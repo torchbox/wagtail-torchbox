@@ -1,28 +1,35 @@
-{% extends "demo/base.html" %}
-{% load pageurl %}
-
-
-{% if self.date %}
-    {% block heading %}
-        <div class="page-header">
-            <h2>{{ self.title }} {{ self.date|date:"j F Y" }}</h2>
-        </div>
-    {% endblock %}
-{% endif %}
+{% extends "torchbox/base.html" %}
+{% load pageurl image_tags rich_text %}
 
 {% block content %}
-    {% include "demo/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
+    {{ self.title }}
 
-    {% include "demo/includes/body.html" with body=self.body only %}
+    {% if self.date %}
+        {{ self.date|date:"j F Y" }}
+    {% endif %}
 
-    {% with self.tags.all as tags %}
-        {% if tags %}
-            <div class="page-header"><h3>Tags</h3></div>
-            {% for tag in tags %}
-                <a href="{% pageurl self.blog_index %}?tag={{ tag }}"><button class="btn btn-primary" type="button">{{ tag }}</button></a>
+    {% with self.related_author.all as authors %}
+        {% if authors %}
+            {% for author in authors %}
+                <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
+
+                {% if author.author.image %}
+                    {% image author.author.image width-300 as photo %}
+                    <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+                {% endif %}
             {% endfor %}
         {% endif %}
     {% endwith %}
 
-    {% include "demo/includes/related_links.html" with related_links=self.related_links.all only %}
+    {% if self.body %}
+        {{ self.body|richtext }}
+    {% endif %}
+
+    {% with self.tags.all as tags %}
+        {% if tags %}
+            {% for tag in tags %}
+                <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 {% endblock %}

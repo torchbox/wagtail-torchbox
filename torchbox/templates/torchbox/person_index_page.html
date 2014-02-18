@@ -1,0 +1,30 @@
+{% extends "torchbox/base.html" %}
+{% load image_tags %}
+
+{% block content %}
+    {{ self.title }}
+
+    {% if self.intro %}
+        {{ self.intro }}
+    {% endif %}
+  
+    {% with self.people.all as people %}
+        {% if people %}
+            <ul>
+                {% for person in people %}
+                    <li>
+                        {% image person.image width-300 as photo %}
+                        <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+
+                        {{ person.title }}
+                        {% if person.role %}
+                            {{ person.role }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    {% endwith %}
+
+{% endblock %}

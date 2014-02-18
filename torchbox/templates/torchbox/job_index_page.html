@@ -1,0 +1,22 @@
+{% extends "torchbox/base.html" %}
+{% load image_tags pageurl rich_text %}
+
+{% block content %}
+    {{ self.title }}
+
+    {% if self.intro %}
+        {{ self.intro|richtext }}
+    {% endif %}
+  
+    {% with self.jobs.all as jobs %}
+        {% if jobs %}
+            <ul>
+                {% for job in jobs %}
+                    <li>
+                        <a href="{% pageurl job %}">{{ job.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+{% endblock %}

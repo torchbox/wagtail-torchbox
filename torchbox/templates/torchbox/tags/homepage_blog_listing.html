@@ -1,0 +1,9 @@
+{% load pageurl image_tags rich_text %}
+{% if blogs %}
+    {% for blog in blogs %}
+		<a href="{% pageurl blog %}">{{ blog.title }}</a>
+		{% if blog.intro %}
+			{{ blog.intro|richtext }}
+		{% endif %}
+    {% endfor %}
+{% endif %}

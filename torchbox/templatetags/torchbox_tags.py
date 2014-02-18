@@ -1,10 +1,9 @@
 from django import template
 from django.conf import settings
 
-from demo.models import *
+from torchbox.models import *
 
 register = template.Library()
-
 
 # settings value
 @register.assignment_tag
@@ -27,7 +26,7 @@ def has_menu_children(page):
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
 # a dropdown class to be applied to a parent
-@register.inclusion_tag('demo/tags/top_menu.html', takes_context=True)
+@register.inclusion_tag('torchbox/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
     menuitems = parent.get_children().filter(
         live=True,
@@ -44,7 +43,7 @@ def top_menu(context, parent, calling_page=None):
 
 
 # Retrieves the children of the top menu items for the drop downs
-@register.inclusion_tag('demo/tags/top_menu_children.html', takes_context=True)
+@register.inclusion_tag('torchbox/tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent):
     menuitems_children = parent.get_children()
     menuitems_children = menuitems_children.filter(
@@ -61,7 +60,7 @@ def top_menu_children(context, parent):
 
 # Retrieves the secondary links for the 'also in this section' links
 # - either the children or siblings of the current page
-@register.inclusion_tag('demo/tags/secondary_menu.html', takes_context=True)
+@register.inclusion_tag('torchbox/tags/secondary_menu.html', takes_context=True)
 def secondary_menu(context, calling_page=None):
     pages = []
     if calling_page:
@@ -82,28 +81,9 @@ def secondary_menu(context, calling_page=None):
         'request': context['request'],
     }
 
-
-# Retrieves all live pages which are children of the calling page
-#for standard index listing
-@register.inclusion_tag(
-    'demo/tags/standard_index_listing.html',
-    takes_context=True
-)
-def standard_index_listing(context, calling_page):
-    pages = calling_page.get_children().filter(live=True)
-    return {
-        'pages': pages,
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-    }
-
-
 # Person feed for home page
-@register.inclusion_tag(
-    'demo/tags/person_listing_homepage.html',
-    takes_context=True
-)
-def person_listing_homepage(context, count=2):
+@register.inclusion_tag('torchbox/tags/homepage_people_listing.html', takes_context=True)
+def homepage_people_listing(context, count=3):
     people = PersonPage.objects.filter(live=True).order_by('?')
     return {
         'people': people[:count],
@@ -113,11 +93,8 @@ def person_listing_homepage(context, count=2):
 
 
 # Blog feed for home page
-@register.inclusion_tag(
-    'demo/tags/blog_listing_homepage.html',
-    takes_context=True
-)
-def blog_listing_homepage(context, count=2):
+@register.inclusion_tag('torchbox/tags/homepage_blog_listing.html', takes_context=True)
+def homepage_blog_listing(context, count=3):
     blogs = BlogPage.objects.filter(live=True).order_by('-date')
     return {
         'blogs': blogs[:count],
@@ -126,23 +103,29 @@ def blog_listing_homepage(context, count=2):
     }
 
 
-# Events feed for home page
-@register.inclusion_tag(
-    'demo/tags/event_listing_homepage.html',
-    takes_context=True
-)
-def event_listing_homepage(context, count=2):
-    events = EventPage.objects.filter(live=True)
-    events = events.filter(date_from__gte=date.today()).order_by('date_from')
+# Work feed for home page
+@register.inclusion_tag('torchbox/tags/homepage_work_listing.html', takes_context=True)
+def homepage_work_listing(context, count=3):
+    work = WorkPage.objects.filter(live=True).order_by('?')
     return {
-        'events': events[:count],
+        'work': work[:count],
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+# Jobs feed for home page
+@register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
+def homepage_job_listing(context, count=3):
+    jobs = JobPage.objects.filter(live=True)
+    return {
+        'jobs': jobs[:count],
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
 
 
 # Advert snippets
-@register.inclusion_tag('demo/tags/adverts.html', takes_context=True)
+@register.inclusion_tag('torchbox/tags/adverts.html', takes_context=True)
 def adverts(context):
     return {
         'adverts': Advert.objects.all(),

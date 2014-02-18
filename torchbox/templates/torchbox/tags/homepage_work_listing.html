@@ -1,0 +1,15 @@
+{% load pageurl image_tags %}
+{% if work %}
+    {% for work in work %}
+        {% with work.screenshots.all|first as screenshot %}
+            {% image screenshot.image width-300 as screenshot %}
+            <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
+        {% endwith %}
+        
+        {{ work.title }}
+
+        {% if work.summary %}
+            {{ work.summary }}
+        {% endif %}
+    {% endfor %}
+{% endif %}

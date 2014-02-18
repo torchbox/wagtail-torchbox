@@ -176,37 +176,6 @@ HomePage.promote_panels = [
 ]
 
 
-# Standard index page
-
-# class StandardIndexPageRelatedLink(Orderable, RelatedLink):
-#     page = ParentalKey('torchbox.StandardIndexPage', related_name='related_links')
-
-
-# class StandardIndexPage(Page):
-#     intro = RichTextField(blank=True)
-#     feed_image = models.ForeignKey(
-#         'wagtailimages.Image',
-#         null=True,
-#         blank=True,
-#         on_delete=models.SET_NULL,
-#         related_name='+'
-#     )
-
-#     indexed_fields = ('intro', )
-#     search_name = None
-
-# StandardIndexPage.content_panels = [
-#     FieldPanel('title', classname="full title"),
-#     FieldPanel('intro', classname="full"),
-#     InlinePanel(StandardIndexPage, 'related_links', label="Related links"),
-# ]
-
-# StandardIndexPage.promote_panels = [
-#     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-#     ImageChooserPanel('feed_image'),
-# ]
-
-
 # Standard page
 
 class StandardPageRelatedLink(Orderable, RelatedLink):
@@ -309,13 +278,14 @@ class BlogPageTag(TaggedItemBase):
 class BlogPageAuthor(Orderable):
     page = ParentalKey('torchbox.BlogPage', related_name='related_author')
     author = models.ForeignKey(
-        'wagtailcore.PersonPage',
+        'torchbox.PersonPage',
         null=True,
         blank=True,
         related_name='+'
     )
 
 class BlogPage(Page):
+    intro = RichTextField(blank=True)
     body = RichTextField()
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date = models.DateField("Post date")
@@ -343,8 +313,9 @@ class BlogPage(Page):
 
 BlogPage.content_panels = [
     FieldPanel('title', classname="full title"),
-    InlinePanel(BlogPage, 'related_authors', label="Author(s)"),
+    InlinePanel(BlogPage, 'related_author', label="Author"),
     FieldPanel('date'),
+    FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
 ]
@@ -370,8 +341,6 @@ JobPage.content_panels = [
 
 JobPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    ImageChooserPanel('feed_image'),
-    FieldPanel('tags'),
 ]
 
 # Jobs index page
@@ -419,7 +388,6 @@ class JobIndexPage(Page):
 JobIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
-    InlinePanel(JobIndexPage, 'related_links', label="Related links"),
 ]
 
 JobIndexPage.promote_panels = [
@@ -432,11 +400,23 @@ JobIndexPage.promote_panels = [
 
 class WorkPageScreenshot(Orderable):
     page = ParentalKey('torchbox.WorkPage', related_name='screenshots')
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
-class WorkPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.WorkPage', related_name='related_links')
+    panels = [
+        ImageChooserPanel('image'),
+    ]
 
-class WorkPage(Page, LinkFields):
+
+# class WorkPageRelatedLink(Orderable, RelatedLink):
+#     page = ParentalKey('torchbox.WorkPage', related_name='related_links')
+
+class WorkPage(Page):
     summary = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
@@ -447,7 +427,7 @@ WorkPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
     InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
-    MultiFieldPanel(LinkFields.panels, "Link"),
+    # InlinePanel(WorkPage, 'related_links', label="Related links"),
 ]
 
 WorkPage.promote_panels = [
@@ -479,7 +459,7 @@ class WorkIndexPage(Page):
 
         # Pagination
         page = request.GET.get('page')
-        paginator = Paginator(jobs, 10)  # Show 10 jobs per page
+        paginator = Paginator(work, 10)  # Show 10 jobs per page
         try:
             work = paginator.page(page)
         except PageNotAnInteger:
@@ -508,9 +488,10 @@ WorkIndexPage.promote_panels = [
 class PersonPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.PersonPage', related_name='related_links')
 
-class PersonPage(Page, ContactFields, LinkFields):
+class PersonPage(Page, ContactFields):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+    role = models.CharField(max_length=255, blank=True)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     image = models.ForeignKey(
@@ -548,6 +529,7 @@ PersonPage.promote_panels = [
 ]
 
 
+
 # Person index
 
 class PersonIndexPage(Page):
@@ -576,7 +558,7 @@ class PersonIndexPage(Page):
 
         # Pagination
         page = request.GET.get('page')
-        paginator = Paginator(jobs, 10)  # Show 10 jobs per page
+        paginator = Paginator(people, 10)  # Show 10 jobs per page
         try:
             people = paginator.page(page)
         except PageNotAnInteger:

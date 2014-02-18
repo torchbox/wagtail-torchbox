@@ -1,15 +1,19 @@
-{% extends "demo/base.html" %}
+{% extends "torchbox/base.html" %}
 {% load torchbox_tags %}
 
-
 {% block content %}
-    {% include "demo/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
+    Top stuff
 
-    {% include "demo/includes/body.html" with body=self.body only %}
+    {% homepage_work_listing 3 %}
 
-    {% person_listing_homepage %}
+    {% homepage_people_listing 3 %}
 
-    {% blog_listing_homepage %}
+    {% homepage_blog_listing 3 %}
 
-    {% event_listing_homepage %}
+    {% homepage_job_listing 3 %}
+
+    Say hello
+
+    Map
+
 {% endblock %}
