@@ -23,6 +23,10 @@ def has_menu_children(page):
         return False
 
 
+@register.filter
+def content_type(value):
+    return value.__class__.__name__.lower()
+
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
 # a dropdown class to be applied to a parent

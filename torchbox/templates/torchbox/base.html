@@ -37,7 +37,7 @@
         </script>
     </head>
 
-    <body class="{% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
+    <body class="type-{{ self|content_type }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
         {% wagtailuserbar %} {# Don't delete this #}
 
         {% block menu %}
