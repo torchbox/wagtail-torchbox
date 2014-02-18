@@ -21,22 +21,14 @@ from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
 from south.signals import post_migrate
 
-from demo.utils import export_event
-
-
-EVENT_AUDIENCE_CHOICES = (
-    ('public', "Public"),
-    ('private', "Private"),
-)
-
-
+from torchbox.utils import export_event
+    
 COMMON_PANELS = (
     FieldPanel('slug'),
     FieldPanel('seo_title'),
     FieldPanel('show_in_menus'),
     FieldPanel('search_description'),
 )
-
 
 # A couple of abstract classes that contain commonly used fields
 
@@ -139,8 +131,7 @@ class RelatedLink(LinkFields):
 
 class AdvertPlacement(models.Model):
     page = ParentalKey('wagtailcore.Page', related_name='advert_placements')
-    advert = models.ForeignKey('demo.Advert', related_name='+')
-
+    advert = models.ForeignKey('torchbox.Advert', related_name='+')
 
 class Advert(models.Model):
     page = models.ForeignKey(
@@ -167,17 +158,9 @@ register_snippet(Advert)
 # Home Page
 
 class HomePageCarouselItem(Orderable, CarouselItem):
-    page = ParentalKey('demo.HomePage', related_name='carousel_items')
-
-
-class HomePageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('demo.HomePage', related_name='related_links')
-
+    page = ParentalKey('torchbox.HomePage', related_name='carousel_items')
 
 class HomePage(Page):
-    body = RichTextField(blank=True)
-
-    indexed_fields = ('body', )
     search_name = "Homepage"
 
     class Meta:
@@ -185,9 +168,7 @@ class HomePage(Page):
 
 HomePage.content_panels = [
     FieldPanel('title', classname="full title"),
-    FieldPanel('body', classname="full"),
     InlinePanel(HomePage, 'carousel_items', label="Carousel items"),
-    InlinePanel(HomePage, 'related_links', label="Related links"),
 ]
 
 HomePage.promote_panels = [
@@ -197,44 +178,39 @@ HomePage.promote_panels = [
 
 # Standard index page
 
-class StandardIndexPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('demo.StandardIndexPage', related_name='related_links')
+# class StandardIndexPageRelatedLink(Orderable, RelatedLink):
+#     page = ParentalKey('torchbox.StandardIndexPage', related_name='related_links')
 
 
-class StandardIndexPage(Page):
-    intro = RichTextField(blank=True)
-    feed_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+# class StandardIndexPage(Page):
+#     intro = RichTextField(blank=True)
+#     feed_image = models.ForeignKey(
+#         'wagtailimages.Image',
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#         related_name='+'
+#     )
 
-    indexed_fields = ('intro', )
-    search_name = None
+#     indexed_fields = ('intro', )
+#     search_name = None
 
-StandardIndexPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro', classname="full"),
-    InlinePanel(StandardIndexPage, 'related_links', label="Related links"),
-]
+# StandardIndexPage.content_panels = [
+#     FieldPanel('title', classname="full title"),
+#     FieldPanel('intro', classname="full"),
+#     InlinePanel(StandardIndexPage, 'related_links', label="Related links"),
+# ]
 
-StandardIndexPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    ImageChooserPanel('feed_image'),
-]
+# StandardIndexPage.promote_panels = [
+#     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+#     ImageChooserPanel('feed_image'),
+# ]
 
 
 # Standard page
 
-class StandardPageCarouselItem(Orderable, CarouselItem):
-    page = ParentalKey('demo.StandardPage', related_name='carousel_items')
-
-
 class StandardPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('demo.StandardPage', related_name='related_links')
-
+    page = ParentalKey('torchbox.StandardPage', related_name='related_links')
 
 class StandardPage(Page):
     intro = RichTextField(blank=True)
@@ -253,7 +229,6 @@ class StandardPage(Page):
 StandardPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
-    InlinePanel(StandardPage, 'carousel_items', label="Carousel items"),
     FieldPanel('body', classname="full"),
     InlinePanel(StandardPage, 'related_links', label="Related links"),
 ]
@@ -267,8 +242,7 @@ StandardPage.promote_panels = [
 # Blog index page
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('demo.BlogIndexPage', related_name='related_links')
-
+    page = ParentalKey('torchbox.BlogIndexPage', related_name='related_links')
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -326,17 +300,20 @@ BlogIndexPage.promote_panels = [
 
 # Blog page
 
-class BlogPageCarouselItem(Orderable, CarouselItem):
-    page = ParentalKey('demo.BlogPage', related_name='carousel_items')
-
-
 class BlogPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('demo.BlogPage', related_name='related_links')
-
+    page = ParentalKey('torchbox.BlogPage', related_name='related_links')
 
 class BlogPageTag(TaggedItemBase):
-    content_object = ParentalKey('demo.BlogPage', related_name='tagged_items')
+    content_object = ParentalKey('torchbox.BlogPage', related_name='tagged_items')
 
+class BlogPageAuthor(Orderable):
+    page = ParentalKey('torchbox.BlogPage', related_name='related_author')
+    author = models.ForeignKey(
+        'wagtailcore.PersonPage',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
 
 class BlogPage(Page):
     body = RichTextField()
@@ -366,9 +343,9 @@ class BlogPage(Page):
 
 BlogPage.content_panels = [
     FieldPanel('title', classname="full title"),
+    InlinePanel(BlogPage, 'related_authors', label="Author(s)"),
     FieldPanel('date'),
     FieldPanel('body', classname="full"),
-    InlinePanel(BlogPage, 'carousel_items', label="Carousel items"),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
 ]
 
@@ -379,13 +356,159 @@ BlogPage.promote_panels = [
 ]
 
 
+# Job page
+
+class JobPage(Page):
+    body = RichTextField()
+
+    indexed_fields = ('body', )
+
+JobPage.content_panels = [
+    FieldPanel('title', classname="full title"),
+    FieldPanel('body', classname="full"),
+]
+
+JobPage.promote_panels = [
+    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+    ImageChooserPanel('feed_image'),
+    FieldPanel('tags'),
+]
+
+# Jobs index page
+
+class JobIndexPage(Page):
+    intro = RichTextField(blank=True)
+
+    indexed_fields = ('intro', )
+    # TODO: what is this? 
+    # search_name = "Job"
+
+    @property
+    def jobs(self):
+        # Get list of blog pages that are descendants of this page
+        jobs = JobPage.objects.filter(
+            live=True,
+            path__startswith=self.path
+        )
+
+        # Order by most recent date first
+        #jobs = jobs.order_by('-date')
+
+        return jobs
+
+    def serve(self, request):
+        # Get jobs
+        jobs = self.jobs
+
+        # Pagination
+        page = request.GET.get('page')
+        paginator = Paginator(jobs, 10)  # Show 10 jobs per page
+        try:
+            jobs = paginator.page(page)
+        except PageNotAnInteger:
+            jobs = paginator.page(1)
+        except EmptyPage:
+            jobs = paginator.page(paginator.num_pages)
+
+        return render(request, self.template, {
+            'self': self,
+            'jobs': jobs,
+        })
+
+
+JobIndexPage.content_panels = [
+    FieldPanel('title', classname="full title"),
+    FieldPanel('intro', classname="full"),
+    InlinePanel(JobIndexPage, 'related_links', label="Related links"),
+]
+
+JobIndexPage.promote_panels = [
+    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+]
+
+
+
+# Work page
+
+class WorkPageScreenshot(Orderable):
+    page = ParentalKey('torchbox.WorkPage', related_name='screenshots')
+
+class WorkPageRelatedLink(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.WorkPage', related_name='related_links')
+
+class WorkPage(Page, LinkFields):
+    summary = models.CharField(max_length=255)
+    intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
+
+WorkPage.content_panels = [
+    FieldPanel('title', classname="full title"),
+    FieldPanel('summary'),
+    FieldPanel('intro', classname="full"),
+    FieldPanel('body', classname="full"),
+    InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
+    MultiFieldPanel(LinkFields.panels, "Link"),
+]
+
+WorkPage.promote_panels = [
+    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+]
+
+
+# Work index page
+
+class WorkIndexPage(Page):
+    intro = RichTextField(blank=True)
+
+    @property
+    def work(self):
+        # Get list of person pages that are descendants of this page
+        work = WorkPage.objects.filter(
+            live=True,
+            path__startswith=self.path
+        )
+
+        # Order by most recent date first
+        #people = people.order_by('-date')
+
+        return work
+
+    def serve(self, request):
+        # Get people
+        work = self.work
+
+        # Pagination
+        page = request.GET.get('page')
+        paginator = Paginator(jobs, 10)  # Show 10 jobs per page
+        try:
+            work = paginator.page(page)
+        except PageNotAnInteger:
+            work = paginator.page(1)
+        except EmptyPage:
+            work = paginator.page(paginator.num_pages)
+
+        return render(request, self.template, {
+            'self': self,
+            'work': work,
+        })
+
+
+WorkIndexPage.content_panels = [
+    FieldPanel('title', classname="full title"),
+    FieldPanel('intro', classname="full"),
+]
+
+WorkIndexPage.promote_panels = [
+    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+]
+
+
 # Person page
 
 class PersonPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('demo.PersonPage', related_name='related_links')
+    page = ParentalKey('torchbox.PersonPage', related_name='related_links')
 
-
-class PersonPage(Page, ContactFields):
+class PersonPage(Page, ContactFields, LinkFields):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
@@ -425,216 +548,53 @@ PersonPage.promote_panels = [
 ]
 
 
-# Contact page
+# Person index
 
-class ContactPage(Page, ContactFields):
-    body = RichTextField(blank=True)
-    feed_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    indexed_fields = ('body', )
-    search_name = "Contact information"
-
-ContactPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('body', classname="full"),
-    MultiFieldPanel(ContactFields.panels, "Contact"),
-]
-
-ContactPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    ImageChooserPanel('feed_image'),
-]
-
-
-# Event index page
-
-class EventIndexPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('demo.EventIndexPage', related_name='related_links')
-
-
-class EventIndexPage(Page):
+class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
 
     indexed_fields = ('intro', )
-    search_name = "Event index"
+    # TODO: what is this? 
+    # search_name = "Job"
 
     @property
-    def events(self):
-        # Get list of event pages that are descendants of this page
-        events = EventPage.objects.filter(
+    def people(self):
+        # Get list of person pages that are descendants of this page
+        people = PersonPage.objects.filter(
             live=True,
             path__startswith=self.path
         )
 
-        # Filter events list to get ones that are either
-        # running now or start in the future
-        events = events.filter(date_from__gte=date.today())
+        # Order by most recent date first
+        #people = people.order_by('-date')
 
-        # Order by date
-        events = events.order_by('date_from')
-
-        return events
-
-EventIndexPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro', classname="full"),
-    InlinePanel(EventIndexPage, 'related_links', label="Related links"),
-]
-
-EventIndexPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-]
-
-
-# Event page
-
-class EventPageCarouselItem(Orderable, CarouselItem):
-    page = ParentalKey('demo.EventPage', related_name='carousel_items')
-
-
-class EventPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('demo.EventPage', related_name='related_links')
-
-
-class EventPageSpeaker(Orderable, LinkFields):
-    page = ParentalKey('demo.EventPage', related_name='speakers')
-    first_name = models.CharField("Name", max_length=255, blank=True)
-    last_name = models.CharField("Surname", max_length=255, blank=True)
-    image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    @property
-    def name_display(self):
-        return self.first_name + " " + self.last_name
-
-    panels = [
-        FieldPanel('first_name'),
-        FieldPanel('last_name'),
-        ImageChooserPanel('image'),
-        MultiFieldPanel(LinkFields.panels, "Link"),
-    ]
-
-
-class EventPage(Page):
-    date_from = models.DateField("Start date")
-    date_to = models.DateField(
-        "End date",
-        null=True,
-        blank=True,
-        help_text="Not required if event is on a single day"
-    )
-    time_from = models.TimeField("Start time", null=True, blank=True)
-    time_to = models.TimeField("End time", null=True, blank=True)
-    audience = models.CharField(max_length=255, choices=EVENT_AUDIENCE_CHOICES)
-    location = models.CharField(max_length=255)
-    body = RichTextField(blank=True)
-    cost = models.CharField(max_length=255)
-    signup_link = models.URLField(blank=True)
-    feed_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    indexed_fields = ('get_audience_display', 'location', 'body')
-    search_name = "Event"
-
-    @property
-    def event_index(self):
-        # Find event index in ancestors
-        for ancestor in reversed(self.get_ancestors()):
-            if isinstance(ancestor.specific, EventIndexPage):
-                return ancestor
-
-        # No ancestors are event indexes,
-        # just return first event index in database
-        return EventIndexPage.objects.first()
+        return people
 
     def serve(self, request):
-        if "format" in request.GET:
-            if request.GET['format'] == 'ical':
-                # Export to ical format
-                response = HttpResponse(
-                    export_event(self, 'ical'),
-                    content_type='text/calendar',
-                )
-                response['Content-Disposition'] = 'attachment; filename=' + self.slug + '.ics'
-                return response
-            else:
-                # Unrecognised format error
-                message = 'Could not export event\n\nUnrecognised format: ' + request.GET['format']
-                return HttpResponse(message, content_type='text/plain')
-        else:
-            # Display event page as usual
-            return super(EventPage, self).serve(request)
+        # Get people
+        people = self.people
 
-EventPage.content_panels = [
+        # Pagination
+        page = request.GET.get('page')
+        paginator = Paginator(jobs, 10)  # Show 10 jobs per page
+        try:
+            people = paginator.page(page)
+        except PageNotAnInteger:
+            people = paginator.page(1)
+        except EmptyPage:
+            people = paginator.page(paginator.num_pages)
+
+        return render(request, self.template, {
+            'self': self,
+            'people': people,
+        })
+
+
+PersonIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),
-    FieldPanel('date_from'),
-    FieldPanel('date_to'),
-    FieldPanel('time_from'),
-    FieldPanel('time_to'),
-    FieldPanel('location'),
-    FieldPanel('audience'),
-    FieldPanel('cost'),
-    FieldPanel('signup_link'),
-    InlinePanel(EventPage, 'carousel_items', label="Carousel items"),
-    FieldPanel('body', classname="full"),
-    InlinePanel(EventPage, 'speakers', label="Speakers"),
-    InlinePanel(EventPage, 'related_links', label="Related links"),
+    FieldPanel('intro', classname="full"),
 ]
 
-EventPage.promote_panels = [
+PersonIndexPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    ImageChooserPanel('feed_image'),
 ]
-
-
-# Signal handler to load demo data from fixtures after migrations have completed
-@receiver(post_migrate)
-def import_demo_data(sender, **kwargs):
-    # post_migrate will be fired after every app is migrated; we only want to do the import
-    # after demo has been migrated
-    if kwargs['app'] != 'demo':
-        return
-
-    # Check that there isn't already meaningful data in the db that would be clobbered.
-    # A freshly created databases should contain no images, tags or snippets
-    # and just two page records: root and homepage.
-    if Image.objects.count() or Tag.objects.count() or Advert.objects.count() or Page.objects.count() > 2:
-        return
-
-    # furthermore, if any page has a more specific type than Page, that suggests that meaningful
-    # data has been added
-    for page in Page.objects.all():
-        if page.specific_class != Page:
-            return
-
-    import os, shutil
-    from django.conf import settings
-
-    fixtures_dir = os.path.join(settings.PROJECT_ROOT, 'demo', 'fixtures')
-    fixture_file = os.path.join(fixtures_dir, 'demo.json')
-    image_src_dir = os.path.join(fixtures_dir, 'images')
-    image_dest_dir = os.path.join(settings.MEDIA_ROOT, 'original_images')
-
-    call_command('loaddata', fixture_file, verbosity=0)
-
-    if not os.path.isdir(image_dest_dir):
-        os.makedirs(image_dest_dir)
-
-    for filename in os.listdir(image_src_dir):
-        shutil.copy(os.path.join(image_src_dir, filename), image_dest_dir)

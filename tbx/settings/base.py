@@ -1,4 +1,4 @@
-# Django settings for wagtaildemo project.
+# Django settings for wagtail-torchbox project.
 
 import os
 
@@ -16,7 +16,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wagtail-torchbox.com',
+        'NAME': 'wagtail-torchbox',
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '',  # Set to empty string for localhost.
@@ -94,11 +94,8 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-# ** You would never normally put the SECRET_KEY in a public repository,
-# ** however this is a demo app so we're using the default settings.
-# ** Don't use this key in any non-demo usage!
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'wq21wtjo3@d_qfjvd-#td!%7gfy2updj2z+nev^k$iy%=m4_tr'
+SECRET_KEY = '0qkkb_#_b)3g-h#*e^-a653*wo0=i2fjeebhh193wt(xe$=s3f'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -125,7 +122,7 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
 )
 
-ROOT_URLCONF = 'torchbox.urls'
+ROOT_URLCONF = 'tbx.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'tbx.wsgi.application'

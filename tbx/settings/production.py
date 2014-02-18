@@ -6,7 +6,7 @@ DEBUG = False
 WAGTAILSEARCH_BACKENDS = {
     'default': {
         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
-        'INDEX': 'wagtaildemo'
+        'INDEX': 'wagtail-torchbox'
     }
 }
 
