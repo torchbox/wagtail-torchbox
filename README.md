@@ -1,9 +1,9 @@
-Wagtail demo
+Torchbox.com on Wagtail
 =======================
 
 [Wagtail](http://wagtail.io) is distributed as a Python package, to be incorporated into a Django project via the INSTALLED_APPS setting. To get you up and running quickly, we provide a demo site with all the configuration in place, including a set of example page types.
 
-Setup (with Vagrant - recommended)
+Setup (with Vagrant)
 -----
 
 We recommend running Wagtail in a virtual machine using Vagrant, as this ensures that the correct dependencies are in place regardless of how your host machine is set up.
@@ -15,8 +15,8 @@ We recommend running Wagtail in a virtual machine using Vagrant, as this ensures
 ### Installation
 Run the following commands:
 
-    git clone https://github.com/torchbox/wagtaildemo.git
-    cd wagtaildemo
+    git clone https://github.com/torchbox/wagtail-torchbox.git
+    cd wagtail-torchbox
     vagrant up
     vagrant ssh
       (then, within the SSH session:)
