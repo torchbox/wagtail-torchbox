@@ -1,11 +1,11 @@
 {% extends "torchbox/base.html" %}
-{% load image_tags %}
+{% load image_tags rich_text pageurl %}
 
 {% block content %}
     {{ self.title }}
 
     {% if self.intro %}
-        {{ self.intro }}
+        {{ self.intro|richtext }}
     {% endif %}
   
     {% with self.people.all as people %}
@@ -16,7 +16,7 @@
                         {% image person.image width-300 as photo %}
                         <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
 
-                        {{ person.title }}
+                        <a href="{% pageurl person %}">{{ person.title }}</a>
                         {% if person.role %}
                             {{ person.role }}
                         {% endif %}

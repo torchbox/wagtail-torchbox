@@ -1,9 +1,7 @@
 {% load torchbox_tags pageurl %}
 {% get_site_root as site_root %}
 
-{# Implementation of bootstrap theme dropdown menu - shows top level links and their children #}
 <nav role="navigation">
-    
     {# Link to home page #}
     <a href="{% pageurl site_root %}" class="navbar-brand">{{ site_root.title }}</a>
         

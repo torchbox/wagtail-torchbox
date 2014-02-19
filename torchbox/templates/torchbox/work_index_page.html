@@ -1,5 +1,5 @@
 {% extends "torchbox/base.html" %}
-{% load image_tags rich_text %}
+{% load pageurl image_tags rich_text %}
 
 {% block content %}
     {{ self.title }}
@@ -13,7 +13,7 @@
             <ul>
                 {% for client in work %}
                     <li>
-                        {{ client.title }}
+                        <a href="{% pageurl client %}">{{ client.title }}</a>
                         {% with client.screenshots.all|first as screenshot %}
                             {% image screenshot.image width-300 as screenshot %}
                             <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />

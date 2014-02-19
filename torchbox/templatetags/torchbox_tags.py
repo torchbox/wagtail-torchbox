@@ -62,8 +62,7 @@ def top_menu_children(context, parent):
     }
 
 
-# Retrieves the secondary links for the 'also in this section' links
-# - either the children or siblings of the current page
+# Retrieves the secondary links - only the children of the current page, NOT the siblings
 @register.inclusion_tag('torchbox/tags/secondary_menu.html', takes_context=True)
 def secondary_menu(context, calling_page=None):
     pages = []
@@ -73,12 +72,12 @@ def secondary_menu(context, calling_page=None):
             show_in_menus=True
         )
 
-        # If no children, get siblings instead
-        if len(pages) == 0:
-            pages = calling_page.get_other_siblings().filter(
-                live=True,
-                show_in_menus=True
-            )
+        # # If no children, get siblings instead
+        # if len(pages) == 0:
+        #     pages = calling_page.get_other_siblings().filter(
+        #         live=True,
+        #         show_in_menus=True
+        #     )
     return {
         'pages': pages,
         # required by the pageurl tag that we want to use within this template

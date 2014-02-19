@@ -1,10 +1,12 @@
 {% load pageurl %}
 
 {% if pages %}
-    <ul>
-        {% for page in pages %}
-            <li><a href="{% pageurl page %}">{{ page.title }}</a></li>
-        {% endfor %}
-    </ul>
+    <nav role="navigation">
+        <ul>
+            {% for page in pages %}
+                <li><a href="{% pageurl page %}">{{ page.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
 {% endif %}
     
