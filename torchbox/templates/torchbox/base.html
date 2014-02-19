@@ -17,13 +17,13 @@
         {% compress css %}
             <link rel="stylesheet" href="{% static "torchbox/css/vendor/jquery.bxslider.css" %}" />
 
-            {# NB Less compilation relies on django compressor and requires type="text/less" #}
+            {# NB Less files must exist within compress tags and requires type="text/less" #}
             <link rel="stylesheet" type="text/less" href="{% static "torchbox/css/main.less" %}" />
         {% endcompress %}
 
         {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
 
-        {# Javascript that needs to be called from head e.g. google analytics snippet, modernizr etc#}
+        {# Javascript that needs to be called from head e.g. google analytics snippet, modernizr etc #}
         <script type="text/javascript">
               var _gaq = _gaq || [];
               _gaq.push(['_setAccount', 'UA-xxxxxxx-x']);
@@ -37,7 +37,7 @@
         </script>
     </head>
 
-    <body class="type-{{ self|content_type }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
+    <body class="page-{{ self|content_type }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
         {% wagtailuserbar %} {# Don't delete this #}
 
         {% block menu %}
