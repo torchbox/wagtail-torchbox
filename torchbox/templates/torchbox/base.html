@@ -8,7 +8,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | Wagtail Demo{% endblock %}</title>
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | Torchbox{% endblock %}</title>
 
         <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
 
@@ -40,10 +40,12 @@
     <body class="page-{{ self|content_type }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
         {% wagtailuserbar %} {# Don't delete this #}
 
+        <header>
         {% block menu %}
             {% get_site_root as site_root %}
             {% top_menu parent=site_root calling_page=self %}
         {% endblock %}
+        </header>
 
         {% block secondary_menu %}
             {% secondary_menu calling_page=self %}
