@@ -32,6 +32,17 @@ COMMON_PANELS = (
 
 # A couple of abstract classes that contain commonly used fields
 
+class ContentBlock(models.Model):
+    content = RichTextField()
+
+    panels = [
+        FieldPanel('content'),
+    ]
+
+    class Meta:
+        abstract = True
+
+
 class LinkFields(models.Model):
     link_external = models.URLField("External link", blank=True)
     link_page = models.ForeignKey(
@@ -178,12 +189,16 @@ HomePage.promote_panels = [
 
 # Standard page
 
+class StandardPageContentBlock(Orderable, ContentBlock):
+    page = ParentalKey('torchbox.StandardPage', related_name='content_block')
+
 class StandardPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='related_links')
 
 class StandardPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
+
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -199,6 +214,7 @@ StandardPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
+    InlinePanel(StandardPage, 'content_block', label="Content block"),
     InlinePanel(StandardPage, 'related_links', label="Related links"),
 ]
 
@@ -343,15 +359,16 @@ JobPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
 ]
 
+
 # Jobs index page
+
+class JobIndexPageContentBlock(Orderable, ContentBlock):
+    page = ParentalKey('torchbox.JobIndexPage', related_name='content_block')
 
 class JobIndexPage(Page):
     intro = RichTextField(blank=True)
-    body = RichTextField()
 
     indexed_fields = ('intro', 'body', )
-    # TODO: what is this? 
-    # search_name = "Job"
 
     @property
     def jobs(self):
@@ -389,6 +406,7 @@ class JobIndexPage(Page):
 JobIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
+    InlinePanel(JobIndexPage, 'content_block', label="Content block"),
 ]
 
 JobIndexPage.promote_panels = [

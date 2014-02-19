@@ -19,4 +19,15 @@
             </ul>
         {% endif %}
     {% endwith %}
+
+    {% if self.content_block.all %}
+        {% for block in self.content_block.all %}
+            {# forloop counter can be used as a class to alternate left/right #}
+            {{ forloop.counter }}
+            {# converely cycle can be used #}
+            {% cycle 'odd' 'even' %}
+            {{ block.content|richtext }}
+        {% endfor %}
+    {% endif %}
+    
 {% endblock %}
