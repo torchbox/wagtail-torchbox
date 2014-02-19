@@ -347,8 +347,9 @@ JobPage.promote_panels = [
 
 class JobIndexPage(Page):
     intro = RichTextField(blank=True)
+    body = RichTextField()
 
-    indexed_fields = ('intro', )
+    indexed_fields = ('intro', 'body', )
     # TODO: what is this? 
     # search_name = "Job"
 

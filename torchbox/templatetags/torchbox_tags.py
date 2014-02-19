@@ -62,11 +62,11 @@ def top_menu_children(context, parent):
     }
 
 
-# Retrieves the secondary links - only the children of the current page, NOT the siblings
+# Retrieves the secondary links - only the children of the current page, NOT the siblings, and only when not viewing the homepage
 @register.inclusion_tag('torchbox/tags/secondary_menu.html', takes_context=True)
 def secondary_menu(context, calling_page=None):
     pages = []
-    if calling_page:
+    if calling_page and calling_page.id != get_site_root(context).id:
         pages = calling_page.get_children().filter(
             live=True,
             show_in_menus=True
