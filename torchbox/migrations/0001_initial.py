@@ -117,6 +117,7 @@ class Migration(SchemaMigration):
         # Adding model 'BlogPage'
         db.create_table(u'torchbox_blogpage', (
             (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
+            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
             ('body', self.gf('wagtail.wagtailcore.fields.RichTextField')()),
             ('date', self.gf('django.db.models.fields.DateField')()),
             ('feed_image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
@@ -142,20 +143,9 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
             ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='screenshots', to=orm['torchbox.WorkPage'])),
+            ('image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
         ))
         db.send_create_signal(u'torchbox', ['WorkPageScreenshot'])
-
-        # Adding model 'WorkPageRelatedLink'
-        db.create_table(u'torchbox_workpagerelatedlink', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('link_external', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('link_page', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtailcore.Page'])),
-            ('link_document', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtaildocs.Document'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='related_links', to=orm['torchbox.WorkPage'])),
-        ))
-        db.send_create_signal(u'torchbox', ['WorkPageRelatedLink'])
 
         # Adding model 'WorkPage'
         db.create_table(u'torchbox_workpage', (
@@ -197,6 +187,7 @@ class Migration(SchemaMigration):
             ('post_code', self.gf('django.db.models.fields.CharField')(max_length=10, blank=True)),
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('role', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
             ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
             ('biography', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
             ('image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
@@ -257,9 +248,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'WorkPageScreenshot'
         db.delete_table(u'torchbox_workpagescreenshot')
-
-        # Deleting model 'WorkPageRelatedLink'
-        db.delete_table(u'torchbox_workpagerelatedlink')
 
         # Deleting model 'WorkPage'
         db.delete_table(u'torchbox_workpage')
@@ -353,6 +341,7 @@ class Migration(SchemaMigration):
             'body': ('wagtail.wagtailcore.fields.RichTextField', [], {}),
             'date': ('django.db.models.fields.DateField', [], {}),
             'feed_image': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['wagtailimages.Image']"}),
+            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
             u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
         },
         u'torchbox.blogpageauthor': {
@@ -424,6 +413,7 @@ class Migration(SchemaMigration):
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'}),
             'post_code': ('django.db.models.fields.CharField', [], {'max_length': '10', 'blank': 'True'}),
+            'role': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'telephone': ('django.db.models.fields.CharField', [], {'max_length': '20', 'blank': 'True'})
         },
         u'torchbox.personpagerelatedlink': {
@@ -465,19 +455,10 @@ class Migration(SchemaMigration):
             u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'}),
             'summary': ('django.db.models.fields.CharField', [], {'max_length': '255'})
         },
-        u'torchbox.workpagerelatedlink': {
-            'Meta': {'ordering': "['sort_order']", 'object_name': 'WorkPageRelatedLink'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'link_document': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtaildocs.Document']"}),
-            'link_external': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'link_page': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtailcore.Page']"}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'related_links'", 'to': u"orm['torchbox.WorkPage']"}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
         u'torchbox.workpagescreenshot': {
             'Meta': {'ordering': "['sort_order']", 'object_name': 'WorkPageScreenshot'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['wagtailimages.Image']"}),
             'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'screenshots'", 'to': u"orm['torchbox.WorkPage']"}),
             'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
