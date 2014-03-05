@@ -1,19 +1,45 @@
 {% extends "torchbox/base.html" %}
-{% load torchbox_tags %}
+{% load torchbox_tags pageurl%}
 
 {% block content %}
-    Top stuff
+<main class="page-home">
+    <section class="hero">
+        <h1 class="visuallyhidden">Home</h1>
+        <h2>Digital stuff for the good guys.</h2>
+    </section>
 
-    {% homepage_work_listing 3 %}
+    <section class="work clearfix grid">
+    	<div class="container">
+    		<ul class="listing clearfix">
 
-    {% homepage_people_listing 3 %}
+    			{% homepage_work_listing 3 %}
+    		</ul>
+    	</div>
+    </section>
 
-    {% homepage_blog_listing 3 %}
+    <section class="container hiring">
+        <h2>We're hiring</h2>
+    		{% homepage_job_listing 3 %}
+     	</section>
 
-    {% homepage_job_listing 3 %}
+    <section class="blog container  grid">
+        <h2><a href="blog.php" >Blog <span>+</span></a></h2>
+        <ul class="listing clearfix" >
+		    {% homepage_blog_listing 3 %}
+		  </ul>
+    </section>
 
+    <section class="clients container clearfix">
+	    <h2>Clients</h2>
+		 <ul>
+            <li>
+
+            </li>
+         </ul>
+	 </section>
     Say hello
 
     Map
+</main>
 
 {% endblock %}

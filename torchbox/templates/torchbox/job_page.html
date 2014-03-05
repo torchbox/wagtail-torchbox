@@ -2,9 +2,15 @@
 {% load image_tags rich_text %}
 
 {% block content %}
-    {{ self.title }}
-
+<main class="page-about job-single single">
+<section class="container body-copy">
+	<div class="breadcrumb">
+        <a href="about-jobs.php">jobs</a>
+    </div>
+    <h1>{{ self.title }}</h1>
     {% if self.body %}
         {{ self.body|richtext }}
     {% endif %}
+</section>
+</main>
 {% endblock %}

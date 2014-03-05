@@ -2,34 +2,46 @@
 {% load pageurl image_tags rich_text %}
 
 {% block content %}
-    {{ self.title }}
+<main class="page-blog-single single">
 
-    {% if self.date %}
-        {{ self.date|date:"j F Y" }}
-    {% endif %}
+    <section class="container body-copy">
+        <div class="breadcrumb">
+            <a href="#">Blog</a>
+        </div>
 
-    {% with self.related_author.all as authors %}
-        {% if authors %}
-            {% for author in authors %}
-                <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
+        <h1>{{ self.title }}</h1>
 
-                {% if author.author.image %}
-                    {% image author.author.image width-300 as photo %}
-                    <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+        <div class="author-teaser">
+            {% with self.related_author.all as authors %}
+                {% if authors %}
+                    {% for author in authors %}
+                    <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
+                        {% if author.author.image %}
+                            {% image author.author.image width-300 as photo %}
+                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+            {% endwith %}
 
+            {% if self.date %}
+            <span class="date">{{ self.date|date:"j F Y" }}</span>
+            {% endif %}
+        </sections>
+    
     {% if self.body %}
-        {{ self.body|richtext }}
+    {{ self.body|richtext }}
     {% endif %}
+    </div>
+    <section class="tags">
+        {% with self.tags.all as tags %}
+            {% if tags %}
+                {% for tag in tags %}
+                    <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
 
-    {% with self.tags.all as tags %}
-        {% if tags %}
-            {% for tag in tags %}
-                <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+</main>
 {% endblock %}

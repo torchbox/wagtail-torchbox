@@ -1,0 +1,373 @@
+
+@media only screen and (min-width: 36em) {
+
+	html {
+		
+		margin:0;
+		padding:0;
+	}
+
+
+	main {
+		background-color: #fff;
+		width:100%;
+	}
+
+	.container {
+		padding: 0 2em;
+	}
+
+	.single .container {
+		padding: 2em;
+	}
+
+	.menu-button {
+		display: none;
+	}
+
+	header {
+		position: relative;
+		padding: 0;
+	}
+
+	header nav ul {
+	    display:block;
+	    position: absolute;
+	    top: 0;
+	    right: 2em;
+	    border-right: 1px dotted #ccc;
+	}
+
+	header nav li {
+		float: left;
+
+	}
+
+	header nav a {
+		/*color: #FF653F;*/
+		color: #fff;
+		border-left: 1px dotted #ccc;
+		border-bottom: 1px dotted #ccc;
+		padding: 1.4em 1em;
+		background-color: transparent;
+	}
+
+	header nav li a:hover {
+		background-color: #FF653F;
+		color: #fff;
+		transition: all 0.15s ease;
+	}
+
+	.logo {
+		height: 2.5em;
+		padding:1em 0;
+	}
+
+	.page-home .hero {
+		padding: 14% 2em;
+	}
+
+	.page-home .hero a {
+		padding:1.25em;
+	}
+
+	.page-home .hero h2 {
+		font-size: 4.5em;
+	}
+
+	.page-home .work li {
+		margin: 0;
+		width:33.33%;
+	}
+
+	.page-home .work li:last-child a{
+		border-right: none;
+	}
+
+	.page-home .work li  {
+		border-right: 1px solid #fff;
+		box-sizing: border-box;
+		position: relative;
+	}
+
+	.page-home .work li a div {
+		padding: 1em;
+		bottom: 0;
+		width: 100%;
+		background-color: rgba(255, 255, 255, 0.75);
+		box-sizing: border-box;
+	}
+
+	.page-home .blog {
+		border-top: 1px dotted #ccc;
+		border-bottom: 1px dotted #ccc;
+		padding:2em;
+	}
+
+	.page-home .blog h3 {
+		font-size: 1.5em;
+	}
+
+	.page-home .hiring {
+		background-size: 100%;
+		padding: 9em 0 28% 0;
+		border: none;
+
+	}
+
+
+	
+	.page-home .hiring h2 {
+		font-size: 5em;
+	}
+
+	.page-home .hiring a {
+		font-size: 1.25em;
+		background-color: #FF653F;
+		padding: 0.5em 1em;
+		line-height: 1em;
+		color: #fff;
+		
+	}
+
+	.page-home .hiring ul {
+		border: none;
+	}
+
+	.page-home .hiring li {
+		display:inline-block;
+		border: none;
+		margin-bottom: 1em;
+	}
+
+	.page-work-index .listing img {
+		margin-bottom: 1em;
+	}	
+
+	.page-work-index .listing a {
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 8em;
+	}
+
+	.page-work-index .listing h2 {
+		font-size: 2em;
+		margin-bottom: 0;
+	}
+
+
+	.page-blog-index  {
+		background: url("/static/torchbox/images/blog-bg-01.png") no-repeat;
+		background-size: 100% auto;
+	}
+
+	.page-blog-index h2 {
+		font-size: 1.5em;
+		margin-bottom: 0.5em;
+	}
+
+	.page-blog-index .container {
+		max-width: 48em;
+		margin: 0 auto;
+		background: rgba(255, 255, 255, 0.75);
+	}
+
+	.page-blog-index li {
+		padding: 1em 0 2em 0;
+	}
+
+    .page-blog-single {
+    	margin: 2em auto;
+    }
+
+    .page-work-single .intro h1 {
+    	font-size: 7em;
+    }
+
+    .body-copy {
+    	font-size: 1.15em;
+    }
+
+    .body-copy h1 {
+    	font-size: 4em;
+    	letter-spacing: -0.075em;
+    }
+
+    .grid li {
+	    float: left;
+	}
+
+	.grid li img {
+		width: 100%;
+		height: auto;
+	}
+
+
+	.grid li {
+		width:32%;
+		margin-right: 2%;
+		border: none;
+	}
+
+	.grid li a {
+		border: none;
+	}
+
+	.grid li:nth-child(3n+3) {
+		margin-right: 0;
+	}
+
+	.listing {
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+
+	.page-home .clients li {
+		width: 15%;
+		margin-right: 2%;
+		margin-bottom: 2%;
+	}
+
+	.page-about .intro {
+	    padding: 4em 0 ;
+	}
+
+	.page-about h1 {
+		font-size: 5em;
+	}
+
+	.page-about .benefits li {
+	    position: relative;
+	    min-height: 18em;
+	    padding: 4em 2em;
+	}
+
+
+	.page-about .services-list li {
+	    min-height: 18em;
+	}
+
+	.page-about.jobs .benefits .heading-block {
+		position: relative;
+	}
+
+
+	.page-about .benefits h2 {
+		font-size: 3em;
+	}
+
+	.page-about .benefits li {
+		padding: 6em 2em;
+	}
+
+	.page-about .benefits li > div > div {
+		max-width: 24em;
+	}
+
+	.page-about .benefits .container {
+		max-width: 72em;
+		margin:0 auto;
+	}
+
+	.page-about .benefits .container div {
+
+	}
+
+	.page-about .benefits li:nth-child(odd) .container div {
+		float: left;
+	}
+
+	.page-about .benefits li:nth-child(even) .container div{	
+		float: right;
+	}
+
+	.page-about .benefits .three .container div {
+		background: rgba(255, 255, 255, 0.75);
+		padding: 1em;
+	}
+
+	.page-about .benefits .three {
+	    color: #222;
+	}
+
+	.grid.people-list li {
+		width: 33.3%;
+		margin: 0;
+		padding: 0;
+
+	}
+
+	.page-people-single .hero {
+		height: 32em;
+	}
+	
+	footer .offices ul {
+		width: 44em;
+		margin: 0 auto;
+	}
+
+	footer .offices li {
+		width: 18em;
+		float: left;
+		padding: 0 1em 1em 3em;
+		background: url("/static/torchbox/images/icon-map-pin.svg") no-repeat left top;
+		background-size: 3em;
+	}
+
+
+	footer .offices li:first-child{
+		margin-right: -1px;
+	}
+
+	footer .offices {
+		margin: 2em auto;
+	}
+
+	footer .offices h3 {
+		font-size: 1.5em;
+	}
+
+	footer .contact {
+		padding: 2em 0;
+		text-align: center;
+	}
+
+	footer .contact h2{
+		font-size: 4em;	
+	}
+
+	footer .contact ul {
+		text-align: center;
+		border: none;
+	}
+
+	footer .contact li {
+		display: inline-block;
+		margin: 0 1em;
+		border: none;
+		width: 12em;
+		border: none;
+	}
+	
+	footer .contact li i {
+		float: none;
+		display: block;
+		font-size: 3em;
+		margin: 0;
+	}
+
+	footer .contact li a:hover i {
+		position: relative;
+		top: -0.25em;
+		transition: top 0.2s ease;
+
+	}
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}

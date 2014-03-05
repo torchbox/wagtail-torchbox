@@ -2,21 +2,33 @@
 {% load image_tags rich_text %}
 
 {% block content %}
-    {{ self.title }}
+<main class="page-work-single single">
+    
+    <div class="intro">
+        <div class="container body-copy">
+            <div class="breadcrumb">
+                <a href="#">Work</a>
+            </div>
+            <h1>{{ self.title }}</h1>
+            <p>
+            {% if self.intro %}
+                {{ self.intro|richtext }}
+            {% endif %}
+            </p>
+        </div>
+    </div>
 
-    {% if self.intro %}
-        {{ self.intro|richtext }}
-    {% endif %}
-
-    {% if self.body %}
-        {{ self.body|richtext }}
-    {% endif %}
+    <div class="body-copy container">
+        {% if self.body %}
+            {{ self.body|richtext }}
+        {% endif %}
+    </div>
 
     {% with self.screenshots.all as screenshots %}
         {% if screenshots %}
             <ul>
                 {% for screenshot in screenshots %}
-                    <li>
+                    <li  class="img-wrapper">
                         {% image screenshot.image width-300 as shot %}
                         <img src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
                     </li>
@@ -25,5 +37,5 @@
         {% endif %}
     {% endwith %}
 
-
+</main>
 {% endblock %}

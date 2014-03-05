@@ -1,10 +1,13 @@
-{% load torchbox_tags pageurl %}
+{% load torchbox_tags static pageurl %}
 {% get_site_root as site_root %}
 
-<nav role="navigation">
+
     {# Link to home page #}
-    <a href="{% pageurl site_root %}" class="navbar-brand">{{ site_root.title }}</a>
-        
+    <a href="{% pageurl site_root %}" class="logo container">
+    	<img src="{% static "torchbox/images/logo-torchbox-grey.png" %}">
+    </a>
+    <nav role="navigation">    
+        <a href="#menu" class="menu-button">&#9776;</a>        
     <ul>
         {% for menuitem in menuitems %}
             <li class="{% if calling_page.url == menuitem.url %}active{% endif %}">
@@ -13,9 +16,4 @@
         {% endfor %}
     </ul>
 
-    <ul class="mini-nav">
-    	<li>Site map</li>
-    	<li>Contact us</li>
-
-    </ul>
 </nav>

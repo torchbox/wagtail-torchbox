@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2013 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="mail" unicode="&#xe801;" d="m0 28v644q0 8 2 18l460-460q39-39 95-39q55 0 94 39l460 460q2-9 2-18v-644q0-37-26-62t-62-26h-937q-36 0-62 26t-26 62z m63 728q13 4 25 4h937q12 0 25-4l-463-463q-13-12-31-12t-30 12z" horiz-adv-x="1113.3" />
+<glyph glyph-name="twitter" unicode="&#xe802;" d="m0-37q30-3 60-3q176 0 314 108q-82 1-147 50t-89 125q20-4 47-4q35 0 67 9q-88 17-145 87t-58 160l0 3q53-30 115-31q-52 34-82 90t-31 120q0 68 35 127q94-117 230-186t290-78q-7 33-7 58q0 104 74 178t179 74q109 0 184-80q87 18 160 62q-28-91-110-140q73 9 144 40q-48-75-125-131l0-33q0-101-29-202t-90-194t-145-165t-201-115t-253-42q-209 0-387 113z" horiz-adv-x="1230" />
+<glyph glyph-name="phone" unicode="&#xe800;" d="m0 615q0 50 28 76l138 138q45 37 77-13l113-211q18-39-14-71l-51-52q-5-6-5-14q25-98 132-195l31-30t36-34t34-26t41-25t40-14q20-6 27 2l61 60q39 30 72 12l203-121q22-14 25-37t-13-39l-141-139q-27-27-74-27q-140 4-318 121q-258 185-375 406q-72 151-67 233z" horiz-adv-x="988" />
+</font>
+</defs>
+</svg>

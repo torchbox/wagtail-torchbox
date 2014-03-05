@@ -2,35 +2,44 @@
 {% load torchbox_tags pageurl image_tags %}
 
 {% block content %}
+<main class="page-blog-index index">
+    
 
-    {{ self.title }}
-
-    {# Optional heading appears if filtering by tag #}
-    {% if request.GET.tag|length %}
-        <h4>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></h4>
-    {% endif %}
-
-    {% for blog in blogs %}
-        <a href="{% pageurl blog %}">{{ blog.title }}</a>
-        {% if blog.date %}
-            {{ blog.date|date:"j F Y" }}
+    <section class="blog container">
+        <h1>{{ self.title }}</h1>
+        {# Optional heading appears if filtering by tag #}
+        {% if request.GET.tag|length %}
+            <p>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></p>
         {% endif %}
-        {% with blog.related_author.all as authors %}
-            {% if authors %}
-                {% for author in authors %}
-                    <a href="{% pageurl author.author %}">
-                        {{ author.author.title }}
 
-                        {% if author.author.image %}
-                            {% image author.author.image width-300 as photo %}
-                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
-                        {% endif %}
-                    </a>
-                {% endfor %}
+        {% for blog in blogs %}
+        <ul>
+            <li>
+
+            <a href="{% pageurl blog %}">
+            <h2>{{ blog.title }}</h2>
+            {% with blog.related_author.all as authors %}
+                {% if authors %}
+                    {% for author in authors %}
+                        <a href="{% pageurl author.author %}">
+                            {{ author.author.title }}
+
+                            {% if author.author.image %}
+                                {% image author.author.image width-300 as photo %}
+                                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% if blog.date %}
+                <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
             {% endif %}
-        {% endwith %}
-    {% endfor %}
-   
+            </a>
+            </li>
+        </ul>
+        {% endfor %}
+       
     {# Pagination #}
     {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
     <div class="row">
@@ -48,4 +57,5 @@
             {% endif %}
         </div>
     </div>
+</main>
 {% endblock %}

@@ -2,7 +2,10 @@
 {% load image_tags rich_text pageurl %}
 
 {% block content %}
-    {{ self.title }}
+<main class="page-about">
+    <section class=" container">
+    <h1>{{ self.title }}</h1>
+    <div class="grid people-list clearfix">
 
     {% if self.intro %}
         {{ self.intro|richtext }}
@@ -13,18 +16,24 @@
             <ul>
                 {% for person in people %}
                     <li>
+                        <a href="{% pageurl person %}">
                         {% image person.image width-300 as photo %}
                         <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+                        <div>
+                            <h2>{{ person.title }}</h2>
 
-                        <a href="{% pageurl person %}">{{ person.title }}</a>
-                        {% if person.role %}
-                            {{ person.role }}
-                        {% endif %}
+                            {% if person.role %}
+                                {{ person.role }}
+                            {% endif %}
+                        </div>
+                        </a>
                     </li>
                 {% endfor %}
             </ul>
         {% endif %}
 
     {% endwith %}
-
+    </div>
+</section>
+</main>
 {% endblock %}

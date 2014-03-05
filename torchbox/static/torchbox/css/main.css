@@ -1,0 +1,988 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #CEEAF8;
+    text-shadow: none;
+}
+
+::selection {
+    background: #CEEAF8;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html {
+    background: url("/static/torchbox/images/bg.png") fixed;
+    background-color: #FF643E;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F5F3EF;
+}
+
+body {
+    max-width: 96em;
+    margin: 0 auto;
+    color: #333;
+    line-height: 1.75;
+    background-color: #fff;
+}
+
+main {
+    background-color: #fff;
+    padding: 0 0 1em 0;
+    
+}
+
+.single main {
+    padding: 1em 0;
+}
+
+h1, h2, h3 {
+    line-height: 1.25;
+    margin: 0;
+    padding: 0;
+    letter-spacing: -0.03em;
+}
+
+p {
+    margin: 0 0 1em 0;
+}
+
+a {
+    text-decoration: none;
+    color: #FF653F;
+}
+
+a:hover {
+    color: #ffa624;
+    transition: color 0.1s ease;
+}
+
+button, .button {
+    padding: 0.75em 1em;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    color: #fff;
+    background-color: #FF653F;
+    display: inline-block;
+    line-height: 1em;
+    border-radius: 0.2em;
+}
+button:hover, .button:hover {
+    background-color: #ffa523;
+    color:#fff;
+    transition: background-color 0.15s ease;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width:100%;
+}
+
+.img-wrapper {
+    width:100%;
+    max-height: 600px;
+    margin-bottom: 1em;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.img-wrapper img {
+    width: auto;
+    position:relative;
+    max-width: 100%;
+}
+
+header nav a {
+    display: block;
+    padding: 0.5em 1em;
+    background-color: #333;
+    color: #222;
+    margin-bottom: 1px;
+}
+
+header nav ul {
+    display:none;
+}
+
+header nav ul.visible {
+    display:block;
+}
+
+main nav {
+    padding: 1em 0;
+    border-bottom: 1px dotted #ccc;
+    margin: 0 2em;
+    text-align: right;
+}
+
+main nav li {
+    display: inline;
+}
+
+main nav li a {
+    color: #ff8080;
+    padding: 0.5em 0.75em;
+    margin-right: 1px;
+    line-height: 1em;
+    border-radius: 0.2em;
+}
+
+main nav li.selected a {
+    color: #222;
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+main nav li.selected a:after {
+    content:"";
+    background-color: #ccc;
+    width: 1px;
+    height: 0.5em;    
+    display:block;
+    position: absolute;
+    line-height: 1em;
+    left: 50%;
+    top: 2.5em;
+}
+
+.container {
+    padding: 0 1em;
+}
+
+.single .container {
+    margin: 0 auto;
+    padding: 1em;
+    position: relative;
+}
+
+.body-copy {
+    max-width: 36em;
+    margin: 0 auto;
+}
+
+.negative {
+    color: #fff;
+}
+
+.negative a {
+    color: #000;
+}
+
+.listing {
+    padding: 0 1em;
+    width: 100%;
+    margin: 0 -1em 1em -1em;
+}
+
+.listing h2,
+.listing h3 {   
+    font-size: 1.5em;
+    letter-spacing: -0.03em;
+    font-weight: bold;
+}
+
+.logo {
+    height:2em;
+    display: block;
+    padding: 0.5em;
+
+
+}
+
+.logo img {
+    height:100%;
+    width: auto;
+}
+
+.menu-button {
+    display:inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: green;
+    line-height: 1em;
+    padding: 0.5em;
+    width:1em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.listing {
+    border-top: 1px solid #ccc;
+}
+
+.listing a {
+    display: block;
+    width:100%;
+    color: #222;
+}
+
+.listing a:hover h2,
+.listing a:hover h3 {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    color: #FF653F;
+}
+
+
+.page-home .hiring {
+    background: url("/static/torchbox/images/hiring-teaser.jpg") no-repeat bottom;
+    background-size: 100;
+    text-align: center;
+    padding: 3em 0;
+    background-size: 50%;
+    border-bottom: 1px dotted #ccc;
+}
+
+.page-home .hiring ul {
+    border-top: 1px dotted #ccc;
+}
+
+.page-home .hiring li {
+    border-bottom: 1px dotted #ccc;
+    padding: 0.5em;
+}
+
+.page-home h2 {
+    font-size: 2em;
+    margin-bottom: 0.25em;
+}
+
+.page-home .hero {
+    padding: 6em 2em;
+    background: url("/static/torchbox/images/home-bg.png") center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.page-home .hero .button {
+    background-color: #222;
+}
+
+img.frame {
+    padding: 2%;
+    position: relative;   
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 0.5em; 
+    -moz-border-radius: 0.5em; 
+    border-radius: 0.5em; 
+    margin-bottom: 1em;
+}
+
+a:hover img.frame {
+    border: 1px dotted #FF653F;
+    transition: all 0.2s ease;
+}
+
+.page-home .hero {
+    text-align: center;
+}
+
+.page-home .hero .button {
+}
+
+.page-home .hero h2 {
+        font-size: 2.5em;
+        max-width: 10em;
+        margin: 0 auto;
+        line-height: 1.1;
+        font-weight: bold;
+        color: #222;
+        margin-bottom: 0.5em;
+
+    }
+
+.page-home h2 a {
+    color: #222;
+    position: relative;
+    transition: color 0.1s ease;
+}
+
+.page-home h2 a span {
+    color: #FF653F;
+}
+
+.page-home h2 a:hover {
+    color: #FF653F;
+}
+
+.page-home h2 a:hover span {
+        position: absolute;
+        right: -0.8em;
+        -webkit-animation:spin 0.5s ease 0.1s;
+        -moz-animation:spin 0.5s linear infinite;
+        animation:spin 0.5s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+
+.page-home section {
+    padding-top: 2em;
+}
+
+.page-home .clients li {
+    width: 31.33%;
+    height: 6em;
+    float: left;
+    padding: 2em 1%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.page-home .clients li > * {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        opacity: 0.5;
+        padding: 0.25em;
+        box-sizing: border-box;
+    }
+
+
+.page-about.jobs {
+    background: url("/static/torchbox/images/jobs-bg-01.png") no-repeat;
+    background-size: 100% auto;
+}
+
+.page-about.jobs .listing li:first-child a {
+    border-top: 1px dotted #ccc;   
+} 
+
+.page-about.jobs .listing a {
+    font-size: 2em;
+    min-height: 0;
+    border-bottom: 1px dotted #ccc;
+    padding: 1em 0;
+}
+
+.page-about.jobs .listing a:hover {
+    color: #FF653F;
+}
+
+.page-about.jobs .benefits .heading-block {
+    padding-bottom: 1em;
+    color: #627928;
+}
+
+.page-about.jobs .benefits h2 {
+    font-weight: bold;
+    font-size: 4em;
+    max-width: 20em;
+    margin: 0;
+
+}
+
+.page-about .benefits li {
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 3em 0;
+}
+
+.page-about .benefits .one {
+    background-image: url("/static/torchbox/images/jobs-placeholder-04.jpg");
+}
+
+.page-about .benefits .one .container div {
+    color: #fff;
+}
+
+.page-about .benefits .two {
+    background-image: url("/static/torchbox/images/jobs-placeholder-07.jpg");
+}
+
+.page-about .benefits .three {
+    background-image: url("/static/torchbox/images/jobs-placeholder-03.jpg");
+    color: #fff;
+}
+
+.page-about .benefits .four {
+    background-image: url("/static/torchbox/images/jobs-placeholder-06.jpg");
+}
+
+
+.page-about .benefits .five {
+    background-image: url("/static/torchbox/images/jobs-placeholder-05.jpg");
+}
+
+.page-about .intro {
+    max-width: 36em;
+    margin: 0 auto;
+    padding: 2em 1em;
+}
+
+.page-about h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 0.2em;
+}
+
+
+/*Index pages*/
+
+.pagination li {
+    display: inline;
+}
+
+.pagination a {
+    background-color: #FF653F;
+    color: #fff;
+    line-height: 1em;
+    padding: 0.5em;
+    width: 1em;
+    text-align: center;
+    display: inline-block;
+    border-radius: 1em;
+}z
+
+.pagination .selected a {
+    border: 1px solid #FF653F;
+    background-color: #fff;
+    color: #FF653F;
+    }
+
+.index h1 {
+    font-size: 5em;
+    margin-bottom: 0.25em;
+    line-height: 1.15;
+    font-weight: bold;
+}
+
+.index,
+.single {
+    padding: 4em 0;
+}
+
+/*Blog listing*/
+    .page-blog-index  li img {
+        width: 6em;
+        float: right;
+        border-radius: 50%;
+        margin-left: 1em;
+    }
+
+/*Blog single*/
+
+.page-blog-single {
+    margin: 2em 0;
+}
+
+.page-work-index .listing {
+    text-align: center;
+}
+
+.page-work-single .intro {
+    border-bottom: 2px dotted #ddd;
+}
+
+.page-work-single .intro p {
+    margin-bottom: 0;
+}
+
+.page-work-single .intro h1 {
+    font-size: 4em;
+    margin-bottom: 0.25em;
+    font-weight: bold;
+    line-height: 1em;
+}
+
+.single h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    line-height: 1.15;
+}
+
+.body-copy p {
+    margin-bottom: 1em;
+}
+
+.body-copy h2 {
+    margin-top: 2em;
+}
+
+.body-copy h2:first-child {
+    margin-top: 0;
+}
+
+.body-copy ul {
+    margin-bottom: 2em;
+}
+
+.body-copy li {
+    margin-bottom: 1em;
+    list-style: disc;
+    margin-left: 1em;
+    font-style: italic;
+}
+
+.body-copy img {
+    margin-bottom: 1em;
+}
+
+.body-copy .button {
+    margin-bottom: 4em;
+}
+
+.breadcrumb a {
+    background-color: #FF653F;
+    display:inline-block;
+    padding: 0.5em;
+    line-height: 1em;
+    margin-bottom: 1em;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.75em;
+}
+
+.author-teaser {
+    margin-bottom: 1em;
+    font-style: italic;
+}
+
+.author {
+    border-top: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    padding: 1em 0.5em;
+    margin: 2em 0;
+}
+
+.author .name {
+    font-size: 1.5em;
+}
+
+.author .avatar {
+    width: 6em;
+    float: left;
+    margin-right: 1em;
+    border-radius: 3em;
+}
+
+.author .role {
+    display: block;
+    font-style: italic;
+}
+
+.related h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.related ul {
+    border-top: 1px dotted #ccc;
+}
+
+.related li {
+    padding: 0.5em 0 0.5em 0.5em;
+    border-bottom: 1px dotted #ccc;
+}
+
+.page-about h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.page-about .people-list h2 {
+    font-size: 2em;
+    margin-bottom: 0.25em;
+    font-weight: bold;
+}
+
+.page-about .services-list li {
+    min-height: 18em;
+}
+
+.grid.people-list li {
+    position: relative;
+}
+
+.grid.people-list li div {
+        display: inline-block;
+        font-size: 0.8em;
+        position: absolute;
+        bottom: 0;
+        background-color: #FF653F;
+        padding: 0.5em 1em;
+        color: #fff;
+    }
+
+.grid.people-list img {
+    margin: 0;
+}
+
+.grid.people-list li:nth-child(3n+2) div {
+    background-color: #627928
+}
+.grid.people-list li:nth-child(3n+3) div{
+    background-color: #5cb9e7
+}
+
+.grid.people-list li a {
+    color: #222;
+}
+
+.people-list img {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.page-people-single .hero {
+    background: url(/static/torchbox/images/people-wes.jpg) no-repeat center center; 
+    height:18em;
+    -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      max-width: 54em;
+      margin: 2em auto 0 auto;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 1.5em 0;
+}
+
+
+footer .contact h2{
+    font-size: 2em; 
+    margin-bottom: 0.5em;
+}
+
+footer .contact a {
+    color: #fff;
+}
+
+footer .contact ul {
+    border-top: 1px dotted #666;
+}
+
+footer .contact li {
+    display: inline-block;
+    border: none;
+    width: 100%;
+    border-bottom: 1px dotted #666;
+}
+
+footer .contact li i {
+    display: block;
+    float: left;
+    margin: 0;
+}
+
+footer .contact a:hover span {
+    color: #FF653F;
+}
+
+footer button,
+footer .button {
+    background-color: #FF653F;
+}
+
+footer .contact li {
+    padding: 1em 0;
+}
+
+footer .contact li i {
+    margin-right: 0.5em;
+}
+
+footer .offices li img {
+    width: 1.5em;
+
+}
+
+footer .offices li {
+    padding: 1em 0;
+}
+
+footer .offices h3 {
+    font-size: 1.5em;
+}
+
+footer .tel {
+    display: block;
+}
+
+#map {
+    width: 750px;
+    height: 500px;
+}
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

@@ -1,6 +1,10 @@
 {% load pageurl image_tags %}
 {% if jobs %}
+	<ul>
     {% for job in jobs %}
-        {{ job.title }}
+    	<li>
+        	{{ job.title }}
+       	</li>
     {% endfor %}
+    </ul>
 {% endif %}

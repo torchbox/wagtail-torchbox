@@ -2,7 +2,11 @@
 {% load image_tags pageurl rich_text %}
 
 {% block content %}
-    {{ self.title }}
+<main class="page-about jobs">
+    <section class="intro container">
+    <div class="body-copy">
+        <h1>{{ self.title }}</h1>
+      </div>
 
     {% if self.intro %}
         {{ self.intro|richtext }}
@@ -10,7 +14,7 @@
   
     {% with self.jobs.all as jobs %}
         {% if jobs %}
-            <ul>
+            <ul class="listing ">
                 {% for job in jobs %}
                     <li>
                         <a href="{% pageurl job %}">{{ job.title }}</a>
@@ -29,5 +33,6 @@
             {{ block.content|richtext }}
         {% endfor %}
     {% endif %}
-    
+    </section>
+</main>
 {% endblock %}
