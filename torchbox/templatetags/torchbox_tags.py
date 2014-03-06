@@ -72,12 +72,12 @@ def secondary_menu(context, calling_page=None):
             show_in_menus=True
         )
 
-        # # If no children, get siblings instead
-        # if len(pages) == 0:
-        #     pages = calling_page.get_other_siblings().filter(
-        #         live=True,
-        #         show_in_menus=True
-        #     )
+        # If no children found and calling page parent isn't the root, get the parent's children
+        if len(pages) == 0 and calling_page.get_parent().id != get_site_root(context).id:
+            pages = calling_page.get_parent().get_children().filter(
+                live=True,
+                show_in_menus=True
+            )
     return {
         'pages': pages,
         # required by the pageurl tag that we want to use within this template
