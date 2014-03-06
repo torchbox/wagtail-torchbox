@@ -4,10 +4,10 @@
     {% for work in work %}
         <li>
             <a href="{% pageurl work %}">
-                {% with work.screenshots.all|first as screenshot %}
-                    {% image screenshot.image width-300 as screenshot %}
+                {% if work.homepage_image %}
+                    {% image work.homepage_image width-300 as screenshot %}
                     <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
-                {% endwith %}
+                {% endif %}
                 <h3>{{ work.title }}</h3>
                 <p>
                     {% if work.summary %}

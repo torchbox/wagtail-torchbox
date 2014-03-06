@@ -24,7 +24,7 @@ def deploy():
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py collectstatic --settings=tbx.settings.production --noinput")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py compress --settings=tbx.settings.production")
 
-    sudo("supervisorctl restart tbxwagtail")
+    run("sudo supervisorctl restart tbxwagtail")
     #sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py update_index --settings=tbx.settings.production")
 
 @roles('production')
