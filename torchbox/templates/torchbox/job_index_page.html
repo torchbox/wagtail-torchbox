@@ -3,36 +3,47 @@
 
 {% block content %}
 <main class="page-about jobs">
+    
     <section class="intro container">
-    <div class="body-copy">
-        <h1>{{ self.title }}</h1>
-      </div>
+        <div class="body-copy">
+            <h1>{{ self.title }}</h1>
+          </div>
 
-    {% if self.intro %}
-        {{ self.intro|richtext }}
-    {% endif %}
-  
-    {% with self.jobs.all as jobs %}
-        {% if jobs %}
-            <ul class="listing ">
-                {% for job in jobs %}
-                    <li>
-                        <a href="{% pageurl job %}">{{ job.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        {% if self.intro %}
+            {{ self.intro|richtext }}
         {% endif %}
-    {% endwith %}
-
-    {% if self.content_block.all %}
-        {% for block in self.content_block.all %}
-            {# forloop counter can be used as a class to alternate left/right #}
-            {{ forloop.counter }}
-            {# converely cycle can be used #}
-            {% cycle 'odd' 'even' %}
-            {{ block.content|richtext }}
-        {% endfor %}
-    {% endif %}
+      
+        {% with self.jobs.all as jobs %}
+            {% if jobs %}
+                <ul class="listing ">
+                    {% for job in jobs %}
+                        <li>
+                            <a href="{% pageurl job %}">{{ job.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     </section>
+    
+    <section class="benefits">
+        <div class="heading-block container">
+            <h2>Perks</h2>
+        </div>
+        {% if self.content_block.all %}
+        <ul>
+            {% for block in self.content_block.all %}
+            <li class="{{ forloop.counter }} {% cycle 'odd' 'even' %}">
+                 <div class="container clearfix">
+                    <div>
+                        {{ block.content|richtext }}
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+
 </main>
 {% endblock %}

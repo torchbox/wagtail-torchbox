@@ -83,17 +83,6 @@ textarea {
 }
 
 /* ==========================================================================
-   Browse Happy prompt
-   ========================================================================== */
-
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-/* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
@@ -438,37 +427,42 @@ a:hover img.frame {
     }
 
 
-.page-about.jobs {
+.page-jobindexpage main {
     background: url("/static/torchbox/images/jobs-bg-01.png") no-repeat;
     background-size: 100% auto;
 }
 
-.page-about.jobs .listing li:first-child a {
+.page-jobindexpage main .listing li:first-child a {
     border-top: 1px dotted #ccc;   
 } 
 
-.page-about.jobs .listing a {
+.page-jobindexpage main .listing a {
     font-size: 2em;
     min-height: 0;
     border-bottom: 1px dotted #ccc;
     padding: 1em 0;
 }
 
-.page-about.jobs .listing a:hover {
+.page-jobindexpage main .listing a:hover {
     color: #FF653F;
 }
 
-.page-about.jobs .benefits .heading-block {
+.page-jobindexpage main .benefits .heading-block {
     padding-bottom: 1em;
     color: #627928;
 }
 
-.page-about.jobs .benefits h2 {
+.page-jobindexpage main .benefits h2 {
     font-weight: bold;
     font-size: 4em;
     max-width: 20em;
     margin: 0;
+}
 
+.page-jobindexpage main .benefits h3 {
+    font-size: 2em;
+    margin-bottom: 0.25em;
+    font-weight: bold;   
 }
 
 .page-about .benefits li {
@@ -534,7 +528,7 @@ a:hover img.frame {
     text-align: center;
     display: inline-block;
     border-radius: 1em;
-}z
+}
 
 .pagination .selected a {
     border: 1px solid #FF653F;
@@ -555,12 +549,13 @@ a:hover img.frame {
 }
 
 /*Blog listing*/
-    .page-blog-index  li img {
-        width: 6em;
-        float: right;
-        border-radius: 50%;
-        margin-left: 1em;
-    }
+.page-blog-index  li img {
+    width: 6em;
+    float: right;
+    border-radius: 50%;
+    margin-left: 1em;
+    height: auto;
+}
 
 /*Blog single*/
 
