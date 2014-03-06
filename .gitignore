@@ -1,5 +1,5 @@
 /.vagrant
-/torchbox/settings/local.py
+/tbx/settings/local.py
 /static
 *.pyc
 /media
