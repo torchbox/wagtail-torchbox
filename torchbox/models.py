@@ -439,12 +439,20 @@ class WorkPage(Page):
     summary = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
+    homepage_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
 WorkPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('summary'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
+    ImageChooserPanel('homepage_image'),
     InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
     # InlinePanel(WorkPage, 'related_links', label="Related links"),
 ]
@@ -535,6 +543,7 @@ PersonPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('first_name'),
     FieldPanel('last_name'),
+    FieldPanel('role'),
     FieldPanel('intro', classname="full"),
     FieldPanel('biography', classname="full"),
     ImageChooserPanel('image'),
