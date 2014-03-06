@@ -172,6 +172,8 @@ COMPRESS_PRECOMPILERS = (
     ('text/less', 'lesspress.LessCompiler'),
 )
 
+COMPRESS_OFFLINE = True
+
 # Auth settings
 LOGIN_URL = 'django.contrib.auth.views.login'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
