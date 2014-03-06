@@ -3,16 +3,18 @@
 <ul>
     {% for work in work %}
         <li>
-        {% with work.screenshots.all|first as screenshot %}
-            {% image screenshot.image width-300 as screenshot %}
-            <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
-        {% endwith %}
-        
-        {{ work.title }}
-
-        {% if work.summary %}
-            {{ work.summary }}
-        {% endif %}
+            <a href="{% pageurl work %}">
+                {% with work.screenshots.all|first as screenshot %}
+                    {% image screenshot.image width-300 as screenshot %}
+                    <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
+                {% endwith %}
+                <h3>{{ work.title }}</h3>
+                <p>
+                    {% if work.summary %}
+                        {{ work.summary }}
+                    {% endif %}
+                </p>
+            </a>
         </li>
     {% endfor %}
 </ul>

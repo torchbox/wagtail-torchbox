@@ -3,10 +3,12 @@
 	<ul>
     {% for blog in blogs %}
     	<li>
-		<a href="{% pageurl blog %}">{{ blog.title }}</a>
+		<a href="{% pageurl blog %}">
+			<h3>{{ blog.title }}</h3>
 			{% if blog.intro %}
 				{{ blog.intro|richtext }}
 			{% endif %}
+			</a>
 		</li>
     {% endfor %}
     </ul>

@@ -3,7 +3,9 @@
 	<ul>
     {% for job in jobs %}
     	<li>
-        	{{ job.title }}
+    		<a href="{% pageurl job %}">
+        		{{ job.title }}
+        	</a>
        	</li>
     {% endfor %}
     </ul>
