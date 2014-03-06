@@ -1,13 +1,12 @@
 {% load torchbox_tags static pageurl %}
 {% get_site_root as site_root %}
 
-
-    {# Link to home page #}
-    <a href="{% pageurl site_root %}" class="logo container">
-    	<img src="{% static "torchbox/images/logo-torchbox-grey.png" %}">
-    </a>
-    <nav role="navigation">    
-        <a href="#menu" class="menu-button">&#9776;</a>        
+{# Link to home page #}
+<a href="{% pageurl site_root %}" class="logo container">
+    <img src="{% static "torchbox/images/logo-torchbox-grey.png" %}">
+</a>
+<nav role="navigation">    
+    <a href="#menu" class="menu-button">&#9776;</a>        
     <ul>
         {% for menuitem in menuitems %}
             <li class="{% if calling_page.url == menuitem.url %}active{% endif %}">
@@ -15,5 +14,4 @@
             </li>       
         {% endfor %}
     </ul>
-
 </nav>

@@ -55,6 +55,7 @@ def top_menu_children(context, parent):
         show_in_menus=True
     )
     return {
+        'calling_page': calling_page,
         'parent': parent,
         'menuitems_children': menuitems_children,
         # required by the pageurl tag that we want to use within this template
@@ -65,21 +66,22 @@ def top_menu_children(context, parent):
 # Retrieves the secondary links - only the children of the current page, NOT the siblings, and only when not viewing the homepage
 @register.inclusion_tag('torchbox/tags/secondary_menu.html', takes_context=True)
 def secondary_menu(context, calling_page=None):
-    pages = []
+    menuitems = []
     if calling_page and calling_page.id != get_site_root(context).id:
-        pages = calling_page.get_children().filter(
+        menuitems = calling_page.get_children().filter(
             live=True,
             show_in_menus=True
         )
 
         # If no children found and calling page parent isn't the root, get the parent's children
-        if len(pages) == 0 and calling_page.get_parent().id != get_site_root(context).id:
-            pages = calling_page.get_parent().get_children().filter(
+        if len(menuitems) == 0 and calling_page.get_parent().id != get_site_root(context).id:
+            menuitems = calling_page.get_parent().get_children().filter(
                 live=True,
                 show_in_menus=True
             )
     return {
-        'pages': pages,
+        'calling_page': calling_page,
+        'menuitems': menuitems,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }

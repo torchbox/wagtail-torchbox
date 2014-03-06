@@ -1,10 +1,10 @@
 {% load pageurl %}
 
-{% if pages %}
+{% if menuitems %}
     <nav role="navigation">
         <ul>
-            {% for page in pages %}
-                <li><a href="{% pageurl page %}">{{ page.title }}</a></li>
+            {% for menuitem in menuitems %}
+                <li class="{% if calling_page.url == menuitem.url %}active{% endif %}"><a href="{% pageurl menuitem %}">{{ menuitem.title }}</a></li>
             {% endfor %}
         </ul>
     </nav>
