@@ -36,6 +36,7 @@
 	    top: 0;
 	    right: 2em;
 	    border-right: 1px dotted #ccc;
+	    border-right: 1px dotted rgba(0,0,0,0.2);
 	}
 
 	header nav li {
@@ -47,7 +48,9 @@
 		/*color: #FF653F;*/
 		color: #fff;
 		border-left: 1px dotted #ccc;
+		border-left: 1px dotted rgba(0,0,0,0.2);
 		border-bottom: 1px dotted #ccc;
+		border-bottom: 1px dotted rgba(0,0,0,0.2);
 		padding: 1.33em 1em;
 		background-color: transparent;
 	}
@@ -91,6 +94,7 @@
 
 	.page-home .work li  {
 		border-right: 1px solid #fff;
+		border-right: 1px solid rgba(0,0,0,0.2);
 		box-sizing: border-box;
 		position: relative;
 	}
@@ -105,7 +109,9 @@
 
 	.page-home .blog {
 		border-top: 1px dotted #ccc;
+		border-top: 1px dotted rgba(0,0,0,0.2);
 		border-bottom: 1px dotted #ccc;
+		border-bottom: 1px dotted rgba(0,0,0,0.2);
 		padding:2em;
 	}
 
@@ -151,6 +157,7 @@
 
 	.page-work-index .listing a {
 		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid rgba(0,0,0,0.2);
 		padding-bottom: 8em;
 	}
 
@@ -180,7 +187,7 @@
     }
 
     .body-copy p {
-    	font-size: 1.5em;
+    	font-size: 1.25em;
     }
 
     .body-copy h1 {

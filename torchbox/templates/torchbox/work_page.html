@@ -4,7 +4,7 @@
 {% block content %}
 <main class="page-work-single single">
     
-    <div class="intro">
+    <section class="intro">
         <div class="container body-copy">
             <div class="breadcrumb">
                 <a href="#">Work</a>
@@ -16,26 +16,27 @@
             {% endif %}
             </p>
         </div>
-    </div>
+    </section>
 
-    <div class="body-copy container">
+    <section class="body-copy container">
         {% if self.body %}
             {{ self.body|richtext }}
         {% endif %}
-    </div>
-
-    {% with self.screenshots.all as screenshots %}
-        {% if screenshots %}
-            <ul>
-                {% for screenshot in screenshots %}
-                    <li  class="img-wrapper">
-                        {% image screenshot.image width-300 as shot %}
-                        <img src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+    </section>
+    <section>
+        {% with self.screenshots.all as screenshots %}
+            {% if screenshots %}
+                <ul>
+                    {% for screenshot in screenshots %}
+                        <li  class="img-wrapper">
+                            {% image screenshot.image width-9999 as shot %}
+                            <img src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </section>
 
 </main>
 {% endblock %}

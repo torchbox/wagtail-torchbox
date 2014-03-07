@@ -5,7 +5,7 @@
         <li>
             <a href="{% pageurl work %}">
                 {% if work.homepage_image %}
-                    {% image work.homepage_image width-300 as screenshot %}
+                    {% image work.homepage_image width-640 as screenshot %}
                     <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
                 {% endif %}
                 <div>

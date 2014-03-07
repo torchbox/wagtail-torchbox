@@ -48,6 +48,7 @@ hr {
     height: 1px;
     border: 0;
     border-top: 1px solid #ccc;
+    border-top: rgba(0,0,0,0.2);
     margin: 1em 0;
     padding: 0;
 }
@@ -197,6 +198,7 @@ header nav ul.visible {
 main nav {
     padding: 1em 0;
     border-bottom: 1px dotted #ccc;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
     margin: 0 2em;
     text-align: right;
 }
@@ -216,6 +218,7 @@ main nav li a {
 main nav li.active a {
     color: #222;
     border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.2);
     position: relative;
 }
 
@@ -311,6 +314,7 @@ main nav li.active a:after {
 
 .listing {
     border-top: 1px solid #ccc;
+    border-top: 1px solid rgba(0,0,0,0.2);
     box-sizing: content-box;
 }
 
@@ -343,14 +347,17 @@ main nav li.active a:after {
     padding: 3em 0;
     background-size: 50%;
     border-bottom: 1px dotted #ccc;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
 }
 
 .page-home .hiring ul {
     border-top: 1px dotted #ccc;
+    border-top: 1px dotted rgba(0,0,0,0.2);
 }
 
 .page-home .hiring li {
     border-bottom: 1px dotted #ccc;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
     padding: 0.5em;
 }
 
@@ -377,6 +384,7 @@ img.frame {
     position: relative;   
 
     border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.2);
     -webkit-border-radius: 0.5em; 
     -moz-border-radius: 0.5em; 
     border-radius: 0.5em; 
@@ -385,6 +393,7 @@ img.frame {
 
 a:hover img.frame {
     border: 1px dotted #FF653F;
+    border: 1px dotted rgba(0,0,0,0.2);
     transition: all 0.2s ease;
 }
 
@@ -464,12 +473,14 @@ a:hover img.frame {
 
 .page-jobindexpage main .listing li:first-child a {
     border-top: 1px dotted #ccc;   
+    border-top: 1px dotted rgba(0,0,0,0.2);
 } 
 
 .page-jobindexpage main .listing a {
     font-size: 2em;
     min-height: 0;
     border-bottom: 1px dotted #ccc;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
     padding: 1em 0;
 }
 
@@ -590,6 +601,7 @@ a:hover img.frame {
 
 .pagination .active a {
     border: 1px solid #FF653F;
+    border: 1px solid rgba(0,0,0,0.2);
     background-color: #fff;
     color: #FF653F;
     }
@@ -632,6 +644,7 @@ a:hover img.frame {
 
 .page-work-single .intro {
     border-bottom: 2px dotted #ddd;
+    border-bottom: 2px dotted rgba(0,0,0,0.2);
 }
 
 .page-work-single .intro p {
@@ -690,7 +703,6 @@ a:hover img.frame {
     margin-bottom: 1em;
     color: #fff;
     text-transform: uppercase;
-    font-size: 0.75em;
 }
 
 .author-teaser {
@@ -700,7 +712,9 @@ a:hover img.frame {
 
 .author {
     border-top: 1px dotted #ccc;
+    border-top: 1px dotted rgba(0,0,0,0.2);
     border-bottom: 1px dotted #ccc;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
     padding: 1em 0.5em;
     margin: 2em 0;
 }
@@ -728,11 +742,13 @@ a:hover img.frame {
 
 .related ul {
     border-top: 1px dotted #ccc;
+    border-top: 1px dotted rgba(0,0,0,0.2);
 }
 
 .related li {
     padding: 0.5em 0 0.5em 0.5em;
     border-bottom: 1px dotted #ccc;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
 }
 
 /*People index*/
@@ -805,6 +821,7 @@ footer .contact a {
 
 footer .contact ul {
     border-top: 1px dotted #666;
+    border-top: 1px dotted rgba(0,0,0,0.2);;
 }
 
 footer .contact li {
@@ -812,6 +829,7 @@ footer .contact li {
     border: none;
     width: 100%;
     border-bottom: 1px dotted #666;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
 }
 
 footer .contact li i {
