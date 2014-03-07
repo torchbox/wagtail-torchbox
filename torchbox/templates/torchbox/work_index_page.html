@@ -18,11 +18,11 @@
                     {% for client in work %}
                         <li>
                             <a href="{% pageurl client %}">
-                                <h2>{{ client.title }}</h2>
                                 {% with client.screenshots.all|first as screenshot %}
-                                    {% image screenshot.image width-300 as screenshot %}
+                                    {% image screenshot.image width-1536 as screenshot %}
                                     <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
                                 {% endwith %}
+                                <h2>{{ client.title }}</h2>
                                 {% if client.summary %}
                                     {{ client.summary }}
                                 {% endif %}

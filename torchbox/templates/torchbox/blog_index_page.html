@@ -3,7 +3,6 @@
 
 {% block content %}
 <main class="page-blog-index index">
-    
 
     <section class="blog container">
         <h1>{{ self.title }}</h1>
@@ -13,25 +12,30 @@
         {% endif %}
 
         {% for blog in blogs %}
-        <ul>
+        <ul class="listing">
             <li>
             <a href="{% pageurl blog %}">
             <h2>{{ blog.title }}</h2>
-            {{blog.intro|richtext}}
-            {% with blog.related_author.all as authors %}
-                {% if authors %}
-                    {% for author in authors %}
-                        <a href="{% pageurl author.author %}">
-                            {{ author.author.title }}
-
+                {% with blog.related_author.all as authors %}
+                    {% if authors %}
+                        {% for author in authors %}
+                        
                             {% if author.author.image %}
                                 {% image author.author.image width-300 as photo %}
                                 <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
                             {% endif %}
-                        </a>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+                            
+                            {{blog.intro|richtext}}               
+                            
+                            <span>
+                                {{ author.author.title }}
+                            </span>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+            
+
             {% if blog.date %}
                 <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
             {% endif %}

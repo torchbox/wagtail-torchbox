@@ -5,43 +5,56 @@
 <main class="page-blog-single single">
 
     <section class="container body-copy">
+        
         <div class="breadcrumb">
             <a href="#">Blog</a>
         </div>
-
         <h1>{{ self.title }}</h1>
 
         <div class="author-teaser">
             {% with self.related_author.all as authors %}
-                {% if authors %}
-                    {% for author in authors %}
-                    <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
-                        {% if author.author.image %}
-                            {% image author.author.image width-300 as photo %}
-                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
+            {% if authors %}
+            {% for author in authors %}
+            <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
+            {% endfor %}
+            {% endif %}
             {% endwith %}
 
             {% if self.date %}
             <span class="date">{{ self.date|date:"j F Y" }}</span>
             {% endif %}
-        </sections>
-    
-    {% if self.body %}
-    {{ self.body|richtext }}
-    {% endif %}
-    </div>
-    <section class="tags">
-        {% with self.tags.all as tags %}
-            {% if tags %}
-                {% for tag in tags %}
-                    <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
-                {% endfor %}
+        </div>
+        
+        {% if self.body %}
+            {{ self.body|richtext }}
+        {% endif %}
+
+        <div id="author" class="author clearfix" >
+            {% with self.related_author.all as authors %}
+            {% if authors %}
+            {% for author in authors %}
+            <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
+            {% if author.author.image %}
+            {% image author.author.image width-300 as photo %}
+            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
             {% endif %}
-        {% endwith %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
     </section>
+    
+    
+</div>
+<section class="tags">
+    {% with self.tags.all as tags %}
+    {% if tags %}
+    {% for tag in tags %}
+    <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</section>
 
 </main>
 {% endblock %}

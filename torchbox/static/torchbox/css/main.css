@@ -101,6 +101,10 @@ body {
     background-color: #fff;
 }
 
+body * {
+    box-sizing: border-box;
+}
+
 main {
     background-color: #fff;
     padding: 0 0 1em 0;
@@ -124,7 +128,7 @@ p {
 
 a {
     text-decoration: none;
-    color: #FF653F;
+    color: inherit;
 }
 
 a:hover {
@@ -158,6 +162,7 @@ ul, li {
 
 img {
     width:100%;
+    height: auto;
 }
 
 .img-wrapper {
@@ -165,7 +170,6 @@ img {
     max-height: 600px;
     margin-bottom: 1em;
     text-align: center;
-    box-sizing: border-box;
 }
 
 .img-wrapper img {
@@ -209,13 +213,13 @@ main nav li a {
     border-radius: 0.2em;
 }
 
-main nav li.selected a {
+main nav li.active a {
     color: #222;
     border: 1px solid #ccc;
     position: relative;
 }
 
-main nav li.selected a:after {
+main nav li.active a:after {
     content:"";
     background-color: #ccc;
     width: 1px;
@@ -238,9 +242,25 @@ main nav li.selected a:after {
 }
 
 .body-copy {
-    max-width: 36em;
+    max-width: 48em;
     margin: 0 auto;
 }
+
+.body-copy p a {
+    color: #FF653F;
+}
+
+.body-copy h1 {
+    font-size: 6em;
+    letter-spacing: -0.075em;
+}
+
+.body-copy h2 {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 0.25em;
+}
+
 
 .negative {
     color: #fff;
@@ -291,12 +311,20 @@ main nav li.selected a:after {
 
 .listing {
     border-top: 1px solid #ccc;
+    box-sizing: content-box;
+}
+
+.listing li {
+    position: relative;
 }
 
 .listing a {
     display: block;
     width:100%;
-    color: #222;
+    padding: 1em;
+    box-sizing: content-box;
+    position: relative;
+    left: -1em;
 }
 
 .listing a:hover h2,
@@ -305,6 +333,7 @@ main nav li.selected a:after {
     transition: color 0.2s ease;
     color: #FF653F;
 }
+
 
 
 .page-home .hiring {
@@ -346,7 +375,7 @@ main nav li.selected a:after {
 img.frame {
     padding: 2%;
     position: relative;   
-    box-sizing: border-box;
+
     border: 1px solid #ccc;
     -webkit-border-radius: 0.5em; 
     -moz-border-radius: 0.5em; 
@@ -361,9 +390,6 @@ a:hover img.frame {
 
 .page-home .hero {
     text-align: center;
-}
-
-.page-home .hero .button {
 }
 
 .page-home .hero h2 {
@@ -423,7 +449,7 @@ a:hover img.frame {
         text-align: center;
         opacity: 0.5;
         padding: 0.25em;
-        box-sizing: border-box;
+
     }
 
 
@@ -500,16 +526,18 @@ a:hover img.frame {
     background-image: url("/static/torchbox/images/jobs-placeholder-05.jpg");
 }
 
-.page-about .intro {
-    max-width: 36em;
-    margin: 0 auto;
-    padding: 2em 1em;
-}
 
-.page-about h1 {
+
+/*Standard page*/
+.page-standardpage h1 {
     font-size: 3em;
     font-weight: bold;
     margin-bottom: 0.2em;
+}
+
+.page-standardpage h2 {
+    font-size: 2em;    
+    font-weight: bold;
 }
 
 
@@ -530,7 +558,7 @@ a:hover img.frame {
     border-radius: 1em;
 }
 
-.pagination .selected a {
+.pagination .active a {
     border: 1px solid #FF653F;
     background-color: #fff;
     color: #FF653F;
@@ -549,12 +577,17 @@ a:hover img.frame {
 }
 
 /*Blog listing*/
-.page-blog-index  li img {
+
+.page-blog-index h2 {
+    margin-bottom: 0.5em;
+}
+
+.page-blog-index li img {
     width: 6em;
-    float: right;
     border-radius: 50%;
     margin-left: 1em;
     height: auto;
+    float: right;
 }
 
 /*Blog single*/
@@ -672,18 +705,20 @@ a:hover img.frame {
     border-bottom: 1px dotted #ccc;
 }
 
-.page-about h2 {
-    font-size: 2em;
-    margin-bottom: 0.5em;
+/*People index*/
+.page-personindexpage main h1 {
+    font-size: 3em;
+    margin-bottom: 0.25em;
+    font-weight: bold;
 }
 
-.page-about .people-list h2 {
+.page-personindexpage main h2 {
     font-size: 2em;
     margin-bottom: 0.25em;
     font-weight: bold;
 }
 
-.page-about .services-list li {
+.page-standardpage main li {
     min-height: 18em;
 }
 
@@ -720,17 +755,6 @@ a:hover img.frame {
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
     filter: grayscale(100%);
-}
-
-.page-people-single .hero {
-    background: url(/static/torchbox/images/people-wes.jpg) no-repeat center center; 
-    height:18em;
-    -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      max-width: 54em;
-      margin: 2em auto 0 auto;
 }
 
 footer {

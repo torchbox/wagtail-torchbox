@@ -48,7 +48,7 @@
 		color: #fff;
 		border-left: 1px dotted #ccc;
 		border-bottom: 1px dotted #ccc;
-		padding: 1.4em 1em;
+		padding: 1.33em 1em;
 		background-color: transparent;
 	}
 
@@ -59,8 +59,13 @@
 	}
 
 	.logo {
-		height: 2.5em;
+		height: 4.5em;
 		padding:1em 0;
+	}
+
+	/*Standard page*/
+	.page-standardpage h1 {
+	    font-size: 5em;
 	}
 
 	.page-home .hero {
@@ -160,19 +165,10 @@
 		background-size: 100% auto;
 	}
 
-	.page-blog-index h2 {
-		font-size: 1.5em;
-		margin-bottom: 0.5em;
-	}
-
 	.page-blog-index .container {
 		max-width: 48em;
 		margin: 0 auto;
 		background: rgba(255, 255, 255, 0.75);
-	}
-
-	.page-blog-index li {
-		padding: 1em 0 2em 0;
 	}
 
     .page-blog-single {
@@ -183,13 +179,16 @@
     	font-size: 7em;
     }
 
-    .body-copy {
-    	font-size: 1.15em;
+    .body-copy p {
+    	font-size: 1.5em;
     }
 
     .body-copy h1 {
-    	font-size: 4em;
-    	letter-spacing: -0.075em;
+    	font-size: 6em;
+    }
+
+    .body-copy h2 {
+    	font-size: 1.75em;
     }
 
     .grid li {
@@ -220,6 +219,7 @@
 		margin: 0;
 		padding: 0;
 		border: none;
+		box-sizing: border-box;
 	}
 
 	.page-home .clients li {
@@ -240,11 +240,6 @@
 	    position: relative;
 	    min-height: 18em;
 	    padding: 4em 2em;
-	}
-
-
-	.page-about .services-list li {
-	    min-height: 18em;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -290,15 +285,15 @@
 	    color: #222;
 	}
 
+	.page-personindexpage main h1 {
+	    font-size: 5em;
+	}
+
 	.grid.people-list li {
 		width: 33.3%;
 		margin: 0;
 		padding: 0;
 
-	}
-
-	.page-people-single .hero {
-		height: 32em;
 	}
 	
 	footer .offices ul {
@@ -307,7 +302,7 @@
 	}
 
 	footer .offices li {
-		width: 18em;
+		width: 22em;
 		float: left;
 		padding: 0 1em 1em 3em;
 		background: url("/static/torchbox/images/icon-map-pin.svg") no-repeat left top;

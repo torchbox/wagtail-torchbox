@@ -2,20 +2,28 @@
 {% load image_tags rich_text %}
 
 {% block content %}
-    {% if self.image %}
-        {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-        {% image self.image width-300 as photo %}
-        <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
-    {% endif %}
+<main class="page-people-single single">
+    <section class="body-copy container">
 
-    {{ self.title }}
+        {% if self.image %}
+            {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+            {% image self.image width-300 as photo %}
+            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+        {% endif %}
 
-    {% if self.intro %}
-        {{ self.intro|richtext }}
-    {% endif %}
+        <div class="breadcrumb">
+            <a href="#">People</a>
+        </div>
 
-    {% if self.biography %}
-        {{ self.biography|richtext }}
-    {% endif %}
+        <h1>{{ self.title }}</h1>
 
+        {% if self.intro %}
+            {{ self.intro|richtext }}
+        {% endif %}
+
+        {% if self.biography %}
+            {{ self.biography|richtext }}
+        {% endif %}
+    </div>
+</main>
 {% endblock %}

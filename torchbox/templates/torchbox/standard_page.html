@@ -2,24 +2,27 @@
 {% load image_tags rich_text %}
 
 {% block content %}
-    {{ self.title }}
+    <section class="container">
+        <h1>{{ self.title }}</h1>
 
-    {% if self.intro %}
-        {{ self.intro|richtext }}
-    {% endif %}
+        {% if self.intro %}
+            {{ self.intro|richtext }}
+        {% endif %}
 
-    {% if self.body %}
-        {{ self.body|richtext }}
-    {% endif %}
-
-    {% if self.content_block.all %}
-        {% for block in self.content_block.all %}
-            {# forloop counter can be used as a class to alternate left/right #}
-            {{ forloop.counter }}
-            {# converely cycle can be used #}
-            {% cycle 'odd' 'even' %}
-            {{ block.content|richtext }}
-        {% endfor %}
-    {% endif %}
+        {% if self.body %}
+            {{ self.body|richtext }}
+        {% endif %}
+    </section>
+    <section class="container clearfix">
+        {% if self.content_block.all %}
+        <ul class="listing grid">
+            {% for block in self.content_block.all %}
+            <li class="{{ forloop.counter }} {% cycle 'odd' 'even' %}">                
+                {{ block.content|richtext }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
 
 {% endblock %}
