@@ -30,6 +30,8 @@
 		padding: 0;
 	}
 
+
+
 	header nav ul {
 	    display:block;
 	    position: absolute;
@@ -45,7 +47,6 @@
 	}
 
 	header nav a {
-		/*color: #FF653F;*/
 		color: #fff;
 		border-left: 1px dotted #ccc;
 		border-left: 1px dotted rgba(0,0,0,0.2);
@@ -99,13 +100,7 @@
 		position: relative;
 	}
 
-	.page-home .work li a div {
-		padding: 1em;
-		bottom: 0;
-		width: 100%;
-		background-color: rgba(255, 255, 255, 0.75);
-		box-sizing: border-box;
-	}
+	
 
 	.page-home .blog {
 		border-top: 1px dotted #ccc;
@@ -151,17 +146,22 @@
 		margin-bottom: 1em;
 	}
 
-	.page-work-index .listing img {
+	.page-workindexpage main .listing img {
 		margin-bottom: 1em;
 	}	
 
-	.page-work-index .listing a {
+	.page-workindexpage main .listing a {
 		border-bottom: 1px solid #ccc;
 		border-bottom: 1px solid rgba(0,0,0,0.2);
 		padding-bottom: 8em;
 	}
 
-	.page-work-index .listing h2 {
+	.page-workindexpage main .listing div {
+		max-width: 36em;
+		margin: 0 auto;
+	}
+
+	.page-workindexpage main .listing h2 {
 		font-size: 2em;
 		margin-bottom: 0;
 	}
@@ -224,7 +224,7 @@
 
 	.listing,
 	.listing a {
-		margin: 0;
+		margin: 0 0 2em 0;
 		padding: 0;
 		border: none;
 		box-sizing: border-box;

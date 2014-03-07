@@ -13,7 +13,7 @@
             {{ self.body|richtext }}
         {% endif %}
     </section>
-    <section class="container clearfix">
+    <section>
         {% if self.content_block.all %}
         <ul class="listing grid">
             {% for block in self.content_block.all %}

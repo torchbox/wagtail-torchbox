@@ -264,7 +264,6 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
 }
 
-
 .negative {
     color: #fff;
 }
@@ -287,11 +286,9 @@ main nav li.active a:after {
 }
 
 .logo {
-    height:2em;
+    height:3em;
     display: block;
     padding: 0.5em;
-
-
 }
 
 .logo img {
@@ -307,9 +304,10 @@ main nav li.active a:after {
     background-color: green;
     line-height: 1em;
     padding: 0.5em;
-    width:1em;
+    width:2em;
     font-size: 1.5em;
     text-align: center;
+    color: #fff;
 }
 
 .listing {
@@ -378,6 +376,15 @@ main nav li.active a:after {
 .page-home .hero .button {
     background-color: #222;
 }
+
+
+.page-home .work li a div {
+        padding: 1em;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.75);
+        box-sizing: border-box;
+    }
 
 img.frame {
     padding: 2%;

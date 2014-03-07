@@ -22,10 +22,14 @@
                                     {% image screenshot.image width-1536 as screenshot %}
                                     <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
                                 {% endwith %}
-                                <h2>{{ client.title }}</h2>
-                                {% if client.summary %}
-                                    {{ client.summary }}
-                                {% endif %}
+                                <div>
+                                    <h2>{{ client.title }}</h2>
+                                    <p>
+                                        {% if client.summary %}
+                                            {{ client.summary }}
+                                        {% endif %}
+                                    </p>
+                                    </div>
                             </a>
                         </li>
                     {% endfor %}
