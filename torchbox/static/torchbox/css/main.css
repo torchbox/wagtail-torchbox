@@ -452,6 +452,10 @@ a:hover img.frame {
 
     }
 
+/*Jobs index*/
+.page-jobindexpage h1 {
+    font-weight: bold;
+}
 
 .page-jobindexpage main {
     background: url("/static/torchbox/images/jobs-bg-01.png") no-repeat;
@@ -491,7 +495,33 @@ a:hover img.frame {
     font-weight: bold;   
 }
 
-.page-about .benefits li {
+.page-jobindexpage .benefits .one {
+    background-image: url("../img/jobs-placeholder-04.jpg");
+}
+
+.page-jobindexpage .benefits .one .container div {
+    color: #fff;
+}
+
+.page-jobindexpage .benefits .two {
+    background-image: url("../img/jobs-placeholder-07.jpg");
+}
+
+.page-jobindexpage .benefits .three {
+    background-image: url("../img/jobs-placeholder-03.jpg");
+    color: #fff;
+}
+
+.page-jobindexpage .benefits .four {
+    background-image: url("../img/jobs-placeholder-06.jpg");
+}
+
+
+.page-jobindexpage .benefits .five {
+    background-image: url("../img/jobs-placeholder-05.jpg");
+}
+
+.page-jobindexpage .benefits li {
     background-position: center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -500,29 +530,29 @@ a:hover img.frame {
     padding: 3em 0;
 }
 
-.page-about .benefits .one {
+.page-jobindexpage .benefits .one {
     background-image: url("/static/torchbox/images/jobs-placeholder-04.jpg");
 }
 
-.page-about .benefits .one .container div {
+.page-jobindexpage .benefits .one .container div {
     color: #fff;
 }
 
-.page-about .benefits .two {
+.page-jobindexpage .benefits .two {
     background-image: url("/static/torchbox/images/jobs-placeholder-07.jpg");
 }
 
-.page-about .benefits .three {
+.page-jobindexpage .benefits .three {
     background-image: url("/static/torchbox/images/jobs-placeholder-03.jpg");
     color: #fff;
 }
 
-.page-about .benefits .four {
+.page-jobindexpage .benefits .four {
     background-image: url("/static/torchbox/images/jobs-placeholder-06.jpg");
 }
 
 
-.page-about .benefits .five {
+.page-jobindexpage .benefits .five {
     background-image: url("/static/torchbox/images/jobs-placeholder-05.jpg");
 }
 

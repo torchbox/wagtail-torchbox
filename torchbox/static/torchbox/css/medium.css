@@ -215,12 +215,16 @@
 		margin-right: 0;
 	}
 
-	.listing {
+	.listing,
+	.listing a {
 		margin: 0;
 		padding: 0;
 		border: none;
 		box-sizing: border-box;
+		left: auto;
 	}
+
+
 
 	.page-home .clients li {
 		width: 15%;
@@ -228,15 +232,17 @@
 		margin-bottom: 2%;
 	}
 
-	.page-about .intro {
-	    padding: 4em 0 ;
+	.page-jobindexpage .intro {
+	    padding: 4em 0;
+	    max-width: 36em;
+	    margin: 0 auto;
 	}
 
-	.page-about h1 {
+	.page-jobindexpage h1 {
 		font-size: 5em;
 	}
 
-	.page-about .benefits li {
+	.page-jobindexpage .benefits li {
 	    position: relative;
 	    min-height: 18em;
 	    padding: 4em 2em;
@@ -247,36 +253,36 @@
 	}
 
 
-	.page-about .benefits h2 {
+	.page-jobindexpage .benefits h2 {
 		font-size: 3em;
 	}
 
-	.page-about .benefits li {
+	.page-jobindexpage .benefits li {
 		padding: 6em 2em;
 	}
 
-	.page-about .benefits li > div > div {
+	.page-jobindexpage .benefits li > div > div {
 		max-width: 24em;
 	}
 
-	.page-about .benefits .container {
+	.page-jobindexpage .benefits .container {
 		max-width: 72em;
 		margin:0 auto;
 	}
 
-	.page-about .benefits .container div {
+	.page-jobindexpage .benefits .container div {
 
 	}
 
-	.page-about .benefits li:nth-child(odd) .container div {
+	.page-jobindexpage .benefits li:nth-child(odd) .container div {
 		float: left;
 	}
 
-	.page-about .benefits li:nth-child(even) .container div{	
+	.page-jobindexpage .benefits li:nth-child(even) .container div{	
 		float: right;
 	}
 
-	.page-about .benefits .three .container div {
+	.page-jobindexpage .benefits .three .container div {
 		background: rgba(255, 255, 255, 0.75);
 		padding: 1em;
 	}

@@ -17,7 +17,7 @@
                 {% for person in people %}
                     <li>
                         <a href="{% pageurl person %}">
-                        {% image person.image width-300 as photo %}
+                        {% image person.image width-420 as photo %}
                         <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
                         <div>
                             <h2>{{ person.title }}</h2>
