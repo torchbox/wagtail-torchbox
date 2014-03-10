@@ -11,7 +11,7 @@
         </div>
         <h1>{{ self.title }}</h1>
 
-        <div class="author-teaser">
+        <div class="article-meta">
             {% with self.related_author.all as authors %}
             {% if authors %}
             {% for author in authors %}
@@ -21,7 +21,7 @@
             {% endwith %}
 
             {% if self.date %}
-            <span class="date">{{ self.date|date:"j F Y" }}</span>
+            <span class="date">&nbsp;|&nbsp;{{ self.date|date:"j F Y" }}</span>
             {% endif %}
         </div>
         
@@ -37,13 +37,12 @@
                 {% image author.author.image width-300 as photo %}
                 <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
             {% endif %}
-            <a href="{% pageurl author.author %}">
-                <span class="name">{{ author.author.title }}</span>
+            <a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>
                 
                 {% if author.author.role %}
                     <span class="role">{{ author.author.role }}</span>
                 {% endif %}
-            </a>
+            
             {% endfor %}
             {% endif %}
             {% endwith %}

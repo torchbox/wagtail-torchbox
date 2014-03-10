@@ -166,7 +166,7 @@
 		margin-bottom: 0;
 	}
 
-
+	/*Blog index*/
 	.page-blog-index  {
 		background: url("/static/torchbox/images/blog-bg-01.png") no-repeat;
 		background-size: 100% auto;
@@ -177,10 +177,6 @@
 		margin: 0 auto;
 		background: rgba(255, 255, 255, 0.75);
 	}
-
-    .page-blog-single {
-    	margin: 2em auto;
-    }
 
     .page-work-single .intro h1 {
     	font-size: 7em;
@@ -308,7 +304,12 @@
 		padding: 0;
 
 	}
-	
+	/*Footer*/
+
+	footer {
+		padding: 2em;
+	}
+
 	footer .offices ul {
 		width: 44em;
 		margin: 0 auto;
@@ -336,7 +337,6 @@
 	}
 
 	footer .contact {
-		padding: 2em 0;
 		text-align: center;
 	}
 

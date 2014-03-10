@@ -625,7 +625,7 @@ a:hover img.frame {
     padding: 4em 0;
 }
 
-/*Blog listing*/
+/*Blog Index*/
 
 .page-blog-index h2 {
     margin-bottom: 0.5em;
@@ -639,34 +639,35 @@ a:hover img.frame {
     float: right;
 }
 
-/*Blog single*/
+/*Blog page*/
 
-.page-blog-single {
-    margin: 2em 0;
+.page-blogpage main a {
+    color: #FF653F;
 }
 
-.page-work-index .listing {
+
+.page-blogpage .listing {
     text-align: center;
 }
 
-.page-work-single .intro {
+.page-blogpage .intro {
     border-bottom: 2px dotted #ddd;
     border-bottom: 2px dotted rgba(0,0,0,0.2);
 }
 
-.page-work-single .intro p {
+.page-blogpage.intro p {
     margin-bottom: 0;
 }
 
-.page-work-single .intro h1 {
+.page-blogpage .intro h1 {
     font-size: 4em;
     margin-bottom: 0.25em;
     font-weight: bold;
     line-height: 1em;
 }
 
-.single h1 {
-    font-size: 2em;
+.page-blogpage h1 {
+    font-size: 3em;
     margin-bottom: 0.5em;
     line-height: 1.15;
 }
@@ -702,7 +703,7 @@ a:hover img.frame {
     margin-bottom: 4em;
 }
 
-.breadcrumb a {
+main .breadcrumb a {
     background-color: #FF653F;
     display:inline-block;
     padding: 0.5em;
@@ -712,9 +713,10 @@ a:hover img.frame {
     text-transform: uppercase;
 }
 
-.author-teaser {
+.article-meta {
     margin-bottom: 1em;
-    font-style: italic;
+    font-size: 1.125em;
+
 }
 
 .author {
@@ -728,6 +730,8 @@ a:hover img.frame {
 
 .author .name {
     font-size: 1.5em;
+    margin-top: 0.5em;
+    display: block;
 }
 
 .author .avatar {
@@ -735,11 +739,12 @@ a:hover img.frame {
     float: left;
     margin-right: 1em;
     border-radius: 3em;
+    margin-bottom: 0;
 }
 
 .author .role {
     display: block;
-    font-style: italic;
+    color: 222;
 }
 
 .related h2 {
@@ -813,9 +818,12 @@ a:hover img.frame {
 footer {
     background-color: #222;
     color: #fff;
-    padding: 1.5em 0;
+    padding: 1em;
 }
 
+footer .contact {
+    margin-bottom: 2em;
+}
 
 footer .contact h2{
     font-size: 2em; 
