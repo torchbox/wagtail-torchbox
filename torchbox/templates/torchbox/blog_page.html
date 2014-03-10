@@ -33,11 +33,17 @@
             {% with self.related_author.all as authors %}
             {% if authors %}
             {% for author in authors %}
-            <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
             {% if author.author.image %}
-            {% image author.author.image width-300 as photo %}
-            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+                {% image author.author.image width-300 as photo %}
+                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
             {% endif %}
+            <a href="{% pageurl author.author %}">
+                <span class="name">{{ author.author.title }}</span>
+                
+                {% if author.author.role %}
+                    <span class="role">{{ author.author.role }}</span>
+                {% endif %}
+            </a>
             {% endfor %}
             {% endif %}
             {% endwith %}
