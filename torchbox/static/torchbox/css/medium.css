@@ -30,15 +30,13 @@
 		padding: 0;
 	}
 
-
-
 	header nav ul {
 	    display:block;
 	    position: absolute;
 	    top: 0;
-	    right: 2em;
+	    right: 0;
 	    border-right: 1px dotted #ccc;
-	    border-right: 1px dotted rgba(0,0,0,0.2);
+	    border-right: 1px dotted rgba(0,0,0,0.3);
 	}
 
 	header nav li {
@@ -53,7 +51,8 @@
 		border-bottom: 1px dotted #ccc;
 		border-bottom: 1px dotted rgba(0,0,0,0.2);
 		padding: 1.33em 1em;
-		background-color: transparent;
+		border-right: 1px solid rgba(255,255,255,0.2);
+
 	}
 
 	header nav li a:hover {
@@ -72,37 +71,32 @@
 	    font-size: 5em;
 	}
 
-	.page-home .hero {
+	.page-homepage .hero {
 		padding: 14% 2em;
 	}
 
-	.page-home .hero a {
+	.page-homepage .hero a {
 		padding:1.25em;
 	}
 
-	.page-home .hero h2 {
+	.page-homepage .hero h2 {
 		font-size: 4.5em;
 	}
 
-	.page-home .work li {
+	.page-homepage .work li {
 		margin: 0;
 		width:33.33%;
-	}
-
-	.page-home .work li:last-child a{
-		border-right: none;
-	}
-
-	.page-home .work li  {
 		border-right: 1px solid #fff;
-		border-right: 1px solid rgba(0,0,0,0.2);
+		border-right: 1px solid rgba(255,255,255,1);
 		box-sizing: border-box;
 		position: relative;
 	}
 
-	
+	.page-homepage .work li:last-child{
+		border-right: none;
+	}
 
-	.page-home .blog {
+	.page-homepage .blog {
 		border-top: 1px dotted #ccc;
 		border-top: 1px dotted rgba(0,0,0,0.2);
 		border-bottom: 1px dotted #ccc;
@@ -110,24 +104,22 @@
 		padding:2em;
 	}
 
-	.page-home .blog h3 {
+	.page-homepage .blog h3 {
 		font-size: 1.5em;
 	}
 
-	.page-home .hiring {
+	.page-homepage .hiring {
 		background-size: 100%;
-		padding: 9em 0 28% 0;
+		padding: 3em 0 24% 0;
 		border: none;
-
+		text-align: center;
 	}
-
-
 	
-	.page-home .hiring h2 {
+	.page-homepage .hiring h2 {
 		font-size: 5em;
 	}
 
-	.page-home .hiring a {
+	.page-homepage .hiring a {
 		font-size: 1.25em;
 		background-color: #FF653F;
 		padding: 0.5em 1em;
@@ -136,11 +128,11 @@
 		
 	}
 
-	.page-home .hiring ul {
+	.page-homepage .hiring ul {
 		border: none;
 	}
 
-	.page-home .hiring li {
+	.page-homepage .hiring li {
 		display:inline-block;
 		border: none;
 		margin-bottom: 1em;
@@ -155,30 +147,50 @@
 		border-bottom: 1px solid rgba(0,0,0,0.2);
 		padding-bottom: 8em;
 	}
-
 	.page-workindexpage main .listing div {
 		max-width: 36em;
 		margin: 0 auto;
 	}
 
 	.page-workindexpage main .listing h2 {
-		font-size: 2em;
-		margin-bottom: 0;
+		font-size: 3em;
+		margin-bottom: 0.5em;
 	}
 
 	/*Blog index*/
-	.page-blog-index  {
+	.page-blogindexpage main {
+		padding: 2em;
+	}
+
+	.page-blogindexpage h1 {
+		font-size: 4em;
+		font-weight: bold;
+		margin-bottom: 0.25em;
+	}
+
+	.page-blogindexpage main {
 		background: url("/static/torchbox/images/blog-bg-01.png") no-repeat;
 		background-size: 100% auto;
 	}
 
-	.page-blog-index .container {
+	.page-blogindexpage main .container {
 		max-width: 48em;
 		margin: 0 auto;
 		background: rgba(255, 255, 255, 0.75);
 	}
 
-    .page-work-single .intro h1 {
+
+	.page-blogindexpage h2 {
+	    margin-bottom: 0.5em;
+	}
+	
+	.page-blogindexpage main li{
+		margin-bottom: 2em;
+	}
+
+	/*Work page*/
+    .page-workpage .intro h1 {
+    	font-weight: bold;
     	font-size: 7em;
     }
 
@@ -218,19 +230,22 @@
 		margin-right: 0;
 	}
 
+	
+	.listing main li {
+		margin-bottom: 2em;
+	}
+
 	.listing,
 	.listing a {
-		margin: 0 0 2em 0;
+		margin: 0;
 		padding: 0;
 		border: none;
 		box-sizing: border-box;
 		left: auto;
 	}
 
-
-
-	.page-home .clients li {
-		width: 15%;
+	.page-homepage .clients li {
+		width: 18%;
 		margin-right: 2%;
 		margin-bottom: 2%;
 	}
@@ -243,6 +258,10 @@
 
 	.page-jobindexpage h1 {
 		font-size: 5em;
+	}
+
+	.page-jobindexpage main .listing a {
+		padding: 0.5em 0;
 	}
 
 	.page-jobindexpage .benefits li {
@@ -306,7 +325,7 @@
 	}
 	/*Footer*/
 
-	footer {
+	footer .container {
 		padding: 2em;
 	}
 
@@ -338,6 +357,10 @@
 
 	footer .contact {
 		text-align: center;
+	}
+
+	footer .contact a {
+		padding: 0;
 	}
 
 	footer .contact h2{

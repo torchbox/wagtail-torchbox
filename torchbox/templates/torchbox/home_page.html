@@ -1,11 +1,10 @@
 {% extends "torchbox/base.html" %}
-{% load torchbox_tags pageurl%}
+{% load torchbox_tags pageurl static%}
 
 {% block content %}
-<main class="page-home">
     <section class="hero">
         <h1 class="visuallyhidden">Home</h1>
-        <h2>Digital stuff for the good guys.</h2>
+        <h2>Digital stuff for <em>nice</em> people.</h2>
     </section>
 
     <section class="work clearfix grid">
@@ -28,11 +27,22 @@
     <section class="clients container clearfix">
 	    <h2>Clients</h2>
 		 <ul>
-            <li>
-
-            </li>
+            <li><img src="{% static "torchbox/images/client-logo-01.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-02.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-03.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-04.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-05.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-03.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-04.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-01.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-02.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-03.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-04.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-05.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-03.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-04.svg" %}"></li>
+            <li><img src="{% static "torchbox/images/client-logo-01.svg" %}"></li>
          </ul>
 	 </section>
-</main>
 
 {% endblock %}

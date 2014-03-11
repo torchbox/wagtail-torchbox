@@ -5,10 +5,10 @@
     	<li>
 		<a href="{% pageurl blog %}">
 			<h3>{{ blog.title }}</h3>
+		</a>
 			{% if blog.intro %}
 				{{ blog.intro|richtext }}
 			{% endif %}
-			</a>
 		</li>
     {% endfor %}
     </ul>
