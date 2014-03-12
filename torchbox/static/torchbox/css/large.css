@@ -19,4 +19,8 @@
 	.page-people-single .hero {
 		height: 32em;
 	}
+
+	.page-homepage .hero h2 {
+		margin-left: 1em;
+	}
 }

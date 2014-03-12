@@ -937,6 +937,10 @@ footer .tel {
     height: 500px;
 }
 
+.map iframe {
+    border: 0;
+}
+
 
 
 
