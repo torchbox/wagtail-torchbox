@@ -171,6 +171,7 @@ INTERNAL_IPS = ('127.0.0.1', '10.0.2.2')
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
     ('text/less', 'lesspress.LessCompiler'),
+    ('text/x-scss', 'sassc -I ~ {infile}'),
 )
 
 COMPRESS_OFFLINE = True

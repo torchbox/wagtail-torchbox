@@ -5,16 +5,20 @@
     <section class="hero">
         <h1 class="visuallyhidden">Home</h1>
         <h2>Digital stuff for <em>nice</em> people.</h2>
+        <div class="gif"><img src="{% static "torchbox/images/phone.gif" %}"></div>
     </section>
 
     <section class="work clearfix grid">
+            <h2 class="visuallyhidden">Work</h2>
     		{% homepage_work_listing 3 %}
     	</div>
     </section>
 
     <section class="container hiring">
-        <h2>We're hiring</h2>
-    		{% homepage_job_listing 3 %}
+            <div>
+                <h2>We're hiring</h2>
+        		{% homepage_job_listing 3 %}
+            </div>
      	</section>
 
     <section class="blog container  grid">
