@@ -1,14 +1,23 @@
-/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+/*Animations*/
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
+main {
 
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+ 
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+ 
+    -webkit-animation-duration:0.3s;
+    -moz-animation-duration:0.3s;
+    animation-duration:0.3s;
+}
 
 html,
 button,
@@ -183,8 +192,10 @@ header nav a {
     display: block;
     padding: 0.5em 1em;
     background-color: #333;
-    color: #222;
-    margin-bottom: 1px;
+    background-color: rgba(0,0,0,0.8);
+
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 header nav ul {
@@ -196,10 +207,10 @@ header nav ul.visible {
 }
 
 main nav {
-    padding: 1em 0;
-    border-bottom: 1px dotted #ccc;
-    border-bottom: 1px dotted rgba(0,0,0,0.2);
-    margin: 0 2em;
+    padding: 1em;
+    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin: 0;
     text-align: right;
 }
 
@@ -208,17 +219,18 @@ main nav li {
 }
 
 main nav li a {
-    color: #ff8080;
     padding: 0.5em 0.75em;
     margin-right: 1px;
     line-height: 1em;
-    border-radius: 0.2em;
+}
+
+main nav li a:hover {
+
 }
 
 main nav li.active a {
-    color: #222;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,0.2);
+    background-color: #FF653F;
+    color: #fff;
     position: relative;
 }
 
@@ -254,8 +266,10 @@ main nav li.active a:after {
 }
 
 .body-copy h1 {
-    font-size: 6em;
+    font-size: 2.5em;
+    font-weight: bold;
     letter-spacing: -0.075em;
+    margin-bottom: 0.25em;
 }
 
 .body-copy h2 {
@@ -270,6 +284,10 @@ main nav li.active a:after {
 
 .negative a {
     color: #000;
+}
+
+.listing main li {
+    margin-bottom: 1em;
 }
 
 .listing {
@@ -301,12 +319,17 @@ main nav li.active a:after {
     position: absolute;
     right: 0;
     top: 0;
-    background-color: green;
+    background-color: rgba(0,0,0,0.8);
     line-height: 1em;
     padding: 0.5em;
     width:2em;
     font-size: 1.5em;
     text-align: center;
+    color: #fff;
+}
+
+.menu-button:hover {
+    background-color: #FF653F;
     color: #fff;
 }
 
@@ -338,33 +361,30 @@ main nav li.active a:after {
 
 
 
-.page-home .hiring {
+.page-homepage .hiring {
     background: url("/static/torchbox/images/hiring-teaser.jpg") no-repeat bottom;
-    background-size: 100;
-    text-align: center;
-    padding: 3em 0;
-    background-size: 50%;
+    background-size: 100%;
     border-bottom: 1px dotted #ccc;
     border-bottom: 1px dotted rgba(0,0,0,0.2);
+    padding-bottom: 28%;
 }
 
-.page-home .hiring ul {
+.page-homepage .hiring ul {
     border-top: 1px dotted #ccc;
     border-top: 1px dotted rgba(0,0,0,0.2);
 }
 
-.page-home .hiring li {
+.page-homepage .hiring li a {
     border-bottom: 1px dotted #ccc;
     border-bottom: 1px dotted rgba(0,0,0,0.2);
-    padding: 0.5em;
 }
 
-.page-home h2 {
+.page-homepage main h2 {
     font-size: 2em;
     margin-bottom: 0.25em;
 }
 
-.page-home .hero {
+.page-homepage .hero {
     padding: 6em 2em;
     background: url("/static/torchbox/images/home-bg.png") center center;
     -webkit-background-size: cover;
@@ -373,12 +393,12 @@ main nav li.active a:after {
     background-size: cover;
 }
 
-.page-home .hero .button {
+.page-homepage .hero .button {
     background-color: #222;
 }
 
 
-.page-home .work li a div {
+.page-homepage .work li a div {
         padding: 1em;
         bottom: 0;
         width: 100%;
@@ -404,11 +424,11 @@ a:hover img.frame {
     transition: all 0.2s ease;
 }
 
-.page-home .hero {
+.page-homepage .hero {
     text-align: center;
 }
 
-.page-home .hero h2 {
+.page-homepage .hero h2 {
         font-size: 2.5em;
         max-width: 10em;
         margin: 0 auto;
@@ -419,21 +439,21 @@ a:hover img.frame {
 
     }
 
-.page-home h2 a {
+.page-homepage h2 a {
     color: #222;
     position: relative;
     transition: color 0.1s ease;
 }
 
-.page-home h2 a span {
+.page-homepage h2 a span {
     color: #FF653F;
 }
 
-.page-home h2 a:hover {
+.page-homepage h2 a:hover {
     color: #FF653F;
 }
 
-.page-home h2 a:hover span {
+.page-homepage h2 a:hover span {
         position: absolute;
         right: -0.8em;
         -webkit-animation:spin 0.5s ease 0.1s;
@@ -446,11 +466,11 @@ a:hover img.frame {
 
 
 
-.page-home section {
+.page-homepage section {
     padding-top: 2em;
 }
 
-.page-home .clients li {
+.page-homepage .clients li {
     width: 31.33%;
     height: 6em;
     float: left;
@@ -459,7 +479,7 @@ a:hover img.frame {
     text-align: center;
 }
 
-.page-home .clients li > * {
+.page-homepage .clients li > * {
         width: 100%;
         height: 100%;
         text-align: center;
@@ -478,6 +498,10 @@ a:hover img.frame {
     background-size: 100% auto;
 }
 
+.page-jobindexpage main .jobs {
+    margin-bottom: 2em;
+}
+
 .page-jobindexpage main .listing li:first-child a {
     border-top: 1px dotted #ccc;   
     border-top: 1px dotted rgba(0,0,0,0.2);
@@ -488,7 +512,6 @@ a:hover img.frame {
     min-height: 0;
     border-bottom: 1px dotted #ccc;
     border-bottom: 1px dotted rgba(0,0,0,0.2);
-    padding: 1em 0;
 }
 
 .page-jobindexpage main .listing a:hover {
@@ -625,13 +648,13 @@ a:hover img.frame {
     padding: 4em 0;
 }
 
-/*Blog listing*/
+/*Blog Index*/
 
-.page-blog-index h2 {
-    margin-bottom: 0.5em;
+.page-blogindexpage h2 {
+    margin-bottom: 0.125em;
 }
 
-.page-blog-index li img {
+.page-blogindexpage li img {
     width: 6em;
     border-radius: 50%;
     margin-left: 1em;
@@ -639,34 +662,35 @@ a:hover img.frame {
     float: right;
 }
 
-/*Blog single*/
+/*Blog page*/
 
-.page-blog-single {
-    margin: 2em 0;
+.page-blogpage main a {
+    color: #FF653F;
 }
 
-.page-work-index .listing {
+
+.page-blogpage .listing {
     text-align: center;
 }
 
-.page-work-single .intro {
+.page-blogpage .intro {
     border-bottom: 2px dotted #ddd;
     border-bottom: 2px dotted rgba(0,0,0,0.2);
 }
 
-.page-work-single .intro p {
+.page-blogpage.intro p {
     margin-bottom: 0;
 }
 
-.page-work-single .intro h1 {
+.page-blogpage .intro h1 {
     font-size: 4em;
     margin-bottom: 0.25em;
     font-weight: bold;
     line-height: 1em;
 }
 
-.single h1 {
-    font-size: 2em;
+.page-blogpage h1 {
+    font-size: 3em;
     margin-bottom: 0.5em;
     line-height: 1.15;
 }
@@ -702,7 +726,7 @@ a:hover img.frame {
     margin-bottom: 4em;
 }
 
-.breadcrumb a {
+main .breadcrumb a {
     background-color: #FF653F;
     display:inline-block;
     padding: 0.5em;
@@ -712,9 +736,10 @@ a:hover img.frame {
     text-transform: uppercase;
 }
 
-.author-teaser {
+.article-meta {
     margin-bottom: 1em;
-    font-style: italic;
+    font-size: 1.125em;
+
 }
 
 .author {
@@ -728,6 +753,8 @@ a:hover img.frame {
 
 .author .name {
     font-size: 1.5em;
+    margin-top: 0.5em;
+    display: block;
 }
 
 .author .avatar {
@@ -735,11 +762,12 @@ a:hover img.frame {
     float: left;
     margin-right: 1em;
     border-radius: 3em;
+    margin-bottom: 0;
 }
 
 .author .role {
     display: block;
-    font-style: italic;
+    color: 222;
 }
 
 .related h2 {
@@ -767,7 +795,6 @@ a:hover img.frame {
 
 .page-personindexpage main h2 {
     font-size: 2em;
-    margin-bottom: 0.25em;
     font-weight: bold;
 }
 
@@ -813,9 +840,16 @@ a:hover img.frame {
 footer {
     background-color: #222;
     color: #fff;
-    padding: 1.5em 0;
+    -webkit-font-smoothing: antialiased;
 }
 
+footer .container {
+    padding: 1em;
+}
+
+footer .contact {
+    margin-bottom: 2em;
+}
 
 footer .contact h2{
     font-size: 2em; 
@@ -824,6 +858,7 @@ footer .contact h2{
 
 footer .contact a {
     color: #fff;
+    padding: 1em 2em;
 }
 
 footer .contact ul {
@@ -833,16 +868,17 @@ footer .contact ul {
 
 footer .contact li {
     display: inline-block;
-    border: none;
     width: 100%;
     border-bottom: 1px dotted #666;
-    border-bottom: 1px dotted rgba(0,0,0,0.2);
+    border-bottom: 1px dotted rgba(255,255,255,0.2);
 }
 
 footer .contact li i {
     display: block;
     float: left;
     margin: 0;
+        margin-right: 0.5em;
+
 }
 
 footer .contact a:hover span {
@@ -854,13 +890,6 @@ footer .button {
     background-color: #FF653F;
 }
 
-footer .contact li {
-    padding: 1em 0;
-}
-
-footer .contact li i {
-    margin-right: 0.5em;
-}
 
 footer .offices li img {
     width: 1.5em;

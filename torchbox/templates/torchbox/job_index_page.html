@@ -12,7 +12,7 @@
       
         {% with self.jobs.all as jobs %}
             {% if jobs %}
-                <ul class="listing ">
+                <ul class="listing jobs">
                     {% for job in jobs %}
                         <li>
                             <a href="{% pageurl job %}">{{ job.title }}</a>
@@ -23,7 +23,9 @@
         {% endwith %}
 
         {% if self.intro %}
-            {{ self.intro|richtext }}
+        <div class="body-copy">
+                {{ self.intro|richtext }}
+        </div>
         {% endif %}
 
     </section>
