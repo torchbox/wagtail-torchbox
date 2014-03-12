@@ -4,7 +4,7 @@ from fabric.api import *
 import uuid
 
 env.roledefs = {
-    'staging': [],
+    'staging': ['django-staging.torchbox.com'],
     'production': ['tbxwagtail@by-web-2.torchbox.com'],
 }
 
@@ -16,7 +16,17 @@ REMOTE_DUMP_PATH = "~/"
 
 @roles('staging')
 def deploy_staging():
-    pass
+    with cd('/usr/local/django/tbxwagtail/'):
+        with settings(sudo_user='tbxwagtail'):
+            sudo("git pull")
+            sudo("git submodule update")
+            sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/pip install -r requirements/production.txt")
+            sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py syncdb --settings=tbx.settings.production --noinput")
+            sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py migrate --settings=tbx.settings.production --noinput")
+            sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py collectstatic --settings=tbx.settings.production --noinput")
+            sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py compress --force --settings=tbx.settings.production")
+
+        sudo("supervisorctl restart tbxwagtail")
 
 @roles('production')
 def deploy():
