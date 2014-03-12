@@ -141,11 +141,6 @@ a {
     color: inherit;
 }
 
-a:hover {
-    color: #ffa624;
-    transition: color 0.1s ease;
-}
-
 button, .button {
     padding: 0.75em 1em;
     font-size: 0.85em;
@@ -188,6 +183,11 @@ img {
     max-width: 100%;
 }
 
+header {
+    z-index: 999;
+    position:relative;
+}
+
 header nav a {
     display: block;
     padding: 0.5em 1em;
@@ -224,10 +224,6 @@ main nav li a {
     line-height: 1em;
 }
 
-main nav li a:hover {
-
-}
-
 main nav li.active a {
     background-color: #FF653F;
     color: #fff;
@@ -259,6 +255,11 @@ main nav li.active a:after {
 .body-copy {
     max-width: 48em;
     margin: 0 auto;
+}
+
+.body-copy a:hover {
+    color: #ffa624;
+    transition: color 0.1s ease;
 }
 
 .body-copy p a {
@@ -359,14 +360,57 @@ main nav li.active a:after {
     color: #FF653F;
 }
 
+/*Page home*/
+.page-homepage .hero {
+    padding: 6em 2em;
+    background-color: #F1D148;
+    position: relative;
+    top:-3em;
+    margin-bottom: -3em;
+}
 
+.page-homepage .hero .gif {
+    width: 100%;
+}
+
+.page-homepage .hero .gif img{
+        margin: 0 auto;
+        max-width: 480px;
+    }
+
+.page-homepage .hero em {
+    border-bottom: 0.15em solid #fff;
+    font-style: normal;
+}
+
+.page-homepage .hero .button {
+    background-color: #222;
+}
 
 .page-homepage .hiring {
-    background: url("/static/torchbox/images/hiring-teaser.jpg") no-repeat bottom;
-    background-size: 100%;
-    border-bottom: 1px dotted #ccc;
-    border-bottom: 1px dotted rgba(0,0,0,0.2);
-    padding-bottom: 28%;
+    background: url("/static/torchbox/images/hiring-teaser.jpg") no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    text-align: center;
+    padding: 4em 2em;
+    margin-bottom: 1em;
+}
+
+.page-homepage .hiring > div {
+    max-width:48em;
+    margin: 0 auto;
+    color:#fff;
+}
+
+.page-homepage .hiring a {
+    background-color: #FF653F;
+    padding: 0.5em 1em;
+    line-height: 1em;
+    color: #fff;
+    display: inline-block;
 }
 
 .page-homepage .hiring ul {
@@ -384,20 +428,6 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
 }
 
-.page-homepage .hero {
-    padding: 6em 2em;
-    background: url("/static/torchbox/images/home-bg.png") center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.page-homepage .hero .button {
-    background-color: #222;
-}
-
-
 .page-homepage .work li a div {
         padding: 1em;
         bottom: 0;
@@ -406,35 +436,13 @@ main nav li.active a:after {
         box-sizing: border-box;
     }
 
-img.frame {
-    padding: 2%;
-    position: relative;   
-
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,0.2);
-    -webkit-border-radius: 0.5em; 
-    -moz-border-radius: 0.5em; 
-    border-radius: 0.5em; 
-    margin-bottom: 1em;
-}
-
-a:hover img.frame {
-    border: 1px dotted #FF653F;
-    border: 1px dotted rgba(0,0,0,0.2);
-    transition: all 0.2s ease;
-}
-
-.page-homepage .hero {
-    text-align: center;
-}
 
 .page-homepage .hero h2 {
         font-size: 2.5em;
-        max-width: 10em;
-        margin: 0 auto;
+        max-width: 9em;
         line-height: 1.1;
         font-weight: bold;
-        color: #222;
+        color: #fff;
         margin-bottom: 0.5em;
 
     }
@@ -466,9 +474,6 @@ a:hover img.frame {
 
 
 
-.page-homepage section {
-    padding-top: 2em;
-}
 
 .page-homepage .clients li {
     width: 31.33%;
@@ -487,6 +492,25 @@ a:hover img.frame {
         padding: 0.25em;
 
     }
+
+
+img.frame {
+    padding: 2%;
+    position: relative;   
+
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.2);
+    -webkit-border-radius: 0.5em; 
+    -moz-border-radius: 0.5em; 
+    border-radius: 0.5em; 
+    margin-bottom: 1em;
+}
+
+a:hover img.frame {
+    border: 1px dotted #FF653F;
+    border: 1px dotted rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
 
 /*Jobs index*/
 .page-jobindexpage h1 {

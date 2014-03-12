@@ -25,8 +25,7 @@
 		display: none;
 	}
 
-	header {
-		position: relative;
+	header {	
 		padding: 0;
 	}
 
@@ -72,9 +71,19 @@
 	}
 
 	.page-homepage .hero {
-		padding: 14% 2em;
+		padding: 18% 2em;
+		margin-top: -2em;
+		margin-bottom: -3em;
 	}
 
+	.page-homepage .hero .gif {
+		padding-left: 38em;
+		position: absolute;
+		top: 5em;
+		right: 2em;
+		text-align: center;
+	}
+	
 	.page-homepage .hero a {
 		padding:1.25em;
 	}
@@ -110,9 +119,9 @@
 
 	.page-homepage .hiring {
 		background-size: 100%;
-		padding: 3em 0 24% 0;
+		padding: 12em 2em;
 		border: none;
-		text-align: center;
+		
 	}
 	
 	.page-homepage .hiring h2 {
@@ -120,12 +129,7 @@
 	}
 
 	.page-homepage .hiring a {
-		font-size: 1.25em;
-		background-color: #FF653F;
-		padding: 0.5em 1em;
-		line-height: 1em;
-		color: #fff;
-		
+		font-size: 1.25em;		
 	}
 
 	.page-homepage .hiring ul {
@@ -242,6 +246,10 @@
 		border: none;
 		box-sizing: border-box;
 		left: auto;
+	}
+
+	.page-homepage .clients {
+	    padding: 2em;
 	}
 
 	.page-homepage .clients li {
