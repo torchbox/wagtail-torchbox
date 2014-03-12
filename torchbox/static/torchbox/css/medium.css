@@ -152,13 +152,15 @@
 		padding-bottom: 8em;
 	}
 	.page-workindexpage main .listing div {
-		max-width: 36em;
+		max-width: 50em;
 		margin: 0 auto;
+		text-align: center;
 	}
 
 	.page-workindexpage main .listing h2 {
-		font-size: 3em;
-		margin-bottom: 0.5em;
+		font-size: 3.5em;
+		margin-bottom: 0.2em;
+		line-height: 1.2;
 	}
 
 	/*Blog index*/
@@ -195,7 +197,28 @@
 	/*Work page*/
     .page-workpage .intro h1 {
     	font-weight: bold;
-    	font-size: 7em;
+    	font-size: 6em;
+    	line-height: 1.1;
+    }
+
+    .page-workpage .single {
+    	padding: 0em;
+    	margin-top: -4.5em;
+    }
+
+    .page-workpage .single .container {
+    	padding: 2em 3em 2em 3em;
+    }
+
+    .page-workpage .body-copy {
+			max-width: 60em;
+    }
+
+    .page-workpage .intro .body-copy {
+    	margin-top: -15em;
+    	margin-bottom: 1em;
+			background: rgba(255, 255, 255, 1);
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .body-copy p {
