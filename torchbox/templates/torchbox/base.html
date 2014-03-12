@@ -17,13 +17,11 @@
         {% compress css %}
             <link rel="stylesheet" href="{% static "torchbox/css/vendor/jquery.bxslider.css" %}" />
 
-            {# NB Less files must exist within compress tags and requires type="text/less" #}
-
-            <link rel="stylesheet" type="text/less" href="{% static "torchbox/css/normalize.css" %}">
-            <link rel="stylesheet" type="text/less" href="{% static "torchbox/css/main.css" %}">
-            <link rel="stylesheet" type="text/less" href="{% static "torchbox/css/medium.css" %}">
-            <link rel="stylesheet" type="text/less" href="{% static "torchbox/css/large.css" %}">
-            <link rel="stylesheet" type="text/less" href="{% static "torchbox/css/fontello.css" %}">
+            <link rel="stylesheet" href="{% static "torchbox/css/normalize.css" %}">
+            <link rel="stylesheet" href="{% static "torchbox/css/main.css" %}">
+            <link rel="stylesheet" href="{% static "torchbox/css/medium.css" %}">
+            <link rel="stylesheet" href="{% static "torchbox/css/large.css" %}">
+            <link rel="stylesheet" href="{% static "torchbox/css/fontello.css" %}">
 
             <script src="{% static "js/vendor/modernizr-2.6.2.min.js" %}" type="text/javascript"></script>
             <script src="{% static "js/main.js" %}"></script>
