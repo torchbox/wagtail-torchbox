@@ -118,7 +118,7 @@ body * {
 main {
     background-color: #fff;
     padding: 0 0 1em 0;
-    
+    position: relative;
 }
 
 .single main {
