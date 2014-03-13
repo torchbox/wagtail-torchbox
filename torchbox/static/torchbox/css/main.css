@@ -427,8 +427,12 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
 }
 
+.page-homepage .work {
+    padding: 1em;
+}
+
 .page-homepage .work li a div {
-        padding: 1em;
+        padding: 1em 0;
         bottom: 0;
         width: 100%;
         background-color: rgba(255, 255, 255, 0.75);
