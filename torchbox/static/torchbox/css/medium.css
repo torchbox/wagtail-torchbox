@@ -138,17 +138,16 @@
 	}	
 
 	.page-workindexpage main .listing a {
-		border-bottom: 1px solid rgba(0,0,0,0.5);
-		padding-bottom: 0em;
-		background: black;
+		background: no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	  min-height: 600px;
 	}
 
 		.page-workindexpage main .listing a:hover img {
 			opacity: 0.5;
-		}
-
-		.page-workindexpage main .listing a:hover h2 {
-			color: #;
 		}
 
 	.page-workindexpage main .listing div {
