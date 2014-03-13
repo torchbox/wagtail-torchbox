@@ -13,6 +13,13 @@
             {{ self.body|richtext }}
         {% endif %}
     </section>
+
+    <section>
+        <div class="map">
+            <iframe src="https://mapsengine.google.com/map/embed?mid=zZ_tGG5Cpnko.kKn0eNls4Kc8" width="100%" height="480"></iframe>
+        </div>
+    </section>
+
     <section class="container">
         {% if self.content_block.all %}
         <ul class="listing grid clearfix">
