@@ -144,6 +144,7 @@
 	  -o-background-size: cover;
 	  background-size: cover;
 	  min-height: 600px;
+	  position:static!important;
 	}
 
 		.page-workindexpage main .listing a:hover img {

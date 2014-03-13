@@ -18,7 +18,7 @@
                     {% for client in work %}
                         <li>
                             {% with client.screenshots.all|first as screenshot %}
-                            {% image screenshot.image width-1536 as screenshot %}
+                            {% image screenshot.image width-2000 as screenshot %}
                                     
                             <a href="{% pageurl client %}" style='background-image: url({{ screenshot.url}});'>
                                     

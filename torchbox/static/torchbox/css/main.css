@@ -139,6 +139,7 @@ p {
 a {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
 }
 
 button, .button {
@@ -889,6 +890,7 @@ main .breadcrumb a {
 .page-personindexpage main h2 {
     font-size: 2em;
     font-weight: bold;
+    -webkit-font-smoothing: antialiased;
 }
 
 .page-standardpage main li {
@@ -897,6 +899,7 @@ main .breadcrumb a {
 
 .grid.people-list li {
     position: relative;
+    overflow:hidden;
 }
 
 .grid.people-list li div {
@@ -909,8 +912,17 @@ main .breadcrumb a {
         color: #fff;
     }
 
-.grid.people-list img {
+.grid.people-list a img {
     margin: 0;
+    transition: all 0.2s ease;
+}
+
+.grid.people-list a:hover img {
+     transform:scale(1.125);
+    -ms-transform:scale(1.125); /* IE 9 */
+    -moz-transform:scale(1.125); /* Firefox */
+    -webkit-transform:scale(1.125); /* Safari and Chrome */
+    -o-transform:scale(1.125); /* Opera */
 }
 
 .grid.people-list li:nth-child(3n+2) div {
