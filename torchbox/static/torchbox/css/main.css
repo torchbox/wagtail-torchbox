@@ -303,6 +303,10 @@ main nav li.active a:after {
     font-weight: bold;
 }
 
+.listing div {   
+    padding: 1em;
+}
+
 .logo {
     height:3em;
     display: block;
@@ -346,10 +350,9 @@ main nav li.active a:after {
 .listing a {
     display: block;
     width:100%;
-    padding: 1em;
+    padding: 0 0 1em 0;
     box-sizing: content-box;
     position: relative;
-    left: -1em;
 }
 
 .listing a:hover h2,
@@ -751,6 +754,18 @@ a:hover img.frame {
 
 .body-copy .button {
     margin-bottom: 4em;
+}
+
+/*Work page*/
+
+.page-workpage .single {
+    padding: 0em;
+    margin-top: -4.5em;
+}
+
+.page-workpage .intro .body-copy {
+    margin-bottom: 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 main .breadcrumb a {
