@@ -9,9 +9,9 @@ env.roledefs = {
 }
 
 LIVE_DB_USERNAME = "tbxwagtail"
-LIVE_DB_SERVER = "by-postgres-a.torchbox.com"
+LIVE_DB_SERVER = "by-postgres-a"
 DB_NAME = "wagtail-torchbox"
-LOCAL_DUMP_PATH = "/home/vagrant/"
+LOCAL_DUMP_PATH = "~/"
 REMOTE_DUMP_PATH = "~/"
 
 @roles('staging')
@@ -50,7 +50,7 @@ def pull_live_data():
     remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
     local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
 
-    run('pg_dump -U%s -h %s -cf %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, remote_path))
+    run('pg_dump -U%s -h %s -xOf %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, remote_path))
     run('gzip %s' % remote_path)
     get("%s.gz" % remote_path, "%s.gz" % local_path)
     run('rm %s.gz' % remote_path)
@@ -71,15 +71,15 @@ def push_live_data():
     remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
     live_db_backup_path = "%s%s-%s.sql" % (REMOTE_DUMP_PATH, DB_NAME, uuid.uuid4())
 
-    local('pg_dump -Upostgres -cf %s %s' % (local_path, DB_NAME))
+    local('pg_dump -Upostgres -xOf %s %s' % (local_path, DB_NAME))
     local('gzip %s' % local_path)
     put("%s.gz" % local_path, "%s.gz" % remote_path)
 
-    run('pg_dump -U%s -h %s -cf %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, live_db_backup_path))
+    run('pg_dump -xO -U%s -h %s -f %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, live_db_backup_path))
     puts('Previous live database backed up to %s' % live_db_backup_path)
     
-    run('dropdb -U%s -h %s %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, DB_NAME))
-    run('createdb -U%s -h %s %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, DB_NAME))
     run('gunzip %s.gz' % remote_path)
-    runs('psql -U%s -h %s -f %s %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, remote_path, DB_NAME))
-    run ('rm %s' % remote_path)
+    run('psql -U%s -h %s -c "DROP SCHEMA public CASCADE"' % (LIVE_DB_USERNAME, LIVE_DB_SERVER))
+    run('psql -U%s -h %s -c "CREATE SCHEMA public"' % (LIVE_DB_USERNAME, LIVE_DB_SERVER))
+    run('psql -U%s -h %s -f %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, remote_path))
+    run('rm %s' % remote_path)
