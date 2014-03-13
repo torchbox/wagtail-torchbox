@@ -694,11 +694,6 @@ a:hover img.frame {
 
 /*Blog page*/
 
-.page-blogpage main a {
-    color: #FF653F;
-}
-
-
 .page-blogpage .listing {
     text-align: center;
 }
@@ -723,6 +718,10 @@ a:hover img.frame {
     font-size: 3em;
     margin-bottom: 0.5em;
     line-height: 1.15;
+}
+
+.body-copy a {
+    color: #FF653F;
 }
 
 .body-copy p {
@@ -781,8 +780,59 @@ main .breadcrumb a {
 .article-meta {
     margin-bottom: 1em;
     font-size: 1.125em;
+}
+
+.share {
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    background-color: #fff;
+}
+
+.share ul {
+    box-shadow: 0.125em 0.125em 0.5em #888888;
+    box-shadow: 0.125em 0.125em 0.5em rgba(0,0,0,0.2);
+    margin-bottom: 0;
+    position: absolute;
+    top: 2em;
+    left: 0;
+    border-top: 2px solid #ddd;
+    display: none;
+}
+
+.share ul.visible {
+    display: block;
+}
+
+.share li {
+    list-style: none;
+    padding: 0.5em;
+    margin: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    line-height: 1em;
+    vertical-align: middle;
+}
+
+.share li:last-child {
+    border:0;
+}
+
+.share ul:after {
+    content: "";
+    width: 0; 
+    height: 0; 
+    border-left: 0.5em solid transparent;
+    border-right: 0.5em solid transparent;
+    border-bottom: 0.5em solid #ddd;
+    position: absolute;
+    top: -10px;
+    left: 24px;
 
 }
+
+
+
+
 
 .author {
     border-top: 1px dotted #ccc;
