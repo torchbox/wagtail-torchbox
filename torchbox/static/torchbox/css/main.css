@@ -301,6 +301,7 @@ main nav li.active a:after {
     font-size: 1.5em;
     letter-spacing: -0.03em;
     font-weight: bold;
+    margin-bottom: 0.2em;
 }
 
 .listing div {   
@@ -338,8 +339,8 @@ main nav li.active a:after {
 }
 
 .listing {
-    border-top: 1px solid #ccc;
-    border-top: 1px solid rgba(0,0,0,0.2);
+    /*border-top: 1px solid #ccc;*/
+    /*border-top: 1px solid rgba(0,0,0,0.2);*/
     box-sizing: content-box;
 }
 
@@ -427,7 +428,7 @@ main nav li.active a:after {
 
 .page-homepage main h2 {
     font-size: 2em;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.75em;
 }
 
 .page-homepage .work {
