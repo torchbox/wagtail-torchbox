@@ -138,17 +138,15 @@
 	}	
 
 	.page-workindexpage main .listing a {
-		background: no-repeat center center fixed; 
+		background-repeat: no-repeat; 
+		background-position: center top;
+		background-attachment: fixed;
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
 	  background-size: cover;
-	  min-height: 600px;
+	  min-height: 800px;
 	}
-
-		.page-workindexpage main .listing a:hover img {
-			opacity: 0.5;
-		}
 
 	.page-workindexpage main .listing div {
 		max-width: 60em;
