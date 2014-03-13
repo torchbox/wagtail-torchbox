@@ -92,17 +92,8 @@
 		font-size: 4.5em;
 	}
 
-	.page-homepage .work li {
-		margin: 0;
-		width:33.33%;
-		border-right: 1px solid #fff;
-		border-right: 1px solid rgba(255,255,255,1);
-		box-sizing: border-box;
-		position: relative;
-	}
-
-	.page-homepage .work li:last-child{
-		border-right: none;
+	.page-homepage .work {
+		padding: 2em;
 	}
 
 	.page-homepage .blog {
@@ -121,7 +112,7 @@
 		background-size: 100%;
 		padding: 12em 2em;
 		border: none;
-		
+		margin: 4em 0;
 	}
 	
 	.page-homepage .hiring h2 {
@@ -257,6 +248,9 @@
 		margin-right: 0;
 	}
 
+	.grid.gutters li {	
+
+	}
 	
 	.listing main li {
 		margin-bottom: 2em;
