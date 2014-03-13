@@ -357,12 +357,34 @@
 	    font-size: 5em;
 	}
 
+
+
 	.grid.people-list li {
 		width: 33.3%;
 		margin: 0;
 		padding: 0;
 
 	}
+
+	/*Person page*/
+
+	.page-personpage main {
+		min-height: 51em;
+		margin-top: 2em;
+	}
+
+	.page-personpage main img {
+		position: absolute;
+		right: 0;
+		padding-left: 49em;
+		top: 0em;
+		margin-top: 4em;
+	}
+
+	.page-personpage .body-copy {
+		margin: 0;
+	}
+
 	/*Footer*/
 
 	footer .container {
