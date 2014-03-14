@@ -523,27 +523,51 @@ a:hover img.frame {
 /*Jobs index*/
 .page-jobindexpage h1 {
     font-weight: bold;
-}
-
-.page-jobindexpage main {
-    background: url("/static/torchbox/images/jobs-bg-01.png") no-repeat;
-    background-size: 100% auto;
+    font-size: 4em;
+    margin-bottom: 0.25em;
 }
 
 .page-jobindexpage main .jobs {
     margin-bottom: 2em;
+    background-color: #5CB9E7;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+ 
+}
+
+.page-jobindexpage main .jobs .container {
+       padding: 2em;
+       max-width: 72em;
+       margin: 0 auto;
+}
+
+.page-jobindexpage main .jobs a {
+    color: #fff;
+    padding: 0.5em 0;
+}
+
+.page-jobindexpage main .jobs a:hover {
+    color: #F1D148;
+}
+
+.page-jobindexpage main .jobs > div {
+    max-width: 48em;
 }
 
 .page-jobindexpage main .listing li:first-child a {
-    border-top: 1px dotted #ccc;   
-    border-top: 1px dotted rgba(0,0,0,0.2);
+    border-top: 1px solid #fff;   
+    border-top: 1px solid rgba(255,255,255,0.2);
 } 
+
+.page-jobindexpage .benefits li {
+    border-bottom: 1px solid #ccc;
+    padding: 1em;
+}
 
 .page-jobindexpage main .listing a {
     font-size: 2em;
-    min-height: 0;
-    border-bottom: 1px dotted #ccc;
-    border-bottom: 1px dotted rgba(0,0,0,0.2);
+    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .page-jobindexpage main .listing a:hover {
@@ -567,69 +591,6 @@ a:hover img.frame {
     margin-bottom: 0.25em;
     font-weight: bold;   
 }
-
-.page-jobindexpage .benefits .one {
-    background-image: url("../img/jobs-placeholder-04.jpg");
-}
-
-.page-jobindexpage .benefits .one .container div {
-    color: #fff;
-}
-
-.page-jobindexpage .benefits .two {
-    background-image: url("../img/jobs-placeholder-07.jpg");
-}
-
-.page-jobindexpage .benefits .three {
-    background-image: url("../img/jobs-placeholder-03.jpg");
-    color: #fff;
-}
-
-.page-jobindexpage .benefits .four {
-    background-image: url("../img/jobs-placeholder-06.jpg");
-}
-
-
-.page-jobindexpage .benefits .five {
-    background-image: url("../img/jobs-placeholder-05.jpg");
-}
-
-.page-jobindexpage .benefits li {
-    background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    padding: 3em 0;
-}
-
-.page-jobindexpage .benefits .one {
-    background-image: url("/static/torchbox/images/jobs-placeholder-04.jpg");
-}
-
-.page-jobindexpage .benefits .one .container div {
-    color: #fff;
-}
-
-.page-jobindexpage .benefits .two {
-    background-image: url("/static/torchbox/images/jobs-placeholder-07.jpg");
-}
-
-.page-jobindexpage .benefits .three {
-    background-image: url("/static/torchbox/images/jobs-placeholder-03.jpg");
-    color: #fff;
-}
-
-.page-jobindexpage .benefits .four {
-    background-image: url("/static/torchbox/images/jobs-placeholder-06.jpg");
-}
-
-
-.page-jobindexpage .benefits .five {
-    background-image: url("/static/torchbox/images/jobs-placeholder-05.jpg");
-}
-
-
 
 /*Standard page*/
 .page-standardpage h1 {

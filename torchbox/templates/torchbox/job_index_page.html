@@ -5,35 +5,32 @@
 {% load humanize %}
 <main>
     
-    <section class="intro container">
-        <div class="body-copy">
-            <h1>{{ self.title }}</h1>
-          </div>
-      
-        {% with self.jobs.all as jobs %}
-            {% if jobs %}
-                <ul class="listing jobs">
-                    {% for job in jobs %}
-                        <li>
-                            <a href="{% pageurl job %}">{{ job.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+    <section class="intro jobs">
 
-        {% if self.intro %}
-        <div class="body-copy">
-                {{ self.intro|richtext }}
+        <div class="container">
+            <h1>{{ self.title }}</h1>
+    
+          
+            {% with self.jobs.all as jobs %}
+                {% if jobs %}
+                    <ul class="listing">
+                        {% for job in jobs %}
+                            <li>
+                                <a href="{% pageurl job %}">{{ job.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            {% if self.intro %}
+                <p>{{ self.intro|richtext }}</p>
+            {% endif %}
         </div>
-        {% endif %}
 
     </section>
     
     <section class="benefits">
-        <div class="heading-block container">
-            <h2>Perks</h2>
-        </div>
         {% if self.content_block.all %}
         <ul>
             {% for block in self.content_block.all %}
