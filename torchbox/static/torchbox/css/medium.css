@@ -9,7 +9,6 @@
 
 
 	main {
-		background-color: #fff;
 		width:100%;
 	}
 
@@ -133,43 +132,63 @@
 		margin-bottom: 1em;
 	}
 
+	/*Work index*/
+
+	.page-workindexpage h1 {
+	    font-size: 5em;
+	}
+
+
 	.page-workindexpage main .listing img {
 		margin-bottom: 0em;
 	}	
 
-	.page-workindexpage main .listing a {
-		background: no-repeat center center fixed; 
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
-	  min-height: 600px;
-	  position:static!important;
+	.page-workindexpage main ul li {
+		background: no-repeat center center; 
 	}
 
-		.page-workindexpage main .listing a:hover img {
-			opacity: 0.5;
-		}
+	.page-workindexpage main ul a {
+		background-color: rgba(0,0,0,0.6);
+		display: block;
+		position: relative;
+		min-height: 600px;
+		transition: background-color 0.2s ease;
+	}
+
+	.page-workindexpage {
+		background-color: #222;
+		color: #fff;
+	}
+
+	.page-workindexpage main ul a:hover {
+		background-color: rgba(0,0,0,0.4);
+		cursor: pointer;
+	}
 
 	.page-workindexpage main .listing div {
 		max-width: 60em;
 		margin: 0 auto;	
-		/*background: rgba(255, 255, 255, 1);*/
 		z-index: 9999;
 		position: absolute;
 		bottom: 2em;
 		padding: 4em;
+		opacity: 0.6;
+		max-width: 36em;
 	}
 
-	.page-workindexpage main .listing h2 {
+	.page-workindexpage main .listing a:hover div {
+		opacity:1;
+	}
+
+	.page-workindexpage main .listing a h2 {
 		font-size: 3.5em;
 		margin-bottom: 0.2em;
 		line-height: 1.2;
-		color: white;
+		transition: opacity 0.2s ease;
 	}
 
-	.page-workindexpage main .listing p {
-		color: white;
+	.page-workindexpage main .listing a:hover h2 {
+		color:#fff;
 	}
 
 	/*Blog index*/

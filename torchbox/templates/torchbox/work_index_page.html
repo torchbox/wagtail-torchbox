@@ -2,8 +2,7 @@
 {% load pageurl image_tags rich_text %}
 
 {% block content %}
-<main class="page-work-index index">
-    <section class="work">
+    
         <div class="container">
             <h1>{{ self.title }}</h1>
             {% if self.intro %}
@@ -11,16 +10,17 @@
             {% endif %}
         </div>
 
-     
+        <section class="work">
         {% with self.work.all as work %}
             {% if work %}
                 <ul class="listing clearfix">
                     {% for client in work %}
-                        <li>
                             {% with client.screenshots.all|first as screenshot %}
                             {% image screenshot.image width-2000 as screenshot %}
+                        <li style='background-image: url({{ screenshot.url}});'>
+                            
                                     
-                            <a href="{% pageurl client %}" style='background-image: url({{ screenshot.url}});'>
+                            <a href="{% pageurl client %}">
                                     
                                 <div>
                                     <h2>{{ client.title }}</h2>
@@ -38,5 +38,5 @@
             {% endif %}
 
         {% endwith %}
-</main>
+    </section>
 {% endblock %}

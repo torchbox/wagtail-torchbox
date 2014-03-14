@@ -116,7 +116,6 @@ body * {
 }
 
 main {
-    background-color: #fff;
     padding: 0 0 1em 0;
     position: relative;
 }
@@ -154,6 +153,7 @@ button, .button {
     line-height: 1em;
     border-radius: 0.2em;
 }
+
 button:hover, .button:hover {
     background-color: #ffa523;
     color:#fff;
@@ -756,6 +756,13 @@ a:hover img.frame {
 .body-copy .button {
     margin-bottom: 4em;
 }
+
+/*Work index*/
+.page-workindexpage h1 {
+    font-weight: bold;
+    font-size: 3em;
+}
+
 
 /*Work page*/
 
