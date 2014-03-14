@@ -142,53 +142,16 @@
 	    font-size: 5em;
 	}
 
+	.page-workindexpage main .listing a h2 {
+	    font-size: 3.5em;
+	}
 
-	.page-workindexpage main .listing img {
-		margin-bottom: 0em;
-	}	
-
-	.page-workindexpage main ul li {
-		background: no-repeat center center; 
+	.page-workindexpage main .listing div {
+	    padding: 4em;
 	}
 
 	.page-workindexpage main ul a {
-		background-color: rgba(0,0,0,0.6);
-		display: block;
-		position: relative;
-		min-height: 600px;
-		transition: background-color 0.2s ease;
-	}
-
-	.page-workindexpage main ul a:hover {
-		background-color: rgba(0,0,0,0.4);
-		cursor: pointer;
-	}
-
-
-	.page-workindexpage main .listing div {
-		max-width: 60em;
-		margin: 0 auto;	
-		z-index: 9999;
-		position: absolute;
-		bottom: 2em;
-		padding: 4em;
-		opacity: 0.6;
-		max-width: 36em;
-	}
-
-	.page-workindexpage main .listing a:hover div {
-		opacity:1;
-	}
-
-	.page-workindexpage main .listing a h2 {
-		font-size: 3.5em;
-		margin-bottom: 0.2em;
-		line-height: 1.2;
-		transition: opacity 0.2s ease;
-	}
-
-	.page-workindexpage main .listing a:hover h2 {
-		color:#fff;
+		min-height: 42em;
 	}
 
 	/*Blog index*/
@@ -242,7 +205,8 @@
 			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    .body-copy p {
+    .body-copy p,
+    .body-copy ul {
     	font-size: 1.25em;
     }
 
@@ -253,6 +217,7 @@
     .body-copy h2 {
     	font-size: 1.75em;
     }
+
 
     .grid li {
 	    float: left;

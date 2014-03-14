@@ -746,9 +746,66 @@ a:hover img.frame {
 }
 
 /*Work index*/
+.page-workindexpage {
+    color: #fff;
+}
+
+
 .page-workindexpage h1 {
     font-weight: bold;
     font-size: 3em;
+}
+
+.page-workindexpage main .listing img {
+    margin-bottom: 0em;
+}   
+
+.page-workindexpage main ul li {
+    background: no-repeat center center; 
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.page-workindexpage main ul a {
+    background-color: rgba(0,0,0,0.6);
+    display: block;
+    position: relative;
+    min-height: 24em;
+    transition: background-color 0.2s ease;
+}
+
+.page-workindexpage main ul a:hover {
+    background-color: rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
+
+.page-workindexpage main .listing div {
+    max-width: 60em;
+    margin: 0 auto; 
+    z-index: 9999;
+    position: absolute;
+    bottom: 2em;
+    padding: 1em;
+    opacity: 0.6;
+    max-width: 36em;
+}
+
+.page-workindexpage main .listing a:hover div {
+    opacity:1;
+}
+
+
+.page-workindexpage main .listing a h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.2em;
+    line-height: 1.2;
+    transition: opacity 0.2s ease;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 0.25em;
+    margin-bottom: 0.25em;
 }
 
 
