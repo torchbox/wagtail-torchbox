@@ -2,61 +2,71 @@
 {% load torchbox_tags pageurl image_tags rich_text%}
 
 {% block content %}
-
-    <section class="blog container">
-        <h1>{{ self.title }}</h1>
-        {# Optional heading appears if filtering by tag #}
-        {% if request.GET.tag|length %}
-            <p>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></p>
-        {% endif %}
-
+    <section class="blog">
+        <div class="container">
+            <h1>{{ self.title }}</h1>
+            {# Optional heading appears if filtering by tag #}
+            {% if request.GET.tag|length %}
+                <p>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></p>
+            {% endif %}
+        </div>
+        <ul class="listing clearfix">
         {% for blog in blogs %}
-        <ul class="listing">
+        
             <li>
-            <a href="{% pageurl blog %}"><h2>{{ blog.title }}</h2></a>
-                {% with blog.related_author.all as authors %}
-                    {% if authors %}
-                        {% for author in authors %}
-                        
-                            {% if author.author.image %}
-                                {% image author.author.image width-300 as photo %}
-                                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
+                
+                <a href="{% pageurl blog %}">
+                    <div class="container">
+                        <h2>{{ blog.title }}</h2>
+                        {% with blog.related_author.all as authors %}
+                            {% if authors %}
+                                {% for author in authors %}
+                                
+                                    {% if author.author.image %}
+                                        {% image author.author.image width-300 as photo %}
+                                        <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
+                                    {% endif %}
+                                    
+                                    {{blog.intro|richtext}}               
+                                    
+                                    <span>
+                                        {{ author.author.title }}
+                                    </span>
+                                {% endfor %}
                             {% endif %}
-                            
-                            {{blog.intro|richtext}}               
-                            
-                            <span>
-                                {{ author.author.title }}
-                            </span>
-                        {% endfor %}
+                        {% endwith %}
+
+                    
+
+                    {% if blog.date %}
+                        <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
                     {% endif %}
-                {% endwith %}
-
-            
-
-            {% if blog.date %}
-                <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
-            {% endif %}
-            
+                
+                    </div>
+                </a>
             </li>
-        </ul>
+
         {% endfor %}
-       
-    {# Pagination #}
-    {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-    <div class="row">
-        <div>
-            {% if blogs.has_previous %}
-                <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Previous</a>
-            {% endif %}
-        </div>
-        <div>
-            Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}
-        </div>
-        <div>
-            {% if blogs.has_next %}
-                <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Next</a>
-            {% endif %}
+        </ul>
+        
+    <div class="container">
+        {# Pagination #}
+    
+        {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+        <div class="row">
+            <div>
+                {% if blogs.has_previous %}
+                    <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Previous</a>
+                {% endif %}
+            </div>
+            <div>
+                Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}
+            </div>
+            <div>
+                {% if blogs.has_next %}
+                    <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Next</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 

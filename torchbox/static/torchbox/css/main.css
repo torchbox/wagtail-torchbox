@@ -361,7 +361,6 @@ main nav li.active a:after {
 .listing a:hover h3 {
     cursor: pointer;
     transition: color 0.2s ease;
-    color: #FF653F;
 }
 
 /*Page home*/
@@ -643,16 +642,44 @@ a:hover img.frame {
 
 /*Blog Index*/
 
+.page-blogindexpage main {
+    background-color: #FF643E;    
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
 .page-blogindexpage h2 {
-    margin-bottom: 0.125em;
+    margin-bottom: 0.5em;
+
 }
 
 .page-blogindexpage li img {
-    width: 6em;
+    width: 6em !important;
     border-radius: 50%;
     margin-left: 1em;
     height: auto;
     float: right;
+}
+
+.page-blogindexpage main a {
+    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding: 3em 1em;
+    transition: background-color 0.2s ease;
+}
+
+.page-blogindexpage main a:hover {
+    background-color: rgba(248,232,164,0.2);
+}
+
+.page-blogindexpage main a:first-child {
+    border-top: 1px solid #fff;
+    border-top: 1px solid rgba(255,255,255,0.4);
+}
+
+.page-blogindexpage main .listing .container {
+   max-width: 48em;
+   margin: 0 auto;
 }
 
 /*Blog page*/

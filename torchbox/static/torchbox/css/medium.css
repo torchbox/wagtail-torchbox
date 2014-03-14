@@ -134,6 +134,10 @@
 
 	/*Work index*/
 
+	.page-workindexpage {
+		color: #fff;
+	}
+
 	.page-workindexpage h1 {
 	    font-size: 5em;
 	}
@@ -153,11 +157,6 @@
 		position: relative;
 		min-height: 600px;
 		transition: background-color 0.2s ease;
-	}
-
-	.page-workindexpage {
-		background-color: #222;
-		color: #fff;
 	}
 
 	.page-workindexpage main ul a:hover {
@@ -194,7 +193,11 @@
 
 	/*Blog index*/
 	.page-blogindexpage main {
-		padding: 2em;
+		padding: 2em 0;
+	}
+
+	.page-blogindexpage main a {
+		padding: 6em 2em;
 	}
 
 	.page-blogindexpage h1 {
@@ -203,25 +206,14 @@
 		margin-bottom: 0.25em;
 	}
 
-	.page-blogindexpage main {
-		background: url("/static/torchbox/images/blog-bg-01.png") no-repeat;
-		background-size: 100% auto;
-	}
-
-	.page-blogindexpage main .container {
-		max-width: 48em;
-		margin: 0 auto;
-		background: rgba(255, 255, 255, 0.75);
-	}
-
-
 	.page-blogindexpage h2 {
-	    margin-bottom: 0.5em;
+	    font-size: 2em;
 	}
-	
-	.page-blogindexpage main li{
-		margin-bottom: 2em;
+
+	.page-blogindexpage p {
+		font-size: 1.125em;
 	}
+
 
 	/*Work page*/
     .page-workpage .intro h1 {
