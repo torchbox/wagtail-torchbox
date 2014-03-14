@@ -543,10 +543,12 @@ a:hover img.frame {
 .page-jobindexpage main .jobs a {
     color: #fff;
     padding: 0.5em 0;
+    transition: all 0.2s ease;
 }
 
 .page-jobindexpage main .jobs a:hover {
-    color: #F1D148;
+    padding: 0.5em;
+    background-color: rgba(0,0,0,0.2);
 }
 
 .page-jobindexpage main .jobs > div {
@@ -567,10 +569,6 @@ a:hover img.frame {
     font-size: 2em;
     border-bottom: 1px solid #fff;
     border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-
-.page-jobindexpage main .listing a:hover {
-    color: #FF653F;
 }
 
 .page-jobindexpage main .benefits .heading-block {
@@ -643,9 +641,10 @@ a:hover img.frame {
 /*Blog Index*/
 
 .page-blogindexpage main {
-    background-color: #FF643E;    
-    color: #fff;
+    background: url("/static/torchbox/images/blog-bg-01.png") top center no-repeat;
+    background-size: 100%;
     -webkit-font-smoothing: antialiased;
+
 }
 
 .page-blogindexpage h2 {
@@ -662,19 +661,17 @@ a:hover img.frame {
 }
 
 .page-blogindexpage main a {
-    border-bottom: 1px solid #fff;
-    border-bottom: 1px solid rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 3em 1em;
     transition: background-color 0.2s ease;
 }
 
 .page-blogindexpage main a:hover {
-    background-color: rgba(248,232,164,0.2);
+    background-color: rgba(92, 185, 231, 0.05);
 }
 
-.page-blogindexpage main a:first-child {
-    border-top: 1px solid #fff;
-    border-top: 1px solid rgba(255,255,255,0.4);
+.page-blogindexpage main li:first-child a {
+    border-top: 1px solid rgba(0,0,0,0.1);
 }
 
 .page-blogindexpage main .listing .container {
