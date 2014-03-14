@@ -545,10 +545,6 @@ a:hover img.frame {
     padding: 0.5em 0;
 }
 
-.page-jobindexpage main .jobs a:hover {
-    color: #F1D148;
-}
-
 .page-jobindexpage main .jobs > div {
     max-width: 48em;
 }
@@ -567,10 +563,18 @@ a:hover img.frame {
     font-size: 2em;
     border-bottom: 1px solid #fff;
     border-bottom: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.2s ease;
 }
 
 .page-jobindexpage main .listing a:hover {
-    color: #FF653F;
+    background-color: rgba(0,0,0,0.1);
+    padding-left: 0.5em;
+}
+
+.page-jobindexpage main .listing a:hover:after {
+    content: "›";
+    position: absolute;
+    right: 1em;
 }
 
 .page-jobindexpage main .benefits .heading-block {
