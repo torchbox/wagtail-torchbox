@@ -191,10 +191,8 @@ header nav a {
     display: block;
     padding: 0.5em 1em;
     background-color: #333;
-    background-color: rgba(0,0,0,0.8);
-
+    background-color: rgba(0,0,0,0.8); 
     color: #fff;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 header nav ul {

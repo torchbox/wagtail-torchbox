@@ -33,8 +33,6 @@
 	    position: absolute;
 	    top: 0;
 	    right: 0;
-	    border-right: 1px dotted #ccc;
-	    border-right: 1px dotted rgba(0,0,0,0.3);
 	}
 
 	header nav li {
@@ -44,13 +42,12 @@
 
 	header nav a {
 		color: #fff;
-		border-left: 1px dotted #ccc;
-		border-left: 1px dotted rgba(0,0,0,0.2);
-		border-bottom: 1px dotted #ccc;
-		border-bottom: 1px dotted rgba(0,0,0,0.2);
 		padding: 1.33em 1em;
 		border-right: 1px solid rgba(255,255,255,0.2);
+	}
 
+	header nav li:last-child a {
+		border: 0;
 	}
 
 	header nav li a:hover {
