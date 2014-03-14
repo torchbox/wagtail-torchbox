@@ -97,10 +97,9 @@ textarea {
    ========================================================================== */
 
 html {
-    background: url("/static/torchbox/images/bg.png") fixed;
-    background-color: #FF643E;
+    /*background: url("/static/torchbox/images/bg.png") fixed;*/
     font-family: 'Open Sans', sans-serif;
-    background-color: #F5F3EF;
+    background-color: #000;
 }
 
 body {
