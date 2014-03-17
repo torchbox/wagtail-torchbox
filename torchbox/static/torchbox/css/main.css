@@ -142,8 +142,6 @@ a {
 
 button, .button {
     padding: 0.75em 1em;
-    font-size: 0.85em;
-    text-transform: uppercase;
     text-decoration: none;
     border: none;
     color: #fff;
@@ -517,6 +515,7 @@ a:hover img.frame {
 }
 
 /*Jobs index*/
+
 .page-jobindexpage h1 {
     font-weight: bold;
     font-size: 4em;
@@ -602,6 +601,26 @@ a:hover img.frame {
 .page-standardpage h2 {
     font-size: 2em;    
     font-weight: bold;
+}
+
+.page-standardpage .intro {
+    margin-bottom: 4em;
+}
+
+.page-standardpage .intro p {
+    max-width: 36em;
+    font-size: 1.25em;
+}
+
+
+/*Services page*/
+.page-servicespage h1 {
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.page-servicespage main .grid li{
+    margin-bottom: 2em;
 }
 
 
@@ -947,7 +966,7 @@ main .breadcrumb a {
 }
 
 .page-standardpage main li {
-    min-height: 18em;
+    margin-bottom: 2em;
 }
 
 .grid.people-list li {

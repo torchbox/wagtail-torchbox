@@ -240,6 +240,10 @@
 		margin-right: 0;
 	}
 
+	.grid li:nth-child(3n+4) {
+		clear: both;
+	}
+
 	.grid.gutters li {	
 
 	}
