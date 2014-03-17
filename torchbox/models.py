@@ -223,6 +223,42 @@ StandardPage.promote_panels = [
     ImageChooserPanel('feed_image'),
 ]
 
+# Services page
+
+class ServicesPageContentBlock(Orderable, ContentBlock):
+    page = ParentalKey('torchbox.ServicesPage', related_name='content_block')
+
+class ServicesPageRelatedLink(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.ServicesPage', related_name='related_links')
+
+class ServicesPage(Page):
+    intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
+
+    feed_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    indexed_fields = ('intro', 'body', )
+    search_name = None
+
+ServicesPage.content_panels = [
+    FieldPanel('title', classname="full title"),
+    FieldPanel('intro', classname="full"),
+    FieldPanel('body', classname="full"),
+    InlinePanel(ServicesPage, 'content_block', label="Content block"),
+    InlinePanel(ServicesPage, 'related_links', label="Related links"),
+]
+
+ServicesPage.promote_panels = [
+    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+    ImageChooserPanel('feed_image'),
+]
+
 
 # Blog index page
 
