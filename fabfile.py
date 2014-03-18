@@ -41,7 +41,7 @@ def deploy_staging():
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py collectstatic --settings=tbx.settings.production --noinput")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py compress --force --settings=tbx.settings.production")
 
-    sudo("/usr/bin/supervisorctl restart tbxwagtail")
+    run("sudo /usr/bin/supervisorctl restart tbxwagtail")
 
 @roles('production')
 def deploy():
@@ -60,24 +60,25 @@ def deploy():
 
 @roles('production')
 def pull_live_data():
-    filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
-    local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
-    remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
-    local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
+    pass
+    # filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
+    # local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
+    # remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
+    # local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
 
-    run('pg_dump -U%s -h %s -xOf %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, remote_path))
-    run('gzip %s' % remote_path)
-    get("%s.gz" % remote_path, "%s.gz" % local_path)
-    run('rm %s.gz' % remote_path)
+    # run('pg_dump -U%s -h %s -xOf %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, remote_path))
+    # run('gzip %s' % remote_path)
+    # get("%s.gz" % remote_path, "%s.gz" % local_path)
+    # run('rm %s.gz' % remote_path)
     
-    local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
-    puts('Previous local database backed up to %s' % local_db_backup_path)
+    # local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
+    # puts('Previous local database backed up to %s' % local_db_backup_path)
     
-    local('dropdb -Upostgres %s' % DB_NAME)
-    local('createdb -Upostgres %s' % DB_NAME)
-    local('gunzip %s.gz' % local_path)
-    local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
-    local ('rm %s' % local_path)
+    # local('dropdb -Upostgres %s' % DB_NAME)
+    # local('createdb -Upostgres %s' % DB_NAME)
+    # local('gunzip %s.gz' % local_path)
+    # local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
+    # local ('rm %s' % local_path)
 
 @roles('staging')
 def push_staging_media():
@@ -96,11 +97,12 @@ def push_staging_media():
         sudo('mv %s .' % remote_media_dump)
         sudo('tar -xzvf %s' % remote_media_dump)
 
+
 @roles('staging')
 def push_staging_data():
-    db_filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
-    local_path = "%s%s" % (LOCAL_DUMP_PATH, db_filename)
-    remote_path = "%s%s" % (REMOTE_DUMP_PATH, db_filename)
+    filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
+    local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
+    remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
     staging_db_backup_path = "%s%s-%s.sql" % (REMOTE_DUMP_PATH, DB_NAME, uuid.uuid4())
 
     # dump and upload db
