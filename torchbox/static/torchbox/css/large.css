@@ -12,8 +12,12 @@
 		font-size: 5em;
 	}
 
-	.grid.people-list li {
+	.page-personindexpage .grid.people-list li {
 		width: 25%;
+	}
+
+	.page-personindexpage .grid li:nth-child(3n+4) {
+		clear: none;
 	}
 
 	.page-people-single .hero {
