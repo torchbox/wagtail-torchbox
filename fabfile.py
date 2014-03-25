@@ -111,6 +111,24 @@ def push_staging_media():
     # tar and upload media
     local('tar -cvf %s media' % local_media_dump)
     local('gzip %s' % local_media_dump)
+    put('%s.gz' % local_media_dump, '%s.gz' % remote_media_dump)
+
+    # unzip everything
+    with cd('/usr/local/django/tbxwagtail/'):
+        run('rm -rf media')
+        run('mv %s.gz .' % remote_media_dump)
+        run('tar -xzvf %s' % remote_media_dump)
+        run('rm %s.gz' % media_filename)
+
+@roles('staging')
+def pull_staging_media():
+    media_filename = "%s-%s-media.tar" % ('wagtail-torchbox', uuid.uuid4())
+    local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
+    remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
+
+    # tar and upload media
+    local('tar -cvf %s media' % local_media_dump)
+    local('gzip %s' % local_media_dump)
     put(local_media_dump, remote_media_dump)
 
     # unzip everything
