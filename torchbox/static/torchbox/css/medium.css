@@ -20,6 +20,10 @@
 		padding: 2em;
 	}
 
+	.bleed {
+		margin: 0;
+	}
+
 	.menu-button {
 		display: none;
 	}
@@ -33,6 +37,7 @@
 	    position: absolute;
 	    top: 0;
 	    right: 0;
+
 	}
 
 	header nav li {
@@ -40,8 +45,7 @@
 
 	}
 
-	header nav a {
-		color: #fff;
+	header nav li a {
 		padding: 1.33em 1em;
 		border-right: 1px solid rgba(255,255,255,0.2);
 	}
@@ -280,6 +284,10 @@
 		font-size: 5em;
 	}
 
+	.page-jobindexpage .intro p {
+		font-size: 1.25em;
+	}
+
 	.page-jobindexpage main .listing a {
 		padding: 0.5em 0;
 	}
@@ -427,10 +435,12 @@
 		display: block;
 		font-size: 3em;
 		margin: 0;
+		top:0;
+		position: relative;
 	}
 
 	footer .contact li a:hover i {
-		position: relative;
+		
 		top: -0.25em;
 		transition: top 0.2s ease;
 

@@ -111,7 +111,9 @@ body {
 }
 
 body * {
-    box-sizing: border-box;
+     -moz-box-sizing:    border-box;   /* Firefox 1, probably can drop this */
+   -webkit-box-sizing: border-box;   /* Safari 3-4, also probably droppable */
+    box-sizing:        border-box;   /* Everything else */
 }
 
 main {
@@ -137,7 +139,10 @@ p {
 a {
     text-decoration: none;
     color: inherit;
-    cursor: pointer;
+}
+
+a:hover {
+    cursor: auto;
 }
 
 button, .button {
@@ -185,12 +190,17 @@ header {
     position:relative;
 }
 
-header nav a {
+header nav li a {
     display: block;
     padding: 0.5em 1em;
     background-color: #333;
     background-color: rgba(0,0,0,0.8); 
     color: #fff;
+}
+
+header nav li a:hover {
+    background-color: #FF653F;
+    transition: all 0.2s ease;
 }
 
 header nav ul {
@@ -241,6 +251,10 @@ main nav li.active a:after {
     padding: 0 1em;
 }
 
+.bleed {
+    margin: 0 -1em;
+}
+
 .single .container {
     margin: 0 auto;
     padding: 1em;
@@ -282,14 +296,26 @@ main nav li.active a:after {
     color: #000;
 }
 
-.listing main li {
-    margin-bottom: 1em;
-}
 
 .listing {
-    padding: 0 1em;
     width: 100%;
-    margin: 0 -1em 1em -1em;
+}
+
+.listing main li {
+    margin-bottom: 1em;
+    position: relative;
+}
+
+.listing a {
+    display: block;
+    width:100%;
+    position: relative;
+}
+
+.listing a:hover h2,
+.listing a:hover h3 {
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
 .listing h2,
@@ -308,6 +334,7 @@ main nav li.active a:after {
     height:3em;
     display: block;
     padding: 0.5em;
+    display: inline-block;
 }
 
 .logo img {
@@ -332,30 +359,7 @@ main nav li.active a:after {
 .menu-button:hover {
     background-color: #FF653F;
     color: #fff;
-}
-
-.listing {
-    /*border-top: 1px solid #ccc;*/
-    /*border-top: 1px solid rgba(0,0,0,0.2);*/
-    box-sizing: content-box;
-}
-
-.listing li {
-    position: relative;
-}
-
-.listing a {
-    display: block;
-    width:100%;
-    padding: 0 0 1em 0;
-    box-sizing: content-box;
-    position: relative;
-}
-
-.listing a:hover h2,
-.listing a:hover h3 {
-    cursor: pointer;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 /*Page home*/
@@ -446,7 +450,6 @@ main nav li.active a:after {
         font-weight: bold;
         color: #fff;
         margin-bottom: 0.5em;
-
     }
 
 .page-homepage h2 a {
@@ -474,9 +477,6 @@ main nav li.active a:after {
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-
-
-
 .page-homepage .clients li {
     width: 31.33%;
     height: 6em;
@@ -487,31 +487,12 @@ main nav li.active a:after {
 }
 
 .page-homepage .clients li > * {
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        opacity: 0.5;
-        padding: 0.25em;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    opacity: 0.5;
+    padding: 0.25em;
 
-    }
-
-
-img.frame {
-    padding: 2%;
-    position: relative;   
-
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,0.2);
-    -webkit-border-radius: 0.5em; 
-    -moz-border-radius: 0.5em; 
-    border-radius: 0.5em; 
-    margin-bottom: 1em;
-}
-
-a:hover img.frame {
-    border: 1px dotted #FF653F;
-    border: 1px dotted rgba(0,0,0,0.2);
-    transition: all 0.2s ease;
 }
 
 /*Jobs index*/
@@ -553,6 +534,7 @@ a:hover img.frame {
 .page-jobindexpage .benefits li {
     border-bottom: 1px solid #ccc;
     padding: 1em;
+    min-height: 28em;
 }
 
 .page-jobindexpage main .listing a {
@@ -621,6 +603,10 @@ a:hover img.frame {
 
 .page-servicespage main .grid li{
     margin-bottom: 2em;
+}
+
+.page-servicespage aside {
+    margin-bottom: 1em;
 }
 
 
@@ -809,14 +795,8 @@ a:hover img.frame {
     position: absolute;
     bottom: 2em;
     padding: 1em;
-    opacity: 0.6;
     max-width: 36em;
 }
-
-.page-workindexpage main .listing a:hover div {
-    opacity:1;
-}
-
 
 .page-workindexpage main .listing a h2 {
     font-size: 1.5em;
@@ -899,7 +879,7 @@ main .breadcrumb a {
     border-right: 0.5em solid transparent;
     border-bottom: 0.5em solid #ddd;
     position: absolute;
-    top: -10px;
+    top: -11px;
     left: 24px;
 
 }
@@ -1035,7 +1015,7 @@ footer .contact h2{
 
 footer .contact a {
     color: #fff;
-    padding: 1em 2em;
+    padding: 1em;
 }
 
 footer .contact ul {
