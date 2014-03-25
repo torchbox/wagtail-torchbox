@@ -81,6 +81,28 @@ def pull_live_data():
     # local ('rm %s' % local_path)
 
 @roles('staging')
+def pull_staging_data():
+    filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
+    local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
+    remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
+    local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
+
+    run('pg_dump -U%s -h %s -xOf %s' % (STAGING_DB_USERNAME, STAGING_DB_SERVER, remote_path))
+    run('gzip %s' % remote_path)
+    get("%s.gz" % remote_path, "%s.gz" % local_path)
+    run('rm %s.gz' % remote_path)
+    
+    local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
+    puts('Previous local database backed up to %s' % local_db_backup_path)
+    
+    local('dropdb -Upostgres %s' % DB_NAME)
+    local('createdb -Upostgres %s' % DB_NAME)
+    local('gunzip %s.gz' % local_path)
+    local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
+    local ('rm %s' % local_path)
+
+
+@roles('staging')
 def push_staging_media():
     media_filename = "%s-%s-media.tar" % ('wagtail-torchbox', uuid.uuid4())
     local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
