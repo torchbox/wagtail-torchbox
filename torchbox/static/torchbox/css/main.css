@@ -1018,16 +1018,16 @@ footer {
 }
 
 footer .container {
-    padding: 1em;
+    padding: 1em 1em 1em;
 }
 
 footer .contact {
-    margin-bottom: 2em;
+    margin-bottom: 0em;
 }
 
 footer .contact h2{
     font-size: 2em; 
-    margin-bottom: 0.5em;
+    margin: 0.5em 0;
 }
 
 footer .contact a {
@@ -1037,7 +1037,7 @@ footer .contact a {
 
 footer .contact ul {
     border-top: 1px dotted #666;
-    border-top: 1px dotted rgba(0,0,0,0.2);;
+    border-top: 1px dotted rgba(255,255,255,0.2);;
 }
 
 footer .contact li {
