@@ -235,6 +235,10 @@
 		border: none;
 	}
 
+	.grid li:nth-child(3n+3) {
+		margin-right: 0;
+	}
+
 	.grid li a {
 		border: none;
 	}

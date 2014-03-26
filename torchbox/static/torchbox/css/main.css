@@ -966,10 +966,16 @@ main .breadcrumb a {
     width: 100%;
 }
 
+.grid.people-list a {
+    background-color: black;
+    display: block;
+}
+
 
 .grid.people-list a img {
     margin: 0;
     transition: all 0.2s ease;
+    opacity: 0.8;
 }
 
 .grid.people-list a:hover img {
@@ -987,16 +993,15 @@ main .breadcrumb a {
     transition: all 0.2s ease;
 }
 
-.grid.people-list li a {
-    color: #222;
+.grid.people-list li a:hover {
     background-color: #FF653F;
     display: block;
 }
 
-.grid.people-list li:nth-child(3n+2) a {
+.grid.people-list li:nth-child(3n+2) a:hover {
     background-color: #627928;
 }
-.grid.people-list li:nth-child(3n+3) a {
+.grid.people-list li:nth-child(3n+3) a:hover {
     background-color: #5cb9e7;
 }
 
