@@ -2,7 +2,6 @@
 @media only screen and (min-width: 36em) {
 
 	html {
-		
 		margin:0;
 		padding:0;
 	}
@@ -240,14 +239,6 @@
 		border: none;
 	}
 
-	.grid li:nth-child(3n+3) {
-		margin-right: 0;
-	}
-
-	.grid li:nth-child(3n+4) {
-		clear: both;
-	}
-
 	.grid.gutters li {	
 
 	}
@@ -345,13 +336,16 @@
 	    font-size: 5em;
 	}
 
-
+	/*People index*/
 
 	.grid.people-list li {
-		width: 33.3%;
+		width: 50%;
 		margin: 0;
 		padding: 0;
+	}
 
+	.grid.people-list li div {
+    opacity: 0.5;
 	}
 
 	/*Person page*/
@@ -454,3 +448,19 @@
        (min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
+
+
+@media only screen and (min-width: 66em) {
+
+	/*People index*/
+
+	.grid.people-list li {
+		width: 33.33%;
+		margin: 0;
+		padding: 0;
+	}
+
+}	
+
+
+

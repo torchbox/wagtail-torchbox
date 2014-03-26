@@ -934,13 +934,13 @@ main .breadcrumb a {
 
 /*People index*/
 .page-personindexpage main h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: 0.25em;
     font-weight: bold;
 }
 
 .page-personindexpage main h2 {
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
 }
@@ -955,14 +955,17 @@ main .breadcrumb a {
 }
 
 .grid.people-list li div {
-        display: inline-block;
-        font-size: 0.8em;
-        position: absolute;
-        bottom: 0;
-        background-color: #FF653F;
-        padding: 0.5em 1em;
-        color: #fff;
-    }
+    display: block;
+    font-size: 1.1em;
+    position: absolute;
+    left: 0;
+    bottom: 2em;
+    opacity: 1;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+}
+
 
 .grid.people-list a img {
     margin: 0;
@@ -975,17 +978,26 @@ main .breadcrumb a {
     -moz-transform:scale(1.125); /* Firefox */
     -webkit-transform:scale(1.125); /* Safari and Chrome */
     -o-transform:scale(1.125); /* Opera */
+    opacity: 0.3;
 }
 
-.grid.people-list li:nth-child(3n+2) div {
-    background-color: #627928
-}
-.grid.people-list li:nth-child(3n+3) div{
-    background-color: #5cb9e7
+.grid.people-list a:hover div {
+    font-size: 1em;
+    opacity: 1;
+    transition: all 0.2s ease;
 }
 
 .grid.people-list li a {
     color: #222;
+    background-color: #FF653F;
+    display: block;
+}
+
+.grid.people-list li:nth-child(3n+2) a {
+    background-color: #627928;
+}
+.grid.people-list li:nth-child(3n+3) a {
+    background-color: #5cb9e7;
 }
 
 .people-list img {
