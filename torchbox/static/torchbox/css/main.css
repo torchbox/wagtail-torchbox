@@ -434,6 +434,12 @@ main nav li.active a:after {
     padding: 1em;
 }
 
+.page-homepage .work li img {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -webkit-transition: all 0.2s ease 0s;
+}
+
 .page-homepage .work li a div {
         padding: 1em 0;
         bottom: 0;
