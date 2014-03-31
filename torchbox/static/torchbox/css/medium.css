@@ -194,20 +194,6 @@
     	padding: 2em 3em 2em 3em;
     }
 
-    .page-workpage .body-copy *:not(img) {
-			max-width: 720px;
-			margin: auto;
-    }
-
-    .page-workpage .body-copy img {
-    	background: red;
-    	width: inherit;
-    	margin:0 auto;
-    	text-align: center;
-    	width:100%;
-
-    }
-
     .page-workpage .intro .body-copy {
     	margin-top: -15em;
     	margin-bottom: 1em;

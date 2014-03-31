@@ -812,6 +812,19 @@ main nav li.active a:after {
 
 /*Work page*/
 
+.page-workpage .body-copy *:not(img) {
+        max-width: 720px;
+        margin: auto;
+}
+
+.page-workpage .body-copy img {
+    width: inherit;
+    margin: 0 auto;
+    text-align: center;
+    width:100%;
+
+}
+
 .page-workpage .single {
     padding: 0em;
     margin-top: -4.5em;
