@@ -8,7 +8,7 @@ env.roledefs = {
     'production': ['tbxwagtail@by-web-2.torchbox.com'],
 }
 
-# TODO:
+# TODO: a nicer dict of settings
 # DATABASES = {
 #     'staging':{
 #         'name': 'tbxwagtail',
