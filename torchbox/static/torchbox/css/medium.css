@@ -196,7 +196,7 @@
 
     .page-workpage .body-copy *:not(img) {
 			max-width: 720px;
-			margin: 0 auto;
+			margin: inherit auto;
     }
 
     .page-workpage .body-copy img {
