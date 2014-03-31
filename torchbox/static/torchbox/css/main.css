@@ -994,7 +994,6 @@ main .breadcrumb a {
 }
 
 .grid.people-list a:hover div {
-    font-size: 1em;
     opacity: 1;
     transition: all 0.2s ease;
 }
