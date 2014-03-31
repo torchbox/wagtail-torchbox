@@ -434,6 +434,12 @@ main nav li.active a:after {
     padding: 1em;
 }
 
+.page-homepage .work li img {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -webkit-transition: all 0.2s ease 0s;
+}
+
 .page-homepage .work li a div {
         padding: 1em 0;
         bottom: 0;
@@ -934,13 +940,13 @@ main .breadcrumb a {
 
 /*People index*/
 .page-personindexpage main h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: 0.25em;
     font-weight: bold;
 }
 
 .page-personindexpage main h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
 }
@@ -955,18 +961,27 @@ main .breadcrumb a {
 }
 
 .grid.people-list li div {
-        display: inline-block;
-        font-size: 0.8em;
-        position: absolute;
-        bottom: 0;
-        background-color: #FF653F;
-        padding: 0.5em 1em;
-        color: #fff;
-    }
+    display: block;
+    font-size: 1.1em;
+    position: absolute;
+    left: 0;
+    bottom: 2em;
+    opacity: 1;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+}
+
+.grid.people-list a {
+    background-color: black;
+    display: block;
+}
+
 
 .grid.people-list a img {
     margin: 0;
     transition: all 0.2s ease;
+    opacity: 0.8;
 }
 
 .grid.people-list a:hover img {
@@ -975,17 +990,25 @@ main .breadcrumb a {
     -moz-transform:scale(1.125); /* Firefox */
     -webkit-transform:scale(1.125); /* Safari and Chrome */
     -o-transform:scale(1.125); /* Opera */
+    opacity: 0.3;
 }
 
-.grid.people-list li:nth-child(3n+2) div {
-    background-color: #627928
-}
-.grid.people-list li:nth-child(3n+3) div{
-    background-color: #5cb9e7
+.grid.people-list a:hover div {
+    font-size: 1em;
+    opacity: 1;
+    transition: all 0.2s ease;
 }
 
-.grid.people-list li a {
-    color: #222;
+.grid.people-list li a:hover {
+    background-color: #FF653F;
+    display: block;
+}
+
+.grid.people-list li:nth-child(3n+2) a:hover {
+    background-color: #627928;
+}
+.grid.people-list li:nth-child(3n+3) a:hover {
+    background-color: #5cb9e7;
 }
 
 .people-list img {
@@ -1001,16 +1024,16 @@ footer {
 }
 
 footer .container {
-    padding: 1em;
+    padding: 1em 1em 1em;
 }
 
 footer .contact {
-    margin-bottom: 2em;
+    margin-bottom: 0em;
 }
 
 footer .contact h2{
     font-size: 2em; 
-    margin-bottom: 0.5em;
+    margin: 0.5em 0;
 }
 
 footer .contact a {
@@ -1020,7 +1043,7 @@ footer .contact a {
 
 footer .contact ul {
     border-top: 1px dotted #666;
-    border-top: 1px dotted rgba(0,0,0,0.2);;
+    border-top: 1px dotted rgba(255,255,255,0.2);;
 }
 
 footer .contact li {
@@ -1074,7 +1097,10 @@ footer .tel {
     border: 0;
 }
 
-
+#wagtail-userbar {
+    bottom: 0;
+    top: inherit;
+}
 
 
 

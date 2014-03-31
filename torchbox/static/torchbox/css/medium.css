@@ -2,7 +2,6 @@
 @media only screen and (min-width: 36em) {
 
 	html {
-		
 		margin:0;
 		padding:0;
 	}
@@ -112,7 +111,7 @@
 		background-size: 100%;
 		padding: 12em 2em;
 		border: none;
-		margin: 4em 0;
+		margin: 0em 0;
 	}
 	
 	.page-homepage .hiring h2 {
@@ -236,16 +235,12 @@
 		border: none;
 	}
 
-	.grid li a {
-		border: none;
-	}
-
 	.grid li:nth-child(3n+3) {
 		margin-right: 0;
 	}
 
-	.grid li:nth-child(3n+4) {
-		clear: both;
+	.grid li a {
+		border: none;
 	}
 
 	.grid.gutters li {	
@@ -345,13 +340,16 @@
 	    font-size: 5em;
 	}
 
-
+	/*People index*/
 
 	.grid.people-list li {
-		width: 33.3%;
+		width: 50%;
 		margin: 0;
 		padding: 0;
+	}
 
+	.grid.people-list li div {
+    opacity: 0.5;
 	}
 
 	/*Person page*/
@@ -376,16 +374,18 @@
 	/*Footer*/
 
 	footer .container {
-		padding: 2em;
+		padding: 1em;
 	}
 
 	footer .offices ul {
-		width: 44em;
+		width: 80%;
 		margin: 0 auto;
+		border-top: 1px dotted rgba(255,255,255,0.2);
+		padding-top: 2em;
 	}
 
 	footer .offices li {
-		width: 22em;
+		width: 50%;
 		float: left;
 		padding: 0 1em 1em 3em;
 		background: url("/static/torchbox/images/icon-map-pin.svg") no-repeat left top;
@@ -398,7 +398,7 @@
 	}
 
 	footer .offices {
-		margin: 2em auto;
+		margin: 1em auto;
 	}
 
 	footer .offices h3 {
@@ -415,6 +415,7 @@
 
 	footer .contact h2{
 		font-size: 4em;	
+		margin: 0.25em 0 0.25em 0;
 	}
 
 	footer .contact ul {
@@ -424,7 +425,7 @@
 
 	footer .contact li {
 		display: inline-block;
-		margin: 0 1em;
+		margin: 0 2em;
 		border: none;
 		width: 12em;
 		border: none;
@@ -454,3 +455,19 @@
        (min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
+
+
+@media only screen and (min-width: 66em) {
+
+	/*People index*/
+
+	.grid.people-list li {
+		width: 33.33%;
+		margin: 0;
+		padding: 0;
+	}
+
+}	
+
+
+
