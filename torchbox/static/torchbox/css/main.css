@@ -261,11 +261,6 @@ main nav li.active a:after {
     position: relative;
 }
 
-.body-copy {
-    max-width: 48em;
-    margin: 0 auto;
-}
-
 .body-copy a:hover {
     color: #ffa624;
     transition: color 0.1s ease;
@@ -817,6 +812,19 @@ main nav li.active a:after {
 
 /*Work page*/
 
+.page-workpage .body-copy *:not(img) {
+        max-width: 720px;
+        margin: auto;
+}
+
+.page-workpage .body-copy img {
+    width: inherit;
+    margin: 0 auto;
+    text-align: center;
+    width:100%;
+
+}
+
 .page-workpage .single {
     padding: 0em;
     margin-top: -4.5em;
@@ -994,7 +1002,6 @@ main .breadcrumb a {
 }
 
 .grid.people-list a:hover div {
-    font-size: 1em;
     opacity: 1;
     transition: all 0.2s ease;
 }
