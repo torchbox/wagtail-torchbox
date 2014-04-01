@@ -15,8 +15,6 @@
         {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
         
         {% compress css %}
-            <link rel="stylesheet" href="{% static "torchbox/css/vendor/jquery.bxslider.css" %}" />
-
             <link rel="stylesheet" href="{% static "torchbox/css/normalize.css" %}">
             <link rel="stylesheet" href="{% static "torchbox/css/main.css" %}">
             <link rel="stylesheet" href="{% static "torchbox/css/medium.css" %}">
@@ -105,11 +103,10 @@
             </div>
         </footer>
 
-        <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>w
 
         {% compress js %}
-            <script src="{% static "torchbox/js/vendor/jquery.bxslider.min.js" %}"></script>
-            <script src="{% static "torchbox/js/vendor/fluidvids.js" %}"></script>
+            <script src="{% static "torchbox/js/vendor/jquery.fitvids.js" %}"></script>
             {# Custom javascript #}
             {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
             <script src="{% static "torchbox/js/main.js" %}"></script>

@@ -774,7 +774,7 @@ main nav li.active a:after {
   -o-background-size: cover;
   background-size: cover;
 }
-
+       
 .page-workindexpage main ul a {
     background-color: rgba(0,0,0,0.6);
     display: block;
@@ -812,7 +812,7 @@ main nav li.active a:after {
 
 /*Work page*/
 
-.page-workpage .body-copy *:not(img) {
+.page-workpage .body-copy {
         max-width: 720px;
         margin: auto;
 }
@@ -1108,7 +1108,9 @@ footer .tel {
     bottom: 0;
     top: inherit;
 }
-
+.responsive-object {
+     padding-bottom: 0!important;
+}
 
 
 /* ==========================================================================
