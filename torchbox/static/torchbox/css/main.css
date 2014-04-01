@@ -812,17 +812,18 @@ main nav li.active a:after {
 
 /*Work page*/
 
-.page-workpage .body-copy {
+.page-workpage .body-copy > *{
         max-width: 720px;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
 }
 
-.page-workpage .body-copy img {
-    width: inherit;
+.page-workpage .body-copy img,
+.page-workpage .body-copy .responsive-object {
     margin: 0 auto;
     text-align: center;
     width:100%;
-
+    max-width: initial;
 }
 
 .page-workpage .single {
