@@ -21,6 +21,7 @@ env.roledefs = {
 #     }
 # }
 
+PROJECT = "wagtail-torchbox"
 STAGING_DB_USERNAME = "tbxwagtail"
 STAGING_DB_SERVER = "localhost"
 LIVE_DB_USERNAME = "tbxwagtail"
@@ -58,27 +59,26 @@ def deploy():
     sudo("/usr/bin/supervisorctl restart tbxwagtail")
     #sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py update_index --settings=tbx.settings.production")
 
-@roles('production')
-def pull_live_data():
-    pass
-    # filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
-    # local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
-    # remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
-    # local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
+# @roles('production')
+# def pull_live_data():
+#     filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
+#     local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
+#     remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
+#     local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
 
-    # run('pg_dump -U%s -h %s -xOf %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, remote_path))
-    # run('gzip %s' % remote_path)
-    # get("%s.gz" % remote_path, "%s.gz" % local_path)
-    # run('rm %s.gz' % remote_path)
+#     run('pg_dump -U%s -h %s -xOf %s' % (LIVE_DB_USERNAME, LIVE_DB_SERVER, remote_path))
+#     run('gzip %s' % remote_path)
+#     get("%s.gz" % remote_path, "%s.gz" % local_path)
+#     run('rm %s.gz' % remote_path)
     
-    # local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
-    # puts('Previous local database backed up to %s' % local_db_backup_path)
+#     local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
+#     puts('Previous local database backed up to %s' % local_db_backup_path)
     
-    # local('dropdb -Upostgres %s' % DB_NAME)
-    # local('createdb -Upostgres %s' % DB_NAME)
-    # local('gunzip %s.gz' % local_path)
-    # local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
-    # local ('rm %s' % local_path)
+#     local('dropdb -Upostgres %s' % DB_NAME)
+#     local('createdb -Upostgres %s' % DB_NAME)
+#     local('gunzip %s.gz' % local_path)
+#     local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
+#     local ('rm %s' % local_path)
 
 @roles('staging')
 def pull_staging_data():
@@ -104,7 +104,7 @@ def pull_staging_data():
 
 @roles('staging')
 def push_staging_media():
-    media_filename = "%s-%s-media.tar" % ('wagtail-torchbox', uuid.uuid4())
+    media_filename = "%s-%s-media.tar" % (PROJECT, uuid.uuid4())
     local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
     remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
 
@@ -122,21 +122,21 @@ def push_staging_media():
 
 @roles('staging')
 def pull_staging_media():
-    pass
-    # media_filename = "%s-%s-media.tar" % ('wagtail-torchbox', uuid.uuid4())
-    # local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
-    # remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
+    media_filename = "%s-%s-media.tar" % (PROJECT, uuid.uuid4())
+    local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
+    remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
 
-    # # tar and upload media
-    # local('tar -cvf %s media' % local_media_dump)
-    # local('gzip %s' % local_media_dump)
-    # put(local_media_dump, remote_media_dump)
+    # tar and upload media
+    with cd('/usr/local/django/tbxwagtail/'):
+        run('tar -cvf %s media' % remote_media_dump)
+        run('gzip %s' % remote_media_dump)
+    
+    get('%s.gz' % remote_media_dump, '%s.gz' % local_media_dump)
 
-    # # unzip everything
-    # with cd('/usr/local/django/tbxwagtail/'):
-    #     sudo('rm -rf media')
-    #     sudo('mv %s .' % remote_media_dump)
-    #     sudo('tar -xzvf %s' % remote_media_dump)
+    local('rm -rf media')
+    local('mv %s.gz .' % local_media_dump)
+    local('tar -xzvf %s.gz' % media_filename)
+    local('rm %s.gz' % media_filename)
 
 
 @roles('staging')
