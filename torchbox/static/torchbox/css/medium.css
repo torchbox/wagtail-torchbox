@@ -194,7 +194,7 @@
     	padding: 2em 3em 2em 3em;
     }
 
-    .page-workpage .intro .body-copy {
+    .page-workpage .intro .body-copy[] {
     	margin-top: -15em;
     	margin-bottom: 1em;
 			background: rgba(255, 255, 255, 1);
@@ -233,6 +233,10 @@
 
 	.grid li:nth-child(3n+3) {
 		margin-right: 0;
+	}
+
+	.grid li:nth-child(3n+4) {
+		clear:both;
 	}
 
 	.grid li a {
