@@ -17,6 +17,10 @@
             <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
         {% endif %}
 
+        {% if self.role %}
+            {{ self.role|richtext }}
+        {% endif %}
+
         {% if self.intro %}
             {{ self.intro|richtext }}
         {% endif %}
