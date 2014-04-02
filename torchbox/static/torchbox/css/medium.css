@@ -363,17 +363,40 @@
 		margin-top: 2em;
 	}
 
-	.page-personpage main img {
-		position: absolute;
-		right: 0;
-		padding-left: 49em;
-		top: 0em;
-		margin-top: 4em;
+	.page-personpage main .container {
+		padding: 0;	
 	}
+
+	.page-personpage img {
+		max-width: 960px;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
+
+	.page-personpage h1 {
+		margin-bottom: 0;
+	}
+
+	.page-personpage .role {
+		font-size: 2em;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		padding-bottom: 0.5em;
+		margin-bottom: 0.5em;
+	}	
 
 	.page-personpage .body-copy {
 		margin: 0;
 	}
+
+	.page-personpage .person-bio {
+		background: white;
+		margin-top: -10em;
+		overflow: scroll;
+		padding: 2em 3em;
+	}
+
+
 
 	/*Footer*/
 
