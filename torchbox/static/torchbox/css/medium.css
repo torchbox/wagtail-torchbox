@@ -239,6 +239,10 @@
 		clear:both;
 	}
 
+	.grid.people-list li:nth-child(3n+4) {
+		clear:none;
+	}
+
 	.grid li a {
 		border: none;
 	}
