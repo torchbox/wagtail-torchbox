@@ -410,11 +410,18 @@ main nav li.active a:after {
 
 .page-homepage .hiring a {
     background-color: #FF653F;
-    padding: 0.5em 1em;
+    padding: 0.8em 1em;
     line-height: 1em;
     color: #fff;
     display: inline-block;
+    margin-bottom: 0.5em;
 }
+
+.page-homepage .hiring a:hover {
+    background-color: #ffa624;
+}
+
+
 
 .page-homepage .hiring ul {
     border-top: 1px dotted #ccc;
@@ -428,7 +435,7 @@ main nav li.active a:after {
 
 .page-homepage main h2 {
     font-size: 2em;
-    margin-bottom: 0.75em;
+    margin-bottom: 0.5em;
 }
 
 .page-homepage .work {
@@ -493,6 +500,10 @@ main nav li.active a:after {
     margin-top: 0.5em;
 }
 
+.page-homepage .clients {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
 
 .page-homepage .clients li {
     width: 31.33%;
