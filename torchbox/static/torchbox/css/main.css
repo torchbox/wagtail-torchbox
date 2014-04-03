@@ -329,7 +329,7 @@ main nav li.active a:after {
     height:3em;
     display: block;
     background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
-    background-size: auto 3em;
+    background-size: auto 2em;
     width:14em;
     transition: all 0.2s ease;
     opacity: 0.80;
@@ -652,7 +652,7 @@ main nav li.active a:after {
 
 .index,
 .single {
-    padding: 4em 0;
+    padding: 1em 0;
 }
 
 /*Blog Index*/
@@ -700,7 +700,7 @@ main nav li.active a:after {
 /*Blog page*/
 
 .page-blogpage .listing {
-    text-align: center;
+
 }
 
 .page-blogpage .intro {
@@ -921,7 +921,6 @@ main .breadcrumb a {
     border-bottom: 1px dotted #ccc;
     border-bottom: 1px dotted rgba(0,0,0,0.2);
     padding: 1em 0.5em;
-    margin: 2em 0;
 }
 
 .author .name {
@@ -960,6 +959,7 @@ main .breadcrumb a {
 }
 
 /*People index*/
+
 .page-personindexpage main h1 {
     font-size: 2.5em;
     margin-bottom: 0.25em;
@@ -972,6 +972,10 @@ main .breadcrumb a {
     -webkit-font-smoothing: antialiased;
 }
 
+    .page-personpage main .breadcrumb {
+        margin-top: 2em;
+    }
+
     .page-personpage .role {
         font-size: 1.3em;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -980,7 +984,7 @@ main .breadcrumb a {
     }   
 
     .page-personpage img {
-        margin-bottom: 1em;
+        margin-bottom: 2em;
     }
 
 .page-standardpage main li {
