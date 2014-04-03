@@ -450,6 +450,11 @@ main nav li.active a:after {
         box-sizing: border-box;
     }
 
+.page-homepage .work li a:hover img {
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -webkit-transition: all 0.2s ease 0s;
+}
 
 .page-homepage .hero h2 {
         font-size: 2.5em;
