@@ -99,9 +99,7 @@
 	.page-homepage .blog {
 		border-top: 1px dotted #ccc;
 		border-top: 1px dotted rgba(0,0,0,0.2);
-		border-bottom: 1px dotted #ccc;
-		border-bottom: 1px dotted rgba(0,0,0,0.2);
-		padding:2em;
+		padding:2em 2em 0 2em;
 	}
 
 	.page-homepage .blog h3 {

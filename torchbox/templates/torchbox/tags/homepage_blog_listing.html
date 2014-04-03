@@ -9,6 +9,27 @@
 			{% if blog.intro %}
 				{{ blog.intro|richtext }}
 			{% endif %}
+
+
+      <div id="author" class="author clearfix" >
+          {% with blog.related_author.all as authors %}
+          {% if authors %}
+          {% for author in authors %}
+          {% if author.author.image %}
+              {% image author.author.image width-300 as photo %}
+              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+          {% endif %}
+          <a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>
+              
+              {% if author.author.role %}
+                  <span class="role">{{ author.author.role }}</span>
+              {% endif %}
+          
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+      </div>
+      
 		</li>
     {% endfor %}
     </ul>

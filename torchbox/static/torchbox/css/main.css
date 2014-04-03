@@ -436,12 +436,6 @@ main nav li.active a:after {
     padding: 1em;
 }
 
-.page-homepage .work li img {
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -webkit-transition: all 0.2s ease 0s;
-}
-
 .page-homepage .work li a div {
         padding: 1em 0;
         bottom: 0;
@@ -450,11 +444,9 @@ main nav li.active a:after {
         box-sizing: border-box;
     }
 
-.page-homepage .work li a:hover img {
-    -webkit-filter: grayscale(0%);
-    -moz-filter: grayscale(0%);
-    -webkit-transition: all 0.2s ease 0s;
-}
+ .page-homepage .work li a:hover h3 {
+     color: #FF653F;
+ }   
 
 .page-homepage .hero h2 {
         font-size: 2.5em;
@@ -489,6 +481,12 @@ main nav li.active a:after {
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+.page-homepage .blog li {
+    margin-top: 1em;
+}
+
 
 .page-homepage .clients li {
     width: 31.33%;
@@ -917,15 +915,22 @@ main .breadcrumb a {
 }
 
 
-
-
-
 .author {
     border-top: 1px dotted #ccc;
     border-top: 1px dotted rgba(0,0,0,0.2);
     border-bottom: 1px dotted #ccc;
     border-bottom: 1px dotted rgba(0,0,0,0.2);
-    padding: 1em 0.5em;
+    padding: 1em 0em;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+
+.author a {
+    color: #FF653F;
+}
+
+.author a:hover {
+    color: #ffa624;
 }
 
 .author .name {
@@ -941,6 +946,24 @@ main .breadcrumb a {
     border-radius: 3em;
     margin-bottom: 0;
 }
+
+.page-homepage .author .avatar {
+    width: 4em;
+    float: left;
+    margin-right: 1em;
+    border-radius: 3em;
+    margin-bottom: 0; 
+}  
+
+.page-homepage .author .name {
+    font-size: 1em;
+    margin-top: 0;
+    display: block;
+}  
+
+.page-homepage .author span {
+    font-size: 0.8em;
+}  
 
 .author .role {
     display: block;
