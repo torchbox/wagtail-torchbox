@@ -399,8 +399,7 @@ main nav li.active a:after {
     background-size: cover;
 
     text-align: center;
-    padding: 4em 2em;
-    margin-bottom: 1em;
+    padding: 4em 2em; 
 }
 
 .page-homepage .hiring > div {
@@ -483,8 +482,15 @@ main nav li.active a:after {
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
+.page-homepage .blog {
+    border-top: 1px dotted #ccc;
+    border-top: 1px dotted rgba(0,0,0,0.2);
+    background: #f5f4e9;
+    padding-top: 2em;
+}
+
 .page-homepage .blog li {
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 
@@ -918,8 +924,6 @@ main .breadcrumb a {
 .author {
     border-top: 1px dotted #ccc;
     border-top: 1px dotted rgba(0,0,0,0.2);
-    border-bottom: 1px dotted #ccc;
-    border-bottom: 1px dotted rgba(0,0,0,0.2);
     padding: 1em 0em;
     margin-top: 1.5em;
     margin-bottom: 2em;
