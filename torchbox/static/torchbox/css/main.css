@@ -371,6 +371,8 @@ main nav li.active a:after {
     position: relative;
     top:-3em;
     margin-bottom: -3em;
+    /*background: url("/static/torchbox/images/houses.jpg") no-repeat center top;*/
+    /*-webkit-background-size: cover;*/
 }
 
 .page-homepage .hero .gif {
@@ -459,8 +461,8 @@ main nav li.active a:after {
         max-width: 9em;
         line-height: 1.1;
         font-weight: bold;
-        color: #fff;
         margin-bottom: 0.5em;
+        color: #fff;
     }
 
 .page-homepage h2 a {
