@@ -142,7 +142,7 @@ a {
 }
 
 a:hover {
-    cursor: auto;
+    cursor: pointer;
 }
 
 button, .button {

@@ -190,15 +190,15 @@
     	margin-top: -4.5em;
     }
 
-    .page-workpage .single .container {
-    	padding: 2em 3em 2em 3em;
+    .page-workpage .single .img-wrapper img {
+    	margin-bottom: -15em;
     }
 
-    .page-workpage .intro .body-copy[] {
-    	margin-top: -15em;
+    .page-workpage .intro .body-copy {
     	margin-bottom: 1em;
 			background: rgba(255, 255, 255, 1);
 			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			max-width: 800px;
     }
 
     .body-copy p,
@@ -213,6 +213,10 @@
     .body-copy h2 {
     	font-size: 1.75em;
     }
+
+    .share {
+	    margin-left: 0.5em
+		}
 
 
     .grid li {
