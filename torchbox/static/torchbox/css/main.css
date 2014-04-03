@@ -717,6 +717,11 @@ main nav li.active a:after {
    margin: 0 auto;
 }
 
+.page-blogindexpage .pagination {
+    text-align: center;
+    padding-top: 1em;
+}
+
 /*Blog page*/
 
 .page-blogpage .listing {
@@ -812,10 +817,9 @@ main nav li.active a:after {
 }
 
 .page-workindexpage main ul a:hover {
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0);
     cursor: pointer;
 }
-
 
 .page-workindexpage main .listing div {
     max-width: 60em;
@@ -825,14 +829,20 @@ main nav li.active a:after {
     bottom: 2em;
     padding: 1em;
     max-width: 36em;
+    transition: background-color 0.3s ease;
 }
+
+.page-workindexpage main .listing a:hover div {
+    background: rgba(0,0,0,0.5);
+}
+
 
 .page-workindexpage main .listing a h2 {
     font-size: 1.5em;
     margin-bottom: 0.2em;
     line-height: 1.2;
     transition: opacity 0.2s ease;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
     padding-bottom: 0.25em;
     margin-bottom: 0.25em;
 }
