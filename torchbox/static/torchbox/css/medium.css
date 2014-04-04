@@ -304,11 +304,12 @@
 	}
 
 	.page-jobindexpage .intro p {
-		font-size: 1.25em;
+		font-size: 1em;
 	}
 
 	.page-jobindexpage main .listing a {
 		padding: 0.5em 0;
+		font-size: 2em;
 	}
 
 	.page-jobindexpage .benefits li {
