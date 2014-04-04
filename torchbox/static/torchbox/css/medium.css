@@ -65,7 +65,7 @@
 		background-size: auto 3em;
 	}
 
-	/*Standard page*/
+	/*Homepage*/
 	.page-standardpage h1 {
 	    font-size: 5em;
 	    letter-spacing: -0.06em;
@@ -215,6 +215,10 @@
     .body-copy h1 {
     	font-size: 6em;
     }
+
+    .body-copy h1.long-title {
+		font-size: 4em;
+	}
 
     .body-copy h2 {
     	font-size: 1.75em;
