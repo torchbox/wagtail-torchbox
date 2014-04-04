@@ -880,6 +880,20 @@ main nav li.active a:after {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.page-workpage .intro p a {
+    display: inline-block;
+    background: #333;
+    padding: 0.25em 1em;
+    color: white;
+    border-radius: 3px;
+    margin: 1em 0 0 0;
+    transition: all 0.2s ease;
+}    
+
+.page-workpage .intro p a:hover {
+    background: #ffa624;
+}  
+
 main .breadcrumb a {
     background-color: #FF653F;
     display:inline-block;
