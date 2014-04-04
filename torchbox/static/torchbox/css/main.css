@@ -529,7 +529,7 @@ main nav li.active a:after {
 
 .page-jobindexpage h1 {
     font-weight: bold;
-    font-size: 4em;
+    font-size: 3em;
     margin-bottom: 0.25em;
 }
 
@@ -538,8 +538,6 @@ main nav li.active a:after {
     background-color: #5CB9E7;
     color: #222;
     -webkit-font-smoothing: antialiased;
-    margin-top: -8.5em;
- 
 }
 
 .page-jobindexpage main .jobs .container {
@@ -832,7 +830,7 @@ main nav li.active a:after {
     bottom: 2em;
     padding: 1em;
     max-width: 36em;
-    transition: background-color 0.3s ease;
+    transition: background-color 1s ease;
 }
 
 .page-workindexpage main .listing a:hover div {

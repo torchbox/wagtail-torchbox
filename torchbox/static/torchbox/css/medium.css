@@ -68,6 +68,7 @@
 	/*Standard page*/
 	.page-standardpage h1 {
 	    font-size: 5em;
+	    letter-spacing: -0.06em;
 	}
 
 	.page-homepage .hero {
@@ -283,6 +284,10 @@
 		margin-bottom: 2%;
 	}
 
+	.page-jobindexpage main .jobs {
+    margin-top: -8.5em; 
+	}
+
 	.page-jobindexpage .intro {
 	    padding: 4em 0;
 	    margin: 0 auto;
@@ -290,6 +295,7 @@
 
 	.page-jobindexpage h1 {
 		font-size: 5em;
+		letter-spacing: -0.06em;
 	}
 
 	.page-jobindexpage .intro p {
