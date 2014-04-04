@@ -47,6 +47,7 @@
 	header nav li a {
 		padding: 1.33em 1em;
 		border-right: 1px solid rgba(255,255,255,0.2);
+    border-bottom: none;
 	}
 
 	header nav li:last-child a {
