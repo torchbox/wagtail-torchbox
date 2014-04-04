@@ -830,11 +830,11 @@ main nav li.active a:after {
     bottom: 2em;
     padding: 1em;
     max-width: 36em;
-    transition: background-color 1s ease;
+    transition: background-color 0.3s ease;
 }
 
 .page-workindexpage main .listing a:hover div {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
 }
 
 
