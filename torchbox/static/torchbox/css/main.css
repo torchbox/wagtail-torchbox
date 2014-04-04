@@ -915,7 +915,9 @@ main .breadcrumb a {
 
 .article-meta {
     margin-bottom: 1em;
+    padding-bottom: 1em;
     font-size: 1.125em;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
 }
 
 .share {
