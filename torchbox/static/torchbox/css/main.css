@@ -803,7 +803,7 @@ main nav li.active a:after {
 }   
 
 .page-workindexpage main ul li {
-    background: no-repeat center center fixed; 
+    background: no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -882,16 +882,19 @@ main nav li.active a:after {
 
 .page-workpage .intro p a {
     display: inline-block;
-    background: #333;
+    background: #fff;
     padding: 0.25em 1em;
-    color: white;
+    color: #333;
     border-radius: 3px;
     margin: 1em 0 0 0;
     transition: all 0.2s ease;
+    border: 1px solid #333;
 }    
 
 .page-workpage .intro p a:hover {
-    background: #ffa624;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
 }  
 
 main .breadcrumb a {
