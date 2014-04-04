@@ -509,7 +509,7 @@ main nav li.active a:after {
 
 .page-homepage .clients li {
     width: 31.33%;
-    height: 6em;
+    height: 9em;
     float: left;
     padding: 2em 1%;
     overflow: hidden;
@@ -520,7 +520,7 @@ main nav li.active a:after {
     width: 100%;
     height: 100%;
     text-align: center;
-    opacity: 0.5;
+    opacity: 0.6;
     padding: 0.25em;
 
 }
