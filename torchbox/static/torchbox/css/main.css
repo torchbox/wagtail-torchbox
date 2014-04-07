@@ -619,15 +619,23 @@ main nav li.active a:after {
 .page-standardpage h2 {
     font-size: 2em;    
     font-weight: bold;
+    margin-bottom: 0.5em;
 }
 
 .page-standardpage .intro {
     margin-bottom: 4em;
+    margin-top: 2em;
 }
 
 .page-standardpage .intro p {
     max-width: 36em;
     font-size: 1.25em;
+}
+
+.page-standardpage .listing li img {
+    border-radius: 500px;
+    width: 95%;
+    margin-bottom: 1em;
 }
 
 
