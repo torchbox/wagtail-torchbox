@@ -126,7 +126,7 @@ def pull_staging_media():
     local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
     remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
 
-    # tar and upload media
+    # tar and download media
     with cd('/usr/local/django/tbxwagtail/'):
         run('tar -cvf %s media' % remote_media_dump)
         run('gzip %s' % remote_media_dump)
