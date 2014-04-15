@@ -142,7 +142,7 @@ a {
 }
 
 a:hover {
-    cursor: auto;
+    cursor: pointer;
 }
 
 button, .button {
@@ -196,6 +196,7 @@ header nav li a {
     background-color: #333;
     background-color: rgba(0,0,0,0.8); 
     color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 header nav li a:hover {
@@ -328,13 +329,15 @@ main nav li.active a:after {
 .logo {
     height:3em;
     display: block;
-    padding: 0.5em;
-    display: inline-block;
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background-size: auto 2em;
+    width:14em;
+    transition: all 0.2s ease;
+    opacity: 0.80;
 }
 
-.logo img {
-    height:100%;
-    width: auto;
+.logo:hover {
+    opacity: 1;
 }
 
 .menu-button {
@@ -358,12 +361,19 @@ main nav li.active a:after {
 }
 
 /*Page home*/
+.page-homepage .listing a h2:hover,
+.page-homepage .listing a h3:hover {
+    color: #FF653F;   
+}
+
 .page-homepage .hero {
     padding: 6em 2em;
     background-color: #F1D148;
     position: relative;
     top:-3em;
     margin-bottom: -3em;
+    /*background: url("/static/torchbox/images/houses.jpg") no-repeat center top;*/
+    /*-webkit-background-size: cover;*/
 }
 
 .page-homepage .hero .gif {
@@ -392,8 +402,7 @@ main nav li.active a:after {
     background-size: cover;
 
     text-align: center;
-    padding: 4em 2em;
-    margin-bottom: 1em;
+    padding: 4em 2em; 
 }
 
 .page-homepage .hiring > div {
@@ -404,11 +413,18 @@ main nav li.active a:after {
 
 .page-homepage .hiring a {
     background-color: #FF653F;
-    padding: 0.5em 1em;
+    padding: 0.8em 1em;
     line-height: 1em;
     color: #fff;
     display: inline-block;
+    margin-bottom: 0.5em;
 }
+
+.page-homepage .hiring a:hover {
+    background-color: #ffa624;
+}
+
+
 
 .page-homepage .hiring ul {
     border-top: 1px dotted #ccc;
@@ -422,17 +438,11 @@ main nav li.active a:after {
 
 .page-homepage main h2 {
     font-size: 2em;
-    margin-bottom: 0.75em;
+    margin-bottom: 0.5em;
 }
 
 .page-homepage .work {
     padding: 1em;
-}
-
-.page-homepage .work li img {
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -webkit-transition: all 0.2s ease 0s;
 }
 
 .page-homepage .work li a div {
@@ -443,14 +453,17 @@ main nav li.active a:after {
         box-sizing: border-box;
     }
 
+ .page-homepage .work li a:hover h3 {
+     color: #FF653F;
+ }   
 
 .page-homepage .hero h2 {
         font-size: 2.5em;
         max-width: 9em;
         line-height: 1.1;
         font-weight: bold;
-        color: #fff;
         margin-bottom: 0.5em;
+        color: #fff;
     }
 
 .page-homepage h2 a {
@@ -478,9 +491,26 @@ main nav li.active a:after {
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
+
+.page-homepage .blog {
+    border-top: 1px dotted #ccc;
+    border-top: 1px dotted rgba(0,0,0,0.2);
+    background: #f5f4e9;
+    padding-top: 2em;
+}
+
+.page-homepage .blog li {
+    margin-top: 0.5em;
+}
+
+.page-homepage .clients {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
 .page-homepage .clients li {
     width: 31.33%;
-    height: 6em;
+    height: 9em;
     float: left;
     padding: 2em 1%;
     overflow: hidden;
@@ -491,7 +521,7 @@ main nav li.active a:after {
     width: 100%;
     height: 100%;
     text-align: center;
-    opacity: 0.5;
+    opacity: 0.6;
     padding: 0.25em;
 
 }
@@ -500,7 +530,7 @@ main nav li.active a:after {
 
 .page-jobindexpage h1 {
     font-weight: bold;
-    font-size: 4em;
+    font-size: 3em;
     margin-bottom: 0.25em;
 }
 
@@ -509,7 +539,6 @@ main nav li.active a:after {
     background-color: #5CB9E7;
     color: #222;
     -webkit-font-smoothing: antialiased;
- 
 }
 
 .page-jobindexpage main .jobs .container {
@@ -538,11 +567,17 @@ main nav li.active a:after {
     min-height: 28em;
 }
 
+.page-jobindexpage .intro p {
+    font-size: 0.9em;
+    margin: 2em 0 0.5em 0;
+}
+
 .page-jobindexpage main .listing a {
-    font-size: 2em;
+    font-size: 1.2em;
     border-bottom: 1px solid #fff;
     border-bottom: 1px solid rgba(255,255,255,0.2);
     transition: all 0.2s ease;
+    line-height: 1.3;
 }
 
 .page-jobindexpage main .listing a:hover {
@@ -584,10 +619,12 @@ main nav li.active a:after {
 .page-standardpage h2 {
     font-size: 2em;    
     font-weight: bold;
+    margin-bottom: 0.5em;
 }
 
 .page-standardpage .intro {
     margin-bottom: 4em;
+    margin-top: 2em;
 }
 
 .page-standardpage .intro p {
@@ -595,11 +632,18 @@ main nav li.active a:after {
     font-size: 1.25em;
 }
 
+.page-standardpage .listing li img {
+    border-radius: 500px;
+    width: 95%;
+    margin-bottom: 1em;
+}
+
 
 /*Services page*/
 .page-servicespage h1 {
     font-size: 4em;
     font-weight: bold;
+    margin-bottom: 0.25em;
 }
 
 .page-servicespage main .grid li{
@@ -644,7 +688,7 @@ main nav li.active a:after {
 
 .index,
 .single {
-    padding: 4em 0;
+    padding: 1em 0;
 }
 
 /*Blog Index*/
@@ -689,10 +733,15 @@ main nav li.active a:after {
    margin: 0 auto;
 }
 
+.page-blogindexpage .pagination {
+    text-align: center;
+    padding-top: 1em;
+}
+
 /*Blog page*/
 
 .page-blogpage .listing {
-    text-align: center;
+
 }
 
 .page-blogpage .intro {
@@ -770,11 +819,11 @@ main nav li.active a:after {
 .page-workindexpage main ul li {
     background: no-repeat center center; 
     -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-
+       
 .page-workindexpage main ul a {
     background-color: rgba(0,0,0,0.6);
     display: block;
@@ -784,10 +833,9 @@ main nav li.active a:after {
 }
 
 .page-workindexpage main ul a:hover {
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0);
     cursor: pointer;
 }
-
 
 .page-workindexpage main .listing div {
     max-width: 60em;
@@ -797,14 +845,20 @@ main nav li.active a:after {
     bottom: 2em;
     padding: 1em;
     max-width: 36em;
+    transition: background-color 0.3s ease;
 }
+
+.page-workindexpage main .listing a:hover div {
+    background: rgba(0,0,0,0.7);
+}
+
 
 .page-workindexpage main .listing a h2 {
     font-size: 1.5em;
     margin-bottom: 0.2em;
     line-height: 1.2;
     transition: opacity 0.2s ease;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
     padding-bottom: 0.25em;
     margin-bottom: 0.25em;
 }
@@ -812,17 +866,22 @@ main nav li.active a:after {
 
 /*Work page*/
 
-.page-workpage .body-copy *:not(img) {
+.body-copy > *{
         max-width: 720px;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
 }
 
-.page-workpage .body-copy img {
-    width: inherit;
+.body-copy img,
+.body-copy .responsive-object {
     margin: 0 auto;
     text-align: center;
     width:100%;
+    max-width: initial;
+}
 
+.page-workpage .logo {
+    background-image: url("/static/torchbox/images/logo-torchbox-white.png");
 }
 
 .page-workpage .single {
@@ -834,6 +893,23 @@ main nav li.active a:after {
     margin-bottom: 1em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.page-workpage .intro p a {
+    display: inline-block;
+    background: #fff;
+    padding: 0.25em 1em;
+    color: #333;
+    border-radius: 3px;
+    margin: 1em 0 0 0;
+    transition: all 0.2s ease;
+    border: 1px solid #333;
+}    
+
+.page-workpage .intro p a:hover {
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+}  
 
 main .breadcrumb a {
     background-color: #FF653F;
@@ -847,7 +923,9 @@ main .breadcrumb a {
 
 .article-meta {
     margin-bottom: 1em;
+    padding-bottom: 1em;
     font-size: 1.125em;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
 }
 
 .share {
@@ -899,16 +977,20 @@ main .breadcrumb a {
 }
 
 
-
-
-
 .author {
     border-top: 1px dotted #ccc;
     border-top: 1px dotted rgba(0,0,0,0.2);
-    border-bottom: 1px dotted #ccc;
-    border-bottom: 1px dotted rgba(0,0,0,0.2);
-    padding: 1em 0.5em;
-    margin: 2em 0;
+    padding: 1em 0em;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+
+.author a {
+    color: #FF653F;
+}
+
+.author a:hover {
+    color: #ffa624;
 }
 
 .author .name {
@@ -924,6 +1006,24 @@ main .breadcrumb a {
     border-radius: 3em;
     margin-bottom: 0;
 }
+
+.page-homepage .author .avatar {
+    width: 4em;
+    float: left;
+    margin-right: 1em;
+    border-radius: 3em;
+    margin-bottom: 0; 
+}  
+
+.page-homepage .author .name {
+    font-size: 1em;
+    margin-top: 0;
+    display: block;
+}  
+
+.page-homepage .author span {
+    font-size: 0.8em;
+}  
 
 .author .role {
     display: block;
@@ -947,6 +1047,7 @@ main .breadcrumb a {
 }
 
 /*People index*/
+
 .page-personindexpage main h1 {
     font-size: 2.5em;
     margin-bottom: 0.25em;
@@ -958,6 +1059,21 @@ main .breadcrumb a {
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
 }
+
+    .page-personpage main .breadcrumb {
+        margin-top: 2em;
+    }
+
+    .page-personpage .role {
+        font-size: 1.3em;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 0.5em;
+        margin-bottom: 0.5em;
+    }   
+
+    .page-personpage img {
+        margin-bottom: 2em;
+    }
 
 .page-standardpage main li {
     margin-bottom: 2em;
@@ -1108,7 +1224,9 @@ footer .tel {
     bottom: 0;
     top: inherit;
 }
-
+.responsive-object {
+     padding-bottom: 0!important;
+}
 
 
 /* ==========================================================================

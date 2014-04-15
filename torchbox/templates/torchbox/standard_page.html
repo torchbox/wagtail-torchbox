@@ -2,11 +2,6 @@
 {% load image_tags rich_text %}
 
 {% block content %}
-    <section>
-        <div class="map">
-            <iframe src="https://mapsengine.google.com/map/embed?mid=zZ_tGG5Cpnko.kKn0eNls4Kc8" width="100%" height="480"></iframe>
-        </div>
-    </section>
     <section class="container intro">
         <h1>{{ self.title }}</h1>
 
@@ -14,7 +9,7 @@
             {% if self.intro %}
                 {{ self.intro|richtext }}
             {% endif %}
-            <p>Want to work with us?</p>
+            <h2>Want to work with us?</h2>
             <p><a href="#" class="button">hello@torchbox.com</a></p>
         </div>
 
@@ -33,6 +28,12 @@
             {% endfor %}
         </ul>
         {% endif %}
+    </section>
+
+    <section>
+        <div class="map">
+            <iframe src="https://mapsengine.google.com/map/embed?mid=zZ_tGG5Cpnko.kKn0eNls4Kc8" width="100%" height="480"></iframe>
+        </div>
     </section>
 
 {% endblock %}

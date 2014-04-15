@@ -11,18 +11,28 @@
 
         <h1>{{ self.title }}</h1>
 
+        <div class="role">
+            {% if self.role %}
+                {{ self.role|richtext }}
+            {% endif %}
+        </div>
+
+        <div class="intro">
+            {% if self.intro %}
+                {{ self.intro|richtext }}
+            {% endif %}
+        </div>
+
         {% if self.image %}
             {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
             {% image self.image width-960 as photo %}
             <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
         {% endif %}
 
-        {% if self.intro %}
-            {{ self.intro|richtext }}
-        {% endif %}
-
+        <div class="person-bio">
         {% if self.biography %}
             {{ self.biography|richtext }}
         {% endif %}
-    </div>
+        </div>
+
 {% endblock %}

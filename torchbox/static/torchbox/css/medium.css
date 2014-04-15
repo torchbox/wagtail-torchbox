@@ -47,6 +47,7 @@
 	header nav li a {
 		padding: 1.33em 1em;
 		border-right: 1px solid rgba(255,255,255,0.2);
+    border-bottom: none;
 	}
 
 	header nav li:last-child a {
@@ -62,11 +63,13 @@
 	.logo {
 		height: 4.5em;
 		padding:1em 0;
+		background-size: auto 3em;
 	}
 
-	/*Standard page*/
+	/*Homepage*/
 	.page-standardpage h1 {
 	    font-size: 5em;
+	    letter-spacing: -0.06em;
 	}
 
 	.page-homepage .hero {
@@ -96,11 +99,8 @@
 	}
 
 	.page-homepage .blog {
-		border-top: 1px dotted #ccc;
-		border-top: 1px dotted rgba(0,0,0,0.2);
-		border-bottom: 1px dotted #ccc;
-		border-bottom: 1px dotted rgba(0,0,0,0.2);
-		padding:2em;
+		padding:2em 2em 0 2em;
+		background: #f5f4e9;
 	}
 
 	.page-homepage .blog h3 {
@@ -151,12 +151,19 @@
 	}
 
 	.page-workindexpage main ul a {
-		min-height: 42em;
+		min-height: 800px;
+	}
+
+	/*Index pages*/
+
+	.index,
+	.single {
+	    padding: 0em 0;
 	}
 
 	/*Blog index*/
 	.page-blogindexpage main {
-		padding: 2em 0;
+		padding: 0 0 2em 0;
 	}
 
 	.page-blogindexpage main a {
@@ -190,15 +197,15 @@
     	margin-top: -4.5em;
     }
 
-    .page-workpage .single .container {
-    	padding: 2em 3em 2em 3em;
+    .page-workpage .single .img-wrapper img {
+    	margin-bottom: -15em;
     }
 
     .page-workpage .intro .body-copy {
-    	margin-top: -15em;
     	margin-bottom: 1em;
 			background: rgba(255, 255, 255, 1);
 			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			max-width: 800px;
     }
 
     .body-copy p,
@@ -210,9 +217,17 @@
     	font-size: 6em;
     }
 
+    .body-copy h1.long-title {
+		font-size: 4em;
+	}
+
     .body-copy h2 {
     	font-size: 1.75em;
     }
+
+    .share {
+	    margin-left: 0.5em
+		}
 
 
     .grid li {
@@ -233,6 +248,14 @@
 
 	.grid li:nth-child(3n+3) {
 		margin-right: 0;
+	}
+
+	.grid li:nth-child(3n+4) {
+		clear:both;
+	}
+
+	.grid.people-list li:nth-child(3n+4) {
+		clear:none;
 	}
 
 	.grid li a {
@@ -266,6 +289,10 @@
 		margin-bottom: 2%;
 	}
 
+	.page-jobindexpage main .jobs {
+    margin-top: -8.5em; 
+	}
+
 	.page-jobindexpage .intro {
 	    padding: 4em 0;
 	    margin: 0 auto;
@@ -273,14 +300,16 @@
 
 	.page-jobindexpage h1 {
 		font-size: 5em;
+		letter-spacing: -0.06em;
 	}
 
 	.page-jobindexpage .intro p {
-		font-size: 1.25em;
+		font-size: 1em;
 	}
 
 	.page-jobindexpage main .listing a {
 		padding: 0.5em 0;
+		font-size: 2em;
 	}
 
 	.page-jobindexpage .benefits li {
@@ -355,17 +384,39 @@
 		margin-top: 2em;
 	}
 
-	.page-personpage main img {
-		position: absolute;
-		right: 0;
-		padding-left: 49em;
-		top: 0em;
-		margin-top: 4em;
+	.page-personpage main .container {
+		padding: 0;	
 	}
+
+	.page-personpage img {
+		max-width: 960px;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
+
+	.page-personpage h1 {
+		margin-bottom: 0;
+	}
+
+	.page-personpage .role {
+		font-size: 2em;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		padding-bottom: 0.5em;
+		margin-bottom: 0.5em;
+	}	
 
 	.page-personpage .body-copy {
 		margin: 0;
 	}
+
+	.page-personpage .person-bio {
+		background: white;
+		margin-top: -10em;
+		overflow: scroll;
+		padding: 2em 3em;
+	}
+
 
 	/*Footer*/
 
