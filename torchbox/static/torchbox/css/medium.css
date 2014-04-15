@@ -418,6 +418,27 @@
 	}
 
 
+	/*Services page*/
+
+	.page-servicespage .services-intro {
+		background: #F1D148;
+		margin-top: -8.5em;
+		padding-top: 8.5em;
+		padding-bottom: 1em;
+	}
+
+	.page-servicespage h1 {
+	    font-size: 5em;
+	}
+
+	.page-servicespage .services li {
+		margin: 3em 0;
+	}
+
+	.page-servicespage .services h2 {
+		font-size: 2em;
+	}
+
 	/*Footer*/
 
 	footer .container {

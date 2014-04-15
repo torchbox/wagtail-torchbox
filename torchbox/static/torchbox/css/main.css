@@ -640,8 +640,13 @@ main nav li.active a:after {
 
 
 /*Services page*/
+.page-servicespage main .services-intro {
+    background: #F1D148;
+}
+
+
 .page-servicespage h1 {
-    font-size: 4em;
+    font-size: 3em;
     font-weight: bold;
     margin-bottom: 0.25em;
 }
@@ -651,7 +656,7 @@ main nav li.active a:after {
 }
 
 .page-servicespage aside {
-    margin-bottom: 1em;
+
 }
 
 
