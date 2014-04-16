@@ -274,7 +274,7 @@
 	.listing,
 	.listing a {
 		margin: 0;
-		padding: 3em 0 3em 0;
+		padding: 0;
 		border: none;
 		box-sizing: border-box;
 		left: auto;
@@ -433,6 +433,10 @@
 	    color: #FFFFFF;
 	    font-family: "Raleway";
 	    letter-spacing: 0;
+	}
+
+	.services {
+		margin-top: 3em;
 	}
 
 	.page-servicespage .services li {
