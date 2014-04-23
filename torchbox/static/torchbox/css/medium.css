@@ -444,7 +444,7 @@
 		padding: 0 1.5em 0 1.5em;
 		width: 25%;
 		float: left;
-		height: 300px;
+		height: 350px;
 		transition: all 0.15s ease;
 	}
 
@@ -455,7 +455,7 @@
 
 	.page-servicespage .services h2 {
 		font-size: 2em;
-		height: 3em;
+		min-height: 3em;
 		font-family: "Raleway";
 	}
 
