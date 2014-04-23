@@ -68,10 +68,6 @@
 	}
 
 	/*Homepage*/
-	.page-standardpage h1 {
-	    font-size: 5em;
-	    letter-spacing: -0.06em;
-	}
 
 	.page-homepage .hero {
 		padding: 18% 2em;
@@ -132,6 +128,31 @@
 		border: none;
 		margin-bottom: 1em;
 	}
+
+
+	/*Standard page (we're torchbox) */
+
+	.page-standardpage .were-tbx {
+	    margin-top: -8.5em;
+	    padding-top: 8.5em;
+	    padding-left: 4em;
+	    padding-right: 4em;
+	    padding-bottom: 3em;
+	}
+
+	.page-standardpage h1 {
+	    font-size: 5em;
+	    letter-spacing: -0.06em;
+	}
+
+	.page-standardpage .were-tbx-2 h3 {
+	    font-size: 2em;
+	}
+
+	.page-standardpage .were-tbx-2 li {
+	    padding: 4em 2em;  
+	}
+
 
 	/*Work index*/
 
@@ -291,12 +312,9 @@
 	}
 
 	.page-jobindexpage main .jobs {
-    margin-top: -8.5em; 
-	}
-
-	.page-jobindexpage .intro {
-	    padding: 4em 0;
-	    margin: 0 auto;
+    padding-bottom: 3em;
+    padding-left: 4em;
+    padding-right: 4em;
 	}
 
 	.page-jobindexpage h1 {
@@ -323,13 +341,16 @@
 		position: relative;
 	}
 
-
 	.page-jobindexpage .benefits h2 {
 		font-size: 3em;
 	}
 
+	.page-jobindexpage .benefits h3 {
+		font-size: 2em;
+	}
+
 	.page-jobindexpage .benefits li {
-		padding: 6em 2em;
+		padding: 3em 2em;
 	}
 
 	.page-jobindexpage .benefits li > div > div {
@@ -337,7 +358,6 @@
 	}
 
 	.page-jobindexpage .benefits .container {
-		max-width: 72em;
 		margin:0 auto;
 	}
 
@@ -424,15 +444,12 @@
 	.page-servicespage .services-intro {
 		background: #F1D148;
 		margin-top: -8.5em;
-		padding-top: 8.5em;
-		padding-bottom: 1em;
+		padding: 8.5em 4em 2em 4em;
 	}
 
 	.page-servicespage h1 {
 	    font-size: 5em;
 	    color: #FFFFFF;
-	    font-family: "Raleway";
-	    letter-spacing: 0;
 	}
 
 	.services {

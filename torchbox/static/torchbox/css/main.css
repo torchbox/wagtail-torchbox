@@ -535,20 +535,17 @@ main nav li.active a:after {
 .page-jobindexpage h1 {
     font-weight: bold;
     font-size: 3em;
+    margin-top: 0.25em;
     margin-bottom: 0.25em;
+    color: white;
 }
 
 .page-jobindexpage main .jobs {
-    margin-bottom: 2em;
+    margin-top: -8.5em; 
     background-color: #5CB9E7;
     color: #222;
     -webkit-font-smoothing: antialiased;
-}
-
-.page-jobindexpage main .jobs .container {
-       padding: 2em;
-       max-width: 72em;
-       margin: 0 auto;
+    padding: 8.5em 2em 2em 2em;
 }
 
 .page-jobindexpage main .jobs a {
@@ -567,8 +564,7 @@ main nav li.active a:after {
 
 .page-jobindexpage .benefits li {
     border-bottom: 1px solid #ccc;
-    padding: 1em;
-    min-height: 28em;
+    padding: 2em 1em 1.5em 1em;
 }
 
 .page-jobindexpage .intro p {
@@ -607,8 +603,8 @@ main nav li.active a:after {
     margin: 0;
 }
 
-.page-jobindexpage main .benefits h3 {
-    font-size: 2em;
+.page-jobindexpage .benefits h3 {
+    font-size: 1.7em;
     margin-bottom: 0.25em;
     font-weight: bold;   
 }
@@ -617,66 +613,51 @@ main nav li.active a:after {
 .page-standardpage h1 {
     font-size: 3em;
     font-weight: bold;
+    margin-top: 0.5em;
     margin-bottom: 0.2em;
+    line-height: 1;
 }
 
 .page-standardpage h2 {
-    font-size: 2em;    
+    font-size: 1.6em;    
     font-weight: bold;
     margin-bottom: 0.5em;
 }
 
 .page-standardpage .intro {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
     margin-top: 2em;
 }
 
 .page-standardpage .intro p {
     max-width: 36em;
-    font-size: 1.25em;
+    font-size: 1em;
 }
 
 .page-standardpage .listing li img {
-    border-radius: 50%;
-    width: 95%;
-    margin-bottom: 1em;
+
+}
+
+.page-standardpage .services-intro {
+    padding-bottom: 1em;
 }
 
 .page-standardpage .were-tbx {
-    margin-top: 0;
-    text-align: left;
+    background: #5CB9E7;
+    margin-top: -8.5em;
+    padding: 8.5em 2em 2em 2em;
     -webkit-font-smoothing: antialiased;
-}
-
-.were-tbx h1 {
-    font-family: "Raleway";
-    font-weight: 700;
-    padding-top: 1em;
-}
-
-.were-tbx h2 {
-    padding-top: 1em;
-}
-
-.were-tbx {
-    background-image: url("/static/img/flickrphoto.jpg");
-        background-size: cover;
-        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,255,255,0.8)), color-stop(100%, rgba(255,255,255,1))), url('/static/img/flickrphoto.jpg'); /* Chrome,Safari4+ */
-        background-image: -webkit-linear-gradient(top, transparent, rgba(0,0,0, 1)), url('/static/img/flickrphoto.jpg'); /* Chrome10+,Safari5.1+ */
-        background-image:    -moz-linear-gradient(top, transparent, rgba(255,255,255,0.8)), url('/static/img/flickrphoto.jpg'); /* FF3.6+ */
-        background-image:     -ms-linear-gradient(top, transparent, rgba(255,255,255,0.8)), url('/static/img/flickrphoto.jpg'); /* IE10+ */
-        background-image:      -o-linear-gradient(top, transparent, rgba(255,255,255,0.8)), url('/static/img/flickrphoto.jpg'); /* Opera 11.10+ */
-        background-image:         linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,1)), url('/static/img/flickrphoto.jpg'); /* W3C */
-        background-size: cover;
-    
+    color: white;
 }
 
 .page-standardpage .were-tbx-2 li {
-    width: 100%;   
+    display: block;
+    overflow: hidden;
+    width: 100%; 
+    padding: 0em 1em;  
 }
 
 .page-standardpage .listing li img {
-    width: 50%;
     display: block;
 }
 
@@ -686,15 +667,16 @@ main nav li.active a:after {
 
 
 /*Services page*/
-.page-servicespage main .services-intro {
+.page-servicespage .services-intro {
     background: #F1D148;
+    margin-top: -8.5em;
+    padding: 8.5em 2em 2em 2em;
+    color: white;
 }
-
 
 .page-servicespage h1 {
     font-size: 3em;
     font-weight: bold;
-    margin-bottom: 0.25em;
 }
 
 .page-servicespage main .grid li{

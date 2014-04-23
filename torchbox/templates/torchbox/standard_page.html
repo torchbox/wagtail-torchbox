@@ -2,15 +2,13 @@
 {% load image_tags rich_text %}
 
 {% block content %}
-    <section class="container intro were-tbx">
+    <section class="intro were-tbx">
         <h1>{{ self.title }}</h1>
 
         <div>
             {% if self.intro %}
                 {{ self.intro|richtext }}
             {% endif %}
-            <h2>Want to work with us?</h2>
-            <p><a href="#" class="button">hello@torchbox.com</a></p>
         </div>
 
         {% if self.body %}
