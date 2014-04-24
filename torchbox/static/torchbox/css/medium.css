@@ -48,7 +48,7 @@
 	header nav li a {
 		padding: 1.33em 1em;
 		border-right: 1px solid rgba(255,255,255,0.2);
-    border-bottom: none;
+    	border-bottom: none;
 	}
 
 	header nav li:last-child a {
@@ -137,7 +137,8 @@
 	    padding-top: 8.5em;
 	    padding-left: 4em;
 	    padding-right: 4em;
-	    padding-bottom: 3em;
+	    padding-bottom: 18em;
+	    background: url("/static/torchbox/images/buildings.jpg") no-repeat bottom #5CB9E7;
 	}
 
 	.page-standardpage h1 {
@@ -315,6 +316,7 @@
     padding-bottom: 3em;
     padding-left: 4em;
     padding-right: 4em;
+    background: url("/static/torchbox/images/ducks.jpg") no-repeat bottom #5CB9E7;
 	}
 
 	.page-jobindexpage h1 {
