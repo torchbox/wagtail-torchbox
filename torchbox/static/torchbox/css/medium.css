@@ -316,7 +316,7 @@
     padding-bottom: 3em;
     padding-left: 4em;
     padding-right: 4em;
-    background: url("/static/torchbox/images/ducks.jpg") no-repeat bottom #5CB9E7;
+    background: url("/static/torchbox/images/ducks.jpg") no-repeat #5CB9E7;
 	}
 
 	.page-jobindexpage h1 {
@@ -336,7 +336,17 @@
 	.page-jobindexpage .benefits li {
 	    position: relative;
 	    min-height: 18em;
-	    padding: 4em 2em;
+	}
+
+	.page-jobindexpage .benefits li.int-proj {
+	    position: relative;
+	    min-height: 18em;
+	    background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat #5CB9E7;
+	}
+	.page-jobindexpage .benefits li.healthy {
+	    position: relative;
+	    min-height: 18em;
+	    background: url("/static/torchbox/images/jobs-placeholder-04.jpg") no-repeat #5CB9E7;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -352,7 +362,7 @@
 	}
 
 	.page-jobindexpage .benefits li {
-		padding: 3em 2em;
+		padding: 0;
 	}
 
 	.page-jobindexpage .benefits li > div > div {
