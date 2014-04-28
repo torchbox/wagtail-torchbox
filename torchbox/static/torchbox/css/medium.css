@@ -137,8 +137,16 @@
 	    padding-top: 8.5em;
 	    padding-left: 4em;
 	    padding-right: 4em;
-	    padding-bottom: 18em;
-	    background: url("/static/torchbox/images/buildings.jpg") no-repeat bottom #5CB9E7;
+	    padding-bottom: 9em;
+	    background: url("/static/torchbox/images/bike.jpg") no-repeat bottom #5CB9E7;
+	}
+
+	.page-standardpage .were-tbx p {
+			font-size: 1.3em;
+	}		
+
+	.page-standardpage .statement {
+		font-size: 1.6em;
 	}
 
 	.page-standardpage h1 {
@@ -148,6 +156,7 @@
 
 	.page-standardpage .were-tbx-2 h3 {
 	    font-size: 2em;
+	    font-weight: normal;
 	}
 
 	.page-standardpage .were-tbx-2 li {
@@ -334,8 +343,15 @@
 	}
 
 	.page-jobindexpage .benefits li {
-	    position: relative;
-	    min-height: 18em;
+			position: relative;
+	   	margin: 0em 0em 0em 0em;
+	   	padding: 8em 4em 8em 4em;
+	   	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	   	display: block;
+	}
+
+	.page-jobindexpage .benefits li:first-child {
+	   	border-top: none;
 	}
 
 	.page-jobindexpage .benefits li.int-proj {
@@ -358,40 +374,48 @@
 	}
 
 	.page-jobindexpage .benefits h3 {
-		font-size: 2em;
-	}
-
-	.page-jobindexpage .benefits li {
-		padding: 0;
+		font-size: 2.5em;
 	}
 
 	.page-jobindexpage .benefits li > div > div {
 		max-width: 24em;
 	}
 
-	.page-jobindexpage .benefits .container {
-		margin:0 auto;
-	}
-
-	.page-jobindexpage .benefits .container div {
-
-	}
-
-	.page-jobindexpage .benefits li:nth-child(odd) .container div {
+	.page-jobindexpage .benefits li:nth-child(odd) div {
 		float: left;
 	}
 
-	.page-jobindexpage .benefits li:nth-child(even) .container div{	
+	.page-jobindexpage .benefits li:nth-child(even) div {	
 		float: right;
 	}
 
-	.page-jobindexpage .benefits .three .container div {
-		background: rgba(255, 255, 255, 0.75);
-		padding: 1em;
+	.page-jobindexpage .benefits .one {
+		background: url("/static/torchbox/images/equip-flip.jpg") no-repeat;
+		-webkit-background-size: cover;
+	}
+	.page-jobindexpage .benefits .two {
+		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat;
+		-webkit-background-size: cover;
+	}
+	.page-jobindexpage .benefits .three {
+		background: url("/static/torchbox/images/jobs-placeholder-03.jpg") no-repeat;
+		-webkit-background-size: cover;
+	}
+	.page-jobindexpage .benefits .four {
+		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat;
+		-webkit-background-size: cover;
+	}
+	.page-jobindexpage .benefits .five {
+		background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
+		-webkit-background-size: cover;
+	}
+	.page-jobindexpage .benefits .six {
+		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat;
+		-webkit-background-size: cover;
 	}
 
-	.page-about .benefits .three {
-	    color: #222;
+	.page-jobindexpage .benefits .three {
+	    color: white;
 	}
 
 	.page-personindexpage main h1 {

@@ -563,7 +563,6 @@ main nav li.active a:after {
 } 
 
 .page-jobindexpage .benefits li {
-    border-bottom: 1px solid #ccc;
     padding: 2em 1em 1.5em 1em;
 }
 
@@ -648,6 +647,12 @@ main nav li.active a:after {
     padding: 8.5em 2em 2em 2em;
     -webkit-font-smoothing: antialiased;
     color: white;
+}
+
+.page-standardpage .were-tbx-2 h3 {
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 1;
 }
 
 .page-standardpage .were-tbx-2 li {
