@@ -166,13 +166,18 @@
 	    letter-spacing: -0.06em;
 	}
 
+	.page-standardpage .were-tbx-2 h2 {
+	    font-size: 2.5em;
+	    font-weight: bold;
+	}
+
 	.page-standardpage .were-tbx-2 h3 {
 	    font-size: 1.7em;
 	    font-weight: normal;
 	}
 
 	.page-standardpage .were-tbx-2 li {
-	    padding: 8em 2em; 
+	    padding: 12em 4em; 
 	    margin: 0;
 	    border-top: 1px solid rgba(0, 0, 0, 0.1);
 	}
@@ -181,13 +186,31 @@
 	    border-top: none;
 	}
 
-	.page-standardpage .were-tbx-2 li.even {
-		text-align: right;
+	.page-standardpage .were-tbx-2 li:nth-child(2) {
+		background: url("/static/torchbox/images/geeks.jpg") no-repeat black;
+		-webkit-background-size: cover;
+		color: white;
 	}
 
-	.page-standardpage .were-tbx-2 li.2 {
-		background: url("/static/torchbox/images/geeks.jpg") no-repeat;
+	.page-standardpage .were-tbx-2 li:nth-child(2) div {
+		float: right;
+		max-width: 35%;
+	}
+
+	.page-standardpage .were-tbx-2 li:nth-child(3) {
+		background: url("/static/torchbox/images/equip-flip.jpg") no-repeat;
 		-webkit-background-size: cover;
+	}
+
+	.page-standardpage .were-tbx-2 li:nth-child(4) {
+		background: #222;
+		color: white;
+		padding: 3em 4em 1em 4em;
+		text-align: center;
+	}
+
+	.page-standardpage .were-tbx-2 li:nth-child(3) div {
+		max-width: 60%;
 	}
 
 
@@ -229,10 +252,29 @@
 		padding: 6em 2em;
 	}
 
+	.page-blogindexpage .blog-title {
+		background: url("/static/torchbox/images/balloons.jpg") no-repeat;
+		-webkit-background-size: cover;
+	}
+
 	.page-blogindexpage h1 {
-		font-size: 4em;
+		font-size: 5em;
 		font-weight: bold;
 		margin-bottom: 0.25em;
+		letter-spacing: -0.03em;
+		color: #333;
+		position: relative;
+	}
+
+	.page-blogindexpage h1:before {
+			position: absolute;
+			background: url("/static/torchbox/images/balloon.svg") no-repeat;
+			content: "";
+			background-size: 100% auto;
+			top: 50px;
+			right: 0;
+			width: 119px;
+			height: 150px;
 	}
 
 	.page-blogindexpage h2 {
@@ -373,7 +415,7 @@
 			position: relative;
 	   	margin: 0em 0em 0em 0em;
 	   	padding: 8em 4em 8em 4em;
-	   	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	   	border-top: 1px solid white;
 	   	display: block;
 	}
 
@@ -394,7 +436,7 @@
 	}
 
 	.page-jobindexpage .benefits li > div > div {
-		max-width: 24em;
+		max-width: 30em;
 	}
 
 	.page-jobindexpage .benefits li:nth-child(odd) div {
@@ -410,12 +452,13 @@
 		-webkit-background-size: cover;
 	}
 	.page-jobindexpage .benefits .two {
-		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat;
+		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat #f5f4e9;
 		-webkit-background-size: cover;
 	}
 	.page-jobindexpage .benefits .three {
 		background: url("/static/torchbox/images/jobs-placeholder-03.jpg") no-repeat;
 		-webkit-background-size: cover;
+		padding: 13em 4em 3em 4em;
 	}
 	.page-jobindexpage .benefits .four {
 		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat;
