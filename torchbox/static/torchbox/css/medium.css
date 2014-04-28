@@ -134,12 +134,24 @@
 
 	.page-standardpage .were-tbx {
 	    margin-top: -8.5em;
-	    padding-top: 8.5em;
+	    padding-top: 16em;
 	    padding-left: 4em;
 	    padding-right: 4em;
-	    padding-bottom: 9em;
-	    background: url("/static/torchbox/images/bike.jpg") no-repeat bottom #5CB9E7;
+	    padding-bottom: 8.5em;
+	    background: url("/static/torchbox/images/jobs-placeholder-04.jpg") no-repeat bottom white;
 	}
+
+	.page-standardpage .were-tbx:before {
+			position: absolute;
+			background: url("/static/torchbox/images/circle-yellow.svg") no-repeat;
+			top: 450px;
+			left: 10%;
+			width: 160px;
+			height: 160px;
+			content: "";
+			background-size: 100% auto;
+	}
+
 
 	.page-standardpage .were-tbx p {
 			font-size: 1.3em;
@@ -155,12 +167,27 @@
 	}
 
 	.page-standardpage .were-tbx-2 h3 {
-	    font-size: 2em;
+	    font-size: 1.7em;
 	    font-weight: normal;
 	}
 
 	.page-standardpage .were-tbx-2 li {
-	    padding: 4em 2em;  
+	    padding: 8em 2em; 
+	    margin: 0;
+	    border-top: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+	.page-standardpage .were-tbx-2 li:first-child {
+	    border-top: none;
+	}
+
+	.page-standardpage .were-tbx-2 li.even {
+		text-align: right;
+	}
+
+	.page-standardpage .were-tbx-2 li.2 {
+		background: url("/static/torchbox/images/geeks.jpg") no-repeat;
+		-webkit-background-size: cover;
 	}
 
 
@@ -352,17 +379,6 @@
 
 	.page-jobindexpage .benefits li:first-child {
 	   	border-top: none;
-	}
-
-	.page-jobindexpage .benefits li.int-proj {
-	    position: relative;
-	    min-height: 18em;
-	    background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat #5CB9E7;
-	}
-	.page-jobindexpage .benefits li.healthy {
-	    position: relative;
-	    min-height: 18em;
-	    background: url("/static/torchbox/images/jobs-placeholder-04.jpg") no-repeat #5CB9E7;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {

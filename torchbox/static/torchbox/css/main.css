@@ -609,17 +609,22 @@ main nav li.active a:after {
 }
 
 /*Standard page*/
+
+.page-standardpage main {
+    padding: 0;
+}
+
 .page-standardpage h1 {
     font-size: 3em;
     font-weight: bold;
-    margin-top: 0.5em;
+    margin-top: 1em;
     margin-bottom: 0.2em;
     line-height: 1;
 }
 
-.page-standardpage h2 {
-    font-size: 1.6em;    
-    font-weight: bold;
+.page-standardpage .were-tbx h2 {
+    font-size: 2em;    
+    font-weight: normal;
     margin-bottom: 0.5em;
 }
 
@@ -650,9 +655,10 @@ main nav li.active a:after {
 }
 
 .page-standardpage .were-tbx-2 h3 {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: normal;
     letter-spacing: 1;
+    line-height: 1.5;
 }
 
 .page-standardpage .were-tbx-2 li {
@@ -1256,6 +1262,7 @@ footer .tel {
 
 .map iframe {
     border: 0;
+    display: block;
 }
 
 #wagtail-userbar {
