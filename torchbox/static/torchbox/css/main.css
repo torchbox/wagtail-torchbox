@@ -241,15 +241,17 @@ main nav li.active a {
 }
 
 main nav li.active a:after {
-  /*  content:""; */
-  /*  background-color: #ccc; */
-  /*  width: 1px; */
-    height: 0.5em;    
-    display:block;
+    height: 0;
+    width: 0;
     position: absolute;
-    line-height: 1em;
+    border-top: 10px solid #FF653F;
+    border-bottom: 1em solid transparent;
+    border-left: 0.75em solid transparent;
+    border-right: 0.75em solid transparent;
+    content: "";
     left: 50%;
-    top: 2.5em;
+    top: 38px;
+    margin-left: -0.75em;
 }
 
 .container {
@@ -737,6 +739,11 @@ main nav li.active a:after {
 
 /*Blog Index*/
 
+.page-blogindexpage h1 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
 .page-blogindexpage main {
     background-color: #FF643E;    
     color: #fff;
@@ -745,10 +752,9 @@ main nav li.active a:after {
 
 .page-blogindexpage .blog-title div {
     margin: -4.5em auto 0 auto;
-    padding: 18em 2em 2em 2em;
+    padding: 6em 2em 2em 2em;
     max-width: 48em;
 }
-
 
 .page-blogindexpage h2 {
     margin-bottom: 0.5em;
@@ -874,16 +880,11 @@ main nav li.active a:after {
 }
        
 .page-workindexpage main ul a {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0);
     display: block;
     position: relative;
     min-height: 24em;
     transition: background-color 0.2s ease;
-}
-
-.page-workindexpage main ul a:hover {
-    background-color: rgba(0,0,0,0);
-    cursor: pointer;
 }
 
 .page-workindexpage main .listing div {
@@ -891,14 +892,11 @@ main nav li.active a:after {
     margin: 0 auto; 
     z-index: 9999;
     position: absolute;
-    bottom: 2em;
-    padding: 1em;
+    bottom: 0em;
+    padding: 1.5em;
     max-width: 36em;
     transition: background-color 0.3s ease;
-}
-
-.page-workindexpage main .listing a:hover div {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
 }
 
 
@@ -907,7 +905,7 @@ main nav li.active a:after {
     margin-bottom: 0.2em;
     line-height: 1.2;
     transition: opacity 0.2s ease;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 0.25em;
     margin-bottom: 0.25em;
 }

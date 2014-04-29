@@ -133,11 +133,11 @@
 	/*Standard page (we're torchbox) */
 
 	.page-standardpage .were-tbx {
-	    margin-top: -8.5em;
+	    margin-top: -7em;
 	    padding-top: 16em;
 	    padding-left: 4em;
 	    padding-right: 4em;
-	    padding-bottom: 8.5em;
+	    padding-bottom: 4em;
 	    background: url("/static/torchbox/images/jobs-placeholder-04.jpg") no-repeat bottom white;
 	}
 
@@ -167,8 +167,9 @@
 	}
 
 	.page-standardpage .were-tbx-2 h2 {
-	    font-size: 2.5em;
+	    font-size: 3em;
 	    font-weight: bold;
+	    letter-spacing: -0.05em;
 	}
 
 	.page-standardpage .were-tbx-2 h3 {
@@ -198,14 +199,15 @@
 	}
 
 	.page-standardpage .were-tbx-2 li:nth-child(3) {
-		background: url("/static/torchbox/images/equip-flip.jpg") no-repeat;
+		background: url("/static/torchbox/images/bbqs.jpg") no-repeat;
 		-webkit-background-size: cover;
+		padding: 8em 4em 8em 4em;
 	}
 
 	.page-standardpage .were-tbx-2 li:nth-child(4) {
 		background: #222;
 		color: white;
-		padding: 3em 4em 1em 4em;
+		padding: 2em 4em 1em 4em;
 		text-align: center;
 	}
 
@@ -236,6 +238,25 @@
 		min-height: 800px;
 	}
 
+	.page-workindexpage main ul a {
+	    background-color: rgba(0,0,0,0.6);
+	}
+
+	.page-workindexpage main ul a:hover {
+	    background-color: rgba(0,0,0,0);
+	    cursor: pointer;
+	}
+
+
+	.page-workindexpage main .listing div {
+	    background: rgba(0,0,0,0);
+	    padding: 2.5em;
+	}
+
+	.page-workindexpage main .listing a:hover div {
+	    background: rgba(0,0,0,0.8);
+	}
+
 	/*Index pages*/
 
 	.index,
@@ -257,11 +278,17 @@
 		-webkit-background-size: cover;
 	}
 
+	.page-blogindexpage .blog-title div {
+	    margin: -4.5em auto 0 auto;
+	    padding: 18em 2em 2em 2em;
+	    max-width: 48em;
+	}
+
 	.page-blogindexpage h1 {
 		font-size: 5em;
 		font-weight: bold;
 		margin-bottom: 0.25em;
-		letter-spacing: -0.03em;
+		letter-spacing: -0.05em;
 		color: #333;
 		position: relative;
 	}
