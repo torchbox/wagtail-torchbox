@@ -595,60 +595,11 @@
 	.page-servicespage .services h2 {
 		font-size: 2em;
 		min-height: 3em;
-		font-family: "Raleway";
 	}
 
 	.page-servicespage .services p {
 		color: #6a6a6a;
 		line-height: 1.6em;
-	}
-
-	.page-servicespage .services li:before {
-		position: absolute;
-		margin-top: -1.5em;
-		font-size: 2.5em;
-		color: #F1D148;
-		-webkit-font-smoothing: antialiased;
-	}
-
-	.page-servicespage .services li:nth-of-type(1):before {
-		content: "\f1fe";
-		font-family: "Ionicons";
-	}
-
-	.page-servicespage .services li:nth-of-type(2):before {
-		content: "\f202\f25d";
-		font-family: "Ionicons";
-	}
-
-	.page-servicespage .services li:nth-of-type(3):before {
-		content: "\f256";
-		font-family: "Ionicons";
-	}
-
-	.page-servicespage .services li:nth-of-type(4):before {
-		content: "\f270";
-		font-family: "Ionicons";
-	}
-
-	.page-servicespage .services li:nth-of-type(5):before {
-		content: "\f20a";
-		font-family: "Ionicons";
-	}
-
-	.page-servicespage .services li:nth-of-type(6):before {
-		content: "\f127";
-		font-family: "Ionicons";
-	}
-
-	.page-servicespage .services li:nth-of-type(7):before {
-		content: "\f212";
-		font-family: "Ionicons";
-	}
-
-	.page-servicespage .services li:nth-of-type(8):before {
-		content: "\f2b3";
-		font-family: "Ionicons";
 	}
 
 	/*Footer*/
