@@ -133,18 +133,18 @@
 	/*Standard page (we're torchbox) */
 
 	.page-standardpage .were-tbx {
-	    margin-top: -7em;
-	    padding-top: 16em;
+	    margin-top: -8.5em;
+	    padding-top: 24em;
 	    padding-left: 4em;
 	    padding-right: 4em;
 	    padding-bottom: 4em;
-	    background: url("/static/torchbox/images/jobs-placeholder-04.jpg") no-repeat bottom white;
+	    background: url("/static/torchbox/images/greenbike.jpg") no-repeat bottom #a0ba4c;
 	}
 
 	.page-standardpage .were-tbx:before {
 			position: absolute;
 			background: url("/static/torchbox/images/circle-yellow.svg") no-repeat;
-			top: 450px;
+			top: 480px;
 			left: 10%;
 			width: 160px;
 			height: 160px;
@@ -164,6 +164,12 @@
 	.page-standardpage h1 {
 	    font-size: 5em;
 	    letter-spacing: -0.06em;
+	    margin-top: 0em;
+	}
+
+	.page-standardpage .were-tbx h2 {
+	    font-size: 2em;    
+	    margin-bottom: 0.5em;
 	}
 
 	.page-standardpage .were-tbx-2 h2 {
@@ -186,6 +192,7 @@
 	.page-standardpage .were-tbx-2 li:first-child {
 	    border-top: none;
 	}
+
 
 	.page-standardpage .were-tbx-2 li:nth-child(2) {
 		background: url("/static/torchbox/images/geeks.jpg") no-repeat black;

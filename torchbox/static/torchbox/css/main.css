@@ -565,7 +565,7 @@ main nav li.active a:after {
 } 
 
 .page-jobindexpage .benefits li {
-    padding: 2em 1em 1.5em 1em;
+    padding: 2em 2em 1.5em 2em;
 }
 
 .page-jobindexpage .intro p {
@@ -619,13 +619,13 @@ main nav li.active a:after {
 .page-standardpage h1 {
     font-size: 3em;
     font-weight: bold;
-    margin-top: 1em;
+    margin-top: 0.5em;
     margin-bottom: 0.2em;
     line-height: 1;
 }
 
 .page-standardpage .were-tbx h2 {
-    font-size: 2em;    
+    font-size: 1.5em;    
     font-weight: normal;
     margin-bottom: 0.5em;
 }
@@ -649,7 +649,7 @@ main nav li.active a:after {
 }
 
 .page-standardpage .were-tbx {
-    background: #5CB9E7;
+    background: #a0ba4c;
     margin-top: -8.5em;
     padding: 8.5em 2em 2em 2em;
     -webkit-font-smoothing: antialiased;
@@ -657,7 +657,7 @@ main nav li.active a:after {
 }
 
 .page-standardpage .were-tbx-2 h3 {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: normal;
     letter-spacing: 1;
     line-height: 1.5;
@@ -667,7 +667,7 @@ main nav li.active a:after {
     display: block;
     overflow: hidden;
     width: 100%; 
-    padding: 0em 1em;  
+    padding: 0em 2em;  
 }
 
 .page-standardpage .listing li img {
@@ -696,8 +696,10 @@ main nav li.active a:after {
     margin-bottom: 2em;
 }
 
-.page-servicespage aside {
-
+.page-servicespage .services li {
+    margin: 5em 1em 0em 1em;
+    padding-bottom: 1em;
+    display: block;
 }
 
 .page-servicespage .services li:before {
