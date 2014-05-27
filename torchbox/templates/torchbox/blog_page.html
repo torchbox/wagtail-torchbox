@@ -30,6 +30,7 @@
             {% endif %}
             {% endwith %}
 
+
             {% if self.date %}
             <span class="date">&nbsp;|&nbsp;{{ self.date|date:"j F Y" }}</span>
             {% endif %}
@@ -47,6 +48,10 @@
                 </ul>
             </div>
         </div>
+
+        {% if self.intro %}
+            {{ self.intro|richtext }}
+        {% endif %}
         
         {% if self.body %}
             {{ self.body|richtext }}
