@@ -819,17 +819,17 @@ main nav li.active a:after {
     float: right;
 }
 
-.page-blogindexpage main a {
+.page-blogindexpage main .block-link {
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding: 3em 1em;
     transition: background-color 0.2s ease;
 }
 
-.page-blogindexpage main a:hover {
+.page-blogindexpage main .block-link:hover {
     background-color: rgba(0,0,0,0.2);
 }
 
-.page-blogindexpage main a:first-child {
+.page-blogindexpage main .block-link:first-child {
     border-top: 1px solid rgba(255,255,255,0.2);
 }
 
