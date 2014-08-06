@@ -109,7 +109,7 @@ html {
 body {
     /*max-width: 96em; */
     margin: 0 auto;
-    color: #333;
+    color: ##434a4f;
     line-height: 1.75;
     background-color: #fff;
 }
@@ -155,7 +155,7 @@ button, .button {
     text-decoration: none;
     border: none;
     color: #fff;
-    background-color: #FF653F;
+    background-color: #EA853a;
     display: inline-block;
     line-height: 1em;
     border-radius: 0.2em;
@@ -216,7 +216,7 @@ header nav li a {
 }
 
 header nav li a:hover {
-    color: #FF653F;
+    color: #EA853a;
     transition: all 0.2s ease;
 }
 
@@ -252,7 +252,7 @@ main nav li a {
 }
 
 main nav li.active a {
-    color: #FF653F;
+    color: #EA853a;
     position: relative;
 }
 
@@ -260,7 +260,7 @@ main nav li.active a:after {
     height: 0;
     width: 0;
     position: absolute;
-    border-top: 10px solid #FF653F;
+    border-top: 10px solid #EA853a;
     border-bottom: 1em solid transparent;
     border-left: 0.75em solid transparent;
     border-right: 0.75em solid transparent;
@@ -306,7 +306,7 @@ main nav li.active a:after {
 }
 
 .body-copy p a {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .body-copy h1 {
@@ -394,7 +394,7 @@ main nav li.active a:after {
 }
 
 .menu-button:hover {
-    background-color: #FF653F;
+    background-color: #EA853a;
     color: #fff;
     transition: all 0.2s ease;
 }
@@ -414,7 +414,7 @@ main nav li.active a:after {
 
 .page-homepage .listing a h2:hover,
 .page-homepage .listing a h3:hover {
-    color: #FF653F;   
+    color: #EA853a;   
 }
 
 .page-homepage .hero {
@@ -464,7 +464,7 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a {
-    background-color: #FF653F;
+    background-color: #EA853a;
     padding: 0.8em 1em;
     line-height: 1em;
     color: #fff;
@@ -513,7 +513,7 @@ main nav li.active a:after {
     }
 
  .page-homepage .work li a:hover h3 {
-     color: #FF653F;
+     color: #EA853a;
  }   
 
 .page-homepage .hero h2 {
@@ -531,11 +531,11 @@ main nav li.active a:after {
 }
 
 .page-homepage h2 a span {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .page-homepage h2 a:hover {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .page-homepage h2 a:hover span {
@@ -563,7 +563,6 @@ main nav li.active a:after {
     padding-top: 2em;
     padding-bottom: 2em;
 }
-
 .page-homepage .clients li {
     width: 31.33%;
     height: 9em;
@@ -812,10 +811,10 @@ main nav li.active a:after {
 }
 
 .pagination .active a {
-    border: 1px solid #FF653F;
+    border: 1px solid #EA853a;
     border: 1px solid rgba(0,0,0,0.2);
     background-color: #fff;
-    color: #FF653F;
+    color: #EA853a;
     }
 
 .index h1 {
@@ -841,7 +840,7 @@ main nav li.active a:after {
 
 .page-blogindexpage main {
     background-color: #fff;    
-    color: #333;
+    color: ##434a4f;
     -webkit-font-smoothing: antialiased;
     padding-top: 100%;
     margin-top: -100%;
@@ -922,7 +921,7 @@ main nav li.active a:after {
 }
 
 .body-copy a {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .body-copy p {
@@ -962,7 +961,7 @@ main nav li.active a:after {
     display: block; 
     padding: 0;
     margin: 0.5em 0.5em;
-    color: #333;
+    color: ##434a4f;
     font-size: 1.1em;
     font-weight: 600;
 }
@@ -1029,7 +1028,7 @@ main nav li.active a:after {
     display: block; 
     padding: 0;
     margin: 0.5em 0.5em;
-    color: #333;
+    color: ##434a4f;
     font-size: 1.1em;
     font-weight: 600;
 }
@@ -1066,17 +1065,17 @@ main nav li.active a:after {
     display: inline-block;
     background: #fff;
     padding: 0.25em 1em;
-    color: #333;
+    color: ##434a4f;
     border-radius: 3px;
     margin: 1em 0 0 0;
     transition: all 0.2s ease;
-    border: 1px solid #333;
+    border: 1px solid ##434a4f;
 }    
 
 .page-workpage .intro p a:hover {
-    background: #333;
+    background: ##434a4f;
     color: #fff;
-    border: 1px solid #333;
+    border: 1px solid ##434a4f;
 }  
 
 .breadcrumb{
@@ -1091,8 +1090,8 @@ main .breadcrumb a {
     padding: 0.5em 1.5em;
     line-height: 1em;
     margin:0 1em 1em 0;
-    color: #FF653F;
-    border: solid 1px #FF653F;
+    color: #EA853a;
+    border: solid 1px #EA853a;
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
@@ -1100,7 +1099,7 @@ main .breadcrumb a {
 }
 
 main .breadcrumb a:hover {
-    background-color: #FF653F;
+    background-color: #EA853a;
     display:inline-block;
     color: #fff;
     transition: background-color 0.2s ease;
@@ -1171,7 +1170,7 @@ main .breadcrumb a:hover {
 }
 
 .author a {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .author a:hover {
@@ -1288,7 +1287,7 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list a {
-    background-color: black;
+    background-color: #434a4f;
     display: block;
 }
 
@@ -1314,7 +1313,7 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list li a:hover {
-    background-color: #FF653F;
+    background-color: #EA853a;
     display: block;
 }
 /*
@@ -1377,12 +1376,12 @@ footer .contact li i {
 }
 
 footer .contact a:hover span {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 footer button,
 footer .button {
-    background-color: #FF653F;
+    background-color: #EA853a;
 }
 
 
@@ -1532,7 +1531,7 @@ footer .tel {
 @media print {
     * {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        color: #000 !important; /* #434a4f prints faster: h5bp.com/s */
         box-shadow: none !important;
         text-shadow: none !important;
     }

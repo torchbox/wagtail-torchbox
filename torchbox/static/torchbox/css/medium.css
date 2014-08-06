@@ -59,9 +59,9 @@
 	}
 
 	header nav li a:hover {
-		color: #333;
+		color: #434a4f;
 		transition: all 0.15s ease;
-		border-bottom: 3px solid #333;
+		border-bottom: 3px solid #434a4f;
 	}
 
 	.logo {
@@ -210,7 +210,7 @@
 
 
 	.page-standardpage .were-tbx-2 li:nth-child(2) {
-		background: url("/static/torchbox/images/geeks.jpg") no-repeat black;
+		background: url("/static/torchbox/images/geeks.jpg") no-repeat #434a4f;
 		-webkit-background-size: cover;
 		color: white;
 	}
@@ -290,12 +290,12 @@
 
 	/*Blog index*/
 	.page-blogindexpage header nav li a {
-	color: #333;
+	color: #434a4f;
 	}
 
 	.page-blogindexpage	header nav li a:hover {
-    color: #FF653F;
-    border-bottom: 3px solid #FF653F;
+    color: #EA853a;
+    border-bottom: 3px solid #EA853a;
 	}
 
 	.page-blogindexpage .logo {
@@ -350,7 +350,7 @@
 		font-weight: bold;
 		margin-bottom: 0.25em;
 		letter-spacing: -0.05em;
-		color: #333;
+		color: #434a4f;
 		position: relative;
 	}
 
@@ -371,7 +371,7 @@
 
 	.page-blogindexpage p {
 		font-size: 1.125em;
-		color: #333;
+		color: #434a4f;
 	}
 
 
@@ -389,8 +389,8 @@
 	}
 
 	.page-workpage	header nav li a:hover {
-	color: #FF653F;
-	border-bottom: 3px solid #FF653F;
+	color: #EA853a;
+	border-bottom: 3px solid #EA853a;
 	}
 
 	.page-workpage .img-wrapper {
@@ -679,7 +679,7 @@
     display: block;
     padding: 0;
     margin:0.5em 0.5em;
-    color: #333;
+    color: #434a4f;
     font-size: 1.1em;
     font-weight: 600;
 	}
@@ -687,9 +687,9 @@
 
 	.page-workindexpage header nav li a:hover {
     font-weight: 600;
-    color: #FF653F;
+    color: #EA853a;
 	transition: all 0.15s ease;
-	border-bottom: 3px solid #FF653F;
+	border-bottom: 3px solid #EA853a;
 	}
 
 	/*Services page*/
@@ -719,7 +719,7 @@
 	}
 
 	.page-servicespage .services li:hover:before {
-		color: #FF653F;
+		color: #EA853a;
 		transition: all 0.15s ease;
 	}
 
