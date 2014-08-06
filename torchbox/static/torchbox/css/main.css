@@ -583,6 +583,12 @@ main nav li.active a:after {
 
 /*Jobs index*/
 
+.page-jobindexpage .menu-button:hover {
+    background-color: #fff;
+    color: rgba(0,0,0,0.8);
+    transition: all 0.2s ease;
+}
+
 .page-jobindexpage h1 {
     font-weight: bold;
     font-size: 3em;
@@ -593,12 +599,17 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage main .jobs {
-    margin-top: -8.5em; 
-    background-color: #5CB9E7;
+    margin-top: -18.5em; 
+    background-color: #ea853a;
     color: #222;
     -webkit-font-smoothing: antialiased;
-    padding: 8.5em 2em 2em 2em;
+    padding: 19.5em 2em 1em 2em;
 }
+
+.page-jobindexpage .richtext{
+    border-bottom: 1px dotted #DAD7D7;
+}
+
 
 .page-jobindexpage main .jobs a {
     color: #fff;
@@ -1019,13 +1030,11 @@ main nav li.active a:after {
 
 /*Work page*/
 
-    
-
-.body-copy > *{
+    .body-copy > *{
         max-width: 720px;
         margin-left: auto;
         margin-right: auto;
-}
+    }
 
 .body-copy img,
 .body-copy .responsive-object {
