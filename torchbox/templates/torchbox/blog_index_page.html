@@ -55,7 +55,6 @@
         {# Pagination #}
     
         {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-        <div class="row">
             <div>
                 {% if blogs.has_previous %}
                     <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Previous</a>
@@ -69,7 +68,6 @@
                     <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Next</a>
                 {% endif %}
             </div>
-        </div>
     </div>
 
 {% endblock %}

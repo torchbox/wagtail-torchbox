@@ -21,8 +21,11 @@
                 <ul>
                     {% for screenshot in screenshots %}
                         <li  class="img-wrapper">
+                             <div class="crop-height">
+                            <img class="scale"
                             {% image screenshot.image width-9999 as shot %}
-                            <img src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
+                            src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>
@@ -41,7 +44,6 @@
                 {{ self.intro|richtext }}
             {% endif %}
             </p>
-
             <div class="share">
                 <a>Share &#10084;</a>
                 <ul class="share options">
@@ -62,6 +64,9 @@
         {% if self.body %}
             {{ self.body|richtext }}
         {% endif %}
+        <div class="breadcrumb">
+            <a href="#">View more of our work</a>
+        </div>
     </section>
     
 

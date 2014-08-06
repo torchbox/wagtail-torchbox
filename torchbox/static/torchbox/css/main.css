@@ -103,11 +103,11 @@ textarea {
 html {
     /*background: url("/static/torchbox/images/bg.png") fixed;*/
     font-family: 'Open Sans', sans-serif;
-    background-color: #000;
+    background-color: #fff;
 }
 
 body {
-    max-width: 96em;
+    /*max-width: 96em; */
     margin: 0 auto;
     color: #333;
     line-height: 1.75;
@@ -121,7 +121,7 @@ body * {
 }
 
 main {
-    padding: 0 0 1em 0;
+    padding: 0;
     position: relative;
 }
 
@@ -134,10 +134,11 @@ h1, h2, h3 {
     margin: 0;
     padding: 0;
     letter-spacing: -0.03em;
+    font-family: "proxima-nova";
 }
 
-p {
-    margin: 0 0 1em 0;
+.listing p {
+    display: none;
 }
 
 a {
@@ -179,7 +180,7 @@ img {
 
 .img-wrapper {
     width:100%;
-    margin-bottom: 1em;
+    margin:-8em 0 0 0;
     text-align: center;
 }
 
@@ -189,31 +190,47 @@ img {
     max-width: 100%;
 }
 
+.page-workpage .img-wrapper {
+    width:100%;
+    margin:4.5em 0 0 0;
+    text-align: center;
+}
+
+.page-homepage header {
+    position:relative;
+}
+
 header {
     z-index: 999;
     position:relative;
+    background-color: transparent;
 }
 
 header nav li a {
     display: block;
     padding: 0.5em 1em;
-    background-color: #333;
-    background-color: rgba(0,0,0,0.8); 
-    color: #fff;
+    color: white;
     border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-size: 1.1em;
+    font-family: "proxima-nova";
 }
 
 header nav li a:hover {
-    background-color: #FF653F;
+    color: #FF653F;
     transition: all 0.2s ease;
 }
 
 header nav ul {
-    display:none;
+    height: 0;
+    -webkit-transition: 0.3s linear;
+    -moz-transition:  0.3s linear;
+    -ms-transition: 0.3s linear;
+    -o-transition: 0.3s linear;
+    transition: 0.3s linear;
 }
 
 header nav ul.visible {
-    display:block;
+    height: 149px;
 }
 
 main nav {
@@ -235,8 +252,7 @@ main nav li a {
 }
 
 main nav li.active a {
-    background-color: #FF653F;
-    color: #fff;
+    color: #FF653F;
     position: relative;
 }
 
@@ -258,8 +274,24 @@ main nav li.active a:after {
     padding: 0 1em;
 }
 
-.bleed {
-    margin: 0 -1em;
+.page-homepage .bleed {
+    margin: 0em -1em 3em -1em;
+    background: rgba(0,0,0,0.8);
+    color: white;
+}
+
+ .bleed {
+    margin: 0 -1em 0 -1em;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    overflow: hidden;
+}
+
+.listing .bleed {
+    background: transparent;
+    margin: 0;
+    color: white;
+    overflow: hidden;
 }
 
 .single .container {
@@ -280,8 +312,8 @@ main nav li.active a:after {
 .body-copy h1 {
     font-size: 2.5em;
     font-weight: bold;
-    letter-spacing: -0.075em;
     margin-bottom: 0.25em;
+    font-family: "proxima-nova";
 }
 
 .body-copy h2 {
@@ -322,10 +354,11 @@ main nav li.active a:after {
 
 .listing h2,
 .listing h3 {   
-    font-size: 1.5em;
+    font-size: 1.55em;
     letter-spacing: -0.03em;
     font-weight: bold;
     margin-bottom: 0.2em;
+    font-family: "proxima-nova";
 }
 
 .listing main div {   
@@ -367,19 +400,31 @@ main nav li.active a:after {
 }
 
 /*Page home*/
+
+.page-homepage .menu-button:hover {
+    background-color: #fff;
+    color: rgba(0,0,0,0.8);
+    transition: all 0.2s ease;
+}
+
+.page-homepage .logo {
+    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background-size: auto 2em;
+}
+
 .page-homepage .listing a h2:hover,
 .page-homepage .listing a h3:hover {
     color: #FF653F;   
 }
 
 .page-homepage .hero {
-    padding: 6em 2em;
-    background-color: #F1D148;
+    padding: 18em 2em 6em 2em;
+    background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
+    background-color: #6EDBE7;
     position: relative;
-    top:-3em;
-    margin-bottom: -3em;
-    /*background: url("/static/torchbox/images/houses.jpg") no-repeat center top;*/
-    /*-webkit-background-size: cover;*/
+    top: -16em;
+    margin-bottom: -15em;
+    -webkit-background-size: cover;
 }
 
 .page-homepage .hero .gif {
@@ -392,7 +437,7 @@ main nav li.active a:after {
     }
 
 .page-homepage .hero em {
-    border-bottom: 0.15em solid #fff;
+    border-bottom: 0.10em solid #fff;
     font-style: normal;
 }
 
@@ -406,7 +451,8 @@ main nav li.active a:after {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
+    min-width: 100%;
+    max-height:40em;
     text-align: center;
     padding: 4em 2em; 
 }
@@ -424,6 +470,11 @@ main nav li.active a:after {
     color: #fff;
     display: inline-block;
     margin-bottom: 0.5em;
+    border-radius: 3px;
+    -o-transition:.3s;
+  -ms-transition:.3s;
+  -moz-transition:.3s;
+  -webkit-transition:.3s;
 }
 
 .page-homepage .hiring a:hover {
@@ -445,6 +496,8 @@ main nav li.active a:after {
 .page-homepage main h2 {
     font-size: 2em;
     margin-bottom: 0.5em;
+    font-family: "proxima-nova";
+    font-weight: 600;
 }
 
 .page-homepage .work {
@@ -465,10 +518,9 @@ main nav li.active a:after {
 
 .page-homepage .hero h2 {
         font-size: 2.5em;
-        max-width: 9em;
         line-height: 1.1;
         font-weight: bold;
-        margin-bottom: 0.5em;
+        margin:0 auto 0.5em auto;
         color: #fff;
     }
 
@@ -499,8 +551,6 @@ main nav li.active a:after {
 
 
 .page-homepage .blog {
-    border-top: 1px dotted #ccc;
-    border-top: 1px dotted rgba(0,0,0,0.2);
     background: #f5f4e9;
     padding-top: 2em;
 }
@@ -540,6 +590,7 @@ main nav li.active a:after {
     margin-top: 0.25em;
     margin-bottom: 0.25em;
     color: white;
+    font-family: "proxima-nova";
 }
 
 .page-jobindexpage main .jobs {
@@ -649,11 +700,10 @@ main nav li.active a:after {
 }
 
 .page-standardpage .were-tbx {
-    background: #a0ba4c;
     margin-top: -8.5em;
     padding: 8.5em 2em 2em 2em;
     -webkit-font-smoothing: antialiased;
-    color: white;
+    color: #000;
 }
 
 .page-standardpage .were-tbx-2 h3 {
@@ -758,14 +808,7 @@ main nav li.active a:after {
 }
 
 .pagination a {
-    background-color: #FF653F;
-    color: #fff;
-    line-height: 1em;
-    padding: 0.5em;
-    width: 1em;
-    text-align: center;
-    display: inline-block;
-    border-radius: 1em;
+
 }
 
 .pagination .active a {
@@ -780,6 +823,7 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
     line-height: 1.15;
     font-weight: bold;
+    font-family: "proxima-nova";
 }
 
 .index,
@@ -792,12 +836,15 @@ main nav li.active a:after {
 .page-blogindexpage h1 {
     font-size: 3em;
     font-weight: bold;
+    font-family: "proxima-nova";
 }
 
 .page-blogindexpage main {
-    background-color: #FF643E;    
-    color: #fff;
+    background-color: #fff;    
+    color: #333;
     -webkit-font-smoothing: antialiased;
+    padding-top: 100%;
+    margin-top: -100%;
 }
 
 .page-blogindexpage .blog-title div {
@@ -808,30 +855,24 @@ main nav li.active a:after {
 
 .page-blogindexpage h2 {
     margin-bottom: 0.5em;
+    color: #FF643E;
 
 }
 
 .page-blogindexpage li img {
-    width: 6em !important;
-    border-radius: 50%;
-    margin-left: 1em;
-    height: auto;
-    float: right;
+    display: none;
 }
 
 .page-blogindexpage main .block-link {
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px dotted #DAD7D7;
     padding: 3em 1em;
     transition: background-color 0.2s ease;
 }
 
 .page-blogindexpage main .block-link:hover {
-    background-color: rgba(0,0,0,0.2);
+    background-color: #eaeff2;
 }
 
-.page-blogindexpage main .block-link:first-child {
-    border-top: 1px solid rgba(255,255,255,0.2);
-}
 
 .page-blogindexpage main .listing .container {
    max-width: 48em;
@@ -839,8 +880,15 @@ main nav li.active a:after {
 }
 
 .page-blogindexpage .pagination {
-    text-align: center;
-    padding-top: 1em;
+    padding: 2em 0 2em 0;
+    max-width: 350px;
+    overflow: hidden;
+}
+
+.page-blogindexpage .pagination div{
+    float:left;
+    margin: 0 1em;
+    width: 200px;
 }
 
 /*Blog page*/
@@ -863,12 +911,14 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
     font-weight: bold;
     line-height: 1em;
+    font-family: "proxima-nova";
 }
 
 .page-blogpage h1 {
     font-size: 3em;
     margin-bottom: 0.5em;
     line-height: 1.15;
+    font-family: "proxima-nova";
 }
 
 .body-copy a {
@@ -907,6 +957,16 @@ main nav li.active a:after {
 }
 
 /*Work index*/
+
+.page-workpage header nav li a {
+    display: block; 
+    padding: 0;
+    margin: 0.5em 0.5em;
+    color: #333;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
 .page-workindexpage {
     color: #fff;
 }
@@ -915,6 +975,7 @@ main nav li.active a:after {
 .page-workindexpage h1 {
     font-weight: bold;
     font-size: 3em;
+    font-family: "proxima-nova";
 }
 
 .page-workindexpage main .listing img {
@@ -927,6 +988,8 @@ main nav li.active a:after {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    width: 100%;
+    max-height: 35em;
 }
        
 .page-workindexpage main ul a {
@@ -955,13 +1018,21 @@ main nav li.active a:after {
     margin-bottom: 0.2em;
     line-height: 1.2;
     transition: opacity 0.2s ease;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 0.25em;
     margin-bottom: 0.25em;
+    font-family: "proxima-nova";
 }
 
 
 /*Work page*/
+
+.page-workpage header nav li a {
+    display: block; 
+    padding: 0;
+    margin: 0.5em 0.5em;
+    color: #333;
+    font-size: 1.1em;
+    font-weight: 600;
+}
 
 .body-copy > *{
         max-width: 720px;
@@ -978,7 +1049,7 @@ main nav li.active a:after {
 }
 
 .page-workpage .logo {
-    background-image: url("/static/torchbox/images/logo-torchbox-white.png");
+    background-image: url("/static/torchbox/images/logo-torchbox-grey.png");
 }
 
 .page-workpage .single {
@@ -1008,14 +1079,31 @@ main nav li.active a:after {
     border: 1px solid #333;
 }  
 
+.breadcrumb{
+    width: 100%;
+    overflow: hidden;
+}
+
+
 main .breadcrumb a {
+    background-color: white;
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    margin:0 1em 1em 0;
+    color: #FF653F;
+    border: solid 1px #FF653F;
+    border-radius: 2px;
+    min-width: 100px;
+    text-align: center;
+    float: left;
+}
+
+main .breadcrumb a:hover {
     background-color: #FF653F;
     display:inline-block;
-    padding: 0.5em;
-    line-height: 1em;
-    margin-bottom: 1em;
     color: #fff;
-    text-transform: uppercase;
+    transition: background-color 0.2s ease;
 }
 
 .article-meta {
@@ -1143,12 +1231,18 @@ main .breadcrumb a {
     border-bottom: 1px dotted rgba(0,0,0,0.2);
 }
 
+.center{
+    max-width: 96em;
+    margin: 0 auto;
+}
+
 /*People index*/
 
 .page-personindexpage main h1 {
     font-size: 2.5em;
     margin-bottom: 0.25em;
     font-weight: bold;
+    font-family: "proxima-nova";
 }
 
 .page-personindexpage main h2 {
@@ -1223,13 +1317,13 @@ main .breadcrumb a {
     background-color: #FF653F;
     display: block;
 }
-
+/*
 .grid.people-list li:nth-child(3n+2) a:hover {
     background-color: #627928;
 }
 .grid.people-list li:nth-child(3n+3) a:hover {
     background-color: #5cb9e7;
-}
+} */
 
 .people-list img {
     -webkit-filter: grayscale(100%);
@@ -1238,13 +1332,13 @@ main .breadcrumb a {
 }
 
 footer {
-    background-color: #222;
+    background-color: #434a4f;
     color: #fff;
     -webkit-font-smoothing: antialiased;
 }
 
 footer .container {
-    padding: 1em 1em 1em;
+    padding: 0 1em 1em;
 }
 
 footer .contact {
@@ -1254,6 +1348,7 @@ footer .contact {
 footer .contact h2{
     font-size: 2em; 
     margin: 0.5em 0;
+    font-family: "proxima-nova";
 }
 
 footer .contact a {
@@ -1277,7 +1372,7 @@ footer .contact li i {
     display: block;
     float: left;
     margin: 0;
-        margin-right: 0.5em;
+    margin-right: 0.5em;
 
 }
 
@@ -1302,6 +1397,7 @@ footer .offices li {
 
 footer .offices h3 {
     font-size: 1.5em;
+    font-family: "proxima-nova";
 }
 
 footer .tel {

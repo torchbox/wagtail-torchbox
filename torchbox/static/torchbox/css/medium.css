@@ -1,5 +1,6 @@
 @import url("http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css");
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,900,100,200,300,500,700,600,800);
+
 @media only screen and (min-width: 36em) {
 
 	html {
@@ -10,10 +11,13 @@
 
 	main {
 		width:100%;
+		margin: 1em 0 0 0;
 	}
 
 	.container {
 		padding: 0 2em;
+		max-width: 96em;
+		margin: 0 auto;
 	}
 
 	.single .container {
@@ -21,7 +25,7 @@
 	}
 
 	.bleed {
-		margin: 0;
+		margin: 2em 0 0 0;
 	}
 
 	.menu-button {
@@ -42,12 +46,11 @@
 
 	header nav li {
 		float: left;
-
+		padding: 1em 1em 0 1em;
 	}
 
 	header nav li a {
-		padding: 1.33em 1em;
-		border-right: 1px solid rgba(255,255,255,0.2);
+		padding: 1.33em 0 0 0;
     	border-bottom: none;
 	}
 
@@ -56,23 +59,49 @@
 	}
 
 	header nav li a:hover {
-		background-color: #FF653F;
-		color: #fff;
+		color: #333;
 		transition: all 0.15s ease;
+		border-bottom: 3px solid #333;
 	}
 
 	.logo {
-		height: 4.5em;
+		height: 7em;
 		padding:1em 0;
 		background-size: auto 3em;
+		margin: 0;
 	}
 
 	/*Homepage*/
 
+	.page-homepage .logo {
+    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background-size: auto 3em;
+}
+
 	.page-homepage .hero {
-		padding: 18% 2em;
-		margin-top: -2em;
-		margin-bottom: -3em;
+    padding: 6em 2em;
+    background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
+    background-color: #6EDBE7;
+    position: relative;
+    top:-3em;
+    margin-bottom: -3em;
+    -webkit-background-size: cover;
+}
+
+	.page-homepage header {
+    position:relative;
+    background-color: transparent;
+	}	
+
+	.page-homepage header nav li {
+		float: left;
+		padding: 2em 1em 0 1em;
+	}
+
+	.page-homepage .hero {
+		padding: 17% 2em;
+		margin-top: -5em;
+		margin-bottom: -1em;
 	}
 
 	.page-homepage .hero .gif {
@@ -88,7 +117,7 @@
 	}
 
 	.page-homepage .hero h2 {
-		font-size: 4.5em;
+		font-size: 5em;
 	}
 
 	.page-homepage .work {
@@ -96,8 +125,9 @@
 	}
 
 	.page-homepage .blog {
-		padding:2em 2em 0 2em;
+		padding:3em 2em 1em 2em;
 		background: #f5f4e9;
+		max-width: 100%;
 	}
 
 	.page-homepage .blog h3 {
@@ -108,7 +138,6 @@
 		background-size: 100%;
 		padding: 12em 2em;
 		border: none;
-		margin: 0em 0;
 	}
 	
 	.page-homepage .hiring h2 {
@@ -129,7 +158,6 @@
 		margin-bottom: 1em;
 	}
 
-
 	/*Standard page (we're torchbox) */
 
 	.page-standardpage .were-tbx {
@@ -138,18 +166,6 @@
 	    padding-left: 4em;
 	    padding-right: 4em;
 	    padding-bottom: 4em;
-	    background: url("/static/torchbox/images/bike.jpg") no-repeat bottom white;
-	}
-
-	.page-standardpage .were-tbx:before {
-			position: absolute;
-			background: url("/static/torchbox/images/circle-yellow.svg") no-repeat;
-			top: 480px;
-			left: 10%;
-			width: 160px;
-			height: 160px;
-			content: "";
-			background-size: 100% auto;
 	}
 
 
@@ -205,11 +221,6 @@
 		max-width: 35%;
 	}
 
-	.page-standardpage .were-tbx-2 li:nth-child(3) {
-		background: url("/static/torchbox/images/bbqs.jpg") no-repeat;
-		-webkit-background-size: cover;
-		padding: 8em 4em 8em 4em;
-	}
 
 	.page-standardpage .were-tbx-2 li:nth-child(4) {
 		background: #222;
@@ -234,15 +245,11 @@
 	}
 
 	.page-workindexpage main .listing a h2 {
-	    font-size: 3.5em;
+	    font-size: 2em;
 	}
 
 	.page-workindexpage main .listing div {
 	    padding: 4em;
-	}
-
-	.page-workindexpage main ul a {
-		min-height: 800px;
 	}
 
 	.page-workindexpage main ul a {
@@ -264,6 +271,17 @@
 	    background: rgba(0,0,0,0.8);
 	}
 
+	.page-workindexpage main ul li {
+    background: no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    max-height: 35em;
+	}
+
+
 	/*Index pages*/
 
 	.index,
@@ -272,27 +290,64 @@
 	}
 
 	/*Blog index*/
+	.page-blogindexpage header nav li a {
+	color: #333;
+	}
+
+	.page-blogindexpage	header nav li a:hover {
+    color: #FF653F;
+    border-bottom: 3px solid #FF653F;
+	}
+
+	.page-blogindexpage .logo {
+	background-image: url("/static/torchbox/images/logo-torchbox-grey.png");
+	}
+	
+	.page-blogindexpage h2 {
+    margin-bottom: 0.5em;
+    max-width: 48em;
+	}	
+
+	.page-blogindexpage li img {
+		display: inline-block;
+		border-radius: 50%;
+		float: right;
+		width: 8em !important;
+		height: auto;
+	    margin: -2em 0 auto 1em;
+	}
+	
+	.page-blogindexpage .pagination {
+    	padding: 2em 0 0 0;
+    	max-width: 700px;
+    	margin: 0 auto;
+    	overflow: hidden;
+    	text-align: center;
+	}
+
 	.page-blogindexpage main {
-		padding: 0 0 2em 0;
+		padding: 100% 0 2em 0;
 	}
 
 	.page-blogindexpage main .block-link {
 		padding: 6em 2em;
+		border-bottom: 1px dotted #DAD7D7;
 	}
 
 	.page-blogindexpage .blog-title {
-		background: url("/static/torchbox/images/balloons.jpg") no-repeat;
+		background-color:white;
 		-webkit-background-size: cover;
+		/*background-image: url("http://placehold.it/2000x300");*/
 	}
 
 	.page-blogindexpage .blog-title div {
 	    margin: -4.5em auto 0 auto;
-	    padding: 18em 2em 2em 2em;
+	    padding: 10em 2em 2em 2em;
 	    max-width: 48em;
 	}
 
 	.page-blogindexpage h1 {
-		font-size: 5em;
+		font-size: 6em;
 		font-weight: bold;
 		margin-bottom: 0.25em;
 		letter-spacing: -0.05em;
@@ -302,7 +357,6 @@
 
 	.page-blogindexpage h1:before {
 			position: absolute;
-			background: url("/static/torchbox/images/balloon.svg") no-repeat;
 			content: "";
 			background-size: 100% auto;
 			top: 50px;
@@ -317,10 +371,45 @@
 
 	.page-blogindexpage p {
 		font-size: 1.125em;
+		color: #333;
 	}
 
 
 	/*Work page*/
+	.bleed {
+	margin: 1em 0 0 0;
+	}
+
+	.page-workpage	header nav li a {
+    display: block;
+    padding: 0;
+    margin:0.5em 0.5em;
+    color: white;
+    font-size: 1.1em;
+	}
+
+	.page-workpage	header nav li a:hover {
+	color: #FF653F;
+	border-bottom: 3px solid #FF653F;
+	}
+
+	.page-workpage .img-wrapper {
+    width:100%;
+    margin:-8em 0 0 0;
+    text-align: center;
+	}
+
+	.page-workpage .img-wrapper img {
+    width: auto;
+    position:relative;
+    max-width: 100%;
+    height: auto;
+	}
+
+	.page-workpage .logo {
+    background-image: url("/static/torchbox/images/logo-torchbox-white.png");
+	}
+
     .page-workpage .intro h1 {
     	font-weight: bold;
     	font-size: 6em;
@@ -333,14 +422,32 @@
     }
 
     .page-workpage .single .img-wrapper img {
-    	margin-bottom: -15em;
+    	width: 100%;
     }
 
+    .crop-height {
+ 	 /* max-width: 1200px; /* img src width (if known) */
+ 	 max-height: 40em;
+  	overflow: hidden; 
+	}
+
+	img.scale {
+ 	 /* corrects inline gap in enclosing div */
+ 	 display: block;
+ 	 max-width: 100%;
+ 	 /* just in case, to force correct aspect ratio */
+ 	 height: auto !important;
+ 	 width: auto\9; /* ie8+9 */
+ 	 /* lt ie8 */
+ 	 -ms-interpolation-mode: bicubic; 
+	}
+
     .page-workpage .intro .body-copy {
-    	margin-bottom: 1em;
-			background: rgba(255, 255, 255, 1);
-			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-			max-width: 800px;
+    margin-bottom: 1em;
+    margin-top: -5.2em;
+	background: rgba(255, 255, 255, 1);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	max-width: 800px;
     }
 
     .body-copy p,
@@ -407,28 +514,22 @@
 
 	.listing,
 	.listing a {
-		margin: 0;
+		margin: 0 auto;
 		padding: 0;
 		border: none;
 		box-sizing: border-box;
 		left: auto;
+		max-width: 100%;
 	}
 
 	.page-homepage .clients {
-	    padding: 2em;
+	    padding: 3em 0 1em 0;
 	}
 
 	.page-homepage .clients li {
 		width: 18%;
 		margin-right: 2%;
 		margin-bottom: 2%;
-	}
-
-	.page-jobindexpage main .jobs {
-    padding-bottom: 3em;
-    padding-left: 4em;
-    padding-right: 4em;
-    background: url("/static/torchbox/images/ducks.jpg") no-repeat #5CB9E7;
 	}
 
 	.page-jobindexpage h1 {
@@ -485,25 +586,13 @@
 		background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
 		-webkit-background-size: cover;
 	}
-	.page-jobindexpage .benefits .two {
-		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat #f5f4e9;
-		-webkit-background-size: cover;
-	}
 	.page-jobindexpage .benefits .three {
 		background: url("/static/torchbox/images/jobs-placeholder-03.jpg") no-repeat;
 		-webkit-background-size: cover;
 		padding: 13em 4em 3em 4em;
 	}
-	.page-jobindexpage .benefits .four {
-		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat;
-		-webkit-background-size: cover;
-	}
 	.page-jobindexpage .benefits .five {
 		background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
-		-webkit-background-size: cover;
-	}
-	.page-jobindexpage .benefits .six {
-		background: url("/static/torchbox/images/jobs-placeholder-06.jpg") no-repeat;
 		-webkit-background-size: cover;
 	}
 
@@ -567,6 +656,41 @@
 		padding: 2em 3em;
 	}
 
+	.bleed {
+    margin: 2.5 -1em;
+    background:none;
+    overflow: visible;
+	}
+
+	header{
+	background-color: transparent;
+	}
+
+	header nav li a {
+    display: block;
+    padding: 0;
+    margin:0.5em 0.5em;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 600;
+	}
+
+	.page-workindexpage header nav li a {
+    display: block;
+    padding: 0;
+    margin:0.5em 0.5em;
+    color: #333;
+    font-size: 1.1em;
+    font-weight: 600;
+	}
+
+
+	.page-workindexpage header nav li a:hover {
+    font-weight: 600;
+    color: #FF653F;
+	transition: all 0.15s ease;
+	border-bottom: 3px solid #FF653F;
+	}
 
 	/*Services page*/
 
@@ -706,6 +830,43 @@
 	}
 
 }	
+
+
+    /* Desktop */
+
+ @media only screen and (min-width: 830px) {
+
+    .page-workpage .intro .body-copy {
+    	margin-top: -17.2em;
+    }
+}
+
+ @media only screen and (min-width: 1150px) {
+	.page-workindexpage main ul li {
+		 -webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		width: 50%;
+		max-height: 35em;
+		float: left;
+	}
+
+	.listing p {
+		display: block;
+    	margin: 0 0 1em 0;
+	}
+
+	.page-workindexpage main ul a {
+		min-height: 35em;
+	}
+
+	.page-workindexpage main .listing a h2 {
+		font-size: 2.5em;
+	}
+
+}
+
 
 
 
