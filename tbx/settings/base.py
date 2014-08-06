@@ -214,3 +214,5 @@ WAGTAIL_SITE_NAME = 'torchbox.com'
 
 # Override the search results template for wagtailsearch
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'torchbox/search_results.html'
+
+WAGTAIL_USAGE_COUNT_ENABLED = True
