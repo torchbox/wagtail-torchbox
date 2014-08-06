@@ -35,7 +35,6 @@ REMOTE_DUMP_PATH = "~/"
 def deploy_staging():
     with cd('/usr/local/django/tbxwagtail/'):
         run("git pull")
-        run("git submodule update")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/pip install -r requirements/production.txt")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py syncdb --settings=tbx.settings.production --noinput")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py migrate --settings=tbx.settings.production --noinput")
@@ -48,8 +47,6 @@ def deploy_staging():
 def deploy():
     with cd('/usr/local/django/tbxwagtail/'):
         run("git pull")
-        run("git submodule update")
-
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/pip install -r requirements/production.txt")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py syncdb --settings=tbx.settings.production --noinput")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py migrate --settings=tbx.settings.production --noinput")
