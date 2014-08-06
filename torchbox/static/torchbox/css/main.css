@@ -109,7 +109,7 @@ html {
 body {
     /*max-width: 96em; */
     margin: 0 auto;
-    color: ##434a4f;
+    color: #434a4f;
     line-height: 1.75;
     background-color: #fff;
 }
@@ -840,7 +840,7 @@ main nav li.active a:after {
 
 .page-blogindexpage main {
     background-color: #fff;    
-    color: ##434a4f;
+    color: #434a4f;
     -webkit-font-smoothing: antialiased;
     padding-top: 100%;
     margin-top: -100%;
@@ -876,6 +876,11 @@ main nav li.active a:after {
 .page-blogindexpage main .listing .container {
    max-width: 48em;
    margin: 0 auto;
+}
+
+.page-blogindexpage main .listing {
+   width: 100%;
+   margin: -2em 0 0 0 ;
 }
 
 .page-blogindexpage .pagination {
@@ -961,7 +966,7 @@ main nav li.active a:after {
     display: block; 
     padding: 0;
     margin: 0.5em 0.5em;
-    color: ##434a4f;
+    color: #434a4f;
     font-size: 1.1em;
     font-weight: 600;
 }
@@ -1028,7 +1033,7 @@ main nav li.active a:after {
     display: block; 
     padding: 0;
     margin: 0.5em 0.5em;
-    color: ##434a4f;
+    color: #434a4f;
     font-size: 1.1em;
     font-weight: 600;
 }
@@ -1065,17 +1070,17 @@ main nav li.active a:after {
     display: inline-block;
     background: #fff;
     padding: 0.25em 1em;
-    color: ##434a4f;
+    color: #434a4f;
     border-radius: 3px;
     margin: 1em 0 0 0;
     transition: all 0.2s ease;
-    border: 1px solid ##434a4f;
+    border: 1px solid #434a4f;
 }    
 
 .page-workpage .intro p a:hover {
-    background: ##434a4f;
+    background: #434a4f;
     color: #fff;
-    border: 1px solid ##434a4f;
+    border: 1px solid #434a4f;
 }  
 
 .breadcrumb{

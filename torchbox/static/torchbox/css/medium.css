@@ -324,6 +324,10 @@
     	text-align: center;
 	}
 
+	.page-blogindexpage .pagination a:hover{
+		color: #EA853A;
+	}
+
 	.page-blogindexpage main {
 		padding: 100% 0 2em 0;
 	}
@@ -337,6 +341,7 @@
 		background-color:white;
 		-webkit-background-size: cover;
 		/*background-image: url("http://placehold.it/2000x300");*/
+		margin-top: -6em;
 	}
 
 	.page-blogindexpage .blog-title div {
@@ -366,7 +371,7 @@
 
 	.page-blogindexpage h2 {
 	    font-size: 2.3em;
-	    max-width: 660px;
+	    max-width: 650px;
 	}
 
 	.page-blogindexpage p {
