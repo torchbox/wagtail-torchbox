@@ -126,7 +126,6 @@
 
 	.page-homepage .blog {
 		padding:3em 2em 1em 2em;
-		background: #f5f4e9;
 		max-width: 100%;
 	}
 
@@ -366,7 +365,8 @@
 	}
 
 	.page-blogindexpage h2 {
-	    font-size: 2em;
+	    font-size: 2.3em;
+	    max-width: 660px;
 	}
 
 	.page-blogindexpage p {
@@ -778,6 +778,8 @@
 	footer .contact h2{
 		font-size: 4em;	
 		margin: 0.25em 0 0.25em 0;
+		max-width: 100%;
+		color:#fff;
 	}
 
 	footer .contact ul {
