@@ -230,7 +230,7 @@ header nav ul {
 }
 
 header nav ul.visible {
-    height: 149px;
+    height: 248px;
 }
 
 main nav {
@@ -418,12 +418,12 @@ main nav li.active a:after {
 }
 
 .page-homepage .hero {
-    padding: 18em 2em 6em 2em;
+    padding: 24em 2em 6em 2em;
     background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
     background-color: #6EDBE7;
     position: relative;
-    top: -16em;
-    margin-bottom: -15em;
+    top: -22em;
+    margin-bottom: -21em;
     -webkit-background-size: cover;
 }
 
@@ -853,7 +853,6 @@ main nav li.active a:after {
 }
 
 .page-blogindexpage h2 {
-    margin-bottom: 0.5em;
     color: #FF643E;
 
 }
@@ -962,15 +961,6 @@ main nav li.active a:after {
 
 /*Work index*/
 
-.page-workpage header nav li a {
-    display: block; 
-    padding: 0;
-    margin: 0.5em 0.5em;
-    color: #434a4f;
-    font-size: 1.1em;
-    font-weight: 600;
-}
-
 .page-workindexpage {
     color: #fff;
 }
@@ -1029,14 +1019,7 @@ main nav li.active a:after {
 
 /*Work page*/
 
-.page-workpage header nav li a {
-    display: block; 
-    padding: 0;
-    margin: 0.5em 0.5em;
-    color: #434a4f;
-    font-size: 1.1em;
-    font-weight: 600;
-}
+    
 
 .body-copy > *{
         max-width: 720px;

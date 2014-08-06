@@ -738,6 +738,28 @@
 		line-height: 1.6em;
 	}
 
+    /* Blog page  */
+
+    .page-blogpage header nav li a {
+		color: #000;
+	}
+
+	.page-blogpage header nav li a:hover {
+		color: #EA853A;
+		transition: all 0.15s ease;
+		border-bottom: 3px solid #EA853A;
+	}
+
+	.page-blogpage .body-copy p a{
+		color: #aaa;
+		transition: all 0.15s ease;
+	}
+	
+
+	.page-blogpage .body-copy p a:hover{
+		color: #ea853a;
+	}
+
 	/*Footer*/
 
 	footer .container {
