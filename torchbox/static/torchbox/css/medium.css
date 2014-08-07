@@ -81,7 +81,7 @@
 	.page-homepage .hero {
     padding: 6em 2em;
     background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
-    background-color: #6EDBE7;
+    background-color: #5b6265;
     position: relative;
     top:-3em;
     margin-bottom: -3em;
@@ -178,7 +178,6 @@
 
 	.page-standardpage h1 {
 	    font-size: 5em;
-	    letter-spacing: -0.06em;
 	    margin-top: 0em;
 	}
 
@@ -190,7 +189,6 @@
 	.page-standardpage .were-tbx-2 h2 {
 	    font-size: 3em;
 	    font-weight: bold;
-	    letter-spacing: -0.05em;
 	}
 
 	.page-standardpage .were-tbx-2 h3 {
@@ -230,6 +228,17 @@
 
 	.page-standardpage .were-tbx-2 li:nth-child(3) div {
 		max-width: 60%;
+	}
+
+	.page-standardpage  header nav li a {
+	    color: #424a4f;
+	}
+
+	.page-standardpage  header nav li a:hover {
+	    color: #ea853a;
+	    transition: all 0.15s ease;
+		border-bottom: 3px solid #ea853a;
+
 	}
 
 
@@ -354,7 +363,6 @@
 		font-size: 6em;
 		font-weight: bold;
 		margin-bottom: 0.25em;
-		letter-spacing: -0.05em;
 		color: #434a4f;
 		position: relative;
 	}
@@ -371,13 +379,23 @@
 
 	.page-blogindexpage h2 {
 	    font-size: 2.3em;
-	    max-width: 650px;
+	    max-width: 620px;
 	}
+
+	 .page-blogindexpage .blog-title h2 {
+        margin-top: -0.6em;
+        font-size: 2em;
+    }
 
 	.page-blogindexpage p {
 		font-size: 1.125em;
 		color: #434a4f;
 	}
+	
+	.page-blogindexpage main .listing {
+		width: 100%;
+		margin: 3em 0 0 0;
+	}	
 
 
 	/*Work page*/
@@ -538,12 +556,15 @@
 	}
 
 	.page-jobindexpage h1 {
+		max-width: 96em;
+		margin: 0 auto;
 		font-size: 5em;
-		letter-spacing: -0.06em;
 	}
 
 	.page-jobindexpage .intro p {
-		font-size: 1em;
+		font-size: 0.8em;
+		padding-top: 1em;
+		margin-bottom: -1em;
 	}
 
 	.page-jobindexpage main .listing a {
@@ -551,16 +572,37 @@
 		font-size: 2em;
 	}
 
+	.page-jobindexpage main .listing li{
+		float: left;
+		width:100%;
+		min-height: 60px;
+		font-size: 0.8em;
+	}
+	
+	.benefits{
+		max-width: 96em;
+		margin: 0 auto;
+	}
+
 	.page-jobindexpage .benefits li {
-			position: relative;
+		position: relative;
 	   	margin: 0em 0em 0em 0em;
 	   	padding: 8em 4em 8em 4em;
 	   	border-top: 1px solid white;
 	   	display: block;
 	}
 
-	.page-jobindexpage .benefits li:first-child {
-	   	border-top: none;
+	.page-jobindexpage main .listing li:nth-child(2) a {
+    	border-top: 1px solid #fff;   
+    	border-top: 1px solid rgba(255,255,255,0.2);
+	} 
+
+	.page-jobindexpage .rich-text p{
+		clear: both;
+	}
+
+	.sign-up{
+		margin: 13em auto 1em auto;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -579,30 +621,24 @@
 		max-width: 30em;
 	}
 
-	.page-jobindexpage .benefits li:nth-child(odd) div {
-		float: left;
+	.page-jobindexpage footer {
+	    margin: 4em 0 0 0;
 	}
 
-	.page-jobindexpage .benefits li:nth-child(even) div {	
-		float: right;
+	.page-jobindexpage .center {
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 0 0 0 4em;
 	}
 
 	.page-jobindexpage .benefits .one {
-		background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
-		-webkit-background-size: cover;
-	}
-	.page-jobindexpage .benefits .three {
-		background: url("/static/torchbox/images/jobs-placeholder-03.jpg") no-repeat;
-		-webkit-background-size: cover;
-		padding: 13em 4em 3em 4em;
-	}
-	.page-jobindexpage .benefits .five {
-		background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
-		-webkit-background-size: cover;
-	}
-
-	.page-jobindexpage .benefits .three {
-	    color: white;
+		/*background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
+		-webkit-background-size: cover;*/
+		width: 48%;
+		float: left;
+		margin-right: 2%;
+		overflow: hidden;
+		height: 300px;
 	}
 
 	.page-personindexpage main h1 {
@@ -621,7 +657,29 @@
     opacity: 0.5;
 	}
 
+	.page-personindexpage  header nav li a {
+	    color: #424a4f;
+	}
+
+	.page-personindexpage  header nav li a:hover {
+	    color: #ea853a;
+	    transition: all 0.15s ease;
+		border-bottom: 3px solid #ea853a;
+
+	}
+
 	/*Person page*/
+
+	.page-personpage header nav li a {
+	    color: #424a4f;
+	}
+
+	.page-personpage header nav li a:hover {
+	    color: #ea853a;
+	    transition: all 0.15s ease;
+		border-bottom: 3px solid #ea853a;
+
+	}
 
 	.page-personpage main {
 		min-height: 51em;
@@ -750,10 +808,6 @@
 		border-bottom: 3px solid #EA853A;
 	}
 
-	.page-blogpage .body-copy p a:hover{
-		color: #ea853a;
-	}
-
 	/*Footer*/
 
 	footer .container {
@@ -873,6 +927,14 @@
 		width: 50%;
 		max-height: 35em;
 		float: left;
+	}
+
+	.page-jobindexpage main .listing li{
+		float: left;
+		width:48%;
+		margin-right: 2%;
+		min-height: 60px;
+		font-size: 0.8em;
 	}
 
 	.listing p {

@@ -7,7 +7,7 @@
     
     <section class="intro jobs">
 
-
+        <div class="center">
             <h1>{{ self.title }}</h1>
     
           
@@ -24,13 +24,16 @@
             {% endwith %}
 
             {% if self.intro %}
-                <p>{{ self.intro|richtext }}</p>
-            {% endif %}
+                <div class="sign-up">
+                    <p>{{ self.intro|richtext }}</p>
+                    {% endif %}
+                </div>
+        </div>
 
 
     </section>
     
-    <section class="benefits">
+    <section class="benefits clearfix">
 
     <!--
         <ul>
@@ -57,7 +60,8 @@
         {% if self.content_block.all %}
         <ul>
             {% for block in self.content_block.all %}
-            <li class="{{ forloop.counter|apnumber }} {% cycle 'odd' 'even' %} benefit clearfix">
+            <!--<li class="{{ forloop.counter|apnumber }} {% cycle 'odd' 'even' %} benefit clearfix"> --> 
+            <li class="one">
                  <div class="clearfix">
                     <div>
                         {{ block.content|richtext }}
