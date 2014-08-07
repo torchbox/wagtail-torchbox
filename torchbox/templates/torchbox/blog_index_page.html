@@ -6,6 +6,7 @@
         <div class="blog-title">
             <div>
             <h1>{{ self.title }}</h1>
+            <h2>Talking about digital shizzle<h2>
             {# Optional heading appears if filtering by tag #}
             {% if request.GET.tag|length %}
                 <p>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></p>

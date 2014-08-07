@@ -306,8 +306,13 @@ main nav li.active a:after {
 }
 
 .body-copy p a {
-    color: #EA853a;
+        color: #aaa;
+        transition: all 0.15s ease;
 }
+
+.body-copy p a:hover{
+        color: #ea853a;
+    }
 
 .body-copy h1 {
     font-size: 2.5em;
@@ -864,7 +869,7 @@ main nav li.active a:after {
 }
 
 .page-blogindexpage h2 {
-    color: #FF643E;
+    color: #ea853a;
 
 }
 
@@ -1246,6 +1251,10 @@ main .breadcrumb a:hover {
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
 }
+
+    .page-personpage .body-copy p a:hover{
+        color: #ea853a;
+    }
 
     .page-personpage main .breadcrumb {
         margin-top: 2em;

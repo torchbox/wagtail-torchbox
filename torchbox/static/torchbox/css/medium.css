@@ -750,12 +750,6 @@
 		border-bottom: 3px solid #EA853A;
 	}
 
-	.page-blogpage .body-copy p a{
-		color: #aaa;
-		transition: all 0.15s ease;
-	}
-	
-
 	.page-blogpage .body-copy p a:hover{
 		color: #ea853a;
 	}
