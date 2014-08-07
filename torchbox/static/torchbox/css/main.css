@@ -638,11 +638,19 @@ main nav li.active a:after {
 
 .page-jobindexpage .benefits li {
     padding: 2em 2em 1.5em 2em;
+    margin-bottom: -1em;
 }
 
 .page-jobindexpage .intro p {
     font-size: 0.9em;
     margin: 2em 0 0.5em 0;
+}
+
+.benefits{
+    margin: 1em 0 0 0;
+}
+.page-jobindexpage footer{
+    margin: 2em 0 0 0;
 }
 
 .page-jobindexpage .intro p  a{
@@ -705,6 +713,7 @@ main nav li.active a:after {
     font-size: 1.7em;
     margin-bottom: 0.25em;
     font-weight: bold;   
+    line-height: 0.5em;
 }
 
 /*Standard page*/

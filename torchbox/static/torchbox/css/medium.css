@@ -59,9 +59,9 @@
 	}
 
 	header nav li a:hover {
-		color: #434a4f;
+		color: #EA853a;
 		transition: all 0.15s ease;
-		border-bottom: 3px solid #434a4f;
+		border-bottom: 3px solid #EA853a;
 	}
 
 	.logo {
@@ -699,6 +699,7 @@
 
 	.page-personpage h1 {
 		margin-bottom: 0;
+		line-height: 1em;
 	}
 
 	.page-personpage .role {
