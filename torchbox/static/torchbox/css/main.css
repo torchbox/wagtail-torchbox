@@ -656,7 +656,7 @@ main nav li.active a:after {
 .page-jobindexpage .intro p  a{
     background-color: #EA853a;
     display: inline-block;
-    padding: 1.2em 1.5em;
+    padding: 1em 1.5em;
     line-height: 1em;
     margin: 0 1em -1em 0;
     color: #fff;
@@ -704,9 +704,11 @@ main nav li.active a:after {
 
 .page-jobindexpage main .benefits h2 {
     font-weight: bold;
-    font-size: 4em;
+    font-size: 2.5em;
     max-width: 20em;
-    margin: 0;
+    margin: 0.7em 0 0.5em 0;
+    padding: 0 0 0 0.8em;
+    line-height: 1em;
 }
 
 .page-jobindexpage .benefits h3 {

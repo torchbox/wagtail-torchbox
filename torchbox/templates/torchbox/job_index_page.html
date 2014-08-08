@@ -13,7 +13,7 @@
           
             {% with self.jobs.all as jobs %}
                 {% if jobs %}
-                    <ul class="listing">
+                    <ul class="listing clearfix">
                         {% for job in jobs %}
                             <li>
                                 <a href="{% pageurl job %}">{{ job.title }}</a>
@@ -34,6 +34,9 @@
     </section>
     
     <section class="benefits clearfix">
+        <div class="center">
+            <h2>Working at Torchbox</h2>
+        </div>
 
     <!--
         <ul>

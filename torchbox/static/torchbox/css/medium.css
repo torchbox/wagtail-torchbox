@@ -559,6 +559,7 @@
 		max-width: 96em;
 		margin: 0 auto;
 		font-size: 5em;
+		padding-bottom: 0.3em;
 	}
 
 	.page-jobindexpage .intro p {
@@ -581,7 +582,7 @@
 	
 	.benefits{
 		max-width: 96em;
-		margin: 0 auto;
+		margin: 3em auto 0 auto;
 	}
 
 	.page-jobindexpage .benefits li {
@@ -596,13 +597,23 @@
     	border-top: 1px solid #fff;   
     	border-top: 1px solid rgba(255,255,255,0.2);
 	} 
+	
+	.page-jobindexpage main .benefits h2 {
+    font-size: 4em;
+    padding: 0;
+    margin: 0 0 0.8em 0;
+	}
+
+	.page-jobindexpage .intro p a {
+		padding: 1.2em 1.5em;
+	}
 
 	.page-jobindexpage .rich-text p{
 		clear: both;
 	}
 
 	.sign-up{
-		margin: 13em auto 1em auto;
+		margin: 0.5em auto 1em auto;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -622,7 +633,7 @@
 	}
 
 	.page-jobindexpage footer {
-	    margin: 4em 0 0 0;
+	    margin: -1em 0 0 0;
 	}
 
 	.page-jobindexpage .center {
@@ -636,9 +647,17 @@
 		-webkit-background-size: cover;*/
 		width: 48%;
 		float: left;
-		margin-right: 2%;
-		overflow: hidden;
-		height: 300px;
+		margin: 2% 2%  0 0;
+		height: 200px;
+		padding: 0 0 0 4em;
+		border-top: none;
+	}
+
+
+	.page-jobindexpage header nav li a:hover {
+		color: #424a4f;
+		transition: all 0.15s ease;
+		border-bottom: 3px solid #424a4f;
 	}
 
 	.page-personindexpage main h1 {
