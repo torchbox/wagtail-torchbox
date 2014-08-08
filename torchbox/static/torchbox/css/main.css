@@ -718,6 +718,31 @@ main nav li.active a:after {
     line-height: 0.5em;
 }
 
+    .page-jobindexpage  img.scale {
+        display: block;
+        margin: 0;
+        min-width: 100%;
+        height: 200px;
+        float: right;
+        width: auto\9;
+        -ms-interpolation-mode: bicubic;
+    }
+
+    .page-jobindexpage  img {
+        width: auto;
+    }
+
+    .page-jobindexpage  .crop-height {
+        max-height: 15em;
+        overflow: hidden;
+    }
+
+.page-jobindexpage .img-wrapper {
+width: 100%;
+margin: 0;
+text-align: center;
+}
+
 /*Standard page*/
 
 .page-standardpage main {

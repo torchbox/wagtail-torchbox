@@ -602,6 +602,7 @@
     font-size: 4em;
     padding: 0;
     margin: 0 0 0.8em 0;
+    
 	}
 
 	.page-jobindexpage .intro p a {
@@ -664,6 +665,11 @@
 	    font-size: 5em;
 	}
 
+   .page-jobindexpage  .crop-height {
+        max-height: 35em;
+        overflow: hidden;
+    }
+
 	/*People index*/
 
 	.grid.people-list li {
@@ -707,6 +713,7 @@
 
 	.page-personpage main .container {
 		padding: 0;	
+		margin: 0 auto;
 	}
 
 	.page-personpage img {
