@@ -605,13 +605,13 @@ main nav li.active a:after {
     font-size: 3em;
     margin-top: 0.25em;
     margin-bottom: 0.25em;
-    color: white;
+    color: #424a4f;
     font-family: "proxima-nova";
 }
 
 .page-jobindexpage main .jobs {
     margin-top: -18.5em; 
-    background-color: #ea853a;
+    background-color: #DAD7D7;
     color: #222;
     -webkit-font-smoothing: antialiased;
     padding: 19.5em 2em 1em 2em;
@@ -623,7 +623,7 @@ main nav li.active a:after {
 
 
 .page-jobindexpage main .jobs a {
-    color: #fff;
+    color: #424a4f;
     padding: 0.5em 0;
 }
 
@@ -637,8 +637,8 @@ main nav li.active a:after {
 } */
 
 .page-jobindexpage main .listing li:first-child a {
-    border-top: 1px solid #fff;   
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid #424a4f;   
+    border-top: 1px solid #424a4f;
 } 
 
 .page-jobindexpage .benefits li {
@@ -659,13 +659,13 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .intro p  a{
-    background-color: #EA853a;
+    background-color: #424a4f;
     display: inline-block;
     padding: 1em 1.5em;
     line-height: 1em;
     margin: 0 1em -1em 0;
     color: #fff;
-    border: solid 1px #fff;
+    border: solid 1px #424a4f;
     border-radius: 2px;
     min-width: 235px;
     height: 45px;
@@ -675,7 +675,7 @@ main nav li.active a:after {
 
     .page-jobindexpage .intro p {
         clear: both;
-        color: #fff;
+        color: #424a4f;
 
     }
 
@@ -686,7 +686,7 @@ main nav li.active a:after {
 
 .page-jobindexpage main .listing a {
     font-size: 1.2em;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid #424a4f;
     transition: all 0.2s ease;
     line-height: 1.3;
 }

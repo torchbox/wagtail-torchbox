@@ -261,7 +261,7 @@
 	}
 
 	.page-workindexpage main ul a {
-	    background-color: rgba(0,0,0,0.5);
+	    background-color: rgba(0,0,0,0);
 	}
 
 	.page-workindexpage main ul a:hover {
@@ -271,12 +271,12 @@
 
 
 	.page-workindexpage main .listing div {
-	    background: rgba(0,0,0,0);
+	    background: rgba(66,74,79,0.9) ;
 	    padding: 2.5em;
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(66,74,79,0.9);
+	    background: rgba(234,133,58,0.8);
 	}
 
 	.page-workindexpage main ul li {
@@ -560,6 +560,7 @@
 		margin: 0 auto;
 		font-size: 5em;
 		padding-bottom: 0.3em;
+		color: #424a4f;
 	}
 
 	.page-jobindexpage .intro p {
@@ -593,16 +594,14 @@
 	   	display: block;
 	}
 
-	.page-jobindexpage main .listing li:nth-child(2) a {
-    	border-top: 1px solid #fff;   
-    	border-top: 1px solid rgba(255,255,255,0.2);
+	.page-jobindexpage main .listing li:nth-child(2) a { 
+    	border-top: 1px solid #424a4f;
 	} 
 	
 	.page-jobindexpage main .benefits h2 {
     font-size: 4em;
     padding: 0;
     margin: 0 0 0.8em 0;
-    color: #ea853a;
 	}
 
 	.page-jobindexpage .intro p a {
@@ -640,7 +639,7 @@
 	.page-jobindexpage .center {
 		max-width: 96em;
 		margin: 0 auto;
-		padding: 0 0 0 4em;
+		padding: 2em 0 1em 4em;
 	}
 
 	.page-jobindexpage .benefits .one {
