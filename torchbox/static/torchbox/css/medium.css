@@ -1,7 +1,7 @@
 @import url("http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css");
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,900,100,200,300,500,700,600,800);
 
-@media only screen and (min-width: 36em) {
+@media only screen and (min-width: 45em) {
 
 	html {
 		margin:0;
@@ -118,6 +118,7 @@
 
 	.page-homepage .hero h2 {
 		font-size: 5em;
+		text-align: center;
 	}
 
 	.page-homepage .work {
@@ -265,7 +266,7 @@
 	}
 
 	.page-workindexpage main ul a:hover {
-	    background-color: rgba(0,0,0,0);
+	    background-color: rgba(66,74,79,0.8);
 	    cursor: pointer;
 	}
 
@@ -276,7 +277,7 @@
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(234,133,58,0.8);
+	    background: rgba(234,133,58,0);
 	}
 
 	.page-workindexpage main ul li {
@@ -288,7 +289,6 @@
     width: 100%;
     max-height: 35em;
 	}
-
 
 	/*Index pages*/
 
@@ -556,11 +556,11 @@
 	}
 
 	.page-jobindexpage h1 {
+		margin:-2em auto 0.5em auto;
 		max-width: 96em;
-		margin: 0 auto;
 		font-size: 5em;
 		padding-bottom: 0.3em;
-		color: #424a4f;
+		color: #fff;
 	}
 
 	.page-jobindexpage .intro p {
@@ -595,7 +595,7 @@
 	}
 
 	.page-jobindexpage main .listing li:nth-child(2) a { 
-    	border-top: 1px solid #424a4f;
+    	border-top: none;
 	} 
 	
 	.page-jobindexpage main .benefits h2 {
@@ -665,10 +665,20 @@
 	}
 
    .page-jobindexpage  .crop-height {
+   		display: block;
         max-height: 35em;
         overflow: hidden;
         margin-top: -10em;
     }
+
+    .page-jobindexpage img.scale {
+		display: block;
+		margin: 0;
+		min-width: 100%;
+		float: right;
+		width: auto\9;
+		-ms-interpolation-mode: bicubic;
+	}
 
 	/*People index*/
 
@@ -936,7 +946,7 @@
     }
 }
 
- @media only screen and (min-width: 1150px) {
+ @media only screen and (min-width: 1250px) {
 	.page-workindexpage main ul li {
 		 -webkit-background-size: cover;
 		-moz-background-size: cover;
@@ -945,6 +955,10 @@
 		width: 50%;
 		max-height: 35em;
 		float: left;
+	}
+
+	    	.page-jobindexpage main .listing li:nth-child(2) a {
+		border-top: 1px solid #424a4f;
 	}
 
 	.page-jobindexpage main .listing li{
