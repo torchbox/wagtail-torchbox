@@ -261,7 +261,7 @@
 	}
 
 	.page-workindexpage main ul a {
-	    background-color: rgba(0,0,0,0.6);
+	    background-color: rgba(0,0,0,0.5);
 	}
 
 	.page-workindexpage main ul a:hover {
@@ -276,7 +276,7 @@
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(0,0,0,0.8);
+	    background: rgba(66,74,79,0.9);
 	}
 
 	.page-workindexpage main ul li {
