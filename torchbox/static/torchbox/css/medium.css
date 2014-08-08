@@ -602,7 +602,7 @@
     font-size: 4em;
     padding: 0;
     margin: 0 0 0.8em 0;
-    
+    color: #ea853a;
 	}
 
 	.page-jobindexpage .intro p a {
@@ -656,9 +656,9 @@
 
 
 	.page-jobindexpage header nav li a:hover {
-		color: #424a4f;
+		color: #ea853a;
 		transition: all 0.15s ease;
-		border-bottom: 3px solid #424a4f;
+		border-bottom: 3px solid #ea853a;
 	}
 
 	.page-personindexpage main h1 {
@@ -668,6 +668,7 @@
    .page-jobindexpage  .crop-height {
         max-height: 35em;
         overflow: hidden;
+        margin-top: -10em;
     }
 
 	/*People index*/
@@ -754,15 +755,6 @@
 
 	header{
 	background-color: transparent;
-	}
-
-	header nav li a {
-    display: block;
-    padding: 0;
-    margin:0.5em 0.5em;
-    color: #fff;
-    font-size: 1.1em;
-    font-weight: 600;
 	}
 
 	.page-workindexpage header nav li a {

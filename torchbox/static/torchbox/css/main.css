@@ -627,6 +627,11 @@ main nav li.active a:after {
     padding: 0.5em 0;
 }
 
+.page-jobindexpage .logo{
+    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background-size: auto 3em;
+}
+
 /*.page-jobindexpage main .jobs > div {
     max-width: 48em;
 } */
@@ -722,7 +727,7 @@ main nav li.active a:after {
         display: block;
         margin: 0;
         min-width: 100%;
-        height: 200px;
+        height: 600px;
         float: right;
         width: auto\9;
         -ms-interpolation-mode: bicubic;
@@ -733,8 +738,9 @@ main nav li.active a:after {
     }
 
     .page-jobindexpage  .crop-height {
-        max-height: 15em;
+        max-height: 31em;
         overflow: hidden;
+        margin-top: -19em;
     }
 
 .page-jobindexpage .img-wrapper {
