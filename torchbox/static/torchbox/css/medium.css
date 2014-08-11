@@ -73,10 +73,21 @@
 
 	/*Homepage*/
 
+	.page-homepage .author .avatar {
+    display: block;
+	} 
+
+	.author {
+	    border-top: 1px dotted #ccc;
+	    border-top: 1px dotted rgba(0,0,0,0.2);
+	    padding: 1em 0em;
+	    margin-bottom: 2em;
+	}
+
 	.page-homepage .logo {
     background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 3em;
-}
+	}
 
 	.page-homepage .hero {
     padding: 6em 2em;
@@ -86,7 +97,7 @@
     top:-3em;
     margin-bottom: -3em;
     -webkit-background-size: cover;
-}
+	}
 
 	.page-homepage header {
     position:relative;
@@ -164,6 +175,10 @@
 	}
 
 	/*Standard page (we're torchbox) */
+
+	.page-standardpage .were-tbx {
+    	padding: 8.5em 2em 2em 2em;
+	}
 
 	.page-standardpage .were-tbx {
 	    margin-top: 0em;
