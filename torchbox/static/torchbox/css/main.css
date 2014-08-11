@@ -445,7 +445,23 @@ main nav li.active a:after {
 }
 
 .page-homepage .hero .button {
-    background-color: #222;
+    background-color: transparent;
+    display: inline-block;
+    padding: 1em 1.5em;
+    line-height: 1em;
+    margin: 0 1em 1em 0;
+    color: #93DA9F;
+    border: solid 1px #93DA9F;
+    border-radius: 2px;
+    min-width: 200px;
+    text-align: center;
+    float: left;
+}
+
+.page-homepage .hero .button:hover {
+    background-color: #93DA9F;
+    color: #5b6265;
+    border: solid 1px #93DA9F;
 }
 
 .page-homepage .hiring {
@@ -519,13 +535,25 @@ main nav li.active a:after {
      color: #EA853a;
  }   
 
+ .page-homepage .container {
+padding: 0 1em;
+overflow: hidden;
+}
+
 .page-homepage .hero h2 {
-        font-size: 2.5em;
-        line-height: 1.1;
-        font-weight: bold;
-        margin:0 auto 0.5em auto;
-        color: #ea853a;
+        text-align: center;
+        margin: 0 auto 1em 0;
+        max-width: 26em;
+        text-align: left;
+        font-size: 1.8em;
+        line-height: 1.2em;
+        color: #93DA9F;
     }
+
+.page-homepage .menu-button {
+        background-color: #93DA9F;
+        color: #fff;
+        }
 
 .page-homepage h2 a {
     color: #222;

@@ -111,14 +111,19 @@
 		right: 2em;
 		text-align: center;
 	}
+
+	.page-homepage .hero h2 {
+        text-align: center;
+        margin: 0 auto 1em 0;
+        max-width: 26em;
+        text-align: left;
+        font-size: 3em;
+        line-height: 1.2em;
+        color: #93DA9F;
+    }
 	
 	.page-homepage .hero a {
 		padding:1.25em;
-	}
-
-	.page-homepage .hero h2 {
-		font-size: 5em;
-		text-align: center;
 	}
 
 	.page-homepage .work {

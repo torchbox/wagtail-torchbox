@@ -26,8 +26,11 @@
 
 	.page-homepage .hero h2 {
 		text-align: center;
-		margin: 0 auto;
-		max-width: 96em;
+		max-width: 26em;
+		text-align: left;
+		font-size: 3em;
+		line-height: 1.2em;
+		color: #93DA9F;
 	}
 
 
