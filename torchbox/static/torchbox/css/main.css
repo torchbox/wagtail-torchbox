@@ -415,7 +415,7 @@ main nav li.active a:after {
 
 .page-homepage .menu-button:hover {
     background-color: #fff;
-    color: rgba (67,74,79,0.8);
+    color: rgba(67,74,79,0.8);
     transition: all 0.2s ease;
 }
 
@@ -777,6 +777,12 @@ text-align: center;
 
 /*Standard page*/
 
+.page-standardpage .listing p {
+    float: left;
+    display: block;
+    margin-top: -0.5em;
+}
+
 .page-standardpage main {
     padding: 0;
 }
@@ -821,8 +827,8 @@ text-align: center;
 }
 
 .page-standardpage .were-tbx-2 h3 {
-    font-size: 1em;
-    font-weight: normal;
+    font-size: 1.5em;
+    font-weight: bold;
     line-height: 1.5;
 }
 
@@ -834,10 +840,6 @@ text-align: center;
 
 .page-standardpage .listing li img {
     display: block;
-}
-
-.page-standardpage .listing li p {
-    float: left;
 }
 
 

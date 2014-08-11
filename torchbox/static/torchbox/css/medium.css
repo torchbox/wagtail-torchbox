@@ -210,9 +210,9 @@
 	}
 
 	.page-standardpage .were-tbx-2 h3 {
-	    font-size: 1.7em;
-	    font-weight: normal;
-	    color: #424a4f;
+		font-size: 2.3em;
+		font-weight: bold;
+		color: #424a4f;
 	}
 
 	.page-standardpage .were-tbx-2 li {
@@ -223,6 +223,14 @@
 	.page-standardpage .were-tbx-2 li {
 	    border-top: none;
 	    padding: 0;
+	    float: left;
+	    width: 47%;
+	    margin-right: 1.5%;
+	    height:150px;
+	}
+
+	.page-standardpage .grid li:nth-child(3n+3) {
+		margin-right: 1.5%;
 	}
 
 	.page-standardpage .were-tbx-2 .4even div h2 {
@@ -230,10 +238,6 @@
 		font-weight: bold;
 		color: #fff;
 		}
-
-	.page-standardpage .were-tbx-2 li:nth-child(3) div {
-		max-width: 60%;
-	}
 
 	.page-standardpage  header nav li a {
 	    color: #424a4f;
@@ -243,7 +247,9 @@
 	    color: #ea853a;
 	    transition: all 0.15s ease;
 		border-bottom: 3px solid #ea853a;
-
+	}
+	.page-standardpage .grid li:nth-child(3n+4) {
+	 clear: none; 
 	}
 
 
