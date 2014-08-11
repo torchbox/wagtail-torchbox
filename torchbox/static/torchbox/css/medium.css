@@ -166,11 +166,7 @@
 	/*Standard page (we're torchbox) */
 
 	.page-standardpage .were-tbx {
-	    margin-top: -8.5em;
-	    padding-top: 24em;
-	    padding-left: 4em;
-	    padding-right: 4em;
-	    padding-bottom: 4em;
+	    margin-top: 0em;
 	}
 
 
@@ -195,42 +191,30 @@
 	.page-standardpage .were-tbx-2 h2 {
 	    font-size: 3em;
 	    font-weight: bold;
+	    color: #424a4f;
 	}
 
 	.page-standardpage .were-tbx-2 h3 {
 	    font-size: 1.7em;
 	    font-weight: normal;
+	    color: #424a4f;
 	}
 
 	.page-standardpage .were-tbx-2 li {
-	    padding: 12em 4em; 
+	    padding: 0; 
 	    margin: 0;
-	    border-top: 1px solid rgba(0, 0, 0, 0.1);
 	}
 
-	.page-standardpage .were-tbx-2 li:first-child {
+	.page-standardpage .were-tbx-2 li {
 	    border-top: none;
+	    padding: 0;
 	}
 
-
-	.page-standardpage .were-tbx-2 li:nth-child(2) {
-		background: url("/static/torchbox/images/geeks.jpg") no-repeat #434a4f;
-		-webkit-background-size: cover;
-		color: white;
-	}
-
-	.page-standardpage .were-tbx-2 li:nth-child(2) div {
-		float: right;
-		max-width: 35%;
-	}
-
-
-	.page-standardpage .were-tbx-2 li:nth-child(4) {
-		background: #222;
-		color: white;
-		padding: 2em 4em 1em 4em;
-		text-align: center;
-	}
+	.page-standardpage .were-tbx-2 .4even div h2 {
+		font-size: 3em;
+		font-weight: bold;
+		color: #fff;
+		}
 
 	.page-standardpage .were-tbx-2 li:nth-child(3) div {
 		max-width: 60%;
@@ -282,7 +266,7 @@
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(234,133,58,0);
+	    background: rgba(234,133,58,1);
 	}
 
 	.page-workindexpage main ul li {
@@ -404,6 +388,59 @@
 
 
 	/*Work page*/
+
+	.next{
+    position: fixed;
+    top: 660px;
+    right: 0;
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    background-color: #434a4f;
+    z-index: 200;
+    color: #fff;
+    border: solid 1px #434a4f;
+    border-radius: 2px;
+    min-width: 110px;
+    text-align: center;
+    overflow: hidden;
+    margin-right: -75px;
+    transition: 0.2s ease;
+    opacity: 0.8;
+}
+
+.next:hover{
+    margin-right: 0px;
+    opacity: 1;
+}
+
+.previous{
+    position: fixed;
+    top: 660px;
+    left: 0;
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    background-color: #434a4f;
+    z-index: 200;
+    color: #fff;
+    border: solid 1px #434a4f;
+    border-radius: 2px;
+    min-width: 140px;
+    text-align: center;
+    overflow: hidden;
+    margin-left: -105px;
+    margin-right: 0;
+    transition: 0.2s ease;
+    opacity: 0.8;
+}
+
+.previous:hover{
+    margin-left: 0px;
+    opacity: 1;
+    margin-right: 0;
+}
+
 	.bleed {
 	margin: 1em 0 0 0;
 	}
@@ -414,6 +451,10 @@
     margin:0.5em 0.5em;
     color: white;
     font-size: 1.1em;
+	}
+
+	.author {
+    	margin-top: 1.5em;
 	}
 
 	.page-workpage	header nav li a:hover {
@@ -777,17 +818,11 @@
 	}
 
 	.page-workindexpage header nav li a {
-    display: block;
-    padding: 0;
-    margin:0.5em 0.5em;
     color: #434a4f;
-    font-size: 1.1em;
-    font-weight: 600;
 	}
 
 
 	.page-workindexpage header nav li a:hover {
-    font-weight: 600;
     color: #EA853a;
 	transition: all 0.15s ease;
 	border-bottom: 3px solid #EA853a;

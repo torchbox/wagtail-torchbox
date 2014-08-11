@@ -100,6 +100,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.active{
+    color: purple !important;
+}
+
 html {
     /*background: url("/static/torchbox/images/bg.png") fixed;*/
     font-family: 'Open Sans', sans-serif;
@@ -487,7 +491,7 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a {
-    background-color: #93DA9F;
+    background-color: #EA853a;
     padding: 0.8em 1em;
     line-height: 1em;
     color: #fff;
@@ -501,7 +505,7 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a:hover {
-    background-color: #66c666;
+    background-color: #ffa624;
 }
 
 
@@ -1208,6 +1212,47 @@ main .breadcrumb a:hover {
     transition: background-color 0.2s ease;
 }
 
+.next{
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    z-index: 200;
+    color: #434a4f;
+    border: solid 1px #434a4f;
+    border-radius: 2px;
+    min-width: 110px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.2s ease;
+}
+
+.next:hover{
+    margin-right: 0px;
+    opacity: 1;
+}
+
+.previous{
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    z-index: 200;
+    color: #434a4f;
+    border: solid 1px #434a4f;
+    border-radius: 2px;
+    min-width: 140px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.2s ease;
+       margin: 0 9%;
+}
+
+.previous:hover{
+    margin-left: 0px;
+    opacity: 1;
+    margin: 0 4%;
+}
+
+
 .article-meta {
     margin-bottom: 1em;
     padding-bottom: 1em;
@@ -1268,7 +1313,6 @@ main .breadcrumb a:hover {
     border-top: 1px dotted #ccc;
     border-top: 1px dotted rgba(0,0,0,0.2);
     padding: 1em 0em;
-    margin-top: 1.5em;
     margin-bottom: 2em;
 }
 
