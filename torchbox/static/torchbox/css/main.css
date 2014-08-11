@@ -586,12 +586,6 @@ main nav li.active a:after {
 
 /*Jobs index*/
 
-.page-jobindexpage .menu-button:hover {
-    background-color: #fff;
-    color: rgba(0,0,0,0.8);
-    transition: all 0.2s ease;
-}
-
 
     .sign-up{
         clear: both;
@@ -628,7 +622,7 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .logo{
-    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 3em;
 }
 

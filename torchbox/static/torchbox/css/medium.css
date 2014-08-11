@@ -632,6 +632,11 @@
 		max-width: 30em;
 	}
 
+	.page-jobindexpage .logo{
+    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background-size: auto 3em;
+}
+
 	.page-jobindexpage footer {
 	    margin: -1em 0 0 0;
 	}
