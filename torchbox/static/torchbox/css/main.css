@@ -278,14 +278,14 @@ main nav li.active a:after {
 }
 
 .page-homepage .bleed {
-    margin: 0em -1em 3em -1em;
-    background: rgba(0,0,0,0.8);
+    margin: 0.3em -1em 3em -1em;
+    background: rgba(67,74,79,0.8);
     color: white;
 }
 
  .bleed {
-    margin: 0 -1em 0 -1em;
-    background: rgba(0,0,0,0.8);
+    margin: 0.3em -1em 0 -1em;
+    background: rgba(67,74,79,1);
     color: white;
     overflow: hidden;
 }
@@ -393,8 +393,8 @@ main nav li.active a:after {
     top: 0;
     background-color: #434a4f;
     line-height: 1em;
-    padding: 0.5em;
-    width:2em;
+    padding: 0.6em;
+    width:2.5em;
     font-size: 1.5em;
     text-align: center;
     color: #fff;
@@ -408,9 +408,14 @@ main nav li.active a:after {
 
 /*Page home*/
 
+.page-homepage .blog .listing p {
+    display: block;
+    margin-top: -0.3em;
+}
+
 .page-homepage .menu-button:hover {
     background-color: #fff;
-    color: rgba(0,0,0,0.8);
+    color: rgba(67,74,79,0.8);
     transition: all 0.2s ease;
 }
 
@@ -603,7 +608,7 @@ overflow: hidden;
 }
 .page-homepage .clients li {
     width: 31.33%;
-    height: 9em;
+    height: 6em;
     float: left;
     padding: 2em 1%;
     overflow: hidden;
@@ -639,7 +644,7 @@ overflow: hidden;
 }
 
 .page-jobindexpage main .jobs {
-    margin-top: -18.5em; 
+    margin-top: -19.5em; 
     background-color: #f3f4f6;;
     color: #222;
     -webkit-font-smoothing: antialiased;
@@ -658,16 +663,15 @@ overflow: hidden;
 
 .page-jobindexpage .logo{
     background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
-    background-size: auto 3em;
+    background-size: auto 2em;
 }
 
 /*.page-jobindexpage main .jobs > div {
     max-width: 48em;
 } */
 
-.page-jobindexpage main .listing li:first-child a {
-    border-top: 1px solid #424a4f;   
-    border-top: 1px solid #424a4f;
+.page-jobindexpage main .listing li:first-child a {  
+    border-top: 1px solid #a9a9a9;
 } 
 
 .page-jobindexpage .benefits li {
@@ -696,9 +700,10 @@ overflow: hidden;
     color: #fff;
     border: solid 1px #424a4f;
     border-radius: 2px;
-    min-width: 235px;
-    height: 45px;
+    min-width: 285px;
+    height: 55px;
     text-align: center;
+    font-size: 1.2em;
     transition: all 0.2s ease;
 }
 
@@ -711,11 +716,12 @@ overflow: hidden;
 .page-jobindexpage .intro p  a:hover{
     background-color: rgba(0,0,0,0.1);
     border-radius: 2px;
+    color: #424a4f;
 }
 
 .page-jobindexpage main .listing a {
     font-size: 1.2em;
-    border-bottom: 1px solid #424a4f;
+    border-bottom: 1px solid #a9a9a9;
     transition: all 0.2s ease;
     line-height: 1.3;
 }
@@ -758,6 +764,7 @@ overflow: hidden;
 
     .page-jobindexpage  img {
         display: block;
+        width: 62px;
     }
 
     .page-jobindexpage  .crop-height {
@@ -771,6 +778,12 @@ text-align: center;
 }
 
 /*Standard page*/
+
+.page-standardpage .listing p {
+    float: left;
+    display: block;
+    margin-top: -0.5em;
+}
 
 .page-standardpage main {
     padding: 0;
@@ -810,30 +823,25 @@ text-align: center;
 
 .page-standardpage .were-tbx {
     margin-top: -8.5em;
-    padding: 8.5em 2em 2em 2em;
+    padding: 8.5em 2em 0 1em;
     -webkit-font-smoothing: antialiased;
     color: #000;
 }
 
 .page-standardpage .were-tbx-2 h3 {
-    font-size: 1em;
-    font-weight: normal;
+    font-size: 1.5em;
+    font-weight: bold;
     line-height: 1.5;
 }
 
 .page-standardpage .were-tbx-2 li {
     display: block;
     overflow: hidden;
-    width: 100%; 
-    padding: 0em 2em;  
+    width: 100%;  
 }
 
 .page-standardpage .listing li img {
     display: block;
-}
-
-.page-standardpage .listing li p {
-    float: left;
 }
 
 
@@ -1124,7 +1132,7 @@ text-align: center;
     padding: 1.5em;
     max-width: 36em;
     transition: background-color 0.3s ease;
-    background: rgba(0,0,0,0.8);
+    background: rgba(67,74,79,0.5);
 }
 
 
@@ -1243,13 +1251,12 @@ main .breadcrumb a:hover {
     text-align: center;
     overflow: hidden;
     transition: 0.2s ease;
-       margin: 0 9%;
+    margin: 0 9%;
 }
 
 .previous:hover{
-    margin-left: 0px;
+    margin: 0 9%;
     opacity: 1;
-    margin: 0 4%;
 }
 
 
@@ -1310,10 +1317,8 @@ main .breadcrumb a:hover {
 
 
 .author {
-    border-top: 1px dotted #ccc;
-    border-top: 1px dotted rgba(0,0,0,0.2);
-    padding: 1em 0em;
-    margin-bottom: 2em;
+    padding: 0em 0em;
+    margin: -0.5em 0 2em 0;
 }
 
 .author a {
@@ -1339,6 +1344,7 @@ main .breadcrumb a:hover {
 }
 
 .page-homepage .author .avatar {
+    display: none;
     width: 4em;
     float: left;
     margin-right: 1em;
@@ -1467,6 +1473,19 @@ main .breadcrumb a:hover {
     background-color: #EA853a;
     display: block;
 }
+
+.page-personpage h1 {
+    font-size: 2.5em;
+    line-height: 1em;
+    font-weight: bold;
+    color: #424a4f;
+}
+
+.page-personpage .title{
+    padding: 0 1em;
+    margin-top: -3em;
+}
+
 /*
 .grid.people-list li:nth-child(3n+2) a:hover {
     background-color: #627928;

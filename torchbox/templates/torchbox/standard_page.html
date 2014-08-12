@@ -20,7 +20,7 @@
         {% if self.content_block.all %}
         <ul class="listing grid clearfix">
             {% for block in self.content_block.all %}
-            <li class="{{ forloop.counter }} {% cycle 'odd' 'even' %}">   
+            <li class=>   
                 <div>             
                 {{ block.content|richtext }}
                 </div>

@@ -73,10 +73,21 @@
 
 	/*Homepage*/
 
+	.page-homepage .author .avatar {
+    display: block;
+	} 
+
+	.author {
+	    border-top: 1px dotted #ccc;
+	    border-top: 1px dotted rgba(0,0,0,0.2);
+	    padding: 1em 0em;
+	    margin-bottom: 2em;
+	}
+
 	.page-homepage .logo {
     background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 3em;
-}
+	}
 
 	.page-homepage .hero {
     padding: 6em 2em;
@@ -86,7 +97,7 @@
     top:-3em;
     margin-bottom: -3em;
     -webkit-background-size: cover;
-}
+	}
 
 	.page-homepage header {
     position:relative;
@@ -166,6 +177,10 @@
 	/*Standard page (we're torchbox) */
 
 	.page-standardpage .were-tbx {
+    	padding: 8.5em 2em 2em 2em;
+	}
+
+	.page-standardpage .were-tbx {
 	    margin-top: 0em;
 	}
 
@@ -195,9 +210,9 @@
 	}
 
 	.page-standardpage .were-tbx-2 h3 {
-	    font-size: 1.7em;
-	    font-weight: normal;
-	    color: #424a4f;
+		font-size: 2.3em;
+		font-weight: bold;
+		color: #424a4f;
 	}
 
 	.page-standardpage .were-tbx-2 li {
@@ -208,6 +223,14 @@
 	.page-standardpage .were-tbx-2 li {
 	    border-top: none;
 	    padding: 0;
+	    float: left;
+	    width: 47%;
+	    margin-right: 1.5%;
+	    height:150px;
+	}
+
+	.page-standardpage .grid li:nth-child(3n+3) {
+		margin-right: 1.5%;
 	}
 
 	.page-standardpage .were-tbx-2 .4even div h2 {
@@ -215,10 +238,6 @@
 		font-weight: bold;
 		color: #fff;
 		}
-
-	.page-standardpage .were-tbx-2 li:nth-child(3) div {
-		max-width: 60%;
-	}
 
 	.page-standardpage  header nav li a {
 	    color: #424a4f;
@@ -228,7 +247,9 @@
 	    color: #ea853a;
 	    transition: all 0.15s ease;
 		border-bottom: 3px solid #ea853a;
-
+	}
+	.page-standardpage .grid li:nth-child(3n+4) {
+	 clear: none; 
 	}
 
 
@@ -255,13 +276,13 @@
 	}
 
 	.page-workindexpage main ul a:hover {
-	    background-color: rgba(66,74,79,0.8);
+	    background-color: rgba(0,0,0,0.8);
 	    cursor: pointer;
 	}
 
 
 	.page-workindexpage main .listing div {
-	    background: rgba(66,74,79,0.9) ;
+	    background: rgba(0,0,0,0.7) ;
 	    padding: 2.5em;
 	}
 
@@ -311,7 +332,17 @@
 		float: right;
 		width: 8em !important;
 		height: auto;
-	    margin: -2em 0 auto 1em;
+	    margin:auto;
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	}
+
+	.centertall{
+		width: 8em;
+		height: 8em;
+		float: right;
+		margin-left: 1em;
 	}
 	
 	.page-blogindexpage .pagination {
@@ -442,7 +473,7 @@
 }
 
 	.bleed {
-	margin: 1em 0 0 0;
+	margin: 1em 0.5em 0 0;
 	}
 
 	.page-workpage	header nav li a {
@@ -454,7 +485,7 @@
 	}
 
 	.author {
-    	margin-top: 1.5em;
+    	margin:1.5em auto 0 auto;
 	}
 
 	.page-workpage	header nav li a:hover {
@@ -650,6 +681,11 @@
     margin: 0 0 0.8em 0;
 	}
 
+	.icon{
+		margin: 0 1em;
+		float: left;
+	}
+
 	.page-jobindexpage .intro p a {
 		padding: 1.2em 1.5em;
 	}
@@ -676,6 +712,7 @@
 
 	.page-jobindexpage .benefits li > div > div {
 		max-width: 30em;
+		float: left;
 	}
 
 	.page-jobindexpage .logo{
@@ -761,10 +798,23 @@
 	}
 
 	.page-personpage header nav li a:hover {
-	    color: #ea853a;
+	    color: #fff;
 	    transition: all 0.15s ease;
-		border-bottom: 3px solid #ea853a;
+		border-bottom: 3px solid #fff;
 
+	}
+
+	.page-personpage img {
+		float: right;
+		max-width: 40%;
+		margin-top: 0em;
+	}
+
+	.page-personpage .title {
+		position: relative;
+		margin-top: -19.3em;
+		max-width: 56%;
+		padding: 0;
 	}
 
 	.page-personpage main {
@@ -774,25 +824,28 @@
 
 	.page-personpage main .container {
 		padding: 0;	
-		margin: 0 auto;
-	}
-
-	.page-personpage img {
-		max-width: 960px;
-		margin-left: auto;
-		margin-right: auto;
-		display: block;
+		margin-top: 12em;
 	}
 
 	.page-personpage h1 {
-		margin-bottom: 0;
+		font-size: 4em;
 		line-height: 1em;
+		font-weight: bold;
+		color: #ea853a;
+	}
+
+
+	
+	.holder{
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 0 1em;
 	}
 
 	.page-personpage .role {
 		font-size: 2em;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-		padding-bottom: 0.5em;
+		padding-bottom: 0.3em;
 		margin-bottom: 0.5em;
 	}	
 
@@ -804,7 +857,8 @@
 		background: white;
 		margin-top: -10em;
 		overflow: scroll;
-		padding: 2em 3em;
+		padding: 0em 0 3em 0;
+		margin-left: 0;
 	}
 
 	.bleed {
@@ -984,6 +1038,20 @@
 
     /* Desktop */
 
+  @media only screen and (min-width: 850px) {
+	.page-personpage img {
+		float: right;
+		max-width: 40%;
+		margin-top: -9em;
+	}	
+
+	.page-personpage .title{
+		position: relative;
+		margin-top: -16.3em;
+		max-width: 55%;
+	}
+}
+
  @media only screen and (min-width: 830px) {
 
     .page-workpage .intro .body-copy {
@@ -1002,8 +1070,8 @@
 		float: left;
 	}
 
-	    	.page-jobindexpage main .listing li:nth-child(2) a {
-		border-top: 1px solid #424a4f;
+	.page-jobindexpage main .listing li:nth-child(2) a {
+		border-top: 1px solid #a9a9a9;
 	}
 
 	.page-jobindexpage main .listing li{
@@ -1025,6 +1093,45 @@
 
 	.page-workindexpage main .listing a h2 {
 		font-size: 2.5em;
+	}
+
+
+	.page-personpage main .container {
+		padding: 0;	
+		margin-top: -11em;
+	}
+
+	.page-personpage img {
+		float: right;
+		max-width: 48%;
+		margin-top: -9em;
+		display: block;
+	}
+
+	.page-personpage h1 {
+		color: #ea853a;
+		margin-bottom: 0;
+		line-height: 1em;
+		font-size: 5em;
+		font-weight:bold;
+	}
+
+	.page-personpage .title{
+		position: relative;
+		float: left;
+		margin-top: -26em;
+		width: 48%;
+	}
+
+	.holder{
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 0 1em
+	}
+
+	.page-personpage main .container {
+		padding: 0;	
+		margin-top: -11em;
 	}
 
 }
