@@ -821,7 +821,7 @@ text-align: center;
 
 .page-standardpage .were-tbx {
     margin-top: -8.5em;
-    padding: 8.5em 2em 2em 1em;
+    padding: 8.5em 2em 0 1em;
     -webkit-font-smoothing: antialiased;
     color: #000;
 }
@@ -1249,13 +1249,12 @@ main .breadcrumb a:hover {
     text-align: center;
     overflow: hidden;
     transition: 0.2s ease;
-       margin: 0 9%;
+    margin: 0 9%;
 }
 
 .previous:hover{
-    margin-left: 0px;
+    margin: 0 9%;
     opacity: 1;
-    margin: 0 4%;
 }
 
 
@@ -1472,6 +1471,19 @@ main .breadcrumb a:hover {
     background-color: #EA853a;
     display: block;
 }
+
+.page-personpage h1 {
+    font-size: 2.5em;
+    line-height: 1em;
+    font-weight: bold;
+    color: #424a4f;
+}
+
+.page-personpage .title{
+    padding: 0 1em;
+    margin-top: -3em;
+}
+
 /*
 .grid.people-list li:nth-child(3n+2) a:hover {
     background-color: #627928;

@@ -463,7 +463,7 @@
 }
 
 	.bleed {
-	margin: 1em 0 0 0;
+	margin: 1em 0.5em 0 0;
 	}
 
 	.page-workpage	header nav li a {
@@ -782,10 +782,23 @@
 	}
 
 	.page-personpage header nav li a:hover {
-	    color: #ea853a;
+	    color: #fff;
 	    transition: all 0.15s ease;
-		border-bottom: 3px solid #ea853a;
+		border-bottom: 3px solid #fff;
 
+	}
+
+	.page-personpage img {
+		float: right;
+		max-width: 40%;
+		margin-top: 0em;
+	}
+
+	.page-personpage .title {
+		position: relative;
+		margin-top: -19.3em;
+		max-width: 56%;
+		padding: 0;
 	}
 
 	.page-personpage main {
@@ -795,25 +808,28 @@
 
 	.page-personpage main .container {
 		padding: 0;	
-		margin: 0 auto;
-	}
-
-	.page-personpage img {
-		max-width: 960px;
-		margin-left: auto;
-		margin-right: auto;
-		display: block;
+		margin-top: 12em;
 	}
 
 	.page-personpage h1 {
-		margin-bottom: 0;
+		font-size: 4em;
 		line-height: 1em;
+		font-weight: bold;
+		color: #ea853a;
+	}
+
+
+	
+	.holder{
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 0 1em;
 	}
 
 	.page-personpage .role {
 		font-size: 2em;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-		padding-bottom: 0.5em;
+		padding-bottom: 0.3em;
 		margin-bottom: 0.5em;
 	}	
 
@@ -825,7 +841,8 @@
 		background: white;
 		margin-top: -10em;
 		overflow: scroll;
-		padding: 2em 3em;
+		padding: 0em 0 3em 0;
+		margin-left: 0;
 	}
 
 	.bleed {
@@ -1005,6 +1022,20 @@
 
     /* Desktop */
 
+  @media only screen and (min-width: 850px) {
+	.page-personpage img {
+		float: right;
+		max-width: 40%;
+		margin-top: -9em;
+	}	
+
+	.page-personpage .title{
+		position: relative;
+		margin-top: -16.3em;
+		max-width: 55%;
+	}
+}
+
  @media only screen and (min-width: 830px) {
 
     .page-workpage .intro .body-copy {
@@ -1023,7 +1054,7 @@
 		float: left;
 	}
 
-	    	.page-jobindexpage main .listing li:nth-child(2) a {
+	.page-jobindexpage main .listing li:nth-child(2) a {
 		border-top: 1px solid #424a4f;
 	}
 
@@ -1046,6 +1077,45 @@
 
 	.page-workindexpage main .listing a h2 {
 		font-size: 2.5em;
+	}
+
+
+	.page-personpage main .container {
+		padding: 0;	
+		margin-top: -11em;
+	}
+
+	.page-personpage img {
+		float: right;
+		max-width: 48%;
+		margin-top: -9em;
+		display: block;
+	}
+
+	.page-personpage h1 {
+		color: #ea853a;
+		margin-bottom: 0;
+		line-height: 1em;
+		font-size: 5em;
+		font-weight:bold;
+	}
+
+	.page-personpage .title{
+		position: relative;
+		float: left;
+		margin-top: -26em;
+		width: 48%;
+	}
+
+	.holder{
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 0 1em
+	}
+
+	.page-personpage main .container {
+		padding: 0;	
+		margin-top: -11em;
 	}
 
 }
