@@ -670,9 +670,8 @@ overflow: hidden;
     max-width: 48em;
 } */
 
-.page-jobindexpage main .listing li:first-child a {
-    border-top: 1px solid #424a4f;   
-    border-top: 1px solid #424a4f;
+.page-jobindexpage main .listing li:first-child a {  
+    border-top: 1px solid #a9a9a9;
 } 
 
 .page-jobindexpage .benefits li {
@@ -701,9 +700,10 @@ overflow: hidden;
     color: #fff;
     border: solid 1px #424a4f;
     border-radius: 2px;
-    min-width: 235px;
-    height: 45px;
+    min-width: 285px;
+    height: 55px;
     text-align: center;
+    font-size: 1.2em;
     transition: all 0.2s ease;
 }
 
@@ -716,11 +716,12 @@ overflow: hidden;
 .page-jobindexpage .intro p  a:hover{
     background-color: rgba(0,0,0,0.1);
     border-radius: 2px;
+    color: #424a4f;
 }
 
 .page-jobindexpage main .listing a {
     font-size: 1.2em;
-    border-bottom: 1px solid #424a4f;
+    border-bottom: 1px solid #a9a9a9;
     transition: all 0.2s ease;
     line-height: 1.3;
 }
@@ -763,6 +764,7 @@ overflow: hidden;
 
     .page-jobindexpage  img {
         display: block;
+        width: 62px;
     }
 
     .page-jobindexpage  .crop-height {

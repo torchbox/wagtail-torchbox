@@ -276,13 +276,13 @@
 	}
 
 	.page-workindexpage main ul a:hover {
-	    background-color: rgba(66,74,79,0.8);
+	    background-color: rgba(0,0,0,0.8);
 	    cursor: pointer;
 	}
 
 
 	.page-workindexpage main .listing div {
-	    background: rgba(66,74,79,0.9) ;
+	    background: rgba(0,0,0,0.7) ;
 	    padding: 2.5em;
 	}
 
@@ -681,6 +681,11 @@
     margin: 0 0 0.8em 0;
 	}
 
+	.icon{
+		margin: 0 1em;
+		float: left;
+	}
+
 	.page-jobindexpage .intro p a {
 		padding: 1.2em 1.5em;
 	}
@@ -707,6 +712,7 @@
 
 	.page-jobindexpage .benefits li > div > div {
 		max-width: 30em;
+		float: left;
 	}
 
 	.page-jobindexpage .logo{
@@ -1065,7 +1071,7 @@
 	}
 
 	.page-jobindexpage main .listing li:nth-child(2) a {
-		border-top: 1px solid #424a4f;
+		border-top: 1px solid #a9a9a9;
 	}
 
 	.page-jobindexpage main .listing li{
