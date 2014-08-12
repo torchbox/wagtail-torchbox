@@ -332,7 +332,17 @@
 		float: right;
 		width: 8em !important;
 		height: auto;
-	    margin: -2em 0 auto 1em;
+	    margin:auto;
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	}
+
+	.centertall{
+		width: 8em;
+		height: 8em;
+		float: right;
+		margin-left: 1em;
 	}
 	
 	.page-blogindexpage .pagination {
@@ -475,7 +485,7 @@
 	}
 
 	.author {
-    	margin-top: 1.5em;
+    	margin:1.5em auto 0 auto;
 	}
 
 	.page-workpage	header nav li a:hover {
