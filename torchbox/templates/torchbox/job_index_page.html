@@ -21,7 +21,7 @@
                                 <a href="{% pageurl job %}">
                                     {{ job.title }}
                                     {% if job.location %}
-                                        <p>{{ job.location }}</p>
+                                        <div class="location">{{ job.location }}</div>
                                     {% endif %}
                                 </a>
                             </li>
@@ -75,7 +75,6 @@
                  <div class="clearfix">
 
                     <div class="icon">
-                         <img src="/static/torchbox/images/icons/ethical.png" width="50px" height="50px" alt="">
                     </div>
                     <div>
 

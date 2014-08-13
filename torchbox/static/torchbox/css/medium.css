@@ -641,9 +641,9 @@
 	}
 
 	.page-jobindexpage .intro p {
-		font-size: 0.8em;
+		font-size: 1.1em;
 		padding-top: 1em;
-		margin-bottom: -1em;
+		margin-bottom: -2em;
 	}
 
 	.page-jobindexpage main .listing a {
@@ -682,8 +682,37 @@
 	}
 
 	.icon{
-		margin: 0 1em;
+		display: block;
+		margin: 0em 1em 0 0;
 		float: left;
+		width: 65px;
+		height: 65px;
+		background-repeat: no-repeat;
+		background-image: url("/static/torchbox/images/icons/ethical.png")
+	}
+
+	.one:nth-child(1) .icon {
+		background-image: url("/static/torchbox/images/icons/ethical.png");
+	}
+
+	.one:nth-child(2) .icon {
+		background-image: url("/static/torchbox/images/icons/interesting.png");
+	}
+
+	.one:nth-child(3) .icon {
+		background-image: url("/static/torchbox/images/icons/healthy.png");
+	}
+
+	.one:nth-child(4) .icon {
+		background-image: url("/static/torchbox/images/icons/equipment.png");
+	}
+
+	.one:nth-child(5) .icon {
+		background-image: url("/static/torchbox/images/icons/people.png");
+	}
+
+	.one:nth-child(6) .icon {
+		background-image: url("/static/torchbox/images/icons/salary.png");
 	}
 
 	.page-jobindexpage .intro p a {
@@ -695,7 +724,7 @@
 	}
 
 	.sign-up{
-		margin: 0.5em auto 1em auto;
+		margin: -1em auto 1em auto;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -708,6 +737,7 @@
 
 	.page-jobindexpage .benefits h3 {
 		font-size: 2.5em;
+		line-height: 1em;
 	}
 
 	.page-jobindexpage .benefits li > div > div {
@@ -718,8 +748,10 @@
 	.page-jobindexpage .logo{
     background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 3em;
-}
+	}
 
+
+	
 	.page-jobindexpage footer {
 	    margin: -1em 0 0 0;
 	}
@@ -727,7 +759,7 @@
 	.page-jobindexpage .center {
 		max-width: 96em;
 		margin: 0 auto;
-		padding: 2em 0 1em 4em;
+		padding: 2em 4em 1em 4em;
 	}
 
 	.page-jobindexpage .benefits .one {
@@ -735,12 +767,18 @@
 		-webkit-background-size: cover;*/
 		width: 48%;
 		float: left;
-		margin: 2% 2%  0 0;
-		height: 200px;
+		margin: 2% 2%  3% 0;
 		padding: 0 0 0 4em;
 		border-top: none;
 	}
+	
+	.page-jobindexpage .benefits .one:nth-of-type(odd) {
+		clear: left;
+	}
 
+	.page-jobindexpage .benefits .one:nth-of-type(5) {
+		margin-bottom: 5%;
+	}
 
 	.page-jobindexpage header nav li a:hover {
 		color: #ea853a;

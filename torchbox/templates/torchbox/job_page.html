@@ -9,17 +9,26 @@
     </div>
     <h1>{{ self.title }}</h1>
 
-	{% if self.salary %}
-        {{ self.salary }}
-    {% endif %}
+<div class="info-holder">
 
-    {% if self.location %}
-        {{ self.location }}
-    {% endif %}
+    <div class="info">
+    	{% if self.salary %}
+           <h3> Salary </h3> <p>{{ self.salary }}</p>
+        {% endif %}
+    </div>
+
+    <div class="info">
+        {% if self.location %}
+          <h3> Location </h3>  <p>{{ self.location }}</p>
+        {% endif %}
+    </div>
+
+</div>
 
     {% if self.body %}
         {{ self.body|richtext }}
     {% endif %}
+    
 </section>
 </main>
 {% endblock %}
