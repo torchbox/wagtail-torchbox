@@ -603,8 +603,9 @@ overflow: hidden;
 }
 
 .page-homepage .clients {
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding: 2em 0 2em 1em;
+    margin:0 auto;
+    max-width: 100%;
 }
 .page-homepage .clients li {
     width: 31.33%;
@@ -648,7 +649,7 @@ overflow: hidden;
     background-color: #f3f4f6;;
     color: #222;
     -webkit-font-smoothing: antialiased;
-    padding: 19.5em 2em 1em 2em;
+    padding: 19.5em 2em 3em 2em; 
 }
 
 .page-jobindexpage .richtext{
@@ -662,13 +663,17 @@ overflow: hidden;
 }
 
 .page-jobindexpage .logo{
-    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background: ("url/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
 }
 
 /*.page-jobindexpage main .jobs > div {
     max-width: 48em;
 } */
+
+.icon{ 
+    display: none;
+}
 
 .page-jobindexpage main .listing li:first-child a {  
     border-top: 1px solid #a9a9a9;
@@ -694,7 +699,7 @@ overflow: hidden;
 .page-jobindexpage .intro p  a{
     background-color: #424a4f;
     display: inline-block;
-    padding: 1em 1.5em;
+    padding: 1.7em 1.5em;
     line-height: 1em;
     margin: 0 1em -1em 0;
     color: #fff;
@@ -703,15 +708,14 @@ overflow: hidden;
     min-width: 285px;
     height: 55px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 0.8em;
     transition: all 0.2s ease;
 }
 
-    .page-jobindexpage .intro p {
-        clear: both;
-        color: #424a4f;
-
-    }
+.page-jobindexpage .intro p {
+    clear: both;
+    color: #424a4f;
+}
 
 .page-jobindexpage .intro p  a:hover{
     background-color: rgba(0,0,0,0.1);
@@ -735,6 +739,7 @@ overflow: hidden;
     content: "›";
     position: absolute;
     right: 1em;
+    bottom: 1.1em;
 }
 
 .page-jobindexpage main .benefits .heading-block {
@@ -771,11 +776,56 @@ overflow: hidden;
         display: none;
     }
 
-.page-jobindexpage .img-wrapper {
-width: 100%;
-margin: 0;
-text-align: center;
+    .page-jobindexpage .img-wrapper {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .location{
+        margin:0.5em 0 0 0;
+        padding: 0;
+        font-size: 0.7em;
+        color:#97cb9b;
+    }
+
+/*job page*/
+
+.page-jobpage header nav li a{
+    color: #424a4f;
 }
+    .page-jobpage h1 {
+        line-height: 1em;
+        font-size: 5.3em !important;
+    }
+
+    .page-jobpage h3 {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: -1em;
+    }
+    
+    .page-jobpage footer .offices h3{
+        margin-bottom: 0;
+    }
+
+    .info{
+        width: 49%;
+        margin-left: 1%;
+        float: left;
+    }
+
+    .info-holder{
+        width: 100%;
+        margin:-1em auto 2em 0;
+        height: 130px;
+        padding: 2em 0 0em 0;
+        border-bottom: 1px dotted #a9a9a9;
+    }
+
+    .info p{
+        color: #97cb9b;
+    }
 
 /*Standard page*/
 
@@ -850,7 +900,7 @@ text-align: center;
     background: #F1D148;
     margin-top: -8.5em;
     padding: 8.5em 2em 2em 2em;
-    color: white;
+    color: #fff;
 }
 
 .page-servicespage h1 {
@@ -974,7 +1024,7 @@ text-align: center;
 }
 
     .page-blogindexpage .blog-title h2 {
-        color: #434a4f;
+        color: #97cb9b;
         margin-top: 0.5em;
         font-size: 1.3em;
     }
@@ -1051,6 +1101,19 @@ text-align: center;
     margin-bottom: 0.5em;
     line-height: 1.15;
     font-family: "proxima-nova";
+}
+
+.page-blogpage .article-meta {
+    color: #97cb9b;
+}
+
+.page-blogpage .article-meta a {
+    transition: 0.2s ease;
+    color: #97cb9b;
+}
+
+.page-blogpage .article-meta a:hover {
+    color: #ea853a;
 }
 
 .body-copy a {
@@ -1180,17 +1243,17 @@ text-align: center;
     display: inline-block;
     background: #fff;
     padding: 0.25em 1em;
-    color: #434a4f;
+    color: #97cb9b;
     border-radius: 3px;
     margin: 1em 0 0 0;
     transition: all 0.2s ease;
-    border: 1px solid #434a4f;
+    border: 1px solid #97cb9b;
 }    
 
 .page-workpage .intro p a:hover {
-    background: #434a4f;
+    background: #97cb9b;
     color: #fff;
-    border: 1px solid #434a4f;
+    border: 1px solid #97cb9b;
 }  
 
 .breadcrumb{
@@ -1403,28 +1466,59 @@ main .breadcrumb a:hover {
     -webkit-font-smoothing: antialiased;
 }
 
-    .page-personpage .body-copy p a:hover{
+.page-personpage .body-copy p a:hover{
         color: #ea853a;
-    }
+}
 
-    .page-personpage main .breadcrumb {
+.page-personpage main .breadcrumb {
         margin-top: 2em;
-    }
+}
 
-    .page-personpage .role {
-        font-size: 1.3em;
+ .page-personpage .role {
+        font-size: 1.1em;
+        line-height: 1.2em;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         padding-bottom: 0.5em;
         margin-bottom: 0.5em;
-    }   
+        color: #97cb9b;
+}   
 
-    .page-personpage img {
-        margin-bottom: 2em;
-    }
+.page-personpage .container {
+        margin-bottom: 4em;
+        padding: 0 1em;
+}
 
 .page-standardpage main li {
     margin-bottom: 2em;
 }
+
+.page-standardpage .logo {
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background-size: auto 3em;
+}
+
+.page-standardpage header nav li a {
+    color: #fff;
+}
+.page-standardpage header nav li a:hover{
+    color: #ea853a;
+    transition: all 0.15s ease;
+    border-bottom: 3px solid #ea853a;
+}
+
+
+
+#map {
+     width: 100%;
+     height: 500px;
+}
+
+#pointers_map{
+    background: red;
+    width: 30px;
+    height: 80px;
+}
+
 
 .grid.people-list li {
     position: relative;
@@ -1482,7 +1576,6 @@ main .breadcrumb a:hover {
 }
 
 .page-personpage .title{
-    padding: 0 1em;
     margin-top: -3em;
 }
 
@@ -1571,11 +1664,6 @@ footer .offices h3 {
 
 footer .tel {
     display: block;
-}
-
-#map {
-    width: 750px;
-    height: 500px;
 }
 
 .map iframe {

@@ -3,15 +3,7 @@
 
 {% block content %}
 
-<div class="holder">
-
-        {% if self.image %}
-            {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-            {% image self.image width-960 as photo %}
-            <div class="clearfix">
-                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
-            </div>
-        {% endif %}
+<div class="container">
 
     <div class="title">
         <div class="breadcrumb">
@@ -28,7 +20,14 @@
 
     </div>
 
-    <section class="body-copy container">
+
+        {% if self.image %}
+            {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+            {% image self.image width-960 as photo %}
+                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+        {% endif %}
+
+    <section class="body-copy">
 
         <div class="person-bio">
             <div class="intro">
@@ -43,6 +42,7 @@
             {% endif %}
         </div>
 
-</section>
+    </section>
+</div>
 
 {% endblock %}

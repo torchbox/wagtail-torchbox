@@ -10,6 +10,9 @@
 				{{ blog.intro|richtext }}
 			{% endif %}
 
+            {% if blog.date %}
+              <span class="date">{{ blog.date|date:"j F Y" }}</span>
+            {% endif %}
 
       <div id="author" class="author clearfix" >
           {% with blog.related_author.all as authors %}

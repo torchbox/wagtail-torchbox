@@ -2,6 +2,11 @@
 {% load image_tags rich_text %}
 
 {% block content %}
+
+        <div class= "crop-height">
+            <img class="scale" src="/static/torchbox/images/about-placeholder.jpg" width="" height="" alt="">
+        </div>
+
     <section class="intro were-tbx container">
         <h1>{{ self.title }}</h1>
 
@@ -18,9 +23,11 @@
 
     <section class="were-tbx-2 container">
         {% if self.content_block.all %}
-        <ul class="listing grid clearfix">
+        <ul class="uslist grid clearfix">
             {% for block in self.content_block.all %}
             <li class=>   
+                    <div class="icon">
+                    </div>
                 <div>             
                 {{ block.content|richtext }}
                 </div>
@@ -31,8 +38,10 @@
     </section>
 
     <section>
-        <div class="map">
-            <iframe src="https://mapsengine.google.com/map/embed?mid=zZ_tGG5Cpnko.kKn0eNls4Kc8" width="100%" height="600"></iframe>
+            
+            <div id="map">
+            </div>
+
         </div>
     </section>
 

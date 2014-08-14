@@ -151,7 +151,6 @@
 	}
 
 	.page-homepage .hiring {
-		background-size: 100%;
 		padding: 12em 2em;
 		border: none;
 	}
@@ -176,12 +175,24 @@
 
 	/*Standard page (we're torchbox) */
 
-	.page-standardpage .were-tbx {
-    	padding: 8.5em 2em 2em 2em;
+	.page-standardpage .logo {
+   		 background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+	    background-size: auto 3em;
+	}
+
+	.page-standardpage .crop-height{
+		display: block;
+		max-height: 35em;
+		overflow: hidden;
+		margin-top: -10em;
 	}
 
 	.page-standardpage .were-tbx {
-	    margin-top: 0em;
+    	padding: 2.5em 2em 2em 2em;
+	}
+
+	.page-standardpage .were-tbx {
+	    margin-top: -13em;
 	}
 
 
@@ -196,11 +207,13 @@
 	.page-standardpage h1 {
 	    font-size: 5em;
 	    margin-top: 0em;
+	    color: #fff;
 	}
 
 	.page-standardpage .were-tbx h2 {
 	    font-size: 2em;    
 	    margin-bottom: 0.5em;
+	    color: #fff;
 	}
 
 	.page-standardpage .were-tbx-2 h2 {
@@ -226,22 +239,38 @@
 	    float: left;
 	    width: 47%;
 	    margin-right: 1.5%;
-	    height:150px;
+	    height:200px;
 	}
 
-	.page-standardpage .grid li:nth-child(3n+3) {
-		margin-right: 1.5%;
+	.page-standardpage .were-tbx-2 li:nth-child(1) .icon {
+		background-image: url("/static/torchbox/images/icons/ethical.png");
 	}
 
-	.page-standardpage .were-tbx-2 .4even div h2 {
-		font-size: 3em;
-		font-weight: bold;
-		color: #fff;
-		}
-
-	.page-standardpage  header nav li a {
-	    color: #424a4f;
+	.page-standardpage .were-tbx-2 li:nth-child(2) .icon {
+		background-image: url("/static/torchbox/images/icons/equipment.png");
 	}
+
+	.page-standardpage .were-tbx-2 li:nth-child(3) .icon {
+		background-image: url("/static/torchbox/images/icons/healthy.png");
+	}
+
+	.page-standardpage .were-tbx-2 li:nth-child(4) .icon {
+		background-image: url("/static/torchbox/images/icons/location.png");
+	}
+
+	.page-standardpage .were-tbx-2 p {
+		padding-left: 5.3em;
+	}
+
+	.uslist {
+		margin: 0 auto;
+		padding: 3em 0 1em 0;
+		border: none;
+		box-sizing: border-box;
+		left: auto;
+		max-width: 100%;
+	}
+
 
 	.page-standardpage  header nav li a:hover {
 	    color: #ea853a;
@@ -276,7 +305,7 @@
 	}
 
 	.page-workindexpage main ul a:hover {
-	    background-color: rgba(0,0,0,0.8);
+	    background-color: rgba(0,0,0,0.7);
 	    cursor: pointer;
 	}
 
@@ -420,68 +449,100 @@
 
 	/*Work page*/
 
+	/*Next button*/
+
+	.buttonsright{
+		overflow: hidden;
+		min-width: 35px;
+		float: right;
+	}
+
+	.buttonsleft{
+		overflow: hidden;
+		min-width: 35px;
+		float: left;
+	}
+
+	.buttons a:hover{
+		overflow: visible;
+	}
+
 	.next{
-    position: fixed;
-    top: 660px;
-    right: 0;
-    display:inline-block;
-    padding: 0.5em 1.5em;
-    line-height: 1em;
-    background-color: #434a4f;
-    z-index: 200;
-    color: #fff;
-    border: solid 1px #434a4f;
-    border-radius: 2px;
-    min-width: 110px;
-    text-align: center;
-    overflow: hidden;
-    margin-right: -75px;
-    transition: 0.2s ease;
-    opacity: 0.8;
-}
+	    margin-top: 10px;
+	    right: 0;
+	    display:inline-block;
+	    padding: 1.5em 0.5em 1.5em 1.5em;
+	    line-height: 1em;
+	    background: url("/static/torchbox/images/icons/right.png") no-repeat left 7px center;
+	    background-color: #ea853a;
+	    z-index: 200;
+	    color: #fff;
+	    border: solid 1px #ea853a;
+	    border-radius: 2px;
+	    min-width: 110px;
+	    text-align: center;
+	    overflow: hidden;
+	    margin-right: -75px;
+	    transition: 0.2s ease;
+	    opacity: 0.8;
+	}
 
-.next:hover{
-    margin-right: 0px;
-    opacity: 1;
-}
+	.next.sticky {
+		position: fixed;
+		top: 10px;
+	}
 
-.previous{
-    position: fixed;
-    top: 660px;
-    left: 0;
-    display:inline-block;
-    padding: 0.5em 1.5em;
-    line-height: 1em;
-    background-color: #434a4f;
-    z-index: 200;
-    color: #fff;
-    border: solid 1px #434a4f;
-    border-radius: 2px;
-    min-width: 140px;
-    text-align: center;
-    overflow: hidden;
-    margin-left: -105px;
-    margin-right: 0;
-    transition: 0.2s ease;
-    opacity: 0.8;
-}
+	/*Previous button*/
 
-.previous:hover{
-    margin-left: 0px;
-    opacity: 1;
-    margin-right: 0;
-}
+	.previous.sticky {
+		overflow: visible;
+		position: fixed;
+		top: 10px;
+	}
+
+	.next:hover{
+	    margin-right: -4px;
+	    opacity: 1;
+	    cursor: pointer;
+	}
+
+	.previous{
+		margin-top: 10px;
+	    left: 0;
+	    display:inline-block;
+	    padding: 1.5em 1.5em 1.5em 0.5em;
+	    line-height: 1em;
+	    background: url("/static/torchbox/images/icons/left.png") no-repeat right 7px center;
+	    background-color: #ea853a;
+	    z-index: 200;
+	    color: #fff;
+	    border: solid 1px #ea853a;
+	    border-radius: 2px;
+	    min-width: 140px;
+	    text-align: center;
+	    overflow: hidden;
+	    margin-left: -105px;
+	    margin-right: 0;
+	    transition: 0.2s ease;
+	    opacity: 0.8;
+	}
+
+	.previous:hover{
+	    margin:10px 0 0 -4px;
+	    opacity: 1;
+	    cursor: pointer;
+	}
 
 	.bleed {
-	margin: 1em 0.5em 0 0;
+		margin: 1em 0.5em 0 0;
 	}
 
 	.page-workpage	header nav li a {
-    display: block;
-    padding: 0;
-    margin:0.5em 0.5em;
-    color: white;
-    font-size: 1.1em;
+	    display: block;
+	    padding: 0;
+	    margin:0.5em 0.5em;
+	    color: white;
+	    font-size: 1.1em;
 	}
 
 	.author {
@@ -489,25 +550,25 @@
 	}
 
 	.page-workpage	header nav li a:hover {
-	color: #EA853a;
-	border-bottom: 3px solid #EA853a;
+		color: #EA853a;
+		border-bottom: 3px solid #EA853a;
 	}
 
 	.page-workpage .img-wrapper {
-    width:100%;
-    margin:-8em 0 0 0;
-    text-align: center;
+	    width:100%;
+	    margin:-8em 0 0 0;
+	    text-align: center;
 	}
 
 	.page-workpage .img-wrapper img {
-    width: auto;
-    position:relative;
-    max-width: 100%;
-    height: auto;
+	    width: auto;
+	    position:relative;
+	    max-width: 100%;
+	    height: auto;
 	}
 
 	.page-workpage .logo {
-    background-image: url("/static/torchbox/images/logo-torchbox-white.png");
+    	background-image: url("/static/torchbox/images/logo-torchbox-white.png");
 	}
 
     .page-workpage .intro h1 {
@@ -526,28 +587,28 @@
     }
 
     .crop-height {
- 	 /* max-width: 1200px; /* img src width (if known) */
- 	 max-height: 40em;
-  	overflow: hidden; 
+	 	 /* max-width: 1200px; /* img src width (if known) */
+	 	 max-height: 40em;
+	  	overflow: hidden; 
 	}
 
 	img.scale {
- 	 /* corrects inline gap in enclosing div */
- 	 display: block;
- 	 max-width: 100%;
- 	 /* just in case, to force correct aspect ratio */
- 	 height: auto !important;
- 	 width: auto\9; /* ie8+9 */
- 	 /* lt ie8 */
- 	 -ms-interpolation-mode: bicubic; 
+	 	 /* corrects inline gap in enclosing div */
+	 	 display: block;
+	 	 max-width: 100%;
+	 	 /* just in case, to force correct aspect ratio */
+	 	 height: auto !important;
+	 	 width: auto\9; /* ie8+9 */
+	 	 /* lt ie8 */
+	 	 -ms-interpolation-mode: bicubic; 
 	}
 
     .page-workpage .intro .body-copy {
-    margin-bottom: 1em;
-    margin-top: -5.2em;
-	background: rgba(255, 255, 255, 1);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	max-width: 800px;
+	    margin-bottom: 1em;
+	    margin-top: -10.2em;
+		background: rgba(255, 255, 255, 1);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		max-width: 800px;
     }
 
     .body-copy p,
@@ -588,10 +649,6 @@
 		border: none;
 	}
 
-	.grid li:nth-child(3n+3) {
-		margin-right: 0;
-	}
-
 	.grid li:nth-child(3n+4) {
 		clear:both;
 	}
@@ -621,9 +678,8 @@
 		left: auto;
 		max-width: 100%;
 	}
-
-	.page-homepage .clients {
-	    padding: 3em 0 1em 0;
+	.page-homepage .clients{
+		padding: 3em 2em 1em 2em;
 	}
 
 	.page-homepage .clients li {
@@ -641,9 +697,9 @@
 	}
 
 	.page-jobindexpage .intro p {
-		font-size: 0.8em;
+		font-size: 1.1em;
 		padding-top: 1em;
-		margin-bottom: -1em;
+		margin-bottom: -2em;
 	}
 
 	.page-jobindexpage main .listing a {
@@ -682,8 +738,37 @@
 	}
 
 	.icon{
-		margin: 0 1em;
+		display: block;
+		margin: 0em 1em 0 0;
 		float: left;
+		width: 65px;
+		height: 65px;
+		background-repeat: no-repeat;
+		background-image: url("/static/torchbox/images/icons/ethical.png")
+	}
+
+	.one:nth-child(1) .icon {
+		background-image: url("/static/torchbox/images/icons/ethical.png");
+	}
+
+	.one:nth-child(2) .icon {
+		background-image: url("/static/torchbox/images/icons/interesting.png");
+	}
+
+	.one:nth-child(3) .icon {
+		background-image: url("/static/torchbox/images/icons/healthy.png");
+	}
+
+	.one:nth-child(4) .icon {
+		background-image: url("/static/torchbox/images/icons/equipment.png");
+	}
+
+	.one:nth-child(5) .icon {
+		background-image: url("/static/torchbox/images/icons/people.png");
+	}
+
+	.one:nth-child(6) .icon {
+		background-image: url("/static/torchbox/images/icons/salary.png");
 	}
 
 	.page-jobindexpage .intro p a {
@@ -695,7 +780,7 @@
 	}
 
 	.sign-up{
-		margin: 0.5em auto 1em auto;
+		margin: -1em auto 1em auto;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -708,6 +793,7 @@
 
 	.page-jobindexpage .benefits h3 {
 		font-size: 2.5em;
+		line-height: 1em;
 	}
 
 	.page-jobindexpage .benefits li > div > div {
@@ -718,8 +804,10 @@
 	.page-jobindexpage .logo{
     background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 3em;
-}
+	}
 
+
+	
 	.page-jobindexpage footer {
 	    margin: -1em 0 0 0;
 	}
@@ -727,7 +815,7 @@
 	.page-jobindexpage .center {
 		max-width: 96em;
 		margin: 0 auto;
-		padding: 2em 0 1em 4em;
+		padding: 2em 4em 1em 4em;
 	}
 
 	.page-jobindexpage .benefits .one {
@@ -735,12 +823,18 @@
 		-webkit-background-size: cover;*/
 		width: 48%;
 		float: left;
-		margin: 2% 2%  0 0;
-		height: 200px;
+		margin: 2% 2%  3% 0;
 		padding: 0 0 0 4em;
 		border-top: none;
 	}
+	
+	.page-jobindexpage .benefits .one:nth-of-type(odd) {
+		clear: left;
+	}
 
+	.page-jobindexpage .benefits .one:nth-of-type(5) {
+		margin-bottom: 5%;
+	}
 
 	.page-jobindexpage header nav li a:hover {
 		color: #ea853a;
@@ -798,44 +892,36 @@
 	}
 
 	.page-personpage header nav li a:hover {
-	    color: #fff;
+	    color: #ea853a;
 	    transition: all 0.15s ease;
-		border-bottom: 3px solid #fff;
+		border-bottom: 3px solid #ea853a;
 
 	}
 
 	.page-personpage img {
-		float: right;
-		max-width: 40%;
-		margin-top: 0em;
+		max-width: 100%;
 	}
 
 	.page-personpage .title {
-		position: relative;
-		margin-top: -19.3em;
-		max-width: 56%;
+		max-width: 720px;
 		padding: 0;
 	}
 
 	.page-personpage main {
-		min-height: 51em;
-		margin-top: 2em;
+		margin-top: 6em;
 	}
 
 	.page-personpage main .container {
+		max-width: 720px;
 		padding: 0;	
-		margin-top: 12em;
 	}
 
 	.page-personpage h1 {
-		font-size: 4em;
+		font-size: 6em;
 		line-height: 1em;
 		font-weight: bold;
-		color: #ea853a;
 	}
 
-
-	
 	.holder{
 		max-width: 96em;
 		margin: 0 auto;
@@ -843,7 +929,7 @@
 	}
 
 	.page-personpage .role {
-		font-size: 2em;
+		font-size: 1.5em;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 		padding-bottom: 0.3em;
 		margin-bottom: 0.5em;
@@ -855,7 +941,6 @@
 
 	.page-personpage .person-bio {
 		background: white;
-		margin-top: -10em;
 		overflow: scroll;
 		padding: 0em 0 3em 0;
 		margin-left: 0;
@@ -1038,25 +1123,8 @@
 
     /* Desktop */
 
-  @media only screen and (min-width: 850px) {
-	.page-personpage img {
-		float: right;
-		max-width: 40%;
-		margin-top: -9em;
-	}	
-
-	.page-personpage .title{
-		position: relative;
-		margin-top: -16.3em;
-		max-width: 55%;
-	}
-}
-
  @media only screen and (min-width: 830px) {
 
-    .page-workpage .intro .body-copy {
-    	margin-top: -17.2em;
-    }
 }
 
  @media only screen and (min-width: 1250px) {
@@ -1093,45 +1161,6 @@
 
 	.page-workindexpage main .listing a h2 {
 		font-size: 2.5em;
-	}
-
-
-	.page-personpage main .container {
-		padding: 0;	
-		margin-top: -11em;
-	}
-
-	.page-personpage img {
-		float: right;
-		max-width: 48%;
-		margin-top: -9em;
-		display: block;
-	}
-
-	.page-personpage h1 {
-		color: #ea853a;
-		margin-bottom: 0;
-		line-height: 1em;
-		font-size: 5em;
-		font-weight:bold;
-	}
-
-	.page-personpage .title{
-		position: relative;
-		float: left;
-		margin-top: -26em;
-		width: 48%;
-	}
-
-	.holder{
-		max-width: 96em;
-		margin: 0 auto;
-		padding: 0 1em
-	}
-
-	.page-personpage main .container {
-		padding: 0;	
-		margin-top: -11em;
 	}
 
 }

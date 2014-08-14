@@ -9,6 +9,52 @@
         <script type="text/javascript" src="//use.typekit.net/zzm2obu.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
+        <!-- MAP -->
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8DzA414OJ7tzw0J7cKc9LPisCg2gNNKI&sensor=false"></script>
+        
+        <script type="text/javascript">
+            // When the window has finished loading create our google map below
+            google.maps.event.addDomListener(window, 'load', init);
+        
+            function init() {
+                // Basic options for a simple Google Map
+                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                var mapOptions = {
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: 10,
+
+                    // The latitude and longitude to center the map (always required)
+                    center: new google.maps.LatLng(51.468489, - 2.5907094), 
+
+                    // How you would like to style the map. 
+                    // This is where you would paste any style found on Snazzy Maps.
+                    styles: [   {"featureType":"all", "stylers":[  {"saturation":0},  {"hue":"#ea853a"} ]},
+
+                                {"featureType":"road", "stylers":[ {"saturation":-20} ]},  
+
+                                {"featureType":"transit","stylers":[ {"visibility":"off"} ] }, 
+
+                                {"featureType":"road.arterial","stylers":[{"visibility":"off"} ]}, 
+
+                                {"featureType":"poi","stylers":[{"visibility":"off"}]}, 
+
+                                {"featureType":"water","stylers":[{"visibility":"simplified"},{"saturation":-60}]} 
+                            ]
+
+                };
+
+                // Get the HTML DOM element that will contain your map 
+                // We are using a div with id="map" seen below in the <body>
+                var mapElement = document.getElementById('map');
+
+                // Create the Google Map using out element and options defined above
+                var map = new google.maps.Map(mapElement, mapOptions); }
+
+            </script>
+
+            <!-- MAP END -->
+
+
         <link rel="stylesheet/less" href="style.less" type="text/css">
         <script src="http://lesscss.googlecode.com/files/less-1.0.21.min.js"></script>
 
@@ -121,5 +167,23 @@
         {% endcompress %}
 
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}
+
+        <script> 
+              // Sticky next / previous work page //
+
+              // Cache selectors outside callback for performance. 
+             var $window = $(window),
+                $stickyEl = $('.next, .previous'),
+                elTop = $stickyEl.offset().top-30;
+
+            $window.scroll(function() {
+                    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+
+                });
+
+        </script>
+
+
+
     </body>
 </html>
