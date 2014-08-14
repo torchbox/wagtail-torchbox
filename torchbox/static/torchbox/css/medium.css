@@ -175,12 +175,24 @@
 
 	/*Standard page (we're torchbox) */
 
-	.page-standardpage .were-tbx {
-    	padding: 8.5em 2em 2em 2em;
+	.page-standardpage .logo {
+   		 background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+	    background-size: auto 3em;
+	}
+
+	.page-standardpage .crop-height{
+		display: block;
+		max-height: 35em;
+		overflow: hidden;
+		margin-top: -10em;
 	}
 
 	.page-standardpage .were-tbx {
-	    margin-top: 0em;
+    	padding: 2.5em 2em 2em 2em;
+	}
+
+	.page-standardpage .were-tbx {
+	    margin-top: -13em;
 	}
 
 
@@ -195,11 +207,13 @@
 	.page-standardpage h1 {
 	    font-size: 5em;
 	    margin-top: 0em;
+	    color: #fff;
 	}
 
 	.page-standardpage .were-tbx h2 {
 	    font-size: 2em;    
 	    margin-bottom: 0.5em;
+	    color: #fff;
 	}
 
 	.page-standardpage .were-tbx-2 h2 {
@@ -225,22 +239,38 @@
 	    float: left;
 	    width: 47%;
 	    margin-right: 1.5%;
-	    height:150px;
+	    height:200px;
 	}
 
-	.page-standardpage .grid li:nth-child(3n+3) {
-		margin-right: 1.5%;
+	.page-standardpage .were-tbx-2 li:nth-child(1) .icon {
+		background-image: url("/static/torchbox/images/icons/ethical.png");
 	}
 
-	.page-standardpage .were-tbx-2 .4even div h2 {
-		font-size: 3em;
-		font-weight: bold;
-		color: #fff;
-		}
-
-	.page-standardpage  header nav li a {
-	    color: #424a4f;
+	.page-standardpage .were-tbx-2 li:nth-child(2) .icon {
+		background-image: url("/static/torchbox/images/icons/equipment.png");
 	}
+
+	.page-standardpage .were-tbx-2 li:nth-child(3) .icon {
+		background-image: url("/static/torchbox/images/icons/healthy.png");
+	}
+
+	.page-standardpage .were-tbx-2 li:nth-child(4) .icon {
+		background-image: url("/static/torchbox/images/icons/location.png");
+	}
+
+	.page-standardpage .were-tbx-2 p {
+		padding-left: 5.3em;
+	}
+
+	.uslist {
+		margin: 0 auto;
+		padding: 3em 0 1em 0;
+		border: none;
+		box-sizing: border-box;
+		left: auto;
+		max-width: 100%;
+	}
+
 
 	.page-standardpage  header nav li a:hover {
 	    color: #ea853a;
@@ -617,10 +647,6 @@
 		width:32%;
 		margin-right: 2%;
 		border: none;
-	}
-
-	.grid li:nth-child(3n+3) {
-		margin-right: 0;
 	}
 
 	.grid li:nth-child(3n+4) {

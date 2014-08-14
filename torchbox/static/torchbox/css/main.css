@@ -649,7 +649,7 @@ overflow: hidden;
     background-color: #f3f4f6;;
     color: #222;
     -webkit-font-smoothing: antialiased;
-    padding: 19.5em 2em 3em 2em;
+    padding: 19.5em 2em 3em 2em; 
 }
 
 .page-jobindexpage .richtext{
@@ -1490,6 +1490,20 @@ main .breadcrumb a:hover {
 
 .page-standardpage main li {
     margin-bottom: 2em;
+}
+
+.page-standardpage .logo {
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background-size: auto 3em;
+}
+
+.page-standardpage header nav li a {
+    color: #fff;
+}
+.page-standardpage header nav li a:hover{
+    color: #ea853a;
+    transition: all 0.15s ease;
+    border-bottom: 3px solid #ea853a;
 }
 
 
