@@ -11,7 +11,6 @@
 
         <!-- MAP -->
                 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8DzA414OJ7tzw0J7cKc9LPisCg2gNNKI&sensor=false"></script>
-                <script src="{% static "js/gmaps.js" %}"></script>
         
         <script type="text/javascript">
             // When the window has finished loading create our google map below
@@ -54,6 +53,7 @@
             </script>
 
             <!-- MAP END -->
+
 
         <link rel="stylesheet/less" href="style.less" type="text/css">
         <script src="http://lesscss.googlecode.com/files/less-1.0.21.min.js"></script>
@@ -167,5 +167,23 @@
         {% endcompress %}
 
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}
+
+        <script> 
+              // Sticky next / previous work page //
+
+              // Cache selectors outside callback for performance. 
+             var $window = $(window),
+                $stickyEl = $('.next, .previous'),
+                elTop = $stickyEl.offset().top-30;
+
+            $window.scroll(function() {
+                    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+
+                });
+
+        </script>
+
+
+
     </body>
 </html>

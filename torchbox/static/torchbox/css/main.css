@@ -1314,11 +1314,11 @@ main .breadcrumb a:hover {
     text-align: center;
     overflow: hidden;
     transition: 0.2s ease;
-    margin: 0 9% 0 0;
+    margin: 0 9%;
 }
 
 .previous:hover{
-    margin: 0 9% 0 0;
+    margin: 0 9%;
     opacity: 1;
 }
 

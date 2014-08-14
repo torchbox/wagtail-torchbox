@@ -419,70 +419,100 @@
 
 	/*Work page*/
 
+	/*Next button*/
+
+	.buttonsright{
+		overflow: hidden;
+		min-width: 35px;
+		float: right;
+	}
+
+	.buttonsleft{
+		overflow: hidden;
+		min-width: 35px;
+		float: left;
+	}
+
+	.buttons a:hover{
+		overflow: visible;
+	}
+
 	.next{
-    position: fixed;
-    top: 660px;
-    right: 0;
-    display:inline-block;
-    padding: 1.5em 0.5em 1.5em 1.5em;
-    line-height: 1em;
-    background: url("/static/torchbox/images/icons/right.png") no-repeat left 7px center;
-    background-color: #ea853a;
-    z-index: 200;
-    color: #fff;
-    border: solid 1px #ea853a;
-    border-radius: 2px;
-    min-width: 110px;
-    text-align: center;
-    overflow: hidden;
-    margin-right: -75px;
-    transition: 0.2s ease;
-    opacity: 0.8;
-}
+	    margin-top: 10px;
+	    right: 0;
+	    display:inline-block;
+	    padding: 1.5em 0.5em 1.5em 1.5em;
+	    line-height: 1em;
+	    background: url("/static/torchbox/images/icons/right.png") no-repeat left 7px center;
+	    background-color: #ea853a;
+	    z-index: 200;
+	    color: #fff;
+	    border: solid 1px #ea853a;
+	    border-radius: 2px;
+	    min-width: 110px;
+	    text-align: center;
+	    overflow: hidden;
+	    margin-right: -75px;
+	    transition: 0.2s ease;
+	    opacity: 0.8;
+	}
 
-.next:hover{
-    margin-right: -4px;
-    opacity: 1;
-}
+	.next.sticky {
+		position: fixed;
+		top: 10px;
+	}
 
-.previous{
-    position: fixed;
-    top: 660px;
-    left: 0;
-    display:inline-block;
-    padding: 1.5em 1.5em 1.5em 0.5em;
-    line-height: 1em;
-    background: url("/static/torchbox/images/icons/left.png") no-repeat right 7px center;
-    background-color: #ea853a;
-    z-index: 200;
-    color: #fff;
-    border: solid 1px #ea853a;
-    border-radius: 2px;
-    min-width: 140px;
-    text-align: center;
-    overflow: hidden;
-    margin-left: -105px;
-    margin-right: 0;
-    transition: 0.2s ease;
-    opacity: 0.8;
-}
+	/*Previous button*/
 
-.previous:hover{
-    margin-left: -4px;
-    opacity: 1;
-    margin-right: 0;
-}
+	.previous.sticky {
+		overflow: visible;
+		position: fixed;
+		top: 10px;
+	}
+
+	.next:hover{
+	    margin-right: -4px;
+	    opacity: 1;
+	    cursor: pointer;
+	}
+
+	.previous{
+		margin-top: 10px;
+	    left: 0;
+	    display:inline-block;
+	    padding: 1.5em 1.5em 1.5em 0.5em;
+	    line-height: 1em;
+	    background: url("/static/torchbox/images/icons/left.png") no-repeat right 7px center;
+	    background-color: #ea853a;
+	    z-index: 200;
+	    color: #fff;
+	    border: solid 1px #ea853a;
+	    border-radius: 2px;
+	    min-width: 140px;
+	    text-align: center;
+	    overflow: hidden;
+	    margin-left: -105px;
+	    margin-right: 0;
+	    transition: 0.2s ease;
+	    opacity: 0.8;
+	}
+
+	.previous:hover{
+	    margin:10px 0 0 -4px;
+	    opacity: 1;
+	    cursor: pointer;
+	}
 
 	.bleed {
-	margin: 1em 0.5em 0 0;
+		margin: 1em 0.5em 0 0;
 	}
 
 	.page-workpage	header nav li a {
-    display: block;
-    padding: 0;
-    margin:0.5em 0.5em;
-    color: white;
-    font-size: 1.1em;
+	    display: block;
+	    padding: 0;
+	    margin:0.5em 0.5em;
+	    color: white;
+	    font-size: 1.1em;
 	}
 
 	.author {
@@ -490,25 +520,25 @@
 	}
 
 	.page-workpage	header nav li a:hover {
-	color: #EA853a;
-	border-bottom: 3px solid #EA853a;
+		color: #EA853a;
+		border-bottom: 3px solid #EA853a;
 	}
 
 	.page-workpage .img-wrapper {
-    width:100%;
-    margin:-8em 0 0 0;
-    text-align: center;
+	    width:100%;
+	    margin:-8em 0 0 0;
+	    text-align: center;
 	}
 
 	.page-workpage .img-wrapper img {
-    width: auto;
-    position:relative;
-    max-width: 100%;
-    height: auto;
+	    width: auto;
+	    position:relative;
+	    max-width: 100%;
+	    height: auto;
 	}
 
 	.page-workpage .logo {
-    background-image: url("/static/torchbox/images/logo-torchbox-white.png");
+    	background-image: url("/static/torchbox/images/logo-torchbox-white.png");
 	}
 
     .page-workpage .intro h1 {
@@ -527,28 +557,28 @@
     }
 
     .crop-height {
- 	 /* max-width: 1200px; /* img src width (if known) */
- 	 max-height: 40em;
-  	overflow: hidden; 
+	 	 /* max-width: 1200px; /* img src width (if known) */
+	 	 max-height: 40em;
+	  	overflow: hidden; 
 	}
 
 	img.scale {
- 	 /* corrects inline gap in enclosing div */
- 	 display: block;
- 	 max-width: 100%;
- 	 /* just in case, to force correct aspect ratio */
- 	 height: auto !important;
- 	 width: auto\9; /* ie8+9 */
- 	 /* lt ie8 */
- 	 -ms-interpolation-mode: bicubic; 
+	 	 /* corrects inline gap in enclosing div */
+	 	 display: block;
+	 	 max-width: 100%;
+	 	 /* just in case, to force correct aspect ratio */
+	 	 height: auto !important;
+	 	 width: auto\9; /* ie8+9 */
+	 	 /* lt ie8 */
+	 	 -ms-interpolation-mode: bicubic; 
 	}
 
     .page-workpage .intro .body-copy {
-    margin-bottom: 1em;
-    margin-top: -5.2em;
-	background: rgba(255, 255, 255, 1);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	max-width: 800px;
+	    margin-bottom: 1em;
+	    margin-top: -10.2em;
+		background: rgba(255, 255, 255, 1);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		max-width: 800px;
     }
 
     .body-copy p,

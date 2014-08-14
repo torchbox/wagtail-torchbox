@@ -31,6 +31,15 @@
                 </ul>
             {% endif %}
         {% endwith %}
+
+        <div class="buttonsleft">
+             <div class="previous">Previous</div>
+        </div>
+
+        <div class="buttonsright">
+            <div class="next">Next</div>
+        </div>
+
     </section>
     
     <section class="intro">
@@ -61,11 +70,12 @@
     </section>
 
     <section class="body-copy container">
+
+
         {% if self.body %}
             {{ self.body|richtext }}
         {% endif %}
-        <div class="previous">Previous</div>
-        <div class="next">Next</div>
+
 
     </section>
     
