@@ -1024,7 +1024,7 @@ overflow: hidden;
 }
 
     .page-blogindexpage .blog-title h2 {
-        color: #97cb9b;
+        color: #424a4f;
         margin-top: 0.5em;
         font-size: 1.3em;
     }
@@ -1104,16 +1104,16 @@ overflow: hidden;
 }
 
 .page-blogpage .article-meta {
-    color: #97cb9b;
+    color: #424a4f;
 }
 
 .page-blogpage .article-meta a {
     transition: 0.2s ease;
-    color: #97cb9b;
+    color: #ea853a;
 }
 
 .page-blogpage .article-meta a:hover {
-    color: #ea853a;
+    color: #f6a32b;
 }
 
 .body-copy a {
@@ -1243,17 +1243,17 @@ overflow: hidden;
     display: inline-block;
     background: #fff;
     padding: 0.25em 1em;
-    color: #97cb9b;
+    color: #EA853a;
     border-radius: 3px;
     margin: 1em 0 0 0;
     transition: all 0.2s ease;
-    border: 1px solid #97cb9b;
+    border: 1px solid #EA853a;
 }    
 
 .page-workpage .intro p a:hover {
-    background: #97cb9b;
+    background: #EA853a;
     color: #fff;
-    border: 1px solid #97cb9b;
+    border: 1px solid #EA853a;
 }  
 
 .breadcrumb{

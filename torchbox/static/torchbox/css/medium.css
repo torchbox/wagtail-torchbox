@@ -106,7 +106,8 @@
 
 	.page-homepage header nav li {
 		float: left;
-		padding: 2em 1em 0 1em;
+		padding: 2em 0em 0 1em;
+		margin-right: 1em;
 	}
 
 	.page-homepage .hero {
@@ -644,8 +645,8 @@
 
 
 	.grid li {
-		width:32%;
-		margin-right: 2%;
+		width:30%;
+		margin-right: 3%;
 		border: none;
 	}
 
