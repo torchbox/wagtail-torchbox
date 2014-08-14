@@ -25,15 +25,15 @@
             {% with self.related_author.all as authors %}
             {% if authors %}
             {% for author in authors %}
+
+            {% if self.date %}
+            <span class="date">{{ self.date|date:"j F Y" }}&nbsp;|&nbsp;</span>
+            {% endif %}
+
             <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
             {% endfor %}
             {% endif %}
             {% endwith %}
-
-
-            {% if self.date %}
-            <span class="date">&nbsp;|&nbsp;{{ self.date|date:"j F Y" }}</span>
-            {% endif %}
 
             <div class="share">
                 | <a>Share &#10084;</a>
@@ -47,6 +47,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
 
         {% if self.intro %}
