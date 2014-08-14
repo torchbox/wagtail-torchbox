@@ -11,6 +11,7 @@
 
         <!-- MAP -->
                 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8DzA414OJ7tzw0J7cKc9LPisCg2gNNKI&sensor=false"></script>
+                <script src="{% static "js/gmaps.js" %}"></script>
         
         <script type="text/javascript">
             // When the window has finished loading create our google map below
@@ -24,11 +25,7 @@
                     zoom: 10,
 
                     // The latitude and longitude to center the map (always required)
-                    center: new google.maps.LatLng(51.468489, - 2.5907094), // 
-
-                    ["The Royal Albert Hall","Kensington Gore","Kensington","London","SW7 2AP",51.501078,-0.177222,"The Royal Albert Hall is a concert 
-                    hall on the northern edge of South Kensington, in the City of Westminster, London, England, best known for holding the annual summer
-                    Proms concerts since 1941."],
+                    center: new google.maps.LatLng(51.468489, - 2.5907094), 
 
                     // How you would like to style the map. 
                     // This is where you would paste any style found on Snazzy Maps.
@@ -52,8 +49,7 @@
                 var mapElement = document.getElementById('map');
 
                 // Create the Google Map using out element and options defined above
-                var map = new google.maps.Map(mapElement, mapOptions);
-            }
+                var map = new google.maps.Map(mapElement, mapOptions); }
 
             </script>
 

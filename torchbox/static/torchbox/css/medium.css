@@ -151,7 +151,6 @@
 	}
 
 	.page-homepage .hiring {
-		background-size: 100%;
 		padding: 12em 2em;
 		border: none;
 	}
@@ -621,9 +620,8 @@
 		left: auto;
 		max-width: 100%;
 	}
-
-	.page-homepage .clients {
-	    padding: 3em 0 1em 0;
+	.page-homepage .clients{
+		padding: 3em 2em 1em 2em;
 	}
 
 	.page-homepage .clients li {

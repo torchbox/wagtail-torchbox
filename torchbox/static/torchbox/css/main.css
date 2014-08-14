@@ -603,8 +603,9 @@ overflow: hidden;
 }
 
 .page-homepage .clients {
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding: 2em 0 2em 1em;
+    margin:0 auto;
+    max-width: 100%;
 }
 .page-homepage .clients li {
     width: 31.33%;
@@ -1498,6 +1499,11 @@ main .breadcrumb a:hover {
      height: 500px;
 }
 
+#pointers_map{
+    background: red;
+    width: 30px;
+    height: 80px;
+}
 
 
 .grid.people-list li {
