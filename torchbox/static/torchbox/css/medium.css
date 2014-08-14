@@ -836,44 +836,36 @@
 	}
 
 	.page-personpage header nav li a:hover {
-	    color: #fff;
+	    color: #ea853a;
 	    transition: all 0.15s ease;
-		border-bottom: 3px solid #fff;
+		border-bottom: 3px solid #ea853a;
 
 	}
 
 	.page-personpage img {
-		float: right;
-		max-width: 40%;
-		margin-top: 0em;
+		max-width: 100%;
 	}
 
 	.page-personpage .title {
-		position: relative;
-		margin-top: -19.3em;
-		max-width: 56%;
+		max-width: 720px;
 		padding: 0;
 	}
 
 	.page-personpage main {
-		min-height: 51em;
-		margin-top: 2em;
+		margin-top: 6em;
 	}
 
 	.page-personpage main .container {
+		max-width: 720px;
 		padding: 0;	
-		margin-top: 12em;
 	}
 
 	.page-personpage h1 {
-		font-size: 4em;
+		font-size: 6em;
 		line-height: 1em;
 		font-weight: bold;
-		color: #ea853a;
 	}
 
-
-	
 	.holder{
 		max-width: 96em;
 		margin: 0 auto;
@@ -881,7 +873,7 @@
 	}
 
 	.page-personpage .role {
-		font-size: 2em;
+		font-size: 1.5em;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 		padding-bottom: 0.3em;
 		margin-bottom: 0.5em;
@@ -893,7 +885,6 @@
 
 	.page-personpage .person-bio {
 		background: white;
-		margin-top: -10em;
 		overflow: scroll;
 		padding: 0em 0 3em 0;
 		margin-left: 0;
@@ -1076,25 +1067,8 @@
 
     /* Desktop */
 
-  @media only screen and (min-width: 850px) {
-	.page-personpage img {
-		float: right;
-		max-width: 40%;
-		margin-top: -9em;
-	}	
-
-	.page-personpage .title{
-		position: relative;
-		margin-top: -16.3em;
-		max-width: 55%;
-	}
-}
-
  @media only screen and (min-width: 830px) {
 
-    .page-workpage .intro .body-copy {
-    	margin-top: -17.2em;
-    }
 }
 
  @media only screen and (min-width: 1250px) {
@@ -1131,45 +1105,6 @@
 
 	.page-workindexpage main .listing a h2 {
 		font-size: 2.5em;
-	}
-
-
-	.page-personpage main .container {
-		padding: 0;	
-		margin-top: -11em;
-	}
-
-	.page-personpage img {
-		float: right;
-		max-width: 48%;
-		margin-top: -9em;
-		display: block;
-	}
-
-	.page-personpage h1 {
-		color: #ea853a;
-		margin-bottom: 0;
-		line-height: 1em;
-		font-size: 5em;
-		font-weight:bold;
-	}
-
-	.page-personpage .title{
-		position: relative;
-		float: left;
-		margin-top: -26em;
-		width: 48%;
-	}
-
-	.holder{
-		max-width: 96em;
-		margin: 0 auto;
-		padding: 0 1em
-	}
-
-	.page-personpage main .container {
-		padding: 0;	
-		margin-top: -11em;
 	}
 
 }

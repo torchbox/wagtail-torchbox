@@ -804,7 +804,7 @@ overflow: hidden;
         margin-bottom: -1em;
     }
     
-    .page-jobpage footer .offices  h3{
+    .page-jobpage footer .offices h3{
         margin-bottom: 0;
     }
 
@@ -1023,7 +1023,7 @@ overflow: hidden;
 }
 
     .page-blogindexpage .blog-title h2 {
-        color: #434a4f;
+        color: #97cb9b;
         margin-top: 0.5em;
         font-size: 1.3em;
     }
@@ -1100,6 +1100,19 @@ overflow: hidden;
     margin-bottom: 0.5em;
     line-height: 1.15;
     font-family: "proxima-nova";
+}
+
+.page-blogpage .article-meta {
+    color: #97cb9b;
+}
+
+.page-blogpage .article-meta a {
+    transition: 0.2s ease;
+    color: #97cb9b;
+}
+
+.page-blogpage .article-meta a:hover {
+    color: #ea853a;
 }
 
 .body-copy a {
@@ -1452,28 +1465,40 @@ main .breadcrumb a:hover {
     -webkit-font-smoothing: antialiased;
 }
 
-    .page-personpage .body-copy p a:hover{
+.page-personpage .body-copy p a:hover{
         color: #ea853a;
-    }
+}
 
-    .page-personpage main .breadcrumb {
+.page-personpage main .breadcrumb {
         margin-top: 2em;
-    }
+}
 
-    .page-personpage .role {
-        font-size: 1.3em;
+ .page-personpage .role {
+        font-size: 1.1em;
+        line-height: 1.2em;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         padding-bottom: 0.5em;
         margin-bottom: 0.5em;
-    }   
+        color: #97cb9b;
+}   
 
-    .page-personpage img {
-        margin-bottom: 2em;
-    }
+.page-personpage .container {
+        margin-bottom: 4em;
+        padding: 0 1em;
+}
 
 .page-standardpage main li {
     margin-bottom: 2em;
 }
+
+
+
+#map {
+     width: 100%;
+     height: 500px;
+}
+
+
 
 .grid.people-list li {
     position: relative;
@@ -1531,7 +1556,6 @@ main .breadcrumb a:hover {
 }
 
 .page-personpage .title{
-    padding: 0 1em;
     margin-top: -3em;
 }
 
@@ -1620,11 +1644,6 @@ footer .offices h3 {
 
 footer .tel {
     display: block;
-}
-
-#map {
-    width: 750px;
-    height: 500px;
 }
 
 .map iframe {
