@@ -663,7 +663,7 @@ overflow: hidden;
 }
 
 .page-jobindexpage .logo{
-    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background: ("url/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
 }
 
@@ -1243,17 +1243,17 @@ overflow: hidden;
     display: inline-block;
     background: #fff;
     padding: 0.25em 1em;
-    color: #434a4f;
+    color: #97cb9b;
     border-radius: 3px;
     margin: 1em 0 0 0;
     transition: all 0.2s ease;
-    border: 1px solid #434a4f;
+    border: 1px solid #97cb9b;
 }    
 
 .page-workpage .intro p a:hover {
-    background: #434a4f;
+    background: #97cb9b;
     color: #fff;
-    border: 1px solid #434a4f;
+    border: 1px solid #97cb9b;
 }  
 
 .breadcrumb{
@@ -1314,11 +1314,11 @@ main .breadcrumb a:hover {
     text-align: center;
     overflow: hidden;
     transition: 0.2s ease;
-    margin: 0 9%;
+    margin: 0 9% 0 0;
 }
 
 .previous:hover{
-    margin: 0 9%;
+    margin: 0 9% 0 0;
     opacity: 1;
 }
 

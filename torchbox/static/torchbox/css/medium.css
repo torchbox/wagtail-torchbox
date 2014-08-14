@@ -275,7 +275,7 @@
 	}
 
 	.page-workindexpage main ul a:hover {
-	    background-color: rgba(0,0,0,0.8);
+	    background-color: rgba(0,0,0,0.7);
 	    cursor: pointer;
 	}
 
@@ -424,12 +424,13 @@
     top: 660px;
     right: 0;
     display:inline-block;
-    padding: 0.5em 1.5em;
+    padding: 1.5em 0.5em 1.5em 1.5em;
     line-height: 1em;
-    background-color: #434a4f;
+    background: url("/static/torchbox/images/icons/right.png") no-repeat left 7px center;
+    background-color: #ea853a;
     z-index: 200;
     color: #fff;
-    border: solid 1px #434a4f;
+    border: solid 1px #ea853a;
     border-radius: 2px;
     min-width: 110px;
     text-align: center;
@@ -440,7 +441,7 @@
 }
 
 .next:hover{
-    margin-right: 0px;
+    margin-right: -4px;
     opacity: 1;
 }
 
@@ -449,12 +450,13 @@
     top: 660px;
     left: 0;
     display:inline-block;
-    padding: 0.5em 1.5em;
+    padding: 1.5em 1.5em 1.5em 0.5em;
     line-height: 1em;
-    background-color: #434a4f;
+    background: url("/static/torchbox/images/icons/left.png") no-repeat right 7px center;
+    background-color: #ea853a;
     z-index: 200;
     color: #fff;
-    border: solid 1px #434a4f;
+    border: solid 1px #ea853a;
     border-radius: 2px;
     min-width: 140px;
     text-align: center;
@@ -466,7 +468,7 @@
 }
 
 .previous:hover{
-    margin-left: 0px;
+    margin-left: -4px;
     opacity: 1;
     margin-right: 0;
 }
