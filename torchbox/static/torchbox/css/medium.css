@@ -1166,21 +1166,24 @@
 		font-size: 0.8em;
 	}
 
-
-	.page-workindexpage main ul a {
-		min-height: 35em;
-	}
-
 	.page-workindexpage main .listing div {
 	    background: rgba(0,0,0,0.7) ;
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
-	    top: 468px;
+	    top: 629px;
 	}
 
 	.page-workindexpage main .listing a:hover div {
 	    background: rgba(234,133,58,1);
-	    top: 317px;
+	    top: 475px;
+	}
+
+	.page-workindexpage main ul li{
+		max-height: 45em;
+	}
+
+	.page-workindexpage main ul a{
+		min-height: 80em;
 	}
 
 }
