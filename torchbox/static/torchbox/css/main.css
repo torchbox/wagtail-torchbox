@@ -100,6 +100,25 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+
+img.scale {
+     /* corrects inline gap in enclosing div */
+     display: block;
+     max-width: 100%;
+     /* just in case, to force correct aspect ratio */
+     height: auto !important;
+     width: auto\9; /* ie8+9 */
+     /* lt ie8 */
+     -ms-interpolation-mode: bicubic; 
+}
+
+.crop-height {
+     /* max-width: 1200px; /* img src width (if known) */
+     max-height: 40em;
+    overflow: hidden; 
+}
+
+
 .active{
     color: purple !important;
 }
@@ -335,7 +354,7 @@ main nav li.active a:after {
 }
 
 .negative a {
-    color: #000;
+    color: #434a4f;
 }
 
 
@@ -880,7 +899,11 @@ font-size: 0.8em;
     margin-top: -8.5em;
     padding: 8.5em 2em 0 1em;
     -webkit-font-smoothing: antialiased;
-    color: #000;
+    color: #434a4f;
+}
+
+.page-standardpage .crop-height {
+    display: none;
 }
 
 .page-standardpage .were-tbx-2 h3 {
@@ -1764,7 +1787,7 @@ footer .tel {
 @media print {
     * {
         background: transparent !important;
-        color: #000 !important; /* #434a4f prints faster: h5bp.com/s */
+        color: #434a4f !important; /* #434a4f prints faster: h5bp.com/s */
         box-shadow: none !important;
         text-shadow: none !important;
     }
