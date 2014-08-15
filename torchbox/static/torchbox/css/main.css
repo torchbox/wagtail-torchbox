@@ -1411,6 +1411,15 @@ main .breadcrumb a:hover {
     margin-bottom: 0; 
 }  
 
+.page-homepage .down{
+    background: url("/static/torchbox/images/down.png") center no-repeat;
+    width: 100%;
+    height: 75px;
+    position: absolute;
+    bottom: 0;
+    margin-left: -2em;
+}
+
 .page-homepage .author .name {
     font-size: 1em;
     margin-top: 0;
