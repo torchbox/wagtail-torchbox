@@ -1218,7 +1218,7 @@ font-size: 0.8em;
     margin: 0 auto; 
     z-index: 9999;
     position: absolute;
-    bottom: 10em;
+    bottom: 0em;
     padding: 1.5em;
     max-width: 36em;
     transition: background-color 0.3s ease;
