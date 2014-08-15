@@ -74,6 +74,10 @@
 
 	/*Homepage*/
 
+	.page-homepage .down{
+	    height: 100px;
+	}
+
 	.page-homepage .bleed {
 		margin: 1em 0.5em 0 0;
 	}	
