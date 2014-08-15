@@ -465,10 +465,11 @@ main nav li.active a:after {
     min-width: 200px;
     text-align: center;
     float: left;
-        -o-transition:.3s;
-  -ms-transition:.3s;
-  -moz-transition:.3s;
-  -webkit-transition:.3s;
+    cursor: pointer;
+     -o-transition:.3s;
+    -ms-transition:.3s;
+    -moz-transition:.3s;
+    -webkit-transition:.3s;
 }
 
 .page-homepage .hero .button:hover {
@@ -627,13 +628,20 @@ overflow: hidden;
 
 /*Jobs index*/
 
+.page-jobindexpage main .listing li {
+width: 100%;
+margin-right: 2%;
+min-height: 60px;
+font-size: 0.8em;
+}
 
-    .sign-up{
-        clear: both;
-        margin: 0 auto;
-        width: 100%;
-        text-align: center;
-    }
+
+.sign-up{
+    clear: both;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
 
 .page-jobindexpage h1 {
     font-weight: bold;
@@ -724,7 +732,7 @@ overflow: hidden;
 }
 
 .page-jobindexpage main .listing a {
-    font-size: 1.2em;
+    font-size: 1.3em;
     border-bottom: 1px solid #a9a9a9;
     transition: all 0.2s ease;
     line-height: 1.3;
@@ -812,9 +820,10 @@ overflow: hidden;
 
     .info-holder{
         width: 100%;
-        margin:2em auto -1em 0;
-        height: 130px;
+        margin:2em auto 2em 0;
+        height: 95px;
         padding: 0em 0 0em 0;
+        border-bottom: 1px dotted #a9a9a9;
     }
 
     .info p{
@@ -1288,7 +1297,7 @@ main .breadcrumb a:hover {
 
 
 .article-meta {
-    margin-bottom: 1em;
+    margin:-1em auto 2em auto;
     padding-bottom: 1em;
     font-size: 1.125em;
     border-bottom: 1px dotted rgba(0,0,0,0.2);
@@ -1441,7 +1450,6 @@ main .breadcrumb a:hover {
  .page-personpage .role {
         font-size: 1.1em;
         line-height: 1.2em;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         padding-bottom: 0.5em;
         margin-bottom: 0.5em;
         color: #97cb9b;
@@ -1467,7 +1475,6 @@ main .breadcrumb a:hover {
 .page-standardpage header nav li a:hover{
     color: #ea853a;
     transition: all 0.15s ease;
-    border-bottom: 3px solid #ea853a;
 }
 
 
@@ -1510,7 +1517,7 @@ main .breadcrumb a:hover {
 .grid.people-list a img {
     margin: 0;
     transition: all 0.2s ease;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .grid.people-list a:hover img {
@@ -1537,6 +1544,10 @@ main .breadcrumb a:hover {
     line-height: 1em;
     font-weight: bold;
     color: #424a4f;
+}
+
+.page-personpage .bleed {
+margin: -3.7em -1em 0 -1em;
 }
 
 .page-personpage .title{

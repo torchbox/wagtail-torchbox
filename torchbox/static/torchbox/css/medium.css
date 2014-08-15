@@ -243,6 +243,10 @@
 	    height:225px;
 	}
 
+	.page-standardpage .grid li:nth-of-type(3) {
+		margin-right: 3.5%;
+	}
+
 	.page-standardpage .were-tbx-2 li div {
 		max-width: 30em;
 		float:left;
@@ -644,9 +648,13 @@
 
 
 	.grid li {
-		width:30%;
-		margin-right: 3%;
+		width:31%;
+		margin-right: 3.5%;
 		border: none;
+	}
+
+	.grid li:nth-of-type(3) {
+		margin-right: 0;
 	}
 
 	.grid li:nth-child(3n+4) {
@@ -714,13 +722,6 @@
 		padding: 0.5em 0;
 		font-size: 2em;
 	}
-
-	.page-jobindexpage main .listing li{
-		float: left;
-		width:100%;
-		min-height: 60px;
-		font-size: 0.8em;
-	}
 	
 	.benefits{
 		max-width: 96em;
@@ -740,9 +741,9 @@
 	} 
 	
 	.page-jobindexpage main .benefits h2 {
-    font-size: 4em;
-    padding: 0;
-    margin: 0 0 0.8em 0;
+    	font-size: 4em;
+		padding: 0;
+		margin: 0 0 0.8em 0;
 	}
 
 	.icon{
@@ -879,7 +880,7 @@
 	}
 
 	.grid.people-list li div {
-    opacity: 0.5;
+    	opacity: 0.5;
 	}
 
 	.page-personindexpage  header nav li a {
@@ -897,6 +898,10 @@
 
 	.page-personpage header nav li a {
 	    color: #424a4f;
+	}
+
+	.page-personpage .bleed {
+		margin: 1em 0.5em 0 0;
 	}
 
 	.page-personpage header nav li a:hover {
@@ -938,7 +943,6 @@
 
 	.page-personpage .role {
 		font-size: 1.5em;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 		padding-bottom: 0.3em;
 		margin-bottom: 0.5em;
 	}	
@@ -1131,12 +1135,12 @@
 		padding: 0;
 	}
 
-}	
+}
 
 @media only screen and (min-width: 1000px) {
 	.uslist {
 		margin: 0 auto;
-		padding: 3em 0 1em 0;
+		padding: 3em 0 0em 0;
 		border: none;
 		box-sizing: border-box;
 		left: auto;
@@ -1157,7 +1161,7 @@
 }
 
     /* Desktop */
-
+@media only screen and (min-width: 1250px) {
 	.page-jobindexpage main .listing li:nth-child(2) a {
 		border-top: 1px solid #a9a9a9;
 	}
