@@ -50,8 +50,9 @@
 	}
 
 	header nav li a {
-		padding: 1.33em 0 0 0;
+		padding: 0.5em 0 0 0;
     	border-bottom: none;
+    	margin: 0.5em 0.5em;
 	}
 
 	header nav li:last-child a {
@@ -72,6 +73,10 @@
 	}
 
 	/*Homepage*/
+
+	.page-homepage .bleed {
+		margin: 1em 0.5em 0 0;
+	}	
 
 	.page-homepage .author .avatar {
     display: block;
@@ -103,12 +108,6 @@
     position:relative;
     background-color: transparent;
 	}	
-
-	.page-homepage header nav li {
-		float: left;
-		padding: 2em 0em 0 1em;
-		margin-right: 1em;
-	}
 
 	.page-homepage .hero {
 		padding: 17% 2em;
@@ -193,7 +192,7 @@
 	}
 
 	.page-standardpage .were-tbx {
-	    margin-top: -13em;
+	    margin-top: -9em;
 	}
 
 
@@ -212,6 +211,7 @@
 	}
 
 	.page-standardpage .were-tbx h2 {
+		display: none;
 	    font-size: 2em;    
 	    margin-bottom: 0.5em;
 	    color: #fff;
@@ -238,9 +238,18 @@
 	    border-top: none;
 	    padding: 0;
 	    float: left;
-	    width: 47%;
-	    margin-right: 1.5%;
-	    height:200px;
+	    width: 46%;
+	    margin-right: 3.5%;
+	    height:225px;
+	}
+
+	.page-standardpage .grid li:nth-of-type(3) {
+		margin-right: 3.5%;
+	}
+
+	.page-standardpage .were-tbx-2 li div {
+		max-width: 30em;
+		float:left;
 	}
 
 	.page-standardpage .were-tbx-2 li:nth-child(1) .icon {
@@ -257,10 +266,6 @@
 
 	.page-standardpage .were-tbx-2 li:nth-child(4) .icon {
 		background-image: url("/static/torchbox/images/icons/location.png");
-	}
-
-	.page-standardpage .were-tbx-2 p {
-		padding-left: 5.3em;
 	}
 
 	.uslist {
@@ -313,12 +318,21 @@
 
 	.page-workindexpage main .listing div {
 	    background: rgba(0,0,0,0.7) ;
-	    padding: 2.5em;
+	    padding: 2em 2.5em 0 2.5em;
+		transition: 0.3s ease;
+	    top: 300px;
 	}
 
 	.page-workindexpage main .listing a:hover div {
 	    background: rgba(234,133,58,1);
+	    top: 130px;
 	}
+
+	.page-workindexpage main .listing div p {
+		margin: 1em 0 1em 0;
+		display: block;
+	}
+
 
 	.page-workindexpage main ul li {
     background: no-repeat center center; 
@@ -328,6 +342,7 @@
     background-size: cover;
     width: 100%;
     max-height: 35em;
+    overflow: hidden;
 	}
 
 	/*Index pages*/
@@ -469,6 +484,7 @@
 	}
 
 	.next{
+		display: block;
 	    margin-top: 10px;
 	    right: 0;
 	    display:inline-block;
@@ -485,7 +501,6 @@
 	    overflow: hidden;
 	    margin-right: -75px;
 	    transition: 0.2s ease;
-	    opacity: 0.8;
 	}
 
 	.next.sticky {
@@ -508,6 +523,7 @@
 	}
 
 	.previous{
+		display: block;
 		margin-top: 10px;
 	    left: 0;
 	    display:inline-block;
@@ -525,7 +541,6 @@
 	    margin-left: -105px;
 	    margin-right: 0;
 	    transition: 0.2s ease;
-	    opacity: 0.8;
 	}
 
 	.previous:hover{
@@ -539,11 +554,8 @@
 	}
 
 	.page-workpage	header nav li a {
-	    display: block;
-	    padding: 0;
 	    margin:0.5em 0.5em;
 	    color: white;
-	    font-size: 1.1em;
 	}
 
 	.author {
@@ -587,23 +599,6 @@
     	width: 100%;
     }
 
-    .crop-height {
-	 	 /* max-width: 1200px; /* img src width (if known) */
-	 	 max-height: 40em;
-	  	overflow: hidden; 
-	}
-
-	img.scale {
-	 	 /* corrects inline gap in enclosing div */
-	 	 display: block;
-	 	 max-width: 100%;
-	 	 /* just in case, to force correct aspect ratio */
-	 	 height: auto !important;
-	 	 width: auto\9; /* ie8+9 */
-	 	 /* lt ie8 */
-	 	 -ms-interpolation-mode: bicubic; 
-	}
-
     .page-workpage .intro .body-copy {
 	    margin-bottom: 1em;
 	    margin-top: -10.2em;
@@ -645,9 +640,13 @@
 
 
 	.grid li {
-		width:30%;
-		margin-right: 3%;
+		width:31%;
+		margin-right: 3.5%;
 		border: none;
+	}
+
+	.grid li:nth-of-type(3) {
+		margin-right: 0;
 	}
 
 	.grid li:nth-child(3n+4) {
@@ -689,6 +688,14 @@
 		margin-bottom: 2%;
 	}
 
+	.page-jobpage header nav li a{
+    	color: #424a4f;
+	}
+
+	.page-jobpage header nav li a:hover{
+    	color: #ea853a;
+	}
+
 	.page-jobindexpage h1 {
 		margin:-2em auto 0.5em auto;
 		max-width: 96em;
@@ -706,13 +713,6 @@
 	.page-jobindexpage main .listing a {
 		padding: 0.5em 0;
 		font-size: 2em;
-	}
-
-	.page-jobindexpage main .listing li{
-		float: left;
-		width:100%;
-		min-height: 60px;
-		font-size: 0.8em;
 	}
 	
 	.benefits{
@@ -733,9 +733,9 @@
 	} 
 	
 	.page-jobindexpage main .benefits h2 {
-    font-size: 4em;
-    padding: 0;
-    margin: 0 0 0.8em 0;
+    	font-size: 4em;
+		padding: 0;
+		margin: 0 0 0.8em 0;
 	}
 
 	.icon{
@@ -872,7 +872,7 @@
 	}
 
 	.grid.people-list li div {
-    opacity: 0.5;
+    	opacity: 0.5;
 	}
 
 	.page-personindexpage  header nav li a {
@@ -890,6 +890,10 @@
 
 	.page-personpage header nav li a {
 	    color: #424a4f;
+	}
+
+	.page-personpage .bleed {
+		margin: 1em 0.5em 0 0;
 	}
 
 	.page-personpage header nav li a:hover {
@@ -931,7 +935,6 @@
 
 	.page-personpage .role {
 		font-size: 1.5em;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 		padding-bottom: 0.3em;
 		margin-bottom: 0.5em;
 	}	
@@ -948,7 +951,6 @@
 	}
 
 	.bleed {
-    margin: 2.5 -1em;
     background:none;
     overflow: visible;
 	}
@@ -1099,6 +1101,12 @@
 
 	}
 
+
+	.listing p {
+    	margin: 0 0 1em 0;
+    	display: block;
+	}
+
 }
 
 @media print,
@@ -1119,26 +1127,33 @@
 		padding: 0;
 	}
 
-}	
+}
 
+@media only screen and (min-width: 1000px) {
+	.uslist {
+		margin: 0 auto;
+		padding: 3em 0 0em 0;
+		border: none;
+		box-sizing: border-box;
+		left: auto;
+		max-width: 100%;
+	}
 
-    /* Desktop */
+	.page-standardpage .were-tbx h2 {
+		display: block;
+		font-size: 2em;
+		margin-bottom: 0.5em;
+		color: #fff;
+	}
 
- @media only screen and (min-width: 830px) {
+	.page-standardpage .were-tbx {
+		margin-top: -13em;
+	}
 
 }
 
- @media only screen and (min-width: 1250px) {
-	.page-workindexpage main ul li {
-		 -webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-		width: 50%;
-		max-height: 35em;
-		float: left;
-	}
-
+    /* Desktop */
+@media only screen and (min-width: 1250px) {
 	.page-jobindexpage main .listing li:nth-child(2) a {
 		border-top: 1px solid #a9a9a9;
 	}
@@ -1151,17 +1166,24 @@
 		font-size: 0.8em;
 	}
 
-	.listing p {
-		display: block;
-    	margin: 0 0 1em 0;
+	.page-workindexpage main .listing div {
+	    background: rgba(0,0,0,0.7) ;
+	    padding: 2em 2.5em 0 2.5em;
+		transition: 0.3s ease;
+	    top: 629px;
 	}
 
-	.page-workindexpage main ul a {
-		min-height: 35em;
+	.page-workindexpage main .listing a:hover div {
+	    background: rgba(234,133,58,1);
+	    top: 475px;
 	}
 
-	.page-workindexpage main .listing a h2 {
-		font-size: 2.5em;
+	.page-workindexpage main ul li{
+		max-height: 45em;
+	}
+
+	.page-workindexpage main ul a{
+		min-height: 80em;
 	}
 
 }
