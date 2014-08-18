@@ -488,6 +488,7 @@
 	}
 
 	.next{
+		position: absolute;
 		display: block;
 	    margin-top: 10px;
 	    right: 0;
@@ -527,6 +528,7 @@
 	}
 
 	.previous{
+		position: absolute;
 		display: block;
 		margin-top: 10px;
 	    left: 0;
