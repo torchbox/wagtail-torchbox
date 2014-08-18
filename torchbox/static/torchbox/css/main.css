@@ -1030,6 +1030,10 @@ font-size: 0.8em;
 
 /*Blog Index*/
 
+.page-blogindexpage .crop-height {
+    display: none;
+}   
+
 .page-blogindexpage h1 {
     font-size: 3em;
     font-weight: bold;
