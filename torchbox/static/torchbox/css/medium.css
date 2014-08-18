@@ -717,7 +717,7 @@
 	}
 
 	.page-jobindexpage main .listing a {
-		padding: 0.5em 0;
+		padding: 0.5em 0.2em;
 		font-size: 2em;
 	}
 	
@@ -867,6 +867,14 @@
 		float: right;
 		width: auto\9;
 		-ms-interpolation-mode: bicubic;
+	}
+
+	.info-holder {
+		width: 100%;
+		margin: 2em auto 2em auto;
+		height: 95px;
+		padding: 0em 0 0em 0;
+		border-bottom: 1px dotted #a9a9a9;
 	}
 
 	/*People index*/

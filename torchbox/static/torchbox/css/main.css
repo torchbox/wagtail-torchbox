@@ -790,66 +790,70 @@ font-size: 0.8em;
     line-height: 1em;
 }
 
-    .page-jobindexpage  img.scale {
-        display: none;
-    }
+.page-jobindexpage  img.scale {
+    display: none;
+}
 
-    .page-jobindexpage  img {
-        display: block;
-        width: 62px;
-    }
+.page-jobindexpage  img {
+    display: block;
+    width: 62px;
+}
 
-    .page-jobindexpage  .crop-height {
-        display: none;
-    }
+.page-jobindexpage  .crop-height {
+    display: none;
+}
 
-    .page-jobindexpage .img-wrapper {
-        width: 100%;
-        margin: 0;
-        text-align: center;
-    }
+.page-jobindexpage .img-wrapper {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
 
-    .location{
-        margin:0.5em 0 0 0;
-        padding: 0;
-        font-size: 0.7em;
-        color:#97cb9b;
-    }
+.location{
+    margin:0.5em 0 0 0;
+    padding: 0;
+    font-size: 0.7em;
+    color:#97cb9b;
+}
 
 /*job page*/
-    .page-jobpage h1 {
-        line-height: 1em;
-    }
+.page-jobpage h1 {
+    line-height: 1em;
+}
 
-    .page-jobpage h3 {
-        font-size: 1.5em;
-        font-weight: bold;
-        margin-bottom: -1em;
-    }
-    
-    .page-jobpage footer .offices h3{
-        margin-bottom: 0;
-    }
+.page-jobpage h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: -1em;
+}
 
-    .info{
-        width: 49%;
-        margin-left: 1%;
-        float: left;
-    }
+.page-jobpage .body-copy h2 {
+    margin-top: 0;
+}
 
-    .info-holder{
-        width: 100%;
-        margin:2em auto 2em 0;
-        height: 95px;
-        padding: 0em 0 0em 0;
-        border-bottom: 1px dotted #a9a9a9;
-    }
+.page-jobpage footer .offices h3{
+    margin-bottom: 0;
+}
 
-    .info p{
-        color: #97cb9b;
-        line-height: 1em;
-        padding-top: 1em;
-    }
+.info{
+    width: 49%;
+    margin-left: 1%;
+    float: left;
+}
+
+.info-holder{
+    width: 100%;
+    margin:1em auto 1.5em 0;
+    height: 95px;
+    padding: 0em 0 0em 0;
+    border-bottom: 1px dotted #a9a9a9;
+}
+
+.info p{
+    color: #97cb9b;
+    line-height: 1em;
+    padding-top: 1em;
+}
 
 /*Standard page*/
 
@@ -1488,9 +1492,9 @@ main .breadcrumb a:hover {
 }   
 
 .page-personpage .container {
-        margin-bottom: 4em;
         padding: 0 1em;
 }
+
 
 .page-standardpage main li {
     margin-bottom: 2em;
@@ -1578,12 +1582,8 @@ main .breadcrumb a:hover {
     color: #424a4f;
 }
 
-.page-personpage .bleed {
-margin: -3.7em -1em 0 -1em;
-}
-
-.page-personpage .title{
-    margin-top: -3em;
+footer .contact h2 {
+color: #fff;
 }
 
 /*
