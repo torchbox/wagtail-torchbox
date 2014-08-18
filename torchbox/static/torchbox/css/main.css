@@ -1420,12 +1420,13 @@ main .breadcrumb a:hover {
 }  
 
 .page-homepage .down{
-    background: url("/static/torchbox/images/down.png") center no-repeat;
+    background: url("/static/torchbox/images/down2.png") center no-repeat;
+    background-size: 80em;
     width: 100%;
     height: 75px;
     position: absolute;
     bottom: 0;
-    margin-left: -2em;
+    margin: 0 0 -1em -2em;
 }
 
 .page-homepage .author .name {

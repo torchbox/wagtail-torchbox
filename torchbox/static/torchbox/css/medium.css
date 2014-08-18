@@ -76,6 +76,7 @@
 
 	.page-homepage .down{
 	    height: 100px;
+	    background-size: 180em;
 	}
 
 	.page-homepage .bleed {
@@ -469,7 +470,7 @@
 
 	.page-blogindexpage .crop-height {
 		display: block;
-		max-height: 40em;
+		max-height: 24.5em;
 		overflow: hidden;
 		margin-top: -7em;
 	}	
