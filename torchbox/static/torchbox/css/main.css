@@ -851,7 +851,7 @@ font-size: 0.8em;
 
 .info p{
     color: #97cb9b;
-    line-height: 1em;
+    line-height: 1.2em;
     padding-top: 1em;
 }
 
@@ -1426,7 +1426,7 @@ main .breadcrumb a:hover {
 
 .page-homepage .author .name {
     font-size: 1em;
-    margin-top: 0;
+    margin-top: 0.3em;
     display: block;
 }  
 
