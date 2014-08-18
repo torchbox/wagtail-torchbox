@@ -500,10 +500,10 @@
 	    color: #fff;
 	    border: solid 1px #ea853a;
 	    border-radius: 2px;
-	    min-width: 110px;
+	    min-width: 195px;
 	    text-align: center;
 	    overflow: hidden;
-	    margin-right: -75px;
+	    margin-right: -159px;
 	    transition: 0.2s ease;
 	}
 
@@ -539,10 +539,10 @@
 	    color: #fff;
 	    border: solid 1px #ea853a;
 	    border-radius: 2px;
-	    min-width: 140px;
+	    min-width: 220px;
 	    text-align: center;
 	    overflow: hidden;
-	    margin-left: -105px;
+	    margin-left: -185px;
 	    margin-right: 0;
 	    transition: 0.2s ease;
 	}
@@ -777,7 +777,7 @@
 	}
 
 	.page-jobindexpage .intro p a {
-		padding: 1.2em 1.5em;
+		padding: 1.4em 1.5em;
 	}
 
 	.page-jobindexpage .rich-text p{

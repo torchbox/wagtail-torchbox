@@ -732,7 +732,7 @@ font-size: 0.8em;
     color: #fff;
     border: solid 1px #424a4f;
     border-radius: 2px;
-    min-width: 285px;
+    min-width: 252px;
     height: 55px;
     text-align: center;
     font-size: 0.8em;
@@ -745,7 +745,7 @@ font-size: 0.8em;
 }
 
 .page-jobindexpage .intro p  a:hover{
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(255,255,255,0.9);
     border-radius: 2px;
     color: #424a4f;
 }
@@ -787,7 +787,7 @@ font-size: 0.8em;
     font-size: 1.7em;
     margin-bottom: 0.25em;
     font-weight: bold;   
-    line-height: 0.5em;
+    line-height: 1em;
 }
 
     .page-jobindexpage  img.scale {
