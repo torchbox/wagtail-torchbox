@@ -303,6 +303,32 @@ main nav li.active a:after {
     color: white;
 }
 
+.page-homepage .more {
+    padding: 2em 0;
+    overflow: hidden;
+}
+
+.page-homepage .button {
+    margin: 0 auto;
+    padding: 1.3em 3em;
+    background-color: transparent;
+    border: solid 1px #EA853a;
+    color: #EA853a;
+    line-height: 1em;
+    border-radius: 0.2em;
+}
+
+.page-homepage .center {
+    max-width: 230px;
+}
+
+.page-homepage .button:hover {
+    background-color: #EA853a;
+    border: solid 1px #EA853a;
+    color: #fff;
+    cursor:pointer;
+}
+
  .bleed {
     margin: 0.3em -1em 0 -1em;
     background: rgba(67,74,79,1);
@@ -529,7 +555,7 @@ overflow: hidden;
 }
 
 .page-homepage .hiring > div {
-    max-width:96em;
+    max-width:46em;
     margin: 0 auto;
     color:#fff;
 }
@@ -1552,6 +1578,7 @@ main .breadcrumb a:hover {
 .grid.people-list a {
     background-color: #434a4f;
     display: block;
+    overflow: hidden;
 }
 
 
@@ -1590,14 +1617,6 @@ main .breadcrumb a:hover {
 footer .contact h2 {
 color: #fff;
 }
-
-/*
-.grid.people-list li:nth-child(3n+2) a:hover {
-    background-color: #627928;
-}
-.grid.people-list li:nth-child(3n+3) a:hover {
-    background-color: #5cb9e7;
-} */
 
 .people-list img {
     -webkit-filter: grayscale(100%);
