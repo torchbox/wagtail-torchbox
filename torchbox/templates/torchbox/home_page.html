@@ -15,44 +15,22 @@
         
     </section>
 
-    <section class="container gutters work clearfix grid">
-            <h2 class="visuallyhidden">Work</h2>
+    <section class="gutters work clearfix grid">
     		{% homepage_work_listing 3 %}
     	</div>
     </section>
 
-    <section class="container hiring">
-            <div >
-                <h2>  We're hiring </h2>
-        		{% homepage_job_listing 3 %}
-            </div>
-     	</section>
-
-    <section class="blog container grid">
-        <div class="center">
-                <h2><a href="blog.php" >Blog <span></span></a></h2>
-                <ul class="listing clearfix" >
-		          {% homepage_blog_listing 3 %}
-		          </ul>
-        </div>
+    <section class="grid">
+            <ul class="listing clearfix" >
+	          {% homepage_blog_listing 3 %}
+	        </ul>
     </section>
 
-    <section class="clients container">
-        <div class="center">
-	     <h2>Clients</h2>
-		 <ul>
-            <li><img src="{% static "torchbox/images/client-logo-crt.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-rca.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-ukgbc.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-jrf.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-ds.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-05.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-04.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-01.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-02.png" %}"></li>
-            <li><img src="{% static "torchbox/images/client-logo-03.png" %}"></li>
-         </ul>
-         </div>
-	 </section>
+    <section class="container hiring">
+        <div >
+            <h2>  We're hiring </h2>
+            {% homepage_job_listing 3 %}
+        </div>
+    </section>
 
 {% endblock %}

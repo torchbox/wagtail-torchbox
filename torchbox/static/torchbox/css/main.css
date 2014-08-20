@@ -427,6 +427,30 @@ main nav li.active a:after {
 
 /*Page home*/
 
+.page-homepage .block {
+padding: 1em 0;
+overflow: hidden;
+}
+
+.page-homepage .block .container{
+    margin: 0 auto;
+    max-width: 96em;
+}
+
+.label{
+    display: none;
+}
+
+.page-homepage .listing p{
+    font-size: 1.1em;
+}
+
+.page-homepage .crop-height {
+    /* max-width: 1200px; /* img src width (if known) */
+    float: left;
+    overflow: hidden; 
+}
+
 .page-homepage .blog .listing p {
     display: block;
     margin-top: -0.3em;
@@ -498,27 +522,24 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring {
-    background: url("/static/torchbox/images/hiring-teaser.jpg") no-repeat center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     min-width: 100%;
-    max-height:40em;
-    text-align: center;
-    padding: 4em 2em; 
+    text-align: left;
+    padding: 3em 2em; 
+    background-color: #97cb9b;
 }
 
 .page-homepage .hiring > div {
-    max-width:48em;
+    max-width:96em;
     margin: 0 auto;
     color:#fff;
 }
 
 .page-homepage .hiring a {
-    background-color: #EA853a;
+    border-radius: 3px;
+    border: solid 1px #fff;
     padding: 0.8em 1em;
     line-height: 1em;
+    font-weight: 300;
     color: #fff;
     display: inline-block;
     margin-bottom: 0.5em;
@@ -530,19 +551,8 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a:hover {
-    background-color: #ffa624;
-}
-
-
-
-.page-homepage .hiring ul {
-    border-top: 1px dotted #ccc;
-    border-top: 1px dotted rgba(0,0,0,0.2);
-}
-
-.page-homepage .hiring li a {
-    border-bottom: 1px dotted #ccc;
-    border-bottom: 1px dotted rgba(0,0,0,0.2);
+    background-color: #424a4f;
+    border: solid 1px #424a4f;
 }
 
 .page-homepage main h2 {
@@ -552,17 +562,9 @@ main nav li.active a:after {
     font-weight: 600;
 }
 
-.page-homepage .work {
-    padding: 1em;
+.page-homepage .work-intro {
+    margin-top: 1em;
 }
-
-.page-homepage .work li a div {
-        padding: 1em 0;
-        bottom: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.75);
-        box-sizing: border-box;
-    }
 
  .page-homepage .work li a:hover h3 {
      color: #EA853a;
@@ -1082,7 +1084,7 @@ font-size: 0.8em;
 }
 
 .page-blogindexpage main .block-link:hover {
-    background-color: #eaeff2;
+    background-color: #FAF9F5;
 }
 
 
@@ -1229,8 +1231,6 @@ font-size: 0.8em;
     bottom: 0em;
     padding: 1.5em;
     max-width: 36em;
-    transition: background-color 0.3s ease;
-    background: rgba(0,0,0,0.7);
 }
 
 

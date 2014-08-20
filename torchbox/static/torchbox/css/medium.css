@@ -74,9 +74,55 @@
 
 	/*Homepage*/
 
+	.label{
+		display: block;
+		position: absolute;
+		background-color: #fff;
+		padding: 1em 1.5em;
+		color:#ea853a;
+		font-size: 1em;
+	}
+
+	.block:hover .label {
+		transition: 0.2s ease;
+		background: #FAF9F5;
+		color: #424a4f;
+	}
+
+	.page-homepage .crop-height {
+  	  max-height: 20em;
+  	  width: 45%;
+	}
+
+	.page-homepage .work-intro {
+		float: left;
+		padding: 0em 3em;
+		bottom: 0;
+		max-width: 45%;
+		box-sizing: border-box;
+	}
+
+	.page-homepage .block{
+	    padding: 2.5em 0;
+	    border-top: 1px dotted #DAD7D7;
+	    overflow:hidden;
+	}
+
+	.page-homepage .listing h3{
+    	font-size: 2em;
+	}
+
 	.page-homepage .down{
 	    height: 100px;
 	    background-size: 180em;
+	}
+
+	.page-homepage .listing a:hover h3{
+		color: #ea853a;
+	}
+
+	.page-homepage .listing .grid li img a:hover {
+		background-color: rgba(0,0,0,0.7);
 	}
 
 	.page-homepage .bleed {
@@ -142,8 +188,9 @@
 		padding:1.25em;
 	}
 
-	.page-homepage .work {
-		padding: 2em;
+	.page-homepage .work-block {
+		max-width: 96em;
+		margin: 0 auto;
 	}
 
 	.page-homepage .blog {
@@ -154,18 +201,14 @@
 	.page-homepage .blog h3 {
 		font-size: 1.5em;
 	}
-
-	.page-homepage .hiring {
-		padding: 12em 2em;
-		border: none;
-	}
 	
 	.page-homepage .hiring h2 {
-		font-size: 5em;
+		font-size: 3em;
+		color: #fff;
 	}
 
 	.page-homepage .hiring a {
-		font-size: 1.25em;		
+		font-size: 1em;		
 	}
 
 	.page-homepage .hiring ul {
@@ -175,7 +218,7 @@
 	.page-homepage .hiring li {
 		display:inline-block;
 		border: none;
-		margin-bottom: 1em;
+		margin:0 1.5em 1em 0;
 	}
 
 	/*Standard page (we're torchbox) */
@@ -322,14 +365,12 @@
 
 
 	.page-workindexpage main .listing div {
-	    background: rgba(0,0,0,0.7) ;
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 300px;
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(234,133,58,1);
 	    top: 130px;
 	}
 
@@ -649,15 +690,16 @@
 	}
 
 	.grid li img {
+		float: left;
 		width: 100%;
 		height: auto;
 	}
 
 
 	.grid li {
-		width:31%;
-		margin-right: 3.5%;
+		width:100%;
 		border: none;
+		margin: 1em 0;
 	}
 
 	.grid li:nth-of-type(3) {
@@ -695,6 +737,15 @@
 	}
 	.page-homepage .clients{
 		padding: 3em 2em 1em 2em;
+	}
+
+	.page-homepage .grid li {
+		margin: 0;
+		transition: 0.2s ease;
+	}
+
+	.page-homepage .grid li:hover {
+		background-color: #FAF9F5;
 	}
 
 	.page-homepage .clients li {
@@ -1190,14 +1241,12 @@
 	}
 
 	.page-workindexpage main .listing div {
-	    background: rgba(0,0,0,0.7) ;
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 629px;
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(234,133,58,1);
 	    top: 475px;
 	}
 
