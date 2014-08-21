@@ -453,42 +453,47 @@ main nav li.active a:after {
 
 /*Page home*/
 
-.page-homepage .block {
-padding: 1em 0;
-overflow: hidden;
+.hide{
+    display: none;
 }
 
-.page-homepage .block .container{
-    margin: 0 auto;
-    max-width: 96em;
-}
-
-.page-homepage .blogcontainer{
-    margin: 0 auto;
-    max-width: 55em;
-}
-
-.page-homepage .blogcontainer .work-intro{
-    padding: 2em 0 2em 0;
+.page-homepage .block .workcontainer {
+    padding: 1em;
+    max-width: 100%;
     overflow: hidden;
-    float: left;
-    bottom: 0;
-    max-width: 100%;
-    width: auto;
-    box-sizing: border-box;
 }
 
-.page-homepage .block .workcontainer{
-    padding: 0;
+.page-homepage .block .blogcontainer {
+    padding: 1em;
     max-width: 100%;
+    overflow: hidden;
 }
 
 .label{
     display: none;
 }
 
+.blog .label{
+    display: block;
+}
+
 .page-homepage .listing p{
-    font-size: 1.1em;
+    display: block;
+    font-size: 1em;
+    margin-top: -0.1em;
+}
+
+.workcontainer .work-intro .listing p{
+    display: none;
+}
+
+.blogcontainer {
+    display: none;
+}
+
+.page-homepage .blockblog{
+    height: auto;
+    overflow: hidden;
 }
 
 .page-homepage .crop-height {
@@ -497,9 +502,9 @@ overflow: hidden;
     overflow: hidden; 
 }
 
-.page-homepage .blog .listing p {
-    display: block;
-    margin-top: -0.3em;
+.page-homepage .blog {
+    background: #f3f4f6;
+    padding: 1px 0;
 }
 
 .page-homepage .menu-button:hover {
@@ -609,7 +614,8 @@ overflow: hidden;
 }
 
 .page-homepage .work-intro {
-    margin-top: 1em;
+    margin:0;
+    padding: 0em 1em;
 }
 
  .page-homepage .work li a:hover h3 {
@@ -656,12 +662,17 @@ overflow: hidden;
         -moz-animation:spin 0.5s linear infinite;
         animation:spin 0.5s linear infinite;
 }
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 .page-homepage .blog li {
     margin-top: 0.5em;
+}
+
+.page-homepage .bloglisting a:first-child li{
+    padding-top: 2em;
+}
+
+.page-homepage .bloglisting a:last-child li{
+    padding-bottom: 2em;
 }
 
 .page-homepage .clients {
@@ -1271,6 +1282,7 @@ font-size: 0.8em;
     bottom: 0em;
     padding: 1.5em;
     max-width: 36em;
+    background: #000;
 }
 
 
@@ -1282,6 +1294,8 @@ font-size: 0.8em;
     margin-bottom: 0.25em;
     font-family: "proxima-nova";
 }
+
+
 
 
 /*Work page*/
@@ -1428,18 +1442,11 @@ main .breadcrumb a:hover {
     margin: -0.5em 0 2em 0;
 }
 
-.author a {
-    color: #EA853a;
-}
-
-.author a:hover {
-    color: #ffa624;
-}
-
 .author .name {
     font-size: 1.5em;
     margin-top: 0.5em;
     display: block;
+    color: #EA853a;
 }
 
 .author .avatar {

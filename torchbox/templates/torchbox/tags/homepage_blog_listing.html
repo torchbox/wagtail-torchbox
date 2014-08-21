@@ -3,60 +3,61 @@
 	<ul>
     {% for blog in blogs %}
     <a href="{% pageurl blog %}">
-    	<li>
-                <div class="blockblog">
-                    <div class="blogcontainer">
-                       <!--  <div class="crop-height">
-                           {% if blog.feed_image %}
-                                {% image blog.feed_image width-2000 as blogimage %}
-                                <img src="{{ blogimage.url }}" width="{{ blogimage.width }}" height="{{ blogimage.height }}" alt="{{ blogimage.alt }}" class="" />
-                            {% else %}
-                                <img src="http://www.spoon-tamago.com/wp-content/uploads/2012/07/book-design-doppo.jpg" width="" height="" alt="" class=""/>
-                            {% endif %}
-                        </div>  
-
-                    <div class="label">
-                        Our blog
-                    </div>
-
-                    --> 
-                          
-
-
-                        <div class="work-intro">
-                            {% if blog.date %}
-                              <span class="date">{{ blog.date|date:"j F Y" }}</span>
-                            {% endif %}
-
-                            <h3>{{ blog.title }}</h3>
-
-                            {% if blog.intro %}
-                            	{{ blog.intro|richtext }}
-                            {% endif %}
-
-                            <div id="author" class="author clearfix" >
-                                {% with blog.related_author.all as authors %}
-                                {% if authors %}
-                                {% for author in authors %}
-                                {% if author.author.image %}
-                                {% image author.author.image width-300 as photo %}
-
-                                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+        <div class="blog">
+        	<li>
+                    <div class="block">
+                        <div class="blogcontainer">
+                            <div class="crop-height">
+                               {% if blog.feed_image %}
+                                    {% image blog.feed_image width-2000 as blogimage %}
+                                    <img src="{{ blogimage.url }}" width="{{ blogimage.width }}" height="{{ blogimage.height }}" alt="{{ blogimage.alt }}" class="" />
+                                {% else %}
+                                    <img src="http://www.spoon-tamago.com/wp-content/uploads/2012/07/book-design-doppo.jpg" width="" height="" alt="" class=""/>
                                 {% endif %}
-                                <div class="name">{{ author.author.title }}</div>
-                                  
-                                {% if author.author.role %}
-                                <span class="role">{{ author.author.role }}</span>
-                                {% endif %}
+                            </div>  
 
-                                {% endfor %}
-                                {% endif %}
-                                {% endwith %}
+                            <div class="label">
+                                <p>Our blog</p>
                             </div>
+
                         </div>
-                    </div>    
-                </div>
-		</li>
+
+
+                            <div class="work-intro">
+
+                                <h3>{{ blog.title }}</h3>
+
+                                {% if blog.intro %}
+                                	{{ blog.intro|richtext }}
+                                {% endif %}
+
+                                {% if blog.date %}
+                                  <span class="date">{{ blog.date|date:"j F Y" }}</span>
+                                {% endif %}
+
+                                <div id="author" class="author clearfix" >
+                                    {% with blog.related_author.all as authors %}
+                                    {% if authors %}
+                                    {% for author in authors %}
+                                    {% if author.author.image %}
+                                    {% image author.author.image width-300 as photo %}
+
+                                    <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+                                    {% endif %}
+                                    <div class="name">{{ author.author.title }}</div>
+                                      
+                                    {% if author.author.role %}
+                                    <span class="role">{{ author.author.role }}</span>
+                                    {% endif %}
+
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endwith %}
+                                </div>
+                            </div>
+                    </div>
+    	   </li>
+        </div>
     </a>
     {% endfor %}
     </ul>

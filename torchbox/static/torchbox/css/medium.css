@@ -73,20 +73,51 @@
 	}
 
 	/*Homepage*/
+	.page-homepage .blog {
+	    background: transparent;
+	    padding-top: 0;
+	}
+
+	.hide{
+    	display: block;
+	}
+
+	.page-homepage .listing p{
+    	margin-top: 0;
+	}
+
+	.page-homepage .block .workcontainer{
+    	padding: 0;
+	}
+
+	.page-homepage .block .blogcontainer{
+    	padding: 0;
+    	overflow:visible;
+    	display: block;
+	}
 
 	.label{
 		display: block;
 		position: absolute;
-		background-color: #fff;
-		padding: 1em 1.5em;
-		color:#ea853a;
+		background-color: #000;
+		padding: 1em 1.5em 0.5em 1.5em;
+		color:#fff;
 		font-size: 1em;
+		margin-top: -5em;
+		transition: 0.4s ease;
 	}
 
 	.block:hover .label {
-		transition: 0.2s ease;
 		background: #000;
-		color: #fff;
+		margin-top: 0;
+	}
+
+	.page-homepage .bloglisting a:first-child li{
+    	padding-top: 0em;
+	}
+
+	.page-homepage .bloglisting a:last-child li{
+	    padding-bottom: 0em;
 	}
 
 	.block:hover .name {
@@ -104,33 +135,32 @@
 
 	.page-homepage .crop-height {
 		background-color: #000;
-	  	max-height: 25em;
+	  	max-height: 28em;
 	  	width: 55%;
+	  	position: relative;
+	}
+
+	.page-homepage .block .workcontainer{
+		overflow: visible;
 	}
 
 	.page-homepage .work-intro {
 		float: left;
-		padding: 0em 3em;
+		padding: 1em 3em;
 		bottom: 0;
 		max-width: 40%;
 		width: 750px;
 		box-sizing: border-box;
 	}
 
-	.page-homepage .blog .work-intro {
-		padding: 2em 0em;
-		max-width: 55%;
-	}
-
 	.page-homepage .block{
 	    padding: 0;
 	    overflow:hidden;
+	    position: relative;
 	}
 
-	.page-homepage .blockblog{
-		padding: 0;
-	    overflow:hidden;
-	    border-top: 1px dotted #DAD7D7;
+	.blog h3{
+    	color: #424a4f;
 	}
 
 	.page-homepage .listing h3{
@@ -152,6 +182,7 @@
 
 	.page-homepage .author .avatar {
 	    display: block;
+	    opacity: 1;
 	} 
 
 	.author {
@@ -159,6 +190,10 @@
 	    border-top: 1px dotted rgba(0,0,0,0.2);
 	    padding: 1em 0em;
 	    margin-bottom: 2em;
+	}
+
+	.author .name {
+	    color: #424a4f;
 	}
 
 	.page-homepage .logo {
