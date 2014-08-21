@@ -316,6 +316,7 @@ main nav li.active a:after {
     color: #EA853a;
     line-height: 1em;
     border-radius: 0.2em;
+    -webkit-transition: .3s;
 }
 
 .page-homepage .center {
@@ -665,6 +666,14 @@ overflow: hidden;
 
 .page-homepage .blog li {
     margin-top: 0.5em;
+}
+
+.worklisting h3{
+    margin-bottom: 1em;
+}
+
+.worklisting {
+    margin-bottom: 2em;
 }
 
 .page-homepage .bloglisting a:first-child li{

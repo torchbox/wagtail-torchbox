@@ -7,12 +7,13 @@
         	<li>
                     <div class="block">
                         <div class="blogcontainer">
+                        
                             <div class="crop-height">
                                {% if blog.feed_image %}
                                     {% image blog.feed_image width-2000 as blogimage %}
                                     <img src="{{ blogimage.url }}" width="{{ blogimage.width }}" height="{{ blogimage.height }}" alt="{{ blogimage.alt }}" class="" />
                                 {% else %}
-                                    <img src="http://www.spoon-tamago.com/wp-content/uploads/2012/07/book-design-doppo.jpg" width="" height="" alt="" class=""/>
+                                    <img src="/static/torchbox/images/blog_home_placeholder.png" width="" height="" alt="" class=""/>
                                 {% endif %}
                             </div>  
 

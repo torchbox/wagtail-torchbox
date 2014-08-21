@@ -10,10 +10,12 @@
                         {% if work.homepage_image %}
                         {% image work.homepage_image width-2000 as screenshot %}
 
+                        <div class="label">
+                            <p>Our work</p>
+                        </div>
+
                         <div class="crop-height">
                             <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
-                            <div class="label">
-                                <p>Our work</p> </div>
                         </div>
 
                         </div>
