@@ -463,6 +463,26 @@ overflow: hidden;
     max-width: 96em;
 }
 
+.page-homepage .blogcontainer{
+    margin: 0 auto;
+    max-width: 55em;
+}
+
+.page-homepage .blogcontainer .work-intro{
+    padding: 2em 0 2em 0;
+    overflow: hidden;
+    float: left;
+    bottom: 0;
+    max-width: 100%;
+    width: auto;
+    box-sizing: border-box;
+}
+
+.page-homepage .block .workcontainer{
+    padding: 0;
+    max-width: 100%;
+}
+
 .label{
     display: none;
 }
@@ -639,12 +659,6 @@ overflow: hidden;
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-
-
-.page-homepage .blog {
-    background: #f3f4f6;
-    padding-top: 2em;
-}
 
 .page-homepage .blog li {
     margin-top: 0.5em;
@@ -1115,7 +1129,7 @@ font-size: 0.8em;
 
 
 .page-blogindexpage main .listing .container {
-   max-width: 48em;
+   max-width: 60em;
    margin: 0 auto;
 }
 

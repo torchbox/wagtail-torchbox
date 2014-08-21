@@ -5,7 +5,7 @@
         <a href="{% pageurl work %}">
             <li>
                 <div class="block">
-                    <div class="container">
+                    <div class="workcontainer">
                         {% if work.homepage_image %}
                         {% image work.homepage_image width-2000 as screenshot %}
                         <div class="crop-height">
@@ -20,7 +20,7 @@
                             <h3>{{ work.title }}</h3>
                             <p>
                                 {% if work.summary %}
-                                {{ work.summary }}
+                                    {{ work.summary }}
                                 {% endif %}
                             </p>
                         </div>

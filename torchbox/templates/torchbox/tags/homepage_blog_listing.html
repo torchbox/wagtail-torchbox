@@ -4,20 +4,22 @@
     {% for blog in blogs %}
     <a href="{% pageurl blog %}">
     	<li>
-                <div class="block">
-                    <div class="container">
-                        <div class="crop-height">
-                            {% if blog.feed_image %}
+                <div class="blockblog">
+                    <div class="blogcontainer">
+                       <!--  <div class="crop-height">
+                           {% if blog.feed_image %}
                                 {% image blog.feed_image width-2000 as blogimage %}
                                 <img src="{{ blogimage.url }}" width="{{ blogimage.width }}" height="{{ blogimage.height }}" alt="{{ blogimage.alt }}" class="" />
                             {% else %}
                                 <img src="http://www.spoon-tamago.com/wp-content/uploads/2012/07/book-design-doppo.jpg" width="" height="" alt="" class=""/>
                             {% endif %}
-                        </div>    
+                        </div>  
 
                     <div class="label">
                         Our blog
                     </div>
+
+                    --> 
                           
 
 
@@ -25,7 +27,7 @@
                             {% if blog.date %}
                               <span class="date">{{ blog.date|date:"j F Y" }}</span>
                             {% endif %}
-                            
+
                             <h3>{{ blog.title }}</h3>
 
                             {% if blog.intro %}

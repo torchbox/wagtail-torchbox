@@ -85,8 +85,8 @@
 
 	.block:hover .label {
 		transition: 0.2s ease;
-		background: #FAF9F5;
-		color: #424a4f;
+		background: #000;
+		color: #fff;
 	}
 
 	.block:hover .name {
@@ -94,27 +94,43 @@
 		color: #ea853a;
 	}
 
+	.block:hover img {
+		opacity: 0.3;
+	}
+
+	.block img {
+		transition: 0.2s ease;
+	}
+
 	.page-homepage .crop-height {
-  	  max-height: 20em;
-  	  width: 45%;
+		background-color: #000;
+	  	max-height: 25em;
+	  	width: 55%;
 	}
 
 	.page-homepage .work-intro {
 		float: left;
 		padding: 0em 3em;
 		bottom: 0;
-		max-width: 45%;
+		max-width: 40%;
+		width: 750px;
 		box-sizing: border-box;
 	}
 
+	.page-homepage .blog .work-intro {
+		padding: 2em 0em;
+		max-width: 55%;
+	}
+
 	.page-homepage .block{
-	    padding: 2.5em 0;
-	    border-top: 1px dotted #DAD7D7;
+	    padding: 0;
 	    overflow:hidden;
 	}
 
-	.page-homepage .block:nth-last-of-type(1){
-		border-bottom: 1px dotted #DAD7D7;
+	.page-homepage .blockblog{
+		padding: 0;
+	    overflow:hidden;
+	    border-top: 1px dotted #DAD7D7;
 	}
 
 	.page-homepage .listing h3{
@@ -130,16 +146,12 @@
 		color: #ea853a;
 	}
 
-	.page-homepage .listing .grid li img a:hover {
-		background-color: rgba(0,0,0,0.7);
-	}
-
 	.page-homepage .bleed {
 		margin: 1em 0.5em 0 0;
 	}	
 
 	.page-homepage .author .avatar {
-    display: block;
+	    display: block;
 	} 
 
 	.author {
@@ -150,8 +162,8 @@
 	}
 
 	.page-homepage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
-    background-size: auto 3em;
+	    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+	    background-size: auto 3em;
 	}
 
 	.page-homepage .hero {
@@ -172,7 +184,6 @@
 	.page-homepage .hero {
 		padding: 17% 2em;
 		margin-top: -5em;
-		margin-bottom: -1em;
 	}
 
 	.page-homepage .hero .gif {
@@ -200,15 +211,6 @@
 	.page-homepage .work-block {
 		max-width: 96em;
 		margin: 0 auto;
-	}
-
-	.page-homepage .blog {
-		padding:3em 2em 1em 2em;
-		max-width: 100%;
-	}
-
-	.page-homepage .blog h3 {
-		font-size: 1.5em;
 	}
 	
 	.page-homepage .hiring h2 {
@@ -378,6 +380,7 @@
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 300px;
+	    background-color: #000;
 	}
 
 	.page-workindexpage main .listing a:hover div {
@@ -478,7 +481,11 @@
 	.page-blogindexpage .blog-title div {
 	    margin: -12em auto 0 auto;
 	    padding: 0em 2em 2em 2em;
-	    max-width: 48em;
+	    max-width: 60em;
+	}
+
+	.page-blogindexpage .listing p {
+		max-width: 38em;
 	}
 
 	.page-blogindexpage h1 {
@@ -1254,6 +1261,7 @@
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 629px;
+	    background-color: #000;
 	}
 
 	.page-workindexpage main .listing a:hover div {
