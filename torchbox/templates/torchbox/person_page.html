@@ -3,36 +3,46 @@
 
 {% block content %}
 
-    <section class="body-copy container">
+<div class="holder">
 
+        {% if self.image %}
+            {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+            {% image self.image width-960 as photo %}
+            <div class="clearfix">
+                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+            </div>
+        {% endif %}
+
+    <div class="title">
         <div class="breadcrumb">
             <a href="#">People</a>
         </div>
 
         <h1>{{ self.title }}</h1>
 
-        <div class="role">
+         <div class="role">
             {% if self.role %}
                 {{ self.role|richtext }}
             {% endif %}
         </div>
 
-        <div class="intro">
-            {% if self.intro %}
-                {{ self.intro|richtext }}
+    </div>
+
+    <section class="body-copy container">
+
+        <div class="person-bio">
+            <div class="intro">
+                {% if self.intro %}
+                    {{ self.intro|richtext }}
+                {% endif %}
+            </div>
+
+            
+            {% if self.biography %}
+                {{ self.biography|richtext }}
             {% endif %}
         </div>
 
-        {% if self.image %}
-            {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-            {% image self.image width-960 as photo %}
-            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
-        {% endif %}
-
-        <div class="person-bio">
-        {% if self.biography %}
-            {{ self.biography|richtext }}
-        {% endif %}
-        </div>
+</section>
 
 {% endblock %}

@@ -383,12 +383,16 @@ BlogPage.promote_panels = [
 
 class JobPage(Page):
     body = RichTextField()
+    salary = models.CharField(max_length=255, blank=True)
+    location = models.CharField(max_length=255, blank=True)
 
     indexed_fields = ('body', )
 
 JobPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('body', classname="full"),
+    FieldPanel('salary', classname="full"),
+    FieldPanel('location', classname="full"),
 ]
 
 JobPage.promote_panels = [

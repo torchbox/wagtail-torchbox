@@ -3,20 +3,27 @@
 
 {% block content %}
 {% load humanize %}
-
+        <div class= "crop-height">
+            <img class="scale" src="/static/torchbox/images/jobs-placeholder-02.jpg" width="" height="" alt="">
+        </div>
     
     <section class="intro jobs">
 
-
+        <div class="center">
             <h1>{{ self.title }}</h1>
     
           
             {% with self.jobs.all as jobs %}
                 {% if jobs %}
-                    <ul class="listing">
+                    <ul class="listing clearfix">
                         {% for job in jobs %}
                             <li>
-                                <a href="{% pageurl job %}">{{ job.title }}</a>
+                                <a href="{% pageurl job %}">
+                                    {{ job.title }}
+                                    {% if job.location %}
+                                        <p>{{ job.location }}</p>
+                                    {% endif %}
+                                </a>
                             </li>
                         {% endfor %}
                     </ul>
@@ -24,13 +31,19 @@
             {% endwith %}
 
             {% if self.intro %}
-                <p>{{ self.intro|richtext }}</p>
-            {% endif %}
+                <div class="sign-up">
+                    <p>{{ self.intro|richtext }}</p>
+                    {% endif %}
+                </div>
+        </div>
 
 
     </section>
     
-    <section class="benefits">
+    <section class="benefits clearfix">
+        <div class="center">
+            <h2>Working at Torchbox</h2>
+        </div>
 
     <!--
         <ul>
@@ -57,9 +70,15 @@
         {% if self.content_block.all %}
         <ul>
             {% for block in self.content_block.all %}
-            <li class="{{ forloop.counter|apnumber }} {% cycle 'odd' 'even' %} benefit clearfix">
+            <!--<li class="{{ forloop.counter|apnumber }} {% cycle 'odd' 'even' %} benefit clearfix"> --> 
+            <li class="one">
                  <div class="clearfix">
+
+                    <div class="icon">
+                         <img src="/static/torchbox/images/icons/ethical.png" width="50px" height="50px" alt="">
+                    </div>
                     <div>
+
                         {{ block.content|richtext }}
                     </div>
                 </div>

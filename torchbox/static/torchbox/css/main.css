@@ -100,6 +100,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.active{
+    color: purple !important;
+}
+
 html {
     /*background: url("/static/torchbox/images/bg.png") fixed;*/
     font-family: 'Open Sans', sans-serif;
@@ -109,7 +113,7 @@ html {
 body {
     /*max-width: 96em; */
     margin: 0 auto;
-    color: #333;
+    color: #434a4f;
     line-height: 1.75;
     background-color: #fff;
 }
@@ -133,7 +137,6 @@ h1, h2, h3 {
     line-height: 1.25;
     margin: 0;
     padding: 0;
-    letter-spacing: -0.03em;
     font-family: "proxima-nova";
 }
 
@@ -155,7 +158,7 @@ button, .button {
     text-decoration: none;
     border: none;
     color: #fff;
-    background-color: #FF653F;
+    background-color: #EA853a;
     display: inline-block;
     line-height: 1em;
     border-radius: 0.2em;
@@ -216,7 +219,7 @@ header nav li a {
 }
 
 header nav li a:hover {
-    color: #FF653F;
+    color: #EA853a;
     transition: all 0.2s ease;
 }
 
@@ -230,7 +233,7 @@ header nav ul {
 }
 
 header nav ul.visible {
-    height: 149px;
+    height: 248px;
 }
 
 main nav {
@@ -252,7 +255,7 @@ main nav li a {
 }
 
 main nav li.active a {
-    color: #FF653F;
+    color: #EA853a;
     position: relative;
 }
 
@@ -260,7 +263,7 @@ main nav li.active a:after {
     height: 0;
     width: 0;
     position: absolute;
-    border-top: 10px solid #FF653F;
+    border-top: 10px solid #EA853a;
     border-bottom: 1em solid transparent;
     border-left: 0.75em solid transparent;
     border-right: 0.75em solid transparent;
@@ -275,14 +278,14 @@ main nav li.active a:after {
 }
 
 .page-homepage .bleed {
-    margin: 0em -1em 3em -1em;
-    background: rgba(0,0,0,0.8);
+    margin: 0.3em -1em 3em -1em;
+    background: rgba(67,74,79,0.8);
     color: white;
 }
 
  .bleed {
-    margin: 0 -1em 0 -1em;
-    background: rgba(0,0,0,0.8);
+    margin: 0.3em -1em 0 -1em;
+    background: rgba(67,74,79,1);
     color: white;
     overflow: hidden;
 }
@@ -306,8 +309,13 @@ main nav li.active a:after {
 }
 
 .body-copy p a {
-    color: #FF653F;
+        color: #aaa;
+        transition: all 0.15s ease;
 }
+
+.body-copy p a:hover{
+        color: #ea853a;
+    }
 
 .body-copy h1 {
     font-size: 2.5em;
@@ -355,7 +363,6 @@ main nav li.active a:after {
 .listing h2,
 .listing h3 {   
     font-size: 1.55em;
-    letter-spacing: -0.03em;
     font-weight: bold;
     margin-bottom: 0.2em;
     font-family: "proxima-nova";
@@ -384,26 +391,31 @@ main nav li.active a:after {
     position: absolute;
     right: 0;
     top: 0;
-    background-color: rgba(0,0,0,0.8);
+    background-color: #434a4f;
     line-height: 1em;
-    padding: 0.5em;
-    width:2em;
+    padding: 0.6em;
+    width:2.5em;
     font-size: 1.5em;
     text-align: center;
     color: #fff;
 }
 
 .menu-button:hover {
-    background-color: #FF653F;
+    background-color: #EA853a;
     color: #fff;
     transition: all 0.2s ease;
 }
 
 /*Page home*/
 
+.page-homepage .blog .listing p {
+    display: block;
+    margin-top: -0.3em;
+}
+
 .page-homepage .menu-button:hover {
     background-color: #fff;
-    color: rgba(0,0,0,0.8);
+    color: rgba(67,74,79,0.8);
     transition: all 0.2s ease;
 }
 
@@ -414,16 +426,16 @@ main nav li.active a:after {
 
 .page-homepage .listing a h2:hover,
 .page-homepage .listing a h3:hover {
-    color: #FF653F;   
+    color: #EA853a;   
 }
 
 .page-homepage .hero {
-    padding: 18em 2em 6em 2em;
+    padding: 22em 2em 6em 2em;
     background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
-    background-color: #6EDBE7;
+    background-color: #5b6265;
     position: relative;
-    top: -16em;
-    margin-bottom: -15em;
+    top: -22em;
+    margin-bottom: -21em;
     -webkit-background-size: cover;
 }
 
@@ -437,12 +449,32 @@ main nav li.active a:after {
     }
 
 .page-homepage .hero em {
-    border-bottom: 0.10em solid #fff;
+    border-bottom: 0.10em solid #ea853a;
     font-style: normal;
 }
 
 .page-homepage .hero .button {
-    background-color: #222;
+    background-color: transparent;
+    display: inline-block;
+    padding: 1em 1.5em;
+    line-height: 1em;
+    margin: 0 1em 1em 0;
+    color: #93DA9F;
+    border: solid 1px #93DA9F;
+    border-radius: 2px;
+    min-width: 200px;
+    text-align: center;
+    float: left;
+        -o-transition:.3s;
+  -ms-transition:.3s;
+  -moz-transition:.3s;
+  -webkit-transition:.3s;
+}
+
+.page-homepage .hero .button:hover {
+    background-color: #93DA9F;
+    color: #5b6265;
+    border: solid 1px #93DA9F;
 }
 
 .page-homepage .hiring {
@@ -464,7 +496,7 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a {
-    background-color: #FF653F;
+    background-color: #EA853a;
     padding: 0.8em 1em;
     line-height: 1em;
     color: #fff;
@@ -513,16 +545,27 @@ main nav li.active a:after {
     }
 
  .page-homepage .work li a:hover h3 {
-     color: #FF653F;
+     color: #EA853a;
  }   
 
+ .page-homepage .container {
+overflow: hidden;
+}
+
 .page-homepage .hero h2 {
-        font-size: 2.5em;
-        line-height: 1.1;
-        font-weight: bold;
-        margin:0 auto 0.5em auto;
-        color: #fff;
+        text-align: center;
+        margin: 0 auto 1em 0;
+        max-width: 26em;
+        text-align: left;
+        font-size: 1.8em;
+        line-height: 1.2em;
+        color: #93DA9F;
     }
+
+.page-homepage .menu-button {
+        background-color: #93DA9F;
+        color: #fff;
+        }
 
 .page-homepage h2 a {
     color: #222;
@@ -531,11 +574,11 @@ main nav li.active a:after {
 }
 
 .page-homepage h2 a span {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .page-homepage h2 a:hover {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .page-homepage h2 a:hover span {
@@ -563,10 +606,9 @@ main nav li.active a:after {
     padding-top: 2em;
     padding-bottom: 2em;
 }
-
 .page-homepage .clients li {
     width: 31.33%;
-    height: 9em;
+    height: 6em;
     float: left;
     padding: 2em 1%;
     overflow: hidden;
@@ -584,39 +626,57 @@ main nav li.active a:after {
 
 /*Jobs index*/
 
+
+    .sign-up{
+        clear: both;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+    }
+
 .page-jobindexpage h1 {
     font-weight: bold;
     font-size: 3em;
     margin-top: 0.25em;
     margin-bottom: 0.25em;
-    color: white;
+    color: #424a4f;
     font-family: "proxima-nova";
 }
 
 .page-jobindexpage main .jobs {
-    margin-top: -8.5em; 
-    background-color: #5CB9E7;
+    margin-top: -19.5em; 
+    background-color: #f3f4f6;;
     color: #222;
     -webkit-font-smoothing: antialiased;
-    padding: 8.5em 2em 2em 2em;
+    padding: 19.5em 2em 1em 2em;
 }
 
+.page-jobindexpage .richtext{
+    border-bottom: 1px dotted #DAD7D7;
+}
+
+
 .page-jobindexpage main .jobs a {
-    color: #fff;
+    color: #424a4f;
     padding: 0.5em 0;
 }
 
-.page-jobindexpage main .jobs > div {
-    max-width: 48em;
+.page-jobindexpage .logo{
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background-size: auto 2em;
 }
 
-.page-jobindexpage main .listing li:first-child a {
-    border-top: 1px solid #fff;   
-    border-top: 1px solid rgba(255,255,255,0.2);
+/*.page-jobindexpage main .jobs > div {
+    max-width: 48em;
+} */
+
+.page-jobindexpage main .listing li:first-child a {  
+    border-top: 1px solid #a9a9a9;
 } 
 
 .page-jobindexpage .benefits li {
     padding: 2em 2em 1.5em 2em;
+    margin-bottom: -1em;
 }
 
 .page-jobindexpage .intro p {
@@ -624,10 +684,44 @@ main nav li.active a:after {
     margin: 2em 0 0.5em 0;
 }
 
+.benefits{
+    margin: 1em 0 0 0;
+}
+.page-jobindexpage footer{
+    margin: 2em 0 0 0;
+}
+
+.page-jobindexpage .intro p  a{
+    background-color: #424a4f;
+    display: inline-block;
+    padding: 1em 1.5em;
+    line-height: 1em;
+    margin: 0 1em -1em 0;
+    color: #fff;
+    border: solid 1px #424a4f;
+    border-radius: 2px;
+    min-width: 285px;
+    height: 55px;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 0.2s ease;
+}
+
+    .page-jobindexpage .intro p {
+        clear: both;
+        color: #424a4f;
+
+    }
+
+.page-jobindexpage .intro p  a:hover{
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 2px;
+    color: #424a4f;
+}
+
 .page-jobindexpage main .listing a {
     font-size: 1.2em;
-    border-bottom: 1px solid #fff;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid #a9a9a9;
     transition: all 0.2s ease;
     line-height: 1.3;
 }
@@ -650,18 +744,46 @@ main nav li.active a:after {
 
 .page-jobindexpage main .benefits h2 {
     font-weight: bold;
-    font-size: 4em;
+    font-size: 2.5em;
     max-width: 20em;
-    margin: 0;
+    margin: 0.7em 0 0.5em 0;
+    padding: 0 0 0 0.8em;
+    line-height: 1em;
 }
 
 .page-jobindexpage .benefits h3 {
     font-size: 1.7em;
     margin-bottom: 0.25em;
     font-weight: bold;   
+    line-height: 0.5em;
+}
+
+    .page-jobindexpage  img.scale {
+        display: none;
+    }
+
+    .page-jobindexpage  img {
+        display: block;
+        width: 62px;
+    }
+
+    .page-jobindexpage  .crop-height {
+        display: none;
+    }
+
+.page-jobindexpage .img-wrapper {
+width: 100%;
+margin: 0;
+text-align: center;
 }
 
 /*Standard page*/
+
+.page-standardpage .listing p {
+    float: left;
+    display: block;
+    margin-top: -0.5em;
+}
 
 .page-standardpage main {
     padding: 0;
@@ -701,31 +823,25 @@ main nav li.active a:after {
 
 .page-standardpage .were-tbx {
     margin-top: -8.5em;
-    padding: 8.5em 2em 2em 2em;
+    padding: 8.5em 2em 0 1em;
     -webkit-font-smoothing: antialiased;
     color: #000;
 }
 
 .page-standardpage .were-tbx-2 h3 {
-    font-size: 1em;
-    font-weight: normal;
-    letter-spacing: 1;
+    font-size: 1.5em;
+    font-weight: bold;
     line-height: 1.5;
 }
 
 .page-standardpage .were-tbx-2 li {
     display: block;
     overflow: hidden;
-    width: 100%; 
-    padding: 0em 2em;  
+    width: 100%;  
 }
 
 .page-standardpage .listing li img {
     display: block;
-}
-
-.page-standardpage .listing li p {
-    float: left;
 }
 
 
@@ -812,10 +928,10 @@ main nav li.active a:after {
 }
 
 .pagination .active a {
-    border: 1px solid #FF653F;
+    border: 1px solid #EA853a;
     border: 1px solid rgba(0,0,0,0.2);
     background-color: #fff;
-    color: #FF653F;
+    color: #EA853a;
     }
 
 .index h1 {
@@ -841,7 +957,7 @@ main nav li.active a:after {
 
 .page-blogindexpage main {
     background-color: #fff;    
-    color: #333;
+    color: #434a4f;
     -webkit-font-smoothing: antialiased;
     padding-top: 100%;
     margin-top: -100%;
@@ -854,10 +970,14 @@ main nav li.active a:after {
 }
 
 .page-blogindexpage h2 {
-    margin-bottom: 0.5em;
-    color: #FF643E;
-
+    color: #ea853a;
 }
+
+    .page-blogindexpage .blog-title h2 {
+        color: #434a4f;
+        margin-top: 0.5em;
+        font-size: 1.3em;
+    }
 
 .page-blogindexpage li img {
     display: none;
@@ -865,6 +985,13 @@ main nav li.active a:after {
 
 .page-blogindexpage main .block-link {
     border-bottom: 1px dotted #DAD7D7;
+    padding: 3em 1em;
+    transition: background-color 0.2s ease;
+}
+
+.page-blogindexpage main .block-link:first-child {
+    border-bottom: 1px dotted #DAD7D7;
+    border-top: 1px dotted #DAD7D7;
     padding: 3em 1em;
     transition: background-color 0.2s ease;
 }
@@ -877,6 +1004,11 @@ main nav li.active a:after {
 .page-blogindexpage main .listing .container {
    max-width: 48em;
    margin: 0 auto;
+}
+
+.page-blogindexpage main .listing {
+   width: 100%;
+   margin: 0 0 0 0 ;
 }
 
 .page-blogindexpage .pagination {
@@ -922,7 +1054,7 @@ main nav li.active a:after {
 }
 
 .body-copy a {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .body-copy p {
@@ -957,15 +1089,6 @@ main nav li.active a:after {
 }
 
 /*Work index*/
-
-.page-workpage header nav li a {
-    display: block; 
-    padding: 0;
-    margin: 0.5em 0.5em;
-    color: #333;
-    font-size: 1.1em;
-    font-weight: 600;
-}
 
 .page-workindexpage {
     color: #fff;
@@ -1009,7 +1132,7 @@ main nav li.active a:after {
     padding: 1.5em;
     max-width: 36em;
     transition: background-color 0.3s ease;
-    background: rgba(0,0,0,0.8);
+    background: rgba(67,74,79,0.5);
 }
 
 
@@ -1025,20 +1148,11 @@ main nav li.active a:after {
 
 /*Work page*/
 
-.page-workpage header nav li a {
-    display: block; 
-    padding: 0;
-    margin: 0.5em 0.5em;
-    color: #333;
-    font-size: 1.1em;
-    font-weight: 600;
-}
-
-.body-copy > *{
+    .body-copy > *{
         max-width: 720px;
         margin-left: auto;
         margin-right: auto;
-}
+    }
 
 .body-copy img,
 .body-copy .responsive-object {
@@ -1066,17 +1180,17 @@ main nav li.active a:after {
     display: inline-block;
     background: #fff;
     padding: 0.25em 1em;
-    color: #333;
+    color: #434a4f;
     border-radius: 3px;
     margin: 1em 0 0 0;
     transition: all 0.2s ease;
-    border: 1px solid #333;
+    border: 1px solid #434a4f;
 }    
 
 .page-workpage .intro p a:hover {
-    background: #333;
+    background: #434a4f;
     color: #fff;
-    border: 1px solid #333;
+    border: 1px solid #434a4f;
 }  
 
 .breadcrumb{
@@ -1091,8 +1205,8 @@ main .breadcrumb a {
     padding: 0.5em 1.5em;
     line-height: 1em;
     margin:0 1em 1em 0;
-    color: #FF653F;
-    border: solid 1px #FF653F;
+    color: #EA853a;
+    border: solid 1px #EA853a;
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
@@ -1100,11 +1214,51 @@ main .breadcrumb a {
 }
 
 main .breadcrumb a:hover {
-    background-color: #FF653F;
+    background-color: #EA853a;
     display:inline-block;
     color: #fff;
     transition: background-color 0.2s ease;
 }
+
+.next{
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    z-index: 200;
+    color: #434a4f;
+    border: solid 1px #434a4f;
+    border-radius: 2px;
+    min-width: 110px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.2s ease;
+}
+
+.next:hover{
+    margin-right: 0px;
+    opacity: 1;
+}
+
+.previous{
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    z-index: 200;
+    color: #434a4f;
+    border: solid 1px #434a4f;
+    border-radius: 2px;
+    min-width: 140px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.2s ease;
+    margin: 0 9%;
+}
+
+.previous:hover{
+    margin: 0 9%;
+    opacity: 1;
+}
+
 
 .article-meta {
     margin-bottom: 1em;
@@ -1163,15 +1317,12 @@ main .breadcrumb a:hover {
 
 
 .author {
-    border-top: 1px dotted #ccc;
-    border-top: 1px dotted rgba(0,0,0,0.2);
-    padding: 1em 0em;
-    margin-top: 1.5em;
-    margin-bottom: 2em;
+    padding: 0em 0em;
+    margin: -0.5em 0 2em 0;
 }
 
 .author a {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 .author a:hover {
@@ -1193,6 +1344,7 @@ main .breadcrumb a:hover {
 }
 
 .page-homepage .author .avatar {
+    display: none;
     width: 4em;
     float: left;
     margin-right: 1em;
@@ -1251,6 +1403,10 @@ main .breadcrumb a:hover {
     -webkit-font-smoothing: antialiased;
 }
 
+    .page-personpage .body-copy p a:hover{
+        color: #ea853a;
+    }
+
     .page-personpage main .breadcrumb {
         margin-top: 2em;
     }
@@ -1288,7 +1444,7 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list a {
-    background-color: black;
+    background-color: #434a4f;
     display: block;
 }
 
@@ -1314,9 +1470,22 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list li a:hover {
-    background-color: #FF653F;
+    background-color: #EA853a;
     display: block;
 }
+
+.page-personpage h1 {
+    font-size: 2.5em;
+    line-height: 1em;
+    font-weight: bold;
+    color: #424a4f;
+}
+
+.page-personpage .title{
+    padding: 0 1em;
+    margin-top: -3em;
+}
+
 /*
 .grid.people-list li:nth-child(3n+2) a:hover {
     background-color: #627928;
@@ -1377,12 +1546,12 @@ footer .contact li i {
 }
 
 footer .contact a:hover span {
-    color: #FF653F;
+    color: #EA853a;
 }
 
 footer button,
 footer .button {
-    background-color: #FF653F;
+    background-color: #EA853a;
 }
 
 
@@ -1532,7 +1701,7 @@ footer .tel {
 @media print {
     * {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        color: #000 !important; /* #434a4f prints faster: h5bp.com/s */
         box-shadow: none !important;
         text-shadow: none !important;
     }

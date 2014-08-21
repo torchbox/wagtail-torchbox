@@ -1,7 +1,7 @@
 @import url("http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css");
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,900,100,200,300,500,700,600,800);
 
-@media only screen and (min-width: 36em) {
+@media only screen and (min-width: 45em) {
 
 	html {
 		margin:0;
@@ -59,9 +59,9 @@
 	}
 
 	header nav li a:hover {
-		color: #333;
+		color: #EA853a;
 		transition: all 0.15s ease;
-		border-bottom: 3px solid #333;
+		border-bottom: 3px solid #EA853a;
 	}
 
 	.logo {
@@ -73,20 +73,31 @@
 
 	/*Homepage*/
 
+	.page-homepage .author .avatar {
+    display: block;
+	} 
+
+	.author {
+	    border-top: 1px dotted #ccc;
+	    border-top: 1px dotted rgba(0,0,0,0.2);
+	    padding: 1em 0em;
+	    margin-bottom: 2em;
+	}
+
 	.page-homepage .logo {
     background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 3em;
-}
+	}
 
 	.page-homepage .hero {
     padding: 6em 2em;
     background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
-    background-color: #6EDBE7;
+    background-color: #5b6265;
     position: relative;
     top:-3em;
     margin-bottom: -3em;
     -webkit-background-size: cover;
-}
+	}
 
 	.page-homepage header {
     position:relative;
@@ -111,13 +122,19 @@
 		right: 2em;
 		text-align: center;
 	}
+
+	.page-homepage .hero h2 {
+        text-align: center;
+        margin: 0 auto 1em 0;
+        max-width: 26em;
+        text-align: left;
+        font-size: 3em;
+        line-height: 1.2em;
+        color: #93DA9F;
+    }
 	
 	.page-homepage .hero a {
 		padding:1.25em;
-	}
-
-	.page-homepage .hero h2 {
-		font-size: 5em;
 	}
 
 	.page-homepage .work {
@@ -160,11 +177,11 @@
 	/*Standard page (we're torchbox) */
 
 	.page-standardpage .were-tbx {
-	    margin-top: -8.5em;
-	    padding-top: 24em;
-	    padding-left: 4em;
-	    padding-right: 4em;
-	    padding-bottom: 4em;
+    	padding: 8.5em 2em 2em 2em;
+	}
+
+	.page-standardpage .were-tbx {
+	    margin-top: 0em;
 	}
 
 
@@ -178,7 +195,6 @@
 
 	.page-standardpage h1 {
 	    font-size: 5em;
-	    letter-spacing: -0.06em;
 	    margin-top: 0em;
 	}
 
@@ -190,46 +206,50 @@
 	.page-standardpage .were-tbx-2 h2 {
 	    font-size: 3em;
 	    font-weight: bold;
-	    letter-spacing: -0.05em;
+	    color: #424a4f;
 	}
 
 	.page-standardpage .were-tbx-2 h3 {
-	    font-size: 1.7em;
-	    font-weight: normal;
+		font-size: 2.3em;
+		font-weight: bold;
+		color: #424a4f;
 	}
 
 	.page-standardpage .were-tbx-2 li {
-	    padding: 12em 4em; 
+	    padding: 0; 
 	    margin: 0;
-	    border-top: 1px solid rgba(0, 0, 0, 0.1);
 	}
 
-	.page-standardpage .were-tbx-2 li:first-child {
+	.page-standardpage .were-tbx-2 li {
 	    border-top: none;
+	    padding: 0;
+	    float: left;
+	    width: 47%;
+	    margin-right: 1.5%;
+	    height:150px;
 	}
 
-
-	.page-standardpage .were-tbx-2 li:nth-child(2) {
-		background: url("/static/torchbox/images/geeks.jpg") no-repeat black;
-		-webkit-background-size: cover;
-		color: white;
+	.page-standardpage .grid li:nth-child(3n+3) {
+		margin-right: 1.5%;
 	}
 
-	.page-standardpage .were-tbx-2 li:nth-child(2) div {
-		float: right;
-		max-width: 35%;
+	.page-standardpage .were-tbx-2 .4even div h2 {
+		font-size: 3em;
+		font-weight: bold;
+		color: #fff;
+		}
+
+	.page-standardpage  header nav li a {
+	    color: #424a4f;
 	}
 
-
-	.page-standardpage .were-tbx-2 li:nth-child(4) {
-		background: #222;
-		color: white;
-		padding: 2em 4em 1em 4em;
-		text-align: center;
+	.page-standardpage  header nav li a:hover {
+	    color: #ea853a;
+	    transition: all 0.15s ease;
+		border-bottom: 3px solid #ea853a;
 	}
-
-	.page-standardpage .were-tbx-2 li:nth-child(3) div {
-		max-width: 60%;
+	.page-standardpage .grid li:nth-child(3n+4) {
+	 clear: none; 
 	}
 
 
@@ -252,22 +272,22 @@
 	}
 
 	.page-workindexpage main ul a {
-	    background-color: rgba(0,0,0,0.6);
+	    background-color: rgba(0,0,0,0);
 	}
 
 	.page-workindexpage main ul a:hover {
-	    background-color: rgba(0,0,0,0);
+	    background-color: rgba(0,0,0,0.8);
 	    cursor: pointer;
 	}
 
 
 	.page-workindexpage main .listing div {
-	    background: rgba(0,0,0,0);
+	    background: rgba(0,0,0,0.7) ;
 	    padding: 2.5em;
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(0,0,0,0.8);
+	    background: rgba(234,133,58,1);
 	}
 
 	.page-workindexpage main ul li {
@@ -280,7 +300,6 @@
     max-height: 35em;
 	}
 
-
 	/*Index pages*/
 
 	.index,
@@ -290,12 +309,12 @@
 
 	/*Blog index*/
 	.page-blogindexpage header nav li a {
-	color: #333;
+	color: #434a4f;
 	}
 
 	.page-blogindexpage	header nav li a:hover {
-    color: #FF653F;
-    border-bottom: 3px solid #FF653F;
+    color: #EA853a;
+    border-bottom: 3px solid #EA853a;
 	}
 
 	.page-blogindexpage .logo {
@@ -313,7 +332,17 @@
 		float: right;
 		width: 8em !important;
 		height: auto;
-	    margin: -2em 0 auto 1em;
+	    margin:auto;
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	}
+
+	.centertall{
+		width: 8em;
+		height: 8em;
+		float: right;
+		margin-left: 1em;
 	}
 	
 	.page-blogindexpage .pagination {
@@ -322,6 +351,10 @@
     	margin: 0 auto;
     	overflow: hidden;
     	text-align: center;
+	}
+
+	.page-blogindexpage .pagination a:hover{
+		color: #EA853A;
 	}
 
 	.page-blogindexpage main {
@@ -337,6 +370,7 @@
 		background-color:white;
 		-webkit-background-size: cover;
 		/*background-image: url("http://placehold.it/2000x300");*/
+		margin-top: -6em;
 	}
 
 	.page-blogindexpage .blog-title div {
@@ -349,8 +383,7 @@
 		font-size: 6em;
 		font-weight: bold;
 		margin-bottom: 0.25em;
-		letter-spacing: -0.05em;
-		color: #333;
+		color: #434a4f;
 		position: relative;
 	}
 
@@ -366,18 +399,81 @@
 
 	.page-blogindexpage h2 {
 	    font-size: 2.3em;
-	    max-width: 660px;
+	    max-width: 620px;
 	}
+
+	 .page-blogindexpage .blog-title h2 {
+        margin-top: -0.6em;
+        font-size: 2em;
+    }
 
 	.page-blogindexpage p {
 		font-size: 1.125em;
-		color: #333;
+		color: #434a4f;
 	}
+	
+	.page-blogindexpage main .listing {
+		width: 100%;
+		margin: 3em 0 0 0;
+	}	
 
 
 	/*Work page*/
+
+	.next{
+    position: fixed;
+    top: 660px;
+    right: 0;
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    background-color: #434a4f;
+    z-index: 200;
+    color: #fff;
+    border: solid 1px #434a4f;
+    border-radius: 2px;
+    min-width: 110px;
+    text-align: center;
+    overflow: hidden;
+    margin-right: -75px;
+    transition: 0.2s ease;
+    opacity: 0.8;
+}
+
+.next:hover{
+    margin-right: 0px;
+    opacity: 1;
+}
+
+.previous{
+    position: fixed;
+    top: 660px;
+    left: 0;
+    display:inline-block;
+    padding: 0.5em 1.5em;
+    line-height: 1em;
+    background-color: #434a4f;
+    z-index: 200;
+    color: #fff;
+    border: solid 1px #434a4f;
+    border-radius: 2px;
+    min-width: 140px;
+    text-align: center;
+    overflow: hidden;
+    margin-left: -105px;
+    margin-right: 0;
+    transition: 0.2s ease;
+    opacity: 0.8;
+}
+
+.previous:hover{
+    margin-left: 0px;
+    opacity: 1;
+    margin-right: 0;
+}
+
 	.bleed {
-	margin: 1em 0 0 0;
+	margin: 1em 0.5em 0 0;
 	}
 
 	.page-workpage	header nav li a {
@@ -388,9 +484,13 @@
     font-size: 1.1em;
 	}
 
+	.author {
+    	margin:1.5em auto 0 auto;
+	}
+
 	.page-workpage	header nav li a:hover {
-	color: #FF653F;
-	border-bottom: 3px solid #FF653F;
+	color: #EA853a;
+	border-bottom: 3px solid #EA853a;
 	}
 
 	.page-workpage .img-wrapper {
@@ -533,12 +633,17 @@
 	}
 
 	.page-jobindexpage h1 {
+		margin:-2em auto 0.5em auto;
+		max-width: 96em;
 		font-size: 5em;
-		letter-spacing: -0.06em;
+		padding-bottom: 0.3em;
+		color: #fff;
 	}
 
 	.page-jobindexpage .intro p {
-		font-size: 1em;
+		font-size: 0.8em;
+		padding-top: 1em;
+		margin-bottom: -1em;
 	}
 
 	.page-jobindexpage main .listing a {
@@ -546,16 +651,51 @@
 		font-size: 2em;
 	}
 
+	.page-jobindexpage main .listing li{
+		float: left;
+		width:100%;
+		min-height: 60px;
+		font-size: 0.8em;
+	}
+	
+	.benefits{
+		max-width: 96em;
+		margin: 3em auto 0 auto;
+	}
+
 	.page-jobindexpage .benefits li {
-			position: relative;
+		position: relative;
 	   	margin: 0em 0em 0em 0em;
 	   	padding: 8em 4em 8em 4em;
 	   	border-top: 1px solid white;
 	   	display: block;
 	}
 
-	.page-jobindexpage .benefits li:first-child {
-	   	border-top: none;
+	.page-jobindexpage main .listing li:nth-child(2) a { 
+    	border-top: none;
+	} 
+	
+	.page-jobindexpage main .benefits h2 {
+    font-size: 4em;
+    padding: 0;
+    margin: 0 0 0.8em 0;
+	}
+
+	.icon{
+		margin: 0 1em;
+		float: left;
+	}
+
+	.page-jobindexpage .intro p a {
+		padding: 1.2em 1.5em;
+	}
+
+	.page-jobindexpage .rich-text p{
+		clear: both;
+	}
+
+	.sign-up{
+		margin: 0.5em auto 1em auto;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -572,36 +712,60 @@
 
 	.page-jobindexpage .benefits li > div > div {
 		max-width: 30em;
-	}
-
-	.page-jobindexpage .benefits li:nth-child(odd) div {
 		float: left;
 	}
 
-	.page-jobindexpage .benefits li:nth-child(even) div {	
-		float: right;
+	.page-jobindexpage .logo{
+    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background-size: auto 3em;
+}
+
+	.page-jobindexpage footer {
+	    margin: -1em 0 0 0;
+	}
+
+	.page-jobindexpage .center {
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 2em 0 1em 4em;
 	}
 
 	.page-jobindexpage .benefits .one {
-		background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
-		-webkit-background-size: cover;
-	}
-	.page-jobindexpage .benefits .three {
-		background: url("/static/torchbox/images/jobs-placeholder-03.jpg") no-repeat;
-		-webkit-background-size: cover;
-		padding: 13em 4em 3em 4em;
-	}
-	.page-jobindexpage .benefits .five {
-		background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
-		-webkit-background-size: cover;
+		/*background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
+		-webkit-background-size: cover;*/
+		width: 48%;
+		float: left;
+		margin: 2% 2%  0 0;
+		height: 200px;
+		padding: 0 0 0 4em;
+		border-top: none;
 	}
 
-	.page-jobindexpage .benefits .three {
-	    color: white;
+
+	.page-jobindexpage header nav li a:hover {
+		color: #ea853a;
+		transition: all 0.15s ease;
+		border-bottom: 3px solid #ea853a;
 	}
 
 	.page-personindexpage main h1 {
 	    font-size: 5em;
+	}
+
+   .page-jobindexpage  .crop-height {
+   		display: block;
+        max-height: 35em;
+        overflow: hidden;
+        margin-top: -10em;
+    }
+
+    .page-jobindexpage img.scale {
+		display: block;
+		margin: 0;
+		min-width: 100%;
+		float: right;
+		width: auto\9;
+		-ms-interpolation-mode: bicubic;
 	}
 
 	/*People index*/
@@ -616,7 +780,42 @@
     opacity: 0.5;
 	}
 
+	.page-personindexpage  header nav li a {
+	    color: #424a4f;
+	}
+
+	.page-personindexpage  header nav li a:hover {
+	    color: #ea853a;
+	    transition: all 0.15s ease;
+		border-bottom: 3px solid #ea853a;
+
+	}
+
 	/*Person page*/
+
+	.page-personpage header nav li a {
+	    color: #424a4f;
+	}
+
+	.page-personpage header nav li a:hover {
+	    color: #fff;
+	    transition: all 0.15s ease;
+		border-bottom: 3px solid #fff;
+
+	}
+
+	.page-personpage img {
+		float: right;
+		max-width: 40%;
+		margin-top: 0em;
+	}
+
+	.page-personpage .title {
+		position: relative;
+		margin-top: -19.3em;
+		max-width: 56%;
+		padding: 0;
+	}
 
 	.page-personpage main {
 		min-height: 51em;
@@ -625,23 +824,28 @@
 
 	.page-personpage main .container {
 		padding: 0;	
-	}
-
-	.page-personpage img {
-		max-width: 960px;
-		margin-left: auto;
-		margin-right: auto;
-		display: block;
+		margin-top: 12em;
 	}
 
 	.page-personpage h1 {
-		margin-bottom: 0;
+		font-size: 4em;
+		line-height: 1em;
+		font-weight: bold;
+		color: #ea853a;
+	}
+
+
+	
+	.holder{
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 0 1em;
 	}
 
 	.page-personpage .role {
 		font-size: 2em;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-		padding-bottom: 0.5em;
+		padding-bottom: 0.3em;
 		margin-bottom: 0.5em;
 	}	
 
@@ -653,7 +857,8 @@
 		background: white;
 		margin-top: -10em;
 		overflow: scroll;
-		padding: 2em 3em;
+		padding: 0em 0 3em 0;
+		margin-left: 0;
 	}
 
 	.bleed {
@@ -666,30 +871,15 @@
 	background-color: transparent;
 	}
 
-	header nav li a {
-    display: block;
-    padding: 0;
-    margin:0.5em 0.5em;
-    color: #fff;
-    font-size: 1.1em;
-    font-weight: 600;
-	}
-
 	.page-workindexpage header nav li a {
-    display: block;
-    padding: 0;
-    margin:0.5em 0.5em;
-    color: #333;
-    font-size: 1.1em;
-    font-weight: 600;
+    color: #434a4f;
 	}
 
 
 	.page-workindexpage header nav li a:hover {
-    font-weight: 600;
-    color: #FF653F;
+    color: #EA853a;
 	transition: all 0.15s ease;
-	border-bottom: 3px solid #FF653F;
+	border-bottom: 3px solid #EA853a;
 	}
 
 	/*Services page*/
@@ -719,7 +909,7 @@
 	}
 
 	.page-servicespage .services li:hover:before {
-		color: #FF653F;
+		color: #EA853a;
 		transition: all 0.15s ease;
 	}
 
@@ -731,6 +921,18 @@
 	.page-servicespage .services p {
 		color: #6a6a6a;
 		line-height: 1.6em;
+	}
+
+    /* Blog page  */
+
+    .page-blogpage header nav li a {
+		color: #000;
+	}
+
+	.page-blogpage header nav li a:hover {
+		color: #EA853A;
+		transition: all 0.15s ease;
+		border-bottom: 3px solid #EA853A;
 	}
 
 	/*Footer*/
@@ -836,6 +1038,20 @@
 
     /* Desktop */
 
+  @media only screen and (min-width: 850px) {
+	.page-personpage img {
+		float: right;
+		max-width: 40%;
+		margin-top: -9em;
+	}	
+
+	.page-personpage .title{
+		position: relative;
+		margin-top: -16.3em;
+		max-width: 55%;
+	}
+}
+
  @media only screen and (min-width: 830px) {
 
     .page-workpage .intro .body-copy {
@@ -843,7 +1059,7 @@
     }
 }
 
- @media only screen and (min-width: 1150px) {
+ @media only screen and (min-width: 1250px) {
 	.page-workindexpage main ul li {
 		 -webkit-background-size: cover;
 		-moz-background-size: cover;
@@ -852,6 +1068,18 @@
 		width: 50%;
 		max-height: 35em;
 		float: left;
+	}
+
+	.page-jobindexpage main .listing li:nth-child(2) a {
+		border-top: 1px solid #a9a9a9;
+	}
+
+	.page-jobindexpage main .listing li{
+		float: left;
+		width:48%;
+		margin-right: 2%;
+		min-height: 60px;
+		font-size: 0.8em;
 	}
 
 	.listing p {
@@ -865,6 +1093,45 @@
 
 	.page-workindexpage main .listing a h2 {
 		font-size: 2.5em;
+	}
+
+
+	.page-personpage main .container {
+		padding: 0;	
+		margin-top: -11em;
+	}
+
+	.page-personpage img {
+		float: right;
+		max-width: 48%;
+		margin-top: -9em;
+		display: block;
+	}
+
+	.page-personpage h1 {
+		color: #ea853a;
+		margin-bottom: 0;
+		line-height: 1em;
+		font-size: 5em;
+		font-weight:bold;
+	}
+
+	.page-personpage .title{
+		position: relative;
+		float: left;
+		margin-top: -26em;
+		width: 48%;
+	}
+
+	.holder{
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 0 1em
+	}
+
+	.page-personpage main .container {
+		padding: 0;	
+		margin-top: -11em;
 	}
 
 }

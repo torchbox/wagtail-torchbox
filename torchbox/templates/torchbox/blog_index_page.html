@@ -6,6 +6,7 @@
         <div class="blog-title">
             <div>
             <h1>{{ self.title }}</h1>
+            <h2>Talking about digital shizzle<h2>
             {# Optional heading appears if filtering by tag #}
             {% if request.GET.tag|length %}
                 <p>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></p>
@@ -24,10 +25,12 @@
                             {% if authors %}
                                 {% for author in authors %}
                                 
+                                <div class="centertall">
                                     {% if author.author.image %}
                                         {% image author.author.image width-300 as photo %}
                                         <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
                                     {% endif %}
+                                </div>
                                     
                                     {{blog.intro|richtext}}               
                                     
