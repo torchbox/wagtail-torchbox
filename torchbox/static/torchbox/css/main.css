@@ -303,6 +303,33 @@ main nav li.active a:after {
     color: white;
 }
 
+.page-homepage .more {
+    padding: 3em 0;
+    overflow: hidden;
+}
+
+.page-homepage .button {
+    margin: 0 auto;
+    padding: 1.3em 3em;
+    background-color: transparent;
+    border: solid 1px #EA853a;
+    color: #EA853a;
+    line-height: 1em;
+    border-radius: 0.2em;
+    -webkit-transition: .3s;
+}
+
+.page-homepage .center {
+    max-width: 230px;
+}
+
+.page-homepage .button:hover {
+    background-color: #EA853a;
+    border: solid 1px #EA853a;
+    color: #fff;
+    cursor:pointer;
+}
+
  .bleed {
     margin: 0.3em -1em 0 -1em;
     background: rgba(67,74,79,1);
@@ -427,9 +454,58 @@ main nav li.active a:after {
 
 /*Page home*/
 
-.page-homepage .blog .listing p {
+.hide{
+    display: none;
+}
+
+.page-homepage .block .workcontainer {
+    padding: 1em;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.page-homepage .block .blogcontainer {
+    padding: 1em;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.label{
+    display: none;
+}
+
+.blog .label{
     display: block;
-    margin-top: -0.3em;
+}
+
+.page-homepage .listing p{
+    display: block;
+    font-size: 1em;
+    margin-top: -0.1em;
+}
+
+.workcontainer .work-intro .listing p{
+    display: none;
+}
+
+.blogcontainer {
+    display: none;
+}
+
+.page-homepage .blockblog{
+    height: auto;
+    overflow: hidden;
+}
+
+.page-homepage .crop-height {
+    /* max-width: 1200px; /* img src width (if known) */
+    float: left;
+    overflow: hidden; 
+}
+
+.page-homepage .blog {
+    background: #f3f4f6;
+    padding: 1px 0;
 }
 
 .page-homepage .menu-button:hover {
@@ -498,27 +574,24 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring {
-    background: url("/static/torchbox/images/hiring-teaser.jpg") no-repeat center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     min-width: 100%;
-    max-height:40em;
-    text-align: center;
-    padding: 4em 2em; 
+    text-align: left;
+    padding: 3em 2em; 
+    background-color: #97cb9b;
 }
 
 .page-homepage .hiring > div {
-    max-width:48em;
+    max-width:46em;
     margin: 0 auto;
     color:#fff;
 }
 
 .page-homepage .hiring a {
-    background-color: #EA853a;
+    border-radius: 3px;
+    border: solid 1px #fff;
     padding: 0.8em 1em;
     line-height: 1em;
+    font-weight: 300;
     color: #fff;
     display: inline-block;
     margin-bottom: 0.5em;
@@ -530,19 +603,8 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a:hover {
-    background-color: #ffa624;
-}
-
-
-
-.page-homepage .hiring ul {
-    border-top: 1px dotted #ccc;
-    border-top: 1px dotted rgba(0,0,0,0.2);
-}
-
-.page-homepage .hiring li a {
-    border-bottom: 1px dotted #ccc;
-    border-bottom: 1px dotted rgba(0,0,0,0.2);
+    background-color: #424a4f;
+    border: solid 1px #424a4f;
 }
 
 .page-homepage main h2 {
@@ -552,17 +614,10 @@ main nav li.active a:after {
     font-weight: 600;
 }
 
-.page-homepage .work {
-    padding: 1em;
+.page-homepage .work-intro {
+    margin:0;
+    padding: 0em 1em;
 }
-
-.page-homepage .work li a div {
-        padding: 1em 0;
-        bottom: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.75);
-        box-sizing: border-box;
-    }
 
  .page-homepage .work li a:hover h3 {
      color: #EA853a;
@@ -608,18 +663,25 @@ overflow: hidden;
         -moz-animation:spin 0.5s linear infinite;
         animation:spin 0.5s linear infinite;
 }
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-
-
-.page-homepage .blog {
-    background: #f3f4f6;
-    padding-top: 2em;
-}
 
 .page-homepage .blog li {
     margin-top: 0.5em;
+}
+
+.worklisting h3{
+    margin-bottom: 1em;
+}
+
+.worklisting {
+    margin-bottom: 2em;
+}
+
+.page-homepage .bloglisting a:first-child li{
+    padding-top: 2em;
+}
+
+.page-homepage .bloglisting a:last-child li{
+    padding-bottom: 2em;
 }
 
 .page-homepage .clients {
@@ -1082,12 +1144,12 @@ font-size: 0.8em;
 }
 
 .page-blogindexpage main .block-link:hover {
-    background-color: #eaeff2;
+    background-color: #FAF9F5;
 }
 
 
 .page-blogindexpage main .listing .container {
-   max-width: 48em;
+   max-width: 60em;
    margin: 0 auto;
 }
 
@@ -1229,8 +1291,7 @@ font-size: 0.8em;
     bottom: 0em;
     padding: 1.5em;
     max-width: 36em;
-    transition: background-color 0.3s ease;
-    background: rgba(0,0,0,0.7);
+    background: #000;
 }
 
 
@@ -1242,6 +1303,8 @@ font-size: 0.8em;
     margin-bottom: 0.25em;
     font-family: "proxima-nova";
 }
+
+
 
 
 /*Work page*/
@@ -1388,18 +1451,11 @@ main .breadcrumb a:hover {
     margin: -0.5em 0 2em 0;
 }
 
-.author a {
-    color: #EA853a;
-}
-
-.author a:hover {
-    color: #ffa624;
-}
-
 .author .name {
     font-size: 1.5em;
     margin-top: 0.5em;
     display: block;
+    color: #EA853a;
 }
 
 .author .avatar {
@@ -1552,6 +1608,7 @@ main .breadcrumb a:hover {
 .grid.people-list a {
     background-color: #434a4f;
     display: block;
+    overflow: hidden;
 }
 
 
@@ -1590,14 +1647,6 @@ main .breadcrumb a:hover {
 footer .contact h2 {
 color: #fff;
 }
-
-/*
-.grid.people-list li:nth-child(3n+2) a:hover {
-    background-color: #627928;
-}
-.grid.people-list li:nth-child(3n+3) a:hover {
-    background-color: #5cb9e7;
-} */
 
 .people-list img {
     -webkit-filter: grayscale(100%);

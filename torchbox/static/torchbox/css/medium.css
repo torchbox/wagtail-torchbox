@@ -73,10 +73,117 @@
 	}
 
 	/*Homepage*/
+	.page-homepage .blog {
+	    background: transparent;
+	    padding-top: 0;
+	}
+
+	.hide{
+    	display: block;
+	}
+
+	.page-homepage .listing p{
+    	margin-top: 0;
+	}
+
+	.page-homepage .block .workcontainer{
+    	padding: 0;
+	}
+
+	.page-homepage .block .blogcontainer{
+    	padding: 0;
+    	overflow:visible;
+    	display: block;
+	}
+
+	.label{
+		display: block;
+		position: absolute;
+		background-color: #000;
+		padding: 1em 1.5em 0.5em 1.5em;
+		color:#fff;
+		right: 0;
+		font-size: 1em;
+		margin-top: -5em;
+		transition: 0.4s ease;
+	}
+
+	.block:hover .label {
+		background: #000;
+		margin-top: 0;
+	}
+
+	.worklisting h3{
+    margin-bottom: 0em;
+}
+
+	.worklisting {
+	    margin-bottom: 0em;
+	}
+
+	.page-homepage .bloglisting a:first-child li{
+    	padding-top: 0em;
+	}
+
+	.page-homepage .bloglisting a:last-child li{
+	    padding-bottom: 0em;
+	}
+
+	.block:hover .name {
+		transition: 0.2s ease;
+		color: #ea853a;
+	}
+
+	.block:hover img {
+		opacity: 0.3;
+	}
+
+	.block img {
+		transition: 0.2s ease;
+	}
+
+	.page-homepage .crop-height {
+		background-color: #000;
+	  	max-height: 28em;
+	  	width: 55%;
+	  	position: relative;
+	}
+
+	.page-homepage .block .workcontainer{
+		overflow: visible;
+		position: relative;
+	}
+
+	.page-homepage .work-intro {
+		float: left;
+		padding: 4em 0 0 3em;
+		bottom: 0;
+		max-width: 40%;
+		width: 750px;
+		box-sizing: border-box;
+	}
+
+	.page-homepage .block{
+	    padding: 0;
+	    overflow:hidden;
+	    position: relative;
+	}
+
+	.blog h3{
+    	color: #424a4f;
+	}
+
+	.page-homepage .listing h3{
+    	font-size: 2em;
+	}
 
 	.page-homepage .down{
 	    height: 100px;
 	    background-size: 180em;
+	}
+
+	.page-homepage .listing a:hover h3{
+		color: #ea853a;
 	}
 
 	.page-homepage .bleed {
@@ -84,7 +191,8 @@
 	}	
 
 	.page-homepage .author .avatar {
-    display: block;
+	    display: block;
+	    opacity: 1;
 	} 
 
 	.author {
@@ -94,9 +202,13 @@
 	    margin-bottom: 2em;
 	}
 
+	.author .name {
+	    color: #424a4f;
+	}
+
 	.page-homepage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
-    background-size: auto 3em;
+	    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+	    background-size: auto 3em;
 	}
 
 	.page-homepage .hero {
@@ -117,7 +229,6 @@
 	.page-homepage .hero {
 		padding: 17% 2em;
 		margin-top: -5em;
-		margin-bottom: -1em;
 	}
 
 	.page-homepage .hero .gif {
@@ -142,30 +253,19 @@
 		padding:1.25em;
 	}
 
-	.page-homepage .work {
-		padding: 2em;
-	}
-
-	.page-homepage .blog {
-		padding:3em 2em 1em 2em;
-		max-width: 100%;
-	}
-
-	.page-homepage .blog h3 {
-		font-size: 1.5em;
-	}
-
-	.page-homepage .hiring {
-		padding: 12em 2em;
-		border: none;
+	.page-homepage .work-block {
+		max-width: 96em;
+		margin: 0 auto;
 	}
 	
 	.page-homepage .hiring h2 {
-		font-size: 5em;
+		text-align: center;
+		font-size: 3em;
+		color: #fff;
 	}
 
 	.page-homepage .hiring a {
-		font-size: 1.25em;		
+		font-size: 1em;		
 	}
 
 	.page-homepage .hiring ul {
@@ -175,7 +275,7 @@
 	.page-homepage .hiring li {
 		display:inline-block;
 		border: none;
-		margin-bottom: 1em;
+		margin:0 1.5em 1em 0;
 	}
 
 	/*Standard page (we're torchbox) */
@@ -322,14 +422,13 @@
 
 
 	.page-workindexpage main .listing div {
-	    background: rgba(0,0,0,0.7) ;
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 300px;
+	    background-color: #000;
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(234,133,58,1);
 	    top: 130px;
 	}
 
@@ -427,7 +526,11 @@
 	.page-blogindexpage .blog-title div {
 	    margin: -12em auto 0 auto;
 	    padding: 0em 2em 2em 2em;
-	    max-width: 48em;
+	    max-width: 60em;
+	}
+
+	.page-blogindexpage .listing p {
+		max-width: 38em;
 	}
 
 	.page-blogindexpage h1 {
@@ -649,15 +752,16 @@
 	}
 
 	.grid li img {
+		float: left;
 		width: 100%;
 		height: auto;
 	}
 
 
 	.grid li {
-		width:31%;
-		margin-right: 3.5%;
+		width:100%;
 		border: none;
+		margin: 1em 0;
 	}
 
 	.grid li:nth-of-type(3) {
@@ -695,6 +799,15 @@
 	}
 	.page-homepage .clients{
 		padding: 3em 2em 1em 2em;
+	}
+
+	.page-homepage .grid li {
+		margin: 0;
+		transition: 0.2s ease;
+	}
+
+	.page-homepage .grid li:hover {
+		background-color: #FAF9F5;
 	}
 
 	.page-homepage .clients li {
@@ -1190,14 +1303,13 @@
 	}
 
 	.page-workindexpage main .listing div {
-	    background: rgba(0,0,0,0.7) ;
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 629px;
+	    background-color: #000;
 	}
 
 	.page-workindexpage main .listing a:hover div {
-	    background: rgba(234,133,58,1);
 	    top: 475px;
 	}
 

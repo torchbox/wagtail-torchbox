@@ -2,22 +2,38 @@
 {% if work %}
 <ul class="listing clearfix">
     {% for work in work %}
-        <li>
-            <a href="{% pageurl work %}">
-                {% if work.homepage_image %}
-                    {% image work.homepage_image width-640 as screenshot %}
-                    <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
-                {% endif %}
-                <div>
-                    <h3>{{ work.title }}</h3>
-                    <p>
-                        {% if work.summary %}
-                            {{ work.summary }}
+        <a href="{% pageurl work %}">
+            <li>
+                <div class="block">
+
+                    <div class="workcontainer">
+                        {% if work.homepage_image %}
+                        {% image work.homepage_image width-2000 as screenshot %}
+
+                        <div class="label">
+                            <p>Our work</p>
+                        </div>
+
+                        <div class="crop-height">
+                            <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
+                        </div>
+
+                        </div>
                         {% endif %}
-                    </p>
+
+                        <div class="work-intro">
+                            <h3>{{ work.title }}</h3>
+                            <div class="hide">
+                                <p>
+                                {% if work.summary %}
+                                    {{ work.summary }}
+                                {% endif %}
+                                </p>
+                            </div>
+                        </div>
                 </div>
-            </a>
-        </li>
+            </li>
+        </a>
     {% endfor %}
 </ul>
 {% endif %}
