@@ -1648,6 +1648,10 @@ footer .contact h2 {
 color: #fff;
 }
 
+.svg{
+    display: none;
+}
+
 .people-list img {
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
@@ -1697,6 +1701,10 @@ footer .contact li i {
     margin: 0;
     margin-right: 0.5em;
 
+}
+
+footer .contact span {
+    transition: all 0.2s ease;
 }
 
 footer .contact a:hover span {

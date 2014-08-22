@@ -1242,6 +1242,7 @@
 	}
 
 	.svg{
+		display: block;
 		transition: all 0.15s ease;
 		height: 80px;
 		float: left;
