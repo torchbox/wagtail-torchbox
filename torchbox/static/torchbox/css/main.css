@@ -1721,6 +1721,20 @@ footer .offices li {
 footer .offices h3 {
     font-size: 1.5em;
     font-family: "proxima-nova";
+    transition: all 0.2s ease;
+}
+
+footer .offices li:hover h3 {
+    color: #ea853a;
+}
+
+footer .vcard {
+     transition: all 0.2s ease;
+     margin-top: -0.5em;
+}
+
+footer .offices li:hover .vcard{
+    color: #ea853a;
 }
 
 footer .tel {

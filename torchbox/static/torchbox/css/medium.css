@@ -1173,11 +1173,16 @@
 	}
 
 	footer .offices li {
+		color: #fff;
 		width: 50%;
 		float: left;
 		padding: 0 1em 1em 3em;
-		background: url("/static/torchbox/images/icon-map-pin.svg") no-repeat left top;
-		background-size: 3em;
+		transition: all 0.15s ease;
+		/*background: url("/static/torchbox/images/icon-map-pin.svg") no-repeat left top; */
+	}
+
+	footer .offices li:hover {
+		color: #fff;
 	}
 
 
@@ -1231,10 +1236,23 @@
 	}
 
 	footer .contact li a:hover i {
-		
 		top: -0.25em;
 		transition: top 0.2s ease;
 
+	}
+
+	.svg{
+		transition: all 0.15s ease;
+		height: 80px;
+		float: left;
+		fill: #fff;
+		width: 80px;
+	}
+
+	.offices li:hover .svg{
+		fill: #ea853a;
+		height: 100px;
+		margin-top: -19px;
 	}
 
 
