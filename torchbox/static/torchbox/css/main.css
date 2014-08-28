@@ -925,10 +925,6 @@ font-size: 0.8em;
     background-color: #f3f4f6;
 }
 
-.page-standardpage .body {
-    margin-top:4em;
-}
-
 .page-standardpage h4{
     color: #97cb9b;
     font-size: 1.5em;
@@ -940,15 +936,16 @@ font-size: 0.8em;
     padding: 0.7em 1.5em;
     line-height: 1em;
     margin: 1em 1em 1em 0;
-    color: #EA853a;
-    border: solid 1px #EA853a;
+    color: #97cb9b;
+    border: solid 1px #97cb9b;
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
 }
 
 .page-standardpage .button:hover{
-    background-color: #EA853a;
+    cursor: pointer;
+    background-color: #97cb9b;
     display: inline-block;
     color: #fff;
     transition: background-color 0.2s ease;
@@ -986,8 +983,17 @@ font-size: 0.8em;
     margin-top: -0.5em;
 }
 
+.page-standardpage  p i{
+    font-size: 1.2em;
+}
+
 .page-standardpage main {
     padding: 0;
+}
+
+.page-standardpage .quote {
+    background: #424a4f;
+    padding: 2em 0 1em 0;
 }
 
 .page-standardpage h1 {
@@ -996,6 +1002,11 @@ font-size: 0.8em;
     margin-top: 0.5em;
     margin-bottom: 0.2em;
     line-height: 1;
+}
+
+.page-standardpage .width{
+    max-width: 60em;
+    margin: 0 auto;
 }
 
 .page-standardpage .were-tbx h2 {
@@ -1032,12 +1043,6 @@ font-size: 0.8em;
 
 .page-standardpage .crop-height {
     display: none;
-}
-
-.page-standardpage .were-tbx-2 h3 {
-    font-size: 1.5em;
-    font-weight: bold;
-    line-height: 1.5;
 }
 
 .page-standardpage .were-tbx-2 li {
