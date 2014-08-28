@@ -1248,12 +1248,12 @@
 		float: left;
 		fill: #fff;
 		width: 80px;
+		margin-top: -23px;
 	}
 
 	.offices li:hover .svg{
-		fill: #ea853a;
 		height: 100px;
-		margin-top: -19px;
+		margin-top: -40px;
 	}
 
 
