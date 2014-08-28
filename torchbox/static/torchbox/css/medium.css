@@ -280,8 +280,12 @@
 
 	/*Standard page (we're torchbox) */
 
+	.page-standardpage header nav li a{
+		color: #424a4f;
+	}
+
 	.page-standardpage .logo {
-   		 background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+   		 background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
 	    background-size: auto 3em;
 	}
 
@@ -297,7 +301,8 @@
 	}
 
 	.page-standardpage .were-tbx {
-	    margin-top: -9em;
+	    margin-top: -20em;
+	    max-width: 60em;
 	}
 
 
@@ -316,22 +321,17 @@
 	}
 
 	.page-standardpage .were-tbx h2 {
-		display: none;
-	    font-size: 2em;    
-	    margin-bottom: 0.5em;
-	    color: #fff;
+	    font-size: 4em;   
+	    margin-bottom: 2.5em;
 	}
 
-	.page-standardpage .were-tbx-2 h2 {
-	    font-size: 3em;
-	    font-weight: bold;
-	    color: #424a4f;
-	}
-
-	.page-standardpage .were-tbx-2 h3 {
-		font-size: 2.3em;
+	.page-standardpage  h4 {
+		font-size: 2em;
+		line-height: 1.3em;
 		font-weight: bold;
-		color: #424a4f;
+		padding: 0.3em;
+		margin: 0.5em 0 0.5em 0;
+		max-width: 24em;
 	}
 
 	.page-standardpage .were-tbx-2 li {
@@ -1292,17 +1292,6 @@
 		box-sizing: border-box;
 		left: auto;
 		max-width: 100%;
-	}
-
-	.page-standardpage .were-tbx h2 {
-		display: block;
-		font-size: 2em;
-		margin-bottom: 0.5em;
-		color: #fff;
-	}
-
-	.page-standardpage .were-tbx {
-		margin-top: -13em;
 	}
 
 }

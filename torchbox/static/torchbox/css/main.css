@@ -362,7 +362,7 @@ main nav li.active a:after {
 
 .body-copy p a:hover{
         color: #ea853a;
-    }
+}
 
 .body-copy h1 {
     font-size: 3em;
@@ -525,7 +525,7 @@ main nav li.active a:after {
 }
 
 .page-homepage .hero {
-    padding: 22em 2em 6em 2em;
+    padding: 22em 0em 3em 0em;
     background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
     background-color: #5b6265;
     position: relative;
@@ -919,6 +919,67 @@ font-size: 0.8em;
 
 /*Standard page*/
 
+.page-standardpage .hero {
+    height: 550px;
+    margin-top: -10em;
+    background-color: #f3f4f6;
+}
+
+.page-standardpage .body {
+    margin-top:4em;
+}
+
+.page-standardpage h4{
+    color: #97cb9b;
+    font-size: 1.5em;
+}
+
+.page-standardpage .button{
+    background-color: white;
+    display: inline-block;
+    padding: 0.7em 1.5em;
+    line-height: 1em;
+    margin: 1em 1em 1em 0;
+    color: #EA853a;
+    border: solid 1px #EA853a;
+    border-radius: 2px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.page-standardpage .button:hover{
+    background-color: #EA853a;
+    display: inline-block;
+    color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+.page-standardpage p a {
+        color: #aaa;
+        transition: all 0.15s ease;
+}
+
+.page-standardpage p a:hover{
+        color: #ea853a;
+}
+
+.page-standardpage main li {
+    margin-bottom: 2em;
+}
+
+.page-standardpage .logo {
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background-size: auto 2em;
+}
+
+.page-standardpage header nav li a {
+    color: #fff;
+}
+.page-standardpage header nav li a:hover{
+    color: #ea853a;
+    transition: all 0.15s ease;
+}
+
 .page-standardpage .listing p {
     float: left;
     display: block;
@@ -939,8 +1000,9 @@ font-size: 0.8em;
 
 .page-standardpage .were-tbx h2 {
     font-size: 1.5em;    
-    font-weight: normal;
+    font-weight: bold;
     margin-bottom: 0.5em;
+    color: #424a4f;
 }
 
 .page-standardpage .intro {
@@ -1536,7 +1598,7 @@ main .breadcrumb a:hover {
     -webkit-font-smoothing: antialiased;
 }
 
-.page-personpage .body-copy p a:hover{
+.body-copy p a:hover{
         color: #ea853a;
 }
 
@@ -1555,26 +1617,6 @@ main .breadcrumb a:hover {
 .page-personpage .container {
         padding: 0 1em;
 }
-
-
-.page-standardpage main li {
-    margin-bottom: 2em;
-}
-
-.page-standardpage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
-    background-size: auto 3em;
-}
-
-.page-standardpage header nav li a {
-    color: #fff;
-}
-.page-standardpage header nav li a:hover{
-    color: #ea853a;
-    transition: all 0.15s ease;
-}
-
-
 
 #map {
      width: 100%;

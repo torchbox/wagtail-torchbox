@@ -3,25 +3,34 @@
 
 {% block content %}
 
+       <!-- 
         <div class= "crop-height">
             <img class="scale" src="/static/torchbox/images/about-placeholder.jpg" width="" height="" alt="">
         </div>
+        -->
 
-    <section class="intro were-tbx container">
-        <h1>{{ self.title }}</h1>
-
-        <div>
-            {% if self.intro %}
-                {{ self.intro|richtext }}
-            {% endif %}
+        <div class="hero">
         </div>
 
-        {% if self.body %}
-            {{ self.body|richtext }}
+    <section class="intro were-tbx container">
+        <!--<h1>{{ self.title }}</h1>-->
+
+        {% if self.intro %}
+            {{ self.intro|richtext }}
         {% endif %}
+
+        <div class="body">
+            {% if self.body %}
+                {{ self.body|richtext }}
+            {% endif %}
+            <div class="button">
+                Get in touch
+            </div>
+        </div>
     </section>   
 
-    <section class="were-tbx-2 container">
+     <!--
+        <section class="were-tbx-2 container">
         {% if self.content_block.all %}
         <ul class="uslist grid clearfix">
             {% for block in self.content_block.all %}
@@ -36,5 +45,6 @@
         </ul>
         {% endif %}
     </section>
+    -->
 
 {% endblock %}
