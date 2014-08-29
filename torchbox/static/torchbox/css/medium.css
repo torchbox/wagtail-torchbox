@@ -50,9 +50,9 @@
 	}
 
 	header nav li a {
-		padding: 0.5em 0 0 0;
+		padding: 0;
     	border-bottom: none;
-    	margin: 0.5em 0.5em;
+    	margin: 0.5em 0.5em 0.5em 0.5em;
 	}
 
 	header nav li:last-child a {
@@ -70,6 +70,23 @@
 		padding:1em 0;
 		background-size: auto 3em;
 		margin: 0;
+	}
+	
+	/*Active*/
+
+	.active {
+		background: rgba(0,0,0,0.5);
+		padding: 0em 1em 0em 1em;
+		margin-top: 1em;
+		border-radius: 2px;
+	}
+
+	header nav li .active a{
+		color: #fff;
+	}
+
+	header nav li .active a:hover{
+		color: #fff;
 	}
 
 	/*Homepage*/
@@ -478,7 +495,7 @@
 	}
 
 	.page-blogindexpage .logo {
-	background-image: url("/static/torchbox/images/logo-torchbox-white.png");
+	background-image: url("/static/torchbox/images/logo-torchbox-grey.png");
 	}
 	
 	.page-blogindexpage h2 {
@@ -839,7 +856,6 @@
 		max-width: 96em;
 		font-size: 5em;
 		padding-bottom: 0.3em;
-		color: #fff;
 	}
 
 	.page-jobindexpage .intro p {
@@ -919,7 +935,7 @@
 	}
 
 	.sign-up{
-		margin: -1em auto 1em auto;
+		padding-bottom: 2em;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -941,11 +957,9 @@
 	}
 
 	.page-jobindexpage .logo{
-    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 3em;
 	}
-
-
 	
 	.page-jobindexpage footer {
 	    margin: -1em 0 0 0;
@@ -965,6 +979,11 @@
 		margin: 2% 2%  3% 0;
 		padding: 0 0 0 4em;
 		border-top: none;
+	}
+
+	.page-jobindexpage header nav li a{
+		color: #424a4f;
+
 	}
 	
 	.page-jobindexpage .benefits .one:nth-of-type(odd) {
@@ -1256,9 +1275,9 @@
 		transition: all 0.15s ease;
 		height: 80px;
 		float: left;
-		fill: #fff;
+		fill: #EA853A;
 		width: 80px;
-		margin-top: -23px;
+		margin-top: -31px;
 	}
 
 	.offices li:hover .svg{
@@ -1309,7 +1328,7 @@
     /* Desktop */
 @media only screen and (min-width: 1250px) {
 	.page-jobindexpage main .listing li:nth-child(2) a {
-		border-top: 1px solid #a9a9a9;
+		border-top: 1px solid #6F6E6E;
 	}
 
 	.page-jobindexpage main .listing li{

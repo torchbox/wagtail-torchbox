@@ -118,11 +118,6 @@ img.scale {
     overflow: hidden; 
 }
 
-
-.active{
-    color: purple !important;
-}
-
 html {
     /*background: url("/static/torchbox/images/bg.png") fixed;*/
     font-family: 'Open Sans', sans-serif;
@@ -735,7 +730,7 @@ font-size: 0.8em;
 
 .page-jobindexpage main .jobs {
     margin-top: -19.5em; 
-    background-color: #f3f4f6;;
+    background-color: #434a4f;
     color: #222;
     -webkit-font-smoothing: antialiased;
     padding: 19.5em 2em 3em 2em; 
@@ -747,7 +742,7 @@ font-size: 0.8em;
 
 
 .page-jobindexpage main .jobs a {
-    color: #424a4f;
+    color: #f3f4f6;
     padding: 0.5em 0;
 }
 
@@ -765,7 +760,7 @@ font-size: 0.8em;
 }
 
 .page-jobindexpage main .listing li:first-child a {  
-    border-top: 1px solid #a9a9a9;
+    border-top: 1px solid #6F6E6E;
 } 
 
 .page-jobindexpage .benefits li {
@@ -792,7 +787,7 @@ font-size: 0.8em;
     line-height: 1em;
     margin: 0 1em -1em 0;
     color: #fff;
-    border: solid 1px #424a4f;
+    border: solid 1px #f3f4f6;
     border-radius: 2px;
     min-width: 252px;
     height: 55px;
@@ -803,7 +798,7 @@ font-size: 0.8em;
 
 .page-jobindexpage .intro p {
     clear: both;
-    color: #424a4f;
+    color: #f3f4f6;
 }
 
 .page-jobindexpage .intro p  a:hover{
@@ -814,13 +809,13 @@ font-size: 0.8em;
 
 .page-jobindexpage main .listing a {
     font-size: 1.3em;
-    border-bottom: 1px solid #a9a9a9;
+    border-bottom: 1px solid #6F6E6E;
     transition: all 0.2s ease;
     line-height: 1.3;
 }
 
 .page-jobindexpage main .listing a:hover {
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,0.1);
     padding-left: 0.5em;
 }
 
@@ -1158,6 +1153,10 @@ font-size: 0.8em;
 }
 
 /*Blog Index*/
+
+.blog{
+    margin-top: 9em;
+}
 
 .page-blogindexpage .crop-height {
     display: none;
