@@ -475,7 +475,7 @@ main nav li.active a:after {
 
 .page-homepage .listing p{
     display: block;
-    font-size: 1em;
+    font-size: 1.2em;
     margin-top: -0.1em;
 }
 
@@ -730,7 +730,7 @@ font-size: 0.8em;
 
 .page-jobindexpage main .jobs {
     margin-top: -19.5em; 
-    background-color: #434a4f;
+    background-color: #F3F4F6;
     color: #222;
     -webkit-font-smoothing: antialiased;
     padding: 19.5em 2em 3em 2em; 
@@ -742,7 +742,7 @@ font-size: 0.8em;
 
 
 .page-jobindexpage main .jobs a {
-    color: #f3f4f6;
+    color: #424A4F;
     padding: 0.5em 0;
 }
 
@@ -798,11 +798,11 @@ font-size: 0.8em;
 
 .page-jobindexpage .intro p {
     clear: both;
-    color: #f3f4f6;
 }
 
 .page-jobindexpage .intro p  a:hover{
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,0.7);
+    border: solid 1px #424a4f;
     border-radius: 2px;
     color: #424a4f;
 }
@@ -815,7 +815,7 @@ font-size: 0.8em;
 }
 
 .page-jobindexpage main .listing a:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.7);
     padding-left: 0.5em;
 }
 
@@ -990,7 +990,7 @@ font-size: 0.8em;
 
 .page-standardpage .quote {
     background: #424A4F;
-    padding: 2em 0 1.8em 0;
+    padding: 4em 0 3.8em 0;
 }
 
 .page-standardpage .quote p {
@@ -1163,7 +1163,7 @@ font-size: 0.8em;
 /*Blog Index*/
 
 .blog{
-    margin-top: 9em;
+    margin-top: 0;
 }
 
 .page-blogindexpage .crop-height {
@@ -1660,7 +1660,7 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list a {
-    background-color: #434a4f;
+    background-color: #424A4F;
     display: block;
     overflow: hidden;
 }
@@ -1669,7 +1669,7 @@ main .breadcrumb a:hover {
 .grid.people-list a img {
     margin: 0;
     transition: all 0.2s ease;
-    opacity: 0.7;
+    opacity: 0.3;
 }
 
 .grid.people-list a:hover img {

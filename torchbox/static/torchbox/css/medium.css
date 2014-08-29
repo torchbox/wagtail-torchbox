@@ -444,6 +444,7 @@
 
 	.page-workindexpage main .listing a h2 {
 	    font-size: 2em;
+	    color: #000;
 	}
 
 	.page-workindexpage main .listing div {
@@ -474,6 +475,7 @@
 	.page-workindexpage main .listing div p {
 		margin: 1em 0 1em 0;
 		display: block;
+		color: #000;
 	}
 
 
@@ -507,7 +509,7 @@
 	}
 
 	.page-blogindexpage .logo {
-	background-image: url("/static/torchbox/images/logo-torchbox-grey.png");
+	background-image: url("/static/torchbox/images/logo-torchbox-white.png");
 	}
 	
 	.page-blogindexpage h2 {
@@ -573,11 +575,7 @@
 	}
 
 	.page-blogindexpage h1 {
-		font-size: 6em;
-		font-weight: bold;
-		margin-bottom: 0.25em;
-		color: #fff;
-		position: relative;
+		display: none;
 	}
 
 	.page-blogindexpage h1:before {
@@ -601,6 +599,10 @@
         color: #fff;
     }
 
+    .page-blogindexpage .blog{
+    	margin-top: 9em;
+	}
+
 	.page-blogindexpage p {
 		font-size: 1.125em;
 		color: #434a4f;
@@ -612,7 +614,7 @@
 
 	.page-blogindexpage .crop-height {
 		display: block;
-		max-height: 24.5em;
+		max-height: 29em;
 		overflow: hidden;
 		margin-top: -7em;
 	}	
@@ -868,6 +870,8 @@
 		max-width: 96em;
 		font-size: 5em;
 		padding-bottom: 0.3em;
+		color: #97CB9B;
+		display: none;
 	}
 
 	.page-jobindexpage .intro p {
@@ -969,7 +973,7 @@
 	}
 
 	.page-jobindexpage .logo{
-    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 3em;
 	}
 	
@@ -991,10 +995,6 @@
 		margin: 2% 2%  3% 0;
 		padding: 0 0 0 4em;
 		border-top: none;
-	}
-
-	.page-jobindexpage header nav li a{
-		color: #424a4f;
 	}
 
 	.page-jobindexpage .active a{
@@ -1383,7 +1383,7 @@
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 629px;
-	    background-color: #000;
+	    background-color: #fff;
 	}
 
 	.page-workindexpage main .listing a:hover div {
