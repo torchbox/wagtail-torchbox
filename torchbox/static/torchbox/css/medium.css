@@ -298,10 +298,6 @@
 
 	/*Standard page (we're torchbox) */
 
-	.page-standardpage header nav li a{
-		color: #424a4f;
-	}
-
 	.page-standardpage .active a{
 		color: #fff;
 	}
@@ -312,21 +308,36 @@
 	}
 
 	.page-standardpage .hero{
-		padding:2em 2em 3em 2em;
-		max-width: 60em;
-		margin:-12em auto -2em auto;
-		background: rgba(255, 255, 255, 1);
+		padding:4em 4em 3em 6em;
+		max-width: 80em;
+		margin:-23em auto 9em auto;
 		position: relative;
 	}
 
+	.page-standardpage h2 {
+		color: #97CB9B;
+		font-weight: bold;
+	    font-size: 4em;
+	}
+
+	.page-standardpage h2 span{
+		border-bottom: 6px #97CB9B solid;
+		transition: 0.2s ease;
+	}
+
+	.page-standardpage h2 span:hover{
+		border-bottom: 6px #fff solid;
+		color: #fff;
+	}
+
 	.page-standardpage .logo {
-   		 background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+   		 background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
 	    background-size: auto 3em;
 	}
 
 	.page-standardpage .crop-height{
 		display: block;
-		max-height: 35em;
+		max-height: 40em;
 		overflow: hidden;
 		margin-top: -10em;
 	}
@@ -335,7 +346,7 @@
 		padding: 0em 2em 1em 2em;
 		background-color: #fff;
 		margin:0 auto 0 auto;
-	    max-width: 60em;
+	    max-width: 50em;
 	    position: relative;
 	}
 
@@ -353,36 +364,13 @@
 	    color: #fff;
 	}
 
-	.page-standardpage h2 {
-		font-weight: bold;
-	    font-size: 4.5em;   
-	}
-
-	.page-standardpage h2 span{
-		border-bottom: 6px #424a4f solid;
-		transition: 0.2s ease;
-	}
-
-	.page-standardpage h2 span:hover{
-		border-bottom: 6px #ea853a solid;
-		color: #ea853a;
-	}
-
 	.page-standardpage  h4 {
-		font-size: 2em;
+		font-size: 2.5em;
 		line-height: 1.3em;
 		font-weight: bold;
 		padding: 0.3em;
-		margin: 0.5em 0 0.5em 0;
-		max-width: 24em;
-	}
-
-	.page-standardpage  h3 {
-		margin-top: 1.5em;
-		font-size: 2em;
-		line-height: 1.3em;
-		font-weight: bold;
-		max-width: 24em;
+		margin: 0.5em auto 0.5em auto;
+		text-align: center;
 	}
 
 	.page-standardpage .were-tbx-2 li {

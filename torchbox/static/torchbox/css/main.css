@@ -679,13 +679,15 @@ overflow: hidden;
     padding-bottom: 2em;
 }
 
-.page-homepage .clients {
-    padding: 2em 0 2em 1em;
+.clients {
+    padding: 1em 0 1em 0em;
     margin:0 auto;
-    max-width: 100%;
+    max-width: 50em;
+    overflow: hidden;
 }
-.page-homepage .clients li {
-    width: 31.33%;
+
+.clients li {
+    width: 25%;
     height: 6em;
     float: left;
     padding: 2em 1%;
@@ -693,9 +695,8 @@ overflow: hidden;
     text-align: center;
 }
 
-.page-homepage .clients li > * {
-    width: 100%;
-    height: auto;
+.clients li > * {
+    height: 100%;
     text-align: center;
     opacity: 0.6;
     padding: 0.25em;
@@ -921,11 +922,11 @@ font-size: 0.8em;
 .page-standardpage .button{
     background-color: white;
     display: inline-block;
-    padding: 0.7em 1.5em;
+    padding: 1.1em 3em;
     line-height: 1em;
-    margin: 1em 1em 1em 0;
-    color: #97cb9b;
-    border: solid 1px #97cb9b;
+    margin: 1em 1em 3em 0;
+    color: #EA853a;
+    border: solid 1px #EA853a;
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
@@ -933,19 +934,20 @@ font-size: 0.8em;
 
 .page-standardpage .button:hover{
     cursor: pointer;
-    background-color: #97cb9b;
+    background-color: #EA853a;
     display: inline-block;
     color: #fff;
     transition: background-color 0.2s ease;
 }
 
 .page-standardpage p a {
-        color: #aaa;
-        transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    border-bottom: 1px dotted #424A4F;
 }
 
 .page-standardpage p a:hover{
-        color: #ea853a;
+    color: #EA853A;
+    border-bottom: 1px dotted #EA853A;
 }
 
 .page-standardpage main li {
@@ -976,8 +978,10 @@ font-size: 0.8em;
 }
 
 .italic{
-    font-size: 1.5em;
-    margin: 2.5em 0 2.5em 0;
+    max-width: 23em;
+    font-size: 2em;
+    margin: 1.5em auto 1.3em auto;
+    font-style: italic;
 }
 
 .page-standardpage main {
@@ -985,8 +989,15 @@ font-size: 0.8em;
 }
 
 .page-standardpage .quote {
-    background: #424a4f;
+    background: #424A4F;
     padding: 2em 0 1.8em 0;
+}
+
+.page-standardpage .quote p {
+    font-size: 1.5em;
+    margin-top: -1em;
+    color: #97CB9B;
+    text-align: center;
 }
 
 .page-standardpage h1 {
