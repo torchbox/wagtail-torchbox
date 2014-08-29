@@ -279,7 +279,7 @@
 	.page-homepage .hiring h2 {
 		text-align: center;
 		font-size: 3em;
-		color: #fff;
+		color: #424A4F;
 	}
 
 	.page-homepage .hiring a {
@@ -298,6 +298,12 @@
 
 	/*Standard page (we're torchbox) */
 
+	.italic{
+	    font-size: 2em;
+	    padding: 0;
+	    margin: 1.5em auto 1.5em auto;
+	}	
+
 	.page-standardpage .active a{
 		color: #fff;
 	}
@@ -309,7 +315,6 @@
 
 	.page-standardpage .hero{
 		padding:4em 4em 3em 6em;
-		max-width: 80em;
 		margin:-23em auto 9em auto;
 		position: relative;
 	}
@@ -364,13 +369,20 @@
 	    color: #fff;
 	}
 
+	.page-standardpage .quote {
+    	padding: 4em 0 3.8em 0;
+	}
+
 	.page-standardpage  h4 {
 		font-size: 2.5em;
 		line-height: 1.3em;
-		font-weight: bold;
 		padding: 0.3em;
 		margin: 0.5em auto 0.5em auto;
 		text-align: center;
+	}
+
+	.page-standardpage .quote p {
+    	font-size: 1.5em;
 	}
 
 	.page-standardpage .were-tbx-2 li {
@@ -915,6 +927,7 @@
 		width: 65px;
 		height: 65px;
 		background-repeat: no-repeat;
+		background-size: 80%;
 		background-image: url("/static/torchbox/images/icons/ethical.png")
 	}
 
@@ -963,8 +976,9 @@
 	}
 
 	.page-jobindexpage .benefits h3 {
-		font-size: 2.5em;
+		font-size: 2em;
 		line-height: 1em;
+		margin-bottom: -0.2em;
 	}
 
 	.page-jobindexpage .benefits li > div > div {

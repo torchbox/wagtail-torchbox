@@ -572,7 +572,7 @@ main nav li.active a:after {
     min-width: 100%;
     text-align: left;
     padding: 3em 2em; 
-    background-color: #97cb9b;
+    background-color: #F3F4F6;
 }
 
 .page-homepage .hiring > div {
@@ -583,11 +583,11 @@ main nav li.active a:after {
 
 .page-homepage .hiring a {
     border-radius: 3px;
-    border: solid 1px #fff;
+    border: solid 1px #424A4F;
     padding: 0.8em 1em;
     line-height: 1em;
     font-weight: 300;
-    color: #fff;
+    color: #424A4F;
     display: inline-block;
     margin-bottom: 0.5em;
     border-radius: 3px;
@@ -600,6 +600,7 @@ main nav li.active a:after {
 .page-homepage .hiring a:hover {
     background-color: #424a4f;
     border: solid 1px #424a4f;
+    color: #fff;
 }
 
 .page-homepage main h2 {
@@ -914,9 +915,16 @@ font-size: 0.8em;
 
 /*Standard page*/
 
+.page-standardpage .menu-button{
+    background-color: #97CB9B;
+}
+
 .page-standardpage h4{
     color: #97cb9b;
     font-size: 1.5em;
+    padding: 0 1em;
+    font-weight: bold;
+    text-align: center;
 }
 
 .page-standardpage .button{
@@ -955,7 +963,7 @@ font-size: 0.8em;
 }
 
 .page-standardpage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 2em;
 }
 
@@ -973,14 +981,32 @@ font-size: 0.8em;
     margin-top: -0.5em;
 }
 
+.page-standardpage .hero{
+    padding: 4em 1em 0em 1em;
+    max-width: 80em;
+    margin:-20em auto 9em auto;
+    position: relative;
+}
+
+.page-standardpage h2 span{
+    border-bottom: 4px #97CB9B solid;
+}
+
+.page-standardpage h2 {
+    color: #97CB9B;
+    font-weight: bold;
+    font-size: 2.5em;
+}
+
 .page-standardpage  p i{
     font-size: 1.1em;
 }
 
 .italic{
     max-width: 23em;
-    font-size: 2em;
-    margin: 1.5em auto 1.3em auto;
+    font-size: 1.2em;
+    padding: 0 1em;
+    margin: 1.5em auto 0em auto;
     font-style: italic;
 }
 
@@ -990,11 +1016,11 @@ font-size: 0.8em;
 
 .page-standardpage .quote {
     background: #424A4F;
-    padding: 4em 0 3.8em 0;
+    padding: 3em 0 2.8em 0;
 }
 
 .page-standardpage .quote p {
-    font-size: 1.5em;
+    font-size: 1.1em;
     margin-top: -1em;
     color: #97CB9B;
     text-align: center;
@@ -1029,10 +1055,6 @@ font-size: 0.8em;
     font-size: 1em;
 }
 
-.page-standardpage .listing li img {
-
-}
-
 .page-standardpage .services-intro {
     padding-bottom: 1em;
 }
@@ -1044,8 +1066,19 @@ font-size: 0.8em;
     color: #434a4f;
 }
 
-.page-standardpage .crop-height {
-    display: none;
+.page-standardpage  .crop-height {
+    max-height: 40em;
+    overflow: hidden;
+    margin-top: -19em;
+}
+
+.page-standardpage img.scale {
+    display: block;
+    height: auto !important;
+    width: auto\9;
+    width: auto;
+    max-width: none;
+    -ms-interpolation-mode: bicubic;
 }
 
 .page-standardpage .were-tbx-2 li {
@@ -1239,7 +1272,7 @@ font-size: 0.8em;
 }
 
 .page-blogindexpage .pagination div{
-    float:left;
+    float:right;
     margin: 0 1em;
     width: 200px;
 }
