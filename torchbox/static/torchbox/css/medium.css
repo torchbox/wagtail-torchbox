@@ -81,12 +81,13 @@
 		border-radius: 2px;
 	}
 
-	header nav li .active a{
+	.active a{
 		color: #fff;
 	}
 
-	header nav li .active a:hover{
+	.active a:hover{
 		color: #fff;
+		border-bottom: none;
 	}
 
 	/*Homepage*/
@@ -301,6 +302,23 @@
 		color: #424a4f;
 	}
 
+	.page-standardpage .active a{
+		color: #fff;
+	}
+
+	.page-standardpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
+	}
+
+	.page-standardpage .hero{
+		padding:2em 2em 3em 2em;
+		max-width: 60em;
+		margin:-12em auto -2em auto;
+		background: rgba(255, 255, 255, 1);
+		position: relative;
+	}
+
 	.page-standardpage .logo {
    		 background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
 	    background-size: auto 3em;
@@ -314,12 +332,11 @@
 	}
 
 	.page-standardpage .were-tbx {
-    	padding: 1em 2em 0em 2em;
-	}
-
-	.page-standardpage .were-tbx {
-		margin-top: 0;
+		padding: 0em 2em 1em 2em;
+		background-color: #fff;
+		margin:0 auto 0 auto;
 	    max-width: 60em;
+	    position: relative;
 	}
 
 	.page-standardpage .were-tbx p {
@@ -336,18 +353,17 @@
 	    color: #fff;
 	}
 
-	.page-standardpage .were-tbx h2 {
-		margin-top: -4em;
-	    font-size: 4em;   
-	    margin-bottom: 1.7em;
+	.page-standardpage h2 {
+		font-weight: bold;
+	    font-size: 4.5em;   
 	}
 
-	.page-standardpage .were-tbx h2 span{
+	.page-standardpage h2 span{
 		border-bottom: 6px #424a4f solid;
 		transition: 0.2s ease;
 	}
 
-	.page-standardpage .were-tbx h2 span:hover{
+	.page-standardpage h2 span:hover{
 		border-bottom: 6px #ea853a solid;
 		color: #ea853a;
 	}
@@ -358,6 +374,14 @@
 		font-weight: bold;
 		padding: 0.3em;
 		margin: 0.5em 0 0.5em 0;
+		max-width: 24em;
+	}
+
+	.page-standardpage  h3 {
+		margin-top: 1.5em;
+		font-size: 2em;
+		line-height: 1.3em;
+		font-weight: bold;
 		max-width: 24em;
 	}
 
@@ -935,7 +959,7 @@
 	}
 
 	.sign-up{
-		padding-bottom: 2em;
+		margin-top: -1.5em;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -983,7 +1007,15 @@
 
 	.page-jobindexpage header nav li a{
 		color: #424a4f;
+	}
 
+	.page-jobindexpage .active a{
+		color: #fff;
+	}
+
+	.page-jobindexpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
 	}
 	
 	.page-jobindexpage .benefits .one:nth-of-type(odd) {
@@ -1002,6 +1034,15 @@
 
 	.page-personindexpage main h1 {
 	    font-size: 5em;
+	}
+
+	.page-personindexpage .active a{
+		color: #fff;
+	}
+
+	.page-personindexpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
 	}
 
    .page-jobindexpage  .crop-height {
@@ -1134,6 +1175,17 @@
 	transition: all 0.15s ease;
 	border-bottom: 3px solid #EA853a;
 	}
+
+	.page-workindexpage .active a{
+		color: #fff;
+	}
+
+	.page-workindexpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
+	}
+
+
 
 	/*Services page*/
 

@@ -714,7 +714,6 @@ font-size: 0.8em;
 
 .sign-up{
     clear: both;
-    margin: 0 auto;
     width: 100%;
     text-align: center;
 }
@@ -914,12 +913,6 @@ font-size: 0.8em;
 
 /*Standard page*/
 
-.page-standardpage .hero {
-    height: 550px;
-    margin-top: -10em;
-    background-color: #f3f4f6;
-}
-
 .page-standardpage h4{
     color: #97cb9b;
     font-size: 1.5em;
@@ -979,7 +972,12 @@ font-size: 0.8em;
 }
 
 .page-standardpage  p i{
-    font-size: 1.2em;
+    font-size: 1.1em;
+}
+
+.italic{
+    font-size: 1.5em;
+    margin: 2.5em 0 2.5em 0;
 }
 
 .page-standardpage main {
@@ -988,7 +986,7 @@ font-size: 0.8em;
 
 .page-standardpage .quote {
     background: #424a4f;
-    padding: 2em 0 1em 0;
+    padding: 2em 0 1.8em 0;
 }
 
 .page-standardpage h1 {
@@ -1017,7 +1015,6 @@ font-size: 0.8em;
 }
 
 .page-standardpage .intro p {
-    max-width: 36em;
     font-size: 1em;
 }
 
