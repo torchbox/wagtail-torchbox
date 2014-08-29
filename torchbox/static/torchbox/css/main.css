@@ -915,7 +915,7 @@ font-size: 0.8em;
 
 /*Standard page*/
 
-.menu-button{
+.page-standardpage .menu-button{
     background-color: #97CB9B;
 }
 
@@ -1272,7 +1272,7 @@ font-size: 0.8em;
 }
 
 .page-blogindexpage .pagination div{
-    float:left;
+    float:right;
     margin: 0 1em;
     width: 200px;
 }

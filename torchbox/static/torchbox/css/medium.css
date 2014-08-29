@@ -927,6 +927,7 @@
 		width: 65px;
 		height: 65px;
 		background-repeat: no-repeat;
+		background-size: 80%;
 		background-image: url("/static/torchbox/images/icons/ethical.png")
 	}
 
@@ -975,8 +976,9 @@
 	}
 
 	.page-jobindexpage .benefits h3 {
-		font-size: 2.5em;
+		font-size: 2em;
 		line-height: 1em;
+		margin-bottom: -0.2em;
 	}
 
 	.page-jobindexpage .benefits li > div > div {
