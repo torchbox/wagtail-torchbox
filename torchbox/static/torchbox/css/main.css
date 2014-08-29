@@ -118,11 +118,6 @@ img.scale {
     overflow: hidden; 
 }
 
-
-.active{
-    color: purple !important;
-}
-
 html {
     /*background: url("/static/torchbox/images/bg.png") fixed;*/
     font-family: 'Open Sans', sans-serif;
@@ -362,7 +357,7 @@ main nav li.active a:after {
 
 .body-copy p a:hover{
         color: #ea853a;
-    }
+}
 
 .body-copy h1 {
     font-size: 3em;
@@ -480,7 +475,7 @@ main nav li.active a:after {
 
 .page-homepage .listing p{
     display: block;
-    font-size: 1em;
+    font-size: 1.2em;
     margin-top: -0.1em;
 }
 
@@ -525,7 +520,7 @@ main nav li.active a:after {
 }
 
 .page-homepage .hero {
-    padding: 22em 2em 6em 2em;
+    padding: 22em 0em 3em 0em;
     background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
     background-color: #5b6265;
     position: relative;
@@ -684,13 +679,15 @@ overflow: hidden;
     padding-bottom: 2em;
 }
 
-.page-homepage .clients {
-    padding: 2em 0 2em 1em;
+.clients {
+    padding: 1em 0 1em 0em;
     margin:0 auto;
-    max-width: 100%;
+    max-width: 50em;
+    overflow: hidden;
 }
-.page-homepage .clients li {
-    width: 31.33%;
+
+.clients li {
+    width: 25%;
     height: 6em;
     float: left;
     padding: 2em 1%;
@@ -698,9 +695,8 @@ overflow: hidden;
     text-align: center;
 }
 
-.page-homepage .clients li > * {
-    width: 100%;
-    height: auto;
+.clients li > * {
+    height: 100%;
     text-align: center;
     opacity: 0.6;
     padding: 0.25em;
@@ -719,7 +715,6 @@ font-size: 0.8em;
 
 .sign-up{
     clear: both;
-    margin: 0 auto;
     width: 100%;
     text-align: center;
 }
@@ -735,7 +730,7 @@ font-size: 0.8em;
 
 .page-jobindexpage main .jobs {
     margin-top: -19.5em; 
-    background-color: #f3f4f6;;
+    background-color: #F3F4F6;
     color: #222;
     -webkit-font-smoothing: antialiased;
     padding: 19.5em 2em 3em 2em; 
@@ -747,7 +742,7 @@ font-size: 0.8em;
 
 
 .page-jobindexpage main .jobs a {
-    color: #424a4f;
+    color: #424A4F;
     padding: 0.5em 0;
 }
 
@@ -765,7 +760,7 @@ font-size: 0.8em;
 }
 
 .page-jobindexpage main .listing li:first-child a {  
-    border-top: 1px solid #a9a9a9;
+    border-top: 1px solid #6F6E6E;
 } 
 
 .page-jobindexpage .benefits li {
@@ -792,7 +787,7 @@ font-size: 0.8em;
     line-height: 1em;
     margin: 0 1em -1em 0;
     color: #fff;
-    border: solid 1px #424a4f;
+    border: solid 1px #f3f4f6;
     border-radius: 2px;
     min-width: 252px;
     height: 55px;
@@ -803,24 +798,24 @@ font-size: 0.8em;
 
 .page-jobindexpage .intro p {
     clear: both;
-    color: #424a4f;
 }
 
 .page-jobindexpage .intro p  a:hover{
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,0.7);
+    border: solid 1px #424a4f;
     border-radius: 2px;
     color: #424a4f;
 }
 
 .page-jobindexpage main .listing a {
     font-size: 1.3em;
-    border-bottom: 1px solid #a9a9a9;
+    border-bottom: 1px solid #6F6E6E;
     transition: all 0.2s ease;
     line-height: 1.3;
 }
 
 .page-jobindexpage main .listing a:hover {
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,0.7);
     padding-left: 0.5em;
 }
 
@@ -919,14 +914,90 @@ font-size: 0.8em;
 
 /*Standard page*/
 
+.page-standardpage h4{
+    color: #97cb9b;
+    font-size: 1.5em;
+}
+
+.page-standardpage .button{
+    background-color: white;
+    display: inline-block;
+    padding: 1.1em 3em;
+    line-height: 1em;
+    margin: 1em 1em 3em 0;
+    color: #EA853a;
+    border: solid 1px #EA853a;
+    border-radius: 2px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.page-standardpage .button:hover{
+    cursor: pointer;
+    background-color: #EA853a;
+    display: inline-block;
+    color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+.page-standardpage p a {
+    transition: all 0.15s ease;
+    border-bottom: 1px dotted #424A4F;
+}
+
+.page-standardpage p a:hover{
+    color: #EA853A;
+    border-bottom: 1px dotted #EA853A;
+}
+
+.page-standardpage main li {
+    margin-bottom: 2em;
+}
+
+.page-standardpage .logo {
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background-size: auto 2em;
+}
+
+.page-standardpage header nav li a {
+    color: #fff;
+}
+.page-standardpage header nav li a:hover{
+    color: #ea853a;
+    transition: all 0.15s ease;
+}
+
 .page-standardpage .listing p {
     float: left;
     display: block;
     margin-top: -0.5em;
 }
 
+.page-standardpage  p i{
+    font-size: 1.1em;
+}
+
+.italic{
+    max-width: 23em;
+    font-size: 2em;
+    margin: 1.5em auto 1.3em auto;
+    font-style: italic;
+}
+
 .page-standardpage main {
     padding: 0;
+}
+
+.page-standardpage .quote {
+    background: #424A4F;
+    padding: 4em 0 3.8em 0;
+}
+
+.page-standardpage .quote p {
+    font-size: 1.5em;
+    margin-top: -1em;
+    color: #97CB9B;
+    text-align: center;
 }
 
 .page-standardpage h1 {
@@ -937,10 +1008,16 @@ font-size: 0.8em;
     line-height: 1;
 }
 
+.page-standardpage .width{
+    max-width: 60em;
+    margin: 0 auto;
+}
+
 .page-standardpage .were-tbx h2 {
     font-size: 1.5em;    
-    font-weight: normal;
+    font-weight: bold;
     margin-bottom: 0.5em;
+    color: #424a4f;
 }
 
 .page-standardpage .intro {
@@ -949,7 +1026,6 @@ font-size: 0.8em;
 }
 
 .page-standardpage .intro p {
-    max-width: 36em;
     font-size: 1em;
 }
 
@@ -970,12 +1046,6 @@ font-size: 0.8em;
 
 .page-standardpage .crop-height {
     display: none;
-}
-
-.page-standardpage .were-tbx-2 h3 {
-    font-size: 1.5em;
-    font-weight: bold;
-    line-height: 1.5;
 }
 
 .page-standardpage .were-tbx-2 li {
@@ -1091,6 +1161,10 @@ font-size: 0.8em;
 }
 
 /*Blog Index*/
+
+.blog{
+    margin-top: 0;
+}
 
 .page-blogindexpage .crop-height {
     display: none;
@@ -1536,7 +1610,7 @@ main .breadcrumb a:hover {
     -webkit-font-smoothing: antialiased;
 }
 
-.page-personpage .body-copy p a:hover{
+.body-copy p a:hover{
         color: #ea853a;
 }
 
@@ -1555,26 +1629,6 @@ main .breadcrumb a:hover {
 .page-personpage .container {
         padding: 0 1em;
 }
-
-
-.page-standardpage main li {
-    margin-bottom: 2em;
-}
-
-.page-standardpage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
-    background-size: auto 3em;
-}
-
-.page-standardpage header nav li a {
-    color: #fff;
-}
-.page-standardpage header nav li a:hover{
-    color: #ea853a;
-    transition: all 0.15s ease;
-}
-
-
 
 #map {
      width: 100%;
@@ -1606,7 +1660,7 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list a {
-    background-color: #434a4f;
+    background-color: #424A4F;
     display: block;
     overflow: hidden;
 }
@@ -1615,7 +1669,7 @@ main .breadcrumb a:hover {
 .grid.people-list a img {
     margin: 0;
     transition: all 0.2s ease;
-    opacity: 0.7;
+    opacity: 0.3;
 }
 
 .grid.people-list a:hover img {
@@ -1646,6 +1700,10 @@ main .breadcrumb a:hover {
 
 footer .contact h2 {
 color: #fff;
+}
+
+.svg{
+    display: none;
 }
 
 .people-list img {
@@ -1699,6 +1757,10 @@ footer .contact li i {
 
 }
 
+footer .contact span {
+    transition: all 0.2s ease;
+}
+
 footer .contact a:hover span {
     color: #EA853a;
 }
@@ -1721,6 +1783,20 @@ footer .offices li {
 footer .offices h3 {
     font-size: 1.5em;
     font-family: "proxima-nova";
+    transition: all 0.2s ease;
+}
+
+footer .offices li:hover h3 {
+    color: #ea853a;
+}
+
+footer .vcard {
+     transition: all 0.2s ease;
+     margin-top: -0.5em;
+}
+
+footer .offices li:hover .vcard{
+    color: #ea853a;
 }
 
 footer .tel {

@@ -4,14 +4,13 @@
 {% block content %}
 
     <div class= "crop-height">
-        <img class="scale" src="/static/torchbox/images/blog_placeholder.jpg" width="" height="" alt="">
+        <img class="scale" src="/static/torchbox/images/blog_placeholder3.jpg" width="" height="" alt="">
     </div>
 
     <section class="blog">
         <div class="blog-title">
             <div>
             <h1>{{ self.title }}</h1>
-            <h2>Talking about digital shizzle<h2>
             {# Optional heading appears if filtering by tag #}
             {% if request.GET.tag|length %}
                 <p>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></p>

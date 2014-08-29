@@ -50,9 +50,9 @@
 	}
 
 	header nav li a {
-		padding: 0.5em 0 0 0;
+		padding: 0;
     	border-bottom: none;
-    	margin: 0.5em 0.5em;
+    	margin: 0.5em 0.5em 0.5em 0.5em;
 	}
 
 	header nav li:last-child a {
@@ -70,6 +70,24 @@
 		padding:1em 0;
 		background-size: auto 3em;
 		margin: 0;
+	}
+	
+	/*Active*/
+
+	.active {
+		background: rgba(0,0,0,0.5);
+		padding: 0em 1em 0em 1em;
+		margin-top: 1em;
+		border-radius: 2px;
+	}
+
+	.active a{
+		color: #fff;
+	}
+
+	.active a:hover{
+		color: #fff;
+		border-bottom: none;
 	}
 
 	/*Homepage*/
@@ -280,6 +298,38 @@
 
 	/*Standard page (we're torchbox) */
 
+	.page-standardpage .active a{
+		color: #fff;
+	}
+
+	.page-standardpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
+	}
+
+	.page-standardpage .hero{
+		padding:4em 4em 3em 6em;
+		max-width: 80em;
+		margin:-23em auto 9em auto;
+		position: relative;
+	}
+
+	.page-standardpage h2 {
+		color: #97CB9B;
+		font-weight: bold;
+	    font-size: 4em;
+	}
+
+	.page-standardpage h2 span{
+		border-bottom: 6px #97CB9B solid;
+		transition: 0.2s ease;
+	}
+
+	.page-standardpage h2 span:hover{
+		border-bottom: 6px #fff solid;
+		color: #fff;
+	}
+
 	.page-standardpage .logo {
    		 background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
 	    background-size: auto 3em;
@@ -287,19 +337,18 @@
 
 	.page-standardpage .crop-height{
 		display: block;
-		max-height: 35em;
+		max-height: 40em;
 		overflow: hidden;
 		margin-top: -10em;
 	}
 
 	.page-standardpage .were-tbx {
-    	padding: 2.5em 2em 2em 2em;
+		padding: 0em 2em 1em 2em;
+		background-color: #fff;
+		margin:0 auto 0 auto;
+	    max-width: 50em;
+	    position: relative;
 	}
-
-	.page-standardpage .were-tbx {
-	    margin-top: -9em;
-	}
-
 
 	.page-standardpage .were-tbx p {
 			font-size: 1.3em;
@@ -315,23 +364,13 @@
 	    color: #fff;
 	}
 
-	.page-standardpage .were-tbx h2 {
-		display: none;
-	    font-size: 2em;    
-	    margin-bottom: 0.5em;
-	    color: #fff;
-	}
-
-	.page-standardpage .were-tbx-2 h2 {
-	    font-size: 3em;
-	    font-weight: bold;
-	    color: #424a4f;
-	}
-
-	.page-standardpage .were-tbx-2 h3 {
-		font-size: 2.3em;
+	.page-standardpage  h4 {
+		font-size: 2.5em;
+		line-height: 1.3em;
 		font-weight: bold;
-		color: #424a4f;
+		padding: 0.3em;
+		margin: 0.5em auto 0.5em auto;
+		text-align: center;
 	}
 
 	.page-standardpage .were-tbx-2 li {
@@ -405,6 +444,7 @@
 
 	.page-workindexpage main .listing a h2 {
 	    font-size: 2em;
+	    color: #000;
 	}
 
 	.page-workindexpage main .listing div {
@@ -435,6 +475,7 @@
 	.page-workindexpage main .listing div p {
 		margin: 1em 0 1em 0;
 		display: block;
+		color: #000;
 	}
 
 
@@ -524,7 +565,7 @@
 	}
 
 	.page-blogindexpage .blog-title div {
-	    margin: -12em auto 0 auto;
+	    margin: -12em auto 1em auto;
 	    padding: 0em 2em 2em 2em;
 	    max-width: 60em;
 	}
@@ -534,11 +575,7 @@
 	}
 
 	.page-blogindexpage h1 {
-		font-size: 6em;
-		font-weight: bold;
-		margin-bottom: 0.25em;
-		color: #fff;
-		position: relative;
+		display: none;
 	}
 
 	.page-blogindexpage h1:before {
@@ -562,6 +599,10 @@
         color: #fff;
     }
 
+    .page-blogindexpage .blog{
+    	margin-top: 9em;
+	}
+
 	.page-blogindexpage p {
 		font-size: 1.125em;
 		color: #434a4f;
@@ -573,7 +614,7 @@
 
 	.page-blogindexpage .crop-height {
 		display: block;
-		max-height: 24.5em;
+		max-height: 29em;
 		overflow: hidden;
 		margin-top: -7em;
 	}	
@@ -829,7 +870,8 @@
 		max-width: 96em;
 		font-size: 5em;
 		padding-bottom: 0.3em;
-		color: #fff;
+		color: #97CB9B;
+		display: none;
 	}
 
 	.page-jobindexpage .intro p {
@@ -909,7 +951,7 @@
 	}
 
 	.sign-up{
-		margin: -1em auto 1em auto;
+		margin-top: -1.5em;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
@@ -934,8 +976,6 @@
     background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 3em;
 	}
-
-
 	
 	.page-jobindexpage footer {
 	    margin: -1em 0 0 0;
@@ -956,6 +996,15 @@
 		padding: 0 0 0 4em;
 		border-top: none;
 	}
+
+	.page-jobindexpage .active a{
+		color: #fff;
+	}
+
+	.page-jobindexpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
+	}
 	
 	.page-jobindexpage .benefits .one:nth-of-type(odd) {
 		clear: left;
@@ -973,6 +1022,15 @@
 
 	.page-personindexpage main h1 {
 	    font-size: 5em;
+	}
+
+	.page-personindexpage .active a{
+		color: #fff;
+	}
+
+	.page-personindexpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
 	}
 
    .page-jobindexpage  .crop-height {
@@ -1106,6 +1164,17 @@
 	border-bottom: 3px solid #EA853a;
 	}
 
+	.page-workindexpage .active a{
+		color: #fff;
+	}
+
+	.page-workindexpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
+	}
+
+
+
 	/*Services page*/
 
 	.page-servicespage .services-intro {
@@ -1173,11 +1242,16 @@
 	}
 
 	footer .offices li {
+		color: #fff;
 		width: 50%;
 		float: left;
 		padding: 0 1em 1em 3em;
-		background: url("/static/torchbox/images/icon-map-pin.svg") no-repeat left top;
-		background-size: 3em;
+		transition: all 0.15s ease;
+		/*background: url("/static/torchbox/images/icon-map-pin.svg") no-repeat left top; */
+	}
+
+	footer .offices li:hover {
+		color: #fff;
 	}
 
 
@@ -1231,10 +1305,24 @@
 	}
 
 	footer .contact li a:hover i {
-		
 		top: -0.25em;
 		transition: top 0.2s ease;
 
+	}
+
+	.svg{
+		display: block;
+		transition: all 0.15s ease;
+		height: 80px;
+		float: left;
+		fill: #EA853A;
+		width: 80px;
+		margin-top: -31px;
+	}
+
+	.offices li:hover .svg{
+		height: 100px;
+		margin-top: -40px;
 	}
 
 
@@ -1275,23 +1363,12 @@
 		max-width: 100%;
 	}
 
-	.page-standardpage .were-tbx h2 {
-		display: block;
-		font-size: 2em;
-		margin-bottom: 0.5em;
-		color: #fff;
-	}
-
-	.page-standardpage .were-tbx {
-		margin-top: -13em;
-	}
-
 }
 
     /* Desktop */
 @media only screen and (min-width: 1250px) {
 	.page-jobindexpage main .listing li:nth-child(2) a {
-		border-top: 1px solid #a9a9a9;
+		border-top: 1px solid #6F6E6E;
 	}
 
 	.page-jobindexpage main .listing li{
@@ -1306,7 +1383,7 @@
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 629px;
-	    background-color: #000;
+	    background-color: #fff;
 	}
 
 	.page-workindexpage main .listing a:hover div {

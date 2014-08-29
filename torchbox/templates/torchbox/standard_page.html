@@ -4,24 +4,73 @@
 {% block content %}
 
         <div class= "crop-height">
-            <img class="scale" src="/static/torchbox/images/about-placeholder.jpg" width="" height="" alt="">
+            <img class="scale" src="/static/torchbox/images/tbx_sign_dark.jpg" width="" height="" alt="">
+        </div>
+        
+        <div class="animated fadeInDown container">
+            <div class="hero">
+                <h2>Torchbox is a digital agency with a <a href="/team"> <span> difference. </span> </a> </h2>
+            </div>
         </div>
 
-    <section class="intro were-tbx container">
-        <h1>{{ self.title }}</h1>
+        <div class="italic">
+            "We work with people who are trying to make the world a better place. People who share our values." 
+        </div>
+        
+        <!--<section class="intro were-tbx container">
+            <p>People like this:</p>
+        </section> -->
 
-        <div>
-            {% if self.intro %}
-                {{ self.intro|richtext }}
-            {% endif %}
+        <section class="intro were-tbx container">
+                <!--<h1>{{ self.title }}</h1>-->
+
+            <!--{% if self.body %}
+                {{ self.body|richtext }}
+            {% endif %}-->
+
+            <p>We design and build beautiful websites for some of the world’s <a href="#"> great universities </a> and <a href="#"> academic institutions </a>, globally-renowned 
+            <a href="#">think tanks</a>, <a href="#">fundraising charities</a>, <a href="#">campaigning NGOs</a>, and leading <a href="#">membership organisations</a>, powered by open source content management systems including <a href="#">Drupal</a> and our very own <a href="#">Wagtail CMS</a>.</p>
+
+            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use <a href="#">Django</a> to build robust, scalable web applications for mission critical requirements such as <a href="#">management information</a>, <a href="#">grant monitoring</a> and <a href="#">reporting</a>, as well as <a href="#">campaign platforms</a>, <a href="#">footprint calculators</a> and <a href="#">data visualisations</a>.</p>
+
+            <p>It's not all or nothing either.</p> 
+        </section>
+            
+        <div class="quote">
+                <h4>Strategy | UX | Design | Animation | Implementation </h4> <br> <p> Take your pick. Mix and match.</p>     
         </div>
 
-        {% if self.body %}
-            {{ self.body|richtext }}
-        {% endif %}
-    </section>   
+        <section class="intro were-tbx container">
 
-    <section class="were-tbx-2 container">
+            <p>We've got digital marketing covered too. We can manage your social media channels, tell your story to a wider audience, generate new content ideas, and optimise your Google Grant. Just ask.</p>
+
+            <p>And we want our clients to see the best possible return on their investment. Close <a href="#">collaboration</a> and an <a href="#">agile and flexible</a> approach mean we can respond and adapt to evolving requirements as we work towards a Minimum Viable Product, without breaking the bank.</p>
+
+            <p>Why Torchbox? Why not?</p>
+
+            <div class="clients">
+                 <h2>Some of our clients</h2>
+                    <ul>
+                        <li><img src="/static/torchbox/images/client-logo-01.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-02.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-03.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-04.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-05.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-crt.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-ds.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-jrf.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-rca.svg" width="" height="" alt=""></li>
+                        <li><img src="/static/torchbox/images/client-logo-ukgbc.svg" width="" height="" alt=""></li>
+                    </ul>
+            </div>
+
+                <div class="button">
+                    Get in touch
+                </div>
+        </section>
+
+     <!--
+        <section class="were-tbx-2 container">
         {% if self.content_block.all %}
         <ul class="uslist grid clearfix">
             {% for block in self.content_block.all %}
@@ -36,15 +85,6 @@
         </ul>
         {% endif %}
     </section>
-
-    <section>
-            
-        <div class="clearfix">
-            <div id="map">
-            </div>
-        </div>
-
-        </div>
-    </section>
+    -->
 
 {% endblock %}
