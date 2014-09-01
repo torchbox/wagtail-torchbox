@@ -475,7 +475,7 @@ main nav li.active a:after {
 
 .page-homepage .listing p{
     display: block;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-top: -0.1em;
 }
 
@@ -964,10 +964,6 @@ font-size: 0.8em;
     border-bottom: 1px dotted #EA853A;
 }
 
-.page-standardpage main li {
-    margin-bottom: 2em;
-}
-
 .page-standardpage .logo {
     background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 2em;
@@ -976,6 +972,7 @@ font-size: 0.8em;
 .page-standardpage header nav li a {
     color: #fff;
 }
+
 .page-standardpage header nav li a:hover{
     color: #ea853a;
     transition: all 0.15s ease;
@@ -988,7 +985,7 @@ font-size: 0.8em;
 }
 
 .page-standardpage .hero{
-    padding: 4em 1em 0em 1em;
+    padding: 2em 1em 0em 1em;
     max-width: 80em;
     margin:-20em auto 9em auto;
     position: relative;
@@ -1646,11 +1643,9 @@ main .breadcrumb a:hover {
     font-size: 1.5em;
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
-    color: #97CB9B;
 }
 .page-personindexpage main p{
     margin: 0;
-    color: #97CB9B;
 }
 
 .body-copy p a:hover{
@@ -1721,7 +1716,7 @@ main .breadcrumb a:hover {
     -moz-transform:scale(1.125); /* Firefox */
     -webkit-transform:scale(1.125); /* Safari and Chrome */
     -o-transform:scale(1.125); /* Opera */
-    opacity: 0.8;
+    opacity: 0.3;
 }
 
 .grid.people-list a:hover div {
@@ -1731,6 +1726,7 @@ main .breadcrumb a:hover {
 
 .grid.people-list li a:hover {
     display: block;
+    background: #EA853A;
 }
 
 .page-personpage h1 {
