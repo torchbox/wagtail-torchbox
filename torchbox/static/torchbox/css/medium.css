@@ -394,7 +394,7 @@
 	}
 
 	.page-workindexpage main ul a:hover {
-	    background-color: rgba(0,0,0,0.7);
+	    background-color: rgba(0,0,0,0.6);
 	    cursor: pointer;
 	}
 
@@ -729,9 +729,7 @@
 	.grid li img {
 		float: left;
 		width: 100%;
-		height: auto;
 	}
-
 
 	.grid li {
 		width:100%;
@@ -1339,6 +1337,12 @@
 
 @media only screen and (min-width: 65em) {
 
+	.page-homepage .grid li img {
+		float: left;
+		width: 150%;
+		max-width: 150%;
+	}
+
 	.page-homepage .block .workcontainer{
     	padding: 0;
 	}
@@ -1391,7 +1395,7 @@
 	}
 
 	.block:hover img {
-		opacity: 0.3;
+		opacity: 0.4;
 	}
 
 	.block img {

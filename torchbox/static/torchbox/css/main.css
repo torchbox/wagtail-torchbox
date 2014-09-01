@@ -1042,8 +1042,10 @@ h4 span:last-child{
 }
 
 .page-standardpage .quote {
-    background: #424A4F;
+    background-color: #424A4F;
     padding: 3em 0 2.8em 0;
+    background: url("/static/torchbox/images/tbx_sign_dark2.jpg") center right no-repeat;
+    background-size: cover;
 }
 
 .page-standardpage .quote p {
