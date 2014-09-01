@@ -502,15 +502,16 @@ main nav li.active a:after {
     overflow: hidden; 
 }
 
-.page-homepage .blog {
-    background: #f3f4f6;
-    padding: 1px 0;
-}
-
 .page-homepage .menu-button:hover {
     background-color: #fff;
     color: rgba(67,74,79,0.8);
     transition: all 0.2s ease;
+}
+
+.page-homepage .blog {
+    background: #f3f4f6;
+    padding: 1em 0;
+    overflow: hidden;
 }
 
 .page-homepage .logo {
@@ -712,7 +713,7 @@ overflow: hidden;
 
 .clients li > *:hover {
     cursor: pointer;
-    opacity: 1;
+    opacity: ;
 }
 
 /*Jobs index*/
@@ -742,8 +743,7 @@ font-size: 0.8em;
 
 .page-jobindexpage main .jobs {
     margin-top: -19.5em; 
-    background-color: #F3F4F6;
-    color: #222;
+    background-color: #424A4F;
     -webkit-font-smoothing: antialiased;
     padding: 19.5em 2em 3em 2em; 
 }
@@ -752,9 +752,8 @@ font-size: 0.8em;
     border-bottom: 1px dotted #DAD7D7;
 }
 
-
 .page-jobindexpage main .jobs a {
-    color: #424A4F;
+    color: #F3F4F6;
     padding: 0.5em 0;
 }
 
@@ -762,10 +761,6 @@ font-size: 0.8em;
     background: ("url/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
 }
-
-/*.page-jobindexpage main .jobs > div {
-    max-width: 48em;
-} */
 
 .icon{ 
     display: none;
@@ -783,6 +778,7 @@ font-size: 0.8em;
 .page-jobindexpage .intro p {
     font-size: 0.9em;
     margin: 2em 0 0.5em 0;
+    color: #F3F4F6;
 }
 
 .benefits{
@@ -813,10 +809,9 @@ font-size: 0.8em;
 }
 
 .page-jobindexpage .intro p  a:hover{
-    background-color: rgba(255,255,255,0.7);
-    border: solid 1px #424a4f;
+    background-color: rgba(255,255,255,0.1);
+    border: solid 1px #f3f4f6;
     border-radius: 2px;
-    color: #424a4f;
 }
 
 .page-jobindexpage main .listing a {
@@ -827,7 +822,7 @@ font-size: 0.8em;
 }
 
 .page-jobindexpage main .listing a:hover {
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.1);
     padding-left: 0.5em;
 }
 
@@ -938,9 +933,18 @@ font-size: 0.8em;
 .page-standardpage h4{
     color: #97cb9b;
     font-size: 1.5em;
-    padding: 0 1em;
     font-weight: bold;
     text-align: center;
+}
+
+h4 span{
+    padding: 0 0.3em 0 0.5em;
+    border-right: 1px solid #97cb9b;
+}
+
+h4 span:last-child{
+    padding: 0 0.5em;
+    border-right: none;
 }
 
 .page-standardpage .button{
@@ -1428,11 +1432,11 @@ font-size: 0.8em;
 
 /*Work page*/
 
-    .body-copy > *{
-        max-width: 720px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+.body-copy > *{
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .body-copy img,
 .body-copy .responsive-object {
@@ -1717,7 +1721,7 @@ main .breadcrumb a:hover {
 .grid.people-list a img {
     margin: 0;
     transition: all 0.2s ease;
-    opacity: 0.3;
+    opacity: 0.8;
 }
 
 .grid.people-list a:hover img {

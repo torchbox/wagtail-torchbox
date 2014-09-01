@@ -92,12 +92,13 @@
 
 	/*Homepage*/
 
+	.page-homepage .blog {
+		padding: 2em 0;
+		margin-bottom: 5px;
+	}
+
 	.page-blogindexpage .pagination div{
 	    float:right;
-	}
-	.page-homepage .blog {
-	    background: transparent;
-	    padding-top: 0;
 	}
 
 	.hide{
@@ -106,57 +107,7 @@
 
 	.page-homepage .listing p{
     	margin-top: 0;
-	}
-
-	.page-homepage .block .workcontainer{
-    	padding: 0;
-	}
-
-	.page-homepage .block .blogcontainer{
-    	padding: 0;
-    	overflow:visible;
-    	display: block;
-	}
-
-	.label{
-		display: block;
-		position: absolute;
-		background-color: #000;
-		padding: 1em 1.5em 0.5em 1.5em;
-		color:#fff;
-		right: 0;
-		font-size: 1em;
-		margin-top: -5em;
-		transition: 0.4s ease;
-	}
-
-	.block:hover .label {
-		background: #000;
-		margin-top: 0;
-	}
-
-	.page-homepage .go {
-		display: block;
-		opacity: 0;
-		max-width: 200px;
-		text-align: center;
-	    padding: 1em 1.5em;
-	    border: solid 1px #EA853a;
-	    color: #EA853a;
-	    margin-top: 3em;
-	    line-height: 1em;
-	    border-radius: 0.2em;
-	    -webkit-transition: .3s;
-	}
-
-	.page-homepage .go:hover {
-    border: solid 1px #EA853a;
-    color: #fff;
-    background: #EA853a;
-	}
-
-	.page-homepage .block:hover .go {
-		opacity: 1;
+    	max-width: 700px;
 	}
 
 	.worklisting h3{
@@ -173,52 +124,6 @@
 
 	.page-homepage .bloglisting a:last-child li{
 	    padding-bottom: 0em;
-	}
-
-	.block:hover .name {
-		transition: 0.2s ease;
-		color: #ea853a;
-	}
-
-	.block:hover img {
-		opacity: 0.3;
-	}
-
-	.block img {
-		transition: 0.2s ease;
-	}
-
-	.page-homepage .block:hover .crop-height {
-	  	width: 50%;
-	}
-
-	.page-homepage .crop-height {
-		transition: 0.4s ease;
-		background-color: #000;
-	  	max-height: 28em;
-	  	width: 55%;
-	  	position: relative;
-	}
-
-
-	.page-homepage .block .workcontainer{
-		overflow: visible;
-		position: relative;
-	}
-
-	.page-homepage .work-intro {
-		float: left;
-		padding: 4em 0 0 3em;
-		bottom: 0;
-		max-width: 40%;
-		width: 750px;
-		box-sizing: border-box;
-	}
-
-	.page-homepage .block{
-	    padding: 0;
-	    overflow:hidden;
-	    position: relative;
 	}
 
 	.blog h3{
@@ -240,22 +145,6 @@
 
 	.page-homepage .bleed {
 		margin: 1em 0.5em 0 0;
-	}	
-
-	.page-homepage .author .avatar {
-	    display: block;
-	    opacity: 1;
-	} 
-
-	.author {
-	    border-top: 1px dotted #ccc;
-	    border-top: 1px dotted rgba(0,0,0,0.2);
-	    padding: 1em 0em;
-	    margin-bottom: 2em;
-	}
-
-	.author .name {
-	    color: #424a4f;
 	}
 
 	.page-homepage .logo {
@@ -300,14 +189,9 @@
         line-height: 1.2em;
         color: #93DA9F;
     }
-	
+
 	.page-homepage .hero a {
 		padding:1.25em;
-	}
-
-	.page-homepage .work-block {
-		max-width: 96em;
-		margin: 0 auto;
 	}
 	
 	.page-homepage .hiring h2 {
@@ -352,8 +236,8 @@
 	}
 
 	.page-standardpage .hero{
-		padding:4em 4em 3em 6em;
-		margin:-23em auto 9em auto;
+		padding: 2em 4em 3em 6em;
+		margin: -23em auto 11em auto;
 		position: relative;
 	}
 
@@ -483,6 +367,10 @@
 
 
 	/*Work index*/
+
+	.page-workindexpage .active {
+		background: black;
+	}
 
 	.page-workindexpage {
 		color: #fff;
@@ -767,10 +655,6 @@
 	    color: white;
 	}
 
-	.author {
-    	margin:1.5em auto 0 auto;
-	}
-
 	.page-workpage	header nav li a:hover {
 		color: #EA853a;
 		border-bottom: 3px solid #EA853a;
@@ -895,16 +779,6 @@
 	.page-homepage .grid li {
 		margin: 0;
 		transition: 0.2s ease;
-	}
-
-	.page-homepage .grid li:hover {
-		background-color: #FAF9F5;
-	}
-
-	.page-homepage .clients li {
-		width: 18%;
-		margin-right: 2%;
-		margin-bottom: 2%;
 	}
 
 	.page-jobpage header nav li a{
@@ -1074,6 +948,10 @@
 
 	.page-personindexpage main h1 {
 	    font-size: 5em;
+	}
+
+	.page-personindexpage .active {
+		background: black;
 	}
 
 	.page-personindexpage .active a{
@@ -1458,19 +1336,144 @@
 
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-  /* For general iPad layouts hiding certain elements */
+	/*Block Hover*/
 
-.previous{
-	display: none;
+@media only screen and (min-width: 65em) {
+
+	.page-homepage .block .workcontainer{
+    	padding: 0;
+	}
+
+	.page-homepage .block .blogcontainer{
+    	padding: 0;
+    	overflow:visible;
+    	display: block;
+	}
+
+	.block:hover .label {
+		background: #000;
+		margin-top: 0;
+	}
+
+	.label{
+		display: block;
+		position: absolute;
+		background-color: #000;
+		padding: 1em 1.5em 0.5em 1.5em;
+		color:#fff;
+		right: 0;
+		font-size: 1em;
+		margin-top: -5em;
+		transition: 0.4s ease;
+	}
+
+	.page-homepage .go {
+		display: block;
+		opacity: 0;
+		max-width: 200px;
+		text-align: center;
+	    padding: 1em 1.5em;
+	    border: solid 1px #EA853a;
+	    color: #EA853a;
+	    margin: 3em 0;
+	    line-height: 1em;
+	    border-radius: 0.2em;
+	    -webkit-transition: .3s;
+	}
+
+	.page-homepage .go:hover {
+    border: solid 1px #EA853a;
+    color: #fff;
+    background: #EA853a;
+	}
+
+	.page-homepage .block:hover .go {
+		opacity: 1;
+	}
+
+	.block:hover img {
+		opacity: 0.3;
+	}
+
+	.block img {
+		transition: 0.2s ease;
+	}
+
+	.block:hover .name {
+		transition: 0.2s ease;
+		color: #ea853a;
+	}
+
+	.page-homepage .block:hover .crop-height {
+	  	width: 50%;
+	}
+
+	.page-homepage .block .workcontainer{
+		overflow: visible;
+		position: relative;
+	}
+
+	.page-homepage .work-block {
+		max-width: 96em;
+		margin: 0 auto;
+	}
+
+	.page-homepage .grid li:hover {
+		background-color: #FAF9F5;
+	}
+
+	.page-homepage .crop-height {
+		transition: 0.4s ease;
+		background-color: #000;
+	  	max-height: 28em;
+	  	width: 55%;
+	  	position: relative;
+	}
+
+	.page-homepage .work-intro {
+		float: left;
+		padding: 4em 0 0 3em;
+		bottom: 0;
+		max-width: 40%;
+		width: 750px;
+		box-sizing: border-box;
+	}
+
+	.page-homepage .block{
+	    padding: 0;
+	    overflow:hidden;
+	    position: relative;
+	}
+
+	.listing p {
+		display: block;
+		max-width: 100%;
+	}
+
+	.page-homepage .blog {
+	    background: transparent;
+	    margin: 0;
+	    padding: 0;
+	}
+
+	.page-homepage .author .avatar {
+	    display: block;
+	    opacity: 1;
+	} 
+
+	.author {
+		margin:1.5em auto 0 auto;
+	    border-top: 1px dotted #ccc;
+	    border-top: 1px dotted rgba(0,0,0,0.2);
+	    padding: 1em 0em;
+	}
+
+	.author .name {
+	    color: #424a4f;
+	}
+
 }
 
-.next{
-	display: none;
-}
-
-
-}
 
 
 
