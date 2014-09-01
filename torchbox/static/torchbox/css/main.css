@@ -704,9 +704,15 @@ overflow: hidden;
 .clients li > * {
     height: 100%;
     text-align: center;
-    opacity: 0.6;
+    opacity: 0.5;
     padding: 0.25em;
+    transition: 0.3s ease;
 
+}
+
+.clients li > *:hover {
+    cursor: pointer;
+    opacity: 1;
 }
 
 /*Jobs index*/
@@ -1029,7 +1035,7 @@ font-size: 0.8em;
 .page-standardpage .quote p {
     font-size: 1.1em;
     margin-top: -1em;
-    color: #97CB9B;
+    color: #fff;
     text-align: center;
 }
 
