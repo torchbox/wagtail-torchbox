@@ -608,6 +608,7 @@ main nav li.active a:after {
     margin-bottom: 0.5em;
     font-family: "proxima-nova";
     font-weight: 600;
+    color: #424A4F;
 }
 
 .page-homepage .work-intro {
@@ -915,6 +916,11 @@ font-size: 0.8em;
 
 /*Standard page*/
 
+.page-standardpage .bleed {
+    background: rgba(67,74,79,0.8);
+}
+
+
 .page-standardpage .menu-button{
     background-color: #97CB9B;
 }
@@ -1170,6 +1176,7 @@ font-size: 0.8em;
 }
 
 .pagination a {
+    text-align: center;
 
 }
 
@@ -1272,11 +1279,9 @@ font-size: 0.8em;
 }
 
 .page-blogindexpage .pagination div{
-    float:right;
     margin: 0 1em;
     width: 200px;
 }
-
 /*Blog page*/
 
 .page-blogpage .listing {
@@ -1641,6 +1646,11 @@ main .breadcrumb a:hover {
     font-size: 1.5em;
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
+    color: #97CB9B;
+}
+.page-personindexpage main p{
+    margin: 0;
+    color: #97CB9B;
 }
 
 .body-copy p a:hover{
@@ -1711,7 +1721,7 @@ main .breadcrumb a:hover {
     -moz-transform:scale(1.125); /* Firefox */
     -webkit-transform:scale(1.125); /* Safari and Chrome */
     -o-transform:scale(1.125); /* Opera */
-    opacity: 0.3;
+    opacity: 0.8;
 }
 
 .grid.people-list a:hover div {
@@ -1720,7 +1730,6 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list li a:hover {
-    background-color: #EA853a;
     display: block;
 }
 
