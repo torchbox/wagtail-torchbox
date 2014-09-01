@@ -475,7 +475,7 @@ main nav li.active a:after {
 
 .page-homepage .listing p{
     display: block;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-top: -0.1em;
 }
 
@@ -608,6 +608,7 @@ main nav li.active a:after {
     margin-bottom: 0.5em;
     font-family: "proxima-nova";
     font-weight: 600;
+    color: #424A4F;
 }
 
 .page-homepage .work-intro {
@@ -915,6 +916,11 @@ font-size: 0.8em;
 
 /*Standard page*/
 
+.page-standardpage .bleed {
+    background: rgba(67,74,79,0.8);
+}
+
+
 .page-standardpage .menu-button{
     background-color: #97CB9B;
 }
@@ -958,10 +964,6 @@ font-size: 0.8em;
     border-bottom: 1px dotted #EA853A;
 }
 
-.page-standardpage main li {
-    margin-bottom: 2em;
-}
-
 .page-standardpage .logo {
     background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 2em;
@@ -970,6 +972,7 @@ font-size: 0.8em;
 .page-standardpage header nav li a {
     color: #fff;
 }
+
 .page-standardpage header nav li a:hover{
     color: #ea853a;
     transition: all 0.15s ease;
@@ -982,7 +985,7 @@ font-size: 0.8em;
 }
 
 .page-standardpage .hero{
-    padding: 4em 1em 0em 1em;
+    padding: 2em 1em 0em 1em;
     max-width: 80em;
     margin:-20em auto 9em auto;
     position: relative;
@@ -1170,6 +1173,7 @@ font-size: 0.8em;
 }
 
 .pagination a {
+    text-align: center;
 
 }
 
@@ -1272,11 +1276,9 @@ font-size: 0.8em;
 }
 
 .page-blogindexpage .pagination div{
-    float:right;
     margin: 0 1em;
     width: 200px;
 }
-
 /*Blog page*/
 
 .page-blogpage .listing {
@@ -1642,6 +1644,9 @@ main .breadcrumb a:hover {
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
 }
+.page-personindexpage main p{
+    margin: 0;
+}
 
 .body-copy p a:hover{
         color: #ea853a;
@@ -1720,8 +1725,8 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list li a:hover {
-    background-color: #EA853a;
     display: block;
+    background: #EA853A;
 }
 
 .page-personpage h1 {
