@@ -805,7 +805,6 @@
 	}
 
 	.page-jobindexpage main .listing a {
-		padding: 0.5em 0.2em;
 		font-size: 2em;
 	}
 	
@@ -876,7 +875,7 @@
 	}
 
 	.sign-up{
-		margin-top: -1.5em;
+		margin-top: -0.5em;
 	}
 
 	.page-jobindexpage main .benefits .heading-block {
