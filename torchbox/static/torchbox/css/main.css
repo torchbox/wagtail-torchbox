@@ -298,6 +298,10 @@ main nav li.active a:after {
     color: white;
 }
 
+.page-homepage .go {
+    display: none;
+}
+
 .page-homepage .more {
     padding: 3em 0;
     overflow: hidden;
