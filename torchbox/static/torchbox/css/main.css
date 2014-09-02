@@ -119,8 +119,7 @@ img.scale {
 }
 
 html {
-    /*background: url("/static/torchbox/images/bg.png") fixed;*/
-    font-family: 'proxima-nova', sans-serif;
+    font-family: 'proxima-nova',helvetica,sans-serif;
     background-color: #fff;
 }
 
@@ -151,7 +150,7 @@ h1, h2, h3 {
     line-height: 1.25;
     margin: 0;
     padding: 0;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .listing p {
@@ -230,7 +229,7 @@ header nav li a {
     color: white;
     border-bottom: 1px solid rgba(255,255,255,0.2);
     font-size: 1.1em;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 header nav li a:hover {
@@ -366,7 +365,7 @@ main nav li.active a:after {
 .body-copy h1 {
     font-size: 3em;
     font-weight: bold;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .body-copy h2 {
@@ -410,7 +409,7 @@ main nav li.active a:after {
     font-size: 1.55em;
     font-weight: bold;
     margin-bottom: 0.2em;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .listing main div {   
@@ -933,11 +932,6 @@ font-size: 0.8em;
     background: rgba(67,74,79,0.8);
 }
 
-
-.page-standardpage .menu-button{
-    background-color: #97CB9B;
-}
-
 .page-standardpage h4{
     color: #97cb9b;
     font-size: 1.5em;
@@ -987,7 +981,7 @@ h4 span:last-child{
 }
 
 .page-standardpage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
     background-size: auto 2em;
 }
 
@@ -1014,11 +1008,11 @@ h4 span:last-child{
 }
 
 .page-standardpage h2 span{
-    border-bottom: 4px #EA853A solid;
+    border-bottom: 4px #424A4F solid;
 }
 
 .page-standardpage h2 {
-    color: #EA853A;
+    color: #fff;
     font-weight: bold;
     font-size: 2.5em;
     margin: -3em 0 3.5em 0;
@@ -1216,7 +1210,7 @@ h4 span:last-child{
     margin-bottom: 0.25em;
     line-height: 1.15;
     font-weight: bold;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .index,
@@ -1237,7 +1231,7 @@ h4 span:last-child{
 .page-blogindexpage h1 {
     font-size: 3em;
     font-weight: bold;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-blogindexpage main {
@@ -1326,14 +1320,14 @@ h4 span:last-child{
     margin-bottom: 0.25em;
     font-weight: bold;
     line-height: 1em;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-blogpage h1 {
     font-size: 3em;
     margin-bottom: 0.5em;
     line-height: 1.15;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-blogpage .article-meta {
@@ -1394,7 +1388,7 @@ h4 span:last-child{
 .page-workindexpage h1 {
     font-weight: bold;
     font-size: 3em;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-workindexpage main .listing img {
@@ -1437,7 +1431,7 @@ h4 span:last-child{
     line-height: 1.2;
     transition: opacity 0.2s ease;
     margin-bottom: 0.25em;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 
@@ -1663,7 +1657,7 @@ main .breadcrumb a:hover {
     font-size: 2.5em;
     margin-bottom: 0.25em;
     font-weight: bold;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-personindexpage main h2 {
@@ -1794,7 +1788,7 @@ footer .contact {
 footer .contact h2{
     font-size: 2em; 
     margin: 0.5em 0;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 footer .contact a {
@@ -1847,7 +1841,7 @@ footer .offices li {
 
 footer .offices h3 {
     font-size: 1.5em;
-    font-family: "proxima-nova";
+    font-family: "proxima-nova",helvetica,sans-serif;
     transition: all 0.2s ease;
 }
 

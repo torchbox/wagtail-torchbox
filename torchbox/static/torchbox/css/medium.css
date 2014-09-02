@@ -255,18 +255,18 @@
 	}
 
 	.page-standardpage h2 span:hover{
-		border-bottom: 6px #fff solid;
-		color: #fff;
+		border-bottom: 6px #EA853A solid;
+		color: #EA853A;
 	}
 
 	.page-standardpage .logo {
-   		 background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+   		 background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
 	    background-size: auto 3em;
 	}
 
 	.page-standardpage .crop-height{
 		display: block;
-		max-height: 40em;
+		max-height: 37em;
 		overflow: hidden;
 		margin-top: -10em;
 	}
@@ -555,7 +555,7 @@
 
 	.page-blogindexpage .crop-height {
 		display: block;
-		max-height: 29em;
+		max-height: 35em;
 		overflow: hidden;
 		margin-top: -7em;
 	}	
