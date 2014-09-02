@@ -418,17 +418,25 @@
 		display: block;
 		color: #000;
 	}
+	
+	.page-workindexpage main .listing a:hover div {
+	    top: 165px;
+	    background-color: #fff;
+	}
 
+	.page-workindexpage main .listing a:hover div h2 {
+		color: #000;
+	}
 
 	.page-workindexpage main ul li {
-    background: no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 100%;
-    max-height: 35em;
-    overflow: hidden;
+	    background: no-repeat center center; 
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
+	    width: 100%;
+	    max-height: 35em;
+	    overflow: hidden;
 	}
 
 	/*Index pages*/
