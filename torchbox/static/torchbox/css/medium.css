@@ -216,9 +216,12 @@
 
 	/*Standard page (we're torchbox) */
 
+	.page-standardpage img.scale {
+	    width: 100%;
+	}
+
 	.italic{
 	    font-size: 2em;
-	    padding: 0;
 	    margin: 1.5em auto 1.5em auto;
 	}	
 
@@ -242,8 +245,8 @@
 	}
 
 	.page-standardpage h2 {
-		font-weight: bold;
-	    font-size: 4em;
+		margin: -2em auto 2em auto;
+		font-size: 4em;
 	}
 
 	.page-standardpage h2 span{
@@ -252,8 +255,8 @@
 	}
 
 	.page-standardpage h2 span:hover{
-		border-bottom: 6px #fff solid;
-		color: #fff;
+		border-bottom: 6px #EA853A solid;
+		color: #EA853A;
 	}
 
 	.page-standardpage .logo {
@@ -263,7 +266,7 @@
 
 	.page-standardpage .crop-height{
 		display: block;
-		max-height: 40em;
+		max-height: 37em;
 		overflow: hidden;
 		margin-top: -10em;
 	}
@@ -442,17 +445,17 @@
 	}
 
 	.page-blogindexpage	header nav li a:hover {
-    color: #EA853a;
-    border-bottom: 3px solid #EA853a;
+   		color: #EA853a;
+    	border-bottom: 3px solid #EA853a;
 	}
 
 	.page-blogindexpage .logo {
-	background-image: url("/static/torchbox/images/logo-torchbox-grey.png");
+		background-image: url("/static/torchbox/images/logo-torchbox-grey.png");
 	}
 	
 	.page-blogindexpage h2 {
-    margin-bottom: 0.5em;
-    max-width: 48em;
+	    margin-bottom: 0.5em;
+	    max-width: 48em;
 	}	
 
 	.page-blogindexpage li img {
@@ -552,7 +555,7 @@
 
 	.page-blogindexpage .crop-height {
 		display: block;
-		max-height: 29em;
+		max-height: 35em;
 		overflow: hidden;
 		margin-top: -7em;
 	}	
@@ -918,6 +921,14 @@
 		margin: 2% 2%  3% 0;
 		padding: 0 0 0 4em;
 		border-top: none;
+	}
+
+	.page-jobindexpage main .jobs {
+	    padding: 19.5em 2em 4em 2em; 
+	}
+
+	.page-jobindexpage .intro p  a{
+	    margin: 0em 1em -1em 0;
 	}
 
 	.page-jobindexpage .active a{
@@ -1337,6 +1348,13 @@
 
 @media only screen and (min-width: 65em) {
 
+	.page-standardpage h2 {
+		font-weight: bold;
+	    font-size: 4em;
+	    margin: -3em auto 3em auto;
+		max-width: 1000px;
+	}
+
 	.page-homepage .grid li img {
 		float: left;
 		width: 150%;
@@ -1362,7 +1380,7 @@
 		display: block;
 		position: absolute;
 		background-color: #000;
-		padding: 1em 1.5em 0.5em 1.5em;
+		padding: 1.1em 1.5em 0em 1.5em;
 		color:#fff;
 		right: 0;
 		font-size: 1em;
@@ -1371,6 +1389,7 @@
 	}
 
 	.page-homepage .go {
+		position: absolute;
 		display: block;
 		opacity: 0;
 		max-width: 200px;
