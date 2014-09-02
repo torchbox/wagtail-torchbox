@@ -704,7 +704,7 @@ overflow: hidden;
     height: auto;
     text-align: center;
     opacity: 0.5;
-    padding: 0.25em;
+    padding: 1.25em;
     transition: 0.3s ease;
 
 }
@@ -1008,7 +1008,7 @@ h4 span:last-child{
 }
 
 .page-standardpage h2 span{
-    border-bottom: 4px #424A4F solid;
+    border-bottom: 4px #fff solid;
 }
 
 .page-standardpage h2 {
