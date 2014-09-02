@@ -694,16 +694,15 @@ overflow: hidden;
 }
 
 .clients li {
-    width: 25%;
-    height: 6em;
+    width: 33%;
+    height: 3em;
     float: left;
     padding: 2em 1%;
-    overflow: hidden;
     text-align: center;
 }
 
 .clients li > * {
-    height: 100%;
+    height: auto;
     text-align: center;
     opacity: 0.5;
     padding: 0.25em;
@@ -713,7 +712,6 @@ overflow: hidden;
 
 .clients li > *:hover {
     cursor: pointer;
-    opacity: ;
 }
 
 /*Jobs index*/
@@ -745,7 +743,7 @@ font-size: 0.8em;
     margin-top: -19.5em; 
     background-color: #424A4F;
     -webkit-font-smoothing: antialiased;
-    padding: 19.5em 2em 5em 2em; 
+    padding: 19.5em 2em 3em 2em; 
 }
 
 .page-jobindexpage .richtext{
@@ -804,7 +802,7 @@ font-size: 0.8em;
     display: inline-block;
     padding: 1.7em 1.5em;
     line-height: 1em;
-    margin: 0 1em -1em 0;
+    margin: -1em 1em -1em 0;
     color: #fff;
     border: solid 1px #f3f4f6;
     border-radius: 2px;
@@ -989,7 +987,7 @@ h4 span:last-child{
 }
 
 .page-standardpage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
 }
 
@@ -1016,13 +1014,14 @@ h4 span:last-child{
 }
 
 .page-standardpage h2 span{
-    border-bottom: 4px #97CB9B solid;
+    border-bottom: 4px #EA853A solid;
 }
 
 .page-standardpage h2 {
-    color: #97CB9B;
+    color: #EA853A;
     font-weight: bold;
     font-size: 2.5em;
+    margin: -3em 0 3.5em 0;
 }
 
 .page-standardpage  p i{
@@ -1030,7 +1029,9 @@ h4 span:last-child{
 }
 
 .italic{
-    max-width: 23em;
+    line-height: 1.5em;
+    padding: 0 1em;
+    max-width: 800px;
     font-size: 1.2em;
     padding: 0 1em;
     margin: 1.5em auto 0em auto;
