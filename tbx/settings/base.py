@@ -8,7 +8,9 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Dave Cranwell', 'david@torchbox.com'),
+    ('Wes West', 'wes@torchbox.com'),
+    ('Sys admins', 'sysadmin@torchbox.com'),
 )
 
 MANAGERS = ADMINS
