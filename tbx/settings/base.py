@@ -10,7 +10,6 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     ('Dave Cranwell', 'david@torchbox.com'),
     ('Wes West', 'wes@torchbox.com'),
-    ('Sys admins', 'sysadmin@torchbox.com'),
 )
 
 MANAGERS = ADMINS
