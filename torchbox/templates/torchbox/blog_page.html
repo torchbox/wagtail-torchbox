@@ -15,10 +15,9 @@
 <main class="page-blog-single single">
 
     <section class="container body-copy">
-        
-        <div class="breadcrumb">
-            <a href="#">Blog</a>
-        </div>
+
+        {% include "torchbox/includes/breadcrumb.html" %}
+
         <h1 class="{% if self.title|length >= 30 %}long-title{% endif %}">{{ self.title }}</h1>
 
         <div class="article-meta">
@@ -53,7 +52,7 @@
         {% if self.intro %}
             {{ self.intro|richtext }}
         {% endif %}
-        
+
         {% if self.body %}
             {{ self.body|richtext }}
         {% endif %}
@@ -67,18 +66,18 @@
                 <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
             {% endif %}
             <a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>
-                
+
                 {% if author.author.role %}
                     <span class="role">{{ author.author.role }}</span>
                 {% endif %}
-            
+
             {% endfor %}
             {% endif %}
             {% endwith %}
         </div>
     </section>
-    
-    
+
+
 </div>
 <section class="tags">
     {% with self.tags.all as tags %}
