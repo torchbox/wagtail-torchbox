@@ -19,50 +19,41 @@
         </div>
         <ul class="listing clearfix">
         {% for blog in blogs %}
-        
             <li>
-                
                 <a class="block-link" href="{% pageurl blog %}">
                     <div class="container">
                         <h2>{{ blog.title }}</h2>
                         {% with blog.related_author.all as authors %}
                             {% if authors %}
                                 {% for author in authors %}
-                                
-                                <div class="centertall">
-                                    {% if author.author.image %}
-                                        {% image author.author.image width-300 as photo %}
-                                        <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
-                                    {% endif %}
-                                </div>
-                                    
-                                    {{blog.intro|richtext}}               
-                                    
-                                    <span>
-                                        {{ author.author.title }}
-                                    </span>
+                                    <div class="centertall">
+                                        {% if author.author.image %}
+                                            {% image author.author.image fill-300x300 as photo %}
+                                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
+                                        {% endif %}
+                                    </div>
+
+                                    {{blog.intro|richtext}}
+
+                                    <span>{{ author.author.title }}</span>
                                 {% endfor %}
                             {% endif %}
                         {% endwith %}
 
-                    
-
                     {% if blog.date %}
                         <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
                     {% endif %}
-                
                     </div>
                 </a>
             </li>
-
         {% endfor %}
         </ul>
-        
+
     <div class="container pagination">
         {# Pagination #}
-    
+
         {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-  
+
             <div>
                 {% if blogs.has_next %}
                     <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Next</a>
@@ -78,11 +69,5 @@
                     <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Previous</a>
                 {% endif %}
             </div>
-
-
-
-
-
     </div>
-
 {% endblock %}
