@@ -1,18 +1,18 @@
 {% extends "torchbox/base.html" %}
-{% load image_tags pageurl rich_text %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 {% load humanize %}
         <div class= "crop-height">
             <img class="scale" src="/static/torchbox/images/desk_02.jpg" width="" height="" alt="">
         </div>
-    
+
     <section class="intro jobs">
 
          <div class="center">
             <h1>{{ self.title }}</h1>
-    
-          
+
+
             {% with self.jobs.all as jobs %}
                 {% if jobs %}
                     <ul class="listing">
@@ -39,7 +39,7 @@
 
 
     </section>
-    
+
     <section class="benefits clearfix">
         <div class="center">
             <h2>Working at Torchbox</h2>
@@ -63,21 +63,20 @@
                 <h3>Interesting projects</h3>
                 <p>We work on all kinds of projects and try to match people to the work that most interests them.</p>
             </li>
-        </ul>  
-      -->        
+        </ul>
+      -->
 
 
         {% if self.content_block.all %}
         <ul>
             {% for block in self.content_block.all %}
-            <!--<li class="{{ forloop.counter|apnumber }} {% cycle 'odd' 'even' %} benefit clearfix"> --> 
+            <!--<li class="{{ forloop.counter|apnumber }} {% cycle 'odd' 'even' %} benefit clearfix"> -->
             <li class="one">
                  <div class="clearfix">
 
                     <div class="icon">
                     </div>
                     <div>
-
                         {{ block.content|richtext }}
                     </div>
                 </div>
