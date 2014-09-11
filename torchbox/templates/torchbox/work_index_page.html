@@ -1,8 +1,8 @@
 {% extends "torchbox/base.html" %}
-{% load pageurl image_tags rich_text %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    
+
         <div class="container">
             <h1 class="visuallyhidden">{{ self.title }}</h1>
             {% if self.intro %}
@@ -18,10 +18,10 @@
                             {% with client.screenshots.all|first as screenshot %}
                             {% image screenshot.image width-2000 as screenshot %}
                         <li style='background-image: url({{ screenshot.url}});'>
-                            
-                                    
+
+
                             <a href="{% pageurl client %}">
-                                    
+
                                 <div>
                                     <h2>{{ client.title }}</h2>
                                     <p>

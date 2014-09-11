@@ -1,5 +1,5 @@
 {% extends "torchbox/base.html" %}
-{% load image_tags rich_text %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
     <section class="services-intro">
@@ -18,7 +18,7 @@
         {% if self.content_block.all %}
         <ul class="listing clearfix services">
             {% for block in self.content_block.all %}
-            <li class="{{ forloop.counter }} {% cycle 'odd' 'even' %}">                
+            <li class="{{ forloop.counter }} {% cycle 'odd' 'even' %}">
                 {{ block.content|richtext }}
             </li>
             {% endfor %}

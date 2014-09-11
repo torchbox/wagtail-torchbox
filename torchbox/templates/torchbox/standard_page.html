@@ -1,5 +1,5 @@
 {% extends "torchbox/base.html" %}
-{% load image_tags rich_text %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
@@ -15,9 +15,9 @@
         </div>
 
         <div class="italic">
-            "We work with people who are trying to make the world a better place. People who share our values." 
+            "We work with people who are trying to make the world a better place. People who share our values."
         </div>
-        
+
         <!--<section class="intro were-tbx container">
             <p>People like this:</p>
         </section> -->
@@ -29,22 +29,22 @@
                 {{ self.body|richtext }}
             {% endif %}-->
 
-            <p>We design and build beautiful websites for some of the world’s <a href="#"> great universities </a> and <a href="#"> academic institutions </a>, globally-renowned 
+            <p>We design and build beautiful websites for some of the world’s <a href="#"> great universities </a> and <a href="#"> academic institutions </a>, globally-renowned
             <a href="#">think tanks</a>, <a href="#">fundraising charities</a>, <a href="#">campaigning NGOs</a>, and leading <a href="#">membership organisations</a>, powered by open source content management systems including <a href="#">Drupal</a> and our very own <a href="#">Wagtail CMS</a>.</p>
 
             <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use <a href="#">Django</a> to build robust, scalable web applications for mission critical requirements such as <a href="#">management information</a>, <a href="#">grant monitoring</a> and <a href="#">reporting</a>, as well as <a href="#">campaign platforms</a>, <a href="#">footprint calculators</a> and <a href="#">data visualisations</a>.</p>
 
-            <p>It's not all or nothing either.</p> 
+            <p>It's not all or nothing either.</p>
         </section>
-            
+
         <div class="quote">
                 <h4> <span> Strategy </span>
                      <span> UX </span>
                      <span> Design </span>
                      <span> Animation </span>
                      <span> Implementation </span>
-                </h4> 
-                <br> <p> Take your pick. Mix and match.</p>     
+                </h4>
+                <br> <p> Take your pick. Mix and match.</p>
         </div>
 
         <section class="intro were-tbx container">
@@ -81,10 +81,10 @@
         {% if self.content_block.all %}
         <ul class="uslist grid clearfix">
             {% for block in self.content_block.all %}
-            <li class=>   
+            <li class=>
                     <div class="icon">
                     </div>
-                <div>             
+                <div>
                 {{ block.content|richtext }}
                 </div>
             </li>
