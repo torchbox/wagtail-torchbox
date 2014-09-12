@@ -216,6 +216,10 @@
 
 	/*Standard page (we're torchbox) */
 
+	.page-standardpage .button{
+	    margin: 4em auto 3em auto;
+	}
+
 	.page-standardpage img.scale {
 	    width: 100%;
 	}
