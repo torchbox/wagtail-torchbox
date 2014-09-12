@@ -1284,13 +1284,13 @@
 		height: 100px;
 		float: left;
 		fill: #EA853A;
-		width: 80px;
-		margin-top: -31px;
+		width: 68px;
+		margin-top: -25px;
 		padding-bottom: 1em;
+		overflow: hidden;
 	}
 
 	.offices li:hover .svg{
-		height: 100px;
 		margin-top: -40px;
 	}
 
