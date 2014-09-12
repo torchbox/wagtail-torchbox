@@ -8,7 +8,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Dave Cranwell', 'david@torchbox.com'),
+    ('Wes West', 'wes@torchbox.com'),
 )
 
 MANAGERS = ADMINS
@@ -159,6 +160,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailembeds',
     'wagtail.wagtailsearch',
     'wagtail.wagtailredirects',
+    'wagtail.contrib.wagtailstyleguide',
 
     'torchbox',
 )
@@ -214,3 +216,5 @@ WAGTAIL_SITE_NAME = 'torchbox.com'
 
 # Override the search results template for wagtailsearch
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'torchbox/search_results.html'
+
+WAGTAIL_USAGE_COUNT_ENABLED = True

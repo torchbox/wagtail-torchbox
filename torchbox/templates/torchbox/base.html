@@ -19,7 +19,7 @@
         <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
 
         {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
-        
+
         {% compress css %}
             <link rel="stylesheet" href="{% static "torchbox/css/normalize.css" %}">
             <link rel="stylesheet" href="{% static "torchbox/css/main.css" %}">
@@ -65,11 +65,15 @@
         </header>
 
         <main>
+
+            <!--
             <aside>
                 {% block secondary_menu %}
                     {% secondary_menu calling_page=self %}
                 {% endblock %}
             </aside>
+            -->
+
 
             {% block content %}{% endblock %}
 
@@ -84,11 +88,11 @@
                     <li><a href="https://twitter.com/torchbox"><i class="icon-twitter"></i><span>@torchbox</span></a></li>
                 </ul>
             </div>
-            
+
             <div class="offices container ">
                 <h2 class="visuallyhidden">Offices</h2>
                 <ul class="clearfix listing">
-                    <a href="http://www.maps.google.com/?q=Unit+9+Southill+Business+Park+Cornbury+Park+Charlbury+OX7+3EW"> 
+                    <a href="http://www.maps.google.com/?q=Unit+9+Southill+Business+Park+Cornbury+Park+Charlbury+OX7+3EW">
                         <li>
                             <div class="svg">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
@@ -100,12 +104,12 @@
                                 <div class="vcard">
                                     <span class="street-address">Unit&nbsp;9, Southill&nbsp;Business&nbsp;Park</span>,
                                     <span class="region">Charlbury</span>,
-                                    <span class="postal-code">OX7&nbsp;3EW</span>, 
+                                    <span class="postal-code">OX7&nbsp;3EW</span>,
                                     <span class="country-name">UK</span>
                                 </div>
                         </li>
                     </a>
-                    <a href="http://www.maps.google.com/?q=4+Unity+St+Bristol+BS1+United Kingdom"> 
+                    <a href="http://www.maps.google.com/?q=4+Unity+St+Bristol+BS1+United Kingdom">
                         <li>
                             <div class="svg">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
@@ -116,7 +120,7 @@
                                 <div class="vcard">
                                     <span class="street-address">The Annexe, 4&nbsp;Unity&nbsp;Street</span>
                                     <span class="region">Bristol</span>,
-                                    <span class="postal-code">BS1&nbsp;5HH</span>, 
+                                    <span class="postal-code">BS1&nbsp;5HH</span>,
                                     <span class="country-name">UK</span>
                         </li>
                     </a>
@@ -137,22 +141,17 @@
 
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}
 
-        <script> 
-              // Sticky next / previous work page //
-
-              // Cache selectors outside callback for performance. 
-             var $window = $(window),
+        <script>
+            // Sticky next / previous work page //
+            // Cache selectors outside callback for performance.
+            var $window = $(window),
                 $stickyEl = $('.next, .previous'),
-                elTop = $stickyEl.offset().top-30;
+                elTop = $stickyEl.length && $stickyEl.offset().top-30;
 
             $window.scroll(function() {
                     $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
-
-                });
-
+            });
         </script>
-
-
 
     </body>
 </html>

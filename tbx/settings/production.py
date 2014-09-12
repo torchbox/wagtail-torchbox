@@ -29,6 +29,8 @@ CACHES = {
     }
 }
 
+SERVER_EMAIL = "root@by-web-2.torchbox.com"
+
 
 # CELERY SETTINGS
 import djcelery

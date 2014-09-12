@@ -9,11 +9,11 @@ main {
     -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
     -moz-animation:fadeIn ease-in 1;
     animation:fadeIn ease-in 1;
- 
+
     -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
     -moz-animation-fill-mode:forwards;
     animation-fill-mode:forwards;
- 
+
     -webkit-animation-duration:0.3s;
     -moz-animation-duration:0.3s;
     animation-duration:0.3s;
@@ -109,13 +109,13 @@ img.scale {
      height: auto !important;
      width: auto\9; /* ie8+9 */
      /* lt ie8 */
-     -ms-interpolation-mode: bicubic; 
+     -ms-interpolation-mode: bicubic;
 }
 
 .crop-height {
      /* max-width: 1200px; /* img src width (if known) */
      max-height: 40em;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 html {
@@ -405,14 +405,14 @@ main nav li.active a:after {
 }
 
 .listing h2,
-.listing h3 {   
+.listing h3 {
     font-size: 1.55em;
     font-weight: bold;
     margin-bottom: 0.2em;
     font-family: "proxima-nova",helvetica,sans-serif;
 }
 
-.listing main div {   
+.listing main div {
     padding: 1em;
 }
 
@@ -498,7 +498,7 @@ main nav li.active a:after {
 .page-homepage .crop-height {
     /* max-width: 1200px; /* img src width (if known) */
     float: left;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .page-homepage .menu-button:hover {
@@ -520,7 +520,7 @@ main nav li.active a:after {
 
 .page-homepage .listing a h2:hover,
 .page-homepage .listing a h3:hover {
-    color: #EA853a;   
+    color: #EA853a;
 }
 
 .page-homepage .hero {
@@ -575,7 +575,7 @@ main nav li.active a:after {
 .page-homepage .hiring {
     min-width: 100%;
     text-align: left;
-    padding: 3em 2em; 
+    padding: 3em 2em;
     background-color: #F3F4F6;
 }
 
@@ -622,7 +622,7 @@ main nav li.active a:after {
 
  .page-homepage .work li a:hover h3 {
      color: #EA853a;
- }   
+ }
 
  .page-homepage .container {
 overflow: hidden;
@@ -740,10 +740,10 @@ font-size: 0.8em;
 }
 
 .page-jobindexpage main .jobs {
-    margin-top: -19.5em; 
+    margin-top: -19.5em;
     background-color: #424A4F;
     -webkit-font-smoothing: antialiased;
-    padding: 19.5em 2em 3em 2em; 
+    padding: 19.5em 2em 3em 2em;
 }
 
 .page-jobindexpage .richtext{
@@ -771,13 +771,13 @@ font-size: 0.8em;
     transition: all 0.2s ease;
 }
 
-.icon{ 
+.icon{
     display: none;
 }
 
-.page-jobindexpage main .listing li:first-child a {  
+.page-jobindexpage main .listing li:first-child a {
     border-top: 1px solid #6F6E6E;
-} 
+}
 
 .page-jobindexpage .benefits li {
     padding: 2em 2em 1.5em 2em;
@@ -859,7 +859,7 @@ font-size: 0.8em;
 .page-jobindexpage .benefits h3 {
     font-size: 1.7em;
     margin-bottom: 0.25em;
-    font-weight: bold;   
+    font-weight: bold;
     line-height: 1em;
 }
 
@@ -1069,7 +1069,7 @@ h4 span:last-child{
 }
 
 .page-standardpage .were-tbx h2 {
-    font-size: 1.5em;    
+    font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 0.5em;
     color: #424a4f;
@@ -1112,7 +1112,7 @@ h4 span:last-child{
 
 .page-standardpage .were-tbx-2 li {
     display: block;
-    width: 100%;  
+    width: 100%;
 }
 
 .page-standardpage .listing li img {
@@ -1231,7 +1231,7 @@ h4 span:last-child{
 
 .page-blogindexpage .crop-height {
     display: none;
-}   
+}
 
 .page-blogindexpage h1 {
     font-size: 3em;
@@ -1240,7 +1240,7 @@ h4 span:last-child{
 }
 
 .page-blogindexpage main {
-    background-color: #fff;    
+    background-color: #fff;
     color: #434a4f;
     -webkit-font-smoothing: antialiased;
     padding-top: 100%;
@@ -1265,6 +1265,9 @@ h4 span:last-child{
 
 .page-blogindexpage li img {
     display: none;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    /*filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
 }
 
 .page-blogindexpage main .block-link {
@@ -1398,10 +1401,10 @@ h4 span:last-child{
 
 .page-workindexpage main .listing img {
     margin-bottom: 0em;
-}   
+}
 
 .page-workindexpage main ul li {
-    background: no-repeat center center; 
+    background: no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1409,7 +1412,7 @@ h4 span:last-child{
     width: 100%;
     max-height: 25em;
 }
-       
+
 .page-workindexpage main ul a {
     background-color: rgba(0,0,0,0);
     display: block;
@@ -1420,7 +1423,7 @@ h4 span:last-child{
 
 .page-workindexpage main .listing div {
     max-width: 60em;
-    margin: 0 auto; 
+    margin: 0 auto;
     z-index: 9999;
     position: absolute;
     bottom: 0em;
@@ -1481,13 +1484,13 @@ h4 span:last-child{
     margin: 1em 0 0 0;
     transition: all 0.2s ease;
     border: 1px solid #EA853a;
-}    
+}
 
 .page-workpage .intro p a:hover {
     background: #EA853a;
     color: #fff;
     border: 1px solid #EA853a;
-}  
+}
 
 .breadcrumb{
     width: 100%;
@@ -1569,8 +1572,8 @@ main .breadcrumb a:hover {
 
 .share ul:after {
     content: "";
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 0.5em solid transparent;
     border-right: 0.5em solid transparent;
     border-bottom: 0.5em solid #ddd;
@@ -1607,8 +1610,8 @@ main .breadcrumb a:hover {
     float: left;
     margin-right: 1em;
     border-radius: 3em;
-    margin-bottom: 0; 
-}  
+    margin-bottom: 0;
+}
 
 .page-homepage .down{
     background: url("/static/torchbox/images/down2.png") center no-repeat;
@@ -1624,11 +1627,11 @@ main .breadcrumb a:hover {
     font-size: 1em;
     margin-top: 0.3em;
     display: block;
-}  
+}
 
 .page-homepage .author span {
     font-size: 0.8em;
-}  
+}
 
 .author .role {
     display: block;
@@ -1683,12 +1686,13 @@ main .breadcrumb a:hover {
 }
 
  .page-personpage .role {
-        font-size: 1.1em;
+        font-size: 1.3em;
         line-height: 1.2em;
         padding-bottom: 0.5em;
         margin-bottom: 0.5em;
+        margin-top: 0.5em;
         color: #97cb9b;
-}   
+}
 
 .page-personpage .container {
         padding: 0 1em;
@@ -1727,6 +1731,7 @@ main .breadcrumb a:hover {
     background-color: #424A4F;
     display: block;
     overflow: hidden;
+    -webkit-transform: translate3d(0,0,0);
 }
 
 
@@ -1772,8 +1777,8 @@ color: #fff;
 
 .people-list img {
     -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
     filter: grayscale(100%);
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
 }
 
 footer {
@@ -1791,7 +1796,7 @@ footer .contact {
 }
 
 footer .contact h2{
-    font-size: 2em; 
+    font-size: 2em;
     margin: 0.5em 0;
     font-family: "proxima-nova",helvetica,sans-serif;
 }
