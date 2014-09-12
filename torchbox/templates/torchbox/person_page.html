@@ -1,8 +1,7 @@
 {% extends "torchbox/base.html" %}
-{% load image_tags rich_text %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-
 <div class="container clearfix">
 
     {% if self.image %}
@@ -15,9 +14,7 @@
     <div class="bio-text">
 
         <div class="title">
-            <div class="breadcrumb">
-                <a href="#">People</a>
-            </div>
+            {% include "torchbox/includes/breadcrumb.html" %}
 
             <h1>{{ self.title }}</h1>
 
@@ -38,7 +35,7 @@
                     {% endif %}
                 </div>
 
-                
+
                 {% if self.biography %}
                     {{ self.biography|richtext }}
                 {% endif %}
