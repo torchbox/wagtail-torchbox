@@ -1,0 +1,18 @@
+{% load wagtailcore_tags %}
+
+{% if self.get_ancestors|length > 2 %}
+    <div class="breadcrumb">
+        {% for page in self.get_ancestors %}
+            {% if not page.is_root %}
+                {% if page.depth > 2 %}
+                    <a href="{% pageurl page %}">{{ page.title }}</a>
+                {% elif show_home %}
+                    <a href="/"><i class="ion" title="home">&#xf144;</i></a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if include_self %}
+            {{ page.title }}
+        {% endif %}
+    </div>
+{% endif %}

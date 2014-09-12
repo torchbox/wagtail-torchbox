@@ -1,24 +1,13 @@
 {% extends "torchbox/base.html" %}
-{% load pageurl image_tags rich_text %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<!-- facebook -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=323944607389";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 <main class="page-blog-single single">
 
     <section class="container body-copy">
-        
-        <div class="breadcrumb">
-            <a href="#">Blog</a>
-        </div>
+
+        {% include "torchbox/includes/breadcrumb.html" %}
+
         <h1 class="{% if self.title|length >= 30 %}long-title{% endif %}">{{ self.title }}</h1>
 
         <div class="article-meta">
@@ -43,52 +32,60 @@
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-via="torchbox">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                     </li>
                 </ul>
             </div>
-
         </div>
 
         {% if self.intro %}
             {{ self.intro|richtext }}
         {% endif %}
-        
+
         {% if self.body %}
             {{ self.body|richtext }}
         {% endif %}
 
         <div id="author" class="author clearfix" >
             {% with self.related_author.all as authors %}
-            {% if authors %}
-            {% for author in authors %}
-            {% if author.author.image %}
-                {% image author.author.image width-300 as photo %}
-                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
-            {% endif %}
-            <a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>
-                
-                {% if author.author.role %}
-                    <span class="role">{{ author.author.role }}</span>
+                {% if authors %}
+                    {% for author in authors %}
+                        {% if author.author.image %}
+                            {% image author.author.image width-300 as photo %}
+                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+                        {% endif %}
+                        <a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>
+
+                        {% if author.author.role %}
+                            <span class="role">{{ author.author.role }}</span>
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
-            
-            {% endfor %}
-            {% endif %}
             {% endwith %}
         </div>
     </section>
-    
-    
-</div>
-<section class="tags">
-    {% with self.tags.all as tags %}
-    {% if tags %}
-    {% for tag in tags %}
-    <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-</section>
 
+    <section class="tags">
+        {% with self.tags.all as tags %}
+            {% if tags %}
+                {% for tag in tags %}
+                    <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
 </main>
+
+<div id="fb-root"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=323944607389&status=0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 {% endblock %}
