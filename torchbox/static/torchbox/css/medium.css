@@ -32,7 +32,7 @@
 		display: none;
 	}
 
-	header {	
+	header {
 		padding: 0;
 	}
 
@@ -71,7 +71,7 @@
 		background-size: auto 3em;
 		margin: 0;
 	}
-	
+
 	/*Active*/
 
 	.active {
@@ -165,7 +165,7 @@
 	.page-homepage header {
     position:relative;
     background-color: transparent;
-	}	
+	}
 
 	.page-homepage .hero {
 		padding: 17% 2em;
@@ -193,7 +193,7 @@
 	.page-homepage .hero a {
 		padding:1.25em;
 	}
-	
+
 	.page-homepage .hiring h2 {
 		text-align: center;
 		font-size: 3em;
@@ -201,7 +201,7 @@
 	}
 
 	.page-homepage .hiring a {
-		font-size: 1em;		
+		font-size: 1em;
 	}
 
 	.page-homepage .hiring ul {
@@ -223,7 +223,7 @@
 	.italic{
 	    font-size: 2em;
 	    margin: 1.5em auto 1.5em auto;
-	}	
+	}
 
 	.page-standardpage main li {
     	margin-bottom: 2em;
@@ -281,7 +281,7 @@
 
 	.page-standardpage .were-tbx p {
 			font-size: 1.25em;
-	}		
+	}
 
 	.page-standardpage .statement {
 		font-size: 1.6em;
@@ -311,7 +311,7 @@
 	}
 
 	.page-standardpage .were-tbx-2 li {
-	    padding: 0; 
+	    padding: 0;
 	    margin: 0;
 	}
 
@@ -365,7 +365,7 @@
 		border-bottom: 3px solid #ea853a;
 	}
 	.page-standardpage .grid li:nth-child(3n+4) {
-	 clear: none; 
+	 clear: none;
 	}
 
 
@@ -418,7 +418,7 @@
 		display: block;
 		color: #000;
 	}
-	
+
 	.page-workindexpage main .listing a:hover div {
 	    top: 165px;
 	    background-color: #fff;
@@ -429,7 +429,7 @@
 	}
 
 	.page-workindexpage main ul li {
-	    background: no-repeat center center; 
+	    background: no-repeat center center;
 	    -webkit-background-size: cover;
 	    -moz-background-size: cover;
 	    -o-background-size: cover;
@@ -460,11 +460,11 @@
 	.page-blogindexpage .logo {
 		background-image: url("/static/torchbox/images/logo-torchbox-grey.png");
 	}
-	
+
 	.page-blogindexpage h2 {
 	    margin-bottom: 0.5em;
 	    max-width: 48em;
-	}	
+	}
 
 	.page-blogindexpage li img {
 		display: inline-block;
@@ -484,7 +484,7 @@
 		float: right;
 		margin-left: 1em;
 	}
-	
+
 	.page-blogindexpage .pagination {
     	padding: 2em 0 0 0;
     	max-width: 700px;
@@ -556,17 +556,17 @@
 		font-size: 1.125em;
 		color: #434a4f;
 	}
-	
+
 	.page-blogindexpage main .listing {
 		width: 100%;
-	}	
+	}
 
 	.page-blogindexpage .crop-height {
 		display: block;
 		max-height: 35em;
 		overflow: hidden;
 		margin-top: -7em;
-	}	
+	}
 
 
 	/*Work page*/
@@ -764,10 +764,10 @@
 		border: none;
 	}
 
-	.grid.gutters li {	
+	.grid.gutters li {
 
 	}
-	
+
 	.listing main li {
 		margin-bottom: 2em;
 	}
@@ -816,7 +816,7 @@
 	.page-jobindexpage main .listing a {
 		font-size: 2em;
 	}
-	
+
 	.benefits{
 		max-width: 96em;
 		margin: 3em auto 0 auto;
@@ -830,10 +830,10 @@
 	   	display: block;
 	}
 
-	.page-jobindexpage main .listing li:nth-child(2) a { 
+	.page-jobindexpage main .listing li:nth-child(2) a {
     	border-top: none;
-	} 
-	
+	}
+
 	.page-jobindexpage main .benefits h2 {
     	font-size: 4em;
 		padding: 0;
@@ -910,7 +910,7 @@
     background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 3em;
 	}
-	
+
 	.page-jobindexpage footer {
 	    margin: -1em 0 0 0;
 	}
@@ -932,7 +932,7 @@
 	}
 
 	.page-jobindexpage main .jobs {
-	    padding: 19.5em 2em 4em 2em; 
+	    padding: 19.5em 2em 4em 2em;
 	}
 
 	.page-jobindexpage .intro p  a{
@@ -947,7 +947,7 @@
 		color: #fff;
 		border-bottom: none;
 	}
-	
+
 	.page-jobindexpage .benefits .one:nth-of-type(odd) {
 		clear: left;
 	}
@@ -1070,7 +1070,7 @@
 	}
 
 	.page-personpage main .container {
-		padding: 0;	
+		padding: 0;
 	}
 
 	.page-personpage h1 {
@@ -1090,7 +1090,7 @@
 		padding-bottom: 0;
 		margin-bottom: 0;
 		margin-top: 0.25em;
-	}	
+	}
 
 	.page-personpage .body-copy {
 		margin: 0;
@@ -1098,7 +1098,6 @@
 
 	.page-personpage .person-bio {
 		background: white;
-		overflow: scroll;
 		padding: 0em 0 3em 0;
 		margin-left: 0;
 	}
@@ -1241,7 +1240,7 @@
 	}
 
 	footer .contact h2{
-		font-size: 4em;	
+		font-size: 4em;
 		margin: 0.25em 0 0.25em 0;
 		max-width: 100%;
 		color:#fff;
@@ -1259,7 +1258,7 @@
 		width: 12em;
 		border: none;
 	}
-	
+
 	footer .contact li i {
 		float: none;
 		display: block;
@@ -1508,7 +1507,7 @@
 	.page-homepage .author .avatar {
 	    display: block;
 	    opacity: 1;
-	} 
+	}
 
 	.author {
 		margin:1.5em auto 0 auto;
