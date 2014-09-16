@@ -121,6 +121,7 @@ img.scale {
 html {
     font-family: 'proxima-nova',helvetica,sans-serif;
     background-color: #fff;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -155,6 +156,7 @@ h1, h2, h3 {
 
 .listing p {
     display: none;
+
 }
 
 a {
@@ -354,12 +356,14 @@ main nav li.active a:after {
 }
 
 .body-copy p a {
-        color: #aaa;
-        transition: all 0.15s ease;
+    color: #424A4F;
+    transition: all 0.15s ease;
+    border-bottom: 1px dotted #424A4F;
 }
 
 .body-copy p a:hover{
-        color: #ea853a;
+    color: #EA853A;
+    border-bottom: 1px dotted #EA853A;
 }
 
 .body-copy h1 {
