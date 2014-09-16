@@ -495,14 +495,18 @@
 	}
 
 	.page-blogindexpage .pagination {
-    	padding: 2em 0 0 0;
-    	max-width: 700px;
+    	padding: 0;
+    	max-width: 60em;
     	margin: 0 auto;
     	overflow: hidden;
     	text-align: center;
 	}
 
-	.page-blogindexpage .pagination a:hover{
+	.page-blogindexpage .pagination a p{
+    	transition: 0.2s ease;
+	}
+
+	.page-blogindexpage .pagination a p:hover{
 		color: #EA853A;
 	}
 
