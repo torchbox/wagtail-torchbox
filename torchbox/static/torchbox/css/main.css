@@ -1276,10 +1276,9 @@ h4 span:last-child{
     transition: background-color 0.2s ease;
 }
 
-.page-blogindexpage main .block-link:first-child {
-    border-bottom: 1px dotted #DAD7D7;
+.page-blogindexpage main .listing li:first-child {
+    border-bottom: none;
     border-top: 1px dotted #DAD7D7;
-    padding: 3em 1em;
     transition: background-color 0.2s ease;
 }
 
