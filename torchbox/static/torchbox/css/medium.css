@@ -1382,7 +1382,7 @@
 
 }
 
-	/*Block Hover*/
+/*Block Hover homepage feed*/
 
 @media only screen and (min-width: 65em) {
 
@@ -1397,7 +1397,23 @@
 		float: left;
 		width: 150%;
 		max-width: 150%;
+		transition: 0.4s ease;
 	}
+
+
+	/*Below stops the image scaling on hover*/
+	.page-homepage .grid li .block:hover img {
+		float: left;
+		width: 166%;
+		max-width: 165%;
+	}
+
+
+	.page-homepage .grid li .block:hover .author img {
+		width: 4em;
+	}
+	/*Above stops the image scaling on hover*/
+
 
 	.page-homepage .block .workcontainer{
     	padding: 0;
