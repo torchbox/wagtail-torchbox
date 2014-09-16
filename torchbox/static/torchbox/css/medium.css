@@ -461,6 +461,11 @@
     	border-bottom: 3px solid #EA853a;
 	}
 
+	.page-blogindexpage .active a:hover{
+		color: #fff;
+		border-bottom: none;
+	}
+
 	.page-blogindexpage .logo {
 		background-image: url("/static/torchbox/images/logo-torchbox-grey.png");
 	}
