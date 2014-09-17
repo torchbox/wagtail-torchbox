@@ -6,7 +6,7 @@
 
     {% if self.image %}
         {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-        {% image self.image fill-1024x1024 as photo %}
+        {% image self.image fill-900x900 as photo %}
             <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
     {% endif %}
 
