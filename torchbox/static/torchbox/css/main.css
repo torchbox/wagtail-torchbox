@@ -456,6 +456,10 @@ main nav li.active a:after {
 
 /*Page home*/
 
+.arrow{
+    display: none;
+}
+
 .hide{
     display: none;
 }
@@ -529,7 +533,7 @@ main nav li.active a:after {
 
 .page-homepage .hero {
     padding: 22em 0em 3em 0em;
-    background: url("/static/torchbox/images/Bristol_01.png") no-repeat center;
+    background: url("/static/torchbox/images/Homepage_hero.png") no-repeat center;
     background-color: #5b6265;
     position: relative;
     top: -22em;
@@ -557,8 +561,8 @@ main nav li.active a:after {
     padding: 1em 1.5em;
     line-height: 1em;
     margin: 0 1em 1em 0;
-    color: #93DA9F;
-    border: solid 1px #93DA9F;
+    color: #fff;
+    border: solid 1px #fff;
     border-radius: 2px;
     min-width: 200px;
     text-align: center;
@@ -571,9 +575,9 @@ main nav li.active a:after {
 }
 
 .page-homepage .hero .button:hover {
-    background-color: #93DA9F;
+    background-color: #fff;
     color: #5b6265;
-    border: solid 1px #93DA9F;
+    border: solid 1px #fff;
 }
 
 .page-homepage .hiring {
@@ -639,7 +643,7 @@ overflow: hidden;
         text-align: left;
         font-size: 1.8em;
         line-height: 1.2em;
-        color: #93DA9F;
+        color: #fff;
     }
 
 .page-homepage .menu-button {
