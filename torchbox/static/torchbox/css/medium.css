@@ -1401,7 +1401,7 @@
 	}
 
 
-	/*Below stops the image scaling on hover*/
+	/*Below stops the image scaling on hover
 	.page-homepage .grid li .block:hover img {
 		float: left;
 		width: 166%;
@@ -1412,7 +1412,7 @@
 	.page-homepage .grid li .block:hover .author img {
 		width: 4em;
 	}
-	/*Above stops the image scaling on hover*/
+	*/
 
 
 	.page-homepage .block .workcontainer{
@@ -1480,9 +1480,12 @@
 		color: #ea853a;
 	}
 
+
+	/* Below makde the slide effect
 	.page-homepage .block:hover .crop-height {
 	  	width: 50%;
 	}
+	*/
 
 	.page-homepage .block .workcontainer{
 		overflow: visible;
