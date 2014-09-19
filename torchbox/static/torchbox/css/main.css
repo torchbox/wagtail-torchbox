@@ -876,7 +876,6 @@ font-size: 0.8em;
 }
 
 .page-jobindexpage  img {
-    display: block;
     width: 62px;
 }
 
@@ -913,6 +912,10 @@ font-size: 0.8em;
 
 .page-jobpage footer .offices h3{
     margin-bottom: 0;
+}
+
+.footerbleed{
+    padding-top: 1em;
 }
 
 .info{
