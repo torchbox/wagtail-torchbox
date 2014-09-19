@@ -32,5 +32,104 @@
 		line-height: 1.2em;
 	}
 
+	/*footer*/
+
+	footer{
+		padding: 1em 0 3em 0;
+	}
+
+	.holder {
+		max-width: 80em;
+	}
+
+	.page-homepage footer .bleed {
+		margin: 3em 0.5em 0 0;
+	}
+	
+	.page-homepage .listing h3 {
+		font-size: 1.8em;
+	}
+
+	footer .container {
+		max-width: 40em;
+		float: left;
+	}
+
+	footer .offices ul {
+		width: 100%;
+		margin: 0 auto;
+		padding-top: 1.5em;
+		border-top: none;
+	}
+
+	footer .offices li {
+		width: 600px;
+		float: left;
+		padding: 2em 0 0 0;
+	}
+
+	footer .offices {
+		margin: 1em auto 0 -2em;
+		padding-left: 4em;
+		border-left: 1px dotted rgba(255,255,255,0.2);
+	}
+
+	.wagtail{
+		display: none;
+	}
+
+	.wagtail2{
+	    display: block;
+	}
+
+	footer .contact span {
+		font-size: 0.9em;
+	}
+
+	.offices li:hover .svg {
+	margin-top: -25px;
+	}
+
+	footer .offices h3 {
+		font-size: 1.8em;
+		font-weight: bold;
+	}
+
+	footer .vcard {
+		margin-top: -0.5em;
+	}
+
+	footer .offices h2{
+		max-width: 100%;
+	}
+
+	footer .contact li {
+		float: left;
+		margin:0;
+	}
+
+	footer .contact h2{
+		font-size: 3em;
+		text-align: left;
+	}
+
+	.svg{
+		height: 90px;
+		width: 55px;
+		margin-top: -25px;
+	}
+
+	footer .contact li i {
+		font-size: 2em;
+	}
+
+	footer .offices h2 {
+		display: block;
+		position: relative;
+		height: auto;
+		width: auto;
+		font-size: 3em;
+		font-weight: bold;
+}
 
 }

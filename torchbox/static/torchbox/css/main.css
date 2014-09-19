@@ -647,8 +647,8 @@ overflow: hidden;
     }
 
 .page-homepage .menu-button {
-        background-color: #93DA9F;
-        color: #fff;
+        background-color: #fff;
+        color: #434a4f;
         }
 
 .page-homepage h2 a {
@@ -1780,6 +1780,16 @@ footer .contact h2 {
 color: #fff;
 }
 
+.wagtail{
+    float: left;
+    opacity: 0.8;
+    margin: 1em 0 1em 0;
+}
+
+.wagtail2{
+    display: none;
+}
+
 .svg{
     display: none;
 }
@@ -1838,11 +1848,11 @@ footer .contact li i {
     float: left;
     margin: 0;
     margin-right: 0.5em;
-
 }
 
 footer .contact span {
     transition: all 0.2s ease;
+    font-size: 1em;
 }
 
 footer .contact a:hover span {
@@ -1866,6 +1876,7 @@ footer .offices li {
 
 footer .offices h3 {
     font-size: 1.5em;
+    font-weight: bold;
     font-family: "proxima-nova",helvetica,sans-serif;
     transition: all 0.2s ease;
 }
@@ -1874,10 +1885,14 @@ footer .offices li:hover h3 {
     color: #ea853a;
 }
 
+footer .offices h2{
+    display: none;
+}
+
 footer .vcard {
      transition: all 0.2s ease;
-     margin-top: -0.5em;
      overflow: hidden;
+     font-size: 0.9em;
 }
 
 footer .offices li:hover .vcard{

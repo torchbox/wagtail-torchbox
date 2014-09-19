@@ -94,9 +94,7 @@
 
 	.arrow{
 	    display: block;
-	    bottom: 20px;
-	    padding: 0 2em;
-	    position: absolute;
+	    padding: 8em 0 0 2em;
 	}
 
 	.page-homepage .blog {
@@ -175,7 +173,7 @@
 	}
 
 	.page-homepage .hero {
-		padding: 17% 2em;
+		padding: 17% 2em 7% 2em;
 		margin-top: -5em;
 	}
 
