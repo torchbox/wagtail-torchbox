@@ -42,11 +42,11 @@
 		max-width: 80em;
 	}
 
-	.page-homepage footer .bleed {
-		margin: 3em 0.5em 0 0;
+	 footer .bleed {
+		margin: 3.5em 0.5em 0 0;
 	}
 	
-	.page-homepage .listing h3 {
+	 .listing h3 {
 		font-size: 1.8em;
 	}
 
@@ -58,7 +58,7 @@
 	footer .offices ul {
 		width: 100%;
 		margin: 0 auto;
-		padding-top: 1.5em;
+		padding-top: 0em;
 		border-top: none;
 	}
 
@@ -78,6 +78,10 @@
 		display: none;
 	}
 
+	footer .bleed {
+		margin: 2em 0.5em 0 0;
+	}
+
 	.wagtail2{
 	    display: block;
 	}
@@ -91,7 +95,7 @@
 	}
 
 	footer .offices h3 {
-		font-size: 1.8em;
+		font-size: 2em;
 		font-weight: bold;
 	}
 
@@ -124,6 +128,8 @@
 	}
 
 	footer .offices h2 {
+		margin: 0;
+		color: white;
 		display: block;
 		position: relative;
 		height: auto;

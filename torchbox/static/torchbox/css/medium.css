@@ -220,6 +220,10 @@
 
 	/*Standard page (we're torchbox) */
 
+	.hangingindent {
+    	text-indent: -13px ;
+	}
+
 	.page-standardpage .button{
 	    margin: 4em auto 3em auto;
 	}
