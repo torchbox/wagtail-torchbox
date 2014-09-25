@@ -12,16 +12,15 @@
 
         <div class="article-meta">
             {% with self.related_author.all as authors %}
-            {% if authors %}
-            {% for author in authors %}
+                {% if authors %}
+                    {% for author in authors %}
+                        {% if self.date %}
+                            <span class="date">{{ self.date|date:"j F Y" }}&nbsp;|&nbsp;</span>
+                        {% endif %}
 
-            {% if self.date %}
-            <span class="date">{{ self.date|date:"j F Y" }}&nbsp;|&nbsp;</span>
-            {% endif %}
-
-            <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
-            {% endfor %}
-            {% endif %}
+                        <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
+                    {% endfor %}
+                {% endif %}
             {% endwith %}
 
             <div class="share">
@@ -45,6 +44,16 @@
             {{ self.body|richtext }}
         {% endif %}
 
+        <section class="tags">
+            {% with self.tags.all as tags %}
+                {% if tags %}
+                    {% for tag in tags %}
+                        <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+
         <div id="author" class="author clearfix" >
             {% with self.related_author.all as authors %}
                 {% if authors %}
@@ -64,15 +73,7 @@
         </div>
     </section>
 
-    <section class="tags">
-        {% with self.tags.all as tags %}
-            {% if tags %}
-                {% for tag in tags %}
-                    <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </section>
+   
 </main>
 
 <div id="fb-root"></div>

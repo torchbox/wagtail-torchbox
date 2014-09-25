@@ -521,14 +521,6 @@
 	.page-blogindexpage .blog-title {
 		background-color:white;
 		-webkit-background-size: cover;
-		/*background-image: url("http://placehold.it/2000x300");*/
-		margin-top: -6em;
-	}
-
-	.page-blogindexpage .blog-title div {
-	    margin: -12em auto 1em auto;
-	    padding: 0em 2em 2em 2em;
-	    max-width: 60em;
 	}
 
 	.page-blogindexpage .listing p {
@@ -559,10 +551,6 @@
         font-size: 2em;
         color: #fff;
     }
-
-    .page-blogindexpage .blog{
-    	margin-top: 9em;
-	}
 
 	.page-blogindexpage p {
 		font-size: 1.125em;

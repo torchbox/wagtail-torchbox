@@ -10,10 +10,9 @@
                 <ul>
                     {% for screenshot in screenshots %}
                         <li  class="img-wrapper">
-                             <div class="crop-height">
-                            <img class="scale"
-                            {% image screenshot.image width-9999 as shot %}
-                            src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
+                            <div class="crop-height">
+                                {% image screenshot.image width-9999 as shot %}
+                                <img class="scale" src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
                             </div>
                         </li>
                     {% endfor %}
@@ -22,7 +21,7 @@
         {% endwith %}
 
         <div class="buttonsleft">
-             <div class="previous">Previous case study</div>
+            <div class="previous">Previous case study</div>
         </div>
 
         <div class="buttonsright">
@@ -37,11 +36,10 @@
 
             <h1>{{ self.title }}</h1>
 
-            <p>
             {% if self.intro %}
                 {{ self.intro|richtext }}
             {% endif %}
-            </p>
+
             <div class="share">
                 <a>Share &#10084;</a>
                 <ul class="share options">

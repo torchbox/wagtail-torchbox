@@ -38,6 +38,10 @@ def top_menu(context, parent, calling_page=None):
     )
     for menuitem in menuitems:
         menuitem.show_dropdown = has_menu_children(menuitem)
+        menuitem.is_active = False
+        if context['request'].path.startswith(menuitem.url):
+            menuitem.is_active = True
+            
     return {
         'calling_page': calling_page,
         'menuitems': menuitems,
