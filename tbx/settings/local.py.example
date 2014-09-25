@@ -20,3 +20,16 @@ SECRET_KEY = 'enter-a-long-unguessable-string-here'
 # import os
 # PATH_TO_WAGTAIL = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'wagtail')
 # sys.path.insert(1, PATH_TO_WAGTAIL)
+
+# INSTALLED_APPS += (
+#     'debug_toolbar',
+# )
+
+# MIDDLEWARE_CLASSES += (
+#     'debug_toolbar.middleware.DebugToolbarMiddleware',
+# )
+
+# django-debug-toolbar settings
+# DEBUG_TOOLBAR_CONFIG = {
+#     'INTERCEPT_REDIRECTS': False,
+# }
