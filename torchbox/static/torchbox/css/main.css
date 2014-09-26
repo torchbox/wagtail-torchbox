@@ -1536,15 +1536,6 @@ main .breadcrumb a:hover {
     transition: background-color 0.2s ease;
 }
 
-.next{
-    display: none;
-}
-
-.previous{
-    display: none;
-}
-
-
 .article-meta {
     margin:-1em auto 2em auto;
     padding-bottom: 1em;

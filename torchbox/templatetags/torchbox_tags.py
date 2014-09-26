@@ -11,6 +11,18 @@ def get_googe_maps_key():
     return getattr(settings, 'GOOGLE_MAPS_KEY', "")
 
 
+@register.assignment_tag
+def get_next_sibling_by_order(page):
+    if page.get_next_siblings().live().first():
+        return page.get_next_siblings().live().first().specific
+
+
+@register.assignment_tag
+def get_prev_sibling_by_order(page):
+    if page.get_prev_siblings().live().first():
+        return page.get_prev_siblings().live().first().specific
+
+
 @register.assignment_tag(takes_context=True)
 def get_site_root(context):
     return context['request'].site.root_page
@@ -140,6 +152,8 @@ def adverts(context):
         'adverts': Advert.objects.all(),
         'request': context['request'],
     }
+
+
 
 
 # Format times e.g. on event page

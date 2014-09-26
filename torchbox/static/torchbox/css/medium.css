@@ -90,6 +90,85 @@
 		border-bottom: none;
 	}
 
+
+
+	/* Generic Next/prev buttons used on work and blog pages */
+
+	.nextprev{
+		overflow:hidden;
+		position:absolute;
+		overflow: hidden;
+		width: 3em;
+		transition:0.3s ease;
+		-webkit-transition: 0.3s ease;
+	}
+	.nextprev a:hover{
+		color:white;
+	}
+	.nextprev:hover{
+		width:20em;
+	}
+	.nextprev .thumb{
+		width:80px;
+	}
+	.nextprev.sticky{
+		position:fixed;
+		z-index:50;
+		top: 10px;
+	}
+	.next{
+		right:0;
+	}
+	.prev{
+		left:0;
+	}
+	
+	.nextprev a{
+		background-color: #ea853a;
+		background-repeat:no-repeat;
+		border-radius: 3px;
+		width:20em;
+		height:80px;
+		position:relative;
+		display: block;
+	    line-height: 1em;
+	    z-index: 200;
+	    color: #fff;
+	    padding:0 1em;
+	    transition: 0.2s ease;
+	}
+	.nextprev span{
+		display:block;
+		position: relative;
+		top: 50%;
+		line-height:1.3em;
+		transform: translateY(-50%);
+	}
+
+	.next a{
+		padding-left:3em;
+		background-position: 5% 50%;
+		background-image:url("/static/torchbox/images/icons/right.png");
+	}
+
+	.prev a{
+		float:right;
+		padding-right:3em;
+		text-align:right;
+		background-position: 95% 50%;
+	    background-image: url("/static/torchbox/images/icons/left.png");
+	}
+	.next .thumb{
+		float:left;
+		margin-right:1em;
+	}
+	.prev .thumb{
+		float:right;
+		margin-left:1em;
+	}
+	
+
+
 	/*Homepage*/
 
 	.page-homepage .blog {
@@ -567,96 +646,7 @@
 		overflow: hidden;
 		margin-top: -7em;
 	}
-
-
-	/*Work page*/
-
-	/*Next button*/
-
-	.buttonsright{
-		overflow: hidden;
-		min-width: 35px;
-		float: right;
-	}
-
-	.buttonsleft{
-		overflow: hidden;
-		min-width: 35px;
-		float: left;
-	}
-
-	.buttons a:hover{
-		overflow: visible;
-	}
-
-	.next{
-		position: absolute;
-		display: block;
-	    margin-top: 10px;
-	    right: 0;
-	    display:inline-block;
-	    padding: 1.5em 0.5em 1.5em 1.5em;
-	    line-height: 1em;
-	    background: url("/static/torchbox/images/icons/right.png") no-repeat left 7px center;
-	    background-color: #ea853a;
-	    z-index: 200;
-	    color: #fff;
-	    border: solid 1px #ea853a;
-	    border-radius: 2px;
-	    min-width: 195px;
-	    text-align: center;
-	    overflow: hidden;
-	    margin-right: -159px;
-	    transition: 0.2s ease;
-	}
-
-	.next.sticky {
-		position: fixed;
-		top: 10px;
-	}
-
-	/*Previous button*/
-
-	.previous.sticky {
-		overflow: visible;
-		position: fixed;
-		top: 10px;
-	}
-
-	.next:hover{
-	    margin-right: -4px;
-	    opacity: 1;
-	    cursor: pointer;
-	}
-
-	.previous{
-		position: absolute;
-		display: block;
-		margin-top: 10px;
-	    left: 0;
-	    display:inline-block;
-	    padding: 1.5em 1.5em 1.5em 0.5em;
-	    line-height: 1em;
-	    background: url("/static/torchbox/images/icons/left.png") no-repeat right 7px center;
-	    background-color: #ea853a;
-	    z-index: 200;
-	    color: #fff;
-	    border: solid 1px #ea853a;
-	    border-radius: 2px;
-	    min-width: 220px;
-	    text-align: center;
-	    overflow: hidden;
-	    margin-left: -185px;
-	    margin-right: 0;
-	    transition: 0.2s ease;
-	}
-
-	.previous:hover{
-	    margin:10px 0 0 -4px;
-	    opacity: 1;
-	    cursor: pointer;
-	}
-
+	
 	.bleed {
 		margin: 1em 0.5em 0 0;
 	}
@@ -1191,6 +1181,8 @@
 		transition: all 0.15s ease;
 		border-bottom: 3px solid #EA853A;
 	}
+
+	
 
 	/*Footer*/
 

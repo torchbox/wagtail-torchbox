@@ -1,7 +1,10 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
 
 {% block content %}
+{% get_next_sibling_by_order self as next_page %}
+{% get_prev_sibling_by_order self as prev_page %}
+
 <main class="page-blog-single single">
 
     <section class="container body-copy">
@@ -35,6 +38,21 @@
                 </ul>
             </div>
         </div>
+
+        <div class="nextprev-nav">
+            {% if prev_page %}
+                <div class="nextprev prev">
+                    <a href="{% pageurl prev_page %}"><span>{{ prev_page.title }}</span></a>
+                </div>
+            {% endif %}
+
+            {% if next_page %}
+                <div class="nextprev next">
+                    <a href="{% pageurl next_page %}"><span>{{ next_page.title }}</span></a>
+                </div>
+            {% endif %}
+        </div>
+
 
         {% if self.intro %}
             {{ self.intro|richtext }}
