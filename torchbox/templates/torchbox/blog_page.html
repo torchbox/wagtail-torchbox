@@ -2,8 +2,8 @@
 {% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
 
 {% block content %}
-{% get_next_sibling_by_order self as next_page %}
-{% get_prev_sibling_by_order self as prev_page %}
+{% get_next_sibling_blog self as next_page %}
+{% get_prev_sibling_blog self as prev_page %}
 
 <main class="page-blog-single single">
 

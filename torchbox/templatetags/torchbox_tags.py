@@ -13,14 +13,30 @@ def get_googe_maps_key():
 
 @register.assignment_tag
 def get_next_sibling_by_order(page):
-    if page.get_next_siblings().live().first():
-        return page.get_next_siblings().live().first().specific
+    sibling = page.get_next_siblings().live().first()
+    if sibling:
+        return sibling.specific
 
 
 @register.assignment_tag
 def get_prev_sibling_by_order(page):
-    if page.get_prev_siblings().live().first():
-        return page.get_prev_siblings().live().first().specific
+    sibling = page.get_next_siblings().live().first()
+    if sibling:
+        return sibling.specific
+
+
+@register.assignment_tag
+def get_next_sibling_blog(page):
+    sibling = BlogPage.objects.filter(date__lt=page.date).order_by('-date').live().first()
+    if sibling:
+        return sibling.specific
+
+
+@register.assignment_tag
+def get_prev_sibling_blog(page):
+    sibling = BlogPage.objects.filter(date__gt=page.date).order_by('-date').live().last()
+    if sibling:
+        return sibling.specific
 
 
 @register.assignment_tag(takes_context=True)
