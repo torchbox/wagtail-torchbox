@@ -5,6 +5,11 @@ from torchbox.models import *
 
 register = template.Library()
 
+@register.assignment_tag
+def get_popular_tags(model):
+    return model.get_popular_tags()
+
+
 # settings value
 @register.assignment_tag
 def get_googe_maps_key():

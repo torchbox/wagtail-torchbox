@@ -1,42 +1,49 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
 
 {% block content %}
 
-        <div class="container">
-            <h1 class="visuallyhidden">{{ self.title }}</h1>
-            {% if self.intro %}
-                {{ self.intro|richtext }}
-            {% endif %}
-        </div>
+    {% get_popular_tags self as poptags %}
 
-        <section class="work">
-        {% with self.work.all as work %}
-            {% if work %}
-                <ul class="listing clearfix">
-                    {% for client in work %}
-                            {% with client.screenshots.all|first as screenshot %}
-                            {% image screenshot.image width-2000 as screenshot %}
-                        <li style='background-image: url({{ screenshot.url}});'>
+    <div class="container">
+        <h1 class="visuallyhidden">{{ self.title }}</h1>
+        {% if self.intro %}
+            {{ self.intro|richtext }}
+        {% endif %}
 
-
-                            <a href="{% pageurl client %}">
-
-                                <div>
-                                    <h2>{{ client.title }}</h2>
-                                    <p>
-                                        {% if client.summary %}
-                                            {{ client.summary }}
-                                        {% endif %}
-                                    </p>
-                                    </div>
-                            </a>
-                            {% endwith %}
-                        </li>
+        {% if poptags %}
+            <h2>Popular tags</h2>
+            <div class="popular-tags">
+                <p>
+                    {% for tag in poptags %}
+                        <a href="?tag={{ tag.slug }}">{{ tag }}</a>
                     {% endfor %}
-                </ul>
-            {% endif %}
+                </p>
+            </div>
+        {% endif %}
+    </div>
 
-        {% endwith %}
+    <section class="work">
+        {% if works %}
+            <ul class="listing clearfix">
+                {% for work in works %}
+                    {% with work.screenshots.all|first as screenshot %}
+                    {% image screenshot.image width-2000 as screenshot %}
+                    <li style='background-image: url({{ screenshot.url}});'>
+                        <a href="{% pageurl work %}">
+                            <div>
+                                <h2>{{ work.title }}</h2>
+                                <p>
+                                    {% if work.summary %}
+                                        {{ work.summary }}
+                                    {% endif %}
+                                </p>
+                             </div>
+                        </a>
+                        {% endwith %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </section>
 {% endblock %}
