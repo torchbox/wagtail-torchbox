@@ -25,9 +25,6 @@
 
         {% include "torchbox/includes/breadcrumb.html" %}
 
-
-
-
         <h1 class="{% if self.title|length >= 30 %}long-title{% endif %}">{{ self.title }}</h1>
 
         <div class="article-meta">
@@ -55,8 +52,6 @@
                 </ul>
             </div>
         </div>
-
-      
 
         {% if self.intro %}
             {{ self.intro|richtext }}

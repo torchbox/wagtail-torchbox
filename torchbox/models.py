@@ -502,6 +502,17 @@ class WorkPage(Page, TagSearchable):
         related_name='+'
     )
 
+    @property
+    def work_index(self):
+        # Find blog index in ancestors
+        for ancestor in reversed(self.get_ancestors()):
+            if isinstance(ancestor.specific, WorkIndexPage):
+                return ancestor
+
+        # No ancestors are blog indexes,
+        # just return first blog index in database
+        return WorkIndexPage.objects.first()
+
 WorkPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('summary'),
