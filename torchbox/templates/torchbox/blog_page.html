@@ -7,9 +7,26 @@
 
 <main class="page-blog-single single">
 
+    <div class="nextprev-nav">
+        {% if prev_page %}
+            <div class="nextprev prev">
+                <a href="{% pageurl prev_page %}"><span>{{ prev_page.title }}</span></a>
+            </div>
+        {% endif %}
+
+        {% if next_page %}
+            <div class="nextprev next">
+                <a href="{% pageurl next_page %}"><span>{{ next_page.title }}</span></a>
+            </div>
+        {% endif %}
+    </div>
+
     <section class="container body-copy">
 
         {% include "torchbox/includes/breadcrumb.html" %}
+
+
+
 
         <h1 class="{% if self.title|length >= 30 %}long-title{% endif %}">{{ self.title }}</h1>
 
@@ -39,20 +56,7 @@
             </div>
         </div>
 
-        <div class="nextprev-nav">
-            {% if prev_page %}
-                <div class="nextprev prev">
-                    <a href="{% pageurl prev_page %}"><span>{{ prev_page.title }}</span></a>
-                </div>
-            {% endif %}
-
-            {% if next_page %}
-                <div class="nextprev next">
-                    <a href="{% pageurl next_page %}"><span>{{ next_page.title }}</span></a>
-                </div>
-            {% endif %}
-        </div>
-
+      
 
         {% if self.intro %}
             {{ self.intro|richtext }}
