@@ -1,4 +1,4 @@
 Django==1.6.2
 South==1.0.0
 psycopg2==2.5.2
-wagtail==0.5
+wagtail==0.6
