@@ -681,6 +681,11 @@
 		border-bottom: 3px solid #EA853a;
 	}
 
+	.page-workpage .active:hover a{
+		border-bottom: none;
+		color: #fff;
+	}
+
 	.page-workpage .img-wrapper {
 	    width:100%;
 	    margin:-8em 0 0 0;
