@@ -173,7 +173,18 @@
 
 	.arrow{
 	    display: block;
-	    padding: 8em 0 0 2em;
+	    margin: 4em 0 0 -0.8em;
+	    height: 6em;
+	    width: 6em;
+	    background-image: url("/static/torchbox/images/arrow_down.png");
+	    background-repeat: no-repeat;
+	    transition: 0.2s ease;
+	    cursor: pointer;
+	}
+
+	.arrow:hover{
+	    background-image: url("/static/torchbox/images/arrow_down2.png");
+	    opacity: 0.5;
 	}
 
 	.page-homepage .blog {
@@ -1235,7 +1246,6 @@
 		float: left;
 		padding: 0 1em 1em 3em;
 		transition: all 0.15s ease;
-		/*background: url("/static/torchbox/images/icon-map-pin.svg") no-repeat left top; */
 	}
 
 	footer .offices li:hover {

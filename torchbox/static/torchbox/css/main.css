@@ -575,9 +575,9 @@ main nav li.active a:after {
 }
 
 .page-homepage .hero .button:hover {
-    background-color: #fff;
-    color: #5b6265;
-    border: solid 1px #fff;
+    background-color: rgba(225,225,225, 0.5);
+    color: #fff;
+    border: solid 1px rgba(225,225,225, 0.2);
 }
 
 .page-homepage .hiring {
