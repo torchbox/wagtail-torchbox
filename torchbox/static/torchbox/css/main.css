@@ -1562,14 +1562,12 @@ main .breadcrumb a:hover {
 }
 
 .share ul {
-    box-shadow: 0.125em 0.125em 0.5em #888888;
-    box-shadow: 0.125em 0.125em 0.5em rgba(0,0,0,0.2);
     margin-bottom: 0;
     position: absolute;
     z-index:5;
-    top: 2em;
-    left: 0;
-    border-top: 2px solid #ddd;
+    top: 2.3em;
+    left: -1em;
+    border: 1px solid #EA863A;
     display: none;
 }
 
@@ -1579,28 +1577,45 @@ main .breadcrumb a:hover {
 
 .share li {
     list-style: none;
-    padding: 0.5em;
+    padding: 0.5em 0em 0.5em 1.5em;
     margin: 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(234, 134, 58, 0.2);
     line-height: 1em;
     vertical-align: middle;
 }
 
 .share li:last-child {
     border:0;
+    padding: 0.5em 0em 0.3em 1.5em;
+}
+
+.arrow_box {
+    position: relative;
+    background: #fff;
+    border: 1px solid #EA863A;
+}
+.share ul:after, .share ul:before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
 }
 
 .share ul:after {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 0.5em solid transparent;
-    border-right: 0.5em solid transparent;
-    border-bottom: 0.5em solid #ddd;
-    position: absolute;
-    top: -11px;
-    left: 24px;
-
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #fff;
+    border-width: 15px;
+    margin-left: -15px;
+}
+.share ul:before {
+    border-color: rgba(234, 134, 58, 0);
+    border-bottom-color: #EA863A;
+    border-width: 16px;
+    margin-left: -16px;
 }
 
 
