@@ -709,6 +709,10 @@
 		max-width: 800px;
     }
 
+    .nextprev-nav{
+    	display: block;
+    }
+
     .body-copy p,
     .body-copy ul {
     	font-size: 1.25em;

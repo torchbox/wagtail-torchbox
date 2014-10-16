@@ -3,7 +3,9 @@
 
 {% block content %}
 
-    {% get_popular_tags self as poptags %}
+    {% comment %}
+        {% get_popular_tags self as poptags %} 
+    {% endcomment %}
 
     <div class="container">
         <h1 class="visuallyhidden">{{ self.title }}</h1>
