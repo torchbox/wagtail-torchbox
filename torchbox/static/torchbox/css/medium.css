@@ -1189,10 +1189,29 @@
 		color: #000;
 	}
 
+	.page-blogpage .active a {
+		color: #fff;
+	}
+
+	.page-blogpage .active:hover a {
+		color: #fff;
+		border:none;
+	}
+
 	.page-blogpage header nav li a:hover {
 		color: #EA853A;
 		transition: all 0.15s ease;
 		border-bottom: 3px solid #EA853A;
+	}
+
+	.page-blogpage .next{
+		right:0;
+		top: 6em;
+	}
+
+	.page-blogpage .prev{
+		left:0;
+		top: 6em;
 	}
 
 	
