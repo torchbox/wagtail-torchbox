@@ -3,6 +3,8 @@
 
 {% block content %}
 
+    {% get_popular_tags self as poptags %}
+
     <div class= "crop-height">
         <img class="scale" src="/static/torchbox/images/blog_placeholder2.jpg" width="" height="" alt="">
     </div>
@@ -10,11 +12,23 @@
     <section class="blog">
         <div class="blog-title">
             <div>
-            <h1>{{ self.title }}</h1>
-            {# Optional heading appears if filtering by tag #}
-            {% if request.GET.tag|length %}
-                <p>Showing posts tagged as {{ request.GET.tag|safe }} <a href=" {% pageurl self %} ">Show all</a></p>
-            {% endif %}
+                <h1>{{ self.title }}</h1>
+
+                {% if poptags %}
+                    <h2>Popular tags</h2>
+                    <div class="popular-tags">
+                        <p>
+                            {% for tag in poptags %}
+                                <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                            {% endfor %}
+                        </p>
+                    </div>
+                {% endif %}
+
+                {# Optional heading appears if filtering by tag #}
+                {% if request.GET.tag|length %}
+                    <p>Showing posts tagged  "{{ request.GET.tag|safe }}" <a href="{% pageurl self %}">Show all</a></p>
+                {% endif %}
             </div>
         </div>
         <ul class="listing clearfix">
@@ -23,6 +37,7 @@
                 <a class="block-link" href="{% pageurl blog %}">
                     <div class="container">
                         <h2>{{ blog.title }}</h2>
+                        
                         {% with blog.related_author.all as authors %}
                             {% if authors %}
                                 {% for author in authors %}

@@ -713,14 +713,8 @@ overflow: hidden;
     text-align: center;
     opacity: 0.5;
     padding: 1.25em;
-    transition: 0.3s ease;
-
 }
 
-.clients li > *:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
 
 /*Jobs index*/
 
@@ -1258,12 +1252,16 @@ h4 span:last-child{
     margin-top: -100%;
 }
 
-.page-blogindexpage .blog-title div {
-    margin: -4.5em auto 0 auto;
-    padding: 6em 2em 2em 2em;
+.page-blogindexpage .blog-title h1{
+    margin: 0 auto;
+    padding: 0.2em 0.7em;
     max-width: 48em;
 }
-
+.page-blogindexpage .blog-title p{ /* secondary headings, usually only to show name of tag on which filtered */
+    margin:0 auto;
+    padding:1em 2em;
+    max-width:54em;
+}
 .page-blogindexpage h2 {
     color: #ea853a;
 }
@@ -1395,6 +1393,23 @@ h4 span:last-child{
 .body-copy .button {
     margin-bottom: 4em;
 }
+
+
+/* Generic style for tags */
+.tags a{
+    background-color: #ea853a;
+    padding:3px 5px;
+    color:white;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    text-transform:uppercase;
+    font-size:0.8em;
+}
+.tags a:hover{
+    color:white;
+    background-color: #f6a32b;
+}
+
 
 /*Work index*/
 
@@ -1528,15 +1543,6 @@ main .breadcrumb a:hover {
     transition: background-color 0.2s ease;
 }
 
-.next{
-    display: none;
-}
-
-.previous{
-    display: none;
-}
-
-
 .article-meta {
     margin:-1em auto 2em auto;
     padding-bottom: 1em;
@@ -1556,6 +1562,7 @@ main .breadcrumb a:hover {
     box-shadow: 0.125em 0.125em 0.5em rgba(0,0,0,0.2);
     margin-bottom: 0;
     position: absolute;
+    z-index:5;
     top: 2em;
     left: 0;
     border-top: 2px solid #ddd;

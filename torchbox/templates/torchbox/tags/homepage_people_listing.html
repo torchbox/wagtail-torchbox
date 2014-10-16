@@ -1,4 +1,4 @@
-{% load pageurl image_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% if people %}
     {% for person in people %}
         {% image person.image width-300 as photo %}

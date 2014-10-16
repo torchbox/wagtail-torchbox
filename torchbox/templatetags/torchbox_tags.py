@@ -5,10 +5,43 @@ from torchbox.models import *
 
 register = template.Library()
 
+@register.assignment_tag
+def get_popular_tags(model):
+    return model.get_popular_tags()
+
+
 # settings value
 @register.assignment_tag
 def get_googe_maps_key():
     return getattr(settings, 'GOOGLE_MAPS_KEY', "")
+
+
+@register.assignment_tag
+def get_next_sibling_by_order(page):
+    sibling = page.get_next_siblings().live().first()
+    if sibling:
+        return sibling.specific
+
+
+@register.assignment_tag
+def get_prev_sibling_by_order(page):
+    sibling = page.get_prev_siblings().live().first()
+    if sibling:
+        return sibling.specific
+
+
+@register.assignment_tag
+def get_next_sibling_blog(page):
+    sibling = BlogPage.objects.filter(date__lt=page.date).order_by('-date').live().first()
+    if sibling:
+        return sibling.specific
+
+
+@register.assignment_tag
+def get_prev_sibling_blog(page):
+    sibling = BlogPage.objects.filter(date__gt=page.date).order_by('-date').live().last()
+    if sibling:
+        return sibling.specific
 
 
 @register.assignment_tag(takes_context=True)
@@ -38,6 +71,10 @@ def top_menu(context, parent, calling_page=None):
     )
     for menuitem in menuitems:
         menuitem.show_dropdown = has_menu_children(menuitem)
+        menuitem.is_active = False
+        if context['request'].path.startswith(menuitem.url):
+            menuitem.is_active = True
+            
     return {
         'calling_page': calling_page,
         'menuitems': menuitems,
@@ -136,6 +173,8 @@ def adverts(context):
         'adverts': Advert.objects.all(),
         'request': context['request'],
     }
+
+
 
 
 # Format times e.g. on event page

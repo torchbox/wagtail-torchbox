@@ -15,6 +15,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailadmin.taggable import TagSearchable
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -271,6 +272,14 @@ class BlogIndexPage(Page):
     indexed_fields = ('intro', )
     search_name = "Blog"
 
+    def get_popular_tags(self):
+        # Get a ValuesQuerySet of tags ordered by most popular
+        popular_tags = BlogPageTag.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+
+        # Return first 10 popular tags as tag objects
+        # Getting them individually to preserve the order
+        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+
     @property
     def blogs(self):
         # Get list of blog pages that are descendants of this page
@@ -336,7 +345,7 @@ class BlogPageAuthor(Orderable):
         related_name='+'
     )
 
-class BlogPage(Page):
+class BlogPage(Page, TagSearchable):
     intro = RichTextField(blank=True)
     body = RichTextField()
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
@@ -457,6 +466,10 @@ JobIndexPage.promote_panels = [
 
 # Work page
 
+class WorkPageTag(TaggedItemBase):
+    content_object = ParentalKey('torchbox.WorkPage', related_name='tagged_items')
+
+
 class WorkPageScreenshot(Orderable):
     page = ParentalKey('torchbox.WorkPage', related_name='screenshots')
     image = models.ForeignKey(
@@ -475,10 +488,12 @@ class WorkPageScreenshot(Orderable):
 # class WorkPageRelatedLink(Orderable, RelatedLink):
 #     page = ParentalKey('torchbox.WorkPage', related_name='related_links')
 
-class WorkPage(Page):
+
+class WorkPage(Page, TagSearchable):
     summary = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
+    tags = ClusterTaggableManager(through=WorkPageTag, blank=True)
     homepage_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -486,6 +501,17 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
+    @property
+    def work_index(self):
+        # Find blog index in ancestors
+        for ancestor in reversed(self.get_ancestors()):
+            if isinstance(ancestor.specific, WorkIndexPage):
+                return ancestor
+
+        # No ancestors are blog indexes,
+        # just return first blog index in database
+        return WorkIndexPage.objects.first()
 
 WorkPage.content_panels = [
     FieldPanel('title', classname="full title"),
@@ -499,6 +525,7 @@ WorkPage.content_panels = [
 
 WorkPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+    FieldPanel('tags'),
 ]
 
 
@@ -507,10 +534,19 @@ WorkPage.promote_panels = [
 class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
+    def get_popular_tags(self):
+        # Get a ValuesQuerySet of tags ordered by most popular
+        popular_tags = WorkPageTag.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+
+        # Return first 10 popular tags as tag objects
+        # Getting them individually to preserve the order
+        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+
+
     @property
-    def work(self):
+    def works(self):
         # Get list of person pages that are descendants of this page
-        work = WorkPage.objects.filter(
+        works = WorkPage.objects.filter(
             live=True,
             path__startswith=self.path
         )
@@ -518,25 +554,29 @@ class WorkIndexPage(Page):
         # Order by most recent date first
         #people = people.order_by('-date')
 
-        return work
+        return works
 
     def serve(self, request):
         # Get people
-        work = self.work
+        works = self.works
+
+        tag = request.GET.get('tag')
+        if tag:
+            works = works.filter(tags__name=tag)
 
         # Pagination
         page = request.GET.get('page')
-        paginator = Paginator(work, 10)  # Show 10 jobs per page
+        paginator = Paginator(works, 10)  # Show 10 jobs per page
         try:
-            work = paginator.page(page)
+            works = paginator.page(page)
         except PageNotAnInteger:
-            work = paginator.page(1)
+            works = paginator.page(1)
         except EmptyPage:
-            work = paginator.page(paginator.num_pages)
+            works = paginator.page(paginator.num_pages)
 
         return render(request, self.template, {
             'self': self,
-            'work': work,
+            'works': works,
         })
 
 

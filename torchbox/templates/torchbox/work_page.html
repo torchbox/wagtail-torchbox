@@ -1,7 +1,10 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
 
 {% block content %}
+{% get_next_sibling_by_order self as next_page %}
+{% get_prev_sibling_by_order self as prev_page %}
+
 <main class="single">
 
     <section>
@@ -10,10 +13,9 @@
                 <ul>
                     {% for screenshot in screenshots %}
                         <li  class="img-wrapper">
-                             <div class="crop-height">
-                            <img class="scale"
-                            {% image screenshot.image width-9999 as shot %}
-                            src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
+                            <div class="crop-height">
+                                {% image screenshot.image width-9999 as shot %}
+                                <img class="scale" src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
                             </div>
                         </li>
                     {% endfor %}
@@ -21,12 +23,18 @@
             {% endif %}
         {% endwith %}
 
-        <div class="buttonsleft">
-             <div class="previous">Previous case study</div>
-        </div>
+        <div class="nextprev-nav">
+            {% if prev_page %}
+                <div class="nextprev prev">
+                    <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
+                </div>
+            {% endif %}
 
-        <div class="buttonsright">
-            <div class="next">Next case study</div>
+            {% if next_page %}
+                <div class="nextprev next">
+                    <a href="{% pageurl next_page %}">{% image next_page.homepage_image fill-80x80 class="thumb" %} <span>{{ next_page.title }}</span></a>
+                </div>
+            {% endif %}
         </div>
 
     </section>
@@ -37,11 +45,10 @@
 
             <h1>{{ self.title }}</h1>
 
-            <p>
             {% if self.intro %}
                 {{ self.intro|richtext }}
             {% endif %}
-            </p>
+
             <div class="share">
                 <a>Share &#10084;</a>
                 <ul class="share options">
@@ -62,19 +69,29 @@
             {{ self.body|richtext }}
         {% endif %}
     </section>
+
+    <section class="tags">
+        {% with self.tags.all as tags %}
+            {% if tags %}
+                {% for tag in tags %}
+                    <a href="{% pageurl self.work_index %}?tag={{ tag }}">{{ tag }}</a>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
 </main>
 
 <div id="fb-root"></div>
 {% endblock %}
 
 {% block extra_js %}
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=323944607389&status=0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=323944607389&status=0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 {% endblock %}

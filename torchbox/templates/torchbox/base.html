@@ -149,11 +149,11 @@
             // Sticky next / previous work page //
             // Cache selectors outside callback for performance.
             var $window = $(window),
-                $stickyEl = $('.next, .previous'),
+                $stickyEl = $('.nextprev'),
                 elTop = $stickyEl.length && $stickyEl.offset().top-30;
 
             $window.scroll(function() {
-                    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+                $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
             });
         </script>
 
