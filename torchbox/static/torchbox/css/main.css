@@ -1398,12 +1398,8 @@ h4 span:last-child{
 /* Generic style for tags */
 
 .popular-tags {
-    max-width: 40em;
-    padding: 0 2em;
-    margin-bottom: 2em;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+    margin: 1em 0;
+    padding: 0 1em;
 }
 
 .popular-tags h3 {
@@ -1412,11 +1408,8 @@ h4 span:last-child{
 }
 
 .popular-tags a {
-    background-color: rgba(225,225,225,0.7);
     padding:0.5em 1em;
     color:#424A4F;
-    border-radius:3px;
-    -webkit-border-radius:3px;
     font-size:1em;
     margin-right: 0.5em;
     line-height: 40px;
@@ -1424,6 +1417,7 @@ h4 span:last-child{
     -moz-transition: background-color 0.2s ease;
     -o-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
+    border-radius: 3px;
 }
 
 .popular-tags a:hover {
@@ -1440,54 +1434,37 @@ h4 span:last-child{
     font-family: "Ionicons";
 }
 
-.show a {
-    padding: 0.75em 1em;
-    text-decoration: none;
-    border: none;
-    color: #EA853a;
-    border: 1px solid #EA853a;
-    background: transparent;
-    display: inline-block;
-    line-height: 1em;
-    border-radius: 0.2em;
-    -webkit-transition: background-color 0.2s ease;
-    -moz-transition: background-color 0.2s ease;
-    -o-transition: background-color 0.2s ease;
-    transition: background-color 0.2s ease;
-}
-
-.show a:hover {
-    padding: 0.75em 1em;
-    color: #fff;
-    background-color: #EA853a;
+.popular-tags p {
+    color: #424A4F;
+    margin: 0;
 }
 
 .popular-tags p span {
     font-weight: bold;
 }
 
-/* TAGS Blog index */
-
-.page-blogindexpage .popular-tags p {
-    color: #424A4F;
-    margin:0.5em 0 1em 0;
-    max-width: 40em;
+.popular-tags p.show {
+   margin: 0.5em 0 1em 1em;
 }
 
-/* TAGS Work index */
-
-.page-workindexpage .popular-tags {
-    margin-bottom: 1em;
+.show a {
+    transition: all 0.15s ease;
+    border-bottom: 1px dotted #424A4F;
+    padding: 0;
+    border-radius: 0;
+    margin-left: 1em;
 }
 
-.page-workindexpage .popular-tags p {
-    color: #424A4F;
+.show a:hover {
+    color: #EA853A;
+    border-bottom: 1px dotted #EA853A;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
 }
 
-.page-workindexpage .show a:hover {
-    padding: 0.75em 1em;
-    color: #fff;
-    background-color: #EA853a;
+.show a:before {
+    content: none;
 }
 
 /*tags*/
@@ -1497,7 +1474,6 @@ h4 span:last-child{
 }
 
 .tags a {
-    background-color: rgba(225,225,225,0.7);
     padding:0.5em 1em;
     color:#424A4F;
     border-radius:3px;
@@ -1521,6 +1497,11 @@ h4 span:last-child{
 .tags a:hover {
     color:#424A4F;
     background-color: rgba(225,225,225,1);
+}
+
+.page-workpage .tags{
+    display: inline-block;
+    margin: 0 0 0 2em;
 }
 
 

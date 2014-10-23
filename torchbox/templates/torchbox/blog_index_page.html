@@ -11,31 +11,31 @@
         <div class="blog-title">
             <h1>{{ self.title }}</h1>
         </div>
-
-        <div class="popular-tags container">
-            {% if poptags %}
-                <!--<h3>Popular tags</h3>-->
-                    <p>
-                        {% for tag in poptags %}
-                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% endfor %}
-                    </p>
-            {% endif %}
-
-            {# Optional heading appears if filtering by tag #}
-            {% if request.GET.tag|length %}
-                <p>Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span> </p> 
-                <div class="show"> 
-                    <a href="{% pageurl self %}"> Show all </a>
-                </div>
-            {% endif %}
-        </div>
-
     </div>
 
     <section class="blog">
 
-        <ul class="listing clearfix">
+    <div class="popular-tags">
+        {% if poptags %}
+            <!--<h3>Popular tags</h3>-->
+            <div class="container">
+                <p>
+                    {% for tag in poptags %}
+                        <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                    {% endfor %}
+                </p>
+                {% endif %}
+
+                {# Optional heading appears if filtering by tag #}
+                {% if request.GET.tag|length %}
+                    <p class="show">Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span> 
+                        <a href="{% pageurl self %}"> Show all </a>
+                    </p>
+                    {% endif %}
+            </div>
+    </div>
+
+    <ul class="listing clearfix">
         {% for blog in blogs %}
             <li>
                 <a class="block-link" href="{% pageurl blog %}">
@@ -55,18 +55,22 @@
                                     {{blog.intro|richtext}}
 
                                     <span>{{ author.author.title }}</span>
+
                                 {% endfor %}
                             {% endif %}
                         {% endwith %}
 
-                    {% if blog.date %}
-                        <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
-                    {% endif %}
+                        {% if blog.date %}
+                            <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
+                        {% endif %}
+
                     </div>
                 </a>
             </li>
         {% endfor %}
-        </ul>
+    </ul>
+
+    </section>
 
     <div class="container pagination">
         {# Pagination #}

@@ -61,6 +61,16 @@
                 </ul>
             </div>
 
+            <section class="tags">
+                {% with self.tags.all as tags %}
+                    {% if tags %}
+                        {% for tag in tags %}
+                            <a href="{% pageurl self.work_index %}?tag={{ tag }}">{{ tag }}</a>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </section>
+
         </div>
     </section>
 
@@ -68,16 +78,6 @@
         {% if self.body %}
             {{ self.body|richtext }}
         {% endif %}
-
-        <section class="tags">
-        {% with self.tags.all as tags %}
-            {% if tags %}
-                {% for tag in tags %}
-                    <a href="{% pageurl self.work_index %}?tag={{ tag }}">{{ tag }}</a>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        </section>
 
     </section>
 

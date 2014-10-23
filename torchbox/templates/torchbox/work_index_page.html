@@ -7,31 +7,29 @@
     {% get_popular_tags self as poptags %} 
 
 
+     <div class="popular-tags container">
+        {% if poptags %}
+            <!--<h3>Popular tags</h3>-->
+                <p>
+                    {% for tag in poptags %}
+                        <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                    {% endfor %}
+                </p>
+        {% endif %}
+
+        {# Optional heading appears if filtering by tag #}
+        {% if request.GET.tag|length %}
+            <p class="show">Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span> 
+                <a href="{% pageurl self %}"> Show all </a>
+            </p>
+        {% endif %}
+    </div>
+
     <div class="container">
         <h1 class="visuallyhidden">{{ self.title }}</h1>
         {% if self.intro %}
             {{ self.intro|richtext }}
         {% endif %}
-
-         <div class="popular-tags container">
-            {% if poptags %}
-                <!--<h3>Popular tags</h3>-->
-                    <p>
-                        {% for tag in poptags %}
-                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% endfor %}
-                    </p>
-            {% endif %}
-
-            {# Optional heading appears if filtering by tag #}
-            {% if request.GET.tag|length %}
-                <p>Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span> </p> 
-                <div class="show"> 
-                    <a href="{% pageurl self %}"> Show all </a>
-                </div>
-            {% endif %}
-        </div>
-
     </div>
 
     <section class="work">
