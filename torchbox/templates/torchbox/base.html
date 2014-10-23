@@ -52,6 +52,7 @@
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
               })();
         </script>
+
     </head>
 
     <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
