@@ -1396,16 +1396,33 @@ h4 span:last-child{
 
 
 /* Generic style for tags */
-.tags a{
+.tags {
+    margin-top: 2em;
+}
+
+.tags a {
     background-color: #ea853a;
-    padding:3px 5px;
+    padding:0.5em 1em;
     color:white;
     border-radius:3px;
     -webkit-border-radius:3px;
-    text-transform:uppercase;
-    font-size:0.8em;
+    font-size:1em;
+    margin-right: 0.5em;
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
+    -o-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
 }
-.tags a:hover{
+
+.tags a:before {
+    content: "\f28d";
+    font-size: 1.2em;
+    padding: 0 5px 0 0;
+    margin: 5px 5px 0 0;
+    font-family: "Ionicons";
+}
+
+.tags a:hover {
     color:white;
     background-color: #f6a32b;
 }
@@ -1443,7 +1460,6 @@ h4 span:last-child{
     display: block;
     position: relative;
     min-height: 24em;
-    transition: background-color 0.2s ease;
 }
 
 .page-workindexpage main .listing div {
@@ -1538,13 +1554,14 @@ main .breadcrumb a {
     min-width: 100px;
     text-align: center;
     float: left;
+    transition: all 0.2s ease;
 }
 
 main .breadcrumb a:hover {
     background-color: #EA853a;
     display:inline-block;
     color: #fff;
-    transition: background-color 0.2s ease;
+    
 }
 
 .article-meta {

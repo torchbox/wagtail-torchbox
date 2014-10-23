@@ -61,16 +61,6 @@
             {{ self.body|richtext }}
         {% endif %}
 
-        <section class="tags">
-            {% with self.tags.all as tags %}
-                {% if tags %}
-                    {% for tag in tags %}
-                        <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </section>
-
         <div id="author" class="author clearfix" >
             {% with self.related_author.all as authors %}
                 {% if authors %}
@@ -88,6 +78,17 @@
                 {% endif %}
             {% endwith %}
         </div>
+
+        <section class="tags">
+            {% with self.tags.all as tags %}
+                {% if tags %}
+                    {% for tag in tags %}
+                        <a href="{% pageurl self.blog_index %}?tag={{ tag }}">{{ tag }}</a>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+
     </section>
 
    

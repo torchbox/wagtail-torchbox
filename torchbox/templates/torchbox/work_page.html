@@ -68,19 +68,19 @@
         {% if self.body %}
             {{ self.body|richtext }}
         {% endif %}
+
+        <section class="tags">
+        {% with self.tags.all as tags %}
+            {% if tags %}
+                {% for tag in tags %}
+                    <a href="{% pageurl self.work_index %}?tag={{ tag }}">{{ tag }}</a>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </section>
+
     </section>
 
-    <section class="tags">
-        {% comment %}
-            {% with self.tags.all as tags %}
-                {% if tags %}
-                    {% for tag in tags %}
-                        <a href="{% pageurl self.work_index %}?tag={{ tag }}">{{ tag }}</a>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        {% endcomment %}
-    </section>
 </main>
 
 <div id="fb-root"></div>

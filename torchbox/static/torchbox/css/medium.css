@@ -1325,11 +1325,6 @@
 		overflow: hidden;
 	}
 
-	.offices li:hover .svg{
-		margin-top: -40px;
-	}
-
-
 	.listing p {
     	margin: 0 0 1em 0;
     	display: block;
