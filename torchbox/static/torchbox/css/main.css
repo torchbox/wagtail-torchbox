@@ -1440,16 +1440,6 @@ h4 span:last-child{
     font-family: "Ionicons";
 }
 
-.page-blogindexpage .popular-tags p {
-    color: #424A4F;
-    margin:0.5em 0 1em 0;
-    max-width: 40em;
-}
-
-.page-blogindexpage .popular-tags p span {
-    font-weight: bold;
-}
-
 .show a {
     padding: 0.75em 1em;
     text-decoration: none;
@@ -1472,6 +1462,33 @@ h4 span:last-child{
     background-color: #EA853a;
 }
 
+.popular-tags p span {
+    font-weight: bold;
+}
+
+/* TAGS Blog index */
+
+.page-blogindexpage .popular-tags p {
+    color: #424A4F;
+    margin:0.5em 0 1em 0;
+    max-width: 40em;
+}
+
+/* TAGS Work index */
+
+.page-workindexpage .popular-tags {
+    margin-bottom: 1em;
+}
+
+.page-workindexpage .popular-tags p {
+    color: #424A4F;
+}
+
+.page-workindexpage .show a:hover {
+    padding: 0.75em 1em;
+    color: #fff;
+    background-color: #EA853a;
+}
 
 /*tags*/
 

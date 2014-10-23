@@ -574,6 +574,19 @@
 	    background-color: #EA853a;
 	}
 
+	/* TAGS Work index */
+
+	.page-workindexpage .popular-tags {
+	    position: relative;
+	    top: 0;
+	    margin-bottom: 2em;
+	}
+
+	.page-workindexpage .popular-tags p {
+	    max-width: 100%;
+	    min-width: 96em;
+	}
+
 	/*Blog index*/
 
 	.page-blogindexpage main .block-link:first-child {
