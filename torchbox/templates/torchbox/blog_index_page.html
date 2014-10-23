@@ -7,30 +7,34 @@
 
     <div class= "crop-height">
         <img class="scale" src="http://cinemagraphs.com/images/demo/cab-window-429.gif" width="" height="" alt="">
+
+        <div class="blog-title">
+            <h1>{{ self.title }}</h1>
+        </div>
+
+        <div class="popular-tags container">
+            {% if poptags %}
+                <!--<h3>Popular tags</h3>-->
+                    <p>
+                        {% for tag in poptags %}
+                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% endfor %}
+                    </p>
+            {% endif %}
+
+            {# Optional heading appears if filtering by tag #}
+            {% if request.GET.tag|length %}
+                <p>Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span> </p> 
+                <div class="show"> 
+                    <a href="{% pageurl self %}"> Show all </a>
+                </div>
+            {% endif %}
+        </div>
+
     </div>
 
     <section class="blog">
-        <div class="blog-title">
-            <div>
-                <h1>{{ self.title }}</h1>
 
-                {% if poptags %}
-                    <h2>Popular tags</h2>
-                    <div class="popular-tags">
-                        <p>
-                            {% for tag in poptags %}
-                                <a href="?tag={{ tag.slug }}">{{ tag }}</a>
-                            {% endfor %}
-                        </p>
-                    </div>
-                {% endif %}
-
-                {# Optional heading appears if filtering by tag #}
-                {% if request.GET.tag|length %}
-                    <p>Showing posts tagged  "{{ request.GET.tag|safe }}" <a href="{% pageurl self %}">Show all</a></p>
-                {% endif %}
-            </div>
-        </div>
         <ul class="listing clearfix">
         {% for blog in blogs %}
             <li>

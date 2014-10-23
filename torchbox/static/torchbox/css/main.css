@@ -1234,7 +1234,7 @@ h4 span:last-child{
     margin-top: 0;
 }
 
-.page-blogindexpage .crop-height {
+.page-blogindexpage img.scale {
     display: none;
 }
 
@@ -1396,14 +1396,93 @@ h4 span:last-child{
 
 
 /* Generic style for tags */
+
+.popular-tags {
+    max-width: 40em;
+    padding: 0 2em;
+    margin-bottom: 2em;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.popular-tags h3 {
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.popular-tags a {
+    background-color: rgba(225,225,225,0.7);
+    padding:0.5em 1em;
+    color:#424A4F;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    font-size:1em;
+    margin-right: 0.5em;
+    line-height: 40px;
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
+    -o-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+}
+
+.popular-tags a:hover {
+    background-color: rgba(225,225,225,1);
+    padding:0.5em 1em;
+    color:#424A4F;
+}
+
+.popular-tags a:before {
+    content: "\f28d";
+    font-size: 1.2em;
+    padding: 0 5px 0 0;
+    margin: 0px 5px 0 0;
+    font-family: "Ionicons";
+}
+
+.page-blogindexpage .popular-tags p {
+    color: #424A4F;
+    margin:0.5em 0 1em 0;
+    max-width: 40em;
+}
+
+.page-blogindexpage .popular-tags p span {
+    font-weight: bold;
+}
+
+.show a {
+    padding: 0.75em 1em;
+    text-decoration: none;
+    border: none;
+    color: #EA853a;
+    border: 1px solid #EA853a;
+    background: transparent;
+    display: inline-block;
+    line-height: 1em;
+    border-radius: 0.2em;
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
+    -o-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+}
+
+.show a:hover {
+    padding: 0.75em 1em;
+    color: #fff;
+    background-color: #EA853a;
+}
+
+
+/*tags*/
+
 .tags {
     margin-top: 2em;
 }
 
 .tags a {
-    background-color: #ea853a;
+    background-color: rgba(225,225,225,0.7);
     padding:0.5em 1em;
-    color:white;
+    color:#424A4F;
     border-radius:3px;
     -webkit-border-radius:3px;
     font-size:1em;
@@ -1418,13 +1497,13 @@ h4 span:last-child{
     content: "\f28d";
     font-size: 1.2em;
     padding: 0 5px 0 0;
-    margin: 5px 5px 0 0;
+    margin: 0px 5px 0 0;
     font-family: "Ionicons";
 }
 
 .tags a:hover {
-    color:white;
-    background-color: #f6a32b;
+    color:#424A4F;
+    background-color: rgba(225,225,225,1);
 }
 
 
