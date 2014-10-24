@@ -1386,11 +1386,12 @@ h4 span:last-child{
 }
 
 .popular-tags a:before {
-    content: "\f28d";
-    font-size: 1.2em;
-    padding: 0 5px 0 0;
+    background-image:  url("/static/torchbox/images/tag.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    content: "";
+    padding: 0 20px 0 0;
     margin: 0px 5px 0 0;
-    font-family: "Ionicons";
 }
 
 .popular-tags p {
