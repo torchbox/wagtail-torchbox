@@ -90,8 +90,6 @@
 		border-bottom: none;
 	}
 
-
-
 	/* Generic Next/prev buttons used on work and blog pages */
 
 	.nextprev{
@@ -166,8 +164,6 @@
 		float:right;
 		margin-left:1em;
 	}
-	
-
 
 	/*Homepage*/
 
@@ -355,11 +351,6 @@
 	.page-standardpage h2 span{
 		border-bottom: 6px solid;
 		transition: 0.2s ease;
-	}
-
-	.page-standardpage h2 span:hover{
-		border-bottom: 6px #EA853A solid;
-		color: #EA853A;
 	}
 
 	.page-standardpage .logo {
@@ -1185,8 +1176,6 @@
 		border-bottom: none;
 	}
 
-
-
 	/*Services page*/
 
 	.page-servicespage .services-intro {
@@ -1258,8 +1247,6 @@
 		left:0;
 		top: 6em;
 	}
-
-	
 
 	/*Footer*/
 
@@ -1440,7 +1427,7 @@
 	.page-standardpage h2 {
 		font-weight: bold;
 	    font-size: 4em;
-	    margin: -3em auto 3em auto;
+	    margin: -3em auto 4em auto;
 		max-width: 1000px;
 	}
 
@@ -1450,21 +1437,6 @@
 		max-width: 150%;
 		transition: 0.4s ease;
 	}
-
-
-	/*Below stops the image scaling on hover
-	.page-homepage .grid li .block:hover img {
-		float: left;
-		width: 166%;
-		max-width: 165%;
-	}
-
-
-	.page-homepage .grid li .block:hover .author img {
-		width: 4em;
-	}
-	*/
-
 
 	.page-homepage .block .workcontainer{
     	padding: 0;
@@ -1530,13 +1502,6 @@
 		transition: 0.2s ease;
 		color: #ea853a;
 	}
-
-
-	/* Below makde the slide effect
-	.page-homepage .block:hover .crop-height {
-	  	width: 50%;
-	}
-	*/
 
 	.page-homepage .block .workcontainer{
 		overflow: visible;

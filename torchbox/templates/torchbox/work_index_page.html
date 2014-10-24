@@ -9,7 +9,6 @@
 
      <div class="popular-tags container">
         {% if poptags %}
-            <!--<h3>Popular tags</h3>-->
                 <p>
                     {% for tag in poptags %}
                         <a href="?tag={{ tag.slug }}">{{ tag }}</a>
