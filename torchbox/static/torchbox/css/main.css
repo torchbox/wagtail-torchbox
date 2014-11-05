@@ -269,12 +269,6 @@ main nav li.active a:after {
     padding: 0 1em;
 }
 
-.page-homepage .bleed {
-    margin: 0.3em -1em 3em -1em;
-    background: rgba(67,74,79,0.8);
-    color: white;
-}
-
 .page-homepage .go {
     display: none;
 }

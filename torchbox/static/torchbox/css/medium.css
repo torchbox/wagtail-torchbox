@@ -25,7 +25,10 @@
 	}
 
 	.bleed {
-		margin: 2em 0 0 0;
+		margin: 1.5em 0.5em 0 0;
+		height: 66px;
+		border-radius: 3px;
+		background: rgba(67,74,79,0.5);
 	}
 
 	.menu-button {
@@ -46,7 +49,7 @@
 
 	header nav li {
 		float: left;
-		padding: 1em 1em 0 1em;
+		padding: 0.6em 1em 0 1em;
 	}
 
 	header nav li a {
@@ -60,9 +63,8 @@
 	}
 
 	header nav li a:hover {
-		color: #EA853a;
+		color: #F7A42C;
 		transition: all 0.15s ease;
-		border-bottom: 3px solid #EA853a;
 	}
 
 	.logo {
@@ -75,18 +77,15 @@
 	/*Active*/
 
 	.active {
-		background: rgba(0,0,0,0.5);
-		padding: 0em 1em 0em 1em;
-		margin-top: 1em;
-		border-radius: 2px;
+		color: #F7A42C;
 	}
 
-	.active a{
-		color: #fff;
+	.active a {
+		color: #F7A42C;
 	}
 
-	.active a:hover{
-		color: #fff;
+	.active a:hover {
+		color: #F7A42C;
 		border-bottom: none;
 	}
 
@@ -232,10 +231,6 @@
 
 	.page-homepage .listing a:hover h3{
 		color: #ea853a;
-	}
-
-	.page-homepage .bleed {
-		margin: 1em 0.5em 0 0;
 	}
 
 	.page-homepage .logo {
@@ -452,12 +447,6 @@
 		max-width: 100%;
 	}
 
-
-	.page-standardpage  header nav li a:hover {
-	    color: #ea853a;
-	    transition: all 0.15s ease;
-		border-bottom: 3px solid #ea853a;
-	}
 	.page-standardpage .grid li:nth-child(3n+4) {
 	 clear: none;
 	}
@@ -465,8 +454,20 @@
 
 	/*Work index*/
 
-	.page-workindexpage .active {
-		background: black;
+	.page-workindexpage .bleed{
+		background: none;
+	}
+
+	.page-workindexpage header nav li a {
+		color: #434A4F;
+	}
+
+	.page-workindexpage header nav li a:hover {
+		color: #F7A42C;
+	}
+
+	.page-workindexpage header nav li.active a {
+		color: #F7A42C;
 	}
 
 	.page-workindexpage {
@@ -568,16 +569,6 @@
 
 	.page-blogindexpage main .block-link:first-child {
 		border-top: none;
-	}
-
-	.page-blogindexpage	header nav li a:hover {
-   		color: #EA853a;
-    	border-bottom: 3px solid #EA853a;
-	}
-
-	.page-blogindexpage .active a:hover{
-		color: #fff;
-		border-bottom: none;
 	}
 
 	.page-blogindexpage .logo {
@@ -685,25 +676,6 @@
 
 	.page-blogindexpage img.scale {
     	display: block;
-	}
-	
-	.bleed {
-		margin: 1em 0.5em 0 0;
-	}
-
-	.page-workpage	header nav li a {
-	    margin:0.5em 0.5em;
-	    color: white;
-	}
-
-	.page-workpage	header nav li a:hover {
-		color: #EA853a;
-		border-bottom: 3px solid #EA853a;
-	}
-
-	.page-workpage .active:hover a{
-		border-bottom: none;
-		color: #fff;
 	}
 
 	.page-workpage .img-wrapper {
@@ -827,14 +799,6 @@
 	.page-homepage .grid li {
 		margin: 0;
 		transition: 0.2s ease;
-	}
-
-	.page-jobpage header nav li a{
-    	color: #424a4f;
-	}
-
-	.page-jobpage header nav li a:hover{
-    	color: #ea853a;
 	}
 
 	.page-jobindexpage h1 {
@@ -978,15 +942,6 @@
 	    margin: 0em 1em -1em 0;
 	}
 
-	.page-jobindexpage .active a{
-		color: #fff;
-	}
-
-	.page-jobindexpage .active a:hover{
-		color: #fff;
-		border-bottom: none;
-	}
-
 	.page-jobindexpage .benefits .one:nth-of-type(odd) {
 		clear: left;
 	}
@@ -995,27 +950,8 @@
 		margin-bottom: 5%;
 	}
 
-	.page-jobindexpage header nav li a:hover {
-		color: #ea853a;
-		transition: all 0.15s ease;
-		border-bottom: 3px solid #ea853a;
-	}
-
 	.page-personindexpage main h1 {
 	    font-size: 5em;
-	}
-
-	.page-personindexpage .active {
-		background: black;
-	}
-
-	.page-personindexpage .active a{
-		color: #fff;
-	}
-
-	.page-personindexpage .active a:hover{
-		color: #fff;
-		border-bottom: none;
 	}
 
    .page-jobindexpage  .crop-height {
@@ -1044,6 +980,22 @@
 
 	/*People index*/
 
+	.page-personindexpage .bleed{
+		background: none;
+	}
+
+	.page-personindexpage header nav li a {
+		color: #434A4F;
+	}
+
+	.page-personindexpage header nav li a:hover {
+		color: #F7A42C;
+	}
+
+	.page-personindexpage header nav li.active a {
+		color: #F7A42C;
+	}
+
 	.grid.people-list li {
 		width: 50%;
 		margin: 0;
@@ -1054,32 +1006,22 @@
     	opacity: 0.7;
 	}
 
-	.page-personindexpage  header nav li a {
-	    color: #424a4f;
-	}
-
-	.page-personindexpage  header nav li a:hover {
-	    color: #ea853a;
-	    transition: all 0.15s ease;
-		border-bottom: 3px solid #ea853a;
-
-	}
-
 	/*Person page*/
 
-	.page-personpage header nav li a {
-	    color: #424a4f;
+	.page-personpage .bleed{
+		background: none;
 	}
 
-	.page-personpage .bleed {
-		margin: 1em 0.5em 0 0;
+	.page-personpage header nav li a {
+		color: #434A4F;
 	}
 
 	.page-personpage header nav li a:hover {
-	    color: #ea853a;
-	    transition: all 0.15s ease;
-		border-bottom: 3px solid #ea853a;
+		color: #F7A42C;
+	}
 
+	.page-personpage header nav li.active a {
+		color: #F7A42C;
 	}
 
 	.page-personpage img {
@@ -1146,34 +1088,8 @@
 		margin: 1em 0;
 	}
 
-
-	.bleed {
-    background:none;
-    overflow: visible;
-	}
-
-	header{
+	header {
 	background-color: transparent;
-	}
-
-	.page-workindexpage header nav li a {
-    color: #434a4f;
-	}
-
-
-	.page-workindexpage header nav li a:hover {
-    color: #EA853a;
-	transition: all 0.15s ease;
-	border-bottom: 3px solid #EA853a;
-	}
-
-	.page-workindexpage .active a{
-		color: #fff;
-	}
-
-	.page-workindexpage .active a:hover{
-		color: #fff;
-		border-bottom: none;
 	}
 
 	/*Services page*/
@@ -1219,23 +1135,20 @@
 
     /* Blog page  */
 
-    .page-blogpage header nav li a {
-		color: #000;
+	.page-blogpage .bleed{
+		background: none;
 	}
 
-	.page-blogpage .active a {
-		color: #fff;
+	.page-blogpage  header nav li a {
+		color: #434A4F;
 	}
 
-	.page-blogpage .active:hover a {
-		color: #fff;
-		border:none;
+	.page-blogpage  header nav li a:hover {
+		color: #F7A42C;
 	}
 
-	.page-blogpage header nav li a:hover {
-		color: #EA853A;
-		transition: all 0.15s ease;
-		border-bottom: 3px solid #EA853A;
+	.page-blogpage  header nav li.active a {
+		color: #F7A42C;
 	}
 
 	.page-blogpage .next{
@@ -1246,6 +1159,24 @@
 	.page-blogpage .prev{
 		left:0;
 		top: 6em;
+	}
+
+	/*page-jobpage*/
+	
+	.page-jobpage .bleed{
+		background: none;
+	}
+
+	.page-jobpage header nav li a {
+		color: #434A4F;
+	}
+
+	.page-jobpage header nav li a:hover {
+		color: #F7A42C;
+	}
+
+	.page-jobpage header nav li.active a {
+		color: #F7A42C;
 	}
 
 	/*Footer*/
