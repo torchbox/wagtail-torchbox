@@ -25,8 +25,8 @@
 	}
 
 	.bleed {
-		margin: 1.5em 0.5em 0 0;
-		height: 66px;
+		margin: 2.2em 0.5em 0 0;
+		height: 55px;
 		border-radius: 3px;
 		background: rgba(67,74,79,0.5);
 	}
@@ -55,7 +55,7 @@
 	header nav li a {
 		padding: 0;
     	border-bottom: none;
-    	margin: 0.5em 0.5em 0.5em 0.5em;
+    	margin: 0.2em 0.5em 0.5em 0.5em;
 	}
 
 	header nav li:last-child a {
@@ -543,11 +543,12 @@
 	/* Generic style for tags */
 	.popular-tags{
 		padding: 0 2em;
-		margin:0;
+		margin:0.5em 0;
 	}
 
 	.popular-tags a {
-	    line-height: 50px;
+	    line-height: 30px;
+	    width: auto;
 	}
 
 	.show a {
@@ -555,10 +556,6 @@
 	}
 
 	/* TAGS Work index */
-
-	.page-workindexpage .popular-tags {
-	    margin-bottom: 0;
-	}
 
 	.page-workindexpage .popular-tags p {
 	    max-width: 100%;
@@ -632,8 +629,12 @@
 		max-width: 38em;
 	}
 
-	.page-blogindexpage h1 {
-		display: none;
+	.page-blogindexpage .blog-title h1 {
+		margin: -2em auto 0.5em 0;
+		position: relative;
+		color: #fff;
+		font-size: 4em;
+		padding-left: 0;
 	}
 
 	.page-blogindexpage h1:before {
@@ -1162,7 +1163,7 @@
 	}
 
 	/*page-jobpage*/
-	
+
 	.page-jobpage .bleed{
 		background: none;
 	}
@@ -1175,7 +1176,7 @@
 		color: #F7A42C;
 	}
 
-	.page-jobpage header nav li.active a {
+	.page-jobpage.bleed header nav li.active a {
 		color: #F7A42C;
 	}
 
@@ -1358,7 +1359,7 @@
 	.page-standardpage h2 {
 		font-weight: bold;
 	    font-size: 4em;
-	    margin: -3em auto 4em auto;
+	    margin: -5em auto 4.5em auto;
 		max-width: 1000px;
 	}
 

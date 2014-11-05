@@ -1333,11 +1333,13 @@ h4 span:last-child{
 }
 
 .popular-tags a {
+    display: inline-block;
+    width: 145px;
     padding:0.5em 1em;
     color:#424A4F;
     font-size:1em;
     margin-right: 0.5em;
-    line-height: 40px;
+    line-height: 25px;
     -webkit-transition: background-color 0.2s ease;
     -moz-transition: background-color 0.2s ease;
     -o-transition: background-color 0.2s ease;
@@ -1367,6 +1369,7 @@ h4 span:last-child{
 
 .popular-tags p span {
     font-weight: bold;
+    margin-right: 1em;
 }
 
 .popular-tags p.show {
@@ -1378,7 +1381,7 @@ h4 span:last-child{
     border-bottom: 1px dotted #424A4F;
     padding: 0;
     border-radius: 0;
-    margin-left: 1em;
+    width: auto;
 }
 
 .show a:hover {
