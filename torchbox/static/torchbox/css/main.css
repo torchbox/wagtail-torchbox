@@ -1236,12 +1236,15 @@ h4 span:last-child{
     padding: 2em 0 2em 0;
     max-width: 350px;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .page-blogindexpage .pagination div{
-    margin: 0 1em;
-    width: 30%;
+    display: inline-block;
+    margin: 0 0.5em;
+    width: 25%;
 }
+
 /*Blog page*/
 
 .page-blogpage .listing {
