@@ -902,28 +902,35 @@ font-size: 0.8em;
 
 /*Standard page*/
 
-.page-standardpage .bleed {
-    background: rgba(67,74,79,0.8);
+.dark {
+    background: rgba(67, 74, 79, 0.5);
+    margin: 0 2em;
+    border-radius: 3px;
+    padding: 0.5em;
 }
 
-.page-standardpage h4{
-    color: #97cb9b;
-    font-size: 1.5em;
-    font-weight: bold;
+.page-standardpage h4 {
+    color: #fff;
+    font-size: 1.1em;
+    text-align: center;
+    margin: 0.5em auto 0.5em auto;
     text-align: center;
 }
 
-h4 span{
+.page-standardpage h4 span {
+    font-weight: bold;
+    color: #97CB9C;
+    font-size: 1.5em;
     padding: 0 0.3em 0 0.5em;
-    border-right: 1px solid #97cb9b;
+    border-right: 1px solid #97CB9C;
 }
 
-h4 span:last-child{
+.page-standardpage h4 span:last-child {
     padding: 0 0.5em;
     border-right: none;
 }
 
-.page-standardpage .button{
+.page-standardpage .button {
     background-color: white;
     display: inline-block;
     padding: 1.1em 3em;
@@ -936,7 +943,7 @@ h4 span:last-child{
     text-align: center;
 }
 
-.page-standardpage .button:hover{
+.page-standardpage .button:hover {
     cursor: pointer;
     background-color: #EA853a;
     display: inline-block;
@@ -1017,13 +1024,12 @@ h4 span:last-child{
 .page-standardpage .quote {
     background-color: #424A4F;
     padding: 3em 0 2.8em 0;
-    background: url("/static/torchbox/images/tbx_sign_dark2.jpg") center right no-repeat;
+    background: url("/static/torchbox/images/about-placeholder6.jpg") center right no-repeat;
     background-size: cover;
 }
 
 .page-standardpage .quote p {
     font-size: 1.1em;
-    margin-top: -1em;
     color: #fff;
     text-align: center;
 }

@@ -379,16 +379,16 @@
 	}
 
 	.page-standardpage .quote {
-    	padding: 6em 0 6em 0;
+    	padding: 7em 0 6em 0;
     	margin: 2em 0 3em 0;
 	}
 
-	.page-standardpage  h4 {
+	.page-standardpage h4 span {
 		font-size: 2.5em;
-		line-height: 1.3em;
-		padding: 0.3em;
-		margin: 0.5em auto 0.5em auto;
-		text-align: center;
+	}
+
+	.page-standardpage h4 {
+		padding: 1em;
 	}
 
 	.page-standardpage .quote p {
