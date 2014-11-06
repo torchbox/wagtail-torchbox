@@ -559,6 +559,13 @@
 	}
 
 	/*Blog index*/
+	.closed {
+	    height: auto;
+	}
+
+	.dropdown {
+		display: none;
+	}
 
 	.page-blogindexpage main .block-link:first-child {
 		border-top: none;
@@ -613,12 +620,15 @@
 	}
 
 	.page-blogindexpage main .block-link {
-		border-bottom: 1px dotted #DAD7D7;
+		padding: 3em 1em;
 	}
 
 	.page-blogindexpage .blog-title {
 		background-color:white;
 		-webkit-background-size: cover;
+		max-width: 60em;
+		margin: 0 auto;
+		padding: 0 2em;
 	}
 
 	.page-blogindexpage .listing p {

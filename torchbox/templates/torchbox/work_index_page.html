@@ -6,14 +6,20 @@
 
     {% get_popular_tags self as poptags %} 
 
+    <div class="dropdown">
+        Tags
+    </div>
+
 
      <div class="popular-tags container">
         {% if poptags %}
+            <div class="closed">
                 <p>
                     {% for tag in poptags %}
                         <a href="?tag={{ tag.slug }}">{{ tag }}</a>
                     {% endfor %}
                 </p>
+            </div>
         {% endif %}
 
         {# Optional heading appears if filtering by tag #}

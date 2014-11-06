@@ -302,7 +302,7 @@ main nav li.active a:after {
 
  .bleed {
     margin: 0.3em -1em 0 -1em;
-    background: rgba(67,74,79,1);
+    background: rgba(67,74,79,0.9);
     color: white;
     overflow: hidden;
 }
@@ -426,11 +426,11 @@ main nav li.active a:after {
 
 /*Page home*/
 
-.arrow{
+.arrow {
     display: none;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
@@ -663,10 +663,11 @@ overflow: hidden;
 }
 
 .clients {
-    padding: 1em 0 1em 0em;
-    margin:0 auto;
+    padding: 3em 0 1em 0em;
+    margin: 3.5em auto 0 auto;
     max-width: 50em;
     overflow: hidden;
+    border-top: 1px dotted;
 }
 
 .clients li {
@@ -903,14 +904,13 @@ font-size: 0.8em;
 /*Standard page*/
 
 .dark {
-    background: rgba(67, 74, 79, 0.5);
     margin: 0 2em;
     border-radius: 3px;
     padding: 0.5em;
 }
 
 .page-standardpage h4 {
-    color: #fff;
+    color: #434a4f;
     font-size: 1.1em;
     text-align: center;
     margin: 0.5em auto 0.5em auto;
@@ -919,10 +919,11 @@ font-size: 0.8em;
 
 .page-standardpage h4 span {
     font-weight: bold;
-    color: #97CB9C;
+    color: #434a4f;
     font-size: 1.5em;
     padding: 0 0.3em 0 0.5em;
-    border-right: 1px solid #97CB9C;
+    border-right: 1px solid #434a4f;
+    text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
 
 .page-standardpage h4 span:last-child {
@@ -996,7 +997,7 @@ font-size: 0.8em;
     color: #fff;
     font-weight: bold;
     font-size: 2.5em;
-    margin: -3em 0 3.5em 0;
+    margin: -3em 0 1em 0;
 }
 
 .page-standardpage  p i{
@@ -1030,8 +1031,9 @@ font-size: 0.8em;
 
 .page-standardpage .quote p {
     font-size: 1.1em;
-    color: #fff;
+    color: #434a4f;
     text-align: center;
+    text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
 
 .page-standardpage h1 {
@@ -1048,9 +1050,9 @@ font-size: 0.8em;
 }
 
 .page-standardpage .were-tbx h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
     font-weight: bold;
-    margin-bottom: 0.5em;
+    margin: 0.5em 0;
     color: #424a4f;
 }
 
@@ -1167,6 +1169,36 @@ font-size: 0.8em;
     margin-top: 0;
 }
 
+.dropdown {
+    font-size: 1.2em;
+    color: #fff;
+    background: #434a4f;
+    padding: 0.5em 0 0.5em 1em;
+    border-radius: 3px;
+    display: block;
+    margin: 1em;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
+.closed {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.open {
+   height: 200px;
+}
+
+.dropdown:after {
+    content: url("/static/torchbox/images/down_arrow.png");
+    float: right;
+    padding: 4px 1em 0 0;
+}
+
 .page-blogindexpage img.scale {
     display: none;
 }
@@ -1187,7 +1219,7 @@ font-size: 0.8em;
 
 .page-blogindexpage .blog-title h1{
     margin: 0 auto;
-    padding: 0.2em 0.7em;
+    padding: 0.2em 0em;
     max-width: 48em;
 }
 .page-blogindexpage .blog-title p{
@@ -1199,11 +1231,11 @@ font-size: 0.8em;
     color: #ea853a;
 }
 
-    .page-blogindexpage .blog-title h2 {
-        color: #424a4f;
-        margin-top: 0.5em;
-        font-size: 1.3em;
-    }
+.page-blogindexpage .blog-title h2 {
+    color: #424a4f;
+    margin-top: 0.5em;
+    font-size: 1.3em;
+}
 
 .page-blogindexpage li img {
     display: none;
@@ -1213,7 +1245,7 @@ font-size: 0.8em;
 
 .page-blogindexpage main .block-link {
     border-bottom: 1px dotted #DAD7D7;
-    padding: 3em 1em;
+    padding: 2em 1em;
     transition: background-color 0.2s ease;
 }
 
@@ -1343,7 +1375,7 @@ font-size: 0.8em;
 
 .popular-tags a {
     display: inline-block;
-    width: 145px;
+    width: 130px;
     padding:0.5em 1em;
     color:#424A4F;
     font-size:1em;
@@ -1457,6 +1489,10 @@ a.tooltip span{
 }
 
 /*Work index*/
+
+.page-workindexpage .dropdown {
+    margin: 2em 1em 1em 1em;
+}
 
 .page-workindexpage {
     color: #fff;
