@@ -30,6 +30,7 @@
                     {% endfor %}
                 </p>
                 {% endif %}
+            </div>
 
                 {# Optional heading appears if filtering by tag #}
                 {% if request.GET.tag|length %}
@@ -37,7 +38,7 @@
                         <a href="{% pageurl self %}"> Show all </a>
                     </p>
                     {% endif %}
-            </div>
+            
     </div>
 
     <ul class="listing clearfix">
