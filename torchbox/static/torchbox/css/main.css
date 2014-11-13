@@ -1542,7 +1542,7 @@ a.tooltip span{
     min-height: 24em;
 }
 
-.page-workindexpage main .listing div {
+.page-workindexpage main .listing .about {
     max-width: 60em;
     margin: 0 auto;
     z-index: 9999;
@@ -1551,6 +1551,7 @@ a.tooltip span{
     padding: 1.5em;
     max-width: 36em;
     background: #000;
+    border-radius: 0 3px 0 0;
 }
 
 
@@ -1560,6 +1561,10 @@ a.tooltip span{
     transition: opacity 0.2s ease;
     margin-bottom: 0.25em;
     font-family: "proxima-nova",helvetica,sans-serif;
+}
+
+.page-workindexpage main .listing .credit {
+    display: none;
 }
 
 /*Work page*/

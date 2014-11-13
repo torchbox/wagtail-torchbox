@@ -479,7 +479,7 @@
 	    color: #fff;
 	}
 
-	.page-workindexpage main .listing div {
+	.page-workindexpage main .listing .about {
 	    padding: 4em;
 	}
 
@@ -490,33 +490,44 @@
 	.page-workindexpage main ul a:hover {
 	    background-color: rgba(0,0,0,0.6);
 	    cursor: pointer;
+	    transition: 0.3s ease;
 	}
 
 
-	.page-workindexpage main .listing div {
+	.page-workindexpage main .listing .about {
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 289px;
 	    background-color: #000;
 	}
 
-	.page-workindexpage main .listing a:hover div {
+	.page-workindexpage main .listing a:hover .about {
 	    top: 130px;
 	}
 
-	.page-workindexpage main .listing div p {
+	.page-workindexpage main .listing .about p {
 		margin: 1em 0 1em 0;
 		display: block;
 		color: #000;
 	}
 
-	.page-workindexpage main .listing a:hover div {
+	.page-workindexpage main .listing a:hover .about {
 	    top: 165px;
 	    background-color: #fff;
 	}
 
-	.page-workindexpage main .listing a:hover div h2 {
+	.page-workindexpage main .listing a:hover .about h2 {
 		color: #000;
+	}
+
+	.page-workindexpage main .listing a h5 {
+		display: block;
+	    font-size: 1em;
+	    line-height: 1;
+	    transition: opacity 0.2s ease;
+	    margin-bottom: 0.25em;
+	    font-family: "proxima-nova",helvetica,sans-serif;
+	    font-style: italic;
 	}
 
 	.page-workindexpage main ul li {
@@ -1316,6 +1327,22 @@
 		max-width: 100%;
 	}
 
+	.page-workindexpage main .listing .credit {
+		display: block;
+		position: absolute;
+		background: rgba(0,0,0,0.6);
+		border-radius: 3px 0 0 0;
+		padding: 0.5em 1em;
+		right: 0;
+		bottom: 0;
+		transition: 0.2s ease;
+	}
+
+	.page-workindexpage main .listing a:hover .credit {
+		background: none;
+		transition: 0.2s ease;
+	}
+
 }
 
     /* Desktop */
@@ -1332,19 +1359,24 @@
 		font-size: 0.8em;
 	}
 
-	.page-workindexpage main .listing div {
+	.page-workindexpage main .listing .about {
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
-	    top: 624px;
+	    top: 634px;
 	    background-color: rgba(0,0,0,0.7);
 	}
 
-	.page-workindexpage main .listing a:hover div {
+	.page-workindexpage main .listing a:hover .about {
 	    top: 475px;
 	    background-color: #fff;
 	}
 
-	.page-workindexpage main .listing a:hover div h2 {
+
+	.page-workindexpage main .listing .credit {
+		bottom: 560px;
+	}
+
+	.page-workindexpage main .listing a:hover .about h2 {
 	color: #000;
 	}
 
