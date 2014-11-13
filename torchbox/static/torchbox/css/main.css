@@ -307,6 +307,8 @@ main nav li.active a:after {
     overflow: hidden;
 }
 
+
+
 .listing .bleed {
     background: transparent;
     margin: 0;
@@ -464,6 +466,15 @@ main nav li.active a:after {
     display: none;
 }
 
+.work-intro .rich-text p{
+    max-height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    line-height: 1.5em;
+}
+
 .blogcontainer {
     display: none;
 }
@@ -584,9 +595,14 @@ main nav li.active a:after {
     color: #fff;
 }
 
+.page-homepage .hiring div ul li{
+    text-align: center;
+}
+
 .page-homepage main h2 {
+    text-align: center;
     font-size: 2em;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     font-family: "proxima-nova";
     font-weight: 600;
     color: #424A4F;
@@ -644,6 +660,7 @@ overflow: hidden;
 
 .page-homepage .blog li {
     margin-top: 0.5em;
+    border-bottom: 1px dotted #A9A9A9;
 }
 
 .worklisting h3{
@@ -655,11 +672,12 @@ overflow: hidden;
 }
 
 .page-homepage .bloglisting a:first-child li{
-    padding-top: 2em;
+    padding-top: 0.5em;
 }
 
 .page-homepage .bloglisting a:last-child li{
-    padding-bottom: 2em;
+    padding-bottom: 0em;
+    border: none;
 }
 
 .clients {
@@ -1950,18 +1968,17 @@ footer .contact {
 
 footer .contact h2{
     font-size: 2em;
-    margin: 0.5em 0;
+    margin: 0.5em 0 -0.5em 0;
     font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 footer .contact a {
     color: #fff;
-    padding: 1em;
+    padding: 1em 0;
 }
 
 footer .contact ul {
-    border-top: 1px dotted #666;
-    border-top: 1px dotted rgba(255,255,255,0.2);;
+    margin-bottom: 0;
 }
 
 footer .contact li {

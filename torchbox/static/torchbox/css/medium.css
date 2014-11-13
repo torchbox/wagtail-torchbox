@@ -183,8 +183,7 @@
 	}
 
 	.page-homepage .blog {
-		padding: 2em 0;
-		margin-bottom: 5px;
+		padding: 2em 0 0.5em 0;
 	}
 
 	.hide{
@@ -1392,7 +1391,7 @@
 
 /*Block Hover homepage feed*/
 
-@media only screen and (min-width: 65em) {
+@media only screen and (min-width: 60em) {
 
 	.page-standardpage h2 {
 		font-weight: bold;
