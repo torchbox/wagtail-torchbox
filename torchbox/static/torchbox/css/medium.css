@@ -315,6 +315,12 @@
 
 	.credit h5 {
 		color: #fff;
+		font-style: italic;
+		display: block;
+		font-size: 1em;
+		line-height: 1;
+		transition: opacity 0.2s ease;
+		margin: 0.1em 0;
 	}
 
 	.hangingindent {
@@ -544,7 +550,7 @@
 	    font-size: 1em;
 	    line-height: 1;
 	    transition: opacity 0.2s ease;
-	    margin-bottom: 0.25em;
+	    margin: 0.1em 0;
 	    font-family: "proxima-nova",helvetica,sans-serif;
 	    font-style: italic;
 	}
