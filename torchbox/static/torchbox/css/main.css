@@ -1532,7 +1532,6 @@ a.tooltip span{
     color: #fff;
 }
 
-
 .page-workindexpage h1 {
     font-weight: bold;
     font-size: 3em;
@@ -1614,8 +1613,11 @@ a.tooltip span{
     margin-top: -4.5em;
 }
 
+.height .rich-text p {
+    margin-top: 0;
+}
+
 .page-workpage .intro .body-copy {
-    margin-bottom: 1em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
