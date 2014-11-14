@@ -737,6 +737,7 @@
 		background: rgba(255, 255, 255, 1);
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 		max-width: 800px;
+		border-radius: 3px;
     }
 
     .nextprev-nav{
