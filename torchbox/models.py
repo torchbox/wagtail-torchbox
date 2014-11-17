@@ -23,7 +23,7 @@ from taggit.models import Tag, TaggedItemBase
 from south.signals import post_migrate
 
 from torchbox.utils import export_event
-    
+
 COMMON_PANELS = (
     FieldPanel('slug'),
     FieldPanel('seo_title'),
@@ -193,12 +193,40 @@ HomePage.promote_panels = [
 class StandardPageContentBlock(Orderable, ContentBlock):
     page = ParentalKey('torchbox.StandardPage', related_name='content_block')
 
+
 class StandardPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='related_links')
 
+
+class StandardPageClients(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.StandardPage', related_name='clients')
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+StandardPageClients.panels = StandardPageClients.panels + [
+    ImageChooserPanel('image')]
+
+
 class StandardPage(Page):
+    main_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    credit = models.CharField(max_length=255, blank=True)
+    heading = RichTextField(blank=True)
+    quote = models.CharField(max_length=255, blank=True)
     intro = RichTextField(blank=True)
+    middle_break = RichTextField(blank=True)
     body = RichTextField(blank=True)
+    email = models.EmailField(blank=True)
 
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -213,10 +241,17 @@ class StandardPage(Page):
 
 StandardPage.content_panels = [
     FieldPanel('title', classname="full title"),
+    ImageChooserPanel('main_image'),
+    FieldPanel('credit', classname="full"),
+    FieldPanel('heading', classname="full"),
+    FieldPanel('quote', classname="full"),
     FieldPanel('intro', classname="full"),
+    FieldPanel('middle_break', classname="full"),
     FieldPanel('body', classname="full"),
+    FieldPanel('email', classname="full"),
     InlinePanel(StandardPage, 'content_block', label="Content block"),
     InlinePanel(StandardPage, 'related_links', label="Related links"),
+    InlinePanel(StandardPage, 'clients', label="Clients"),
 ]
 
 StandardPage.promote_panels = [
@@ -644,7 +679,7 @@ class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
 
     indexed_fields = ('intro', )
-    # TODO: what is this? 
+    # TODO: what is this?
     # search_name = "Job"
 
     @property
@@ -726,4 +761,3 @@ def import_demo_data(sender, **kwargs):
 
     for filename in os.listdir(image_src_dir):
         shutil.copy(os.path.join(image_src_dir, filename), image_dest_dir)
-
