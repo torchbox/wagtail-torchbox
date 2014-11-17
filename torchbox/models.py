@@ -198,7 +198,7 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='related_links')
 
 
-class Clients(Orderable, RelatedLink):
+class StandardPageClients(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='clients')
     image = models.ForeignKey(
         'wagtailimages.Image',
@@ -208,7 +208,8 @@ class Clients(Orderable, RelatedLink):
         related_name='+'
     )
 
-Clients.panels = Clients.panels + [ImageChooserPanel('image')]
+StandardPageClients.panels = StandardPageClients.panels + [
+    ImageChooserPanel('image')]
 
 
 class StandardPage(Page):
@@ -219,6 +220,7 @@ class StandardPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    credit = models.CharField(max_length=255, blank=True)
     heading = RichTextField(blank=True)
     quote = models.CharField(max_length=255, blank=True)
     intro = RichTextField(blank=True)
@@ -240,6 +242,7 @@ class StandardPage(Page):
 StandardPage.content_panels = [
     FieldPanel('title', classname="full title"),
     ImageChooserPanel('main_image'),
+    FieldPanel('credit', classname="full"),
     FieldPanel('heading', classname="full"),
     FieldPanel('quote', classname="full"),
     FieldPanel('intro', classname="full"),
