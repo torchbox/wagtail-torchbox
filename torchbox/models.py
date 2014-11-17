@@ -222,7 +222,7 @@ class StandardPage(Page):
 
 StandardPage.content_panels = [
     FieldPanel('title', classname="full title"),
-    ImageChooserPanel('main_image', classname="full"),
+    ImageChooserPanel('main_image'),
     FieldPanel('heading', classname="full"),
     FieldPanel('quote', classname="full"),
     FieldPanel('intro', classname="full"),
