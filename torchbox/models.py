@@ -207,6 +207,7 @@ class StandardPage(Page):
     heading = RichTextField(blank=True)
     quote = models.CharField(max_length=255, blank=True)
     intro = RichTextField(blank=True)
+    middle_break = RichTextField(blank=True)
     body = RichTextField(blank=True)
 
     feed_image = models.ForeignKey(
@@ -226,6 +227,7 @@ StandardPage.content_panels = [
     FieldPanel('heading', classname="full"),
     FieldPanel('quote', classname="full"),
     FieldPanel('intro', classname="full"),
+    FieldPanel('middle_break', classname="full"),
     FieldPanel('body', classname="full"),
     InlinePanel(StandardPage, 'content_block', label="Content block"),
     InlinePanel(StandardPage, 'related_links', label="Related links"),
