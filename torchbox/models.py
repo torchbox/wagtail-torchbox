@@ -198,7 +198,7 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='related_links')
 
 
-class Clients(Orderable, RelatedLink):
+class StandardPageClients(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='clients')
     image = models.ForeignKey(
         'wagtailimages.Image',
@@ -208,7 +208,8 @@ class Clients(Orderable, RelatedLink):
         related_name='+'
     )
 
-Clients.panels = Clients.panels + [ImageChooserPanel('image')]
+StandardPageClients.panels = StandardPageClients.panels + [
+    ImageChooserPanel('image')]
 
 
 class StandardPage(Page):
