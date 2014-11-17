@@ -193,8 +193,23 @@ HomePage.promote_panels = [
 class StandardPageContentBlock(Orderable, ContentBlock):
     page = ParentalKey('torchbox.StandardPage', related_name='content_block')
 
+
 class StandardPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='related_links')
+
+
+class Clients(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.StandardPage', related_name='clients')
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+Clients.panels = Clients.panels + [ImageChooserPanel('image')]
+
 
 class StandardPage(Page):
     main_image = models.ForeignKey(
@@ -209,6 +224,7 @@ class StandardPage(Page):
     intro = RichTextField(blank=True)
     middle_break = RichTextField(blank=True)
     body = RichTextField(blank=True)
+    email = models.EmailField(blank=True)
 
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -229,8 +245,10 @@ StandardPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('middle_break', classname="full"),
     FieldPanel('body', classname="full"),
+    FieldPanel('email', classname="full"),
     InlinePanel(StandardPage, 'content_block', label="Content block"),
     InlinePanel(StandardPage, 'related_links', label="Related links"),
+    InlinePanel(StandardPage, 'clients', label="Clients"),
 ]
 
 StandardPage.promote_panels = [

@@ -36,21 +36,14 @@
             <div class="clients">
                  <h2>Some of our clients</h2>
                     <ul>
-                        <li><img src="/static/torchbox/images/client-logo-01.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-02.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-03.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-04.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-ukgbc.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-05.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-ds.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-jrf.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-rca.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-crt.png" width="" height="" alt=""></li>
+                        {% for client in self.clients.all %}
+                            <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
+                        {% endfor %}
                     </ul>
             </div>
 
                 <div class="button">
-                    <a href="mailto:hello@torchbox.com">Get in touch</a>
+                    <a href="mailto:{{ self.email }}">Get in touch</a>
                 </div>
         </section>
 
