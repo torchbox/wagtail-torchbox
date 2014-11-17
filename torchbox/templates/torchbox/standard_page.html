@@ -3,71 +3,47 @@
 
 {% block content %}
 
-        <div class= "crop-height">
-            <img class="scale" src="http://cinemagraphs.com/images/demo/cab-window-429.gif" width="" height="" alt="">
-            <div class="credit">
-                <h5>This photo was stolen from the internet</h5>
+        {% if self.main_image %}
+            <div class= "crop-height">
+                {% image self.main_image fill-1300x750 class="scale" %}
             </div>
-        </div>
+        {% endif %}
 
         <div class="animated fadeInDown container">
-                 <h2>A digital agency with a <span> difference. </span> </h2>
+            {{ self.heading|richtext }}
         </div>
 
         <div class="italic">
-            <p class="hangingindent"> &#8220; We work with people who are trying to make the world a better place. People who share our values.&#8221; </p>
+            <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
         </div>
 
         <section class="intro were-tbx container">
 
-            <p>We design and build beautiful websites for some of the world’s <a href="/work/university-oxford/"> great universities </a> and <a href="/work/royal-college-art/"> academic institutions </a>, globally-renowned
-            <a href="/work/kings-fund-election-timeline/">think tanks</a>, <a href="/work/wwf/">fundraising charities</a>,campaigning NGOs, and leading membership organisations, powered by open source content management systems including Drupal and our very own <a href="/work/wagtail/">Wagtail CMS</a>.</p>
-
-            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust, scalable web applications for mission critical requirements such as management information, <a href="/work/football-foundation/">grant monitoring</a> and reporting, as well as campaign platforms, <a href="/work/wwf/">footprint calculators</a> and <a href="/work/qualitywatch/">data visualisations</a>.</p>
-
-            <p>It's not all or nothing either.</p>
+          {{ self.intro|richtext }}
 
         </section>
 
         <div class="quote">
-            <div class="dark"> 
-                <h4>
-                <span> Strategy </span>
-                <span> UX </span>
-                <span> Design </span>
-                <span> Animation </span>
-                <span> Implementation </span>
-                </h4>
-                <p> Take your pick. Mix and match.</p>
+            <div class="dark">
+                {{ self.middle_break|richtext }}
             </div>
         </div>
 
         <section class="intro were-tbx container">
 
-            <p>We've got digital marketing covered too. We can manage your social media channels, tell your story to a wider audience, generate new content ideas, and optimise your Google Grant. Just ask.</p>
-
-            <p>And we want our clients to see the best possible return on their investment. Close collaboration and an agile and flexible approach mean we can respond and adapt to evolving requirements as we work towards a Minimum Viable Product, without breaking the bank.</p>
-
-            <p>Why Torchbox? Why not?</p>
+            {{ self.body|richtext }}
 
             <div class="clients">
                  <h2>Some of our clients</h2>
                     <ul>
-                        <li><img src="/static/torchbox/images/client-logo-01.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-02.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-03.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-04.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-ukgbc.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-05.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-ds.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-jrf.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-rca.png" width="" height="" alt=""></li>
-                        <li><img src="/static/torchbox/images/client-logo-crt.png" width="" height="" alt=""></li>
+                        {% for client in self.clients.all %}
+                            <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
+                        {% endfor %}
                     </ul>
             </div>
 
                 <div class="button">
-                    <a href="mailto:hello@torchbox.com">Get in touch</a>
+                    <a href="mailto:{{ self.email }}">Get in touch</a>
                 </div>
         </section>
 
