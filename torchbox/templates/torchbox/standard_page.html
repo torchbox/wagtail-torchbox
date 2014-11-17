@@ -6,6 +6,9 @@
         {% if self.main_image %}
             <div class= "crop-height">
                 {% image self.main_image fill-1300x750 class="scale" %}
+                <div class="credit">
+                    <h5>{{ self.credit }}</h5>
+                </div>
             </div>
         {% endif %}
 
