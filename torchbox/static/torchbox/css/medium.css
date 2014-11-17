@@ -305,7 +305,7 @@
 	.credit {
 		display: block;
 		position: absolute;
-		background: rgba(0,0,0,0.6);
+		background: rgba(0,0,0,0.3);
 		border-radius: 3px 0 0 0;
 		padding: 0.5em 1em;
 		right: 0;
@@ -317,7 +317,7 @@
 		color: #fff;
 		font-style: italic;
 		display: block;
-		font-size: 1em;
+		font-size: 0.9em;
 		line-height: 1;
 		transition: opacity 0.2s ease;
 		margin: 0.1em 0;
@@ -547,7 +547,7 @@
 
 	.page-workindexpage main .listing a h5 {
 		display: block;
-	    font-size: 1em;
+	    font-size: 0.9em;
 	    line-height: 1;
 	    transition: opacity 0.2s ease;
 	    margin: 0.1em 0;
@@ -1359,7 +1359,7 @@
 	.page-workindexpage main .listing .credit {
 		display: block;
 		position: absolute;
-		background: rgba(0,0,0,0.6);
+		background: rgba(0,0,0,0.3);
 		border-radius: 3px 0 0 0;
 		padding: 0.5em 1em;
 		right: 0;
