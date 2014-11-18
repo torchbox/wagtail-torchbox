@@ -60,11 +60,48 @@ def has_menu_children(page):
 def content_type(value):
     return value.__class__.__name__.lower()
 
-# Retrieves the top menu items - the immediate children of the parent page
-# The has_menu_children method is necessary because the bootstrap menu requires
-# a dropdown class to be applied to a parent
+
 @register.inclusion_tag('torchbox/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
+    """
+    Checks to see if we're in the Play section in order to return pages with
+    show_in_play_menu set to True, otherwise retrieves the top menu
+    items - the immediate children of the parent page. The
+    has_menu_children method is necessary because the bootstrap menu
+    requires a dropdown class to be applied to a parent
+    """
+    try:
+        in_play = calling_page.show_in_play_menu or True in [
+            ancestor.show_in_play_menu
+            for ancestor in calling_page.get_ancestors()]
+        if in_play:
+            menuitems = list(StandardPage.objects.filter(
+                live=True,
+                show_in_play_menu=True
+            ))
+            menuitems.extend(PersonIndexPage.objects.filter(
+                live=True,
+                show_in_play_menu=True
+            ))
+            menuitems.extend(WorkIndexPage.objects.filter(
+                live=True,
+                show_in_play_menu=True
+            ))
+            for menuitem in menuitems:
+                menuitem.is_active = False
+                if menuitem == calling_page:
+                    menuitem.is_active = True
+            return {
+                'menuitems': menuitems,
+                'calling_page': calling_page,
+                # required by the pageurl tag that we want to use within this template
+                'request': context['request'],
+            }
+        else:
+            pass
+    except AttributeError:
+        pass
+
     menuitems = parent.get_children().filter(
         live=True,
         show_in_menus=True
@@ -74,7 +111,7 @@ def top_menu(context, parent, calling_page=None):
         menuitem.is_active = False
         if context['request'].path.startswith(menuitem.url):
             menuitem.is_active = True
-            
+
     return {
         'calling_page': calling_page,
         'menuitems': menuitems,
