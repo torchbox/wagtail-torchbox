@@ -236,6 +236,8 @@ class StandardPage(Page):
         related_name='+'
     )
 
+    show_in_play_menu = models.BooleanField(default=False)
+
     indexed_fields = ('intro', 'body', )
     search_name = None
 
@@ -256,8 +258,10 @@ StandardPage.content_panels = [
 
 StandardPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+    FieldPanel('show_in_play_menu'),
     ImageChooserPanel('feed_image'),
 ]
+
 
 # Services page
 
@@ -569,6 +573,8 @@ WorkPage.promote_panels = [
 class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
+    show_in_play_menu = models.BooleanField(default=False)
+
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
         popular_tags = WorkPageTag.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
@@ -580,7 +586,7 @@ class WorkIndexPage(Page):
 
     @property
     def works(self):
-        # Get list of person pages that are descendants of this page
+        # Get list of work pages that are descendants of this page
         works = WorkPage.objects.filter(
             live=True,
             path__startswith=self.path
@@ -622,6 +628,7 @@ WorkIndexPage.content_panels = [
 
 WorkIndexPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+    FieldPanel('show_in_play_menu'),
 ]
 
 
@@ -678,6 +685,8 @@ PersonPage.promote_panels = [
 class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
 
+    show_in_play_menu = models.BooleanField(default=False)
+
     indexed_fields = ('intro', )
     # TODO: what is this?
     # search_name = "Job"
@@ -722,6 +731,7 @@ PersonIndexPage.content_panels = [
 
 PersonIndexPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+    FieldPanel('show_in_play_menu'),
 ]
 
 
