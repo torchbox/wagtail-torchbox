@@ -70,36 +70,35 @@ def top_menu(context, parent, calling_page=None):
     has_menu_children method is necessary because the bootstrap menu
     requires a dropdown class to be applied to a parent
     """
-    try:
-        in_play = calling_page.show_in_play_menu or True in [
-            ancestor.show_in_play_menu
-            for ancestor in calling_page.get_ancestors()]
-        if in_play:
-            menuitems = list(StandardPage.objects.filter(
-                live=True,
-                show_in_play_menu=True
-            ))
-            menuitems.extend(PersonIndexPage.objects.filter(
-                live=True,
-                show_in_play_menu=True
-            ))
-            menuitems.extend(WorkIndexPage.objects.filter(
-                live=True,
-                show_in_play_menu=True
-            ))
-            for menuitem in menuitems:
-                menuitem.is_active = False
-                if menuitem == calling_page:
-                    menuitem.is_active = True
-            return {
-                'menuitems': menuitems,
-                'calling_page': calling_page,
-                # required by the pageurl tag that we want to use within this template
-                'request': context['request'],
-            }
-        else:
-            pass
-    except AttributeError:
+    in_play = getattr(
+        calling_page, 'show_in_play_menu', False
+    ) or (
+        True in [getattr(ancestor.specific, 'show_in_play_menu', False)
+                 for ancestor in calling_page.get_ancestors()])
+    if in_play:
+        menuitems = list(StandardPage.objects.filter(
+            live=True,
+            show_in_play_menu=True
+        ))
+        menuitems.extend(PersonIndexPage.objects.filter(
+            live=True,
+            show_in_play_menu=True
+        ))
+        menuitems.extend(WorkIndexPage.objects.filter(
+            live=True,
+            show_in_play_menu=True
+        ))
+        for menuitem in menuitems:
+            menuitem.is_active = False
+            if menuitem == calling_page:
+                menuitem.is_active = True
+        return {
+            'menuitems': menuitems,
+            'calling_page': calling_page,
+            # required by the pageurl tag that we want to use within this template
+            'request': context['request'],
+        }
+    else:
         pass
 
     menuitems = parent.get_children().filter(
