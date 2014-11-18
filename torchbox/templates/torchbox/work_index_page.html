@@ -4,15 +4,14 @@
 {% block content %}
 
 
-    {% get_popular_tags self as poptags %} 
+    {% get_popular_tags self as poptags %}
 
     <div class="dropdown">
         Tags
     </div>
 
-
      <div class="popular-tags container">
-        {% if poptags %}
+        {% if poptags and not self.hide_popular_tags %}
             <div class="closed">
                 <p>
                     {% for tag in poptags %}
@@ -24,7 +23,7 @@
 
         {# Optional heading appears if filtering by tag #}
         {% if request.GET.tag|length %}
-            <p class="show">Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span> 
+            <p class="show">Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span>
                 <a href="{% pageurl self %}"> Show all </a>
             </p>
         {% endif %}
