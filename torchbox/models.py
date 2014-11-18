@@ -574,6 +574,7 @@ class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
     show_in_play_menu = models.BooleanField(default=False)
+    hide_popular_tags = models.BooleanField(default=False)
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
@@ -624,6 +625,7 @@ class WorkIndexPage(Page):
 WorkIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
+    FieldPanel('hide_popular_tags'),
 ]
 
 WorkIndexPage.promote_panels = [
