@@ -411,6 +411,12 @@ class BlogPage(Page, TagSearchable):
         # just return first blog index in database
         return BlogIndexPage.objects.first()
 
+    @property
+    def has_authors(self):
+        for author in self.related_author.all():
+            if author.author:
+                return true
+
 BlogPage.content_panels = [
     FieldPanel('title', classname="full title"),
     InlinePanel(BlogPage, 'related_author', label="Author"),
