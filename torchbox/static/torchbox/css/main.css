@@ -355,6 +355,13 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
 }
 
+.body-copy img,
+.body-copy audio,
+.body-copy canvas,
+.body-copy video {
+    vertical-align: baseline;
+}
+
 .negative {
     color: #fff;
 }
