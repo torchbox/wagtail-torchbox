@@ -166,6 +166,11 @@
 
 	/*Homepage*/
 
+	.page-homepage .blog li {
+		margin-top: 0;
+		border-bottom: none;
+	}
+
 	.arrow{
 	    display: block;
 	    margin: 4em 0 0 -0.8em;
@@ -183,8 +188,7 @@
 	}
 
 	.page-homepage .blog {
-		padding: 2em 0;
-		margin-bottom: 5px;
+		padding: 2em 0 0.5em 0;
 	}
 
 	.hide{
@@ -298,6 +302,27 @@
 
 	/*Standard page (we're torchbox) */
 
+	.credit {
+		display: block;
+		position: absolute;
+		background: rgba(0,0,0,0.3);
+		border-radius: 3px 0 0 0;
+		padding: 0.5em 1em;
+		right: 0;
+		bottom: 0;
+		transition: 0.2s ease;
+	}
+
+	.credit h5 {
+		color: #fff;
+		font-style: italic;
+		display: block;
+		font-size: 0.9em;
+		line-height: 1;
+		transition: opacity 0.2s ease;
+		margin: 0.1em 0;
+	}
+
 	.hangingindent {
     	text-indent: -13px ;
 	}
@@ -335,7 +360,7 @@
 	}
 
 	.page-standardpage h2 {
-		margin: -2em auto 2em auto;
+		margin: -4em auto 2em auto;
 		font-size: 4em;
 	}
 
@@ -479,7 +504,7 @@
 	    color: #fff;
 	}
 
-	.page-workindexpage main .listing div {
+	.page-workindexpage main .listing .about {
 	    padding: 4em;
 	}
 
@@ -490,33 +515,45 @@
 	.page-workindexpage main ul a:hover {
 	    background-color: rgba(0,0,0,0.6);
 	    cursor: pointer;
+	    transition: 0.3s ease;
 	}
 
 
-	.page-workindexpage main .listing div {
+	.page-workindexpage main .listing .about {
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
 	    top: 289px;
 	    background-color: #000;
 	}
 
-	.page-workindexpage main .listing a:hover div {
+	.page-workindexpage main .listing a:hover .about {
 	    top: 130px;
 	}
 
-	.page-workindexpage main .listing div p {
+	.page-workindexpage main .listing .about p {
 		margin: 1em 0 1em 0;
 		display: block;
 		color: #000;
+		font-size: 1.1em;
 	}
 
-	.page-workindexpage main .listing a:hover div {
+	.page-workindexpage main .listing a:hover .about {
 	    top: 165px;
 	    background-color: #fff;
 	}
 
-	.page-workindexpage main .listing a:hover div h2 {
+	.page-workindexpage main .listing a:hover .about h2 {
 		color: #000;
+	}
+
+	.page-workindexpage main .listing a h5 {
+		display: block;
+	    font-size: 0.9em;
+	    line-height: 1;
+	    transition: opacity 0.2s ease;
+	    margin: 0.1em 0;
+	    font-family: "proxima-nova",helvetica,sans-serif;
+	    font-style: italic;
 	}
 
 	.page-workindexpage main ul li {
@@ -559,6 +596,10 @@
 	}
 
 	/*Blog index*/
+	.closed:after {
+		display: none;
+	}
+
 	.closed {
 	    height: auto;
 	}
@@ -718,11 +759,11 @@
     }
 
     .page-workpage .intro .body-copy {
-	    margin-bottom: 1em;
 	    margin-top: -10.2em;
 		background: rgba(255, 255, 255, 1);
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 		max-width: 800px;
+		border-radius: 3px;
     }
 
     .nextprev-nav{
@@ -776,6 +817,10 @@
 
 	.grid.people-list li:nth-child(3n+4) {
 		clear:none;
+	}
+
+	.grid.people-list a {
+		-webkit-transform: translate3d(0,0,0);
 	}
 
 	.grid li a {
@@ -1004,9 +1049,9 @@
 	}
 
 	.grid.people-list li {
-		width: 50%;
+		/*width: 50%;
 		margin: 0;
-		padding: 0;
+		padding: 0;*/
 	}
 
 	.grid.people-list li div {
@@ -1316,6 +1361,22 @@
 		max-width: 100%;
 	}
 
+	.page-workindexpage main .listing .credit {
+		display: block;
+		position: absolute;
+		background: rgba(0,0,0,0.3);
+		border-radius: 3px 0 0 0;
+		padding: 0.5em 1em;
+		right: 0;
+		bottom: 0;
+		transition: 0.2s ease;
+	}
+
+	.page-workindexpage main .listing a:hover .credit {
+		background: none;
+		transition: 0.2s ease;
+	}
+
 }
 
     /* Desktop */
@@ -1332,19 +1393,24 @@
 		font-size: 0.8em;
 	}
 
-	.page-workindexpage main .listing div {
+	.page-workindexpage main .listing .about {
 	    padding: 2em 2.5em 0 2.5em;
 		transition: 0.3s ease;
-	    top: 624px;
+	    top: 634px;
 	    background-color: rgba(0,0,0,0.7);
 	}
 
-	.page-workindexpage main .listing a:hover div {
+	.page-workindexpage main .listing a:hover .about {
 	    top: 475px;
 	    background-color: #fff;
 	}
 
-	.page-workindexpage main .listing a:hover div h2 {
+
+	.page-workindexpage main .listing .credit {
+		bottom: 560px;
+	}
+
+	.page-workindexpage main .listing a:hover .about h2 {
 	color: #000;
 	}
 
@@ -1360,7 +1426,7 @@
 
 /*Block Hover homepage feed*/
 
-@media only screen and (min-width: 65em) {
+@media only screen and (min-width: 60em) {
 
 	.page-standardpage h2 {
 		font-weight: bold;

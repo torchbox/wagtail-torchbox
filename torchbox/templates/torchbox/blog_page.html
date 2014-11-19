@@ -31,17 +31,19 @@
             {% with self.related_author.all as authors %}
                 {% if authors %}
                     {% for author in authors %}
-                        {% if self.date %}
-                            <span class="date">{{ self.date|date:"j F Y" }}&nbsp;|&nbsp;</span>
-                        {% endif %}
+                        {% if author.author %}
+                            {% if self.date %}
+                                <span class="date">{{ self.date|date:"j F Y" }}&nbsp;|&nbsp;</span>
+                            {% endif %}
 
-                        <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
+                            <a href="{% pageurl author.author %}">{{ author.author.title }}</a>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             {% endwith %}
 
             <div class="share">
-                | <a>Share &#10084;</a>
+                {% if has_authors %}| {% endif %}<a>Share &#10084;</a>
                 <ul class="share options">
                     <li>
                         <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
@@ -69,7 +71,7 @@
                             {% image author.author.image fill-300x300 as photo %}
                             <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
                         {% endif %}
-                        <a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>
+                        {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
 
                         {% if author.author.role %}
                             <span class="role">{{ author.author.role }}</span>

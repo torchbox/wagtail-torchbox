@@ -44,7 +44,10 @@
                     {% image screenshot.image width-2000 as screenshot %}
                     <li style='background-image: url({{ screenshot.url}});'>
                         <a href="{% pageurl work %}">
-                            <div>
+                            <div class="credit">
+                                <h5>Photo by The European Commission DG ECHO</h5>
+                            </div>
+                            <div class="about">
                                 <h2>{{ work.title }}</h2>
                                 <p>
                                     {% if work.summary %}

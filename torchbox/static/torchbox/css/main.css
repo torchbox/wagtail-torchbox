@@ -90,9 +90,10 @@ img.scale {
 }
 
 .crop-height {
-     /* max-width: 1200px; /* img src width (if known) */
-     max-height: 40em;
+    /* max-width: 1200px; /* img src width (if known) */
+    max-height: 40em;
     overflow: hidden;
+    position: relative;
 }
 
 html {
@@ -265,6 +266,10 @@ main nav li.active a:after {
     margin-left: -0.75em;
 }
 
+.credit {
+    display:none;
+}
+
 .container {
     padding: 0 1em;
 }
@@ -307,6 +312,8 @@ main nav li.active a:after {
     overflow: hidden;
 }
 
+
+
 .listing .bleed {
     background: transparent;
     margin: 0;
@@ -346,6 +353,13 @@ main nav li.active a:after {
     font-size: 1.25em;
     font-weight: bold;
     margin-bottom: 0.25em;
+}
+
+.body-copy img,
+.body-copy audio,
+.body-copy canvas,
+.body-copy video {
+    vertical-align: baseline;
 }
 
 .negative {
@@ -462,6 +476,15 @@ main nav li.active a:after {
 
 .workcontainer .work-intro .listing p{
     display: none;
+}
+
+.work-intro .rich-text p{
+    max-height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    line-height: 1.5em;
 }
 
 .blogcontainer {
@@ -584,9 +607,14 @@ main nav li.active a:after {
     color: #fff;
 }
 
+.page-homepage .hiring div ul li{
+    text-align: center;
+}
+
 .page-homepage main h2 {
+    text-align: center;
     font-size: 2em;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     font-family: "proxima-nova";
     font-weight: 600;
     color: #424A4F;
@@ -607,7 +635,7 @@ overflow: hidden;
 
 .page-homepage .hero h2 {
         text-align: center;
-        margin: 0 auto 1em 0;
+        margin: 1.5em auto 1em 0;
         max-width: 26em;
         text-align: left;
         font-size: 1.8em;
@@ -644,6 +672,7 @@ overflow: hidden;
 
 .page-homepage .blog li {
     margin-top: 0.5em;
+    border-bottom: 1px dotted #A9A9A9;
 }
 
 .worklisting h3{
@@ -655,11 +684,12 @@ overflow: hidden;
 }
 
 .page-homepage .bloglisting a:first-child li{
-    padding-top: 2em;
+    padding-top: 0.5em;
 }
 
 .page-homepage .bloglisting a:last-child li{
-    padding-bottom: 2em;
+    padding-bottom: 0em;
+    border: none;
 }
 
 .clients {
@@ -997,7 +1027,7 @@ font-size: 0.8em;
     color: #fff;
     font-weight: bold;
     font-size: 2.5em;
-    margin: -3em 0 1em 0;
+    margin: -5em 0 3em 0;
 }
 
 .page-standardpage  p i{
@@ -1086,7 +1116,7 @@ font-size: 0.8em;
     display: block;
     height: auto !important;
     width: auto\9;
-    width: auto;
+    width: 260%;
     max-width: none;
     -ms-interpolation-mode: bicubic;
 }
@@ -1213,6 +1243,14 @@ font-size: 0.8em;
     padding: 4px 1em 0 0;
     -webkit-transform: rotate(-180deg);
     transform: rotate(-180deg);
+}
+
+.page-blogindexpage .closed:after {
+    margin-top: -16.6em;
+}
+
+.page-blogindexpage .open:after {
+    margin-top: -17em;
 }
 
 .page-blogindexpage img.scale {
@@ -1473,11 +1511,12 @@ font-size: 0.8em;
 }
 
 .tags a:before {
-    content: "\f28d";
-    font-size: 1.2em;
-    padding: 0 5px 0 0;
+    background-image: url("/static/torchbox/images/tag.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    content: "";
+    padding: 0 20px 0 0;
     margin: 0px 5px 0 0;
-    font-family: "Ionicons";
 }
 
 .tags a:hover {
@@ -1514,7 +1553,6 @@ a.tooltip span{
     color: #fff;
 }
 
-
 .page-workindexpage h1 {
     font-weight: bold;
     font-size: 3em;
@@ -1542,7 +1580,7 @@ a.tooltip span{
     min-height: 24em;
 }
 
-.page-workindexpage main .listing div {
+.page-workindexpage main .listing .about {
     max-width: 60em;
     margin: 0 auto;
     z-index: 9999;
@@ -1551,6 +1589,7 @@ a.tooltip span{
     padding: 1.5em;
     max-width: 36em;
     background: #000;
+    border-radius: 0 3px 0 0;
 }
 
 
@@ -1560,6 +1599,10 @@ a.tooltip span{
     transition: opacity 0.2s ease;
     margin-bottom: 0.25em;
     font-family: "proxima-nova",helvetica,sans-serif;
+}
+
+.page-workindexpage main .listing .credit {
+    display: none;
 }
 
 /*Work page*/
@@ -1591,8 +1634,11 @@ a.tooltip span{
     margin-top: -4.5em;
 }
 
+.height .rich-text p {
+    margin-top: 0;
+}
+
 .page-workpage .intro .body-copy {
-    margin-bottom: 1em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -1863,7 +1909,6 @@ main .breadcrumb a:hover {
     background-color: #424A4F;
     display: block;
     overflow: hidden;
-    -webkit-transform: translate3d(0,0,0);
 }
 
 
@@ -1945,18 +1990,17 @@ footer .contact {
 
 footer .contact h2{
     font-size: 2em;
-    margin: 0.5em 0;
+    margin: 0.5em 0 -0.5em 0;
     font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 footer .contact a {
     color: #fff;
-    padding: 1em;
+    padding: 1em 0;
 }
 
 footer .contact ul {
-    border-top: 1px dotted #666;
-    border-top: 1px dotted rgba(255,255,255,0.2);;
+    margin-bottom: 0;
 }
 
 footer .contact li {
