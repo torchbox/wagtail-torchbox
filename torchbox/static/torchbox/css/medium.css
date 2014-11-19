@@ -819,6 +819,10 @@
 		clear:none;
 	}
 
+	.grid.people-list a {
+		-webkit-transform: translate3d(0,0,0);
+	}
+
 	.grid li a {
 		border: none;
 	}
@@ -1045,9 +1049,9 @@
 	}
 
 	.grid.people-list li {
-		width: 50%;
+		/*width: 50%;
 		margin: 0;
-		padding: 0;
+		padding: 0;*/
 	}
 
 	.grid.people-list li div {

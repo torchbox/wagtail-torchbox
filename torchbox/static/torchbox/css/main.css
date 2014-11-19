@@ -1909,7 +1909,6 @@ main .breadcrumb a:hover {
     background-color: #424A4F;
     display: block;
     overflow: hidden;
-    -webkit-transform: translate3d(0,0,0);
 }
 
 
