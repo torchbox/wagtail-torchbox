@@ -33,6 +33,11 @@
             <script src="{% static "js/main.js" %}"></script>
         {% endcompress %}
 
+        {% if self|in_play %}
+            {# PLAY CSS GOES HERE #}
+        {% endif %}
+
+
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}"/>
 
         <!-- Load fonts -->
@@ -106,7 +111,7 @@
                     <div class="offices container ">
                         <h2 class="visuallyhidden">Visit us</h2>
                         <ul class="clearfix listing">
-                            <a href="http://www.maps.google.com/?q=Unit+9+Southill+Business+Park+Cornbury+Park+Charlbury+OX7+3EW">
+                            <a href="https://www.google.co.uk/maps/place/Torchbox/@51.858115,-1.480577,17z/data=!3m1!4b1!4m2!3m1!1s0x4876d26f301900bd:0xca3bbb6b78d4b3e4">
                                 <li>
                                     <div class="svg">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
@@ -123,8 +128,7 @@
                                         </div>
                                 </li>
                             </a>
-
-                            <a href="http://www.maps.google.com/?q=4+Unity+St+Bristol+BS1+United Kingdom">
+                            <a href="https://www.google.co.uk/maps/place/Torchbox/@51.453371,-2.60056,20z/data=!3m1!4b1!4m2!3m1!1s0x48718dd73f674ef7:0xa01401396c06a317">
                                 <li>
                                     <div class="svg">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">

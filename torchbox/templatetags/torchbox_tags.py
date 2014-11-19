@@ -61,6 +61,20 @@ def content_type(value):
     return value.__class__.__name__.lower()
 
 
+@register.filter
+def in_play(page):
+    """
+    Check to see if a page is in the Play section. A page is in the Play
+    section if it has 'show_in_play_menu' set to True, or one of its
+    ancestors does.
+    """
+    return getattr(
+        page, 'show_in_play_menu', False
+    ) or (
+        True in [getattr(ancestor.specific, 'show_in_play_menu', False)
+                 for ancestor in page.get_ancestors()])
+
+
 @register.inclusion_tag('torchbox/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
     """
@@ -70,12 +84,7 @@ def top_menu(context, parent, calling_page=None):
     has_menu_children method is necessary because the bootstrap menu
     requires a dropdown class to be applied to a parent
     """
-    in_play = getattr(
-        calling_page, 'show_in_play_menu', False
-    ) or (
-        True in [getattr(ancestor.specific, 'show_in_play_menu', False)
-                 for ancestor in calling_page.get_ancestors()])
-    if in_play:
+    if in_play(calling_page):
         menuitems = list(StandardPage.objects.filter(
             live=True,
             show_in_play_menu=True
@@ -98,8 +107,6 @@ def top_menu(context, parent, calling_page=None):
             # required by the pageurl tag that we want to use within this template
             'request': context['request'],
         }
-    else:
-        pass
 
     menuitems = parent.get_children().filter(
         live=True,
