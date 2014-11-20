@@ -732,6 +732,7 @@ overflow: hidden;
 .clients li img {
     width: auto;
     max-height: 97px;
+    max-width: 100%;
 }
 
 /*Jobs index*/
