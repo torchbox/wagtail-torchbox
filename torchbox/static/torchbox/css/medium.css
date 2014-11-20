@@ -164,6 +164,24 @@
 		margin-left:1em;
 	}
 
+	/* Pagination */
+	.pagination {
+    	padding: 0;
+    	max-width: 60em;
+    	margin: 0 auto;
+    	overflow: hidden;
+    	text-align: center;
+    	font-size: 1.125em;
+	}
+
+	.pagination a p{
+    	transition: 0.2s ease;
+	}
+
+	.pagination a p:hover{
+		color: #EA853A;
+	}
+
 	/*Homepage*/
 
 	.page-homepage .blog li {
@@ -491,7 +509,7 @@
 		color: #F7A42C;
 	}
 
-	.page-workindexpage {
+	.page-workindexpage section.work {
 		color: #fff;
 	}
 
@@ -640,22 +658,6 @@
 		margin-left: 1em;
 	}
 
-	.page-blogindexpage .pagination {
-    	padding: 0;
-    	max-width: 60em;
-    	margin: 0 auto;
-    	overflow: hidden;
-    	text-align: center;
-	}
-
-	.page-blogindexpage .pagination a p{
-    	transition: 0.2s ease;
-	}
-
-	.page-blogindexpage .pagination a p:hover{
-		color: #EA853A;
-	}
-
 	.page-blogindexpage main {
 		padding: 100% 0 2em 0;
 	}
@@ -708,6 +710,10 @@
 	.page-blogindexpage p {
 		font-size: 1.125em;
 		color: #434a4f;
+	}
+
+	.page-blogindexpage .pagination {
+		font-size: 1em;
 	}
 
 	.page-blogindexpage main .listing {
@@ -1211,24 +1217,6 @@
 	.page-blogpage .prev{
 		left:0;
 		top: 6em;
-	}
-
-	/*page-jobpage*/
-
-	.page-jobpage .bleed{
-		background: none;
-	}
-
-	.page-jobpage header nav li a {
-		color: #434A4F;
-	}
-
-	.page-jobpage header nav li a:hover {
-		color: #F7A42C;
-	}
-
-	.page-jobpage.bleed header nav li.active a {
-		color: #F7A42C;
 	}
 
 	/*Footer*/

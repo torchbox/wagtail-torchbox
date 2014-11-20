@@ -21,8 +21,8 @@
                     <ul class="listing">
                         {% for job in jobs %}
                             <li>
-                                <a href="{% pageurl job %}">
-                                    {{ job.title }}
+                                <a href="{{ job.url }}">
+                                    {{ job.job_title }}
                                     {% if job.location %}
                                         <div class="location">{{ job.location }}</div>
                                     {% endif %}

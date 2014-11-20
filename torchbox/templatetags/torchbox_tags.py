@@ -201,7 +201,9 @@ def homepage_work_listing(context, count=3):
 # Jobs feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
 def homepage_job_listing(context, count=3):
-    jobs = JobPage.objects.filter(live=True)
+    #assume there is only one job index page
+    jobindex = JobIndexPage.objects.filter(live=True)[0]
+    jobs = jobindex.jobs
     return {
         'jobs': jobs[:count],
         # required by the pageurl tag that we want to use within this template

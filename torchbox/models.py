@@ -33,6 +33,7 @@ COMMON_PANELS = (
 
 # A couple of abstract classes that contain commonly used fields
 
+
 class ContentBlock(models.Model):
     content = RichTextField()
 
@@ -145,6 +146,7 @@ class AdvertPlacement(models.Model):
     page = ParentalKey('wagtailcore.Page', related_name='advert_placements')
     advert = models.ForeignKey('torchbox.Advert', related_name='+')
 
+
 class Advert(models.Model):
     page = models.ForeignKey(
         'wagtailcore.Page',
@@ -171,6 +173,7 @@ register_snippet(Advert)
 
 class HomePageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('torchbox.HomePage', related_name='carousel_items')
+
 
 class HomePage(Page):
     search_name = "Homepage"
@@ -268,8 +271,10 @@ StandardPage.promote_panels = [
 class ServicesPageContentBlock(Orderable, ContentBlock):
     page = ParentalKey('torchbox.ServicesPage', related_name='content_block')
 
+
 class ServicesPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.ServicesPage', related_name='related_links')
+
 
 class ServicesPage(Page):
     intro = RichTextField(blank=True)
@@ -304,6 +309,7 @@ ServicesPage.promote_panels = [
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogIndexPage', related_name='related_links')
+
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -372,8 +378,10 @@ BlogIndexPage.promote_panels = [
 class BlogPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogPage', related_name='related_links')
 
+
 class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey('torchbox.BlogPage', related_name='tagged_items')
+
 
 class BlogPageAuthor(Orderable):
     page = ParentalKey('torchbox.BlogPage', related_name='related_author')
@@ -383,6 +391,7 @@ class BlogPageAuthor(Orderable):
         blank=True,
         related_name='+'
     )
+
 
 class BlogPage(Page, TagSearchable):
     intro = RichTextField(blank=True)
@@ -433,31 +442,24 @@ BlogPage.promote_panels = [
 ]
 
 
-# Job page
-
-class JobPage(Page):
-    body = RichTextField()
-    salary = models.CharField(max_length=255, blank=True)
-    location = models.CharField(max_length=255, blank=True)
-
-    indexed_fields = ('body', )
-
-JobPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('body', classname="full"),
-    FieldPanel('salary', classname="full"),
-    FieldPanel('location', classname="full"),
-]
-
-JobPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-]
-
-
 # Jobs index page
 
 class JobIndexPageContentBlock(Orderable, ContentBlock):
     page = ParentalKey('torchbox.JobIndexPage', related_name='content_block')
+
+
+class JobIndexPageJob(Orderable):
+    page = ParentalKey('torchbox.JobIndexPage', related_name='job')
+    job_title = models.CharField(max_length=255)
+    url = models.URLField(null=True)
+    location = models.CharField(max_length=255, blank=True)
+
+    panels = [
+        FieldPanel('job_title'),
+        FieldPanel("url"),
+        FieldPanel("location"),
+    ]
+
 
 class JobIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -466,14 +468,7 @@ class JobIndexPage(Page):
 
     @property
     def jobs(self):
-        # Get list of blog pages that are descendants of this page
-        jobs = JobPage.objects.filter(
-            live=True,
-            path__startswith=self.path
-        )
-
-        # Order by most recent date first
-        #jobs = jobs.order_by('-date')
+        jobs = self.job.all()
 
         return jobs
 
@@ -501,6 +496,7 @@ JobIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
     InlinePanel(JobIndexPage, 'content_block', label="Content block"),
+    InlinePanel(JobIndexPage, 'job', label="Job"),
 ]
 
 JobIndexPage.promote_panels = [
@@ -508,9 +504,7 @@ JobIndexPage.promote_panels = [
 ]
 
 
-
 # Work page
-
 class WorkPageTag(TaggedItemBase):
     content_object = ParentalKey('torchbox.WorkPage', related_name='tagged_items')
 
@@ -590,7 +584,6 @@ class WorkIndexPage(Page):
         # Getting them individually to preserve the order
         return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
-
     @property
     def works(self):
         # Get list of work pages that are descendants of this page
@@ -614,7 +607,7 @@ class WorkIndexPage(Page):
 
         # Pagination
         page = request.GET.get('page')
-        paginator = Paginator(works, 10)  # Show 10 jobs per page
+        paginator = Paginator(works, 10)  # Show 10 works per page
         try:
             works = paginator.page(page)
         except PageNotAnInteger:
@@ -644,6 +637,7 @@ WorkIndexPage.promote_panels = [
 
 class PersonPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.PersonPage', related_name='related_links')
+
 
 class PersonPage(Page, ContactFields):
     first_name = models.CharField(max_length=255)
@@ -687,9 +681,7 @@ PersonPage.promote_panels = [
 ]
 
 
-
 # Person index
-
 class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
 
@@ -741,7 +733,6 @@ PersonIndexPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
     FieldPanel('show_in_play_menu'),
 ]
-
 
 
 # Signal handler to load demo data from fixtures after migrations have completed
