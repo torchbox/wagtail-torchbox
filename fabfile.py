@@ -5,7 +5,7 @@ import uuid
 
 env.roledefs = {
     'staging': ['tbxwagtail@django-staging.torchbox.com'],
-    'production': ['tbxwagtail@by-web-2.torchbox.com'],
+    'production': ['tbxwagtail@by-web-3.torchbox.com'],
 }
 
 # TODO: a nicer dict of settings
@@ -23,9 +23,7 @@ env.roledefs = {
 
 PROJECT = "wagtail-torchbox"
 STAGING_DB_USERNAME = "tbxwagtail"
-STAGING_DB_SERVER = "localhost"
 LIVE_DB_USERNAME = "tbxwagtail"
-LIVE_DB_SERVER = "by-postgres-a"
 DB_NAME = "wagtail-torchbox"
 LOCAL_DUMP_PATH = "~/"
 REMOTE_DUMP_PATH = "~/"
@@ -41,7 +39,7 @@ def deploy_staging():
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py collectstatic --settings=tbx.settings.production --noinput")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py compress --force --settings=tbx.settings.production")
 
-    run("sudo /usr/bin/supervisorctl restart tbxwagtail")
+    run("touch -h /usr/local/etc/uwsgi/conf.d/tbxwagtail.ini")
 
 @roles('production')
 def deploy():
@@ -53,7 +51,7 @@ def deploy():
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py collectstatic --settings=tbx.settings.production --noinput")
         run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py compress --settings=tbx.settings.production")
 
-    run("sudo /usr/bin/supervisorctl restart tbxwagtail")
+    run("touch -h /usr/local/etc/uwsgi/conf.d/tbxwagtail.ini")
     #sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py update_index --settings=tbx.settings.production")
 
 # @roles('production')
@@ -84,7 +82,7 @@ def pull_staging_data():
     remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
     local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
 
-    run('pg_dump -U%s -h %s -xOf %s' % (STAGING_DB_USERNAME, STAGING_DB_SERVER, remote_path))
+    run('pg_dump -U%s -xOf %s' % (STAGING_DB_USERNAME, remote_path))
     run('gzip %s' % remote_path)
     get("%s.gz" % remote_path, "%s.gz" % local_path)
     run('rm %s.gz' % remote_path)
@@ -148,11 +146,11 @@ def push_staging_data():
     local('gzip %s' % local_path)
     put("%s.gz" % local_path, "%s.gz" % remote_path)
 
-    run('pg_dump -xO -U%s -h %s -f %s' % (STAGING_DB_USERNAME, STAGING_DB_SERVER, staging_db_backup_path))
+    run('pg_dump -xO -h %s -f %s' % (STAGING_DB_USERNAME, staging_db_backup_path))
     puts('Previous staging database backed up to %s' % staging_db_backup_path)
     
     run('gunzip %s.gz' % remote_path)
-    run('psql -U%s -h %s -c "DROP SCHEMA public CASCADE"' % (STAGING_DB_USERNAME, STAGING_DB_SERVER))
-    run('psql -U%s -h %s -c "CREATE SCHEMA public"' % (STAGING_DB_USERNAME, STAGING_DB_SERVER))
-    run('psql -U%s -h %s -f %s' % (STAGING_DB_USERNAME, STAGING_DB_SERVER, remote_path))
+    run('psql -U%s -c "DROP SCHEMA public CASCADE"' % (STAGING_DB_USERNAME))
+    run('psql -U%s -c "CREATE SCHEMA public"' % (STAGING_DB_USERNAME))
+    run('psql -U%s -f %s' % (STAGING_DB_USERNAME, remote_path))
     run('rm %s' % remote_path)
