@@ -438,6 +438,20 @@ main nav li.active a:after {
     transition: all 0.2s ease;
 }
 
+/* pagination */
+.pagination {
+    padding: 2em 0 2em 0;
+    max-width: 350px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.pagination div{
+    display: inline-block;
+    margin: 0 0.5em;
+    width: 25%;
+}
+
 /*Page home*/
 
 .arrow {
@@ -893,46 +907,7 @@ overflow: hidden;
     color:#97cb9b;
 }
 
-/*job page*/
-.page-jobpage h1 {
-    line-height: 1em;
-}
-
-.page-jobpage h3 {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: -1em;
-}
-
-.page-jobpage .body-copy h2 {
-    margin-top: 0;
-}
-
-.page-jobpage footer .offices h3{
-    margin-bottom: 0;
-}
-
 .footerbleed{
-    padding-top: 1em;
-}
-
-.info{
-    width: 49%;
-    margin-left: 1%;
-    float: left;
-}
-
-.info-holder{
-    width: 100%;
-    margin:1em auto 1.5em 0;
-    height: 95px;
-    padding: 0em 0 0em 0;
-    border-bottom: 1px dotted #a9a9a9;
-}
-
-.info p{
-    color: #97cb9b;
-    line-height: 1.2em;
     padding-top: 1em;
 }
 
@@ -1329,19 +1304,6 @@ overflow: hidden;
    margin: 0 0 0 0 ;
 }
 
-.page-blogindexpage .pagination {
-    padding: 2em 0 2em 0;
-    max-width: 350px;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-.page-blogindexpage .pagination div{
-    display: inline-block;
-    margin: 0 0.5em;
-    width: 25%;
-}
-
 /*Blog page*/
 
 .page-blogpage .listing {
@@ -1554,7 +1516,7 @@ a.tooltip span{
     margin: 2em 1em 1em 1em;
 }
 
-.page-workindexpage {
+.page-workindexpage section.main {
     color: #fff;
 }
 
