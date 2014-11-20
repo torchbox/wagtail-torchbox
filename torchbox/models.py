@@ -31,6 +31,20 @@ COMMON_PANELS = (
     FieldPanel('search_description'),
 )
 
+TAG_CHOICES = (
+    ('strategy', 'strategy'),
+    ('ux', 'ux'),
+    ('design', "design"),
+    ('drupal', 'drupal'),
+    ('wagtail', 'wagtail'),
+    ('tech', 'tech'),
+    ('digital_marketing', 'digital marketing'),
+    ('google_grants', 'google grants'),
+    ('seo', 'seo'),
+    ('animation_and_video', 'animation & video'),
+    ('front_end', 'front-end'),
+)
+
 # A couple of abstract classes that contain commonly used fields
 
 
@@ -319,7 +333,7 @@ class BlogIndexPage(Page):
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = BlogPageTag.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        popular_tags = BlogPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
@@ -374,13 +388,17 @@ BlogIndexPage.promote_panels = [
 
 
 # Blog page
-
 class BlogPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogPage', related_name='related_links')
 
 
-class BlogPageTag(TaggedItemBase):
-    content_object = ParentalKey('torchbox.BlogPage', related_name='tagged_items')
+class BlogPageTagSelect(Orderable):
+    page = ParentalKey('torchbox.BlogPage', related_name='tags')
+    tag = models.CharField(max_length=255, choices=TAG_CHOICES)
+
+BlogPageTagSelect.content_panels = [
+    FieldPanel('tag'),
+]
 
 
 class BlogPageAuthor(Orderable):
@@ -393,10 +411,9 @@ class BlogPageAuthor(Orderable):
     )
 
 
-class BlogPage(Page, TagSearchable):
+class BlogPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
-    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -433,12 +450,12 @@ BlogPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
+    InlinePanel(BlogPage, 'tags', label="Tags"),
 ]
 
 BlogPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
     ImageChooserPanel('feed_image'),
-    FieldPanel('tags'),
 ]
 
 
