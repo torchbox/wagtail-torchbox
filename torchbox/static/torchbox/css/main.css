@@ -735,6 +735,10 @@ overflow: hidden;
     max-width: 80%;
 }
 
+.clients li a img {
+    padding: 1.25em;
+}
+
 .clients li a {
     transition: all 0.2s ease;
 }
