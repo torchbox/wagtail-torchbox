@@ -739,13 +739,6 @@ overflow: hidden;
     transition: all 0.2s ease;
 }
 
-<<<<<<< HEAD
-=======
-.clients li a {
-    transition: all 0.2s ease;
-}
-
->>>>>>> develop
 .clients li a:hover {
     opacity: 1;
     cursor: pointer;
