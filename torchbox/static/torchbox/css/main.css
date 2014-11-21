@@ -733,6 +733,12 @@ overflow: hidden;
     width: auto;
     max-height: 97px;
     max-width: 80%;
+    transition: all 0.2s ease;
+}
+
+.clients li img:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 /*Jobs index*/
