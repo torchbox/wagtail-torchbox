@@ -392,15 +392,6 @@ class BlogPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogPage', related_name='related_links')
 
 
-class BlogPageTagSelect(Orderable):
-    page = ParentalKey('torchbox.BlogPage', related_name='tags')
-    tag = models.CharField(max_length=255, choices=TAG_CHOICES)
-
-BlogPageTagSelect.content_panels = [
-    FieldPanel('tag'),
-]
-
-
 class BlogPageAuthor(Orderable):
     page = ParentalKey('torchbox.BlogPage', related_name='related_author')
     author = models.ForeignKey(
@@ -450,7 +441,6 @@ BlogPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
-    InlinePanel(BlogPage, 'tags', label="Tags"),
 ]
 
 BlogPage.promote_panels = [
