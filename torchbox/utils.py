@@ -75,4 +75,3 @@ def export_event(event, format='ical'):
 
     # Join components
     return '\r'.join(ical_components)
-    
