@@ -524,10 +524,6 @@ class WorkPageScreenshot(Orderable):
     ]
 
 
-# class WorkPageRelatedLink(Orderable, RelatedLink):
-#     page = ParentalKey('torchbox.WorkPage', related_name='related_links')
-
-
 class WorkPage(Page, TagSearchable):
     summary = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
@@ -543,13 +539,13 @@ class WorkPage(Page, TagSearchable):
 
     @property
     def work_index(self):
-        # Find blog index in ancestors
+        # Find work index in ancestors
         for ancestor in reversed(self.get_ancestors()):
             if isinstance(ancestor.specific, WorkIndexPage):
                 return ancestor
 
-        # No ancestors are blog indexes,
-        # just return first blog index in database
+        # No ancestors are work indexes,
+        # just return first work index in database
         return WorkIndexPage.objects.first()
 
 WorkPage.content_panels = [
@@ -559,7 +555,6 @@ WorkPage.content_panels = [
     FieldPanel('body', classname="full"),
     ImageChooserPanel('homepage_image'),
     InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
-    # InlinePanel(WorkPage, 'related_links', label="Related links"),
 ]
 
 WorkPage.promote_panels = [
@@ -569,7 +564,6 @@ WorkPage.promote_panels = [
 
 
 # Work index page
-
 class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
@@ -592,13 +586,10 @@ class WorkIndexPage(Page):
             path__startswith=self.path
         )
 
-        # Order by most recent date first
-        #people = people.order_by('-date')
-
         return works
 
     def serve(self, request):
-        # Get people
+        # Get work pages
         works = self.works
 
         tag = request.GET.get('tag')
@@ -634,7 +625,6 @@ WorkIndexPage.promote_panels = [
 
 
 # Person page
-
 class PersonPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.PersonPage', related_name='related_links')
 
@@ -684,12 +674,8 @@ PersonPage.promote_panels = [
 # Person index
 class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
-
     show_in_play_menu = models.BooleanField(default=False)
-
     indexed_fields = ('intro', )
-    # TODO: what is this?
-    # search_name = "Job"
 
     @property
     def people(self):
@@ -698,9 +684,6 @@ class PersonIndexPage(Page):
             live=True,
             path__startswith=self.path
         )
-
-        # Order by most recent date first
-        #people = people.order_by('-date')
 
         return people
 
@@ -755,7 +738,8 @@ def import_demo_data(sender, **kwargs):
         if page.specific_class != Page:
             return
 
-    import os, shutil
+    import os
+    import shutil
     from django.conf import settings
 
     fixtures_dir = os.path.join(settings.PROJECT_ROOT, 'torchbox', 'fixtures')

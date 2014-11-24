@@ -167,6 +167,7 @@ def secondary_menu(context, calling_page=None):
         'request': context['request'],
     }
 
+
 # Person feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_people_listing.html', takes_context=True)
 def homepage_people_listing(context, count=3):
@@ -202,6 +203,7 @@ def homepage_work_listing(context, count=3):
         'request': context['request'],
     }
 
+
 # Jobs feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
 def homepage_job_listing(context, count=3):
@@ -222,8 +224,6 @@ def adverts(context):
         'adverts': Advert.objects.all(),
         'request': context['request'],
     }
-
-
 
 
 # Format times e.g. on event page
