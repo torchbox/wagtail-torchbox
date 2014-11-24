@@ -24,6 +24,7 @@ from south.signals import post_migrate
 
 from torchbox.utils import export_event
 
+
 COMMON_PANELS = (
     FieldPanel('slug'),
     FieldPanel('seo_title'),
@@ -337,7 +338,7 @@ class BlogIndexPage(Page):
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
-        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+        return [BlogPageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
     def blogs(self):
@@ -359,7 +360,7 @@ class BlogIndexPage(Page):
         # Filter by tag
         tag = request.GET.get('tag')
         if tag:
-            blogs = blogs.filter(tags__name=tag)
+            blogs = blogs.filter(tags__tag__name=tag)
 
         # Pagination
         page = request.GET.get('page')
@@ -390,6 +391,25 @@ BlogIndexPage.promote_panels = [
 # Blog page
 class BlogPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogPage', related_name='related_links')
+
+
+class BlogPageTagList(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
+
+
+class BlogPageTagSelect(Orderable):
+    page = ParentalKey('torchbox.BlogPage', related_name='tags')
+    tag = models.ForeignKey(
+        'torchbox.BlogPageTagList',
+        related_name='blog_page_tag_select'
+    )
+
+BlogPageTagSelect.content_panels = [
+    FieldPanel('tag'),
+]
 
 
 class BlogPageAuthor(Orderable):
@@ -441,6 +461,7 @@ BlogPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
+    InlinePanel(BlogPage, 'tags', label="Tags")
 ]
 
 BlogPage.promote_panels = [
