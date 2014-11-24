@@ -983,8 +983,6 @@
 	}
 
 	.page-jobindexpage .benefits .one {
-		/*background: url("/static/torchbox/images/jobs-placeholder-05.jpg") no-repeat;
-		-webkit-background-size: cover;*/
 		width: 48%;
 		float: left;
 		margin: 2% 2%  3% 0;
@@ -1052,12 +1050,6 @@
 
 	.page-personindexpage header nav li.active a {
 		color: #F7A42C;
-	}
-
-	.grid.people-list li {
-		/*width: 50%;
-		margin: 0;
-		padding: 0;*/
 	}
 
 	.grid.people-list li div {
