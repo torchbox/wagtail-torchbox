@@ -5,6 +5,7 @@ from torchbox.models import *
 
 register = template.Library()
 
+
 @register.assignment_tag
 def get_popular_tags(model):
     return model.get_popular_tags()
@@ -169,9 +170,10 @@ def secondary_menu(context, calling_page=None):
 # Person feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_people_listing.html', takes_context=True)
 def homepage_people_listing(context, count=3):
-    people = PersonPage.objects.filter(live=True).order_by('?')
+    people = play_filter(PersonPage.objects.filter(live=True).order_by('?'),
+                         count)
     return {
-        'people': people[:count],
+        'people': people,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
@@ -180,9 +182,10 @@ def homepage_people_listing(context, count=3):
 # Blog feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_blog_listing.html', takes_context=True)
 def homepage_blog_listing(context, count=3):
-    blogs = BlogPage.objects.filter(live=True).order_by('-date')
+    blogs = play_filter(BlogPage.objects.filter(live=True).order_by('-date'),
+                        count)
     return {
-        'blogs': blogs[:count],
+        'blogs': blogs,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
@@ -191,9 +194,10 @@ def homepage_blog_listing(context, count=3):
 # Work feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_work_listing.html', takes_context=True)
 def homepage_work_listing(context, count=3):
-    work = WorkPage.objects.filter(live=True).order_by('?')
+    work = play_filter(WorkPage.objects.filter(live=True).order_by('?'),
+                       count)
     return {
-        'work': work[:count],
+        'work': work,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
@@ -203,9 +207,9 @@ def homepage_work_listing(context, count=3):
 def homepage_job_listing(context, count=3):
     #assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True)[0]
-    jobs = jobindex.jobs
+    jobs = play_filter(jobindex.jobs, count)
     return {
-        'jobs': jobs[:count],
+        'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
@@ -255,3 +259,17 @@ def time_display(time):
 
     # Join and return
     return "".join([hour_string, minute_string, pm_string])
+
+
+def play_filter(pages, number):
+    """
+    Given an iterable of Pages, return a specified number that
+    are not in the Play section.
+    """
+    result = []
+    for page in pages:
+        if len(result) > (number - 1):
+            break
+        if not in_play(page):
+            result.append(page)
+    return result
