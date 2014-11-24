@@ -1425,7 +1425,6 @@
 
 	.page-homepage .grid li img {
 		float: left;
-		width: 150%;
 		max-width: 150%;
 		transition: 0.4s ease;
 	}
