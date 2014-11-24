@@ -10,7 +10,7 @@
                         
                             <div class="crop-height">
                                {% if blog.feed_image %}
-                                    {% image blog.feed_image width-2000 as blogimage %}
+                                    {% image blog.feed_image width-1000 as blogimage %}
                                     <img src="{{ blogimage.url }}" width="{{ blogimage.width }}" height="{{ blogimage.height }}" alt="{{ blogimage.alt }}" class="" />
                                 {% else %}
                                     <img src="/static/torchbox/images/blog_default.png" width="" height="" alt="" class=""/>
