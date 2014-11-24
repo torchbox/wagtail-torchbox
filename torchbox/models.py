@@ -360,7 +360,7 @@ class BlogIndexPage(Page):
         # Filter by tag
         tag = request.GET.get('tag')
         if tag:
-            blogs = blogs.filter(tags__tag__name=tag)
+            blogs = blogs.filter(tags__tag__slug=tag)
 
         # Pagination
         page = request.GET.get('page')
@@ -395,6 +395,7 @@ class BlogPageRelatedLink(Orderable, RelatedLink):
 
 class BlogPageTagList(models.Model):
     name = models.CharField(max_length=255)
+    slug = models.CharField(max_length=255)
 
     def __unicode__(self):
         return self.name
