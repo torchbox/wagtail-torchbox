@@ -33,7 +33,7 @@ class Migration(DataMigration):
         "Write your backwards methods here."
         for tag in self.TAG_CHOICES:
             try:
-                orm.BlogPageTagList().objects.get(name=tag).delete()
+                orm.BlogPageTagList.objects.get(name=tag).delete()
             except orm.BlogPageTagList.DoesNotExist:
                 pass
 
