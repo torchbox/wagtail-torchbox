@@ -19,7 +19,7 @@ class Migration(DataMigration):
     def backwards(self, orm):
         "Write your backwards methods here."
         for tag_obj in orm.BlogPageTagList.objects.all():
-            tag_obj.slug = ""
+            tag_obj.slug = tag_obj.name.replace('and', '&')
             tag_obj.save()
 
     models = {
