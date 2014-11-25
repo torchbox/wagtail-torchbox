@@ -24,11 +24,26 @@ from south.signals import post_migrate
 
 from torchbox.utils import export_event
 
+
 COMMON_PANELS = (
     FieldPanel('slug'),
     FieldPanel('seo_title'),
     FieldPanel('show_in_menus'),
     FieldPanel('search_description'),
+)
+
+TAG_CHOICES = (
+    ('strategy', 'strategy'),
+    ('ux', 'ux'),
+    ('design', "design"),
+    ('drupal', 'drupal'),
+    ('wagtail', 'wagtail'),
+    ('tech', 'tech'),
+    ('digital_marketing', 'digital marketing'),
+    ('google_grants', 'google grants'),
+    ('seo', 'seo'),
+    ('animation_and_video', 'animation & video'),
+    ('front_end', 'front-end'),
 )
 
 # A couple of abstract classes that contain commonly used fields
@@ -319,11 +334,11 @@ class BlogIndexPage(Page):
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = BlogPageTag.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        popular_tags = BlogPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
-        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+        return [BlogPageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
     def blogs(self):
@@ -345,7 +360,7 @@ class BlogIndexPage(Page):
         # Filter by tag
         tag = request.GET.get('tag')
         if tag:
-            blogs = blogs.filter(tags__name=tag)
+            blogs = blogs.filter(tags__tag__slug=tag)
 
         # Pagination
         page = request.GET.get('page')
@@ -374,13 +389,28 @@ BlogIndexPage.promote_panels = [
 
 
 # Blog page
-
 class BlogPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogPage', related_name='related_links')
 
 
-class BlogPageTag(TaggedItemBase):
-    content_object = ParentalKey('torchbox.BlogPage', related_name='tagged_items')
+class BlogPageTagList(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
+
+
+class BlogPageTagSelect(Orderable):
+    page = ParentalKey('torchbox.BlogPage', related_name='tags')
+    tag = models.ForeignKey(
+        'torchbox.BlogPageTagList',
+        related_name='blog_page_tag_select'
+    )
+
+BlogPageTagSelect.content_panels = [
+    FieldPanel('tag'),
+]
 
 
 class BlogPageAuthor(Orderable):
@@ -393,10 +423,9 @@ class BlogPageAuthor(Orderable):
     )
 
 
-class BlogPage(Page, TagSearchable):
+class BlogPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
-    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -433,12 +462,12 @@ BlogPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
+    InlinePanel(BlogPage, 'tags', label="Tags")
 ]
 
 BlogPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
     ImageChooserPanel('feed_image'),
-    FieldPanel('tags'),
 ]
 
 
