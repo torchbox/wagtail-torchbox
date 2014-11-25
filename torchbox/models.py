@@ -534,8 +534,16 @@ JobIndexPage.promote_panels = [
 
 
 # Work page
-class WorkPageTag(TaggedItemBase):
-    content_object = ParentalKey('torchbox.WorkPage', related_name='tagged_items')
+class WorkPageTagSelect(Orderable):
+    page = ParentalKey('torchbox.WorkPage', related_name='tags')
+    tag = models.ForeignKey(
+        'torchbox.BlogPageTagList',
+        related_name='work_page_tag_select'
+    )
+
+WorkPageTagSelect.content_panels = [
+    FieldPanel('tag'),
+]
 
 
 class WorkPageScreenshot(Orderable):
@@ -557,7 +565,6 @@ class WorkPage(Page, TagSearchable):
     summary = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
-    tags = ClusterTaggableManager(through=WorkPageTag, blank=True)
     homepage_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -584,11 +591,7 @@ WorkPage.content_panels = [
     FieldPanel('body', classname="full"),
     ImageChooserPanel('homepage_image'),
     InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
-]
-
-WorkPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    FieldPanel('tags'),
+    InlinePanel(BlogPage, 'tags', label="Tags"),
 ]
 
 
@@ -601,11 +604,11 @@ class WorkIndexPage(Page):
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = WorkPageTag.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        popular_tags = WorkPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
-        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+        return [BlogPageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
     def works(self):
@@ -621,9 +624,10 @@ class WorkIndexPage(Page):
         # Get work pages
         works = self.works
 
+        # Filter by tag
         tag = request.GET.get('tag')
         if tag:
-            works = works.filter(tags__name=tag)
+            works = works.filter(tags__tag__slug=tag)
 
         # Pagination
         page = request.GET.get('page')
