@@ -11,7 +11,7 @@
                 <h5>This photo was stolen from the internet</h5>
             </div>
     </div>
-    
+
     <div class="hero container">
         <div class="blog-title">
             <h1>{{ self.title }}</h1>
@@ -32,16 +32,21 @@
                         <a href="?tag={{ tag.slug }}">{{ tag }}</a>
                     {% endfor %}
                 </p>
-                {% endif %}
             </div>
+        {% endif %}
+    
 
-                {# Optional heading appears if filtering by tag #}
-                {% if request.GET.tag|length %}
-                    <p class="show">Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span> 
+        {# Optional heading appears if filtering by tag #}
+        {% if request.GET.tag|length %}
+            {% for tag in poptags %}
+                {% if request.GET.tag|safe == tag.slug %}
+                    <p class="show">Showing posts tagged  <span>"{{ tag.name }}" </span>
                         <a href="{% pageurl self %}"> Show all </a>
                     </p>
-                    {% endif %}
-            
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
     </div>
 
     <ul class="listing clearfix">
@@ -50,7 +55,7 @@
                 <a class="block-link" href="{% pageurl blog %}">
                     <div class="container">
                         <h2>{{ blog.title }}</h2>
-                        
+
                         {% with blog.related_author.all as authors %}
                             {% if authors %}
                                 {% for author in authors %}

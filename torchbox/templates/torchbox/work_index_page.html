@@ -22,11 +22,13 @@
         {% endif %}
 
         {# Optional heading appears if filtering by tag #}
-        {% if request.GET.tag|length %}
-            <p class="show">Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span>
-                <a href="{% pageurl self %}"> Show all </a>
-            </p>
-        {% endif %}
+        {% for tag in poptags %}
+            {% if request.GET.tag|safe == tag.slug %}
+                <p class="show">Showing posts tagged  <span>"{{ tag.name }}" </span>
+                    <a href="{% pageurl self %}"> Show all </a>
+                </p>
+            {% endif %}
+        {% endfor %}
     </div>
 
     <div class="container">
