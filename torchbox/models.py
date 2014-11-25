@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.db import models
+from django.db.models.signals import pre_delete
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.management import call_command
 from django.dispatch import receiver
@@ -13,6 +14,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
     InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
+from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailadmin.taggable import TagSearchable
@@ -118,10 +120,9 @@ class ContactFields(models.Model):
 
 
 # Carousel items
-
 class CarouselItem(LinkFields):
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -142,7 +143,6 @@ class CarouselItem(LinkFields):
 
 
 # Related links
-
 class RelatedLink(LinkFields):
     title = models.CharField(max_length=255, help_text="Link title")
 
@@ -156,7 +156,6 @@ class RelatedLink(LinkFields):
 
 
 # Advert Snippet
-
 class AdvertPlacement(models.Model):
     page = ParentalKey('wagtailcore.Page', related_name='advert_placements')
     advert = models.ForeignKey('torchbox.Advert', related_name='+')
@@ -184,8 +183,39 @@ class Advert(models.Model):
 register_snippet(Advert)
 
 
-# Home Page
+#Custom image
+class TorchboxImage(AbstractImage):
+    credit = models.CharField(max_length=255, blank=True)
 
+    @property
+    def credit_text(self):
+        return self.credit
+
+
+# Receive the pre_delete signal and delete the file associated with the model instance.
+@receiver(pre_delete, sender=TorchboxImage)
+def image_delete(sender, instance, **kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.file.delete(False)
+
+
+class TorchboxRendition(AbstractRendition):
+    image = models.ForeignKey('TorchboxImage', related_name='renditions')
+
+    class Meta:
+        unique_together = (
+            ('image', 'filter', 'focal_point_key'),
+        )
+
+
+# Receive the pre_delete signal and delete the file associated with the model instance.
+@receiver(pre_delete, sender=TorchboxRendition)
+def rendition_delete(sender, instance, **kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.file.delete(False)
+
+
+# Home Page
 class HomePageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('torchbox.HomePage', related_name='carousel_items')
 
@@ -219,7 +249,7 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
 class StandardPageClients(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='clients')
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -232,7 +262,7 @@ StandardPageClients.panels = StandardPageClients.panels + [
 
 class StandardPage(Page):
     main_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -247,7 +277,7 @@ class StandardPage(Page):
     email = models.EmailField(blank=True)
 
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -296,7 +326,7 @@ class ServicesPage(Page):
     body = RichTextField(blank=True)
 
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -428,7 +458,7 @@ class BlogPage(Page):
     body = RichTextField()
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -549,7 +579,7 @@ WorkPageTagSelect.content_panels = [
 class WorkPageScreenshot(Orderable):
     page = ParentalKey('torchbox.WorkPage', related_name='screenshots')
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -566,7 +596,7 @@ class WorkPage(Page, TagSearchable):
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
     homepage_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -669,14 +699,14 @@ class PersonPage(Page, ContactFields):
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
