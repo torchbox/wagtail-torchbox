@@ -1,8 +1,15 @@
 /* ==========================================================================
     PLAY STYLES 
    ========================================================================== */
+.page-standardpage .logo {
+	background: url("/static/torchbox/images/play_white.png") center left no-repeat;
+	background-size: 9em;
+}
 
-    .page-standardpage h2 {
+
+.page-standardpage h2 {
         color: #F16022;
-    }
+        margin-top: -6em;
+        margin-bottom: 3em;
+}
 	
