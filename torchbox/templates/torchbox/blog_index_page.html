@@ -29,22 +29,22 @@
             <div class="closed">
                 <p>
                     {% for tag in poptags %}
-                        <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                            <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% else %}
+                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% endif %}
                     {% endfor %}
+                    {# Optional 'show all' appears if filtering by tag #}
+                    {% if request.GET.tag|length %}
+                        {% for tag in poptags %}
+                            {% if request.GET.tag|safe == tag.slug %}
+                                <a href="{% pageurl self %}">show all</a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </p>
             </div>
-        {% endif %}
-    
-
-        {# Optional heading appears if filtering by tag #}
-        {% if request.GET.tag|length %}
-            {% for tag in poptags %}
-                {% if request.GET.tag|safe == tag.slug %}
-                    <p class="show">Showing posts tagged  <span>"{{ tag.name }}" </span>
-                        <a href="{% pageurl self %}"> Show all </a>
-                    </p>
-                {% endif %}
-            {% endfor %}
         {% endif %}
 
     </div>

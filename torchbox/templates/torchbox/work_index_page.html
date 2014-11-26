@@ -15,20 +15,23 @@
             <div class="closed">
                 <p>
                     {% for tag in poptags %}
-                        <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                            <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% else %}
+                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% endif %}
                     {% endfor %}
+                    {# Optional 'show all' appears if filtering by tag #}
+                    {% if request.GET.tag|length %}
+                        {% for tag in poptags %}
+                            {% if request.GET.tag|safe == tag.slug %}
+                                <a href="{% pageurl self %}">show all</a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </p>
             </div>
         {% endif %}
-
-        {# Optional heading appears if filtering by tag #}
-        {% for tag in poptags %}
-            {% if request.GET.tag|safe == tag.slug %}
-                <p class="show">Showing posts tagged  <span>"{{ tag.name }}" </span>
-                    <a href="{% pageurl self %}"> Show all </a>
-                </p>
-            {% endif %}
-        {% endfor %}
     </div>
 
     <div class="container">
@@ -43,12 +46,14 @@
             <ul class="listing clearfix">
                 {% for work in works %}
                     {% with work.screenshots.all|first as screenshot %}
-                    {% image screenshot.image width-2000 as screenshot %}
-                    <li style='background-image: url({{ screenshot.url}});'>
+                    {% image screenshot.image width-2000 as screenshotimage %}
+                    <li style='background-image: url({{ screenshotimage.url}});'>
                         <a href="{% pageurl work %}">
-                            <div class="credit">
-                                <h5></h5>
-                            </div>
+                            {% if screenshot.image.credit_text %}
+                                <div class="credit">
+                                    <h5>{{ screenshot.image.credit_text }}</h5>
+                                </div>
+                            {% endif %}
                             <div class="about">
                                 <h2>{{ work.title }}</h2>
                                 <p>
