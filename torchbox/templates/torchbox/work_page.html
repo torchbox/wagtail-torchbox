@@ -62,14 +62,14 @@
             </div>
 
             <section class="tags">
-                {% with self.tags.all as tags %}
-                    {% if tags %}
-                        {% for tag in tags %}
-                            <a href="{% pageurl self.work_index %}?tag={{ tag }}">{{ tag }}</a>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </section>
+            {% with self.tags.all as tags %}
+                {% if tags %}
+                    {% for tag in tags %}
+                        <a href="{% pageurl self.work_index %}?tag={{ tag.tag }}">{{ tag.tag }}</a>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
 
         </div>
     </section>

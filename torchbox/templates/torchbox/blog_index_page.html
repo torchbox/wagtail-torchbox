@@ -11,7 +11,7 @@
                 <h5>This photo was stolen from the internet</h5>
             </div>
     </div>
-    
+
     <div class="hero container">
         <div class="blog-title">
             <h1>{{ self.title }}</h1>
@@ -29,19 +29,24 @@
             <div class="closed">
                 <p>
                     {% for tag in poptags %}
-                        <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                            <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% else %}
+                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                        {% endif %}
                     {% endfor %}
-                </p>
-                {% endif %}
-            </div>
-
-                {# Optional heading appears if filtering by tag #}
-                {% if request.GET.tag|length %}
-                    <p class="show">Showing posts tagged  <span>"{{ request.GET.tag|safe }}" </span> 
-                        <a href="{% pageurl self %}"> Show all </a>
-                    </p>
+                    {# Optional 'show all' appears if filtering by tag #}
+                    {% if request.GET.tag|length %}
+                        {% for tag in poptags %}
+                            {% if request.GET.tag|safe == tag.slug %}
+                                <a href="{% pageurl self %}">show all</a>
+                            {% endif %}
+                        {% endfor %}
                     {% endif %}
-            
+                </p>
+            </div>
+        {% endif %}
+
     </div>
 
     <ul class="listing clearfix">
@@ -50,7 +55,7 @@
                 <a class="block-link" href="{% pageurl blog %}">
                     <div class="container">
                         <h2>{{ blog.title }}</h2>
-                        
+
                         {% with blog.related_author.all as authors %}
                             {% if authors %}
                                 {% for author in authors %}

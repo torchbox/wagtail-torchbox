@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.db import models
+from django.db.models.signals import pre_delete
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.management import call_command
 from django.dispatch import receiver
@@ -13,6 +14,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
     InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
+from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailadmin.taggable import TagSearchable
@@ -24,11 +26,26 @@ from south.signals import post_migrate
 
 from torchbox.utils import export_event
 
+
 COMMON_PANELS = (
     FieldPanel('slug'),
     FieldPanel('seo_title'),
     FieldPanel('show_in_menus'),
     FieldPanel('search_description'),
+)
+
+TAG_CHOICES = (
+    ('strategy', 'strategy'),
+    ('ux', 'ux'),
+    ('design', "design"),
+    ('drupal', 'drupal'),
+    ('wagtail', 'wagtail'),
+    ('tech', 'tech'),
+    ('digital_marketing', 'digital marketing'),
+    ('google_grants', 'google grants'),
+    ('seo', 'seo'),
+    ('animation_and_video', 'animation & video'),
+    ('front_end', 'front-end'),
 )
 
 # A couple of abstract classes that contain commonly used fields
@@ -103,10 +120,9 @@ class ContactFields(models.Model):
 
 
 # Carousel items
-
 class CarouselItem(LinkFields):
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -127,7 +143,6 @@ class CarouselItem(LinkFields):
 
 
 # Related links
-
 class RelatedLink(LinkFields):
     title = models.CharField(max_length=255, help_text="Link title")
 
@@ -141,7 +156,6 @@ class RelatedLink(LinkFields):
 
 
 # Advert Snippet
-
 class AdvertPlacement(models.Model):
     page = ParentalKey('wagtailcore.Page', related_name='advert_placements')
     advert = models.ForeignKey('torchbox.Advert', related_name='+')
@@ -169,8 +183,39 @@ class Advert(models.Model):
 register_snippet(Advert)
 
 
-# Home Page
+#Custom image
+class TorchboxImage(AbstractImage):
+    credit = models.CharField(max_length=255, blank=True)
 
+    @property
+    def credit_text(self):
+        return self.credit
+
+
+# Receive the pre_delete signal and delete the file associated with the model instance.
+@receiver(pre_delete, sender=TorchboxImage)
+def image_delete(sender, instance, **kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.file.delete(False)
+
+
+class TorchboxRendition(AbstractRendition):
+    image = models.ForeignKey('TorchboxImage', related_name='renditions')
+
+    class Meta:
+        unique_together = (
+            ('image', 'filter', 'focal_point_key'),
+        )
+
+
+# Receive the pre_delete signal and delete the file associated with the model instance.
+@receiver(pre_delete, sender=TorchboxRendition)
+def rendition_delete(sender, instance, **kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.file.delete(False)
+
+
+# Home Page
 class HomePageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('torchbox.HomePage', related_name='carousel_items')
 
@@ -204,7 +249,7 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
 class StandardPageClients(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='clients')
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -217,7 +262,7 @@ StandardPageClients.panels = StandardPageClients.panels + [
 
 class StandardPage(Page):
     main_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -232,7 +277,7 @@ class StandardPage(Page):
     email = models.EmailField(blank=True)
 
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -281,7 +326,7 @@ class ServicesPage(Page):
     body = RichTextField(blank=True)
 
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -319,11 +364,11 @@ class BlogIndexPage(Page):
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = BlogPageTag.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        popular_tags = BlogPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
-        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+        return [BlogPageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
     def blogs(self):
@@ -345,7 +390,7 @@ class BlogIndexPage(Page):
         # Filter by tag
         tag = request.GET.get('tag')
         if tag:
-            blogs = blogs.filter(tags__name=tag)
+            blogs = blogs.filter(tags__tag__slug=tag)
 
         # Pagination
         page = request.GET.get('page')
@@ -374,13 +419,28 @@ BlogIndexPage.promote_panels = [
 
 
 # Blog page
-
 class BlogPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogPage', related_name='related_links')
 
 
-class BlogPageTag(TaggedItemBase):
-    content_object = ParentalKey('torchbox.BlogPage', related_name='tagged_items')
+class BlogPageTagList(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
+
+
+class BlogPageTagSelect(Orderable):
+    page = ParentalKey('torchbox.BlogPage', related_name='tags')
+    tag = models.ForeignKey(
+        'torchbox.BlogPageTagList',
+        related_name='blog_page_tag_select'
+    )
+
+BlogPageTagSelect.content_panels = [
+    FieldPanel('tag'),
+]
 
 
 class BlogPageAuthor(Orderable):
@@ -393,13 +453,12 @@ class BlogPageAuthor(Orderable):
     )
 
 
-class BlogPage(Page, TagSearchable):
+class BlogPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
-    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -433,12 +492,12 @@ BlogPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
+    InlinePanel(BlogPage, 'tags', label="Tags")
 ]
 
 BlogPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
     ImageChooserPanel('feed_image'),
-    FieldPanel('tags'),
 ]
 
 
@@ -505,14 +564,22 @@ JobIndexPage.promote_panels = [
 
 
 # Work page
-class WorkPageTag(TaggedItemBase):
-    content_object = ParentalKey('torchbox.WorkPage', related_name='tagged_items')
+class WorkPageTagSelect(Orderable):
+    page = ParentalKey('torchbox.WorkPage', related_name='tags')
+    tag = models.ForeignKey(
+        'torchbox.BlogPageTagList',
+        related_name='work_page_tag_select'
+    )
+
+WorkPageTagSelect.content_panels = [
+    FieldPanel('tag'),
+]
 
 
 class WorkPageScreenshot(Orderable):
     page = ParentalKey('torchbox.WorkPage', related_name='screenshots')
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -524,17 +591,12 @@ class WorkPageScreenshot(Orderable):
     ]
 
 
-# class WorkPageRelatedLink(Orderable, RelatedLink):
-#     page = ParentalKey('torchbox.WorkPage', related_name='related_links')
-
-
 class WorkPage(Page, TagSearchable):
     summary = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
-    tags = ClusterTaggableManager(through=WorkPageTag, blank=True)
     homepage_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -543,13 +605,13 @@ class WorkPage(Page, TagSearchable):
 
     @property
     def work_index(self):
-        # Find blog index in ancestors
+        # Find work index in ancestors
         for ancestor in reversed(self.get_ancestors()):
             if isinstance(ancestor.specific, WorkIndexPage):
                 return ancestor
 
-        # No ancestors are blog indexes,
-        # just return first blog index in database
+        # No ancestors are work indexes,
+        # just return first work index in database
         return WorkIndexPage.objects.first()
 
 WorkPage.content_panels = [
@@ -559,17 +621,11 @@ WorkPage.content_panels = [
     FieldPanel('body', classname="full"),
     ImageChooserPanel('homepage_image'),
     InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
-    # InlinePanel(WorkPage, 'related_links', label="Related links"),
-]
-
-WorkPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    FieldPanel('tags'),
+    InlinePanel(BlogPage, 'tags', label="Tags"),
 ]
 
 
 # Work index page
-
 class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
@@ -578,11 +634,11 @@ class WorkIndexPage(Page):
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = WorkPageTag.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        popular_tags = WorkPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
-        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+        return [BlogPageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
     def works(self):
@@ -592,18 +648,16 @@ class WorkIndexPage(Page):
             path__startswith=self.path
         )
 
-        # Order by most recent date first
-        #people = people.order_by('-date')
-
         return works
 
     def serve(self, request):
-        # Get people
+        # Get work pages
         works = self.works
 
+        # Filter by tag
         tag = request.GET.get('tag')
         if tag:
-            works = works.filter(tags__name=tag)
+            works = works.filter(tags__tag__slug=tag)
 
         # Pagination
         page = request.GET.get('page')
@@ -634,7 +688,6 @@ WorkIndexPage.promote_panels = [
 
 
 # Person page
-
 class PersonPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.PersonPage', related_name='related_links')
 
@@ -646,14 +699,14 @@ class PersonPage(Page, ContactFields):
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'torchbox.TorchboxImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -684,12 +737,8 @@ PersonPage.promote_panels = [
 # Person index
 class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
-
     show_in_play_menu = models.BooleanField(default=False)
-
     indexed_fields = ('intro', )
-    # TODO: what is this?
-    # search_name = "Job"
 
     @property
     def people(self):
@@ -698,9 +747,6 @@ class PersonIndexPage(Page):
             live=True,
             path__startswith=self.path
         )
-
-        # Order by most recent date first
-        #people = people.order_by('-date')
 
         return people
 
@@ -755,7 +801,8 @@ def import_demo_data(sender, **kwargs):
         if page.specific_class != Page:
             return
 
-    import os, shutil
+    import os
+    import shutil
     from django.conf import settings
 
     fixtures_dir = os.path.join(settings.PROJECT_ROOT, 'torchbox', 'fixtures')

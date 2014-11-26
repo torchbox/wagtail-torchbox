@@ -8,7 +8,8 @@
 
                     <div class="workcontainer">
                         {% if work.homepage_image %}
-                        {% image work.homepage_image width-2000 as screenshot %}
+                        {# image height matches max height of the crop div on the home page - width of crop is set as a percentage by the css so resizing by width doesn't help here #}
+                        {% image work.homepage_image height-448 as screenshot %}
 
                         <div class="label">
                             <p>Our work</p>

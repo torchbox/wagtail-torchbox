@@ -10,7 +10,8 @@
                         
                             <div class="crop-height">
                                {% if blog.feed_image %}
-                                    {% image blog.feed_image width-2000 as blogimage %}
+                                    {# image height matches max height of the crop div on the home page - width of crop is set as a percentage by the css so resizing by width doesn't help here #}
+                                    {% image blog.feed_image height-448 as blogimage %}
                                     <img src="{{ blogimage.url }}" width="{{ blogimage.width }}" height="{{ blogimage.height }}" alt="{{ blogimage.alt }}" class="" />
                                 {% else %}
                                     <img src="/static/torchbox/images/blog_default.png" width="" height="" alt="" class=""/>
