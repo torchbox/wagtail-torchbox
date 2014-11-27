@@ -456,6 +456,7 @@ class BlogPageAuthor(Orderable):
 class BlogPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
+    author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -483,11 +484,12 @@ class BlogPage(Page):
     def has_authors(self):
         for author in self.related_author.all():
             if author.author:
-                return true
+                return True
 
 BlogPage.content_panels = [
     FieldPanel('title', classname="full title"),
     InlinePanel(BlogPage, 'related_author', label="Author"),
+    FieldPanel('author_left'),
     FieldPanel('date'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
