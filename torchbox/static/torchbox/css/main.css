@@ -1438,6 +1438,21 @@ overflow: hidden;
     margin: 0px 5px 0 0;
 }
 
+.popular-tags .filtering {
+    background: #ea853a;
+    color: white;
+}
+
+.popular-tags .filtering:hover {
+    background: #ea853a;
+    color: white;
+}
+
+.popular-tags .filtering:before {
+    background-image:  url("/static/torchbox/images/tag-02.png");
+    content: "";
+}
+
 .popular-tags p {
     color: #424A4F;
     margin: 0;
