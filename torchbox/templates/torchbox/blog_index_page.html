@@ -106,6 +106,5 @@
                     <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
                 {% endif %}
             </div>
-
     </div>
 {% endblock %}
