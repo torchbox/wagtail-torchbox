@@ -838,10 +838,6 @@
 		clear:none;
 	}
 
-	.grid.people-list a {
-		-webkit-transform: translate3d(0,0,0);
-	}
-
 	.grid li a {
 		border: none;
 	}
@@ -1413,6 +1409,10 @@
 
 	.page-workindexpage main ul a{
 		min-height: 80em;
+	}
+
+	.grid.people-list a {
+		-webkit-transform: translate3d(0,0,0);
 	}
 
 }

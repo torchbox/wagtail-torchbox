@@ -393,8 +393,11 @@ class BlogIndexPage(Page):
             blogs = blogs.filter(tags__tag__slug=tag)
 
         # Pagination
+        per_page = 10
         page = request.GET.get('page')
-        paginator = Paginator(blogs, 10)  # Show 10 blogs per page
+        print('helen')
+        print(page)
+        paginator = Paginator(blogs, per_page)  # Show 10 blogs per page
         try:
             blogs = paginator.page(page)
         except PageNotAnInteger:
@@ -402,10 +405,19 @@ class BlogIndexPage(Page):
         except EmptyPage:
             blogs = paginator.page(paginator.num_pages)
 
-        return render(request, self.template, {
-            'self': self,
-            'blogs': blogs,
-        })
+        if request.is_ajax():
+            return render(request, "torchbox/includes/blog_listing.html", {
+                'self': self,
+                'blogs': blogs,
+                'per_page': per_page,
+            })
+        else:
+            return render(request, self.template, {
+                'self': self,
+                'blogs': blogs,
+                'per_page': per_page,
+            })
+
 
 BlogIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),
@@ -456,6 +468,7 @@ class BlogPageAuthor(Orderable):
 class BlogPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
+    author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -483,11 +496,12 @@ class BlogPage(Page):
     def has_authors(self):
         for author in self.related_author.all():
             if author.author:
-                return true
+                return True
 
 BlogPage.content_panels = [
     FieldPanel('title', classname="full title"),
     InlinePanel(BlogPage, 'related_author', label="Author"),
+    FieldPanel('author_left'),
     FieldPanel('date'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
