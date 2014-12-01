@@ -393,8 +393,11 @@ class BlogIndexPage(Page):
             blogs = blogs.filter(tags__tag__slug=tag)
 
         # Pagination
+        per_page = 10
         page = request.GET.get('page')
-        paginator = Paginator(blogs, 10)  # Show 10 blogs per page
+        print('helen')
+        print(page)
+        paginator = Paginator(blogs, per_page)  # Show 10 blogs per page
         try:
             blogs = paginator.page(page)
         except PageNotAnInteger:
@@ -402,10 +405,19 @@ class BlogIndexPage(Page):
         except EmptyPage:
             blogs = paginator.page(paginator.num_pages)
 
-        return render(request, self.template, {
-            'self': self,
-            'blogs': blogs,
-        })
+        if request.is_ajax():
+            return render(request, "torchbox/includes/blog_listing.html", {
+                'self': self,
+                'blogs': blogs,
+                'per_page': per_page,
+            })
+        else:
+            return render(request, self.template, {
+                'self': self,
+                'blogs': blogs,
+                'per_page': per_page,
+            })
+
 
 BlogIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),

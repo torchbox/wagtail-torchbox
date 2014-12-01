@@ -7,9 +7,6 @@
 
     <div class= "crop-height">
         <img class="scale" src="http://cinemagraphs.com/images/demo/cab-window-429.gif" width="" height="" alt="">
-                <div class="credit">
-                <h5>This photo was stolen from the internet</h5>
-            </div>
     </div>
 
     <div class="hero container">
@@ -20,91 +17,51 @@
 
     <section class="blog">
 
-    <div class="dropdown">
-        Tags
-    </div>
+        <div class="dropdown">
+            Tags
+        </div>
 
-    <div class="popular-tags">
-        {% if poptags %}
-            <div class="closed">
-                <p>
-                    {% for tag in poptags %}
-                        {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
-                            <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% else %}
-                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% endif %}
-                    {% endfor %}
-                    {# Optional 'show all' appears if filtering by tag #}
-                    {% if request.GET.tag|length %}
+        <div class="popular-tags">
+            {% if poptags %}
+                <div class="closed">
+                    <p>
                         {% for tag in poptags %}
-                            {% if request.GET.tag|safe == tag.slug %}
-                                <a href="{% pageurl self %}">show all</a>
+                            {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                                <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
+                            {% else %}
+                                <a href="?tag={{ tag.slug }}">{{ tag }}</a>
                             {% endif %}
                         {% endfor %}
-                    {% endif %}
-                </p>
-            </div>
-        {% endif %}
-
-    </div>
-
-    <ul class="listing clearfix">
-        {% for blog in blogs %}
-            <li>
-                <a class="block-link" href="{% pageurl blog %}">
-                    <div class="container">
-                        <h2>{{ blog.title }}</h2>
-
-                        {% with blog.related_author.all as authors %}
-                            {% if authors %}
-                                {% for author in authors %}
-                                    <div class="centertall">
-                                        {% if author.author.image %}
-                                            {% image author.author.image fill-300x300 as photo %}
-                                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
-                                        {% endif %}
-                                    </div>
-
-                                    {{blog.intro|richtext}}
-
-                                    <span>{{ author.author.title }}</span>
-
-                                {% endfor %}
-                            {% endif %}
-                        {% endwith %}
-
-                        {% if blog.date %}
-                            <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
+                        {# Optional 'show all' appears if filtering by tag #}
+                        {% if request.GET.tag|length %}
+                            {% for tag in poptags %}
+                                {% if request.GET.tag|safe == tag.slug %}
+                                    <a href="{% pageurl self %}">show all</a>
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
+                    </p>
+                </div>
+            {% endif %}
 
-                    </div>
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+        </div>
+
+        <div id="listing">
+
+            {% include "torchbox/includes/blog_listing.html" %}
+
+        </div>
 
     </section>
 
-    <div class="container pagination">
-        {# Pagination #}
 
-        {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+{% endblock %}
 
-            <div>&nbsp;
-                {% if blogs.has_previous %}
-                    <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Previous &nbsp;</p></a>
-                {% endif %}
-            </div>
-
-            <div>&nbsp;
-                <p> Page {{ blogs.number }} of {{ blogs.paginator.num_pages }} </p>
-            </div>
-
-            <div> &nbsp;
-                {% if blogs.has_next %}
-                    <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
-                {% endif %}
-            </div>
-    </div>
+{% block extra_js %}
+    <script type="text/javascript">
+        //global var for current_page set here so that it can be used by the script being called
+        var blog_page = window.location.pathname;
+        //var num_pages = {{ blogs.paginator.num_pages }}
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js">
 {% endblock %}
