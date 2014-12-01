@@ -24,8 +24,8 @@
         Tags
     </div>
 
-    <div class="popular-tags">
-        {% if poptags %}
+     <div class="popular-tags container">
+        {% if poptags and not self.hide_popular_tags %}
             <div class="closed">
                 <p>
                     {% for tag in poptags %}
@@ -39,14 +39,13 @@
                     {% if request.GET.tag|length %}
                         {% for tag in poptags %}
                             {% if request.GET.tag|safe == tag.slug %}
-                                <a href="{% pageurl self %}">show all</a>
+                                <a class="before" href="{% pageurl self %}">show all</a>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
                 </p>
             </div>
         {% endif %}
-
     </div>
 
     <ul class="listing clearfix">
