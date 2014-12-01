@@ -1224,12 +1224,11 @@ overflow: hidden;
     position: absolute;
     top: 10px;
     right: 1em;
-    z-index: 5;
     transition: all 0.3s ease;
     transform-style: preserve-2D;
 }
 
-.open:after{
+.open:after {
     content: url("/static/torchbox/images/down_arrow.png");
     float: right;
     right: 30px;
@@ -1239,12 +1238,16 @@ overflow: hidden;
     transform: rotate(-180deg);
 }
 
+.page-blogindexpage .container {
+    position: relative;
+}
+
 .page-blogindexpage .closed:after {
-    bottom: 
+    top: -60px;
 }
 
 .page-blogindexpage .open:after {
-    margin-top: -17em;
+    top: -67px;
 }
 
 .page-blogindexpage img.scale {
