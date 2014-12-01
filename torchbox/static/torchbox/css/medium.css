@@ -628,7 +628,7 @@
 	}
 
 	.closed {
-	    height: auto;
+	    display: block;
 	}
 
 	.dropdown {
