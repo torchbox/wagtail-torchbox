@@ -1,25 +1,17 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="container pagination">
-    {# Pagination #}
-
-    {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-
-    <div>&nbsp;
-        {% if blogs.has_previous %}
-            <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="previous"><p> Previous &nbsp;</p></a>
-        {% endif %}
-    </div>
-
-    <div>&nbsp;
-        <p> Page <span class="this-page-number">{{ blogs.number }}</span> of {{ blogs.paginator.num_pages }} </p>
-    </div>
-
-    <div> &nbsp;
-        {% if blogs.has_next %}
-            <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="next"><p> Next </p></a>
-        {% endif %}
-    </div>
+{# orange arrow navigation #}
+<div class="nextprev-nav">
+    {% if blogs.has_previous %}
+        <div class="nextprev prev">
+            <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="previous"><span>Previous page</span></a>
+        </div>
+    {% endif %}
+    {% if blogs.has_next %}
+        <div class="nextprev next">
+            <a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="next"><span>Next page</span></a>
+        </div>
+    {% endif %}
 </div>
 
 <ul class="listing clearfix">
