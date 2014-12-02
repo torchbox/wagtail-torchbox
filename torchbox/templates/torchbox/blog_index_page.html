@@ -21,59 +21,6 @@
             Tags
         </div>
 
-<<<<<<< HEAD
-     <div class="popular-tags container">
-        {% if poptags and not self.hide_popular_tags %}
-            <div class="closed">
-                <p>
-                    {% for tag in poptags %}
-                        {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
-                            <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% else %}
-                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% endif %}
-                    {% endfor %}
-                    {# Optional 'show all' appears if filtering by tag #}
-                    {% if request.GET.tag|length %}
-                        {% for tag in poptags %}
-                            {% if request.GET.tag|safe == tag.slug %}
-                                <a class="before" href="{% pageurl self %}">show all</a>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </p>
-            </div>
-        {% endif %}
-    </div>
-
-    <ul class="listing clearfix">
-        {% for blog in blogs %}
-            <li>
-                <a class="block-link" href="{% pageurl blog %}">
-                    <div class="container">
-                        <h2>{{ blog.title }}</h2>
-
-                        {% with blog.related_author.all as authors %}
-                            {% if authors %}
-                                {% for author in authors %}
-                                    <div class="centertall">
-                                        {% if author.author.image %}
-                                            {% image author.author.image fill-300x300 as photo %}
-                                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
-                                        {% endif %}
-                                    </div>
-
-                                    {{blog.intro|richtext}}
-
-                                    <span>{{ author.author.title }}</span>
-
-                                {% endfor %}
-                            {% endif %}
-                        {% endwith %}
-
-                        {% if blog.date %}
-                            <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
-=======
         <div class="popular-tags">
             {% if poptags %}
                 <div class="closed">
@@ -92,7 +39,6 @@
                                     <a href="{% pageurl self %}">show all</a>
                                 {% endif %}
                             {% endfor %}
->>>>>>> 9bdfef43682dc7cd29c8f7e19d56ab652accb016
                         {% endif %}
                     </p>
                 </div>

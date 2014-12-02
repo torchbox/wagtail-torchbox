@@ -34,23 +34,8 @@ COMMON_PANELS = (
     FieldPanel('search_description'),
 )
 
-TAG_CHOICES = (
-    ('strategy', 'strategy'),
-    ('ux', 'ux'),
-    ('design', "design"),
-    ('drupal', 'drupal'),
-    ('wagtail', 'wagtail'),
-    ('tech', 'tech'),
-    ('digital_marketing', 'digital marketing'),
-    ('google_grants', 'google grants'),
-    ('seo', 'seo'),
-    ('animation_and_video', 'animation & video'),
-    ('front_end', 'front-end'),
-)
 
 # A couple of abstract classes that contain commonly used fields
-
-
 class ContentBlock(models.Model):
     content = RichTextField()
 
