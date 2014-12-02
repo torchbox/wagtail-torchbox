@@ -515,7 +515,9 @@
 		margin: 0 auto;
 		padding: 3em 0 1em 0;
 		border: none;
-		box-sizing: border-box;
+	    -webkit-box-sizing: border-box; 
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
 		left: auto;
 		max-width: 100%;
 	}
@@ -905,7 +907,9 @@
 		margin: 0 auto;
 		padding: 0;
 		border: none;
-		box-sizing: border-box;
+	    -webkit-box-sizing: border-box; 
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
 		left: auto;
 		max-width: 100%;
 	}
@@ -1423,7 +1427,9 @@
 		margin: 0 auto;
 		padding: 3em 0 0em 0;
 		border: none;
-		box-sizing: border-box;
+		-webkit-box-sizing: border-box; 
+    	-moz-box-sizing: border-box;
+    	box-sizing: border-box; 
 		left: auto;
 		max-width: 100%;
 	}
@@ -1632,7 +1638,9 @@
 		bottom: 0;
 		max-width: 40%;
 		width: 750px;
-		box-sizing: border-box;
+		-webkit-box-sizing: border-box; 
+    	-moz-box-sizing: border-box;
+    	box-sizing: border-box; 
 	}
 
 	.page-homepage .block{
