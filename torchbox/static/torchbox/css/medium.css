@@ -1490,10 +1490,6 @@
 		min-height: 80em;
 	}
 
-	.grid.people-list a {
-		-webkit-transform: translate3d(0,0,0);
-	}
-
 }
 
 /*Block Hover homepage feed*/
