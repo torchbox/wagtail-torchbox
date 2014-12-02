@@ -27,6 +27,8 @@
 	.bleed {
 		margin: 2.2em 0.5em 0 0;
 		height: 55px;
+	    -webkit-border-radius: 3px; 
+	    -moz-border-radius: 3px; 
 		border-radius: 3px;
 		background: rgba(67,74,79,0.5);
 	}
@@ -64,6 +66,9 @@
 
 	header nav li a:hover {
 		color: #F7A42C;
+		-o-transition: all 0.15s ease;
+    	-webkit-transition: all 0.15s ease;
+    	-moz-transition: all 0.15s ease;
 		transition: all 0.15s ease;
 	}
 
@@ -96,8 +101,10 @@
 		position:absolute;
 		overflow: hidden;
 		width: 3em;
+		-o-transition: 0.3s ease;
+    	-webkit-transition: 0.3s ease;
+    	-moz-transition: 0.3s ease;
 		transition:0.3s ease;
-		-webkit-transition: 0.3s ease;
 	}
 	.nextprev a:hover{
 		color:white;
@@ -123,6 +130,8 @@
 	.nextprev a{
 		background-color: #ea853a;
 		background-repeat:no-repeat;
+	    -webkit-border-radius: 3px; 
+	    -moz-border-radius: 3px; 
 		border-radius: 3px;
 		width:20em;
 		height:80px;
@@ -132,6 +141,9 @@
 	    z-index: 200;
 	    color: #fff;
 	    padding:0 1em;
+	    -o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 	    transition: 0.2s ease;
 	}
 	.nextprev span{
@@ -139,6 +151,8 @@
 		position: relative;
 		top: 50%;
 		line-height:1.3em;
+		 -webkit-transform: translateY(-50%);
+  		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
 	}
 
@@ -175,6 +189,9 @@
 	}
 
 	.pagination a p{
+		-o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
     	transition: 0.2s ease;
 	}
 
@@ -196,6 +213,9 @@
 	    width: 6em;
 	    background-image: url("/static/torchbox/images/arrow_down.png");
 	    background-repeat: no-repeat;
+	    -o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 	    transition: 0.2s ease;
 	    cursor: pointer;
 	}
@@ -264,6 +284,9 @@
     top:-3em;
     margin-bottom: -3em;
     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 	}
 
 	.page-homepage header {
@@ -324,10 +347,15 @@
 		display: block;
 		position: absolute;
 		background: rgba(0,0,0,0.3);
+	    -webkit-border-radius: 3px 0 0 0; 
+	    -moz-border-radius: 3px 0 0 0; 
 		border-radius: 3px 0 0 0;
 		padding: 0.5em 1em;
 		right: 0;
 		bottom: 0;
+		-o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 		transition: 0.2s ease;
 	}
 
@@ -337,6 +365,9 @@
 		display: block;
 		font-size: 0.9em;
 		line-height: 1;
+		-o-transition: opacity 0.2s ease;
+    	-webkit-transition: opacity 0.2s ease;
+    	-moz-transition: opacity 0.2s ease;
 		transition: opacity 0.2s ease;
 		margin: 0.1em 0;
 	}
@@ -382,8 +413,11 @@
 		font-size: 4em;
 	}
 
-	.page-standardpage h2 span{
+	.page-standardpage h2 span {
 		border-bottom: 6px solid;
+		-o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 		transition: 0.2s ease;
 	}
 
@@ -533,12 +567,18 @@
 	.page-workindexpage main ul a:hover {
 	    background-color: rgba(0,0,0,0.6);
 	    cursor: pointer;
+	    -o-transition: 0.3s ease;
+    	-webkit-transition: 0.3s ease;
+    	-moz-transition: 0.3s ease;
 	    transition: 0.3s ease;
 	}
 
 
 	.page-workindexpage main .listing .about {
 	    padding: 2em 2.5em 0 2.5em;
+	    -o-transition: 0.3s ease;
+    	-webkit-transition: 0.3s ease;
+    	-moz-transition: 0.3s ease;
 		transition: 0.3s ease;
 	    top: 289px;
 	    background-color: #000;
@@ -568,6 +608,9 @@
 		display: block;
 	    font-size: 0.9em;
 	    line-height: 1;
+	   	-o-transition: opacity 0.2s ease;
+    	-webkit-transition: opacity 0.2s ease;
+    	-moz-transition: opacity 0.2s ease;
 	    transition: opacity 0.2s ease;
 	    margin: 0.1em 0;
 	    font-family: "proxima-nova",helvetica,sans-serif;
@@ -650,6 +693,8 @@
 
 	.page-blogindexpage li img {
 		display: inline-block;
+		-webkit-border-radius: 50%; 
+    	-moz-border-radius: 50%; 
 		border-radius: 50%;
 		float: right;
 		width: 8em !important;
@@ -676,7 +721,10 @@
 	}
 
 	.page-blogindexpage .blog-title {
-		-webkit-background-size: cover;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
 		max-width: 60em;
 		margin: 0 auto;
 		padding: 0 2em;
@@ -783,6 +831,8 @@
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 		max-width: 800px;
 		border-radius: 3px;
+	    -webkit-border-radius: 3px; 
+		-moz-border-radius: 3px; 
     }
 
     .nextprev-nav{
@@ -865,6 +915,9 @@
 
 	.page-homepage .grid li {
 		margin: 0;
+		-o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 		transition: 0.2s ease;
 	}
 
@@ -1174,11 +1227,17 @@
 		width: 25%;
 		float: left;
 		height: 350px;
+		-o-transition: all 0.15s ease;
+    	-webkit-transition: all 0.15s ease;
+    	-moz-transition: all 0.15s ease;
 		transition: all 0.15s ease;
 	}
 
 	.page-servicespage .services li:hover:before {
 		color: #EA853a;
+		-o-transition: all 0.15s ease;
+    	-webkit-transition: all 0.15s ease;
+    	-moz-transition: all 0.15s ease;
 		transition: all 0.15s ease;
 	}
 
@@ -1238,6 +1297,9 @@
 		width: 50%;
 		float: left;
 		padding: 0 1em 1em 3em;
+		-o-transition: all 0.15s ease;
+    	-webkit-transition: all 0.15s ease;
+    	-moz-transition: all 0.15s ease;
 		transition: all 0.15s ease;
 	}
 
@@ -1297,12 +1359,18 @@
 
 	footer .contact li a:hover i {
 		top: -0.25em;
+		-o-transition: top 0.2s ease;
+    	-webkit-transition: top 0.2s ease;
+    	-moz-transition: top 0.2s ease;
 		transition: top 0.2s ease;
 
 	}
 
 	.svg{
 		display: block;
+		-o-transition: all 0.15s ease;
+    	-webkit-transition: all 0.15s ease;
+    	-moz-transition: all 0.15s ease;
 		transition: all 0.15s ease;
 		height: 100px;
 		float: left;
@@ -1355,14 +1423,22 @@
 		position: absolute;
 		background: rgba(0,0,0,0.3);
 		border-radius: 3px 0 0 0;
+		-webkit-border-radius: 3px 0 0 0; 
+    	-moz-border-radius: 3px 0 0 0; 
 		padding: 0.5em 1em;
 		right: 0;
 		bottom: 0;
+		-o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 		transition: 0.2s ease;
 	}
 
 	.page-workindexpage main .listing a:hover .credit {
 		background: none;
+		-o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 		transition: 0.2s ease;
 	}
 
@@ -1384,6 +1460,9 @@
 
 	.page-workindexpage main .listing .about {
 	    padding: 2em 2.5em 0 2.5em;
+	    -o-transition: 0.3s ease;
+    	-webkit-transition: 0.3s ease;
+    	-moz-transition: 0.3s ease;
 		transition: 0.3s ease;
 	    top: 634px;
 	    background-color: rgba(0,0,0,0.7);
@@ -1431,6 +1510,9 @@
 	.page-homepage .grid li img {
 		float: left;
 		max-width: 150%;
+		-o-transition: 0.4s ease;
+    	-webkit-transition: 0.4s ease;
+    	-moz-transition: 0.4s ease;
 		transition: 0.4s ease;
 	}
 
@@ -1458,6 +1540,9 @@
 		right: 0;
 		font-size: 1em;
 		margin-top: -5em;
+		-o-transition: 0.4s ease;
+    	-webkit-transition: 0.4s ease;
+    	-moz-transition: 0.4s ease;
 		transition: 0.4s ease;
 	}
 
@@ -1473,13 +1558,18 @@
 	    margin: 3em 0;
 	    line-height: 1em;
 	    border-radius: 0.2em;
-	    -webkit-transition: .3s;
+	    -webkit-border-radius: 0.2em; 
+    	-moz-border-radius: 0.2em; 
+		-o-transition: 0.3s;
+    	-webkit-transition: 0.3s;
+    	-moz-transition: 0.3s;
+		transition: 0.3s;
 	}
 
 	.page-homepage .go:hover {
-    border: solid 1px #EA853a;
-    color: #fff;
-    background: #EA853a;
+	    border: solid 1px #EA853a;
+	    color: #fff;
+	    background: #EA853a;
 	}
 
 	.page-homepage .block:hover .go {
@@ -1491,10 +1581,16 @@
 	}
 
 	.block img {
+		-o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 		transition: 0.2s ease;
 	}
 
 	.block:hover .name {
+		-o-transition: 0.2s ease;
+    	-webkit-transition: 0.2s ease;
+    	-moz-transition: 0.2s ease;
 		transition: 0.2s ease;
 		color: #ea853a;
 	}
@@ -1514,6 +1610,9 @@
 	}
 
 	.page-homepage .crop-height {
+		-o-transition: 0.4s ease;
+    	-webkit-transition: 0.4s ease;
+    	-moz-transition: 0.4s ease;
 		transition: 0.4s ease;
 		background-color: #000;
 	  	max-height: 28em;

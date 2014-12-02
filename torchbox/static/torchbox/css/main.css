@@ -153,13 +153,18 @@ button, .button {
     background-color: #EA853a;
     display: inline-block;
     line-height: 1em;
+    -webkit-border-radius: 0.2em; 
+    -moz-border-radius: 0.2em; 
     border-radius: 0.2em;
 }
 
 button:hover, .button:hover {
     background-color: #ffa523;
     color:#fff;
-    transition: background-color 0.15s ease;
+    -webkit-transition: background-color 0.15s ease;
+    -moz-transition:    background-color 0.15s ease;
+    -o-transition:      background-color 0.15s ease;
+    transition:         background-color 0.15s ease;
 }
 
 ul, li {
@@ -213,6 +218,9 @@ header nav li a {
 
 header nav li a:hover {
     color: #EA853a;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease; 
+    -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -290,8 +298,13 @@ main nav li.active a:after {
     border: solid 1px #EA853a;
     color: #EA853a;
     line-height: 1em;
+    -webkit-border-radius: 0.2em; 
+    -moz-border-radius: 0.2em; 
     border-radius: 0.2em;
-    -webkit-transition: .3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s; 
+    -o-transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 
 .page-homepage .center {
@@ -329,12 +342,18 @@ main nav li.active a:after {
 
 .body-copy a:hover {
     color: #ffa624;
+    -webkit-transition: color 0.1s ease;
+    -moz-transition: color 0.1s ease;
+    -o-transition: color 0.1s ease;
     transition: color 0.1s ease;
 }
 
 .body-copy p a {
     color: #424A4F;
     transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
     border-bottom: 1px dotted #424A4F;
 }
 
@@ -389,7 +408,10 @@ main nav li.active a:after {
 .listing a:hover h2,
 .listing a:hover h3 {
     cursor: pointer;
+    -webkit-transition: color 0.2s ease;
+    -moz-transition: color 0.2s ease;
     transition: color 0.2s ease;
+    -o-transition: all 0.2s ease;
 }
 
 .listing h2,
@@ -410,6 +432,9 @@ main nav li.active a:after {
     background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
     width:14em;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
     opacity: 0.80;
 }
@@ -435,6 +460,9 @@ main nav li.active a:after {
 .menu-button:hover {
     background-color: #EA853a;
     color: #fff;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -518,6 +546,9 @@ main nav li.active a:after {
 .page-homepage .menu-button:hover {
     background-color: #fff;
     color: rgba(67,74,79,0.8);
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -545,6 +576,9 @@ main nav li.active a:after {
     top: -22em;
     margin-bottom: -21em;
     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .page-homepage .hero .gif {
@@ -569,6 +603,8 @@ main nav li.active a:after {
     margin: 0 1em 1em 0;
     color: #fff;
     border: solid 1px #fff;
+    -webkit-border-radius: 2px; 
+    -moz-border-radius: 2px; 
     border-radius: 2px;
     min-width: 200px;
     text-align: center;
@@ -600,6 +636,8 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a {
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
     border-radius: 3px;
     border: solid 1px #424A4F;
     padding: 0.8em 1em;
@@ -644,7 +682,7 @@ main nav li.active a:after {
  }
 
  .page-homepage .container {
-overflow: hidden;
+    overflow: hidden;
 }
 
 .page-homepage .hero h2 {
@@ -665,6 +703,9 @@ overflow: hidden;
 .page-homepage h2 a {
     color: #222;
     position: relative;
+    -o-transition: color 0.1s ease;
+    -webkit-transition: color 0.1s ease;
+    -moz-transition: color 0.1s ease;
     transition: color 0.1s ease;
 }
 
@@ -679,9 +720,10 @@ overflow: hidden;
 .page-homepage h2 a:hover span {
     position: absolute;
     right: -0.8em;
-    -webkit-animation:spin 0.5s ease 0.1s;
-    -moz-animation:spin 0.5s linear infinite;
-    animation:spin 0.5s linear infinite;
+    -webkit-animation: spin 0.5s linear infinite;
+    -moz-animation: spin 0.5s linear infinite;
+    -o-animation: spin 0.5s linear infinite;
+    animation: spin 0.5s linear infinite;
 }
 
 .page-homepage .blog li {
@@ -740,6 +782,9 @@ overflow: hidden;
 }
 
 .clients li a {
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -802,6 +847,9 @@ overflow: hidden;
 .page-jobindexpage .menu-button:hover {
     background-color: #fff;
     color: rgba(67,74,79,0.8);
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -839,11 +887,16 @@ overflow: hidden;
     margin: -1em 1em -1em 0;
     color: #fff;
     border: solid 1px #f3f4f6;
+    -webkit-border-radius: 2px; 
+    -moz-border-radius: 2px; 
     border-radius: 2px;
     min-width: 252px;
     height: 55px;
     text-align: center;
     font-size: 0.8em;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -854,12 +907,17 @@ overflow: hidden;
 .page-jobindexpage .intro p  a:hover{
     background-color: rgba(255,255,255,0.1);
     border: solid 1px #f3f4f6;
+    -webkit-border-radius: 2px; 
+    -moz-border-radius: 2px; 
     border-radius: 2px;
 }
 
 .page-jobindexpage main .listing a {
     font-size: 1.3em;
     border-bottom: 1px solid #6F6E6E;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
     line-height: 1.3;
 }
@@ -929,6 +987,8 @@ overflow: hidden;
 
 .dark {
     margin: 0 2em;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
     border-radius: 3px;
     padding: 0.5em;
 }
@@ -963,6 +1023,8 @@ overflow: hidden;
     margin: 2em 1em 1em 0;
     color: #EA853a;
     border: solid 1px #EA853a;
+    -webkit-border-radius: 2px; 
+    -moz-border-radius: 2px; 
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
@@ -973,10 +1035,16 @@ overflow: hidden;
     background-color: #EA853a;
     display: inline-block;
     color: #fff;
+    -o-transition: background-color 0.2s ease;
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
 }
 
 .page-standardpage p a {
+    -o-transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
     transition: all 0.15s ease;
     border-bottom: 1px dotted #424A4F;
 }
@@ -997,6 +1065,9 @@ overflow: hidden;
 
 .page-standardpage header nav li a:hover{
     color: #ea853a;
+    -o-transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
     transition: all 0.15s ease;
 }
 
@@ -1050,6 +1121,9 @@ overflow: hidden;
     background-color: #424A4F;
     padding: 3em 0 2.8em 0;
     background: url("/static/torchbox/images/about-placeholder6.jpg") center right no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
 }
 
@@ -1198,6 +1272,8 @@ overflow: hidden;
     color: #fff;
     background: #434a4f;
     padding: 0.5em 0 0.5em 1em;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
     border-radius: 3px;
     display: block;
     margin: 1em;
@@ -1271,12 +1347,18 @@ overflow: hidden;
 .page-blogindexpage main .block-link {
     border-bottom: 1px dotted #DAD7D7;
     padding: 2em 1em;
+    -o-transition: background-color 0.2s ease;
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
 }
 
 .page-blogindexpage main .listing li:first-child {
     border-bottom: none;
     border-top: 1px dotted #DAD7D7;
+    -o-transition: background-color 0.2s ease;
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
 }
 
@@ -1331,6 +1413,9 @@ overflow: hidden;
 }
 
 .page-blogpage .article-meta a {
+    -o-transition: 0.2s ease;
+    -webkit-transition: 0.2s ease;
+    -moz-transition: 0.2s ease;
     transition: 0.2s ease;
     color: #ea853a;
 }
@@ -1397,6 +1482,8 @@ overflow: hidden;
     -moz-transition: background-color 0.2s ease;
     -o-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
     border-radius: 3px;
 }
 
@@ -1432,6 +1519,8 @@ overflow: hidden;
 .popular-tags a.before {
     border-bottom: 1px dotted;
     padding: 0.3em 0 0 0;
+    -webkit-border-radius: 0; 
+    -moz-border-radius: 0; 
     border-radius: 0;
 }
 
@@ -1463,9 +1552,14 @@ a.before:before {
 }
 
 .show a {
+    -o-transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
     transition: all 0.15s ease;
     border-bottom: 1px dotted #424A4F;
     padding: 0;
+    -webkit-border-radius: 0; 
+    -moz-border-radius: 0; 
     border-radius: 0;
     width: auto;
 }
@@ -1475,6 +1569,8 @@ a.before:before {
     border-bottom: 1px dotted #EA853A;
     background: transparent;
     padding: 0;
+    -webkit-border-radius: 0; 
+    -moz-border-radius: 0; 
     border-radius: 0;
 }
 
@@ -1492,7 +1588,8 @@ a.before:before {
     padding:0.5em 0em;
     color:#424A4F;
     border-radius:3px;
-    -webkit-border-radius:3px;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
     font-size:1em;
     margin-right: 1.3em;
     -webkit-transition: background-color 0.2s ease;
@@ -1526,6 +1623,8 @@ a.before:before {
     
 /*CSS3 extras*/
 a.tooltip span{
+    -webkit-border-radius: 4px; 
+    -moz-border-radius: 4px; 
     border-radius:4px;
     box-shadow: 5px 5px 8px #CCC;
 }
@@ -1577,12 +1676,17 @@ a.tooltip span{
     max-width: 36em;
     background: #000;
     border-radius: 0 3px 0 0;
+    -webkit-border-radius: 0 3px 0 0; 
+    -moz-border-radius: 0 3px 0 0; 
 }
 
 
 .page-workindexpage main .listing a h2 {
     font-size: 1.5em;
     line-height: 1.2;
+    -o-transition: opacity 0.2s ease;
+    -webkit-transition: opacity 0.2s ease;
+    -moz-transition: opacity 0.2s ease;
     transition: opacity 0.2s ease;
     margin-bottom: 0.25em;
     font-family: "proxima-nova",helvetica,sans-serif;
@@ -1635,8 +1739,13 @@ a.tooltip span{
     background: #fff;
     padding: 0.25em 1em;
     color: #EA853a;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
     border-radius: 3px;
     margin: 1em 0 0 0;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
     border: 1px solid #EA853a;
 }
@@ -1661,10 +1770,15 @@ main .breadcrumb a {
     margin:0 1em 1em 0;
     color: #EA853a;
     border: solid 1px #EA853a;
+    -webkit-border-radius: 2px; 
+    -moz-border-radius: 2px; 
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
     float: left;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -1763,6 +1877,8 @@ main .breadcrumb a:hover {
     width: 6em;
     float: left;
     margin-right: 1em;
+    -webkit-border-radius: 3em; 
+    -moz-border-radius: 3em; 
     border-radius: 3em;
     margin-bottom: 0;
     -webkit-filter: grayscale(100%);
@@ -1775,6 +1891,8 @@ main .breadcrumb a:hover {
     width: 4em;
     float: left;
     margin-right: 1em;
+    -webkit-border-radius: 3em; 
+    -moz-border-radius: 3em; 
     border-radius: 3em;
     margin-bottom: 0;
 }
@@ -1902,6 +2020,9 @@ main .breadcrumb a:hover {
 
 .grid.people-list a img {
     margin: 0;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
     opacity: 0.8;
 }
@@ -1917,6 +2038,9 @@ main .breadcrumb a:hover {
 
 .grid.people-list a:hover div {
     opacity: 1;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -2006,6 +2130,9 @@ footer .contact li i {
 }
 
 footer .contact span {
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
     font-size: 1em;
 }
@@ -2033,6 +2160,9 @@ footer .offices h3 {
     font-size: 1.5em;
     font-weight: bold;
     font-family: "proxima-nova",helvetica,sans-serif;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 
@@ -2045,6 +2175,9 @@ footer .offices h2{
 }
 
 footer .vcard {
+     -o-transition: all 0.2s ease;
+     -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
      transition: all 0.2s ease;
      overflow: hidden;
      font-size: 0.9em;
