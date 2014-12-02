@@ -822,7 +822,7 @@ main nav li.active a:after {
     margin-top: -19.5em;
     background-color: #424A4F;
     -webkit-font-smoothing: antialiased;
-    padding: 19.5em 2em 3em 2em;
+    padding: 19.5em 2em 1em 2em;
 }
 
 .page-jobindexpage .richtext{
@@ -870,13 +870,26 @@ main nav li.active a:after {
     font-size: 0.9em;
     margin: 2em 0 0.5em 0;
     color: #F3F4F6;
+    text-align: center;
 }
 
-.benefits{
+.benefits {
     margin: 1em 0 0 0;
 }
-.page-jobindexpage footer{
+.page-jobindexpage footer {
     margin: 2em 0 0 0;
+}
+
+.sub {
+    max-width: 100%;
+    margin: 1.5em auto 0 auto;
+}
+
+.page-jobindexpage .intro .sub p {
+    margin: 0 0 0.5em 0;
+    font-size: 0.9em;
+    padding-top: 0.2em;
+    opacity: 0.8;
 }
 
 .page-jobindexpage .intro p  a{
@@ -1941,6 +1954,7 @@ main .breadcrumb a:hover {
 .center{
     max-width: 96em;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 /*People index*/

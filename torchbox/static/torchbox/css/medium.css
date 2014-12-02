@@ -1042,6 +1042,7 @@
 		max-width: 96em;
 		margin: 0 auto;
 		padding: 2em 4em 1em 4em;
+		overflow: hidden;
 	}
 
 	.page-jobindexpage .benefits .one {
@@ -1052,8 +1053,17 @@
 		border-top: none;
 	}
 
+	.news {
+	    margin-top: -2.5em;
+	}
+
+	.sub {
+		max-width: 55%;
+		margin: 4.5em auto 0 auto;
+	}
+
 	.page-jobindexpage main .jobs {
-	    padding: 19.5em 2em 4em 2em;
+	    padding: 19.5em 2em 2em 2em;
 	}
 
 	.page-jobindexpage .intro p  a{
