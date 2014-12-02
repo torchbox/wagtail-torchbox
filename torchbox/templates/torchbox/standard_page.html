@@ -40,7 +40,7 @@
                  <h2>Some of our clients</h2>
                     <ul>
                         {% for client in self.clients.all %}
-                            <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-200x80 %}{% if client.link %}</a>{% endif %}</li>
+                            <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
                         {% endfor %}
                     </ul>
             </div>

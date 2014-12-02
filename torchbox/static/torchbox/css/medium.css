@@ -594,7 +594,7 @@
 	/* Generic style for tags */
 	.popular-tags{
 		padding: 0 2em;
-		margin:0.5em 0;
+		margin:0.5em auto;
 	}
 
 	.popular-tags a {
@@ -606,11 +606,20 @@
 		line-height: 15px;
 	}
 
+	.tags a {
+		padding:0.5em 1em;
+		margin-right: 0.5em;
+	}
+
+	.tags a:hover {
+	    color:#424A4F;
+	    background-color: rgba(225,225,225,1);
+	}
+
 	/* TAGS Work index */
 
 	.page-workindexpage .popular-tags p {
 	    max-width: 100%;
-	    min-width: 96em;
 	}
 
 	/*Blog index*/
@@ -619,7 +628,7 @@
 	}
 
 	.closed {
-	    height: auto;
+	    display: block;
 	}
 
 	.dropdown {
@@ -667,7 +676,6 @@
 	}
 
 	.page-blogindexpage .blog-title {
-		background-color:white;
 		-webkit-background-size: cover;
 		max-width: 60em;
 		margin: 0 auto;
@@ -736,6 +744,11 @@
 	    width:100%;
 	    margin:-8em 0 0 0;
 	    text-align: center;
+	}
+
+	.page-workpage .tags {
+	    display: inline-block;
+	    margin: 3em 0 0 2em;
 	}
 
 	.page-workpage .img-wrapper img {
