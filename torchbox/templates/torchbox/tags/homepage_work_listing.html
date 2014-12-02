@@ -24,13 +24,11 @@
 
                         <div class="work-intro">
                             <h3>{{ work.title }}</h3>
-                            <div class="hide">
-                                <p>
-                                {% if work.summary %}
-                                    {{ work.summary }}
-                                {% endif %}
-                                </p>
-                            </div>
+                            {% if work.summary %}
+                                <div class="hide">
+                                    <p>{{ work.summary|striptags|truncatewords:30 }}</p>
+                                </div>
+                            {% endif %}
                             <div class="go">
                                 See the project
                             </div>

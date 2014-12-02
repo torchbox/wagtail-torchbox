@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
 {% if blogs %}
 	<ul>
     {% for blog in blogs %}
@@ -30,7 +30,7 @@
                                 <h3>{{ blog.title }}</h3>
 
                                 {% if blog.intro %}
-                                	{{ blog.intro|richtext }}
+                                	<p>{{ blog.intro|striptags|truncatewords:30 }}</p>
                                 {% endif %}
 
                                 {% if blog.date %}
