@@ -2,44 +2,42 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<main class="page-about">
     <section>
-    <div class="container">
-        <h1 class="visuallyhidden">{{ self.title }}</h1>
-    </div>
-    <div class="grid people-list clearfix">
+        <div class="container">
+            <h1 class="visuallyhidden">{{ self.title }}</h1>
+        </div>
+        <div class="grid people-list clearfix">
 
-    {% if self.intro %}
-        {{ self.intro|richtext }}
-    {% endif %}
-
-    {% with self.people.all as people %}
-        {% if people %}
-            <ul>
-                {% for person in people %}
-                    <li>
-                        <a href="{% pageurl person %}">
-                        {% if person.image %}
-                            {% image person.image fill-400x400 as photo %}
-                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
-                        {% else %}
-                            <img src="http://placehold.it/400&text=Please+update+me" width="400" height="400" alt="Please change me!" class="img-thumbnail" />
-                        {% endif %}
-                        <div>
-                            <h2>{{ person.title }}</h2>
-
-                            <p>{% if person.role %}
-                                {{ person.role }}
-                            {% endif %}</p>
-                        </div>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+        {% if self.intro %}
+            {{ self.intro|richtext }}
         {% endif %}
 
-    {% endwith %}
-    </div>
-</section>
-</main>
+        {% with self.people.all as people %}
+            {% if people %}
+                <ul>
+                    {% for person in people %}
+                        <li>
+                            <a href="{% pageurl person %}">
+                            {% if person.image %}
+                                {% image person.image fill-400x400 as photo %}
+                                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+                            {% else %}
+                                <img src="http://placehold.it/400&text=Please+update+me" width="400" height="400" alt="Please change me!" class="img-thumbnail" />
+                            {% endif %}
+                            <div>
+                                <h2>{{ person.title }}</h2>
+
+                                <p>{% if person.role %}
+                                    {{ person.role }}
+                                {% endif %}</p>
+                            </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+        {% endwith %}
+        </div>
+    </section>
 {% endblock %}

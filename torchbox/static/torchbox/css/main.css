@@ -1844,29 +1844,29 @@ main .breadcrumb a:hover {
 }
 
 .body-copy p a:hover{
-        color: #ea853a;
+    color: #ea853a;
 }
 
 .page-personpage main .breadcrumb {
-        margin-top: 2em;
+    margin-top: 2em;
 }
 
- .page-personpage .role {
-        font-size: 1.3em;
-        line-height: 1.2em;
-        padding-bottom: 0.5em;
-        margin-bottom: 0.5em;
-        margin-top: 0.5em;
-        color: #97cb9b;
+.page-personpage .role {
+    font-size: 1.3em;
+    line-height: 1.2em;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    color: #97cb9b;
 }
 
 .page-personpage .container {
-        padding: 0 1em;
+    padding: 0 1em;
 }
 
 #map {
-     width: 100%;
-     height: 500px;
+    width: 100%;
+    height: 500px;
 }
 
 #pointers_map{
@@ -1897,21 +1897,22 @@ main .breadcrumb a:hover {
     background-color: #424A4F;
     display: block;
     overflow: hidden;
+    -webkit-transform: translate3d(0,0,0);
 }
 
 
 .grid.people-list a img {
     margin: 0;
-    transition: all 0.2s ease;
     opacity: 0.8;
 }
 
 .grid.people-list a:hover img {
-     transform:scale(1.125);
+    transform:scale(1.125);
     -ms-transform:scale(1.125); /* IE 9 */
     -moz-transform:scale(1.125); /* Firefox */
     -webkit-transform:scale(1.125); /* Safari and Chrome */
     -o-transform:scale(1.125); /* Opera */
+    transition: all 0.2s ease;
     opacity: 0.3;
 }
 
@@ -1921,7 +1922,6 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list li a:hover {
-    display: block;
     background: #EA853A;
 }
 
