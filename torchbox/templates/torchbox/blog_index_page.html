@@ -36,7 +36,7 @@
                         {% if request.GET.tag|length %}
                             {% for tag in poptags %}
                                 {% if request.GET.tag|safe == tag.slug %}
-                                    <a href="{% pageurl self %}">show all</a>
+                                    <a class="before" href="{% pageurl self %}">show all</a>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
