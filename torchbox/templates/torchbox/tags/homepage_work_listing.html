@@ -8,18 +8,17 @@
 
                     <div class="workcontainer">
                         {% if work.homepage_image %}
-                        {# image height matches max height of the crop div on the home page - width of crop is set as a percentage by the css so resizing by width doesn't help here #}
-                        {% image work.homepage_image height-448 as screenshot %}
+                            {% image work.homepage_image fill-764x448 as screenshot %}
 
-                        <div class="label">
-                            <p>Our work</p>
-                        </div>
+                            <div class="label">
+                                <p>Our work</p>
+                            </div>
 
-                        <div class="crop-height">
-                            <img class="scale" src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
-                        </div>
+                            <div class="crop-height">
+                                <img class="scale" src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
+                            </div>
 
-                        </div>
+                            </div>
                         {% endif %}
 
                         <div class="work-intro">
