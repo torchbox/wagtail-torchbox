@@ -6,7 +6,7 @@
     {% get_popular_tags self as poptags %}
 
     <div class= "crop-height">
-        <img class="scale" src="http://cinemagraphs.com/images/demo/cab-window-429.gif" width="" height="" alt="">
+        <img class="scale" src="/static/torchbox/images/blog_placeholder2.jpg" width="" height="" alt="">
     </div>
 
     <div class="hero container">
@@ -36,7 +36,7 @@
                         {% if request.GET.tag|length %}
                             {% for tag in poptags %}
                                 {% if request.GET.tag|safe == tag.slug %}
-                                    <a href="{% pageurl self %}">show all</a>
+                                    <a class="before" href="{% pageurl self %}">show all</a>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
