@@ -332,6 +332,7 @@
 	}
 
 	.page-homepage .hiring ul {
+		text-align: center;
 		border: none;
 	}
 
@@ -1423,6 +1424,7 @@
 }
 
 @media only screen and (min-width: 1000px) {
+
 	.uslist {
 		margin: 0 auto;
 		padding: 3em 0 0em 0;
@@ -1511,6 +1513,14 @@
 /*Block Hover homepage feed*/
 
 @media only screen and (min-width: 60em) {
+
+	.wagtail {
+	    opacity: 0.8;
+	    width: 100%;
+	    padding: 2em 0 0 0;
+	    text-align: center;
+	    overflow: hidden;
+	}
 
 	.page-standardpage h2 {
 		font-weight: bold;
