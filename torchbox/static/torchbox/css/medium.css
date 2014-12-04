@@ -1462,54 +1462,6 @@
 
 }
 
-    /* Desktop */
-@media only screen and (min-width: 1250px) {
-	.page-jobindexpage main .listing li:nth-child(2) a {
-		border-top: 1px solid #6F6E6E;
-	}
-
-	.page-jobindexpage main .listing li{
-		float: left;
-		width:48%;
-		margin-right: 2%;
-		min-height: 60px;
-		font-size: 0.8em;
-	}
-
-	.page-workindexpage main .listing .about {
-	    padding: 2em 2.5em 0 2.5em;
-	    -o-transition: 0.3s ease;
-    	-webkit-transition: 0.3s ease;
-    	-moz-transition: 0.3s ease;
-		transition: 0.3s ease;
-	    top: 634px;
-	    background-color: rgba(0,0,0,0.7);
-	}
-
-	.page-workindexpage main .listing a:hover .about {
-	    top: 475px;
-	    background-color: #fff;
-	}
-
-
-	.page-workindexpage main .listing .credit {
-		bottom: 560px;
-	}
-
-	.page-workindexpage main .listing a:hover .about h2 {
-	color: #000;
-	}
-
-	.page-workindexpage main ul li{
-		max-height: 45em;
-	}
-
-	.page-workindexpage main ul a{
-		min-height: 80em;
-	}
-
-}
-
 /*Block Hover homepage feed*/
 
 @media only screen and (min-width: 60em) {
@@ -1588,6 +1540,11 @@
 		transition: 0.3s;
 	}
 
+	.page-homepage .crop-height {
+	    float: left;
+	    overflow: hidden;
+	}
+
 	.page-homepage .go:hover {
 	    border: solid 1px #EA853a;
 	    color: #fff;
@@ -1644,7 +1601,7 @@
 
 	.page-homepage .work-intro {
 		float: left;
-		padding: 4em 0 0 3em;
+		padding: 2em 0 0 3em;
 		bottom: 0;
 		max-width: 45%;
 		width: 750px;
@@ -1682,6 +1639,58 @@
 
 	.author .name {
 	    color: #424a4f;
+	}
+
+}
+
+    /* Desktop */
+@media only screen and (min-width: 1250px) {
+	.page-jobindexpage main .listing li:nth-child(2) a {
+		border-top: 1px solid #6F6E6E;
+	}
+
+	.page-homepage .work-intro {
+		padding: 4em 0 0 3em;
+	}
+
+	.page-jobindexpage main .listing li{
+		float: left;
+		width:48%;
+		margin-right: 2%;
+		min-height: 60px;
+		font-size: 0.8em;
+	}
+
+	.page-workindexpage main .listing .about {
+	    padding: 2em 2.5em 0 2.5em;
+	    -o-transition: 0.3s ease;
+    	-webkit-transition: 0.3s ease;
+    	-moz-transition: 0.3s ease;
+		transition: 0.3s ease;
+	    top: 634px;
+	    background-color: rgba(0,0,0,0.7);
+	}
+
+	.page-workindexpage main .listing a:hover .about {
+	    top: 475px;
+	    background-color: #fff;
+	}
+
+
+	.page-workindexpage main .listing .credit {
+		bottom: 560px;
+	}
+
+	.page-workindexpage main .listing a:hover .about h2 {
+	color: #000;
+	}
+
+	.page-workindexpage main ul li{
+		max-height: 45em;
+	}
+
+	.page-workindexpage main ul a{
+		min-height: 80em;
 	}
 
 }

@@ -543,6 +543,7 @@ main nav li.active a:after {
 .page-homepage .crop-height {
     float: left;
     overflow: hidden;
+    width: 100%;
 }
 
 .page-homepage .menu-button:hover {
