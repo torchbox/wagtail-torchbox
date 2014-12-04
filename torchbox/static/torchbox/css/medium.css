@@ -1577,7 +1577,7 @@
 	    padding: 1em 1.5em;
 	    border: solid 1px #EA853a;
 	    color: #EA853a;
-	    margin: 3em 0;
+	    margin: 0;
 	    line-height: 1em;
 	    border-radius: 0.2em;
 	    -webkit-border-radius: 0.2em; 
@@ -1638,7 +1638,7 @@
 		transition: 0.4s ease;
 		background-color: #000;
 	  	max-height: 28em;
-	  	width: 55%;
+	  	width: 50%;
 	  	position: relative;
 	}
 
@@ -1646,7 +1646,7 @@
 		float: left;
 		padding: 4em 0 0 3em;
 		bottom: 0;
-		max-width: 40%;
+		max-width: 45%;
 		width: 750px;
 		-webkit-box-sizing: border-box; 
     	-moz-box-sizing: border-box;
@@ -1676,9 +1676,7 @@
 	}
 
 	.author {
-		margin:1.5em auto 0 auto;
-	    border-top: 1px dotted #ccc;
-	    border-top: 1px dotted rgba(0,0,0,0.2);
+		margin:0 auto 0 auto;
 	    padding: 1em 0em;
 	}
 

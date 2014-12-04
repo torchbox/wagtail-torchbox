@@ -28,9 +28,9 @@
 
                                 <h3>{{ blog.title }}</h3>
 
-                                {% if blog.intro %}
-                                	<p>{{ blog.intro|striptags|truncatewords:30 }}</p>
-                                {% endif %}
+                                <!--Taking out <p>  {% if blog.intro %}
+                                	<p>{{ blog.intro|striptags|truncatewords:0 }}</p>
+                                {% endif %} -->
 
                                 {% if blog.date %}
                                   <span class="date">{{ blog.date|date:"j F Y" }}</span>
