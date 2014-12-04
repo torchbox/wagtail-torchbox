@@ -2,8 +2,7 @@
 {% get_site_root as site_root %}
 
 {# Link to home page #}
-<a href="{% pageurl site_root %}" class="logo container">
-</a>
+<a href="{% pageurl site_root %}{% if calling_page|in_play %}play/{% endif %}" class="logo container"></a>
 <nav role="navigation"> 
     <a href="#menu" class="menu-button">&#9776;</a>        
     <ul class="bleed">
