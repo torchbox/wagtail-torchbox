@@ -397,16 +397,7 @@
         margin-bottom: 2em;
     }
 
-    .page-standardpage .active a{
-        color: #fff;
-    }
-
-    .page-standardpage .active a:hover{
-        color: #fff;
-        border-bottom: none;
-    }
-
-    .page-standardpage .hero{
+    .page-standardpage .hero {
         padding: 2em 4em 3em 6em;
         margin: -23em auto 11em auto;
         position: relative;

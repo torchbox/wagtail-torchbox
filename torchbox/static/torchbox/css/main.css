@@ -1084,18 +1084,6 @@ main nav li.active a:after {
     background-size: auto 2em;
 }
 
-.page-standardpage header nav li a {
-    color: #fff;
-}
-
-.page-standardpage header nav li a:hover{
-    color: #ea853a;
-    -o-transition: all 0.15s ease;
-    -webkit-transition: all 0.15s ease;
-    -moz-transition: all 0.15s ease;
-    transition: all 0.15s ease;
-}
-
 .page-standardpage .listing p {
     float: left;
     display: block;
