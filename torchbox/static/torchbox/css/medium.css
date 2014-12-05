@@ -201,11 +201,6 @@
 
 	/*Homepage*/
 
-	.page-homepage .blog li {
-		margin-top: 0;
-		border-bottom: none;
-	}
-
 	.arrow{
 	    display: block;
 	    margin: 4em 0 0 -0.8em;
@@ -233,12 +228,12 @@
     	display: block;
 	}
 
-	.page-homepage .listing p{
+	.page-homepage .listing p {
     	margin-top: 0;
     	max-width: 700px;
 	}
 
-	.worklisting h3{
+	.worklisting h3 {
     	margin-bottom: 0em;
 	}
 
@@ -246,28 +241,28 @@
 	    margin-bottom: 0em;
 	}
 
-	.page-homepage .bloglisting a:first-child li{
+	.page-homepage .bloglisting a:first-child li {
     	padding-top: 0em;
 	}
 
-	.page-homepage .bloglisting a:last-child li{
+	.page-homepage .bloglisting a:last-child li {
 	    padding-bottom: 0em;
 	}
 
-	.blog h3{
+	.blog h3 {
     	color: #424a4f;
 	}
 
-	.page-homepage .listing h3{
+	.page-homepage .listing h3 {
     	font-size: 2em;
 	}
 
-	.page-homepage .down{
+	.page-homepage .down {
 	    height: 100px;
 	    background-size: 180em;
 	}
 
-	.page-homepage .listing a:hover h3{
+	.page-homepage .listing a:hover h3 {
 		color: #ea853a;
 	}
 
@@ -277,21 +272,21 @@
 	}
 
 	.page-homepage .hero {
-    padding: 6em 2em;
-    background: url("/static/torchbox/images/Homepage_hero.png") no-repeat center;
-    background-color: #5b6265;
-    position: relative;
-    top:-3em;
-    margin-bottom: -3em;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	    padding: 6em 2em;
+	    background: url("/static/torchbox/images/Homepage_hero.png") no-repeat center;
+	    background-color: #5b6265;
+	    position: relative;
+	    top:-3em;
+	    margin-bottom: -3em;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+    	background-size: cover;
 	}
 
 	.page-homepage header {
-    position:relative;
-    background-color: transparent;
+	    position:relative;
+	    background-color: transparent;
 	}
 
 	.page-homepage .hero {
@@ -319,6 +314,10 @@
 
 	.page-homepage .hero a {
 		padding:1.25em;
+	}
+
+	.page-homepage .hiring {
+		padding: 3em 2em;
 	}
 
 	.page-homepage .hiring h2 {
@@ -410,7 +409,7 @@
 	}
 
 	.page-standardpage h2 {
-		margin: -4em auto 2em auto;
+		margin: 0 auto;
 		font-size: 4em;
 	}
 
@@ -1425,6 +1424,11 @@
 
 @media only screen and (min-width: 1000px) {
 
+	.page-standardpage .heading {
+	    position: absolute;
+	    bottom: 200px;
+	}
+
 	.uslist {
 		margin: 0 auto;
 		padding: 3em 0 0em 0;
@@ -1466,6 +1470,15 @@
 
 @media only screen and (min-width: 60em) {
 
+	.page-homepage .bloglisting {
+		margin-top: 0;
+	}
+
+	.page-homepage .blog li {
+	    margin-top: 0;
+	    border-bottom: 0;
+	}
+
 	.wagtail {
 	    opacity: 0.8;
 	    width: 100%;
@@ -1477,7 +1490,6 @@
 	.page-standardpage h2 {
 		font-weight: bold;
 	    font-size: 4em;
-	    margin: -5em auto 4.5em auto;
 		max-width: 1000px;
 	}
 
@@ -1645,6 +1657,7 @@
 
     /* Desktop */
 @media only screen and (min-width: 1250px) {
+
 	.page-jobindexpage main .listing li:nth-child(2) a {
 		border-top: 1px solid #6F6E6E;
 	}

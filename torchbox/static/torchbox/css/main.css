@@ -628,7 +628,7 @@ main nav li.active a:after {
 .page-homepage .hiring {
     min-width: 100%;
     text-align: left;
-    padding: 3em 2em;
+    padding: 1.8em 2em 3em 2em;
     background-color: #F3F4F6;
 }
 
@@ -734,21 +734,16 @@ main nav li.active a:after {
     border-bottom: 1px dotted #A9A9A9;
 }
 
-.worklisting h3{
-    margin-bottom: 1em;
+.worklisting h3 {
+    margin-bottom: 0;
 }
 
-.worklisting {
-    margin-bottom: 2em;
+.page-homepage .bloglisting {
+    margin-top: 1.8em;
 }
 
 .page-homepage .bloglisting a:first-child li{
     padding-top: 0.5em;
-}
-
-.page-homepage .bloglisting a:last-child li{
-    padding-bottom: 0em;
-    border: none;
 }
 
 .clients {
@@ -1017,11 +1012,18 @@ main nav li.active a:after {
     text-align: center;
 }
 
+.page-standardpage .heading {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
+}
+
 .page-standardpage h4 span {
     font-weight: bold;
     color: #434a4f;
     font-size: 1.5em;
-    padding: 0 0.3em 0 0.5em;
+    padding: 0 0.5em;
     border-right: 1px solid #434a4f;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
@@ -1108,7 +1110,7 @@ main nav li.active a:after {
     color: #fff;
     font-weight: bold;
     font-size: 2.5em;
-    margin: -5em 0 3em 0;
+    margin: 0;
 }
 
 .page-standardpage  p i{
@@ -1184,8 +1186,7 @@ main nav li.active a:after {
 }
 
 .page-standardpage .were-tbx {
-    margin-top: -8.5em;
-    padding: 8.5em 2em 0 1em;
+    padding: 0em 2em 0 1em;
     -webkit-font-smoothing: antialiased;
     color: #434a4f;
 }
