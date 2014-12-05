@@ -830,6 +830,7 @@
 	    margin-top: -10.2em;
 		background: rgba(255, 255, 255, 1);
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		padding-bottom: 0;
 		max-width: 800px;
 		border-radius: 3px;
 	    -webkit-border-radius: 3px; 
@@ -854,8 +855,9 @@
     }
 
     .share {
-	    margin-left: 0.5em
-		}
+	    margin-left: 0.5em;
+	    float: left;
+	}
 
 
     .grid li {
