@@ -692,11 +692,6 @@
 		background-image: url("/static/torchbox/images/logo-torchbox-white.png");
 	}
 
-	.page-blogindexpage h2 {
-	    margin-bottom: 0.5em;
-	    max-width: 48em;
-	}
-
 	.page-blogindexpage li img {
 		display: inline-block;
 		-webkit-border-radius: 50%; 
@@ -760,7 +755,7 @@
 
 	.page-blogindexpage h2 {
 	    font-size: 2.3em;
-	    max-width: 620px;
+	    margin-bottom: 0.5em;
 	}
 
 	 .page-blogindexpage .blog-title h2 {

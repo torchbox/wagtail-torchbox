@@ -1350,8 +1350,10 @@ main nav li.active a:after {
     padding:1em 2em;
     max-width:54em;
 }
+
 .page-blogindexpage h2 {
     color: #ea853a;
+    max-width: 80%;
 }
 
 .page-blogindexpage .blog-title h2 {
