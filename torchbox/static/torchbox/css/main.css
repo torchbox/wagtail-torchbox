@@ -2022,6 +2022,7 @@ main .breadcrumb a:hover {
 .grid.people-list li {
     position: relative;
     overflow:hidden;
+    margin: 0;
 }
 
 .grid.people-list li div {

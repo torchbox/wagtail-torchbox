@@ -1403,6 +1403,15 @@
     /* Style adjustments for high resolution devices */
 }
 
+@media only screen and (min-width: 500px) {
+	.grid.people-list li {
+	    width: 50%;
+	    position: relative;
+	    overflow:hidden;
+	    margin: 0;
+	    float: left;
+	}
+}
 
 @media only screen and (min-width: 66em) {
 
