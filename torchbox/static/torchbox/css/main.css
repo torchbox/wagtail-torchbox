@@ -628,7 +628,7 @@ main nav li.active a:after {
 .page-homepage .hiring {
     min-width: 100%;
     text-align: left;
-    padding: 3em 2em;
+    padding: 1.8em 2em 3em 2em;
     background-color: #F3F4F6;
 }
 
@@ -734,21 +734,16 @@ main nav li.active a:after {
     border-bottom: 1px dotted #A9A9A9;
 }
 
-.worklisting h3{
-    margin-bottom: 1em;
+.worklisting h3 {
+    margin-bottom: 0;
 }
 
-.worklisting {
-    margin-bottom: 2em;
+.page-homepage .bloglisting {
+    margin-top: 1.8em;
 }
 
 .page-homepage .bloglisting a:first-child li{
     padding-top: 0.5em;
-}
-
-.page-homepage .bloglisting a:last-child li{
-    padding-bottom: 0em;
-    border: none;
 }
 
 .clients {
@@ -865,12 +860,17 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .benefits li {
-    padding: 2em 2em 1.5em 2em;
+    padding: 1em 2em 0.5em 2em;
     margin-bottom: -1em;
 }
 
+.page-jobindexpage .benefits li p {
+    margin: 0 0 2em 0;
+}
+
 .page-jobindexpage .intro p {
-    font-size: 0.9em;
+    font-size: 1.1em;
+    line-height: 1.4em;
     margin: 2em 0 0.5em 0;
     color: #F3F4F6;
     text-align: center;
@@ -895,12 +895,12 @@ main nav li.active a:after {
     opacity: 0.8;
 }
 
-.page-jobindexpage .intro p  a{
+.page-jobindexpage .intro p a {
     background-color: #424a4f;
     display: inline-block;
     padding: 1.7em 1.5em;
-    line-height: 1em;
-    margin: -1em 1em -1em 0;
+    line-height: 0em;
+    margin: -1em 1em 0em 0;
     color: #fff;
     border: solid 1px #f3f4f6;
     -webkit-border-radius: 2px;
@@ -909,7 +909,7 @@ main nav li.active a:after {
     min-width: 252px;
     height: 55px;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 1em;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
@@ -929,7 +929,7 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage main .listing a {
-    font-size: 1.3em;
+    font-size: 1.8em;
     border-bottom: 1px solid #6F6E6E;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
@@ -1017,11 +1017,20 @@ main nav li.active a:after {
     text-align: center;
 }
 
+.page-standardpage .heading {
+    position: absolute;
+    top: 0em;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
+}
+
 .page-standardpage h4 span {
     font-weight: bold;
     color: #434a4f;
     font-size: 1.5em;
-    padding: 0 0.3em 0 0.5em;
+    padding: 0 0.5em;
     border-right: 1px solid #434a4f;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
@@ -1071,7 +1080,7 @@ main nav li.active a:after {
 }
 
 .page-standardpage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
 }
 
@@ -1108,7 +1117,7 @@ main nav li.active a:after {
     color: #fff;
     font-weight: bold;
     font-size: 2.5em;
-    margin: -5em 0 3em 0;
+    margin: 0;
 }
 
 .page-standardpage  p i{
@@ -1184,16 +1193,13 @@ main nav li.active a:after {
 }
 
 .page-standardpage .were-tbx {
-    margin-top: -8.5em;
-    padding: 8.5em 2em 0 1em;
+    padding: 0em 2em 0 1em;
     -webkit-font-smoothing: antialiased;
     color: #434a4f;
 }
 
 .page-standardpage  .crop-height {
-    max-height: 40em;
-    overflow: hidden;
-    margin-top: -19em;
+    max-height: 12em;
 }
 
 .page-standardpage img.scale {
@@ -1344,8 +1350,10 @@ main nav li.active a:after {
     padding:1em 2em;
     max-width:54em;
 }
+
 .page-blogindexpage h2 {
     color: #ea853a;
+    max-width: 80%;
 }
 
 .page-blogindexpage .blog-title h2 {
@@ -2014,6 +2022,7 @@ main .breadcrumb a:hover {
 .grid.people-list li {
     position: relative;
     overflow:hidden;
+    margin: 0;
 }
 
 .grid.people-list li div {

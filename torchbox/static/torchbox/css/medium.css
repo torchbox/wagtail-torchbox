@@ -201,11 +201,6 @@
 
 	/*Homepage*/
 
-	.page-homepage .blog li {
-		margin-top: 0;
-		border-bottom: none;
-	}
-
 	.arrow{
 	    display: block;
 	    margin: 4em 0 0 -0.8em;
@@ -233,12 +228,12 @@
     	display: block;
 	}
 
-	.page-homepage .listing p{
+	.page-homepage .listing p {
     	margin-top: 0;
     	max-width: 700px;
 	}
 
-	.worklisting h3{
+	.worklisting h3 {
     	margin-bottom: 0em;
 	}
 
@@ -246,28 +241,28 @@
 	    margin-bottom: 0em;
 	}
 
-	.page-homepage .bloglisting a:first-child li{
+	.page-homepage .bloglisting a:first-child li {
     	padding-top: 0em;
 	}
 
-	.page-homepage .bloglisting a:last-child li{
+	.page-homepage .bloglisting a:last-child li {
 	    padding-bottom: 0em;
 	}
 
-	.blog h3{
+	.blog h3 {
     	color: #424a4f;
 	}
 
-	.page-homepage .listing h3{
+	.page-homepage .listing h3 {
     	font-size: 2em;
 	}
 
-	.page-homepage .down{
+	.page-homepage .down {
 	    height: 100px;
 	    background-size: 180em;
 	}
 
-	.page-homepage .listing a:hover h3{
+	.page-homepage .listing a:hover h3 {
 		color: #ea853a;
 	}
 
@@ -277,21 +272,21 @@
 	}
 
 	.page-homepage .hero {
-    padding: 6em 2em;
-    background: url("/static/torchbox/images/Homepage_hero.png") no-repeat center;
-    background-color: #5b6265;
-    position: relative;
-    top:-3em;
-    margin-bottom: -3em;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	    padding: 6em 2em;
+	    background: url("/static/torchbox/images/Homepage_hero.png") no-repeat center;
+	    background-color: #5b6265;
+	    position: relative;
+	    top:-3em;
+	    margin-bottom: -3em;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+    	background-size: cover;
 	}
 
 	.page-homepage header {
-    position:relative;
-    background-color: transparent;
+	    position:relative;
+	    background-color: transparent;
 	}
 
 	.page-homepage .hero {
@@ -319,6 +314,10 @@
 
 	.page-homepage .hero a {
 		padding:1.25em;
+	}
+
+	.page-homepage .hiring {
+		padding: 3em 2em;
 	}
 
 	.page-homepage .hiring h2 {
@@ -381,13 +380,17 @@
 	    margin: 4em auto 3em auto;
 	}
 
+	.page-standardpage .heading {
+    	top: 7em;
+	}
+
 	.page-standardpage img.scale {
 	    width: 100%;
 	}
 
-	.italic{
-	    font-size: 2em;
-	    margin: 1.5em auto 1.5em auto;
+	.italic {
+		font-size: 1.7em;
+		margin: 1.5em auto 1.5em auto;
 	}
 
 	.page-standardpage main li {
@@ -410,8 +413,8 @@
 	}
 
 	.page-standardpage h2 {
-		margin: -4em auto 2em auto;
-		font-size: 4em;
+		margin: 0 auto;
+		font-size: 3em;
 	}
 
 	.page-standardpage h2 span {
@@ -689,11 +692,6 @@
 		background-image: url("/static/torchbox/images/logo-torchbox-white.png");
 	}
 
-	.page-blogindexpage h2 {
-	    margin-bottom: 0.5em;
-	    max-width: 48em;
-	}
-
 	.page-blogindexpage li img {
 		display: inline-block;
 		-webkit-border-radius: 50%; 
@@ -757,7 +755,7 @@
 
 	.page-blogindexpage h2 {
 	    font-size: 2.3em;
-	    max-width: 620px;
+	    margin-bottom: 0.5em;
 	}
 
 	 .page-blogindexpage .blog-title h2 {
@@ -832,14 +830,11 @@
 	    margin-top: -10.2em;
 		background: rgba(255, 255, 255, 1);
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		padding-bottom: 0;
 		max-width: 800px;
 		border-radius: 3px;
 	    -webkit-border-radius: 3px; 
 		-moz-border-radius: 3px; 
-    }
-
-    .nextprev-nav{
-    	display: block;
     }
 
     .body-copy p,
@@ -860,8 +855,9 @@
     }
 
     .share {
-	    margin-left: 0.5em
-		}
+	    margin-left: 0.5em;
+	    float: left;
+	}
 
 
     .grid li {
@@ -1004,7 +1000,7 @@
 	}
 
 	.page-jobindexpage .intro p a {
-		padding: 1.4em 1.5em;
+		padding: 1.5em;
 	}
 
 	.page-jobindexpage .rich-text p{
@@ -1026,7 +1022,6 @@
 	.page-jobindexpage .benefits h3 {
 		font-size: 2em;
 		line-height: 1em;
-		margin-bottom: -0.2em;
 	}
 
 	.page-jobindexpage .benefits li > div > div {
@@ -1410,6 +1405,15 @@
     /* Style adjustments for high resolution devices */
 }
 
+@media only screen and (min-width: 500px) {
+	.grid.people-list li {
+	    width: 50%;
+	    position: relative;
+	    overflow:hidden;
+	    margin: 0;
+	    float: left;
+	}
+}
 
 @media only screen and (min-width: 66em) {
 
@@ -1424,6 +1428,14 @@
 }
 
 @media only screen and (min-width: 1000px) {
+
+	.nextprev-nav{
+    	display: block;
+    }
+
+	.page-standardpage .heading {
+    	top: 15em;
+	}
 
 	.uslist {
 		margin: 0 auto;
@@ -1466,6 +1478,15 @@
 
 @media only screen and (min-width: 60em) {
 
+	.page-homepage .bloglisting {
+		margin-top: 0;
+	}
+
+	.page-homepage .blog li {
+	    margin-top: 0;
+	    border-bottom: 0;
+	}
+
 	.wagtail {
 	    opacity: 0.8;
 	    width: 100%;
@@ -1477,7 +1498,6 @@
 	.page-standardpage h2 {
 		font-weight: bold;
 	    font-size: 4em;
-	    margin: -5em auto 4.5em auto;
 		max-width: 1000px;
 	}
 
@@ -1645,6 +1665,17 @@
 
     /* Desktop */
 @media only screen and (min-width: 1250px) {
+
+	.italic {
+	    font-size: 2em;
+	    margin: 1.5em auto 1.5em auto;
+	}
+
+	.page-standardpage h2 {
+		margin: 0 auto;
+		font-size: 4em;
+	}
+
 	.page-jobindexpage main .listing li:nth-child(2) a {
 		border-top: 1px solid #6F6E6E;
 	}
