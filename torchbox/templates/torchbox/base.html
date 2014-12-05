@@ -159,14 +159,17 @@
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}
 
         <script>
-            // Sticky next / previous work page //
-            // Cache selectors outside callback for performance.
-            var $window = $(window),
-                $stickyEl = $('.nextprev'),
-                elTop = $stickyEl.length && $stickyEl.offset().top-30;
+            $(window).load(function(){
+                // Sticky next / previous work page //
+                // Cache selectors outside callback for performance.
+                var $window = $(window),
+                    $stickyEl = $('.nextprev'),
+                    elTop = $stickyEl.length && $stickyEl.offset().top - 10;
+                    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
 
-            $window.scroll(function() {
-                $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+                $window.scroll(function() {
+                    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+                });
             });
         </script>
 
