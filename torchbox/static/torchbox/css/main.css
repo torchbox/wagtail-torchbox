@@ -429,7 +429,7 @@ main nav li.active a:after {
 }
 
 .logo {
-    height:3em;
+    height: 3.5em;
     display: block;
     background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
