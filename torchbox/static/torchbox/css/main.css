@@ -860,12 +860,17 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .benefits li {
-    padding: 2em 2em 1.5em 2em;
+    padding: 1em 2em 0.5em 2em;
     margin-bottom: -1em;
 }
 
+.page-jobindexpage .benefits li p {
+    margin: 0 0 2em 0;
+}
+
 .page-jobindexpage .intro p {
-    font-size: 0.9em;
+    font-size: 1.1em;
+    line-height: 1.4em;
     margin: 2em 0 0.5em 0;
     color: #F3F4F6;
     text-align: center;
@@ -890,12 +895,12 @@ main nav li.active a:after {
     opacity: 0.8;
 }
 
-.page-jobindexpage .intro p  a{
+.page-jobindexpage .intro p a {
     background-color: #424a4f;
     display: inline-block;
     padding: 1.7em 1.5em;
-    line-height: 1em;
-    margin: -1em 1em -1em 0;
+    line-height: 0em;
+    margin: -1em 1em 0em 0;
     color: #fff;
     border: solid 1px #f3f4f6;
     -webkit-border-radius: 2px; 
@@ -904,7 +909,7 @@ main nav li.active a:after {
     min-width: 252px;
     height: 55px;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 1em;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
@@ -924,7 +929,7 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage main .listing a {
-    font-size: 1.3em;
+    font-size: 1.8em;
     border-bottom: 1px solid #6F6E6E;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;

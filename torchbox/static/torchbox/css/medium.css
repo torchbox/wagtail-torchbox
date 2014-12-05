@@ -841,10 +841,6 @@
 		-moz-border-radius: 3px; 
     }
 
-    .nextprev-nav{
-    	display: block;
-    }
-
     .body-copy p,
     .body-copy ul {
     	font-size: 1.25em;
@@ -1007,7 +1003,7 @@
 	}
 
 	.page-jobindexpage .intro p a {
-		padding: 1.4em 1.5em;
+		padding: 1.5em;
 	}
 
 	.page-jobindexpage .rich-text p{
@@ -1029,7 +1025,6 @@
 	.page-jobindexpage .benefits h3 {
 		font-size: 2em;
 		line-height: 1em;
-		margin-bottom: -0.2em;
 	}
 
 	.page-jobindexpage .benefits li > div > div {
@@ -1427,6 +1422,10 @@
 }
 
 @media only screen and (min-width: 1000px) {
+
+	.nextprev-nav{
+    	display: block;
+    }
 
 	.page-standardpage .heading {
     	top: 15em;
