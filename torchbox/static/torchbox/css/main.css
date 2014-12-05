@@ -1014,8 +1014,10 @@ main nav li.active a:after {
 
 .page-standardpage .heading {
     position: absolute;
-    bottom: 30px;
-    width: 100%;
+    top: 0em;
+    left: 0;
+    right: 0;
+    padding: 1em;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
 
@@ -1073,7 +1075,7 @@ main nav li.active a:after {
 }
 
 .page-standardpage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
 }
 
@@ -1192,9 +1194,7 @@ main nav li.active a:after {
 }
 
 .page-standardpage  .crop-height {
-    max-height: 40em;
-    overflow: hidden;
-    margin-top: -19em;
+    max-height: 12em;
 }
 
 .page-standardpage img.scale {
