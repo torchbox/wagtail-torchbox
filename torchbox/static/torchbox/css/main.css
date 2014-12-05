@@ -20,9 +20,9 @@ main {
 }
 
 * {
-    -webkit-box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 html,
@@ -155,8 +155,8 @@ button, .button {
     background-color: #EA853a;
     display: inline-block;
     line-height: 1em;
-    -webkit-border-radius: 0.2em; 
-    -moz-border-radius: 0.2em; 
+    -webkit-border-radius: 0.2em;
+    -moz-border-radius: 0.2em;
     border-radius: 0.2em;
 }
 
@@ -221,7 +221,7 @@ header nav li a {
 header nav li a:hover {
     color: #EA853a;
     -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
@@ -300,11 +300,11 @@ main nav li.active a:after {
     border: solid 1px #EA853a;
     color: #EA853a;
     line-height: 1em;
-    -webkit-border-radius: 0.2em; 
-    -moz-border-radius: 0.2em; 
+    -webkit-border-radius: 0.2em;
+    -moz-border-radius: 0.2em;
     border-radius: 0.2em;
     -webkit-transition: 0.3s;
-    -moz-transition: 0.3s; 
+    -moz-transition: 0.3s;
     -o-transition: 0.3s;
     -webkit-transition: 0.3s;
 }
@@ -606,8 +606,8 @@ main nav li.active a:after {
     margin: 0 1em 1em 0;
     color: #fff;
     border: solid 1px #fff;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     min-width: 200px;
     text-align: center;
@@ -639,8 +639,8 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a {
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     border: solid 1px #424A4F;
     padding: 0.8em 1em;
@@ -689,19 +689,19 @@ main nav li.active a:after {
 }
 
 .page-homepage .hero h2 {
-        text-align: center;
-        margin: 1.5em auto 1em 0;
-        max-width: 26em;
-        text-align: left;
-        font-size: 1.8em;
-        line-height: 1.2em;
-        color: #fff;
-    }
+    text-align: center;
+    margin: 1.5em auto 1em 0;
+    max-width: 26em;
+    text-align: left;
+    font-size: 1.8em;
+    line-height: 1.2em;
+    color: #fff;
+}
 
 .page-homepage .menu-button {
-        background-color: #fff;
-        color: #434a4f;
-        }
+    background-color: #fff;
+    color: #434a4f;
+}
 
 .page-homepage h2 a {
     color: #222;
@@ -802,7 +802,7 @@ main nav li.active a:after {
     width: 100%;
     margin-right: 2%;
     min-height: 60px;
-    font-size: 0.8em;   
+    font-size: 0.8em;
 }
 
 
@@ -903,8 +903,8 @@ main nav li.active a:after {
     margin: -1em 1em -1em 0;
     color: #fff;
     border: solid 1px #f3f4f6;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     min-width: 252px;
     height: 55px;
@@ -923,8 +923,8 @@ main nav li.active a:after {
 .page-jobindexpage .intro p  a:hover{
     background-color: rgba(255,255,255,0.1);
     border: solid 1px #f3f4f6;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
 }
 
@@ -1003,8 +1003,8 @@ main nav li.active a:after {
 
 .dark {
     margin: 0 2em;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     padding: 0.5em;
 }
@@ -1039,8 +1039,8 @@ main nav li.active a:after {
     margin: 2em 1em 1em 0;
     color: #EA853a;
     border: solid 1px #EA853a;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
@@ -1288,8 +1288,8 @@ main nav li.active a:after {
     color: #fff;
     background: #434a4f;
     padding: 0.5em 0 0.5em 1em;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     display: block;
     margin: 1em;
@@ -1498,8 +1498,8 @@ main nav li.active a:after {
     -moz-transition: background-color 0.2s ease;
     -o-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -1535,8 +1535,8 @@ main nav li.active a:after {
 .popular-tags a.before {
     border-bottom: 1px dotted;
     padding: 0.3em 0 0 0;
-    -webkit-border-radius: 0; 
-    -moz-border-radius: 0; 
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     border-radius: 0;
 }
 
@@ -1574,8 +1574,8 @@ a.before:before {
     transition: all 0.15s ease;
     border-bottom: 1px dotted #424A4F;
     padding: 0;
-    -webkit-border-radius: 0; 
-    -moz-border-radius: 0; 
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     border-radius: 0;
     width: auto;
 }
@@ -1585,8 +1585,8 @@ a.before:before {
     border-bottom: 1px dotted #EA853A;
     background: transparent;
     padding: 0;
-    -webkit-border-radius: 0; 
-    -moz-border-radius: 0; 
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     border-radius: 0;
 }
 
@@ -1604,8 +1604,8 @@ a.before:before {
     padding:0.5em 0em;
     color:#424A4F;
     border-radius:3px;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     font-size:1em;
     margin-right: 1.3em;
     -webkit-transition: background-color 0.2s ease;
@@ -1636,11 +1636,11 @@ a.before:before {
     border:0;
     left:-12px;
 }
-    
+
 /*CSS3 extras*/
 a.tooltip span{
-    -webkit-border-radius: 4px; 
-    -moz-border-radius: 4px; 
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
     border-radius:4px;
     box-shadow: 5px 5px 8px #CCC;
 }
@@ -1692,8 +1692,8 @@ a.tooltip span{
     max-width: 36em;
     background: #000;
     border-radius: 0 3px 0 0;
-    -webkit-border-radius: 0 3px 0 0; 
-    -moz-border-radius: 0 3px 0 0; 
+    -webkit-border-radius: 0 3px 0 0;
+    -moz-border-radius: 0 3px 0 0;
 }
 
 
@@ -1755,8 +1755,8 @@ a.tooltip span{
     background: #fff;
     padding: 0.25em 1em;
     color: #EA853a;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     margin: 1em 0 0 0;
     -o-transition: all 0.2s ease;
@@ -1786,8 +1786,8 @@ main .breadcrumb a {
     margin:0 1em 1em 0;
     color: #EA853a;
     border: solid 1px #EA853a;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
@@ -1802,7 +1802,7 @@ main .breadcrumb a:hover {
     background-color: #EA853a;
     display:inline-block;
     color: #fff;
-    
+
 }
 
 .article-meta {
@@ -1893,8 +1893,8 @@ main .breadcrumb a:hover {
     width: 6em;
     float: left;
     margin-right: 1em;
-    -webkit-border-radius: 3em; 
-    -moz-border-radius: 3em; 
+    -webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
     border-radius: 3em;
     margin-bottom: 0;
     -webkit-filter: grayscale(100%);
@@ -1907,8 +1907,8 @@ main .breadcrumb a:hover {
     width: 4em;
     float: left;
     margin-right: 1em;
-    -webkit-border-radius: 3em; 
-    -moz-border-radius: 3em; 
+    -webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
     border-radius: 3em;
     margin-bottom: 0;
 }
@@ -2397,8 +2397,3 @@ footer .tel {
         page-break-after: avoid;
     }
 }
-
-
-
-
-
