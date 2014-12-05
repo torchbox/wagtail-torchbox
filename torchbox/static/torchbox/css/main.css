@@ -1834,11 +1834,13 @@ main .breadcrumb a:hover {
     top: 2.3em;
     left: -1em;
     border: 1px solid #EA863A;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .share ul.visible {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .share li {
