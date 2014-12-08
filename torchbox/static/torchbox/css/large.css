@@ -137,4 +137,17 @@
         font-size: 3em;
         font-weight: bold;
     }
+
+    .page-personpage img {
+        width: 55%;
+        margin-right: 4%;
+        float: left;
+        z-index: -1;
+    }
+
+    .page-personpage .bio-text {
+        width: 37%;
+        float: left;
+        margin-right: 4%;
+    }
 }
