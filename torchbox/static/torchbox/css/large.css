@@ -1,141 +1,140 @@
 @media only screen and (min-width: 96em) {
 
     .page-home h2 {
-    	font-size: 7em;
+        font-size: 7em;
     }
 
-	.page-home .hero {
-		padding: 15em 2em;
-	}
+    .page-home .hero {
+        padding: 15em 2em;
+    }
 
-	.page-home .hero h2 {
-		font-size: 5em;
-	}
+    .page-home .hero h2 {
+        font-size: 5em;
+    }
 
-	.page-personindexpage .grid.people-list li {
-		width: 25%;
-	}
+    .page-personindexpage .grid.people-list li {
+        width: 25%;
+    }
 
-	.page-personindexpage .grid li:nth-child(3n+4) {
-		clear: none;
-	}
+    .page-personindexpage .grid li:nth-child(3n+4) {
+        clear: none;
+    }
 
-	.page-people-single .hero {
-		height: 32em;
-	}
+    .page-people-single .hero {
+        height: 32em;
+    }
 
-	.page-homepage .hero h2 {
-		text-align: center;
-		max-width: 26em;
-		text-align: left;
-		font-size: 3em;
-		line-height: 1.2em;
-	}
+    .page-homepage .hero h2 {
+        text-align: center;
+        max-width: 26em;
+        text-align: left;
+        font-size: 3em;
+        line-height: 1.2em;
+    }
 
-	/*footer*/
+    /*footer*/
 
-	footer{
-		padding: 1em 0 3em 0;
-	}
+    footer {
+        padding: 1em 0 3em 0;
+    }
 
-	.holder {
-		max-width: 80em;
-	}
+    .holder {
+        max-width: 80em;
+    }
 
-	 footer .bleed {
-		margin: 3.5em 0.5em 0 0;
-	}
-	
-	 .listing h3 {
-		font-size: 1.8em;
-	}
+    footer .bleed {
+        margin: 3.5em 0.5em 0 0;
+    }
 
-	footer .container {
-		max-width: 40em;
-		float: left;
-	}
+    .listing h3 {
+        font-size: 1.8em;
+    }
 
-	footer .offices ul {
-		width: 100%;
-		margin: 0 auto;
-		padding-top: 0em;
-		border-top: none;
-	}
+    footer .container {
+        max-width: 40em;
+        float: left;
+    }
 
-	footer .offices li {
-		width: 600px;
-		float: left;
-		padding: 2em 0 0 0;
-	}
+    footer .offices ul {
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 0em;
+        border-top: none;
+    }
 
-	footer .offices {
-		margin: 1em auto 0 -2em;
-		padding-left: 4em;
-		border-left: 1px dotted rgba(255,255,255,0.2);
-	}
+    footer .offices li {
+        width: 600px;
+        float: left;
+        padding: 2em 0 0 0;
+    }
 
-	.wagtail{
-		display: none;
-	}
+    footer .offices {
+        margin: 1em auto 0 -2em;
+        padding-left: 4em;
+        border-left: 1px dotted rgba(255,255,255,0.2);
+    }
 
-	footer .bleed {
-		margin: 2em 0.5em 0 0;
-	}
+    .wagtail {
+        display: none;
+    }
 
-	.wagtail2{
-	    display: block;
-	}
+    footer .bleed {
+        margin: 2em 0.5em 0 0;
+    }
 
-	footer .contact span {
-		font-size: 0.9em;
-	}
+    .wagtail2 {
+        display: block;
+    }
 
-	.offices li:hover .svg {
-	margin-top: -25px;
-	}
+    footer .contact span {
+        font-size: 0.9em;
+    }
 
-	footer .offices h3 {
-		font-size: 2em;
-		font-weight: bold;
-	}
+    .offices li:hover .svg {
+        margin-top: -25px;
+    }
 
-	footer .vcard {
-		margin-top: -0.5em;
-	}
+    footer .offices h3 {
+        font-size: 2em;
+        font-weight: bold;
+    }
 
-	footer .offices h2{
-		max-width: 100%;
-	}
+    footer .vcard {
+        margin-top: -0.5em;
+    }
 
-	footer .contact li {
-		float: left;
-		margin:0;
-	}
+    footer .offices h2 {
+        max-width: 100%;
+    }
 
-	footer .contact h2{
-		font-size: 3em;
-		text-align: left;
-	}
+    footer .contact li {
+        float: left;
+        margin:0;
+    }
 
-	.svg{
-		height: 90px;
-		width: 55px;
-		margin-top: -25px;
-	}
+    footer .contact h2 {
+        font-size: 3em;
+        text-align: left;
+    }
 
-	footer .contact li i {
-		font-size: 2em;
-	}
+    .svg {
+        height: 90px;
+        width: 55px;
+        margin-top: -25px;
+    }
 
-	footer .offices h2 {
-		margin: 0;
-		color: white;
-		display: block;
-		position: relative;
-		height: auto;
-		width: auto;
-		font-size: 3em;
-		font-weight: bold;
-}
+    footer .contact li i {
+        font-size: 2em;
+    }
 
+    footer .offices h2 {
+        margin: 0;
+        color: white;
+        display: block;
+        position: relative;
+        height: auto;
+        width: auto;
+        font-size: 3em;
+        font-weight: bold;
+    }
 }
