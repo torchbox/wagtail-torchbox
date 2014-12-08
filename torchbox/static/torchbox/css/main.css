@@ -446,17 +446,16 @@ main nav li.active a:after {
 }
 
 .menu-button {
-    display:inline-block;
+    display: inline-block;
     position: absolute;
     right: 0;
     top: 0;
     background-color: #434a4f;
-    line-height: 1em;
-    padding: 0.6em;
-    width:2.5em;
-    font-size: 1.5em;
+    width: 1.5em;
+    font-size: 2.25em;
     text-align: center;
     color: #fff;
+    line-height: 1.48em;
 }
 
 .menu-button:hover {
