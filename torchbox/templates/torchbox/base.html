@@ -175,9 +175,15 @@
 
         <script>
             $(function() {
-              $(".dropdown").click(function() {
-                $(".closed").toggleClass("open");
-              });
+                $('.dropdown').click(function() {
+                    $('.dropdown').toggleClass('open');
+                    $('.popular-tags .closed').slideToggle();
+                });
+                var querystring = window.location.search;
+                if (querystring.indexOf('tag') > 0) {
+                    $('.dropdown').addClass('open');
+                    $('.popular-tags .closed').slideToggle();
+                }
             });
         </script>
 
