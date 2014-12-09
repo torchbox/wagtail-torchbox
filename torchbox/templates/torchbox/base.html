@@ -30,10 +30,11 @@
             <script src="{% static "js/main.js" %}"></script>
         {% endcompress %}
 
-        {% if self|in_play %}
-            <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
+        {% if self %}
+            {% if self|in_play %}
+                <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
+            {% endif %}
         {% endif %}
-
 
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}"/>
 
