@@ -2067,6 +2067,9 @@ color: #fff;
     text-align: left;
     overflow: hidden;
 }
+.wagtail img {
+    width: auto;
+}
 
 .wagtail2 {
     display: none;
