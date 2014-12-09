@@ -180,7 +180,7 @@
                     $('.popular-tags .closed').slideToggle();
                 });
                 var querystring = window.location.search;
-                if (querystring.indexOf('tag') > 0) {
+                if ((querystring.indexOf('tag') > 0) && (!$('dropdown').css('display') == 'none')) {
                     $('.dropdown').addClass('open');
                     $('.popular-tags .closed').slideToggle();
                 }
