@@ -3,7 +3,7 @@
 {% block extra_css %}
 <style>
 .page-standardpage {
-    padding: 8em 2em;
+    padding: 2em 1em;
 }
 .page-standardpage .heading {
     position: relative;
@@ -15,6 +15,12 @@
 }
 .page-standardpage .intro p {
     text-align: center;
+}
+
+@media only screen and (min-width: 45em) {
+    .page-standardpage {
+        padding: 8em 2em;
+    }
 }
 </style>
 {% endblock %}
