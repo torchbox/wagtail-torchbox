@@ -1285,6 +1285,14 @@ main nav li.active a:after {
     float: right;
     padding: 4px 1em 0 0;
 }
+.dropdown.open:after {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    margin: -6px 20px 0 0px
+}
 
 .page-blogindexpage h1 {
     font-size: 3em;
