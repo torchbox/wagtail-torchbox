@@ -1,28 +1,7 @@
-/*Animations*/
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-main {
-
-    opacity:0;  /* make things invisible upon start */
-    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
-    -moz-animation:fadeIn ease-in 1;
-    animation:fadeIn ease-in 1;
-
-    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
-    -moz-animation-fill-mode:forwards;
-    animation-fill-mode:forwards;
-
-    -webkit-animation-duration:0.2s;
-    -moz-animation-duration:0.2s;
-    animation-duration:0.2s;
-}
-
 * {
-    -webkit-box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 html,
@@ -155,8 +134,8 @@ button, .button {
     background-color: #EA853a;
     display: inline-block;
     line-height: 1em;
-    -webkit-border-radius: 0.2em; 
-    -moz-border-radius: 0.2em; 
+    -webkit-border-radius: 0.2em;
+    -moz-border-radius: 0.2em;
     border-radius: 0.2em;
 }
 
@@ -221,7 +200,7 @@ header nav li a {
 header nav li a:hover {
     color: #EA853a;
     -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
@@ -300,11 +279,11 @@ main nav li.active a:after {
     border: solid 1px #EA853a;
     color: #EA853a;
     line-height: 1em;
-    -webkit-border-radius: 0.2em; 
-    -moz-border-radius: 0.2em; 
+    -webkit-border-radius: 0.2em;
+    -moz-border-radius: 0.2em;
     border-radius: 0.2em;
     -webkit-transition: 0.3s;
-    -moz-transition: 0.3s; 
+    -moz-transition: 0.3s;
     -o-transition: 0.3s;
     -webkit-transition: 0.3s;
 }
@@ -446,17 +425,16 @@ main nav li.active a:after {
 }
 
 .menu-button {
-    display:inline-block;
+    display: inline-block;
     position: absolute;
     right: 0;
     top: 0;
     background-color: #434a4f;
-    line-height: 1em;
-    padding: 0.6em;
-    width:2.5em;
-    font-size: 1.5em;
+    width: 1.5em;
+    font-size: 2.25em;
     text-align: center;
     color: #fff;
+    line-height: 1.48em;
 }
 
 .menu-button:hover {
@@ -606,8 +584,8 @@ main nav li.active a:after {
     margin: 0 1em 1em 0;
     color: #fff;
     border: solid 1px #fff;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     min-width: 200px;
     text-align: center;
@@ -628,7 +606,7 @@ main nav li.active a:after {
 .page-homepage .hiring {
     min-width: 100%;
     text-align: left;
-    padding: 3em 2em;
+    padding: 1.8em 2em 3em 2em;
     background-color: #F3F4F6;
 }
 
@@ -639,8 +617,8 @@ main nav li.active a:after {
 }
 
 .page-homepage .hiring a {
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     border: solid 1px #424A4F;
     padding: 0.8em 1em;
@@ -689,19 +667,19 @@ main nav li.active a:after {
 }
 
 .page-homepage .hero h2 {
-        text-align: center;
-        margin: 1.5em auto 1em 0;
-        max-width: 26em;
-        text-align: left;
-        font-size: 1.8em;
-        line-height: 1.2em;
-        color: #fff;
-    }
+    text-align: center;
+    margin: 1.5em auto 1em 0;
+    max-width: 26em;
+    text-align: left;
+    font-size: 1.8em;
+    line-height: 1.2em;
+    color: #fff;
+}
 
 .page-homepage .menu-button {
-        background-color: #fff;
-        color: #434a4f;
-        }
+    background-color: #fff;
+    color: #434a4f;
+}
 
 .page-homepage h2 a {
     color: #222;
@@ -734,21 +712,16 @@ main nav li.active a:after {
     border-bottom: 1px dotted #A9A9A9;
 }
 
-.worklisting h3{
-    margin-bottom: 1em;
+.worklisting h3 {
+    margin-bottom: 0;
 }
 
-.worklisting {
-    margin-bottom: 2em;
+.page-homepage .bloglisting {
+    margin-top: 1.8em;
 }
 
 .page-homepage .bloglisting a:first-child li{
     padding-top: 0.5em;
-}
-
-.page-homepage .bloglisting a:last-child li{
-    padding-bottom: 0em;
-    border: none;
 }
 
 .clients {
@@ -802,7 +775,7 @@ main nav li.active a:after {
     width: 100%;
     margin-right: 2%;
     min-height: 60px;
-    font-size: 0.8em;   
+    font-size: 0.8em;
 }
 
 
@@ -865,12 +838,17 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .benefits li {
-    padding: 2em 2em 1.5em 2em;
+    padding: 1em 2em 0.5em 2em;
     margin-bottom: -1em;
 }
 
+.page-jobindexpage .benefits li p {
+    margin: 0 0 2em 0;
+}
+
 .page-jobindexpage .intro p {
-    font-size: 0.9em;
+    font-size: 1.1em;
+    line-height: 1.4em;
     margin: 2em 0 0.5em 0;
     color: #F3F4F6;
     text-align: center;
@@ -895,21 +873,21 @@ main nav li.active a:after {
     opacity: 0.8;
 }
 
-.page-jobindexpage .intro p  a{
+.page-jobindexpage .intro p a {
     background-color: #424a4f;
     display: inline-block;
     padding: 1.7em 1.5em;
-    line-height: 1em;
-    margin: -1em 1em -1em 0;
+    line-height: 0em;
+    margin: -1em 1em 0em 0;
     color: #fff;
     border: solid 1px #f3f4f6;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     min-width: 252px;
     height: 55px;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 1em;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
@@ -923,13 +901,13 @@ main nav li.active a:after {
 .page-jobindexpage .intro p  a:hover{
     background-color: rgba(255,255,255,0.1);
     border: solid 1px #f3f4f6;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
 }
 
 .page-jobindexpage main .listing a {
-    font-size: 1.3em;
+    font-size: 1.8em;
     border-bottom: 1px solid #6F6E6E;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
@@ -1003,8 +981,8 @@ main nav li.active a:after {
 
 .dark {
     margin: 0 2em;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     padding: 0.5em;
 }
@@ -1017,11 +995,20 @@ main nav li.active a:after {
     text-align: center;
 }
 
+.page-standardpage .heading {
+    position: absolute;
+    top: 0em;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
+}
+
 .page-standardpage h4 span {
     font-weight: bold;
     color: #434a4f;
     font-size: 1.5em;
-    padding: 0 0.3em 0 0.5em;
+    padding: 0 0.5em;
     border-right: 1px solid #434a4f;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
@@ -1039,8 +1026,8 @@ main nav li.active a:after {
     margin: 2em 1em 1em 0;
     color: #EA853a;
     border: solid 1px #EA853a;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
@@ -1071,20 +1058,8 @@ main nav li.active a:after {
 }
 
 .page-standardpage .logo {
-    background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+    background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
     background-size: auto 2em;
-}
-
-.page-standardpage header nav li a {
-    color: #fff;
-}
-
-.page-standardpage header nav li a:hover{
-    color: #ea853a;
-    -o-transition: all 0.15s ease;
-    -webkit-transition: all 0.15s ease;
-    -moz-transition: all 0.15s ease;
-    transition: all 0.15s ease;
 }
 
 .page-standardpage .listing p {
@@ -1108,7 +1083,7 @@ main nav li.active a:after {
     color: #fff;
     font-weight: bold;
     font-size: 2.5em;
-    margin: -5em 0 3em 0;
+    margin: 0;
 }
 
 .page-standardpage  p i{
@@ -1131,16 +1106,6 @@ main nav li.active a:after {
 
 .hangingindent {
     text-indent: -13px ;
-}
-
-.page-standardpage .quote {
-    background-color: #424A4F;
-    padding: 3em 0 2.8em 0;
-    background: url("/static/torchbox/images/about-placeholder6.jpg") center right no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
 
 .page-standardpage .quote p {
@@ -1184,16 +1149,13 @@ main nav li.active a:after {
 }
 
 .page-standardpage .were-tbx {
-    margin-top: -8.5em;
-    padding: 8.5em 2em 0 1em;
+    padding: 0em 2em 0 1em;
     -webkit-font-smoothing: antialiased;
     color: #434a4f;
 }
 
 .page-standardpage  .crop-height {
-    max-height: 40em;
-    overflow: hidden;
-    margin-top: -19em;
+    max-height: 12em;
 }
 
 .page-standardpage img.scale {
@@ -1288,8 +1250,8 @@ main nav li.active a:after {
     color: #fff;
     background: #434a4f;
     padding: 0.5em 0 0.5em 1em;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     display: block;
     margin: 1em;
@@ -1312,8 +1274,14 @@ main nav li.active a:after {
     content: url("/static/torchbox/images/down_arrow.png");
     float: right;
     padding: 4px 1em 0 0;
-    top: 10px;
-    right: 1em;
+}
+.dropdown.open:after {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    margin: -6px 20px 0 0px
 }
 
 .page-blogindexpage h1 {
@@ -1344,8 +1312,10 @@ main nav li.active a:after {
     padding:1em 2em;
     max-width:54em;
 }
+
 .page-blogindexpage h2 {
     color: #ea853a;
+    max-width: 80%;
 }
 
 .page-blogindexpage .blog-title h2 {
@@ -1498,8 +1468,8 @@ main nav li.active a:after {
     -moz-transition: background-color 0.2s ease;
     -o-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -1535,8 +1505,8 @@ main nav li.active a:after {
 .popular-tags a.before {
     border-bottom: 1px dotted;
     padding: 0.3em 0 0 0;
-    -webkit-border-radius: 0; 
-    -moz-border-radius: 0; 
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     border-radius: 0;
 }
 
@@ -1574,8 +1544,8 @@ a.before:before {
     transition: all 0.15s ease;
     border-bottom: 1px dotted #424A4F;
     padding: 0;
-    -webkit-border-radius: 0; 
-    -moz-border-radius: 0; 
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     border-radius: 0;
     width: auto;
 }
@@ -1585,8 +1555,8 @@ a.before:before {
     border-bottom: 1px dotted #EA853A;
     background: transparent;
     padding: 0;
-    -webkit-border-radius: 0; 
-    -moz-border-radius: 0; 
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     border-radius: 0;
 }
 
@@ -1604,8 +1574,8 @@ a.before:before {
     padding:0.5em 0em;
     color:#424A4F;
     border-radius:3px;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     font-size:1em;
     margin-right: 1.3em;
     -webkit-transition: background-color 0.2s ease;
@@ -1636,11 +1606,11 @@ a.before:before {
     border:0;
     left:-12px;
 }
-    
+
 /*CSS3 extras*/
 a.tooltip span{
-    -webkit-border-radius: 4px; 
-    -moz-border-radius: 4px; 
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
     border-radius:4px;
     box-shadow: 5px 5px 8px #CCC;
 }
@@ -1692,8 +1662,8 @@ a.tooltip span{
     max-width: 36em;
     background: #000;
     border-radius: 0 3px 0 0;
-    -webkit-border-radius: 0 3px 0 0; 
-    -moz-border-radius: 0 3px 0 0; 
+    -webkit-border-radius: 0 3px 0 0;
+    -moz-border-radius: 0 3px 0 0;
 }
 
 
@@ -1755,8 +1725,8 @@ a.tooltip span{
     background: #fff;
     padding: 0.25em 1em;
     color: #EA853a;
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     margin: 1em 0 0 0;
     -o-transition: all 0.2s ease;
@@ -1786,8 +1756,8 @@ main .breadcrumb a {
     margin:0 1em 1em 0;
     color: #EA853a;
     border: solid 1px #EA853a;
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     min-width: 100px;
     text-align: center;
@@ -1802,7 +1772,7 @@ main .breadcrumb a:hover {
     background-color: #EA853a;
     display:inline-block;
     color: #fff;
-    
+
 }
 
 .article-meta {
@@ -1826,11 +1796,13 @@ main .breadcrumb a:hover {
     top: 2.3em;
     left: -1em;
     border: 1px solid #EA863A;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .share ul.visible {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .share li {
@@ -1893,13 +1865,13 @@ main .breadcrumb a:hover {
     width: 6em;
     float: left;
     margin-right: 1em;
-    -webkit-border-radius: 3em; 
-    -moz-border-radius: 3em; 
+    -webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
     border-radius: 3em;
     margin-bottom: 0;
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
 }
 
 .page-homepage .author .avatar {
@@ -1907,8 +1879,8 @@ main .breadcrumb a:hover {
     width: 4em;
     float: left;
     margin-right: 1em;
-    -webkit-border-radius: 3em; 
-    -moz-border-radius: 3em; 
+    -webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
     border-radius: 3em;
     margin-bottom: 0;
 }
@@ -2014,6 +1986,7 @@ main .breadcrumb a:hover {
 .grid.people-list li {
     position: relative;
     overflow:hidden;
+    margin: 0;
 }
 
 .grid.people-list li div {
@@ -2032,7 +2005,6 @@ main .breadcrumb a:hover {
     background-color: #424A4F;
     display: block;
     overflow: hidden;
-    -webkit-transform: translate3d(0,0,0);
 }
 
 
@@ -2084,6 +2056,9 @@ color: #fff;
     padding: 1em 0 0 0;
     text-align: left;
     overflow: hidden;
+}
+.wagtail img {
+    width: auto;
 }
 
 .wagtail2 {
@@ -2397,8 +2372,3 @@ footer .tel {
         page-break-after: avoid;
     }
 }
-
-
-
-
-

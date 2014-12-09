@@ -1,15 +1,106 @@
 /* ==========================================================================
     PLAY STYLES 
    ========================================================================== */
-.page-standardpage .logo {
-	background: url("/static/torchbox/images/play_white.png") center left no-repeat;
-	background-size: 9em;
+html {
+	font-family: 'effra',helvetica,sans-serif;
 }
 
+h1, h2, h3 {
+	line-height: 1.25;
+	margin: 0;
+	padding: 0;
+	font-family: "effra",helvetica,sans-serif;
+}
+
+.page-standardpage .logo {
+	background: url("/static/torchbox/images/play/play-white.png") center left no-repeat;
+	background-size: 6em;
+	padding: 1em;
+	opacity: 1;
+}
 
 .page-standardpage h2 {
-        color: #F16022;
-        margin-top: -6em;
-        margin-bottom: 3em;
+    color: #fff;
+    margin-top: -7.5em;
+    margin-bottom: 2em;
 }
-	
+
+.page-standardpage .quote {
+	display:none;
+}
+
+.play-nav {
+	background: none;
+}
+
+.menu-button {
+	background-color: #fff;
+	color: #63A6CB;
+}
+
+.menu-button:hover {
+	background-color: #63A6CB;
+	color: #fff;
+}
+
+header nav li a:hover {
+	color: #63A6CB;
+}
+
+.bleed {
+	margin: 0.3em -1em 0 -1em;
+	background: rgba(255,255,255,0.2);
+}
+
+header nav ul.visible {
+	height: 198px;
+}
+
+.page-standardpage .button {
+	color: #63A6CB;
+	border-color: #63A6CB;
+}
+
+.page-standardpage .button:hover {
+	background-color: #63A6CB;
+}
+
+
+@media only screen and (min-width: 45em) {
+
+	.page-standardpage .logo {
+		background-size: 8em;
+		margin-top: -0.5em;
+	}
+
+	.page-standardpage h2 {
+	    color: #fff;
+	    margin-top: -5.5em;
+	    margin-bottom: 2em;
+	}
+
+	.play-nav {
+		display: block;
+		background: rgba(255,255,255,0.4);
+		width: 100%;
+		height: 100px;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.bleed {
+		background: none;
+		margin-top: 0;
+		margin-right: 0;
+		padding: 0.5em 1em;
+		height: 80px;
+	}
+
+	header nav li  a{
+		float: left;
+		padding: 0.8em 1em 1em 1em;
+		font-family: "effra",helvetica,sans-serif;
+	}
+
+}

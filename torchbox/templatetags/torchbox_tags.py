@@ -85,7 +85,7 @@ def top_menu(context, parent, calling_page=None):
     has_menu_children method is necessary because the bootstrap menu
     requires a dropdown class to be applied to a parent
     """
-    if in_play(calling_page):
+    if calling_page and in_play(calling_page):
         menuitems = list(StandardPage.objects.filter(
             live=True,
             show_in_play_menu=True

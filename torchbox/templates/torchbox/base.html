@@ -30,10 +30,11 @@
             <script src="{% static "js/main.js" %}"></script>
         {% endcompress %}
 
-        {% if self|in_play %}
-            <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
+        {% if self %}
+            {% if self|in_play %}
+                <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
+            {% endif %}
         {% endif %}
-
 
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}"/>
 
@@ -139,7 +140,7 @@
                                 </li>
                             </a>
                             <div class="wagtail">
-                                <img src="/static/torchbox/images/wagtail.png" alt="" style="width:165px;height:19px">
+                                <a href="http://wagtail.io"><img src="/static/torchbox/images/wagtail.png" alt="Wagtail"></a>
                             </div>
                         </ul>
                     </div>
@@ -159,22 +160,31 @@
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}
 
         <script>
-            // Sticky next / previous work page //
-            // Cache selectors outside callback for performance.
-            var $window = $(window),
-                $stickyEl = $('.nextprev'),
-                elTop = $stickyEl.length && $stickyEl.offset().top-30;
+            $(window).load(function(){
+                // Sticky next / previous work page //
+                // Cache selectors outside callback for performance.
+                var $window = $(window),
+                    $stickyEl = $('.nextprev'),
+                    elTop = $stickyEl.length && $stickyEl.offset().top - 10;
+                    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
 
-            $window.scroll(function() {
-                $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+                $window.scroll(function() {
+                    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+                });
             });
         </script>
 
         <script>
             $(function() {
-              $(".dropdown").click(function() {
-                $(".closed").toggleClass("open");
-              });
+                $('.dropdown').click(function() {
+                    $('.dropdown').toggleClass('open');
+                    $('.popular-tags .closed').slideToggle();
+                });
+                var querystring = window.location.search;
+                if ((querystring.indexOf('tag') > 0) && ($('.dropdown').css('display') == 'block')) {
+                    $('.dropdown').addClass('open');
+                    $('.popular-tags .closed').slideToggle();
+                }
             });
         </script>
 

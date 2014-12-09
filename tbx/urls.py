@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
+from django.views.generic.base import TemplateView
 from django.contrib import admin
 from django.conf import settings
 import os.path
@@ -15,7 +16,7 @@ admin.autodiscover()
 
 # Signal handlers
 from wagtail.wagtailsearch.signal_handlers import register_signal_handlers as wagtailsearch_register_signal_handlers
-wagtailsearch_register_signal_handlers() 
+wagtailsearch_register_signal_handlers()
 
 
 urlpatterns = patterns('',
@@ -28,6 +29,9 @@ urlpatterns = patterns('',
     url(r'^search/', include(wagtailsearch_frontend_urls)),
 
     url(r'^documents/', include(wagtaildocs_urls)),
+
+    url(r'^test404/$', TemplateView.as_view(template_name="404.html")),
+    url(r'^test500/$', TemplateView.as_view(template_name="500.html")),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's serving mechanism
