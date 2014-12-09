@@ -455,6 +455,16 @@
         margin: 2em 0 3em 0;
     }
 
+    .page-standardpage .quote {
+        background-color: #424A4F;
+        background: url("/static/torchbox/images/about-placeholder6.jpg") center right no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+
     .page-standardpage h4 span {
         font-size: 2.5em;
     }

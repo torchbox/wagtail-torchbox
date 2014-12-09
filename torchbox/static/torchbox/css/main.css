@@ -1108,16 +1108,6 @@ main nav li.active a:after {
     text-indent: -13px ;
 }
 
-.page-standardpage .quote {
-    background-color: #424A4F;
-    padding: 3em 0 2.8em 0;
-    background: url("/static/torchbox/images/about-placeholder6.jpg") center right no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
 .page-standardpage .quote p {
     font-size: 1.1em;
     color: #434a4f;
