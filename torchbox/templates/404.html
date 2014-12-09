@@ -2,17 +2,27 @@
 
 {% block extra_css %}
 <style>
-h1 {
-  font-size: 250%;
-  text-align: center;
+.page-standardpage .heading {
+    position: relative;
+    top: 0;
 }
-p {
-  text-align: center;
+.page-standardpage .heading h2 {
+    color: inherit;
+    text-align: center;
+}
+.page-standardpage .intro p {
+    text-align: center;
 }
 </style>
 {% endblock %}
 
 {% block content %}
-<h1>OMG, you broke it! Our lovely new website in tatters!</h1>
-<p>Please can you put it back as you found it? We'd be ever so grateful.</p>
+<div class="page-standardpage">
+    <div class="heading">
+        <h2>OMG, you broke it! Our lovely new website in tatters!</h2>
+    </div>
+    <div class="were-tbx intro">
+    <p>Please can you put it back as you found it? We'd be ever so grateful.</p>
+    </div>
+</div>
 {% endblock %}
