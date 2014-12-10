@@ -341,6 +341,10 @@
         margin: 0 1.5em 1em 0;
     }
 
+    .page-homepage .work-intro {
+        padding-bottom: 0;
+    }
+
     /*Standard page (we're torchbox) */
 
     .credit {
@@ -589,6 +593,7 @@
         transition: 0.3s ease;
         top: 289px;
         background-color: #000;
+        background-color: rgba(0,0,0,0.7);
     }
 
     .page-workindexpage main .listing a:hover .about {
@@ -1616,7 +1621,8 @@
         position: relative;
     }
 
-    .page-homepage .work-intro {
+    .page-homepage .work-intro,
+    .page-homepage .blog-intro {
         float: left;
         padding: 2em 0 0 3em;
         bottom: 0;
@@ -1625,7 +1631,15 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+        position: static;
+        background: none;
     }
+
+    .page-homepage .work-intro h3,
+    .page-homepage .work-intro {
+        color: inherit;
+    }
+
 
     .page-homepage .block {
         padding: 0;

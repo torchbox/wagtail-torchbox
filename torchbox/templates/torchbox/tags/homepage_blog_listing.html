@@ -7,7 +7,7 @@
         	<li>
                     <div class="block">
                         <div class="blogcontainer">
-                        
+
                             <div class="crop-height">
                                {% if blog.feed_image %}
                                     {% image blog.feed_image fill-764x448 as blogimage %}
@@ -15,7 +15,7 @@
                                 {% else %}
                                     <img src="/static/torchbox/images/blog_default.png" width="" height="" alt="" class=""/>
                                 {% endif %}
-                            </div>  
+                            </div>
 
                             <div class="label">
                                 <p>Our blog</p>
@@ -24,7 +24,7 @@
                         </div>
 
 
-                            <div class="work-intro">
+                            <div class="blog-intro">
 
                                 <h3>{{ blog.title }}</h3>
 
@@ -46,7 +46,7 @@
                                     <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
                                     {% endif %}
                                     <div class="name">{{ author.author.title }}</div>
-                                      
+
                                     {% if author.author.role %}
                                     <span class="role">{{ author.author.role }}</span>
                                     {% endif %}
