@@ -1600,8 +1600,9 @@ a.before:before {
 }
 
 .page-workpage .tags {
-    display: inline-block;
-    margin: 1em 0 0 0;
+    padding: 1.5em 0 0;
+    margin: 0;
+    clear: left;
 }
 
 .callout {

@@ -792,8 +792,7 @@
     }
 
     .page-workpage .tags {
-        display: inline-block;
-        margin: 1.5em 0;
+        padding: 1.5em 0;
     }
 
     .page-workpage .img-wrapper img {
