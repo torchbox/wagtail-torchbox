@@ -69,11 +69,16 @@ def in_play(page):
     section if it has 'show_in_play_menu' set to True, or one of its
     ancestors does.
     """
-    return getattr(
-        page, 'show_in_play_menu', False
-    ) or (
-        True in [getattr(ancestor.specific, 'show_in_play_menu', False)
-                 for ancestor in page.get_ancestors()])
+    if not page:
+        return False
+
+    if getattr(page.specific, 'show_in_play_menu', False):
+        return True
+
+    return any(
+        getattr(ancestor.specific, 'show_in_play_menu', False)
+        for ancestor in page.get_ancestors()
+    )
 
 
 @register.inclusion_tag('torchbox/tags/top_menu.html', takes_context=True)
