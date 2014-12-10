@@ -17,7 +17,6 @@ from wagtail.wagtailimages.models import Image
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailadmin.taggable import TagSearchable
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -590,7 +589,7 @@ class WorkPageScreenshot(Orderable):
     ]
 
 
-class WorkPage(Page, TagSearchable):
+class WorkPage(Page):
     summary = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
