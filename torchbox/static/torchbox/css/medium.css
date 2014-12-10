@@ -661,11 +661,6 @@
         margin-right: 0.5em;
     }
 
-    .tags a:hover {
-        color:#424A4F;
-        background-color: rgba(225,225,225,1);
-    }
-
     /* TAGS Work index */
 
     .page-workindexpage .popular-tags p {
@@ -798,7 +793,7 @@
 
     .page-workpage .tags {
         display: inline-block;
-        margin: 3em 0 0 2em;
+        margin: 1.5em 0;
     }
 
     .page-workpage .img-wrapper img {
@@ -857,6 +852,10 @@
 
     .share {
         margin-left: 0.5em;
+    }
+
+    .page-workpage .share {
+        margin-top: 0.65em;
     }
 
     .grid li {
