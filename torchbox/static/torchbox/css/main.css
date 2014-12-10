@@ -430,11 +430,11 @@ main nav li.active a:after {
     right: 0;
     top: 0;
     background-color: #434a4f;
-    width: 1.5em;
-    font-size: 2.25em;
+    width: 1.2em;
+    font-size: 3em;
     text-align: center;
     color: #fff;
-    line-height: 1.48em;
+    line-height: 1.11em;
 }
 
 .menu-button:hover {
