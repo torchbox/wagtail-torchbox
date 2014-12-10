@@ -4,13 +4,13 @@
 @media only screen and (min-width: 45em) {
 
     html {
-        margin:0;
-        padding:0;
+        margin: 0;
+        padding: 0;
     }
 
 
     main {
-        width:100%;
+        width: 100%;
         margin: 1em 0 0 0;
     }
 
@@ -42,7 +42,7 @@
     }
 
     header nav ul {
-        display:block;
+        display: block;
         position: absolute;
         top: 0;
         right: 0;
@@ -74,7 +74,7 @@
 
     .logo {
         height: 7em;
-        padding:1em 0;
+        padding: 1em 0;
         background-size: auto 3em;
         margin: 0;
     }
@@ -96,86 +96,86 @@
 
     /* Generic Next/prev buttons used on work and blog pages */
 
-    .nextprev{
-        overflow:hidden;
-        position:absolute;
+    .nextprev {
+        overflow: hidden;
+        position: absolute;
         overflow: hidden;
         width: 3em;
         -o-transition: 0.3s ease;
         -webkit-transition: 0.3s ease;
         -moz-transition: 0.3s ease;
-        transition:0.3s ease;
+        transition: 0.3s ease;
     }
-    .nextprev a:hover{
-        color:white;
+    .nextprev a:hover {
+        color: white;
     }
-    .nextprev:hover{
-        width:20em;
+    .nextprev:hover {
+        width: 20em;
     }
-    .nextprev .thumb{
-        width:80px;
+    .nextprev .thumb {
+        width: 80px;
     }
-    .nextprev.sticky{
-        position:fixed;
-        z-index:50;
+    .nextprev.sticky {
+        position: fixed;
+        z-index: 50;
         top: 10px;
     }
-    .next{
-        right:0;
+    .next {
+        right: 0;
     }
-    .prev{
-        left:0;
+    .prev {
+        left: 0;
     }
 
-    .nextprev a{
+    .nextprev a {
         background-color: #ea853a;
-        background-repeat:no-repeat;
+        background-repeat: no-repeat;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
-        width:20em;
-        height:80px;
-        position:relative;
+        width: 20em;
+        height: 80px;
+        position: relative;
         display: block;
         line-height: 1em;
         z-index: 200;
         color: #fff;
-        padding:0 1em;
+        padding: 0 1em;
         -o-transition: 0.2s ease;
         -webkit-transition: 0.2s ease;
         -moz-transition: 0.2s ease;
         transition: 0.2s ease;
     }
-    .nextprev span{
-        display:block;
+    .nextprev span {
+        display: block;
         position: relative;
         top: 50%;
-        line-height:1.3em;
-         -webkit-transform: translateY(-50%);
+        line-height: 1.3em;
+        -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
 
-    .next a{
-        padding-left:3em;
+    .next a {
+        padding-left: 3em;
         background-position: 5% 50%;
-        background-image:url("/static/torchbox/images/icons/right.png");
+        background-image: url("/static/torchbox/images/icons/right.png");
     }
 
-    .prev a{
-        float:right;
-        padding-right:3em;
-        text-align:right;
+    .prev a {
+        float: right;
+        padding-right: 3em;
+        text-align: right;
         background-position: 95% 50%;
         background-image: url("/static/torchbox/images/icons/left.png");
     }
-    .next .thumb{
-        float:left;
-        margin-right:1em;
+    .next .thumb {
+        float: left;
+        margin-right: 1em;
     }
-    .prev .thumb{
-        float:right;
-        margin-left:1em;
+    .prev .thumb {
+        float: right;
+        margin-left: 1em;
     }
 
     /* Pagination */
@@ -188,20 +188,20 @@
         font-size: 1.125em;
     }
 
-    .pagination a p{
+    .pagination a p {
         -o-transition: 0.2s ease;
         -webkit-transition: 0.2s ease;
         -moz-transition: 0.2s ease;
         transition: 0.2s ease;
     }
 
-    .pagination a p:hover{
+    .pagination a p:hover {
         color: #EA853A;
     }
 
     /*Homepage*/
 
-    .arrow{
+    .arrow {
         display: block;
         margin: 4em 0 0 -0.8em;
         height: 6em;
@@ -215,7 +215,7 @@
         cursor: pointer;
     }
 
-    .arrow:hover{
+    .arrow:hover {
         background-image: url("/static/torchbox/images/arrow_down2.png");
         opacity: 0.5;
     }
@@ -224,7 +224,7 @@
         padding: 2em 0 0.5em 0;
     }
 
-    .hide{
+    .hide {
         display: block;
     }
 
@@ -276,7 +276,7 @@
         background: url("/static/torchbox/images/Homepage_hero.png") no-repeat center;
         background-color: #5b6265;
         position: relative;
-        top:-3em;
+        top: -3em;
         margin-bottom: -3em;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -285,7 +285,7 @@
     }
 
     .page-homepage header {
-        position:relative;
+        position: relative;
         background-color: transparent;
     }
 
@@ -313,7 +313,7 @@
     }
 
     .page-homepage .hero a {
-        padding:1.25em;
+        padding: 1.25em;
     }
 
     .page-homepage .hiring {
@@ -336,9 +336,9 @@
     }
 
     .page-homepage .hiring li {
-        display:inline-block;
+        display: inline-block;
         border: none;
-        margin:0 1.5em 1em 0;
+        margin: 0 1.5em 1em 0;
     }
 
     /*Standard page (we're torchbox) */
@@ -376,7 +376,7 @@
         text-indent: -13px ;
     }
 
-    .page-standardpage .button{
+    .page-standardpage .button {
         margin: 4em auto 3em auto;
     }
 
@@ -421,7 +421,7 @@
         background-size: auto 3em;
     }
 
-    .page-standardpage .crop-height{
+    .page-standardpage .crop-height {
         display: block;
         max-height: 37em;
         overflow: hidden;
@@ -431,7 +431,7 @@
     .page-standardpage .were-tbx {
         padding: 0em 2em 1em 2em;
         background-color: #fff;
-        margin:0 auto 0 auto;
+        margin: 0 auto 0 auto;
         max-width: 50em;
         position: relative;
     }
@@ -488,7 +488,7 @@
         float: left;
         width: 46%;
         margin-right: 3.5%;
-        height:225px;
+        height: 225px;
     }
 
     .page-standardpage .grid li:nth-of-type(3) {
@@ -497,7 +497,7 @@
 
     .page-standardpage .were-tbx-2 li div {
         max-width: 30em;
-        float:left;
+        float: left;
     }
 
     .page-standardpage .were-tbx-2 li:nth-child(1) .icon {
@@ -534,7 +534,7 @@
 
     /*Work index*/
 
-    .page-workindexpage .bleed{
+    .page-workindexpage .bleed {
         background: none;
     }
 
@@ -642,9 +642,9 @@
     }
 
     /* Generic style for tags */
-    .popular-tags{
+    .popular-tags {
         padding: 0 2em;
-        margin:0.5em auto;
+        margin: 0.5em auto;
     }
 
     .popular-tags a {
@@ -657,7 +657,7 @@
     }
 
     .tags a {
-        padding:0.5em 1em;
+        padding: 0.5em 1em;
         margin-right: 0.5em;
     }
 
@@ -701,13 +701,13 @@
         float: right;
         width: 8em !important;
         height: auto;
-        margin:auto;
+        margin: auto;
         position: absolute;
         top: 0;
         bottom: 0;
     }
 
-    .centertall{
+    .centertall {
         width: 8em;
         height: 8em;
         float: right;
@@ -759,7 +759,7 @@
         margin-bottom: 0.5em;
     }
 
-     .page-blogindexpage .blog-title h2 {
+    .page-blogindexpage .blog-title h2 {
         margin-top: -0.6em;
         font-size: 2em;
         color: #fff;
@@ -791,7 +791,7 @@
     }
 
     .page-workpage .img-wrapper {
-        width:100%;
+        width: 100%;
         margin:-8em 0 0 0;
         text-align: center;
     }
@@ -803,7 +803,7 @@
 
     .page-workpage .img-wrapper img {
         width: auto;
-        position:relative;
+        position: relative;
         max-width: 100%;
         height: auto;
     }
@@ -869,7 +869,7 @@
     }
 
     .grid li {
-        width:100%;
+        width: 100%;
         border: none;
         margin: 1em 0;
     }
@@ -879,11 +879,11 @@
     }
 
     .grid li:nth-child(3n+4) {
-        clear:both;
+        clear: both;
     }
 
     .grid.people-list li:nth-child(3n+4) {
-        clear:none;
+        clear: none;
     }
 
     .grid li a {
@@ -909,7 +909,7 @@
         left: auto;
         max-width: 100%;
     }
-    .page-homepage .clients{
+    .page-homepage .clients {
         padding: 3em 2em 1em 2em;
     }
 
@@ -940,7 +940,7 @@
         font-size: 2em;
     }
 
-    .benefits{
+    .benefits {
         max-width: 96em;
         margin: 3em auto 0 auto;
     }
@@ -963,7 +963,7 @@
         margin: 0 0 0.8em 0;
     }
 
-    .icon{
+    .icon {
         display: block;
         margin: 0em 1em 0 0;
         float: left;
@@ -1002,11 +1002,11 @@
         padding: 1.5em;
     }
 
-    .page-jobindexpage .rich-text p{
+    .page-jobindexpage .rich-text p {
         clear: both;
     }
 
-    .sign-up{
+    .sign-up {
         margin-top: -0.5em;
     }
 
@@ -1028,7 +1028,7 @@
         float: left;
     }
 
-    .page-jobindexpage .logo{
+    .page-jobindexpage .logo {
         background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
         background-size: auto 3em;
     }
@@ -1065,7 +1065,7 @@
         padding: 19.5em 2em 2em 2em;
     }
 
-    .page-jobindexpage .intro p  a{
+    .page-jobindexpage .intro p  a {
         margin: 0em 1em -1em 0;
     }
 
@@ -1081,7 +1081,7 @@
         font-size: 5em;
     }
 
-   .page-jobindexpage  .crop-height {
+    .page-jobindexpage  .crop-height {
         display: block;
         max-height: 35em;
         overflow: hidden;
@@ -1107,7 +1107,7 @@
 
     /*People index*/
 
-    .page-personindexpage .bleed{
+    .page-personindexpage .bleed {
         background: none;
     }
 
@@ -1129,7 +1129,7 @@
 
     /*Person page*/
 
-    .page-personpage .bleed{
+    .page-personpage .bleed {
         background: none;
     }
 
@@ -1181,7 +1181,7 @@
         font-weight: bold;
     }
 
-    .holder{
+    .holder {
         max-width: 96em;
         margin: 0 auto;
         padding: 0 1em;
@@ -1262,7 +1262,7 @@
 
     /* Blog page  */
 
-    .page-blogpage .bleed{
+    .page-blogpage .bleed {
         background: none;
     }
 
@@ -1278,13 +1278,13 @@
         color: #F7A42C;
     }
 
-    .page-blogpage .next{
-        right:0;
+    .page-blogpage .next {
+        right: 0;
         top: 6em;
     }
 
-    .page-blogpage .prev{
-        left:0;
+    .page-blogpage .prev {
+        left: 0;
         top: 6em;
     }
 
@@ -1317,7 +1317,7 @@
     }
 
 
-    footer .offices li:first-child{
+    footer .offices li:first-child {
         margin-right: -1px;
     }
 
@@ -1337,7 +1337,7 @@
         padding: 0;
     }
 
-    footer .contact h2{
+    footer .contact h2 {
         font-size: 4em;
         margin: 0.25em 0 0.25em 0;
         max-width: 100%;
@@ -1362,7 +1362,7 @@
         display: block;
         font-size: 3em;
         margin: 0;
-        top:0;
+        top: 0;
         position: relative;
     }
 
@@ -1375,7 +1375,7 @@
 
     }
 
-    .svg{
+    .svg {
         display: block;
         -o-transition: all 0.15s ease;
         -webkit-transition: all 0.15s ease;
@@ -1398,9 +1398,9 @@
 }
 
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
@@ -1408,7 +1408,7 @@
     .grid.people-list li {
         width: 50%;
         position: relative;
-        overflow:hidden;
+        overflow: hidden;
         margin: 0;
         float: left;
     }
@@ -1428,7 +1428,7 @@
 
 @media only screen and (min-width: 1000px) {
 
-    .nextprev-nav{
+    .nextprev-nav {
         display: block;
     }
 
@@ -1509,13 +1509,13 @@
         transition: 0.4s ease;
     }
 
-    .page-homepage .block .workcontainer{
+    .page-homepage .block .workcontainer {
         padding: 0;
     }
 
-    .page-homepage .block .blogcontainer{
+    .page-homepage .block .blogcontainer {
         padding: 0;
-        overflow:visible;
+        overflow: visible;
         display: block;
     }
 
@@ -1524,7 +1524,7 @@
         margin-top: 0;
     }
 
-    .label{
+    .label {
         display: block;
         position: absolute;
         background-color: #000;
@@ -1593,7 +1593,7 @@
         color: #ea853a;
     }
 
-    .page-homepage .block .workcontainer{
+    .page-homepage .block .workcontainer {
         overflow: visible;
         position: relative;
     }
@@ -1629,9 +1629,9 @@
         box-sizing: border-box;
     }
 
-    .page-homepage .block{
+    .page-homepage .block {
         padding: 0;
-        overflow:hidden;
+        overflow: hidden;
         position: relative;
     }
 
@@ -1652,7 +1652,7 @@
     }
 
     .author {
-        margin:0 auto 0 auto;
+        margin: 0 auto 0 auto;
         padding: 1em 0em;
     }
 
@@ -1662,7 +1662,7 @@
 
 }
 
-    /* Desktop */
+/* Desktop */
 @media only screen and (min-width: 1250px) {
 
     .italic {
@@ -1683,9 +1683,9 @@
         padding: 4em 0 0 3em;
     }
 
-    .page-jobindexpage main .listing li{
+    .page-jobindexpage main .listing li {
         float: left;
-        width:48%;
+        width: 48%;
         margin-right: 2%;
         min-height: 60px;
         font-size: 0.8em;
@@ -1712,14 +1712,14 @@
     }
 
     .page-workindexpage main .listing a:hover .about h2 {
-    color: #000;
+        color: #000;
     }
 
-    .page-workindexpage main ul li{
+    .page-workindexpage main ul li {
         max-height: 45em;
     }
 
-    .page-workindexpage main ul a{
+    .page-workindexpage main ul a {
         min-height: 80em;
     }
 
