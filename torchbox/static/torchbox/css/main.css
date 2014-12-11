@@ -2242,6 +2242,69 @@ footer .tel {
      padding-bottom: 0!important;
 }
 
+/*T shirts*/
+
+.heading {
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #fff;
+    padding: 3em 1em;
+}
+
+.page-tshirtpage .heading h2 {
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.page-tshirtpage .heading h3 {
+    color: #fff;
+    font-weight: normal;
+    font-size: 2em;
+}
+
+.page-tshirtpage .style h2 {
+    margin: 1em 0;
+    font-size: 1.5em;
+    text-align: center;
+    color: #434a4f;
+    padding: 0.5em 1em;
+}
+
+.t-listing ul {
+    width: 100%;
+}
+
+.t-listing li {
+    width: 49%;
+    margin: 0 0.5% 1em 0;
+    display: inline-block;
+}
+
+.t-listing li:nth-child(2n) {
+  margin-right: 0;
+}
+
+.t-listing li img {
+    width: 100%;
+    height: auto;
+}
+
+.t-listing li h3 {
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.t-listing li h4 {
+    font-size: 1em;
+    text-align: center;
+    font-style: italic;
+}
+
+
+
 
 /* ==========================================================================
    Helper classes
