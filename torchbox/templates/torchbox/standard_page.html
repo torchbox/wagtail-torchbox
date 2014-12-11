@@ -2,14 +2,16 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
+{% if self.main_image %}
+    {% image self.main_image fill-1300x750 as header_image %}
+    <style>
+    .heading {
+        background-image: url('{{ header_image.url }}');
+    }
+    </style>
+{% endif %}
 
-        {% if self.main_image %}
-            <div class= "crop-height">
-                {% image self.main_image fill-1300x750 class="scale" %}
-            </div>
-        {% endif %}
-
-        <div class="heading">    
+        <div class="heading">
             {{ self.heading|richtext }}
         </div>
 

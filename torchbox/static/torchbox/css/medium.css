@@ -384,8 +384,17 @@
         margin: 4em auto 3em auto;
     }
 
-    .page-standardpage .heading {
-        top: 7em;
+    .page-standardpage .container {
+        position: absolute;
+        width: 100%;
+    }
+
+    .page-standardpage.page-standardpage .heading {
+        padding-top: 9em;
+    }
+
+    .page-standardpage main {
+        margin: 0;
     }
 
     .page-standardpage img.scale {
@@ -457,9 +466,7 @@
     .page-standardpage .quote {
         padding: 7em 0 6em 0;
         margin: 2em 0 3em 0;
-    }
-
-    .page-standardpage .quote {
+        color: #434a4f;
         background-color: #424A4F;
         background: url("/static/torchbox/images/about-placeholder6.jpg") center right no-repeat;
         -webkit-background-size: cover;
@@ -468,9 +475,10 @@
         background-size: cover;
     }
 
-
     .page-standardpage h4 span {
         font-size: 2.5em;
+        color: #434a4f;
+        border-right-color: #434a4f;
     }
 
     .page-standardpage h4 {
@@ -1415,6 +1423,10 @@
         margin: 0;
         float: left;
     }
+    .page-standardpage .heading {
+        padding: 6em 1em;
+        text-align: center;
+    }
 }
 
 @media only screen and (min-width: 66em) {
@@ -1501,6 +1513,10 @@
         font-weight: bold;
         font-size: 4em;
         max-width: 1000px;
+    }
+
+    .page-standardpage h2 {
+        max-width: 12em;
     }
 
     .page-homepage .grid li img {
