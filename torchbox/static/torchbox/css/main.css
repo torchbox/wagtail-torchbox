@@ -1014,20 +1014,18 @@ main nav li.active a:after {
 }
 
 .page-standardpage .heading {
-    position: absolute;
-    top: 0em;
-    left: 0;
-    right: 0;
-    padding: 1em;
+    padding: 2em 1em;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .page-standardpage h4 span {
     font-weight: bold;
-    color: #434a4f;
+    color: #fff;
     font-size: 1.5em;
     padding: 0 0.5em;
-    border-right: 1px solid #434a4f;
+    border-right: 1px solid #fff;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
 
@@ -1126,9 +1124,13 @@ main nav li.active a:after {
     text-indent: -13px ;
 }
 
+.page-standardpage .quote {
+    background-color: #EA853a;
+    color: #fff;
+}
+
 .page-standardpage .quote p {
     font-size: 1.1em;
-    color: #434a4f;
     text-align: center;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
