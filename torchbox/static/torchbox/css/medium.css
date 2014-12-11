@@ -384,7 +384,7 @@
         margin: 4em auto 3em auto;
     }
 
-    .page-standardpage .container {
+    .page-standardpage header.container {
         position: absolute;
         width: 100%;
     }

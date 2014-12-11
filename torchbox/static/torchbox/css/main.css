@@ -1016,8 +1016,12 @@ main nav li.active a:after {
 .page-standardpage .heading {
     padding: 2em 1em;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
-    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .page-standardpage h4 span {
