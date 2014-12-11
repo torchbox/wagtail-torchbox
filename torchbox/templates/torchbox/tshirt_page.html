@@ -1,0 +1,18 @@
+{% extends "torchbox/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+{% if self.main_image %}
+    {% image self.main_image fill-1300x750 as header_image %}
+    <style>
+    .heading {
+        background-image: url('{{ header_image.url }}');
+    }
+    </style>
+{% endif %}
+
+        <div class="heading">
+        <h2>Sup dawg?</h2>
+        </div>
+
+{% endblock %}
