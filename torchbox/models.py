@@ -778,6 +778,19 @@ PersonIndexPage.promote_panels = [
     FieldPanel('show_in_play_menu'),
 ]
 
+class TshirtPage(Page):
+    main_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+TshirtPage.content_panels = [
+    FieldPanel('title', classname="full title"),
+    ImageChooserPanel('main_image'),
+]
 
 # Signal handler to load demo data from fixtures after migrations have completed
 @receiver(post_migrate)

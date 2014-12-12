@@ -1,0 +1,92 @@
+{% extends "torchbox/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+{% if self.main_image %}
+    {% image self.main_image fill-1300x750 as header_image %}
+    <style>
+    .heading {
+        background-image: url('{{ header_image.url }}');
+    }
+    </style>
+{% endif %}
+
+        <div class="heading">
+        <h2>Pick a T</h2>
+        <h3> courtesy of Torchbox</h3>
+        </div>
+
+        <div class="style">
+        	<h2> Classic fit</h2>
+        </div>
+
+        <div class="container t-listing">
+        	<ul class="t-listing">
+        		<li>
+	        		<img src="/static/torchbox/images/shirts/classic/brown.png"  width="" height="" alt="">
+	        		<h3> Hello from torchbox </h3>
+	        		<h4> Brown </h4>
+        		</li>
+        		 <li>
+	        		<img src="/static/torchbox/images/shirts/classic/Dark-Grey.png"  width="" height="" alt="">
+	        		<h3> Hello from torchbox </h3>
+	        		<h4> Dark grey </h4>
+        		</li>
+      			<li>
+	        		<img src="/static/torchbox/images/shirts/classic/French-Navy.png"  width="" height="" alt="">
+	        		<h3> Torchbox flame </h3>
+	        		<h4> French navy </h4>
+        		</li>
+        		 <li>
+	        		<img src="/static/torchbox/images/shirts/classic/Kelly.png"  width="" height="" alt="">
+	        		<h3> Torchbox flame </h3>
+	        		<h4> Kellly </h4>
+        		</li>
+      			<li>
+	        		<img src="/static/torchbox/images/shirts/classic/Light-Blue.png"  width="" height="" alt="">
+	        		<h3> Hello from torchbox </h3>
+	        		<h4> Light blue </h4>
+        		</li>
+        		 <li>
+	        		<img src="/static/torchbox/images/shirts/classic/Yellow.png"  width="" height="" alt="">
+	        		<h3> Hello from torchbox </h3>
+	        		<h4> Kellly </h4>
+        		</li>
+        	</ul>
+        </div>
+
+        <div class="style">
+        	<h2> Slim fit</h2>
+        </div>
+
+        <div class="container t-listing">
+        	<ul class="t-listing">
+        		<li>
+	        		<img src="/static/torchbox/images/shirts/Slim/Aqua.png"  width="" height="" alt="">
+	        		<h3> Torchbox flame </h3>
+	        		<h4> Aqua </h4>
+        		</li>
+        		 <li>
+	        		<img src="/static/torchbox/images/shirts/Slim/Dark-Grey.png"  width="" height="" alt="">
+	        		<h3> Torchbox flame </h3>
+	        		<h4> Dark grey </h4>
+        		</li>
+      			<li>
+	        		<img src="/static/torchbox/images/shirts/Slim/Dark-Navy.png"  width="" height="" alt="">
+	        		<h3> Torchbox flame </h3>
+	        		<h4> Dark navy </h4>
+        		</li>
+      			<li>
+	        		<img src="/static/torchbox/images/shirts/Slim/melange-Grey.png"  width="" height="" alt="">
+	        		<h3> Torchbox flame  </h3>
+	        		<h4> Melange Grey </h4>
+        		</li>
+        		 <li>
+	        		<img src="/static/torchbox/images/shirts/Slim/Purple.png"  width="" height="" alt="">
+	        		<h3> Torchbox flame  </h3>
+	        		<h4> Purple </h4>
+        		</li>
+        	</ul>
+        </div>
+
+{% endblock %}
