@@ -32,6 +32,14 @@
         line-height: 1.2em;
     }
 
+    .page-tshirtpage .heading {
+        padding: 10em 1em;
+    }
+
+    .page-tshirtpage .heading h2 {
+        font-size: 9em;
+    }
+
     /*footer*/
 
     footer {

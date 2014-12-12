@@ -1481,6 +1481,22 @@
         width: 32%;
     }
 
+    .t-listing li img {
+        -webkit-transition: all 0.5s ease; 
+        -moz-transition: all 0.5s ease; 
+        -ms-transition: all 0.5s ease; 
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .t-listing li img:hover {
+        -webkit-transform:scale(1.5);
+        -moz-transform:scale(1.5); 
+        -ms-transform:scale(1.5); 
+        -o-transform:scale(1.5); 
+         transform:scale(1.5);
+    }
+
     .t-listing li:nth-child(3n) {
       margin-right: 0;
     }
