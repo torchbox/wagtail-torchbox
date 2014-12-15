@@ -30,6 +30,7 @@
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
+        background: #ccc;
         background: rgba(67,74,79,0.5);
     }
 
@@ -836,6 +837,7 @@
 
     .page-workpage .intro .body-copy {
         margin-top: -10.2em;
+        background: #fff;
         background: rgba(255, 255, 255, 1);
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         padding-bottom: 0;
@@ -1482,18 +1484,18 @@
     }
 
     .t-listing li img {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
 
     .t-listing li img:hover {
         -webkit-transform:scale(1.5);
-        -moz-transform:scale(1.5); 
-        -ms-transform:scale(1.5); 
-        -o-transform:scale(1.5); 
+        -moz-transform:scale(1.5);
+        -ms-transform:scale(1.5);
+        -o-transform:scale(1.5);
          transform:scale(1.5);
     }
 
