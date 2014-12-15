@@ -176,6 +176,19 @@
 
         <script>
             $(function() {
+                var $window = $(window),
+                    $stickyEl = $('.pick'),
+                    elTop = $stickyEl.length && $stickyEl.offset().top - 4;
+                    $stickyEl.toggleClass('fixed', $window.scrollTop() > elTop);
+
+                $window.scroll(function() {
+                    $stickyEl.toggleClass('fixed', $window.scrollTop() > elTop);
+                });
+            });
+        </script>
+
+        <script>
+            $(function() {
                 $('.dropdown').click(function() {
                     $('.dropdown').toggleClass('open');
                     $('.popular-tags .closed').slideToggle();

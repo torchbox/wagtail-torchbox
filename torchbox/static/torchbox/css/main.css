@@ -2245,8 +2245,11 @@ footer .tel {
 /*T shirts*/
 
 .heading {
+    min-height: 100%;
     background-size: cover;
+    background-attachment: fixed;
     background-repeat: no-repeat;
+    background-position: center center;
     text-align: center;
     color: #fff;
     padding: 3em 1em;
@@ -2263,8 +2266,14 @@ footer .tel {
     font-size: 2em;
 }
 
+.page-tshirtpage .button:hover {
+    font-weight: bold;
+    background: rgba(62, 89, 106, 1);
+    padding: 0.5em 0;
+}
+
 .page-tshirtpage .style h2 {
-    margin: 1em 0;
+    margin: 2em 0 1em 0;
     font-size: 1.5em;
     text-align: center;
     color: #434a4f;
@@ -2275,35 +2284,102 @@ footer .tel {
     width: 100%;
 }
 
-.t-listing li {
-    width: 49%;
-    margin: 0 0.5% 1em 0;
-    display: inline-block;
+    .t-listing li {
+        width: 49%;
+        margin: 0 0.5% 1em 0;
+        display: inline-block;
+    }
+
+        .t-listing li:nth-child(2n) {
+          margin-right: 0;
+        }
+
+        .t-listing li img {
+            width: 100%;
+            height: auto;
+        }
+
+        .t-listing li h3 {
+            font-size: 1em;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .t-listing li h4 {
+            font-size: 1em;
+            text-align: center;
+            font-style: italic;
+            margin-top: -0.2em;
+        }
+
+.t-listing .order {
+    opacity: 0;
+    display: none;
+    -webkit-transition: all 0.5s ease; 
+    -moz-transition: all 0.5s ease; 
+    -ms-transition: all 0.5s ease; 
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
-.t-listing li:nth-child(2n) {
-  margin-right: 0;
-}
-
-.t-listing li img {
+.pick {
     width: 100%;
-    height: auto;
+    position: absolute;
+    top: 200px;
 }
 
-.t-listing li h3 {
-    font-size: 1em;
+.fixed {
+    position: fixed;
+    top: 4px;
+}
+
+.pick li {
     text-align: center;
-    font-weight: bold;
-    margin-bottom: 0;
 }
 
-.t-listing li h4 {
-    font-size: 1em;
-    text-align: center;
-    font-style: italic;
-    margin-top: -0.2em;
-}
+    .pick a {
+        width: 32%;
+        display: inline-block;
+        opacity: 1;
+        color: #fff;
+        padding: 0.3em 1em;
+        background: #434a4f; 
+        margin-right: 1%;
+        border-radius: 3px;
+        -webkit-transition: all 0.3s ease; 
+        -moz-transition: all 0.3s ease; 
+        -ms-transition: all 0.3s ease; 
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
 
+    .pick a:hover {
+        background: #2D3235;
+        cursor: pointer;
+    }
+
+    .pick a:first-of-type {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px; 
+    }
+
+    .pick a:last-of-type {
+        margin-right: 0;
+        background: #EA853a;
+        float: right;
+        border-top-right-radius: 0px; 
+        border-bottom-right-radius: 0px; 
+    }
+
+    .pick a:last-of-type:hover {
+        background: #EA9E3A;
+        cursor: pointer;
+    }
+
+.top {
+    margin-top: 4em;
+}
 
 
 
