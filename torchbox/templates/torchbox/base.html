@@ -38,6 +38,12 @@
 
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}"/>
 
+        <!--[if lte IE 8]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="{% static "torchbox/js/vendor/respond.js" %}""></script>
+            <link rel="stylesheet" type="text/css" href="{% static "torchbox/css/ie8.css" %}" />
+        <![endif]-->
+
         {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
 
         {# Javascript that needs to be called from head e.g. google analytics snippet, modernizr etc #}

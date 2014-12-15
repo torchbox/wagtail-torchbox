@@ -1,0 +1,24 @@
+.logo {
+    height: 3.5em !important;
+    min-height: 0;
+    padding: 1em 0;
+    background-size: 200px !important;
+    margin: 2em 0 0 0 !important;
+    background-image: none !important;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/torchbox/images/logo-torchbox-grey.png', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/torchbox/images/logo-torchbox-grey.png', sizingMethod='scale')";
+}
+
+.page-homepage .logo,
+.page-workpage .logo {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/torchbox/images/logo-torchbox-white.png', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/torchbox/images/logo-torchbox-white.png', sizingMethod='scale')";
+}
+
+.page-homepage .work-intro, .page-homepage .blog-intro {
+    max-width: 40% !important;
+}
+
+.page-blogindexpage main {
+    padding-top: 90% !important;
+}
