@@ -1321,6 +1321,10 @@
         font-size: 1.2em;
     }
 
+    #main_body form li.highlighted {
+        background-color: red;
+    }
+
     /*Footer*/
 
     footer .container {
