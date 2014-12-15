@@ -5,39 +5,37 @@
 
     <section class="hero">
         <h1 class="visuallyhidden">Home</h1>
-                <div class="animated fadeInDown container">
-                   <h2> We do digital for those changing the world for the better. We love working on projects we're passionate about with people who share our values.</h2>
-                   <a href="/about"> <div class="button"> Who are we</div> </a>
-                   <a href="mailto:hello@torchbox.com"> <div class="button"> Get in touch</div> </a>
+        <div class="animated fadeInDown container">
+           <h2>{{ self.intro }}</h2>
+           <a href="/about"> <div class="button"> Who are we</div> </a>
+           <a href="mailto:hello@torchbox.com"> <div class="button"> Get in touch</div> </a>
+        </div>
+        
+        <div class="container">
+            <a href="#posts">
+                <div class="arrow">
                 </div>
-                
-                <div class="container">
-                    <a href="#posts">
-                        <div class="arrow">
-                        </div>
-                    </a>
-                </div>
-
+            </a>
+        </div>
     </section>
 
     <a name="posts">
-    <section class="gutters work clearfix grid worklisting">
-    		{% homepage_work_listing 3 %}
-    </section>
+        <section class="gutters work clearfix grid worklisting">
+            {% homepage_work_listing 3 %}
+        </section>
     </a>
 
     <section class="grid">
-            <div class="listing clearfix bloglisting" >
-	          {% homepage_blog_listing 3 %}
-	        </div>
+        <div class="listing clearfix bloglisting" >
+          {% homepage_blog_listing 3 %}
+        </div>
     </section>
 
     <section class="container hiring">
-        <div >
+        <div>
             <h2>  By the way, we're hiring </h2>
             {% homepage_job_listing 3 %}
         </div>
     </section>
-
 
 {% endblock %}
