@@ -1040,23 +1040,22 @@ main nav li.active a:after {
 
 .page-standardpage .button {
     background-color: white;
-    display: inline-block;
+    display: block;
     padding: 1.1em 3em;
     line-height: 1em;
-    margin: 2em 1em 1em 0;
+    margin: 2em auto 1em auto;
     color: #EA853a;
     border: solid 1px #EA853a;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    min-width: 100px;
+    width: 200px;
     text-align: center;
 }
 
 .page-standardpage .button:hover {
     cursor: pointer;
     background-color: #EA853a;
-    display: inline-block;
     color: #fff;
     -o-transition: background-color 0.2s ease;
     -webkit-transition: background-color 0.2s ease;
