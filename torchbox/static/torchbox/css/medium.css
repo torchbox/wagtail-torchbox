@@ -1485,7 +1485,7 @@
         width: 32%;
     }
 
-    .t-listing li img {
+    .t-listing img {
         -webkit-transition: all 0.5s ease; 
         -moz-transition: all 0.5s ease; 
         -ms-transition: all 0.5s ease; 
@@ -1493,12 +1493,40 @@
         transition: all 0.5s ease;
     }
 
-    .t-listing li img:hover {
+    .t-listing li:hover img {
         -webkit-transform:scale(1.5);
         -moz-transform:scale(1.5); 
         -ms-transform:scale(1.5); 
         -o-transform:scale(1.5); 
          transform:scale(1.5);
+    }
+
+    .t-listing li h3 {
+        -webkit-transition: all 0.5s ease; 
+        -moz-transition: all 0.5s ease; 
+        -ms-transition: all 0.5s ease; 
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .t-listing li h4 {
+        -webkit-transition: all 0.5s ease; 
+        -moz-transition: all 0.5s ease; 
+        -ms-transition: all 0.5s ease; 
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .t-listing li:hover h3 {
+        position: relative;
+        z-index: 5;
+        color: #fff;
+    }
+
+    .t-listing li:hover h4 {
+        position: relative;
+        z-index: 5;
+        color: #fff;
     }
 
     .t-listing li:nth-child(3n) {
