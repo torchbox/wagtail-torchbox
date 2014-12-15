@@ -1335,6 +1335,7 @@
 
     .t-listing li h3 {
         font-size: 1.2em;
+        margin-top: -1em;
     }
 
     .t-listing li h4 {
@@ -1506,7 +1507,6 @@
         width: 32%;
     }
 
-<<<<<<< HEAD
     .pick li {
         font-size: 1.2em;
     }
@@ -1515,12 +1515,12 @@
         -webkit-transition: all 0.5s ease; 
         -moz-transition: all 0.5s ease; 
         -ms-transition: all 0.5s ease; 
-=======
+    }
+
     .t-listing li img {
         -webkit-transition: all 0.5s ease;
         -moz-transition: all 0.5s ease;
         -ms-transition: all 0.5s ease;
->>>>>>> 78810ae627cc05e2467504afe0a0a9f8465807ba
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
