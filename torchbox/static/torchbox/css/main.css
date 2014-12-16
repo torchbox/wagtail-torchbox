@@ -574,7 +574,7 @@ main nav li.active a:after {
 
 .page-homepage .hero {
     padding: 22em 0em 3em 0em;
-    background: url("/static/torchbox/images/Homepage_hero.png") no-repeat center;
+    background: url("/static/torchbox/images/Homepage_hero.jpg") no-repeat center;
     background-color: #5b6265;
     position: relative;
     top: -22em;
