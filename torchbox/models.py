@@ -205,6 +205,8 @@ class HomePageCarouselItem(Orderable, CarouselItem):
 
 
 class HomePage(Page):
+    intro = models.TextField(blank=True)
+
     search_name = "Homepage"
 
     class Meta:
@@ -212,6 +214,7 @@ class HomePage(Page):
 
 HomePage.content_panels = [
     FieldPanel('title', classname="full title"),
+    FieldPanel('intro'),
     InlinePanel(HomePage, 'carousel_items', label="Carousel items"),
 ]
 

@@ -2,17 +2,14 @@
 {% get_site_root as site_root %}
 
 {# Link to home page #}
-<a href="{% pageurl site_root %}" class="logo container">
-</a>
+<a href="{% pageurl site_root %}{% if calling_page|in_play %}play/{% endif %}" class="logo container"></a>
 <nav role="navigation">
     <a href="#menu" class="menu-button">&#x2261;</a>
-    <div class="play-nav">
-        <ul class="bleed">
-            {% for menuitem in menuitems %}
-                <li class="{% if menuitem.is_active %}active{% endif %}">
-                    <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+    <ul class="bleed">
+	        {% for menuitem in menuitems %}
+	            <li class="{% if menuitem.is_active %}active{% endif %}">
+	                <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+	            </li>
+        {% endfor %}
+    </ul>
 </nav>
