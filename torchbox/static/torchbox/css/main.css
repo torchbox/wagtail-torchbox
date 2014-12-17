@@ -583,6 +583,25 @@ main nav li.active a:after {
     background-size: cover;
 }
 
+.page-homepage .hero.hero-video{
+    padding-bottom:0;
+}
+
+
+.page-homepage .hero h1 {
+    text-align: center;
+    margin: 1.5em auto 1em 0;
+    max-width: 26em;
+    text-align: left;
+    font-size: 1.8em;
+    line-height: 1.2em;
+    font-weight:bold;
+    color: #fff;
+}
+.page-homepage .hero.hero-video h1{
+    margin:1em 0;
+}
+
 .page-homepage .hero .gif {
     width: 100%;
 }
@@ -681,15 +700,6 @@ main nav li.active a:after {
     overflow: hidden;
 }
 
-.page-homepage .hero h2 {
-    text-align: center;
-    margin: 1.5em auto 1em 0;
-    max-width: 26em;
-    text-align: left;
-    font-size: 1.8em;
-    line-height: 1.2em;
-    color: #fff;
-}
 
 .page-homepage .menu-button {
     background-color: #fff;
@@ -2096,7 +2106,7 @@ color: #fff;
     width: auto;
 }
 
-.svg{
+body .svg{
     display: none;
 }
 

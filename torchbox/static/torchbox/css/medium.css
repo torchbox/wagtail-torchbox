@@ -272,14 +272,6 @@
         background-size: auto 3em;
     }
 
-    .page-homepage .hero {
-        padding: 6em 2em;
-        background-color: #5b6265;
-        position: relative;
-        top: -3em;
-        margin-bottom: -3em;
-    }
-
     .page-homepage header {
         position: relative;
         background-color: transparent;
@@ -287,7 +279,27 @@
 
     .page-homepage .hero {
         padding: 17% 2em 7% 2em;
+        background-color: #5b6265;
+        position: relative;
+        top: -3em;
         margin-top: -5em;
+        margin-bottom: -3em;
+    }
+
+    .page-homepage .hero.hero-video{
+        padding:0;
+    } 
+    .page-homepage .hero.hero-video .container{
+        position:absolute;
+        top:35%;
+        left:0;
+        right:0;
+        max-width:100%;
+        text-align:center;
+    }
+    .page-homepage .hero.hero-video h1{
+        text-align:center;
+        margin: auto;
     }
 
     .page-homepage .hero .gif {
@@ -298,7 +310,7 @@
         text-align: center;
     }
 
-    .page-homepage .hero h2 {
+    .page-homepage .hero h1 {
         text-align: center;
         margin: 0 auto 1em 0;
         max-width: 26em;
@@ -307,6 +319,11 @@
         line-height: 1.2em;
         font-weight: bold;
     }
+
+    .page-homepage .hero.hero-video h1{
+        font-size:2em;
+    }
+
 
     .page-homepage .hero a {
         padding: 1.25em;
@@ -339,6 +356,10 @@
 
     .page-homepage .work-intro {
         padding-bottom: 0;
+    }
+
+    .page-homepage.hasvideo header{
+        margin-right:60px;
     }
 
     /*Standard page (we're torchbox) */
@@ -1448,7 +1469,7 @@
 
     }
 
-    .svg {
+    body .svg {
         display: block;
         -o-transition: all 0.15s ease;
         -webkit-transition: all 0.15s ease;
@@ -1652,14 +1673,16 @@
         transition: 0.2s ease;
     }
 
+    .page-homepage .hero.hero-video h1{
+        font-size:3em;
+    }
+
 }
 
 @media only screen and (min-width: 515px) {
-
-.form iframe {
-    height: 950px !important;
-}
-
+    .form iframe {
+        height: 950px !important;
+    }
 }
 
 /*Block Hover homepage feed*/
