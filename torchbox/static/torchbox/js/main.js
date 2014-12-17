@@ -63,17 +63,20 @@ $(function() {
 
     // fitVids
     $('.responsive-object').fitVids();
-
-    /* 
-    .each(function() {
+    
+    // get some stats about the video
+    $('.responsive-object').each(function() {
         var $this = $(this);
         var iframe = $('iframe', $this)[0];
         var player = $f(iframe);
 
-        // Call the API when a button is pressed
-        $('.playpause', $(this)).on('click', function() {
-            player.api('play');
+        player.addEvent('ready', function() {  
+            player.addEvent('play', function(id){
+                ga('send', 'event', 'video', 'played', id);
+            });      
+            player.addEvent('finish', function(id){
+                ga('send', 'event', 'video', 'finished', id);
+            });
         });
     });
-    */
 });
