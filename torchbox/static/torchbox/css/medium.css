@@ -1298,8 +1298,19 @@
 
     /*T shirts*/
 
-    .heading {
+    .page-tshirtpage .heading {
         padding: 5em 1em;
+        margin-top: -8em;
+        padding: 8em 1em;
+    }
+
+    .page-tshirtpage .logo {
+        background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+        background-size: auto 3em ;
+    }
+
+    .page-tshirtpage .bleed {
+        background: transparent;
     }
 
     .page-tshirtpage .heading h2 {
@@ -1307,13 +1318,16 @@
     }
 
     .pick {
-        top: 239px;
+        top: 399px;
     }
 
     .pick a {
-        margin: 0;
+        margin: 0 0.5%;
         width: 32%;
-        margin-right: 1.7%;
+    }
+
+    .pick li {
+        font-size: 1em;
     }
 
     .fixed {
@@ -1339,6 +1353,12 @@
 
     #main_body form li.highlighted {
         background-color: red;
+    }
+
+    .form {
+        margin-top: 0em;
+        background: rgb(249, 249, 249);
+        padding-top: 1em;
     }
 
     /*Footer*/
