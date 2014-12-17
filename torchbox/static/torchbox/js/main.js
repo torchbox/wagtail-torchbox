@@ -70,16 +70,17 @@ $(function() {
         var iframe = $('iframe', $this)[0];
         var player = $f(iframe);
 
-        $('.poster, .play', $this).click(function(){
+        $('.poster, .play').click(function(){
             player.api('play');
         });
 
         player.addEvent('ready', function() {  
             player.addEvent('play', function(id){
+                $('.play').hide();
                 $('header, .hero-video h1').animate({
                     opacity: 0,
                 }, 500, function() {});
-                $('.poster, .play').fadeOut(500);
+                $('.poster').fadeOut(300);
                 ga('send', 'event', 'video', 'played', id);
             }); 
             player.addEvent('pause', function(id){
