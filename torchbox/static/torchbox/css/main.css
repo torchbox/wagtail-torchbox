@@ -582,9 +582,46 @@ main nav li.active a:after {
     -o-background-size: cover;
     background-size: cover;
 }
-
+.arrow {
+    display: none;
+    margin: 4em 0 0 -0.8em;
+    height: 6em;
+    width: 6em;
+    background-image: url("/static/torchbox/images/arrow_down.png");
+    background-repeat: no-repeat;
+    -o-transition: 0.2s ease;
+    -webkit-transition: 0.2s ease;
+    -moz-transition: 0.2s ease;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
 .page-homepage .hero.hero-video{
     padding-bottom:0;
+}
+.page-homepage .hero.hero-video .poster{
+    display:block;
+    position:absolute;
+    top:0; bottom:0;
+    left:0;
+    right:0;
+    z-index:10;
+}
+.page-homepage .hero.hero-video .arrow{
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-3em 0 0 -3em;
+    z-index:10;
+    display:block;
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.page-homepage .hero.hero-video .responsive-object{
+    position:relative;
+}
+.page-homepage .hero.hero-video .fluid-width-video-wrapper{
+    z-index:5;
 }
 
 

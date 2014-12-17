@@ -201,6 +201,13 @@ def rendition_delete(sender, instance, **kwargs):
 class HomePage(Page):
     intro = models.TextField(blank=True)
     hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
+    hero_video_poster_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     search_name = "Homepage"
 
@@ -211,6 +218,7 @@ HomePage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro'),
     FieldPanel('hero_video_id'),
+    ImageChooserPanel('hero_video_poster_image'),
 ]
 
 HomePage.promote_panels = [

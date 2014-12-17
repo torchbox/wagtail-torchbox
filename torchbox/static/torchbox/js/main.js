@@ -70,11 +70,16 @@ $(function() {
         var iframe = $('iframe', $this)[0];
         var player = $f(iframe);
 
+        $('.poster, .play', $this).click(function(){
+            player.api('play');
+        });
+
         player.addEvent('ready', function() {  
             player.addEvent('play', function(id){
                 $('header, .hero-video h1').animate({
                     opacity: 0,
                 }, 500, function() {});
+                $('.poster, .play').fadeOut(500);
                 ga('send', 'event', 'video', 'played', id);
             }); 
             player.addEvent('pause', function(id){
@@ -87,6 +92,7 @@ $(function() {
                  $('header').animate({
                     opacity: 1,
                 }, 500, function() {});
+                $('.poster').fadeIn(500);
                 ga('send', 'event', 'video', 'finished', id);
             });
         });
