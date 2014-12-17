@@ -2230,7 +2230,7 @@ footer .tel {
 
 /*T shirts*/
 
-.heading {
+.page-tshirtpage .heading {
     min-height: 100%;
     background-size: cover;
     background-attachment: fixed;
@@ -2249,7 +2249,7 @@ footer .tel {
 .page-tshirtpage .heading h3 {
     color: #fff;
     font-weight: normal;
-    font-size: 2em;
+    font-size: 1.9em;
 }
 
 .page-tshirtpage .button:hover {
@@ -2313,7 +2313,7 @@ footer .tel {
 .pick {
     width: 100%;
     position: absolute;
-    top: 200px;
+    top: 195px;
 }
 
 .fixed {
@@ -2323,6 +2323,7 @@ footer .tel {
 
 .pick li {
     text-align: center;
+    font-size: 0.8em;
 }
 
     .pick a {
@@ -2332,7 +2333,7 @@ footer .tel {
         color: #fff;
         padding: 0.3em 1em;
         background: #434a4f; 
-        margin-right: 1%;
+        margin: 0 0.2%;
         border-radius: 3px;
         -webkit-transition: all 0.3s ease; 
         -moz-transition: all 0.3s ease; 
@@ -2346,17 +2347,9 @@ footer .tel {
         cursor: pointer;
     }
 
-    .pick a:first-of-type {
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px; 
-    }
-
     .pick a:last-of-type {
         margin-right: 0;
         background: #EA853a;
-        float: right;
-        border-top-right-radius: 0px; 
-        border-bottom-right-radius: 0px; 
     }
 
     .pick a:last-of-type:hover {
@@ -2364,8 +2357,14 @@ footer .tel {
         cursor: pointer;
     }
 
-.top {
-    margin-top: 4em;
+.form {
+    margin-top: 2em;
+    background: rgb(249, 249, 249);
+    padding-top: 2em;
+}
+
+.form iframe {
+    height: 1200px !important;
 }
 
 
