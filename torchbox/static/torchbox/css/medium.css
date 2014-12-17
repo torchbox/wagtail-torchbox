@@ -629,7 +629,7 @@
         -moz-transition: opacity 0.2s ease;
         transition: opacity 0.2s ease;
         margin: 0.1em 0;
-        font-family: "proxima-nova",helvetica,sans-serif;
+        font-family: "proxima-nova", helvetica, sans-serif;
         font-style: italic;
     }
 
