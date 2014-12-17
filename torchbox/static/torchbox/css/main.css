@@ -617,6 +617,13 @@ main nav li.active a:after {
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
+.page-homepage .hero.hero-video .poster .arrow{
+    display:block;
+}
+.page-homepage .hero.hero-video .container .arrow{
+    display:none;
+}
+
 .page-homepage .hero.hero-video .responsive-object{
     position:relative;
 }

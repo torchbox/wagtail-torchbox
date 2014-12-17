@@ -288,6 +288,9 @@
         right:0;
         z-index:10;
     }
+    .page-homepage .hero.hero-video .poster .arrow{
+        display:none;
+    }
    
     .page-homepage .hero.hero-video .container{
         position:absolute;
@@ -297,6 +300,11 @@
         right:0;
         max-width:100%;
         text-align:center;
+    }
+    .page-homepage .hero.hero-video .container .arrow{
+        display:block;
+        position:relative;
+        margin-top:0;
     }
     .page-homepage .hero.hero-video h1{
         text-align:center;
