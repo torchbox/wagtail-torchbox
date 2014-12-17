@@ -78,7 +78,7 @@ img.scale {
 }
 
 html {
-    font-family: 'proxima-nova',helvetica,sans-serif;
+    font-family: 'proxima-nova', helvetica, sans-serif;
     background-color: #fff;
     -webkit-font-smoothing: antialiased;
 }
@@ -109,7 +109,7 @@ h1, h2, h3 {
     line-height: 1.25;
     margin: 0;
     padding: 0;
-    font-family: "proxima-nova",helvetica,sans-serif;
+    font-family: "proxima-nova", helvetica, sans-serif;
 }
 
 .listing p {
@@ -194,7 +194,7 @@ header nav li a {
     color: white;
     border-bottom: 1px solid rgba(255,255,255,0.2);
     font-size: 1.1em;
-    font-family: "proxima-nova",helvetica,sans-serif;
+    font-family: "proxima-nova", helvetica, sans-serif;
 }
 
 header nav li a:hover {
@@ -346,7 +346,6 @@ main nav li.active a:after {
 .body-copy h1 {
     font-size: 3em;
     font-weight: bold;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .body-copy h2 {
@@ -400,7 +399,6 @@ main nav li.active a:after {
     font-size: 1.55em;
     font-weight: bold;
     margin-bottom: 0.2em;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .listing main div {
@@ -671,7 +669,6 @@ main nav li.active a:after {
     text-align: center;
     font-size: 2em;
     margin-bottom: 1em;
-    font-family: "proxima-nova";
     font-weight: 600;
     color: #424A4F;
 }
@@ -809,7 +806,6 @@ main nav li.active a:after {
     margin-top: 0.25em;
     margin-bottom: 0.25em;
     color: #fff;
-    font-family: "proxima-nova";
 }
 
 .page-jobindexpage main .jobs {
@@ -1254,7 +1250,6 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
     line-height: 1.15;
     font-weight: bold;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .index,
@@ -1310,7 +1305,6 @@ main nav li.active a:after {
 .page-blogindexpage h1 {
     font-size: 3em;
     font-weight: bold;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-blogindexpage img.scale {
@@ -1407,14 +1401,12 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
     font-weight: bold;
     line-height: 1em;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-blogpage h1 {
     font-size: 3em;
     margin-bottom: 0.5em;
     line-height: 1.15;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-blogpage .article-meta {
@@ -1657,7 +1649,6 @@ a.tooltip span{
 .page-workindexpage h1 {
     font-weight: bold;
     font-size: 3em;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-workindexpage main .listing img {
@@ -1705,7 +1696,6 @@ a.tooltip span{
     -moz-transition: opacity 0.2s ease;
     transition: opacity 0.2s ease;
     margin-bottom: 0.25em;
-    font-family: "proxima-nova",helvetica,sans-serif;
     color: #fff;
 }
 
@@ -1979,7 +1969,6 @@ main .breadcrumb a:hover {
     font-size: 2.5em;
     margin-bottom: 0.25em;
     font-weight: bold;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 .page-personindexpage main h2 {
@@ -2137,10 +2126,9 @@ footer .contact {
     margin-bottom: 0em;
 }
 
-footer .contact h2{
+footer .contact h2 {
     font-size: 2em;
     margin: 0.5em 0 -0.5em 0;
-    font-family: "proxima-nova",helvetica,sans-serif;
 }
 
 footer .contact a {
@@ -2196,7 +2184,6 @@ footer .offices li {
 footer .offices h3 {
     font-size: 1.5em;
     font-weight: bold;
-    font-family: "proxima-nova",helvetica,sans-serif;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
