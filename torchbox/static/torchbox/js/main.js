@@ -72,9 +72,21 @@ $(function() {
 
         player.addEvent('ready', function() {  
             player.addEvent('play', function(id){
+                $('header, .hero-video h1').animate({
+                    opacity: 0,
+                }, 500, function() {});
                 ga('send', 'event', 'video', 'played', id);
-            });      
+            }); 
+            player.addEvent('pause', function(id){
+                $('header').animate({
+                    opacity: 1,
+                }, 500, function() {});
+                ga('send', 'event', 'video', 'paused', id);
+            });     
             player.addEvent('finish', function(id){
+                 $('header').animate({
+                    opacity: 1,
+                }, 500, function() {});
                 ga('send', 'event', 'video', 'finished', id);
             });
         });

@@ -7,7 +7,7 @@
     <section class="hero {% if self.hero_video_id %}hero-video{% endif %}">
         {% if self.hero_video_id %}
             <div class="responsive-object">
-                <iframe id="vimeo{{ self.hero_video_id }}" src="//player.vimeo.com/video/{{ self.hero_video_id }}?api=1&portrait=0&badge=0&byline=0&title=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe id="vimeo{{ self.hero_video_id }}" src="//player.vimeo.com/video/{{ self.hero_video_id }}?api=1&portrait=0&badge=0&byline=0&title=0&player_id=vimeo{{ self.hero_video_id }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
         {% endif %}
         <div class="animated fadeInDown container">
