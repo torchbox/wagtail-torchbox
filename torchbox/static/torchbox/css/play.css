@@ -1,6 +1,15 @@
 /* ==========================================================================
     PLAY STYLES 
    ========================================================================== */
+
+@media only screen and (min-width: 96em) {
+	.page-personpage .bio-text {
+		width: 57%;
+		float: left;
+		margin-right: 4%;
+	}
+}
+
 html {
 	font-family: 'effra',helvetica,sans-serif;
 }
@@ -12,17 +21,26 @@ h1, h2, h3 {
 	font-family: "effra",helvetica,sans-serif;
 }
 
+main {
+	overflow: hidden;
+}
+
+.menu-button {
+	line-height: 0.95em;
+}
+
 .page-standardpage .logo {
-	background: url("/static/torchbox/images/play/play-white.png") center left no-repeat;
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
+	position: relative;
+	z-index: 5;
 }
 
-.page-standardpage h2 {
-    color: #fff;
-    margin-top: -7.5em;
-    margin-bottom: 2em;
+.clients {
+	margin-top: -2em;
+	padding-top: 1.5em;
 }
 
 .page-standardpage .quote {
@@ -43,6 +61,19 @@ h1, h2, h3 {
 	color: #fff;
 }
 
+header nav li a {
+	color: #34434F;
+}
+
+.active a{
+	color: #63A6CB;
+}
+
+.active a:hover {
+	color: #63A6CB;
+	border-bottom: none;
+}
+
 header nav li a:hover {
 	color: #63A6CB;
 }
@@ -57,50 +88,344 @@ header nav ul.visible {
 }
 
 .page-standardpage .button {
-	color: #63A6CB;
-	border-color: #63A6CB;
+	position: relative;
+	color: #fff;
+	border: none;
+	background-color: #63A6CB;
+	border-radius: 0;
+}
+
+.page-standardpage .button:after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    border-width:20px 10px 0px 0px;
+    border-style:solid;
+    -moz-transform: scale(.9999);
+    border-color:#fff transparent transparent #fff;
+}
+
+.page-standardpage .button:before {
+    content:"";
+    position:absolute;
+    bottom:0;
+    right:0;
+    border-width:0px 0px 35px 18px;
+    border-style:solid;
+    -moz-transform: scale(.9999);
+    border-color:transparent transparent #fff transparent;
 }
 
 .page-standardpage .button:hover {
-	background-color: #63A6CB;
+	background-color: #FFC121;
+	color: #34434F;
 }
+
+.play-yellow {
+	position: relative;
+	background: #FFC121;
+	width: 100%;
+	margin-right: 4%;
+	float: left;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+.play-yellow:before {
+	opacity: 1;
+	z-index: 1;
+    content:"";
+    position:absolute;
+    bottom:0;
+    right:0;
+    border-width:0px 0px 95px 78px;
+    border-style:solid;
+    -moz-transform: scale(.9999);
+    border-color:transparent transparent #fff transparent;
+}
+
+.play-yellow:after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    border-width:180px 100px 0px 0px;
+    border-style:solid;
+    -moz-transform: scale(.9999);
+    border-color:#fff transparent transparent #fff;
+}
+
+.page-personpage h1 {
+	margin-top: 7em;
+}
+
+.page-personpage main img {
+	opacity: 0.8;
+	width: 100%;
+	margin-right: 0;
+	float: none;
+	z-index: 0;
+}
+
+.page-personpage .role {
+	color: #63A6CB;
+}
+
+.breadcrumb {
+	display: none;
+}
+
+
+/* ==========================================================================
+Footer
+========================================================================== */
+
+
+footer {
+	background: #34434F;
+	position: relative;
+	overflow: hidden;
+}
+
+footer:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	-moz-transform: scale(.9999);
+	border-width: 30px 1610px 0px 0px;
+	border-style: solid;
+	border-color: #fff transparent transparent #fff;
+}
+
+footer .offices {
+	margin: 0em auto;
+}
+
+footer .contact a:hover span {
+	color: #FFC121;
+}
+
+.svg {
+	fill: #FFC121;
+}
+
+footer .offices li:hover h3, footer .offices li:hover .vcard {
+	color: #FFC121;
+}
+
+footer .contact h2 {
+	margin: 1.5em 0 -0.5em 0;
+}
+
+.wagtail {
+	padding: 0 0 1em 0;
+}
+
+
 
 
 @media only screen and (min-width: 45em) {
 
+	/* ==========================================================================
+    page-standardpage
+   ========================================================================== */
+
+	.page-standardpage header.container {
+		max-width: 100%;
+	}
+
+	.page-standardpage.page-standardpage .heading {
+		padding-top: 10em;
+		padding-top: 15em;
+		height: 760px;
+	}
+
 	.page-standardpage .logo {
 		background-size: 8em;
-		margin-top: -0.5em;
+		margin-top: -0.3em;
 	}
 
 	.page-standardpage h2 {
-	    color: #fff;
-	    margin-top: -5.5em;
-	    margin-bottom: 2em;
+		max-width: 18em;
 	}
+
+	.italic {
+		position: relative;
+		z-index: 1;
+		margin: 1.5em auto 0.5em auto;
+	}
+
+	.clients {
+		margin: -1.5em auto 0 auto;
+	}
+
+	.page-standardpage .were-tbx h2 {
+		text-align: center;
+		max-width: 100%;
+	}
+
+	.heading {
+		min-height: 100%;
+		background-size: cover;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	.heading:after {
+		content: "";
+		position: absolute;
+		bottom: 35px;
+		top: 686px;
+		left: 0;
+		-moz-transform: scale(.9999);
+		border-width: 40px 1610px 0px 0px;
+		border-style: solid;
+		border-color: transparent #fff transparent transparent;
+	}
+
+/* ==========================================================================
+    Navigation 
+   ========================================================================== */
 
 	.play-nav {
 		display: block;
-		background: rgba(255,255,255,0.4);
+		background: rgba(255,255,255,0.9);
 		width: 100%;
-		height: 100px;
+		height: 75px;
+	}
+
+	.play-nav:after {
+		content: "";
 		position: absolute;
-		top: 0;
+		bottom: 35px;
 		left: 0;
+		-moz-transform: scale(.9999);
+		border-width: 30px 1610px 0px 0px;
+		border-style: solid;
+		border-color: rgba(255,255,255,0.9) transparent transparent rgba(255,255,255,0.9);
 	}
 
 	.bleed {
 		background: none;
-		margin-top: 0;
+		margin-top: -10px;
 		margin-right: 0;
 		padding: 0.5em 1em;
 		height: 80px;
 	}
 
+	.play-nav-container {
+		height: 140px;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
 	header nav li  a{
 		float: left;
-		padding: 0.8em 1em 1em 1em;
+		padding: 0.8em 0 0 0;
 		font-family: "effra",helvetica,sans-serif;
 	}
 
+	footer .contact h2 {
+		margin: 0.5em 0 0.2em 0;
+	}
+
+	.footerbleed {
+	padding: 1em 0 2em 0;
+	}
+
+	/* ==========================================================================
+    .page-personindexpage 
+   ========================================================================== */
+
+   .page-personindexpage .logo {
+		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background-size: 8em;
+		margin-top: -0.3em;
+		padding: 1em;
+		opacity: 1;
+		position: relative;
+		z-index: 5;
+	}
+
+	.page-personindexpage .bleed {
+		background: none;
+		margin-top: 0.5em;
+	}
+
+	.page-personindexpage header nav li  a{
+		float: left;
+		padding: 0.8em 0 0 0;
+		font-family: "effra",helvetica,sans-serif;
+	}
+		
+	.page-personindexpage header nav li a:hover {
+		color: #63A6CB;
+	}
+
+	.page-personindexpage header nav li.active a {
+		color: #63A6CB;
+	}
+	
+	.grid.people-list li a {
+		background: #FFC121;
+	}
+
+	.grid.people-list li a:hover {
+		background: #63A6CB;
+	}
+
+	/* ==========================================================================
+    .page-personpage
+   ========================================================================== */
+    .page-personpage .logo {
+		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background-size: 8em;
+		margin-top: -0.3em;
+		padding: 1em;
+		opacity: 1;
+		position: relative;
+		z-index: 5;
+	}
+
+	.page-personpage .bleed {
+		background: none;
+		margin-top: 0.5em;
+	}
+
+	.page-personpage header nav li  a{
+		float: left;
+		padding: 0.8em 0 0 0;
+		font-family: "effra",helvetica,sans-serif;
+	}
+		
+	.page-personpage header nav li a:hover {
+		color: #63A6CB;
+	}
+
+	.page-personpage header nav li.active a {
+		color: #63A6CB;
+	}
+
+	.page-personpage h1 {
+		margin-top: 0em;
+	}
+
+	.page-personpage main .container {
+		margin-top: 3em;
+		max-width: 80em;
+	}
+
+	.play-yellow {
+		width: 35%;
+	}
+
 }
+

@@ -3,12 +3,13 @@
 
 {% block content %}
 <div class="container clearfix">
-
-    {% if self.image %}
-        {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-        {% image self.image fill-900x900 as photo %}
-            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
-    {% endif %}
+    <div class="play-yellow">
+        {% if self.image %}
+            {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+            {% image self.image fill-900x900 as photo %}
+                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+        {% endif %}
+    </div>
 
 
     <div class="bio-text">
