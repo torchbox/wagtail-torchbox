@@ -18,11 +18,12 @@
             </div>
         {% endif %}
         <div class="animated fadeInDown container">
-            <h1>{{ self.intro }}</h1>
             {% if self.hero_video_id %}
                 <div class="arrow play" title="Play"></div>
             {% endif %}
 
+            <h1>{{ self.intro }}</h1>
+           
             {% if not self.hero_video_id %}
                 <a href="/about"><div class="button">Who are we</div> </a>
                 <a href="mailto:hello@torchbox.com"> <div class="button"> Get in touch</div></a>
