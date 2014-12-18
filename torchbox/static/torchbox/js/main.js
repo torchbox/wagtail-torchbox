@@ -5,7 +5,6 @@ $(function() {
         large: 'screen and (min-width: 96em)'
     }
 
-    console.log('here');
     Harvey.attach(breakpoints.medium, {
         on: function(){
             $('body').addClass('breakpoint-medium');
