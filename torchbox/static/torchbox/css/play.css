@@ -179,6 +179,53 @@ header nav ul.visible {
 }
 
 
+/* ==========================================================================
+Footer
+========================================================================== */
+
+
+footer {
+	background: #34434F;
+	position: relative;
+	overflow: hidden;
+}
+
+footer:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	-moz-transform: scale(.9999);
+	border-width: 30px 1610px 0px 0px;
+	border-style: solid;
+	border-color: #fff transparent transparent #fff;
+}
+
+footer .offices {
+	margin: 0em auto;
+}
+
+footer .contact a:hover span {
+	color: #FFC121;
+}
+
+.svg {
+	fill: #FFC121;
+}
+
+footer .offices li:hover h3, footer .offices li:hover .vcard {
+	color: #FFC121;
+}
+
+footer .contact h2 {
+	margin: 1.5em 0 -0.5em 0;
+}
+
+.wagtail {
+	padding: 0 0 1em 0;
+}
+
+
 
 
 @media only screen and (min-width: 45em) {
@@ -286,6 +333,14 @@ header nav ul.visible {
 		font-family: "effra",helvetica,sans-serif;
 	}
 
+	footer .contact h2 {
+		margin: 0.5em 0 0.2em 0;
+	}
+
+	.footerbleed {
+	padding: 1em 0 2em 0;
+	}
+
 	/* ==========================================================================
     .page-personindexpage 
    ========================================================================== */
@@ -372,25 +427,5 @@ header nav ul.visible {
 		width: 35%;
 	}
 
-	}
-
-    /* ==========================================================================
-    Footer
-   ========================================================================== */
-
-   footer {
-   		background: #34434F;
-   }
-
-	footer .contact a:hover span {
-		color: #FFC121;
-	}
-
-	.svg {
-		fill: #FFC121;
-	}
-
-	footer .offices li:hover h3, footer .offices li:hover .vcard {
-		color: #FFC121;
-	}
 }
+
