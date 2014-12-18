@@ -24,12 +24,21 @@
         height: 32em;
     }
 
-    .page-homepage .hero h2 {
+    .page-homepage.hasvideo header{
+        margin-right:auto;
+    }
+
+   
+
+    .page-homepage .hero h1 {
         text-align: center;
         max-width: 26em;
         text-align: left;
         font-size: 3em;
         line-height: 1.2em;
+    }
+    .page-homepage .hero.hero-video h1{
+        font-size:3em;
     }
 
     .page-tshirtpage .heading {
@@ -135,7 +144,7 @@
         text-align: left;
     }
 
-    .svg {
+    body .svg {
         height: 90px;
         width: 55px;
         margin-top: -25px;

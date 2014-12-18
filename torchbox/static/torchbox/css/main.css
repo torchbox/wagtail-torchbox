@@ -582,6 +582,76 @@ main nav li.active a:after {
     -o-background-size: cover;
     background-size: cover;
 }
+.arrow {
+    display: none;
+    margin: 4em 0 0 -0.8em;
+    height: 6em;
+    width: 6em;
+    background-image: url("/static/torchbox/images/arrow_down.png");
+    background-repeat: no-repeat;
+    -o-transition: 0.2s ease;
+    -webkit-transition: 0.2s ease;
+    -moz-transition: 0.2s ease;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+.page-homepage .hero.hero-video{
+    padding-bottom:0;
+}
+.page-homepage .hero.hero-video .poster{
+    display:block;
+    position:absolute;
+    top:0; bottom:0;
+    left:0;
+    right:0;
+    z-index:10;
+}
+
+ /* disable poster for all touch devices as Vimeo can't support player API properly */
+.touch .page-homepage .hero.hero-video .poster,
+.touch .page-homepage .hero.hero-video .container .arrow{
+    display:none;
+}
+
+.page-homepage .hero.hero-video .arrow{
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-3em 0 0 -3em;
+    z-index:10;
+    display:block;
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.page-homepage .hero.hero-video .poster .arrow{
+    display:block;
+}
+.page-homepage .hero.hero-video .container .arrow{
+    display:none;
+}
+
+.page-homepage .hero.hero-video .responsive-object{
+    position:relative;
+}
+.page-homepage .hero.hero-video .fluid-width-video-wrapper{
+    z-index:5;
+}
+
+
+.page-homepage .hero h1 {
+    text-align: center;
+    margin: 1.5em auto 1em 0;
+    max-width: 26em;
+    text-align: left;
+    font-size: 1.8em;
+    line-height: 1.2em;
+    font-weight:bold;
+    color: #fff;
+}
+.page-homepage .hero.hero-video h1{
+    margin:1em 0;
+}
 
 .page-homepage .hero .gif {
     width: 100%;
@@ -681,15 +751,6 @@ main nav li.active a:after {
     overflow: hidden;
 }
 
-.page-homepage .hero h2 {
-    text-align: center;
-    margin: 1.5em auto 1em 0;
-    max-width: 26em;
-    text-align: left;
-    font-size: 1.8em;
-    line-height: 1.2em;
-    color: #fff;
-}
 
 .page-homepage .menu-button {
     background-color: #fff;
@@ -2096,7 +2157,7 @@ color: #fff;
     width: auto;
 }
 
-.svg{
+body .svg{
     display: none;
 }
 

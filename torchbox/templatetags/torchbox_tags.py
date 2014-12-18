@@ -200,7 +200,7 @@ def homepage_blog_listing(context, count=3):
 # Work feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_work_listing.html', takes_context=True)
 def homepage_work_listing(context, count=3):
-    work = play_filter(WorkPage.objects.filter(live=True).order_by('?'),
+    work = play_filter(WorkPage.objects.filter(live=True),
                        count)
     return {
         'work': work,
