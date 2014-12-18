@@ -606,6 +606,13 @@ main nav li.active a:after {
     right:0;
     z-index:10;
 }
+
+ /* disable poster for all touch devices as Vimeo can't support player API properly */
+.touch .page-homepage .hero.hero-video .poster,
+.touch .page-homepage .hero.hero-video .container .arrow{
+    display:none;
+}
+
 .page-homepage .hero.hero-video .arrow{
     position:absolute;
     top:50%;

@@ -1,5 +1,28 @@
 $(function() {
     var $window = $(window);
+    var breakpoints = {
+        medium: 'screen and (min-width: 45em)',
+        large: 'screen and (min-width: 96em)'
+    }
+
+    console.log('here');
+    Harvey.attach(breakpoints.medium, {
+        on: function(){
+            $('body').addClass('breakpoint-medium');
+        },
+        off: function(){
+            $('body').removeClass('breakpoint-medium');
+        }
+    });
+    Harvey.attach(breakpoints.large, {
+        on: function(){
+            $('body').addClass('breakpoint-large');
+        },
+        off: function(){
+            $('body').removeClass('breakpoint-large');
+        }
+    });
+
 
     // Scroll all anchor links
     $('a[href*=#]:not([href=#])').click(function() {
@@ -70,14 +93,14 @@ $(function() {
         var iframe = $('iframe', $this)[0];
         var player = $f(iframe);
 
-        $('.poster, .play').click(function(){
+        $(document).on('click tap', '.poster, .play', function(){
             player.api('play');
         });
 
         player.addEvent('ready', function() {  
             player.addEvent('play', function(id){
                 $('.play').hide();
-                $('header, .hero-video h1').animate({
+                $('.breakpoint-medium header, .breakpoint-medium .hero-video h1').animate({
                     opacity: 0,
                 }, 500, function() {});
                 $('.poster').fadeOut(300);
