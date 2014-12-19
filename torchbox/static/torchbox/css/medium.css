@@ -49,6 +49,9 @@
         right: 0;
 
     }
+    header nav ul.visible{
+        height:auto;
+    }
 
     header nav li {
         float: left;
@@ -244,7 +247,7 @@
         color: #424a4f;
     }
 
-    .page-homepage .listing h3 {
+    .page-homepage .grid .listing h3 {
         font-size: 2em;
     }
 
