@@ -2,14 +2,6 @@
     PLAY STYLES 
    ========================================================================== */
 
-@media only screen and (min-width: 96em) {
-	.page-personpage .bio-text {
-		width: 57%;
-		float: left;
-		margin-right: 4%;
-	}
-}
-
 html {
 	font-family: 'effra',helvetica,sans-serif;
 }
@@ -23,6 +15,12 @@ h1, h2, h3 {
 
 main {
 	overflow: hidden;
+}
+
+.logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: auto 3em;
+	margin-top: 1em;
 }
 
 .menu-button {
@@ -122,6 +120,39 @@ header nav ul.visible {
 	color: #34434F;
 }
 
+.grid.people-list li a {
+	background: #FFC121;
+}
+
+.grid.people-list ul:first-child:before{
+   content:"";
+    position:absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	border-width: 19px 410px 0px 0px;
+    border-style:solid;
+    -moz-transform: scale(.9999);
+    border-color:#fff transparent transparent #fff;
+}
+
+.grid.people-list ul:last-child:after{
+	opacity: 1;
+	z-index: 1;
+    content:"";
+    position:absolute;
+    bottom:0;
+    right:0;
+    border-width:0px 0px 15px 418px;
+    border-style:solid;
+    -moz-transform: scale(.9999);
+    border-color:transparent transparent #fff transparent;
+}
+
+.grid.people-list li a:hover {
+	background: #63A6CB;
+}
+
 .play-yellow {
 	position: relative;
 	background: #FFC121;
@@ -176,6 +207,41 @@ header nav ul.visible {
 
 .breadcrumb {
 	display: none;
+}
+
+.dropdown {
+	display: none;
+}
+
+.page-workindexpage main .listing .about {
+	border-radius: 0px;
+	max-width: 100%;
+	width: 100%;
+	margin:0;
+}
+
+.page-workindexpage main .listing a h2 {
+	color: #FFC121;
+}
+
+.page-workindexpage main ul a {
+	min-height: 17em;
+}
+
+.pagination {
+	display: none;
+}
+
+.page-workindexpage main .listing a .about:after {
+	content: "";
+	position: absolute;
+	top: -35px;
+	left: 0;
+	-moz-transform: scale(.9999);
+	border-width: 0px 0px 35px 808px;
+	border-style: solid;
+	-moz-transform: scale(.9999);
+	border-color: transparent transparent rgba(0,0,0,0.7) transparent;
 }
 
 
@@ -338,7 +404,7 @@ footer .contact h2 {
 	}
 
 	.footerbleed {
-	padding: 1em 0 2em 0;
+		padding: 1em 0 2em 0;
 	}
 
 	/* ==========================================================================
@@ -373,13 +439,9 @@ footer .contact h2 {
 	.page-personindexpage header nav li.active a {
 		color: #63A6CB;
 	}
-	
-	.grid.people-list li a {
-		background: #FFC121;
-	}
 
-	.grid.people-list li a:hover {
-		background: #63A6CB;
+	.grid.people-list ul:first-child:before {
+		border-width: 0;
 	}
 
 	/* ==========================================================================
@@ -427,5 +489,171 @@ footer .contact h2 {
 		width: 35%;
 	}
 
+	/* ==========================================================================
+    .page-workindexpage 
+   ========================================================================== */
+   .page-workindexpage .logo {
+		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background-size: 8em;
+		margin-top: -0.3em;
+		padding: 1em;
+		opacity: 1;
+		position: relative;
+		z-index: 5;
+	}
+
+	.page-workindexpage .bleed {
+		background: none;
+		margin-top: 0.5em;
+	}
+
+	.page-workindexpage header nav li  a{
+		float: left;
+		padding: 0.8em 0 0 0;
+		font-family: "effra",helvetica,sans-serif;
+	}
+		
+	.page-workindexpage header nav li a:hover {
+		color: #63A6CB;
+	}
+
+	.page-workindexpage header nav li.active a {
+		color: #63A6CB;
+	}
+	
+	.grid.people-list li a {
+		background: #FFC121;
+	}
+
+	.grid.people-list li a:hover {
+		background: #63A6CB;
+	}
+
+	.page-workindexpage main ul li {
+		width: 50%;
+		float: left;
+		max-height: 35em;
+	}
+
+	.page-workindexpage main ul a:hover {
+		background: transparent;
+	}
+
+	.page-workindexpage main .listing a:hover .about {
+		background-color: rgba(0,0,0,0.7);
+		top: 0;
+	}
+
+	.page-workindexpage main .listing a .about:after {
+		border-width: 0px 0px 35px 808px;
+	}
+
+	.page-workindexpage main .listing .about {;
+		position: relative;
+		-o-transition: 0.3s ease;
+		-webkit-transition: 0.3s ease;
+		-moz-transition: 0.3s ease;
+		transition: 0.3s ease;
+		padding-bottom: 100px;
+	}
+
+	.page-workindexpage main .listing a:hover .about h2 {
+		color: #63A6CB;
+	}
+
+	.page-workindexpage main .listing .about p {
+		opacity: 0;
+		-o-transition: 0.3s ease;
+		-webkit-transition: 0.3s ease;
+		-moz-transition: 0.3s ease;
+		transition: 0.3s ease;
+	}
+
+	.page-workindexpage main .listing a:hover .about p {
+		opacity: 1;
+		color: #FFC121;
+	}
+
+	.page-workindexpage main ul a {
+		overflow: hidden;
+	}
+
+	.page-workindexpage main ul a {
+		min-height: 24em;
+	}
 }
 
+@media only screen and (min-width: 1000px) {
+	.page-workindexpage main ul li {
+		width: 25%;
+		height: 50em;
+		max-height: 50em;
+	}
+
+	.page-workindexpage main .listing .about {
+		top: 0;
+		height: 75px;
+		padding: 1em;
+		margin: 0;
+	}
+
+	.page-workindexpage main .listing a:hover .about {
+		height: 150px;
+	}
+
+	.page-workindexpage main .listing a .about:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		-moz-transform: scale(.9999);
+		border-width: 12px 1010px 0px 0px;
+		border-style: solid;
+		border-color: #fff transparent transparent #fff;
+	}
+
+	.page-workindexpage main ul a {
+		height: 50em;
+		max-height: 50em;
+	}
+
+	.page-workindexpage .listing li {
+		transition: 0.5s;
+	}
+
+	.page-workindexpage .listing:hover li {
+		width: 16.666%;
+	}
+
+	.page-workindexpage .listing li:hover {
+		width: 50%;
+	}
+
+	.page-workindexpage main .listing a h2 {
+		padding: 0.3em 0 0 0;
+	}
+}
+
+@media only screen and (min-width: 1250em) {
+	.page-workindexpage main .listing a:hover .about {
+		top: 385px;
+		background-color: #fff;
+	}
+
+	.page-workindexpage main .listing .about {
+		top: 474px;
+		position: relative;
+	}
+}
+
+@media only screen and (min-width: 96em) {
+	.page-personpage .bio-text {
+		width: 57%;
+		float: left;
+		margin-right: 4%;
+	}
+
+	footer .offices {
+		margin: 1em auto 0 -2em;
+	}
+}
