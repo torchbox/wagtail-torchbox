@@ -1468,6 +1468,10 @@
         display: block;
     }
 
+    .form iframe {
+        height: 1100px !important;
+    }
+
 }
 
 @media print,
@@ -1651,14 +1655,6 @@
         -moz-transition: 0.2s ease;
         transition: 0.2s ease;
     }
-
-}
-
-@media only screen and (min-width: 515px) {
-
-.form iframe {
-    height: 950px !important;
-}
 
 }
 
