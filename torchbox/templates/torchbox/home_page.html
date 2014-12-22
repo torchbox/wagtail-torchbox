@@ -1,43 +1,55 @@
 {% extends "torchbox/base.html" %}
-{% load torchbox_tags wagtailcore_tags static %}
-
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags wagtailembeds_tags static %}
+{% block body_class %}{% if self.hero_video_id %}hasvideo{% endif %}{% endblock %}
+{% block title_postfix %}{% endblock %}
 {% block content %}
 
-    <section class="hero">
-        <h1 class="visuallyhidden">Home</h1>
-                <div class="animated fadeInDown container">
-                   <h2> We do digital for those changing the world for the better. We love working on projects we're passionate about with people who share our values.</h2>
-                   <a href="/about"> <div class="button"> Who are we</div> </a>
-                   <a href="mailto:hello@torchbox.com"> <div class="button"> Get in touch</div> </a>
-                </div>
-                
-                <div class="container">
-                    <a href="#posts">
-                        <div class="arrow">
-                        </div>
-                    </a>
-                </div>
+    <section class="hero {% if self.hero_video_id %}hero-video{% endif %}">
+        {% if self.hero_video_id %}
+            <div class="responsive-object">
+                {% comment %}
+                {% if self.hero_video_poster_image %}
+                    <div class="poster">
+                        {% image self.hero_video_poster_image fill-900x505 %}
+                        <div class="arrow play" title="Play"></div>
+                    </div>
+                {% endif %}
+                {% endcomment %}
 
-    </section>
+                <iframe id="vimeo{{ self.hero_video_id }}" src="//player.vimeo.com/video/{{ self.hero_video_id }}?api=1&portrait=0&badge=0&byline=0&title=0&player_id=vimeo{{ self.hero_video_id }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+        {% endif %}
+        <div class="animated fadeInDown container">
+            <h1>{{ self.intro }}</h1>
+            {% comment %}
+            {% if self.hero_video_id %}
+                <div class="arrow play" title="Play"></div>
+            {% endif %}
+            {% endcomment %}
 
-    <a name="posts">
-    <section class="gutters work clearfix grid worklisting">
-    		{% homepage_work_listing 3 %}
-    </section>
-    </a>
-
-    <section class="grid">
-            <div class="listing clearfix bloglisting" >
-	          {% homepage_blog_listing 3 %}
-	        </div>
-    </section>
-
-    <section class="container hiring">
-        <div >
-            <h2>  By the way, we're hiring </h2>
-            {% homepage_job_listing 3 %}
+            {% if not self.hero_video_id %}
+                <a href="/about"><div class="button">Who are we</div> </a>
+                <a href="mailto:hello@torchbox.com"> <div class="button"> Get in touch</div></a>
+                <a href="#posts" class="arrow"></a>
+            {% endif %}
         </div>
     </section>
 
+    <section id="posts" class="gutters work clearfix grid worklisting">
+        {% homepage_work_listing 3 %}
+    </section>
+
+    <section class="grid">
+        <div class="listing clearfix bloglisting" >
+          {% homepage_blog_listing 3 %}
+        </div>
+    </section>
+
+    <section class="container hiring">
+        <div>
+            <h2>By the way, we're hiring</h2>
+            {% homepage_job_listing 3 %}
+        </div>
+    </section>
 
 {% endblock %}
