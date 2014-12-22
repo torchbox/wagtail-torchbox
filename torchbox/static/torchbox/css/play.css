@@ -244,7 +244,6 @@ header nav ul.visible {
 	border-color: transparent transparent rgba(0,0,0,0.7) transparent;
 }
 
-
 /* ==========================================================================
 Footer
 ========================================================================== */
@@ -289,6 +288,12 @@ footer .contact h2 {
 
 .wagtail {
 	padding: 0 0 1em 0;
+}
+
+.page-workpage .logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: 6em;
+	opacity: 1;
 }
 
 
@@ -540,12 +545,7 @@ footer .contact h2 {
 	}
 
 	.page-workindexpage main .listing a:hover .about {
-		background-color: rgba(0,0,0,0.7);
-		top: 0;
-	}
-
-	.page-workindexpage main .listing a .about:after {
-		border-width: 0px 0px 35px 808px;
+		background-color: transparent;
 	}
 
 	.page-workindexpage main .listing .about {;
@@ -581,68 +581,131 @@ footer .contact h2 {
 	.page-workindexpage main ul a {
 		min-height: 24em;
 	}
-}
 
-@media only screen and (min-width: 1000px) {
-	.page-workindexpage main ul li {
-		width: 25%;
-		height: 50em;
-		max-height: 50em;
+	.page-workindexpage main ul a:hover {
+		background: rgba(0,0,0,0.7);
 	}
 
-	.page-workindexpage main .listing .about {
-		top: 0;
-		height: 75px;
-		padding: 1em;
-		margin: 0;
+	.page-workindexpage main .listing a:hover .about:after {
+		content: "";
+		border-color: transparent;
+	}
+	/* ==========================================================================
+    .page-workpage 
+   ========================================================================== */
+
+   .page-workpage .logo {
+   		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+   		background-size: 8em;
+		margin-top: -0.3em;
+		position: relative;
+		z-index: 5;
+		opacity: 1;
+   }
+
+   .page-workpage main {
+   		overflow: visible;
+   }
+
+   .page-workpage header.container {
+   		max-width: 100%;
+   		margin: 0;
+   }
+
+   .page-workpage .intro .body-copy {
+   		border-radius: 0;
+   }
+
+    .page-workpage .intro .body-copy:after {
+		content: "";
+		position: absolute;
+		bottom: 35px;
+		top: -35px;
+		height: 20px;
+		left: 0;
+		-moz-transform: scale(.9999);
+		border-width: 25px 800px 0px 0px;
+		border-style: solid;
+		border-color: transparent #fff transparent transparent;
+   }
+	
+	.body-copy a {
+		color: #63A6CB;
 	}
 
-	.page-workindexpage main .listing a:hover .about {
-		height: 150px;
+	.body-copy a:hover {
+		color: #34434F;
 	}
 
-	.page-workindexpage main .listing a .about:after {
+	.share li {
+		border-bottom: 1px solid rgba(99, 166, 203, 0.2);
+	}
+
+	.share ul:before {
+		border-bottom-color: #63A6CB;
+	}
+
+	.share ul {
+		border-color: #63A6CB;
+	}
+
+	.nextprev a {
+		background-color: #63A6CB;
+		border-radius: 0;
+	}
+
+	.prev a:after {
+		z-index: 1;
+		content: "";
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		border-width: 0px 0px 20px 28px;
+		border-style: solid;
+		-moz-transform: scale(.9999);
+		border-color: transparent transparent #fff transparent;
+	}
+
+	.next a:before {
+		z-index: 1;
 		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
-		-moz-transform: scale(.9999);
-		border-width: 12px 1010px 0px 0px;
+		border-width: 30px 20px 0px 0px;
 		border-style: solid;
+		-moz-transform: scale(.9999);
 		border-color: #fff transparent transparent #fff;
 	}
 
-	.page-workindexpage main ul a {
-		height: 50em;
-		max-height: 50em;
+	.next .thumb {
+		display: none;
 	}
 
-	.page-workindexpage .listing li {
-		transition: 0.5s;
+	.prev .thumb {
+		display: none;
 	}
 
-	.page-workindexpage .listing:hover li {
-		width: 16.666%;
+	.page-workpage .tags {
+		display: none;
 	}
 
-	.page-workindexpage .listing li:hover {
-		width: 50%;
+	.page-workpage .share {
+		margin: 0 0 1.5em 0;
+		float: none;
 	}
 
-	.page-workindexpage main .listing a h2 {
-		padding: 0.3em 0 0 0;
-	}
+
 }
 
-@media only screen and (min-width: 1250em) {
-	.page-workindexpage main .listing a:hover .about {
-		top: 385px;
-		background-color: #fff;
+@media only screen and (min-width: 1250px) {
+	.page-workindexpage main .listing .about {
+		top: 270px;
+		position: relative;
 	}
 
-	.page-workindexpage main .listing .about {
-		top: 474px;
-		position: relative;
+	.page-workindexpage main .listing a:hover .about {
+		top: 211px;
 	}
 }
 
@@ -651,6 +714,10 @@ footer .contact h2 {
 		width: 57%;
 		float: left;
 		margin-right: 4%;
+	}
+
+	.page-workindexpage main .listing a .about:after {
+		border-width: 0px 0px 35px 1008px;
 	}
 
 	footer .offices {
