@@ -13,6 +13,10 @@ h1, h2, h3 {
 	font-family: "effra",helvetica,sans-serif;
 }
 
+.body-copy h2 {
+	margin-top: 1.5em;
+}
+
 main {
 	overflow: hidden;
 }
@@ -24,7 +28,8 @@ main {
 }
 
 .menu-button {
-	line-height: 0.95em;
+	line-height: 0.5em;
+	padding: 0.2em 0 0.4em 0;
 }
 
 .page-standardpage .logo {
@@ -61,19 +66,23 @@ main {
 
 header nav li a {
 	color: #34434F;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .active a{
-	color: #63A6CB;
+	color: #24536d;
 }
 
 .active a:hover {
-	color: #63A6CB;
-	border-bottom: none;
+	color: #24536d;
+}
+
+header nav li a {
+	color: #fff;
 }
 
 header nav li a:hover {
-	color: #63A6CB;
+	color: #fff;
 }
 
 .bleed {
@@ -83,6 +92,7 @@ header nav li a:hover {
 
 header nav ul.visible {
 	height: 198px;
+	background: #63a6cb;
 }
 
 .page-standardpage .button {
@@ -91,6 +101,7 @@ header nav ul.visible {
 	border: none;
 	background-color: #63A6CB;
 	border-radius: 0;
+	margin: 3em auto 0 auto;
 }
 
 .page-standardpage .button:after {
@@ -244,6 +255,62 @@ header nav ul.visible {
 	border-color: transparent transparent rgba(0,0,0,0.7) transparent;
 }
 
+.page-workpage .logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: 6em;
+	opacity: 1;
+}
+
+.body-copy a {
+	color: #63A6CB;
+}
+
+.body-copy a:hover {
+	color: #34434F;
+}
+
+.share li {
+	border-bottom: 1px solid rgba(99, 166, 203, 0.2);
+}
+
+.share ul:before {
+	border-bottom-color: #63A6CB;
+}
+
+.share ul {
+	border-color: #63A6CB;
+}
+
+.page-workpage .crop-height:after{
+	content: "";
+	position: absolute;
+	bottom: 35px;
+	bottom: 0;
+	height: 0px;
+	right: 0;
+	-moz-transform: scale(.9999);
+	border-width: 31px 90px 0px 0px;
+	border-style: solid;
+	border-color: transparent #fff transparent transparent;
+}
+
+.single .container {
+	padding: 1em 1em 0 1em;
+}
+
+.page-workpage .tags {
+	display: none;
+}
+
+
+.page-workpage .share {
+	margin: 0 0 0.5em 0;
+	float: none;
+}
+
+.intro p {
+	margin-bottom: 0.5em;
+}
 
 /* ==========================================================================
 Footer
@@ -292,16 +359,13 @@ footer .contact h2 {
 }
 
 
-
-
 @media only screen and (min-width: 45em) {
 
 	/* ==========================================================================
     page-standardpage
    ========================================================================== */
-
-	.page-standardpage header.container {
-		max-width: 100%;
+	.active a:hover {
+		border-bottom: none;
 	}
 
 	.page-standardpage.page-standardpage .heading {
@@ -357,18 +421,42 @@ footer .contact h2 {
 /* ==========================================================================
     Navigation 
    ========================================================================== */
+	.active a {
+		color: #63A6CB;
+	}
 
-	.play-nav {
+	header nav li a {
+		color: #34434F;
+	}
+
+	header nav li a:hover {
+		color: #63A6CB;
+	}
+
+	.page-standardpage header.container {
 		display: block;
 		background: rgba(255,255,255,0.9);
-		width: 100%;
+		max-width: 100%;
 		height: 75px;
 	}
 
-	.play-nav:after {
+	.play-nav {
+		padding: 0 2em;
+		max-width: 96em;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.play-nav-container {
+		height: 140px;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.page-standardpage header.container:after {
 		content: "";
 		position: absolute;
-		bottom: 35px;
+		bottom: -30px;
 		left: 0;
 		-moz-transform: scale(.9999);
 		border-width: 30px 1610px 0px 0px;
@@ -384,19 +472,11 @@ footer .contact h2 {
 		height: 80px;
 	}
 
-	.play-nav-container {
-		height: 140px;
-		overflow: hidden;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-	}
-
 	header nav li  a{
 		float: left;
 		padding: 0.8em 0 0 0;
 		font-family: "effra",helvetica,sans-serif;
+		border: none;
 	}
 
 	footer .contact h2 {
@@ -540,12 +620,7 @@ footer .contact h2 {
 	}
 
 	.page-workindexpage main .listing a:hover .about {
-		background-color: rgba(0,0,0,0.7);
-		top: 0;
-	}
-
-	.page-workindexpage main .listing a .about:after {
-		border-width: 0px 0px 35px 808px;
+		background-color: transparent;
 	}
 
 	.page-workindexpage main .listing .about {;
@@ -581,68 +656,132 @@ footer .contact h2 {
 	.page-workindexpage main ul a {
 		min-height: 24em;
 	}
-}
 
-@media only screen and (min-width: 1000px) {
-	.page-workindexpage main ul li {
-		width: 25%;
-		height: 50em;
-		max-height: 50em;
+	.page-workindexpage main ul a:hover {
+		background: rgba(0,0,0,0.7);
 	}
 
-	.page-workindexpage main .listing .about {
-		top: 0;
+	.page-workindexpage main .listing a:hover .about:after {
+		content: "";
+		border-color: transparent;
+	}
+	/* ==========================================================================
+    .page-workpage 
+   ========================================================================== */
+
+	.page-workpage header.container {
+		display: block;
+		background: rgba(255,255,255,0.9);
+		max-width: 100%;
 		height: 75px;
-		padding: 1em;
-		margin: 0;
 	}
 
-	.page-workindexpage main .listing a:hover .about {
-		height: 150px;
+	.page-workpage header.container:after {
+		content: "";
+		position: absolute;
+		bottom: -30px;
+		left: 0;
+		-moz-transform: scale(.9999);
+		border-width: 30px 1610px 0px 0px;
+		border-style: solid;
+		border-color: rgba(255,255,255,0.9) transparent transparent rgba(255,255,255,0.9);
 	}
 
-	.page-workindexpage main .listing a .about:after {
+   .page-workpage .logo {
+   		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+   		background-size: 8em;
+		margin-top: -0.3em;
+		position: relative;
+		z-index: 5;
+		opacity: 1;
+   }
+
+   .page-workpage main {
+   		overflow: visible;
+   }
+
+   .page-workpage header.container {
+   		max-width: 100%;
+   		margin: 0;
+   }
+
+   .page-workpage .intro .body-copy {
+   		border-radius: 0;
+   }
+
+    .page-workpage .intro .body-copy:after {
+		content: "";
+		position: absolute;
+		bottom: 35px;
+		top: -35px;
+		height: 20px;
+		left: 0;
+		-moz-transform: scale(.9999);
+		border-width: 25px 800px 0px 0px;
+		border-style: solid;
+		border-color: transparent #fff transparent transparent;
+   }
+
+	.nextprev a {
+		background-color: #63A6CB;
+		border-radius: 0;
+	}
+
+	.prev a:after {
+		z-index: 1;
+		content: "";
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		border-width: 0px 0px 20px 28px;
+		border-style: solid;
+		-moz-transform: scale(.9999);
+		border-color: transparent transparent #fff transparent;
+	}
+
+	.next a:before {
+		z-index: 1;
 		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
-		-moz-transform: scale(.9999);
-		border-width: 12px 1010px 0px 0px;
+		border-width: 30px 20px 0px 0px;
 		border-style: solid;
+		-moz-transform: scale(.9999);
 		border-color: #fff transparent transparent #fff;
 	}
 
-	.page-workindexpage main ul a {
-		height: 50em;
-		max-height: 50em;
+	.next .thumb {
+		display: none;
 	}
 
-	.page-workindexpage .listing li {
-		transition: 0.5s;
+	.prev .thumb {
+		display: none;
 	}
 
-	.page-workindexpage .listing:hover li {
-		width: 16.666%;
+	.intro p {
+		margin-bottom: 0.8em;
 	}
 
-	.page-workindexpage .listing li:hover {
-		width: 50%;
+	.page-workpage .share {
+		margin: 0 0 1.5em 1.5em;
 	}
 
-	.page-workindexpage main .listing a h2 {
-		padding: 0.3em 0 0 0;
+	.page-workpage .crop-height:after{
+		border-width: 0px;
 	}
+
+
 }
 
-@media only screen and (min-width: 1250em) {
-	.page-workindexpage main .listing a:hover .about {
-		top: 385px;
-		background-color: #fff;
+@media only screen and (min-width: 1250px) {
+	.page-workindexpage main .listing .about {
+		top: 270px;
+		position: relative;
 	}
 
-	.page-workindexpage main .listing .about {
-		top: 474px;
-		position: relative;
+	.page-workindexpage main .listing a:hover .about {
+		top: 211px;
 	}
 }
 
@@ -651,6 +790,14 @@ footer .contact h2 {
 		width: 57%;
 		float: left;
 		margin-right: 4%;
+	}
+
+	.heading:after {
+		border-width: 40px 3610px 0px 0px;
+	}
+
+	.page-workindexpage main .listing a .about:after {
+		border-width: 0px 0px 35px 1008px;
 	}
 
 	footer .offices {
