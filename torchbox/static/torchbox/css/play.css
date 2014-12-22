@@ -13,6 +13,10 @@ h1, h2, h3 {
 	font-family: "effra",helvetica,sans-serif;
 }
 
+.body-copy h2 {
+	margin-top: 1.5em;
+}
+
 main {
 	overflow: hidden;
 }
@@ -24,7 +28,8 @@ main {
 }
 
 .menu-button {
-	line-height: 0.95em;
+	line-height: 0.5em;
+	padding: 0.2em 0 0.4em 0;
 }
 
 .page-standardpage .logo {
@@ -61,19 +66,23 @@ main {
 
 header nav li a {
 	color: #34434F;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .active a{
-	color: #63A6CB;
+	color: #24536d;
 }
 
 .active a:hover {
-	color: #63A6CB;
-	border-bottom: none;
+	color: #24536d;
+}
+
+header nav li a {
+	color: #fff;
 }
 
 header nav li a:hover {
-	color: #63A6CB;
+	color: #fff;
 }
 
 .bleed {
@@ -83,6 +92,7 @@ header nav li a:hover {
 
 header nav ul.visible {
 	height: 198px;
+	background: #63a6cb;
 }
 
 .page-standardpage .button {
@@ -91,6 +101,7 @@ header nav ul.visible {
 	border: none;
 	background-color: #63A6CB;
 	border-radius: 0;
+	margin: 3em auto 0 auto;
 }
 
 .page-standardpage .button:after {
@@ -244,6 +255,63 @@ header nav ul.visible {
 	border-color: transparent transparent rgba(0,0,0,0.7) transparent;
 }
 
+.page-workpage .logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: 6em;
+	opacity: 1;
+}
+
+.body-copy a {
+	color: #63A6CB;
+}
+
+.body-copy a:hover {
+	color: #34434F;
+}
+
+.share li {
+	border-bottom: 1px solid rgba(99, 166, 203, 0.2);
+}
+
+.share ul:before {
+	border-bottom-color: #63A6CB;
+}
+
+.share ul {
+	border-color: #63A6CB;
+}
+
+.page-workpage .crop-height:after{
+	content: "";
+	position: absolute;
+	bottom: 35px;
+	bottom: 0;
+	height: 0px;
+	right: 0;
+	-moz-transform: scale(.9999);
+	border-width: 31px 90px 0px 0px;
+	border-style: solid;
+	border-color: transparent #fff transparent transparent;
+}
+
+.single .container {
+	padding: 1em 1em 0 1em;
+}
+
+.page-workpage .tags {
+	display: none;
+}
+
+
+.page-workpage .share {
+	margin: 0 0 0.5em 0;
+	float: none;
+}
+
+.intro p {
+	margin-bottom: 0.5em;
+}
+
 /* ==========================================================================
 Footer
 ========================================================================== */
@@ -290,20 +358,15 @@ footer .contact h2 {
 	padding: 0 0 1em 0;
 }
 
-.page-workpage .logo {
-	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
-	background-size: 6em;
-	opacity: 1;
-}
-
-
-
 
 @media only screen and (min-width: 45em) {
 
 	/* ==========================================================================
     page-standardpage
    ========================================================================== */
+	.active a:hover {
+		border-bottom: none;
+	}
 
 	.page-standardpage header.container {
 		max-width: 100%;
@@ -362,6 +425,17 @@ footer .contact h2 {
 /* ==========================================================================
     Navigation 
    ========================================================================== */
+	.active a {
+		color: #63A6CB;
+	}
+
+	header nav li a {
+		color: #34434F;
+	}
+
+	header nav li a:hover {
+		color: #63A6CB;
+	}
 
 	.play-nav {
 		display: block;
@@ -402,6 +476,7 @@ footer .contact h2 {
 		float: left;
 		padding: 0.8em 0 0 0;
 		font-family: "effra",helvetica,sans-serif;
+		border: none;
 	}
 
 	footer .contact h2 {
@@ -628,26 +703,6 @@ footer .contact h2 {
 		border-style: solid;
 		border-color: transparent #fff transparent transparent;
    }
-	
-	.body-copy a {
-		color: #63A6CB;
-	}
-
-	.body-copy a:hover {
-		color: #34434F;
-	}
-
-	.share li {
-		border-bottom: 1px solid rgba(99, 166, 203, 0.2);
-	}
-
-	.share ul:before {
-		border-bottom-color: #63A6CB;
-	}
-
-	.share ul {
-		border-color: #63A6CB;
-	}
 
 	.nextprev a {
 		background-color: #63A6CB;
@@ -686,13 +741,16 @@ footer .contact h2 {
 		display: none;
 	}
 
-	.page-workpage .tags {
-		display: none;
+	.intro p {
+		margin-bottom: 0.8em;
 	}
 
 	.page-workpage .share {
-		margin: 0 0 1.5em 0;
-		float: none;
+		margin: 0 0 1.5em 1.5em;
+	}
+
+	.page-workpage .crop-height:after{
+		border-width: 0px;
 	}
 
 
@@ -714,6 +772,10 @@ footer .contact h2 {
 		width: 57%;
 		float: left;
 		margin-right: 4%;
+	}
+
+	.heading:after {
+		border-width: 40px 3610px 0px 0px;
 	}
 
 	.page-workindexpage main .listing a .about:after {
