@@ -377,6 +377,7 @@ footer .contact h2 {
 	.page-standardpage .logo {
 		background-size: 8em;
 		margin-top: -0.3em;
+		display: inline-block;
 	}
 
 	.page-standardpage h2 {
@@ -434,26 +435,24 @@ footer .contact h2 {
 	}
 
 	.page-standardpage header.container {
-		display: block;
-		background: rgba(255,255,255,0.9);
 		max-width: 100%;
-		height: 75px;
+		height: 150px;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
 	}
 
-	.play-nav {
-		padding: 0 2em;
-		max-width: 96em;
-		margin: 0 auto;
+	.page-standardpage nav {
 		position: relative;
 	}
 
 	.play-nav-container {
-		height: 140px;
-		overflow: hidden;
-		width: 100%;
+		background: rgba(255,255,255,0.9);
+		height: 100px;
+		position: relative;
 	}
-
-	.page-standardpage header.container:after {
+	
+	.play-nav-container:before {
 		content: "";
 		position: absolute;
 		bottom: -30px;
@@ -462,6 +461,17 @@ footer .contact h2 {
 		border-width: 30px 1610px 0px 0px;
 		border-style: solid;
 		border-color: rgba(255,255,255,0.9) transparent transparent rgba(255,255,255,0.9);
+	}
+
+	.page-standardpage .bleed {
+		background: none;
+		margin-top: 0;
+	}
+
+	.play-nav {
+		max-width: 96em;
+		margin: 0 auto;
+		padding: 0 2em;
 	}
 
 	.bleed {
@@ -527,6 +537,15 @@ footer .contact h2 {
 	/* ==========================================================================
     .page-personpage
    ========================================================================== */
+
+   	.grid.people-list li a {
+		background: #FFC121;
+	}
+
+	.grid.people-list li a:hover {
+		background: #63A6CB;
+	}
+
     .page-personpage .logo {
 		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
 		background-size: 8em;
@@ -572,6 +591,11 @@ footer .contact h2 {
 	/* ==========================================================================
     .page-workindexpage 
    ========================================================================== */
+
+   .page-workindexpage .bleed {
+		margin: 0.5em;
+   }
+
    .page-workindexpage .logo {
 		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
 		background-size: 8em;
@@ -580,11 +604,6 @@ footer .contact h2 {
 		opacity: 1;
 		position: relative;
 		z-index: 5;
-	}
-
-	.page-workindexpage .bleed {
-		background: none;
-		margin-top: 0.5em;
 	}
 
 	.page-workindexpage header nav li  a{
@@ -599,14 +618,6 @@ footer .contact h2 {
 
 	.page-workindexpage header nav li.active a {
 		color: #63A6CB;
-	}
-	
-	.grid.people-list li a {
-		background: #FFC121;
-	}
-
-	.grid.people-list li a:hover {
-		background: #63A6CB;
 	}
 
 	.page-workindexpage main ul li {
@@ -668,23 +679,27 @@ footer .contact h2 {
 	/* ==========================================================================
     .page-workpage 
    ========================================================================== */
-
-	.page-workpage header.container {
-		display: block;
-		background: rgba(255,255,255,0.9);
-		max-width: 100%;
-		height: 75px;
+	.page-workpage main {
+		margin: -150px 0 0 0;
+		padding: 0;
+		overflow: visible;
 	}
 
-	.page-workpage header.container:after {
-		content: "";
-		position: absolute;
-		bottom: -30px;
-		left: 0;
-		-moz-transform: scale(.9999);
-		border-width: 30px 1610px 0px 0px;
-		border-style: solid;
-		border-color: rgba(255,255,255,0.9) transparent transparent rgba(255,255,255,0.9);
+	.page-workpage header.container {
+		max-width: 100%;
+		height: 150px;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+	}
+
+	.page-workpage nav {
+		position: relative;
+	}
+
+	.page-workpage .bleed {
+		background: none;
+		margin-top: 0;
 	}
 
    .page-workpage .logo {
@@ -694,15 +709,6 @@ footer .contact h2 {
 		position: relative;
 		z-index: 5;
 		opacity: 1;
-   }
-
-   .page-workpage main {
-   		overflow: visible;
-   }
-
-   .page-workpage header.container {
-   		max-width: 100%;
-   		margin: 0;
    }
 
    .page-workpage .intro .body-copy {
