@@ -368,10 +368,6 @@ footer .contact h2 {
 		border-bottom: none;
 	}
 
-	.page-standardpage header.container {
-		max-width: 100%;
-	}
-
 	.page-standardpage.page-standardpage .heading {
 		padding-top: 10em;
 		padding-top: 15em;
@@ -437,17 +433,30 @@ footer .contact h2 {
 		color: #63A6CB;
 	}
 
-	.play-nav {
+	.page-standardpage header.container {
 		display: block;
 		background: rgba(255,255,255,0.9);
-		width: 100%;
+		max-width: 100%;
 		height: 75px;
 	}
 
-	.play-nav:after {
+	.play-nav {
+		padding: 0 2em;
+		max-width: 96em;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.play-nav-container {
+		height: 140px;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.page-standardpage header.container:after {
 		content: "";
 		position: absolute;
-		bottom: 35px;
+		bottom: -30px;
 		left: 0;
 		-moz-transform: scale(.9999);
 		border-width: 30px 1610px 0px 0px;
@@ -461,15 +470,6 @@ footer .contact h2 {
 		margin-right: 0;
 		padding: 0.5em 1em;
 		height: 80px;
-	}
-
-	.play-nav-container {
-		height: 140px;
-		overflow: hidden;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
 	}
 
 	header nav li  a{
@@ -668,6 +668,24 @@ footer .contact h2 {
 	/* ==========================================================================
     .page-workpage 
    ========================================================================== */
+
+	.page-workpage header.container {
+		display: block;
+		background: rgba(255,255,255,0.9);
+		max-width: 100%;
+		height: 75px;
+	}
+
+	.page-workpage header.container:after {
+		content: "";
+		position: absolute;
+		bottom: -30px;
+		left: 0;
+		-moz-transform: scale(.9999);
+		border-width: 30px 1610px 0px 0px;
+		border-style: solid;
+		border-color: rgba(255,255,255,0.9) transparent transparent rgba(255,255,255,0.9);
+	}
 
    .page-workpage .logo {
    		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
