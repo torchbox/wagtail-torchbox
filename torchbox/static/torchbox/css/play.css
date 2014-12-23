@@ -13,6 +13,10 @@ h1, h2, h3 {
 	font-family: "effra",helvetica,sans-serif;
 }
 
+nav {
+	position: relative;
+}
+
 .body-copy h2 {
 	margin-top: 1.5em;
 }
@@ -358,6 +362,13 @@ footer .contact h2 {
 	padding: 0 0 1em 0;
 }
 
+header.container {
+	max-width: 100%;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
 
 @media only screen and (min-width: 45em) {
 
@@ -466,10 +477,11 @@ footer .contact h2 {
 	.page-standardpage .bleed {
 		background: none;
 		margin-top: 0;
+		right: -2em;
 	}
 
 	.play-nav {
-		max-width: 96em;
+		max-width: 90em;
 		margin: 0 auto;
 		padding: 0 2em;
 	}
@@ -500,6 +512,18 @@ footer .contact h2 {
 	/* ==========================================================================
     .page-personindexpage 
    ========================================================================== */
+   	.page-personindexpage .bleed {
+		top: -0.2em;
+		right: -2em;
+	}
+
+    .page-personindexpage header nav ul {
+		right: 8px;
+	}
+
+	.page-personindexpage .play-nav-container:before {
+		border-width: 0px;
+	}
 
    .page-personindexpage .logo {
 		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
@@ -538,6 +562,13 @@ footer .contact h2 {
     .page-personpage
    ========================================================================== */
 
+    .page-personpage .bleed {
+    	background: none;
+		margin-top: 0.5em;
+		top: -0.2em;
+		right: -2em;
+	}
+
    	.grid.people-list li a {
 		background: #FFC121;
 	}
@@ -554,11 +585,6 @@ footer .contact h2 {
 		opacity: 1;
 		position: relative;
 		z-index: 5;
-	}
-
-	.page-personpage .bleed {
-		background: none;
-		margin-top: 0.5em;
 	}
 
 	.page-personpage header nav li  a{
@@ -592,9 +618,10 @@ footer .contact h2 {
     .page-workindexpage 
    ========================================================================== */
 
-   .page-workindexpage .bleed {
-		margin: 0.5em;
-   }
+	.page-workindexpage .bleed {
+		top: 0.9em;
+		right: -2em;
+	}
 
    .page-workindexpage .logo {
 		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
@@ -679,6 +706,10 @@ footer .contact h2 {
 	/* ==========================================================================
     .page-workpage 
    ========================================================================== */
+	.page-workpage .play-nav-container {
+		height: 104px;
+	}
+
 	.page-workpage main {
 		margin: -150px 0 0 0;
 		padding: 0;
@@ -699,21 +730,22 @@ footer .contact h2 {
 
 	.page-workpage .bleed {
 		background: none;
-		margin-top: 0;
+		margin-top: 5px;
+		right: -2em;
 	}
 
-   .page-workpage .logo {
+    .page-workpage .logo {
    		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
    		background-size: 8em;
 		margin-top: -0.3em;
 		position: relative;
 		z-index: 5;
 		opacity: 1;
-   }
+    }
 
-   .page-workpage .intro .body-copy {
+    .page-workpage .intro .body-copy {
    		border-radius: 0;
-   }
+    }
 
     .page-workpage .intro .body-copy:after {
 		content: "";
