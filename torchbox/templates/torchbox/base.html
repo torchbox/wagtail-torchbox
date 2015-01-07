@@ -82,16 +82,16 @@
             {% endblock %}
         </header>
 
-        <main>{% block content %}{% endblock %}</main>      
+        <main>{% block content %}{% endblock %}</main>
 
         <footer class="clearfix">
             <div class="holder">
                 <div class="contact container listing">
                     <h2>Say hello</h2>
                     <ul class="footerbleed">
-                        <li><a href="mailto:hello@torchbox.com"><i class="icon-mail"></i><span>hello@torchbox.com</span></a></li>
+                        <li><a href="mailto:hello@torchbox.com"><i class="icon-mail"></i><span>{% if self|in_play %}play{% else %}hello{% endif %}@torchbox.com</span></a></li>
                         <li><a href="tel:+441608811870"><i class="icon-phone"></i><span>+44 (0) 1608 811870</span></a></li>
-                        <li><a href="https://twitter.com/torchbox"><i class="icon-twitter"></i><span>@torchbox</span></a></li>
+                        <li><a href="https://twitter.com/torchbox"><i class="icon-twitter"></i><span>{% if self|in_play %}@PlaySays{% else %}@torchbox{% endif %}</span></a></li>
                     </ul>
                 </div>
 
