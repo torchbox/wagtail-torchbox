@@ -215,8 +215,10 @@ def homepage_job_listing(context, count=3):
     #assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True)[0]
     jobs = jobindex.jobs
+    if count:
+        jobs = jobs[:count]
     return {
-        'jobs': jobs[:count],
+        'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
