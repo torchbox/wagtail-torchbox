@@ -1097,6 +1097,8 @@
 
     .news {
         margin-top: -2.5em;
+        margin: auto;
+        max-width: 55%;
     }
 
     .sub {
