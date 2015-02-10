@@ -53,10 +53,15 @@ $(function() {
       $('.newsletter-wrapper-top').toggleClass('show');
     });
 
-        // News-letter PLAY hieght container
+    // News-letter PLAY height container
     $('.sign-up').on('click', function() {
       $('header.container').toggleClass('taller');
     });
+
+    // main blur // Slows down the browser too much
+    //$('.sign-up').on('click', function() {
+    //  $('main').toggleClass('blur');
+   //});
     
 
     // Dropdown menus for mobile

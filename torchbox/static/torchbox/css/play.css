@@ -17,12 +17,21 @@ nav {
 	position: relative;
 }
 
+main.blur {
+	-webkit-filter: blur(5px);
+	        filter: blur(5px);
+}
+
 .body-copy h2 {
 	margin-top: 1.5em;
 }
 
 main {
 	overflow: hidden;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 .logo {
@@ -376,7 +385,7 @@ Sign up
 
 .newsletter-wrapper-top.show {
 	opacity: 1;
-	height: 120px;
+	height: 130px;
 	padding: 2em;
 }
 
@@ -658,10 +667,10 @@ header.container {
 	.play-nav-container:after {
 		content: "";
 		position: absolute;
-		top: -20px;
+		top: -30px;
 		left: 0;
 		-moz-transform: scale(.9999);
-		border-top: 20px solid rgba(255, 255, 255, 0);
+		border-top: 30px solid rgba(255, 255, 255, 0);
 		border-right: 0px solid rgba(255, 255, 255, 0);
 		border-bottom: 0px solid rgba(255, 255, 255, 0);
 		border-left: 1610px solid rgba(255,255,255,0.9);
