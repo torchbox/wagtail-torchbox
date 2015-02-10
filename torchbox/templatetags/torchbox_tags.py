@@ -1,3 +1,5 @@
+from itertools import chain, cycle, islice
+
 from django import template
 from django.conf import settings
 
@@ -215,8 +217,10 @@ def homepage_job_listing(context, count=3):
     #assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True)[0]
     jobs = jobindex.jobs
+    if count:
+        jobs = jobs[:count]
     return {
-        'jobs': jobs[:count],
+        'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
@@ -227,6 +231,33 @@ def homepage_job_listing(context, count=3):
 def adverts(context):
     return {
         'adverts': Advert.objects.all(),
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
+def work_and_blog_listing(context, count=6):
+    """
+    An interleaved list of work and blog items.
+    """
+    count /= 2
+    blogs = play_filter(BlogPage.objects.filter(live=True).order_by('-date'),
+                        count)
+    works = play_filter(WorkPage.objects.filter(live=True),
+                        count)
+    blog_items = [template.loader.render_to_string(
+        "torchbox/tags/blog_list_item.html",
+        {'blog': blog,
+         'request': context['request']}
+    ) for blog in blogs]
+    work_items = [template.loader.render_to_string(
+        "torchbox/tags/work_list_item.html",
+        {'work': work,
+         'request': context['request']}
+    ) for work in works]
+    return {
+        'items': list(roundrobin(blog_items, work_items)),
+        # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
 
@@ -278,3 +309,18 @@ def play_filter(pages, number):
         if not in_play(page):
             result.append(page)
     return result
+
+
+# https://docs.python.org/2/library/itertools.html#recipes
+def roundrobin(*iterables):
+    "roundrobin('ABC', 'D', 'EF') --> A D E B F C"
+    # Recipe credited to George Sakkis
+    pending = len(iterables)
+    nexts = cycle(iter(it).next for it in iterables)
+    while pending:
+        try:
+            for next in nexts:
+                yield next()
+        except StopIteration:
+            pending -= 1
+            nexts = cycle(islice(nexts, pending))
