@@ -96,20 +96,28 @@ header nav li a:hover {
 }
 
 header nav ul.visible {
-	height: 198px;
+	height: 318px;
 	background: #63a6cb;
+}
+
+.page-standardpage .heading p {
+	margin-top: 2em;
 }
 
 .page-standardpage .heading p a {
 	font-size: 1.2em;
 	color: #fff;
 	padding: 0.5em 1em;
+	margin-right: 2em;
 	border: 2px solid #fff;
-	margin: 3em auto 0 1em;
 	-o-transition: all 0.2s ease;
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
 	transition: all 0.2s ease;
+}
+
+.page-standardpage .heading p a:last-of-type {
+	margin: 0
 }
 
 .page-standardpage .heading p a:hover {
@@ -342,6 +350,134 @@ header nav ul.visible {
 }
 
 /* ==========================================================================
+Sign up
+========================================================================== */
+
+.follow {
+	margin: 1.2em 0 0 1.7em;
+}
+
+.newsletter-wrapper {
+	position: relative;
+	margin: 0.3em 2em 0 1.7em;
+}
+
+.newsletter-wrapper-top {
+	height: 0;
+	text-align: center;
+	position: relative;
+	padding: 0;
+	opacity: 0;
+	-o-transition: all 0.4s ease;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.newsletter-wrapper-top.show {
+	opacity: 1;
+	height: 120px;
+	padding: 2em;
+}
+
+header.container.taller {
+	height: 250px;
+}
+
+input {
+	height: 40px;
+	width: 250px;
+	text-align: left;
+	padding: 0.5em;
+	box-sizing: border-box;
+	border: 0;
+}
+
+input[type="text"] {
+  display: block;
+  color: rgba(0,0,0,0.4);
+  font-size: 0.8em;
+  padding-top: 0.85em;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    border: 1px solid #FFC121;
+}
+
+.form-btn {
+	position: absolute;
+	top: 0px;
+	right: 71px;
+	background: #FFC121;
+	border-radius: 0;
+}
+
+@media only screen and (min-width: 45em) {
+	form {
+		position: relative;
+		max-width: 30em;
+		margin: 0 auto;
+	}
+
+	form:hover .form-btn {
+		background: #ffa523;
+	}
+
+	.follow {
+		margin: 1.2em 0 0 0;
+	}
+
+	input {
+		border: 1px solid #63A6CB;
+		width: 90%;
+		height: 50px;
+	}
+
+	input[type="text"] {
+		font-size: 1em;
+		padding: 0.3em 1em 0;
+	}
+
+	.newsletter-wrapper {
+		position: relative;
+		margin: 0.8em 2em 0 0;
+	}
+
+	.form-btn {
+		height: 100%;
+		width: 10%;
+		right: 0;
+		background: #63A6CB;
+		text-align: center;
+		padding: 0.1em 0 0 0;
+		-o-transition: all 0.2s ease;
+		-webkit-transition: all 0.2s ease;
+		-moz-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+
+	.sign-up {
+		background: #63A6CB;
+		color: #fff;
+		padding: 0.1em 0.5em 0.3em;
+		margin-top: 0.8em;
+		-o-transition: all 0.2s ease;
+		-webkit-transition: all 0.2s ease;
+		-moz-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+
+	.sign-up:hover {
+		background: #34434F;
+		color: #fff;
+	}
+}
+
+/* ==========================================================================
 Footer
 ========================================================================== */
 
@@ -396,18 +532,29 @@ footer .contact h2 {
 }
 
 header.container {
+	min-width: 100%;
 	max-width: 100%;
-	overflow: hidden;
-	margin: 0;
 	padding: 0;
+	overflow: hidden;
+	-o-transition: 0.3s ease;
+	-webkit-transition: 0.3s ease;
+	-moz-transition: 0.3s ease;
+	transition: 0.3s ease;
 }
 
-
 @media only screen and (min-width: 45em) {
+
+	header.container {
+		height: 128px;
+		position: absolute;
+		top: 0;
+	}
+
 
 	/* ==========================================================================
     page-standardpage
    ========================================================================== */
+
 	.active a:hover {
 		border-bottom: none;
 	}
@@ -480,11 +627,11 @@ header.container {
 	}
 
 	.page-standardpage header.container {
-		max-width: 100%;
-		height: 150px;
+		height: 350px;
 		overflow: hidden;
-		margin: 0;
-		padding: 0;
+		position: absolute;
+		top: 0;
+		min-width: 100%;
 	}
 
 	.page-standardpage nav {
@@ -506,6 +653,18 @@ header.container {
 		border-width: 30px 1610px 0px 0px;
 		border-style: solid;
 		border-color: rgba(255,255,255,0.9) transparent transparent rgba(255,255,255,0.9);
+	}
+
+	.play-nav-container:after {
+		content: "";
+		position: absolute;
+		top: -20px;
+		left: 0;
+		-moz-transform: scale(.9999);
+		border-top: 20px solid rgba(255, 255, 255, 0);
+		border-right: 0px solid rgba(255, 255, 255, 0);
+		border-bottom: 0px solid rgba(255, 255, 255, 0);
+		border-left: 1610px solid rgba(255,255,255,0.9);
 	}
 
 	.page-standardpage .bleed {
@@ -546,6 +705,9 @@ header.container {
 	/* ==========================================================================
     .page-personindexpage 
    ========================================================================== */
+   .page-personindexpage main {
+   		margin-top: 7em;
+   }
 
    	.page-personindexpage .bleed {
 		top: -0.2em;
@@ -554,10 +716,6 @@ header.container {
 
     .page-personindexpage header nav ul {
 		right: 8px;
-	}
-
-	.page-personindexpage .play-nav-container:before {
-		border-width: 0px;
 	}
 
    .page-personindexpage .logo {
@@ -575,16 +733,6 @@ header.container {
 		margin-top: 0.5em;
 	}
 
-	.page-personindexpage header nav li  a{
-		float: left;
-		padding: 0.8em 0 0 0;
-		font-family: "effra",helvetica,sans-serif;
-	}
-		
-	.page-personindexpage header nav li a:hover {
-		color: #63A6CB;
-	}
-
 	.page-personindexpage header nav li.active a {
 		color: #63A6CB;
 	}
@@ -596,6 +744,9 @@ header.container {
 	/* ==========================================================================
     .page-personpage
    ========================================================================== */
+	.page-personpage main {
+		margin-top: 7em;
+	}
 
     .page-personpage .bleed {
     	background: none;
@@ -622,16 +773,6 @@ header.container {
 		z-index: 5;
 	}
 
-	.page-personpage header nav li  a{
-		float: left;
-		padding: 0.8em 0 0 0;
-		font-family: "effra",helvetica,sans-serif;
-	}
-		
-	.page-personpage header nav li a:hover {
-		color: #63A6CB;
-	}
-
 	.page-personpage header nav li.active a {
 		color: #63A6CB;
 	}
@@ -652,6 +793,9 @@ header.container {
 	/* ==========================================================================
     .page-workindexpage 
    ========================================================================== */
+	.page-workindexpage  main {
+		margin-top: 7em;
+	}
 
 	.page-workindexpage .bleed {
 		top: 0.9em;
@@ -666,16 +810,6 @@ header.container {
 		opacity: 1;
 		position: relative;
 		z-index: 5;
-	}
-
-	.page-workindexpage header nav li  a{
-		float: left;
-		padding: 0.8em 0 0 0;
-		font-family: "effra",helvetica,sans-serif;
-	}
-		
-	.page-workindexpage header nav li a:hover {
-		color: #63A6CB;
 	}
 
 	.page-workindexpage header nav li.active a {
@@ -742,6 +876,11 @@ header.container {
 	/* ==========================================================================
     .page-workpage 
    ========================================================================== */
+
+   .page-workpage .img-wrapper {
+   	margin-top: 5em;
+   }
+
 	.page-workpage .play-nav-container {
 		height: 104px;
 	}
@@ -750,14 +889,6 @@ header.container {
 		margin: -150px 0 0 0;
 		padding: 0;
 		overflow: visible;
-	}
-
-	.page-workpage header.container {
-		max-width: 100%;
-		height: 150px;
-		overflow: hidden;
-		margin: 0;
-		padding: 0;
 	}
 
 	.page-workpage nav {
@@ -842,6 +973,41 @@ header.container {
 	}
 
 
+}
+
+/* ==========================================================================
+play display 
+========================================================================== */
+.play-no {
+	display: none;
+}
+
+.tbx-no {
+    display: block;
+}
+
+.big {
+	display: block;
+}
+
+@media only screen and (min-width: 45em) {
+	.big {
+		display: none;
+	}
+}
+
+.sml {
+	display: none;
+}
+
+@media only screen and (min-width: 45em) {
+	.sml {
+		display: block;
+	}
+}
+
+.page-standardpage .play-no {
+	display: none;
 }
 
 @media only screen and (min-width: 1250px) {

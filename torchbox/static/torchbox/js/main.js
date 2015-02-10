@@ -47,6 +47,16 @@ $(function() {
     $(".share a").click(function() {
         $('.share ul').toggleClass('visible');
     });
+
+    // News-letter PLAY toggle
+    $('.sign-up').on('click', function() {
+      $('.newsletter-wrapper-top').toggleClass('show');
+    });
+
+        // News-letter PLAY hieght container
+    $('.sign-up').on('click', function() {
+      $('header.container').toggleClass('taller');
+    });
     
 
     // Dropdown menus for mobile
