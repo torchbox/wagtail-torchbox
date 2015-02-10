@@ -100,6 +100,29 @@ header nav ul.visible {
 	background: #63a6cb;
 }
 
+.page-standardpage .heading p a {
+	font-size: 1.2em;
+	color: #fff;
+	padding: 0.5em 1em;
+	border: 2px solid #fff;
+	margin: 3em auto 0 1em;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+.page-standardpage .heading p a:hover {
+	font-size: 1.2em;
+	color: #fff;
+	background: #63A6CB;
+	border: 2px solid #63A6CB;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
 .page-standardpage .button {
 	position: relative;
 	color: #fff;
@@ -107,6 +130,10 @@ header nav ul.visible {
 	background-color: #63A6CB;
 	border-radius: 0;
 	margin: 3em auto 0 auto;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 .page-standardpage .button:after {
@@ -150,19 +177,6 @@ header nav ul.visible {
     border-style:solid;
     -moz-transform: scale(.9999);
     border-color:#fff transparent transparent #fff;
-}
-
-.grid.people-list ul:last-child:after{
-	opacity: 1;
-	z-index: 1;
-    content:"";
-    position:absolute;
-    bottom:0;
-    right:0;
-    border-width:0px 0px 15px 418px;
-    border-style:solid;
-    -moz-transform: scale(.9999);
-    border-color:transparent transparent #fff transparent;
 }
 
 .grid.people-list li a:hover {
@@ -251,6 +265,7 @@ header nav ul.visible {
 .page-workindexpage main .listing a .about:after {
 	content: "";
 	position: absolute;
+	opacity: 1;
 	top: -35px;
 	left: 0;
 	-moz-transform: scale(.9999);
@@ -258,6 +273,14 @@ header nav ul.visible {
 	border-style: solid;
 	-moz-transform: scale(.9999);
 	border-color: transparent transparent rgba(0,0,0,0.7) transparent;
+	-o-transition: 0.3s ease;
+	-webkit-transition: 0.3s ease;
+	-moz-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.page-workindexpage main ul a:hover .about:after {
+	opacity: 0;
 }
 
 .page-workpage .logo {
@@ -314,7 +337,8 @@ header nav ul.visible {
 }
 
 .intro p {
-	margin-bottom: 0.5em;
+	margin-bottom: 1em;
+	line-height: 1.7;
 }
 
 /* ==========================================================================
@@ -326,6 +350,14 @@ footer {
 	background: #34434F;
 	position: relative;
 	overflow: hidden;
+}
+
+.page-personindexpage footer:after {
+	border-width: 0px;
+}
+
+.page-workindexpage footer:after {
+	border-width: 0px;
 }
 
 footer:after {
@@ -347,7 +379,7 @@ footer .contact a:hover span {
 	color: #FFC121;
 }
 
-.svg {
+body .svg {
 	fill: #FFC121;
 }
 
@@ -398,6 +430,7 @@ header.container {
 
 	.italic {
 		position: relative;
+		text-align: center;
 		z-index: 1;
 		margin: 1.5em auto 0.5em auto;
 	}
@@ -513,6 +546,7 @@ header.container {
 	/* ==========================================================================
     .page-personindexpage 
    ========================================================================== */
+
    	.page-personindexpage .bleed {
 		top: -0.2em;
 		right: -2em;
@@ -693,6 +727,7 @@ header.container {
 	}
 
 	.page-workindexpage main ul a {
+		background: transparent;
 		min-height: 24em;
 	}
 
@@ -798,10 +833,6 @@ header.container {
 		display: none;
 	}
 
-	.intro p {
-		margin-bottom: 0.8em;
-	}
-
 	.page-workpage .share {
 		margin: 0 0 1.5em 1.5em;
 	}
@@ -821,6 +852,12 @@ header.container {
 
 	.page-workindexpage main .listing a:hover .about {
 		top: 211px;
+	}
+}
+
+@media only screen and (min-width: 66em) {
+	.grid.people-list li {
+		width: 25%;
 	}
 }
 
