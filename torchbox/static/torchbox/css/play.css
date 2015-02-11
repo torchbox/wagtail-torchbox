@@ -447,6 +447,7 @@ button:focus {
 	}
 
 	input[type="text"] {
+		color: #63A6CB;
 		font-size: 1em;
 		padding: 0.3em 1em 0;
 	}
@@ -469,7 +470,7 @@ button:focus {
 		transition: all 0.2s ease;
 	}
 
-	.sign-up {
+	header nav li a.sign-up {
 		background: #63A6CB;
 		color: #fff;
 		padding: 0.1em 0.5em 0.3em;
@@ -480,7 +481,7 @@ button:focus {
 		transition: all 0.2s ease;
 	}
 
-	.sign-up:hover {
+	header nav li a.sign-up:hover {
 		background: #34434F;
 		color: #fff;
 	}

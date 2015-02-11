@@ -77,8 +77,7 @@
 
         <header class="container">
             {% block menu %}
-                {% get_site_root as site_root %}
-                {% top_menu parent=site_root calling_page=self %}
+                {% top_menu calling_page=self %}
             {% endblock %}
         </header>
 
