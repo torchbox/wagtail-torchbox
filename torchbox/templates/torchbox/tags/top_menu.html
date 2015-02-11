@@ -15,25 +15,27 @@
         <nav role="navigation">
         <a href="{% pageurl site_root %}{% if calling_page|in_play %}play/{% endif %}" class="logo container"></a>
         <a href="#menu" class="menu-button">&#x2261;</a>
-            <ul class="bleed">
+          <ul class="bleed">
                 {% for menuitem in menuitems %}
-                    <li class="{% if menuitem.is_active %}active{% endif %}">
+                      <li class="{% if menuitem = calling_page %}active{% endif %}">
                         <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
                     </li>
                 {% endfor %}
-                <li class="sml"> 
-                    <a href="#" class="sign-up"> Sign up email </a>
-                </li>
-                <li class="tbx-no follow">
-                    <a href="https://twitter.com/playsays" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @playsays</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                </li>
-                <li class="tbx-no newsletter-wrapper big">
-                    <form>
-                        <input type="text" placeholder="Sign up for our Play Time email">
-                    </form>
-                    <button type="submit" class="form-btn"> Go </button>
-                </li>
+                {% if calling_page|in_play %}
+                    <li class="sml">
+                        <a href="#" class="sign-up"> Sign up email </a>
+                    </li>
+                    <li class="tbx-no follow">
+                        <a href="https://twitter.com/playsays" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @playsays</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    </li>
+                    <li class="tbx-no newsletter-wrapper big">
+                        <form>
+                            <input type="text" placeholder="Sign up for our Play Time email">
+                        </form>
+                        <button type="submit" class="form-btn"> Go </button>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
     </div>

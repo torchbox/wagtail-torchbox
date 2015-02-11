@@ -84,48 +84,31 @@ def in_play(page):
 
 
 @register.inclusion_tag('torchbox/tags/top_menu.html', takes_context=True)
-def top_menu(context, parent, calling_page=None):
+def top_menu(context, calling_page=None):
     """
     Checks to see if we're in the Play section in order to return pages with
     show_in_play_menu set to True, otherwise retrieves the top menu
-    items - the immediate children of the parent page. The
-    has_menu_children method is necessary because the bootstrap menu
-    requires a dropdown class to be applied to a parent
+    items - the immediate children of the site root.
     """
     if calling_page and in_play(calling_page):
-        menuitems = list(StandardPage.objects.filter(
+        play_models = [
+            StandardPage,
+            PersonIndexPage,
+            WorkIndexPage,
+            BlogIndexPage
+        ]
+        menuitems = chain(*[
+            model.objects.filter(
+                live=True,
+                show_in_play_menu=True,
+                show_in_menus=False
+            ) for model in play_models
+        ])
+    else:
+        menuitems = get_site_root(context).get_children().filter(
             live=True,
-            show_in_play_menu=True
-        ))
-        menuitems.extend(PersonIndexPage.objects.filter(
-            live=True,
-            show_in_play_menu=True
-        ))
-        menuitems.extend(WorkIndexPage.objects.filter(
-            live=True,
-            show_in_play_menu=True
-        ))
-        for menuitem in menuitems:
-            menuitem.is_active = False
-            if menuitem == calling_page:
-                menuitem.is_active = True
-        return {
-            'menuitems': menuitems,
-            'calling_page': calling_page,
-            # required by the pageurl tag that we want to use within this template
-            'request': context['request'],
-        }
-
-    menuitems = parent.get_children().filter(
-        live=True,
-        show_in_menus=True
-    )
-    for menuitem in menuitems:
-        menuitem.show_dropdown = has_menu_children(menuitem)
-        menuitem.is_active = False
-        if context['request'].path.startswith(menuitem.url):
-            menuitem.is_active = True
-
+            show_in_menus=True
+        )
     return {
         'calling_page': calling_page,
         'menuitems': menuitems,
