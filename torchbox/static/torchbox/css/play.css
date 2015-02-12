@@ -57,6 +57,7 @@ main {
 .clients {
 	margin-top: -2em;
 	padding-top: 1.5em;
+	border-top: none;
 }
 
 .page-standardpage .quote {
@@ -119,10 +120,29 @@ header nav ul.visible {
 	padding: 0.5em 1em;
 	margin-right: 2em;
 	border: 2px solid #fff;
+	background: transparent;
 	-o-transition: all 0.2s ease;
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
 	transition: all 0.2s ease;
+}
+
+.page-standardpage p a {
+	font-size: 1em;
+	color: #63A6CB;
+	padding: 0.5em 0.7em;
+	margin-right: 2em;
+	border: 1px solid #63A6CB;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+.page-standardpage p a:hover {
+	background: #63A6CB;
+	color: #fff;
+	border: 1px solid #63A6CB;
 }
 
 .page-standardpage .heading p a:last-of-type {
@@ -173,6 +193,10 @@ header nav ul.visible {
     border-style:solid;
     -moz-transform: scale(.9999);
     border-color:transparent transparent #fff transparent;
+}
+
+.page-standardpage .intro:first-of-type {
+	display: none;
 }
 
 .page-standardpage .button:hover {
@@ -236,6 +260,11 @@ header nav ul.visible {
     border-color:#fff transparent transparent #fff;
 }
 
+hr {
+	margin: 2em 0;
+	border-top: 1px solid #63A6CB;
+}
+
 .page-personpage h1 {
 	margin-top: 7em;
 }
@@ -252,6 +281,11 @@ header nav ul.visible {
 	color: #63A6CB;
 }
 
+.clients li {
+	width: 50%;
+	min-height: 94px;
+}
+
 .breadcrumb {
 	display: none;
 }
@@ -265,6 +299,13 @@ header nav ul.visible {
 	max-width: 100%;
 	width: 100%;
 	margin:0;
+}
+
+.page-standardpage .were-tbx h3 {
+	font-size: 1.4em;
+	margin: 0 0 -1em 0;
+	color: #63A6CB;
+	font-weight: bold;
 }
 
 .page-workindexpage main .listing a h2 {
@@ -294,6 +335,10 @@ header nav ul.visible {
 	-webkit-transition: 0.3s ease;
 	-moz-transition: 0.3s ease;
 	transition: 0.3s ease;
+}
+
+.clients li > * {
+		opacity: 1;
 }
 
 .page-workindexpage main ul a:hover .about:after {
@@ -565,14 +610,38 @@ header.container {
     page-standardpage
    ========================================================================== */
 
+   .clients li a:hover {
+		opacity: 0.5;
+   }
+
+   .page-standardpage html {
+   		background: red;
+   }
+
+   .page-standardpage body {
+   		background: red;
+   }
+
+   .page-standardpage .were-tbx {
+   	background: transparent;
+   }
+
 	.active a:hover {
 		border-bottom: none;
 	}
 
 	.page-standardpage.page-standardpage .heading {
-		padding-top: 10em;
-		padding-top: 15em;
+		padding-top: 19em;
 		height: 760px;
+	}
+
+	.page-standardpage .were-tbx h3 {
+		margin: 2em 0 0em 0;
+	}
+
+
+	.page-standardpage p a {
+		font-size: 0.8em;
 	}
 
 	.page-standardpage .logo {
@@ -587,18 +656,26 @@ header.container {
 
 	.italic {
 		position: relative;
-		text-align: center;
+		text-align: left;
+		color: #63A6CB;
 		z-index: 1;
 		margin: 1.5em auto 0.5em auto;
 	}
 
 	.clients {
-		margin: -1.5em auto 0 auto;
+		margin: 3em auto 4em auto;
+		border-top: none;
+	}
+
+	.clients li {
+		width: 50%;
+		min-height: 70px;
 	}
 
 	.page-standardpage .were-tbx h2 {
 		text-align: center;
 		max-width: 100%;
+		color: #63A6CB;
 	}
 
 	.heading {
@@ -607,6 +684,10 @@ header.container {
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		background-position: center center;
+	}
+
+	.page-standardpage b {
+		color: #34434F;
 	}
 
 	.heading:after {
@@ -712,6 +793,14 @@ header.container {
 		padding: 1em 0 2em 0;
 	}
 
+	footer .contact li i {
+		color: #63A6CB
+	}
+
+	footer .contact a:hover span {
+		color: #FFC121
+	}
+
 	/* ==========================================================================
     .page-personindexpage 
    ========================================================================== */
@@ -756,6 +845,10 @@ header.container {
    ========================================================================== */
 	.page-personpage main {
 		margin-top: 7em;
+	}
+
+	.grid.people-list li div {
+		opacity: 1;
 	}
 
     .page-personpage .bleed {
@@ -986,7 +1079,7 @@ header.container {
 }
 
 /* ==========================================================================
-.page-personindexpage 
+.page-blog-index
 ========================================================================== */
 
 .popular-tags {
@@ -1003,6 +1096,47 @@ header.container {
 
 .page-blogindexpage h2 {
 	color: #63A6CB;
+}
+
+.page-blogindexpage .logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: 6em;
+	padding: 1em;
+	opacity: 1;
+	position: relative;
+	z-index: 5;
+}
+
+.page-blogindexpage nav {
+	position: relative;
+}
+
+.page-blogindexpage .bleed {
+	background: none;
+	margin-top: 5px;
+	right: -2em;
+}
+
+/* ==========================================================================
+.page-blogpage
+========================================================================== */
+
+.page-blogpage main {
+	width: 100%;
+	margin: 4em 0 0 0;
+}
+
+.page-blogpage .article-meta a {
+	color: #63A6CB;
+}
+
+.page-blogpage .logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: 6em;
+	padding: 1em;
+	opacity: 1;
+	position: relative;
+	z-index: 5;
 }
 
 /* ==========================================================================
@@ -1023,6 +1157,14 @@ play display
 @media only screen and (min-width: 45em) {
 	.big {
 		display: none;
+	}
+	.page-blogindexpage .logo {
+		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background-size: 8em;
+		margin-top: -0.3em;
+		position: relative;
+		z-index: 5;
+		opacity: 1;
 	}
 }
 
