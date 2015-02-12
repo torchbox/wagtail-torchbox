@@ -986,6 +986,26 @@ header.container {
 }
 
 /* ==========================================================================
+.page-personindexpage 
+========================================================================== */
+
+.popular-tags {
+	display: none;
+}
+
+.dropdown {
+	display: none;
+}
+
+.blog {
+	margin-top: -10px;
+}
+
+.page-blogindexpage h2 {
+	color: #63A6CB;
+}
+
+/* ==========================================================================
 play display 
 ========================================================================== */
 .play-no {
@@ -1028,12 +1048,6 @@ play display
 
 	.page-workindexpage main .listing a:hover .about {
 		top: 211px;
-	}
-}
-
-@media only screen and (min-width: 66em) {
-	.grid.people-list li {
-		width: 25%;
 	}
 }
 
