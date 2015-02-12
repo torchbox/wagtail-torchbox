@@ -65,10 +65,10 @@ def deploy():
 #     run('gzip %s' % remote_path)
 #     get("%s.gz" % remote_path, "%s.gz" % local_path)
 #     run('rm %s.gz' % remote_path)
-    
+
 #     local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
 #     puts('Previous local database backed up to %s' % local_db_backup_path)
-    
+
 #     local('dropdb -Upostgres %s' % DB_NAME)
 #     local('createdb -Upostgres %s' % DB_NAME)
 #     local('gunzip %s.gz' % local_path)
@@ -86,10 +86,10 @@ def pull_staging_data():
     run('gzip %s' % remote_path)
     get("%s.gz" % remote_path, "%s.gz" % local_path)
     run('rm %s.gz' % remote_path)
-    
+
     local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
     puts('Previous local database backed up to %s' % local_db_backup_path)
-    
+
     local('dropdb -Upostgres %s' % DB_NAME)
     local('createdb -Upostgres %s' % DB_NAME)
     local('gunzip %s.gz' % local_path)
@@ -125,7 +125,7 @@ def pull_staging_media():
     with cd('/usr/local/django/tbxwagtail/'):
         run('tar -cvf %s media' % remote_media_dump)
         run('gzip %s' % remote_media_dump)
-    
+
     get('%s.gz' % remote_media_dump, '%s.gz' % local_media_dump)
 
     local('rm -rf media')
@@ -148,7 +148,7 @@ def push_staging_data():
 
     run('pg_dump -xO -h %s -f %s' % (STAGING_DB_USERNAME, staging_db_backup_path))
     puts('Previous staging database backed up to %s' % staging_db_backup_path)
-    
+
     run('gunzip %s.gz' % remote_path)
     run('psql -U%s -c "DROP SCHEMA public CASCADE"' % (STAGING_DB_USERNAME))
     run('psql -U%s -c "CREATE SCHEMA public"' % (STAGING_DB_USERNAME))
