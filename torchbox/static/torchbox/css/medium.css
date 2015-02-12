@@ -49,6 +49,9 @@
         right: 0;
 
     }
+    header nav ul.visible{
+        height:auto;
+    }
 
     header nav li {
         float: left;
@@ -244,7 +247,7 @@
         color: #424a4f;
     }
 
-    .page-homepage .listing h3 {
+    .page-homepage .grid .listing h3 {
         font-size: 2em;
     }
 
@@ -288,6 +291,7 @@
         right:0;
         z-index:10;
     }
+
     .page-homepage .hero.hero-video .poster .arrow{
         display:none;
     }
@@ -295,7 +299,7 @@
     .page-homepage .hero.hero-video .container{
         position:absolute;
         z-index:20;
-        top:25%;
+        top:55%;
         left:0;
         right:0;
         max-width:100%;
@@ -1093,6 +1097,8 @@
 
     .news {
         margin-top: -2.5em;
+        margin: auto;
+        max-width: 55%;
     }
 
     .sub {
@@ -1497,6 +1503,10 @@
     .listing p {
         margin: 0 0 1em 0;
         display: block;
+    }
+
+    .form iframe {
+        height: 1100px !important;
     }
 
 }

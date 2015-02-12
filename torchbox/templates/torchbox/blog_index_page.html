@@ -1,5 +1,5 @@
 {% extends "torchbox/base.html" %}
-{% load torchbox_tags wagtailcore_tags wagtailimages_tags %}
+{% load compress static torchbox_tags wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
@@ -58,10 +58,13 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript">
-        //global var for current_page set here so that it can be used by the script being called
-        var blog_page = window.location.pathname;
-        //var num_pages = {{ blogs.paginator.num_pages }}
-    </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
+    
+    {% compress js %}
+        <script>
+            //global var for current_page set here so that it can be used by the script being called
+            var blog_page = window.location.pathname;
+        </script>
+        <script src="{% static 'torchbox/js/ajax-load.js' %}"></script>
+    {% endcompress %}
 {% endblock %}

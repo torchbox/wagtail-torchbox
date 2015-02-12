@@ -352,6 +352,8 @@ class BlogIndexPage(Page):
     indexed_fields = ('intro', )
     search_name = "Blog"
 
+    show_in_play_menu = models.BooleanField(default=False)
+
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
         popular_tags = BlogPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
@@ -385,8 +387,6 @@ class BlogIndexPage(Page):
         # Pagination
         per_page = 10
         page = request.GET.get('page')
-        print('helen')
-        print(page)
         paginator = Paginator(blogs, per_page)  # Show 10 blogs per page
         try:
             blogs = paginator.page(page)
@@ -417,6 +417,7 @@ BlogIndexPage.content_panels = [
 
 BlogIndexPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+    FieldPanel('show_in_play_menu'),
 ]
 
 

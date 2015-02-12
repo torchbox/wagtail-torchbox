@@ -7,25 +7,22 @@
     <section class="hero {% if self.hero_video_id %}hero-video{% endif %}">
         {% if self.hero_video_id %}
             <div class="responsive-object">
-                {% comment %}
                 {% if self.hero_video_poster_image %}
                     <div class="poster">
                         {% image self.hero_video_poster_image fill-900x505 %}
                         <div class="arrow play" title="Play"></div>
                     </div>
                 {% endif %}
-                {% endcomment %}
 
                 <iframe id="vimeo{{ self.hero_video_id }}" src="//player.vimeo.com/video/{{ self.hero_video_id }}?api=1&portrait=0&badge=0&byline=0&title=0&player_id=vimeo{{ self.hero_video_id }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
         {% endif %}
         <div class="animated fadeInDown container">
-            <h1>{{ self.intro }}</h1>
-            {% comment %}
             {% if self.hero_video_id %}
                 <div class="arrow play" title="Play"></div>
             {% endif %}
-            {% endcomment %}
+
+            <h1>{{ self.intro }}</h1>
 
             {% if not self.hero_video_id %}
                 <a href="/about"><div class="button">Who are we</div> </a>
@@ -35,20 +32,14 @@
         </div>
     </section>
 
-    <section id="posts" class="gutters work clearfix grid worklisting">
-        {% homepage_work_listing 3 %}
-    </section>
-
-    <section class="grid">
-        <div class="listing clearfix bloglisting" >
-          {% homepage_blog_listing 3 %}
-        </div>
+    <section class="listing clearfix">
+        {% work_and_blog_listing %}
     </section>
 
     <section class="container hiring">
         <div>
             <h2>By the way, we're hiring</h2>
-            {% homepage_job_listing 3 %}
+            {% homepage_job_listing 0 %}
         </div>
     </section>
 

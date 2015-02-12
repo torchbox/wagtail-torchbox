@@ -1,4 +1,4 @@
-{% load torchbox_tags cache compress static wagtailuserbar %}
+{% load torchbox_tags cache compress static wagtailuserbar wagtailimages_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -6,14 +6,26 @@
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <script type="text/javascript" src="//use.typekit.net/zzm2obu.js"></script>
-        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <meta charset="utf-8" />
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | Torchbox{% endblock %}</title>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@torchbox">
+        <meta name="twitter:creator" content="@torchbox">
+        <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox">
+        <meta name="twitter:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
+        <meta name="twitter:image:src" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-400 as img %}{{ img.url }}{% else %}{% static "torchbox/images/about-placeholder6.jpg" %}{% endif %}" />
+
+        <meta property="fb:app_id" content="995117193836517" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://{{ request.site.hostname }}{{ self.url }}" />
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox" />
+        <meta property="og:image" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% else %}{% static "torchbox/images/about-placeholder6.jpg" %}{% endif %}" />
+        <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
+        <meta property="og:site_name" content="Torchbox" />
 
         {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
 
@@ -42,6 +54,9 @@
 
         {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
 
+        <script type="text/javascript" src="//use.typekit.net/zzm2obu.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
         {% compress js %}
             <script src="{% static "torchbox/js/vendor/modernizr-2.6.2.min.js" %}" type="text/javascript"></script>
         {% endcompress %}
@@ -62,21 +77,20 @@
 
         <header class="container">
             {% block menu %}
-                {% get_site_root as site_root %}
-                {% top_menu parent=site_root calling_page=self %}
+                {% top_menu calling_page=self %}
             {% endblock %}
         </header>
 
-        <main>{% block content %}{% endblock %}</main>      
+        <main>{% block content %}{% endblock %}</main>
 
         <footer class="clearfix">
             <div class="holder">
                 <div class="contact container listing">
                     <h2>Say hello</h2>
                     <ul class="footerbleed">
-                        <li><a href="mailto:hello@torchbox.com"><i class="icon-mail"></i><span>hello@torchbox.com</span></a></li>
+                        <li><a href="mailto:{% if self|in_play %}play{% else %}hello{% endif %}@torchbox.com"><i class="icon-mail"></i><span>{% if self|in_play %}play{% else %}hello{% endif %}@torchbox.com</span></a></li>
                         <li><a href="tel:+441608811870"><i class="icon-phone"></i><span>+44 (0) 1608 811870</span></a></li>
-                        <li><a href="https://twitter.com/torchbox"><i class="icon-twitter"></i><span>@torchbox</span></a></li>
+                        <li><a href="https://twitter.com/{% if self|in_play %}playsays{% else %}torchbox{% endif %}"><i class="icon-twitter"></i><span>{% if self|in_play %}@PlaySays{% else %}@torchbox{% endif %}</span></a></li>
                     </ul>
                 </div>
 
@@ -129,6 +143,7 @@
         <script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
 
         {% compress js %}
+            <script src="{% static "torchbox/js/vendor/harvey.js" %}"></script>
             <script src="{% static "torchbox/js/vendor/jquery.fitvids.js" %}"></script>
             <script src="{% static "torchbox/js/main.js" %}"></script>
         {% endcompress %}
