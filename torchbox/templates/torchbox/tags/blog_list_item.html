@@ -52,6 +52,9 @@
                                 {% endfor %}
                                 {% endif %}
                                 {% endwith %}
+                                {% if blog.author_left %}
+                                     <div class="name">{{ blog.author_left }}</div>
+                                {% endif %}
                             </div>
                         </div>
                 </div>
