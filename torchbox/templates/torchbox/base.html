@@ -72,6 +72,8 @@
         </script>
     </head>
 
+    <div class="footer-cover no-tbx"> </div>
+
     <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
         {% wagtailuserbar %} {# Don't delete this #}
 

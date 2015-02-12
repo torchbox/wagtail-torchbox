@@ -60,10 +60,6 @@ main {
 	border-top: none;
 }
 
-.page-standardpage .quote {
-	display:none;
-}
-
 .play-nav {
 	background: none;
 }
@@ -197,6 +193,10 @@ header nav ul.visible {
 
 .page-standardpage .intro:first-of-type {
 	display: none;
+}
+
+.page-standardpage .quote {
+	display:none;
 }
 
 .page-standardpage .button:hover {
@@ -536,6 +536,14 @@ button:focus {
 Footer
 ========================================================================== */
 
+.page-blogindexpage  .footer-cover {
+	background: #34434F;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
 
 footer {
 	background: #34434F;
@@ -1211,4 +1219,9 @@ play display
 	footer .offices {
 		margin: 1em auto 0 -2em;
 	}
+
+	.page-personindexpage .grid.people-list li {
+		width: 33.3%;
+	}
 }
+
