@@ -21,6 +21,9 @@
             <div class="container">
                 <h2>{{ blog.title }}</h2>
 
+
+                {{ blog.intro|richtext }}
+
                 {% with blog.related_author.all as authors %}
                     {% if authors %}
                         {% for author in authors %}
@@ -31,13 +34,15 @@
                                 {% endif %}
                             </div>
 
-                            {{blog.intro|richtext}}
-
                             <span>{{ author.author.title }}</span>
 
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
+
+                {% if blog.author_left %}
+                    <span>{{ blog.author_left }}</span>
+                {% endif %}
 
                 {% if blog.date %}
                     <span>|&nbsp;{{ blog.date|date:"j F Y" }}</span>
