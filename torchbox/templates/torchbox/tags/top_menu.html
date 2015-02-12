@@ -5,7 +5,7 @@
 
 <div class="tbx-no newsletter-wrapper-top sml">
     <form action="https://tinyletter.com/PlayTimeEmail" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/PlayTimeEmail', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
-        <input type="text" placeholder="Get the Play newsletter">
+        <input type="text" name="email" id="tlemail" placeholder="Email address for ace newsletter! Deal? ">
         <button type="hidden" value="1" name="embed" type="submit" class="form-btn"> Go </button>
     </form>
 </div>
@@ -23,7 +23,7 @@
                 {% endfor %}
                 {% if calling_page|in_play %}
                     <li class="sml">
-                        <a href="#" class="sign-up"> Sign up email </a>
+                        <a href="#" class="sign-up"> Get our email </a>
                     </li>
                     <li class="tbx-no follow">
                         <a href="https://twitter.com/playsays" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @playsays</a>
@@ -31,7 +31,7 @@
                     </li>
                     <li class="tbx-no newsletter-wrapper big">
                         <form>
-                            <input type="text" placeholder="Sign up for our Play Time email">
+                            <input type="text" placeholder="Email address for ace newsletter! Deal? ">
                         </form>
                         <button type="submit" class="form-btn"> Go </button>
                     </li>
