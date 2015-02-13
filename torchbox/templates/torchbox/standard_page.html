@@ -10,7 +10,6 @@
     }
     </style>
 {% endif %}
-
         <div class="heading">
             {{ self.heading|richtext }}
         </div>
@@ -36,7 +35,8 @@
             {{ self.body|richtext }}
 
             <div class="clients">
-                 <h2>Some of our clients</h2>
+                 <h2 class="play-no">Some of our clients</h2>
+                 <h2 class="tbx-no">We're proud to have worked with</h2>
                     <ul>
                         {% for client in self.clients.all %}
                             <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
@@ -44,7 +44,7 @@
                     </ul>
             </div>
 
-                <div class="button">
+                <div class="button play-no">
                     <a href="mailto:{{ self.email }}">Get in touch</a>
                 </div>
         </section>

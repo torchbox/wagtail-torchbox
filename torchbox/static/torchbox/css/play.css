@@ -17,12 +17,21 @@ nav {
 	position: relative;
 }
 
+main.blur {
+	-webkit-filter: blur(5px);
+	        filter: blur(5px);
+}
+
 .body-copy h2 {
 	margin-top: 1.5em;
 }
 
 main {
 	overflow: hidden;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 .logo {
@@ -48,10 +57,7 @@ main {
 .clients {
 	margin-top: -2em;
 	padding-top: 1.5em;
-}
-
-.page-standardpage .quote {
-	display:none;
+	border-top: none;
 }
 
 .play-nav {
@@ -96,8 +102,58 @@ header nav li a:hover {
 }
 
 header nav ul.visible {
-	height: 198px;
+	height: 318px;
 	background: #63a6cb;
+}
+
+.page-standardpage .heading p {
+	margin-top: 2em;
+}
+
+.page-standardpage .heading p a {
+	font-size: 1.2em;
+	color: #fff;
+	padding: 0.5em 1em;
+	margin-right: 2em;
+	border: 2px solid #fff;
+	background: transparent;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+.page-standardpage p a {
+	font-size: 1em;
+	color: #63A6CB;
+	padding: 0.5em 0.7em;
+	margin-right: 2em;
+	border: 1px solid #63A6CB;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+.page-standardpage p a:hover {
+	background: #63A6CB;
+	color: #fff;
+	border: 1px solid #63A6CB;
+}
+
+.page-standardpage .heading p a:last-of-type {
+	margin: 0
+}
+
+.page-standardpage .heading p a:hover {
+	font-size: 1.2em;
+	color: #fff;
+	background: #63A6CB;
+	border: 2px solid #63A6CB;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 .page-standardpage .button {
@@ -107,6 +163,10 @@ header nav ul.visible {
 	background-color: #63A6CB;
 	border-radius: 0;
 	margin: 3em auto 0 auto;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 .page-standardpage .button:after {
@@ -131,6 +191,14 @@ header nav ul.visible {
     border-color:transparent transparent #fff transparent;
 }
 
+.page-standardpage .intro:first-of-type {
+	display: none;
+}
+
+.page-standardpage .quote {
+	display:none;
+}
+
 .page-standardpage .button:hover {
 	background-color: #FFC121;
 	color: #34434F;
@@ -150,19 +218,6 @@ header nav ul.visible {
     border-style:solid;
     -moz-transform: scale(.9999);
     border-color:#fff transparent transparent #fff;
-}
-
-.grid.people-list ul:last-child:after{
-	opacity: 1;
-	z-index: 1;
-    content:"";
-    position:absolute;
-    bottom:0;
-    right:0;
-    border-width:0px 0px 15px 418px;
-    border-style:solid;
-    -moz-transform: scale(.9999);
-    border-color:transparent transparent #fff transparent;
 }
 
 .grid.people-list li a:hover {
@@ -205,6 +260,11 @@ header nav ul.visible {
     border-color:#fff transparent transparent #fff;
 }
 
+hr {
+	margin: 2em 0;
+	border-top: 1px solid #63A6CB;
+}
+
 .page-personpage h1 {
 	margin-top: 7em;
 }
@@ -219,6 +279,11 @@ header nav ul.visible {
 
 .page-personpage .role {
 	color: #63A6CB;
+}
+
+.clients li {
+	width: 50%;
+	min-height: 94px;
 }
 
 .breadcrumb {
@@ -236,6 +301,13 @@ header nav ul.visible {
 	margin:0;
 }
 
+.page-standardpage .were-tbx h3 {
+	font-size: 1.4em;
+	margin: 0 0 -1em 0;
+	color: #63A6CB;
+	font-weight: bold;
+}
+
 .page-workindexpage main .listing a h2 {
 	color: #FFC121;
 }
@@ -251,6 +323,7 @@ header nav ul.visible {
 .page-workindexpage main .listing a .about:after {
 	content: "";
 	position: absolute;
+	opacity: 1;
 	top: -35px;
 	left: 0;
 	-moz-transform: scale(.9999);
@@ -258,6 +331,18 @@ header nav ul.visible {
 	border-style: solid;
 	-moz-transform: scale(.9999);
 	border-color: transparent transparent rgba(0,0,0,0.7) transparent;
+	-o-transition: 0.3s ease;
+	-webkit-transition: 0.3s ease;
+	-moz-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.clients li > * {
+		opacity: 1;
+}
+
+.page-workindexpage main ul a:hover .about:after {
+	opacity: 0;
 }
 
 .page-workpage .logo {
@@ -314,18 +399,164 @@ header nav ul.visible {
 }
 
 .intro p {
-	margin-bottom: 0.5em;
+	margin-bottom: 1em;
+	line-height: 1.7;
+}
+
+/* ==========================================================================
+Sign up
+========================================================================== */
+
+.follow {
+	margin: 1.2em 0 0 1.7em;
+}
+
+.newsletter-wrapper {
+	position: relative;
+	margin: 0.3em 2em 0 1.7em;
+}
+
+.newsletter-wrapper-top {
+	height: 0;
+	text-align: center;
+	position: relative;
+	padding: 0;
+	opacity: 0;
+	-o-transition: all 0.4s ease;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.newsletter-wrapper-top.show {
+	opacity: 1;
+	height: 130px;
+	padding: 2em;
+}
+
+header.container.taller {
+	height: 250px;
+}
+
+input {
+	height: 40px;
+	width: 250px;
+	text-align: left;
+	padding: 0.5em;
+	box-sizing: border-box;
+	border: 0;
+}
+
+input[type="text"] {
+  display: block;
+  color: rgba(0,0,0,0.4);
+  font-size: 0.8em;
+  padding-top: 0.85em;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    border: 1px solid #FFC121;
+}
+
+.form-btn {
+	position: absolute;
+	top: 0px;
+	right: 71px;
+	background: #FFC121;
+	border-radius: 0;
+}
+
+@media only screen and (min-width: 45em) {
+	form {
+		position: relative;
+		max-width: 30em;
+		margin: 0 auto;
+	}
+
+	form:hover .form-btn {
+		background: #ffa523;
+	}
+
+	.follow {
+		margin: 1.2em 0 0 0;
+	}
+
+	input {
+		border: 1px solid #63A6CB;
+		width: 90%;
+		height: 50px;
+	}
+
+	input[type="text"] {
+		color: #63A6CB;
+		font-size: 1em;
+		padding: 0.3em 1em 0;
+	}
+
+	.newsletter-wrapper {
+		position: relative;
+		margin: 0.8em 2em 0 0;
+	}
+
+	.form-btn {
+		height: 100%;
+		width: 10%;
+		right: 0;
+		background: #63A6CB;
+		text-align: center;
+		padding: 0.1em 0 0 0;
+		-o-transition: all 0.2s ease;
+		-webkit-transition: all 0.2s ease;
+		-moz-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+
+	header nav li a.sign-up {
+		background: #63A6CB;
+		color: #fff;
+		padding: 0.1em 0.5em 0.3em;
+		margin-top: 0.8em;
+		-o-transition: all 0.2s ease;
+		-webkit-transition: all 0.2s ease;
+		-moz-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+
+	header nav li a.sign-up:hover {
+		background: #34434F;
+		color: #fff;
+	}
 }
 
 /* ==========================================================================
 Footer
 ========================================================================== */
 
+.page-blogindexpage  .footer-cover {
+	background: #34434F;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
 
 footer {
 	background: #34434F;
 	position: relative;
 	overflow: hidden;
+}
+
+.page-personindexpage footer:after {
+	border-width: 0px;
+}
+
+.page-workindexpage footer:after {
+	border-width: 0px;
 }
 
 footer:after {
@@ -347,7 +578,7 @@ footer .contact a:hover span {
 	color: #FFC121;
 }
 
-.svg {
+body .svg {
 	fill: #FFC121;
 }
 
@@ -364,26 +595,61 @@ footer .contact h2 {
 }
 
 header.container {
+	min-width: 100%;
 	max-width: 100%;
-	overflow: hidden;
-	margin: 0;
 	padding: 0;
+	overflow: hidden;
+	-o-transition: 0.3s ease;
+	-webkit-transition: 0.3s ease;
+	-moz-transition: 0.3s ease;
+	transition: 0.3s ease;
 }
 
-
 @media only screen and (min-width: 45em) {
+
+	header.container {
+		height: 128px;
+		position: absolute;
+		top: 0;
+	}
+
 
 	/* ==========================================================================
     page-standardpage
    ========================================================================== */
+
+   .clients li a:hover {
+		opacity: 0.5;
+   }
+
+   .page-standardpage html {
+   		background: red;
+   }
+
+   .page-standardpage body {
+   		background: red;
+   }
+
+   .page-standardpage .were-tbx {
+   	background: transparent;
+   }
+
 	.active a:hover {
 		border-bottom: none;
 	}
 
 	.page-standardpage.page-standardpage .heading {
-		padding-top: 10em;
-		padding-top: 15em;
+		padding-top: 19em;
 		height: 760px;
+	}
+
+	.page-standardpage .were-tbx h3 {
+		margin: 2em 0 0em 0;
+	}
+
+
+	.page-standardpage p a {
+		font-size: 0.8em;
 	}
 
 	.page-standardpage .logo {
@@ -398,17 +664,26 @@ header.container {
 
 	.italic {
 		position: relative;
+		text-align: left;
+		color: #63A6CB;
 		z-index: 1;
 		margin: 1.5em auto 0.5em auto;
 	}
 
 	.clients {
-		margin: -1.5em auto 0 auto;
+		margin: 3em auto 4em auto;
+		border-top: none;
+	}
+
+	.clients li {
+		width: 50%;
+		min-height: 70px;
 	}
 
 	.page-standardpage .were-tbx h2 {
 		text-align: center;
 		max-width: 100%;
+		color: #63A6CB;
 	}
 
 	.heading {
@@ -417,6 +692,10 @@ header.container {
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		background-position: center center;
+	}
+
+	.page-standardpage b {
+		color: #34434F;
 	}
 
 	.heading:after {
@@ -447,11 +726,11 @@ header.container {
 	}
 
 	.page-standardpage header.container {
-		max-width: 100%;
-		height: 150px;
+		height: 350px;
 		overflow: hidden;
-		margin: 0;
-		padding: 0;
+		position: absolute;
+		top: 0;
+		min-width: 100%;
 	}
 
 	.page-standardpage nav {
@@ -473,6 +752,18 @@ header.container {
 		border-width: 30px 1610px 0px 0px;
 		border-style: solid;
 		border-color: rgba(255,255,255,0.9) transparent transparent rgba(255,255,255,0.9);
+	}
+
+	.play-nav-container:after {
+		content: "";
+		position: absolute;
+		top: -30px;
+		left: 0;
+		-moz-transform: scale(.9999);
+		border-top: 30px solid rgba(255, 255, 255, 0);
+		border-right: 0px solid rgba(255, 255, 255, 0);
+		border-bottom: 0px solid rgba(255, 255, 255, 0);
+		border-left: 1610px solid rgba(255,255,255,0.9);
 	}
 
 	.page-standardpage .bleed {
@@ -510,9 +801,21 @@ header.container {
 		padding: 1em 0 2em 0;
 	}
 
+	footer .contact li i {
+		color: #63A6CB
+	}
+
+	footer .contact a:hover span {
+		color: #FFC121
+	}
+
 	/* ==========================================================================
     .page-personindexpage 
    ========================================================================== */
+   .page-personindexpage main {
+   		margin-top: 7em;
+   }
+
    	.page-personindexpage .bleed {
 		top: -0.2em;
 		right: -2em;
@@ -520,10 +823,6 @@ header.container {
 
     .page-personindexpage header nav ul {
 		right: 8px;
-	}
-
-	.page-personindexpage .play-nav-container:before {
-		border-width: 0px;
 	}
 
    .page-personindexpage .logo {
@@ -541,16 +840,6 @@ header.container {
 		margin-top: 0.5em;
 	}
 
-	.page-personindexpage header nav li  a{
-		float: left;
-		padding: 0.8em 0 0 0;
-		font-family: "effra",helvetica,sans-serif;
-	}
-		
-	.page-personindexpage header nav li a:hover {
-		color: #63A6CB;
-	}
-
 	.page-personindexpage header nav li.active a {
 		color: #63A6CB;
 	}
@@ -562,6 +851,13 @@ header.container {
 	/* ==========================================================================
     .page-personpage
    ========================================================================== */
+	.page-personpage main {
+		margin-top: 7em;
+	}
+
+	.grid.people-list li div {
+		opacity: 1;
+	}
 
     .page-personpage .bleed {
     	background: none;
@@ -588,16 +884,6 @@ header.container {
 		z-index: 5;
 	}
 
-	.page-personpage header nav li  a{
-		float: left;
-		padding: 0.8em 0 0 0;
-		font-family: "effra",helvetica,sans-serif;
-	}
-		
-	.page-personpage header nav li a:hover {
-		color: #63A6CB;
-	}
-
 	.page-personpage header nav li.active a {
 		color: #63A6CB;
 	}
@@ -618,6 +904,9 @@ header.container {
 	/* ==========================================================================
     .page-workindexpage 
    ========================================================================== */
+	.page-workindexpage  main {
+		margin-top: 7em;
+	}
 
 	.page-workindexpage .bleed {
 		top: 0.9em;
@@ -632,16 +921,6 @@ header.container {
 		opacity: 1;
 		position: relative;
 		z-index: 5;
-	}
-
-	.page-workindexpage header nav li  a{
-		float: left;
-		padding: 0.8em 0 0 0;
-		font-family: "effra",helvetica,sans-serif;
-	}
-		
-	.page-workindexpage header nav li a:hover {
-		color: #63A6CB;
 	}
 
 	.page-workindexpage header nav li.active a {
@@ -693,6 +972,7 @@ header.container {
 	}
 
 	.page-workindexpage main ul a {
+		background: transparent;
 		min-height: 24em;
 	}
 
@@ -707,6 +987,11 @@ header.container {
 	/* ==========================================================================
     .page-workpage 
    ========================================================================== */
+
+   .page-workpage .img-wrapper {
+   	margin-top: 5em;
+   }
+
 	.page-workpage .play-nav-container {
 		height: 104px;
 	}
@@ -715,14 +1000,6 @@ header.container {
 		margin: -150px 0 0 0;
 		padding: 0;
 		overflow: visible;
-	}
-
-	.page-workpage header.container {
-		max-width: 100%;
-		height: 150px;
-		overflow: hidden;
-		margin: 0;
-		padding: 0;
 	}
 
 	.page-workpage nav {
@@ -798,10 +1075,6 @@ header.container {
 		display: none;
 	}
 
-	.intro p {
-		margin-bottom: 0.8em;
-	}
-
 	.page-workpage .share {
 		margin: 0 0 1.5em 1.5em;
 	}
@@ -811,6 +1084,110 @@ header.container {
 	}
 
 
+}
+
+/* ==========================================================================
+.page-blog-index
+========================================================================== */
+
+.popular-tags {
+	display: none;
+}
+
+.dropdown {
+	display: none;
+}
+
+.blog {
+	margin-top: -10px;
+}
+
+.page-blogindexpage h2 {
+	color: #63A6CB;
+}
+
+.page-blogindexpage .logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: 6em;
+	padding: 1em;
+	opacity: 1;
+	position: relative;
+	z-index: 5;
+}
+
+.page-blogindexpage nav {
+	position: relative;
+}
+
+.page-blogindexpage .bleed {
+	background: none;
+	margin-top: 5px;
+	right: -2em;
+}
+
+/* ==========================================================================
+.page-blogpage
+========================================================================== */
+
+.page-blogpage main {
+	width: 100%;
+	margin: 4em 0 0 0;
+}
+
+.page-blogpage .article-meta a {
+	color: #63A6CB;
+}
+
+.page-blogpage .logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: 6em;
+	padding: 1em;
+	opacity: 1;
+	position: relative;
+	z-index: 5;
+}
+
+/* ==========================================================================
+play display 
+========================================================================== */
+.play-no {
+	display: none;
+}
+
+.tbx-no {
+    display: block;
+}
+
+.big {
+	display: block;
+}
+
+@media only screen and (min-width: 45em) {
+	.big {
+		display: none;
+	}
+	.page-blogindexpage .logo {
+		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background-size: 8em;
+		margin-top: -0.3em;
+		position: relative;
+		z-index: 5;
+		opacity: 1;
+	}
+}
+
+.sml {
+	display: none;
+}
+
+@media only screen and (min-width: 45em) {
+	.sml {
+		display: block;
+	}
+}
+
+.page-standardpage .play-no {
+	display: none;
 }
 
 @media only screen and (min-width: 1250px) {
@@ -842,4 +1219,9 @@ header.container {
 	footer .offices {
 		margin: 1em auto 0 -2em;
 	}
+
+	.page-personindexpage .grid.people-list li {
+		width: 33.3%;
+	}
 }
+
