@@ -889,7 +889,7 @@ main nav li.active a:after {
     border-bottom: 1px dotted #DAD7D7;
 }
 
-.page-jobindexpage main .jobs a {
+.page-jobindexpage .job-link {
     color: #F3F4F6;
     padding: 0.6em 0;
 }
@@ -957,7 +957,7 @@ main nav li.active a:after {
     opacity: 0.8;
 }
 
-.page-jobindexpage .intro p a {
+.page-jobindexpage .button {
     background-color: #424a4f;
     display: inline-block;
     padding: 1.7em 1.5em;
@@ -982,7 +982,7 @@ main nav li.active a:after {
     clear: both;
 }
 
-.page-jobindexpage .intro p  a:hover{
+.page-jobindexpage .button:hover {
     background-color: rgba(255,255,255,0.1);
     border: solid 1px #f3f4f6;
     -webkit-border-radius: 2px;
@@ -1049,6 +1049,13 @@ main nav li.active a:after {
     width: 100%;
     margin: 0;
     text-align: center;
+}
+
+.link-inline {
+    color: #EA853A;
+}
+.link-inline:hover {
+    border-bottom: 1px dotted CurrentColor;
 }
 
 .location{

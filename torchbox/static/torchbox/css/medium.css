@@ -1041,7 +1041,7 @@
         background-image: url("/static/torchbox/images/icons/salary.png");
     }
 
-    .page-jobindexpage .intro p a {
+    .page-jobindexpage .button {
         padding: 1.5em;
     }
 
@@ -1110,7 +1110,7 @@
         padding: 19.5em 2em 2em 2em;
     }
 
-    .page-jobindexpage .intro p  a {
+    .page-jobindexpage .button {
         margin: 0em 1em -1em 0;
     }
 
