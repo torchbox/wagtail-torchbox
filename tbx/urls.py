@@ -11,6 +11,8 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailsearch.urls import frontend as wagtailsearch_frontend_urls
 
+from torchbox import urls as torchbox_urls
+
 admin.autodiscover()
 
 
@@ -22,9 +24,6 @@ wagtailsearch_register_signal_handlers()
 urlpatterns = patterns('',
     url(r'^django-admin/', include(admin.site.urls)),
 
-    # TODO: some way of getting wagtailimages to register itself within wagtailadmin so that we
-    # don't have to define it separately here
-
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^search/', include(wagtailsearch_frontend_urls)),
 
@@ -33,6 +32,7 @@ urlpatterns = patterns('',
     url(r'^test404/$', TemplateView.as_view(template_name="404.html")),
     url(r'^test500/$', TemplateView.as_view(template_name="500.html")),
 
+    url(r'', include(torchbox_urls)),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's serving mechanism
     url(r'', include(wagtail_urls)),
@@ -42,7 +42,7 @@ urlpatterns = patterns('',
 if settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-    urlpatterns += staticfiles_urlpatterns() # tell gunicorn where static files are in dev mode
+    urlpatterns += staticfiles_urlpatterns()  # tell gunicorn where static files are in dev mode
     urlpatterns += static(settings.MEDIA_URL + 'images/', document_root=os.path.join(settings.MEDIA_ROOT, 'images'))
     urlpatterns += patterns('',
         (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'torchbox.com/images/favicon.ico'))
