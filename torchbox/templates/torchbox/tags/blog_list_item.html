@@ -1,55 +1,53 @@
 {% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
 
-<a href="{% pageurl post %}">
-    <div class="blog">
-        <li>
-            <div class="block">
-                <div class="blogcontainer">
-                    <div class="crop-height">
-                       {% if blog.feed_image %}
-                            {% image post.feed_image fill-764x448 as post_image %}
-                            <img src="{{ post_image.url }}" width="{{ post_image.width }}" height="{{ post_image.height }}" alt="{{ post_image.alt }}" class="" />
-                        {% else %}
-                            <img src="/static/torchbox/images/blog_default.png" width="" height="" alt="" class=""/>
-                        {% endif %}
-                    </div>
-
-                    <div class="label">
-                        <p>Our blog</p>
-                    </div>
+<li>
+    <a href="{% pageurl post %}">
+        <div class="block blog">
+            <div class="blogcontainer">
+                <div class="crop-height">
+                   {% if blog.feed_image %}
+                        {% image post.feed_image fill-764x448 as post_image %}
+                        <img src="{{ post_image.url }}" width="{{ post_image.width }}" height="{{ post_image.height }}" alt="{{ post_image.alt }}" class="" />
+                    {% else %}
+                        <img src="/static/torchbox/images/blog_default.png" width="" height="" alt="" class=""/>
+                    {% endif %}
                 </div>
 
-                <div class="blog-intro">
-                    <h3>{{ post.title }}</h3>
-
-                    {% comment "taken out for unknown reasons" %}
-                        {% if post.intro %}
-                            <p>{{ post.intro|striptags|truncatewords:0 }}</p>
-                        {% endif %}
-                    {% endcomment %}
-
-                    {% if post.date %}
-                        <span class="date">{{ post.date|date:"j F Y" }}</span>
-                    {% endif %}
-
-                    <div id="author" class="author clearfix" >
-                        {% if post.related_author.all %}
-                            {% for author in post.related_author.all %}
-                                {% if author.author.image %}
-                                    {% image author.author.image fill-300x300 as photo %}
-                                    <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
-                                {% endif %}
-                                <div class="name">{{ author.author.title }}</div>
-                                {% if author.author.role %}<span class="role">{{ author.author.role }}</span>{% endif %}
-                            {% endfor %}
-                        {% endif %}
-
-                        {% if post.author_left %}
-                             <div class="name">{{ post.author_left }}</div>
-                        {% endif %}
-                    </div>
+                <div class="label">
+                    <p>Our blog</p>
                 </div>
             </div>
-       </li>
-    </div>
-</a>
+
+            <div class="blog-intro">
+                <h3>{{ post.title }}</h3>
+
+                {% comment "taken out for unknown reasons" %}
+                    {% if post.intro %}
+                        <p>{{ post.intro|striptags|truncatewords:0 }}</p>
+                    {% endif %}
+                {% endcomment %}
+
+                {% if post.date %}
+                    <span class="date">{{ post.date|date:"j F Y" }}</span>
+                {% endif %}
+
+                <div id="author" class="author clearfix" >
+                    {% if post.related_author.all %}
+                        {% for author in post.related_author.all %}
+                            {% if author.author.image %}
+                                {% image author.author.image fill-300x300 as photo %}
+                                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+                            {% endif %}
+                            <div class="name">{{ author.author.title }}</div>
+                            {% if author.author.role %}<span class="role">{{ author.author.role }}</span>{% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if post.author_left %}
+                         <div class="name">{{ post.author_left }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
