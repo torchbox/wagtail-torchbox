@@ -173,10 +173,9 @@ def homepage_people_listing(context, count=3):
 # Blog feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_blog_listing.html', takes_context=True)
 def homepage_blog_listing(context, count=3):
-    blogs = play_filter(BlogPage.objects.filter(live=True).order_by('-date'),
-                        count)
+    blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
     return {
-        'blogs': blogs,
+        'blog_posts': blog_posts,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
@@ -197,7 +196,7 @@ def homepage_work_listing(context, count=3):
 # Jobs feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
 def homepage_job_listing(context, count=3):
-    #assume there is only one job index page
+    # Assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True)[0]
     jobs = jobindex.jobs
     if count:
@@ -224,15 +223,13 @@ def work_and_blog_listing(context, count=6):
     An interleaved list of work and blog items.
     """
     count /= 2
-    blogs = play_filter(BlogPage.objects.filter(live=True).order_by('-date'),
-                        count)
-    works = play_filter(WorkPage.objects.filter(live=True),
-                        count)
+    blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
+    works = play_filter(WorkPage.objects.filter(live=True), count)
     blog_items = [template.loader.render_to_string(
         "torchbox/tags/blog_list_item.html",
-        {'blog': blog,
+        {'post': post,
          'request': context['request']}
-    ) for blog in blogs]
+    ) for post in blog_posts]
     work_items = [template.loader.render_to_string(
         "torchbox/tags/work_list_item.html",
         {'work': work,
