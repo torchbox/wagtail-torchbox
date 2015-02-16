@@ -282,7 +282,7 @@
     .page-homepage .hero.hero-video{
         padding:0;
     }
-    
+
     .page-homepage .hero.hero-video .poster{
         display:block;
         position:absolute;
@@ -295,7 +295,7 @@
     .page-homepage .hero.hero-video .poster .arrow{
         display:none;
     }
-   
+
     .page-homepage .hero.hero-video .container{
         position:absolute;
         z-index:20;
@@ -1041,10 +1041,6 @@
         background-image: url("/static/torchbox/images/icons/salary.png");
     }
 
-    .page-jobindexpage .button {
-        padding: 1.5em;
-    }
-
     .page-jobindexpage .rich-text p {
         clear: both;
     }
@@ -1568,9 +1564,9 @@
     }
 
     .t-listing img {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
     }
 
     .t-listing li img {
@@ -1610,17 +1606,17 @@
     }
 
     .t-listing li h3 {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
 
     .t-listing li h4 {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
