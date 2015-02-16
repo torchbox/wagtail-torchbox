@@ -1,7 +1,7 @@
 {% if blog_posts %}
-	<ul>
-    {% for post in blog_posts %}
-        {% include "torchbox/tags/blog_list_item.html" with post=post %}
-    {% endfor %}
+    <ul>
+        {% for post in blog_posts %}
+            {% include "torchbox/tags/blog_list_item.html" with post=post %}
+        {% endfor %}
     </ul>
 {% endif %}

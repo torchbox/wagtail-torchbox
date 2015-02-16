@@ -16,10 +16,7 @@
     </div>
 
     <section class="blog">
-
-        <div class="dropdown">
-            Tags
-        </div>
+        <div class="dropdown">Tags</div>
 
         <div class="popular-tags">
             {% if poptags %}
@@ -47,19 +44,15 @@
         </div>
 
         <div id="listing">
-
             {% include "torchbox/includes/blog_listing.html" %}
-
         </div>
 
     </section>
-
-
 {% endblock %}
 
 {% block extra_js %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
-    
+
     {% compress js %}
         <script>
             //global var for current_page set here so that it can be used by the script being called
