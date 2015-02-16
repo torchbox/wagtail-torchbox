@@ -960,8 +960,7 @@ main nav li.active a:after {
 .page-jobindexpage .button {
     background-color: #424a4f;
     display: inline-block;
-    padding: 1.7em 1.5em;
-    line-height: 0em;
+    padding: 1em;
     margin: -1em 1em 0em 0;
     color: #fff;
     border: solid 1px #f3f4f6;
@@ -2380,9 +2379,9 @@ footer .tel {
 .t-listing .order {
     opacity: 0;
     display: none;
-    -webkit-transition: all 0.5s ease; 
-    -moz-transition: all 0.5s ease; 
-    -ms-transition: all 0.5s ease; 
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
@@ -2409,12 +2408,12 @@ footer .tel {
         opacity: 1;
         color: #fff;
         padding: 0.3em 1em;
-        background: #434a4f; 
+        background: #434a4f;
         margin: 0 0.2%;
         border-radius: 3px;
-        -webkit-transition: all 0.3s ease; 
-        -moz-transition: all 0.3s ease; 
-        -ms-transition: all 0.3s ease; 
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
