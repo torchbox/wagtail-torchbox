@@ -2071,6 +2071,22 @@ main .breadcrumb a:hover {
     padding: 0 1em;
 }
 
+.page-personpage .listing h2 {
+    font-size: 1.8em;
+}
+
+.page-personpage .listing h3 {
+    font-size: 1.55em;
+}
+
+.page-personpage .listing {
+    margin-bottom: 3em;
+}
+
+.page-personpage .listing li {
+    padding: 1em 0;
+}
+
 #map {
     width: 100%;
     height: 500px;
