@@ -1042,7 +1042,6 @@
     }
 
     .page-jobindexpage .intro p a {
-        padding: 1.5em;
         font-size: 1em;
     }
 
@@ -1174,6 +1173,20 @@
     }
 
     /*Person page*/
+
+    .text-push {
+        width: 57%;
+        margin-right: 4%;
+        float: right;
+    }
+
+    .page-personpage .blog-listing li .text {
+        padding: 1.5em;
+    }
+
+    .page-personpage .blog-listing li:hover {
+        background: rgba(250, 249, 245, 1);
+    }
 
     .page-personpage .bleed {
         background: none;

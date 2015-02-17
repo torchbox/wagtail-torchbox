@@ -2068,20 +2068,42 @@ main .breadcrumb a:hover {
     padding: 0 1em;
 }
 
-.page-personpage .listing h2 {
-    font-size: 1.8em;
+.page-personpage .blog-listing h3 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    font-weight: bold;
 }
 
-.page-personpage .listing h3 {
-    font-size: 1.55em;
+.page-personpage .blog-listing h4 {
+    font-size: 1.3em;
+    line-height: 1.3em;
+    color: #EA853a;
 }
 
-.page-personpage .listing {
-    margin-bottom: 3em;
+.page-personpage .blog-listing {
+    margin: 2em 0 0;
 }
 
-.page-personpage .listing li {
-    padding: 1em 0;
+.page-personpage .blog-listing li {
+    background: #fff;
+    border-bottom: 1px dotted #a9a9a9;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.page-personpage .blog-listing li:first-of-type {
+    border-top: 1px dotted #a9a9a9;
+}
+
+.page-personpage .blog-listing li:last-of-type {
+    border-bottom: 0;
+}
+
+
+.page-personpage .blog-listing li .text {
+    padding: 1.5em 0;
 }
 
 #map {
@@ -2199,6 +2221,7 @@ footer {
     background-color: #434a4f;
     color: #fff;
     -webkit-font-smoothing: antialiased;
+    clear: both;
 }
 
 footer .container {
