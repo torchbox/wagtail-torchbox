@@ -1,5 +1,5 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
 
 {% block content %}
 <div class="container clearfix">
@@ -41,8 +41,11 @@
                     {{ self.biography|richtext }}
                 {% endif %}
             </div>
-
         </section>
+        
+        <div class="listing">
+            {% person_blog_post_listing calling_page=self %}
+        </div>
 
     </div>
 
