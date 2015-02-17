@@ -1,0 +1,29 @@
+
+{% load wagtailcore_tags %}
+{% comment %} Does not use blog_list_item.html include because we don't want to show authors on the person page {% endcomment %}
+{% if blogs %}
+    <div class="text-push container">
+        <h3>Blog posts by {{ calling_page.specific.first_name }}</h3>
+    </div>
+	<ul class="text-push clearfix">
+    {% for blog in blogs %}
+        <li>
+            <a href="{% pageurl blog %}">
+                <div class="container">
+                    <div class="text">
+                        <h4>{{ blog.title }}</h4>
+
+
+                        {{ blog.intro|richtext }}
+
+                        {% if blog.date %}
+                            <span>{{ blog.date|date:"j F Y" }}</span>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

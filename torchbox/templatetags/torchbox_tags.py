@@ -218,6 +218,18 @@ def adverts(context):
     }
 
 
+#blog posts by team member
+@register.inclusion_tag('torchbox/tags/person_blog_listing.html', takes_context=True)
+def person_blog_post_listing(context, calling_page=None):
+    blogs = play_filter(BlogPage.objects.filter(related_author__author=calling_page.id).order_by('-date'))
+    return {
+        'blogs': blogs,
+        'calling_page': calling_page,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+
 @register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
 def work_and_blog_listing(context, count=6):
     """
@@ -280,15 +292,16 @@ def time_display(time):
     return "".join([hour_string, minute_string, pm_string])
 
 
-def play_filter(pages, number):
+def play_filter(pages, number=0):
     """
     Given an iterable of Pages, return a specified number that
     are not in the Play section.
     """
     result = []
     for page in pages:
-        if len(result) > (number - 1):
-            break
+        if number > 0:
+            if len(result) > (number - 1):
+                break
         if not in_play(page):
             result.append(page)
     return result

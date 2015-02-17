@@ -1041,6 +1041,10 @@
         background-image: url("/static/torchbox/images/icons/salary.png");
     }
 
+    .page-jobindexpage .intro p a {
+        font-size: 1em;
+    }
+
     .page-jobindexpage .rich-text p {
         clear: both;
     }
@@ -1169,6 +1173,20 @@
     }
 
     /*Person page*/
+
+    .text-push {
+        width: 57%;
+        margin-right: 4%;
+        float: right;
+    }
+
+    .page-personpage .blog-listing li .text {
+        padding: 1.5em;
+    }
+
+    .page-personpage .blog-listing li:hover {
+        background: rgba(250, 249, 245, 1);
+    }
 
     .page-personpage .bleed {
         background: none;
@@ -1693,6 +1711,13 @@
         font-size:3em;
     }
 
+    .page-homepage .hero.hero-video {
+        margin-bottom: -3em;
+    }
+    
+    .page-homepage .hero {
+        margin-bottom: -3em;
+    }
 }
 
 @media only screen and (min-width: 515px) {
