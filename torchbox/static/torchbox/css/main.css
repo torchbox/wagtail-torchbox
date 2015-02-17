@@ -2068,13 +2068,13 @@ main .breadcrumb a:hover {
     padding: 0 1em;
 }
 
-.page-personpage .blog-listing h3 {
+.page-personpage .blog-listing h2 {
     font-size: 1.5em;
     margin-bottom: 1em;
     font-weight: bold;
 }
 
-.page-personpage .blog-listing h4 {
+.page-personpage .blog-listing h3 {
     font-size: 1.3em;
     line-height: 1.3em;
     color: #EA853a;
