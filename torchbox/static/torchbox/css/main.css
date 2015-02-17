@@ -483,15 +483,14 @@ main nav li.active a:after {
 }
 
 .page-homepage .block .workcontainer {
-    padding: 1em;
     max-width: 100%;
     overflow: hidden;
 }
 
 .page-homepage .work-intro {
     position: absolute;
-    bottom: 1em;
-    left: 1em;
+    bottom: 0;
+    left: 0;
     background-color: #000;
     background-color: rgba(0,0,0,0.7);
     padding: 1em 1.5em;
@@ -585,7 +584,7 @@ main nav li.active a:after {
     background: url("/static/torchbox/images/Homepage_hero.jpg") no-repeat center;
     background-color: #5b6265;
     position: relative;
-    top: -22em;
+    top: -21em;
     margin-bottom: -21em;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -605,10 +604,11 @@ main nav li.active a:after {
     transition: 0.2s ease;
     cursor: pointer;
 }
-.page-homepage .hero.hero-video{
+.page-homepage .hero.hero-video {
     padding-bottom:0;
+    margin-bottom: -22em;
 }
-.page-homepage .hero.hero-video .poster{
+.page-homepage .hero.hero-video .poster {
     display:block;
     position:absolute;
     top:0; bottom:0;
@@ -619,7 +619,7 @@ main nav li.active a:after {
 
  /* disable poster for all touch devices as Vimeo can't support player API properly */
 .touch .page-homepage .hero.hero-video .poster,
-.touch .page-homepage .hero.hero-video .container .arrow{
+.touch .page-homepage .hero.hero-video .container .arrow {
     display:none;
 }
 
@@ -960,18 +960,15 @@ main nav li.active a:after {
 .page-jobindexpage .intro p a {
     background-color: #424a4f;
     display: inline-block;
-    padding: 1.7em 1.5em;
-    line-height: 0em;
-    margin: -1em 1em 0em 0;
+    padding: 0.8em 1em;
+    margin: -1em 0 0 0;
     color: #fff;
     border: solid 1px #f3f4f6;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    min-width: 252px;
-    height: 55px;
     text-align: center;
-    font-size: 1em;
+    font-size: 0.9em;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;

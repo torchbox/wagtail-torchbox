@@ -1043,6 +1043,7 @@
 
     .page-jobindexpage .intro p a {
         padding: 1.5em;
+        font-size: 1em;
     }
 
     .page-jobindexpage .rich-text p {
@@ -1697,6 +1698,13 @@
         font-size:3em;
     }
 
+    .page-homepage .hero.hero-video {
+        margin-bottom: -3em;
+    }
+    
+    .page-homepage .hero {
+        margin-bottom: -3em;
+    }
 }
 
 @media only screen and (min-width: 515px) {
