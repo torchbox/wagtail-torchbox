@@ -97,14 +97,14 @@ def is_in_play(page):
     )
 
 
-def play_filter(pages, number):
+def play_filter(pages, number=0):
     """
     Given an iterable of Pages, return a specified number that
     are not in the Play section.
     """
     result = []
     for page in pages:
-        if len(result) > (number - 1):
+        if (number > 0) and (len(result) > (number - 1)):
             break
         if not is_in_play(page):
             result.append(page)

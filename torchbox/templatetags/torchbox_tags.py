@@ -202,6 +202,18 @@ def adverts(context):
     }
 
 
+# blog posts by team member
+@register.inclusion_tag('torchbox/tags/person_blog_listing.html', takes_context=True)
+def person_blog_post_listing(context, calling_page=None):
+    posts = play_filter(BlogPage.objects.filter(related_author__author=calling_page.id).order_by('-date'))
+    return {
+        'posts': posts,
+        'calling_page': calling_page,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+
 @register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
 def work_and_blog_listing(context, count=6):
     """

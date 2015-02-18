@@ -282,7 +282,7 @@
     .page-homepage .hero.hero-video{
         padding:0;
     }
-    
+
     .page-homepage .hero.hero-video .poster{
         display:block;
         position:absolute;
@@ -295,7 +295,7 @@
     .page-homepage .hero.hero-video .poster .arrow{
         display:none;
     }
-   
+
     .page-homepage .hero.hero-video .container{
         position:absolute;
         z-index:20;
@@ -1041,8 +1041,8 @@
         background-image: url("/static/torchbox/images/icons/salary.png");
     }
 
-    .page-jobindexpage .button {
-        padding: 1.5em;
+    .page-jobindexpage .intro p a {
+        font-size: 1em;
     }
 
     .page-jobindexpage .rich-text p {
@@ -1174,6 +1174,19 @@
 
     /*Person page*/
 
+    .page-personpage .blog-listing {
+        margin: 0 0 4em;
+        overflow: hidden;
+    }
+
+    .page-personpage .blog-listing li .text {
+        padding: 1.5em;
+    }
+
+    .page-personpage .blog-listing li:hover {
+        background: rgba(250, 249, 245, 1);
+    }
+
     .page-personpage .bleed {
         background: none;
     }
@@ -1245,7 +1258,7 @@
 
     .page-personpage .person-bio {
         background: white;
-        padding: 0em 0 3em 0;
+        padding: 0em 0 1em 0;
         margin-left: 0;
     }
 
@@ -1568,9 +1581,9 @@
     }
 
     .t-listing img {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
     }
 
     .t-listing li img {
@@ -1610,17 +1623,17 @@
     }
 
     .t-listing li h3 {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
 
     .t-listing li h4 {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
@@ -1697,6 +1710,13 @@
         font-size:3em;
     }
 
+    .page-homepage .hero.hero-video {
+        margin-bottom: -3em;
+    }
+    
+    .page-homepage .hero {
+        margin-bottom: -3em;
+    }
 }
 
 @media only screen and (min-width: 515px) {
