@@ -889,7 +889,7 @@ main nav li.active a:after {
     border-bottom: 1px dotted #DAD7D7;
 }
 
-.page-jobindexpage main .jobs a {
+.page-jobindexpage .job-link {
     color: #F3F4F6;
     padding: 0.6em 0;
 }
@@ -961,7 +961,7 @@ main nav li.active a:after {
     opacity: 0.8;
 }
 
-.page-jobindexpage .intro p a {
+.page-jobindexpage .button {
     background-color: #424a4f;
     display: inline-block;
     padding: 0.8em 1em;
@@ -983,7 +983,7 @@ main nav li.active a:after {
     clear: both;
 }
 
-.page-jobindexpage .intro p  a:hover{
+.page-jobindexpage .button:hover {
     background-color: rgba(255,255,255,0.1);
     border: solid 1px #f3f4f6;
     -webkit-border-radius: 2px;
@@ -1050,6 +1050,13 @@ main nav li.active a:after {
     width: 100%;
     margin: 0;
     text-align: center;
+}
+
+.link-inline {
+    color: #EA853A;
+}
+.link-inline:hover {
+    border-bottom: 1px dotted CurrentColor;
 }
 
 .location{
@@ -2072,13 +2079,13 @@ main .breadcrumb a:hover {
     padding: 0 1em;
 }
 
-.page-personpage .blog-listing h3 {
+.page-personpage .blog-listing h2 {
     font-size: 1.5em;
     margin-bottom: 1em;
     font-weight: bold;
 }
 
-.page-personpage .blog-listing h4 {
+.page-personpage .blog-listing h3 {
     font-size: 1.3em;
     line-height: 1.3em;
     color: #EA853a;
@@ -2408,9 +2415,9 @@ footer .tel {
 .t-listing .order {
     opacity: 0;
     display: none;
-    -webkit-transition: all 0.5s ease; 
-    -moz-transition: all 0.5s ease; 
-    -ms-transition: all 0.5s ease; 
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
@@ -2437,12 +2444,12 @@ footer .tel {
         opacity: 1;
         color: #fff;
         padding: 0.3em 1em;
-        background: #434a4f; 
+        background: #434a4f;
         margin: 0 0.2%;
         border-radius: 3px;
-        -webkit-transition: all 0.3s ease; 
-        -moz-transition: all 0.3s ease; 
-        -ms-transition: all 0.3s ease; 
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }

@@ -282,7 +282,7 @@
     .page-homepage .hero.hero-video{
         padding:0;
     }
-    
+
     .page-homepage .hero.hero-video .poster{
         display:block;
         position:absolute;
@@ -295,7 +295,7 @@
     .page-homepage .hero.hero-video .poster .arrow{
         display:none;
     }
-   
+
     .page-homepage .hero.hero-video .container{
         position:absolute;
         z-index:20;
@@ -1110,7 +1110,7 @@
         padding: 19.5em 2em 2em 2em;
     }
 
-    .page-jobindexpage .intro p  a {
+    .page-jobindexpage .button {
         margin: 0em 1em -1em 0;
     }
 
@@ -1581,9 +1581,9 @@
     }
 
     .t-listing img {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
     }
 
     .t-listing li img {
@@ -1623,17 +1623,17 @@
     }
 
     .t-listing li h3 {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
 
     .t-listing li h4 {
-        -webkit-transition: all 0.5s ease; 
-        -moz-transition: all 0.5s ease; 
-        -ms-transition: all 0.5s ease; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
