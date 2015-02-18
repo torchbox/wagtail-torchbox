@@ -1174,10 +1174,9 @@
 
     /*Person page*/
 
-    .text-push {
-        width: 57%;
-        margin-right: 4%;
-        float: right;
+    .page-personpage .blog-listing {
+        margin: 0 0 4em;
+        overflow: hidden;
     }
 
     .page-personpage .blog-listing li .text {
@@ -1259,7 +1258,7 @@
 
     .page-personpage .person-bio {
         background: white;
-        padding: 0em 0 3em 0;
+        padding: 0em 0 1em 0;
         margin-left: 0;
     }
 

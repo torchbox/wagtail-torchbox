@@ -950,6 +950,10 @@ main nav li.active a:after {
     margin: 1.5em auto 0 auto;
 }
 
+.text-push {
+    padding: 0 1em;
+}
+
 .page-jobindexpage .intro .sub p {
     margin: 0 0 0.5em 0;
     font-size: 0.9em;
@@ -2081,7 +2085,7 @@ main .breadcrumb a:hover {
 }
 
 .page-personpage .blog-listing {
-    margin: 2em 0 0;
+    margin: 1em 0;
 }
 
 .page-personpage .blog-listing li {
@@ -2096,11 +2100,6 @@ main .breadcrumb a:hover {
 .page-personpage .blog-listing li:first-of-type {
     border-top: 1px dotted #a9a9a9;
 }
-
-.page-personpage .blog-listing li:last-of-type {
-    border-bottom: 0;
-}
-
 
 .page-personpage .blog-listing li .text {
     padding: 1.5em 0;
