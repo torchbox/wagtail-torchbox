@@ -1,9 +1,8 @@
-from itertools import chain, cycle, islice
-
 from django import template
 from django.conf import settings
 
 from torchbox.models import *
+from torchbox.utils import *
 
 register = template.Library()
 
@@ -66,21 +65,7 @@ def content_type(value):
 
 @register.filter
 def in_play(page):
-    """
-    Check to see if a page is in the Play section. A page is in the Play
-    section if it has 'show_in_play_menu' set to True, or one of its
-    ancestors does.
-    """
-    if not page:
-        return False
-
-    if getattr(page.specific, 'show_in_play_menu', False):
-        return True
-
-    return any(
-        getattr(ancestor.specific, 'show_in_play_menu', False)
-        for ancestor in page.get_ancestors()
-    )
+    return is_in_play(page)
 
 
 @register.inclusion_tag('torchbox/tags/top_menu.html', takes_context=True)
@@ -173,10 +158,9 @@ def homepage_people_listing(context, count=3):
 # Blog feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_blog_listing.html', takes_context=True)
 def homepage_blog_listing(context, count=3):
-    blogs = play_filter(BlogPage.objects.filter(live=True).order_by('-date'),
-                        count)
+    blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
     return {
-        'blogs': blogs,
+        'blog_posts': blog_posts,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
@@ -197,7 +181,7 @@ def homepage_work_listing(context, count=3):
 # Jobs feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
 def homepage_job_listing(context, count=3):
-    #assume there is only one job index page
+    # Assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True)[0]
     jobs = jobindex.jobs
     if count:
@@ -218,12 +202,12 @@ def adverts(context):
     }
 
 
-#blog posts by team member
+# blog posts by team member
 @register.inclusion_tag('torchbox/tags/person_blog_listing.html', takes_context=True)
 def person_blog_post_listing(context, calling_page=None):
-    blogs = play_filter(BlogPage.objects.filter(related_author__author=calling_page.id).order_by('-date'))
+    posts = play_filter(BlogPage.objects.filter(related_author__author=calling_page.id).order_by('-date'))
     return {
-        'blogs': blogs,
+        'posts': posts,
         'calling_page': calling_page,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
@@ -236,15 +220,13 @@ def work_and_blog_listing(context, count=6):
     An interleaved list of work and blog items.
     """
     count /= 2
-    blogs = play_filter(BlogPage.objects.filter(live=True).order_by('-date'),
-                        count)
-    works = play_filter(WorkPage.objects.filter(live=True),
-                        count)
+    blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
+    works = play_filter(WorkPage.objects.filter(live=True), count)
     blog_items = [template.loader.render_to_string(
         "torchbox/tags/blog_list_item.html",
-        {'blog': blog,
+        {'post': post,
          'request': context['request']}
-    ) for blog in blogs]
+    ) for post in blog_posts]
     work_items = [template.loader.render_to_string(
         "torchbox/tags/work_list_item.html",
         {'work': work,
@@ -290,33 +272,3 @@ def time_display(time):
 
     # Join and return
     return "".join([hour_string, minute_string, pm_string])
-
-
-def play_filter(pages, number=0):
-    """
-    Given an iterable of Pages, return a specified number that
-    are not in the Play section.
-    """
-    result = []
-    for page in pages:
-        if number > 0:
-            if len(result) > (number - 1):
-                break
-        if not in_play(page):
-            result.append(page)
-    return result
-
-
-# https://docs.python.org/2/library/itertools.html#recipes
-def roundrobin(*iterables):
-    "roundrobin('ABC', 'D', 'EF') --> A D E B F C"
-    # Recipe credited to George Sakkis
-    pending = len(iterables)
-    nexts = cycle(iter(it).next for it in iterables)
-    while pending:
-        try:
-            for next in nexts:
-                yield next()
-        except StopIteration:
-            pending -= 1
-            nexts = cycle(islice(nexts, pending))

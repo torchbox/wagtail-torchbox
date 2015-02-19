@@ -91,7 +91,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'compressor.finders.CompressorFinder',
 )
 
@@ -102,7 +102,7 @@ SECRET_KEY = '0qkkb_#_b)3g-h#*e^-a653*wo0=i2fjeebhh193wt(xe$=s3f'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -171,7 +171,7 @@ INTERNAL_IPS = ('127.0.0.1', '10.0.2.2')
 
 # django-compressor settings
 COMPRESS_PRECOMPILERS = (
-   ('text/x-scss', 'django_libsass.SassCompiler'),
+    ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
 COMPRESS_OFFLINE = True
