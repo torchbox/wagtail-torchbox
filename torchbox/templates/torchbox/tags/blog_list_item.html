@@ -5,7 +5,7 @@
         <div class="block blog">
             <div class="blogcontainer">
                 <div class="crop-height">
-                   {% if blog.feed_image %}
+                   {% if post.feed_image %}
                         {% image post.feed_image fill-764x448 as post_image %}
                         <img src="{{ post_image.url }}" width="{{ post_image.width }}" height="{{ post_image.height }}" alt="{{ post_image.alt }}" class="" />
                     {% else %}
