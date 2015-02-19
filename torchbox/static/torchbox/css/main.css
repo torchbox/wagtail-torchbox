@@ -506,17 +506,37 @@ main nav li.active a:after {
 }
 
 .page-homepage .block .blogcontainer {
-    padding: 1em;
+    padding: 1.5em 1em 2em;
     max-width: 100%;
     overflow: hidden;
 }
 
-.label{
-    display: none;
+.blog .label {
+    position: absolute;
+    top: 2em;
+    right: auto;
+    left: 1em;
+    z-index: 1;
+    padding: 0.05em 0.2em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.3);
+    font-size: 0.8em;
 }
 
-.blog .label{
-    display: block;
+.label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    padding: 0.2em;
+    background: rgba(0,0,0,0.3);
+}
+
+.label p {
+    margin: 0;
+    color: #fff;
 }
 
 .page-homepage .listing p{
@@ -539,7 +559,7 @@ main nav li.active a:after {
     line-height: 1.5em;
 }
 
-.blogcontainer {
+.blog .crop-height {
     display: none;
 }
 
@@ -565,8 +585,8 @@ main nav li.active a:after {
 
 .page-homepage .blog {
     background: #f3f4f6;
-    padding: 1em 0;
     overflow: hidden;
+    padding: 0 0 1.3em;
 }
 
 .page-homepage .logo {
@@ -791,10 +811,6 @@ main nav li.active a:after {
     -moz-animation: spin 0.5s linear infinite;
     -o-animation: spin 0.5s linear infinite;
     animation: spin 0.5s linear infinite;
-}
-
-.page-homepage .blog li {
-    margin-top: 0.5em;
 }
 
 .worklisting h3 {
