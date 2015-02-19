@@ -1,12 +1,9 @@
 {% load wagtailcore_tags wagtailimages_tags %}
+
 {% if jobs %}
-	<ul>
-    {% for job in jobs %}
-    	<li>
-    		<a href="{{ job.url }}">
-        		{{ job.job_title }}
-        	</a>
-       	</li>
-    {% endfor %}
+    <ul>
+        {% for job in jobs %}
+            <li><a href="{{ job.url }}">{{ job.job_title }}</a></li>
+        {% endfor %}
     </ul>
 {% endif %}

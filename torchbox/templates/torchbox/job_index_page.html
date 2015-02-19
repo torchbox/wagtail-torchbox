@@ -1,17 +1,14 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags humanize %}
 
 {% block content %}
-{% load humanize %}
-        <div class= "crop-height">
-            <img class="scale" src="/static/torchbox/images/desk_02.jpg"  width="" height="" alt="">
-        </div>
+    <div class= "crop-height">
+        <img class="scale" src="/static/torchbox/images/desk_02.jpg"  width="" height="" alt="">
+    </div>
 
     <section class="intro jobs">
-
          <div class="center">
             <h1>{{ self.title }}</h1>
-
 
             {% with self.jobs.all as jobs %}
                 {% if jobs %}
@@ -33,8 +30,8 @@
             {% if self.intro %}
                 <div class="sign-up">
                     {{ self.intro|richtext }}
-                    {% endif %}
                 </div>
+            {% endif %}
         </div>
 
         <div class="news">
@@ -46,7 +43,6 @@
         <div class="sub">
             <p> We do not use recruitment agents, so if you are a recruiter we would appreciate if you did not contact us.</p>
         </div>
-
     </section>
 
     <section class="benefits clearfix">
@@ -55,24 +51,16 @@
         </div>
 
         {% if self.content_block.all %}
-        <ul>
-            {% for block in self.content_block.all %}
-            <li class="one">
-                 <div class="clearfix">
-
-                    <div class="icon">
+            <ul>
+                {% for item in self.content_block.all %}
+                <li class="one">
+                    <div class="clearfix">
+                        <div class="icon"></div>
+                        <div>{{ item.content|richtext }}</div>
                     </div>
-                    <div>
-                        {{ block.content|richtext }}
-                    </div>
-                </div>
                 </li>
-            {% endfor %}
-        </ul>
+                {% endfor %}
+            </ul>
         {% endif %}
-
-
-
     </section>
-
 {% endblock %}

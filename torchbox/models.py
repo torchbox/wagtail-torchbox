@@ -3,7 +3,6 @@ from datetime import date
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.management import call_command
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -21,7 +20,6 @@ from wagtail.wagtailsnippets.models import register_snippet
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
-from south.signals import post_migrate
 
 from torchbox.utils import export_event
 
@@ -167,7 +165,7 @@ class Advert(models.Model):
 register_snippet(Advert)
 
 
-#Custom image
+# Custom image
 class TorchboxImage(AbstractImage):
     credit = models.CharField(max_length=255, blank=True)
 
@@ -197,6 +195,7 @@ class TorchboxRendition(AbstractRendition):
 def rendition_delete(sender, instance, **kwargs):
     # Pass false so FileField doesn't save the model.
     instance.file.delete(False)
+
 
 class HomePage(Page):
     intro = models.TextField(blank=True)
@@ -363,48 +362,48 @@ class BlogIndexPage(Page):
         return [BlogPageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
-    def blogs(self):
+    def blog_posts(self):
         # Get list of blog pages that are descendants of this page
-        blogs = BlogPage.objects.filter(
+        blog_posts = BlogPage.objects.filter(
             live=True,
             path__startswith=self.path
         )
 
         # Order by most recent date first
-        blogs = blogs.order_by('-date')
+        blog_posts = blog_posts.order_by('-date')
 
-        return blogs
+        return blog_posts
 
     def serve(self, request):
-        # Get blogs
-        blogs = self.blogs
+        # Get blog_posts
+        blog_posts = self.blog_posts
 
         # Filter by tag
         tag = request.GET.get('tag')
         if tag:
-            blogs = blogs.filter(tags__tag__slug=tag)
+            blog_posts = blog_posts.filter(tags__tag__slug=tag)
 
         # Pagination
         per_page = 10
         page = request.GET.get('page')
-        paginator = Paginator(blogs, per_page)  # Show 10 blogs per page
+        paginator = Paginator(blog_posts, per_page)  # Show 10 blog_posts per page
         try:
-            blogs = paginator.page(page)
+            blog_posts = paginator.page(page)
         except PageNotAnInteger:
-            blogs = paginator.page(1)
+            blog_posts = paginator.page(1)
         except EmptyPage:
-            blogs = paginator.page(paginator.num_pages)
+            blog_posts = paginator.page(paginator.num_pages)
 
         if request.is_ajax():
             return render(request, "torchbox/includes/blog_listing.html", {
                 'self': self,
-                'blogs': blogs,
+                'blog_posts': blog_posts,
                 'per_page': per_page,
             })
         else:
             return render(request, self.template, {
                 'self': self,
-                'blogs': blogs,
+                'blog_posts': blog_posts,
                 'per_page': per_page,
             })
 
@@ -507,7 +506,6 @@ BlogPage.promote_panels = [
 
 
 # Jobs index page
-
 class JobIndexPageContentBlock(Orderable, ContentBlock):
     page = ParentalKey('torchbox.JobIndexPage', related_name='content_block')
 
@@ -785,6 +783,7 @@ PersonIndexPage.promote_panels = [
     FieldPanel('show_in_play_menu'),
 ]
 
+
 class TshirtPage(Page):
     main_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -798,40 +797,3 @@ TshirtPage.content_panels = [
     FieldPanel('title', classname="full title"),
     ImageChooserPanel('main_image'),
 ]
-
-# Signal handler to load demo data from fixtures after migrations have completed
-@receiver(post_migrate)
-def import_demo_data(sender, **kwargs):
-    # post_migrate will be fired after every app is migrated; we only want to do the import
-    # after demo has been migrated
-    if kwargs['app'] != 'demo':
-        return
-
-    # Check that there isn't already meaningful data in the db that would be clobbered.
-    # A freshly created databases should contain no images, tags or snippets
-    # and just two page records: root and homepage.
-    if Image.objects.count() or Tag.objects.count() or Advert.objects.count() or Page.objects.count() > 2:
-        return
-
-    # furthermore, if any page has a more specific type than Page, that suggests that meaningful
-    # data has been added
-    for page in Page.objects.all():
-        if page.specific_class != Page:
-            return
-
-    import os
-    import shutil
-    from django.conf import settings
-
-    fixtures_dir = os.path.join(settings.PROJECT_ROOT, 'torchbox', 'fixtures')
-    fixture_file = os.path.join(fixtures_dir, 'torchbox.json')
-    image_src_dir = os.path.join(fixtures_dir, 'images')
-    image_dest_dir = os.path.join(settings.MEDIA_ROOT, 'original_images')
-
-    call_command('loaddata', fixture_file, verbosity=0)
-
-    if not os.path.isdir(image_dest_dir):
-        os.makedirs(image_dest_dir)
-
-    for filename in os.listdir(image_src_dir):
-        shutil.copy(os.path.join(image_src_dir, filename), image_dest_dir)
