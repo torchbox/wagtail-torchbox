@@ -513,25 +513,24 @@ main nav li.active a:after {
 
 .blog .label {
     position: absolute;
-    top: 2em;
+    top: 1.5em;
     right: auto;
     left: 1em;
     z-index: 1;
-    padding: 0.05em 0.2em;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
     background: rgba(0,0,0,0.3);
-    font-size: 0.8em;
 }
 
 .label {
+    font-size: 0.9em;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 138px;
+    left: 0;
     z-index: 1;
-    padding: 0.2em;
-    background: rgba(0,0,0,0.3);
+    padding: 0.1em 0.5em;
+    background: rgba(0,0,0,0.7);
 }
 
 .label p {
