@@ -1,7 +1,7 @@
 Django==1.6.9
 South==1.0.2
 psycopg2==2.5.4
-wagtail==0.8.4
+wagtail==0.8.5
 
 # Development requirements
 django-debug-toolbar==1.2.2

@@ -1,6 +1,4 @@
-{% load torchbox_tags cache compress static wagtailuserbar wagtailimages_tags %}
-
-<!DOCTYPE html>
+{% load torchbox_tags cache compress static wagtailuserbar wagtailimages_tags %}<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
@@ -41,10 +39,12 @@
         {% if self %}
             {% if self|in_play %}
                 <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
+            {% else %}
+                <link rel="alternate" type="application/rss+xml" title="Torchbox Blog RSS" href="{% url 'blog_feed' %}" />
             {% endif %}
         {% endif %}
 
-        <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}"/>
+        <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}" />
 
         <!--[if lte IE 8]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,19 +62,30 @@
         {% endcompress %}
 
         <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-          ga('create', 'UA-112981-1', 'auto');
-          ga('send', 'pageview');
+            ga('create', 'UA-112981-1', 'auto');
+            ga('send', 'pageview');
         </script>
     </head>
 
     <div class="footer-cover no-tbx"> </div>
 
     <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
+       {% if self|in_play %}
+           <!-- Google Tag Manager -->
+           <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PW5C2L"
+                             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+           <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                                                                                                           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+               '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PW5C2L');</script>
+            <!-- End Google Tag Manager -->
+        {% endif %}
         {% wagtailuserbar %} {# Don't delete this #}
 
         <header class="container">
@@ -99,43 +110,49 @@
                 <div class="offices container ">
                     <h2 class="visuallyhidden">Visit us</h2>
                     <ul class="clearfix listing">
-                        <a href="https://www.google.co.uk/maps/place/Torchbox/@51.858115,-1.480577,17z/data=!3m1!4b1!4m2!3m1!1s0x4876d26f301900bd:0xca3bbb6b78d4b3e4">
-                            <li>
+                        <li>
+                            <a href="https://www.google.co.uk/maps/place/Torchbox/@51.858115,-1.480577,17z/data=!3m1!4b1!4m2!3m1!1s0x4876d26f301900bd:0xca3bbb6b78d4b3e4">
                                 <div class="svg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
                                         <path fill="" d="M363.8,267.3c-19.5-18.1-45.5-28.4-71.3-28.4s-51.8,10.4-71.3,28.4c-20.2,18.7-31.3,43-31.3,68.5  c0,66.7,100.8,255.4,101.8,257.3c0.2,0.3,0.5,0.5,0.9,0.5c0.4,0,0.7-0.2,0.9-0.5c1-1.9,101.8-190.6,101.8-257.3  C395.1,310.3,384,286,363.8,267.3z"/>
-                                        </svg> </path>
+                                        </path>
+                                    </svg>
                                 </div>
 
                                 <h3>Oxford</h3>
-                                    <div class="vcard">
-                                        <span class="street-address">Unit&nbsp;9, Southill&nbsp;Business&nbsp;Park</span>,
-                                        <span class="region">Charlbury</span>,
-                                        <span class="postal-code">OX7&nbsp;3EW</span>,
-                                        <span class="country-name">UK</span>
-                                    </div>
-                            </li>
-                        </a>
-                        <a href="https://www.google.co.uk/maps/place/Torchbox/@51.453371,-2.60056,20z/data=!3m1!4b1!4m2!3m1!1s0x48718dd73f674ef7:0xa01401396c06a317">
-                            <li>
+                                <div class="vcard">
+                                    <span class="street-address">Unit&nbsp;9, Southill&nbsp;Business&nbsp;Park</span>,
+                                    <span class="region">Charlbury</span>,
+                                    <span class="postal-code">OX7&nbsp;3EW</span>,
+                                    <span class="country-name">UK</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.google.co.uk/maps/place/Torchbox/@51.453371,-2.60056,20z/data=!3m1!4b1!4m2!3m1!1s0x48718dd73f674ef7:0xa01401396c06a317">
                                 <div class="svg">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
-                                    <path fill="" d="M363.8,267.3c-19.5-18.1-45.5-28.4-71.3-28.4s-51.8,10.4-71.3,28.4c-20.2,18.7-31.3,43-31.3,68.5  c0,66.7,100.8,255.4,101.8,257.3c0.2,0.3,0.5,0.5,0.9,0.5c0.4,0,0.7-0.2,0.9-0.5c1-1.9,101.8-190.6,101.8-257.3  C395.1,310.3,384,286,363.8,267.3z"/>
-                                    </svg> </path>
+                                        <path fill="" d="M363.8,267.3c-19.5-18.1-45.5-28.4-71.3-28.4s-51.8,10.4-71.3,28.4c-20.2,18.7-31.3,43-31.3,68.5  c0,66.7,100.8,255.4,101.8,257.3c0.2,0.3,0.5,0.5,0.9,0.5c0.4,0,0.7-0.2,0.9-0.5c1-1.9,101.8-190.6,101.8-257.3  C395.1,310.3,384,286,363.8,267.3z"/>
+                                        </path>
+                                    </svg>
                                 </div>
+
                                 <h3>Bristol</h3>
-                                    <div class="vcard">
-                                        <span class="street-address">The Annexe, 4&nbsp;Unity&nbsp;Street</span>,
-                                        <span class="region">Bristol</span>,
-                                        <span class="postal-code">BS1&nbsp;5HH</span>,
-                                        <span class="country-name">UK</span>
-                                    </div>
-                            </li>
-                        </a>
-                        <div class="wagtail">
-                            <a href="http://wagtail.io"><img src="/static/torchbox/images/wagtail.png" alt="Wagtail"></a>
-                        </div>
+                                <div class="vcard">
+                                    <span class="street-address">The Annexe, 4&nbsp;Unity&nbsp;Street</span>,
+                                    <span class="region">Bristol</span>,
+                                    <span class="postal-code">BS1&nbsp;5HH</span>,
+                                    <span class="country-name">UK</span>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
+
+                    <div class="wagtail">
+                        <a href="http://wagtail.io"><img src="/static/torchbox/images/wagtail.png" alt="Wagtail"></a>
+                    </div>
+
                 </div>
                 <a href="http://wagtail.io"><img class="wagtail2" src="/static/torchbox/images/wagtail.png" alt="Wagtail"></a>
             </div>
