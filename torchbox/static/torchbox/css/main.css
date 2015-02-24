@@ -1811,7 +1811,6 @@ a.tooltip span{
 .body-copy img,
 .body-copy .responsive-object {
     margin: 0 auto;
-    text-align: center;
     width:100%;
     max-width: initial;
 }
