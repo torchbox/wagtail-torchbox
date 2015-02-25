@@ -24,6 +24,7 @@ main.blur {
 
 .body-copy h2 {
 	margin-top: 1.5em;
+	margin-bottom: 0.4em;
 }
 
 main {
@@ -407,13 +408,9 @@ hr {
 Sign up
 ========================================================================== */
 
-.follow {
-	margin: 1.2em 0 0 1.7em;
-}
-
 .newsletter-wrapper {
 	position: relative;
-	margin: 0.3em 2em 0 1.7em;
+	margin: 0.95em 2em 0 1.7em;
 }
 
 .newsletter-wrapper-top {
@@ -470,6 +467,11 @@ button:focus {
 	border-radius: 0;
 }
 
+header nav li a.btn i {
+	padding: 0 0.5em 0 0;
+	margin-top: 1em;
+}
+
 @media only screen and (min-width: 45em) {
 	form {
 		position: relative;
@@ -515,7 +517,7 @@ button:focus {
 		transition: all 0.2s ease;
 	}
 
-	header nav li a.sign-up {
+	header nav li a.btn {
 		background: #63A6CB;
 		color: #fff;
 		padding: 0.1em 0.5em 0.3em;
@@ -526,9 +528,35 @@ button:focus {
 		transition: all 0.2s ease;
 	}
 
-	header nav li a.sign-up:hover {
+	header nav li a.btn:hover {
 		background: #34434F;
 		color: #fff;
+	}
+
+	.page-workpage .intro h1 {
+		font-size: 5em;
+	}
+
+	.nextprev {
+		width: 3em;
+	}
+
+	.nextprev:hover {
+		width: 15em;
+	}
+
+	.nextprev span {
+		display: block;
+		position: relative;
+		top: 50%;
+		line-height: 1.3em;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		max-width: 170px;
+		margin: 0 0 0 4em;
+	}
+	.play span {
+		margin: 0 0 0 1em;
 	}
 }
 
