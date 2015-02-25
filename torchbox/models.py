@@ -454,6 +454,10 @@ class BlogPageAuthor(Orderable):
         related_name='+'
     )
 
+    panels = [
+        PageChooserPanel('author', 'torchbox.PersonPage')
+    ]
+
 
 class BlogPage(Page):
     intro = RichTextField(blank=True)
