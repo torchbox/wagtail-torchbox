@@ -62,7 +62,6 @@ $(function() {
     //$('.sign-up').on('click', function() {
     //  $('main').toggleClass('blur');
    //});
-    
 
     // Dropdown menus for mobile
     $('.dropdown').click(function() {

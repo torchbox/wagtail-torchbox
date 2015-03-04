@@ -21,7 +21,7 @@
     }
 
     .single .container {
-        padding: 2em;
+        padding: 2em 2em 0;
     }
 
     .bleed {
@@ -1926,6 +1926,224 @@
     }
 
 }
+
+
+@media only screen and (min-width: 45em) {
+    /* ==========================================================================
+       STEAM FIELD STYLES
+    ========================================================================== */
+    .pull-quote {
+        padding: 3em;
+    }
+
+    .pull-quote p {
+        font-size: 1.25em;
+    }
+
+    .screen-grab {
+        position: relative;
+        padding: 2em;
+    }
+
+    .img-grid .holder {
+        text-align: center;
+        width: 70%;
+        margin: 2em auto;
+    }
+
+    .screen-grab img {
+        width: 60%;
+        margin-right: 40%;
+        border-radius: 3px;
+    }
+
+    .screen-grab p {
+        position: absolute;
+        right: 10%;
+        font-size: 1.25em;
+        max-width: 30%;
+        padding: 0.5em 1em;
+        border-radius: 3px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .body-copy h3 {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: -0.5em;
+    }
+
+    .stat-block {
+        padding: 3em 0 6em;
+    }
+
+    .stat {
+        width: 33.3%;
+        float: left;
+        margin: 0;
+    }
+
+    .sml-quote {
+        margin: 1em auto 2em;
+    }
+
+    .bustout {
+        position: relative;
+        overflow: hidden;
+     }
+
+    .bustout-text {
+        padding: 2em;
+        width: 60%;
+        float: right;
+        font-size: 1.25em;
+        background: #434a4f;
+        z-index: 1;
+        position: relative;
+        margin: 0;
+    }
+
+    .bustout img {
+        float: left;
+        width: 100%;
+        position: absolute;
+    }
+
+    .align-right .img-holder {
+        position: absolute;
+        max-width: 40%;
+        top: 1em;
+        right: -2em;
+    }
+
+    .align-right p {
+        max-width: 60%;
+    }
+
+    .align-left .img-holder {
+        position: absolute;
+        max-width: 40%;
+        top: 1em;
+        left: -2em;
+    }
+
+    .align-left .img-holder .credit, .align-right .img-holder .credit {
+        max-width: 100%;
+        bottom: 30px;
+    }
+
+    .align-left p {
+        max-width: 60%;
+        margin-left: 40%;
+    }
+
+    /*
+    .screengrab {
+        padding: 5em 0;
+    }
+
+    .screengrab .laptop-container img {
+        width: 54%;
+        margin-bottom: 3em;
+    }
+
+    .laptop {
+        position: absolute;
+        top: -7%;
+        left: -39%;
+        right: 0;
+    }
+
+    .screengrab .laptop-container .laptop img {
+        width: 51%;
+        margin: 0;
+    }
+    */
+
+}
+
+@media only screen and (min-width: 1350px) {
+    .bustout img {
+        float: left;
+        width: 40%;
+        position: relative;
+    }
+
+    .bustout-text {
+        padding: 2em;
+        width: 60%;
+        float: left;
+        font-size: 1.25em;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 40%;
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+
+    .screen-grab img {
+        width: 51%;
+        margin-left: 10em;
+    }
+
+    .screen-grab p {
+        max-width: 27%;
+        font-size: 1.35em;
+    }
+
+    .align-right .img-holder {
+        position: absolute;
+        max-width: 40%;
+        top: 1em;
+        right: -12em;
+    }
+
+    .align-right p {
+        max-width: 80%;
+    }
+
+    .align-left .img-holder {
+        position: absolute;
+        max-width: 40%;
+        top: 1em;
+        left: -12em;
+    }
+
+    .align-left p {
+        max-width: 80%;
+        margin-left: 20%;
+    }
+
+    /*
+    .laptop {
+        top: -7.5%;
+        left: -27%;
+    }
+
+    .screengrab .laptop-container .laptop img {
+        width: 46%;
+        margin: 0;
+    }
+
+    .screengrab .laptop-container img {
+        width: 44%;
+        margin-bottom: 3em;
+    }
+    */
+
+}
+
+
+
+/*========================================================================== */
+
 
 /* Desktop */
 @media only screen and (min-width: 1250px) {

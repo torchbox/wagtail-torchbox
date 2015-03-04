@@ -38,6 +38,12 @@
             <link rel="stylesheet" href="{% static "torchbox/css/animate.css" %}">
         {% endcompress %}
 
+        
+        <link rel="stylesheet" href="{% static "torchbox/css/featherlight.min.css" %}">
+
+        <link rel="stylesheet" href="{% static "torchbox/css/featherlight.gallery.css" %}">
+
+
         {% if self %}
             {% if self|in_play %}
                 <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
@@ -57,6 +63,11 @@
         <script type="text/javascript" src="//use.typekit.net/zzm2obu.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
+        <script src="//code.jquery.com/jquery-latest.js"></script>
+
+        <script src="//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.gallery.min.js" type="text/javascript" charset="utf-8"></script>
+
         {% compress js %}
             <script src="{% static "torchbox/js/vendor/modernizr-2.6.2.min.js" %}" type="text/javascript"></script>
         {% endcompress %}
@@ -69,6 +80,11 @@
 
           ga('create', 'UA-112981-1', 'auto');
           ga('send', 'pageview');
+
+        $(document).ready(function(){
+            $('.gallery').featherlightGallery();
+        });
+
         </script>
     </head>
 
