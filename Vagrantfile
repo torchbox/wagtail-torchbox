@@ -18,6 +18,9 @@ Vagrant::Config.run do |config|
     # Enable provisioning with a shell script.
     config.vm.provision :shell, :path => "vagrant/provision.sh", :args => "torchbox"
 
+    # Enable agent forwarding over SSH connections.
+    config.ssh.forward_agent = true
+
     # If a 'Vagrantfile.local' file exists, import any configuration settings
     # defined there into here. Vagrantfile.local is ignored in version control,
     # so this can be used to add configuration specific to this computer.
