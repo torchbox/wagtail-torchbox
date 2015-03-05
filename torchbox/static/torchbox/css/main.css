@@ -2511,10 +2511,12 @@ footer .tel {
 .bustout h2 {
     font-size: 1.2em;
     font-weight: bold;
+    font-family: "adelle",serif;
 }
 
 .bustout p {
     font-family: "adelle",serif;
+    font-style: italic;
     font-size: 0.9em;
 }
 
@@ -2552,7 +2554,7 @@ footer .tel {
 .align-right .img-holder p {
     margin: 0;
     font-size: 0.75em;
-    width: 100%;
+    max-width: 100%;
     font-family: "adelle",serif;
 }
 
@@ -2564,7 +2566,7 @@ footer .tel {
     padding: 0.3em 0.5em;
     background: rgba(0,0,0,0.7);
     color: #fff;
-    bottom: 31px;
+    bottom: 9px;
     left: 0;
     font-style: italic;
     display: block;
@@ -2586,8 +2588,12 @@ footer .tel {
 .align-left .img-holder p {
     margin: 0;
     font-size: 0.75em;
-    width: 100%;
+    max-width: 100%;
     font-family: "adelle",serif;
+}
+
+.img-credit {
+    position: relative;
 }
 
 .align-left .img-holder .credit {
@@ -2598,7 +2604,7 @@ footer .tel {
     padding: 0.3em 0.5em;
     background: rgba(0,0,0,0.7);
     color: #fff;
-    bottom: 31px;
+    bottom: 9px;
     left: 0;
     font-style: italic;
     display: block;
@@ -2637,23 +2643,24 @@ footer .tel {
 }
 
 .img-grid a:nth-child(1n) {
-    width: 37%;
+    width: 38%;
     margin: 2%;
     margin-left: 0%;
     margin-top: 0;
 }
 
 .img-grid a:nth-child(2n) {
-    width: 59%;
+    width: 60%;
+    margin-right: 0;
 }
 
 .img-grid a:nth-child(3n) {
-    width: 64%;
+    width: 65%;
     margin: 0 2% 0 0;
 }
 
 .img-grid a:nth-child(4n) {
-    width: 32%;
+    width: 33%;
     margin: 0;
 }
 
@@ -2686,7 +2693,6 @@ footer .tel {
 }
 
 .stat-holder {
-    max-width: 750px;
     margin: 0 auto;
 }
 
@@ -2725,6 +2731,7 @@ h4 ~ .stat {
 }
 
 .html {
+    max-width: 900px;
     margin: 0 auto 2em auto;
     text-align: center;
 }
@@ -2733,34 +2740,18 @@ h4 ~ .stat {
     position: relative;
     font-style: italic;
     font-weight: bold;
-    padding: 1.5em 0;
-    margin: 1em 0 2em;
-    width: 100%;
+    padding: 0;
+    max-width: 600px;
     font-family: "adelle",serif;
     line-height: 2em;
 }
 
 .sml-quote p {
-    max-width: 80%;
+    position: relative;
+    max-width: 600px;
+    font-size: 1.25em;
     margin: 0;
-}
-
-.sml-quote:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10%;
-    border-top: 2px solid #000;
-}
-
-.sml-quote:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 10%;
-    border-top: 2px solid #000;
+    padding: 1em;
 }
 
 .full-width {
