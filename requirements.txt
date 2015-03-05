@@ -1,7 +1,6 @@
-Django==1.6.9
-South==1.0.2
+Django==1.7.4
 psycopg2==2.5.4
-wagtail==0.8.5
+git+git://github.com/torchbox/wagtail.git@b2372c878719bc1927d48b38e107fe18b44275ee#egg=wagtail
 
 # Development requirements
 django-debug-toolbar==1.2.2

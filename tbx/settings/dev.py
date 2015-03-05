@@ -8,10 +8,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # BASE_URL required for notification emails
 BASE_URL = 'http://localhost:8111'
 
+
+INSTALLED_APPS += (
+    'wagtail.contrib.wagtailstyleguide',
+)
+
 try:
-	from .local import *
+    from .local import *
 except ImportError:
-	pass
+    pass
 
 LOGGING = {
     'version': 1,
