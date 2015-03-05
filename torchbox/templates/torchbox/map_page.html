@@ -1,70 +1,60 @@
+<!DOCTYPE html>
 <html>
 <head>
-        <!-- MAP -->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8DzA414OJ7tzw0J7cKc9LPisCg2gNNKI&sensor=false"></script>
-        
-        <script type="text/javascript">
-            google.maps.event.addDomListener(window, 'load', init);
-        
-            function init() {
-                                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-                                var mapOptions = {
-                                    zoom: 9,
-                                    center: new google.maps.LatLng(51.638071, -1.856351), 
-                                    styles: [   {"featureType":"all", "stylers":[  {"saturation":0},  {"hue":"#ea853a"} ]},
+    <!-- MAP -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8DzA414OJ7tzw0J7cKc9LPisCg2gNNKI&sensor=false"></script>
 
-                                            {"featureType":"road", "stylers":[ {"saturation":-20} ]},  
+    <script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', init);
 
-                                            {"featureType":"transit","stylers":[ {"visibility":"off"} ] }, 
+        function init() {
+            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+            var mapOptions = {
+                zoom: 9,
+                center: new google.maps.LatLng(51.638071, -1.856351),
+                styles: [
+                    {"featureType":"all", "stylers":[  {"saturation":0},  {"hue":"#ea853a"} ]},
+                    {"featureType":"road", "stylers":[ {"saturation":-20} ]},
+                    {"featureType":"transit","stylers":[ {"visibility":"off"} ] },
+                    {"featureType":"road.arterial","stylers":[{"visibility":"off"} ]},
+                    {"featureType":"poi","stylers":[{"visibility":"off"}]},
+                    {"featureType":"water","stylers":[{"visibility":"simplified"},{"saturation":-60}]}
+                ]
+            };
 
-                                            {"featureType":"road.arterial","stylers":[{"visibility":"off"} ]}, 
+            var mapElement = document.getElementById('map');
+            var map = new google.maps.Map(mapElement, mapOptions);
 
-                                            {"featureType":"poi","stylers":[{"visibility":"off"}]}, 
+            var iconBase = '/static/torchbox/images/map_icon.png';
+            var myLatlng = new google.maps.LatLng(51.453375, -2.600566);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                icon: iconBase,
+                title: 'Hello World!'
+            });
 
-                                            {"featureType":"water","stylers":[{"visibility":"simplified"},{"saturation":-60}]} 
-                                            ]
+            var iconBase = '/static/torchbox/images/map_icon.png';
+            var myLatlng = new google.maps.LatLng(51.858469,-1.480863);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                icon: iconBase,
+                title: 'Hello World!'
+            });
 
-                                };
-
-                                var mapElement = document.getElementById('map');
-                                var map = new google.maps.Map(mapElement, mapOptions); 
-
-                                var iconBase = '/static/torchbox/images/map_icon.png';
-                                var myLatlng = new google.maps.LatLng(51.453375, -2.600566);
-                                var marker = new google.maps.Marker({
-                                    position: myLatlng,
-                                    map: map,
-                                    icon: iconBase,
-                                    title: 'Hello World!'
-                                });
-
-                                var iconBase = '/static/torchbox/images/map_icon.png';
-                                var myLatlng = new google.maps.LatLng(51.858469,-1.480863);
-                                var marker = new google.maps.Marker({
-                                    position: myLatlng,
-                                    map: map,
-                                    icon: iconBase,
-                                    title: 'Hello World!'
-                                });
-
-                            }
+        }
         </script>
+        <!-- MAP END -->
 
-            <!-- MAP END -->
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="static/torchbox/css/main.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/torchbox/css/main.css">
 </head>
 
 <body>
-
-
-    <div id="map" style="height: 100%; width: 100%; top: 0px; margin:0; padding:0;">
-    </div>
-
+    <div id="map" style="height: 100%; width: 100%; top: 0px; margin:0; padding:0;"></div>
 </body>
 </html>
 
 
-   
+

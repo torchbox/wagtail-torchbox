@@ -5,48 +5,45 @@
 {% if self.main_image %}
     {% image self.main_image fill-1300x750 as header_image %}
     <style>
-    .heading {
-        background-image: url('{{ header_image.url }}');
-    }
+        .heading {
+            background-image: url('{{ header_image.url }}');
+        }
     </style>
 {% endif %}
-        <div class="heading">
-            {{ self.heading|richtext }}
+    <div class="heading">
+        {{ self.heading|richtext }}
+    </div>
+
+    <div class="italic">
+        <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
+    </div>
+
+    <section class="intro were-tbx container">
+        {{ self.intro|richtext }}
+    </section>
+
+    <div class="quote">
+        <div class="dark">
+            {{ self.middle_break|richtext }}
+        </div>
+    </div>
+
+    <section class="intro were-tbx container">
+
+        {{ self.body|richtext }}
+
+        <div class="clients">
+             <h2 class="play-no">Some of our clients</h2>
+             <h2 class="tbx-no">We're proud to have worked with</h2>
+                <ul>
+                    {% for client in self.clients.all %}
+                        <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
+                    {% endfor %}
+                </ul>
         </div>
 
-        <div class="italic">
-            <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
+        <div class="button play-no">
+            <a href="mailto:{{ self.email }}">Get in touch</a>
         </div>
-
-        <section class="intro were-tbx container">
-
-          {{ self.intro|richtext }}
-
-        </section>
-
-        <div class="quote">
-            <div class="dark">
-                {{ self.middle_break|richtext }}
-            </div>
-        </div>
-
-        <section class="intro were-tbx container">
-
-            {{ self.body|richtext }}
-
-            <div class="clients">
-                 <h2 class="play-no">Some of our clients</h2>
-                 <h2 class="tbx-no">We're proud to have worked with</h2>
-                    <ul>
-                        {% for client in self.clients.all %}
-                            <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
-                        {% endfor %}
-                    </ul>
-            </div>
-
-                <div class="button play-no">
-                    <a href="mailto:{{ self.email }}">Get in touch</a>
-                </div>
-        </section>
-
+    </section>
 {% endblock %}
