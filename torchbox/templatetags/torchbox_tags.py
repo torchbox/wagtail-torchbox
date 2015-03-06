@@ -20,12 +20,18 @@ def get_googe_maps_key():
 
 @register.assignment_tag
 def get_next_sibling_by_order(page):
-    return page.get_next_siblings().live().first()
+    sibling = page.get_next_siblings().live().first()
+
+    if sibling:
+        return sibling.specific
 
 
 @register.assignment_tag
 def get_prev_sibling_by_order(page):
-    return page.get_prev_siblings().live().first()
+    sibling = page.get_prev_siblings().live().first()
+
+    if sibling:
+        return sibling.specific
 
 
 @register.assignment_tag
