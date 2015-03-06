@@ -1,6 +1,6 @@
 Django==1.7.4
 psycopg2==2.5.4
-git+git://github.com/torchbox/wagtail.git@b2372c878719bc1927d48b38e107fe18b44275ee#egg=wagtail
+git+git://github.com/torchbox/wagtail.git@920ce81182467a9b6d11114256cf1c450cdc3d2e#egg=wagtail
 
 # Development requirements
 django-debug-toolbar==1.2.2
