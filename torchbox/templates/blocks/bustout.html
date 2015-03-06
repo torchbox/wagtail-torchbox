@@ -1,0 +1,7 @@
+{% load wagtailimages_tags %}
+<div class="bustout">
+    {% image self.image width-1280 as blockimage %}
+    <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
+
+    {{ self.text }}
+</div>

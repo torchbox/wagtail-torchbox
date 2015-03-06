@@ -1,4 +1,7 @@
+from __future__ import unicode_literals
+
 from datetime import date
+from django import forms
 
 from django.db import models
 from django.db.models.signals import pre_delete
@@ -8,9 +11,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
-    InlinePanel, PageChooserPanel
+    InlinePanel, PageChooserPanel, StreamFieldPanel
+from wagtail.wagtailadmin.blocks import ChooserBlock, StructBlock, ListBlock, \
+    StreamBlock, FieldBlock, CharBlock, RichTextBlock, PageChooserBlock, RawHTMLBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
@@ -195,6 +201,66 @@ class TorchboxRendition(AbstractRendition):
 def rendition_delete(sender, instance, **kwargs):
     # Pass false so FileField doesn't save the model.
     instance.file.delete(False)
+
+#
+# StreamField blocks
+#
+# @TODO StatsBlock. Probably as a ListBlock of CharBlocks
+
+class ImageFormatChoiceBlock(FieldBlock):
+    field = forms.ChoiceField(choices=(
+        ('left','Wrap left'),
+        ('right','Wrap right'),
+        ('half','Half width'),
+        ('full','Full width'),
+    ))
+
+
+class ImageBlock(StructBlock):
+    image = ImageChooserBlock()
+    alignment = ImageFormatChoiceBlock()
+    caption = CharBlock()
+    attribution = CharBlock(required=False)
+
+    class Meta:
+        template = "blocks/image.html"
+        icon = "image"
+
+class PhotoGridBlock(StructBlock):
+    images = ListBlock(ImageChooserBlock())
+
+    class Meta:
+        template = "block/photogrid.html"
+        icon = "grip"
+
+class PullQuoteBlock(StructBlock):
+    quote = CharBlock(classname="quote title")
+    attribution = CharBlock()
+
+    class Meta:
+        icon = "openquote"
+
+
+class PullQuoteImageBlock(StructBlock):
+    quote = CharBlock()
+    attribution = CharBlock()
+    image = ImageChooserBlock(required=False)
+
+
+class BustoutBlock(StructBlock):
+    image = ImageChooserBlock()
+    text = CharBlock()
+
+    class Meta:
+        template = "blocks/bustout.html"
+        icon = "pick"
+
+
+class StatsBlock(StructBlock):
+    pass
+
+    class Meta:
+        icon = "order"
 
 
 class HomePage(Page):
@@ -610,6 +676,22 @@ class WorkPage(Page):
         related_name='+'
     )
 
+    streamfield = StreamField([
+        ('h2', CharBlock(icon="title", classname="title", template="blocks/h2.html")),
+        ('h3', CharBlock(icon="title", classname="title")),
+        ('h4', CharBlock(icon="title", classname="title")),
+        ('intro', RichTextBlock(icon="pilcrow")),
+        ('paragraph', RichTextBlock(icon="pilcrow")),
+        ('aligned_image', ImageBlock(label="Aligned image")),
+        ('photogrid', PhotoGridBlock()),
+        ('bustout', BustoutBlock()),
+        ('pullquote', PullQuoteBlock()),
+        ('testimonial', PullQuoteImageBlock(label="Testimonial", icon="group")),
+        ('stats', StatsBlock()),
+        ('raw_html', RawHTMLBlock(label='Raw HTML', icon="code")),
+    ])
+
+
     @property
     def work_index(self):
         # Find work index in ancestors
@@ -626,6 +708,7 @@ WorkPage.content_panels = [
     FieldPanel('summary'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
+    StreamFieldPanel('streamfield'),
     ImageChooserPanel('homepage_image'),
     InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
     InlinePanel(BlogPage, 'tags', label="Tags"),

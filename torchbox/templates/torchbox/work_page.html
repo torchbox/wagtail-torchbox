@@ -74,6 +74,32 @@
         </div>
     </section>
 
+    <section class="body-copy container stream-field height">
+        {% for child in self.streamfield %}
+            {% if child.block_type == 'h3' %}
+                <h3>{{ child }}</h3>
+            {% elif child.block_type == 'h4' %}
+                <h4>{{ child }}</h4>
+            {% elif child.block_type == 'intro' %}
+                <div class="intro drop-cap">{{ child }}</div>
+            {% elif child.block_type == 'image' %}
+                {% image child.value width-200 %}
+            {% elif child.block_type == 'pullquote' %}
+                <blockquote>
+                    {{ child.value.quote }}
+                    <span>- {{ child.value.attribution }}</span>
+                </blockquote>
+            {% elif child.block_type == 'testimonial' %}
+                <div class="pull-quote">
+                    {{ child.value.quote }}
+                    <cite>{{ child.value.attribution }}</cite>
+                </div>
+            {% else %}
+                {{ child }}
+            {% endif %}
+        {% endfor %}
+    </section>
+
     <section class="body-copy container height">
         <p class="drop-cap">Seven years after our original redevelopment of www.ox.ac.uk in RationalMedia, the University of Oxford commissioned us to take another look at their site and rebuild it in Drupal. They wanted a fresh and responsive design that could handle heavy traffic (over 40,000 unique visits a day) and, most importantly, a site to reflect their global standing as a centre of excellence.</p>
 
@@ -98,7 +124,7 @@
             <img src="/static/torchbox/images/Bodleian.jpg">
             <div class="bustout-text">
                 <h2>Immersion</h2>
-                <p> As soon as the discovery phase was completed, our design team grabbed their cameras and headed to the city of dreaming spires for an immersion day. The Oxford team gave them a wonderful tour giving them a great snapshot of university life. They even managed to squeeze in some places not normally on show, such as a private tour of the Brasenose College Senior Common Room and the underground passages of the Bodleian library. </p> 
+                <p> As soon as the discovery phase was completed, our design team grabbed their cameras and headed to the city of dreaming spires for an immersion day. The Oxford team gave them a wonderful tour giving them a great snapshot of university life. They even managed to squeeze in some places not normally on show, such as a private tour of the Brasenose College Senior Common Room and the underground passages of the Bodleian library. </p>
             </div>
         </div>
 
