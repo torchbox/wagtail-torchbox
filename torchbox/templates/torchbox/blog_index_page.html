@@ -6,7 +6,11 @@
     {% get_popular_tags self as poptags %}
 
     <div class= "crop-height">
+    {% if self|in_play %}
+        <img class="scale" src="/static/torchbox/images/play_blog.jpg" width="" height="" alt="">
+    {% else %}
         <img class="scale" src="/static/torchbox/images/blog_placeholder2.jpg" width="" height="" alt="">
+    {% endif %}
     </div>
 
     <div class="hero container">
@@ -16,10 +20,7 @@
     </div>
 
     <section class="blog">
-
-        <div class="dropdown">
-            Tags
-        </div>
+        <div class="dropdown">Tags</div>
 
         <div class="popular-tags">
             {% if poptags %}
@@ -47,19 +48,15 @@
         </div>
 
         <div id="listing">
-
             {% include "torchbox/includes/blog_listing.html" %}
-
         </div>
 
     </section>
-
-
 {% endblock %}
 
 {% block extra_js %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
-    
+
     {% compress js %}
         <script>
             //global var for current_page set here so that it can be used by the script being called
