@@ -134,4 +134,7 @@ $(function() {
             });
         });
     });
+    
+    //featherlight used for lightboxes in streamfield-enabled pages
+    $('.gallery').featherlightGallery();
 });

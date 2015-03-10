@@ -223,14 +223,12 @@ class ImageBlock(StructBlock):
     attribution = CharBlock(required=False)
 
     class Meta:
-        template = "blocks/image.html"
         icon = "image"
 
 class PhotoGridBlock(StructBlock):
     images = ListBlock(ImageChooserBlock())
 
     class Meta:
-        template = "block/photogrid.html"
         icon = "grip"
 
 class PullQuoteBlock(StructBlock):
@@ -252,7 +250,6 @@ class BustoutBlock(StructBlock):
     text = CharBlock()
 
     class Meta:
-        template = "blocks/bustout.html"
         icon = "pick"
 
 
@@ -677,7 +674,7 @@ class WorkPage(Page):
     )
 
     streamfield = StreamField([
-        ('h2', CharBlock(icon="title", classname="title", template="blocks/h2.html")),
+        ('h2', CharBlock(icon="title", classname="title")),
         ('h3', CharBlock(icon="title", classname="title")),
         ('h4', CharBlock(icon="title", classname="title")),
         ('intro', RichTextBlock(icon="pilcrow")),

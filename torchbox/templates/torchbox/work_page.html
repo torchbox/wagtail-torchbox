@@ -76,14 +76,14 @@
 
     <section class="body-copy container stream-field height">
         {% for child in self.streamfield %}
-            {% if child.block_type == 'h3' %}
+            {% if child.block_type == 'h2' %}
+                <h2>{{ child }}</h2>
+            {% elif child.block_type == 'h3' %}
                 <h3>{{ child }}</h3>
             {% elif child.block_type == 'h4' %}
                 <h4>{{ child }}</h4>
             {% elif child.block_type == 'intro' %}
                 <div class="intro drop-cap">{{ child }}</div>
-            {% elif child.block_type == 'image' %}
-                {% image child.value width-200 %}
             {% elif child.block_type == 'pullquote' %}
                 <blockquote>
                     {{ child.value.quote }}
@@ -94,12 +94,34 @@
                     {{ child.value.quote }}
                     <cite>{{ child.value.attribution }}</cite>
                 </div>
+            {% elif child.block_type == 'bustout' %}
+                <div class="bustout">
+                    {% image child.value.image width-1280 as blockimage %}
+                    <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
+
+                    {{ child.value.text }}
+                </div>
+            {% elif child.block_type == 'aligned_image' %}
+                <div class="{% if child.value.alignment == "left" or child.value.alignment == "right" %}align-{{ child.value.alignment }}{% else %}{{ child.value.alignment }}-width{% endif %}">
+                    <div class="img-holder">
+                        {% image child.value.image width-1280 as blockimage %}
+                        <div {% if child.value.attribution %}class="img-credit"{% endif %}>
+                            <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
+                            <p class="credit">{{ child.value.attribution }}</p>
+                        </div>
+
+                        {% if child.value.caption %}
+                            <p>{{ child.value.caption }}</p>
+                        {% endif %}
+                    </div>
+                </div>
             {% else %}
                 {{ child }}
             {% endif %}
         {% endfor %}
     </section>
 
+    <!--
     <section class="body-copy container height">
         <p class="drop-cap">Seven years after our original redevelopment of www.ox.ac.uk in RationalMedia, the University of Oxford commissioned us to take another look at their site and rebuild it in Drupal. They wanted a fresh and responsive design that could handle heavy traffic (over 40,000 unique visits a day) and, most importantly, a site to reflect their global standing as a centre of excellence.</p>
 
@@ -197,15 +219,16 @@
         <p>An ambitious task - but luckily, we love a challenge. We’re long-term partners with Oxford and quite frankly we were thrilled to have a second opportunity to build their site from the ground up.</p>
     </section>
 
-        <!--<div class="full-width screengrab">
-            <div class="laptop-container">
-                <img src="/static/torchbox/images/ox-sml.png">
-                <div class="laptop">
-                    <img src="/static/torchbox/images/laptop.png">
-                </div>
+
+   <div class="full-width screengrab">
+        <div class="laptop-container">
+            <img src="/static/torchbox/images/ox-sml.png">
+            <div class="laptop">
+                <img src="/static/torchbox/images/laptop.png">
             </div>
-            <p> The University of Oxford homepage. Their website is used by everyone from top level staff to prospective students, and for a university like Oxford that means there are a lot of stakeholders. </p>
-        </div> -->
+        </div>
+        <p> The University of Oxford homepage. Their website is used by everyone from top level staff to prospective students, and for a university like Oxford that means there are a lot of stakeholders. </p>
+    </div>
 
     <section class="body-copy container height">
         <h5>The audience</h5>
@@ -246,6 +269,7 @@
         <p>“The team at Torchbox are passionate, smart and fun. They went out of their way to make the whole experience an absolute pleasure from start to finish." </p>
         <cite> – University of Oxford, Keith Gill</cite>
     </div>
+     -->
 
 </main>
 

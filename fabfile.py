@@ -24,7 +24,7 @@ env.roledefs = {
 PROJECT = "wagtail-torchbox"
 STAGING_DB_USERNAME = "tbxwagtail"
 LIVE_DB_USERNAME = "tbxwagtail"
-DB_NAME = "wagtail-torchbox"
+DB_NAME = "torchbox"
 LOCAL_DUMP_PATH = "~/"
 REMOTE_DUMP_PATH = "~/"
 
@@ -66,13 +66,13 @@ def pull_live_data():
     get("%s.gz" % remote_path, "%s.gz" % local_path)
     run('rm %s.gz' % remote_path)
 
-    local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
+    local('pg_dump -xOf %s %s' % (local_db_backup_path, DB_NAME))
     puts('Previous local database backed up to %s' % local_db_backup_path)
 
-    local('dropdb -Upostgres %s' % DB_NAME)
-    local('createdb -Upostgres %s' % DB_NAME)
+    local('dropdb  %s' % DB_NAME)
+    local('createdb %s' % DB_NAME)
     local('gunzip %s.gz' % local_path)
-    local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
+    local('psql %s -f %s' % (DB_NAME, local_path))
     local('rm %s' % local_path)
 
 @roles('staging')
@@ -87,13 +87,13 @@ def pull_staging_data():
     get("%s.gz" % remote_path, "%s.gz" % local_path)
     run('rm %s.gz' % remote_path)
 
-    local('pg_dump -Upostgres -xOf %s %s' % (local_db_backup_path, DB_NAME))
+    local('pg_dump -xOf %s %s' % (local_db_backup_path, DB_NAME))
     puts('Previous local database backed up to %s' % local_db_backup_path)
 
-    local('dropdb -Upostgres %s' % DB_NAME)
-    local('createdb -Upostgres %s' % DB_NAME)
+    local('dropdb  %s' % DB_NAME)
+    local('createdb  %s' % DB_NAME)
     local('gunzip %s.gz' % local_path)
-    local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
+    local('psql %s -f %s' % (DB_NAME, local_path))
     local ('rm %s' % local_path)
 
 
