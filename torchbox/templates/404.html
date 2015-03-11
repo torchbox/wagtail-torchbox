@@ -6,7 +6,7 @@
            /* play styling goes here */
             .page-standardpage {
                 padding-bottom:12vh; 
-                background:url('/static/torchbox/images/404.jpg');
+                background:url('/static/torchbox/images/ref-02.jpg');
                 background-position: center center;
                 background-repeat: no-repeat;
                 -webkit-background-size: cover;
@@ -40,6 +40,17 @@
                 background: transparent;
                 font-size: 1.1em;
             }
+            .credit {
+                display: block;
+                background: rgba(0,0,0,0.3);
+                padding: 0.5em 1em;
+                right: 0;
+                color: #fff;
+                position: absolute;
+                bottom: 0;
+                margin: 0;
+                border-radius: 3px 0 0 0;
+            }
             @media only screen and (min-width: 45em) {
                 .bg {
                     width:70%;
@@ -63,7 +74,6 @@
         .page-standardpage .intro p {
             text-align: center;
         }
-
         @media only screen and (min-width: 45em) {
             .page-standardpage {
                 padding: 8em 2em;
@@ -79,7 +89,7 @@
             <div class="top-top">
                 <div class="bg">
                     <div class="heading">
-                        <h2>Looks like you've taken a tumble! Yellow card for simulation</h2>
+                        <h2>Looks like you've taken a tumble! Yellow card for simulation!</h2>
                     </div>
                     <div class="were-tbx intro">
                     <p>Actually it's likely you followed an out of date link, typed something wrong, or have a bookmark to a page that no longer exists. So please don't fret, card rescinded.</p>
@@ -87,6 +97,7 @@
                     </div>
                 </div>
             </div>
+            <p class="credit">Photo by DSanchez17</p>
         </div>
     {% else %}
         <div class="page-standardpage">
