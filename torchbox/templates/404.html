@@ -4,6 +4,47 @@
     {% if "/play/" in request_path %}
         <style>
            /* play styling goes here */
+            .page-standardpage {
+                padding-bottom:12vh; 
+                background:url('/static/torchbox/images/404.jpg');
+                background-position: center center;
+                background-repeat: no-repeat;
+                -webkit-background-size: cover;
+                margin-top:-20em;
+                background-attachment: fixed;
+            }
+            .top-top{
+                padding: 38vh 0 0 0;
+            }
+            .bg {
+                background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 100%);
+                background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0.25)), color-stop(75%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0)));
+                background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 100%);
+                background: -o-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 100%);
+                background: -ms-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 100%);
+                background: radial-gradient(ellipse at center,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#38000000', endColorstr='#00000000',GradientType=1 );
+                padding:2em 0 0.25em 0;
+                width:95%;
+                margin: 0 auto;
+            }
+            .page-standardpage.page-standardpage .heading{
+                padding: 0;
+            }
+            .heading h2 {
+                text-align: center;
+            }
+            .page-standardpage .were-tbx {
+                text-align: center;
+                color: #fff;
+                background: transparent;
+                font-size: 1.1em;
+            }
+            @media only screen and (min-width: 45em) {
+                .bg {
+                    width:70%;
+                }
+            }
         </style>
     {% else %}
         <style>
@@ -34,7 +75,19 @@
 
 {% block content %}
     {% if "/play/" in request_path %}
-        play 404 message goes here
+        <div class="page-standardpage">
+            <div class="top-top">
+                <div class="bg">
+                    <div class="heading">
+                        <h2>Looks like you've taken a tumble! Yellow card for simulation</h2>
+                    </div>
+                    <div class="were-tbx intro">
+                    <p>Actually it's likely you followed an out of date link, typed something wrong, or have a bookmark to a page that no longer exists. So please don't fret, card rescinded.</p>
+                    <p>One of the links above will find you on your way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% else %}
         <div class="page-standardpage">
             <div class="heading">
