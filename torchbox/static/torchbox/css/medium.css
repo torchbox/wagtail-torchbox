@@ -1934,10 +1934,12 @@
 }
 
 
+/* ==========================================================================
+    STREAM FIELD STYLES
+   ========================================================================== */
+
 @media only screen and (min-width: 45em) {
-    /* ==========================================================================
-       STEAM FIELD STYLES
-    ========================================================================== */
+  
     .pull-quote {
         padding: 3em;
     }
@@ -2027,48 +2029,49 @@
         overflow: hidden;
      }
 
-    .bustout-text {
-        padding: 2em;
-        width: 60%;
-        float: right;
-        font-size: 1.25em;
-        background: #434a4f;
-        z-index: 1;
-        position: relative;
-        margin: 0;
+        .bustout-text {
+            padding: 2em;
+            width: 60%;
+            float: right;
+            font-size: 1.25em;
+            background: #434a4f;
+            z-index: 1;
+            position: relative;
+            margin: 0;
+        }
+
+        .bustout img {
+            float: left;
+            width: 100%;
+            position: absolute;
+        }
+
+    .img-holder p{
+        font-size: 0.9em;
     }
 
-    .bustout img {
-        float: left;
-        width: 100%;
-        position: absolute;
-    }
-
-    .align-right .img-holder {
-        position: absolute;
+    .align-right .img-holder,
+    .align-left .img-holder{
         max-width: 40%;
-        top: 1em;
-        right: -2em;
     }
 
-    .align-right p {
-        max-width: 60%;
-    }
+        .align-right .img-holder {
+            float:right;
+            margin-left:2em;
+        }
+        .align-left .img-holder {
+            float:left;
+            margin-right:2em;
+        }
 
-    .align-left .img-holder {
-        position: absolute;
-        max-width: 40%;
-        top: 1em;
-        left: -2em;
-    }
 
-    .align-left .img-holder .credit, .align-right .img-holder .credit {
+        .align-left p {
+            text-align:right;
+        }
+  
+    .align-left .img-holder .credit, 
+    .align-right .img-holder .credit {
         max-width: 100%;
-    }
-
-    .align-left p {
-        max-width: 60%;
-        margin-left: 40%;
     }
 
     .full-width {
@@ -2107,19 +2110,18 @@
         width: 40%;
         position: relative;
     }
-
-    .bustout-text {
-        padding: 2em;
-        width: 60%;
-        float: left;
-        font-size: 1.25em;
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        left: 40%;
-    }
+        .bustout-text {
+            padding: 2em;
+            width: 60%;
+            float: left;
+            font-size: 1.25em;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: 40%;
+        }
 }
 
 @media only screen and (min-width: 1250px) {
@@ -2134,28 +2136,26 @@
         font-size: 1.35em;
     }
 
-    .align-right .img-holder {
-        position: absolute;
-        max-width: 40%;
-        top: 1em;
-        right: -12em;
-    }
 
-    .align-right p {
+
+    .align-right .img-holder,
+    .align-left .img-holder{
+        max-width: 40%;
+    }
+        .align-right .img-holder {
+            margin-right: -12em;
+        }
+        .align-left .img-holder {
+            margin-left: -12em;
+        }
+
+    .align-right p,
+    .align-left p{
         max-width: 80%;
     }
-
-    .align-left .img-holder {
-        position: absolute;
-        max-width: 40%;
-        top: 1em;
-        left: -12em;
-    }
-
-    .align-left p {
-        max-width: 80%;
-        margin-left: 20%;
-    }
+        .align-left p {
+            margin-left: 20%;
+        }
 
     /*
     .laptop {

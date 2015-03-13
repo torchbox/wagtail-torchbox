@@ -247,7 +247,7 @@ class PullQuoteImageBlock(StructBlock):
 
 class BustoutBlock(StructBlock):
     image = ImageChooserBlock()
-    text = CharBlock()
+    text = RichTextBlock()
 
     class Meta:
         icon = "pick"
@@ -683,7 +683,7 @@ class WorkPage(Page):
         ('photogrid', PhotoGridBlock()),
         ('bustout', BustoutBlock()),
         ('pullquote', PullQuoteBlock()),
-        ('testimonial', PullQuoteImageBlock(label="Testimonial", icon="group")),
+        # ('testimonial', PullQuoteImageBlock(label="Testimonial", icon="group")),
         ('stats', StatsBlock()),
         ('raw_html', RawHTMLBlock(label='Raw HTML', icon="code")),
     ])

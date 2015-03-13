@@ -34,5 +34,7 @@ LOGGING = {
     }
 }
 
-#COMPRESS_OFFLINE = False
-#COMPRESS_ENABLED = False
+try:
+    from .local import *
+except ImportError:
+    pass

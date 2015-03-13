@@ -1823,11 +1823,6 @@ a.tooltip span{
     padding: 0em;
     margin-top: -4.5em;
 }
-
-.height .rich-text p {
-    margin-top: 0;
-}
-
 .page-workpage .intro .body-copy {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -2494,10 +2489,16 @@ footer .tel {
 }
 
 /* ==========================================================================
-   STEAM FIELD STYLES
-========================================================================== */
+    STREAM FIELD STYLES
+   ========================================================================== */
 
-.drop-cap:first-child:first-letter {
+.stream-field .bustout,
+.stream-field .pull-quote,
+.stream-field .full-width{
+    max-width:none;
+}
+
+.drop-cap .rich-text:first-child:first-letter {
     float: left;
     margin: 0.35em 0em;
     font-size: 3.4em;
@@ -2512,27 +2513,23 @@ footer .tel {
 .bustout {
     background: #434a4f;
     color: #fff;
-    font-size: 1.2em;
     margin: 0;
     padding: 0;
 }
-
-.bustout-text {
-    width: 100%;
-    padding: 1em;
-}
-
-.bustout h2 {
-    font-size: 1.2em;
-    font-weight: bold;
-    font-family: "adelle",serif;
-}
-
-.bustout p {
-    font-family: "adelle",serif;
-    font-style: italic;
-    font-size: 0.9em;
-}
+    .bustout-text {
+        width: 100%;
+        padding: 1em;
+    }
+        .bustout h2 {
+            font-size: 1.2em;
+            font-weight: bold;
+            font-family: "adelle",serif;
+        }
+        .bustout p {
+            font-family: "adelle",serif;
+            font-style: italic;
+            font-size: 0.9em;
+        }
 
 .pull-quote {
     padding: 2em 1em;
@@ -2553,63 +2550,29 @@ footer .tel {
     font-size: 0.8em;
 }
 
-.align-right {
-    position: relative;
+.img-holder{
+    position:relative;
 }
-
-.align-right .img-holder {
-    position: relative;
-}
-
-.align-right .img-holder img {
-    border-radius: 3px;
-}
-
-.align-right .img-holder p {
-    margin: 0;
-    font-size: 0.75em;
-    max-width: 100%;
-    font-family: "adelle",serif;
-}
-
-.align-right .img-holder .credit {
-    border-radius: 0 0 3px 3px;
-    position: absolute;
-    margin: 0;
-    font-size: 0.8em;
-    padding: 0.3em 0.5em;
-    background: rgba(0,0,0,0.7);
-    color: #fff;
-    bottom: 9px;
-    left: 0;
-    font-style: italic;
-    display: block;
-    font-family: 'proxima-nova', helvetica, sans-serif;
-}
-
-.align-left {
-    position: relative;
-}
-
-.align-left .img-holder {
-    position: relative;
-}
-
-.align-left .img-holder img {
-    border-radius: 3px;
-}
-
-.align-left .img-holder p {
-    margin: 0;
-    font-size: 0.75em;
-    max-width: 100%;
-    font-family: "adelle",serif;
-}
+    .img-holder img{
+        display:block;
+    }
+    .img-holder p{
+        margin: 0;
+        font-size: 0.75em;
+        max-width: 100%;
+        font-family: "adelle",serif;
+    }
 
 .img-credit {
     position: relative;
 }
 
+.align-right .img-holder img,
+.align-left .img-holder img  {
+    border-radius: 3px;
+}
+
+.align-right .img-holder .credit,
 .align-left .img-holder .credit {
     border-radius: 0 0 3px 3px;
     position: absolute;
@@ -2618,11 +2581,30 @@ footer .tel {
     padding: 0.3em 0.5em;
     background: rgba(0,0,0,0.7);
     color: #fff;
-    bottom: 9px;
+    bottom: 0;
     left: 0;
     font-style: italic;
     display: block;
     font-family: 'proxima-nova', helvetica, sans-serif;
+}
+
+.full-width p,
+.half-width p{
+    text-align:center;
+}
+
+.full-width .credit {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 0.8em 1em 0.6em;
+    max-width: 750px;
+    font-family: "adelle",serif;
+    text-align: center;
 }
 
 .screen-grab {
@@ -2630,20 +2612,19 @@ footer .tel {
     text-align: center;
     padding: 2em 0 1em;
 }
+    .screen-grab img {
+        width: 100%;
+        margin-bottom: 0;
+        display: block;
+    }
 
-.screen-grab img {
-    width: 100%;
-    margin-bottom: 0;
-    display: block;
-}
-
-.screen-grab p {
-    text-align: left;
-    color: #fff;
-    padding: 1em 0 1em 1em;
-    margin: 0;
-    font-family: "adelle",serif;
-}
+    .screen-grab p {
+        text-align: left;
+        color: #fff;
+        padding: 1em 0 1em 1em;
+        margin: 0;
+        font-family: "adelle",serif;
+    }
 
 .img-grid a {
     display: block;
@@ -2766,24 +2747,6 @@ h4 ~ .stat {
     font-size: 1.25em;
     margin: 0;
     padding: 1em;
-}
-
-.full-width {
-    position: relative;
-}
-
-.full-width p {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    padding: 0.8em 1em 0.6em;
-    max-width: 750px;
-    font-family: "adelle",serif;
-    text-align: center;
 }
 
 /* 
