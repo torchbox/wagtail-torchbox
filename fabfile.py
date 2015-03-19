@@ -94,7 +94,7 @@ def pull_staging_data():
     local('createdb -Upostgres %s' % DB_NAME)
     local('gunzip %s.gz' % local_path)
     local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
-    local ('rm %s' % local_path)
+    local('rm %s' % local_path)
 
 
 @roles('staging')
