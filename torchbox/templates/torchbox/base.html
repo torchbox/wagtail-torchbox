@@ -37,7 +37,7 @@
         {% endcompress %}
 
         {% if self %}
-            {% if self|in_play %}
+            {% if self|in_play or play_404 %}
                 <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
             {% else %}
                 <link rel="alternate" type="application/rss+xml" title="Torchbox Blog RSS" href="{% url 'blog_feed' %}" />
@@ -75,7 +75,7 @@
     <div class="footer-cover no-tbx"> </div>
 
     <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
-       {% if self|in_play %}
+       {% if self|in_play or play_404 %}
            <!-- Google Tag Manager -->
            <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PW5C2L"
                              height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -101,9 +101,9 @@
                 <div class="contact container listing">
                     <h2>Say hello</h2>
                     <ul class="footerbleed">
-                        <li><a href="mailto:{% if self|in_play %}play{% else %}hello{% endif %}@torchbox.com"><i class="icon-mail"></i><span>{% if self|in_play %}play{% else %}hello{% endif %}@torchbox.com</span></a></li>
+                        <li><a href="mailto:{% if self|in_play or play_404 %}play{% else %}hello{% endif %}@torchbox.com"><i class="icon-mail"></i><span>{% if self|in_play or play_404 %}play{% else %}hello{% endif %}@torchbox.com</span></a></li>
                         <li><a href="tel:+441608811870"><i class="icon-phone"></i><span>+44 (0) 1608 811870</span></a></li>
-                        <li><a href="https://twitter.com/{% if self|in_play %}playsays{% else %}torchbox{% endif %}"><i class="icon-twitter"></i><span>{% if self|in_play %}@PlaySays{% else %}@torchbox{% endif %}</span></a></li>
+                        <li><a href="https://twitter.com/{% if self|in_play or play_404 %}playsays{% else %}torchbox{% endif %}"><i class="icon-twitter"></i><span>{% if self|in_play or play_404 %}@PlaySays{% else %}@torchbox{% endif %}</span></a></li>
                     </ul>
                 </div>
 
