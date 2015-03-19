@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['localhost']
 ALLOWED_HOSTS = ['*']
 

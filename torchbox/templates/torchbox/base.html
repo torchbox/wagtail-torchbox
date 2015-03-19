@@ -36,12 +36,10 @@
             <link rel="stylesheet" href="{% static "torchbox/css/animate.css" %}">
         {% endcompress %}
 
-        {% if self %}
-            {% if self|in_play or play_404 %}
-                <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
-            {% else %}
-                <link rel="alternate" type="application/rss+xml" title="Torchbox Blog RSS" href="{% url 'blog_feed' %}" />
-            {% endif %}
+        {% if self|in_play or play_404 %}
+            <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
+        {% else %}
+            <link rel="alternate" type="application/rss+xml" title="Torchbox Blog RSS" href="{% url 'blog_feed' %}" />
         {% endif %}
 
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}" />
