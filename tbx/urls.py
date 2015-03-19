@@ -47,3 +47,5 @@ if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'torchbox.com/images/favicon.ico'))
     )
+
+handler404 = 'torchbox.views.error404'
