@@ -73,9 +73,10 @@ def top_menu(context, calling_page=None):
     """
     Checks to see if we're in the Play section in order to return pages with
     show_in_play_menu set to True, otherwise retrieves the top menu
-    items - the immediate children of the site root.
+    items - the immediate children of the site root. Also detects 404s in the
+    Play section.
     """
-    if calling_page and in_play(calling_page):
+    if (calling_page and in_play(calling_page)) or context.get('play_404', False):
         play_models = [
             StandardPage,
             PersonIndexPage,
