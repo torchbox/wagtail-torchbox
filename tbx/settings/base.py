@@ -5,7 +5,6 @@ import os
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
 DEBUG = False
-ALLOWED_HOSTS = ['localhost']
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
