@@ -79,11 +79,11 @@ class BustoutBlock(StructBlock):
         icon = "pick"
 
 
-# class StatsBlock(StructBlock):
-#     pass
+class StatsBlock(StructBlock):
+    pass
 
-#     class Meta:
-#         icon = "order"
+    class Meta:
+        icon = "order"
 
 
 class StoryBlock(StreamBlock):
@@ -93,10 +93,10 @@ class StoryBlock(StreamBlock):
     intro = RichTextBlock(icon="pilcrow")
     paragraph = RichTextBlock(icon="pilcrow")
     aligned_image = ImageBlock(label="Aligned image")
-    photogrid = PhotoGridBlock()
     bustout = BustoutBlock()
     pullquote = PullQuoteBlock()
     raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
+    # photogrid = PhotoGridBlock()
     # testimonial = PullQuoteImageBlock(label="Testimonial", icon="group")
     # stats = StatsBlock()
 
