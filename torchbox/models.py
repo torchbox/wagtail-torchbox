@@ -29,6 +29,78 @@ from taggit.models import Tag, TaggedItemBase
 
 from torchbox.utils import export_event
 
+### Streamfield blocks and config ###
+
+class ImageFormatChoiceBlock(FieldBlock):
+    field = forms.ChoiceField(choices=(
+        ('left','Wrap left'),
+        ('right','Wrap right'),
+        ('half','Half width'),
+        ('full','Full width'),
+    ))
+
+
+class ImageBlock(StructBlock):
+    image = ImageChooserBlock()
+    alignment = ImageFormatChoiceBlock()
+    caption = CharBlock()
+    attribution = CharBlock(required=False)
+
+    class Meta:
+        icon = "image"
+
+
+class PhotoGridBlock(StructBlock):
+    images = ListBlock(ImageChooserBlock())
+
+    class Meta:
+        icon = "grip"
+
+
+class PullQuoteBlock(StructBlock):
+    quote = CharBlock(classname="quote title")
+    attribution = CharBlock()
+
+    class Meta:
+        icon = "openquote"
+
+
+class PullQuoteImageBlock(StructBlock):
+    quote = CharBlock()
+    attribution = CharBlock()
+    image = ImageChooserBlock(required=False)
+
+
+class BustoutBlock(StructBlock):
+    image = ImageChooserBlock()
+    text = RichTextBlock()
+
+    class Meta:
+        icon = "pick"
+
+
+# class StatsBlock(StructBlock):
+#     pass
+
+#     class Meta:
+#         icon = "order"
+
+
+class StoryBlock(StreamBlock):
+    h2 = CharBlock(icon="title", classname="title")
+    h3 = CharBlock(icon="title", classname="title")
+    h4 = CharBlock(icon="title", classname="title")
+    intro = RichTextBlock(icon="pilcrow")
+    paragraph = RichTextBlock(icon="pilcrow")
+    aligned_image = ImageBlock(label="Aligned image")
+    photogrid = PhotoGridBlock()
+    bustout = BustoutBlock()
+    pullquote = PullQuoteBlock()
+    raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
+    # testimonial = PullQuoteImageBlock(label="Testimonial", icon="group")
+    # stats = StatsBlock()
+
+
 
 COMMON_PANELS = (
     FieldPanel('slug'),
@@ -202,63 +274,6 @@ def rendition_delete(sender, instance, **kwargs):
     # Pass false so FileField doesn't save the model.
     instance.file.delete(False)
 
-#
-# StreamField blocks
-#
-# @TODO StatsBlock. Probably as a ListBlock of CharBlocks
-
-class ImageFormatChoiceBlock(FieldBlock):
-    field = forms.ChoiceField(choices=(
-        ('left','Wrap left'),
-        ('right','Wrap right'),
-        ('half','Half width'),
-        ('full','Full width'),
-    ))
-
-
-class ImageBlock(StructBlock):
-    image = ImageChooserBlock()
-    alignment = ImageFormatChoiceBlock()
-    caption = CharBlock()
-    attribution = CharBlock(required=False)
-
-    class Meta:
-        icon = "image"
-
-class PhotoGridBlock(StructBlock):
-    images = ListBlock(ImageChooserBlock())
-
-    class Meta:
-        icon = "grip"
-
-class PullQuoteBlock(StructBlock):
-    quote = CharBlock(classname="quote title")
-    attribution = CharBlock()
-
-    class Meta:
-        icon = "openquote"
-
-
-class PullQuoteImageBlock(StructBlock):
-    quote = CharBlock()
-    attribution = CharBlock()
-    image = ImageChooserBlock(required=False)
-
-
-class BustoutBlock(StructBlock):
-    image = ImageChooserBlock()
-    text = RichTextBlock()
-
-    class Meta:
-        icon = "pick"
-
-
-class StatsBlock(StructBlock):
-    pass
-
-    class Meta:
-        icon = "order"
-
 
 class HomePage(Page):
     intro = models.TextField(blank=True)
@@ -326,6 +341,7 @@ class StandardPage(Page):
     intro = RichTextField(blank=True)
     middle_break = RichTextField(blank=True)
     body = RichTextField(blank=True)
+    streamfield = StreamField(StoryBlock())
     email = models.EmailField(blank=True)
 
     feed_image = models.ForeignKey(
@@ -350,6 +366,7 @@ StandardPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('middle_break', classname="full"),
     FieldPanel('body', classname="full"),
+    StreamFieldPanel('streamfield'),
     FieldPanel('email', classname="full"),
     InlinePanel(StandardPage, 'content_block', label="Content block"),
     InlinePanel(StandardPage, 'related_links', label="Related links"),
@@ -525,6 +542,7 @@ class BlogPageAuthor(Orderable):
 class BlogPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
+    streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
@@ -562,6 +580,7 @@ BlogPage.content_panels = [
     FieldPanel('date'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
+    StreamFieldPanel('streamfield'),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
     InlinePanel(BlogPage, 'tags', label="Tags")
 ]
@@ -673,21 +692,7 @@ class WorkPage(Page):
         related_name='+'
     )
 
-    streamfield = StreamField([
-        ('h2', CharBlock(icon="title", classname="title")),
-        ('h3', CharBlock(icon="title", classname="title")),
-        ('h4', CharBlock(icon="title", classname="title")),
-        ('intro', RichTextBlock(icon="pilcrow")),
-        ('paragraph', RichTextBlock(icon="pilcrow")),
-        ('aligned_image', ImageBlock(label="Aligned image")),
-        ('photogrid', PhotoGridBlock()),
-        ('bustout', BustoutBlock()),
-        ('pullquote', PullQuoteBlock()),
-        # ('testimonial', PullQuoteImageBlock(label="Testimonial", icon="group")),
-        ('stats', StatsBlock()),
-        ('raw_html', RawHTMLBlock(label='Raw HTML', icon="code")),
-    ])
-
+    streamfield = StreamField(StoryBlock())
 
     @property
     def work_index(self):
