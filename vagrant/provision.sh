@@ -2,8 +2,7 @@
 
 PROJECT_NAME=$1
 
-PROJECT_DIR=/home/vagrant/$PROJECT_NAME
-DJANGO_DIR=$PROJECT_DIR
+PROJECT_DIR=/vagrant
 VIRTUALENV_DIR=/home/vagrant/.virtualenvs/$PROJECT_NAME
 
 PYTHON=$VIRTUALENV_DIR/bin/python
@@ -11,29 +10,40 @@ PIP=$VIRTUALENV_DIR/bin/pip
 
 
 # Create database
-createdb -Upostgres wagtail-torchbox
+su - vagrant -c "createdb $PROJECT_NAME"
 
 
 # Virtualenv setup for project
-su - vagrant -c "/usr/local/bin/virtualenv $VIRTUALENV_DIR && \
-    echo $PROJECT_DIR > $VIRTUALENV_DIR/.project && \
-    PIP_DOWNLOAD_CACHE=/home/vagrant/.pip_download_cache $PIP install -r $PROJECT_DIR/requirements.txt"
+#su - vagrant -c "pyvenv $VIRTUALENV_DIR"
+# Replace previous line with this if you are using Python 2
+su - vagrant -c "/usr/local/bin/virtualenv $VIRTUALENV_DIR"
 
-echo "workon $PROJECT_NAME" >> /home/vagrant/.bashrc
+su - vagrant -c "echo $PROJECT_DIR > $VIRTUALENV_DIR/.project"
+
+
+# Install PIP requirements
+su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements.txt"
 
 
 # Set execute permissions on manage.py as they get lost if we build from a zip file
-chmod a+x $DJANGO_DIR/manage.py
-
+chmod a+x $PROJECT_DIR/manage.py
 
 # Run syncdb/migrate/update_index
-su - vagrant -c "$PYTHON $DJANGO_DIR/manage.py syncdb --noinput && \
-                 $PYTHON $DJANGO_DIR/manage.py migrate && \
-                 $PYTHON $DJANGO_DIR/manage.py update_index"
+su - vagrant -c "$PYTHON $PROJECT_DIR/manage.py migrate --noinput && \
+                 $PYTHON $PROJECT_DIR/manage.py update_index"
 
 
 # Add a couple of aliases to manage.py into .bashrc
 cat << EOF >> /home/vagrant/.bashrc
-alias dj="$PYTHON $DJANGO_DIR/manage.py"
+export PYTHONPATH=$PROJECT_DIR
+
+# DJANGO_SETTINGS_MODULE has to be changed from the template's usual value of "$PROJECT_NAME.settings.dev" due to the unique setup of torchbox.com's repo, which can't be restructed to our more modern methods without major migrations.
+export DJANGO_SETTINGS_MODULE=tbx.settings.dev 
+
+alias dj="django-admin"
 alias djrun="dj runserver 0.0.0.0:8000"
+
+source $VIRTUALENV_DIR/bin/activate
+export PS1="[$PROJECT_NAME \W]\\$ "
+cd $PROJECT_DIR
 EOF

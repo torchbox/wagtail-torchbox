@@ -7,37 +7,35 @@
 
 <main class="single">
 
-    <section>
-        {% with self.screenshots.all as screenshots %}
-            {% if screenshots %}
-                <ul>
-                    {% for screenshot in screenshots %}
-                        <li  class="img-wrapper">
-                            <div class="crop-height">
-                                {% image screenshot.image width-9999 as shot %}
-                                <img class="scale" src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+    {% with self.screenshots.all as screenshots %}
+        {% if screenshots %}
+            <ul>
+                {% for screenshot in screenshots %}
+                    <li  class="img-wrapper">
+                        <div class="crop-height">
+                            {% image screenshot.image width-9999 as shot %}
+                            <img class="scale" src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 
-        <div class="nextprev-nav">
-            {% if prev_page %}
-                <div class="nextprev prev">
-                    <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
-                </div>
-            {% endif %}
+    <div class="nextprev-nav">
+        {% if prev_page %}
+            <div class="nextprev prev">
+                <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
+            </div>
+        {% endif %}
 
-            {% if next_page %}
-                <div class="nextprev next play">
-                    <a href="{% pageurl next_page %}">{% image next_page.homepage_image fill-80x80 class="thumb" %} <span>{{ next_page.title }}</span></a>
-                </div>
-            {% endif %}
-        </div>
 
-    </section>
+        {% if next_page %}
+            <div class="nextprev next">
+                <a href="{% pageurl next_page %}">{% image next_page.homepage_image fill-80x80 class="thumb" %} <span>{{ next_page.title }}</span></a>
+            </div>
+        {% endif %}
+    </div>
 
     <section class="intro">
         <div class="container body-copy">
@@ -62,24 +60,24 @@
             </div>
 
             <section class="tags">
-            {% with self.tags.all as tags %}
-                {% if tags %}
-                    {% for tag in tags %}
-                        <a href="{% pageurl self.work_index %}?tag={{ tag.tag }}">{{ tag.tag }}</a>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </section>
-
+                {% with self.tags.all as tags %}
+                    {% if tags %}
+                        {% for tag in tags %}
+                            <a href="{% pageurl self.work_index %}?tag={{ tag.tag }}">{{ tag.tag }}</a>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </section>
         </div>
     </section>
 
-    <section class="body-copy container height">
-        {% if self.body %}
+    {% if self.body %}
+        <section class="body-copy container height">
             {{ self.body|richtext }}
-        {% endif %}
+        </section>
+    {% endif %}
 
-    </section>
+    {% include "torchbox/includes/streamfield.html" %}
 
 </main>
 

@@ -55,7 +55,11 @@
         {% if self.body %}
             {{ self.body|richtext }}
         {% endif %}
+    </section>
 
+    {% include "torchbox/includes/streamfield.html" %}
+
+    <section class="container body-copy">
         <div id="author" class="author clearfix" >
             {% with self.related_author.all as authors %}
                 {% if authors %}

@@ -25,7 +25,7 @@
         <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
         <meta property="og:site_name" content="Torchbox" />
 
-        {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
+        <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}" />
 
         {% compress css %}
             <link rel="stylesheet" href="{% static "torchbox/css/normalize.css" %}">
@@ -34,6 +34,9 @@
             <link rel="stylesheet" href="{% static "torchbox/css/large.css" %}">
             <link rel="stylesheet" href="{% static "torchbox/css/fontello.css" %}">
             <link rel="stylesheet" href="{% static "torchbox/css/animate.css" %}">
+
+            <link rel="stylesheet" href="{% static "torchbox/css/featherlight.min.css" %}">
+            <link rel="stylesheet" href="{% static "torchbox/css/featherlight.gallery.css" %}">
         {% endcompress %}
 
         {% if self|in_play or play_404 %}
@@ -41,14 +44,6 @@
         {% else %}
             <link rel="alternate" type="application/rss+xml" title="Torchbox Blog RSS" href="{% url 'blog_feed' %}" />
         {% endif %}
-
-        <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}" />
-
-        <!--[if lte IE 8]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-            <script src="{% static "torchbox/js/vendor/respond.js" %}""></script>
-            <link rel="stylesheet" type="text/css" href="{% static "torchbox/css/ie8.css" %}" />
-        <![endif]-->
 
         {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
 
@@ -69,21 +64,14 @@
             ga('send', 'pageview');
         </script>
     </head>
-
-    <div class="footer-cover no-tbx"> </div>
-
-    <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}"> {# Override body_class block to set custom body classes on a template by template basis #}
+    <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}">
        {% if self|in_play or play_404 %}
            <!-- Google Tag Manager -->
-           <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PW5C2L"
-                             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-           <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                                                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                                                                                                           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-               '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PW5C2L');</script>
+           <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PW5C2L" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+           <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PW5C2L');</script>
             <!-- End Google Tag Manager -->
         {% endif %}
+
         {% wagtailuserbar %} {# Don't delete this #}
 
         <header class="container">
@@ -158,6 +146,8 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
+        <script src="//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.gallery.min.js" type="text/javascript" charset="utf-8"></script>
 
         {% compress js %}
             <script src="{% static "torchbox/js/vendor/harvey.js" %}"></script>

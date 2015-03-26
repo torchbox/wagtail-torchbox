@@ -1,14 +1,17 @@
-Django==1.6.9
-South==1.0.2
+Django==1.7.4
 psycopg2==2.5.4
-wagtail==0.8.5
+git+git://github.com/torchbox/wagtail.git@3ff98a14c03bbc35cacaf5a42c3e17bee410ca97#egg=wagtail
+pillow==2.7.0
+django-libsass==0.2
 
 # Development requirements
 django-debug-toolbar==1.2.2
 Fabric==1.10.1
 
 # Production requirements
-django-celery==3.1.16
-django-redis-cache==0.13.0
+celery==3.1.17
+django-redis==3.8.2
 elasticsearch==1.3.0
 embedly==0.5.0
+redis==2.10.3
+
