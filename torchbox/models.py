@@ -1,4 +1,7 @@
+from __future__ import unicode_literals
+
 from datetime import date
+from django import forms
 
 from django.db import models
 from django.db.models.signals import pre_delete
@@ -8,9 +11,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
-    InlinePanel, PageChooserPanel
+    InlinePanel, PageChooserPanel, StreamFieldPanel
+from wagtail.wagtailadmin.blocks import ChooserBlock, StructBlock, ListBlock, \
+    StreamBlock, FieldBlock, CharBlock, RichTextBlock, PageChooserBlock, RawHTMLBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
@@ -22,6 +28,78 @@ from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
 
 from torchbox.utils import export_event
+
+### Streamfield blocks and config ###
+
+class ImageFormatChoiceBlock(FieldBlock):
+    field = forms.ChoiceField(choices=(
+        ('left','Wrap left'),
+        ('right','Wrap right'),
+        ('half','Half width'),
+        ('full','Full width'),
+    ))
+
+
+class ImageBlock(StructBlock):
+    image = ImageChooserBlock()
+    alignment = ImageFormatChoiceBlock()
+    caption = CharBlock()
+    attribution = CharBlock(required=False)
+
+    class Meta:
+        icon = "image"
+
+
+class PhotoGridBlock(StructBlock):
+    images = ListBlock(ImageChooserBlock())
+
+    class Meta:
+        icon = "grip"
+
+
+class PullQuoteBlock(StructBlock):
+    quote = CharBlock(classname="quote title")
+    attribution = CharBlock()
+
+    class Meta:
+        icon = "openquote"
+
+
+class PullQuoteImageBlock(StructBlock):
+    quote = CharBlock()
+    attribution = CharBlock()
+    image = ImageChooserBlock(required=False)
+
+
+class BustoutBlock(StructBlock):
+    image = ImageChooserBlock()
+    text = RichTextBlock()
+
+    class Meta:
+        icon = "pick"
+
+
+class StatsBlock(StructBlock):
+    pass
+
+    class Meta:
+        icon = "order"
+
+
+class StoryBlock(StreamBlock):
+    h2 = CharBlock(icon="title", classname="title")
+    h3 = CharBlock(icon="title", classname="title")
+    h4 = CharBlock(icon="title", classname="title")
+    intro = RichTextBlock(icon="pilcrow")
+    paragraph = RichTextBlock(icon="pilcrow")
+    aligned_image = ImageBlock(label="Aligned image")
+    bustout = BustoutBlock()
+    pullquote = PullQuoteBlock()
+    raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
+    # photogrid = PhotoGridBlock()
+    # testimonial = PullQuoteImageBlock(label="Testimonial", icon="group")
+    # stats = StatsBlock()
+
 
 
 COMMON_PANELS = (
@@ -260,9 +338,10 @@ class StandardPage(Page):
     credit = models.CharField(max_length=255, blank=True)
     heading = RichTextField(blank=True)
     quote = models.CharField(max_length=255, blank=True)
-    intro = RichTextField(blank=True)
+    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
     middle_break = RichTextField(blank=True)
-    body = RichTextField(blank=True)
+    body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
+    streamfield = StreamField(StoryBlock())
     email = models.EmailField(blank=True)
 
     feed_image = models.ForeignKey(
@@ -287,6 +366,7 @@ StandardPage.content_panels = [
     FieldPanel('intro', classname="full"),
     FieldPanel('middle_break', classname="full"),
     FieldPanel('body', classname="full"),
+    StreamFieldPanel('streamfield'),
     FieldPanel('email', classname="full"),
     InlinePanel(StandardPage, 'content_block', label="Content block"),
     InlinePanel(StandardPage, 'related_links', label="Related links"),
@@ -460,8 +540,9 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
-    intro = RichTextField(blank=True)
-    body = RichTextField()
+    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
+    body = RichTextField("body (deprecated. Use streamfield instead)")
+    streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
@@ -499,6 +580,7 @@ BlogPage.content_panels = [
     FieldPanel('date'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
+    StreamFieldPanel('streamfield'),
     InlinePanel(BlogPage, 'related_links', label="Related links"),
     InlinePanel(BlogPage, 'tags', label="Tags")
 ]
@@ -600,8 +682,8 @@ class WorkPageScreenshot(Orderable):
 
 class WorkPage(Page):
     summary = models.CharField(max_length=255)
-    intro = RichTextField(blank=True)
-    body = RichTextField(blank=True)
+    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
+    body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -609,6 +691,8 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
+    streamfield = StreamField(StoryBlock())
 
     @property
     def work_index(self):
@@ -626,6 +710,7 @@ WorkPage.content_panels = [
     FieldPanel('summary'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),
+    StreamFieldPanel('streamfield'),
     ImageChooserPanel('homepage_image'),
     InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
     InlinePanel(BlogPage, 'tags', label="Tags"),

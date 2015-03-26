@@ -29,6 +29,13 @@ CACHES = {
     }
 }
 
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+
+
 SERVER_EMAIL = "root@by-web-2.torchbox.com"
 
 

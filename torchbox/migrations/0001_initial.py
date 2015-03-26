@@ -1,502 +1,600 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+import wagtail.wagtailadmin.taggable
+import wagtail.wagtailimages.models
+import wagtail.wagtailcore.fields
+import modelcluster.fields
+import django.db.models.deletion
+from django.conf import settings
+import taggit.managers
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'AdvertPlacement'
-        db.create_table(u'torchbox_advertplacement', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='advert_placements', to=orm['wagtailcore.Page'])),
-            ('advert', self.gf('django.db.models.fields.related.ForeignKey')(related_name='+', to=orm['torchbox.Advert'])),
-        ))
-        db.send_create_signal(u'torchbox', ['AdvertPlacement'])
+    dependencies = [
+        ('wagtailimages', '0005_make_filter_spec_unique'),
+        ('taggit', '0001_initial'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('wagtailcore', '0010_change_page_owner_to_null_on_delete'),
+        ('wagtaildocs', '0002_initial_data'),
+    ]
 
-        # Adding model 'Advert'
-        db.create_table(u'torchbox_advert', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('page', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='adverts', null=True, to=orm['wagtailcore.Page'])),
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
-            ('text', self.gf('django.db.models.fields.CharField')(max_length=255)),
-        ))
-        db.send_create_signal(u'torchbox', ['Advert'])
-
-        # Adding model 'HomePageCarouselItem'
-        db.create_table(u'torchbox_homepagecarouselitem', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('link_external', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('link_page', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtailcore.Page'])),
-            ('link_document', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtaildocs.Document'])),
-            ('image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
-            ('embed_url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('caption', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='carousel_items', to=orm['torchbox.HomePage'])),
-        ))
-        db.send_create_signal(u'torchbox', ['HomePageCarouselItem'])
-
-        # Adding model 'HomePage'
-        db.create_table(u'torchbox_homepage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-        ))
-        db.send_create_signal(u'torchbox', ['HomePage'])
-
-        # Adding model 'StandardPageRelatedLink'
-        db.create_table(u'torchbox_standardpagerelatedlink', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('link_external', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('link_page', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtailcore.Page'])),
-            ('link_document', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtaildocs.Document'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='related_links', to=orm['torchbox.StandardPage'])),
-        ))
-        db.send_create_signal(u'torchbox', ['StandardPageRelatedLink'])
-
-        # Adding model 'StandardPage'
-        db.create_table(u'torchbox_standardpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-            ('body', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-            ('feed_image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
-        ))
-        db.send_create_signal(u'torchbox', ['StandardPage'])
-
-        # Adding model 'BlogIndexPageRelatedLink'
-        db.create_table(u'torchbox_blogindexpagerelatedlink', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('link_external', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('link_page', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtailcore.Page'])),
-            ('link_document', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtaildocs.Document'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='related_links', to=orm['torchbox.BlogIndexPage'])),
-        ))
-        db.send_create_signal(u'torchbox', ['BlogIndexPageRelatedLink'])
-
-        # Adding model 'BlogIndexPage'
-        db.create_table(u'torchbox_blogindexpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-        ))
-        db.send_create_signal(u'torchbox', ['BlogIndexPage'])
-
-        # Adding model 'BlogPageRelatedLink'
-        db.create_table(u'torchbox_blogpagerelatedlink', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('link_external', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('link_page', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtailcore.Page'])),
-            ('link_document', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtaildocs.Document'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='related_links', to=orm['torchbox.BlogPage'])),
-        ))
-        db.send_create_signal(u'torchbox', ['BlogPageRelatedLink'])
-
-        # Adding model 'BlogPageTag'
-        db.create_table(u'torchbox_blogpagetag', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('tag', self.gf('django.db.models.fields.related.ForeignKey')(related_name=u'torchbox_blogpagetag_items', to=orm['taggit.Tag'])),
-            ('content_object', self.gf('modelcluster.fields.ParentalKey')(related_name='tagged_items', to=orm['torchbox.BlogPage'])),
-        ))
-        db.send_create_signal(u'torchbox', ['BlogPageTag'])
-
-        # Adding model 'BlogPageAuthor'
-        db.create_table(u'torchbox_blogpageauthor', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='related_author', to=orm['torchbox.BlogPage'])),
-            ('author', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['torchbox.PersonPage'])),
-        ))
-        db.send_create_signal(u'torchbox', ['BlogPageAuthor'])
-
-        # Adding model 'BlogPage'
-        db.create_table(u'torchbox_blogpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-            ('body', self.gf('wagtail.wagtailcore.fields.RichTextField')()),
-            ('date', self.gf('django.db.models.fields.DateField')()),
-            ('feed_image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
-        ))
-        db.send_create_signal(u'torchbox', ['BlogPage'])
-
-        # Adding model 'JobPage'
-        db.create_table(u'torchbox_jobpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('body', self.gf('wagtail.wagtailcore.fields.RichTextField')()),
-        ))
-        db.send_create_signal(u'torchbox', ['JobPage'])
-
-        # Adding model 'JobIndexPage'
-        db.create_table(u'torchbox_jobindexpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-        ))
-        db.send_create_signal(u'torchbox', ['JobIndexPage'])
-
-        # Adding model 'WorkPageScreenshot'
-        db.create_table(u'torchbox_workpagescreenshot', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='screenshots', to=orm['torchbox.WorkPage'])),
-            ('image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
-        ))
-        db.send_create_signal(u'torchbox', ['WorkPageScreenshot'])
-
-        # Adding model 'WorkPage'
-        db.create_table(u'torchbox_workpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('summary', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-            ('body', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-        ))
-        db.send_create_signal(u'torchbox', ['WorkPage'])
-
-        # Adding model 'WorkIndexPage'
-        db.create_table(u'torchbox_workindexpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-        ))
-        db.send_create_signal(u'torchbox', ['WorkIndexPage'])
-
-        # Adding model 'PersonPageRelatedLink'
-        db.create_table(u'torchbox_personpagerelatedlink', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sort_order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('link_external', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('link_page', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtailcore.Page'])),
-            ('link_document', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, to=orm['wagtaildocs.Document'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('page', self.gf('modelcluster.fields.ParentalKey')(related_name='related_links', to=orm['torchbox.PersonPage'])),
-        ))
-        db.send_create_signal(u'torchbox', ['PersonPageRelatedLink'])
-
-        # Adding model 'PersonPage'
-        db.create_table(u'torchbox_personpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('telephone', self.gf('django.db.models.fields.CharField')(max_length=20, blank=True)),
-            ('email', self.gf('django.db.models.fields.EmailField')(max_length=75, blank=True)),
-            ('address_1', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
-            ('address_2', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
-            ('city', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
-            ('country', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
-            ('post_code', self.gf('django.db.models.fields.CharField')(max_length=10, blank=True)),
-            ('first_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('last_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('role', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
-            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-            ('biography', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-            ('image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
-            ('feed_image', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='+', null=True, on_delete=models.SET_NULL, to=orm['wagtailimages.Image'])),
-        ))
-        db.send_create_signal(u'torchbox', ['PersonPage'])
-
-        # Adding model 'PersonIndexPage'
-        db.create_table(u'torchbox_personindexpage', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('intro', self.gf('wagtail.wagtailcore.fields.RichTextField')(blank=True)),
-        ))
-        db.send_create_signal(u'torchbox', ['PersonIndexPage'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'AdvertPlacement'
-        db.delete_table(u'torchbox_advertplacement')
-
-        # Deleting model 'Advert'
-        db.delete_table(u'torchbox_advert')
-
-        # Deleting model 'HomePageCarouselItem'
-        db.delete_table(u'torchbox_homepagecarouselitem')
-
-        # Deleting model 'HomePage'
-        db.delete_table(u'torchbox_homepage')
-
-        # Deleting model 'StandardPageRelatedLink'
-        db.delete_table(u'torchbox_standardpagerelatedlink')
-
-        # Deleting model 'StandardPage'
-        db.delete_table(u'torchbox_standardpage')
-
-        # Deleting model 'BlogIndexPageRelatedLink'
-        db.delete_table(u'torchbox_blogindexpagerelatedlink')
-
-        # Deleting model 'BlogIndexPage'
-        db.delete_table(u'torchbox_blogindexpage')
-
-        # Deleting model 'BlogPageRelatedLink'
-        db.delete_table(u'torchbox_blogpagerelatedlink')
-
-        # Deleting model 'BlogPageTag'
-        db.delete_table(u'torchbox_blogpagetag')
-
-        # Deleting model 'BlogPageAuthor'
-        db.delete_table(u'torchbox_blogpageauthor')
-
-        # Deleting model 'BlogPage'
-        db.delete_table(u'torchbox_blogpage')
-
-        # Deleting model 'JobPage'
-        db.delete_table(u'torchbox_jobpage')
-
-        # Deleting model 'JobIndexPage'
-        db.delete_table(u'torchbox_jobindexpage')
-
-        # Deleting model 'WorkPageScreenshot'
-        db.delete_table(u'torchbox_workpagescreenshot')
-
-        # Deleting model 'WorkPage'
-        db.delete_table(u'torchbox_workpage')
-
-        # Deleting model 'WorkIndexPage'
-        db.delete_table(u'torchbox_workindexpage')
-
-        # Deleting model 'PersonPageRelatedLink'
-        db.delete_table(u'torchbox_personpagerelatedlink')
-
-        # Deleting model 'PersonPage'
-        db.delete_table(u'torchbox_personpage')
-
-        # Deleting model 'PersonIndexPage'
-        db.delete_table(u'torchbox_personindexpage')
-
-
-    models = {
-        u'auth.group': {
-            'Meta': {'object_name': 'Group'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
-        },
-        u'auth.permission': {
-            'Meta': {'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')", 'unique_together': "((u'content_type', u'codename'),)", 'object_name': 'Permission'},
-            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['contenttypes.ContentType']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        u'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Group']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Permission']"}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
-        u'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        },
-        u'taggit.tag': {
-            'Meta': {'object_name': 'Tag'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '100'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '100'})
-        },
-        u'torchbox.advert': {
-            'Meta': {'object_name': 'Advert'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'page': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'adverts'", 'null': 'True', 'to': u"orm['wagtailcore.Page']"}),
-            'text': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
-        },
-        u'torchbox.advertplacement': {
-            'Meta': {'object_name': 'AdvertPlacement'},
-            'advert': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'+'", 'to': u"orm['torchbox.Advert']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'advert_placements'", 'to': u"orm['wagtailcore.Page']"})
-        },
-        u'torchbox.blogindexpage': {
-            'Meta': {'object_name': 'BlogIndexPage', '_ormbases': [u'wagtailcore.Page']},
-            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'torchbox.blogindexpagerelatedlink': {
-            'Meta': {'ordering': "['sort_order']", 'object_name': 'BlogIndexPageRelatedLink'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'link_document': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtaildocs.Document']"}),
-            'link_external': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'link_page': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtailcore.Page']"}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'related_links'", 'to': u"orm['torchbox.BlogIndexPage']"}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        u'torchbox.blogpage': {
-            'Meta': {'object_name': 'BlogPage', '_ormbases': [u'wagtailcore.Page']},
-            'body': ('wagtail.wagtailcore.fields.RichTextField', [], {}),
-            'date': ('django.db.models.fields.DateField', [], {}),
-            'feed_image': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['wagtailimages.Image']"}),
-            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'torchbox.blogpageauthor': {
-            'Meta': {'ordering': "['sort_order']", 'object_name': 'BlogPageAuthor'},
-            'author': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['torchbox.PersonPage']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'related_author'", 'to': u"orm['torchbox.BlogPage']"}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
-        },
-        u'torchbox.blogpagerelatedlink': {
-            'Meta': {'ordering': "['sort_order']", 'object_name': 'BlogPageRelatedLink'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'link_document': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtaildocs.Document']"}),
-            'link_external': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'link_page': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtailcore.Page']"}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'related_links'", 'to': u"orm['torchbox.BlogPage']"}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        u'torchbox.blogpagetag': {
-            'Meta': {'object_name': 'BlogPageTag'},
-            'content_object': ('modelcluster.fields.ParentalKey', [], {'related_name': "'tagged_items'", 'to': u"orm['torchbox.BlogPage']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'tag': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "u'torchbox_blogpagetag_items'", 'to': u"orm['taggit.Tag']"})
-        },
-        u'torchbox.homepage': {
-            'Meta': {'object_name': 'HomePage', '_ormbases': [u'wagtailcore.Page']},
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'torchbox.homepagecarouselitem': {
-            'Meta': {'ordering': "['sort_order']", 'object_name': 'HomePageCarouselItem'},
-            'caption': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'embed_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['wagtailimages.Image']"}),
-            'link_document': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtaildocs.Document']"}),
-            'link_external': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'link_page': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtailcore.Page']"}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'carousel_items'", 'to': u"orm['torchbox.HomePage']"}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
-        },
-        u'torchbox.jobindexpage': {
-            'Meta': {'object_name': 'JobIndexPage', '_ormbases': [u'wagtailcore.Page']},
-            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'torchbox.jobpage': {
-            'Meta': {'object_name': 'JobPage', '_ormbases': [u'wagtailcore.Page']},
-            'body': ('wagtail.wagtailcore.fields.RichTextField', [], {}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'torchbox.personindexpage': {
-            'Meta': {'object_name': 'PersonIndexPage', '_ormbases': [u'wagtailcore.Page']},
-            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'torchbox.personpage': {
-            'Meta': {'object_name': 'PersonPage', '_ormbases': [u'wagtailcore.Page']},
-            'address_1': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'address_2': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'biography': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            'city': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'country': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'feed_image': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['wagtailimages.Image']"}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'image': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['wagtailimages.Image']"}),
-            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'}),
-            'post_code': ('django.db.models.fields.CharField', [], {'max_length': '10', 'blank': 'True'}),
-            'role': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'telephone': ('django.db.models.fields.CharField', [], {'max_length': '20', 'blank': 'True'})
-        },
-        u'torchbox.personpagerelatedlink': {
-            'Meta': {'ordering': "['sort_order']", 'object_name': 'PersonPageRelatedLink'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'link_document': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtaildocs.Document']"}),
-            'link_external': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'link_page': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtailcore.Page']"}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'related_links'", 'to': u"orm['torchbox.PersonPage']"}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        u'torchbox.standardpage': {
-            'Meta': {'object_name': 'StandardPage', '_ormbases': [u'wagtailcore.Page']},
-            'body': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            'feed_image': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['wagtailimages.Image']"}),
-            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'torchbox.standardpagerelatedlink': {
-            'Meta': {'ordering': "['sort_order']", 'object_name': 'StandardPageRelatedLink'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'link_document': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtaildocs.Document']"}),
-            'link_external': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'link_page': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'to': u"orm['wagtailcore.Page']"}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'related_links'", 'to': u"orm['torchbox.StandardPage']"}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        u'torchbox.workindexpage': {
-            'Meta': {'object_name': 'WorkIndexPage', '_ormbases': [u'wagtailcore.Page']},
-            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'torchbox.workpage': {
-            'Meta': {'object_name': 'WorkPage', '_ormbases': [u'wagtailcore.Page']},
-            'body': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            'intro': ('wagtail.wagtailcore.fields.RichTextField', [], {'blank': 'True'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'}),
-            'summary': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        u'torchbox.workpagescreenshot': {
-            'Meta': {'ordering': "['sort_order']", 'object_name': 'WorkPageScreenshot'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'+'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['wagtailimages.Image']"}),
-            'page': ('modelcluster.fields.ParentalKey', [], {'related_name': "'screenshots'", 'to': u"orm['torchbox.WorkPage']"}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
-        },
-        u'wagtailcore.page': {
-            'Meta': {'object_name': 'Page'},
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'pages'", 'to': u"orm['contenttypes.ContentType']"}),
-            'depth': ('django.db.models.fields.PositiveIntegerField', [], {}),
-            'has_unpublished_changes': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'live': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'numchild': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
-            'owner': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'owned_pages'", 'null': 'True', 'to': u"orm['auth.User']"}),
-            'path': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'}),
-            'search_description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'seo_title': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'show_in_menus': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'url_path': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'})
-        },
-        u'wagtaildocs.document': {
-            'Meta': {'object_name': 'Document'},
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'uploaded_by_user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'})
-        },
-        u'wagtailimages.image': {
-            'Meta': {'object_name': 'Image'},
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'file': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
-            'height': ('django.db.models.fields.IntegerField', [], {}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'uploaded_by_user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'}),
-            'width': ('django.db.models.fields.IntegerField', [], {})
-        }
-    }
-
-    complete_apps = ['torchbox']
+    operations = [
+        migrations.CreateModel(
+            name='Advert',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('url', models.URLField(null=True, blank=True)),
+                ('text', models.CharField(max_length=255)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='AdvertPlacement',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('advert', models.ForeignKey(related_name='+', to='torchbox.Advert')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='BlogIndexPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('show_in_play_menu', models.BooleanField(default=False)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='BlogIndexPageRelatedLink',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
+                ('title', models.CharField(help_text=b'Link title', max_length=255)),
+                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='BlogPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('body', wagtail.wagtailcore.fields.RichTextField()),
+                ('author_left', models.CharField(help_text=b'author who has left Torchbox', max_length=255, blank=True)),
+                ('date', models.DateField(verbose_name=b'Post date')),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='BlogPageAuthor',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='BlogPageRelatedLink',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
+                ('title', models.CharField(help_text=b'Link title', max_length=255)),
+                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='BlogPageTagList',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=255)),
+                ('slug', models.CharField(max_length=255)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='BlogPageTagSelect',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('page', modelcluster.fields.ParentalKey(related_name='tags', to='torchbox.BlogPage')),
+                ('tag', models.ForeignKey(related_name='blog_page_tag_select', to='torchbox.BlogPageTagList')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='HomePage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('intro', models.TextField(blank=True)),
+                ('hero_video_id', models.IntegerField(help_text=b'Optional. The numeric ID of a Vimeo video to replace the background image.', null=True, blank=True)),
+            ],
+            options={
+                'verbose_name': 'Homepage',
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='JobIndexPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='JobIndexPageContentBlock',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('content', wagtail.wagtailcore.fields.RichTextField()),
+                ('page', modelcluster.fields.ParentalKey(related_name='content_block', to='torchbox.JobIndexPage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='JobIndexPageJob',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('job_title', models.CharField(max_length=255)),
+                ('url', models.URLField(null=True)),
+                ('location', models.CharField(max_length=255, blank=True)),
+                ('page', modelcluster.fields.ParentalKey(related_name='job', to='torchbox.JobIndexPage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='PersonIndexPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('show_in_play_menu', models.BooleanField(default=False)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='PersonPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('telephone', models.CharField(max_length=20, blank=True)),
+                ('email', models.EmailField(max_length=75, blank=True)),
+                ('address_1', models.CharField(max_length=255, blank=True)),
+                ('address_2', models.CharField(max_length=255, blank=True)),
+                ('city', models.CharField(max_length=255, blank=True)),
+                ('country', models.CharField(max_length=255, blank=True)),
+                ('post_code', models.CharField(max_length=10, blank=True)),
+                ('first_name', models.CharField(max_length=255)),
+                ('last_name', models.CharField(max_length=255)),
+                ('role', models.CharField(max_length=255, blank=True)),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('biography', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page', models.Model),
+        ),
+        migrations.CreateModel(
+            name='PersonPageRelatedLink',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
+                ('title', models.CharField(help_text=b'Link title', max_length=255)),
+                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='ServicesPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='ServicesPageContentBlock',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('content', wagtail.wagtailcore.fields.RichTextField()),
+                ('page', modelcluster.fields.ParentalKey(related_name='content_block', to='torchbox.ServicesPage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='ServicesPageRelatedLink',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
+                ('title', models.CharField(help_text=b'Link title', max_length=255)),
+                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='StandardPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('credit', models.CharField(max_length=255, blank=True)),
+                ('heading', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('quote', models.CharField(max_length=255, blank=True)),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('middle_break', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('email', models.EmailField(max_length=75, blank=True)),
+                ('show_in_play_menu', models.BooleanField(default=False)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='StandardPageClients',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
+                ('title', models.CharField(help_text=b'Link title', max_length=255)),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='StandardPageContentBlock',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('content', wagtail.wagtailcore.fields.RichTextField()),
+                ('page', modelcluster.fields.ParentalKey(related_name='content_block', to='torchbox.StandardPage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='StandardPageRelatedLink',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
+                ('title', models.CharField(help_text=b'Link title', max_length=255)),
+                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='TorchboxImage',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=255, verbose_name='Title')),
+                ('file', models.ImageField(height_field='height', upload_to=wagtail.wagtailimages.models.get_upload_to, width_field='width', verbose_name='File')),
+                ('width', models.IntegerField(editable=False)),
+                ('height', models.IntegerField(editable=False)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('focal_point_x', models.PositiveIntegerField(null=True, blank=True)),
+                ('focal_point_y', models.PositiveIntegerField(null=True, blank=True)),
+                ('focal_point_width', models.PositiveIntegerField(null=True, blank=True)),
+                ('focal_point_height', models.PositiveIntegerField(null=True, blank=True)),
+                ('credit', models.CharField(max_length=255, blank=True)),
+                ('tags', taggit.managers.TaggableManager(to='taggit.Tag', through='taggit.TaggedItem', blank=True, help_text=None, verbose_name='Tags')),
+                ('uploaded_by_user', models.ForeignKey(blank=True, editable=False, to=settings.AUTH_USER_MODEL, null=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=(models.Model, wagtail.wagtailadmin.taggable.TagSearchable),
+        ),
+        migrations.CreateModel(
+            name='TorchboxRendition',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('file', models.ImageField(height_field='height', width_field='width', upload_to='images')),
+                ('width', models.IntegerField(editable=False)),
+                ('height', models.IntegerField(editable=False)),
+                ('focal_point_key', models.CharField(default='', max_length=255, editable=False, blank=True)),
+                ('filter', models.ForeignKey(related_name='+', to='wagtailimages.Filter')),
+                ('image', models.ForeignKey(related_name='renditions', to='torchbox.TorchboxImage')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='TshirtPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('main_image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='WorkIndexPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('show_in_play_menu', models.BooleanField(default=False)),
+                ('hide_popular_tags', models.BooleanField(default=False)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='WorkPage',
+            fields=[
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('summary', models.CharField(max_length=255)),
+                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('homepage_image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='WorkPageScreenshot',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True)),
+                ('page', modelcluster.fields.ParentalKey(related_name='screenshots', to='torchbox.WorkPage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='WorkPageTagSelect',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('page', modelcluster.fields.ParentalKey(related_name='tags', to='torchbox.WorkPage')),
+                ('tag', models.ForeignKey(related_name='work_page_tag_select', to='torchbox.BlogPageTagList')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AlterUniqueTogether(
+            name='torchboxrendition',
+            unique_together=set([('image', 'filter', 'focal_point_key')]),
+        ),
+        migrations.AddField(
+            model_name='standardpagerelatedlink',
+            name='link_page',
+            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='standardpagerelatedlink',
+            name='page',
+            field=modelcluster.fields.ParentalKey(related_name='related_links', to='torchbox.StandardPage'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='standardpageclients',
+            name='image',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='standardpageclients',
+            name='link_document',
+            field=models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='standardpageclients',
+            name='link_page',
+            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='standardpageclients',
+            name='page',
+            field=modelcluster.fields.ParentalKey(related_name='clients', to='torchbox.StandardPage'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='standardpage',
+            name='feed_image',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='standardpage',
+            name='main_image',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='servicespagerelatedlink',
+            name='link_page',
+            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='servicespagerelatedlink',
+            name='page',
+            field=modelcluster.fields.ParentalKey(related_name='related_links', to='torchbox.ServicesPage'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='servicespage',
+            name='feed_image',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='personpagerelatedlink',
+            name='link_page',
+            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='personpagerelatedlink',
+            name='page',
+            field=modelcluster.fields.ParentalKey(related_name='related_links', to='torchbox.PersonPage'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='personpage',
+            name='feed_image',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='personpage',
+            name='image',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='homepage',
+            name='hero_video_poster_image',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='blogpagerelatedlink',
+            name='link_page',
+            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='blogpagerelatedlink',
+            name='page',
+            field=modelcluster.fields.ParentalKey(related_name='related_links', to='torchbox.BlogPage'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='blogpageauthor',
+            name='author',
+            field=models.ForeignKey(related_name='+', blank=True, to='torchbox.PersonPage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='blogpageauthor',
+            name='page',
+            field=modelcluster.fields.ParentalKey(related_name='related_author', to='torchbox.BlogPage'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='blogpage',
+            name='feed_image',
+            field=models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='blogindexpagerelatedlink',
+            name='link_page',
+            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='blogindexpagerelatedlink',
+            name='page',
+            field=modelcluster.fields.ParentalKey(related_name='related_links', to='torchbox.BlogIndexPage'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='advertplacement',
+            name='page',
+            field=modelcluster.fields.ParentalKey(related_name='advert_placements', to='wagtailcore.Page'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='advert',
+            name='page',
+            field=models.ForeignKey(related_name='adverts', blank=True, to='wagtailcore.Page', null=True),
+            preserve_default=True,
+        ),
+    ]

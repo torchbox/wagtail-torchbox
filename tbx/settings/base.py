@@ -17,8 +17,8 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wagtail-torchbox',
-        'USER': 'postgres',
+        'NAME': 'torchbox',
+        'USER': '',
         'PASSWORD': '',
         'HOST': '',  # Set to empty string for localhost.
         'PORT': '',  # Set to empty string for default.
@@ -143,13 +143,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
-    'south',
     'compressor',
     'taggit',
     'modelcluster',
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
@@ -160,7 +157,6 @@ INSTALLED_APPS = (
     'wagtail.wagtailembeds',
     'wagtail.wagtailsearch',
     'wagtail.wagtailredirects',
-    'wagtail.contrib.wagtailstyleguide',
 
     'torchbox',
 )
