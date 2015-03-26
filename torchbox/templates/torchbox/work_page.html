@@ -70,7 +70,13 @@
         </div>
     </section>
 
-   {% include "includes/streamfield.html" %}
+    {% if self.body %}
+        <section class="body-copy container height">
+            {{ self.body|richtext }}
+        </section>
+    {% endif %}
+
+    {% include "torchbox/includes/streamfield.html" %}
 
 </main>
 

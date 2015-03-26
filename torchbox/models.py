@@ -338,9 +338,9 @@ class StandardPage(Page):
     credit = models.CharField(max_length=255, blank=True)
     heading = RichTextField(blank=True)
     quote = models.CharField(max_length=255, blank=True)
-    intro = RichTextField(blank=True)
+    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
     middle_break = RichTextField(blank=True)
-    body = RichTextField(blank=True)
+    body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     streamfield = StreamField(StoryBlock())
     email = models.EmailField(blank=True)
 
@@ -540,8 +540,8 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
-    intro = RichTextField(blank=True)
-    body = RichTextField()
+    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
+    body = RichTextField("body (deprecated. Use streamfield instead)")
     streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
@@ -682,8 +682,8 @@ class WorkPageScreenshot(Orderable):
 
 class WorkPage(Page):
     summary = models.CharField(max_length=255)
-    intro = RichTextField(blank=True)
-    body = RichTextField(blank=True)
+    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
+    body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
