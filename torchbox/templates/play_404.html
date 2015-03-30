@@ -12,8 +12,14 @@
             margin-top:-20em;
             background-attachment: fixed;
         }
-        .top-top{
-            padding: 35vh 0 0 0;
+        .top-top {
+            width: 99%;
+            position: absolute;
+            left: 50%;
+            top: 70%;
+            z-index: 2;
+            -webkit-transform: translate(-50%, -50%);
+                      transform: translate(-50%, -50%);
         }
         .bg {
             background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 100%);
@@ -58,12 +64,22 @@
             font-weight: bold;
             font-size: 1.25em;
         }
+        .center-text {
+            position: relative;
+            height: 60em;
+        }
         footer:after {
             border: none;
         }
         @media only screen and (min-width: 45em) {
-            .top-top{
-                padding: 53vh 0 0 0;
+            .top-top {
+                width: 80%;
+                position: absolute;
+                left: 50%;
+                top: 80%;
+                z-index: 2;
+                -webkit-transform: translate(-50%, -50%);
+                          transform: translate(-50%, -50%);
             }
             .bg {
                 width:70%;
@@ -104,14 +120,16 @@
 
 {% block content %}
     <div class="page-standardpage">
-        <div class="top-top">
-            <div class="bg">
-                <div class="heading">
-                    <h2>Looks like you've taken a tumble! Yellow card for simulation!</h2>
-                </div>
-                <div class="were-tbx intro">
-                <p>Actually it's likely you followed an out of date link, typed something wrong, or have a bookmark to a page that no longer exists. So please don't fret, card rescinded.</p>
-                <p>One of the links above will find you on your way.</p>
+        <div class="center-text">
+            <div class="top-top">
+                <div class="bg">
+                    <div class="heading">
+                        <h2>Looks like you've taken a tumble! Yellow card for simulation!</h2>
+                    </div>
+                    <div class="were-tbx intro">
+                    <p>Actually it's likely you followed an out of date link, typed something wrong, or have a bookmark to a page that no longer exists. So please don't fret, card rescinded.</p>
+                    <p>One of the links above will find you on your way.</p>
+                    </div>
                 </div>
             </div>
         </div>
