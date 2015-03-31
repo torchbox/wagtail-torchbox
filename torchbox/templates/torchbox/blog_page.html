@@ -64,6 +64,7 @@
             {% with self.related_author.all as authors %}
                 {% if authors %}
                     {% for author in authors %}
+                    <div class="author-holder">
                         {% if author.author.image %}
                             {% image author.author.image fill-300x300 as photo %}
                             <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
@@ -72,6 +73,7 @@
 
                         {% if author.author.role %}
                             <span class="role">{{ author.author.role }}</span>
+                    </div>
                         {% endif %}
                     {% endfor %}
                 {% endif %}

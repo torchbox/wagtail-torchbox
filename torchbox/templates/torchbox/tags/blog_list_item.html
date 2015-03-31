@@ -32,20 +32,22 @@
                 {% endif %}
 
                 <div id="author" class="author clearfix" >
-                    {% if post.related_author.all %}
-                        {% for author in post.related_author.all %}
-                            {% if author.author.image %}
-                                {% image author.author.image fill-300x300 as photo %}
-                                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
-                            {% endif %}
-                            <div class="name">{{ author.author.title }}</div>
-                            {% if author.author.role %}<span class="role">{{ author.author.role }}</span>{% endif %}
-                        {% endfor %}
-                    {% endif %}
+                        {% if post.related_author.all %}
+                            {% for author in post.related_author.all %}
+                                <div class="author-holder">
+                                    {% if author.author.image %}
+                                     {% image author.author.image fill-300x300 as photo %}
+                                     <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+                                     {% endif %}
+                                     <div class="name">{{ author.author.title }}</div>
+                                    {% if author.author.role %}<span class="role">{{ author.author.role }}</span>{% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
 
-                    {% if post.author_left %}
-                         <div class="name">{{ post.author_left }}</div>
-                    {% endif %}
+                        {% if post.author_left %}
+                             <div class="name">{{ post.author_left }}</div>
+                        {% endif %}
                 </div>
             </div>
         </div>

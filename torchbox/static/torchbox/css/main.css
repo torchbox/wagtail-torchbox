@@ -1966,6 +1966,11 @@ main .breadcrumb a:hover {
     margin-left: -16px;
 }
 
+.author-holder {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
 
 .author {
     padding: 0em 0em;
