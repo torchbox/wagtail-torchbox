@@ -4,22 +4,9 @@ from fabric.api import *
 import uuid
 
 env.roledefs = {
-    'staging': ['tbxwagtail@django-staging.torchbox.com'],
-    'production': ['tbxwagtail@by-web-3.torchbox.com'],
+    'staging': [ 'tbxwagtail@django-staging.torchbox.com' ],
+    'production': [ 'tbxwagtail@by-web-4-a.torchbox.com', 'tbxwagtail@by-web-4-b.torchbox.com' ]
 }
-
-# TODO: a nicer dict of settings
-# DATABASES = {
-#     'staging':{
-#         'name': 'tbxwagtail',
-#         'user': 'tbxwagtail',
-#     }
-#     'production':{
-#         'host': 'by-postgres-a.torchbox.com',
-#         'name': 'wagtail-torchbox',
-#         'user': 'tbxwagtail',
-#     }
-# }
 
 PROJECT = "wagtail-torchbox"
 STAGING_DB_USERNAME = "tbxwagtail"
@@ -33,26 +20,25 @@ REMOTE_DUMP_PATH = "~/"
 def deploy_staging():
     with cd('/usr/local/django/tbxwagtail/'):
         run("git pull")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/pip install -r requirements.txt")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py syncdb --settings=tbx.settings.production --noinput")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py migrate --settings=tbx.settings.production --noinput")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py collectstatic --settings=tbx.settings.production --noinput")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py compress --force --settings=tbx.settings.production")
+        run("pip install -r requirements.txt")
+        run("manage syncdb --noinput")
+        run("manage migrate --noinput")
+        run("manage collectstatic --noinput")
+        run("manage compress --force")
 
-    run("touch -h /usr/local/etc/uwsgi/conf.d/tbxwagtail.ini")
+    run('restart')
 
 @roles('production')
 def deploy():
     with cd('/usr/local/django/tbxwagtail/'):
         run("git pull")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/pip install -r requirements.txt")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py syncdb --settings=tbx.settings.production --noinput")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py migrate --settings=tbx.settings.production --noinput")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py collectstatic --settings=tbx.settings.production --noinput")
-        run("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py compress --settings=tbx.settings.production")
+        run("pip install -r requirements.txt")
+        run("manage syncdb --noinput")
+        run("manage migrate --noinput")
+        run("manage collectstatic --noinput")
+        run("manage compress --force")
 
-    run("touch -h /usr/local/etc/uwsgi/conf.d/tbxwagtail.ini")
-    #sudo("/usr/local/django/virtualenvs/tbxwagtail/bin/python manage.py update_index --settings=tbx.settings.production")
+    run('restart')
 
 @roles('production')
 def pull_live_data():
