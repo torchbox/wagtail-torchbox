@@ -121,6 +121,7 @@ MIDDLEWARE_CLASSES = (
 from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+    'torchbox.context_processors.fb_app_id',
 )
 
 ROOT_URLCONF = 'tbx.urls'

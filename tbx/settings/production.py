@@ -14,7 +14,7 @@ WAGTAILSEARCH_BACKENDS = {
 INSTALLED_APPS+= (
     'djcelery',
     'kombu.transport.django',
-    'gunicorn',    
+    'gunicorn',
 )
 
 
@@ -46,6 +46,10 @@ djcelery.setup_loader()
 BROKER_URL = 'redis://'
 CELERY_SEND_TASK_ERROR_EMAILS = True
 CELERYD_LOG_COLOR = False
+
+
+# Facebook JSSDK app Id
+FB_APP_ID = 323944607389
 
 
 try:
