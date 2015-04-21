@@ -11,10 +11,12 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 
-INSTALLED_APPS+= (
+INSTALLED_APPS += (
     'djcelery',
     'kombu.transport.django',
     'gunicorn',
+
+    'wagtail.contrib.wagtailfrontendcache',
 )
 
 
@@ -53,6 +55,6 @@ FB_APP_ID = '323944607389'
 
 
 try:
-	from .local import *
+    from .local import *
 except ImportError:
-	pass
+    pass
