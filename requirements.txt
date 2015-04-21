@@ -1,7 +1,7 @@
 Django==1.7.4
 psycopg2==2.5.4
-git+git://github.com/torchbox/wagtail.git@3ff98a14c03bbc35cacaf5a42c3e17bee410ca97#egg=wagtail
-pillow==2.7.0
+git+git://github.com/torchbox/wagtail.git@6de6437298176b45cfaa034c96a2eaf15a9ff5cf#egg=wagtail
+Pillow==2.7.0
 django-libsass==0.2
 
 # Development requirements
