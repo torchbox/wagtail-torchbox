@@ -15,7 +15,7 @@ INSTALLED_APPS += (
 )
 
 # Facebook JSSDK app Id
-FB_APP_ID = 323944607389
+FB_APP_ID = '323944607389'
 
 
 try:
