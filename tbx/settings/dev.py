@@ -10,10 +10,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 BASE_URL = 'http://localhost:8111'
 
 
-INSTALLED_APPS += (
-    'wagtail.contrib.wagtailstyleguide',
-)
-
 # Facebook JSSDK app Id
 FB_APP_ID = '323944607389'
 
@@ -43,4 +39,3 @@ try:
     from .local import *
 except ImportError:
     pass
-
