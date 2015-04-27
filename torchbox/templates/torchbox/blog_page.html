@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        {% if self.intro %}
+        {% if not self.streamfield and self.intro %}
             {{ self.intro|richtext }}
         {% endif %}
 

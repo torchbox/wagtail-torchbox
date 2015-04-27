@@ -540,7 +540,7 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
-    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
+    intro = RichTextField("Intro (used only for blog index listing)", blank=True)
     body = RichTextField("body (deprecated. Use streamfield instead)", blank=True)
     streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
