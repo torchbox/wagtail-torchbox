@@ -705,6 +705,9 @@ class WorkPage(Page):
         # just return first work index in database
         return WorkIndexPage.objects.first()
 
+    class Meta:
+        ordering = ['-pk']
+
 WorkPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('summary'),
