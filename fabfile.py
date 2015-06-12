@@ -4,7 +4,7 @@ from fabric.api import *
 import uuid
 
 env.roledefs = {
-    'staging': [ 'tbxwagtail@django-staging.torchbox.com' ],
+    'staging': [ 'tbxwagtail@by-staging-1.torchbox.com' ],
     'production': [ 'tbxwagtail@by-web-4-a.torchbox.com', 'tbxwagtail@by-web-4-b.torchbox.com' ]
 }
 
@@ -80,7 +80,7 @@ def pull_staging_data():
     local('createdb  %s' % DB_NAME)
     local('gunzip %s.gz' % local_path)
 
-    # Merge conflict here 2015-03-26. Can't tell which of these psql & rm commands is the correct one. 
+    # Merge conflict here 2015-03-26. Can't tell which of these psql & rm commands is the correct one.
     # Delete these comments if this seems to work ok
     # local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
     # local('rm %s' % local_path)
