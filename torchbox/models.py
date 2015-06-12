@@ -705,9 +705,6 @@ class WorkPage(Page):
         # just return first work index in database
         return WorkIndexPage.objects.first()
 
-    class Meta:
-        ordering = ['-pk']
-
 WorkPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('summary'),
@@ -741,7 +738,7 @@ class WorkIndexPage(Page):
         works = WorkPage.objects.filter(
             live=True,
             path__startswith=self.path
-        )
+        ).order_by('-pk')
 
         return works
 

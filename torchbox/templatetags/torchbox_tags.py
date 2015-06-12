@@ -223,9 +223,10 @@ def work_and_blog_listing(context, count=6):
     """
     An interleaved list of work and blog items.
     """
+    # Exercise for the reader: what should this do if count is an odd number?
     count /= 2
     blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
-    works = play_filter(WorkPage.objects.filter(live=True), count)
+    works = play_filter(WorkPage.objects.filter(live=True).order_by('-pk'), count)
     blog_items = [template.loader.render_to_string(
         "torchbox/tags/blog_list_item.html",
         {'post': post,
