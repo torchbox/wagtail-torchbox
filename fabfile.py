@@ -80,7 +80,7 @@ def pull_staging_data():
     local('createdb  %s' % DB_NAME)
     local('gunzip %s.gz' % local_path)
 
-    # Merge conflict here 2015-03-26. Can't tell which of these psql & rm commands is the correct one. 
+    # Merge conflict here 2015-03-26. Can't tell which of these psql & rm commands is the correct one.
     # Delete these comments if this seems to work ok
     # local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
     # local('rm %s' % local_path)
