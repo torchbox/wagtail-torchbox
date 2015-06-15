@@ -4,7 +4,7 @@ from fabric.api import *
 import uuid
 
 env.roledefs = {
-    'staging': [ 'tbxwagtail@django-staging.torchbox.com' ],
+    'staging': [ 'tbxwagtail@by-staging-1.torchbox.com' ],
     'production': [ 'tbxwagtail@by-web-4-a.torchbox.com', 'tbxwagtail@by-web-4-b.torchbox.com' ]
 }
 
@@ -20,7 +20,7 @@ REMOTE_DUMP_PATH = "~/"
 def deploy_staging():
     with cd('/usr/local/django/tbxwagtail/'):
         run("git pull")
-        run("pip install -r requirements.txt")
+        run("pip install -r requirements.txt --upgrade")
         run("manage syncdb --noinput")
         run("manage migrate --noinput")
         run("manage collectstatic --noinput")

@@ -1,6 +1,6 @@
 Django==1.7.4
 psycopg2==2.5.4
-git+git://github.com/torchbox/wagtail.git@6de6437298176b45cfaa034c96a2eaf15a9ff5cf#egg=wagtail
+wagtail-1.0b2-py2.py3-none-any.whl
 Pillow==2.7.0
 django-libsass==0.2
 
