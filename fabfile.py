@@ -107,6 +107,7 @@ def push_staging_media():
         run('tar -xzvf %s.gz' % media_filename)
         run('rm %s.gz' % media_filename)
 
+
 @roles('staging')
 def pull_staging_media():
     media_filename = "%s-%s-media.tar" % (PROJECT, uuid.uuid4())
@@ -146,3 +147,8 @@ def push_staging_data():
     run('psql -U%s -c "CREATE SCHEMA public"' % (STAGING_DB_USERNAME))
     run('psql -U%s -f %s' % (STAGING_DB_USERNAME, remote_path))
     run('rm %s' % remote_path)
+
+
+@roles('production')
+def purge_cache():
+    run('ats-cache-purge torchbox.com')
