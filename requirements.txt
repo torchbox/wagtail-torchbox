@@ -1,6 +1,6 @@
 Django==1.7.4
 psycopg2==2.5.4
-git+git://github.com/torchbox/wagtail.git@6de6437298176b45cfaa034c96a2eaf15a9ff5cf#egg=wagtail
+wagtail-1.0.dev201606161013-py2.py3-none-any.whl # A custom build of the streamfield-labels branch of wagtail taken from https://github.com/torchbox/wagtail/commit/fc3b6124e58bbcc93f73a9917958f04b994a2449
 Pillow==2.7.0
 django-libsass==0.2
 
