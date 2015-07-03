@@ -680,7 +680,22 @@ class WorkPageScreenshot(Orderable):
     ]
 
 
+class WorkPageAuthor(Orderable):
+    page = ParentalKey('torchbox.WorkPage', related_name='related_author')
+    author = models.ForeignKey(
+        'torchbox.PersonPage',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
+
+    panels = [
+        PageChooserPanel('author', 'torchbox.PersonPage')
+    ]
+
+
 class WorkPage(Page):
+    author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     summary = models.CharField(max_length=255)
     intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
     body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
@@ -705,8 +720,16 @@ class WorkPage(Page):
         # just return first work index in database
         return WorkIndexPage.objects.first()
 
+    @property
+    def has_authors(self):
+        for author in self.related_author.all():
+            if author.author:
+                return True
+
 WorkPage.content_panels = [
     FieldPanel('title', classname="full title"),
+    InlinePanel(BlogPage, 'related_author', label="Author"),
+    FieldPanel('author_left'),
     FieldPanel('summary'),
     FieldPanel('intro', classname="full"),
     FieldPanel('body', classname="full"),

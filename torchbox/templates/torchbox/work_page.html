@@ -47,8 +47,11 @@
                 {{ self.intro|richtext }}
             {% endif %}
 
+            {# note these tags are all squashed together in order to avoid a space before the comma if there are current authors as well as an author who has left #}
+            {% with self.related_author.all as authors %}{% if authors %}{% for author in authors %}{% if author.author %}<a href="{% pageurl author.author %}">{{ author.author.title }}</a>{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}{% endif %}{% endwith %}{% if self.author_left %}{% if self.has_authors %}, {% endif %}{{ self.author_left }}{% endif %}
+
             <div class="share">
-                <a>Share &#10084;</a>
+                {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
                 <ul class="options">
                     <li>
                         <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>

@@ -1898,7 +1898,6 @@ main .breadcrumb a:hover {
 }
 
 .page-workpage .share {
-    float: left;
     margin: 0.3em 0 0 0;
 }
 
@@ -2756,7 +2755,7 @@ h4 ~ .stat {
     padding: 1em;
 }
 
-/* 
+/*
 
 .screengrab {
     padding: 3em 0 1em;
