@@ -82,6 +82,28 @@
 
     {% include "torchbox/includes/streamfield.html" %}
 
+    <section class="container body-copy">
+        <div id="author" class="author clearfix" >
+            {% with self.related_author.all as authors %}
+                {% if authors %}
+                    {% for author in authors %}
+                    <div class="author-holder">
+                        {% if author.author.image %}
+                            {% image author.author.image fill-300x300 as photo %}
+                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+                        {% endif %}
+                        {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
+
+                        {% if author.author.role %}
+                            <span class="role">{{ author.author.role }}</span>
+                    </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </section>
+
 </main>
 
 <div id="fb-root"></div>
