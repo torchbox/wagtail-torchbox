@@ -9,7 +9,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.utils.translation import ugettext_lazy as _
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -22,22 +21,13 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 
-from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
 
 from torchbox.utils import export_event
-
-ALIGNMENTS = (
-    ('mid', _('Mid width')),
-    ('full', _('Full width'))
-)
-
 
 ### Streamfield blocks and config ###
 
@@ -109,6 +99,7 @@ class StoryBlock(StreamBlock):
     # photogrid = PhotoGridBlock()
     # testimonial = PullQuoteImageBlock(label="Testimonial", icon="group")
     # stats = StatsBlock()
+
 
 
 COMMON_PANELS = (
@@ -250,64 +241,6 @@ class Advert(models.Model):
         return self.text
 
 register_snippet(Advert)
-
-class InfographicSnippet(models.Model):
-    name = models.CharField(max_length=255, help_text="The name of this infographic, for identification within Wagtail")
-    html = models.TextField()
-
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('html')
-    ]
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Infographic"
-        ordering = ['name']
-
-register_snippet(InfographicSnippet)
-
-
-class SlideshowSnippet(ClusterableModel):
-    slideshow_name = models.CharField(
-        max_length=255,
-        help_text="The name of the slideshow displayed in the snippets listing. Not displayed on the front end."
-    )
-    alignment = models.CharField(max_length=255, blank=True, choices=ALIGNMENTS, help_text="Sets how this slideshow will be aligned relative to surrounding content.")
-
-    panels = [
-        FieldPanel('slideshow_name'),
-        FieldPanel('alignment'),
-        InlinePanel('images', label='Images')
-    ]
-
-    def __str__(self):
-        return self.slideshow_name
-
-    class Meta:
-        verbose_name = "Slideshow"
-        ordering = ['slideshow_name']
-
-register_snippet(SlideshowSnippet)
-
-
-
-class TestBlogStoryBlock(StreamBlock):
-    h2 = CharBlock(icon="title", classname="title")
-    h3 = CharBlock(icon="title", classname="title")
-    h4 = CharBlock(icon="title", classname="title")
-    intro = RichTextBlock(icon="pilcrow")
-    paragraph = RichTextBlock(icon="pilcrow")
-    aligned_image = ImageBlock(label="Aligned image")
-    bustout = BustoutBlock()
-    pullquote = PullQuoteBlock()
-    raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
-    document = DocumentChooserBlock(icon="doc-full-inverse")
-    infographic = SnippetChooserBlock(InfographicSnippet, icon="image")
-    slideshow = SnippetChooserBlock(SlideshowSnippet, icon="image")
-
 
 
 # Custom image
@@ -656,77 +589,6 @@ BlogPage.promote_panels = [
     MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
     ImageChooserPanel('feed_image'),
 ]
-
-
-
-# Test Blog page
-class TestBlogPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.TestBlogPage', related_name='related_links')
-
-
-class TestBlogPageTagList(models.Model):
-    name = models.CharField(max_length=255)
-    slug = models.CharField(max_length=255)
-
-    def __unicode__(self):
-        return self.name
-
-
-class TestBlogPageTagSelect(Orderable):
-    page = ParentalKey('torchbox.TestBlogPage', related_name='tags')
-    tag = models.ForeignKey(
-        'torchbox.TestBlogPageTagList',
-        related_name='blog_page_tag_select'
-    )
-
-TestBlogPageTagSelect.content_panels = [
-    FieldPanel('tag'),
-]
-
-
-class TestBlogPageAuthor(Orderable):
-    page = ParentalKey('torchbox.TestBlogPage', related_name='related_author')
-    author = models.ForeignKey(
-        'torchbox.PersonPage',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
-
-    panels = [
-        PageChooserPanel('author', 'torchbox.PersonPage')
-    ]
-
-
-class TestBlogPage(Page):
-    date = models.DateField("Post date")
-    streamfield = StreamField(TestBlogStoryBlock())
-    author = models.CharField(max_length=255, blank=True)
-    
-    feed_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    search_name = "Blog Entry"
-
-TestBlogPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    InlinePanel(TestBlogPage, 'related_author', label="Author"),
-    StreamFieldPanel('streamfield'),
-    FieldPanel('date'),
-    InlinePanel(TestBlogPage, 'related_links', label="Related links"),
-    InlinePanel(TestBlogPage, 'tags', label="Tags")
-]
-
-TestBlogPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    ImageChooserPanel('feed_image'),
-]
-
 
 
 # Jobs index page
