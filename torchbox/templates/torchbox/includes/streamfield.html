@@ -40,7 +40,7 @@
                         {% else %}
                             {% image child.value.image width-1280 as blockimage %}
                         {% endif %}
-                       
+
                         <div {% if child.value.attribution %}class="img-credit"{% endif %}>
                             <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
                             {% if child.value.attribution %}<p class="credit">{{ child.value.attribution }}</p>{% endif %}
@@ -53,6 +53,8 @@
                 </div>
             {% elif child.block_type == 'raw_html' %}
                 {{ child.value|safe }}
+            {% elif child.block_type == 'embed' %}
+                <div>{{ child}}</div>
             {% else %}
                 {{ child }}
             {% endif %}
@@ -87,7 +89,7 @@
             <p>The Radcliffe Camera, completed in 1748</p>
         </div>
     </div>
-    
+
     <div class="screen-grab">
         <img src="/static/torchbox/images/ox-lap.png">
         <p> The University of Oxford homepage. Their website is used by everyone from top level staff to prospective students, and for a university like Oxford that means there are a lot of stakeholders. </p>
