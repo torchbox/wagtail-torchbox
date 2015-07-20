@@ -16,6 +16,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
     InlinePanel, PageChooserPanel, StreamFieldPanel
 from wagtail.wagtailadmin.blocks import ChooserBlock, StructBlock, ListBlock, \
     StreamBlock, FieldBlock, CharBlock, RichTextBlock, PageChooserBlock, RawHTMLBlock
+from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
@@ -96,6 +97,7 @@ class StoryBlock(StreamBlock):
     bustout = BustoutBlock()
     pullquote = PullQuoteBlock()
     raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
+    embed = EmbedBlock(icon="code")
     # photogrid = PhotoGridBlock()
     # testimonial = PullQuoteImageBlock(label="Testimonial", icon="group")
     # stats = StatsBlock()
