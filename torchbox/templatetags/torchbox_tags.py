@@ -219,7 +219,7 @@ def person_blog_post_listing(context, calling_page=None):
 
 
 @register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
-def work_and_blog_listing(context, count=6):
+def work_and_blog_listing(context, count=10):
     """
     An interleaved list of work and blog items.
     """
