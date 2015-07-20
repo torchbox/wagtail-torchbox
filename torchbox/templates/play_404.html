@@ -4,7 +4,6 @@
     <style>
         /* play styling goes here */
         .page-standardpage {
-            padding-bottom:12vh;
             background:url('/static/torchbox/images/ref-02.jpg');
             background-position: center center;
             background-repeat: no-repeat;
@@ -12,8 +11,14 @@
             margin-top:-20em;
             background-attachment: fixed;
         }
-        .top-top{
-            padding: 38vh 0 0 0;
+        .top-top {
+            width: 99%;
+            position: absolute;
+            left: 50%;
+            top: 60%;
+            z-index: 2;
+            -webkit-transform: translate(-50%, -50%);
+                      transform: translate(-50%, -50%);
         }
         .bg {
             background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 100%);
@@ -29,6 +34,7 @@
         }
         .page-standardpage.page-standardpage .heading{
             padding: 0;
+            height: auto;
         }
         .heading h2 {
             text-align: center;
@@ -50,9 +56,57 @@
             margin: 0;
             border-radius: 3px 0 0 0;
         }
+        .heading:after {
+            border: none;
+        }
+        .page-standardpage .intro p {
+            font-weight: bold;
+            font-size: 1.25em;
+        }
+        .center-text {
+            position: relative;
+            height: 70em;
+        }
+        footer:after {
+            border: none;
+        }
         @media only screen and (min-width: 45em) {
+            .top-top {
+                width: 80%;
+                top: 70%;
+            }
             .bg {
                 width:70%;
+            }
+            header.container {
+              height: 158px;
+            }
+            .newsletter-wrapper-top.show {
+                height: 100px;
+            }
+            main {
+                margin: 0;
+            }
+            .page-standardpage header.container {
+              height: 350px;
+              overflow: hidden;
+              position: absolute;
+              top: 0;
+              min-width: 100%;
+            }
+            .logo {
+              margin-top: 0;
+              background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+              background-size: 8em;
+              padding: 1em;
+              opacity: 1;
+              position: relative;
+              z-index: 5;
+            }
+            .bleed {
+                background: none;
+                margin-top: 0;
+                right: -2em;
             }
         }
     </style>
@@ -60,14 +114,16 @@
 
 {% block content %}
     <div class="page-standardpage">
-        <div class="top-top">
-            <div class="bg">
-                <div class="heading">
-                    <h2>Looks like you've taken a tumble! Yellow card for simulation!</h2>
-                </div>
-                <div class="were-tbx intro">
-                <p>Actually it's likely you followed an out of date link, typed something wrong, or have a bookmark to a page that no longer exists. So please don't fret, card rescinded.</p>
-                <p>One of the links above will find you on your way.</p>
+        <div class="center-text">
+            <div class="top-top">
+                <div class="bg">
+                    <div class="heading">
+                        <h2>Looks like you've taken a tumble! Yellow card for simulation!</h2>
+                    </div>
+                    <div class="were-tbx intro">
+                    <p>Actually it's likely you followed an out of date link, typed something wrong, or have a bookmark to a page that no longer exists. So please don't fret, card rescinded.</p>
+                    <p>One of the links above will find you on your way.</p>
+                    </div>
                 </div>
             </div>
         </div>
