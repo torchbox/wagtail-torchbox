@@ -51,6 +51,15 @@
                         {% endif %}
                     </div>
                 </div>
+            {% elif child.block_type == 'photogrid' %}
+                <div class="img-grid clearfix">
+                    <div class="holder clearfix">
+                        {% for image in child.value.images %}
+                        {% image image width-800 as gridimage %}
+                        <a href="#" class="gallery" data-featherlight="{{ gridimage.url }}"><img src="{{ gridimage.url }}"></a>
+                        {% endfor %}
+                    </div>
+                </div>
             {% elif child.block_type == 'raw_html' %}
                 {{ child.value|safe }}
             {% elif child.block_type == 'embed' %}
