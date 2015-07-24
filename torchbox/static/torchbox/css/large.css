@@ -28,7 +28,7 @@
         margin-right:auto;
     }
 
-   
+
 
     .page-homepage .hero h1 {
         text-align: center;
@@ -95,9 +95,9 @@
     }
 
     footer .offices {
-        margin: 1em auto 0 -2em;
+        margin: 1em auto 0 0;
         padding-left: 4em;
-        border-left: 1px dotted rgba(255,255,255,0.2);
+        width: 40%;
     }
 
     .wagtail {
@@ -117,6 +117,28 @@
         font-size: 0.9em;
     }
 
+    footer .contact span.newsletter-cta {
+        white-space: nowrap;
+        font-size: 1.45em;
+        float: left;
+        margin: 1em 0 0.5em 0;
+    }
+
+    footer .contact form input {
+        float: left;
+        width: 60%;
+        height: 3em;
+        padding: 1em;
+    }
+
+    footer .contact form button {
+        float: left;
+        width: 25%;
+        height: 3em;
+        border-radius: 0;
+        margin-top: 0;
+    }
+
     .offices li:hover .svg {
         margin-top: -25px;
     }
@@ -134,9 +156,14 @@
         max-width: 100%;
     }
 
+    footer .contact {
+        border-right: 1px dotted rgba(255,255,255,0.2);
+    }
+
     footer .contact li {
         float: left;
-        margin:0;
+        width: 8em;
+        margin: 0 4.6em 0 0;
     }
 
     footer .contact h2 {

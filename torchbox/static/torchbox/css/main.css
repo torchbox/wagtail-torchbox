@@ -2291,6 +2291,26 @@ footer .contact a:hover span {
     color: #EA853a;
 }
 
+footer .contact span.newsletter-cta {
+    white-space: nowrap;
+    font-size: 1.45em;
+    float: left;
+    margin: 1em 0 0.5em 0;
+}
+
+footer .contact form input {
+    height: 3em;
+    padding: 1em;
+    width: 100%;
+}
+
+footer .contact form button {
+    height: 3em;
+    border-radius: 0;
+    width: 100%;
+    margin-top: 0.5em;
+}
+
 footer button,
 footer .button {
     background-color: #EA853a;
@@ -2338,6 +2358,11 @@ footer .offices li:hover .vcard{
 
 footer .tel {
     display: block;
+}
+
+footer img {
+    clear: both;
+    margin-left: 1em;
 }
 
 .map iframe {

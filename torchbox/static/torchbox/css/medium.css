@@ -1497,6 +1497,30 @@
 
     }
 
+    footer .contact span.newsletter-cta {
+        white-space: nowrap;
+        font-size: 1.45em;
+        margin: 1em 0 0.5em 0;
+        float: none;
+        display: block;
+    }
+
+    footer .contact form input {
+        width: 60%;
+        height: 3em;
+        padding: 1em;
+        float: none;
+        margin-right: -0.5em;
+    }
+
+    footer .contact form button {
+        width: 25%;
+        height: 3em;
+        border-radius: 0;
+        margin-top: 0;
+        float: none;
+    }
+
     body .svg {
         display: block;
         -o-transition: all 0.15s ease;
@@ -1712,7 +1736,7 @@
     .page-homepage .hero.hero-video {
         margin-bottom: -3em;
     }
-    
+
     .page-homepage .hero {
         margin-bottom: -3em;
     }
@@ -1938,12 +1962,12 @@
    ========================================================================== */
 
 @media only screen and (min-width: 45em) {
-    
+
     .container.stream-field{
         padding:0;
         max-width:none;
     }
-    
+
     .pull-quote {
         padding: 3em;
     }
@@ -2072,8 +2096,8 @@
         .align-left p {
             text-align:right;
         }
-  
-    .align-left .img-holder .credit, 
+
+    .align-left .img-holder .credit,
     .align-right .img-holder .credit {
         max-width: 100%;
     }
