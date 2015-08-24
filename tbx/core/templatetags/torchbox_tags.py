@@ -1,8 +1,8 @@
 from django import template
 from django.conf import settings
 
-from torchbox.models import *
-from torchbox.utils import *
+from tbx.core.models import *
+from tbx.core.utils import *
 
 register = template.Library()
 
