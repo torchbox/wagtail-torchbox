@@ -11,7 +11,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailsearch.urls import frontend as wagtailsearch_frontend_urls
 
-from torchbox import urls as torchbox_urls
+from tbx.core import urls as torchbox_urls
 
 admin.autodiscover()
 
