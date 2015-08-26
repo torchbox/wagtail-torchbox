@@ -1,4 +1,4 @@
-from .base import *
+ .base import *
 
 DEBUG = False
 
@@ -12,10 +12,6 @@ WAGTAILSEARCH_BACKENDS = {
 
 
 INSTALLED_APPS += (
-    'djcelery',
-    'kombu.transport.django',
-    'gunicorn',
-
     'wagtail.contrib.wagtailfrontendcache',
 )
 
@@ -39,15 +35,6 @@ COMPRESS_CSS_FILTERS = [
 
 
 SERVER_EMAIL = "root@by-web-2.torchbox.com"
-
-
-# CELERY SETTINGS
-import djcelery
-djcelery.setup_loader()
-
-BROKER_URL = 'redis://'
-CELERY_SEND_TASK_ERROR_EMAILS = True
-CELERYD_LOG_COLOR = False
 
 
 # Facebook JSSDK app Id
