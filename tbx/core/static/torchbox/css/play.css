@@ -185,6 +185,7 @@ header nav ul.visible {
 }
 
 .page-standardpage .heading p a {
+	position: relative;
 	font-size: 1.2em;
 	color: #fff;
 	padding: 0.5em 1em;
