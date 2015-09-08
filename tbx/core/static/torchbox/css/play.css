@@ -23,7 +23,7 @@ main.blur {
 }
 
 .body-copy h2 {
-	margin-top: 1.5em;
+	margin-top: 1em;
 	margin-bottom: 0.4em;
 }
 
@@ -35,15 +35,54 @@ main {
 	transition: all 0.2s ease;
 }
 
+.body-copy p {
+	margin: 0 0 1em 0;
+	line-height: 1.6;
+}
+
+.body-copy p a {
+	color: #424A4F;
+	transition: all 0.15s ease;
+	-webkit-transition: all 0.15s ease;
+	-moz-transition: all 0.15s ease;
+	-o-transition: all 0.15s ease;
+	border-bottom: 1px solid rgb(156, 156, 156);
+}
+
+
+.body-copy p a:hover {
+	color: #63A6CB;
+	border-bottom: 1px solid #63A6CB;
+}
+
+.body-copy h2 {
+	margin-bottom: 0.25em;
+}
+
 .logo {
 	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
 	background-size: auto 3em;
 	margin-top: 1em;
 }
 
+.logo p {
+	position: relative;
+	margin: 0;
+	top: 0;
+	left: 80px;
+}
+
+@media only screen and (min-width: 45em) {
+	.logo p {
+		top: 70px;
+		left: -10px;
+	}
+}
+
 .menu-button {
 	line-height: 0.5em;
 	padding: 0.2em 0 0.4em 0;
+	font-family: 'proxima-nova', helvetica, sans-serif;
 }
 
 .page-standardpage .logo {
@@ -59,6 +98,7 @@ main {
 	margin-top: -2em;
 	padding-top: 1.5em;
 	border-top: none;
+	position: relative;
 }
 
 .play-nav {
@@ -107,8 +147,41 @@ header nav ul.visible {
 	background: #63a6cb;
 }
 
+.page-standardpage .heading {
+	position: relative;
+}
+
+.page-standardpage .heading .rich-text {
+	position: relative;
+	z-index: 10;
+}
+
 .page-standardpage .heading p {
 	margin-top: 2em;
+}
+
+.heading:after {
+	content: "";
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	-moz-transform: scale(.9999);
+	border-width: 40px 1610px 0px 0px;
+	border-style: solid;
+	border-color: transparent #63A6CB transparent transparent;
+	max-height: 60px;
+	z-index: 20;
+}
+
+.heading:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.25);
+	height: 100%;
+	width: 100%;
+	z-index: 0;
 }
 
 .page-standardpage .heading p a {
@@ -235,6 +308,7 @@ header nav ul.visible {
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
 	transition: all 0.2s ease;
+	margin-bottom: 2em;
 }
 
 .play-yellow:before {
@@ -278,6 +352,18 @@ hr {
 	z-index: 0;
 }
 
+.page-personpage .blog-listing li:first-of-type {
+	border-top: 1px solid #63A6CB;
+}
+
+.page-personpage .blog-listing li {
+	border-bottom: 1px solid #63A6CB;
+}
+
+.page-personpage .blog-listing h3 {
+	color: #63A6CB;
+}
+
 .page-personpage .role {
 	color: #63A6CB;
 }
@@ -300,6 +386,16 @@ hr {
 	max-width: 100%;
 	width: 100%;
 	margin:0;
+	background: rgba(0,0,0,0.7);
+}
+
+.page-workindexpage .logo {
+	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background-size: 6em;
+	padding: 1em;
+	opacity: 1;
+	position: relative;
+	z-index: 5;
 }
 
 .page-standardpage .were-tbx h3 {
@@ -350,18 +446,38 @@ hr {
 	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
 	background-size: 6em;
 	opacity: 1;
+	padding: 1em;
 }
 
 .body-copy a {
 	color: #63A6CB;
 }
 
+.page-workpage .intro {
+	margin-bottom: 20px;
+}
+
 .body-copy a:hover {
 	color: #34434F;
 }
 
+.page-workpage .intro h1 {
+	line-height: 0.9;
+	margin-bottom: 20px;
+}
+
+.page-workpage .share, .share {
+	font-family: 'proxima-nova', helvetica, sans-serif;
+	margin-bottom: 20px;
+}
+
 .share li {
 	border-bottom: 1px solid rgba(99, 166, 203, 0.2);
+	padding: 0.5em 0.9em;
+}
+
+.share li:last-child {
+	padding: 0.5em 0.9em;
 }
 
 .share ul:before {
@@ -393,16 +509,45 @@ hr {
 	display: none;
 }
 
-
-.page-workpage .share {
-	margin: 0 0 0.5em 0;
-	float: none;
-}
-
 .intro p {
 	margin-bottom: 1em;
 	line-height: 1.7;
 }
+
+.coloured-background {
+	background: #63A6CB;
+	position: relative;
+	padding: 1.75em 0 1.5em;
+	margin-bottom: 3em;
+}
+
+@media only screen and (min-width: 45em) {
+	.coloured-background {
+		margin-bottom: 5em;
+	}
+}
+
+.coloured-background:after {
+	content: "";
+	position: absolute;
+	bottom: -40px;
+	left: 0;
+	-moz-transform: scale(.9999);
+	border-width: 0 1910px 40px 0;
+	border-style: solid;
+	border-color: transparent #63A6CB transparent transparent;
+	max-height: 60px;
+}
+
+.coloured-background .italic {
+	margin: 0 auto;
+	color: white;
+}
+
+.coloured-background .italic p {
+	margin: 0 0 0.5em 0;
+}
+
 
 /* ==========================================================================
 Sign up
@@ -432,7 +577,7 @@ Sign up
 }
 
 header.container.taller {
-	height: 250px;
+	height: 270px;
 }
 
 input {
@@ -535,6 +680,13 @@ header nav li a.btn i {
 
 	.page-workpage .intro h1 {
 		font-size: 5em;
+		line-height: 0.9;
+		margin-bottom: 20px;
+	}
+
+	h1 ~ .rich-text p {
+		font-size: 1.5em;
+		line-height: 1.5;
 	}
 
 	.nextprev {
@@ -633,6 +785,20 @@ header.container {
 	transition: 0.3s ease;
 }
 
+/* ==========================================================================
+page-standardpage
+========================================================================== */
+
+.page-standardpage h2 {
+	line-height: 1;
+}
+
+.page-standardpage .clients h2 {
+	color: #34434F;
+	font-size: 1.75em;
+	text-align: center;
+}
+
 @media only screen and (min-width: 45em) {
 
 	header.container {
@@ -667,8 +833,8 @@ header.container {
 	}
 
 	.page-standardpage.page-standardpage .heading {
-		padding-top: 19em;
-		height: 760px;
+		padding-top: 35em;
+		height: 900px;
 	}
 
 	.page-standardpage .were-tbx h3 {
@@ -695,11 +861,11 @@ header.container {
 		text-align: left;
 		color: #63A6CB;
 		z-index: 1;
-		margin: 1.5em auto 0.5em auto;
+		margin: 1.5em auto 2.5em auto;
 	}
 
 	.clients {
-		margin: 3em auto 4em auto;
+		margin: 1em auto 4em auto;
 		border-top: none;
 	}
 
@@ -715,27 +881,43 @@ header.container {
 	}
 
 	.heading {
-		min-height: 100%;
 		background-size: cover;
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		background-position: center center;
+		overflow: hidden;
+		position: relative;
+		margin-top: -15em;
+		padding-bottom: 0;
+		top: auto;
+	}
+
+	.heading .rich-text {
+		position: relative;
+		z-index: 10;
 	}
 
 	.page-standardpage b {
 		color: #34434F;
 	}
 
-	.heading:after {
-		content: "";
-		position: absolute;
-		bottom: 35px;
-		top: 686px;
-		left: 0;
-		-moz-transform: scale(.9999);
-		border-width: 40px 1610px 0px 0px;
-		border-style: solid;
-		border-color: transparent #fff transparent transparent;
+	.hangingindent {
+		line-height: 1.3;
+	}
+
+	.page-standardpage h2 span {
+		border: none;
+		text-align: left;
+	}
+
+	.page-standardpage .were-tbx h2 {
+		text-align: left;
+		font-size: 2em;
+		margin:0.25em 0 0.75em;
+	}
+
+	.page-standardpage .were-tbx p {
+		margin: 0 0 0.5em 0;
 	}
 
 /* ==========================================================================
@@ -927,6 +1109,7 @@ header.container {
 
 	.play-yellow {
 		width: 35%;
+		margin-bottom: 2em;
 	}
 
 	/* ==========================================================================
@@ -1105,6 +1288,7 @@ header.container {
 
 	.page-workpage .share {
 		margin: 0 0 1.5em 1.5em;
+		font-family: 'proxima-nova', helvetica, sans-serif;
 	}
 
 	.page-workpage .crop-height:after{
@@ -1151,6 +1335,18 @@ header.container {
 	background: none;
 	margin-top: 5px;
 	right: -2em;
+}
+
+.page-blogindexpage main .listing li:first-child {
+	border-top: none;
+}
+
+.page-blogindexpage main .block-link {
+	border-bottom-style: solid;
+}
+
+.page-blogindexpage main .block-link:hover {
+	background: rgba(255,193,33,0.05);
 }
 
 /* ==========================================================================
@@ -1250,6 +1446,12 @@ play display
 
 	.page-personindexpage .grid.people-list li {
 		width: 33.3%;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.page-standardpage .heading{
+		top: auto;
 	}
 }
 
