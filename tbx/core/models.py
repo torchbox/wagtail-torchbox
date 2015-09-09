@@ -28,7 +28,7 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
 
-from torchbox.utils import export_event
+from tbx.core.utils import export_event
 
 ### Streamfield blocks and config ###
 

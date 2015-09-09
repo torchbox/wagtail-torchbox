@@ -11,7 +11,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailsearch.urls import frontend as wagtailsearch_frontend_urls
 
-from torchbox import urls as torchbox_urls
+from tbx.core import urls as torchbox_urls
 
 admin.autodiscover()
 
@@ -48,4 +48,4 @@ if settings.DEBUG:
         (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'torchbox.com/images/favicon.ico'))
     )
 
-handler404 = 'torchbox.views.error404'
+handler404 = 'tbx.core.views.error404'

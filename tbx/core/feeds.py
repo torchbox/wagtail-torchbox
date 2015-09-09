@@ -1,8 +1,8 @@
 from datetime import datetime, date, time
 from django.contrib.syndication.views import Feed
 
-from torchbox.models import BlogPage
-from torchbox.utils import play_filter
+from tbx.core.models import BlogPage
+from tbx.core.utils import play_filter
 
 
 # Main blog feed
