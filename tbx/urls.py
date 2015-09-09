@@ -26,8 +26,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^search/', include(wagtailsearch_frontend_urls)),
-
     url(r'^documents/', include(wagtaildocs_urls)),
+
 
     url(r'^test404/$', TemplateView.as_view(template_name="404.html")),
     url(r'^test500/$', TemplateView.as_view(template_name="500.html")),

@@ -58,6 +58,27 @@ $(function() {
       $('header.container').toggleClass('taller');
     });
 
+    // newsletter signup form
+    $('.newsletter-signup').on('submit', function(e) {
+        e.preventDefault();
+        $(".newsletter-button").html("Signing up...");
+        $.ajax({
+            url : $(this).attr('action'),
+            type: "GET",
+            data: $(this).serialize(),
+            success: function (data) {
+                $(".newsletter-button").html("Thanks!");
+                $(".newsletter-email").animate({
+                    width: "0px"
+                });
+                $(".newsletter-email").hide("slow");
+            },
+            error: function (jXHR, textStatus, errorThrown) {
+                $(".newsletter-button").html("An error occurred! Please try again later.");
+            }
+        });
+    });
+
     // main blur // Slows down the browser too much
     //$('.sign-up').on('click', function() {
     //  $('main').toggleClass('blur');
@@ -78,7 +99,7 @@ $(function() {
     $('.pick').each(function(){
         var $stickyEl = $('.pick');
         var elTop = $stickyEl.length && $stickyEl.offset().top - 4;
-        
+
         $stickyEl.toggleClass('fixed', $window.scrollTop() > elTop);
 
         $window.scroll(function() {
@@ -89,7 +110,7 @@ $(function() {
     $('.nextprev').each(function(){
         var $stickyEl = $('.nextprev');
         var elTop = $stickyEl.length && $stickyEl.offset().top - 10;
-        
+
         $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
 
         $window.scroll(function() {
@@ -99,7 +120,7 @@ $(function() {
 
     // fitVids
     $('.responsive-object').fitVids();
-    
+
     // get some stats about the video
     $('.responsive-object').each(function() {
         var $this = $(this);
@@ -110,7 +131,7 @@ $(function() {
             player.api('play');
         });
 
-        player.addEvent('ready', function() {  
+        player.addEvent('ready', function() {
             player.addEvent('play', function(id){
                 $('.play').hide();
                 $('.breakpoint-medium header, .breakpoint-medium .hero-video h1').animate({
@@ -118,13 +139,13 @@ $(function() {
                 }, 500, function() {});
                 $('.poster').fadeOut(300);
                 ga('send', 'event', 'video', 'played', id);
-            }); 
+            });
             player.addEvent('pause', function(id){
                 $('header').animate({
                     opacity: 1,
                 }, 500, function() {});
                 ga('send', 'event', 'video', 'paused', id);
-            });     
+            });
             player.addEvent('finish', function(id){
                  $('header').animate({
                     opacity: 1,
@@ -134,7 +155,7 @@ $(function() {
             });
         });
     });
-    
+
     //featherlight used for lightboxes in streamfield-enabled pages
     $('.gallery').featherlightGallery();
 });
