@@ -48,4 +48,4 @@ if settings.DEBUG:
         (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'torchbox.com/images/favicon.ico'))
     )
 
-handler404 = 'torchbox.views.error404'
+handler404 = 'tbx.core.views.error404'
