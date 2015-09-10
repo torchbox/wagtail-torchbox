@@ -1,5 +1,5 @@
 /* ==========================================================================
-    PLAY STYLES 
+    PLAY STYLES
    ========================================================================== */
 
 html {
@@ -60,7 +60,7 @@ main {
 }
 
 .logo {
-	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/play-blue.png") center left no-repeat;
 	background-size: auto 3em;
 	margin-top: 1em;
 }
@@ -86,7 +86,7 @@ main {
 }
 
 .page-standardpage .logo {
-	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/play-blue.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -391,7 +391,7 @@ hr {
 }
 
 .page-workindexpage .logo {
-	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/play-blue.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -444,7 +444,7 @@ hr {
 }
 
 .page-workpage .logo {
-	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/play-blue.png") center left no-repeat;
 	background-size: 6em;
 	opacity: 1;
 	padding: 1em;
@@ -922,7 +922,7 @@ page-standardpage
 	}
 
 /* ==========================================================================
-    Navigation 
+    Navigation
    ========================================================================== */
 	.active a {
 		color: #63A6CB;
@@ -953,7 +953,7 @@ page-standardpage
 		height: 100px;
 		position: relative;
 	}
-	
+
 	.play-nav-container:before {
 		content: "";
 		position: absolute;
@@ -1021,7 +1021,7 @@ page-standardpage
 	}
 
 	/* ==========================================================================
-    .page-personindexpage 
+    .page-personindexpage
    ========================================================================== */
    .page-personindexpage main {
    		margin-top: 7em;
@@ -1037,7 +1037,7 @@ page-standardpage
 	}
 
    .page-personindexpage .logo {
-		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background: url("../images/play/play-blue.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1086,7 +1086,7 @@ page-standardpage
 	}
 
     .page-personpage .logo {
-		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background: url("../images/play/play-blue.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1114,7 +1114,7 @@ page-standardpage
 	}
 
 	/* ==========================================================================
-    .page-workindexpage 
+    .page-workindexpage
    ========================================================================== */
 	.page-workindexpage  main {
 		margin-top: 7em;
@@ -1126,7 +1126,7 @@ page-standardpage
 	}
 
    .page-workindexpage .logo {
-		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background: url("../images/play/play-blue.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1197,7 +1197,7 @@ page-standardpage
 		border-color: transparent;
 	}
 	/* ==========================================================================
-    .page-workpage 
+    .page-workpage
    ========================================================================== */
 
    .page-workpage .img-wrapper {
@@ -1225,7 +1225,7 @@ page-standardpage
 	}
 
     .page-workpage .logo {
-   		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+   		background: url("../images/play/play-blue.png") center left no-repeat;
    		background-size: 8em;
 		margin-top: -0.3em;
 		position: relative;
@@ -1320,7 +1320,7 @@ page-standardpage
 }
 
 .page-blogindexpage .logo {
-	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/play-blue.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -1364,7 +1364,7 @@ page-standardpage
 }
 
 .page-blogpage .logo {
-	background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/play-blue.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -1373,7 +1373,7 @@ page-standardpage
 }
 
 /* ==========================================================================
-Home page raw html 
+Home page raw html
 ========================================================================== */
 
 .featured {
@@ -1423,7 +1423,7 @@ Home page raw html
 	right: -43px;
 	height: 38px;
 	width: 30px;
-	background: url("/static/torchbox/images/arrow-right-01.png") center left no-repeat;
+	background: url("../images/arrow-right-01.png") center left no-repeat;
 	background-size: 30px;
 	-o-transition: 0.3s ease;
 	-webkit-transition: 0.3s ease;
@@ -1437,7 +1437,7 @@ Home page raw html
 
 
 /* ==========================================================================
-play display 
+play display
 ========================================================================== */
 .play-no {
 	display: none;
@@ -1456,7 +1456,7 @@ play display
 		display: none;
 	}
 	.page-blogindexpage .logo {
-		background: url("/static/torchbox/images/play/play-blue.png") center left no-repeat;
+		background: url("../images/play/play-blue.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		position: relative;

@@ -13,11 +13,16 @@
 
         <meta name="description" content="">
 
-            <link rel="stylesheet" href="/static/torchbox/css/normalize.css" /><link rel="stylesheet" href="/static/torchbox/css/main.css" /><link rel="stylesheet" href="/static/torchbox/css/medium.css" /><link rel="stylesheet" href="/static/torchbox/css/large.css" /><link rel="stylesheet" href="/static/torchbox/css/fontello.css" /><link rel="stylesheet" href="/static/torchbox/css/animate.css" />
+            <link rel="stylesheet" href="{% static "torchbox/css/normalize.css" %}" />
+            <link rel="stylesheet" href="{% static "torchbox/css/main.css" %}" />
+            <link rel="stylesheet" href="{% static "torchbox/css/medium.css" %}" />
+            <link rel="stylesheet" href="{% static "torchbox/css/large.css" %}"/>
+            <link rel="stylesheet" href="{% static "torchbox/css/fontello.css" %}" />
+            <link rel="stylesheet" href="{% static "torchbox/css/animate.css" %}" />
 
 
 
-        <link rel="shortcut icon" href="/static/torchbox/images/favicon.ico"/>
+        <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}"/>
 
 
 <style>
@@ -167,16 +172,16 @@
                                 </li>
                             </a>
                             <div class="wagtail">
-                                <a href="http://wagtail.io"><img src="/static/torchbox/images/wagtail.png" alt="Wagtail"></a>
+                                <a href="http://wagtail.io"><img src="{% static "torchbox/images/wagtail.png" %}" alt="Wagtail"></a>
                             </div>
                         </ul>
                     </div>
-                         <img class="wagtail2" src="/static/torchbox/images/wagtail.png" alt="" style="width:165px;height:19px">
+                         <img class="wagtail2" src="{% static "torchbox/images/wagtail.png" %}" alt="" style="width:165px;height:19px">
             </footer>
 
         <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
 
-        <script src="/static/torchbox/js/vendor/jquery.fitvids.js"></script>
-<script src="/static/torchbox/js/main.js"></script>
+        <script src="{% static "torchbox/js/vendor/jquery.fitvids.js" %}"></script>
+        <script src="{% static "torchbox/js/main.js" %}"></script>
     </body>
 </html>

@@ -25,7 +25,7 @@
             var mapElement = document.getElementById('map');
             var map = new google.maps.Map(mapElement, mapOptions);
 
-            var iconBase = '/static/torchbox/images/map_icon.png';
+            var iconBase = '{% static "torchbox/images/map_icon.png" %}';
             var myLatlng = new google.maps.LatLng(51.453375, -2.600566);
             var marker = new google.maps.Marker({
                 position: myLatlng,
@@ -34,7 +34,7 @@
                 title: 'Hello World!'
             });
 
-            var iconBase = '/static/torchbox/images/map_icon.png';
+            var iconBase = '{% static "torchbox/images/map_icon.png" %}';
             var myLatlng = new google.maps.LatLng(51.858469,-1.480863);
             var marker = new google.maps.Marker({
                 position: myLatlng,
@@ -48,7 +48,7 @@
         <!-- MAP END -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/torchbox/css/main.css">
+    <link rel="stylesheet" href="{% static "torchbox/css/main.css" %}">
 </head>
 
 <body>

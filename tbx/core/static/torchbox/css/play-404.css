@@ -1,0 +1,107 @@
+/* play styling goes here */
+.page-standardpage {
+    background:url('../images/ref-02.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    margin-top:-20em;
+    background-attachment: fixed;
+}
+.top-top {
+    width: 99%;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    z-index: 2;
+    -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+}
+.bg {
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0.25)), color-stop(75%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0)));
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 100%);
+    background: -o-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 100%);
+    background: radial-gradient(ellipse at center,  rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#38000000', endColorstr='#00000000',GradientType=1 );
+    padding:2em 0 0.25em 0;
+    width:95%;
+    margin: 0 auto;
+}
+.page-standardpage.page-standardpage .heading{
+    padding: 0;
+    height: auto;
+}
+.heading h2 {
+    text-align: center;
+}
+.page-standardpage .were-tbx {
+    text-align: center;
+    color: #fff;
+    background: transparent;
+    font-size: 1.1em;
+}
+.credit {
+    display: block;
+    background: rgba(0,0,0,0.3);
+    padding: 0.5em 1em;
+    right: 0;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    border-radius: 3px 0 0 0;
+}
+.heading:after {
+    border: none;
+}
+.page-standardpage .intro p {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+.center-text {
+    position: relative;
+    height: 70em;
+}
+footer:after {
+    border: none;
+}
+@media only screen and (min-width: 45em) {
+    .top-top {
+        width: 80%;
+        top: 70%;
+    }
+    .bg {
+        width:70%;
+    }
+    header.container {
+      height: 158px;
+    }
+    .newsletter-wrapper-top.show {
+        height: 100px;
+    }
+    main {
+        margin: 0;
+    }
+    .page-standardpage header.container {
+      height: 350px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      min-width: 100%;
+    }
+    .logo {
+      margin-top: 0;
+      background: url("../images/play/play-blue.png") center left no-repeat;
+      background-size: 8em;
+      padding: 1em;
+      opacity: 1;
+      position: relative;
+      z-index: 5;
+    }
+    .bleed {
+        background: none;
+        margin-top: 0;
+        right: -2em;
+    }
+}
