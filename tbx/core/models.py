@@ -711,6 +711,8 @@ class WorkPage(Page):
 
     streamfield = StreamField(StoryBlock())
 
+    show_in_play_menu = models.BooleanField(default=False)
+
     @property
     def work_index(self):
         # Find work index in ancestors
@@ -739,6 +741,11 @@ WorkPage.content_panels = [
     ImageChooserPanel('homepage_image'),
     InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
     InlinePanel(BlogPage, 'tags', label="Tags"),
+]
+
+WorkPage.promote_panels = [
+    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
+    FieldPanel('show_in_play_menu'),
 ]
 
 
