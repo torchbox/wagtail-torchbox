@@ -1,4 +1,4 @@
-{% load torchbox_tags cache compress static wagtailuserbar wagtailimages_tags %}<!DOCTYPE html>
+{% load torchbox_tags cache compress static wagtailuserbar wagtailimages_tags static %}<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
@@ -141,11 +141,11 @@
                     </ul>
 
                     <div class="wagtail">
-                        <a href="http://wagtail.io"><img src="/static/torchbox/images/wagtail.png" alt="Wagtail"></a>
+                        <a href="http://wagtail.io"><img src="{% static "torchbox/images/wagtail.png" %}" alt="Wagtail"></a>
                     </div>
 
                 </div>
-                <a href="http://wagtail.io"><img class="wagtail2" src="/static/torchbox/images/wagtail.png" alt="Wagtail"></a>
+                <a href="http://wagtail.io"><img class="wagtail2" src="{% static "torchbox/images/wagtail.png" %}"  alt="Wagtail"></a>
             </div>
         </footer>
 

@@ -7,9 +7,9 @@
 
     <div class= "crop-height">
     {% if self|in_play %}
-        <img class="scale" src="/static/torchbox/images/play_blog.jpg" width="" height="" alt="">
+        <img class="scale" src="{% static "torchbox/images/play_blog.jpg" %}" width="" height="" alt="">
     {% else %}
-        <img class="scale" src="/static/torchbox/images/blog_placeholder2.jpg" width="" height="" alt="">
+        <img class="scale" src="{% static "torchbox/images/blog_placeholder2.jpg" %}" width="" height="" alt="">
     {% endif %}
     </div>
 

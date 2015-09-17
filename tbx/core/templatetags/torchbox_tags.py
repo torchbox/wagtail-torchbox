@@ -83,6 +83,7 @@ def top_menu(context, calling_page=None):
             StandardPage,
             PersonIndexPage,
             WorkIndexPage,
+            WorkPage,
             BlogIndexPage
         ]
         menuitems = chain(*[

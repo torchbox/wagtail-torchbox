@@ -1,9 +1,9 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags humanize %}
+{% load wagtailcore_tags wagtailimages_tags humanize static %}
 
 {% block content %}
     <div class= "crop-height">
-        <img class="scale" src="/static/torchbox/images/desk_02.jpg"  width="" height="" alt="">
+        <img class="scale" src="{% static "torchbox/images/desk_02.jpg" %}"  width="" height="" alt="">
     </div>
 
     <section class="intro jobs">

@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags static %}
 
 {# orange arrow navigation #}
 <div class="nextprev-nav">
@@ -86,4 +86,4 @@
         {% endif %}
         //var this_page = {{ blog_posts.number }}
 </script>
-<script src="/static/torchbox/js/ajax-load.js"></script>
+<script src="{% static "torchbox/js/ajax-load.js" %}"></script>

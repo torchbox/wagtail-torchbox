@@ -162,7 +162,7 @@
     .next a {
         padding-left: 3em;
         background-position: 5% 50%;
-        background-image: url("/static/torchbox/images/icons/right.png");
+        background-image: url("../images/icons/right.png");
     }
 
     .prev a {
@@ -170,7 +170,7 @@
         padding-right: 3em;
         text-align: right;
         background-position: 95% 50%;
-        background-image: url("/static/torchbox/images/icons/left.png");
+        background-image: url("../images/icons/left.png");
     }
     .next .thumb {
         float: left;
@@ -209,7 +209,7 @@
     }
 
     .arrow:hover {
-        background-image: url("/static/torchbox/images/arrow_down2.png");
+        background-image: url("../images/arrow_down2.png");
         opacity: 0.5;
     }
 
@@ -260,7 +260,7 @@
     }
 
     .page-homepage .logo {
-        background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+        background: url("../images/logo-torchbox-white.png") center left no-repeat;
         background-size: auto 3em;
     }
 
@@ -460,7 +460,7 @@
     }
 
     .page-standardpage .logo {
-        background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+        background: url("../images/logo-torchbox-white.png") center left no-repeat;
         background-size: auto 3em;
     }
 
@@ -498,7 +498,7 @@
         margin: 2em 0 3em 0;
         color: #434a4f;
         background-color: #424A4F;
-        background: url("/static/torchbox/images/about-placeholder6.jpg") center right no-repeat;
+        background: url("../images/about-placeholder6.jpg") center right no-repeat;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -543,19 +543,19 @@
     }
 
     .page-standardpage .were-tbx-2 li:nth-child(1) .icon {
-        background-image: url("/static/torchbox/images/icons/ethical.png");
+        background-image: url("../images/icons/ethical.png");
     }
 
     .page-standardpage .were-tbx-2 li:nth-child(2) .icon {
-        background-image: url("/static/torchbox/images/icons/equipment.png");
+        background-image: url("../images/icons/equipment.png");
     }
 
     .page-standardpage .were-tbx-2 li:nth-child(3) .icon {
-        background-image: url("/static/torchbox/images/icons/healthy.png");
+        background-image: url("../images/icons/healthy.png");
     }
 
     .page-standardpage .were-tbx-2 li:nth-child(4) .icon {
-        background-image: url("/static/torchbox/images/icons/location.png");
+        background-image: url("../images/icons/location.png");
     }
 
     .uslist {
@@ -728,7 +728,7 @@
     }
 
     .page-blogindexpage .logo {
-        background-image: url("/static/torchbox/images/logo-torchbox-white.png");
+        background-image: url("../images/logo-torchbox-white.png");
     }
 
     .page-blogindexpage li img {
@@ -846,7 +846,7 @@
     }
 
     .page-workpage .logo {
-        background-image: url("/static/torchbox/images/logo-torchbox-white.png");
+        background-image: url("../images/logo-torchbox-white.png");
     }
 
     .page-workpage .intro h1 {
@@ -1013,31 +1013,31 @@
         height: 65px;
         background-repeat: no-repeat;
         background-size: 80%;
-        background-image: url("/static/torchbox/images/icons/ethical.png")
+        background-image: url("../images/icons/ethical.png")
     }
 
     .one:nth-child(1) .icon {
-        background-image: url("/static/torchbox/images/icons/ethical.png");
+        background-image: url("../images/icons/ethical.png");
     }
 
     .one:nth-child(2) .icon {
-        background-image: url("/static/torchbox/images/icons/interesting.png");
+        background-image: url("../images/icons/interesting.png");
     }
 
     .one:nth-child(3) .icon {
-        background-image: url("/static/torchbox/images/icons/healthy.png");
+        background-image: url("../images/icons/healthy.png");
     }
 
     .one:nth-child(4) .icon {
-        background-image: url("/static/torchbox/images/icons/equipment.png");
+        background-image: url("../images/icons/equipment.png");
     }
 
     .one:nth-child(5) .icon {
-        background-image: url("/static/torchbox/images/icons/people.png");
+        background-image: url("../images/icons/people.png");
     }
 
     .one:nth-child(6) .icon {
-        background-image: url("/static/torchbox/images/icons/salary.png");
+        background-image: url("../images/icons/salary.png");
     }
 
     .page-jobindexpage .intro p a {
@@ -1071,7 +1071,7 @@
     }
 
     .page-jobindexpage .logo {
-        background: url("/static/torchbox/images/logo-torchbox-grey.png") center left no-repeat;
+        background: url("../images/logo-torchbox-grey.png") center left no-repeat;
         background-size: auto 3em;
     }
 
@@ -1354,7 +1354,7 @@
     }
 
     .page-tshirtpage .logo {
-        background: url("/static/torchbox/images/logo-torchbox-white.png") center left no-repeat;
+        background: url("../images/logo-torchbox-white.png") center left no-repeat;
         background-size: auto 3em ;
     }
 

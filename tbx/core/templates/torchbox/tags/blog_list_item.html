@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
+{% load wagtailcore_tags wagtailimages_tags torchbox_tags static %}
 
 <li>
     <a href="{% pageurl post %}">
@@ -9,7 +9,7 @@
                         {% image post.feed_image fill-764x448 as post_image %}
                         <img src="{{ post_image.url }}" width="{{ post_image.width }}" height="{{ post_image.height }}" alt="{{ post_image.alt }}" class="" />
                     {% else %}
-                        <img src="/static/torchbox/images/blog_default.png" width="" height="" alt="" class=""/>
+                        <img src="{% static "torchbox/images/blog_default.png" %}" width="" height="" alt="" class=""/>
                     {% endif %}
                 </div>
 
