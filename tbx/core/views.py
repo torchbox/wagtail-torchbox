@@ -14,15 +14,10 @@ def error404(request):
 
 def newsletter_subsribe(request):
     if request.is_ajax() and request.GET.get('email'):
-        response = requests.post(
+        requests.post(
             "https://us10.api.mailchimp.com/2.0/lists/subscribe",
             json={'apikey': settings.MAILCHIMP_KEY,
                   'id': settings.MAILING_LIST_ID,
-                  'email': {'email': request.GET.get('email')}})
-        print response.text
-        if response.ok:
-            return HttpResponse()
-        else:
-            return HttpResponse(status=500)
-    else:
-        return HttpResponse(status=400)
+                  'email': {'email': request.GET.get('email')}}
+        )
+    return HttpResponse()

@@ -62,19 +62,16 @@ $(function() {
     $('.newsletter-signup').on('submit', function(e) {
         e.preventDefault();
         $(".newsletter-button").html("Signing up...");
+        $(".newsletter-email").animate({
+            width: "0px"
+        });
+        $(".newsletter-email").hide("slow");
         $.ajax({
             url : $(this).attr('action'),
             type: "GET",
             data: $(this).serialize(),
             success: function (data) {
                 $(".newsletter-button").html("Thanks!");
-                $(".newsletter-email").animate({
-                    width: "0px"
-                });
-                $(".newsletter-email").hide("slow");
-            },
-            error: function (jXHR, textStatus, errorThrown) {
-                $(".newsletter-button").html("An error occurred! Please try again later.");
             }
         });
     });
