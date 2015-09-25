@@ -78,7 +78,9 @@ def top_menu(context, calling_page=None):
     items - the immediate children of the site root. Also detects 404s in the
     Play section.
     """
-    if (calling_page and in_play(calling_page)) or context.get('play_404', False):
+    if (calling_page and in_play(calling_page)) or context.get(
+            'play_404', False
+    ):
         play_models = [
             StandardPage,
             PersonIndexPage,
@@ -86,11 +88,14 @@ def top_menu(context, calling_page=None):
             WorkPage,
             BlogIndexPage
         ]
-        menuitems = chain(*[
+        menuitems = chain.from_iterable([
             model.objects.filter(
                 live=True,
                 show_in_play_menu=True,
                 show_in_menus=False
+            ).exclude(
+                show_in_play_menu=True,
+                show_in_menus=True
             ) for model in play_models
         ])
     else:

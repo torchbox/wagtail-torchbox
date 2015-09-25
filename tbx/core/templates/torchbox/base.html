@@ -91,11 +91,13 @@
                         <li><a href="tel:+441608811870"><i class="icon-phone"></i><span>+44 (0) 1608 811870</span></a></li>
                         <li><a href="https://twitter.com/{% if self|in_play or play_404 %}playsays{% else %}torchbox{% endif %}"><i class="icon-twitter"></i><span>{% if self|in_play or play_404 %}@PlaySays{% else %}@torchbox{% endif %}</span></a></li>
                     </ul>
-                    <span class="newsletter-cta"><strong>Get the best of the web</strong> in your inbox every Friday</span>
-                    <form class="newsletter-signup" action="/newsletter-subscribe" method="get">
-                        <input class="newsletter-email" name="email" type="text" placeholder="Your email">
-                        <button class="newsletter-button">Sign up</button>
-                    </form>
+                    {% if not self|in_play or play_404 %}
+                        <span class="newsletter-cta"><strong>Get the best of the web</strong> in your inbox every Friday</span>
+                        <form class="newsletter-signup" action="/newsletter-subscribe" method="get">
+                            <input class="newsletter-email" name="email" type="text" placeholder="Your email">
+                            <button class="newsletter-button">Sign up</button>
+                        </form>
+                    {% endif %}
                 </div>
 
                 <div class="offices container ">
