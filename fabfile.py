@@ -4,8 +4,9 @@ from fabric.api import *
 import uuid
 
 env.roledefs = {
-    'staging': [ 'tbxwagtail@by-staging-1.torchbox.com' ],
-    'production': [ 'tbxwagtail@by-web-4-a.torchbox.com', 'tbxwagtail@by-web-4-b.torchbox.com' ]
+    'staging': ['tbxwagtail@by-staging-1.torchbox.com'],
+    'production': ['tbxwagtail@by-web-4-a.torchbox.com', 'tbxwagtail@by-web-4-b.torchbox.com'],
+    'production-1': ['tbxwagtail@by-web-4-a.torchbox.com'],
 }
 
 PROJECT = "wagtail-torchbox"
@@ -28,6 +29,7 @@ def deploy_staging():
 
     run('restart')
 
+
 @roles('production')
 def deploy():
     with cd('/usr/local/django/tbxwagtail/'):
@@ -40,7 +42,8 @@ def deploy():
 
     run('restart')
 
-@roles('production')
+
+@roles('production-1')
 def pull_live_data():
     filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
     local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
@@ -60,6 +63,26 @@ def pull_live_data():
     local('gunzip %s.gz' % local_path)
     local('psql %s -f %s' % (DB_NAME, local_path))
     local('rm %s' % local_path)
+
+
+@roles('production-1')
+def pull_live_media():
+    media_filename = "%s-%s-media.tar" % (PROJECT, uuid.uuid4())
+    local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
+    remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
+
+    # tar and download media
+    with cd('/usr/local/django/tbxwagtail/'):
+        run('tar -cvf %s media' % remote_media_dump)
+        run('gzip %s' % remote_media_dump)
+
+    get('%s.gz' % remote_media_dump, '%s.gz' % local_media_dump)
+
+    local('rm -rf media')
+    local('mv %s.gz .' % local_media_dump)
+    local('tar -xzvf %s.gz' % media_filename)
+    local('rm %s.gz' % media_filename)
+
 
 @roles('staging')
 def pull_staging_data():
@@ -85,8 +108,7 @@ def pull_staging_data():
     # local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
     # local('rm %s' % local_path)
     local('psql %s -f %s' % (DB_NAME, local_path))
-    local ('rm %s' % local_path)
-
+    local('rm %s' % local_path)
 
 
 @roles('staging')
