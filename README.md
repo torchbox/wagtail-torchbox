@@ -25,5 +25,5 @@ Run the following commands:
     ./manage.py createsuperuser
     ./manage.py runserver 0.0.0.0:8000
 
-This will make the app accessible on the host machine as http://localhost:8111/ - you can access the Wagtail admin interface at http://localhost:8111/admin/ . The codebase is located on the host
+This will make the app accessible on the host machine as http://localhost:8000/ - you can access the Wagtail admin interface at http://localhost:8000/admin/ . The codebase is located on the host
 machine, exported to the VM as a shared folder; code editing and Git operations will generally be done on the host.
