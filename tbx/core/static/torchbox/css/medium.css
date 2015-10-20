@@ -1169,7 +1169,19 @@
     .jobs-refer h2,
     .jobs-refer p
     .jobs-refer .terms-link {
-        text-shadow: 0px 0px 5px rgba(0,0,0, 0.75);
+        text-shadow: 0px 0px 5px rgba(0,0,0, 0.45);
+    }
+
+    .jobs-header h1 {
+        font-size: 9vw;
+        margin-bottom: 0;
+    }
+
+    .jobs-header p {
+        position: relative;
+        top: -5px;
+        font-size: 1.45em;
+        line-height: 1.4;
     }
 
     .jobs-refer p {
