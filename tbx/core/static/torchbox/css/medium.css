@@ -963,12 +963,6 @@
         transition: 0.2s ease;
     }
 
-    .page-jobindexpage .intro p {
-        font-size: 1.1em;
-        padding-top: 1em;
-        margin-bottom: -2em;
-    }
-
     .icon {
         display: block;
         margin: 0em 1em 0 0;
@@ -1004,12 +998,46 @@
         background-image: url("../images/icons/salary.png");
     }
 
+    .page-jobindexpage .logo {
+        background: url("../images/logo-torchbox-white.png") center left no-repeat;
+        background-size: auto 2em;
+    }
+
+    .page-jobindexpage header {
+        margin-bottom: inherit;
+    }
+
+    .page-jobindexpage .bleed {
+        background: rgba(87, 78, 66, 0.35)
+    }
+
+    .page-jobindexpage .intro p {
+        font-size: 1.1em;
+        padding-top: 1em;
+        margin-bottom: -2em;
+    }
+
     .page-jobindexpage .intro p a {
         font-size: 1em;
     }
 
     .page-jobindexpage .rich-text p {
         clear: both;
+    }
+
+    .jobs-carousel-container .slick-prev {
+        top: 0;
+        right: 2em;
+        left: auto;
+    }
+
+    .jobs-carousel-container img {
+        max-width: 75%;
+    }
+
+    .jobs-carousel-container .slick-next {
+        bottom: 0;
+        right: 2em;
     }
 
     .sign-up {
@@ -1088,7 +1116,7 @@
         position: absolute;
         width: 100%;
         color: #ffffff;
-        padding-top: 6em;
+        padding-top: 12%;
         text-align: center;
     }
 
@@ -1160,7 +1188,7 @@
         position: absolute;
         top: 25%;
         right: 2em;
-        padding: 1em;
+        padding: 2em 1em;
         background: #ffffff;
         max-width: 40%;
         -webkit-box-shadow: 0px 2px 5px 1px rgba(99, 99, 99, 0.3);
@@ -1169,15 +1197,15 @@
     }
 
     .jobs-carousel-container .slide-caption-container p {
-        font-size: 4em;
+        font-size: 3.125em;
     }
 
     .jobs-carousel-container .slick-prev {
-        top: -1.25em;
+        top: -2.25em;
     }
 
     .jobs-carousel-container .slick-next {
-        bottom: -1.25em;
+        bottom: -2.25em;
     }
 
     .jobs-carousel-container .slide-caption-container span {
@@ -2258,6 +2286,10 @@
 /* Desktop */
 @media only screen and (min-width: 1250px) {
 
+    .jobs-refer .center {
+        width: 100%;
+    }
+
     .italic {
         font-size: 2em;
         margin: 1.5em auto 1.5em auto;
@@ -2268,20 +2300,8 @@
         font-size: 4em;
     }
 
-    .jobs-listing .listing li:nth-child(2) a {
-        border-top: 1px solid #6F6E6E;
-    }
-
     .page-homepage .work-intro {
         padding: 4em 0 0 3em;
-    }
-
-    .jobs-listing .listing li {
-        float: left;
-        width: 48%;
-        margin-right: 2%;
-        min-height: 60px;
-        font-size: 0.8em;
     }
 
     .page-workindexpage main .listing .about {

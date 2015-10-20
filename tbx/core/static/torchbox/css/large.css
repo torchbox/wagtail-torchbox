@@ -32,6 +32,10 @@
         padding-top: 10em;
     }
 
+    .jobs-carousel-container .slide-caption-container p {
+        font-size: 4em;
+    }
+
     .jobs-refer .center {
         top: 4em;
     }
