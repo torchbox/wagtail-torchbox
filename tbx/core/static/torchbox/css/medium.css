@@ -963,46 +963,10 @@
         transition: 0.2s ease;
     }
 
-    .page-jobindexpage h1 {
-        margin:-2em auto 0.5em auto;
-        max-width: 96em;
-        font-size: 5em;
-        padding-bottom: 0.3em;
-        color: #97CB9B;
-        display: none;
-    }
-
     .page-jobindexpage .intro p {
         font-size: 1.1em;
         padding-top: 1em;
         margin-bottom: -2em;
-    }
-
-    .page-jobindexpage main .listing a {
-        font-size: 2em;
-    }
-
-    .benefits {
-        max-width: 96em;
-        margin: 3em auto 0 auto;
-    }
-
-    .page-jobindexpage .benefits li {
-        position: relative;
-        margin: 0em 0em 0em 0em;
-        padding: 8em 4em 8em 4em;
-        border-top: 1px solid white;
-        display: block;
-    }
-
-    .page-jobindexpage main .listing li:nth-child(2) a {
-        border-top: none;
-    }
-
-    .page-jobindexpage main .benefits h2 {
-        font-size: 4em;
-        padding: 0;
-        margin: 0 0 0.8em 0;
     }
 
     .icon {
@@ -1052,29 +1016,6 @@
         margin-top: -0.5em;
     }
 
-    .page-jobindexpage main .benefits .heading-block {
-        position: relative;
-    }
-
-    .page-jobindexpage .benefits h2 {
-        font-size: 3em;
-    }
-
-    .page-jobindexpage .benefits h3 {
-        font-size: 2em;
-        line-height: 1em;
-    }
-
-    .page-jobindexpage .benefits li > div > div {
-        max-width: 30em;
-        float: left;
-    }
-
-    .page-jobindexpage .logo {
-        background: url("../images/logo-torchbox-grey.png") center left no-repeat;
-        background-size: auto 3em;
-    }
-
     .page-jobindexpage footer {
         margin: -1em 0 0 0;
     }
@@ -1082,16 +1023,8 @@
     .page-jobindexpage .center {
         max-width: 96em;
         margin: 0 auto;
-        padding: 2em 4em 1em 4em;
+        padding: 0 4em 1em 4em;
         overflow: hidden;
-    }
-
-    .page-jobindexpage .benefits .one {
-        width: 48%;
-        float: left;
-        margin: 2% 2%  3% 0;
-        padding: 0 0 0 4em;
-        border-top: none;
     }
 
     .news {
@@ -1106,30 +1039,24 @@
     }
 
     .page-jobindexpage main .jobs {
-        padding: 19.5em 2em 2em 2em;
+        padding: 19.5em 0 0 0;
     }
 
     .page-jobindexpage .button {
         margin: 0em 1em -1em 0;
     }
 
-    .page-jobindexpage .benefits .one:nth-of-type(odd) {
-        clear: left;
-    }
-
-    .page-jobindexpage .benefits .one:nth-of-type(5) {
-        margin-bottom: 5%;
-    }
-
     .page-personindexpage main h1 {
         font-size: 5em;
     }
 
-    .page-jobindexpage  .crop-height {
+    .page-jobindexpage .crop-height {
         display: block;
         max-height: 35em;
         overflow: hidden;
-        margin-top: -10em;
+        margin-top: -8em;
+        -webkit-clip-path: polygon(100% 0, 100% 88%, 50% 100%, 0 88%, 0 0);
+        clip-path: polygon(100% 0, 100% 88%, 50% 100%, 0 88%, 0 0);
     }
 
     .page-jobindexpage img.scale {
@@ -1139,6 +1066,125 @@
         float: right;
         width: auto\9;
         -ms-interpolation-mode: bicubic;
+    }
+
+    .jobs-listing .listing li {
+        margin-right: 2.25%;
+        margin-bottom: 2.25%;
+        width: 31.5%;
+        float: left;
+        display: block;
+    }
+
+    .jobs-listing .listing li:nth-child(2n + 2) {
+        margin-right: 2.25%;
+    }
+
+    .jobs-listing .listing li:nth-child(3n + 3) {
+        margin-right: 0;
+    }
+
+    .jobs-header-content {
+        position: absolute;
+        width: 100%;
+        color: #ffffff;
+        padding-top: 6em;
+        text-align: center;
+    }
+
+    .jobs-header-content h1 {
+        font-size: 4.5em;
+        margin-bottom: 0.125em;
+    }
+
+    .jobs-header-content p {
+        max-width: 50%;
+        margin: 0 auto;
+        margin-bottom: 2em;
+    }
+
+    .jobs-header-content .button {
+        background: inherit;
+        border-color: #f85a40;
+    }
+
+    .jobs-what-saying li img {
+        width: 8em;
+    }
+
+    .jobs-what-saying li {
+        min-height: 8em;
+        padding-top: 1.5em;
+        padding-left: 10em;
+    }
+
+    .jobs-what-saying li:nth-child(2n + 2) {
+        padding-right: 10em;
+    }
+
+    .jobs-refer {
+        color: #ffffff;
+    }
+
+    .jobs-refer .center {
+        text-align: center;
+        position: absolute;
+        top: 4em;
+    }
+
+    .jobs-refer .img-darken {
+        display: block;
+    }
+
+    .jobs-header h1,
+    .jobs-header p,
+    .jobs-refer h2,
+    .jobs-refer p
+    .jobs-refer .terms-link {
+        text-shadow: 0px 0px 5px rgba(0,0,0, 0.75);
+    }
+
+    .jobs-refer p {
+        font-size: 1.125em;
+        line-height: 1.5em;
+        max-width: 75%;
+        margin: 0 auto 0.125em auto;
+    }
+
+    .jobs-refer .button {
+        border: 1px solid #ffffff;
+        background: transparent;
+    }
+
+    .jobs-carousel-container .slide-caption-container {
+        position: absolute;
+        top: 25%;
+        right: 2em;
+        padding: 1em;
+        background: #ffffff;
+        max-width: 40%;
+        -webkit-box-shadow: 0px 2px 5px 1px rgba(99, 99, 99, 0.3);
+        -moz-box-shadow: 0px 2px 5px 1px rgba(99, 99, 99, 0.3);
+        box-shadow: 0px 2px 5px 1px rgba(99, 99, 99, 0.3);
+    }
+
+    .jobs-carousel-container .slide-caption-container p {
+        font-size: 4em;
+    }
+
+    .jobs-carousel-container .slick-prev {
+        top: -1.25em;
+    }
+
+    .jobs-carousel-container .slick-next {
+        bottom: -1.25em;
+    }
+
+    .jobs-carousel-container .slide-caption-container span {
+        font-size: 1.25em;
+        color: #5e5f61;
+        font-weight: normal;
+        display: block;
     }
 
     .info-holder {
@@ -2222,7 +2268,7 @@
         font-size: 4em;
     }
 
-    .page-jobindexpage main .listing li:nth-child(2) a {
+    .jobs-listing .listing li:nth-child(2) a {
         border-top: 1px solid #6F6E6E;
     }
 
@@ -2230,7 +2276,7 @@
         padding: 4em 0 0 3em;
     }
 
-    .page-jobindexpage main .listing li {
+    .jobs-listing .listing li {
         float: left;
         width: 48%;
         margin-right: 2%;

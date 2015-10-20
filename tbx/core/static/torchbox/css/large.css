@@ -28,7 +28,13 @@
         margin-right:auto;
     }
 
+    .jobs-header-content {
+        padding-top: 10em;
+    }
 
+    .jobs-refer .center {
+        top: 4em;
+    }
 
     .page-homepage .hero h1 {
         text-align: center;
