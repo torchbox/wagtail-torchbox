@@ -1044,10 +1044,6 @@
         margin-top: -0.5em;
     }
 
-    .page-jobindexpage footer {
-        margin: -1em 0 0 0;
-    }
-
     .page-jobindexpage .center {
         max-width: 96em;
         margin: 0 auto;
@@ -1068,10 +1064,6 @@
 
     .page-jobindexpage main .jobs {
         padding: 19.5em 0 0 0;
-    }
-
-    .page-jobindexpage .button {
-        margin: 0em 1em -1em 0;
     }
 
     .page-personindexpage main h1 {
@@ -1150,20 +1142,6 @@
         padding-right: 10em;
     }
 
-    .jobs-refer {
-        color: #ffffff;
-    }
-
-    .jobs-refer .center {
-        text-align: center;
-        position: absolute;
-        top: 4em;
-    }
-
-    .jobs-refer .img-darken {
-        display: block;
-    }
-
     .jobs-header h1,
     .jobs-header p,
     .jobs-refer h2,
@@ -1184,6 +1162,14 @@
         line-height: 1.4;
     }
 
+    .jobs-refer {
+        padding-top: 6em;
+    }
+
+    .jobs-refer .center {
+        top: 6em;
+    }
+
     .jobs-refer p {
         font-size: 1.125em;
         line-height: 1.5em;
@@ -1191,9 +1177,8 @@
         margin: 0 auto 0.125em auto;
     }
 
-    .jobs-refer .button {
-        border: 1px solid #ffffff;
-        background: transparent;
+    .jobs-carousel-container .slick-slide {
+        overflow: hidden;
     }
 
     .jobs-carousel-container .slide-caption-container {
@@ -1209,15 +1194,17 @@
     }
 
     .jobs-carousel-container .slide-caption-container p {
-        font-size: 3.125em;
+        font-size: 2.5em;
     }
 
     .jobs-carousel-container .slick-prev {
+        bottom: auto;
         top: -2.25em;
     }
 
     .jobs-carousel-container .slick-next {
         bottom: -2.25em;
+        top: auto;
     }
 
     .jobs-carousel-container .slide-caption-container span {

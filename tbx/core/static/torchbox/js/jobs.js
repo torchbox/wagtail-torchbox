@@ -28,3 +28,15 @@ $('.jobs-carousel').on('afterChange', function(event, slick, direction){
   $('.jobs-carousel .slick-active .slide-caption-container .slick-buttons').animate({'opacity': 1}, 250);
   $('.jobs-carousel').slick('reinit');
 });
+
+/*
+ * Check for window resize and reinitialise Slick
+ * because it doens't calculate height correctly.
+*/
+var resizeId;
+$(window).resize(function() {
+  clearTimeout(resizeId);
+  resizeId = setTimeout(function() {
+    $('.jobs-carousel').slick('reinit');
+  }, 500);
+});
