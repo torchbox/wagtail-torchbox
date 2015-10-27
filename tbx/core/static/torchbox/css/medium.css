@@ -745,6 +745,10 @@
         bottom: 0;
     }
 
+    .jobs-core-values h2 {
+        font-size: 3.5em;
+    }
+
     .centertall {
         width: 8em;
         height: 8em;
@@ -874,6 +878,16 @@
         border-radius: 3px;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
+    }
+
+    .jobs-offices h2 {
+        font-size: 3.5em;
+        margin: 0.75em 0;
+    }
+
+    .our-offices {
+        margin: 0 0 2.75em 0;
+        overflow: hidden;
     }
 
     .body-copy p,
@@ -1066,13 +1080,16 @@
         padding: 19.5em 0 0 0;
     }
 
+    .page-jobindexpage .button {
+        font-size: 1em;
+    }
+
     .page-personindexpage main h1 {
         font-size: 5em;
     }
 
     .page-jobindexpage .crop-height {
         display: block;
-        max-height: 35em;
         overflow: hidden;
         margin-top: -8em;
         -webkit-clip-path: polygon(100% 0, 100% 88%, 50% 100%, 0 88%, 0 0);
@@ -1105,7 +1122,6 @@
     }
 
     .jobs-header-content {
-        position: absolute;
         width: 100%;
         color: #ffffff;
         padding-top: 12%;
@@ -1121,11 +1137,6 @@
         max-width: 50%;
         margin: 0 auto;
         margin-bottom: 2em;
-    }
-
-    .jobs-header-content .button {
-        background: inherit;
-        border-color: #f85a40;
     }
 
     .jobs-what-saying li img {
@@ -1147,7 +1158,12 @@
     .jobs-refer h2,
     .jobs-refer p
     .jobs-refer .terms-link {
-        text-shadow: 0px 0px 5px rgba(0,0,0, 0.45);
+        text-shadow: 0px 0px 25px rgba(0,0,0, 0.45);
+    }
+
+    .jobs-refer h2 {
+        font-size: 3em;
+        margin-bottom: 15px;
     }
 
     .jobs-header h1 {
@@ -1171,9 +1187,9 @@
     }
 
     .jobs-refer p {
-        font-size: 1.125em;
+        font-size: 1.25em;
         line-height: 1.5em;
-        max-width: 75%;
+        max-width: 650px;
         margin: 0 auto 0.125em auto;
     }
 
@@ -1187,14 +1203,12 @@
         right: 2em;
         padding: 2em 1em;
         background: #ffffff;
-        max-width: 40%;
-        -webkit-box-shadow: 0px 2px 5px 1px rgba(99, 99, 99, 0.3);
-        -moz-box-shadow: 0px 2px 5px 1px rgba(99, 99, 99, 0.3);
-        box-shadow: 0px 2px 5px 1px rgba(99, 99, 99, 0.3);
+        width: 40%;
+        box-shadow: 0 5px 60px rgba(0, 0, 0, 0.25);
     }
 
     .jobs-carousel-container .slide-caption-container p {
-        font-size: 2.5em;
+        font-size: 4.5em;
     }
 
     .jobs-carousel-container .slick-prev {

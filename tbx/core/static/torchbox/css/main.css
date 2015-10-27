@@ -871,6 +871,15 @@ main nav li.active a:after {
 
 /*Jobs index*/
 
+.page-jobindexpage .logo {
+    background: url("../images/logo-torchbox-white.png");
+    background-size: auto 2em;
+    width: 14em;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 1em;
+}
+
 .sign-up {
     clear: both;
     width: 100%;
@@ -880,9 +889,22 @@ main nav li.active a:after {
 .page-jobindexpage h1 {
     font-weight: bold;
     font-size: 3em;
-    margin-bottom: 0.875em;
+    margin-bottom: 0;
     text-align: center;
 }
+
+.jobs-header-content {
+    position: relative;
+    padding: 7em 0.5em;
+    z-index: 10;
+    color: white;
+    text-align: center;
+}
+
+.jobs-header-content p {
+    margin-top: 0;
+}
+
 
 .page-jobindexpage header {
     margin-bottom: 2em;
@@ -965,11 +987,11 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .button {
-    background-color: #424a4f;
+    background-color: transparent;
     display: inline-block;
     padding: 0.8em 1em;
     color: #fff;
-    border: solid 1px #f3f4f6;
+    border: solid 1px #f85a40;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -997,6 +1019,7 @@ main nav li.active a:after {
     font-weight: bold;
     line-height: 1.3;
     border: 1px solid #e4e5e6;
+    box-shadow: 0;
     border-radius: 3px;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
@@ -1006,6 +1029,7 @@ main nav li.active a:after {
 
 .jobs-listing .listing a:hover {
     border-color: #f85a40;
+    box-shadow: 0 5px 60px rgba(0, 0, 0, 0.25);
 }
 
 .jobs-listing h2,
@@ -1059,11 +1083,11 @@ main nav li.active a:after {
 }
 
 .jobs-offices li {
-    width: 31.5%;
+    width: 28%;
     text-align: center;
     display: block;
     float: left;
-    margin-right: 2.25%;
+    margin-right: 5%;
 }
 
 .jobs-offices li img {
@@ -1073,16 +1097,22 @@ main nav li.active a:after {
 
 .jobs-offices li h3 {
     font-weight: bold;
-    font-size: 1.125em;
+    font-size: 1.5em;
+    margin-bottom: 0;
 }
 
 .jobs-offices li p {
-    font-size: 0.875em;
+    font-size: 1em;
     line-height: 1.5em;
+    margin-top: 5px;
 }
 
 .jobs-offices li.last {
     margin-right: 0;
+}
+
+.jobs-offices li.first {
+    margin-left: 3%;
 }
 
 .jobs-core-values {
@@ -1117,6 +1147,9 @@ main nav li.active a:after {
 .jobs-what-saying h3 {
     font-weight: bold;
     font-size: 1.5em;
+    margin-bottom: 0.75em;
+    position: relative;
+    top: -20px;
 }
 
 .jobs-what-saying li {
@@ -1147,8 +1180,13 @@ main nav li.active a:after {
 }
 
 .jobs-what-saying span {
-    font-size: 0.875em;
+    font-size: 1em;
     color: gray;
+}
+
+.jobs-what-saying a {
+    margin-right: 1em;
+    font-size: 1.25em;
 }
 
 .jobs-what-saying span + div {
@@ -1157,7 +1195,14 @@ main nav li.active a:after {
 
 .jobs-what-saying span + div a {
     font-weight: bold;
+    font-size: 1.25em;
 }
+
+.img-darken {
+    background-size: cover;
+    background-position: center;
+}
+
 .img-darken:after {
     content: " ";
     position: absolute;
@@ -1167,13 +1212,6 @@ main nav li.active a:after {
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
     display: block;
-    -webkit-clip-path: polygon(50% 0%, 100% 12%, 100% 100%, 0 100%, 0 12%);
-    clip-path: polygon(50% 0%, 100% 12%, 100% 100%, 0 100%, 0 12%);
-}
-
-.jobs-header .img-darken:after {
-    -webkit-clip-path: polygon(44% 100%, 100% 88%, 100% 0, 0 0, 1% 88%);
-    clip-path: polygon(44% 100%, 100% 88%, 100% 0, 0 0, 1% 88%);
 }
 
 .jobs-refer {
@@ -1183,6 +1221,13 @@ main nav li.active a:after {
     color: #ffffff;
     background: url("../images/jobs-team.jpg") top center no-repeat #000000;
     padding-top: 4em;
+    background-size: cover;
+}
+
+ .jobs-refer .center.space-footer {
+    padding: 6em 0 7em;
+    position: relative;
+    top: 0;
 }
 
 .jobs-refer .img-darken:after {
@@ -1194,8 +1239,6 @@ main nav li.active a:after {
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
     display: block;
-    -webkit-clip-path: polygon(50% 0%, 100% 12%, 100% 100%, 0 100%, 0 12%);
-    clip-path: polygon(50% 0%, 100% 12%, 100% 100%, 0 100%, 0 12%);
 }
 
 .jobs-refer .button {
@@ -1221,11 +1264,14 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage img.scale {
-    display: none;
+    
 }
 
 .page-jobindexpage .crop-height {
-    display: none;
+    margin-top: -6em;
+    overflow: hidden;
+    -webkit-clip-path: polygon(100% 0, 100% 93%, 50% 100%, 0 93%, 0 0);
+    clip-path: polygon(100% 0, 100% 93%, 50% 100%, 0 93%, 0 0);
 }
 
 .page-jobindexpage .img-wrapper {
