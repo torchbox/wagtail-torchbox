@@ -714,6 +714,9 @@
     .closed:after {
         display: none;
     }
+    .center {
+        padding: 0;
+    }
 
     .closed {
         display: block;
@@ -747,6 +750,17 @@
 
     .jobs-core-values h2 {
         font-size: 3.5em;
+    }
+
+    .jobs-core-values li {
+        width: 48%;
+        float: left;
+        margin: 0 1% 2% 0;
+        border-top: none;
+    }
+
+    .jobs-core-values li.rh {
+        margin: 0 0 2% 1%;
     }
 
     .centertall {
@@ -878,6 +892,24 @@
         border-radius: 3px;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
+    }
+
+    .jobs-benefits h2 {
+        font-size: 3em;
+    }
+
+    .jobs-offices li {
+        width: 28%;
+        text-align: center;
+        display: block;
+        float: left;
+        margin-right: 5%;
+    }
+
+    .jobs-offices li img {
+        display: inline-block;
+        width: 50%;
+        margin: 1em 0 1.25em;
     }
 
     .jobs-offices h2 {
@@ -1113,6 +1145,11 @@
         display: block;
     }
 
+    .jobs-listing h2 {
+        margin-bottom: 1.5em;
+        font-size: 3em;
+    }
+
     .jobs-listing .listing li:nth-child(2n + 2) {
         margin-right: 2.25%;
     }
@@ -1124,8 +1161,12 @@
     .jobs-header-content {
         width: 100%;
         color: #ffffff;
-        padding-top: 12%;
+        padding: 12% 0 5% 0;
         text-align: center;
+    }
+
+    .img-darken {
+        background-image: url('../images/job-page-about.jpg');
     }
 
     .jobs-header-content h1 {
@@ -1141,17 +1182,53 @@
 
     .jobs-what-saying li img {
         width: 8em;
+        position: absolute;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .jobs-what-saying h2 {
+        font-size: 3em;
     }
 
     .jobs-what-saying li {
+        text-align: left;
         min-height: 8em;
         padding-top: 1.5em;
         padding-left: 10em;
     }
 
+    .jobs-what-saying h3 {
+        position: relative;
+        top: -20px;
+    }
+
+    .jobs-what-saying li {
+        margin: 0 0 2em;
+    }
+
+
+    .jobs-offices li.first {
+        margin-left: 3%;
+    }
+
+    .center.our-offices-container {
+        background: transparent;
+        padding: 0 1em;
+        margin-bottom: 0;
+    }
+
     .jobs-what-saying li:nth-child(2n + 2) {
         padding-right: 10em;
+        text-align: right;
+        padding-left: 0;
     }
+
+     .jobs-refer .center.space-footer {
+        padding-bottom: 6em;
+     }
 
     .jobs-header h1,
     .jobs-header p,
@@ -1585,11 +1662,15 @@
     }
 
     footer .contact span.newsletter-cta {
-        white-space: nowrap;
+        text-align: center;
         font-size: 1.45em;
         margin: 1em 0 0.5em 0;
         float: none;
         display: block;
+    }
+
+    footer .contact span.newsletter-cta strong {
+        display: inline;
     }
 
     footer .contact form input {

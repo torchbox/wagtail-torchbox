@@ -895,7 +895,7 @@ main nav li.active a:after {
 
 .jobs-header-content {
     position: relative;
-    padding: 7em 0.5em;
+    padding: 21em 0.5em 5em;
     z-index: 10;
     color: white;
     text-align: center;
@@ -933,7 +933,7 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .menu-button {
-    background-color: #93DA9F;
+    background-color: #f85a40;
     color: #fff;
 }
 
@@ -951,15 +951,10 @@ main nav li.active a:after {
 }
 
 .jobs-listing .listing li {
-    margin-right: 2%;
-    margin-bottom: 2%;
-    width: 48%;
+    width: 100%;
+    margin-bottom: 1em;
     float: left;
     display: block;
-}
-
-.jobs-listing .listing li:nth-child(2n + 2) {
-    margin-right: 0;
 }
 
 .page-jobindexpage .intro p {
@@ -1037,7 +1032,7 @@ main nav li.active a:after {
 .jobs-offices h2,
 .jobs-what-saying h2 {
     font-weight: bold;
-    font-size: 2.5em;
+    font-size: 2em;
     margin: 0 0 0.7em 0;
     padding: 0;
     line-height: 1em;
@@ -1045,8 +1040,8 @@ main nav li.active a:after {
 }
 
 .jobs-listing h2 {
-    margin-bottom: 1.5em;
-    font-size: 3em;
+    margin-bottom: 1em;
+    font-size: 2em;
 }
 
 .jobs-benefits h3 {
@@ -1058,7 +1053,7 @@ main nav li.active a:after {
 
 .jobs-benefits h2 {
     font-weight: bold;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .jobs-core-values h2,
@@ -1082,17 +1077,22 @@ main nav li.active a:after {
     margin: 0 auto;
 }
 
+.center.our-offices-container {
+    padding: 3em 1em 2em;
+    background: #F8F8F8;
+    margin-bottom: 2em;
+}
+
 .jobs-offices li {
-    width: 28%;
-    text-align: center;
     display: block;
-    float: left;
-    margin-right: 5%;
+    width: 100%;
+    text-align: center;
 }
 
 .jobs-offices li img {
-    width: 50%;
-    margin-bottom: 1.25em;
+    display: inline-block;
+    width: 35%;
+    margin: 1em 0 1.25em;
 }
 
 .jobs-offices li h3 {
@@ -1111,17 +1111,13 @@ main nav li.active a:after {
     margin-right: 0;
 }
 
-.jobs-offices li.first {
-    margin-left: 3%;
-}
-
 .jobs-core-values {
     max-width: 96em;
 }
 
 .jobs-core-values h2 {
     font-weight: bold;
-    font-size: 2.5em;
+    font-size: 2em;
     margin: 0 0 1em 0;
     line-height: 1em;
 }
@@ -1134,42 +1130,29 @@ main nav li.active a:after {
 }
 
 .jobs-core-values li {
-    width: 48%;
-    float: left;
-    margin: 0 1% 2% 0;
-    border-top: none;
-}
-
-.jobs-core-values li.rh {
-    margin: 0 0 2% 1%;
+    width: 100%;
+    display: block;
+    margin-bottom: 1em;
 }
 
 .jobs-what-saying h3 {
     font-weight: bold;
     font-size: 1.5em;
     margin-bottom: 0.75em;
-    position: relative;
-    top: -20px;
 }
 
 .jobs-what-saying li {
-    margin-bottom: 2em;
+    text-align: center;
+    margin: 2em 0;
     position: relative;
-    padding-left: 7em;
     min-height: 5em;
     padding-top: 0.75em;
 }
 
-.jobs-what-saying li:nth-child(2n + 2) {
-    padding-right: 7em;
-    text-align: right;
-    padding-left: 0;
-}
-
 .jobs-what-saying li img {
+    display: inline-block;
     width: 5em;
     border-radius: 50%;
-    position: absolute;
     top: 0;
     left: 0;
 }
@@ -1201,6 +1184,7 @@ main nav li.active a:after {
 .img-darken {
     background-size: cover;
     background-position: center;
+    background-image: url('../images/job-page-about-sml.jpg');
 }
 
 .img-darken:after {
@@ -1222,10 +1206,11 @@ main nav li.active a:after {
     background: url("../images/jobs-team.jpg") top center no-repeat #000000;
     padding-top: 4em;
     background-size: cover;
+    margin-top: 1em;
 }
 
  .jobs-refer .center.space-footer {
-    padding: 6em 0 7em;
+    padding: 4em 0 5em;
     position: relative;
     top: 0;
 }
@@ -1268,7 +1253,7 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .crop-height {
-    margin-top: -6em;
+    margin-top: -21em;
     overflow: hidden;
     -webkit-clip-path: polygon(100% 0, 100% 93%, 50% 100%, 0 93%, 0 0);
     clip-path: polygon(100% 0, 100% 93%, 50% 100%, 0 93%, 0 0);
@@ -2329,6 +2314,7 @@ main .breadcrumb a:hover {
 .center{
     max-width: 96em;
     margin: 0 auto;
+    padding: 0 1em;
     overflow: hidden;
 }
 
@@ -2569,11 +2555,22 @@ footer .contact a:hover span {
     color: #EA853a;
 }
 
+form.newsletter-signup {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
 footer .contact span.newsletter-cta {
-    white-space: nowrap;
+    text-align: center;
+    line-height: 1.3;
+    width: 100%;
     font-size: 1.45em;
     float: left;
     margin: 1em 0 0.5em 0;
+}
+
+footer .contact span.newsletter-cta strong {
+    display: block;
 }
 
 footer .contact form input {
