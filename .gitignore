@@ -5,3 +5,4 @@
 /media
 /Vagrantfile.local
 db_dump.sql
+.DS_Store
