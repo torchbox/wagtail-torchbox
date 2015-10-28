@@ -919,7 +919,9 @@
 
     .our-offices {
         margin: 0 0 2.75em 0;
+        padding-bottom: 3em;
         overflow: hidden;
+        border-bottom: 1px solid rgba(0,0,0,0.15);
     }
 
     .body-copy p,
@@ -1125,6 +1127,7 @@
         display: block;
         overflow: hidden;
         margin-top: -8em;
+        margin-bottom: 5em;
         -webkit-clip-path: polygon(100% 0, 100% 88%, 50% 100%, 0 88%, 0 0);
         clip-path: polygon(100% 0, 100% 88%, 50% 100%, 0 88%, 0 0);
     }
@@ -1192,6 +1195,7 @@
 
     .jobs-what-saying h2 {
         font-size: 3em;
+        margin-bottom: 1.5em;
     }
 
     .jobs-what-saying li {
