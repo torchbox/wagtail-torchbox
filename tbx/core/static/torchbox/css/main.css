@@ -141,7 +141,7 @@ button, .button {
     text-decoration: none;
     border: none;
     color: #fff;
-    background-color: #EA853a;
+    background-color: #FD5938;
     display: inline-block;
     line-height: 1em;
     -webkit-border-radius: 0.2em;
@@ -150,7 +150,7 @@ button, .button {
 }
 
 button:hover, .button:hover {
-    background-color: #ffa523;
+    background-color: #23B0B0;
     color:#fff;
     -webkit-transition: background-color 0.15s ease;
     -moz-transition:    background-color 0.15s ease;
@@ -208,7 +208,7 @@ header nav li a {
 }
 
 header nav li a:hover {
-    color: #EA853a;
+    color: #FD5938;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
@@ -247,7 +247,7 @@ main nav li a {
 }
 
 main nav li.active a {
-    color: #EA853a;
+    color: #FD5938;
     position: relative;
 }
 
@@ -255,7 +255,7 @@ main nav li.active a:after {
     height: 0;
     width: 0;
     position: absolute;
-    border-top: 10px solid #EA853a;
+    border-top: 10px solid #FD5938;
     border-bottom: 1em solid transparent;
     border-left: 0.75em solid transparent;
     border-right: 0.75em solid transparent;
@@ -286,8 +286,8 @@ main nav li.active a:after {
     margin: 0 auto;
     padding: 1.3em 3em;
     background-color: transparent;
-    border: solid 1px #EA853a;
-    color: #EA853a;
+    border: solid 1px #FD5938;
+    color: #FD5938;
     line-height: 1em;
     -webkit-border-radius: 0.2em;
     -moz-border-radius: 0.2em;
@@ -303,8 +303,8 @@ main nav li.active a:after {
 }
 
 .page-homepage .button:hover {
-    background-color: #EA853a;
-    border: solid 1px #EA853a;
+    background-color: #FD5938;
+    border: solid 1px #FD5938;
     color: #fff;
     cursor:pointer;
 }
@@ -332,7 +332,7 @@ main nav li.active a:after {
 }
 
 .body-copy a:hover {
-    color: #ffa624;
+    color: #FD5938;
     -webkit-transition: color 0.1s ease;
     -moz-transition: color 0.1s ease;
     -o-transition: color 0.1s ease;
@@ -349,8 +349,8 @@ main nav li.active a:after {
 }
 
 .body-copy p a:hover{
-    color: #EA853A;
-    border-bottom: 1px dotted #EA853A;
+    color: #FD5938;
+    border-bottom: 1px dotted #FD5938;
 }
 
 .body-copy h1 {
@@ -446,7 +446,7 @@ main nav li.active a:after {
 }
 
 .menu-button:hover {
-    background-color: #EA853a;
+    background-color: #FD5938;
     color: #fff;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
@@ -595,7 +595,7 @@ main nav li.active a:after {
 
 .page-homepage .listing a h2:hover,
 .page-homepage .listing a h3:hover {
-    color: #EA853a;
+    color: #FD5938;
 }
 
 .page-homepage .hero {
@@ -692,7 +692,7 @@ main nav li.active a:after {
     }
 
 .page-homepage .hero em {
-    border-bottom: 0.10em solid #ea853a;
+    border-bottom: 0.10em solid #FD5938;
     font-style: normal;
 }
 
@@ -773,7 +773,7 @@ main nav li.active a:after {
 }
 
 .page-homepage .work li a:hover h3 {
-    color: #EA853a;
+    color: #FD5938;
 }
 
  .page-homepage .container {
@@ -796,11 +796,11 @@ main nav li.active a:after {
 }
 
 .page-homepage h2 a span {
-    color: #EA853a;
+    color: #FD5938;
 }
 
 .page-homepage h2 a:hover {
-    color: #EA853a;
+    color: #FD5938;
 }
 
 .page-homepage h2 a:hover span {
@@ -1203,7 +1203,7 @@ main nav li.active a:after {
     -webkit-clip-path: polygon(50% 0%, 100% 12%, 100% 100%, 0 100%, 0 12%);
     min-height: 390px;
     color: #ffffff;
-    background: url("../images/jobs-team.jpg") top center no-repeat #000000;
+    background: url("../images/jobs-footer.jpg") top center no-repeat #000000;
     padding-top: 4em;
     background-size: cover;
     margin-top: 1em;
@@ -1230,10 +1230,12 @@ main nav li.active a:after {
     border: 1px solid #ffffff;
     background: transparent;
     margin: 0;
+    text-shadow: 0px 0px 25px rgba(0,0,0, 0.45);
 }
 
 .jobs-refer p {
     line-height: 1.5em;
+    text-shadow: 0px 0px 25px rgba(0,0,0, 0.45);
 }
 
 .jobs-refer .center {
@@ -1266,7 +1268,7 @@ main nav li.active a:after {
 }
 
 .link-inline {
-    color: #EA853A;
+    color: #FD5938;
 }
 .link-inline:hover {
     border-bottom: 1px dotted CurrentColor;
@@ -1397,8 +1399,8 @@ main nav li.active a:after {
     padding: 1.1em 3em;
     line-height: 1em;
     margin: 2em auto 1em auto;
-    color: #EA853a;
-    border: solid 1px #EA853a;
+    color: #FD5938;
+    border: solid 1px #FD5938;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -1408,7 +1410,7 @@ main nav li.active a:after {
 
 .page-standardpage .button:hover {
     cursor: pointer;
-    background-color: #EA853a;
+    background-color: #FD5938;
     color: #fff;
     -o-transition: background-color 0.2s ease;
     -webkit-transition: background-color 0.2s ease;
@@ -1425,8 +1427,8 @@ main nav li.active a:after {
 }
 
 .page-standardpage p a:hover{
-    color: #EA853A;
-    border-bottom: 1px dotted #EA853A;
+    color: #FD5938;
+    border-bottom: 1px dotted #FD5938;
 }
 
 .page-standardpage .logo {
@@ -1481,7 +1483,7 @@ main nav li.active a:after {
 }
 
 .page-standardpage .quote {
-    background-color: #EA853a;
+    background-color: #FD5938;
     color: #fff;
 }
 
@@ -1596,10 +1598,10 @@ main nav li.active a:after {
 }
 
 .pagination .active a {
-    border: 1px solid #EA853a;
+    border: 1px solid #FD5938;
     border: 1px solid rgba(0,0,0,0.2);
     background-color: #fff;
-    color: #EA853a;
+    color: #FD5938;
     }
 
 .index h1 {
@@ -1688,7 +1690,7 @@ main nav li.active a:after {
 }
 
 .page-blogindexpage h2 {
-    color: #ea853a;
+    color: #FD5938;
     max-width: 80%;
 }
 
@@ -1775,7 +1777,7 @@ main nav li.active a:after {
     -webkit-transition: 0.2s ease;
     -moz-transition: 0.2s ease;
     transition: 0.2s ease;
-    color: #ea853a;
+    color: #FD5938;
 }
 
 .page-blogpage .article-meta a:hover {
@@ -1783,7 +1785,7 @@ main nav li.active a:after {
 }
 
 .body-copy a {
-    color: #EA853a;
+    color: #FD5938;
 }
 
 .body-copy p {
@@ -1860,12 +1862,12 @@ main nav li.active a:after {
 }
 
 .popular-tags .filtering {
-    background: #ea853a;
+    background: #FD5938;
     color: white;
 }
 
 .popular-tags .filtering:hover {
-    background: #ea853a;
+    background: #FD5938;
     color: white;
 }
 
@@ -1884,7 +1886,7 @@ main nav li.active a:after {
 
 .popular-tags a.before:hover {
     background: none;
-    color: #ea853a;
+    color: #FD5938;
     position: relative;
 }
 
@@ -1923,8 +1925,8 @@ a.before:before {
 }
 
 .show a:hover {
-    color: #EA853A;
-    border-bottom: 1px dotted #EA853A;
+    color: #FD5938;
+    border-bottom: 1px dotted #FD5938;
     background: transparent;
     padding: 0;
     -webkit-border-radius: 0;
@@ -2094,7 +2096,7 @@ a.tooltip span{
     display: inline-block;
     background: #fff;
     padding: 0.25em 1em;
-    color: #EA853a;
+    color: #FD5938;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -2103,14 +2105,14 @@ a.tooltip span{
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
-    border: 1px solid #EA853a;
+    border: 1px solid #FD5938;
     float: left;
 }
 
 .page-workpage .intro p a:hover {
-    background: #EA853a;
+    background: #FD5938;
     color: #fff;
-    border: 1px solid #EA853a;
+    border: 1px solid #FD5938;
 }
 
 .breadcrumb {
@@ -2125,8 +2127,8 @@ main .breadcrumb a {
     padding: 0.5em 1.5em;
     line-height: 1em;
     margin:0 1em 1em 0;
-    color: #EA853a;
-    border: solid 1px #EA853a;
+    color: #FD5938;
+    border: solid 1px #FD5938;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -2140,7 +2142,7 @@ main .breadcrumb a {
 }
 
 main .breadcrumb a:hover {
-    background-color: #EA853a;
+    background-color: #FD5938;
     display:inline-block;
     color: #fff;
 
@@ -2243,7 +2245,7 @@ main .breadcrumb a:hover {
     font-size: 1.5em;
     margin-top: 0.5em;
     display: block;
-    color: #EA853a;
+    color: #FD5938;
 }
 
 .author .avatar {
@@ -2336,7 +2338,7 @@ main .breadcrumb a:hover {
 }
 
 .body-copy p a:hover{
-    color: #ea853a;
+    color: #FD5938;
 }
 
 .page-personpage main .breadcrumb {
@@ -2349,7 +2351,7 @@ main .breadcrumb a:hover {
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
     margin-top: 0.5em;
-    color: #97cb9b;
+    color: #23B0B0;
 }
 
 .page-personpage .container {
@@ -2365,7 +2367,7 @@ main .breadcrumb a:hover {
 .page-personpage .blog-listing h3 {
     font-size: 1.3em;
     line-height: 1.3em;
-    color: #EA853a;
+    color: #FD5938;
 }
 
 .page-personpage .blog-listing {
@@ -2454,7 +2456,7 @@ main .breadcrumb a:hover {
 }
 
 .grid.people-list li a:hover {
-    background: #EA853A;
+    background: #FD5938;
 }
 
 .page-personpage h1 {
@@ -2552,7 +2554,7 @@ footer .contact span {
 }
 
 footer .contact a:hover span {
-    color: #EA853a;
+    color: #FD5938;
 }
 
 form.newsletter-signup {
@@ -2588,7 +2590,7 @@ footer .contact form button {
 
 footer button,
 footer .button {
-    background-color: #EA853a;
+    background-color: #FD5938;
 }
 
 
@@ -2611,7 +2613,7 @@ footer .offices h3 {
 }
 
 footer .offices li:hover h3 {
-    color: #ea853a;
+    color: #FD5938;
 }
 
 footer .offices h2{
@@ -2628,7 +2630,7 @@ footer .vcard {
 }
 
 footer .offices li:hover .vcard{
-    color: #ea853a;
+    color: #FD5938;
 }
 
 footer .tel {
@@ -2774,7 +2776,7 @@ footer img {
 
     .pick a:last-of-type {
         margin-right: 0;
-        background: #EA853a;
+        background: #FD5938;
     }
 
     .pick a:last-of-type:hover {
@@ -2841,7 +2843,7 @@ footer img {
     padding: 2em 1em;
     font-size: 1.3em;
     text-align: center;
-    background: #ea853a;
+    background: #FD5938;
 }
 
 .pull-quote p {

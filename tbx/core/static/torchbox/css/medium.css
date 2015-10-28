@@ -68,7 +68,7 @@
     }
 
     header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
         -o-transition: all 0.15s ease;
         -webkit-transition: all 0.15s ease;
         -moz-transition: all 0.15s ease;
@@ -85,15 +85,15 @@
     /*Active*/
 
     .active {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .active a:hover {
-        color: #F7A42C;
+        color: #FD5938;
         border-bottom: none;
     }
 
@@ -131,7 +131,7 @@
     }
 
     .nextprev a {
-        background-color: #ea853a;
+        background-color: #FD5938;
         background-repeat: no-repeat;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -199,7 +199,7 @@
     }
 
     .pagination a p:hover {
-        color: #EA853A;
+        color: #FD5938;
     }
 
     /*Homepage*/
@@ -256,7 +256,7 @@
     }
 
     .page-homepage .listing a:hover h3 {
-        color: #ea853a;
+        color: #FD5938;
     }
 
     .page-homepage .logo {
@@ -585,11 +585,11 @@
     }
 
     .page-workindexpage header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-workindexpage header nav li.active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-workindexpage section.work {
@@ -1046,7 +1046,8 @@
 
     .page-jobindexpage .logo {
         background: url("../images/logo-torchbox-white.png") center left no-repeat;
-        background-size: auto 2em;
+        background-size: auto 3em;
+        padding: 1em 0;
     }
 
     .page-jobindexpage header {
@@ -1324,11 +1325,11 @@
     }
 
     .page-personindexpage header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-personindexpage header nav li.active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .grid.people-list li div {
@@ -1359,11 +1360,11 @@
     }
 
     .page-personpage header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-personpage header nav li.active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-personpage main img {
@@ -1464,7 +1465,7 @@
     }
 
     .page-servicespage .services li:hover:before {
-        color: #EA853a;
+        color: #FD5938;
         -o-transition: all 0.15s ease;
         -webkit-transition: all 0.15s ease;
         -moz-transition: all 0.15s ease;
@@ -1492,11 +1493,11 @@
     }
 
     .page-blogpage  header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-blogpage  header nav li.active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-blogpage .next {
@@ -1664,7 +1665,7 @@
     footer .contact span.newsletter-cta {
         text-align: center;
         font-size: 1.45em;
-        margin: 1em 0 0.5em 0;
+        margin: 2em 0 0.5em 0;
         float: none;
         display: block;
     }
@@ -1697,7 +1698,7 @@
         transition: all 0.15s ease;
         height: 100px;
         float: left;
-        fill: #EA853A;
+        fill: #FD5938;
         width: 68px;
         margin-top: -25px;
         padding-bottom: 1em;
@@ -1802,7 +1803,7 @@
         left: 0;
         right: 0;
         margin: auto;
-        background: #EA853a;
+        background: #FD5938;
         color: #fff;
         padding: 0.3em 0.8em 0.3em 1em;
         border-radius: 3px;
@@ -1999,8 +2000,8 @@
         max-width: 200px;
         text-align: center;
         padding: 1em 1.5em;
-        border: solid 1px #EA853a;
-        color: #EA853a;
+        border: solid 1px #FD5938;
+        color: #FD5938;
         margin: 0;
         line-height: 1em;
         border-radius: 0.2em;
@@ -2018,9 +2019,9 @@
     }
 
     .page-homepage .go:hover {
-        border: solid 1px #EA853a;
+        border: solid 1px #FD5938;
         color: #fff;
-        background: #EA853a;
+        background: #FD5938;
     }
 
     .page-homepage .block:hover .go {
@@ -2043,7 +2044,7 @@
         -webkit-transition: 0.2s ease;
         -moz-transition: 0.2s ease;
         transition: 0.2s ease;
-        color: #ea853a;
+        color: #FD5938;
     }
 
     .page-homepage .block .workcontainer {
@@ -2195,7 +2196,7 @@
     }
 
     .stat-holder h2 {
-        color: #ea853a;
+        color: #FD5938;
     }
 
     .stat {

@@ -124,6 +124,7 @@
     }
 
     footer .contact span.newsletter-cta {
+        text-align: left;
         white-space: nowrap;
         font-size: 1.45em;
         float: left;
