@@ -1261,6 +1261,10 @@ main nav li.active a:after {
     clip-path: polygon(100% 0, 100% 93%, 50% 100%, 0 93%, 0 0);
 }
 
+.page-jobindexpage .center.saying {
+    max-width: 1000px;
+}
+
 .page-jobindexpage .img-wrapper {
     width: 100%;
     margin: 0;
