@@ -1,5 +1,5 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags humanize static %}
+{% load wagtailcore_tags wagtailimages_tags humanize static torchbox_tags %}
 
 {% block content %}
     <div class="crop-height jobs-header">
@@ -15,29 +15,27 @@
     <section class="jobs-listing">
          <div class="center">
             <h2>Current opportunities</h2>
-            {% with self.jobs.all as jobs %}
-                {% if jobs %}
-                    <ul class="listing clearfix">
-                        {% for job in jobs %}
-                            <li>
-                                <a href="{{ job.url }}" class="job-link">
-                                    {{ job.job_title }}
-                                    {% if job.location %}
-                                        <div class="location">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
-                                                <path fill="" d="M363.8,267.3c-19.5-18.1-45.5-28.4-71.3-28.4s-51.8,10.4-71.3,28.4c-20.2,18.7-31.3,43-31.3,68.5  c0,66.7,100.8,255.4,101.8,257.3c0.2,0.3,0.5,0.5,0.9,0.5c0.4,0,0.7-0.2,0.9-0.5c1-1.9,101.8-190.6,101.8-257.3  C395.1,310.3,384,286,363.8,267.3z"></path>
+            {% if jobs %}
+                <ul class="listing clearfix">
+                    {% for job in jobs %}
+                        <li>
+                            <a href="{{ job.url }}" class="job-link">
+                                {{ job.job_title }}
+                                {% if job.location %}
+                                    <div class="location">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
+                                            <path fill="" d="M363.8,267.3c-19.5-18.1-45.5-28.4-71.3-28.4s-51.8,10.4-71.3,28.4c-20.2,18.7-31.3,43-31.3,68.5  c0,66.7,100.8,255.4,101.8,257.3c0.2,0.3,0.5,0.5,0.9,0.5c0.4,0,0.7-0.2,0.9-0.5c1-1.9,101.8-190.6,101.8-257.3  C395.1,310.3,384,286,363.8,267.3z"></path>
 
-                                            </svg>
-                                            {{ job.location }}
-                                        </div>
-                                    {% endif %}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                    <a href="#" class="no-job-fit">No jobs that fit?</a>
-                {% endif %}
-            {% endwith %}
+                                        </svg>
+                                        {{ job.location }}
+                                    </div>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ self.no_jobs_that_fit }}" class="no-job-fit">No jobs that fit?</a>
+            {% endif %}
 
             {% if self.intro %}
                 <div class="sign-up">
@@ -52,42 +50,16 @@
         </div>
         <div class="jobs-carousel-container">
             <ul class="jobs-carousel">
-                <li>
-                    <img src="{% static "torchbox/images/jobs-team-carousel.jpg" %}"  width="" height="" alt="">
-                    <div class="slide-caption-container">
-                        <span class="reason-no">Reason one</span>
-                        <p>This lovely bunch</p>
-                        <div class="slick-buttons"></div>
-                    </div>
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/jobs-team-carousel.jpg" %}"  width="" height="" alt="">
-                    <div class="slide-caption-container">
-                        <span class="reason-no">Reason two</span>
-                        <p>Vivamus sagittis lacus vel augue.</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/jobs-team-carousel.jpg" %}"  width="" height="" alt="">
-                    <div class="slide-caption-container">
-                        <span class="reason-no">Reason three</span>
-                        <p>Fusce dapibus sit amet risus</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/jobs-team-carousel.jpg" %}"  width="" height="" alt="">
-                    <div class="slide-caption-container">
-                        <span class="reason-no">Reason four</span>
-                        <p>Etiam porta euismod</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/jobs-team-carousel.jpg" %}"  width="" height="" alt="">
-                    <div class="slide-caption-container">
-                        <span class="reason-no">Reason five</span>
-                        <p>Aenean lacinia bibendum nulla sed consectetur</p>
-                    </div>
-                </li>
+                {% for reason in self.reasons_to_join.all %}
+                    <li>
+                        {% image reason.image original %}
+                        <div class="slide-caption-container">
+                            <span class="reason-no">{{ reason.title }}</span>
+                            <p>{{ reason.body }}</p>
+                            {% if forloop.first %}<div class="slick-buttons"></div>{% endif %}
+                        </div>
+                    </li>
+                 {% endfor %}
             </ul>
         </div>
     </section>
@@ -136,33 +108,19 @@
         <div class="center saying">
             <h2>What have we been saying?</h2>
             <ul>
-                <li>
-                    <img src="/media/images/ru_bw_small.2e16d0ba.fill-400x400.jpg" width="300" height="300" alt="" class="avatar">
-                    <h3>Core code sprinting</h3>
-                    <span>9th October 2015</span>
-                    <div>
-                        <a href="/team/rob-carter/">Rob Carter</a>
-                        <span>Marketing Executive</span>
-                    </div>
-                </li>
-                <li>
-                    <img src="/media/images/FullSizeRender.focus-none.fill-400x400_Hy4MdzK.jpg" width="300" height="300" alt="" class="avatar">
-                    <h3>Designing for web</h3>
-                    <span>9th October 2015</span>
-                    <div>
-                        <a href="/team/james-gillen/">James Gillen</a>
-                        <span>Designer</span>
-                    </div>
-                </li>
-                <li>
-                    <img src="/media/images/rose-nichols_qCtU5Ij.2e16d0ba.fill-400x400.jpg" width="300" height="300" alt="" class="avatar">
-                    <h3>Managing projects a-z</h3>
-                    <span>9th October 2015</span>
-                    <div>
-                        <a href="/team/maya-gibbs/">Maya Gibbs</a>
-                        <span>Project Manager</span>
-                    </div>
-                </li>
+                {% for blog in blogs %}
+                    {% with blog.related_author.all.0 as a %}
+                        <li>
+                            {% image a.author.image fill-300x300 %}
+                            <h3>{{ blog.title }}</h3>
+                            <span>{{ blog.date }}</span>
+                            <div>
+                                <a href="{{ a.author.url }}">{{ a.author.title }}</a>
+                                <span>{{ a.author.role }}</span>
+                            </div>
+                        </li>
+                    {% endwith %}
+                {% endfor %}
             </ul>
         </div>
     </section>
@@ -171,9 +129,9 @@
         <div class="center space-footer">
             <h2>Refer a friend and make £500</h2>
             <p>Not a Torchbox employee? Doesn't matter. Anyone who refers someone who becomes a member of our team can claim the referral fee.</p>
-            <a href="#" class="terms-link">There are some T&amp;Cs, of course</a>
+            <a href="{{ self.terms_and_conditions }}" class="terms-link">There are some T&amp;Cs, of course</a>
             <div>
-                <a href="#" class="button">Refer a friend</a>
+                <a href="{{ self.refer_a_friend }}" class="button">Refer a friend</a>
             </div>
         </div>
     </section>
