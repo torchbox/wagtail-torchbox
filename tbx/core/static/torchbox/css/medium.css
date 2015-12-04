@@ -1074,19 +1074,10 @@
         clear: both;
     }
 
-    .jobs-carousel-container .slick-prev {
-        top: 0;
-        right: 2em;
-        left: auto;
-    }
-
     .jobs-carousel-container img {
-        max-width: 75%;
-    }
-
-    .jobs-carousel-container .slick-next {
-        bottom: 0;
-        right: 2em;
+        max-width: 65%;
+        -webkit-clip-path: polygon(98% 0, 100% 50%, 98% 100%, 0 100%, 0 0);
+        clip-path: polygon(98% 0, 100% 50%, 98% 100%, 0 100%, 0 0);
     }
 
     .sign-up {
@@ -1279,28 +1270,57 @@
         overflow: hidden;
     }
 
-    .jobs-carousel-container .slide-caption-container {
-        position: absolute;
-        top: 25%;
-        right: 2em;
-        padding: 2em 1em;
-        background: #ffffff;
-        width: 40%;
-        box-shadow: 0 5px 60px rgba(0, 0, 0, 0.25);
-    }
-
-    .jobs-carousel-container .slide-caption-container p {
-        font-size: 4.5em;
-    }
-
     .jobs-carousel-container .slick-prev {
+        right: 2em;
+        left: auto;
+        top: 2em;
         bottom: auto;
-        top: -2.25em;
     }
 
     .jobs-carousel-container .slick-next {
-        bottom: -2.25em;
+        bottom: 2em;
         top: auto;
+        right: 2em;
+    }
+
+    .jobs-carousel-container .slick-prev,
+    .jobs-carousel-container .slick-next {
+        height: 3.25em;
+        width: 3.25em;
+    }
+
+    .jobs-carousel-container .slide-caption-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 2em 1em 2em 4%;
+        background: #f2f2f2;
+        width: 35%;
+        height: 100%;
+        white-space: nowrap;
+    }
+
+    .jobs-carousel-container .slide-caption-container > div {
+        display: inline-block;
+        vertical-align: middle;
+        white-space: initial;
+    }
+
+    .jobs-carousel-container .slide-caption-container:after {
+        content: " ";
+        display: inline-block;
+        height: 100%;
+        width: 1%;
+        vertical-align: middle;
+    }
+
+    .jobs-carousel-container .slide-caption-container h3 {
+        font-size: 2em;
+    }
+
+    .jobs-carousel-container .slide-caption-container p {
+        padding-right: 5em;
+        line-height: 1.25em;
     }
 
     .jobs-carousel-container .slide-caption-container span {

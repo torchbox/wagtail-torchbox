@@ -54,9 +54,11 @@
                     <li>
                         {% image reason.image original %}
                         <div class="slide-caption-container">
-                            <span class="reason-no">{{ reason.title }}</span>
-                            <p>{{ reason.body }}</p>
-                            {% if forloop.first %}<div class="slick-buttons"></div>{% endif %}
+                            <div>
+                                <span class="reason-no">{{ reason.title }}</span>
+                                <h3>{{ reason.body }}</h3>
+                                <p>Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus.</p>
+                            </div>
                         </div>
                     </li>
                  {% endfor %}

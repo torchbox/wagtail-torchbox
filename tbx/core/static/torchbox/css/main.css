@@ -1304,6 +1304,7 @@ main nav li.active a:after {
 
 .jobs-carousel-container li {
     position: relative;
+    background: #f2f2f2;
 }
 
 .jobs-carousel-container .slide-caption-container {
@@ -1314,24 +1315,39 @@ main nav li.active a:after {
     position: relative;
 }
 
-.jobs-carousel-container .slide-caption-container p {
+.jobs-carousel-container .slide-caption-container h3 {
     font-weight: bold;
     line-height: 1em;
     margin: 0;
-    font-size: 1.25em;
+    font-size: 1.5em;
+}
+
+.jobs-carousel-container .slick-buttons {
+    margin-top: 1em;
+}
+
+.jobs-carousel-container .slick-arrow {
+    -webkit-border-radius: initial;
+    -moz-border-radius: initial;
+    border-radius: initial;
+}
+
+.jobs-carousel-container .slick-arrow.slick-disabled {
+    background-color: #9c9c9c;
 }
 
 .jobs-carousel-container .slick-prev {
+    z-index: 11;
     position: absolute;
-    top: 0.5em;
-    left: 0;
+    bottom: 1.125em;
+    left: 0.5em;
     background: url('../images/icons/arrow-up.svg') center no-repeat transparent;
 }
 
 .jobs-carousel-container .slick-next {
     position: absolute;
-    top: 0.5em;
-    right: 0;
+    bottom: 1.125em;
+    right: 0.5em;
     background: url('../images/icons/arrow-down.svg') center no-repeat transparent;
 }
 
@@ -1341,14 +1357,9 @@ main nav li.active a:after {
     text-indent: -10em;
     background-color: #f85a40;
     background-size: 70%;
-    height: 3.25em;
-    width: 3.25em;
+    height: 2.5em;
+    width: 2.5em;
 }
-
-/*.jobs-carousel-container .slick-active .slide-caption-container {
-    display: block;
-
-}*/
 
 .footerbleed {
     padding-top: 1em;
