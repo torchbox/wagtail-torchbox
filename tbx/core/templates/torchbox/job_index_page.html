@@ -142,5 +142,7 @@
 <script src="{% static "torchbox/js/vendor/jquery.matchHeight-min.js" %}" type="text/javascript"></script>
 <script src="{% static "torchbox/js/vendor/slick/slick.min.js" %}" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="{% static "torchbox/js/vendor/slick/slick.css" %}"/>
-<script src="{% static "torchbox/js/jobs.js" %}" type="text/javascript"></script>
+    {% compress js %}
+        <script src="{% static "torchbox/js/jobs.js" %}" type="text/javascript"></script>
+    {% endcompress %}
 {% endblock %}
