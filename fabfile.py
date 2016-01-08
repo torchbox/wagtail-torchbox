@@ -5,8 +5,8 @@ import uuid
 
 env.roledefs = {
     'staging': ['tbxwagtail@by-staging-1.torchbox.com'],
-    'production': ['tbxwagtail@by-web-4-a.torchbox.com', 'tbxwagtail@by-web-4-b.torchbox.com'],
-    'production-1': ['tbxwagtail@by-web-4-a.torchbox.com'],
+    'production': ['tbxwagtail@web-1-a.rslon.torchbox.net', 'tbxwagtail@web-1-b.rslon.torchbox.net'],
+    'production-1': ['tbxwagtail@web-1-a.rslon.torchbox.net'],
 }
 
 PROJECT = "wagtail-torchbox"
