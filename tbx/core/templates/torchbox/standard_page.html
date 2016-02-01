@@ -15,9 +15,11 @@
     </div>
 
     <div class="coloured-background">
-        <div class="italic">
-            <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
-        </div>
+        {% if self.quote %}
+            <div class="italic">
+                <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
+            </div>
+        {% endif %}
     </div>
 
     <section class="intro were-tbx container">
