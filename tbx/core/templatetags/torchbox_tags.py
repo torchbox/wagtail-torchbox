@@ -193,7 +193,7 @@ def homepage_work_listing(context, count=3):
 def homepage_job_listing(context, count=3):
     # Assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True)[0]
-    jobs = jobindex.jobs
+    jobs = jobindex.job.all()
     if count:
         jobs = jobs[:count]
     return {
