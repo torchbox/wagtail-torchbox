@@ -1192,19 +1192,40 @@
     .jobs-what-saying li {
         text-align: left;
         min-height: 8em;
-        padding-top: 1.5em;
+        padding-top: 0;
         padding-left: 10em;
     }
 
     .jobs-what-saying h3 {
         position: relative;
-        top: -20px;
+        text-align: left;
+        margin-top: 0;
     }
 
     .jobs-what-saying li {
-        margin: 0 0 2em;
+        margin: 0 0 6em;
+        position: relative;
     }
 
+    .jobs-what-saying li:nth-child(2n + 2) {
+        padding-right: 10em;
+        text-align: right;
+        padding-left: 0;
+    }
+
+    .jobs-what-saying li:nth-child(2n + 2) h3 {
+        text-align: right;
+    }
+
+    .jobs-what-saying li .meta {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .jobs-what-saying li:nth-child(2n + 2) .meta {
+        position: absolute;
+        right: 10em;
+    }
 
     .jobs-offices li.first {
         margin-left: 3%;
@@ -1216,11 +1237,7 @@
         margin-bottom: 0;
     }
 
-    .jobs-what-saying li:nth-child(2n + 2) {
-        padding-right: 10em;
-        text-align: right;
-        padding-left: 0;
-    }
+
 
      .jobs-refer .center.space-footer {
         padding-bottom: 6em;
