@@ -60,7 +60,7 @@ main {
 }
 
 .logo {
-	background: url("../images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/Playground-01.png") center left no-repeat;
 	background-size: auto 3em;
 	margin-top: 1em;
 }
@@ -86,7 +86,7 @@ main {
 }
 
 .page-standardpage .logo {
-	background: url("../images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/Playground-01.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -391,7 +391,7 @@ hr {
 }
 
 .page-workindexpage .logo {
-	background: url("../images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/Playground-01.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -444,7 +444,7 @@ hr {
 }
 
 .page-workpage .logo {
-	background: url("../images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/Playground-01.png") center left no-repeat;
 	background-size: 6em;
 	opacity: 1;
 	padding: 1em;
@@ -1037,7 +1037,7 @@ page-standardpage
 	}
 
    .page-personindexpage .logo {
-		background: url("../images/play/play-blue.png") center left no-repeat;
+		background: url("../images/play/Playground-01.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1086,7 +1086,7 @@ page-standardpage
 	}
 
     .page-personpage .logo {
-		background: url("../images/play/play-blue.png") center left no-repeat;
+		background: url("../images/play/Playground-01.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1126,7 +1126,7 @@ page-standardpage
 	}
 
    .page-workindexpage .logo {
-		background: url("../images/play/play-blue.png") center left no-repeat;
+		background: url("../images/play/Playground-01.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1225,7 +1225,7 @@ page-standardpage
 	}
 
     .page-workpage .logo {
-   		background: url("../images/play/play-blue.png") center left no-repeat;
+   		background: url("../images/play/Playground-01.png") center left no-repeat;
    		background-size: 8em;
 		margin-top: -0.3em;
 		position: relative;
@@ -1320,7 +1320,7 @@ page-standardpage
 }
 
 .page-blogindexpage .logo {
-	background: url("../images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/Playground-01.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -1364,7 +1364,7 @@ page-standardpage
 }
 
 .page-blogpage .logo {
-	background: url("../images/play/play-blue.png") center left no-repeat;
+	background: url("../images/play/Playground-01.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -1456,7 +1456,7 @@ play display
 		display: none;
 	}
 	.page-blogindexpage .logo {
-		background: url("../images/play/play-blue.png") center left no-repeat;
+		background: url("../images/play/Playground-01.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		position: relative;
@@ -1519,4 +1519,3 @@ play display
 		top: auto;
 	}
 }
-

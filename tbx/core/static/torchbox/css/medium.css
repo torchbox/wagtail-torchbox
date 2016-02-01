@@ -1793,6 +1793,15 @@
 
 }
 
+@media only screen and (min-width: 75em) {
+
+    /* Office addresses */
+
+    footer .offices li {
+        width: 33%;
+    }
+}
+
 @media only screen and (min-width: 1000px) {
 
     .page-tshirtpage .heading {
