@@ -1,6 +1,8 @@
 Torchbox.com on Wagtail
 =======================
 
+[![Build Status](http://ci.torchbox.com/api/badges/torchbox/wagtail-torchbox/status.svg)](http://ci.torchbox.com/torchbox/wagtail-torchbox)
+
 [Wagtail](http://wagtail.io) is distributed as a Python package, to be incorporated into a Django project via the INSTALLED_APPS setting. To get you up and running quickly, we provide a demo site with all the configuration in place, including a set of example page types.
 
 This project is essentially a clone of [wagtaildemo](http://github.com/torchbox/wagtaildemo), customised for the torchbox site.
