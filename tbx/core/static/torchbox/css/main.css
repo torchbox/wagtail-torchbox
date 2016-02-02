@@ -926,7 +926,7 @@ main nav li.active a:after {
     min-height: 5.25em;
     font-size: 1.75em;
 }
-h3 {
+.no-job h3 {
     font-weight: bold;
     font-size: 1.5em;
     margin: 2em 0 0;
@@ -999,6 +999,7 @@ h3 {
     display: inline-block;
     padding: 0.8em 1em;
     color: #fff;
+    border: 1px solid #FD5938;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -1010,13 +1011,15 @@ h3 {
     transition: all 0.2s ease;
 }
 
-.page-jobindexpage .intro p {
-    clear: both;
-}
 
 .page-jobindexpage .button:hover {
-    background-color: inherit;
+    background-color: #fff;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.25);
+    color: #FD5938;
+}
+
+.page-jobindexpage .intro p {
+    clear: both;
 }
 
 .jobs-listing .listing a {
