@@ -19,6 +19,9 @@ We recommend running Wagtail in a virtual machine using Vagrant, as this ensures
 ### Installation
 
 Only Tech Team members can push to the repository. To make a change please fork the repository then make a pull request.
+
+**Note you'll need to make a new fork and build for each new piece of work you do.**
+
     - Visit https://github.com/torchbox/wagtail-torchbox in your browser
     - Click 'fork' (top right)
     - It will ask you where to clone the repo to - choose your username
@@ -49,5 +52,5 @@ To make coding changes:
     - Click the big green 'New pull request' button
     - Click the link that says 'compare across forks'.
     - For the base fork choose the fork on the tbx codebase you want to merge into, e.g. staging. For the head fork choose your new branch.
-    - It will show you the changes. Click 'perform pull request'.
+    - It will show you the changes. Click 'Create pull request'.
 
