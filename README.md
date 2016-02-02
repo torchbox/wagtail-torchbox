@@ -16,14 +16,6 @@ We recommend running Wagtail in a virtual machine using Vagrant, to ensure that 
 
 ### Installation
 
-Only Tech Team members can push to the repository. To make a change please fork the repository then make a pull request.
- - Visit https://github.com/torchbox/wagtail-torchbox in your browser
- - Click 'Fork' (top right)
- - It will ask you where to clone the repo to - choose your username
- - Find the URL of your cloned repo (next to the SSH dropdown). It will be something like
-
-    `git@github.com:helenb/wagtail-torchbox.git`
-
 Run the following commands:
 	
 ```
@@ -43,6 +35,6 @@ To make code changes:
  - Create a new branch for your work in the form `ticketnumber-briefdescription` e.g. `123-fix-dodgy-quotemarks`
  - Make your code changes
  - `git push origin branchname`
- - Go back to the original Torchbox repo in the browser (https://github.com/torchbox/wagtail-torchbox)
+ - Go back to Torchbox repo in the browser (https://github.com/torchbox/wagtail-torchbox)
  - Click the big green 'New pull request' button
  - Click the link that says 'compare across forks'.
