@@ -43,9 +43,11 @@ machine, exported to the VM as a shared folder; code editing and Git operations 
 
 To make coding changes:
     - Create a new branch for your work in the form `ticketnumber-briefdescription` e.g. `123-fix-dodgy-quotemarks`
-    - Make your code changes
+    - Make your code changes, add and commit them to your branch.
     - `git push origin branchname`
     - Go back to the original Torchbox repo in the browser (https://github.com/torchbox/wagtail-torchbox)
     - Click the big green 'New pull request' button
     - Click the link that says 'compare across forks'.
+    - For the base fork choose the fork on the tbx codebase you want to merge into, e.g. staging. For the head fork choose your new branch.
+    - It will show you the changes. Click 'perform pull request'.
 
