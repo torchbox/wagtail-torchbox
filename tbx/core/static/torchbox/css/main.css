@@ -926,7 +926,7 @@ main nav li.active a:after {
     min-height: 5.25em;
     font-size: 1.75em;
 }
-h3.no-job {
+.no-job h3 {
     font-weight: bold;
     font-size: 1.5em;
     margin: 2em 0 0;
@@ -999,6 +999,7 @@ h3.no-job {
     display: inline-block;
     padding: 0.8em 1em;
     color: #fff;
+    border: 1px solid #FD5938;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -1010,13 +1011,15 @@ h3.no-job {
     transition: all 0.2s ease;
 }
 
-.page-jobindexpage .intro p {
-    clear: both;
-}
 
 .page-jobindexpage .button:hover {
-    background-color: inherit;
+    background-color: #fff;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.25);
+    color: #FD5938;
+}
+
+.page-jobindexpage .intro p {
+    clear: both;
 }
 
 .jobs-listing .listing a {
@@ -1147,7 +1150,7 @@ h3.no-job {
 .jobs-what-saying h3 {
     font-weight: bold;
     font-size: 1.5em;
-    margin-bottom: 0.75em;
+    margin-top: 0.75em;
 }
 
 .jobs-what-saying li {
@@ -1233,13 +1236,6 @@ h3.no-job {
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
     display: block;
-}
-
-.jobs-refer .button {
-    border: 1px solid #ffffff;
-    background: transparent;
-    margin: 0;
-    text-shadow: 0px 0px 25px rgba(0,0,0, 0.45);
 }
 
 .jobs-refer p {

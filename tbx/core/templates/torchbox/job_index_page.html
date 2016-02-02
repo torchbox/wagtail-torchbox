@@ -34,8 +34,11 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <h3 class="no-job"> No jobs that fit?</h3>
-                <p class="no-job">We are always interested in hearing from smart people who want to work at Torchbox. If there's not an obvious position to apply for, <a href="{{ self.no_jobs_that_fit }}">do get in touch</a> anyway.</p>
+                <div class=" no-job center">
+                    <h3> No jobs that fit?</h3>
+                    <p>We are always interested in hearing from smart people who want to work at Torchbox. If there's not an obvious position to apply for, <a href="{{ self.no_jobs_that_fit }}">do get in touch</a> anyway.</p>
+                </div>
+
             {% endif %}
 
             {% if self.intro %}
@@ -88,7 +91,7 @@
             </ul>
         </div>
     </section>
-    <section class="jobs-core-values clearfix">
+    <section class="jobs-core-values center clearfix">
         <div class="center">
             <h2>Our four core values</h2>
             <ul>
@@ -109,17 +112,18 @@
     </section>
     <section class="jobs-what-saying clearfix">
         <div class="center saying">
-            <h2>What have we been saying?</h2>
             <ul>
                 {% for blog in blogs %}
                     {% with blog.related_author.all.0 as a %}
                         <li>
                             {% image a.author.image fill-300x300 %}
                             <h3>{{ blog.title }}</h3>
-                            <span>{{ blog.date }}</span>
-                            <div>
-                                <a href="{{ a.author.url }}">{{ a.author.title }}</a>
-                                <span>{{ a.author.role }}</span>
+                            <div class="meta">
+                                <span class="date">{{ blog.date }}</span>
+                                <div>
+                                    <a href="{{ a.author.url }}">{{ a.author.title }}</a>
+                                    <span>{{ a.author.role }}</span>
+                                </div>
                             </div>
                         </li>
                     {% endwith %}
