@@ -3,14 +3,12 @@ Torchbox.com on Wagtail
 
 [![Build Status](http://ci.torchbox.com/api/badges/torchbox/wagtail-torchbox/status.svg)](http://ci.torchbox.com/torchbox/wagtail-torchbox)
 
-[Wagtail](http://wagtail.io) is distributed as a Python package, to be incorporated into a Django project via the INSTALLED_APPS setting. To get you up and running quickly, we provide a demo site with all the configuration in place, including a set of example page types.
-
-This project is essentially a clone of [wagtaildemo](http://github.com/torchbox/wagtaildemo), customised for the torchbox site.
+This project was originally a clone of [wagtaildemo](http://github.com/torchbox/wagtaildemo), customised for the Torchbox site.
 
 Setup (with Vagrant)
 --------------------
 
-We recommend running Wagtail in a virtual machine using Vagrant, as this ensures that the correct dependencies are in place regardless of how your host machine is set up.
+We recommend running Wagtail in a virtual machine using Vagrant, to ensure that the correct dependencies are in place.
 
 ### Dependencies
  - [VirtualBox](https://www.virtualbox.org/)
@@ -20,7 +18,7 @@ We recommend running Wagtail in a virtual machine using Vagrant, as this ensures
 
 Only Tech Team members can push to the repository. To make a change please fork the repository then make a pull request.
  - Visit https://github.com/torchbox/wagtail-torchbox in your browser
- - Click 'fork' (top right)
+ - Click 'Fork' (top right)
  - It will ask you where to clone the repo to - choose your username
  - Find the URL of your cloned repo (next to the SSH dropdown). It will be something like
 
@@ -38,10 +36,10 @@ vagrant ssh
 ./manage.py runserver 0.0.0.0:8000
 ```
 
-This will make the app accessible on the host machine as http://localhost:8000/ - you can access the Wagtail admin interface at http://localhost:8000/admin/ . The codebase is located on the host
+This will make the app accessible on the host machine as http://localhost:8000/ - you can access the Wagtail admin interface at http://localhost:8000/admin/. The codebase is located on the host
 machine, exported to the VM as a shared folder; code editing and Git operations will generally be done on the host.
 
-To make coding changes:
+To make code changes:
  - Create a new branch for your work in the form `ticketnumber-briefdescription` e.g. `123-fix-dodgy-quotemarks`
  - Make your code changes
  - `git push origin branchname`
