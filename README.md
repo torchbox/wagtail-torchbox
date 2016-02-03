@@ -37,4 +37,7 @@ To make code changes:
  - `git push origin branchname`
  - Go back to Torchbox repo in the browser (https://github.com/torchbox/wagtail-torchbox)
  - Click the big green 'New pull request' button
- - Click the link that says 'compare across forks'.
+ - Set the 'base' as 'master' and the 'compare' as your branch.
+ - Click 'create pull request.'
+
+You will probably need to first merge to the staging branch in order to stage your changes and show them to the client. You still follow the process above, but add a comment to the pull request asking to manually merge to staging and deploy to the staging site. When you are ready to deploy, add another comment requesting that the pull request is merged to master and deployed.
