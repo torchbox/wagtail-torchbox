@@ -3,6 +3,7 @@ psycopg2==2.5.4
 wagtail==1.0rc2
 Pillow==2.7.0
 django-libsass==0.2
+wagtailmodeladmin==2.2.6
 
 # Development requirements
 django-debug-toolbar==1.2.2
