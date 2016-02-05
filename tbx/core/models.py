@@ -9,6 +9,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.forms import ModelForm
+from django.forms.widgets import TextInput
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -23,6 +25,7 @@ from wagtail.wagtailimages.models import Image
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailsearch import index
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -925,3 +928,126 @@ TshirtPage.content_panels = [
     FieldPanel('title', classname="full title"),
     ImageChooserPanel('main_image'),
 ]
+
+
+class GoogleAdGrantApplication(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+
+    class Meta:
+        ordering = ['-date']
+
+
+class GoogleAdGrantApplicationForm(ModelForm):
+    class Meta:
+        model = GoogleAdGrantApplication
+        fields = [
+            'name', 'email'
+        ]
+        widgets = {
+            'name': TextInput(attrs={'placeholder': "Your charity's name"}),
+            'email': TextInput(attrs={'placeholder': "Your email adress"})
+        }
+
+
+class GoogleAdGrantsPageGrantsManaged(models.Model):
+    page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="grants_managed")
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('image')
+    ]
+
+
+class GoogleAdGrantsPageQuote(models.Model):
+    page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="quotes")
+    text = models.TextField()
+    person_name = models.CharField(max_length=255)
+    organisation_name = models.CharField(max_length=255)
+
+    panels = [
+        FieldPanel('text'),
+        FieldPanel('person_name'),
+        FieldPanel('organisation_name'),
+    ]
+
+
+class GoogleAdGrantsAccreditations(models.Model):
+    page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="accreditations")
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('image')
+    ]
+
+
+class GoogleAdGrantsPage(Page):
+    intro = RichTextField()
+    form_title = models.CharField(max_length=255)
+    form_subtitle = models.CharField(max_length=255)
+    form_button_text = models.CharField(max_length=255)
+    body = RichTextField()
+    grants_managed_title = models.CharField(max_length=255)
+    call_to_action_title = models.CharField(max_length=255)
+    call_to_action_embed_url = models.URLField()
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body')
+    )
+
+    def get_context(self, request):
+        form = GoogleAdGrantApplicationForm()
+        context = super(GoogleAdGrantsPage, self).get_context(request)
+        context['form'] = form
+        return context
+
+    def serve(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == "POST":
+            form = GoogleAdGrantApplicationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return render(
+                    request,
+                    'torchbox/includes/ad_grant_application_landing.html',
+                    {'self': self, 'form': form}
+                )
+            else:
+                return render(
+                    request,
+                    'torchbox/includes/ad_grant_application_form.html',
+                    {'self': self, 'form': form}
+                )
+        else:
+            return super(GoogleAdGrantsPage, self).serve(request)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+        FieldPanel('body'),
+        MultiFieldPanel([
+            FieldPanel('form_title'),
+            FieldPanel('form_subtitle'),
+            FieldPanel('form_button_text'),
+        ], "Application Form"),
+        MultiFieldPanel([
+            FieldPanel('grants_managed_title'),
+            InlinePanel('grants_managed', label="Grants Managed")
+        ], "Grants Managed Section"),
+        InlinePanel('quotes', label="Quotes"),
+        MultiFieldPanel([
+            FieldPanel('call_to_action_title'),
+            FieldPanel('call_to_action_embed_url'),
+            InlinePanel('accreditations', label="Accreditations")
+        ], "Call To Action")
+    ]

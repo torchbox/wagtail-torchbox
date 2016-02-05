@@ -116,6 +116,7 @@ MIDDLEWARE_CLASSES = (
     'wagtail.wagtailcore.middleware.SiteMiddleware',
 
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtailmodeladmin.middleware.ModelAdminMiddleware'
 )
 
 from django.conf import global_settings
@@ -158,6 +159,8 @@ INSTALLED_APPS = (
     'wagtail.wagtailembeds',
     'wagtail.wagtailsearch',
     'wagtail.wagtailredirects',
+
+    'wagtailmodeladmin',
 
     'tbx.core',
 )

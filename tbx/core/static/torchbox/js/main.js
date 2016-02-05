@@ -76,6 +76,20 @@ $(function() {
         });
     });
 
+    // Google ad grant application form
+    $('.grant-application').on('submit', function(e) {
+        e.preventDefault();
+        $(".grant-application-button").html("Submitting...");
+        $.ajax({
+            url : $(this).attr('action'),
+            type: "POST",
+            data: $(this).serialize(),
+            success: function (data) {
+                $(".grant-application").html(data);
+            }
+        });
+    });
+
     // main blur // Slows down the browser too much
     //$('.sign-up').on('click', function() {
     //  $('main').toggleClass('blur');
