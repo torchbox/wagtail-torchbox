@@ -4,6 +4,10 @@ from django.conf import settings
 from wagtail.wagtailcore import hooks
 from wagtail.wagtailcore.whitelist import allow_without_attributes
 
+from wagtailmodeladmin.options import ModelAdmin, wagtailmodeladmin_register
+
+from .models import GoogleAdGrantApplication
+
 
 @hooks.register('construct_whitelister_element_rules')
 def whitelister_element_rules():
@@ -29,3 +33,14 @@ def editor_js():
         </script>
         """
     )
+
+
+class GoogleAdGrantApplicationModelAdmin(ModelAdmin):
+    model = GoogleAdGrantApplication
+    menu_label = 'Ad Grant Applications'
+    menu_icon = 'date'
+    menu_order = 600
+    add_to_settings_menu = False
+    list_display = ('date', 'name', 'email')
+
+wagtailmodeladmin_register(GoogleAdGrantApplicationModelAdmin)
