@@ -89,9 +89,9 @@
                 <div class="contact container listing">
                     <h2>Say hello</h2>
                     <ul class="footerbleed">
-                        <li><a href="mailto:{% if self|in_play or play_404 %}playground{% else %}hello{% endif %}@torchbox.com"><i class="icon-mail"></i><span>{% if self|in_play or play_404 %}playground{% else %}hello{% endif %}@torchbox.com</span></a></li>
+                        <li><a href="mailto:{% if self|in_play or play_404 %}yaffle{% else %}hello{% endif %}@torchbox.com"><i class="icon-mail"></i><span>{% if self|in_play or play_404 %}yaffle{% else %}hello{% endif %}@torchbox.com</span></a></li>
                         <li><a href="tel:+441608811870"><i class="icon-phone"></i><span>+44 (0) 1608 811870</span></a></li>
-                        <li><a href="https://twitter.com/{% if self|in_play or play_404 %}playsays{% else %}torchbox{% endif %}"><i class="icon-twitter"></i><span>{% if self|in_play or play_404 %}@PlaySays{% else %}@torchbox{% endif %}</span></a></li>
+                        <li><a href="https://twitter.com/{% if self|in_play or play_404 %}yaffle{% else %}torchbox{% endif %}"><i class="icon-twitter"></i><span>{% if self|in_play or play_404 %}@yaffle{% else %}@torchbox{% endif %}</span></a></li>
                     </ul>
                     {% if not self|in_play or play_404 %}
                         <span class="newsletter-cta"><strong>Get the best of the web</strong> in your inbox every Friday</span>
