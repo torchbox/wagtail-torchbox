@@ -11,8 +11,8 @@
         <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
 
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@torchbox">
-        <meta name="twitter:creator" content="@torchbox">
+        <meta name="twitter:site" content="{% if self|in_play %}@yaffle{% else %}@torchbox{% endif %}">
+        <meta name="twitter:creator" content="{% if self|in_play %}@yaffle{% else %}@torchbox{% endif %}">
         <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox">
         <meta name="twitter:description" content="{% if self.intro %}{{ self.intro|striptags }}{% elif self.search_description %}{{ self.search_description }}{% endif %}">
         <meta name="twitter:image:src" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-400 as img %}{{ img.url }}{% else %}{% static "torchbox/images/about-placeholder6.jpg" %}{% endif %}" />
