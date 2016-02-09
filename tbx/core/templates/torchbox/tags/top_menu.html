@@ -3,18 +3,20 @@
 
 {# Link to home page #}
 
-<div class="tbx-no newsletter-wrapper-top sml">
+{% if calling_page|in_play or play_404 %}
+<div class="newsletter-wrapper-top sml">
     <form action="https://tinyletter.com/yaffle" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/yaffle', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
         <input type="text" name="email" id="tlemail" placeholder="Email address for ace newsletter! Deal? ">
         <button type="hidden" value="1" name="embed" type="submit" class="form-btn"> Go </button>
     </form>
 </div>
+{% endif %}
 
 <div class="play-nav-container">
     <div class="play-nav">
         <nav role="navigation">
         <a href="{% pageurl site_root %}{% if calling_page|in_play or play_404 %}yaffle/{% endif %}" class="logo container">
-            <p class="tbx-no">A division of Torchbox</p>
+            {% if calling_page|in_play or play_404 %}<p>A division of Torchbox</p>{% endif %}
         </a>
         <a href="#menu" class="menu-button">&#x2261;</a>
           <ul class="bleed">
@@ -30,7 +32,7 @@
                     <li>
                         <a href="https://twitter.com/yaffle" class="btn"> <i class="icon-twitter"></i> Follow </a>
                     </li>
-                    <li class="tbx-no newsletter-wrapper big">
+                    <li class="newsletter-wrapper big">
                         <form>
                             <input type="text" placeholder="Email address for ace newsletter! Deal? ">
                             <button type="submit" class="form-btn"> Go </button>
