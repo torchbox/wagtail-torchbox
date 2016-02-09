@@ -20,10 +20,10 @@
         <meta property="fb:app_id" content="995117193836517" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="http://{{ request.site.hostname }}{{ self.url }}" />
-        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox" />
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | {% if self|in_play or play_404 %}yaffle{% else %}Torchbox{% endif %}" />
         <meta property="og:image" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% else %}{% static "torchbox/images/about-placeholder6.jpg" %}{% endif %}" />
         <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
-        <meta property="og:site_name" content="Torchbox" />
+        <meta property="og:site_name" content="{% if self|in_play or play_404 %}yaffle{% else %}Torchbox{% endif %}" />
 
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}" />
 
