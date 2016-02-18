@@ -1,8 +1,9 @@
-Django==1.7.4
+Django==1.9.2
 psycopg2==2.5.4
 wagtail==1.3.1
 Pillow==2.7.0
 django-libsass==0.2
+django-compressor==2.0
 
 # Development requirements
 django-debug-toolbar==1.2.2
@@ -14,6 +15,3 @@ elasticsearch==1.3.0
 embedly==0.5.0
 redis==2.10.3
 requests==2.7.0
-
-# temp fix, as django-compressor 2.0 does not support Django 1.7
-django-compressor<2.0

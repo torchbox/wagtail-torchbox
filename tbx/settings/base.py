@@ -119,10 +119,10 @@ MIDDLEWARE_CLASSES = (
 )
 
 from django.conf import global_settings
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + [
     'django.core.context_processors.request',
     'tbx.core.context_processors.fb_app_id',
-)
+]
 
 ROOT_URLCONF = 'tbx.urls'
 
@@ -221,4 +221,3 @@ WAGTAILIMAGES_IMAGE_MODEL = 'torchbox.TorchboxImage'
 
 # Facebook JSSDK app Id
 FB_APP_ID = ''
-
