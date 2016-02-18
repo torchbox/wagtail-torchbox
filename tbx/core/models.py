@@ -23,6 +23,7 @@ from wagtail.wagtailimages.models import Image
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailsearch import index
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -342,7 +343,10 @@ class StandardPage(Page):
 
     show_in_play_menu = models.BooleanField(default=False)
 
-    indexed_fields = ('intro', 'body', )
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
 
     content_panels = [
         FieldPanel('title', classname="full title"),
@@ -389,7 +393,10 @@ class ServicesPage(Page):
         related_name='+'
     )
 
-    indexed_fields = ('intro', 'body', )
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
 
     content_panels = [
         FieldPanel('title', classname="full title"),
@@ -414,7 +421,9 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
-    indexed_fields = ('intro', )
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+    )
 
     show_in_play_menu = models.BooleanField(default=False)
 
@@ -533,7 +542,9 @@ class BlogPage(Page):
         related_name='+'
     )
 
-    indexed_fields = ('body', )
+    search_fields = Page.search_fields + (
+        index.SearchField('body'),
+    )
 
     @property
     def blog_index(self):
@@ -591,7 +602,9 @@ class JobIndexPageJob(Orderable):
 class JobIndexPage(Page):
     intro = RichTextField(blank=True)
 
-    indexed_fields = ('intro', 'body', )
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+    )
 
     @property
     def jobs(self):
@@ -804,7 +817,13 @@ class PersonPage(Page, ContactFields):
         related_name='+'
     )
 
-    indexed_fields = ('first_name', 'last_name', 'intro', 'biography')
+
+    search_fields = Page.search_fields + (
+        index.SearchField('first_name'),
+        index.SearchField('last_name'),
+        index.SearchField('intro'),
+        index.SearchField('biography'),
+    )
 
     content_panels = [
         FieldPanel('title', classname="full title"),
@@ -828,7 +847,10 @@ class PersonPage(Page, ContactFields):
 class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
     show_in_play_menu = models.BooleanField(default=False)
-    indexed_fields = ('intro', )
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+    )
 
     @property
     def people(self):
