@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "torchbox/wagtail"
+  config.vm.box = "torchbox/wagtail-jessie64"
   config.vm.box_version = "~> 1.0"
 
   # Disable automatic box update checking. If you disable this, then
@@ -70,7 +70,7 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
   config.vm.provision :shell, :path => "vagrant/provision.sh", :args => "torchbox"
-  
+
   # Enable agent forwarding over SSH connections.
-  config.ssh.forward_agent = true 
+  config.ssh.forward_agent = true
 end
