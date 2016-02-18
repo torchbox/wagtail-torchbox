@@ -279,8 +279,6 @@ class HomePage(Page):
         related_name='+'
     )
 
-    search_name = "Homepage"
-
     class Meta:
         verbose_name = "Homepage"
 
@@ -345,7 +343,6 @@ class StandardPage(Page):
     show_in_play_menu = models.BooleanField(default=False)
 
     indexed_fields = ('intro', 'body', )
-    search_name = None
 
     content_panels = [
         FieldPanel('title', classname="full title"),
@@ -393,7 +390,6 @@ class ServicesPage(Page):
     )
 
     indexed_fields = ('intro', 'body', )
-    search_name = None
 
     content_panels = [
         FieldPanel('title', classname="full title"),
@@ -419,7 +415,6 @@ class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
     indexed_fields = ('intro', )
-    search_name = "Blog"
 
     show_in_play_menu = models.BooleanField(default=False)
 
@@ -539,7 +534,6 @@ class BlogPage(Page):
     )
 
     indexed_fields = ('body', )
-    search_name = "Blog Entry"
 
     @property
     def blog_index(self):
@@ -811,7 +805,6 @@ class PersonPage(Page, ContactFields):
     )
 
     indexed_fields = ('first_name', 'last_name', 'intro', 'biography')
-    search_name = "Person"
 
     content_panels = [
         FieldPanel('title', classname="full title"),
