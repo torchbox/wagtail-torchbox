@@ -22,7 +22,6 @@ def deploy_staging():
     with cd('/usr/local/django/tbxwagtail/'):
         run("git pull")
         run("pip install -r requirements.txt --upgrade")
-        run("manage syncdb --noinput")
         run("manage migrate --noinput")
         run("manage collectstatic --noinput")
         run("manage compress --force")
@@ -35,7 +34,6 @@ def deploy():
     with cd('/usr/local/django/tbxwagtail/'):
         run("git pull")
         run("pip install -r requirements.txt")
-        run("manage syncdb --noinput")
         run("manage migrate --noinput")
         run("manage collectstatic --noinput")
         run("manage compress --force")

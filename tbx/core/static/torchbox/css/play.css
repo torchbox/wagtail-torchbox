@@ -51,8 +51,8 @@ main {
 
 
 .body-copy p a:hover {
-	color: #63A6CB;
-	border-bottom: 1px solid #63A6CB;
+	color: #70ba66;
+	border-bottom: 1px solid #70ba66;
 }
 
 .body-copy h2 {
@@ -60,7 +60,7 @@ main {
 }
 
 .logo {
-	background: url("../images/play/Playground-01.png") center left no-repeat;
+	background: url("../images/play/yaffle.png") center left no-repeat;
 	background-size: auto 3em;
 	margin-top: 1em;
 }
@@ -86,7 +86,7 @@ main {
 }
 
 .page-standardpage .logo {
-	background: url("../images/play/Playground-01.png") center left no-repeat;
+	background: url("../images/play/yaffle.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -107,11 +107,11 @@ main {
 
 .menu-button {
 	background-color: #fff;
-	color: #63A6CB;
+	color: #70ba66;
 }
 
 .menu-button:hover {
-	background-color: #63A6CB;
+	background-color: #70ba66;
 	color: #fff;
 }
 
@@ -144,7 +144,7 @@ header nav li a:hover {
 
 header nav ul.visible {
 	height: 318px;
-	background: #63a6cb;
+	background: #70ba66;
 }
 
 .page-standardpage .heading {
@@ -168,7 +168,7 @@ header nav ul.visible {
 	-moz-transform: scale(.9999);
 	border-width: 40px 1610px 0px 0px;
 	border-style: solid;
-	border-color: transparent #63A6CB transparent transparent;
+	border-color: transparent #70ba66 transparent transparent;
 	max-height: 60px;
 	z-index: 20;
 }
@@ -200,10 +200,10 @@ header nav ul.visible {
 
 .page-standardpage p a {
 	font-size: 1em;
-	color: #63A6CB;
+	color: #70ba66;
 	padding: 0.5em 0.7em;
 	margin-right: 2em;
-	border: 1px solid #63A6CB;
+	border: 1px solid #70ba66;
 	-o-transition: all 0.2s ease;
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
@@ -211,9 +211,9 @@ header nav ul.visible {
 }
 
 .page-standardpage p a:hover {
-	background: #63A6CB;
+	background: #70ba66;
 	color: #fff;
-	border: 1px solid #63A6CB;
+	border: 1px solid #70ba66;
 }
 
 .page-standardpage .heading p a:last-of-type {
@@ -223,8 +223,8 @@ header nav ul.visible {
 .page-standardpage .heading p a:hover {
 	font-size: 1.2em;
 	color: #fff;
-	background: #63A6CB;
-	border: 2px solid #63A6CB;
+	background: #70ba66;
+	border: 2px solid #70ba66;
 	-o-transition: all 0.2s ease;
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
@@ -235,7 +235,7 @@ header nav ul.visible {
 	position: relative;
 	color: #fff;
 	border: none;
-	background-color: #63A6CB;
+	background-color: #70ba66;
 	border-radius: 0;
 	margin: 3em auto 0 auto;
 	-o-transition: all 0.2s ease;
@@ -296,7 +296,7 @@ header nav ul.visible {
 }
 
 .grid.people-list li a:hover {
-	background: #63A6CB;
+	background: #70ba66;
 }
 
 .play-yellow {
@@ -338,7 +338,7 @@ header nav ul.visible {
 
 hr {
 	margin: 2em 0;
-	border-top: 1px solid #63A6CB;
+	border-top: 1px solid #70ba66;
 }
 
 .page-personpage h1 {
@@ -354,19 +354,19 @@ hr {
 }
 
 .page-personpage .blog-listing li:first-of-type {
-	border-top: 1px solid #63A6CB;
+	border-top: 1px solid #70ba66;
 }
 
 .page-personpage .blog-listing li {
-	border-bottom: 1px solid #63A6CB;
+	border-bottom: 1px solid #70ba66;
 }
 
 .page-personpage .blog-listing h3 {
-	color: #63A6CB;
+	color: #70ba66;
 }
 
 .page-personpage .role {
-	color: #63A6CB;
+	color: #70ba66;
 }
 
 .clients li {
@@ -391,7 +391,7 @@ hr {
 }
 
 .page-workindexpage .logo {
-	background: url("../images/play/Playground-01.png") center left no-repeat;
+	background: url("../images/play/yaffle.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -402,7 +402,7 @@ hr {
 .page-standardpage .were-tbx h3 {
 	font-size: 1.4em;
 	margin: 0 0 -1em 0;
-	color: #63A6CB;
+	color: #70ba66;
 	font-weight: bold;
 }
 
@@ -444,14 +444,14 @@ hr {
 }
 
 .page-workpage .logo {
-	background: url("../images/play/Playground-01.png") center left no-repeat;
+	background: url("../images/play/yaffle.png") center left no-repeat;
 	background-size: 6em;
 	opacity: 1;
 	padding: 1em;
 }
 
 .body-copy a {
-	color: #63A6CB;
+	color: #70ba66;
 }
 
 .page-workpage .intro {
@@ -482,11 +482,11 @@ hr {
 }
 
 .share ul:before {
-	border-bottom-color: #63A6CB;
+	border-bottom-color: #70ba66;
 }
 
 .share ul {
-	border-color: #63A6CB;
+	border-color: #70ba66;
 }
 
 .page-workpage .crop-height:after{
@@ -516,7 +516,7 @@ hr {
 }
 
 .coloured-background {
-	background: #63A6CB;
+	background: #70ba66;
 	position: relative;
 	padding: 1.75em 0 1.5em;
 	margin-bottom: 3em;
@@ -536,7 +536,7 @@ hr {
 	-moz-transform: scale(.9999);
 	border-width: 0 1910px 40px 0;
 	border-style: solid;
-	border-color: transparent #63A6CB transparent transparent;
+	border-color: transparent #70ba66 transparent transparent;
 	max-height: 60px;
 }
 
@@ -634,13 +634,13 @@ header nav li a.btn i {
 	}
 
 	input {
-		border: 1px solid #63A6CB;
+		border: 1px solid #70ba66;
 		width: 90%;
 		height: 50px;
 	}
 
 	input[type="text"] {
-		color: #63A6CB;
+		color: #70ba66;
 		font-size: 1em;
 		padding: 0.3em 1em 0;
 	}
@@ -654,7 +654,7 @@ header nav li a.btn i {
 		height: 100%;
 		width: 10%;
 		right: 0;
-		background: #63A6CB;
+		background: #70ba66;
 		text-align: center;
 		padding: 0.1em 0 0 0;
 		-o-transition: all 0.2s ease;
@@ -664,7 +664,7 @@ header nav li a.btn i {
 	}
 
 	header nav li a.btn {
-		background: #63A6CB;
+		background: #70ba66;
 		color: #fff;
 		padding: 0.1em 0.5em 0.3em;
 		margin-top: 0.8em;
@@ -860,7 +860,7 @@ page-standardpage
 	.italic {
 		position: relative;
 		text-align: left;
-		color: #63A6CB;
+		color: #70ba66;
 		z-index: 1;
 		margin: 1.5em auto 2.5em auto;
 	}
@@ -878,7 +878,7 @@ page-standardpage
 	.page-standardpage .were-tbx h2 {
 		text-align: center;
 		max-width: 100%;
-		color: #63A6CB;
+		color: #70ba66;
 	}
 
 	.heading {
@@ -925,7 +925,7 @@ page-standardpage
     Navigation
    ========================================================================== */
 	.active a {
-		color: #63A6CB;
+		color: #70ba66;
 	}
 
 	header nav li a {
@@ -933,7 +933,7 @@ page-standardpage
 	}
 
 	header nav li a:hover {
-		color: #63A6CB;
+		color: #70ba66;
 	}
 
 	.page-standardpage header.container {
@@ -1013,7 +1013,7 @@ page-standardpage
 	}
 
 	footer .contact li i {
-		color: #63A6CB
+		color: #70ba66
 	}
 
 	footer .contact a:hover span {
@@ -1037,7 +1037,7 @@ page-standardpage
 	}
 
    .page-personindexpage .logo {
-		background: url("../images/play/Playground-01.png") center left no-repeat;
+		background: url("../images/play/yaffle.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1052,7 +1052,7 @@ page-standardpage
 	}
 
 	.page-personindexpage header nav li.active a {
-		color: #63A6CB;
+		color: #70ba66;
 	}
 
 	.grid.people-list ul:first-child:before {
@@ -1082,11 +1082,11 @@ page-standardpage
 	}
 
 	.grid.people-list li a:hover {
-		background: #63A6CB;
+		background: #70ba66;
 	}
 
     .page-personpage .logo {
-		background: url("../images/play/Playground-01.png") center left no-repeat;
+		background: url("../images/play/yaffle.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1096,7 +1096,7 @@ page-standardpage
 	}
 
 	.page-personpage header nav li.active a {
-		color: #63A6CB;
+		color: #70ba66;
 	}
 
 	.page-personpage h1 {
@@ -1126,7 +1126,7 @@ page-standardpage
 	}
 
    .page-workindexpage .logo {
-		background: url("../images/play/Playground-01.png") center left no-repeat;
+		background: url("../images/play/yaffle.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		padding: 1em;
@@ -1136,7 +1136,7 @@ page-standardpage
 	}
 
 	.page-workindexpage header nav li.active a {
-		color: #63A6CB;
+		color: #70ba66;
 	}
 
 	.page-workindexpage main ul li {
@@ -1163,7 +1163,7 @@ page-standardpage
 	}
 
 	.page-workindexpage main .listing a:hover .about h2 {
-		color: #63A6CB;
+		color: #70ba66;
 	}
 
 	.page-workindexpage main .listing .about p {
@@ -1225,7 +1225,7 @@ page-standardpage
 	}
 
     .page-workpage .logo {
-   		background: url("../images/play/Playground-01.png") center left no-repeat;
+		background: url("../images/play/yaffle.png") center left no-repeat;
    		background-size: 8em;
 		margin-top: -0.3em;
 		position: relative;
@@ -1251,7 +1251,7 @@ page-standardpage
    }
 
 	.nextprev a {
-		background-color: #63A6CB;
+		background-color: #70ba66;
 		border-radius: 0;
 	}
 
@@ -1316,11 +1316,11 @@ page-standardpage
 }
 
 .page-blogindexpage h2 {
-	color: #63A6CB;
+	color: #70ba66;
 }
 
 .page-blogindexpage .logo {
-	background: url("../images/play/Playground-01.png") center left no-repeat;
+	background: url("../images/play/yaffle.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -1360,11 +1360,11 @@ page-standardpage
 }
 
 .page-blogpage .article-meta a {
-	color: #63A6CB;
+	color: #70ba66;
 }
 
 .page-blogpage .logo {
-	background: url("../images/play/Playground-01.png") center left no-repeat;
+	background: url("../images/play/yaffle.png") center left no-repeat;
 	background-size: 6em;
 	padding: 1em;
 	opacity: 1;
@@ -1390,12 +1390,12 @@ Home page raw html
 .page-standardpage .featured li {
 	list-style: none;
 	padding: 1.5em 0 1.5em;
-	border-bottom: 1px solid #63A6CB;
+	border-bottom: 1px solid #70ba66;
 	margin: 0;
 }
 
 .page-standardpage .featured li:first-of-type {
-	border-top: 1px solid #63A6CB;
+	border-top: 1px solid #70ba66;
 }
 
 .featured p {
@@ -1456,7 +1456,7 @@ play display
 		display: none;
 	}
 	.page-blogindexpage .logo {
-		background: url("../images/play/Playground-01.png") center left no-repeat;
+		background: url("../images/play/yaffle.png") center left no-repeat;
 		background-size: 8em;
 		margin-top: -0.3em;
 		position: relative;

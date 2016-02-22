@@ -5,14 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8" />
-        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | Torchbox{% endblock %}</title>
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} {% if self|in_play or play_404 %}| yaffle{% else %}| Torchbox{% endif %}{% endblock %}</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
 
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@torchbox">
-        <meta name="twitter:creator" content="@torchbox">
+        <meta name="twitter:site" content="{% if self|in_play %}@yaffle{% else %}@torchbox{% endif %}">
+        <meta name="twitter:creator" content="{% if self|in_play %}@yaffle{% else %}@torchbox{% endif %}">
         <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox">
         <meta name="twitter:description" content="{% if self.intro %}{{ self.intro|striptags }}{% elif self.search_description %}{{ self.search_description }}{% endif %}">
         <meta name="twitter:image:src" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-400 as img %}{{ img.url }}{% else %}{% static "torchbox/images/about-placeholder6.jpg" %}{% endif %}" />
@@ -20,10 +20,10 @@
         <meta property="fb:app_id" content="995117193836517" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="http://{{ request.site.hostname }}{{ self.url }}" />
-        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox" />
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | {% if self|in_play or play_404 %}yaffle{% else %}Torchbox{% endif %}" />
         <meta property="og:image" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% else %}{% static "torchbox/images/about-placeholder6.jpg" %}{% endif %}" />
         <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
-        <meta property="og:site_name" content="Torchbox" />
+        <meta property="og:site_name" content="{% if self|in_play or play_404 %}yaffle{% else %}Torchbox{% endif %}" />
 
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}" />
 
@@ -41,6 +41,12 @@
 
         {% if self|in_play or play_404 %}
             <link rel="stylesheet" href="{% static "torchbox/css/play.css" %}">
+            <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+            <script type="text/javascript">twttr.conversion.trackPid('nuakk', 0, tw_order_quantity);</script>
+            <noscript>
+                <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=nuakk&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+                <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=nuakk&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+            </noscript>
         {% else %}
             <link rel="alternate" type="application/rss+xml" title="Torchbox Blog RSS" href="{% url 'blog_feed' %}" />
         {% endif %}
@@ -89,9 +95,9 @@
                 <div class="contact container listing">
                     <h2>Say hello</h2>
                     <ul class="footerbleed">
-                        <li><a href="mailto:{% if self|in_play or play_404 %}playground{% else %}hello{% endif %}@torchbox.com"><i class="icon-mail"></i><span>{% if self|in_play or play_404 %}playground{% else %}hello{% endif %}@torchbox.com</span></a></li>
+                        <li><a href="mailto:{% if self|in_play or play_404 %}yaffle{% else %}hello{% endif %}@torchbox.com"><i class="icon-mail"></i><span>{% if self|in_play or play_404 %}yaffle{% else %}hello{% endif %}@torchbox.com</span></a></li>
                         <li><a href="tel:+441608811870"><i class="icon-phone"></i><span>+44 (0) 1608 811870</span></a></li>
-                        <li><a href="https://twitter.com/{% if self|in_play or play_404 %}playsays{% else %}torchbox{% endif %}"><i class="icon-twitter"></i><span>{% if self|in_play or play_404 %}@PlaySays{% else %}@torchbox{% endif %}</span></a></li>
+                        <li><a href="https://twitter.com/{% if self|in_play or play_404 %}yaffle{% else %}torchbox{% endif %}"><i class="icon-twitter"></i><span>{% if self|in_play or play_404 %}@yaffle{% else %}@torchbox{% endif %}</span></a></li>
                     </ul>
                     {% if not self|in_play or play_404 %}
                         <span class="newsletter-cta"><strong>Get the best of the web</strong> in your inbox every Friday</span>
