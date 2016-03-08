@@ -2975,7 +2975,9 @@ h4 ~ .stat {
 }
 
 .page-googleadgrantspage .logo {
-  background-image: url("http://www.torchbox.com/static/torchbox/images/logo-torchbox-white.png?da7aded656c5"); }
+    background: url("../images/logo-torchbox-white.png") center left no-repeat;
+    background-size: auto 3em;
+}
 
 .page-googleadgrantspage header nav li a {
   color: #fff; }
@@ -3012,7 +3014,7 @@ h4 ~ .stat {
   font-weight: bold; }
 
 .landing-header {
-  background: #4a98c6 url(../img/banner_bg.jpg);
+  background: #4a98c6 url(../images/banner_bg.jpg);
   background-size: 25% 25%;
   color: #fff;
   margin-top: -150px;
