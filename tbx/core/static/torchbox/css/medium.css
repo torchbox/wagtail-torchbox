@@ -1415,7 +1415,6 @@
         width: 35%;
         margin-right: 4%;
         float: left;
-        z-index: -1;
     }
 
     .page-personpage .bio-text {

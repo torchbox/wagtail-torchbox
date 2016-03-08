@@ -243,9 +243,9 @@ register_snippet(Advert)
 class TorchboxImage(AbstractImage):
     credit = models.CharField(max_length=255, blank=True)
 
-    admin_form_fields = Image.admin_form_fields + [
+    admin_form_fields = Image.admin_form_fields + (
         'credit',
-    ]
+    )
 
     @property
     def credit_text(self):
