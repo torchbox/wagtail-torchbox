@@ -243,14 +243,8 @@ register_snippet(Advert)
 class TorchboxImage(AbstractImage):
     credit = models.CharField(max_length=255, blank=True)
 
-    admin_form_fields = (
-        'title',
-        'file',
-        'tags',
-        'focal_point_x',
-        'focal_point_y',
-        'focal_point_width',
-        'focal_point_height',
+    admin_form_fields = Image.admin_form_fields + (
+        'credit',
     )
 
     @property
