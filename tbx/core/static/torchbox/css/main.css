@@ -3020,9 +3020,6 @@ h4 ~ .stat {
   position: relative;
   z-index: 0;
   text-align: center; }
-  @media (min-width: 768px) {
-    .landing-header {
-      padding: 150px 0 180px; } }
   .landing-header p {
     max-width: 700px;
     margin: 0 auto;
@@ -3038,11 +3035,6 @@ h4 ~ .stat {
   margin: 0 auto -120px;
   padding: 3em 2em;
   text-align: center; }
-  @media (min-width: 768px) {
-    .grant-form {
-      box-shadow: 0px 2px 10px #bdc6cc;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      width: 880px; } }
   .grant-form p {
     margin-top: 0;
     margin-bottom: 2em; }
@@ -3055,9 +3047,6 @@ h4 ~ .stat {
       text-align: left;
       padding: 0 1em;
       margin: 0 auto 1em; }
-      @media (min-width: 768px) {
-        .grant-form form .input {
-          width: 60%; } }
       .grant-form form .input input {
         width: 100%; }
     .grant-form form .btn {
@@ -3086,20 +3075,6 @@ h4 ~ .stat {
     width: 100%;
     text-align: center;
     margin: 0 0 4em; }
-    @media (min-width: 768px) {
-      .our-clients ul li {
-        float: left;
-        width: 50%;
-        margin: 0 0 2em;
-        min-height: 51px; }
-        .our-clients ul li:nth-of-type(2n+3) {
-          clear: left; } }
-    @media (min-width: 1205px) {
-      .our-clients ul li {
-        width: 25%;
-        margin: 0 0 2em; }
-        .our-clients ul li:nth-of-type(2n+3) {
-          clear: none; } }
     .our-clients ul li img {
       width: auto;
       height: auto;
@@ -3113,15 +3088,6 @@ h4 ~ .stat {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
   position: relative;
   border-top: 1px dotted rgba(0, 0, 0, 0.1); }
-  @media (min-width: 768px) {
-    .testimonials {
-      border-top: none;
-      padding: 7em 0 6em 0;
-      margin: 2em 0 3em 0;
-      color: #434a4f;
-      background-color: #424A4F;
-      background: url("http://torchbox.com/static/torchbox/images/about-placeholder6.jpg?ec983614c72d") center right no-repeat;
-      background-size: cover; } }
   .testimonials blockquote {
     font-size: 1.4em;
     text-align: center;
