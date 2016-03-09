@@ -1543,6 +1543,15 @@
         height: 1100px !important;
     }
 
+    .page-googleadgrantspage .bleed {
+        background: none;
+        margin: 2.2em 0.5em 0 0;
+    }
+
+    .page-googleadgrantspage .container {
+        padding: 0 2em;
+    }
+
     .grant-form {
         box-shadow: 0px 2px 10px #bdc6cc;
         border: 1px solid rgba(0, 0, 0, 0.1);
