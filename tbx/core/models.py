@@ -588,8 +588,26 @@ class BlogPage(Page):
 
 
 # Jobs index page
-class JobIndexPageContentBlock(Orderable, ContentBlock):
-    page = ParentalKey('torchbox.JobIndexPage', related_name='content_block')
+
+class ReasonToJoin(Orderable):
+    page = ParentalKey('torchbox.JobIndexPage', related_name='reasons_to_join')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    title = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255)
+    body = models.CharField(max_length=511)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('title'),
+        FieldPanel('subtitle'),
+        FieldPanel('body')
+    ]
 
 
 class JobIndexPageJob(Orderable):
@@ -607,41 +625,30 @@ class JobIndexPageJob(Orderable):
 
 class JobIndexPage(Page):
     intro = RichTextField(blank=True)
+    no_jobs_that_fit = models.URLField(null=True)
+    terms_and_conditions = models.URLField(null=True)
+    refer_a_friend = models.URLField(null=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
     )
 
-    @property
-    def jobs(self):
-        jobs = self.job.all()
-
-        return jobs
-
-    def serve(self, request):
-        # Get jobs
-        jobs = self.jobs
-
-        # Pagination
-        page = request.GET.get('page')
-        paginator = Paginator(jobs, 10)  # Show 10 jobs per page
-        try:
-            jobs = paginator.page(page)
-        except PageNotAnInteger:
-            jobs = paginator.page(1)
-        except EmptyPage:
-            jobs = paginator.page(paginator.num_pages)
-
-        return render(request, self.template, {
-            'self': self,
-            'jobs': jobs,
-        })
+    def get_context(self, request, *args, **kwargs):
+        context = super(
+            JobIndexPage, self
+        ).get_context(request, *args, **kwargs)
+        context['jobs'] = self.job.all()
+        context['blogs'] = BlogPage.objects.live().order_by('-date')[:4]
+        return context
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
-        InlinePanel('content_block', label="Content block"),
+        FieldPanel('no_jobs_that_fit', classname="full"),
+        FieldPanel('terms_and_conditions', classname="full"),
+        FieldPanel('refer_a_friend', classname="full"),
         InlinePanel('job', label="Job"),
+        InlinePanel('reasons_to_join', label="Reasons To Join"),
     ]
 
 
@@ -907,10 +914,10 @@ class TshirtPage(Page):
         related_name='+'
     )
 
-TshirtPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    ImageChooserPanel('main_image'),
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        ImageChooserPanel('main_image'),
+    ]
 
 
 class GoogleAdGrantApplication(models.Model):

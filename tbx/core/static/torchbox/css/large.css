@@ -28,7 +28,13 @@
         margin-right:auto;
     }
 
+    .jobs-header-content {
+        padding-top: 10em;
+    }
 
+    .jobs-carousel-container .slide-caption-container p {
+        font-size: 1.5em;
+    }
 
     .page-homepage .hero h1 {
         text-align: center;
@@ -118,6 +124,8 @@
     }
 
     footer .contact span.newsletter-cta {
+        text-align: left;
+        white-space: nowrap;
         font-size: 1.45em;
         float: left;
         margin: 1em 0 0.5em 0;

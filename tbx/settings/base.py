@@ -26,6 +26,8 @@ EMAIL_SUBJECT_PREFIX = '[wagtail-torchbox] '
 INSTALLED_APPS = [
     'tbx.core',
 
+    'wagtailmodeladmin',
+
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -38,7 +40,6 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
-    'wagtailmodeladmin',
 
     'modelcluster',
     'compressor',
@@ -64,6 +65,7 @@ MIDDLEWARE_CLASSES = [
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtailmodeladmin.middleware.ModelAdminMiddleware',
 ]
 
 ROOT_URLCONF = 'tbx.urls'
