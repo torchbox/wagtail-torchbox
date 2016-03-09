@@ -1016,8 +1016,8 @@ class GoogleAdGrantsPage(Page):
             return super(GoogleAdGrantsPage, self).serve(request)
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro'),
-        FieldPanel('body'),
+        FieldPanel('intro', classname='full'),
+        FieldPanel('body', classname='full'),
         MultiFieldPanel([
             FieldPanel('form_title'),
             FieldPanel('form_subtitle'),
