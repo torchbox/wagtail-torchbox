@@ -34,7 +34,8 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <a href="{{ self.no_jobs_that_fit }}" class="no-job-fit">No jobs that fit?</a>
+                <h3 class="no-job"> No jobs that fit?</h3>
+                <p class="no-job">We are always interested in hearing from smart people who want to work at Torchbox. If there's not an obvious position to apply for, <a href="{{ self.no_jobs_that_fit }}">do get in touch</a> anyway.</p>
             {% endif %}
 
             {% if self.intro %}
@@ -56,8 +57,8 @@
                         <div class="slide-caption-container">
                             <div>
                                 <span class="reason-no">{{ reason.title }}</span>
-                                <h3>{{ reason.body }}</h3>
-                                <p>Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus.</p>
+                                <h3>{{ reason.subtitle }}</h3>
+                                <p>{{ reason.body }}</p>
                             </div>
                         </div>
                     </li>

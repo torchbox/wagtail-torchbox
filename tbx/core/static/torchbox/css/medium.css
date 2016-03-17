@@ -14,7 +14,7 @@
     }
 
     .container {
-        padding: 0 2em;
+        padding: 0 4em;
         max-width: 96em;
         margin: 0 auto;
     }
@@ -24,7 +24,7 @@
     }
 
     .bleed {
-        margin: 2.2em 0.5em 0 0;
+        margin: 2.2em 4em 0 0;
         height: 55px;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -1059,7 +1059,7 @@
     }
 
     .page-jobindexpage .bleed {
-        background: rgba(87, 78, 66, 0.35)
+        background: transparent; // this might be in more places
     }
 
     .page-jobindexpage .intro p {

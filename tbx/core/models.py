@@ -605,11 +605,13 @@ class ReasonToJoin(Orderable):
         related_name='+'
     )
     title = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255)
     body = models.CharField(max_length=511)
 
     panels = [
         ImageChooserPanel('image'),
         FieldPanel('title'),
+        FieldPanel('subtitle'),
         FieldPanel('body')
     ]
 
