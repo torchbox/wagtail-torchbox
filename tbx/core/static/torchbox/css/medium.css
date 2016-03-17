@@ -749,7 +749,8 @@
     }
 
     .jobs-core-values h2 {
-        font-size: 3.5em;
+        font-size: 2.5em;
+        margin-bottom: 1.5em;
     }
 
     .jobs-core-values li {
@@ -895,7 +896,8 @@
     }
 
     .jobs-benefits h2 {
-        font-size: 3em;
+        font-size: 2.5em;
+        margin-bottom: 40px;
     }
 
     .jobs-offices li {
@@ -913,7 +915,7 @@
     }
 
     .jobs-offices h2 {
-        font-size: 3.5em;
+        font-size: 2.5em;
         margin: 0.75em 0;
     }
 
@@ -1142,7 +1144,7 @@
 
     .jobs-listing h2 {
         margin-bottom: 1.5em;
-        font-size: 3em;
+        font-size: 2.5em;
     }
 
     .jobs-listing .listing li:nth-child(2n + 2) {
@@ -1156,12 +1158,12 @@
     .jobs-header-content {
         width: 100%;
         color: #ffffff;
-        padding: 12% 0 5% 0;
+        padding: 190px 0 140px 0;
         text-align: center;
     }
 
     .img-darken {
-        background-image: url('../images/job-page-about.jpg');
+        background-image: url('../images/torchbox-all-02.jpg');
     }
 
     .jobs-header-content h1 {
@@ -1180,13 +1182,13 @@
         position: absolute;
         border-radius: 50%;
         position: absolute;
-        top: 0;
+        top: 15px;
         left: 0;
     }
 
     .jobs-what-saying h2 {
-        font-size: 3em;
-        margin-bottom: 1.5em;
+        font-size: 2.5em;
+        margin-bottom: 1em;
     }
 
     .jobs-what-saying li {
@@ -1198,7 +1200,6 @@
 
     .jobs-what-saying h3 {
         position: relative;
-        top: -20px;
     }
 
     .jobs-what-saying li {
@@ -1216,12 +1217,6 @@
         margin-bottom: 0;
     }
 
-    .jobs-what-saying li:nth-child(2n + 2) {
-        padding-right: 10em;
-        text-align: right;
-        padding-left: 0;
-    }
-
      .jobs-refer .center.space-footer {
         padding-bottom: 6em;
      }
@@ -1231,7 +1226,7 @@
     .jobs-refer h2,
     .jobs-refer p
     .jobs-refer .terms-link {
-        text-shadow: 0px 0px 25px rgba(0,0,0, 0.45);
+        //text-shadow: 0px 0px 25px rgba(0,0,0, 0.45);
     }
 
     .jobs-refer h2 {
@@ -1240,13 +1235,11 @@
     }
 
     .jobs-header h1 {
-        font-size: 9vw;
-        margin-bottom: 0;
+        font-size: 90px;
     }
 
     .jobs-header p {
-        position: relative;
-        top: -5px;
+        margin: -10px auto 30px;
         font-size: 1.45em;
         line-height: 1.4;
     }
@@ -1294,10 +1287,11 @@
         top: 0;
         right: 0;
         padding: 2em 1em 2em 4%;
-        background: #f2f2f2;
+        background: #484848;
         width: 35%;
         height: 100%;
         white-space: nowrap;
+        color: white !important;
     }
 
     .jobs-carousel-container .slide-caption-container > div {
@@ -1319,13 +1313,15 @@
     }
 
     .jobs-carousel-container .slide-caption-container p {
+        font-size: 1.1em;
         padding-right: 5em;
+        margin-top: 10px;
         line-height: 1.25em;
     }
 
     .jobs-carousel-container .slide-caption-container span {
         font-size: 1.25em;
-        color: #5e5f61;
+        color: rgab(255,255,255, 0.5);
         font-weight: normal;
         display: block;
     }
