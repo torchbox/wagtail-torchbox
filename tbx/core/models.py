@@ -987,8 +987,8 @@ class GoogleAdGrantsPage(Page):
     )
     body = RichTextField()
     grants_managed_title = models.CharField(max_length=255)
-    call_to_action_title = models.CharField(max_length=255)
-    call_to_action_embed_url = models.URLField()
+    call_to_action_title = models.CharField(max_length=255, blank=True)
+    call_to_action_embed_url = models.URLField(blank=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
