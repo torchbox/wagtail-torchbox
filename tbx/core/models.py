@@ -9,7 +9,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.forms import ModelForm
+from django.forms.widgets import TextInput
 
+from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
@@ -23,6 +26,7 @@ from wagtail.wagtailimages.models import Image
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailsearch import index
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -101,15 +105,6 @@ class StoryBlock(StreamBlock):
     # photogrid = PhotoGridBlock()
     # testimonial = PullQuoteImageBlock(label="Testimonial", icon="group")
     # stats = StatsBlock()
-
-
-
-COMMON_PANELS = (
-    FieldPanel('slug'),
-    FieldPanel('seo_title'),
-    FieldPanel('show_in_menus'),
-    FieldPanel('search_description'),
-)
 
 
 # A couple of abstract classes that contain commonly used fields
@@ -249,6 +244,10 @@ register_snippet(Advert)
 class TorchboxImage(AbstractImage):
     credit = models.CharField(max_length=255, blank=True)
 
+    admin_form_fields = Image.admin_form_fields + (
+        'credit',
+    )
+
     @property
     def credit_text(self):
         return self.credit
@@ -288,21 +287,15 @@ class HomePage(Page):
         related_name='+'
     )
 
-    search_name = "Homepage"
-
     class Meta:
         verbose_name = "Homepage"
 
-HomePage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro'),
-    FieldPanel('hero_video_id'),
-    ImageChooserPanel('hero_video_poster_image'),
-]
-
-HomePage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro'),
+        FieldPanel('hero_video_id'),
+        ImageChooserPanel('hero_video_poster_image'),
+    ]
 
 
 # Standard page
@@ -325,8 +318,9 @@ class StandardPageClients(Orderable, RelatedLink):
         related_name='+'
     )
 
-StandardPageClients.panels = StandardPageClients.panels + [
-    ImageChooserPanel('image')]
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('image')
+    ]
 
 
 class StandardPage(Page):
@@ -356,30 +350,32 @@ class StandardPage(Page):
 
     show_in_play_menu = models.BooleanField(default=False)
 
-    indexed_fields = ('intro', 'body', )
-    search_name = None
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
 
-StandardPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    ImageChooserPanel('main_image'),
-    FieldPanel('credit', classname="full"),
-    FieldPanel('heading', classname="full"),
-    FieldPanel('quote', classname="full"),
-    FieldPanel('intro', classname="full"),
-    FieldPanel('middle_break', classname="full"),
-    FieldPanel('body', classname="full"),
-    StreamFieldPanel('streamfield'),
-    FieldPanel('email', classname="full"),
-    InlinePanel(StandardPage, 'content_block', label="Content block"),
-    InlinePanel(StandardPage, 'related_links', label="Related links"),
-    InlinePanel(StandardPage, 'clients', label="Clients"),
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        ImageChooserPanel('main_image'),
+        FieldPanel('credit', classname="full"),
+        FieldPanel('heading', classname="full"),
+        FieldPanel('quote', classname="full"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('middle_break', classname="full"),
+        FieldPanel('body', classname="full"),
+        StreamFieldPanel('streamfield'),
+        FieldPanel('email', classname="full"),
+        InlinePanel( 'content_block', label="Content block"),
+        InlinePanel( 'related_links', label="Related links"),
+        InlinePanel( 'clients', label="Clients"),
+    ]
 
-StandardPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    FieldPanel('show_in_play_menu'),
-    ImageChooserPanel('feed_image'),
-]
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        FieldPanel('show_in_play_menu'),
+        ImageChooserPanel('feed_image'),
+    ]
 
 
 # Services page
@@ -404,21 +400,23 @@ class ServicesPage(Page):
         related_name='+'
     )
 
-    indexed_fields = ('intro', 'body', )
-    search_name = None
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
 
-ServicesPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro', classname="full"),
-    FieldPanel('body', classname="full"),
-    InlinePanel(ServicesPage, 'content_block', label="Content block"),
-    InlinePanel(ServicesPage, 'related_links', label="Related links"),
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+        InlinePanel('content_block', label="Content block"),
+        InlinePanel('related_links', label="Related links"),
+    ]
 
-ServicesPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    ImageChooserPanel('feed_image'),
-]
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        ImageChooserPanel('feed_image'),
+    ]
 
 
 # Blog index page
@@ -430,8 +428,9 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
-    indexed_fields = ('intro', )
-    search_name = "Blog"
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+    )
 
     show_in_play_menu = models.BooleanField(default=False)
 
@@ -489,17 +488,16 @@ class BlogIndexPage(Page):
                 'per_page': per_page,
             })
 
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        InlinePanel('related_links', label="Related links"),
+    ]
 
-BlogIndexPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro', classname="full"),
-    InlinePanel(BlogIndexPage, 'related_links', label="Related links"),
-]
-
-BlogIndexPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    FieldPanel('show_in_play_menu'),
-]
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        FieldPanel('show_in_play_menu'),
+    ]
 
 
 # Blog page
@@ -522,10 +520,6 @@ class BlogPageTagSelect(Orderable):
         related_name='blog_page_tag_select'
     )
 
-BlogPageTagSelect.content_panels = [
-    FieldPanel('tag'),
-]
-
 
 class BlogPageAuthor(Orderable):
     page = ParentalKey('torchbox.BlogPage', related_name='related_author')
@@ -537,7 +531,7 @@ class BlogPageAuthor(Orderable):
     )
 
     panels = [
-        PageChooserPanel('author', 'torchbox.PersonPage')
+        PageChooserPanel('author'),
     ]
 
 
@@ -555,8 +549,9 @@ class BlogPage(Page):
         related_name='+'
     )
 
-    indexed_fields = ('body', )
-    search_name = "Blog Entry"
+    search_fields = Page.search_fields + (
+        index.SearchField('body'),
+    )
 
     @property
     def blog_index(self):
@@ -575,22 +570,22 @@ class BlogPage(Page):
             if author.author:
                 return True
 
-BlogPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    InlinePanel(BlogPage, 'related_author', label="Author"),
-    FieldPanel('author_left'),
-    FieldPanel('date'),
-    FieldPanel('intro', classname="full"),
-    FieldPanel('body', classname="full"),
-    StreamFieldPanel('streamfield'),
-    InlinePanel(BlogPage, 'related_links', label="Related links"),
-    InlinePanel(BlogPage, 'tags', label="Tags")
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        InlinePanel('related_author', label="Author"),
+        FieldPanel('author_left'),
+        FieldPanel('date'),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+        StreamFieldPanel('streamfield'),
+        InlinePanel('related_links', label="Related links"),
+        InlinePanel('tags', label="Tags")
+    ]
 
-BlogPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    ImageChooserPanel('feed_image'),
-]
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        ImageChooserPanel('feed_image'),
+    ]
 
 
 # Jobs index page
@@ -635,7 +630,9 @@ class JobIndexPage(Page):
     terms_and_conditions = models.URLField(null=True)
     refer_a_friend = models.URLField(null=True)
 
-    indexed_fields = ('intro', 'body', )
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+    )
 
     def get_context(self, request, *args, **kwargs):
         context = super(
@@ -645,20 +642,19 @@ class JobIndexPage(Page):
         context['blogs'] = BlogPage.objects.live().order_by('-date')[:4]
         return context
 
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('no_jobs_that_fit', classname="full"),
+        FieldPanel('terms_and_conditions', classname="full"),
+        FieldPanel('refer_a_friend', classname="full"),
+        InlinePanel('job', label="Job"),
+        InlinePanel('reasons_to_join', label="Reasons To Join"),
+    ]
 
-JobIndexPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro', classname="full"),
-    FieldPanel('no_jobs_that_fit', classname="full"),
-    FieldPanel('terms_and_conditions', classname="full"),
-    FieldPanel('refer_a_friend', classname="full"),
-    InlinePanel(JobIndexPage, 'job', label="Job"),
-    InlinePanel(JobIndexPage, 'reasons_to_join', label="Reasons To Join"),
-]
-
-JobIndexPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-]
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+    ]
 
 
 # Work page
@@ -668,10 +664,6 @@ class WorkPageTagSelect(Orderable):
         'torchbox.BlogPageTagList',
         related_name='work_page_tag_select'
     )
-
-WorkPageTagSelect.content_panels = [
-    FieldPanel('tag'),
-]
 
 
 class WorkPageScreenshot(Orderable):
@@ -699,7 +691,7 @@ class WorkPageAuthor(Orderable):
     )
 
     panels = [
-        PageChooserPanel('author', 'torchbox.PersonPage')
+        PageChooserPanel('author'),
     ]
 
 
@@ -737,23 +729,23 @@ class WorkPage(Page):
             if author.author:
                 return True
 
-WorkPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    InlinePanel(BlogPage, 'related_author', label="Author"),
-    FieldPanel('author_left'),
-    FieldPanel('summary'),
-    FieldPanel('intro', classname="full"),
-    FieldPanel('body', classname="full"),
-    StreamFieldPanel('streamfield'),
-    ImageChooserPanel('homepage_image'),
-    InlinePanel(WorkPage, 'screenshots', label="Screenshots"),
-    InlinePanel(BlogPage, 'tags', label="Tags"),
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        InlinePanel('related_author', label="Author"),
+        FieldPanel('author_left'),
+        FieldPanel('summary'),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+        StreamFieldPanel('streamfield'),
+        ImageChooserPanel('homepage_image'),
+        InlinePanel('screenshots', label="Screenshots"),
+        InlinePanel('tags', label="Tags"),
+    ]
 
-WorkPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    FieldPanel('show_in_play_menu'),
-]
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        FieldPanel('show_in_play_menu'),
+    ]
 
 
 # Work index page
@@ -805,17 +797,16 @@ class WorkIndexPage(Page):
             'works': works,
         })
 
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('hide_popular_tags'),
+    ]
 
-WorkIndexPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro', classname="full"),
-    FieldPanel('hide_popular_tags'),
-]
-
-WorkIndexPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    FieldPanel('show_in_play_menu'),
-]
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        FieldPanel('show_in_play_menu'),
+    ]
 
 
 # Person page
@@ -844,32 +835,40 @@ class PersonPage(Page, ContactFields):
         related_name='+'
     )
 
-    indexed_fields = ('first_name', 'last_name', 'intro', 'biography')
-    search_name = "Person"
 
-PersonPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('first_name'),
-    FieldPanel('last_name'),
-    FieldPanel('role'),
-    FieldPanel('intro', classname="full"),
-    FieldPanel('biography', classname="full"),
-    ImageChooserPanel('image'),
-    MultiFieldPanel(ContactFields.panels, "Contact"),
-    InlinePanel(PersonPage, 'related_links', label="Related links"),
-]
+    search_fields = Page.search_fields + (
+        index.SearchField('first_name'),
+        index.SearchField('last_name'),
+        index.SearchField('intro'),
+        index.SearchField('biography'),
+    )
 
-PersonPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    ImageChooserPanel('feed_image'),
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('first_name'),
+        FieldPanel('last_name'),
+        FieldPanel('role'),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('biography', classname="full"),
+        ImageChooserPanel('image'),
+        MultiFieldPanel(ContactFields.panels, "Contact"),
+        InlinePanel('related_links', label="Related links"),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        ImageChooserPanel('feed_image'),
+    ]
 
 
 # Person index
 class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
     show_in_play_menu = models.BooleanField(default=False)
-    indexed_fields = ('intro', )
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+    )
 
     @property
     def people(self):
@@ -900,16 +899,15 @@ class PersonIndexPage(Page):
             'people': people,
         })
 
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+    ]
 
-PersonIndexPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro', classname="full"),
-]
-
-PersonIndexPage.promote_panels = [
-    MultiFieldPanel(COMMON_PANELS, "Common page configuration"),
-    FieldPanel('show_in_play_menu'),
-]
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        FieldPanel('show_in_play_menu'),
+    ]
 
 
 class TshirtPage(Page):
@@ -925,3 +923,136 @@ TshirtPage.content_panels = [
     FieldPanel('title', classname="full title"),
     ImageChooserPanel('main_image'),
 ]
+
+
+class GoogleAdGrantApplication(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+
+    class Meta:
+        ordering = ['-date']
+
+
+class GoogleAdGrantApplicationForm(ModelForm):
+    class Meta:
+        model = GoogleAdGrantApplication
+        fields = [
+            'name', 'email'
+        ]
+        widgets = {
+            'name': TextInput(attrs={'placeholder': "Your charity's name"}),
+            'email': TextInput(attrs={'placeholder': "Your email adress"})
+        }
+
+
+class GoogleAdGrantsPageGrantsManaged(models.Model):
+    page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="grants_managed")
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('image')
+    ]
+
+
+class GoogleAdGrantsPageQuote(Orderable):
+    page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="quotes")
+    text = models.TextField()
+    person_name = models.CharField(max_length=255)
+    organisation_name = models.CharField(max_length=255)
+
+    panels = [
+        FieldPanel('text'),
+        FieldPanel('person_name'),
+        FieldPanel('organisation_name'),
+    ]
+
+
+class GoogleAdGrantsAccreditations(Orderable):
+    page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="accreditations")
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('image')
+    ]
+
+
+class GoogleAdGrantsPage(Page):
+    intro = RichTextField()
+    form_title = models.CharField(max_length=255)
+    form_subtitle = models.CharField(max_length=255)
+    form_button_text = models.CharField(max_length=255)
+    to_address = models.EmailField(
+        verbose_name='to address', blank=True,
+        help_text="Optional - form submissions will be emailed to this address"
+    )
+    body = RichTextField()
+    grants_managed_title = models.CharField(max_length=255)
+    call_to_action_title = models.CharField(max_length=255, blank=True)
+    call_to_action_embed_url = models.URLField(blank=True)
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body')
+    )
+
+    def get_context(self, request):
+        form = GoogleAdGrantApplicationForm()
+        context = super(GoogleAdGrantsPage, self).get_context(request)
+        context['form'] = form
+        return context
+
+    def serve(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == "POST":
+            form = GoogleAdGrantApplicationForm(request.POST)
+            if form.is_valid():
+                form.save()
+
+                if self.to_address:
+                    subject = "{} form submission".format(self.title)
+                    content = '\n'.join([x[1].label + ': ' + str(form.data.get(x[0])) for x in form.fields.items()])
+                    send_mail(subject, content, [self.to_address],)
+                return render(
+                    request,
+                    'torchbox/includes/ad_grant_application_landing.html',
+                    {'self': self, 'form': form}
+                )
+            else:
+                return render(
+                    request,
+                    'torchbox/includes/ad_grant_application_form.html',
+                    {'self': self, 'form': form}
+                )
+        else:
+            return super(GoogleAdGrantsPage, self).serve(request)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname='full'),
+        FieldPanel('body', classname='full'),
+        MultiFieldPanel([
+            FieldPanel('form_title'),
+            FieldPanel('form_subtitle'),
+            FieldPanel('form_button_text'),
+            FieldPanel('to_address'),
+        ], "Application Form"),
+        MultiFieldPanel([
+            FieldPanel('grants_managed_title'),
+            InlinePanel('grants_managed', label="Grants Managed")
+        ], "Grants Managed Section"),
+        InlinePanel('quotes', label="Quotes"),
+        MultiFieldPanel([
+            FieldPanel('call_to_action_title'),
+            FieldPanel('call_to_action_embed_url'),
+            InlinePanel('accreditations', label="Accreditations")
+        ], "Call To Action")
+    ]

@@ -1,5 +1,5 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
     {% if self.main_image %}
@@ -15,9 +15,11 @@
     </div>
 
     <div class="coloured-background">
-        <div class="italic">
-            <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
-        </div>
+        {% if self.quote %}
+            <div class="italic">
+                <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
+            </div>
+        {% endif %}
     </div>
 
     <section class="intro were-tbx container">
@@ -38,8 +40,11 @@
 
     <section class="container">
         <div class="clients">
-            <h2 class="play-no">Some of our clients</h2>
-            <h2 class="tbx-no">We're proud to have worked with</h2>
+            {% if self|in_play %}
+                <h2>Some of our clients</h2>
+            {% else %}
+                <h2>We're proud to have worked with</h2>
+            {% endif %}
             <ul>
                 {% for client in self.clients.all %}
                     <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
@@ -47,9 +52,11 @@
             </ul>
         </div>
 
-        <div class="button play-no">
-            <a href="mailto:{{ self.email }}">Get in touch</a>
-        </div>
+        {% if not self|in_play %}
+            <div class="button">
+                <a href="mailto:{{ self.email }}">Get in touch</a>
+            </div>
+        {% endif %}
     </section>
 
 {% endblock %}

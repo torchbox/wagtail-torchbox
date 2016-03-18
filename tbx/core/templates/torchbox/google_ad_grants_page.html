@@ -1,0 +1,89 @@
+{% extends "torchbox/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
+
+{% block content %}
+    <header class="landing-header">
+        <div class="container">
+            <h1>{{ self.title }}</h1>
+            <p>{{ self.intro|richtext }}</p>
+        </div>
+    </header>
+
+    <div class="grant-form container">
+        <h2>{{ self.form_title }}</h2>
+        <p class="tag">{{ self.form_subtitle }}</p>
+
+        {% include "torchbox/includes/ad_grant_application_form.html" %}
+    </div> <!-- /grant-form -->
+
+    <div class="landing-page-body container">
+        <div class="introduction">
+            {{ self.body|richtext }}
+        </div>
+
+        <div class="our-clients">
+            <h3>{{ self.grants_managed_title }}</h3>
+            <ul>
+                {% for grant in self.grants_managed.all %}
+                    <li>
+                        {% image grant.image max-200x60 %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="slickslide testimonials quote">
+        {% for quote in self.quotes.all %}
+            <div>
+                <blockquote>
+                    <p>{{ quote.text }}</p>
+                    <cite>{{ quote.person_name }} <span>{{ quote.organisation_name }}</span></cite>
+                </blockquote>
+            </div>
+        {% endfor %}
+    </div> <!-- /slickslide -->
+        
+    <div class="landing-page-body container">
+        <div class="ad-grants-video">
+            {% if self.call_to_action_title %}
+            <h3>{{ self.call_to_action_title }}</h3>
+            {% endif %}
+            {% if self.call_to_action_embed_url %}
+            <div class="aspect-ratio">
+                {{ self.call_to_action_embed_url|embed }}
+            </div>
+            {% endif %}
+        </div>
+
+        <ul class="accreds">
+            {% for accreditation in self.accreditations.all %}
+                <li>{% image accreditation.image max-160x50 %}
+            {% endfor %}
+        </ul>
+
+    </div> <!-- /landing-page-body -->
+
+
+    <div class="cta">
+        <h2>{{ self.form_title }}</h2>
+        <p class="tag">{{ self.form_subtitle }}</p>
+
+        {% include "torchbox/includes/ad_grant_application_form.html" %}
+    </div>
+    
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+        
+    <script>
+      $('.slickslide').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 6000,
+      });
+    </script>
+{% endblock %}

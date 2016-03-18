@@ -1,0 +1,10 @@
+build:
+  image: python:2.7
+  commands:
+    - XDG_CACHE_HOME=/drone/pip-cache pip install wheel
+    - XDG_CACHE_HOME=/drone/pip-cache pip install -r requirements.txt
+    - python manage.py check
+
+cache:
+  mount:
+    - /drone/pip-cache

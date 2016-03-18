@@ -1,7 +1,10 @@
-/.vagrant
-/tbx/settings/local.py
-/static
 *.pyc
-/media
+.DS_Store
+*.swp
+/venv/
+/static/
+/media/
+/tmp/
+/.vagrant/
 /Vagrantfile.local
-db_dump.sql
+/docs/_build/
