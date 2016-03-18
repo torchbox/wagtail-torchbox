@@ -931,7 +931,7 @@ class GoogleAdGrantApplicationForm(ModelForm):
         ]
         widgets = {
             'name': TextInput(attrs={'placeholder': "Your charity's name"}),
-            'email': TextInput(attrs={'placeholder': "Your email adress"})
+            'email': TextInput(attrs={'placeholder': "Your email address"})
         }
 
 
