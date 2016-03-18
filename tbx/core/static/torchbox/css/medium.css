@@ -1391,7 +1391,6 @@
         width: 35%;
         margin-right: 4%;
         float: left;
-        z-index: -1;
     }
 
     .page-personpage .bio-text {
@@ -1734,6 +1733,53 @@
         height: 1100px !important;
     }
 
+    .page-googleadgrantspage .bleed {
+        background: none;
+        margin: 2.2em 0.5em 0 0;
+    }
+
+    .page-googleadgrantspage header.container {
+        padding: 0 2em;
+    }
+
+    .grant-form {
+        box-shadow: 0px 2px 10px #bdc6cc;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        width: 880px;
+        padding: 3em 2em;
+        margin: 0 auto -120px;
+    }
+
+    .landing-page-body {
+        max-width: 880px;
+    }
+
+    .landing-header {
+        padding: 150px 0 180px;
+    }
+
+    .grant-form form .input {
+        width: 60%;
+    }
+
+    .our-clients ul li {
+        float: left;
+        width: 50%;
+        margin: 0 0 2em;
+        min-height: 51px;
+    }
+    .our-clients ul li:nth-of-type(2n+3) {
+        clear: left;
+    }
+    .testimonials {
+        border-top: none;
+        padding: 7em 0 6em 0;
+        margin: 2em 0 3em 0;
+        color: #434a4f;
+        background-color: #424A4F;
+        background: url("http://torchbox.com/static/torchbox/images/about-placeholder6.jpg?ec983614c72d") center right no-repeat;
+        background-size: cover;
+    }
 }
 
 @media print,
@@ -1767,6 +1813,15 @@
         padding: 0;
     }
 
+}
+
+@media only screen and (min-width: 75em) {
+
+    /* Office addresses */
+
+    footer .offices li {
+        width: 33%;
+    }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -1928,6 +1983,14 @@
 
     .page-homepage .hero {
         margin-bottom: -3em;
+    }
+
+    .our-clients ul li {
+        width: 25%;
+        margin: 0 0 2em;
+    }
+    .our-clients ul li:nth-of-type(2n+3) {
+        clear: none;
     }
 }
 
