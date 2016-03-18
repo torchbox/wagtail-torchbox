@@ -2989,7 +2989,7 @@ h4 ~ .stat {
 }
 
 .page-googleadgrantspage h2,
-.page-googleadgrantspage h3 {
+.page-googleadgrantspage main h3 {
     color: #434a4f;
     font-weight: bold;
     font-size: 2.1em;
@@ -2998,7 +2998,7 @@ h4 ~ .stat {
     text-align: center;
 }
 
-.page-googleadgrantspage h3 {
+.page-googleadgrantspage main h3 {
     margin: 0 0 2em;
 }
 
