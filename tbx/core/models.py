@@ -12,6 +12,7 @@ from django.http import HttpResponse
 from django.forms import ModelForm
 from django.forms.widgets import TextInput
 
+from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
@@ -649,6 +650,11 @@ class JobIndexPage(Page):
         FieldPanel('refer_a_friend', classname="full"),
         InlinePanel('job', label="Job"),
         InlinePanel('reasons_to_join', label="Reasons To Join"),
+
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
 
 
@@ -987,10 +993,14 @@ class GoogleAdGrantsPage(Page):
     form_title = models.CharField(max_length=255)
     form_subtitle = models.CharField(max_length=255)
     form_button_text = models.CharField(max_length=255)
+    to_address = models.EmailField(
+        verbose_name='to address', blank=True,
+        help_text="Optional - form submissions will be emailed to this address"
+    )
     body = RichTextField()
     grants_managed_title = models.CharField(max_length=255)
-    call_to_action_title = models.CharField(max_length=255)
-    call_to_action_embed_url = models.URLField()
+    call_to_action_title = models.CharField(max_length=255, blank=True)
+    call_to_action_embed_url = models.URLField(blank=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -1008,6 +1018,11 @@ class GoogleAdGrantsPage(Page):
             form = GoogleAdGrantApplicationForm(request.POST)
             if form.is_valid():
                 form.save()
+
+                if self.to_address:
+                    subject = "{} form submission".format(self.title)
+                    content = '\n'.join([x[1].label + ': ' + str(form.data.get(x[0])) for x in form.fields.items()])
+                    send_mail(subject, content, [self.to_address],)
                 return render(
                     request,
                     'torchbox/includes/ad_grant_application_landing.html',
@@ -1029,6 +1044,7 @@ class GoogleAdGrantsPage(Page):
             FieldPanel('form_title'),
             FieldPanel('form_subtitle'),
             FieldPanel('form_button_text'),
+            FieldPanel('to_address'),
         ], "Application Form"),
         MultiFieldPanel([
             FieldPanel('grants_managed_title'),

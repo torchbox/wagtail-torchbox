@@ -46,10 +46,14 @@
         
     <div class="landing-page-body container">
         <div class="ad-grants-video">
+            {% if self.call_to_action_title %}
             <h3>{{ self.call_to_action_title }}</h3>
+            {% endif %}
+            {% if self.call_to_action_embed_url %}
             <div class="aspect-ratio">
                 {{ self.call_to_action_embed_url|embed }}
             </div>
+            {% endif %}
         </div>
 
         <ul class="accreds">

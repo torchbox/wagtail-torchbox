@@ -117,14 +117,13 @@
                     {% with blog.related_author.all.0 as a %}
                         <li>
                             {% image a.author.image fill-300x300 %}
-                            <h3>{{ blog.title }}</h3>
+                            <h3><a href="{{ blog.url }}">{{ blog.title }}</a></h3>
                             <div class="meta">
                                 <span class="date">{{ blog.date }}</span>
                                 <div>
                                     <a href="{{ a.author.url }}">{{ a.author.title }}</a>
                                     <span>{{ a.author.role }}</span>
                                 </div>
-                            </div>
                         </li>
                     {% endwith %}
                 {% endfor %}
