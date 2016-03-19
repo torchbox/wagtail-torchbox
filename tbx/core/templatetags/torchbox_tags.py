@@ -62,6 +62,9 @@ def has_menu_children(page):
 
 @register.filter
 def content_type(value):
+    # marketing landing page should behave like the homepage in templates
+    if value.__class__.__name__.lower() == 'marketinglandingpage':
+        return 'homepage'
     return value.__class__.__name__.lower()
 
 
