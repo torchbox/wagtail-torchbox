@@ -231,14 +231,20 @@ def person_blog_post_listing(context, calling_page=None):
 
 
 @register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
-def work_and_blog_listing(context, count=10):
+def work_and_blog_listing(context, count=10, filter_tag=None):
     """
     An interleaved list of work and blog items.
     """
     # Exercise for the reader: what should this do if count is an odd number?
     count /= 2
-    blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
-    works = play_filter(WorkPage.objects.filter(live=True).order_by('-pk'), count)
+    blog_posts = BlogPage.objects.filter(live=True)
+    works = WorkPage.objects.filter(live=True)
+    if filter_tag:
+        blog_posts = blog_posts.filter(tags__tag__slug=filter_tag)
+        works = works.filter(tags__tag__slug=filter_tag)
+    
+    blog_posts = play_filter(blog_posts.order_by('-date'), count)
+    works = play_filter(works.order_by('-pk'), count)
     blog_items = [template.loader.render_to_string(
         "torchbox/tags/blog_list_item.html",
         {'post': post,
