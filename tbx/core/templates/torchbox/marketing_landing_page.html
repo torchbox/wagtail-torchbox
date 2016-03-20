@@ -8,6 +8,20 @@
         padding: 22em 0em 3em 0em;
         background: url("{% static 'torchbox/images/Marketingpage_hero1.jpg' %}") no-repeat center;
     }
+    
+    section.container div.clients h2 {
+        font-weight: bold;
+        font-size: 2.5em;
+        margin: 0;
+    }
+    
+    .clients li {
+        margin-bottom: 2em;
+    }
+    
+    .clients {
+        margin-bottom: 5em;
+    }
 </style>
 {% endblock %}
 {% block content %}
@@ -44,5 +58,10 @@
         {% work_and_blog_listing filter_tag="digital_marketing" %}
     </section>
 
+    {% if clients %}
+        <section class="container">
+            {% include "torchbox/includes/clients.html" with clients=clients %}
+        </section>
+    {% endif %}
 
 {% endblock %}

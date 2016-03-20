@@ -1238,6 +1238,20 @@ class MarketingLandingPage(Page):
 
     class Meta:
         verbose_name = "Marketing Landing Page"
+        
+    def get_context(self, request):
+        context = super(MarketingLandingPage, self).get_context(request)
+        # Tricky part: Clients will be *the same* as the clients on the
+        # about page - this is a Q+D solution - the correct one would 
+        # be to do it by using a snippet but that would require to re-insert
+        # the clients to the prod site.
+        try:
+            clients = Page.objects.get(slug='about').specific.clients.all()
+            context['clients'] = clients
+        except Page.DoesNotExist:
+            context['clients'] = None
+            
+        return context
 
     content_panels = [
         FieldPanel('title', classname="full title"),
