@@ -228,7 +228,7 @@ def person_blog_post_listing(context, calling_page=None):
 
 
 @register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
-def work_and_blog_listing(context, count=10, filter_tag=None):
+def work_and_blog_listing(context, count=10, marketing=False):
     """
     An interleaved list of work and blog items.
     """
@@ -236,9 +236,16 @@ def work_and_blog_listing(context, count=10, filter_tag=None):
     count /= 2
     blog_posts = BlogPage.objects.filter(live=True)
     works = WorkPage.objects.filter(live=True)
-    if filter_tag:
+    if marketing:
+        # For marketing landing page return only posts and works
+        # tagged with "digital_marketing"
+        filter_tag = "digital_marketing"
         blog_posts = blog_posts.filter(tags__tag__slug=filter_tag)
         works = works.filter(tags__tag__slug=filter_tag)
+    else:
+        # For normal case, do not display "marketing_only" posts and works
+        blog_posts = blog_posts.exclude(marketing_only=True)
+        works = works.exclude(marketing_only=True)
     
     blog_posts = play_filter(blog_posts.order_by('-date'), count)
     works = play_filter(works.order_by('-pk'), count)

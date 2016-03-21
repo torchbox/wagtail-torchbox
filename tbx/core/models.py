@@ -445,10 +445,11 @@ class BlogIndexPage(Page):
     @property
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
+        # and are not marketing_only
         blog_posts = BlogPage.objects.filter(
             live=True,
             path__startswith=self.path
-        )
+        ).exclude(marketing_only=True)
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date')
@@ -548,7 +549,7 @@ class BlogPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
+    marketing_only = models.BooleanField(default=False, help_text='Display this blog post only on marketing landing page')
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
@@ -585,6 +586,7 @@ class BlogPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
+        FieldPanel('marketing_only'),
     ]
 
 
@@ -708,7 +710,7 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
+    marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
     streamfield = StreamField(StoryBlock())
 
     show_in_play_menu = models.BooleanField(default=False)
@@ -746,6 +748,7 @@ class WorkPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         FieldPanel('show_in_play_menu'),
+        FieldPanel('marketing_only'),
     ]
 
 
@@ -767,10 +770,11 @@ class WorkIndexPage(Page):
     @property
     def works(self):
         # Get list of work pages that are descendants of this page
+        # and are not marketing only
         works = WorkPage.objects.filter(
             live=True,
             path__startswith=self.path
-        )
+        ).exclude(marketing_only=True)
 
         return works
 
