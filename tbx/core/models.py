@@ -1229,6 +1229,21 @@ class MarketingLandingPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.MarketingLandingPage', related_name='related_links')
 
 
+class MarketingLandingPagePageClients(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.MarketingLandingPage', related_name='clients')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('image')
+    ]
+
+
 class MarketingLandingPage(Page):
     intro = models.TextField(blank=True)
     hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
@@ -1242,20 +1257,6 @@ class MarketingLandingPage(Page):
 
     class Meta:
         verbose_name = "Marketing Landing Page"
-        
-    def get_context(self, request):
-        context = super(MarketingLandingPage, self).get_context(request)
-        # Tricky part: Clients will be *the same* as the clients on the
-        # about page - this is a Q+D solution - the correct one would 
-        # be to do it by using a snippet but that would require to re-insert
-        # the clients to the prod site.
-        try:
-            clients = Page.objects.get(slug='about').specific.clients.all()
-            context['clients'] = clients
-        except Page.DoesNotExist:
-            context['clients'] = None
-            
-        return context
 
     content_panels = [
         FieldPanel('title', classname="full title"),
@@ -1263,4 +1264,5 @@ class MarketingLandingPage(Page):
         FieldPanel('hero_video_id'),
         ImageChooserPanel('hero_video_poster_image'),
         InlinePanel( 'related_links', label="Related links"),
+        InlinePanel( 'clients', label="Clients"),
     ]
