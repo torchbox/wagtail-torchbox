@@ -1590,7 +1590,109 @@
         background: url("http://torchbox.com/static/torchbox/images/about-placeholder6.jpg?ec983614c72d") center right no-repeat;
         background-size: cover;
     }
+
+
+    .page-signupformpage .hero {
+        margin-bottom: 40px;
+    }
+
+    .page-signupformpage .hero .container {
+        padding: 60px 0 90px;
+    }
+    .page-signupformpage .hero h1 {
+        font-size: 100px;
+    }
+
+    .page-signupformpage .hero:after,.page-signupformpage .hero:before,.page-signupformpage .hero .green-line {
+        height: 15px;
+        top: 23%;
+    }
+    .page-signupformpage .hero:before {
+        top: 45%;
+    }
+    .page-signupformpage .hero .green-line {
+        top: 65%;
+    }
+    .page-signupformpage .hero button {
+        font-size: 14px;
+    }
+
+    .page-signupformpage .rich-text {
+        margin: 50px auto 30px;
+        font-size: 23px;
+    }
+    .page-signupformpage .rich-text img {
+        float: right;
+        width: 50%;
+    }
+    .page-signupformpage .sign-up-form.top {
+        margin: 20px 0 90px;
+    }
+    .page-signupformpage .sign-up-form.top h3 {
+        font-size: 22px;
+        margin: 1em 0;
+    }
+    .page-signupformpage .advantage {
+        margin-bottom: 20px;
+        width: 50%;
+        padding: 25px;
+        box-sizing: border-box;
+    }
+    .page-signupformpage .advantage h3 {
+        font-size: 20px;
+
+    }
+    .page-signupformpage .advantage:last-of-type {
+        width: 55%;
+        text-align: center;
+        clear: both;
+        float: none;
+        margin: 0 auto;
+    }
+    .page-signupformpage .logos li {
+        float: left;
+        padding: 20px;
+        box-sizing: border-box;
+        width: 33.3%;
+    }
+    .page-signupformpage .quotes {
+        margin-bottom: 100px;
+    }
+    /* When the new header and footer go on this will clash */
+    .page-signupformpage .active {
+        color: inherit;
+    }
+    .page-signupformpage blockquote p {
+        font-size: 18px;
+    }
+    .page-signupformpage .cta {
+        padding: 50px 0 90px;
+        z-index: 1;
+        position: relative;
+    }
+    .page-signupformpage .cta img {
+        display: block;
+        position: absolute;
+        bottom: -150px;
+        left: -80px;
+        width: 220px;
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+        box-shadow: 5px -3px 6px 0 rgba(38,39,40,0.25);
+    }
+    .page-signupformpage .thank-you .text {
+        margin-bottom: 0;
+        width: 60%;
+    }
+    .page-signupformpage footer.thanks  {
+        z-index: 1;
+        position: relative;
+    }
+    .page-signupformpage footer.thanks .container {
+        float:none;
+    }
 }
+
 
 @media print,
 (-o-min-device-pixel-ratio: 5/4),
