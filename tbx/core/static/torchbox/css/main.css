@@ -3440,6 +3440,7 @@ h4 ~ .stat {
     text-align: center;
     margin: 20px 0 60px;
     clear: both;
+    color: inherit;
     background-color: transparent;
 }
 
