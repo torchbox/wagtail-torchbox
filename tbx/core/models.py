@@ -1,38 +1,40 @@
 from __future__ import unicode_literals
 
 from datetime import date
-from django import forms
 
+from django import forms
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models.signals import pre_delete
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.dispatch import receiver
-from django.shortcuts import render
 from django.http import HttpResponse
-from django.forms import ModelForm
-from django.forms.widgets import TextInput
-
-from wagtail.wagtailadmin.utils import send_mail
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
-    InlinePanel, PageChooserPanel, StreamFieldPanel
-from wagtail.wagtailadmin.blocks import ChooserBlock, StructBlock, ListBlock, \
-    StreamBlock, FieldBlock, CharBlock, RichTextBlock, PageChooserBlock, RawHTMLBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailimages.models import Image
-from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsearch import index
+from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
+from wagtail.wagtailadmin.blocks import (CharBlock, ChooserBlock, FieldBlock,
+                                         ListBlock, PageChooserBlock,
+                                         RawHTMLBlock, RichTextBlock,
+                                         StreamBlock, StructBlock)
+from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
+                                                MultiFieldPanel,
+                                                PageChooserPanel,
+                                                StreamFieldPanel)
+from wagtail.wagtailadmin.utils import send_mail
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore.models import Orderable, Page
+from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
+                                          Image)
+from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.models import register_snippet
 
 from tbx.core.utils import export_event
+
 
 ### Streamfield blocks and config ###
 
@@ -923,15 +925,15 @@ class GoogleAdGrantApplication(models.Model):
         ordering = ['-date']
 
 
-class GoogleAdGrantApplicationForm(ModelForm):
+class GoogleAdGrantApplicationForm(forms.ModelForm):
     class Meta:
         model = GoogleAdGrantApplication
         fields = [
             'name', 'email'
         ]
         widgets = {
-            'name': TextInput(attrs={'placeholder': "Your charity's name"}),
-            'email': TextInput(attrs={'placeholder': "Your email address"})
+            'name': forms.TextInput(attrs={'placeholder': "Your charity's name"}),
+            'email': forms.TextInput(attrs={'placeholder': "Your email address"})
         }
 
 
