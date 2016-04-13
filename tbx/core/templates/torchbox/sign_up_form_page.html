@@ -1,5 +1,9 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'torchbox/css/vendor/owl.carousel.css' %}">
+{% endblock %}
 
 {% block title %}{{ page.title }}{% endblock %}
 
@@ -12,10 +16,8 @@
     </div>
 
     <div class="container">
-        <p class="intro">
-            {{ page.intro|richtext }}
-        </p>
-        <div class="form sign-up-form">
+        {{ page.intro|richtext }}
+        <div class="form sign-up-form top">
             <h3>{{ page.call_to_action_text }}</h3>
 
             {% include "torchbox/includes/sign_up_form_page_form.html" %}
@@ -70,4 +72,17 @@
 
         </div>
     </div>
+    <footer class="thanks">
+        <div class="thank-you">
+            <div class="container">
+                <div class="text">
+                    <p>This guide is aimed at anyone working for a charity who is responsible for digital marketing or communications. It has been produced by Torchbox, with special thanks to all the charities which took our survey.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script type="text/javascript" src=" "></script>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'torchbox/js/vendor/owl.carousel.min.js' %}"></script>
 {% endblock %}

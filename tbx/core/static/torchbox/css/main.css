@@ -3331,9 +3331,27 @@ h4 ~ .stat {
     display: none;
 }
 
+/* SignUpFormPage*/
+.page-signupformpage h1,
+.page-signupformpage h2,
+.page-signupformpage h3,
+.page-signupformpage h4,
+.page-signupformpage h5,
+.page-signupformpage p {
+    transition: all 0.35s ease 0s;
+}
+.page-signupformpage main h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+    text-align: center;
+    font-weight: bold;
+}
 
-// SignUpFormPage
-
+.page-signupformpage main h3 {
+    font-weight: 500;
+    font-size: 22px;
+    margin: 1em 0;
+}
 .page-signupformpage .hero {
     position: relative;
     background: #de4f44;
@@ -3346,21 +3364,10 @@ h4 ~ .stat {
     clear: both;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .hero {
-        margin-bottom: 40px;
-    }
-}
-
 .page-signupformpage .hero .container {
     padding: 30px 0 60px;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .hero .container {
-        padding: 60px 0 90px;
-    }
-}
 
 .page-signupformpage .hero h1 {
     color: #fff;
@@ -3371,12 +3378,6 @@ h4 ~ .stat {
     font-weight: 800;
     line-height: 1;
     margin-bottom: 30px;
-}
-
-@media screen and (min-width: 769px) {
-    .page-signupformpage .hero h1 {
-        font-size: 100px;
-    }
 }
 
 .page-signupformpage .hero h1 span {
@@ -3398,24 +3399,11 @@ h4 ~ .stat {
     background: #5b8ac7;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .hero:after,.page-signupformpage .hero:before,.page-signupformpage .hero .green-line {
-        height: 15px;
-        top: 33%;
-    }
-}
-
 .page-signupformpage .hero:before {
     -webkit-transform: rotate(1.25deg);
     transform: rotate(1.25deg);
     top: 45%;
     background: #f4bc2a;
-}
-
-@media screen and (min-width: 769px) {
-    .page-signupformpage .hero:before {
-        top: 50%;
-    }
 }
 
 .page-signupformpage .hero .green-line {
@@ -3425,11 +3413,6 @@ h4 ~ .stat {
     background: #17a667;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .hero .green-line {
-        top: 65%;
-    }
-}
 
 .page-signupformpage .hero button {
     display: inline-block;
@@ -3438,35 +3421,13 @@ h4 ~ .stat {
     font-size: 12px;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .hero button {
-        font-size: 14px;
-    }
-}
-
-.page-signupformpage .logo {
-    padding: 15px;
-    width: 100px;
-}
-
-.page-signupformpage .logo a,.page-signupformpage .logo a:visited {
-    fill: #fff;
-}
-
-@media screen and (min-width: 769px) {
-    .page-signupformpage .logo {
-        padding: 25px;
-        width: 175px;
-    }
-}
-
-.page-signupformpage .container {
+.page-signupformpage main .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-.page-signupformpage .intro {
+.page-signupformpage .rich-text {
     font-size: 18px;
     line-height: 1.4;
     text-align: center;
@@ -3475,55 +3436,45 @@ h4 ~ .stat {
     margin: 50px auto 20px;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .intro {
-        float: left;
-        width: 50%;
-        margin: 50px auto 30px;
-        font-size: 23px;
-    }
-}
-
-@media screen and (min-width: 769px) {
-    .page-signupformpage .mockup {
-        float: left;
-        width: 50%;
-    }
-}
-
-.page-signupformpage .form {
+.page-signupformpage .sign-up-form.top {
     text-align: center;
     margin: 20px 0 60px;
-}
-
-@media screen and (min-width: 769px) {
-    .page-signupformpage .form {
-        margin: 20px 0 90px;
-    }
+    clear: both;
+    background-color: transparent;
 }
 
 .page-signupformpage .form input {
     border: 1px solid rgba(38,39,40,0.15);
     padding: 15px 25px;
     background: rgba(38,39,40,0.05);
-    width: 40%;
-    max-width: 300px;
+    width: 100%;
+    margin-bottom: 1em;
 }
 
-.page-signupformpage .form button .rule {
+.page-signupformpage .sign-up-form.top label {
+    display: none;
+}
+
+.page-signupformpage .sign-up-form.top button .rule {
     background: #f4bc2a;
 }
 
-.page-signupformpage button {
+.page-signupformpage .sign-up-form.top img {
+    display: none;
+}
+
+.page-signupformpage main button {
     position: relative;
     top: 0;
-    left: -5px;
     border: none;
-    padding: 16px 25px;
+    border-radius: 0;
+    padding: 17px 25px;
     background: #de4f44;
     font-weight: 700;
     color: #fff;
     overflow: hidden;
+    display: block;
+    width: 100%;
 }
 
 .page-signupformpage button span {
@@ -3601,24 +3552,9 @@ h4 ~ .stat {
     text-align: center;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .advantage {
-        margin-bottom: 20px;
-        width: 50%;
-        padding: 25px;
-        box-sizing: border-box;
-    }
-}
-
 .page-signupformpage .advantage h3 {
     font-size: 16px;
     margin-bottom: 10px;
-}
-
-@media screen and (min-width: 769px) {
-    .page-signupformpage .advantage h3 {
-        font-size: 20px;
-    }
 }
 
 .page-signupformpage .advantage p {
@@ -3633,6 +3569,7 @@ h4 ~ .stat {
     width: 30px;
     height: 30px;
     border: 1px solid #f5c14c;
+    float: none;
 }
 
 .page-signupformpage .advantage svg {
@@ -3644,16 +3581,6 @@ h4 ~ .stat {
     width: 18px;
     max-height: 20px;
     fill: #f5c14c;
-}
-
-@media screen and (min-width: 769px) {
-    .page-signupformpage .advantage:last-of-type {
-        width: 55%;
-        text-align: center;
-        clear: both;
-        float: none;
-        margin: 0 auto;
-    }
 }
 
 .page-signupformpage .logos {
@@ -3671,15 +3598,6 @@ h4 ~ .stat {
     list-style: none;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .logos li {
-        float: left;
-        padding: 20px;
-        box-sizing: border-box;
-        width: 33.3%;
-    }
-}
-
 .page-signupformpage .logos img {
     display: inline-block;
     max-height: 100px;
@@ -3690,11 +3608,11 @@ h4 ~ .stat {
     margin-bottom: 30px;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .quotes {
-        margin-bottom: 100px;
-    }
+.page-signupformpage .quotes .author {
+    padding: 0;
+    margin: 1em 0;
 }
+
 
 .page-signupformpage blockquote {
     position: relative;
@@ -3716,12 +3634,6 @@ h4 ~ .stat {
 .page-signupformpage blockquote p {
     font-style: italic;
     font-size: 15px;
-}
-
-@media screen and (min-width: 769px) {
-    .page-signupformpage blockquote p {
-        font-size: 18px;
-    }
 }
 
 .page-signupformpage blockquote .author {
@@ -3755,23 +3667,18 @@ h4 ~ .stat {
     clear: both;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .cta {
-        padding: 50px 0 90px;
-    }
-}
-
 .page-signupformpage .cta .container {
     position: relative;
 }
 
 .page-signupformpage .cta h3 {
     color: #fff;
-    font-weight: 500;
 }
 
 .page-signupformpage .cta .form {
     margin: 0;
+    background-color: transparent;
+    padding: 0;
 }
 
 .page-signupformpage .cta input {
@@ -3795,15 +3702,27 @@ h4 ~ .stat {
     display: none;
 }
 
-@media screen and (min-width: 769px) {
-    .page-signupformpage .cta img {
-        display: block;
-        position: absolute;
-        bottom: -150px;
-        left: -80px;
-        width: 220px;
-        -webkit-transform: rotate(-10deg);
-        transform: rotate(-10deg);
-        box-shadow: 5px -3px 6px 0 rgba(38,39,40,0.25);
-    }
+.page-signupformpage .thank-you {
+    background: #262728;
+    padding: 20px 0;
+}
+
+.page-signupformpage .thank-you .container {
+    max-width: 1250px;
+}
+.page-signupformpage .thank-you .text {
+   margin-bottom: 40px;
+}
+
+.page-signupformpage footer.thanks p {
+    font-weight: 300;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.5;
+}
+.page-signupformpage .thank-you p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    font-weight: 300;
 }
