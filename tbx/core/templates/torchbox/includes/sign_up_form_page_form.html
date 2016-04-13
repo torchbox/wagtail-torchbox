@@ -1,0 +1,21 @@
+{% load wagtailimages_tags %}
+<form class="sign-up-form" action="{{ page.url }}" method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+    <p class="error">There were some errors with your form. Please amend the fields highlighted below.</p>
+    {% endif %}
+    {% for field in form %}
+    <div class="input">
+        {{ field.errors }}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+    </div>
+    {% endfor %}
+    <div class="container btn nr">
+        <button class="sign-up-form-button" type="submit">
+            <span class="rule"></span>
+            {{ page.form_button_text }}
+        </button>
+        {% image page.call_to_action_image original %}
+    </div>
+</form>

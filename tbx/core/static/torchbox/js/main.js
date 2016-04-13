@@ -1,3 +1,25 @@
+// Sign up form page form
+function bindSignUpFormPageForm(element) {
+    $(element).on('submit', function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        $(".sign-up-form-button").html("Submitting...");
+        $.ajax({
+            url : $(this).attr('action'),
+            type: "POST",
+            data: $(this).serialize(),
+            success: function (data) {
+                $(".sign-up-form").html(data);
+                $('.page-signupformpage form.sign-up-form').each(function() {
+                    bindSignUpFormPageForm(this)
+                });
+            }
+        });
+    });
+}
+
+
+
 $(function() {
     var $window = $(window);
     var breakpoints = {
@@ -79,6 +101,7 @@ $(function() {
     // Google ad grant application form
     $('.grant-application').on('submit', function(e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         $(".grant-application-button").html("Submitting...");
         $.ajax({
             url : $(this).attr('action'),
@@ -88,6 +111,10 @@ $(function() {
                 $(".grant-application").html(data);
             }
         });
+    });
+
+    $('.page-signupformpage form.sign-up-form').each(function() {
+        bindSignUpFormPageForm(this)
     });
 
     // main blur // Slows down the browser too much
