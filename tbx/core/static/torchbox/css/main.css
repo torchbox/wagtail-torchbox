@@ -3447,8 +3447,8 @@ h4 ~ .stat {
     border: 1px solid rgba(38,39,40,0.15);
     padding: 15px 25px;
     background: rgba(38,39,40,0.05);
-    width: 40%;
-    max-width: 300px;
+    width: 100%;
+    margin-bottom: 1em;
 }
 
 .page-signupformpage .sign-up-form.top label {
@@ -3466,7 +3466,6 @@ h4 ~ .stat {
 .page-signupformpage main button {
     position: relative;
     top: 0;
-    left: -5px;
     border: none;
     border-radius: 0;
     padding: 17px 25px;
@@ -3474,6 +3473,8 @@ h4 ~ .stat {
     font-weight: 700;
     color: #fff;
     overflow: hidden;
+    display: block;
+    width: 100%;
 }
 
 .page-signupformpage button span {

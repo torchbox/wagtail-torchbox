@@ -1625,6 +1625,17 @@
         float: right;
         width: 50%;
     }
+    .page-signupformpage .form input {
+        width: 40%;
+        max-width: 300px;
+    }
+
+    .page-signupformpage main button {
+        display: inline-block;
+        width: auto;
+        left: -5px;
+    }
+
     .page-signupformpage .sign-up-form.top {
         margin: 20px 0 90px;
     }
