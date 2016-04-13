@@ -1635,9 +1635,13 @@
         width: auto;
         left: -5px;
     }
-
+    .page-signupformpage .sign-up-form {
+        font-size: 20px;
+        color: white;
+    }
     .page-signupformpage .sign-up-form.top {
         margin: 20px 0 90px;
+        font-size: 20px;
     }
     .page-signupformpage .sign-up-form.top h3 {
         font-size: 22px;
