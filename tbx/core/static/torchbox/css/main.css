@@ -3340,14 +3340,14 @@ h4 ~ .stat {
 .page-signupformpage p {
     transition: all 0.35s ease 0s;
 }
-.page-signupformpage h2 {
+.page-signupformpage main h2 {
     font-size: 1.5em;
     margin: 0.83em 0;
     text-align: center;
     font-weight: bold;
 }
 
-.page-signupformpage h3 {
+.page-signupformpage main h3 {
     font-weight: 500;
     font-size: 22px;
     margin: 1em 0;
@@ -3463,7 +3463,7 @@ h4 ~ .stat {
     display: none;
 }
 
-.page-signupformpage button {
+.page-signupformpage main button {
     position: relative;
     top: 0;
     left: -5px;
