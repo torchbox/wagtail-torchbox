@@ -19,6 +19,57 @@ function bindSignUpFormPageForm(element) {
 }
 
 $(function(){
+
+    var inOutState = function( trigger, target, speed ){
+
+        var $trigger    = $( trigger ),
+            inClass     = 'mouseEnter',
+            outClass    = 'mouseLeave',
+            resetClass  = 'reset',
+            speed       = speed ? speed : 500,
+            state 		= {
+                busy : false
+            }
+
+        $trigger.each(function(){
+
+            var $item 	= $( this ),
+                $target = $item.find( target );
+
+            $item.on( 'mouseenter', function(){
+                if( state.busy ){ return false; };
+                $target.addClass( inClass );
+            });
+
+            $item.on( 'mouseleave', function(){
+
+                state.busy = true;
+                $target.addClass( outClass );
+
+                $target.removeClass( inClass );
+                setTimeout(function(){
+                    $target.addClass( resetClass );
+                    $target.removeClass( outClass );
+                    setTimeout(function(){
+                        $target.removeClass( resetClass );
+                        setTimeout( function(){
+                            state.busy = false;
+                        }, 10);
+                    }, 5);
+                }, speed)
+
+            });
+
+        });
+
+    };
+
+
+    inOutState( 'button', '.rule' );
+
+});
+
+$(function(){
     //owl // quotes
     var carousel = $(".carousel");
 
