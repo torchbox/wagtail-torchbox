@@ -23,18 +23,18 @@ $(function(){
     var carousel = $(".carousel");
 
     $('.carousel').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:true,
-        pagination: true,
-        paginationNumbers: false,
+        loop:               true,
+        margin:             10,
+        nav:                true,
+        pagination:         true,
+        paginationNumbers:  false,
         // Navigation
         navText : [""],
-        responsive:{
-            0:{
-                nav:true,
-                items:1,
-                pagination: true,
+        responsive: {
+            0: {
+                nav:        true,
+                items:      1,
+                pagination: true
             }
         }
     });
