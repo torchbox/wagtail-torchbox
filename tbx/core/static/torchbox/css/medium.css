@@ -1596,6 +1596,12 @@
         margin-bottom: 40px;
     }
 
+    .page-signupformpage .bleed {
+        background-color: transparent;
+    }
+    .page-signupformpage header nav li a {
+        color: #434a4f;
+    }
     .page-signupformpage .hero .container {
         padding: 60px 0 90px;
     }

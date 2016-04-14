@@ -3469,7 +3469,7 @@ h4 ~ .stat {
     top: 0;
     border: none;
     border-radius: 0;
-    padding: 17px 25px;
+    padding: 18px 25px 17px 25px;
     background: #de4f44;
     font-weight: 700;
     color: #fff;
