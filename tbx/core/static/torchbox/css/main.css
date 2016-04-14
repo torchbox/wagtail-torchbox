@@ -3456,7 +3456,7 @@ h4 ~ .stat {
     display: none;
 }
 
-.page-signupformpage .sign-up-form.top button .rule {
+.page-signupformpage .sign-up-form .rule {
     background: #f4bc2a;
 }
 
@@ -3469,7 +3469,7 @@ h4 ~ .stat {
     top: 0;
     border: none;
     border-radius: 0;
-    padding: 17px 25px;
+    padding: 18px 25px 17px 25px;
     background: #de4f44;
     font-weight: 700;
     color: #fff;
@@ -3490,8 +3490,8 @@ h4 ~ .stat {
     left: 0;
     height: 15px;
     top: 38%;
-    background: #5b8ac7;
-    transition: all .25s ease 0;
+    background-color: #5b8ac7;
+    transition: all 0.25s ease 0s;
 }
 
 .page-signupformpage button svg {
@@ -3620,6 +3620,9 @@ h4 ~ .stat {
     border: 1px solid #fd5938;
     padding: 10px 25px;
     margin-bottom: 20px;
+}
+.page-signupformpage blockquote .svg {
+    height: auto;
 }
 
 .page-signupformpage blockquote svg {

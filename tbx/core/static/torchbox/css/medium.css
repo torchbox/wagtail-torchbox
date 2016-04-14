@@ -1596,6 +1596,17 @@
         margin-bottom: 40px;
     }
 
+    .page-signupformpage .bleed {
+        background-color: transparent;
+    }
+    .page-signupformpage header nav li a {
+        color: #434a4f;
+    }
+
+    .page-signupformpage header nav li a:hover {
+        color: #F7A42C;
+    }
+
     .page-signupformpage .hero .container {
         padding: 60px 0 90px;
     }
@@ -1705,6 +1716,31 @@
     }
     .page-signupformpage footer.thanks .container {
         float:none;
+    }
+
+    .owl-dots {
+        max-width: 100px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .owl-dot {
+        float: left;
+    }
+    .owl-dot span {
+        transition: all 0.35s ease-out 0s;
+        background: none repeat scroll 0 0 #869791;
+        border-radius: 20px;
+        display: block;
+        height: 12px;
+        margin: 5px 7px;
+        opacity: 0.5;
+        width: 12px;
+    }
+    .owl-dots .active span {
+        background: #de4f44;
+        opacity: 0.75;
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
     }
 }
 
