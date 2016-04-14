@@ -3456,7 +3456,7 @@ h4 ~ .stat {
     display: none;
 }
 
-.page-signupformpage .sign-up-form.top button .rule {
+.page-signupformpage .sign-up-form .rule {
     background: #f4bc2a;
 }
 
@@ -3490,8 +3490,8 @@ h4 ~ .stat {
     left: 0;
     height: 15px;
     top: 38%;
-    background: #5b8ac7;
-    transition: all .25s ease 0;
+    background-color: #5b8ac7;
+    transition: all 0.25s ease 0s;
 }
 
 .page-signupformpage button svg {
