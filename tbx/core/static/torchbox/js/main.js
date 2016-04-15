@@ -156,7 +156,6 @@ $(function() {
                     'formId' : 'newsletter-signup'
                 });
                 // end voodoo
-                $(".sign-up-form").html(data);
                 $(".newsletter-button").html("Thanks!");
             }
         });
