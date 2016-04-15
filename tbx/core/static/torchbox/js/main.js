@@ -176,7 +176,7 @@ $(function() {
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     'event' : 'formSubmissionSuccess',
-                    'formId' : 'sign-up-form'
+                    'formId' : 'newsletter-signup'
                 });
                 // end voodoo
                 $(".sign-up-form").html(data);
