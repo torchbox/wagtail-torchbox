@@ -9,6 +9,13 @@ function bindSignUpFormPageForm(element) {
             type: "POST",
             data: $(this).serialize(),
             success: function (data) {
+                // Google Tag Manager voodoo
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event' : 'formSubmissionSuccess',
+                    'formId' : 'sign-up-form'
+                });
+                // end voodoo
                 $(".sign-up-form").html(data);
                 $('.page-signupformpage form.sign-up-form').each(function() {
                     bindSignUpFormPageForm(this)
