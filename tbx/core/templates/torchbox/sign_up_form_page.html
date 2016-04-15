@@ -83,5 +83,28 @@
     </footer>
 {% endblock %}
 {% block extra_js %}
-<script src="{% static 'torchbox/js/vendor/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'torchbox/js/vendor/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript">
+        $(function(){
+            //owl // quotes
+            var carousel = $(".carousel");
+
+            $('.carousel').owlCarousel({
+                loop:               true,
+                margin:             10,
+                nav:                true,
+                pagination:         true,
+                paginationNumbers:  false,
+                // Navigation
+                navText : [""],
+                responsive: {
+                    0: {
+                        nav:        true,
+                        items:      1,
+                        pagination: true
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
