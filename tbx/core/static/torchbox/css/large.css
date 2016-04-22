@@ -210,4 +210,9 @@
         float: left;
         margin-right: 4%;
     }
+
+
+    .page-signupformpage footer.thanks  {
+        padding: 0;
+    }
 }

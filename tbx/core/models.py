@@ -1,38 +1,41 @@
 from __future__ import unicode_literals
 
 from datetime import date
-from django import forms
 
+from django import forms
+from django.core.mail import EmailMessage
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models.signals import pre_delete
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.dispatch import receiver
-from django.shortcuts import render
 from django.http import HttpResponse
-from django.forms import ModelForm
-from django.forms.widgets import TextInput
-
-from wagtail.wagtailadmin.utils import send_mail
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
-    InlinePanel, PageChooserPanel, StreamFieldPanel
-from wagtail.wagtailadmin.blocks import ChooserBlock, StructBlock, ListBlock, \
-    StreamBlock, FieldBlock, CharBlock, RichTextBlock, PageChooserBlock, RawHTMLBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailimages.models import Image
-from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsearch import index
+from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
+from wagtail.wagtailadmin.blocks import (CharBlock, ChooserBlock, FieldBlock,
+                                         ListBlock, PageChooserBlock,
+                                         RawHTMLBlock, RichTextBlock,
+                                         StreamBlock, StructBlock)
+from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
+                                                MultiFieldPanel,
+                                                PageChooserPanel,
+                                                StreamFieldPanel)
+from wagtail.wagtailadmin.utils import send_mail
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore.models import Orderable, Page
+from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
+                                          Image)
+from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.models import register_snippet
 
 from tbx.core.utils import export_event
+
 
 ### Streamfield blocks and config ###
 
@@ -934,15 +937,15 @@ class GoogleAdGrantApplication(models.Model):
         ordering = ['-date']
 
 
-class GoogleAdGrantApplicationForm(ModelForm):
+class GoogleAdGrantApplicationForm(forms.ModelForm):
     class Meta:
         model = GoogleAdGrantApplication
         fields = [
             'name', 'email'
         ]
         widgets = {
-            'name': TextInput(attrs={'placeholder': "Your charity's name"}),
-            'email': TextInput(attrs={'placeholder': "Your email adress"})
+            'name': forms.TextInput(attrs={'placeholder': "Your charity's name"}),
+            'email': forms.TextInput(attrs={'placeholder': "Your email address"})
         }
 
 
@@ -1056,3 +1059,165 @@ class GoogleAdGrantsPage(Page):
             InlinePanel('accreditations', label="Accreditations")
         ], "Call To Action")
     ]
+
+
+# Sign-up for something page
+class SignUpFormPageBullet(Orderable):
+    page = ParentalKey('torchbox.SignUpFormPage', related_name='bullet_points')
+    icon = models.CharField(max_length=100, choices=(
+        ('torchbox/includes/svg/bulb-svg.html','Light bulb'),
+        ('torchbox/includes/svg/pro-svg.html','Chart'),
+        ('torchbox/includes/svg/tick-svg.html','Tick'),
+    ))
+    title = models.CharField(max_length=100)
+    body = models.TextField()
+
+    panels = [
+        FieldPanel('icon'),
+        FieldPanel('title'),
+        FieldPanel('body'),
+    ]
+
+
+class SignUpFormPageLogo(Orderable):
+    page = ParentalKey('torchbox.SignUpFormPage', related_name='logos')
+    logo = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('logo'),
+    ]
+
+
+class SignUpFormPageQuote(Orderable):
+    page = ParentalKey('torchbox.SignUpFormPage', related_name='quotes')
+    quote = models.TextField()
+    author = models.CharField(max_length=100)
+    organisation = models.CharField(max_length=100)
+
+    panels = [
+        FieldPanel('quote'),
+        FieldPanel('author'),
+        FieldPanel('organisation'),
+    ]
+
+
+class SignUpFormPageResponse(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    email = models.EmailField()
+
+    class Meta:
+        ordering = ['-date']
+
+    def __str__(self):
+        return self.email
+
+
+class SignUpFormPageForm(forms.ModelForm):
+    class Meta:
+        model = SignUpFormPageResponse
+        fields = [
+            'email',
+        ]
+        widgets = {
+            'email': forms.TextInput(attrs={'placeholder': "Enter your email address"}),
+        }
+
+
+class SignUpFormPage(Page):
+    formatted_title = models.CharField(
+        max_length=255, blank=True,
+        help_text="This is the title displayed on the page, not the document "
+        "title tag. HTML is permitted. Be careful."
+    )
+    intro = RichTextField()
+    call_to_action_text = models.CharField(
+        max_length=255, help_text="Displayed above the email submission form."
+    )
+    call_to_action_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    form_button_text = models.CharField(max_length=255)
+    thank_you_text = models.CharField(max_length=255,
+                                      help_text="Displayed on successful form submission.")
+    email_subject = models.CharField(max_length=100, verbose_name='subject')
+    email_body = models.TextField(verbose_name='body')
+    email_attachment = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        related_name='+',
+        on_delete=models.SET_NULL,
+        verbose_name='attachment',
+    )
+    email_from_address = models.EmailField(
+        verbose_name='from address',
+        help_text="Anything ending in @torchbox.com is good.")
+
+    content_panels = [
+        MultiFieldPanel([
+            FieldPanel('title', classname="title"),
+            FieldPanel('formatted_title'),
+        ], 'Title'),
+        FieldPanel('intro', classname="full"),
+        InlinePanel('bullet_points', label="Bullet points"),
+        InlinePanel('logos', label="Logos"),
+        InlinePanel('quotes', label="Quotes"),
+        MultiFieldPanel([
+            FieldPanel('call_to_action_text'),
+            ImageChooserPanel('call_to_action_image'),
+            FieldPanel('form_button_text'),
+            FieldPanel('thank_you_text'),
+        ], 'Form'),
+        MultiFieldPanel([
+            FieldPanel('email_subject'),
+            FieldPanel('email_body'),
+            DocumentChooserPanel('email_attachment'),
+            FieldPanel('email_from_address'),
+        ], 'Email'),
+    ]
+
+    def get_context(self, request):
+        form = SignUpFormPageForm()
+        context = super(SignUpFormPage, self).get_context(request)
+        context['form'] = form
+        return context
+
+    def serve(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == "POST":
+            form = SignUpFormPageForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                self.send_email_response(form.cleaned_data['email'])
+                return render(
+                    request,
+                    'torchbox/includes/sign_up_form_page_landing.html',
+                    {'page': self, 'form': form}
+                )
+            else:
+                return render(
+                    request,
+                    'torchbox/includes/sign_up_form_page_form.html',
+                    {'page': self, 'form': form}
+                )
+        else:
+            return super(SignUpFormPage, self).serve(request)
+
+    def send_email_response(self, to_address):
+        email_message = EmailMessage(
+            subject=self.email_subject,
+            body=self.email_body,
+            from_email=self.email_from_address,
+            to=[to_address],
+        )
+        email_message.attach_file(self.email_attachment.file.path)
+        email_message.send()
