@@ -926,7 +926,10 @@ main nav li.active a:after {
     min-height: 5.25em;
     font-size: 1.75em;
 }
-h3.no-job {
+.page-jobindexpage .no-job.no-job {
+    margin-top: 1em;
+}
+.no-job h3 {
     font-weight: bold;
     font-size: 1.5em;
     margin: 0;
@@ -935,7 +938,7 @@ h3.no-job {
     text-align: center;
 }
 
-p.no-job {
+.no-job p {
     line-height: 1.5em;
     max-width: 650px;
     margin: 1em auto 0.125em auto;
@@ -1000,6 +1003,7 @@ p.no-job {
     display: inline-block;
     padding: 0.8em 1em;
     color: #fff;
+    border: 1px solid #2EB1B0;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -1017,6 +1021,7 @@ p.no-job {
 
 .page-jobindexpage .button:hover {
     background-color: #f85a40;
+    border-color: #f85a40;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -1095,7 +1100,7 @@ p.no-job {
 }
 
 .jobs-benefits {
-   background: #F8F8F8; 
+   background: #F8F8F8;
 }
 
 .jobs-offices {
@@ -1158,6 +1163,10 @@ p.no-job {
     width: 100%;
     display: block;
     margin-bottom: 1em;
+}
+
+.jobs-what-saying h2 {
+    margin-top: 1em;
 }
 
 .jobs-what-saying h3 {
@@ -1288,7 +1297,7 @@ p.no-job {
 }
 
 .page-jobindexpage img.scale {
-    
+
 }
 
 .page-jobindexpage .crop-height {

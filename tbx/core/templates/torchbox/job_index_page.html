@@ -45,6 +45,7 @@
             {% endif %}
         </div>
     </section>
+    {% if self.reasons_to_join.all %}
     <section class="jobs-benefits clearfix" id="reasons">
         <div class="center">
             <h2>Reasons to join us...</h2>
@@ -66,6 +67,7 @@
             </ul>
         </div>
     </section>
+    {% endif %}
     <section class="jobs-offices clearfix">
         <div class="center our-offices-container">
             <h2>Our offices</h2>
@@ -109,7 +111,7 @@
     </section>
     <section class="jobs-what-saying clearfix">
         <div class="center saying">
-            <h2>What have we been saying?</h2>
+            <h2>What we've been saying</h2>
             <ul>
                 {% for blog in blogs %}
                     {% with blog.related_author.all.0 as a %}

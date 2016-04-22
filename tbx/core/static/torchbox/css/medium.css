@@ -1182,7 +1182,7 @@
         position: absolute;
         border-radius: 50%;
         position: absolute;
-        top: 15px;
+        top: 0;
         left: 0;
     }
 
@@ -1203,9 +1203,17 @@
     }
 
     .jobs-what-saying li {
-        margin: 0 0 2em;
+        margin: 6em 0;
+        position: relative;
+    }
+    .jobs-what-saying li:first-of-type {
+        margin-top: 4em;
     }
 
+    .jobs-what-saying li .meta {
+        position: absolute;
+        bottom: 0;
+    }
 
     .jobs-offices li.first {
         margin-left: 3%;
