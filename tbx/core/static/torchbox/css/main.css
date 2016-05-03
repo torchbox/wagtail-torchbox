@@ -1102,15 +1102,33 @@ main nav li.active a:after {
     text-align: center;
 }
 
-.page-standardpage .heading {
+.page-standardpage .heading .rich-text {
     padding: 2em 1em;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
+}
+
+.page-standardpage .heading {
     background-position: center center;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    position: relative;
+}
+
+.page-standardpage .heading::after {
+    content: '';
+    background-image: url('../images/triangle.svg');
+    background-repeat: no-repeat;
+    display: block;
+    width: 100%;
+    height: 60px;
+    background-size: 100% 60px;
+    background-position: bottom;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .page-standardpage h4 span {

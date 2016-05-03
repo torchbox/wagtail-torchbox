@@ -419,7 +419,7 @@
         width: 100%;
     }
 
-    .page-standardpage.page-standardpage .heading {
+    .page-standardpage.page-standardpage .heading .rich-text {
         padding-top: 12em;
     }
 
@@ -1760,7 +1760,7 @@
         margin: 0;
         float: left;
     }
-    .page-standardpage .heading {
+    .page-standardpage .heading .rich-text {
         padding: 6em 1em;
         text-align: center;
     }
@@ -1895,10 +1895,6 @@
 
     .nextprev-nav {
         display: block;
-    }
-
-    .page-standardpage .heading {
-        top: 15em;
     }
 
     .uslist {
