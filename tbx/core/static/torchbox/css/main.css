@@ -2209,13 +2209,20 @@ color: #fff;
     text-align: left;
     overflow: hidden;
 }
-.wagtail img {
-    width: auto;
+.wagtail-logo-inline {
+    color: transparent;
+    position: relative;
+    display: inline-block;
 }
-
-.wagtail2 {
-    display: none;
-    width: auto;
+.wagtail-logo-inline::after {
+    content: '';
+    background-image: url('../images/wagtail-logo-white.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 5em;
+    height: 1.75em;
+    position: absolute;
+    left: 0;
 }
 
 body .svg{
