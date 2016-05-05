@@ -1,3 +1,5 @@
+@import "triangles";
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1238,6 +1240,7 @@ main nav li.active a:after {
     padding-top: 4em;
     background-size: cover;
     margin-top: 1em;
+    @include triangle("ffffff", top);
 }
 
 .jobs-refer:before {
@@ -1409,6 +1412,15 @@ main nav li.active a:after {
     width: 2.5em;
 }
 
+.jobs-carousel-container .slick-slide img {
+    max-width: none;
+}
+
+.jobs-carousel-container .slick-slide .picture {
+    @include triangle("484848", right);
+    max-width: 65%;
+}
+
 .footerbleed {
     padding-top: 1em;
 }
@@ -1431,33 +1443,19 @@ main nav li.active a:after {
     text-align: center;
 }
 
-.page-standardpage .heading .rich-text {
+.page-banner .rich-text {
     padding: 2em 1em;
     text-shadow: 2px 0px 8px rgba(169, 169, 169, 0.3);
 }
 
-.page-standardpage .heading {
+.page-banner {
     background-position: center center;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    position: relative;
-}
-
-.page-standardpage .heading::after {
-    content: '';
-    background-image: url('../images/triangle.svg');
-    background-repeat: no-repeat;
-    display: block;
-    width: 100%;
-    height: 60px;
-    background-size: 100% 60px;
-    background-position: bottom;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    @include triangle("F8F8F8", bottom);
 }
 
 .page-standardpage h4 span {

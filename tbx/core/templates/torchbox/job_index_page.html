@@ -2,7 +2,7 @@
 {% load compress wagtailcore_tags wagtailimages_tags humanize static torchbox_tags %}
 
 {% block content %}
-    <div class="crop-height jobs-header">
+    <div class="page-banner crop-height jobs-header">
         <div class="img-darken">
             <div class="jobs-header-content">
                 <h1>Work with us</h1>
@@ -34,7 +34,6 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <h3 class="no-job"> No jobs that fit?</h3>
                 <p class="no-job">We are always interested in hearing from smart people who want to work at Torchbox. If there's not an obvious position to apply for, <a href="{{ self.no_jobs_that_fit }}">do get in touch</a> anyway.</p>
             {% endif %}
 
@@ -47,18 +46,15 @@
     </section>
     {% if self.reasons_to_join.all %}
     <section class="jobs-benefits clearfix" id="reasons">
-        <div class="center">
-            <h2>Reasons to join us...</h2>
-        </div>
         <div class="jobs-carousel-container">
             <ul class="jobs-carousel">
                 {% for reason in self.reasons_to_join.all %}
                     <li>
-                        {% image reason.image original %}
+                        <div class="picture">{% image reason.image original %}</div>
                         <div class="slide-caption-container">
                             <div>
-                                <span class="reason-no">{{ reason.title }}</span>
-                                <h3>{{ reason.subtitle }}</h3>
+                                <span class="reason-no">Reasons to Join Us</span>
+                                <h3>{{ reason.title }}</h3>
                                 <p>{{ reason.body }}</p>
                             </div>
                         </div>
@@ -109,34 +105,10 @@
             </ul>
         </div>
     </section>
-    <section class="jobs-what-saying clearfix">
-        <div class="center saying">
-            <h2>What we've been saying</h2>
-            <ul>
-                {% for blog in blogs %}
-                    {% with blog.related_author.all.0 as a %}
-                        <li>
-                            {% image a.author.image fill-300x300 %}
-                            <h3><a href="{{ blog.url }}">{{ blog.title }}</a></h3>
-                            <span>{{ blog.date }}</span>
-                            <div>
-                                <a href="{{ a.author.url }}">{{ a.author.title }}</a>
-                                <span>{{ a.author.role }}</span>
-                            </div>
-                        </li>
-                    {% endwith %}
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
     <section class="jobs-refer">
         <div class="center space-footer">
             <h2>Refer a friend and make £500</h2>
             <p>Not a Torchbox employee? Doesn't matter. Anyone who refers someone who becomes a member of our team can claim the referral fee.</p>
-            <a href="{{ self.terms_and_conditions }}" class="terms-link">There are some T&amp;Cs, of course</a>
-            <div>
-                <a href="{{ self.refer_a_friend }}" class="button">Refer a friend</a>
-            </div>
         </div>
     </section>
 {% endblock %}

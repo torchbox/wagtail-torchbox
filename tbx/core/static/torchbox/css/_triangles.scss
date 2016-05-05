@@ -1,0 +1,48 @@
+$triangle-size: 60px !default;
+
+@mixin triangle($hexstring, $side) {
+  position: relative;
+  &::after {
+    content: '';
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    background-position: bottom;
+    @if $side == 'bottom' {
+      background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%3E%3Cpath%20d%3D%22M%200%2C0%200%2C100%2050%2C100%200%2C0%20z%20m%2050%2C100%2050%2C0%200%2C-100%20-50%2C100%20z%22%20style%3D%22fill%3A%23#{$hexstring}%22%2F%3E%3C%2Fsvg%3E');
+      width: 100%;
+      height: $triangle-size;
+      background-size: 100% $triangle-size;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    @else if $side == 'left' {
+      background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%3E%3Cpath%20d%3D%22M%20100%2C0%200%2C0%200%2C50%20100%2C0%20z%20M%200%2C50%200%2C100%20100%2C100%200%2C50%20z%22%20style%3D%22fill%3A%23#{$hexstring}%22%2F%3E%3C%2Fsvg%3E');
+      width: $triangle-size;
+      height: 100%;
+      background-size: $triangle-size 100%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+    @else if $side == 'right' {
+      background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%3E%3Cpath%20d%3D%22m%200%2C100%20100%2C0%200%2C-50%20L%200%2C100%20z%20M%20100%2C50%20100%2C0%200%2C0%20100%2C50%20z%22%20style%3D%22fill%3A%23#{$hexstring}%22%2F%3E%3C%2Fsvg%3E');
+      width: $triangle-size;
+      height: 100%;
+      background-size: $triangle-size 100%;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+    @else if $side == 'top' {
+      background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%3E%3Cpath%20d%3D%22M%20100%2C100%20100%2C0%2050%2C0%20100%2C100%20z%20M%2050%2C0%200%2C0%200%2C100%2050%2C0%20z%22%20style%3D%22fill%3A%23#{$hexstring}%22%2F%3E%3C%2Fsvg%3E');
+      width: 100%;
+      height: $triangle-size;
+      background-size: 100% $triangle-size;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}

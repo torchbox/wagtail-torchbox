@@ -5,12 +5,12 @@
     {% if self.main_image %}
         {% image self.main_image fill-1300x750 as header_image %}
         <style>
-            .heading {
+            .page-banner {
                 background-image: url('{{ header_image.url }}');
             }
         </style>
     {% endif %}
-    <div class="heading">
+    <div class="page-banner">
         {{ self.heading|richtext }}
     </div>
 

@@ -419,8 +419,9 @@
         width: 100%;
     }
 
-    .page-standardpage.page-standardpage .heading .rich-text {
+    .page-standardpage.page-standardpage .page-banner .rich-text {
         padding-top: 12em;
+        padding-bottom: 12em;
     }
 
     .page-standardpage main {
