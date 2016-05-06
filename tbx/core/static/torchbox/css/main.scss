@@ -1001,11 +1001,11 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .button {
-    background-color: #2EB1B0;
+    background-color: #f85a40;
     display: inline-block;
     padding: 0.8em 1em;
     color: #fff;
-    border: 1px solid #2EB1B0;
+    border: 1px solid #f85a40;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -1022,8 +1022,8 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .button:hover {
-    background-color: #f85a40;
-    border-color: #f85a40;
+    background-color: #2EB1B0;
+    border-color: #2EB1B0;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -1093,7 +1093,6 @@ main nav li.active a:after {
 }
 
 .jobs-listing {
-    background: #F8F8F8;
     padding: 150px 0 50px;
     margin-top: -10em;
     position: relative;
@@ -1355,7 +1354,7 @@ main nav li.active a:after {
 
 .jobs-carousel-container li {
     position: relative;
-    background: #484848;
+    background: #f2f2f2;
 }
 
 .jobs-carousel-container .slide-caption-container {
@@ -1417,7 +1416,7 @@ main nav li.active a:after {
 }
 
 .jobs-carousel-container .slick-slide .picture {
-    @include triangle("484848", right);
+    @include triangle("f2f2f2", right);
     max-width: 65%;
 }
 
@@ -1455,7 +1454,7 @@ main nav li.active a:after {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    @include triangle("F8F8F8", bottom);
+    @include triangle("ffffff", bottom);
 }
 
 .page-standardpage h4 span {

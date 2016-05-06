@@ -1296,11 +1296,9 @@
         top: 0;
         right: 0;
         padding: 2em 1em 2em 4%;
-        background: #484848;
         width: 35%;
         height: 100%;
         white-space: nowrap;
-        color: white !important;
     }
 
     .jobs-carousel-container .slide-caption-container > div {
