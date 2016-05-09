@@ -1077,10 +1077,10 @@
         clear: both;
     }
 
-    .jobs-carousel-container img {
+    .jobs-carousel-container .slick-slide img {
         max-width: 65%;
-        -webkit-clip-path: polygon(98% 0, 100% 50%, 98% 100%, 0 100%, 0 0);
-        clip-path: polygon(98% 0, 100% 50%, 98% 100%, 0 100%, 0 0);
+        -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 0);
+        clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 0);
     }
 
     .sign-up {

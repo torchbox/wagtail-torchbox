@@ -1408,12 +1408,12 @@ main nav li.active a:after {
     width: 2.5em;
 }
 
-.jobs-carousel-container .slick-slide img {
-    max-width: none;
+.jobs-carousel-container .slick-slide {
+    display: flex;
 }
 
-.jobs-carousel-container .slick-slide .picture {
-    max-width: 65%;
+.jobs-carousel-container .slick-slide img {
+    max-width: none;
 }
 
 .footerbleed {
