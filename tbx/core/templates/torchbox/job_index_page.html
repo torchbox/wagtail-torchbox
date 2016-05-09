@@ -44,7 +44,7 @@
         </div>
     </section>
     {% if self.reasons_to_join.all %}
-    <section class="jobs-benefits clearfix" id="reasons">
+    <section class="jobs-benefits" id="reasons">
         <div class="jobs-carousel-container">
             <ul class="jobs-carousel">
                 {% for reason in self.reasons_to_join.all %}
@@ -63,7 +63,7 @@
         </div>
     </section>
     {% endif %}
-    <section class="jobs-offices clearfix">
+    <section class="jobs-offices">
         <div class="center our-offices-container">
             <h2>Our offices</h2>
             <ul class="our-offices">
@@ -88,17 +88,17 @@
     <section class="jobs-core-values clearfix">
         <div class="center">
             <h2>Our four core values</h2>
-            <ul>
+            <ul class="image-tiles">
                 <li>
                     <img src="{% static "torchbox/images/corevalue-better.jpg" %}" alt="Make things better" />
                 </li>
-                <li class="rh">
+                <li>
                     <img src="{% static "torchbox/images/corevalue-happy.jpg" %}" alt="Make clients happy" />
                 </li>
                 <li>
                     <img src="{% static "torchbox/images/corevalue-never.jpg" %}" alt="Never stand still" />
                 </li>
-                <li class="rh">
+                <li>
                     <img src="{% static "torchbox/images/corevalue-enjoy.jpg" %}" alt="Enjoy it" />
                 </li>
             </ul>

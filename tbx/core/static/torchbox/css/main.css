@@ -200,10 +200,8 @@ header {
 header nav li a {
     display: block;
     padding: 0.5em 1em;
-   /* margin: 0.5em 0.5em; */
     color: white;
     border-bottom: 1px solid rgba(255,255,255,0.2);
-    font-size: 1.1em;
     font-family: "proxima-nova", helvetica, sans-serif;
 }
 
@@ -895,19 +893,28 @@ main nav li.active a:after {
 
 .jobs-header-content {
     position: relative;
-    padding: 21em 0.5em 5em;
+    padding: 9em 0.5em 5em;
     z-index: 10;
     color: white;
     text-align: center;
 }
 
 .jobs-header-content p {
-    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+.jobs-header .button.button {
+    box-shadow: 0 0 20px rgba(0,0,0,0.9);
+    margin: 18px;
+    padding: 0.6em 1em;
+    font-size: 0.9em;
+}
 
 .page-jobindexpage header {
     margin-bottom: 2em;
+    position: absolute;
+    width: 100%;
 }
 
 .page-jobindexpage main .jobs {
@@ -928,6 +935,10 @@ main nav li.active a:after {
 }
 .page-jobindexpage .no-job.no-job {
     margin-top: 1em;
+    max-width: 40em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .no-job h3 {
     font-weight: bold;
@@ -1029,7 +1040,7 @@ main nav li.active a:after {
 
 .jobs-listing .listing a {
     font-weight: bold;
-    line-height: 1.3;
+    line-height: 1.2;
     border: 1px solid #e4e5e6;
     background: white;
     box-shadow: 0;
@@ -1091,15 +1102,14 @@ main nav li.active a:after {
 }
 
 .jobs-listing {
-    padding: 150px 0 50px;
-    margin-top: -10em;
     position: relative;
     z-index: 0;
-    margin-bottom: 0;
+    margin-top: 3em;
 }
 
 .jobs-benefits {
    background: #F8F8F8;
+   margin-top: 3em;
 }
 
 .jobs-offices {
@@ -1122,6 +1132,7 @@ main nav li.active a:after {
     display: inline-block;
     width: 35%;
     margin: 1em 0 1.25em;
+    padding: 22px;
 }
 
 .jobs-offices li h3 {
@@ -1156,12 +1167,6 @@ main nav li.active a:after {
     margin-bottom: 0.25em;
     font-weight: bold;
     line-height: 1em;
-}
-
-.jobs-core-values li {
-    width: 100%;
-    display: block;
-    margin-bottom: 1em;
 }
 
 .jobs-what-saying h2 {
@@ -1236,7 +1241,7 @@ main nav li.active a:after {
     background: radial-gradient(circle, #2EB1B0 , #82D0D0);
     padding-top: 4em;
     background-size: cover;
-    margin-top: 1em;
+    margin-top: 5em;
 }
 
 .jobs-refer:before {
@@ -1300,7 +1305,6 @@ main nav li.active a:after {
 }
 
 .page-jobindexpage .crop-height {
-    margin-top: -21em;
     position: relative;
     z-index: 10;
     overflow: hidden;
@@ -1365,7 +1369,7 @@ main nav li.active a:after {
 .jobs-carousel-container .slide-caption-container h3 {
     font-weight: bold;
     line-height: 1em;
-    margin: 0;
+    margin-bottom: 0.65em;
     font-size: 1.5em;
 }
 
@@ -1381,6 +1385,7 @@ main nav li.active a:after {
 
 .jobs-carousel-container .slick-arrow.slick-disabled {
     background-color: #9c9c9c;
+    pointer-events: none;
 }
 
 .jobs-carousel-container .slick-prev {
@@ -4080,4 +4085,19 @@ h4 ~ .stat {
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.5;
     font-weight: 300;
+}
+
+ul.image-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -38px;
+  margin-top: -38px;
+}
+
+ul.image-tiles li {
+  flex: 1;
+  flex-basis: 100%;
+  margin-left: 38px;
+  margin-top: 38px;
 }
