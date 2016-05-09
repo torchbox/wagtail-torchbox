@@ -1,5 +1,3 @@
-@import "triangles";
-
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1239,7 +1237,6 @@ main nav li.active a:after {
     padding-top: 4em;
     background-size: cover;
     margin-top: 1em;
-    @include triangle("ffffff", top);
 }
 
 .jobs-refer:before {
@@ -1416,7 +1413,6 @@ main nav li.active a:after {
 }
 
 .jobs-carousel-container .slick-slide .picture {
-    @include triangle("f2f2f2", right);
     max-width: 65%;
 }
 
@@ -1454,7 +1450,6 @@ main nav li.active a:after {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    @include triangle("ffffff", bottom);
 }
 
 .page-standardpage h4 span {
