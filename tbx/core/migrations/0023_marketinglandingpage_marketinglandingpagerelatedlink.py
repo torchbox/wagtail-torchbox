@@ -10,7 +10,7 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0022_merge'),
+        ('torchbox', '0022_signupformpage_signupformpagebullet_signupformpagelogo_signupformpagequote_signupformpageresponse'),
     ]
 
     operations = [
