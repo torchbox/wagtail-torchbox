@@ -192,10 +192,13 @@ def homepage_work_listing(context, count=3):
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
 def homepage_job_listing(context, count=3):
     # Assume there is only one job index page
-    jobindex = JobIndexPage.objects.filter(live=True)[0]
-    jobs = jobindex.job.all()
-    if count:
-        jobs = jobs[:count]
+    jobindex = JobIndexPage.objects.filter(live=True).first()
+    if jobindex:
+        jobs = jobindex.job.all()
+        if count:
+            jobs = jobs[:count]
+    else:
+        jobs = []
     return {
         'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
