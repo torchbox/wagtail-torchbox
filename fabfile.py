@@ -1,174 +1,121 @@
 from __future__ import with_statement
-from fabric.api import *
 
 import uuid
 
+from fabric.api import env, get, local, puts, roles, run
+
+STAGING_HOST = 'by-staging-1.torchbox.com'
+PRODUCTION_HOST_1 = 'web-1-a.rslon.torchbox.net'
+PRODUCTION_HOST_2 = 'web-1-b.rslon.torchbox.net'
+
 env.roledefs = {
-    'staging': ['tbxwagtail@by-staging-1.torchbox.com'],
-    'production': ['tbxwagtail@web-1-a.rslon.torchbox.net', 'tbxwagtail@web-1-b.rslon.torchbox.net'],
-    'production-1': ['tbxwagtail@web-1-a.rslon.torchbox.net'],
+    'staging': ['tbxwagtail@{}'.format(STAGING_HOST)],
+    'live': ['tbxwagtail@{}'.format(PRODUCTION_HOST_1),
+             'tbxwagtail@{}'.format(PRODUCTION_HOST_2)],
 }
+env.always_use_pty = False
 
-PROJECT = "wagtail-torchbox"
-STAGING_DB_USERNAME = "tbxwagtail"
-LIVE_DB_USERNAME = "tbxwagtail"
-DB_NAME = "torchbox"
-LOCAL_DUMP_PATH = "~/"
-REMOTE_DUMP_PATH = "~/"
+PROJECT_NAME = "wagtail-torchbox"
+LOCAL_DB_NAME = "torchbox"
+LOCAL_DUMP_PATH = "/tmp/"
+LOCAL_MEDIA_DIR = "/vagrant/media"
+
+REMOTE_DB_NAME = '$CFG_DB_NAME'
+REMOTE_DB_USERNAME = '$CFG_DB_USER'
+REMOTE_PROJECT_PATH = '$D/'
+REMOTE_DUMP_PATH = '{}tmp/'.format(REMOTE_PROJECT_PATH)
+REMOTE_MEDIA_DIR = '$CFG_MEDIA_DIR'
 
 
-@roles('staging')
-def deploy_staging():
-    with cd('/usr/local/django/tbxwagtail/'):
-        run("git pull")
-        run("pip install -r requirements.txt --upgrade")
-        run("manage migrate --noinput")
-        run("manage collectstatic --noinput")
-        run("manage compress --force")
+def _fetch_remote_variable(input_string):
+    """ Runs `echo $SOMEVAR`, with no terminal assigned, so that the server
+    doesn't add extra bumf to stdout.
+    """
+    return run('echo {}'.format(input_string), pty=False)
 
+
+def _fetch_local_variable(input_string):
+    """ Runs `echo $SOMEVAR`, with no terminal assigned, so that the server
+    doesn't add extra bumf to stdout.
+    """
+    return local('echo {}'.format(input_string))
+
+
+def _deploy():
+
+    if env['host'] == STAGING_HOST:
+        branch = 'staging'
+    else:
+        branch = 'master'
+
+    run('git pull origin {}'.format(branch))
+    run('pip install -r requirements.txt')
+    run('dj migrate --noinput')
+    run('dj collectstatic --noinput')
+    run('dj compress')
+    run('dj update_index')
     run('restart')
 
 
-@roles('production')
-def deploy():
-    with cd('/usr/local/django/tbxwagtail/'):
-        run("git pull")
-        run("pip install -r requirements.txt")
-        run("manage migrate --noinput")
-        run("manage collectstatic --noinput")
-        run("manage compress --force")
+def _pull_data():
+    if env['host'] == PRODUCTION_HOST_2:
+        # No need to pull data twice
+        return
 
-    run('restart')
+    local_db_name = _fetch_local_variable(REMOTE_DB_NAME) or LOCAL_DB_NAME
+    local_dump_path = _fetch_local_variable(REMOTE_DUMP_PATH) or LOCAL_DUMP_PATH
 
+    filename = "{}-{}.sql".format(PROJECT_NAME, uuid.uuid4())
+    local_path = "{}{}".format(local_dump_path, filename)
+    remote_path = "{}{}".format(REMOTE_DUMP_PATH, filename)
+    local_db_backup_path = "{}vagrant-{}-{}.sql".format(local_dump_path, local_db_name, uuid.uuid4())
+    non_env_remote_path = _fetch_remote_variable(remote_path)
 
-@roles('production-1')
-def pull_live_data():
-    filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
-    local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
-    remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
-    local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
+    run('pg_dump -U{} -xOf {} {}'.format(REMOTE_DB_USERNAME, remote_path, REMOTE_DB_NAME))
+    run('gzip {}'.format(remote_path))
+    get("{}.gz".format(non_env_remote_path), "{}.gz".format(local_path))
+    run('rm {}.gz'.format(remote_path))
 
-    run('pg_dump -xOf %s' % remote_path)
-    run('gzip %s' % remote_path)
-    get("%s.gz" % remote_path, "%s.gz" % local_path)
-    run('rm %s.gz' % remote_path)
+    local('pg_dump -xOf {} {}'.format(local_db_backup_path, local_db_name))
+    puts('Previous local database backed up to {}'.format(local_db_backup_path))
 
-    local('pg_dump -xOf %s %s' % (local_db_backup_path, DB_NAME))
-    puts('Previous local database backed up to %s' % local_db_backup_path)
-
-    local('dropdb  %s' % DB_NAME)
-    local('createdb %s' % DB_NAME)
-    local('gunzip %s.gz' % local_path)
-    local('psql %s -f %s' % (DB_NAME, local_path))
-    local('rm %s' % local_path)
+    local('dropdb {}'.format(local_db_name))
+    local('createdb {}'.format(local_db_name))
+    local('gunzip {}.gz'.format(local_path))
+    local('psql {} -f {}'.format(local_db_name, local_path))
+    local('rm {}'.format(local_path))
 
 
-@roles('production-1')
-def pull_live_media():
-    media_filename = "%s-%s-media.tar" % (PROJECT, uuid.uuid4())
-    local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
-    remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
+def _pull_media():
+    if env['host'] == PRODUCTION_HOST_2:
+        # No need to pull media twice
+        return
+    non_env_remote_media_path = _fetch_remote_variable(REMOTE_MEDIA_DIR)
+    local('rm -rf media.old')
+    local_media_dir = _fetch_local_variable(REMOTE_MEDIA_DIR) or LOCAL_MEDIA_DIR
+    local('cp -r {} {}.old || true'.format(local_media_dir, local_media_dir))
 
-    # tar and download media
-    with cd('/usr/local/django/tbxwagtail/'):
-        run('tar -cvf %s media' % remote_media_dump)
-        run('gzip %s' % remote_media_dump)
-
-    get('%s.gz' % remote_media_dump, '%s.gz' % local_media_dump)
-
-    local('rm -rf media')
-    local('mv %s.gz .' % local_media_dump)
-    local('tar -xzvf %s.gz' % media_filename)
-    local('rm %s.gz' % media_filename)
+    local('rsync -avz %s:%s /vagrant/media/' % (env['host_string'], non_env_remote_media_path))
 
 
-@roles('staging')
-def pull_staging_data():
-    filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
-    local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
-    remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
-    local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
+deploy_staging = roles('staging')(_deploy)
+deploy_live = roles('live')(_deploy)
 
-    run('pg_dump -U%s -xOf %s' % (STAGING_DB_USERNAME, remote_path))
-    run('gzip %s' % remote_path)
-    get("%s.gz" % remote_path, "%s.gz" % local_path)
-    run('rm %s.gz' % remote_path)
+pull_staging_data = roles('staging')(_pull_data)
+pull_live_data = roles('live')(_pull_data)
 
-    local('pg_dump -xOf %s %s' % (local_db_backup_path, DB_NAME))
-    puts('Previous local database backed up to %s' % local_db_backup_path)
-
-    local('dropdb  %s' % DB_NAME)
-    local('createdb  %s' % DB_NAME)
-    local('gunzip %s.gz' % local_path)
-
-    # Merge conflict here 2015-03-26. Can't tell which of these psql & rm commands is the correct one.
-    # Delete these comments if this seems to work ok
-    # local('psql -Upostgres %s -f %s' % (DB_NAME, local_path))
-    # local('rm %s' % local_path)
-    local('psql %s -f %s' % (DB_NAME, local_path))
-    local('rm %s' % local_path)
+pull_staging_media = roles('staging')(_pull_media)
+pull_live_media = roles('live')(_pull_media)
 
 
-@roles('staging')
-def push_staging_media():
-    media_filename = "%s-%s-media.tar" % (PROJECT, uuid.uuid4())
-    local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
-    remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
-
-    # tar and upload media
-    local('tar -cvf %s media' % local_media_dump)
-    local('gzip %s' % local_media_dump)
-    put('%s.gz' % local_media_dump, '%s.gz' % remote_media_dump)
-
-    # unzip everything
-    with cd('/usr/local/django/tbxwagtail/'):
-        run('rm -rf media')
-        run('mv %s.gz .' % remote_media_dump)
-        run('tar -xzvf %s.gz' % media_filename)
-        run('rm %s.gz' % media_filename)
-
-
-@roles('staging')
-def pull_staging_media():
-    media_filename = "%s-%s-media.tar" % (PROJECT, uuid.uuid4())
-    local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
-    remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
-
-    # tar and download media
-    with cd('/usr/local/django/tbxwagtail/'):
-        run('tar -cvf %s media' % remote_media_dump)
-        run('gzip %s' % remote_media_dump)
-
-    get('%s.gz' % remote_media_dump, '%s.gz' % local_media_dump)
-
-    local('rm -rf media')
-    local('mv %s.gz .' % local_media_dump)
-    local('tar -xzvf %s.gz' % media_filename)
-    local('rm %s.gz' % media_filename)
-
-
-@roles('staging')
-def push_staging_data():
-    filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
-    local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
-    remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
-    staging_db_backup_path = "%s%s-%s.sql" % (REMOTE_DUMP_PATH, DB_NAME, uuid.uuid4())
-
-    # dump and upload db
-    local('pg_dump -Upostgres -xOf %s %s' % (local_path, DB_NAME))
-    local('gzip %s' % local_path)
-    put("%s.gz" % local_path, "%s.gz" % remote_path)
-
-    run('pg_dump -xO -h %s -f %s' % (STAGING_DB_USERNAME, staging_db_backup_path))
-    puts('Previous staging database backed up to %s' % staging_db_backup_path)
-
-    run('gunzip %s.gz' % remote_path)
-    run('psql -U%s -c "DROP SCHEMA public CASCADE"' % (STAGING_DB_USERNAME))
-    run('psql -U%s -c "CREATE SCHEMA public"' % (STAGING_DB_USERNAME))
-    run('psql -U%s -f %s' % (STAGING_DB_USERNAME, remote_path))
-    run('rm %s' % remote_path)
-
-
-@roles('production')
+@roles('live')
 def purge_cache():
     run('ats-cache-purge torchbox.com')
+
+
+@roles('staging')
+def sync_staging_with_live():
+    env.forward_agent = True
+    run('fab pull_live_data')
+    run("manage migrate --noinput")
+    run('fab pull_live_media')
