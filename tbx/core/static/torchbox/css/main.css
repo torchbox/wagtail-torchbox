@@ -1151,10 +1151,6 @@ main nav li.active a:after {
     margin-right: 0;
 }
 
-.jobs-core-values {
-    max-width: 96em;
-}
-
 .jobs-core-values h2 {
     font-weight: bold;
     font-size: 2em;
