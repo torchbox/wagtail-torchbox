@@ -45,7 +45,12 @@ def _deploy():
     else:
         branch = 'master'
 
-    run('git pull origin {}'.format(branch))
+    current_branch = run('git symbolic-ref --short HEAD')
+    if current_branch != branch:
+        puts("Remote server is on {}. You are trying to deploy {}. This "
+             "script does not support branch switching.".format(current_branch, branch))
+        return
+    run('git pull')
     run('pip install -r requirements.txt')
     run('dj migrate --noinput')
     run('dj collectstatic --noinput')
