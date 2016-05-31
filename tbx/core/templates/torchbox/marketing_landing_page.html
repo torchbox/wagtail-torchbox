@@ -49,6 +49,7 @@
                 {% for link in self.related_links.all %}
                     <a href="{{ link.link }}"><div class="button">{{ link.title }}</div> </a>
                 {% endfor %}
+                <a href="#posts" class="arrow"></a>
             {% endif %}
         </div>
     </section>
