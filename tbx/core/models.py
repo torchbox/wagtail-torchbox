@@ -1227,6 +1227,23 @@ class SignUpFormPage(Page):
 
 class MarketingLandingPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.MarketingLandingPage', related_name='related_links')
+    email_link = models.EmailField("Email link", blank=True,
+                                   help_text="Enter email address only, without 'mailto:'")
+
+    @property
+    def link(self):
+        if self.link_page:
+            return self.link_page.url
+        elif self.link_document:
+            return self.link_document.url
+        elif self.link_external:
+            return self.link_external
+        else:
+            return "mailto:{}".format(self.email_link)
+
+    panels = RelatedLink.panels + [
+        FieldPanel('email_link')
+    ]
 
 
 class MarketingLandingPagePageClients(Orderable, RelatedLink):
