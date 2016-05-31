@@ -1261,6 +1261,15 @@ class MarketingLandingPagePageClients(Orderable, RelatedLink):
     ]
 
 
+class MarketingLandingPageFeaturedItem(Orderable):
+    page = ParentalKey('torchbox.MarketingLandingPage', related_name='featured_items')
+    related_page = models.ForeignKey('wagtailcore.Page', related_name='+')
+
+    panels = [
+        PageChooserPanel('related_page', ['torchbox.BlogPage', 'torchbox.WorkPage'])
+    ]
+
+
 class MarketingLandingPage(Page):
     intro = models.TextField(blank=True)
     hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
@@ -1281,5 +1290,6 @@ class MarketingLandingPage(Page):
         FieldPanel('hero_video_id'),
         ImageChooserPanel('hero_video_poster_image'),
         InlinePanel( 'related_links', label="Related links"),
+        InlinePanel('featured_items', label="Featured Items"),
         InlinePanel( 'clients', label="Clients"),
     ]

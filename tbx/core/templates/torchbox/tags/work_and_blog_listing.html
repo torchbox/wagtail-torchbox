@@ -1,5 +1,8 @@
-{% if items %}
+{% if items or featured_items %}
 <ul>
+    {% for item in featured_items %}
+        {{ item }}
+    {% endfor %}
     {% for item in items %}
         {{ item }}
     {% endfor %}
