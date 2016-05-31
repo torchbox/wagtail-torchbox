@@ -8,3 +8,5 @@
 /.vagrant/
 /Vagrantfile.local
 /docs/_build/
+/node_modules
+/npm-debug.log

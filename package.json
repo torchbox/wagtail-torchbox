@@ -1,0 +1,48 @@
+{
+  "name": "wagtail-torchbox",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Torchbox Ltd",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "colors": "^1.1.2",
+    "exorcist": "^0.4.0",
+    "git-hooks": "^1.0.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "~3.0.2",
+    "gulp-cached": "^1.1.0",
+    "gulp-changed": "^1.3.0",
+    "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^1.12.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-scss-lint": "^0.3.9",
+    "gulp-sftp": "^0.1.5",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-svg-sprite": "^1.2.16",
+    "gulp-swig": "^0.7.4",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
+    "imagemin-advpng": "^3.1.0",
+    "imagemin-pngcrush": "^4.1.0",
+    "lodash": "^3.10.1",
+    "merge-stream": "^1.0.0",
+    "minifyify": "^7.3.2",
+    "require-dir": "^0.3.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1",
+    "yargs": "^3.32.0"
+  },
+  "engines": {
+    "node": ">=4.0.0 <5.0.0"
+  },
+  "scripts": {
+    "preinstall": "sudo npm i -g jshint"
+  }
+}
