@@ -5,7 +5,6 @@
 {% block extra_css %}
 <style>
     .page-homepage .hero {
-        padding: 22em 0em 3em 0em;
         background: url("{% static 'torchbox/images/Marketingpage_hero1.jpg' %}") no-repeat center;
     }
 
@@ -47,12 +46,24 @@
             <h1>{{ self.intro }}</h1>
 
             {% if not self.hero_video_id %}
-                {% for link in self.related_links.all %}
-                    <a href="{{ link.link }}"><div class="button">{{ link.title }}</div> </a>
-                {% endfor %}
+                <a href="#posts" class="arrow"></a>
             {% endif %}
         </div>
     </section>
+
+    {% with self.related_links.all as related_links %}
+    {% if related_links %}
+    <section class="container related-links">
+        <div>
+            <ul>
+                {% for link in related_links %}
+                    <li><a href="{{ link.link }}">{{ link.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+    {% endwith %}
 
     <section id="posts" class="listing clearfix">
         {% work_and_blog_listing marketing=True %}

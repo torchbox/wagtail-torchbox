@@ -341,25 +341,30 @@
         padding: 1.25em;
     }
 
+    .page-homepage .related-links,
     .page-homepage .hiring {
         padding: 3em 2em;
     }
 
+    .page-homepage .related-links h2,
     .page-homepage .hiring h2 {
         text-align: center;
         font-size: 3em;
         color: #424A4F;
     }
 
+    .page-homepage .related-links a,
     .page-homepage .hiring a {
         font-size: 1em;
     }
 
+    .page-homepage .related-links ul,
     .page-homepage .hiring ul {
         text-align: center;
         border: none;
     }
 
+    .page-homepage .related-links li,
     .page-homepage .hiring li {
         display: inline-block;
         border: none;

@@ -1,7 +1,19 @@
-{% if items %}
+{% load torchbox_tags %}
+{% if items or featured_items %}
 <ul>
+    {% for item in featured_items %}
+        {% if item.related_page.specific|content_type == 'blogpage' %}
+            {% include 'torchbox/tags/blog_list_item.html' with post=item.related_page.specific %}
+        {% elif item.related_page.specific|content_type == 'workpage' %}
+            {% include 'torchbox/tags/work_list_item.html' with work=item.related_page.specific %}
+        {% endif %}
+    {% endfor %}
     {% for item in items %}
-        {{ item }}
+        {% if item|content_type == 'blogpage' %}
+            {% include 'torchbox/tags/blog_list_item.html' with post=item %}
+        {% elif item|content_type == 'workpage' %}
+            {% include 'torchbox/tags/work_list_item.html' with work=item %}
+        {% endif %}
     {% endfor %}
 </ul>
 {% endif %}
