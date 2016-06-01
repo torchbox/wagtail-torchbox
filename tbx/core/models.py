@@ -1225,8 +1225,7 @@ class SignUpFormPage(Page):
         email_message.send()
 
 
-class MarketingLandingPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.MarketingLandingPage', related_name='related_links')
+class AbstractBaseMarketingLandingPageRelatedLink(Orderable, RelatedLink):
     email_link = models.EmailField("Email link", blank=True,
                                    help_text="Enter email address only, without 'mailto:'")
 
@@ -1244,6 +1243,17 @@ class MarketingLandingPageRelatedLink(Orderable, RelatedLink):
     panels = RelatedLink.panels + [
         FieldPanel('email_link')
     ]
+
+    class Meta:
+        abstract = True
+
+
+class MarketingLandingPageHeaderRelatedLink(AbstractBaseMarketingLandingPageRelatedLink):
+    page = ParentalKey('torchbox.MarketingLandingPage', related_name='header_related_links')
+
+
+class MarketingLandingPageIntroRelatedLink(AbstractBaseMarketingLandingPageRelatedLink):
+    page = ParentalKey('torchbox.MarketingLandingPage', related_name='intro_related_links')
 
 
 class MarketingLandingPagePageClients(Orderable, RelatedLink):
@@ -1271,7 +1281,7 @@ class MarketingLandingPageFeaturedItem(Orderable):
 
 
 class MarketingLandingPage(Page):
-    intro = models.TextField(blank=True)
+    intro = models.TextField('header text', blank=True)
     hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
     hero_video_poster_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -1280,6 +1290,7 @@ class MarketingLandingPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    intro_subtitle = models.CharField('intro subtitle', max_length=255, blank=True)
 
     class Meta:
         verbose_name = "Marketing Landing Page"
@@ -1289,7 +1300,9 @@ class MarketingLandingPage(Page):
         FieldPanel('intro'),
         FieldPanel('hero_video_id'),
         ImageChooserPanel('hero_video_poster_image'),
-        InlinePanel( 'related_links', label="Related links"),
+        InlinePanel('header_related_links', label="Header related items"),
+        FieldPanel('intro_subtitle'),
+        InlinePanel('intro_related_links', label="Intro related items"),
         InlinePanel('featured_items', label="Featured Items"),
         InlinePanel( 'clients', label="Clients"),
     ]
