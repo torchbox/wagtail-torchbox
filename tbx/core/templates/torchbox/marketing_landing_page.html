@@ -46,15 +46,21 @@
             <h1>{{ self.intro }}</h1>
 
             {% if not self.hero_video_id %}
+                {% for link in self.header_related_links.all %}
+                    <a href="{{ link.link }}"><div class="button">{{ link.title }}</div> </a>
+                {% endfor %}
                 <a href="#posts" class="arrow"></a>
             {% endif %}
         </div>
     </section>
 
-    {% with self.related_links.all as related_links %}
+    {% with self.intro_related_links.all as related_links %}
     {% if related_links %}
     <section class="container related-links">
         <div>
+            {% if page.intro_links_heading %}
+            <h2>{{ page.intro_links_heading }}</h2>
+            {% endif %}
             <ul>
                 {% for link in related_links %}
                     <li><a href="{{ link.link }}">{{ link.title }}</a></li>
