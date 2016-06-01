@@ -246,16 +246,7 @@ def work_and_blog_listing(context, count=10, marketing=False):
         works = works.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items)
         # Reduce remaining item count accordingly, but not to below 0.
         count = max(count - featured_items.count(), 0)
-        featured_items = [isinstance(fi.related_page.specific, BlogPage) and
-                          template.loader.render_to_string(
-                              "torchbox/tags/blog_list_item.html",
-                              {'post': fi.related_page.specific,
-                               'request': context['request']}
-                          ) or template.loader.render_to_string(
-                              "torchbox/tags/work_list_item.html",
-                              {'work': fi.related_page.specific,
-                               'request': context['request']}
-                          ) for fi in context['page'].featured_items.all()]
+        featured_items = context['page'].featured_items.all()
     else:
         # For normal case, do not display "marketing_only" posts and works
         blog_posts = blog_posts.exclude(marketing_only=True)
@@ -268,19 +259,10 @@ def work_and_blog_listing(context, count=10, marketing=False):
 
     blog_posts = play_filter(blog_posts.order_by('-date'), blog_count)
     works = play_filter(works.order_by('-pk'), work_count)
-    blog_items = [template.loader.render_to_string(
-        "torchbox/tags/blog_list_item.html",
-        {'post': post,
-         'request': context['request']}
-    ) for post in blog_posts]
-    work_items = [template.loader.render_to_string(
-        "torchbox/tags/work_list_item.html",
-        {'work': work,
-         'request': context['request']}
-    ) for work in works]
+
     return {
         'featured_items': featured_items,
-        'items': list(roundrobin(blog_items, work_items)),
+        'items': list(roundrobin(blog_posts, works)),
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
