@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from datetime import date
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.core.mail import EmailMessage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
@@ -540,7 +541,7 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
-    intro = RichTextField("Intro (used only for blog index listing)", blank=True)
+    intro = RichTextField("Intro (used for blog index and Planet Drupal listings)", blank=True)
     body = RichTextField("body (deprecated. Use streamfield instead)", blank=True)
     streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
@@ -553,6 +554,12 @@ class BlogPage(Page):
         related_name='+'
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this blog post only on marketing landing page')
+    planet_drupal = models.BooleanField(
+        default=False,
+        help_text="Tick to include this post on Planet Drupal. Posts must "
+                  "conform to the guidelines at https://www.drupal.org/planet/guidelines"
+    )
+
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
@@ -590,7 +597,17 @@ class BlogPage(Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
         FieldPanel('marketing_only'),
+        MultiFieldPanel(
+            [FieldPanel('planet_drupal')], "Include post on Planet Drupal"
+        ),
     ]
+
+    def clean(self):
+        super(BlogPage, self).clean()
+        if self.planet_drupal and not self.intro:
+            raise ValidationError(
+                {'intro': "Please enter an intro if posting to Planet Drupal"}
+            )
 
 
 # Jobs index page

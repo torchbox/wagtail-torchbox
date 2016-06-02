@@ -1,4 +1,6 @@
-from datetime import datetime, date, time
+import imghdr
+
+from datetime import datetime, time
 from django.contrib.syndication.views import Feed
 
 from tbx.core.models import BlogPage
@@ -29,3 +31,40 @@ class BlogFeed(Feed):
 
     def item_pubdate(self, item):
         return datetime.combine(item.date, time())
+
+
+# Planet Drupal feed
+
+class PlanetDrupalFeed(Feed):
+    title = "The Torchbox Planet Drupal Feed"
+    link = "/planet_drupal_feed/"
+    description = "The Torchbox Planet Drupal Feed"
+
+    def items(self):
+        return BlogPage.objects.live().filter(planet_drupal=True) \
+            .order_by('-date')
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.intro if item.intro else item.body
+
+    def item_link(self, item):
+        return item.full_url
+
+    def item_author_name(self, item):
+        pass
+
+    def item_pubdate(self, item):
+        return datetime.combine(item.date, time())
+
+    def item_enclosure_url(self, item):
+        return 'http://127.0.0.1:8000' + item.feed_image.file.url
+
+    def item_enclosure_mime_type(self, item):
+        image_format = imghdr.what(item.feed_image.file)
+        return 'image/{}'.format(image_format)
+
+    def item_enclosure_length(self, item):
+        return item.feed_image.file.size
