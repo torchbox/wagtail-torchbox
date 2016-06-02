@@ -238,15 +238,17 @@ def work_and_blog_listing(context, count=10, marketing=False):
     blog_posts = BlogPage.objects.filter(live=True)
     works = WorkPage.objects.filter(live=True)
     if marketing:
-        # For marketing landing page return only posts and works
-        # tagged with "digital_marketing"
-        featured_items = context['page'].featured_items.values_list('related_page_id', flat=True)
-        filter_tag = "digital_marketing"
-        blog_posts = blog_posts.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items)
-        works = works.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items)
+        featured_items = context['page'].featured_items.all()
+
         # Reduce remaining item count accordingly, but not to below 0.
         count = max(count - featured_items.count(), 0)
-        featured_items = context['page'].featured_items.all()
+
+        # For marketing landing page return only posts and works
+        # tagged with "digital_marketing"
+        featured_items_ids = featured_items.values_list('related_page_id', flat=True)
+        filter_tag = "digital_marketing"
+        blog_posts = blog_posts.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items_ids)
+        works = works.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items_ids)
     else:
         # For normal case, do not display "marketing_only" posts and works
         blog_posts = blog_posts.exclude(marketing_only=True)
