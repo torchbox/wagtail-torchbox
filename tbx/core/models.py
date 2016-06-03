@@ -517,6 +517,8 @@ class BlogPageTagList(models.Model):
     def __unicode__(self):
         return self.name
 
+register_snippet(BlogPageTagList)
+
 
 class BlogPageTagSelect(Orderable):
     page = ParentalKey('torchbox.BlogPage', related_name='tags')
@@ -554,11 +556,6 @@ class BlogPage(Page):
         related_name='+'
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this blog post only on marketing landing page')
-    planet_drupal = models.BooleanField(
-        default=False,
-        help_text="Tick to include this post on Planet Drupal. Posts must "
-                  "conform to the guidelines at https://www.drupal.org/planet/guidelines"
-    )
 
     search_fields = Page.search_fields + (
         index.SearchField('body'),
@@ -597,17 +594,7 @@ class BlogPage(Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
         FieldPanel('marketing_only'),
-        MultiFieldPanel(
-            [FieldPanel('planet_drupal')], "Include post on Planet Drupal"
-        ),
     ]
-
-    def clean(self):
-        super(BlogPage, self).clean()
-        if self.planet_drupal and not self.intro:
-            raise ValidationError(
-                {'intro': "Please enter an intro if posting to Planet Drupal"}
-            )
 
 
 # Jobs index page

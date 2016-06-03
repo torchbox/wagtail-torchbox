@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^blog/feed/$', BlogFeed(), name='blog_feed'),
     url(r'^newsletter-subscribe', views.newsletter_subsribe),
     url(
-        r'^planet_drupal_feed/$',
+        r'^blog/feed/planet_drupal/$',
         PlanetDrupalFeed(),
         name='planet_drupal_feed'
     ),
