@@ -1,6 +1,7 @@
+from datetime import datetime, time
+
 import imghdr
 
-from datetime import datetime, time
 from django.conf import settings
 from django.contrib.syndication.views import Feed
 
@@ -53,9 +54,6 @@ class PlanetDrupalFeed(Feed):
 
     def item_link(self, item):
         return item.full_url
-
-    def item_author_name(self, item):
-        pass
 
     def item_pubdate(self, item):
         return datetime.combine(item.date, time())
