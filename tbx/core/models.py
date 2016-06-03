@@ -516,6 +516,8 @@ class BlogPageTagList(models.Model):
     def __unicode__(self):
         return self.name
 
+register_snippet(BlogPageTagList)
+
 
 class BlogPageTagSelect(Orderable):
     page = ParentalKey('torchbox.BlogPage', related_name='tags')
@@ -540,7 +542,7 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
-    intro = RichTextField("Intro (used only for blog index listing)", blank=True)
+    intro = RichTextField("Intro (used for blog index and Planet Drupal listings)", blank=True)
     body = RichTextField("body (deprecated. Use streamfield instead)", blank=True)
     streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
@@ -553,6 +555,7 @@ class BlogPage(Page):
         related_name='+'
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this blog post only on marketing landing page')
+
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
