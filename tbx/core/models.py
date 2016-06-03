@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from datetime import date
 
 from django import forms
-from django.core.exceptions import ValidationError
 from django.core.mail import EmailMessage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
