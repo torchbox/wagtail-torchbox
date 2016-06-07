@@ -8,3 +8,4 @@
 /.vagrant/
 /Vagrantfile.local
 /docs/_build/
+.idea/
