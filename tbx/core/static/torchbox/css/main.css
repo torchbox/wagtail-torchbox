@@ -721,6 +721,7 @@ main nav li.active a:after {
     border: solid 1px rgba(225,225,225, 0.2);
 }
 
+.page-homepage .related-links,
 .page-homepage .hiring {
     min-width: 100%;
     text-align: left;
@@ -728,12 +729,14 @@ main nav li.active a:after {
     background-color: #F3F4F6;
 }
 
+.page-homepage .related-links > div,
 .page-homepage .hiring > div {
     max-width:46em;
     margin: 0 auto;
     color:#fff;
 }
 
+.page-homepage .related-links a,
 .page-homepage .hiring a {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -752,12 +755,14 @@ main nav li.active a:after {
   -webkit-transition:.3s;
 }
 
+.page-homepage .related-links a:hover,
 .page-homepage .hiring a:hover {
     background-color: #424a4f;
     border: solid 1px #424a4f;
     color: #fff;
 }
 
+.page-homepage .related-links div ul li,
 .page-homepage .hiring div ul li{
     text-align: center;
 }
