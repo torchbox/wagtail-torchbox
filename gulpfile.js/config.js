@@ -1,5 +1,5 @@
 var src = 'tbx/core/static/torchbox/';
-var dest = 'tbx/core/static_compiled';
+var dest = 'tbx/core/static';
 
 module.exports = {
     dest: dest,
