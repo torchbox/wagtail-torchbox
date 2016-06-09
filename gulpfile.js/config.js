@@ -1,5 +1,5 @@
-var src = 'wagtail-torchbox/static_src';
-var dest = 'wagtail-torchbox/static_compiled';
+var src = 'tbx/core/static/torchbox/';
+var dest = 'tbx/core/static_compiled';
 
 module.exports = {
     dest: dest,

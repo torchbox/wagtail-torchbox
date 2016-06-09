@@ -1,3 +1,15 @@
+@import '../vendor/normalize';
+//@import '../vendor/slick';
+//@import '../vendor/jquery.fancybox';
+@import 'mixins';
+@import 'variables';
+
+// Current received wisdom is that this file should contain nothing but imports.
+// You should separate every other part of your CSS into individual files.
+
+@import 'base';
+
+
 html {
     font-family: 'proxima-nova', helvetica, sans-serif;
     background-color: #fff;
@@ -12,9 +24,9 @@ body {
 }
 
 body * {
-    -moz-box-sizing:    border-box;   /* Firefox 1, probably can drop this */
-    -webkit-box-sizing: border-box;   /* Safari 3-4, also probably droppable */
-    box-sizing:         border-box;   /* Everything else */
+    -moz-box-sizing:    border-box;   // Firefox 1, probably can drop this */
+    -webkit-box-sizing: border-box;   // Safari 3-4, also probably droppable */
+    box-sizing:         border-box;   // Everything else */
 }
 
 main {
