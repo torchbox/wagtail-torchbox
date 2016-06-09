@@ -1,0 +1,39 @@
+html {
+    font-family: 'proxima-nova', helvetica, sans-serif;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin: 0 auto;
+    color: #2b3033;
+    line-height: 1.75;
+    background-color: #fff;
+}
+
+body * {
+    box-sizing:         border-box;   /* Everything else */
+}
+
+main {
+    padding: 0;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: #23b0b0;
+}
+
+ol, ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
