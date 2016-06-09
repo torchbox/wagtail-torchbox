@@ -8,17 +8,18 @@
 // You should separate every other part of your CSS into individual files.
 
 @import 'base';
+@import 'blog-detail';
 
 
 html {
-    font-family: 'proxima-nova', helvetica, sans-serif;
+    font-family: $secondaryFont;
     background-color: #fff;
     -webkit-font-smoothing: antialiased;
 }
 
 body {
     margin: 0 auto;
-    color: #2b3033;
+    color: $bodyColor;
     line-height: 1.75;
     background-color: #fff;
 }
@@ -108,7 +109,7 @@ nav {
 .bleed li a {
     text-transform: uppercase;
     font-size: 15px;
-    color: #2b3033;
+    color: $bodyColor;
 }
 
 /* logo =================================================== */
@@ -363,7 +364,3 @@ nav {
     bottom: -1px;
     border-bottom: 1px solid #23b0b0;
 }
-
-
-
-

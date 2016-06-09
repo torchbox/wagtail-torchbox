@@ -98,22 +98,22 @@ $(function() {
         large: 'screen and (min-width: 96em)'
     }
 
-    Harvey.attach(breakpoints.medium, {
-        on: function(){
-            $('body').addClass('breakpoint-medium');
-        },
-        off: function(){
-            $('body').removeClass('breakpoint-medium');
-        }
-    });
-    Harvey.attach(breakpoints.large, {
-        on: function(){
-            $('body').addClass('breakpoint-large');
-        },
-        off: function(){
-            $('body').removeClass('breakpoint-large');
-        }
-    });
+    // Harvey.attach(breakpoints.medium, {
+    //     on: function(){
+    //         $('body').addClass('breakpoint-medium');
+    //     },
+    //     off: function(){
+    //         $('body').removeClass('breakpoint-medium');
+    //     }
+    // });
+    // Harvey.attach(breakpoints.large, {
+    //     on: function(){
+    //         $('body').addClass('breakpoint-large');
+    //     },
+    //     off: function(){
+    //         $('body').removeClass('breakpoint-large');
+    //     }
+    // });
 
 
     // Scroll all anchor links
@@ -235,7 +235,7 @@ $(function() {
     });
 
     // fitVids
-    $('.responsive-object').fitVids();
+    // $('.responsive-object').fitVids();
 
     // get some stats about the video
     $('.responsive-object').each(function() {
@@ -273,7 +273,7 @@ $(function() {
     });
 
     //featherlight used for lightboxes in streamfield-enabled pages
-    $('.gallery').featherlightGallery();
+    // $('.gallery').featherlightGallery();
 
     $(function(){
 
