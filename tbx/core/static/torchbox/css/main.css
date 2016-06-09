@@ -24,6 +24,7 @@ main {
 
 a {
     text-decoration: none;
+    color: #23b0b0;
 }
 
 ol, ul {
@@ -37,6 +38,15 @@ li {
 img {
     display: block;
     width: 100%;
+}
+
+/* General Type styles ===================================== */
+
+h2 {
+    font-weight: 100;
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 /* site structure ========================================== */
@@ -91,13 +101,14 @@ nav {
 .hero {
     position: relative;
     background: url('/static/torchbox/images/test-header.jpg') no-repeat center;
-    height: 80vh;
+    height: 85vh;
     background-size: cover;
+    margin: 0 0 50px 0;
 }
 
 .hero h1 {
     position: absolute;
-    top: 37vh;
+    top: 30vh;
     left: 0;
     width: 100%;
     text-align: center;
@@ -112,7 +123,7 @@ nav {
     left: 0;
     top: 0;
     opacity: 0;
-    height: 80vh;
+    height: 85vh;
     background-size: cover;
     background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
     -webkit-transition: opacity 0.25s ease 0s;
@@ -125,7 +136,7 @@ nav {
     left: 0;
     top: 0;
     opacity: 0;
-    height: 80vh;
+    height: 85vh;
     background-size: cover;
     background: url('/static/torchbox/images/test-header-03.jpg') no-repeat center;
     -webkit-transition: opacity 0.25s ease 0s;
@@ -144,7 +155,7 @@ nav {
 /* case studies */
 .featured-case-studies {
     position: absolute;
-    bottom: 100px;
+    bottom: 0px;
     width: 100%;
     max-width: 1250px;
     margin: 0 auto;
@@ -263,7 +274,7 @@ nav {
 .featured-case-studies .link {
     display: inline-block;
     color: #23b0b0;
-    margin: 15px 0 0;
+    margin: 15px 0 20px;
     padding: 5px 0 0;
     border-top: 2px solid #23b0b0;
     opacity: 0;
@@ -276,6 +287,20 @@ nav {
     opacity: 1;
 }
 
+/* Homepage posts ================================================== */
+
+#posts h2 a {
+    position: relative;
+}
+
+#posts h2 a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: -1px;
+    border-bottom: 1px solid #23b0b0;
+}
 
 
 
