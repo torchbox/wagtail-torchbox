@@ -44,15 +44,23 @@ img {
 
 h2 {
     font-weight: 100;
-    font-size: 35px;
+    font-size: 25px;
     text-align: center;
     margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+@media screen and (min-width: 600px) {
+    h2 {
+        font-size: 35px;
+    }
 }
 
 /* site structure ========================================== */
 .container {
     max-width: 1400px;
     padding: 0 30px;
+    box-sizing: border-box;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -101,20 +109,35 @@ nav {
 .hero {
     position: relative;
     background: url('/static/torchbox/images/test-header.jpg') no-repeat center;
-    height: 85vh;
+    height: 65vh;
     background-size: cover;
     margin: 0 0 50px 0;
 }
 
+@media screen and (min-width: 600px) {
+    .hero {
+        height: 85vh;
+    }
+}
+
 .hero h1 {
     position: absolute;
-    top: 30vh;
+    top: 35%;
     left: 0;
     width: 100%;
     text-align: center;
     color: white;
-    font-size: 60px;
+    font-size: 30px;
     font-weight: 100;
+    padding: 0 20px;
+    line-height: 1.2;
+}
+
+@media screen and (min-width: 600px) {
+    .hero h1 {
+        font-size: 60px;
+        top: 30vh;
+    }
 }
 
 .first-feature-image {
@@ -155,10 +178,17 @@ nav {
 /* case studies */
 .featured-case-studies {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
+    left: 0;
     width: 100%;
     max-width: 1250px;
     margin: 0 auto;
+    min-height: 120px;
+}
+
+@media screen and (min-width: 600px) {
+    .featured-case-studies {
+    }
 }
 
 /*ul hover states / go back to default*/
@@ -182,13 +212,32 @@ nav {
     opacity: 0;
 }
 
+.featured-case-studies li:nth-child(1), .featured-case-studies li:nth-child(3) {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .featured-case-studies li:nth-child(1), .featured-case-studies li:nth-child(3) {
+        display: block;
+    }
+}
 
 .featured-case-studies li {
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     float: left;
-    width: 30%;
     margin-right: 5%;
+}
+
+@media screen and (min-width: 600px) {
+    .featured-case-studies li {
+        width: 30%;
+        position: relative;
+        left: 0;
+        transform: translateY(0);
+    }
 }
 
 .featured-case-studies li:before {
@@ -279,6 +328,7 @@ nav {
     border-top: 2px solid #23b0b0;
     opacity: 0;
     font-size: 15px;
+    line-height: 1.2;
     -webkit-transition: opacity 0.25s ease 0s;
             transition: opacity 0.25s ease 0s;
 }
