@@ -27,6 +27,21 @@ function bindSignUpFormPageForm(element) {
 
 $(function(){
 
+    // new for redesign
+
+    // hero hover on li change background image
+    $('.featured-case-studies li:nth-child(1)').hover(
+       function(){ $('.hero').addClass('first-feature') },
+       function(){ $('.hero').removeClass('first-feature') }
+    )
+
+    $('.featured-case-studies li:nth-child(3)').hover(
+       function(){ $('.hero').addClass('third-feature') },
+       function(){ $('.hero').removeClass('third-feature') }
+    )
+
+    // end redesign
+
     var inOutState = function( trigger, target, speed ){
 
         var $trigger    = $( trigger ),

@@ -15,8 +15,9 @@
 <div class="play-nav-container">
     <div class="play-nav">
         <nav role="navigation">
-        <a href="{% pageurl site_root %}{% if calling_page|in_play or play_404 %}yaffle/{% endif %}" class="logo container">
+        <a href="{% pageurl site_root %}{% if calling_page|in_play or play_404 %}yaffle/{% endif %}" class="logo">
             {% if calling_page|in_play or play_404 %}<p>A division of Torchbox</p>{% endif %}
+            <img src="/static/torchbox/images/logo-torchbox-grey.png" alt="">
         </a>
         <a href="#menu" class="menu-button">&#x2261;</a>
           <ul class="bleed">
