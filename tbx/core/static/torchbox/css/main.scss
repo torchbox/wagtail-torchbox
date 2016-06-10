@@ -10,49 +10,6 @@
 @import 'base';
 @import 'blog-detail';
 
-
-html {
-    font-family: $secondaryFont;
-    background-color: #fff;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    margin: 0 auto;
-    color: $bodyColor;
-    line-height: 1.75;
-    background-color: #fff;
-}
-
-body * {
-    -moz-box-sizing:    border-box;   // Firefox 1, probably can drop this */
-    -webkit-box-sizing: border-box;   // Safari 3-4, also probably droppable */
-    box-sizing:         border-box;   // Everything else */
-}
-
-main {
-    padding: 0;
-    position: relative;
-}
-
-a {
-    text-decoration: none;
-    color: #23b0b0;
-}
-
-ol, ul {
-    padding: 0;
-}
-
-li {
-    list-style: none;
-}
-
-img {
-    display: block;
-    width: 100%;
-}
-
 // General Type styles =====================================
 
 h2 {
@@ -104,7 +61,7 @@ nav {
 		a {
 		    text-transform: uppercase;
 		    font-size: 15px;
-		    color: #2b3033;
+		    color: $dark;
 		}
     }
 }
@@ -141,6 +98,9 @@ nav {
         	top: 30vh;
         }
     }
+    &.first-feature .first-feature-image, &.third-feature .third-feature-image {
+    	opacity: 1;
+	}
 }
 
 .first-feature-image {
@@ -167,15 +127,6 @@ nav {
     background: url('/static/torchbox/images/test-header-03.jpg') no-repeat center;
     -webkit-transition: opacity 0.25s ease 0s;
     transition: opacity 0.25s ease 0s;
-}
-
-
-.hero.first-feature .first-feature-image {
-    opacity: 1;
-}
-
-.hero.third-feature .third-feature-image {
-    opacity: 1;
 }
 
 // case studies ===================================================
@@ -223,10 +174,10 @@ nav {
     }
     .link {
         display: inline-block;
-        color: #23b0b0;
+        color: $blue;
         margin: 15px 0 20px;
         padding: 5px 0 0;
-        border-top: 2px solid #23b0b0;
+        border-top: 2px solid $blue;
         opacity: 0;
         font-size: 15px;
         line-height: 1.2;
@@ -329,7 +280,7 @@ nav {
         left: 0;
         width: 100%;
         bottom: -1px;
-        border-bottom: 1px solid #23b0b0;
+        border-bottom: 1px solid $blue;
     }
 }
 
