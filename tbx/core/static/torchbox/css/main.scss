@@ -92,23 +92,20 @@ nav {
 .bleed {
     overflow: hidden;
     float: right;
-}
-
-.bleed li {
-    float: left;
-    margin-right: 60px;
-    letter-spacing: 1px;
-    font-weight: 500;
-}
-
-.bleed li:last-of-type {
-    margin-right: 0;
-}
-
-.bleed li a {
-    text-transform: uppercase;
-    font-size: 15px;
-    color: #2b3033;
+    li {
+        float: left;
+        margin-right: 60px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        &:last-of-type {
+    		margin-right: 0;
+		}
+		a {
+		    text-transform: uppercase;
+		    font-size: 15px;
+		    color: #2b3033;
+		}
+    }
 }
 
 /* logo =================================================== */
@@ -200,6 +197,8 @@ nav {
 
 @media screen and (min-width: 600px) {
     .featured-case-studies {
+    	left: 50%;
+    	transform: translateX(-50%);
     }
 }
 
@@ -255,10 +254,10 @@ nav {
 .featured-case-studies li:before {
     content: '';
     position: absolute;
-    left: -15%;
+    left: 0;
     top: -10%;
     height: 120%;
-    width: 130%;
+    width: 100%;
     opacity: 0;
     -webkit-transition: opacity 0.25s ease 0s;
         transition: opacity 0.25s ease 0s;
