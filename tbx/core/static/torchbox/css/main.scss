@@ -53,7 +53,7 @@ img {
     width: 100%;
 }
 
-/* General Type styles ===================================== */
+// General Type styles =====================================
 
 h2 {
     font-weight: 100;
@@ -69,7 +69,7 @@ h2 {
     }
 }
 
-/* site structure ========================================== */
+// site structure ==========================================
 .container {
     max-width: 1400px;
     padding: 0 30px;
@@ -78,7 +78,7 @@ h2 {
     overflow: hidden;
 }
 
-/* navigation ============================================== */
+// navigation ==============================================
 nav {
     background: white;
     width: 100%;
@@ -109,44 +109,37 @@ nav {
     }
 }
 
-/* logo =================================================== */
+// logo ===================================================
 .logo {
     display: inline-block;
     width: 200px;
 }
 
-/* hero =================================================== */
+// hero ===================================================
 .hero {
     position: relative;
     background: url('/static/torchbox/images/test-header.jpg') no-repeat center;
     height: 65vh;
     background-size: cover;
     margin: 0 0 50px 0;
-}
-
-@media screen and (min-width: 600px) {
-    .hero {
+    @media #{$tablet} {
         height: 85vh;
     }
-}
-
-.hero h1 {
-    position: absolute;
-    top: 35%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-size: 30px;
-    font-weight: 100;
-    padding: 0 20px;
-    line-height: 1.2;
-}
-
-@media screen and (min-width: 600px) {
-    .hero h1 {
-        font-size: 60px;
-        top: 30vh;
+    h1 {
+        position: absolute;
+        top: 35%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 30px;
+        font-weight: 100;
+        padding: 0 20px;
+        line-height: 1.2;
+        @media #{$tablet} {
+        	font-size: 60px;
+        	top: 30vh;
+        }
     }
 }
 
@@ -185,7 +178,7 @@ nav {
     opacity: 1;
 }
 
-/* case studies */
+// case studies ===================================================
 .featured-case-studies {
     position: absolute;
     bottom: 0;
@@ -194,172 +187,154 @@ nav {
     max-width: 1250px;
     margin: 0 auto;
     min-height: 120px;
-}
-
-@media screen and (min-width: 600px) {
-    .featured-case-studies {
+    @media #{$tablet} {
     	left: 50%;
     	transform: translateX(-50%);
     }
-}
-
-/*ul hover states / go back to default*/
-.featured-case-studies:hover li:before{
-    opacity: 0;
-}
-
-.featured-case-studies:hover li svg{
-    opacity: 0.5;
-}
-
-.featured-case-studies:hover li.active:before{
-    opacity: 0;
-}
-
-.featured-case-studies:hover li.active svg {
-    opacity: 0.5;
-}
-
-.featured-case-studies:hover li.active .link {
-    opacity: 0;
-}
-
-.featured-case-studies li:nth-child(1), .featured-case-studies li:nth-child(3) {
-    display: none;
-}
-
-@media screen and (min-width: 600px) {
-    .featured-case-studies li:nth-child(1), .featured-case-studies li:nth-child(3) {
-        display: block;
+    // ul hover states / go back to default
+    // Important it is here / ta the top
+    &:hover {
+    	li {
+    		cursor: pointer;
+    		&:before {
+    	    	opacity: 0;
+    	    }
+    	    svg {
+    	    	opacity: 0.5;
+    	    }
+    	    &.active {
+    	    	&:before {
+    	    		opacity: 0;
+    	    	}
+    	    	svg {
+    	    		opacity: 0.5;
+    	    	}
+    	    	.link {
+    	    		opacity: 0;
+    	    	}
+    	    }
+    	    &:nth-child(1), &:nth-child(3) {
+    	    	display: none;
+    	    	@media #{$tablet} {
+    	    		display: block;
+    	    	}
+    	    }
+    	}
+    }
+    .link {
+        display: inline-block;
+        color: #23b0b0;
+        margin: 15px 0 20px;
+        padding: 5px 0 0;
+        border-top: 2px solid #23b0b0;
+        opacity: 0;
+        font-size: 15px;
+        line-height: 1.2;
+        -webkit-transition: opacity 0.25s ease 0s;
+                transition: opacity 0.25s ease 0s;
+    }
+    li {
+    	position: absolute;
+    	left: 50%;
+    	transform: translateX(-50%);
+    	text-align: center;
+    	float: left;
+    	margin-right: 5%;
+    	@media #{$tablet} {
+    		width: 30%;
+    		position: relative;
+    		left: 0;
+    		transform: translateY(0);
+    	}
+    	&:before {
+    		content: '';
+    		position: absolute;
+    		left: 0;
+    		top: -10%;
+    		height: 120%;
+    		width: 100%;
+    		opacity: 0;
+    		-webkit-transition: opacity 0.25s ease 0s;
+			transition: opacity 0.25s ease 0s;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#23b0b0+0,23b0b0+69&1+0,0+58 */
+			background: -moz-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%, rgba(35,176,176,0) 58%, rgba(35,176,176,0) 69%); /* FF3.6-15 */
+			background: -webkit-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* Chrome10-25,Safari5.1-6 */
+			background: radial-gradient(ellipse at center,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23b0b0', endColorstr='#0023b0b0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    	}
+    	&:last-of-type {
+    	    margin-right: 0;
+    	}
+    	&:hover {
+    		&:before {
+    			opacity: 0.5;
+    		}
+    		svg {
+    		    opacity: 1;
+    		    -webkit-filter: drop-shadow( 0 0 2px white );
+    		    filter: drop-shadow( 0 0 2px white );
+    		    /* polyfil for old browsers */
+    		    /* https://github.com/Schepp/CSS-Filters-Polyfill */
+    		}
+    		.link {
+    		    opacity: 1;
+    		}
+    	}
+    	// active before interaction
+    	&.active {
+			&:before {
+			    opacity: 0.5;
+			}
+			svg {
+			    opacity: 1;
+			    -webkit-filter: drop-shadow( 0 0 2px white );
+			    filter: drop-shadow( 0 0 2px white );
+			}
+			.link {
+			    opacity: 1;
+			}
+			&:hover {
+				svg {
+				    opacity: 1;
+				    -webkit-filter: drop-shadow( 0 0 2px white );
+				    filter: drop-shadow( 0 0 2px white );
+				}
+				.link {
+				    opacity: 1;
+				}
+				&:before {
+    				opacity: 0.5;
+				}
+			}
+    	}
+    }
+    svg {
+        display: inline-block;
+        width: 80%;
+        fill: white;
+        opacity: 0.5;
+        max-height: 150px;
+        max-width: 270px;
+        -webkit-transition: opacity 0.25s ease 0s;
+                transition: opacity 0.25s ease 0s;
     }
 }
 
-.featured-case-studies li {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    float: left;
-    margin-right: 5%;
-}
-
-@media screen and (min-width: 600px) {
-    .featured-case-studies li {
-        width: 30%;
-        position: relative;
-        left: 0;
-        transform: translateY(0);
-    }
-}
-
-.featured-case-studies li:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -10%;
-    height: 120%;
-    width: 100%;
-    opacity: 0;
-    -webkit-transition: opacity 0.25s ease 0s;
-        transition: opacity 0.25s ease 0s;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#23b0b0+0,23b0b0+69&1+0,0+58 */
-    background: -moz-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%, rgba(35,176,176,0) 58%, rgba(35,176,176,0) 69%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23b0b0', endColorstr='#0023b0b0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-
-.featured-case-studies li:last-of-type {
-    margin-right: 0;
-}
-
-.featured-case-studies li:hover {
-    cursor: pointer;
-}
-
-.featured-case-studies li:hover:before {
-    opacity: 0.5;
-}
-
-/*svg*/
-.featured-case-studies svg {
-    display: inline-block;
-    width: 80%;
-    fill: white;
-    opacity: 0.5;
-    max-height: 150px;
-    max-width: 270px;
-    -webkit-transition: opacity 0.25s ease 0s;
-            transition: opacity 0.25s ease 0s;
-}
-
-.featured-case-studies li:hover svg {
-    opacity: 1;
-    -webkit-filter: drop-shadow( 0 0 2px white );
-    filter: drop-shadow( 0 0 2px white );
-    /* polyfil for old browsers */
-    /* https://github.com/Schepp/CSS-Filters-Polyfill */
-}
-
-/* active */
-.featured-case-studies li.active:before {
-    opacity: 0.5;
-}
-
-.featured-case-studies li.active svg {
-    opacity: 1;
-    -webkit-filter: drop-shadow( 0 0 2px white );
-    filter: drop-shadow( 0 0 2px white );
-}
-
-.featured-case-studies li.active:hover svg {
-    opacity: 1;
-    -webkit-filter: drop-shadow( 0 0 2px white );
-    filter: drop-shadow( 0 0 2px white );
-}
-
-.featured-case-studies li.active:hover .link {
-    opacity: 1;
-}
-
-.featured-case-studies li.active:hover:before {
-    opacity: 0.5;
-}
-
-.featured-case-studies li.active .link {
-    opacity: 1;
-}
-
-/* link text */
-.featured-case-studies .link {
-    display: inline-block;
-    color: #23b0b0;
-    margin: 15px 0 20px;
-    padding: 5px 0 0;
-    border-top: 2px solid #23b0b0;
-    opacity: 0;
-    font-size: 15px;
-    line-height: 1.2;
-    -webkit-transition: opacity 0.25s ease 0s;
-            transition: opacity 0.25s ease 0s;
-}
-
-.featured-case-studies li:hover .link {
-    opacity: 1;
-}
-
-/* Homepage posts ================================================== */
-
+// Homepage posts ==================================================
 #posts h2 a {
     position: relative;
+    :after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: -1px;
+        border-bottom: 1px solid #23b0b0;
+    }
 }
 
-#posts h2 a:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 100%;
-    bottom: -1px;
-    border-bottom: 1px solid #23b0b0;
-}
+
+
+
+
+
