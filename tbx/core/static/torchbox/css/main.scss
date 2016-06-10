@@ -16,13 +16,12 @@ h2 {
     font-weight: 100;
     font-size: 25px;
     text-align: center;
-    margin-bottom: 30px;
     line-height: 1.2;
 }
 
 @media screen and (min-width: 600px) {
     h2 {
-        font-size: 35px;
+        font-size: 40px;
     }
 }
 
@@ -50,6 +49,7 @@ nav {
 .bleed {
     overflow: hidden;
     float: right;
+    margin-top: 22px;
     li {
         float: left;
         margin-right: 60px;
@@ -81,6 +81,7 @@ nav {
     margin: 0 0 50px 0;
     @media #{$tablet} {
         height: 85vh;
+        margin: 0 0 70px 0;
     }
     h1 {
         position: absolute;
@@ -96,6 +97,9 @@ nav {
         @media #{$tablet} {
         	font-size: 60px;
         	top: 30vh;
+        }
+        @media #{$tablet-large} {
+        	top: 40vh;
         }
     }
     &.first-feature .first-feature-image, &.third-feature .third-feature-image {
@@ -164,12 +168,6 @@ nav {
     	    		opacity: 0;
     	    	}
     	    }
-    	    &:nth-child(1), &:nth-child(3) {
-    	    	display: none;
-    	    	@media #{$tablet} {
-    	    		display: block;
-    	    	}
-    	    }
     	}
     }
     .link {
@@ -196,6 +194,12 @@ nav {
     		position: relative;
     		left: 0;
     		transform: translateY(0);
+    	}
+    	&:nth-child(1), &:nth-child(3) {
+    		display: none;
+    		@media #{$tablet} {
+    			display: block;
+    		}
     	}
     	&:before {
     		content: '';
@@ -272,16 +276,108 @@ nav {
 }
 
 // Homepage posts ==================================================
-#posts h2 a {
-    position: relative;
-    :after {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 100%;
-        bottom: -1px;
-        border-bottom: 1px solid $blue;
-    }
+#posts h2  {
+	margin-bottom: 40px;
+		a {
+	    position: relative;
+	    :after {
+	        content: '';
+	        position: absolute;
+	        left: 0;
+	        width: 100%;
+	        bottom: -1px;
+	        border-bottom: 1px solid $blue;
+	    }
+	}
+}
+
+// Work listing
+.home-work {
+	// padding
+	$padding: 20px;
+	$padding-sml: 10px;
+
+	clear: both;
+	@include cf;
+	margin-bottom: 50px;
+	@media #{$tablet} {
+		margin-bottom: 70px;
+	}
+	li {
+		margin-bottom: 20px;
+		@media #{$tablet} {
+			margin-bottom: 0;
+			width: 33.3%;
+			float: left;
+		}
+		.content {
+			position: relative;
+			@media #{$tablet} {
+				padding: 0 $padding-sml;
+			}
+			@media #{$tablet-large} {
+				padding: 0 $padding;
+			}
+		}
+	}
+	.image-container {
+		@media #{$tablet-large} {
+			height: auto;
+		}
+		img {
+			object-fit: cover;
+			height: 270px;
+			@media #{$tablet-large} {
+				height: 425px;
+			}
+		}
+	}
+	.work-text {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		padding: 0 15px 15px;
+		width: 100%;
+		@media #{$tablet} {
+			padding: $padding-sml 25px;
+			left: $padding-sml;
+			width: calc(100% - (#{$padding-sml * 2}));
+		}
+		@media #{$tablet-large} {
+			padding: $padding 25px;
+			left: $padding;
+			width: calc(100% - (#{$padding * 2}));
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			height: 180%;
+			width: 100%;
+			left: 0;
+			bottom: 0;
+			background: linear-gradient(to top, rgba($dark, 0.75) 50%,rgba($dark, 0) 100%);
+			mix-blend-mode: multiply;
+		}
+	}
+	h3, h4 {
+		position: relative;
+		z-index: 1;
+	}
+	h3 {
+		color: white;
+		font-weight: 400;
+		margin-bottom: 5px;
+		font-size: 25px;
+		@media #{$tablet-large} {
+			font-size: 30px;
+			margin-bottom: 10px;
+		}
+	}
+	h4 {
+		font-size: 15px;
+		color: $orange;
+		font-weight: 400;
+	}
 }
 
 

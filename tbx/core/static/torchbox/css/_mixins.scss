@@ -1,0 +1,15 @@
+// mixins 
+
+// clear fix
+@mixin cf() {
+	zoom: 1;
+	&:before, &:after {
+	display: table;
+	content: "";
+	zoom: 1;
+	*display: inline;
+	}
+	&:after {
+		clear: both;
+	}
+}

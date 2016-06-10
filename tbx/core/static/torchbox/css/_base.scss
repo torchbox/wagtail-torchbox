@@ -12,7 +12,9 @@ body {
 }
 
 body * {
-    box-sizing:         border-box;   /* Everything else */
+    box-sizing: border-box;   /* Everything else */
+    -webkit-transition: opacity 0.25s ease 0s;
+    transition: opacity 0.25s ease 0s;
 }
 
 main {
@@ -27,6 +29,7 @@ a {
 
 ol, ul {
     padding: 0;
+    margin: 0;
 }
 
 li {
@@ -36,4 +39,9 @@ li {
 img {
     display: block;
     width: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    line-height: 1.2;
 }

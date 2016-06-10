@@ -2,32 +2,17 @@
 
 <li>
     <a href="{% pageurl work %}">
-        <div class="block">
-            <h2>work test</h2>
-            <div class="workcontainer">
+        <div class="content">
+            <div class="image-container">
                 {% if work.homepage_image %}
-                    {% image work.homepage_image fill-764x448 as screenshot %}
-
-                    <div class="label">
-                        <p>Our work</p>
-                    </div>
-
-                    <div class="crop-height">
-                        <img class="scale" src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
-                    </div>
+                    {% image work.homepage_image fill-500x500 as screenshot %}
+                    <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
                 {% endif %}
             </div>
 
-            <div class="work-intro">
+            <div class="work-text">
                 <h3>{{ work.title }}</h3>
-                {% if work.summary %}
-                    <div class="hide">
-                        <p>{{ work.summary|striptags|truncatewords:30 }}</p>
-                    </div>
-                {% endif %}
-                <div class="go">
-                    See the project
-                </div>
+                <h4>Client</h4>
             </div>
         </div>
     </a>
