@@ -45,3 +45,20 @@ h1, h2, h3, h4, h5 {
     margin: 0;
     line-height: 1.2;
 }
+
+button {
+    border: none;
+    font-family: $secondaryFont;
+    line-height: 1;
+}
+
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+    font-family: $secondaryFont;
+    color: rgba($dark, 0.7);
+}
+
+
+// 
+.wagtail-userbar {
+    display: none;
+}

@@ -19,8 +19,12 @@
             {% if calling_page|in_play or play_404 %}<p>A division of Torchbox</p>{% endif %}
             <img src="/static/torchbox/images/logo-torchbox-grey.png" alt="">
         </a>
-        <a href="#menu" class="menu-button">&#x2261;</a>
-          <ul class="bleed">
+        <a href="#menu" class="menu-button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+          <ul class="bleed out-animation">
                 {% for menuitem in menuitems %}
                       <li class="{% if menuitem = calling_page %} active {% endif %}">
                         <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
