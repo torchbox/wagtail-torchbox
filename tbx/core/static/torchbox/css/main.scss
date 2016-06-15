@@ -215,10 +215,11 @@ nav {
         text-align: center;
         color: white;
         font-size: 30px;
-        font-weight: 100;
+        font-weight: 300;
         padding: 0 20px;
         line-height: 1.2;
         @media #{$tablet} {
+        	font-weight: 100;
         	font-size: 60px;
         	top: 30vh;
         }
@@ -513,9 +514,6 @@ nav {
 
 	@include cf;
 	margin-bottom: 50px;
-	@media #{$tablet} {
-		margin-bottom: 70px;
-	}
 	li {
 		margin-bottom: 20px;
 		@media #{$tablet} {
@@ -834,6 +832,11 @@ footer {
 				background: white;
 				border-radius: $border-radius 0 0 $border-radius;
 				padding: 10px 20px;
+				width: 63%;
+				float: left;
+				@media #{$tablet-large} {
+					width: auto;
+				}
 			}
 			button {
 				background: $blue;
@@ -841,6 +844,7 @@ footer {
 				padding: 11px 20px;
 				position: relative;
 				left: -5px;
+				float: left;
 				border-radius: 0 $border-radius $border-radius 0;
 			}
 		}
@@ -855,6 +859,100 @@ footer {
 	margin: 0 auto;
 }
 
+
+// Jobs listing homepage =========================================
+
+.hiring {
+	// vertical space
+	$vertical-space-sml: 50px;
+	$vertical-space: 100px;
+
+	position: relative;
+	background: $blue;
+	padding: $vertical-space-sml 0 0;
+	background: linear-gradient(to bottom, rgba($blue,1) 0%,rgba($blue,1) 50%,rgba($orange,1) 50%,rgba($orange,1) 100%);
+	@media #{$tablet-large} {
+		padding: $vertical-space 0;
+		background: linear-gradient(to right, rgba($blue,1) 0%,rgba($blue,1) 50%,rgba($orange,1) 50%,rgba($orange,1) 100%);
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url('/static/torchbox/images/everyone-02.jpg') no-repeat center;
+		mix-blend-mode: luminosity;
+		opacity: 0.1;
+		background-size: cover;
+	}
+	.container {
+		position: relative;
+		z-index: 1;
+	}
+	.join, .jobs {
+		text-align: center;
+		padding: 0 0 $vertical-space-sml;
+		@media #{$tablet-large} {
+			padding: 0 100px;
+			width: 50%;
+			float: left;
+		}
+	} 
+	p, a {
+		color: white;
+		font-weight: 400;
+	}
+	a {
+		border-bottom: 1px dashed white;
+	}
+	h3 {
+		color: white;
+		font-weight: 300;
+		font-size: 25px;
+	}
+	h2 {
+		color: white;
+		font-weight: 300;
+		margin-bottom: 30px;
+	}
+	p {
+		text-align: center;
+		max-width: 700px;
+		margin: 0 auto 40px;
+		img {
+			position: relative;
+			top: 8px;
+			display: inline;
+			border-radius: 50%;
+			width: 25px;
+			height: 25px;
+			@media #{$tablet-large} {
+				top: 13px;
+				width: 35px;
+				height: 35px;
+			}
+		}
+	}
+	ul {
+		@include cf;
+		text-align: center;
+	}
+	li {
+		display: inline-block;
+		padding: 0 20px;
+		a {
+			display: inline-block;
+			line-height: 1.2;
+			font-size: 16px;
+			margin-bottom: 10px;
+			@media #{$tablet-large} {
+				font-size: 18px;
+			}
+		}
+	}
+}
 
 
 

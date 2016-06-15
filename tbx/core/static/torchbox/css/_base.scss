@@ -46,6 +46,16 @@ h1, h2, h3, h4, h5 {
     line-height: 1.2;
 }
 
+p {
+    font-size: 16px;
+    line-height: 1.4;
+    color: $dark;
+    font-weight: 300;
+    @media #{$tablet-large} {
+        font-size: 18px;
+    }
+}
+
 button {
     border: none;
     font-family: $secondaryFont;

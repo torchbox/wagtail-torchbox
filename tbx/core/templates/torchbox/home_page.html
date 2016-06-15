@@ -1226,6 +1226,7 @@
 
     <section class="about-tbx"> 
         <h2>Something about torchbox</h2>
+        <p>Making world-class work with a friendly and talented <a href="">team</a> working across <a href="">development</a>, <a href="">design</a> and <a href="">client managment</a>.</p>
     </section>
 
     <section id="posts" class="container">
@@ -1235,9 +1236,7 @@
         {% homepage_blog_listing %}
     </section>
 
-    <section class="about-tbx"> 
-        <h2>Our lovely clients</h2>
-    </section>
+    {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
 
     {% homepage_job_listing 0 %}
 

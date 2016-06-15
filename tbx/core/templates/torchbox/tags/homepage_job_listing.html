@@ -1,15 +1,21 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% if jobs %}
-    <section class="container hiring">
-        <div>
-            <h2>Working at Torchbox...</h2>
-            <h3>You'll make world-class work with a friendly and talented team</h3>
-            <ul>
-                {% for job in jobs %}
-                    <li><a href="{{ job.url }}">{{ job.job_title }}</a></li>
-                {% endfor %}
-            </ul>
+    <section class="hiring">
+        <div class="container">
+            <!-- <h2>By the way we're hiring</h2> -->
+            <div class="join">
+                <h2>Thinking about joining us?</h2>
+                <p>What's it like to work here? Check out what <img src="/media/images/ben_1.focus-none.max-130x130.jpg" alt=""> <a href="">Ben Enright</a> or <img src="/media/images/14854891628_2ad9ca0eeb_k_2.focus-none.max-130x130.jpg" alt=""> <a href="">Justine Pocock</a> have to say.</p>
+            </div>
+            <div class="jobs">
+                <h2>Current opportunites</h2>
+                <ul>
+                    {% for job in jobs %}
+                        <li><a href="{{ job.url }}">{{ job.job_title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </section>
 {% endif %}
