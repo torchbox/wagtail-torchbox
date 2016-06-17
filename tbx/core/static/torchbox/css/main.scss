@@ -279,14 +279,14 @@ nav {
       &:before {
           opacity: 0;
         }
-        svg {
+        img {
           opacity: 0.3;
         }
         &.active {
           &:before {
             opacity: 0;
           }
-          svg {
+          img {
             opacity: 0.5;
           }
           .link {
@@ -367,7 +367,7 @@ nav {
       &:before {
         opacity: 0.5;
       }
-      svg {
+      img {
         opacity: 1;
         -webkit-filter: drop-shadow( 0 0 2px white );
         filter: drop-shadow( 0 0 1px white );
@@ -389,7 +389,7 @@ nav {
       &:before {
           opacity: 0.5;
       }
-      svg {
+      img {
         opacity: 1;
         -webkit-filter: drop-shadow( 0 0 2px white );
         filter: drop-shadow( 0 0 1px white );
@@ -404,7 +404,7 @@ nav {
         }
       }
       &:hover {
-        svg {
+        img {
           opacity: 1;
           -webkit-filter: drop-shadow( 0 0 2px white );
           filter: drop-shadow( 0 0 2px white );
@@ -424,13 +424,17 @@ nav {
       }
     }
   }
-  svg {
+  .img-cont {
+    @include cf;
+    width: 100%;
+  }
+  img {
     display: inline-block;
-    width: 80%;
+    width: auto;
+    height: auto;
+    max-height: 100px;
     fill: white;
     opacity: 0.3;
-    max-height: 100px;
-    max-width: 270px;
     -webkit-transition: opacity 0.25s ease 0s;
             transition: opacity 0.25s ease 0s;
   }

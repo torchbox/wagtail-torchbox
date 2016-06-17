@@ -7,8 +7,9 @@
     {% for heroItem in hero %}
         <div class="feature-image" style="background-image: url('{% image heroItem.background fill-1800x978 %}')"></div>
     {% endfor %}
-    </div> <!--/feature-images -->
+    </div>
 
+    <!--/feature-images -->
     <div class="container">
         <h1>{{ self.hero_intro }}</h1>
 
@@ -18,7 +19,7 @@
                 {% if heroItem.link %}
                 <a href="{{ heroItem.link }}">
                 {% endif %}
-                    <span class="svg">
+                    <span class="img-cont">
                         {% image heroItem.logo max-270x270 %}
                     </span>
                     <p class="link">Read the case study</p>

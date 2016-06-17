@@ -12,7 +12,9 @@
                 <h2>{{ self.intro_title }}</h2>
             </div>
             <div class="body">
-                {{ self.intro_body }}
+                <p>
+                    {{ self.intro_body }}
+                </p>
             </div>
         </div>
     </section>
@@ -24,7 +26,7 @@
 
         <h2>{{ self.blog_title|safe }}</h2>
         {% homepage_blog_listing %}
-        
+
     </section>
 
     <section class="clients">
