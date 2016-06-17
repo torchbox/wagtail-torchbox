@@ -763,6 +763,7 @@ class WorkPageAuthor(Orderable):
 class WorkPage(Page):
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     summary = models.CharField(max_length=255)
+    descriptive_title = models.CharField(max_length=255)
     intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
     body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
@@ -796,6 +797,7 @@ class WorkPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('descriptive_title'),
         InlinePanel('related_author', label="Author"),
         FieldPanel('author_left'),
         FieldPanel('summary'),
