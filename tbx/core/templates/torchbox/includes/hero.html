@@ -4,8 +4,10 @@
 
     <!-- background images for features -->
     <div class="feature-images">
+
     {% for heroItem in hero %}
-        <div class="feature-image" style="background-image: url('{% image heroItem.background fill-1800x978 %}')"></div>
+        {% image heroItem.background fill-1800x978 as imgbanner %}
+        <div class="feature-image" style="background-image: url({{ imgbanner.url }})"></div>
     {% endfor %}
     </div>
 

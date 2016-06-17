@@ -242,7 +242,6 @@ class Advert(models.Model):
 
 register_snippet(Advert)
 
-
 # Custom image
 class TorchboxImage(AbstractImage):
     credit = models.CharField(max_length=255, blank=True)
@@ -676,11 +675,13 @@ class ReasonToJoin(Orderable):
 class JobIndexPageJob(Orderable):
     page = ParentalKey('torchbox.JobIndexPage', related_name='job')
     job_title = models.CharField(max_length=255)
+    job_intro = models.CharField(max_length=255)
     url = models.URLField(null=True)
     location = models.CharField(max_length=255, blank=True)
 
     panels = [
         FieldPanel('job_title'),
+        FieldPanel('job_intro'),
         FieldPanel("url"),
         FieldPanel("location"),
     ]
