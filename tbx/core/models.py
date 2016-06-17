@@ -323,7 +323,7 @@ class HomePage(Page):
 
     class HomePageHero(Orderable, RelatedLink):
         page = ParentalKey('torchbox.HomePage', related_name='hero')
-        colour = models.CharField(max_length=255, blank=True, help_text="Hex ref colour of link and background gradient, defaults to blue, for example #ffffff")
+        colour = models.CharField(max_length=255, help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue")
         background = models.ForeignKey(
             'torchbox.TorchboxImage',
             null=True,
@@ -1330,3 +1330,27 @@ class MarketingLandingPage(Page):
         InlinePanel( 'related_links', label="Related links"),
         InlinePanel( 'clients', label="Clients"),
     ]
+
+
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+
+@register_setting
+class GlobalSettings(BaseSetting):
+    class Meta:
+        verbose_name = 'Global Settings'
+    ContactTelephone = models.CharField(max_length=255, help_text='Telephone')
+    ContactEmail = models.CharField(max_length=255, help_text='Email address')
+    ContactTwitter = models.CharField(max_length=255, help_text='Twitter')
+    EmailNewsletterTeaser = models.CharField(max_length=255, help_text='Text that sits above the email newsletter')
+    OxfordAddressTitle = models.CharField(max_length=255, help_text='Full address')
+    OxfordAddress = models.CharField(max_length=255, help_text='Full address')
+    OxfordAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
+    OxfordAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
+    BristolAddressTitle = models.CharField(max_length=255, help_text='Full address')
+    BristolAddress = models.CharField(max_length=255, help_text='Full address')
+    BristolAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
+    BristolAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
+    PhiliAddressTitle = models.CharField(max_length=255, help_text='Full address')
+    PhiliAddress = models.CharField(max_length=255, help_text='Full address')
+    PhiliAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
+    PhiliAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
