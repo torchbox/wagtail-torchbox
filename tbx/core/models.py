@@ -280,7 +280,7 @@ def rendition_delete(sender, instance, **kwargs):
 
 
 class HomePage(Page):
-    intro = models.TextField(blank=True)
+    hero_intro = models.TextField(blank=True)
     hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
     hero_video_poster_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -289,15 +289,26 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    intro_title = models.TextField(blank=True)
+    intro_body = models.TextField(blank=True)
+    work_title = models.TextField(blank=True)
+    blog_title = models.TextField(blank=True)
+    clients_title = models.TextField(blank=True)
 
     class Meta:
         verbose_name = "Homepage"
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('intro'),
+        FieldPanel('hero_intro'),
+        InlinePanel( 'hero', label="Hero"),
         FieldPanel('hero_video_id'),
         ImageChooserPanel('hero_video_poster_image'),
+        FieldPanel('intro_title'),
+        FieldPanel('intro_body'),
+        FieldPanel('work_title'),
+        FieldPanel('blog_title'),
+        FieldPanel('clients_title'),
         InlinePanel( 'clients', label="Clients"),
     ]
 
@@ -312,6 +323,28 @@ class HomePage(Page):
         blog_posts = blog_posts.order_by('-date')
 
         return blog_posts
+
+    class HomePageHero(Orderable, RelatedLink):
+        page = ParentalKey('torchbox.HomePage', related_name='hero')
+        background = models.ForeignKey(
+            'torchbox.TorchboxImage',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL,
+            related_name='+'
+        )
+        logo = models.ForeignKey(
+            'torchbox.TorchboxImage',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL,
+            related_name='+'
+        )
+
+        panels = RelatedLink.panels + [
+            ImageChooserPanel('background'),
+            ImageChooserPanel('logo')
+        ]
 
     class HomePageClients(Orderable, RelatedLink):
         page = ParentalKey('torchbox.HomePage', related_name='clients')

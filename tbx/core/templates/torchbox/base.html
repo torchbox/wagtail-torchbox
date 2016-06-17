@@ -5,14 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8" />
-        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} {% if self|in_play or play_404 %}| yaffle{% else %}| Torchbox{% endif %}{% endblock %}</title>
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | Torchbox{% endblock %}</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
 
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="{% if self|in_play %}@yaffle{% else %}@torchbox{% endif %}">
-        <meta name="twitter:creator" content="{% if self|in_play %}@yaffle{% else %}@torchbox{% endif %}">
+        <meta name="twitter:site" content="@torchbox">
+        <meta name="twitter:creator" content="@torchbox">
         <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox">
         <meta name="twitter:description" content="{% if self.intro %}{{ self.intro|striptags }}{% elif self.search_description %}{{ self.search_description }}{% endif %}">
         <meta name="twitter:image:src" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-400 as img %}{{ img.url }}{% else %}{% static "torchbox/images/about-placeholder6.jpg" %}{% endif %}" />
@@ -20,10 +20,10 @@
         <meta property="fb:app_id" content="995117193836517" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="http://{{ request.site.hostname }}{{ self.url }}" />
-        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | {% if self|in_play or play_404 %}yaffle{% else %}Torchbox{% endif %}" />
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox" />
         <meta property="og:image" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% else %}{% static "torchbox/images/about-placeholder6.jpg" %}{% endif %}" />
         <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
-        <meta property="og:site_name" content="{% if self|in_play or play_404 %}yaffle{% else %}Torchbox{% endif %}" />
+        <meta property="og:site_name" content="Torchbox" />
 
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}" />
 
@@ -36,23 +36,16 @@
 
     </head>
     <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}">
-        {% if not self|in_play and not play_404 %}
-            <!-- Google Tag Manager -->
-            <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K5HPMR"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-K5HPMR');</script>
-            <!-- End Google Tag Manager -->
-        {% endif %}
-        {% if self|in_play or play_404 %}
-           <!-- Google Tag Manager -->
-           <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PW5C2L" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-           <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PW5C2L');</script>
-            <!-- End Google Tag Manager -->
-        {% endif %}
+
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K5HPMR"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K5HPMR');</script>
+        <!-- End Google Tag Manager -->
 
         {% wagtailuserbar %} {# Don't delete this #}
 
@@ -263,9 +256,9 @@
                                 </svg>
                             </div>
                             <div class="content">
-                                <a href="mailto:{% if self|in_play or play_404 %}yaffle{% else %}hello{% endif %}@torchbox.com">
+                                <a href="mailto:hello@torchbox.com">
                                     <i class="icon-mail"></i>
-                                    <span>{% if self|in_play or play_404 %}yaffle{% else %}hello{% endif %}@torchbox.com</span>
+                                    <span>hello@torchbox.com</span>
                                 </a>
                             </div>
                         </li>
@@ -298,16 +291,15 @@
                                 </svg>
                             </div>
                             <div class="content">
-                                <a href="https://twitter.com/{% if self|in_play or play_404 %}yaffle{% else %}torchbox{% endif %}">
+                                <a href="https://twitter.com/torchbox">
                                     <i class="icon-twitter"></i>
-                                    <span>{% if self|in_play or play_404 %}@yaffle{% else %}@torchbox{% endif %}</span>
+                                    <span>@torchbox</span>
                                 </a>
                             </div>
                         </li>
                     </ul>
                 </div>
 
-                {% if not self|in_play or play_404 %}
                 <div class="newsletter">
                     <h3>Get the best of the web in your inbox every Friday</h3>
                     <form class="newsletter-signup" action="/newsletter-subscribe" method="get">
@@ -315,8 +307,6 @@
                         <button class="newsletter-button">Sign up</button>
                     </form>
                 </div>
-                {% endif %}
-
 
                 <div class="wagtail">
                     <a href="http://wagtail.io"><img src="{% static "torchbox/images/wagtail.png" %}" alt="Wagtail"></a>
