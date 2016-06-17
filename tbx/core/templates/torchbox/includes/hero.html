@@ -1,0 +1,34 @@
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags %}
+
+<section class="hero">
+
+    <!-- background images for features -->
+    <div class="feature-images">
+    {% for heroItem in hero %}
+        <div class="feature-image" style="background-image: url('{% image heroItem.background fill-1800x978 %}')"></div>
+    {% endfor %}
+    </div> <!--/feature-images -->
+
+    <div class="container">
+        <h1>{{ self.hero_intro }}</h1>
+
+        <ul class="featured-case-studies">
+            {% for heroItem in hero %}
+            <li>
+                {% if heroItem.link %}
+                <a href="{{ heroItem.link }}">
+                {% endif %}
+                    <span class="svg">
+                        {% image heroItem.logo max-270x270 %}
+                    </span>
+                    <p class="link">Read the case study</p>
+                {% if heroItem.link %}
+                </a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div> <!-- /container -->
+
+</section> <!-- /hero -->

@@ -29,6 +29,11 @@ $(function(){
 
     // new for redesign
 
+    // Add active to second mainstage item on load
+    $(window).on('load', function () {
+        $('.featured-case-studies li:nth-child(2)').addClass('active');
+    });
+
     // hero hover on li change background image
     $('.featured-case-studies li:nth-child(1)').hover(
        function(){ $('.hero').addClass('first-feature') },
