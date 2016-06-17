@@ -199,7 +199,6 @@ nav {
 // hero ========================================================================
 .hero {
   position: relative;
-  background: url('/static/torchbox/images/test-header.jpg') no-repeat center;
   height: 65vh;
   background-size: cover;
   margin: 0 0 50px 0;
@@ -218,6 +217,7 @@ nav {
     font-weight: 300;
     padding: 0 20px;
     line-height: 1.2;
+    z-index: 1;
     @media #{$tablet} {
       font-weight: 100;
       font-size: 60px;
@@ -227,12 +227,24 @@ nav {
       top: 35vh;
     }
   }
-  &.first-feature .first-feature-image, &.third-feature .third-feature-image {
-    opacity: 1;
+  &.third-feature {
+    .feature-image {
+      &:nth-child(3) {
+        opacity: 1;
+      }
+    }
+  }
+  &.first-feature {
+    .feature-image {
+      &:nth-child(1) {
+        opacity: 1;
+        z-index: 1;
+      }
+    }
   }
 }
 
-.first-feature-image {
+.feature-image {
   position: absolute;
   width: 100%;
   left: 0;
@@ -243,19 +255,9 @@ nav {
   background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
   -webkit-transition: opacity 0.25s ease 0s;
   transition: opacity 0.25s ease 0s;
-}
-
-.third-feature-image {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  height: 85vh;
-  background-size: cover;
-  background: url('/static/torchbox/images/test-header-03.jpg') no-repeat center;
-  -webkit-transition: opacity 0.25s ease 0s;
-  transition: opacity 0.25s ease 0s;
+  &:nth-child(2) {
+    opacity: 1;
+  }
 }
 
 // case studies ================================================================
@@ -267,6 +269,7 @@ nav {
   max-width: 1250px;
   margin: 0 auto;
   min-height: 120px;
+  z-index: 2;
   @media #{$tablet} {
     left: 50%;
     transform: translateX(-50%);
@@ -1255,6 +1258,35 @@ footer {
   }
 }
 
+// Work page ===================================================================
+.work-hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  img {
+    object-fit: cover;
+    height: 60vh;
+  }
+  .container {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: red;
+  }
+  .text {
+    padding: 40px 0;
+    max-width: 60%;
+  }
+  p, h1, a {
+    color: white;
+  }
+  h1 {
+    font-size: 65px;
+    font-weight: 400;
+  }
+}
 
 
 

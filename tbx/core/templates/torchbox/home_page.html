@@ -6,6 +6,7 @@
 
     {% include "torchbox/includes/hero.html" with hero=self.hero.all %}
 
+    <!-- /about-tbx -->
     <section class="about-tbx">
         <div class="container">
             <div class="title">
@@ -17,7 +18,7 @@
                 </p>
             </div>
         </div>
-    </section> <!-- /about-tbx -->
+    </section>
 
     <section id="posts" class="container">
 
@@ -26,6 +27,7 @@
 
         <h2>{{ self.blog_title|safe }}</h2>
         {% homepage_blog_listing %}
+    </section>
 
     <!-- /clients -->
     <section class="clients">
