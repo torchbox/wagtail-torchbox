@@ -26,7 +26,7 @@
                         {% endfor %}
                     {% endif %}
                     <h3>{{ post.title }}</h3>
-    
+
                     {% if post.related_author.all %}
                         {% for author in post.related_author.all %}
                                 <div class="name">{{ author.author.title }}</div>

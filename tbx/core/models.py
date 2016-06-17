@@ -298,6 +298,7 @@ class HomePage(Page):
         FieldPanel('intro'),
         FieldPanel('hero_video_id'),
         ImageChooserPanel('hero_video_poster_image'),
+        InlinePanel( 'clients', label="Clients"),
     ]
 
     @property
@@ -312,6 +313,19 @@ class HomePage(Page):
 
         return blog_posts
 
+    class HomePageClients(Orderable, RelatedLink):
+        page = ParentalKey('torchbox.HomePage', related_name='clients')
+        image = models.ForeignKey(
+            'torchbox.TorchboxImage',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL,
+            related_name='+'
+        )
+
+        panels = RelatedLink.panels + [
+            ImageChooserPanel('image')
+        ]
 
 
 # Standard page
