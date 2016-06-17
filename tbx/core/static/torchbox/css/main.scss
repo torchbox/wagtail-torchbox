@@ -291,6 +291,12 @@ nav {
           }
           .link {
             opacity: 0;
+            transition-delay: 0.25s;
+            &:after {
+              width: 0%;
+              right: 0;
+              left: auto;
+            }
           }
         }
     }
@@ -307,6 +313,7 @@ nav {
     line-height: 1.2;
     -webkit-transition: opacity 0.25s ease 0s;
             transition: opacity 0.25s ease 0s;
+    transition-delay: 0.15s;
     &:after {
       content: '';
       position: absolute;
@@ -369,6 +376,7 @@ nav {
       }
       .link {
           opacity: 1;
+          transition-delay: 0s;
           &:after {
             width: 100%;
             right: auto;
@@ -378,35 +386,42 @@ nav {
     }
     // active before interaction
     &.active {
-    &:before {
-        opacity: 0.5;
-    }
-    svg {
-      opacity: 1;
-      -webkit-filter: drop-shadow( 0 0 2px white );
-      filter: drop-shadow( 0 0 1px white );
-    }
-    .link {
-      opacity: 1;
-      &:after {
-        width: 100%;
-        right: auto;
-        left: 0;
+      &:before {
+          opacity: 0.5;
       }
-    }
-    &:hover {
       svg {
         opacity: 1;
         -webkit-filter: drop-shadow( 0 0 2px white );
-        filter: drop-shadow( 0 0 2px white );
+        filter: drop-shadow( 0 0 1px white );
       }
       .link {
         opacity: 1;
+        transition-delay: 0s;
+        &:after {
+          width: 100%;
+          left: 0;
+          right: auto;
+        }
       }
-      &:before {
-        opacity: 0.5;
+      &:hover {
+        svg {
+          opacity: 1;
+          -webkit-filter: drop-shadow( 0 0 2px white );
+          filter: drop-shadow( 0 0 2px white );
+        }
+        .link {
+          opacity: 1;
+          transition-delay: 0s;
+          &:after {
+            right: auto;
+            left: 0;
+            width: 100%;
+          }
+        }
+        &:before {
+          opacity: 0.5;
+        }
       }
-    }
     }
   }
   svg {
