@@ -208,7 +208,6 @@ def homepage_job_listing(context, count=3):
         'request': context['request'],
     }
 
-
 # Advert snippets
 @register.inclusion_tag('torchbox/tags/adverts.html', takes_context=True)
 def adverts(context):
@@ -249,7 +248,7 @@ def work_and_blog_listing(context, count=10, marketing=False):
         # For normal case, do not display "marketing_only" posts and works
         blog_posts = blog_posts.exclude(marketing_only=True)
         works = works.exclude(marketing_only=True)
-    
+
     blog_posts = play_filter(blog_posts.order_by('-date'), count)
     works = play_filter(works.order_by('-pk'), count)
     blog_items = [template.loader.render_to_string(

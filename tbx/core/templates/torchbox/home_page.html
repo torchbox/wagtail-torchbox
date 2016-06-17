@@ -15,7 +15,7 @@
                 {{ self.intro_body }}
             </div>
         </div>
-    </section>
+    </section> <!-- /about-tbx -->
 
     <section id="posts" class="container">
 
@@ -24,14 +24,40 @@
 
         <h2>{{ self.blog_title|safe }}</h2>
         {% homepage_blog_listing %}
-        
-    </section>
+
+    </section> <!-- /posts -->
 
     <section class="clients">
         <h2>{{ self.clients_title|safe }}</h2>
         {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
-    </section>
+    </section> <!-- /clients -->
 
-    {% homepage_job_listing 0 %}
+    <section class="hiring">
+        <div class="container">
+            
+            <div class="join">
+                <h2>A day in the life of</h2>
+                <ul>
+                    <li>
+                        <img src="/media/images/ben_1.focus-none.max-130x130.jpg" alt="">
+                        <a href="">Ben Enright<span>Senior designer</span></a>
+                    </li>
+                    <li>
+                        <img src="/media/images/14854891628_2ad9ca0eeb_k_2.focus-none.max-130x130.jpg" alt="">
+                        <a href="">Justine Pocock<span>Drupal developer</span></a>
+                    </li>
+                    <li>
+                        <img src="/media/images/1526922_10204047534261294_2758572.focus-none.max-165x165.jpg" alt="">
+                        <a href="">Jonny Grum<span>Account Director</span></a>
+                    </li>
+                    <li>
+                        <a href="" class="sml">We get perks too. <span>Reasons to join us</span></span></a>
+                    </li>
+                </ul>
+            </div>
+
+            {% homepage_job_listing 0 %}
+        </div> <!-- /container -->
+    </section> <!-- /hiring -->
 
 {% endblock %}
