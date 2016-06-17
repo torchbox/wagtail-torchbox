@@ -10,948 +10,1230 @@
 @import 'base';
 @import 'blog-detail';
 
-// General Type styles =====================================
-
-h2 {
-    font-weight: 100;
-    font-size: 25px;
-    text-align: center;
-    line-height: 1.2;
-}
-
-@media screen and (min-width: 600px) {
-    h2 {
-        font-size: 40px;
-    }
-}
-
-// site structure ==========================================
+// site structure ==============================================================
 .container {
     max-width: 1450px;
-    padding: 0 30px;
     box-sizing: border-box;
     margin: 0 auto;
     overflow: hidden;
+    padding: 0 $container-padding-sml;
+    @media #{$tablet} {
+      padding: 0 $container-padding;
+    }
 }
 
-// navigation ==============================================
+// navigation ==================================================================
 nav {
     background: white;
     width: 100%;
     padding: 15px 0 5px;
     overflow: hidden;
     @media #{$tablet} {
-    	padding: 15px 0;
+      padding: 15px 0;
     }
 }
 
 .menu-button {
-	position: relative;
-	top: 10px;
-	display: block;
-	float: right;
-	width: 40px;
-	height: 30px;
-	@include custom-transition;
-	@media #{$tablet} {
-    	display: none;
-	}
-	span {
-		position: absolute;
-		right: 0;
-		top: 0;
-		height: 4px;
-		width: 100%;
-		background: $dark;
-		border-radius: 50px;
-		@include custom-transition;
-		&:nth-child(2) {
-			top: 13px;
-			width: 70%;
-		}
-		&:nth-child(3) {
-			width: 85%;
-			top: auto;
-			bottom: 0;
-		}
-	}
-	&.twist {
-		transform: rotate(90deg);
-		width: 30px;
-		span {
-			//width: 100%;
-		}
-	}
+  position: relative;
+  top: 10px;
+  display: block;
+  float: right;
+  width: 30px;
+  height: 25px;
+  @include custom-transition;
+  @media #{$tablet} {
+      display: none;
+  }
+  span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 3px;
+    width: 100%;
+    background: $dark;
+    border-radius: 100px;
+    @include custom-transition;
+    &:nth-child(2) {
+      top: 11px;
+      width: 70%;
+    }
+    &:nth-child(3) {
+      width: 85%;
+      top: auto;
+      bottom: 0;
+    }
+  }
+  &.twist {
+    span {
+      width: 100%;
+      &:nth-child(1) {
+        opacity: 0;
+      }
+      &:nth-child(2) {
+        transform: rotate(45deg);
+        top: 10px;
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        bottom: 12px;
+      }
+    }
+  }
 }
 
 .bleed {
     overflow: hidden;
     height: 0;
     float: right;
-    margin-top: 10px;
+    margin-top: 12px;
     z-index: 1;
     width: 100%;
-    // 
+    //
     position: absolute;
     left: 0;
     top: 55px;
-    transition: all 200ms cubic-bezier(0.705, 0.000, 1.000, 1.130);
-    transition-timing-function: cubic-bezier(0.705, 0.000, 1.000, 1.130);
+    @include custom-transition (200ms);
     &:before {
-		content: "";
-		position: absolute;
-		width: 0%;
-		height: 100vh;
-		top: 0;
-		left: 0;
-		z-index: -1;
-		background: white;
-		@include custom-transition;
-		transition-delay: 200ms;
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: white;
+    @include custom-transition;
+    transition-delay: 200ms;
     }
     @media #{$tablet} {
-    	height: auto;
-    	width: auto;
-    	// 
-    	position: relative;
-    	top: 0;
-    	&:before {
-			display: none;
-    	}
+      height: auto;
+      width: auto;
+      //
+      position: relative;
+      top: 0;
+      &:before {
+      display: none;
+      }
     }
     &.visible {
-    	padding: 50px 0 0;
-    	height: 100vh;
-    	&:before {
-    		width: 100%;
-    	}
-    	li {
-    		opacity: 1;
-    		top: 0;
-    	}
+      padding: 50px 0 0;
+      height: 100vh;
+      &:before {
+        width: 100%;
+      }
+      li {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
     }
     &.out-animation {
-    	transition-delay: 900ms;
-		&:before {
-			transition-delay: 650ms;
-			left: auto;
-			right: 0;
-		}
-		li {
-			transition: all 75ms cubic-bezier(0.705, 0.000, 1.000, 1.130);
-		}
+      transition-delay: 900ms;
+    &:before {
+      transition-delay: 650ms;
+      left: auto;
+      right: 0;
     }
     li {
-		text-align: center;
-        font-weight: 500;
-        margin-bottom: 30px;
-        opacity: 0;
-        position: relative;
-        top: -20px;
-        transition: all 500ms cubic-bezier(0.705, 0.000, 1.000, 1.130);
-        transition-timing-function: cubic-bezier(0.705, 0.000, 1.000, 1.130);
-        &:nth-child(1) {
-        	transition-delay: 0.2s;
-        }
-        &:nth-child(2) {
-        	transition-delay: 0.3s;
-        }
-        &:nth-child(3) {
-        	transition-delay: 0.4s;
-        }
-        &:nth-child(4) {
-        	transition-delay: 0.5s;
-        }
-        &:nth-child(5) {
-        	transition-delay: 0.6s;
-        }
-        &:nth-child(6) {
-        	transition-delay: 0.7s;
-        }
-        @media #{$tablet} {
-        	top: 0;
-        	opacity: 1;
-        	text-align: left;
-        	float: left;
-        	margin-right: 60px;
-        	margin-bottom: 0;
-        	transition-delay: 0 !important;
-        }
-        &:last-of-type {
-    		margin-right: 0;
-		}
-		a {
-		    color: $dark;
-		    font-size: 22px;
-			@media #{$tablet} {
-		    	font-size: 18px;
-			}
-		}
+      transition: all 75ms cubic-bezier(0.705, 0.000, 1.000, 1.130);
     }
+    }
+    li {
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translate3d(0, -20px, 0);
+      @include custom-transition (500ms);
+    &:nth-child(1) {
+      transition-delay: 0.2s;
+    }
+    &:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+    &:nth-child(3) {
+      transition-delay: 0.4s;
+    }
+    &:nth-child(4) {
+      transition-delay: 0.5s;
+    }
+    &:nth-child(5) {
+      transition-delay: 0.6s;
+    }
+    &:nth-child(6) {
+      transition-delay: 0.7s;
+    }
+    @media #{$tablet} {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      text-align: left;
+      float: left;
+      margin-right: 60px;
+      margin-bottom: 0;
+      transition-delay: 0 !important;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+    a {
+      color: $dark;
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 400;
+      @media #{$tablet} {
+        font-size: 15px;
+        position: relative;
+        top: 0;
+        @include line-hover;
+      }
+    }
+  }
 }
 
-// logo ===================================================
+// logo ========================================================================
 .logo {
     display: inline-block;
     width: 165px;
 }
 
-// hero ===================================================
+// hero ========================================================================
 .hero {
-    position: relative;
-    background: url('/static/torchbox/images/test-header.jpg') no-repeat center;
-    height: 65vh;
-    background-size: cover;
-    margin: 0 0 50px 0;
+  position: relative;
+  background: url('/static/torchbox/images/test-header.jpg') no-repeat center;
+  height: 65vh;
+  background-size: cover;
+  margin: 0 0 50px 0;
+  @media #{$tablet} {
+      height: 85vh;
+      margin: 0 0 70px 0;
+  }
+  h1 {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    padding: 0 20px;
+    line-height: 1.2;
     @media #{$tablet} {
-        height: 85vh;
-        margin: 0 0 70px 0;
+      font-weight: 100;
+      font-size: 60px;
+      top: 30%;
     }
-    h1 {
-        position: absolute;
-        top: 35%;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        color: white;
-        font-size: 30px;
-        font-weight: 300;
-        padding: 0 20px;
-        line-height: 1.2;
-        @media #{$tablet} {
-        	font-weight: 100;
-        	font-size: 60px;
-        	top: 30vh;
-        }
-        @media #{$tablet-large} {
-        	top: 40vh;
-        }
+    @media #{$tablet-large} {
+      top: 35vh;
     }
-    &.first-feature .first-feature-image, &.third-feature .third-feature-image {
-    	opacity: 1;
-	}
+  }
+  &.first-feature .first-feature-image, &.third-feature .third-feature-image {
+    opacity: 1;
+  }
 }
 
 .first-feature-image {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    height: 85vh;
-    background-size: cover;
-    background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
-    -webkit-transition: opacity 0.25s ease 0s;
-    transition: opacity 0.25s ease 0s;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  height: 85vh;
+  background-size: cover;
+  background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
+  -webkit-transition: opacity 0.25s ease 0s;
+  transition: opacity 0.25s ease 0s;
 }
 
 .third-feature-image {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    height: 85vh;
-    background-size: cover;
-    background: url('/static/torchbox/images/test-header-03.jpg') no-repeat center;
-    -webkit-transition: opacity 0.25s ease 0s;
-    transition: opacity 0.25s ease 0s;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  height: 85vh;
+  background-size: cover;
+  background: url('/static/torchbox/images/test-header-03.jpg') no-repeat center;
+  -webkit-transition: opacity 0.25s ease 0s;
+  transition: opacity 0.25s ease 0s;
 }
 
-// case studies ===================================================
+// case studies ================================================================
 .featured-case-studies {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-width: 1250px;
-    margin: 0 auto;
-    min-height: 120px;
-    @media #{$tablet} {
-    	left: 50%;
-    	transform: translateX(-50%);
-    }
-    // ul hover states / go back to default
-    // Important it is here / ta the top
-    &:hover {
-    	li {
-    		cursor: pointer;
-    		&:before {
-    	    	opacity: 0;
-    	    }
-    	    svg {
-    	    	opacity: 0.5;
-    	    }
-    	    &.active {
-    	    	&:before {
-    	    		opacity: 0;
-    	    	}
-    	    	svg {
-    	    		opacity: 0.5;
-    	    	}
-    	    	.link {
-    	    		opacity: 0;
-    	    	}
-    	    }
-    	}
-    }
-    .link {
-        display: inline-block;
-        color: $blue;
-        margin: 15px 0 20px;
-        padding: 5px 0 0;
-        border-top: 2px solid $blue;
-        opacity: 0;
-        font-size: 15px;
-        line-height: 1.2;
-        -webkit-transition: opacity 0.25s ease 0s;
-                transition: opacity 0.25s ease 0s;
-    }
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  min-height: 120px;
+  @media #{$tablet} {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  // ul hover states / go back to default
+  // Important it is here / ta the top
+  &:hover {
     li {
-    	position: absolute;
-    	left: 50%;
-    	transform: translateX(-50%);
-    	text-align: center;
-    	float: left;
-    	margin-right: 5%;
-    	@media #{$tablet} {
-    		width: 30%;
-    		position: relative;
-    		left: 0;
-    		transform: translateY(0);
-    	}
-    	&:nth-child(1), &:nth-child(3) {
-    		display: none;
-    		@media #{$tablet} {
-    			display: block;
-    		}
-    	}
-    	&:before {
-    		content: '';
-    		position: absolute;
-    		left: 0;
-    		top: -10%;
-    		height: 120%;
-    		width: 100%;
-    		opacity: 0;
-    		-webkit-transition: opacity 0.25s ease 0s;
-			transition: opacity 0.25s ease 0s;
-			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#23b0b0+0,23b0b0+69&1+0,0+58 */
-			background: -moz-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%, rgba(35,176,176,0) 58%, rgba(35,176,176,0) 69%); /* FF3.6-15 */
-			background: -webkit-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* Chrome10-25,Safari5.1-6 */
-			background: radial-gradient(ellipse at center,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23b0b0', endColorstr='#0023b0b0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    	}
-    	&:last-of-type {
-    	    margin-right: 0;
-    	}
-    	&:hover {
-    		&:before {
-    			opacity: 0.5;
-    		}
-    		svg {
-    		    opacity: 1;
-    		    -webkit-filter: drop-shadow( 0 0 2px white );
-    		    filter: drop-shadow( 0 0 2px white );
-    		    /* polyfil for old browsers */
-    		    /* https://github.com/Schepp/CSS-Filters-Polyfill */
-    		}
-    		.link {
-    		    opacity: 1;
-    		}
-    	}
-    	// active before interaction
-    	&.active {
-			&:before {
-			    opacity: 0.5;
-			}
-			svg {
-			    opacity: 1;
-			    -webkit-filter: drop-shadow( 0 0 2px white );
-			    filter: drop-shadow( 0 0 2px white );
-			}
-			.link {
-			    opacity: 1;
-			}
-			&:hover {
-				svg {
-				    opacity: 1;
-				    -webkit-filter: drop-shadow( 0 0 2px white );
-				    filter: drop-shadow( 0 0 2px white );
-				}
-				.link {
-				    opacity: 1;
-				}
-				&:before {
-    				opacity: 0.5;
-				}
-			}
-    	}
+      cursor: pointer;
+      &:before {
+          opacity: 0;
+        }
+        svg {
+          opacity: 0.3;
+        }
+        &.active {
+          &:before {
+            opacity: 0;
+          }
+          svg {
+            opacity: 0.5;
+          }
+          .link {
+            opacity: 0;
+          }
+        }
+    }
+  }
+  .link {
+    display: inline-block;
+    position: relative;
+    color: $blue;
+    margin: 15px 0 20px;
+    padding: 5px 0 0;
+    opacity: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    -webkit-transition: opacity 0.25s ease 0s;
+            transition: opacity 0.25s ease 0s;
+    &:after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: 0;
+      height: 1px;
+      width: 0;
+      background: $blue;
+      @include custom-bounce;
+    }
+  }
+  li {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    float: left;
+    margin-right: 5%;
+    @media #{$tablet} {
+      width: 30%;
+      position: relative;
+      left: 0;
+      transform: translateY(0);
+    }
+    &:nth-child(1), &:nth-child(3) {
+      display: none;
+      @media #{$tablet} {
+        display: block;
+      }
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -10%;
+      height: 120%;
+      width: 100%;
+      opacity: 0;
+      -webkit-transition: opacity 0.25s ease 0s;
+      transition: opacity 0.25s ease 0s;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#23b0b0+0,23b0b0+69&1+0,0+58 */
+      background: -moz-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%, rgba(35,176,176,0) 58%, rgba(35,176,176,0) 69%); /* FF3.6-15 */
+      background: -webkit-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* Chrome10-25,Safari5.1-6 */
+      background: radial-gradient(ellipse at center,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23b0b0', endColorstr='#0023b0b0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+    &:last-of-type {
+        margin-right: 0;
+    }
+    &:hover {
+      &:before {
+        opacity: 0.5;
+      }
+      svg {
+        opacity: 1;
+        -webkit-filter: drop-shadow( 0 0 2px white );
+        filter: drop-shadow( 0 0 1px white );
+        /* polyfil for old browsers */
+        /* https://github.com/Schepp/CSS-Filters-Polyfill */
+      }
+      .link {
+          opacity: 1;
+          &:after {
+            width: 100%;
+            right: auto;
+            left: 0;
+          }
+      }
+    }
+    // active before interaction
+    &.active {
+    &:before {
+        opacity: 0.5;
     }
     svg {
-        display: inline-block;
-        width: 80%;
-        fill: white;
-        opacity: 0.5;
-        max-height: 150px;
-        max-width: 270px;
-        -webkit-transition: opacity 0.25s ease 0s;
-                transition: opacity 0.25s ease 0s;
+      opacity: 1;
+      -webkit-filter: drop-shadow( 0 0 2px white );
+      filter: drop-shadow( 0 0 1px white );
     }
+    .link {
+      opacity: 1;
+      &:after {
+        width: 100%;
+        right: auto;
+        left: 0;
+      }
+    }
+    &:hover {
+      svg {
+        opacity: 1;
+        -webkit-filter: drop-shadow( 0 0 2px white );
+        filter: drop-shadow( 0 0 2px white );
+      }
+      .link {
+        opacity: 1;
+      }
+      &:before {
+        opacity: 0.5;
+      }
+    }
+    }
+  }
+  svg {
+    display: inline-block;
+    width: 80%;
+    fill: white;
+    opacity: 0.3;
+    max-height: 100px;
+    max-width: 270px;
+    -webkit-transition: opacity 0.25s ease 0s;
+            transition: opacity 0.25s ease 0s;
+  }
 }
 
-// Homepage posts ==================================================
+// Homepage posts ==============================================================
 #posts h2  {
-	margin-bottom: 40px;
-		a {
-	    position: relative;
-	    :after {
-	        content: '';
-	        position: absolute;
-	        left: 0;
-	        width: 100%;
-	        bottom: -1px;
-	        border-bottom: 1px solid $blue;
-	    }
-	}
+  margin-bottom: 40px;
+    a {
+      @include line-hover;
+  }
 }
 
 // Work listing
 .home-work {
-	// padding
-	$padding: 20px;
-	$padding-sml: 10px;
+  // padding
+  $padding: 15px;
+  $padding-sml: 10px;
 
-	clear: both;
-	@include cf;
-	margin-bottom: 50px;
-	@media #{$tablet} {
-		margin-bottom: 70px;
-	}
-	li {
-		margin-bottom: 20px;
-		@media #{$tablet} {
-			margin-bottom: 0;
-			width: 33.3%;
-			float: left;
-		}
-		.content {
-			position: relative;
-			@media #{$tablet} {
-				padding: 0 $padding-sml;
-			}
-			@media #{$tablet-large} {
-				padding: 0 $padding;
-			}
-		}
-	}
-	.image-container {
-		@media #{$tablet-large} {
-			height: auto;
-		}
-		img {
-			object-fit: cover;
-			height: 270px;
-			@media #{$tablet-large} {
-				height: 425px;
-			}
-		}
-	}
-	.work-text {
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		padding: 0 15px 15px;
-		width: 100%;
-		@media #{$tablet} {
-			padding: $padding-sml 25px;
-			left: $padding-sml;
-			width: calc(100% - (#{$padding-sml * 2}));
-		}
-		@media #{$tablet-large} {
-			padding: $padding 25px;
-			left: $padding;
-			width: calc(100% - (#{$padding * 2}));
-		}
-		&:before {
-			content: '';
-			position: absolute;
-			height: 180%;
-			width: 100%;
-			left: 0;
-			bottom: 0;
-			background: linear-gradient(to top, rgba($dark, 0.75) 50%,rgba($dark, 0) 100%);
-			mix-blend-mode: multiply;
-		}
-	}
-	h3, h4 {
-		position: relative;
-		z-index: 1;
-	}
-	h3 {
-		color: white;
-		font-weight: 400;
-		margin-bottom: 5px;
-		font-size: 25px;
-		@media #{$tablet-large} {
-			font-size: 30px;
-			margin-bottom: 10px;
-		}
-	}
-	h4 {
-		font-size: 15px;
-		color: $orange;
-		font-weight: 400;
-	}
+  clear: both;
+  @include cf;
+  margin-bottom: 50px;
+  @media #{$tablet} {
+    margin-bottom: 100px;
+  }
+  li {
+    margin-bottom: 20px;
+    @media #{$tablet} {
+      margin-bottom: 0;
+      width: 33.3%;
+      float: left;
+    }
+    .content {
+      position: relative;
+      @include custom-transition;
+      @media #{$tablet} {
+        padding: 0 $padding-sml;
+      }
+      @media #{$tablet-large} {
+        padding: 0 $padding;
+      }
+    }
+    &:hover {
+      //text up
+      .work-text {
+        &:before {
+          height: 190%;
+        }
+        // delays for way in
+        &:after {
+          width: calc(100% - 50px);
+          left: calc(#{$padding * 2});
+          right: auto;
+          transition-delay: 0.25s;
+        }
+        h3, h4 {
+          transform: translate3d(0, -40px, 0);
+        }
+        h3 {
+          transition-delay: 0.1s;
+        }
+        h4 {
+          transition-delay: 0.15s;
+        }
+      }
+    }
+  }
+  .image-container {
+    @media #{$tablet-large} {
+      height: auto;
+    }
+    img {
+      object-fit: cover;
+      height: 270px;
+      @media #{$tablet-large} {
+        height: 425px;
+      }
+    }
+  }
+  .work-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 15px 15px;
+    width: 100%;
+    @media #{$tablet} {
+      padding: $padding-sml 25px;
+      left: $padding-sml;
+      width: calc(100% - (#{$padding-sml * 2}));
+    }
+    @media #{$tablet-large} {
+      padding: $padding 25px;
+      left: $padding;
+      width: calc(100% - (#{$padding * 2}));
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      height: 180%;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba($dark, 0.75) 50%,rgba($dark, 0) 100%);
+      mix-blend-mode: multiply;
+      @include custom-bounce;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 25px;
+      bottom: 20px;
+      width: 0;
+      height: 1px;
+      background: white;
+      @include custom-bounce;
+      transition-delay: 0s;
+    }
+  }
+  h3, h4 {
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    z-index: 1;
+    @include custom-bounce;
+  }
+  h3 {
+    color: white;
+    font-weight: 400;
+    margin-bottom: 5px;
+    font-size: 25px;
+    @media #{$tablet-large} {
+      font-size: 30px;
+      margin-bottom: 10px;
+      transition-delay: 0.15s;
+    }
+  }
+  h4 {
+    font-size: 11px;
+    color: $orange;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition-delay: 0.1s;
+  }
 }
 
 
 // Blog listing
 .blog-list {
-	// padding
-	$padding: 20px;
-	$padding-sml: 10px;
+  // padding
+  $padding: 15px;
+  $padding-sml: 10px;
 
-	@include cf;
-	margin-bottom: 50px;
-	li {
-		margin-bottom: 20px;
-		@media #{$tablet} {
-			width: 50%;
-			float: left;
-		}
-		@media #{$tablet-large} {
-			margin-bottom: 40px;
-			width: 25%;
-		}
-		.content {
-			position: relative;
-			@media #{$tablet} {
-				padding: 0 $padding-sml;
-			}
-			@media #{$tablet-large} {
-				padding: 0 $padding;
-			}
-		}
-		// larger cards
-		&:first-of-type, &:last-of-type {
-			@media #{$tablet-large} {
-				width: 50%;
-			}
-			.blog-text {
-				@media #{$tablet-large} {
-					max-width: 65%;
-					h3 {
-						font-size: 35px;
-					}
-				}
-			}
-		}
-		// additional blog styles
-		// orange
-		&.orange {
-			.image-container {
-				background: $orange;
-				height: 270px;
-				@media #{$tablet-large} {
-					height: 495px;
-				}
-				img {
-					display: none;
-				}
-				&:after {
-					height: 100%;
-					background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
-					background-size: cover;
-					mix-blend-mode: soft-light;
-					opacity: 0.2;
-				}
-			}
-			.name {
-				color: white;
-			}
-		}
-		// blue
-		&.blue {
-			@extend .orange;
-			.image-container {
-				background: $blue;
-			}
-		}
-		// white
-		&.white {
-			@extend .orange;
-			.image-container {
-				background: $grey;
-				&:after {
-					mix-blend-mode: unset;
-					opacity: 0.75;
-				}
-			}
-			h3, .date {
-				color: $dark;
-			}
-			.name {
-				color: $orange;
-			}
-		}
-	}
-	.image-container {
-		position: relative;
-		@media #{$tablet-large} {
-			height: auto;
-		}
-		img {
-			object-fit: cover;
-			height: 270px;
-			@media #{$tablet-large} {
-				height: 495px;
-			}
-		}
-		&:after {
-			content: '';
-			position: absolute;
-			height: 70%;
-			width: 100%;
-			left: 0;
-			bottom: 0;
-			background: linear-gradient(to top, rgba($dark, 1) 50%,rgba($dark, 0) 100%);
-			mix-blend-mode: multiply;
-			@media #{$tablet-large} {
-				height: 50%;
-			}
-		}
-	}
-	.blog-text {
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		padding: 0 15px 15px;
-		width: 100%;
-		@media #{$tablet} {
-			padding: $padding-sml 25px;
-			left: $padding-sml;
-			width: calc(100% - (#{$padding-sml * 2}));
-		}
-		@media #{$tablet-large} {
-			padding: $padding 25px 30px;
-			left: $padding;
-			width: calc(100% - (#{$padding * 2}));
-		}
-	}
-	.author, h3, .date {
-		position: relative;
-		z-index: 1;
-	} 
-	h3 {
-		color: white;
-		font-size: 25px;
-		line-height: 1.1;
-		font-weight: 400;
-		margin-bottom: 5px;
-		@media #{$tablet-large} {
-			font-size: 30px;
-		}
-	}
-	.name {
-		color: $orange;
-		font-size: 15px;
-		display: inline;
-	}
-	.date {
-		color: white;
-		font-size: 15px;
-		margin-left: 5px;
-	}
-	.author-image {
-		margin-bottom: 10px;
-		@media #{$tablet-large} {
-			margin-bottom: 15px;
-		}
-	}
+  @include cf;
+  margin-bottom: 50px;
+  @media #{$tablet-large} {
+    margin-bottom: 70px;
+  }
+  li {
+    margin-bottom: 20px;
+    @media #{$tablet} {
+      width: 50%;
+      float: left;
+    }
+    @media #{$tablet-large} {
+      margin-bottom: 40px;
+      width: 25%;
+    }
+    .content {
+      position: relative;
+      @media #{$tablet} {
+        padding: 0 $padding-sml;
+      }
+      @media #{$tablet-large} {
+        padding: 0 $padding;
+      }
+    }
+    // larger cards
+    &:first-of-type, &:last-of-type {
+      @media #{$tablet-large} {
+        width: 50%;
+      }
+      .blog-text {
+        @media #{$tablet-large} {
+          max-width: 65%;
+          h3 {
+            font-size: 35px;
+          }
+        }
+      }
+    }
+    // additional blog styles
+    // orange
+    &.orange {
+      .image-container {
+        background: $orange;
+        height: 270px;
+        @media #{$tablet-large} {
+          height: 495px;
+        }
+        img {
+          display: none;
+        }
+        &:after {
+          height: 100%;
+          background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
+          background-size: cover;
+          mix-blend-mode: soft-light;
+          opacity: 0.1;
+          filter: blur(2px);
+        }
+      }
+      .name {
+        color: white;
+      }
+      &:hover {
+        .image-container {
+          &:after {
+            height: 100%;
+          }
+        }
+      }
+    }
+    // blue
+    &.blue {
+      @extend .orange;
+      .image-container {
+        background: $blue;
+      }
+    }
+    // white
+    &.white {
+      @extend .orange;
+      .image-container {
+        background: $grey;
+        &:after {
+          mix-blend-mode: unset;
+          opacity: 0.75;
+        }
+        &:before {
+          background: $orange;
+        }
+      }
+      h3, .date {
+        color: $dark;
+      }
+      .name {
+        color: $orange;
+      }
+    }
+    // hover
+    &:hover {
+      .image-container {
+        &:after {
+          height: 60%;
+        }
+        &:before {
+          width: calc(100% - 50px);
+          left: 25px;
+          right: auto;
+        }
+      }
+      .author-image {
+        transform: translate3d(0, -30px, 0);
+        // in hover
+        transition-delay: 0.1s;
+      }
+      h3 {
+        transform: translate3d(0, -30px, 0);
+      }
+      .name, .date {
+        transform: translate3d(0, -30px, 0);
+        // in hover
+        transition-delay: 0.3s;
+      }
+    }
+  }
+  .image-container {
+    position: relative;
+    @media #{$tablet-large} {
+      height: auto;
+    }
+    img {
+      object-fit: cover;
+      height: 270px;
+      @media #{$tablet-large} {
+        height: 495px;
+      }
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      height: 70%;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba($dark, 1) 50%,rgba($dark, 0) 100%);
+      mix-blend-mode: multiply;
+      @include custom-bounce;
+      @media #{$tablet-large} {
+        height: 50%;
+      }
+    }
+    &:before {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      right: 25px;
+      bottom: 20px;
+      width: 0;
+      height: 1px;
+      background: white;
+      @include custom-bounce;
+      transition-delay: 0s;
+    }
+  }
+  .blog-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 15px 15px;
+    width: 100%;
+    @media #{$tablet} {
+      padding: $padding-sml 25px;
+      left: $padding-sml;
+      width: calc(100% - (#{$padding-sml * 2}));
+    }
+    @media #{$tablet-large} {
+      padding: $padding 25px 30px;
+      left: $padding;
+      width: calc(100% - (#{$padding * 2}));
+    }
+  }
+  .author, h3, .date {
+    position: relative;
+    z-index: 1;
+  }
+  h3 {
+    color: white;
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 5px;
+    @media #{$tablet-large} {
+      font-size: 30px;
+      transform: translate3d(0,0,0);
+      @include custom-bounce;
+      // out hover
+      transition-delay: 0.2s;
+    }
+  }
+  .name {
+    color: $orange;
+    font-size: 15px;
+  }
+  .date {
+    color: white;
+    font-size: 15px;
+    margin-left: 5px;
+  }
+  .name, .date {
+    // animation hover
+    display: inline-block;
+    transform: translate3d(0,0,0);
+    @include custom-bounce;
+    // out hover
+    transition-delay: 0.1s;
+  }
+  .author-image {
+    margin-bottom: 10px;
+    @media #{$tablet-large} {
+      margin-bottom: 15px;
+      transform: translate3d(0,0,0);
+      @include custom-bounce;
+      // out hover
+      transition-delay: 0.3s;
+    }
+  }
 }
 
-// Author image ==================================================
+// Author image ================================================================
 .author-image {
-	img {
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-		@media #{$tablet-large} {
-			width: 60px;
-			height: 60px;
-		}
-	}
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    @media #{$tablet-large} {
+      width: 60px;
+      height: 60px;
+    }
+  }
 }
 
-// footer ==================================================
+// footer ======================================================================
 footer {
-	// vertical space
-	$vertical-space-sml: 35px;
-	$vertical-space: 55px;
+  // vertical space
+  $vertical-space-sml: 35px;
+  $vertical-space: 55px;
 
-	background: $dark;
-	svg {
-		fill: white;
-		width: 100%;
-	}
-	.offices {
-		@include cf;
-		padding: $vertical-space 0;
-		border-bottom: 1px solid rgba(white, 0.15);
-		li {
-			@include cf;
-			margin-bottom: 30px;
-			@media #{$tablet-large} {
-				margin-bottom: 0;
-				width: 33.3%;
-				float: left;
-				padding: 0 80px;
-			}
-			&:last-of-type {
-				margin-bottom: 0;
-			}
-		}
-		h3 {
-			font-size: 18px;
-			font-weight: 300;
-			margin-bottom: 10px;
-			color: white;
-			@media #{$tablet-large} {
-				font-size: 22px;
-			}
-		}
-		.vcard {
-			color: white;
-			font-weight: 300;
-			line-height: 1.5;
-			font-size: 13px;
-			@media #{$tablet-large} {
-				font-size: 15px;
-			}
-			span {
-				border-bottom: 1px dashed rgba(white, 0.5);
-			}
-		}
-		.svg {
-			position: relative;
-			float: left;
-			width: 15%;
-			margin-right: 10%;
-			top: 20px;
-			@media #{$tablet-large} {
-				margin-right: 5%;
-				top: 30px;
-			}
-			svg {
-				max-height: 40px;
-			}
-		}
-		.content {
-			float: left;
-			width: 75%;
-			@media #{$tablet-large} {
-				width: 80%;
-			}
-		}
-	}
-	.contact {
-		@include cf;
-		border-bottom: 1px solid rgba(white, 0.15);
-		margin-bottom: $vertical-space-sml;
-		@media #{$tablet-large} {
-			border-bottom: 0;
-			margin-bottom: 0;
-		}
-		ul {
-			@include cf;
-			padding: $vertical-space-sml 0;
-			max-width: 900px;
-			margin: 0 auto;
-			text-align: center;
-			@media #{$tablet-large} {
-				padding: $vertical-space 0;
-			}
-		}
-		li {
-			display: inline-block;
-			width: 100%;
-			margin-bottom: 20px;
-			font-size: 16px;
-			font-weight: 300;
-			@media #{$tablet-large} {
-				margin-bottom: 0;
-				text-align: center;
-				float: left;
-				width: 33.3%;
-			}
-			&:last-of-type {
-				margin-bottom: 0;
-			}
-		}
-		.svg {
-			display: inline-block;
-			width: 20px;
-			@media #{$tablet-large} {
-				display: inline;
-				margin-right: 15px;
-			}
-		}
-		.content {
-			display: block;
-			@media #{$tablet-large} {
-				display: inline;
-			}
-		}
-		svg {
-			position: relative;
-			top: 3px;
-			width: 20px;
-		}
-		a {
-			color: white;
-		}
-	}
-	// Newsletter ====================================================
-	.newsletter {
-		text-align: center;
-		padding: 0 0 $vertical-space-sml;
-		@media #{$tablet-large} {
-			padding: 0 0 $vertical-space;
-		}
-		h3 {
-			color: white;
-			font-size: 16px;
-			font-weight: 400;
-			margin-bottom: 15px;
-		}
-		form {
-			display: inline-block;
-			input {
-				border: 0;
-				background: white;
-				border-radius: $border-radius 0 0 $border-radius;
-				padding: 10px 20px;
-				width: 63%;
-				float: left;
-				@media #{$tablet-large} {
-					width: auto;
-				}
-			}
-			button {
-				background: $blue;
-				color: white;
-				padding: 11px 20px;
-				position: relative;
-				left: -5px;
-				float: left;
-				border-radius: 0 $border-radius $border-radius 0;
-			}
-		}
-	}
+  background: $dark;
+  svg {
+    fill: white;
+    width: 100%;
+  }
+  .offices {
+    @include cf;
+    padding: $vertical-space 0;
+    border-bottom: 1px solid rgba(white, 0.15);
+    li {
+      @include cf;
+      margin-bottom: 30px;
+      @media #{$tablet-large} {
+        margin-bottom: 0;
+        width: 33.3%;
+        float: left;
+        padding: 0 80px;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      color: white;
+      @media #{$tablet-large} {
+        font-size: 22px;
+      }
+    }
+    .vcard {
+      color: white;
+      font-weight: 300;
+      line-height: 1.5;
+      font-size: 13px;
+      @media #{$tablet-large} {
+        font-size: 15px;
+      }
+    }
+    .svg {
+      position: relative;
+      float: left;
+      width: 15%;
+      margin-right: 10%;
+      top: 20px;
+      @media #{$tablet-large} {
+        margin-right: 5%;
+        top: 30px;
+      }
+      svg {
+        max-height: 40px;
+      }
+    }
+    .content {
+      float: left;
+      width: 75%;
+      @media #{$tablet-large} {
+        width: 80%;
+      }
+    }
+  }
+  .contact {
+    @include cf;
+    border-bottom: 1px solid rgba(white, 0.15);
+    margin-bottom: $vertical-space-sml;
+    @media #{$tablet-large} {
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
+    ul {
+      @include cf;
+      padding: $vertical-space-sml 0;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      @media #{$tablet-large} {
+        padding: $vertical-space 0;
+      }
+    }
+    li {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 300;
+      @media #{$tablet-large} {
+        margin-bottom: 0;
+        text-align: center;
+        float: left;
+        width: 33.3%;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    .svg {
+      display: inline-block;
+      width: 20px;
+      @media #{$tablet-large} {
+        display: inline;
+        margin-right: 15px;
+      }
+    }
+    .content {
+      display: block;
+      @media #{$tablet-large} {
+        display: inline;
+      }
+    }
+    svg {
+      position: relative;
+      top: 3px;
+      width: 20px;
+    }
+    a {
+      color: white;
+    }
+  }
+  // Newsletter ================================================================
+  .newsletter {
+    text-align: center;
+    padding: 0 0 $vertical-space-sml;
+    @media #{$tablet-large} {
+      padding: 0 0 $vertical-space;
+    }
+    h3 {
+      color: white;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+    form {
+      display: inline-block;
+      input {
+        border: 0;
+        background: white;
+        border-radius: $border-radius 0 0 $border-radius;
+        padding: 10px 20px;
+        width: 63%;
+        float: left;
+        @media #{$tablet-large} {
+          width: auto;
+        }
+      }
+      button {
+        background: $blue;
+        color: white;
+        padding: 10px 20px;
+        position: relative;
+        left: -5px;
+        float: left;
+        border-radius: 0 $border-radius $border-radius 0;
+      }
+    }
+  }
 }
 
 
-// Wagtail logo ==================================================
+// Wagtail logo ================================================================
 .wagtail {
-	padding: 0 0 20px;
-	max-width: 150px;
-	margin: 0 auto;
+  padding: 0 0 20px;
+  max-width: 150px;
+  margin: 0 auto;
 }
 
 
-// Jobs listing homepage =========================================
-
+// Jobs listing homepage =======================================================
 .hiring {
-	// vertical space
-	$vertical-space-sml: 50px;
-	$vertical-space: 100px;
+  // vertical space
+  $vertical-space-sml: 60px;
+  $vertical-space: 100px;
 
-	position: relative;
-	background: $blue;
-	padding: $vertical-space-sml 0 0;
-	background: linear-gradient(to bottom, rgba($blue,1) 0%,rgba($blue,1) 50%,rgba($orange,1) 50%,rgba($orange,1) 100%);
-	@media #{$tablet-large} {
-		padding: $vertical-space 0;
-		background: linear-gradient(to right, rgba($blue,1) 0%,rgba($blue,1) 50%,rgba($orange,1) 50%,rgba($orange,1) 100%);
-	}
-	&:before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: url('/static/torchbox/images/everyone-02.jpg') no-repeat center;
-		mix-blend-mode: luminosity;
-		opacity: 0.1;
-		background-size: cover;
-	}
-	.container {
-		position: relative;
-		z-index: 1;
-	}
-	.join, .jobs {
-		text-align: center;
-		padding: 0 0 $vertical-space-sml;
-		@media #{$tablet-large} {
-			padding: 0 100px;
-			width: 50%;
-			float: left;
-		}
-	} 
-	p, a {
-		color: white;
-		font-weight: 400;
-	}
-	a {
-		border-bottom: 1px dashed white;
-	}
-	h3 {
-		color: white;
-		font-weight: 300;
-		font-size: 25px;
-	}
-	h2 {
-		color: white;
-		font-weight: 300;
-		margin-bottom: 30px;
-	}
-	p {
-		text-align: center;
-		max-width: 700px;
-		margin: 0 auto 40px;
-		img {
-			position: relative;
-			top: 8px;
-			display: inline;
-			border-radius: 50%;
-			width: 25px;
-			height: 25px;
-			@media #{$tablet-large} {
-				top: 13px;
-				width: 35px;
-				height: 35px;
-			}
-		}
-	}
-	ul {
-		@include cf;
-		text-align: center;
-	}
-	li {
-		display: inline-block;
-		padding: 0 20px;
-		a {
-			display: inline-block;
-			line-height: 1.2;
-			font-size: 16px;
-			margin-bottom: 10px;
-			@media #{$tablet-large} {
-				font-size: 18px;
-			}
-		}
-	}
+  position: relative;
+  //border-top: 1px solid rgba($dark, 0.15);
+  background: $blue;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
+    background-size: cover;
+    mix-blend-mode: soft-light;
+    filter: blur(5px);
+    opacity: 0.15;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    @media #{$tablet-large} {
+      display: flex;
+      padding: 0 $container-padding;
+    }
+  }
+  .join, .jobs {
+    text-align: center;
+    padding: $vertical-space-sml 0;
+    @media #{$tablet-large} {
+      padding: $vertical-space-sml $vertical-space-sml;
+      width: 50%;
+      float: left;
+    }
+  }
+  .join {
+    border-bottom: 1px solid rgba(white, 0.15);
+    @media #{$tablet-large} {
+      border-bottom: none;
+      border-right: 1px solid rgba(white, 0.15);
+    }
+  }
+  .jobs {
+    li {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    p {
+      color: $dark;
+    }
+  }
+  p, a, h2 {
+    color: white;
+    font-weight: 400;
+  }
+  h2 {
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    @media #{$tablet-large} {
+      font-size: 30px;
+    }
+  }
+  p {
+    text-align: center;
+    font-size: 12px;
+    margin: 0 auto;
+    @media #{$tablet-large} {
+      font-size: 14px;
+    }
+  }
+  img {
+    position: relative;
+    top: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    @media #{$tablet-large} {
+      display: inline;
+      top: 12px;
+      width: 35px;
+      height: 35px;
+    }
+  }
+  ul {
+    @include cf;
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    padding: 0 20px;
+    margin-bottom: 15px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    a {
+      display: inline-block;
+      line-height: 1;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      width: 100%;
+      @include line-hover;
+      &:after {
+        background: rgba(white, 0.75);
+      }
+      @media #{$tablet-large} {
+        width: auto;
+        font-size: 14px;
+      }
+      &.sml {
+        text-transform: none;
+        color: white;
+        letter-spacing: 0;
+        margin-top: 20px;
+        span {
+          color: $dark;
+          font-weight: 400;
+          border: none;
+          padding-left: 0;
+          margin-left: 0;
+        }
+      }
+      span {
+        font-weight: 300;
+        border-left: 1px solid rgba(white, 0.5);
+        padding-left: 10px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+
+// about tbx homepage ==========================================================
+.about-tbx {
+  //padding
+  $padding: 20px;
+
+  @include cf;
+  padding: 0;
+  margin-bottom: 30px;
+  @media #{$tablet-large} {
+    padding: 40px 0;
+    margin-bottom: 70px;
+  }
+  .container {
+    max-width: 1200px;
+    @media #{$tablet-large} {
+      display: flex;
+    }
+  }
+  .title, .body {
+    position: relative;
+    margin-bottom: 20px;
+    @media #{$tablet-large} {
+      float: left;
+      width: 50%;
+      padding: 0 $padding;
+    }
+  }
+  h2 {
+    text-align: center;
+    @media #{$tablet-large} {
+      text-align: left;
+    }
+  }
+  p {
+    text-align: center;
+    @media #{$tablet-large} {
+      text-align: left;
+      position: absolute;
+      left: $padding;
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc(100% - (#{$padding * 2}));
+    }
+  }
+}
+
+// Clients home ================================================================
+.clients {
+  // height
+  $height: 120px;
+
+  @include cf;
+  text-align: center;
+  margin-bottom: 80px;
+  h2 {
+    margin-bottom: 30px;
+  }
+  ul {
+    @include cf;
+    height: calc(#{$height * 2});
+    overflow: hidden;
+    margin-bottom: 20px;
+    @include custom-bounce (0.45s);
+    &.visible {
+      height: calc(#{$height * 8});
+      @media #{$tablet-large} {
+        height: calc(#{$height * 4});
+      }
+      li:nth-last-child(-n+12) {
+        opacity: 1;
+      }
+    }
+  }
+  li {
+    width: 50%;
+    float: left;
+    display: flex;
+    align-items: center;
+    // not needed for center
+    height: $height;
+    &:nth-last-child(-n+12) {
+      opacity: 0;
+    }
+    // Loop through the items and add some delay
+    @for $i from 5 through 16 {
+        &:nth-child(#{$i}) {
+          @include custom-transition;
+         transition-delay: calc((0.1s * #{$i}) - 0.65s);
+        }
+    }
+    @media #{$tablet-large} {
+      width: 25%;
+      opacity: 1;
+      &:nth-child(-n+8) {
+        opacity: 1;
+      }
+      &:nth-last-child(-n+8) {
+        opacity: 0;
+      }
+    }
+    img {
+      opacity: 0.5;
+      width: auto;
+      height: auto;
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 0 15px;
+      @media #{$tablet-large} {
+        max-width: 60%;
+      }
+    }
+  }
 }
 
 

@@ -45,6 +45,11 @@ $(function(){
         $('.menu-button').toggleClass('twist');
     });
 
+    // load more logos
+    $('.clients button').click(function() {
+        $('.clients ul').toggleClass('visible');
+    });
+
 });
 
     // end redesign
