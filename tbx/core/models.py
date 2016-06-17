@@ -302,8 +302,6 @@ class HomePage(Page):
         FieldPanel('title', classname="full title"),
         FieldPanel('hero_intro'),
         InlinePanel( 'hero', label="Hero"),
-        FieldPanel('hero_video_id'),
-        ImageChooserPanel('hero_video_poster_image'),
         FieldPanel('intro_title'),
         FieldPanel('intro_body'),
         FieldPanel('work_title'),
@@ -602,6 +600,7 @@ class BlogPageAuthor(Orderable):
 class BlogPage(Page):
     intro = RichTextField("Intro (used only for blog index listing)", blank=True)
     body = RichTextField("body (deprecated. Use streamfield instead)", blank=True)
+    homepage_color = models.TextField("Homepage colour (orange, blue, white) if left blank will display image", blank=True)
     streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
@@ -616,7 +615,6 @@ class BlogPage(Page):
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
-
     @property
     def blog_index(self):
         # Find blog index in ancestors
@@ -636,6 +634,7 @@ class BlogPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('homepage_color'),
         InlinePanel('related_author', label="Author"),
         FieldPanel('author_left'),
         FieldPanel('date'),
