@@ -4,6 +4,7 @@ var jscs         = require('gulp-jscs');
 var jshint       = require('gulp-jshint');
 var argv         = require('yargs').argv;
 var config       = require('../config').scripts;
+var uglify       = require('gulp-uglify');
 
 gulp.task('jshint', function () {
     return gulp.src(config.src)
@@ -21,5 +22,6 @@ gulp.task('jscs', function () {
 
 gulp.task('scripts', function () {
     return gulp.src(config.src)
+        .pipe(uglify())
         .pipe(gulp.dest(config.dest));
 });
