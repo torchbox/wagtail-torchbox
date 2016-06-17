@@ -323,6 +323,7 @@ class HomePage(Page):
 
     class HomePageHero(Orderable, RelatedLink):
         page = ParentalKey('torchbox.HomePage', related_name='hero')
+        colour = models.CharField(max_length=255, blank=True, help_text="Hex ref colour of link and background gradient, defaults to blue, for example #ffffff")
         background = models.ForeignKey(
             'torchbox.TorchboxImage',
             null=True,
@@ -340,7 +341,8 @@ class HomePage(Page):
 
         panels = RelatedLink.panels + [
             ImageChooserPanel('background'),
-            ImageChooserPanel('logo')
+            ImageChooserPanel('logo'),
+            FieldPanel('colour'),
         ]
 
     class HomePageClients(Orderable, RelatedLink):
