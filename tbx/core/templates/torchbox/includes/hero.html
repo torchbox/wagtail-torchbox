@@ -2,12 +2,29 @@
 
 <section class="hero">
 
+    <style>
+    {% for heroItem in hero %}
+    {% if heroItem.colour %}
+    .featured-case-studies .featured-case-study{% cycle '-one' '-two' '-three' %} .link {
+        color: {{ heroItem.colour }};
+    }
+    .featured-case-studies .featured-case-study{% cycle '-one' '-two' '-three' %} .link:after {
+        background-color: {{ heroItem.colour }};
+    }
+    .featured-case-studies .featured-case-study{% cycle '-one' '-two' '-three' %} .link:before {
+        background: radial-gradient(ellipse at center, {{ heroItem.colour }}  0%, rgba(35,176,176,0) 58%, rgba(35,176,176,0) 69%);
+    }
+    {% endif %}
+    {% endfor %}
+    </style>
+
     <!-- background images for features -->
     <div class="feature-images">
 
     {% for heroItem in hero %}
         {% image heroItem.background fill-1800x978 as imgbanner %}
-        <div class="feature-image" style="background-image: url({{ imgbanner.url }})"></div>
+        <div class="feature-image" style="background-image: url({{ imgbanner.url }})">
+        </div>
     {% endfor %}
     </div>
 
@@ -16,7 +33,7 @@
         <h1>{{ self.hero_intro }}</h1>
         <ul class="featured-case-studies">
             {% for heroItem in hero %}
-            <li>
+            <li class="featured-case-study{% cycle '-one' '-two' '-three' %}">
                 {% if heroItem.link %}
                 <a href="{{ heroItem.link }}">
                 {% endif %}

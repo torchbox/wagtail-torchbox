@@ -323,6 +323,7 @@ class HomePage(Page):
 
     class HomePageHero(Orderable, RelatedLink):
         page = ParentalKey('torchbox.HomePage', related_name='hero')
+        colour = models.CharField(max_length=255, blank=True, help_text="Hex ref colour of link and background gradient, defaults to blue, for example #ffffff")
         background = models.ForeignKey(
             'torchbox.TorchboxImage',
             null=True,
@@ -340,7 +341,8 @@ class HomePage(Page):
 
         panels = RelatedLink.panels + [
             ImageChooserPanel('background'),
-            ImageChooserPanel('logo')
+            ImageChooserPanel('logo'),
+            FieldPanel('colour'),
         ]
 
     class HomePageClients(Orderable, RelatedLink):
@@ -761,6 +763,7 @@ class WorkPageAuthor(Orderable):
 class WorkPage(Page):
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     summary = models.CharField(max_length=255)
+    descriptive_title = models.CharField(max_length=255)
     intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
     body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
@@ -794,6 +797,7 @@ class WorkPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('descriptive_title'),
         InlinePanel('related_author', label="Author"),
         FieldPanel('author_left'),
         FieldPanel('summary'),
