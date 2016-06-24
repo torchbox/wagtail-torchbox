@@ -5,12 +5,12 @@
     {% if self.main_image %}
         {% image self.main_image fill-1300x750 as header_image %}
         <style>
-            .heading {
+            .page-banner {
                 background-image: url('{{ header_image.url }}');
             }
         </style>
     {% endif %}
-    <div class="heading">
+    <div class="page-banner">
         {{ self.heading|richtext }}
     </div>
 
@@ -39,18 +39,7 @@
     {% include "torchbox/includes/streamfield.html" %}
 
     <section class="container">
-        <div class="clients">
-            {% if self|in_play %}
-                <h2>Some of our clients</h2>
-            {% else %}
-                <h2>We're proud to have worked with</h2>
-            {% endif %}
-            <ul>
-                {% for client in self.clients.all %}
-                    <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
-                {% endfor %}
-            </ul>
-        </div>
+        {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
 
         {% if not self|in_play %}
             <div class="button">

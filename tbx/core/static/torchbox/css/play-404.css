@@ -28,11 +28,11 @@
     width:95%;
     margin: 0 auto;
 }
-.page-standardpage.page-standardpage .heading{
+.page-standardpage.page-standardpage .page-banner{
     padding: 0;
     height: auto;
 }
-.heading h2 {
+.page-banner h2 {
     text-align: center;
 }
 .page-standardpage .were-tbx {

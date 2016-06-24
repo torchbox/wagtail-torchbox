@@ -1,0 +1,82 @@
+{% extends "torchbox/base.html" %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags wagtailembeds_tags static %}
+{% block body_class %}{% if self.hero_video_id %}hasvideo{% endif %}{% endblock %}
+{% block title_postfix %}{% endblock %}
+{% block extra_css %}
+<style>
+    .page-homepage .hero {
+        background: url("{% static 'torchbox/images/Marketingpage_hero1.jpg' %}") no-repeat center;
+    }
+
+    section.container div.clients h2 {
+        font-weight: bold;
+        font-size: 2.5em;
+        margin: 0;
+    }
+
+    .clients li {
+        margin-bottom: 2em;
+    }
+
+    .clients {
+        margin-bottom: 5em;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+    <section class="hero {% if self.hero_video_id %}hero-video{% endif %}">
+        {% if self.hero_video_id %}
+            <div class="responsive-object">
+                {% if self.hero_video_poster_image %}
+                    <div class="poster">
+                        {% image self.hero_video_poster_image fill-900x505 %}
+                        <div class="arrow play" title="Play"></div>
+                    </div>
+                {% endif %}
+
+                <iframe id="vimeo{{ self.hero_video_id }}" src="//player.vimeo.com/video/{{ self.hero_video_id }}?api=1&portrait=0&badge=0&byline=0&title=0&player_id=vimeo{{ self.hero_video_id }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+        {% endif %}
+        <div class="animated fadeInDown container">
+            {% if self.hero_video_id %}
+                <div class="arrow play" title="Play"></div>
+            {% endif %}
+
+            <h1>{{ self.intro }}</h1>
+
+            {% if not self.hero_video_id %}
+                {% for link in self.header_related_links.all %}
+                    <a href="{{ link.link }}"><div class="button">{{ link.title }}</div> </a>
+                {% endfor %}
+                <a href="#posts" class="arrow"></a>
+            {% endif %}
+        </div>
+    </section>
+
+    {% with self.intro_related_links.all as related_links %}
+    {% if related_links %}
+    <section class="container related-links">
+        <div>
+            {% if page.intro_subtitle %}
+            <h2>{{ page.intro_subtitle }}</h2>
+            {% endif %}
+            <ul>
+                {% for link in related_links %}
+                    <li><a href="{{ link.link }}">{{ link.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+    {% endwith %}
+
+    <section id="posts" class="listing clearfix">
+        {% work_and_blog_listing marketing=True %}
+    </section>
+
+    <section class="container">
+        {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+    </section>
+
+{% endblock %}

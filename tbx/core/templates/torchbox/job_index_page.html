@@ -1,31 +1,40 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags humanize static %}
+{% load compress wagtailcore_tags wagtailimages_tags humanize static torchbox_tags %}
 
 {% block content %}
-    <div class= "crop-height">
-        <img class="scale" src="{% static "torchbox/images/desk_02.jpg" %}"  width="" height="" alt="">
+    <div class="page-banner crop-height jobs-header">
+        <div class="img-darken">
+            <div class="jobs-header-content">
+                <h1>Work with us</h1>
+                <p>We design and build beautiful websites and robust, scalable custom applications for some of the world's great universities and academic institutions, globally-renowned think tanks, high profile charities and NGOs, and other organisations seeking to have a positive impact.
+                <a href="#reasons" class="button">Reasons to join us</a>
+            </div>
+        </div>
     </div>
 
-    <section class="intro jobs">
+    <section class="jobs-listing">
          <div class="center">
-            <h1>{{ self.title }}</h1>
-
-            {% with self.jobs.all as jobs %}
-                {% if jobs %}
-                    <ul class="listing">
-                        {% for job in jobs %}
-                            <li>
-                                <a href="{{ job.url }}" class="job-link">
-                                    {{ job.job_title }}
-                                    {% if job.location %}
-                                        <div class="location">{{ job.location }}</div>
-                                    {% endif %}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
+            <h2>Current opportunities</h2>
+            {% if jobs %}
+                <ul class="listing clearfix">
+                    {% for job in jobs %}
+                        <li>
+                            <a href="{{ job.url }}" class="job-link">
+                                {{ job.job_title }}
+                                {% if job.location %}
+                                    <div class="location">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
+                                            <path fill="" d="M363.8,267.3c-19.5-18.1-45.5-28.4-71.3-28.4s-51.8,10.4-71.3,28.4c-20.2,18.7-31.3,43-31.3,68.5  c0,66.7,100.8,255.4,101.8,257.3c0.2,0.3,0.5,0.5,0.9,0.5c0.4,0,0.7-0.2,0.9-0.5c1-1.9,101.8-190.6,101.8-257.3  C395.1,310.3,384,286,363.8,267.3z"></path>
+                                        </svg>
+                                        {{ job.location }}
+                                    </div>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p class="no-job">We are always interested in hearing from smart people who want to work at Torchbox. If there's not an obvious position to apply for, <a href="mailto:hello@torchbox.com">do get in touch</a> anyway.</p>
+            {% endif %}
 
             {% if self.intro %}
                 <div class="sign-up">
@@ -33,34 +42,80 @@
                 </div>
             {% endif %}
         </div>
-
-        <div class="news">
-            <p>We are always interested in hearing from smart people who want to work at Torchbox. If there's not an obvious position to apply for, do <a href="mailto:hello@torchbox.com" class="link-inline">get in touch</a> anyway.</p>
-            <p>Be the first to know about new jobs at Torchbox:</p>
-            <p><a href="http://torchbox.us10.list-manage.com/subscribe?u=63765af7f1090864643763edd&id=1fc112ba28" class="button">Sign-up to our newsletter</a></p>
-        </div>
-
-        <div class="sub">
-            <p> We do not use recruitment agents, so if you are a recruiter we would appreciate if you did not contact us.</p>
-        </div>
     </section>
-
-    <section class="benefits clearfix">
-        <div class="center">
-            <h2>Working at Torchbox</h2>
-        </div>
-
-        {% if self.content_block.all %}
-            <ul>
-                {% for item in self.content_block.all %}
-                <li class="one">
-                    <div class="clearfix">
-                        <div class="icon"></div>
-                        <div>{{ item.content|richtext }}</div>
-                    </div>
-                </li>
-                {% endfor %}
+    {% if self.reasons_to_join.all %}
+    <section class="jobs-benefits" id="reasons">
+        <div class="jobs-carousel-container">
+            <ul class="jobs-carousel">
+                {% for reason in self.reasons_to_join.all %}
+                    <li>
+                        {% image reason.image original %}
+                        <div class="slide-caption-container">
+                            <div>
+                                <span class="reason-no">Reasons to join us</span>
+                                <h3>{{ reason.title }}</h3>
+                                <p>{{ reason.body }}</p>
+                            </div>
+                        </div>
+                    </li>
+                 {% endfor %}
             </ul>
-        {% endif %}
+        </div>
     </section>
+    {% endif %}
+    <section class="jobs-offices">
+        <div class="center our-offices-container">
+            <h2>Our offices</h2>
+            <ul class="our-offices">
+                <li class="cotswolds first">
+                    <img src="{% static "torchbox/images/icons/cotswolds.svg" %}" />
+                    <h3>In the glorious Cotswolds</h3>
+                    <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
+                </li>
+                <li class="bristol">
+                    <img src="{% static "torchbox/images/icons/bristol.svg" %}" />
+                    <h3>The vibrant centre of Bristol</h3>
+                    <p>Go out with the team to try the endless supply of real ales, or try the abundance of street food and sit in the vibrant parks.</p>
+                </li>
+                <li class="philadelphia last">
+                    <img src="{% static "torchbox/images/icons/philadelphia.svg" %}" />
+                    <h3>Historic Philadelphia</h3>
+                    <p>Soak up the historic Old City, kick back in a bar on South Street, or head to Passyunk square for an original cheese-steak.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="jobs-core-values clearfix">
+        <div class="center">
+            <h2>Our four core values</h2>
+            <ul class="image-tiles">
+                <li>
+                    <img src="{% static "torchbox/images/corevalue-better.jpg" %}" alt="Make things better" />
+                </li>
+                <li>
+                    <img src="{% static "torchbox/images/corevalue-happy.jpg" %}" alt="Make clients happy" />
+                </li>
+                <li>
+                    <img src="{% static "torchbox/images/corevalue-never.jpg" %}" alt="Never stand still" />
+                </li>
+                <li>
+                    <img src="{% static "torchbox/images/corevalue-enjoy.jpg" %}" alt="Enjoy it" />
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="jobs-refer">
+        <div class="center space-footer">
+            <h2>Refer a friend and make £500</h2>
+            <p>Not a Torchbox employee? Doesn't matter. If we hire someone for a permanent role and they pass their probation, if they've told us during the interview process that you recommended they apply the bounty is yours.</p>
+        </div>
+    </section>
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'torchbox/js/vendor/jquery.matchHeight-min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'torchbox/js/vendor/slick/slick.min.js' %}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'torchbox/js/vendor/slick/slick.css' %}"/>
+    {% compress js %}
+        <script src="{% static 'torchbox/js/jobs.js' %}"></script>
+    {% endcompress %}
 {% endblock %}

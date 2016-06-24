@@ -62,6 +62,9 @@ def has_menu_children(page):
 
 @register.filter
 def content_type(value):
+    # marketing landing page should behave like the homepage in templates
+    if value.__class__.__name__.lower() == 'marketinglandingpage':
+        return 'homepage'
     return value.__class__.__name__.lower()
 
 
@@ -192,10 +195,13 @@ def homepage_work_listing(context, count=3):
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
 def homepage_job_listing(context, count=3):
     # Assume there is only one job index page
-    jobindex = JobIndexPage.objects.filter(live=True)[0]
-    jobs = jobindex.jobs
-    if count:
-        jobs = jobs[:count]
+    jobindex = JobIndexPage.objects.filter(live=True).first()
+    if jobindex:
+        jobs = jobindex.job.all()
+        if count:
+            jobs = jobs[:count]
+    else:
+        jobs = []
     return {
         'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
@@ -225,26 +231,40 @@ def person_blog_post_listing(context, calling_page=None):
 
 
 @register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
-def work_and_blog_listing(context, count=10):
+def work_and_blog_listing(context, count=10, marketing=False):
     """
     An interleaved list of work and blog items.
     """
-    # Exercise for the reader: what should this do if count is an odd number?
-    count /= 2
-    blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
-    works = play_filter(WorkPage.objects.filter(live=True).order_by('-pk'), count)
-    blog_items = [template.loader.render_to_string(
-        "torchbox/tags/blog_list_item.html",
-        {'post': post,
-         'request': context['request']}
-    ) for post in blog_posts]
-    work_items = [template.loader.render_to_string(
-        "torchbox/tags/work_list_item.html",
-        {'work': work,
-         'request': context['request']}
-    ) for work in works]
+    blog_posts = BlogPage.objects.filter(live=True)
+    works = WorkPage.objects.filter(live=True)
+    if marketing:
+        featured_items = context['page'].featured_items.all()
+
+        # Reduce remaining item count accordingly, but not to below 0.
+        count = max(count - featured_items.count(), 0)
+
+        # For marketing landing page return only posts and works
+        # tagged with "digital_marketing"
+        featured_items_ids = featured_items.values_list('related_page_id', flat=True)
+        filter_tag = "digital_marketing"
+        blog_posts = blog_posts.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items_ids)
+        works = works.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items_ids)
+    else:
+        # For normal case, do not display "marketing_only" posts and works
+        blog_posts = blog_posts.exclude(marketing_only=True)
+        works = works.exclude(marketing_only=True)
+        featured_items = []
+    
+    # If (remaining) count is odd, blog_count = work_count + 1
+    blog_count = (count + 1) / 2
+    work_count = count / 2
+
+    blog_posts = play_filter(blog_posts.order_by('-date'), blog_count)
+    works = play_filter(works.order_by('-pk'), work_count)
+
     return {
-        'items': list(roundrobin(blog_items, work_items)),
+        'featured_items': featured_items,
+        'items': list(roundrobin(blog_posts, works)),
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }

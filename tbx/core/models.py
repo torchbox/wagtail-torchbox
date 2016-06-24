@@ -1,38 +1,41 @@
 from __future__ import unicode_literals
 
 from datetime import date
-from django import forms
 
+from django import forms
+from django.core.mail import EmailMessage
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models.signals import pre_delete
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.dispatch import receiver
-from django.shortcuts import render
 from django.http import HttpResponse
-from django.forms import ModelForm
-from django.forms.widgets import TextInput
-
-from wagtail.wagtailadmin.utils import send_mail
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
-    InlinePanel, PageChooserPanel, StreamFieldPanel
-from wagtail.wagtailadmin.blocks import ChooserBlock, StructBlock, ListBlock, \
-    StreamBlock, FieldBlock, CharBlock, RichTextBlock, PageChooserBlock, RawHTMLBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailimages.models import Image
-from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsearch import index
+from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
+from wagtail.wagtailadmin.blocks import (CharBlock, ChooserBlock, FieldBlock,
+                                         ListBlock, PageChooserBlock,
+                                         RawHTMLBlock, RichTextBlock,
+                                         StreamBlock, StructBlock)
+from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
+                                                MultiFieldPanel,
+                                                PageChooserPanel,
+                                                StreamFieldPanel)
+from wagtail.wagtailadmin.utils import send_mail
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore.models import Orderable, Page
+from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
+                                          Image)
+from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.models import register_snippet
 
 from tbx.core.utils import export_event
+
 
 ### Streamfield blocks and config ###
 
@@ -445,10 +448,11 @@ class BlogIndexPage(Page):
     @property
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
+        # and are not marketing_only
         blog_posts = BlogPage.objects.filter(
             live=True,
             path__startswith=self.path
-        )
+        ).exclude(marketing_only=True)
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date')
@@ -548,7 +552,7 @@ class BlogPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
+    marketing_only = models.BooleanField(default=False, help_text='Display this blog post only on marketing landing page')
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
@@ -585,12 +589,29 @@ class BlogPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
+        FieldPanel('marketing_only'),
     ]
 
 
 # Jobs index page
-class JobIndexPageContentBlock(Orderable, ContentBlock):
-    page = ParentalKey('torchbox.JobIndexPage', related_name='content_block')
+
+class ReasonToJoin(Orderable):
+    page = ParentalKey('torchbox.JobIndexPage', related_name='reasons_to_join')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    title = models.CharField(max_length=255)
+    body = models.CharField(max_length=511)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('title'),
+        FieldPanel('body')
+    ]
 
 
 class JobIndexPageJob(Orderable):
@@ -608,41 +629,34 @@ class JobIndexPageJob(Orderable):
 
 class JobIndexPage(Page):
     intro = RichTextField(blank=True)
+    no_jobs_that_fit = models.URLField(null=True)
+    terms_and_conditions = models.URLField(null=True)
+    refer_a_friend = models.URLField(null=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
     )
 
-    @property
-    def jobs(self):
-        jobs = self.job.all()
-
-        return jobs
-
-    def serve(self, request):
-        # Get jobs
-        jobs = self.jobs
-
-        # Pagination
-        page = request.GET.get('page')
-        paginator = Paginator(jobs, 10)  # Show 10 jobs per page
-        try:
-            jobs = paginator.page(page)
-        except PageNotAnInteger:
-            jobs = paginator.page(1)
-        except EmptyPage:
-            jobs = paginator.page(paginator.num_pages)
-
-        return render(request, self.template, {
-            'self': self,
-            'jobs': jobs,
-        })
+    def get_context(self, request, *args, **kwargs):
+        context = super(
+            JobIndexPage, self
+        ).get_context(request, *args, **kwargs)
+        context['jobs'] = self.job.all()
+        context['blogs'] = BlogPage.objects.live().order_by('-date')[:4]
+        return context
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
-        InlinePanel('content_block', label="Content block"),
+        FieldPanel('no_jobs_that_fit', classname="full"),
+        FieldPanel('terms_and_conditions', classname="full"),
+        FieldPanel('refer_a_friend', classname="full"),
         InlinePanel('job', label="Job"),
+        InlinePanel('reasons_to_join', label="Reasons To Join"),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
 
 
@@ -696,7 +710,7 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
+    marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
     streamfield = StreamField(StoryBlock())
 
     show_in_play_menu = models.BooleanField(default=False)
@@ -734,6 +748,7 @@ class WorkPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         FieldPanel('show_in_play_menu'),
+        FieldPanel('marketing_only'),
     ]
 
 
@@ -755,10 +770,11 @@ class WorkIndexPage(Page):
     @property
     def works(self):
         # Get list of work pages that are descendants of this page
+        # and are not marketing only
         works = WorkPage.objects.filter(
             live=True,
             path__startswith=self.path
-        )
+        ).exclude(marketing_only=True)
 
         return works
 
@@ -923,15 +939,15 @@ class GoogleAdGrantApplication(models.Model):
         ordering = ['-date']
 
 
-class GoogleAdGrantApplicationForm(ModelForm):
+class GoogleAdGrantApplicationForm(forms.ModelForm):
     class Meta:
         model = GoogleAdGrantApplication
         fields = [
             'name', 'email'
         ]
         widgets = {
-            'name': TextInput(attrs={'placeholder': "Your charity's name"}),
-            'email': TextInput(attrs={'placeholder': "Your email adress"})
+            'name': forms.TextInput(attrs={'placeholder': "Your charity's name"}),
+            'email': forms.TextInput(attrs={'placeholder': "Your email address"})
         }
 
 
@@ -1044,4 +1060,249 @@ class GoogleAdGrantsPage(Page):
             FieldPanel('call_to_action_embed_url'),
             InlinePanel('accreditations', label="Accreditations")
         ], "Call To Action")
+    ]
+
+
+# Sign-up for something page
+class SignUpFormPageBullet(Orderable):
+    page = ParentalKey('torchbox.SignUpFormPage', related_name='bullet_points')
+    icon = models.CharField(max_length=100, choices=(
+        ('torchbox/includes/svg/bulb-svg.html','Light bulb'),
+        ('torchbox/includes/svg/pro-svg.html','Chart'),
+        ('torchbox/includes/svg/tick-svg.html','Tick'),
+    ))
+    title = models.CharField(max_length=100)
+    body = models.TextField()
+
+    panels = [
+        FieldPanel('icon'),
+        FieldPanel('title'),
+        FieldPanel('body'),
+    ]
+
+
+class SignUpFormPageLogo(Orderable):
+    page = ParentalKey('torchbox.SignUpFormPage', related_name='logos')
+    logo = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('logo'),
+    ]
+
+
+class SignUpFormPageQuote(Orderable):
+    page = ParentalKey('torchbox.SignUpFormPage', related_name='quotes')
+    quote = models.TextField()
+    author = models.CharField(max_length=100)
+    organisation = models.CharField(max_length=100)
+
+    panels = [
+        FieldPanel('quote'),
+        FieldPanel('author'),
+        FieldPanel('organisation'),
+    ]
+
+
+class SignUpFormPageResponse(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    email = models.EmailField()
+
+    class Meta:
+        ordering = ['-date']
+
+    def __str__(self):
+        return self.email
+
+
+class SignUpFormPageForm(forms.ModelForm):
+    class Meta:
+        model = SignUpFormPageResponse
+        fields = [
+            'email',
+        ]
+        widgets = {
+            'email': forms.TextInput(attrs={'placeholder': "Enter your email address"}),
+        }
+
+
+class SignUpFormPage(Page):
+    formatted_title = models.CharField(
+        max_length=255, blank=True,
+        help_text="This is the title displayed on the page, not the document "
+        "title tag. HTML is permitted. Be careful."
+    )
+    intro = RichTextField()
+    call_to_action_text = models.CharField(
+        max_length=255, help_text="Displayed above the email submission form."
+    )
+    call_to_action_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    form_button_text = models.CharField(max_length=255)
+    thank_you_text = models.CharField(max_length=255,
+                                      help_text="Displayed on successful form submission.")
+    email_subject = models.CharField(max_length=100, verbose_name='subject')
+    email_body = models.TextField(verbose_name='body')
+    email_attachment = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        related_name='+',
+        on_delete=models.SET_NULL,
+        verbose_name='attachment',
+    )
+    email_from_address = models.EmailField(
+        verbose_name='from address',
+        help_text="Anything ending in @torchbox.com is good.")
+
+    content_panels = [
+        MultiFieldPanel([
+            FieldPanel('title', classname="title"),
+            FieldPanel('formatted_title'),
+        ], 'Title'),
+        FieldPanel('intro', classname="full"),
+        InlinePanel('bullet_points', label="Bullet points"),
+        InlinePanel('logos', label="Logos"),
+        InlinePanel('quotes', label="Quotes"),
+        MultiFieldPanel([
+            FieldPanel('call_to_action_text'),
+            ImageChooserPanel('call_to_action_image'),
+            FieldPanel('form_button_text'),
+            FieldPanel('thank_you_text'),
+        ], 'Form'),
+        MultiFieldPanel([
+            FieldPanel('email_subject'),
+            FieldPanel('email_body'),
+            DocumentChooserPanel('email_attachment'),
+            FieldPanel('email_from_address'),
+        ], 'Email'),
+    ]
+
+    def get_context(self, request):
+        form = SignUpFormPageForm()
+        context = super(SignUpFormPage, self).get_context(request)
+        context['form'] = form
+        return context
+
+    def serve(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == "POST":
+            form = SignUpFormPageForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                self.send_email_response(form.cleaned_data['email'])
+                return render(
+                    request,
+                    'torchbox/includes/sign_up_form_page_landing.html',
+                    {'page': self, 'form': form}
+                )
+            else:
+                return render(
+                    request,
+                    'torchbox/includes/sign_up_form_page_form.html',
+                    {'page': self, 'form': form}
+                )
+        else:
+            return super(SignUpFormPage, self).serve(request)
+
+    def send_email_response(self, to_address):
+        email_message = EmailMessage(
+            subject=self.email_subject,
+            body=self.email_body,
+            from_email=self.email_from_address,
+            to=[to_address],
+        )
+        email_message.attach_file(self.email_attachment.file.path)
+        email_message.send()
+
+
+class AbstractBaseMarketingLandingPageRelatedLink(Orderable, RelatedLink):
+    email_link = models.EmailField("Email link", blank=True,
+                                   help_text="Enter email address only, without 'mailto:'")
+
+    @property
+    def link(self):
+        if self.link_page:
+            return self.link_page.url
+        elif self.link_document:
+            return self.link_document.url
+        elif self.link_external:
+            return self.link_external
+        else:
+            return "mailto:{}".format(self.email_link)
+
+    panels = RelatedLink.panels + [
+        FieldPanel('email_link')
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class MarketingLandingPageHeaderRelatedLink(AbstractBaseMarketingLandingPageRelatedLink):
+    page = ParentalKey('torchbox.MarketingLandingPage', related_name='header_related_links')
+
+
+class MarketingLandingPageIntroRelatedLink(AbstractBaseMarketingLandingPageRelatedLink):
+    page = ParentalKey('torchbox.MarketingLandingPage', related_name='intro_related_links')
+
+
+class MarketingLandingPagePageClients(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.MarketingLandingPage', related_name='clients')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('image')
+    ]
+
+
+class MarketingLandingPageFeaturedItem(Orderable):
+    page = ParentalKey('torchbox.MarketingLandingPage', related_name='featured_items')
+    related_page = models.ForeignKey('wagtailcore.Page', related_name='+')
+
+    panels = [
+        PageChooserPanel('related_page', ['torchbox.BlogPage', 'torchbox.WorkPage'])
+    ]
+
+
+class MarketingLandingPage(Page):
+    intro = models.TextField('header text', blank=True)
+    hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
+    hero_video_poster_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    intro_subtitle = models.CharField('intro subtitle', max_length=255, blank=True)
+
+    class Meta:
+        verbose_name = "Marketing Landing Page"
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro'),
+        FieldPanel('hero_video_id'),
+        ImageChooserPanel('hero_video_poster_image'),
+        InlinePanel('header_related_links', label="Header related items"),
+        FieldPanel('intro_subtitle'),
+        InlinePanel('intro_related_links', label="Intro related items"),
+        InlinePanel('featured_items', label="Featured Items"),
+        InlinePanel( 'clients', label="Clients"),
     ]

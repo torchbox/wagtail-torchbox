@@ -21,7 +21,7 @@
         <a href="#menu" class="menu-button">&#x2261;</a>
           <ul class="bleed">
                 {% for menuitem in menuitems %}
-                      <li class="{% if menuitem = calling_page %}active{% endif %}">
+                      <li class="{% if menuitem = calling_page %} active {% endif %}">
                         <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
                     </li>
                 {% endfor %}
