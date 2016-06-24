@@ -86,7 +86,7 @@ nav {
     height: 0;
     float: right;
     margin-top: 12px;
-    z-index: 1;
+    z-index: 3;
     width: 100%;
     //
     position: absolute;
@@ -250,11 +250,14 @@ nav {
   left: 0;
   top: 0;
   opacity: 0;
-  height: 85vh;
-  background-size: cover;
+  height: 65vh;
   background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
+  background-size: cover;
   -webkit-transition: opacity 0.25s ease 0s;
   transition: opacity 0.25s ease 0s;
+  @media #{$tablet} {
+    height: 85vh;
+  }
   &:nth-child(2) {
     opacity: 1;
   }
@@ -331,6 +334,7 @@ nav {
   li {
     position: absolute;
     left: 50%;
+    bottom: -10px;
     transform: translateX(-50%);
     text-align: center;
     float: left;
@@ -339,6 +343,7 @@ nav {
       width: 30%;
       position: relative;
       left: 0;
+      bottom: 0;
       transform: translateY(0);
     }
     &:nth-child(1), &:nth-child(3) {
@@ -435,11 +440,14 @@ nav {
     display: inline-block;
     width: auto;
     height: auto;
-    max-height: 100px;
+    max-height: 50px;
     fill: white;
     opacity: 0.3;
     -webkit-transition: opacity 0.25s ease 0s;
             transition: opacity 0.25s ease 0s;
+    @media #{$tablet} {
+      max-height: 100px;
+    }
   }
 }
 
@@ -837,6 +845,7 @@ footer {
   $vertical-space: 55px;
 
   background: $dark;
+  clear: both;
   svg {
     fill: white;
     width: 100%;
@@ -1259,32 +1268,268 @@ footer {
 }
 
 // Work page ===================================================================
+.nextprev-nav, .breadcrumb {
+  display: none;
+}
+
+.page-workpage {
+  .container {
+    max-width: 1100px;
+  }
+  header.container, footer .container {
+    max-width: 1450px;
+  }
+  main {
+    margin-bottom: 60px;
+  }
+}
+
 .work-hero {
+  $height: 70vh;
+  $height-mob: 45vh;
+
   position: relative;
   width: 100%;
-  height: 60vh;
+  height: $height-mob;
+  margin-bottom: 40px;
+  background-size: 170% !important;
+  @media #{$tablet} {
+    height: $height;
+    //
+    background-size: cover;
+    background-position: bottom;
+    background-size: 115% !important;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 70%;
+    width: 100%;
+    background: rgba($dark, 0.75);
+    background: linear-gradient(to top, rgba($dark, 0.9) , rgba($dark, 0));
+    mix-blend-mode: multiply;
+  }
   img {
     object-fit: cover;
-    height: 60vh;
+    height: $height-mob;
+    @media #{$tablet} {
+      display: none;
+      height: $height;
+    }
   }
   .container {
     position: absolute;
-    width: 100%;
     bottom: 0;
     right: 0;
     left: 0;
-    background: red;
+    overflow: visible;
   }
   .text {
-    padding: 40px 0;
-    max-width: 60%;
+    position: relative;
+    z-index: 1;
+    padding: 20px 0;
+    @media #{$tablet} {
+      padding: 40px 0;
+      max-width: 700px;
+    }
   }
   p, h1, a {
     color: white;
   }
   h1 {
-    font-size: 65px;
+    font-size: 35px;
+    line-height: 1;
     font-weight: 400;
+    @media #{$tablet} {
+      font-size: 65px;
+    }
+  }
+  .client {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    @media #{$tablet} {
+      font-size: 14px;
+    }
+  }
+}
+
+.main-content {
+  @include cf;
+  @media #{$tablet} {
+    max-width: 70%;
+    float: left;
+  }
+}
+
+.intro {
+  .rich-text {
+    p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      max-width: 700px;
+      @media #{$tablet} {
+        font-size: 23px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+.rich-text, .stream-field {
+  p {
+    max-width: 650px;
+    a {
+      @include line-hover;
+    }
+  }
+  h2 {
+    text-align: left;
+    font-size: 23px;
+    font-weight: 400;
+    margin: 30px 0 10px;
+    @media #{$tablet} {
+      font-size: 25px;
+      margin: 40px 0 10px;
+    }
+  }
+  blockquote {
+    padding: 0 0 0 20px;
+    margin: 30px 0 0 -21px;
+    border-left: 1px solid $orange;
+    @media #{$tablet} {
+      padding: 0 0 0 40px;
+      margin: 60px 0 50px -41px;
+    }
+    p {
+      font-weight: 400;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+    cite {
+      font-weight: 600;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+  }
+  img {
+    margin-bottom: 25px;
+    max-width: 100%;
+    max-height: 600px;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    @media #{$tablet} {
+      margin: 0;
+    }
+  }
+  .align-right {
+    position: relative;
+    @media #{$tablet} {
+      right: -90px;
+      margin-right: -150px;
+      float: right;
+    }
+  }
+  .img-holder {
+    margin: 30px 0 10px;
+    @media #{$tablet} {
+      margin: 50px 0 -15px;
+    }
+    @include cf;
+    p {
+      font-style: italic;
+      font-size: 14px;
+      margin: 0;
+      position: relative;
+      text-align: center;
+    }
+  }
+}
+
+.specifications {
+  border-top: 1px solid rgba($dark, 0.1);
+  margin-top: 15px;
+  padding-top: 30px;
+  @media #{$tablet} {
+    margin-top: 0;
+    padding-top: 0;
+    border: 0;
+    float: right;
+    width: 30%;
+  }
+  .content {
+    text-align: left;
+    @media #{$tablet} {
+      float: right;
+    }
+  }
+  h4 {
+    text-transform: uppercase;
+    color: $blue;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    @media #{$tablet} {
+      font-size: 15px;
+    }
+  }
+  ul {
+    margin: 0 0 30px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  li {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    @media #{$tablet} {
+      font-size: 18px;
+    }
+  }
+}
+
+.author-holder {
+  @include cf;
+  border-top: 1px solid rgba($dark, 0.1);
+  max-width: 700px;
+  margin: 30px 0 0 0;
+  padding: 30px 0 0 0;
+  @media #{$tablet} {
+    margin: 30px 0 0 0;
+    padding: 40px 0 0 0;
+  }
+  img {
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    @media #{$tablet} {
+      width: 90px;
+      height: 90px;
+    }
+  }
+  .text {
+    float: left;
+    position: relative;
+    top: 10px;
+    @media #{$tablet} {
+      top: 30px;
+    }
+  }
+  a {
+    @include line-hover;
+  }
+  .role {
+    padding-left: 13px;
+    margin-left: 10px;
+    border-left: 1px solid rgba($dark, 0.5);
   }
 }
 

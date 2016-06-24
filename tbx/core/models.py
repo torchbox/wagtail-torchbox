@@ -654,7 +654,6 @@ class BlogPage(Page):
 
 
 # Jobs index page
-
 class ReasonToJoin(Orderable):
     page = ParentalKey('torchbox.JobIndexPage', related_name='reasons_to_join')
     image = models.ForeignKey(

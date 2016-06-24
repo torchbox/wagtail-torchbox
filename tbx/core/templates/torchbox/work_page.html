@@ -10,14 +10,13 @@
     {% with self.screenshots.all as screenshots %}
         {% if screenshots %}
                 {% for screenshot in screenshots %}
-                    <div class="work-hero">
-                        {% image screenshot.image width-9999 as shot %}
-                        <img src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
+                    {% image screenshot.image width-9999 as shot %}
+                    <div class="work-hero" id="top-image" style=" background:url({{ shot.url }});">
                         <div class="container">
                             <div class="text">
                                 {% include "torchbox/includes/breadcrumb.html" %}
-                                <p class="client">Client name</p>
-                                <h1>{{ self.title }}</h1>
+                                <p class="client">{{ self.title }}</p>
+                                <h1>{{self.descriptive_title}}</h1>
                             </div>
                         </div>
                     </div>
@@ -40,17 +39,19 @@
         {% endif %}
     </div>
 
-    <section>
-        <div class="container">
 
-            {% if self.intro %}
+    <section class="container">
+
+        <div class="main-content">
+
+<!--             {% if self.intro %}
                 {{ self.intro|richtext }}
-            {% endif %}
+            {% endif %} -->
 
-            {# note these tags are all squashed together in order to avoid a space before the comma if there are current authors as well as an author who has left #}
-            {% with self.related_author.all as authors %}{% if authors %}{% for author in authors %}{% if author.author %}<a href="{% pageurl author.author %}">{{ author.author.title }}</a>{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}{% endif %}{% endwith %}{% if self.author_left %}{% if self.has_authors %}, {% endif %}{{ self.author_left }}{% endif %}
-
-            <div class="share">
+<!--             {# note these tags are all squashed together in order to avoid a space before the comma if there are current authors as well as an author who has left #}
+ --><!--             {% with self.related_author.all as authors %}{% if authors %}{% for author in authors %}{% if author.author %}<a href="{% pageurl author.author %}">{{ author.author.title }}</a>{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}{% endif %}{% endwith %}{% if self.author_left %}{% if self.has_authors %}, {% endif %}{{ self.author_left }}{% endif %}
+ -->
+<!--             <div class="share">
                 {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
                 <ul class="options">
                     <li>
@@ -60,9 +61,9 @@
                         <a href="http://www.twitter.com/share" class="twitter-share-button">Tweet</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
 
-            <section class="tags">
+<!--             <section class="tags">
                 {% with self.tags.all as tags %}
                     {% if tags %}
                         {% for tag in tags %}
@@ -70,17 +71,33 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-            </section>
+            </section> -->
+
+            {% if self.body %}
+                    {{ self.body|richtext }}
+            {% endif %}
+
+            {% include "torchbox/includes/streamfield.html" %}
+        </div>
+        <div class="specifications">
+            <div class="content">
+            <ul>
+                <li><h4>specifications</h4></li>
+                <li>14 templates</li>
+            </ul>
+            <ul>
+                <li><h4>services</h4></li>
+                <li>User experience</li>
+                <li>Design</li>
+                <li>Wagtial build</li>
+            </ul>
+            <ul>
+                <li><h4>Sector</h4></li>
+                <li>Third sector</li>
+            </ul>
+            </div>
         </div>
     </section>
-
-    {% if self.body %}
-        <section class="body-copy container height">
-            {{ self.body|richtext }}
-        </section>
-    {% endif %}
-
-    {% include "torchbox/includes/streamfield.html" %}
 
     <section class="container body-copy">
         <div id="author" class="author clearfix" >
@@ -92,10 +109,12 @@
                             {% image author.author.image fill-300x300 as photo %}
                             <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
                         {% endif %}
-                        {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
+                        <div class="text">
+                            {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
 
-                        {% if author.author.role %}
-                            <span class="role">{{ author.author.role }}</span>
+                            {% if author.author.role %}
+                                <span class="role">{{ author.author.role }}</span>
+                        </div>
                     </div>
                         {% endif %}
                     {% endfor %}

@@ -55,6 +55,18 @@ $(function(){
         $('.clients ul').toggleClass('visible');
     });
 
+    // background move
+    var movementStrength = 25;
+    var height = movementStrength / $(window).height();
+    var width = movementStrength / $(window).width();
+    $("#top-image").mousemove(function(e) {
+      var pageX = e.pageX - ($(window).width() / 1);
+      var pageY = e.pageY - ($(window).height() / 1);
+      var newvalueX = width * pageX * -1 - 20;
+      var newvalueY = height * pageY * -1 - 30;
+      $('#top-image').css("background-position", newvalueX + "px     " + newvalueY + "px");
+    });
+
 });
 
     // end redesign
