@@ -1268,8 +1268,82 @@ footer {
 }
 
 // Work page ===================================================================
-.nextprev-nav, .breadcrumb {
+.breadcrumb {
   display: none;
+}
+
+.nextprev-nav {
+  position: relative;
+  img {
+    object-fit: cover;
+    height: 500px;
+  }
+  a {
+    display: block;
+  }
+  .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 550px;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: 100px;
+      width: 0;
+      height: 1px;
+      background: white;
+      @include custom-bounce;
+    }
+  }
+  h4 {
+    text-transform: uppercase;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    @include custom-bounce;
+    transition-delay: 0.1s;
+    transform: translate3d(0,0,0);
+  }
+  h2 {
+    font-size: 35px;
+    color: white;
+    font-weight: 500;
+    @include custom-bounce;
+    transition-delay: 0s;
+    transform: translate3d(0,0,0);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba($dark, 0.35);
+    mix-blend-mode: multiply;
+  }
+  &:hover {
+    h4 {
+      transform: translate3d(0,-20px,0);
+      transition-delay: 0;
+    }
+    h2 {
+      transform: translate3d(0,-20px,0);
+      transition-delay: 0.2s;
+    }
+    .text:after {
+      width: calc(100% - 200px);
+      left: 100px;
+      right: 100px;
+    }
+  }
 }
 
 .page-workpage {
@@ -1279,8 +1353,33 @@ footer {
   header.container, footer .container {
     max-width: 1450px;
   }
-  main {
-    margin-bottom: 60px;
+  footer {
+    position: relative;
+    z-index: 10;
+  }
+  nav {
+    @media #{$tablet} {
+      position: fixed;
+      left: 0;
+      max-width: 1350px;
+      right: 0;
+      margin: 0 auto;
+    }
+  }
+  .text-content {
+    // &:last-child {
+    //   padding-bottom: 40px;
+    //   @media #{$tablet} {
+    //     padding-bottom: 40px;
+    //   }
+    // }
+    @media #{$tablet} {
+      background: white;
+      position: relative;
+      z-index: 10;
+      margin-top:  calc(70vh + 79px);
+      padding-top: 60px;
+    }
   }
 }
 
@@ -1292,13 +1391,13 @@ footer {
   width: 100%;
   height: $height-mob;
   margin-bottom: 40px;
-  background-size: 170% !important;
+  background-size: calc(100% + 300px);
   @media #{$tablet} {
+    top: 79px;
+    position: fixed;
     height: $height;
-    //
-    background-size: cover;
-    background-position: bottom;
-    background-size: 115% !important;
+    margin-bottom: 60px;
+    background-size: calc(100% + 50px);
   }
   &:before {
     content: '';
@@ -1330,6 +1429,7 @@ footer {
     position: relative;
     z-index: 1;
     padding: 20px 0;
+    transition: all 0.5s ease 0s;
     @media #{$tablet} {
       padding: 40px 0;
       max-width: 700px;
@@ -1354,6 +1454,13 @@ footer {
     margin-bottom: 15px;
     @media #{$tablet} {
       font-size: 14px;
+    }
+  }
+  &.fade {
+    .text {
+      @media #{$tablet} {
+        opacity: 0;
+      }
     }
   }
 }
@@ -1400,7 +1507,7 @@ footer {
   blockquote {
     padding: 0 0 0 20px;
     margin: 30px 0 0 -21px;
-    border-left: 1px solid $orange;
+    border-left: 1px solid $blue;
     @media #{$tablet} {
       padding: 0 0 0 40px;
       margin: 60px 0 50px -41px;
@@ -1471,7 +1578,7 @@ footer {
   }
   h4 {
     text-transform: uppercase;
-    color: $blue;
+    color: $orange;
     font-size: 13px;
     font-weight: 400;
     margin-bottom: 5px;
@@ -1484,15 +1591,31 @@ footer {
     &:last-of-type {
       margin-bottom: 0;
     }
+    &.tags {
+
+    }
   }
   li {
     font-size: 16px;
     font-weight: 300;
     line-height: 1.5;
+    width: 100%;
     @media #{$tablet} {
       font-size: 18px;
     }
+    a {
+      display: inline-block;
+      @include line-hover;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
   }
+}
+
+.author {
+  @include cf;
+  margin-bottom: 40px;
 }
 
 .author-holder {

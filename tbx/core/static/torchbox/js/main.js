@@ -67,6 +67,17 @@ $(function(){
       $('#top-image').css("background-position", newvalueX + "px     " + newvalueY + "px");
     });
 
+    // work page title fade on scroll
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 50) {
+            $(".work-hero").addClass("fade");
+        } else {
+            $(".work-hero").removeClass("fade");
+        }
+    });
+
 });
 
     // end redesign

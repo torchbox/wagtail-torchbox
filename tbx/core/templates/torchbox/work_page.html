@@ -6,12 +6,11 @@
 {% get_prev_sibling_by_order self as prev_page %}
 
 <main class="single">
-
     {% with self.screenshots.all as screenshots %}
         {% if screenshots %}
                 {% for screenshot in screenshots %}
                     {% image screenshot.image width-9999 as shot %}
-                    <div class="work-hero" id="top-image" style=" background:url({{ shot.url }});">
+                    <div class="work-hero" id="top-image" style=" background-image:url({{ shot.url }});">
                         <div class="container">
                             <div class="text">
                                 {% include "torchbox/includes/breadcrumb.html" %}
@@ -24,106 +23,109 @@
         {% endif %}
     {% endwith %}
 
-    <div class="nextprev-nav">
-        {% if prev_page %}
-            <div class="nextprev prev">
-                <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
+    <section class="text-content">
+        <div class="container">
+            <div class="main-content">
+                {% if self.body %}
+                        {{ self.body|richtext }}
+                {% endif %}
+
+                {% include "torchbox/includes/streamfield.html" %}
             </div>
-        {% endif %}
-
-
-        {% if next_page %}
-            <div class="nextprev next">
-                <a href="{% pageurl next_page %}">{% image next_page.homepage_image fill-80x80 class="thumb" %} <span>{{ next_page.title }}</span></a>
-            </div>
-        {% endif %}
-    </div>
-
-
-    <section class="container">
-
-        <div class="main-content">
-
-<!--             {% if self.intro %}
-                {{ self.intro|richtext }}
-            {% endif %} -->
-
-<!--             {# note these tags are all squashed together in order to avoid a space before the comma if there are current authors as well as an author who has left #}
- --><!--             {% with self.related_author.all as authors %}{% if authors %}{% for author in authors %}{% if author.author %}<a href="{% pageurl author.author %}">{{ author.author.title }}</a>{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}{% endif %}{% endwith %}{% if self.author_left %}{% if self.has_authors %}, {% endif %}{{ self.author_left }}{% endif %}
- -->
-<!--             <div class="share">
-                {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
-                <ul class="options">
-                    <li>
-                        <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                    </li>
-                    <li>
-                        <a href="http://www.twitter.com/share" class="twitter-share-button">Tweet</a>
-                    </li>
+            <div class="specifications">
+                <div class="content">
+                <ul>
+                    <li><h4>specifications</h4></li>
+                    <li>14 templates</li>
                 </ul>
-            </div> -->
-
-<!--             <section class="tags">
-                {% with self.tags.all as tags %}
-                    {% if tags %}
-                        {% for tag in tags %}
-                            <a href="{% pageurl self.work_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
+                <ul>
+                    <li><h4>services</h4></li>
+                    <li>User experience</li>
+                    <li>Design</li>
+                    <li>Wagtial build</li>
+                </ul>
+                <ul>
+                    <li><h4>Sector</h4></li>
+                    <li>Third sector</li>
+                </ul>
+                <ul class="tags">
+                    <li><h4>tags</h4></li>
+                    {% with self.tags.all as tags %}
+                        {% if tags %}
+                            {% for tag in tags %}
+                                <li>
+                                    <a href="{% pageurl self.work_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="author" >
+                {% with self.related_author.all as authors %}
+                    {% if authors %}
+                        {% for author in authors %}
+                        <div class="author-holder">
+                            {% if author.author.image %}
+                                {% image author.author.image fill-300x300 as photo %}
+                                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
+                            {% endif %}
+                            <div class="text">
+                                {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
+                                {% if author.author.role %}
+                                <span class="role">{{ author.author.role }}</span>
+                            </div>
+                        </div>
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-            </section> -->
-
-            {% if self.body %}
-                    {{ self.body|richtext }}
-            {% endif %}
-
-            {% include "torchbox/includes/streamfield.html" %}
-        </div>
-        <div class="specifications">
-            <div class="content">
-            <ul>
-                <li><h4>specifications</h4></li>
-                <li>14 templates</li>
-            </ul>
-            <ul>
-                <li><h4>services</h4></li>
-                <li>User experience</li>
-                <li>Design</li>
-                <li>Wagtial build</li>
-            </ul>
-            <ul>
-                <li><h4>Sector</h4></li>
-                <li>Third sector</li>
-            </ul>
             </div>
         </div>
-    </section>
+        <div class="nextprev-nav">
+<!--
+            {% if prev_page %}
+                <div class="nextprev prev">
+                    <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
+                </div>
+            {% endif %}
+-->
 
-    <section class="container body-copy">
-        <div id="author" class="author clearfix" >
-            {% with self.related_author.all as authors %}
-                {% if authors %}
-                    {% for author in authors %}
-                    <div class="author-holder">
-                        {% if author.author.image %}
-                            {% image author.author.image fill-300x300 as photo %}
-                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
-                        {% endif %}
-                        <div class="text">
-                            {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
 
-                            {% if author.author.role %}
-                                <span class="role">{{ author.author.role }}</span>
+            {% if next_page %}
+                <div class="nextprev next">
+                    <a href="{% pageurl next_page %}">
+                        <div class="next style=" background-image:url({{ shot.url }});">
+                            {% image next_page.homepage_image fill-2000x600 class="thumb" %}
+                            <span class="text">
+                                <h4>up next</h4>
+                                <h2>{{next_page.descriptive_title}}</h2>
+                            </span>
                         </div>
-                    </div>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+                    </a>
+                </div>
+            {% endif %}
         </div>
     </section>
 
 </main>
+
+<!--
+<div class="share">
+    {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
+    <ul class="options">
+        <li>
+            <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+        </li>
+        <li>
+            <a href="http://www.twitter.com/share" class="twitter-share-button">Tweet</a>
+        </li>
+    </ul>
+</div>
+-->
 
 <div id="fb-root"></div>
 {% endblock %}
