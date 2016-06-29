@@ -15,8 +15,8 @@
     max-width: 1450px;
     box-sizing: border-box;
     margin: 0 auto;
-    overflow: hidden;
     padding: 0 $container-padding-sml;
+    @include cf;
     @media #{$tablet} {
       padding: 0 $container-padding;
     }
@@ -71,10 +71,12 @@ nav {
       }
       &:nth-child(2) {
         transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
         top: 10px;
       }
       &:nth-child(3) {
         transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
         bottom: 12px;
       }
     }
@@ -86,9 +88,8 @@ nav {
     height: 0;
     float: right;
     margin-top: 12px;
-    z-index: 3;
+    z-index: 5;
     width: 100%;
-    //
     position: absolute;
     left: 0;
     top: 55px;
@@ -199,7 +200,7 @@ nav {
 // hero ========================================================================
 .hero {
   position: relative;
-  height: 65vh;
+  height: 75vh;
   background-size: cover;
   margin: 0 0 50px 0;
   @media #{$tablet} {
@@ -250,7 +251,7 @@ nav {
   left: 0;
   top: 0;
   opacity: 0;
-  height: 65vh;
+  height: 75vh;
   background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
   background-size: cover;
   -webkit-transition: opacity 0.25s ease 0s;
@@ -284,27 +285,27 @@ nav {
       cursor: pointer;
       &:before {
           opacity: 0;
+      }
+      img {
+        opacity: 0.3;
+      }
+      &.active {
+        &:before {
+          opacity: 0;
         }
         img {
-          opacity: 0.3;
+          opacity: 0.5;
         }
-        &.active {
-          &:before {
-            opacity: 0;
-          }
-          img {
-            opacity: 0.5;
-          }
-          .link {
-            opacity: 0;
-            transition-delay: 0.25s;
-            &:after {
-              width: 0%;
-              right: 0;
-              left: auto;
-            }
+        .link {
+          opacity: 0;
+          transition-delay: 0.25s;
+          &:after {
+            width: 0%;
+            right: 0;
+            left: auto;
           }
         }
+      }
     }
   }
   .link {
@@ -452,10 +453,12 @@ nav {
 }
 
 // Homepage posts ==============================================================
-#posts h2  {
-  margin-bottom: 40px;
-    a {
-      @include line-hover;
+#posts  {
+  h2  {
+    margin-bottom: 40px;
+      a {
+        @include line-hover;
+    }
   }
 }
 
@@ -464,6 +467,7 @@ nav {
   // padding
   $padding: 15px;
   $padding-sml: 10px;
+  $padding-large: 25px;
 
   clear: both;
   @include cf;
@@ -489,26 +493,28 @@ nav {
       }
     }
     &:hover {
-      //text up
-      .work-text {
-        &:before {
-          height: 190%;
-        }
-        // delays for way in
-        &:after {
-          width: calc(100% - 50px);
-          left: calc(#{$padding * 2});
-          right: auto;
-          transition-delay: 0.25s;
-        }
-        h3, h4 {
-          transform: translate3d(0, -40px, 0);
-        }
-        h3 {
-          transition-delay: 0.1s;
-        }
-        h4 {
-          transition-delay: 0.15s;
+      @media #{$tablet} {
+        //text up
+        .work-text {
+          &:before {
+            height: 190%;
+          }
+          // delays for way in
+          &:after {
+            width: calc(100% - (#{$padding-large * 2}));
+            left: $padding-large;
+            right: auto;
+            transition-delay: 0.25s;
+          }
+          h3, h4 {
+            transform: translate3d(0, -40px, 0);
+          }
+          h3 {
+            transition-delay: 0.1s;
+          }
+          h4 {
+            transition-delay: 0.15s;
+          }
         }
       }
     }
@@ -519,7 +525,7 @@ nav {
     }
     img {
       object-fit: cover;
-      height: 270px;
+      height: 350px;
       @media #{$tablet-large} {
         height: 425px;
       }
@@ -532,12 +538,12 @@ nav {
     padding: 0 15px 15px;
     width: 100%;
     @media #{$tablet} {
-      padding: $padding-sml 25px;
+      padding: $padding-sml $padding-large 30px;
       left: $padding-sml;
       width: calc(100% - (#{$padding-sml * 2}));
     }
     @media #{$tablet-large} {
-      padding: $padding 25px;
+      padding: $padding $padding-large 30px;
       left: $padding;
       width: calc(100% - (#{$padding * 2}));
     }
@@ -641,7 +647,7 @@ nav {
     &.orange {
       .image-container {
         background: $orange;
-        height: 270px;
+        height: 350px;
         @media #{$tablet-large} {
           height: 495px;
         }
@@ -653,7 +659,7 @@ nav {
           background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
           background-size: cover;
           mix-blend-mode: soft-light;
-          opacity: 0.1;
+          opacity: 0.25;
           filter: blur(2px);
         }
       }
@@ -661,9 +667,11 @@ nav {
         color: white;
       }
       &:hover {
-        .image-container {
-          &:after {
-            height: 100%;
+        @media #{$tablet-large} {
+          .image-container {
+            &:after {
+              height: 100%;
+            }
           }
         }
       }
@@ -682,7 +690,7 @@ nav {
         background: $grey;
         &:after {
           mix-blend-mode: unset;
-          opacity: 0.75;
+          opacity: 1;
         }
         &:before {
           background: $orange;
@@ -697,28 +705,30 @@ nav {
     }
     // hover
     &:hover {
-      .image-container {
-        &:after {
-          height: 60%;
+      @media #{$tablet-large} {
+        .image-container {
+          &:after {
+            height: 60%;
+          }
+          &:before {
+            width: calc(100% - 50px);
+            left: 25px;
+            right: auto;
+          }
         }
-        &:before {
-          width: calc(100% - 50px);
-          left: 25px;
-          right: auto;
+        .author-image {
+          transform: translate3d(0, -30px, 0);
+          // in hover
+          transition-delay: 0.1s;
         }
-      }
-      .author-image {
-        transform: translate3d(0, -30px, 0);
-        // in hover
-        transition-delay: 0.1s;
-      }
-      h3 {
-        transform: translate3d(0, -30px, 0);
-      }
-      .name, .date {
-        transform: translate3d(0, -30px, 0);
-        // in hover
-        transition-delay: 0.3s;
+        h3 {
+          transform: translate3d(0, -30px, 0);
+        }
+        .name, .date {
+          transform: translate3d(0, -30px, 0);
+          // in hover
+          transition-delay: 0.3s;
+        }
       }
     }
   }
@@ -729,7 +739,7 @@ nav {
     }
     img {
       object-fit: cover;
-      height: 270px;
+      height: 350px;
       @media #{$tablet-large} {
         height: 495px;
       }
@@ -1018,8 +1028,10 @@ footer {
   $vertical-space-sml: 60px;
   $vertical-space: 100px;
 
+  // padding
+  $padding: 30px;
+
   position: relative;
-  //border-top: 1px solid rgba($dark, 0.15);
   background: $blue;
   &:after {
     content: '';
@@ -1032,122 +1044,116 @@ footer {
     background-size: cover;
     mix-blend-mode: soft-light;
     filter: blur(5px);
-    opacity: 0.15;
+    opacity: 0.25;
   }
   .container {
     position: relative;
     z-index: 1;
     padding: 0;
     @media #{$tablet-large} {
-      display: flex;
       padding: 0 $container-padding;
-    }
-  }
-  .join, .jobs {
-    text-align: center;
-    padding: $vertical-space-sml 0;
-    @media #{$tablet-large} {
-      padding: $vertical-space-sml $vertical-space-sml;
-      width: 50%;
-      float: left;
-    }
-  }
-  .join {
-    border-bottom: 1px solid rgba(white, 0.15);
-    @media #{$tablet-large} {
-      border-bottom: none;
-      border-right: 1px solid rgba(white, 0.15);
-    }
-  }
-  .jobs {
-    li {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-    p {
-      color: $dark;
-    }
-  }
-  p, a, h2 {
-    color: white;
-    font-weight: 400;
-  }
-  h2 {
-    font-size: 25px;
-    margin-bottom: 30px;
-    font-weight: 300;
-    @media #{$tablet-large} {
-      font-size: 30px;
-    }
-  }
-  p {
-    text-align: center;
-    font-size: 12px;
-    margin: 0 auto;
-    @media #{$tablet-large} {
-      font-size: 14px;
-    }
-  }
-  img {
-    position: relative;
-    top: 8px;
-    display: inline-block;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    margin-right: 5px;
-    @media #{$tablet-large} {
-      display: inline;
-      top: 12px;
-      width: 35px;
-      height: 35px;
     }
   }
   ul {
     @include cf;
     text-align: center;
   }
-  li {
-    display: inline-block;
-    padding: 0 20px;
-    margin-bottom: 15px;
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-    a {
+  .jobs {
+    padding: 70px 0;
+    width: 100%;
+    text-align: center;
+    li {
       display: inline-block;
-      line-height: 1;
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
       width: 100%;
-      @include line-hover;
-      &:after {
-        background: rgba(white, 0.75);
+      margin-bottom: 15px;
+      padding: 0 15px;
+      @media #{$tablet} {
+        padding: 0 10px;
+        width: 25%;
+        margin-bottom: 30px;
       }
-      @media #{$tablet-large} {
-        width: auto;
-        font-size: 14px;
-      }
-      &.sml {
-        text-transform: none;
-        color: white;
-        letter-spacing: 0;
-        margin-top: 20px;
-        span {
-          color: $dark;
-          font-weight: 400;
-          border: none;
-          padding-left: 0;
-          margin-left: 0;
+      .content {
+        position: relative;
+        text-align: left;
+        padding: 160px $padding $padding;
+        background: white;
+        &:after {
+          content: '';
+          position: absolute;
+          right: $padding;
+          bottom: 20px;
+          width: 0;
+          height: 1px;
+          background: $orange;
+          @include custom-bounce;
         }
       }
-      span {
-        font-weight: 300;
-        border-left: 1px solid rgba(white, 0.5);
-        padding-left: 10px;
-        margin-left: 10px;
+      &:hover {
+        @media #{$tablet-large} {
+          h3 {
+            transform: translate3d(0,-30px,0);
+            transition-delay: 0s;
+          }
+          p {
+            transform: translate3d(0,-30px,0);
+            transition-delay: 0.1s;
+          }
+          .content {
+            &:after {
+              left: $padding;
+              right: auto;
+              width: calc(100% - (#{$padding * 2}));
+            }
+          }
+        }
       }
+    }
+  }
+  .sml {
+    color: $dark;
+    @include line-hover;
+    &:after {
+      background: white;
+    }
+    span {
+      color: white;
+    }
+  }
+  h2 {
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: white;
+    @media #{$tablet-large} {
+      margin-bottom: 60px;
+    }
+    a {
+      color: white;
+      @include line-hover;
+      &:after {
+        background: white;
+      }
+    }
+  }
+  h3 {
+    color: $dark;
+    font-weight: 400;
+    margin-bottom: 10px;
+    @media #{$tablet-large} {
+      transform: translate3d(0,0,0);
+      @include custom-bounce;
+      transition-delay: 0.1s;
+    }
+  }
+  p {
+    color: $dark;
+    font-size: 12px;
+    margin: 0 auto;
+    font-weight: 400;
+    @media #{$tablet-large} {
+      font-size: 14px;
+      transform: translate3d(0,0,0);
+      @include custom-bounce;
+      transition-delay: 0s;
     }
   }
 }
@@ -1163,38 +1169,27 @@ footer {
   margin-bottom: 30px;
   @media #{$tablet-large} {
     padding: 40px 0;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
   }
   .container {
-    max-width: 1200px;
-    @media #{$tablet-large} {
-      display: flex;
-    }
+    max-width: 750px;
   }
   .title, .body {
     position: relative;
-    margin-bottom: 20px;
-    @media #{$tablet-large} {
-      float: left;
-      width: 50%;
-      padding: 0 $padding;
-    }
+    @include cf;
   }
   h2 {
     text-align: center;
+    margin-bottom: 10px;
     @media #{$tablet-large} {
-      text-align: left;
+      margin-bottom: 30px;
     }
   }
   p {
     text-align: center;
+    margin-bottom: 0;
     @media #{$tablet-large} {
-      text-align: left;
-      position: absolute;
-      left: $padding;
-      top: 50%;
-      transform: translateY(-50%);
-      width: calc(100% - (#{$padding * 2}));
+      font-size: 22px;
     }
   }
 }
@@ -1202,22 +1197,30 @@ footer {
 // Clients home ================================================================
 .clients {
   // height
+  $height-mob: 100px;
   $height: 120px;
 
   @include cf;
+  padding: 0 $container-padding-sml;
   text-align: center;
   margin-bottom: 80px;
+  @media #{$tablet} {
+    padding: 0;
+  }
   h2 {
     margin-bottom: 30px;
   }
   ul {
     @include cf;
-    height: calc(#{$height * 2});
+    height: calc(#{$height-mob * 2});
     overflow: hidden;
-    margin-bottom: 20px;
     @include custom-bounce (0.45s);
+    @media #{$tablet} {
+      margin-bottom: 20px;
+      height: calc(#{$height * 2});
+    }
     &.visible {
-      height: calc(#{$height * 8});
+      height: calc(#{$height-mob * 8});
       @media #{$tablet-large} {
         height: calc(#{$height * 4});
       }
@@ -1231,8 +1234,11 @@ footer {
     float: left;
     display: flex;
     align-items: center;
-    // not needed for center
-    height: $height;
+    height: 100px;
+    @media #{$tablet} {
+      // not needed for center
+      height: $height;
+    }
     &:nth-last-child(-n+12) {
       opacity: 0;
     }
@@ -1272,83 +1278,11 @@ footer {
   display: none;
 }
 
-.nextprev-nav {
-  position: relative;
-  img {
-    object-fit: cover;
-    height: 500px;
-  }
-  a {
-    display: block;
-  }
-  .text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    max-width: 550px;
-    transform: translateY(-50%) translateX(-50%);
-    width: 100%;
-    text-align: center;
-    z-index: 1;
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      right: 100px;
-      width: 0;
-      height: 1px;
-      background: white;
-      @include custom-bounce;
-    }
-  }
-  h4 {
-    text-transform: uppercase;
-    color: white;
-    font-size: 14px;
-    letter-spacing: 1px;
-    font-weight: 400;
-    @include custom-bounce;
-    transition-delay: 0.1s;
-    transform: translate3d(0,0,0);
-  }
-  h2 {
-    font-size: 35px;
-    color: white;
-    font-weight: 500;
-    @include custom-bounce;
-    transition-delay: 0s;
-    transform: translate3d(0,0,0);
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba($dark, 0.35);
-    mix-blend-mode: multiply;
-  }
-  &:hover {
-    h4 {
-      transform: translate3d(0,-20px,0);
-      transition-delay: 0;
-    }
-    h2 {
-      transform: translate3d(0,-20px,0);
-      transition-delay: 0.2s;
-    }
-    .text:after {
-      width: calc(100% - 200px);
-      left: 100px;
-      right: 100px;
-    }
-  }
-}
 
+// general overides
 .page-workpage {
   .container {
-    max-width: 1100px;
+    max-width: 1200px;
   }
   header.container, footer .container {
     max-width: 1450px;
@@ -1366,38 +1300,37 @@ footer {
       margin: 0 auto;
     }
   }
+  .author {
+    @include cf;
+    margin-bottom: 40px;
+  }
   .text-content {
-    // &:last-child {
-    //   padding-bottom: 40px;
-    //   @media #{$tablet} {
-    //     padding-bottom: 40px;
-    //   }
-    // }
     @media #{$tablet} {
       background: white;
       position: relative;
-      z-index: 10;
-      margin-top:  calc(70vh + 79px);
+      z-index: 2;
+      margin-top:  calc(555px + 109px);
       padding-top: 60px;
     }
   }
 }
 
+// hero / work page
 .work-hero {
-  $height: 70vh;
-  $height-mob: 45vh;
+  $height: 585px;
+  $height-mob: 400px;
 
   position: relative;
   width: 100%;
+  margin-bottom: 30px;
   height: $height-mob;
-  margin-bottom: 40px;
-  background-size: calc(100% + 300px);
+  background-size: cover;
   @media #{$tablet} {
     top: 79px;
     position: fixed;
     height: $height;
     margin-bottom: 60px;
-    background-size: calc(100% + 50px);
+    background-size: cover;
   }
   &:before {
     content: '';
@@ -1418,22 +1351,27 @@ footer {
       height: $height;
     }
   }
-  .container {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    overflow: visible;
+}
+
+// text on hero
+.hero-text {
+  position: absolute;
+  top: 240px;
+  right: 0;
+  left: 0;
+  overflow: visible;
+  z-index: 3;
+  @media #{$tablet} {
+      position: fixed;
+      top: 400px;
   }
-  .text {
+  .container {
     position: relative;
     z-index: 1;
-    padding: 20px 0;
     transition: all 0.5s ease 0s;
-    @media #{$tablet} {
-      padding: 40px 0;
-      max-width: 700px;
-    }
+  }
+  .content {
+    max-width: 700px;
   }
   p, h1, a {
     color: white;
@@ -1456,15 +1394,25 @@ footer {
       font-size: 14px;
     }
   }
-  &.fade {
-    .text {
-      @media #{$tablet} {
-        opacity: 0;
-      }
+  // clip through
+  &.testclass-1 {
+     h1 {
+      color: $orange;
+     }
+     .client {
+      color: $dark;
+     }
+  }
+  &.stop {
+    position: absolute;
+    top: 535px;
+    @media #{$tablet} {
+      top: 70px;
     }
   }
 }
 
+// main content
 .main-content {
   @include cf;
   @media #{$tablet} {
@@ -1473,6 +1421,7 @@ footer {
   }
 }
 
+// intro
 .intro {
   .rich-text {
     p {
@@ -1487,9 +1436,14 @@ footer {
   }
 }
 
+// rich text styles
 .rich-text, .stream-field {
   p {
     max-width: 650px;
+    font-size: 16px;
+    @media #{$tablet} {
+      font-size: 19px;
+    }
     a {
       @include line-hover;
     }
@@ -1499,29 +1453,36 @@ footer {
     font-size: 23px;
     font-weight: 400;
     margin: 30px 0 10px;
+    color: $dark;
     @media #{$tablet} {
       font-size: 25px;
       margin: 40px 0 10px;
     }
   }
   blockquote {
-    padding: 0 0 0 20px;
-    margin: 30px 0 0 -21px;
-    border-left: 1px solid $blue;
+    position: relative;
+    padding: 20px;
+    margin: 30px 0 0 0;
+    border: 1px solid $orange;
+    background: white;
     @media #{$tablet} {
-      padding: 0 0 0 40px;
+      padding: 40px;
       margin: 60px 0 50px -41px;
     }
     p {
-      font-weight: 400;
-      margin-bottom: 10px;
+      font-weight: 300;
+      line-height: 1.4;
+      margin-bottom: 20px;
       font-style: italic;
     }
     cite {
-      font-weight: 600;
+      font-weight: 500;
       font-style: normal;
-      font-size: 16px;
-      line-height: 1.2;
+      font-size: 13px;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
     }
   }
   img {
@@ -1533,6 +1494,7 @@ footer {
     height: auto;
     @media #{$tablet} {
       margin: 0;
+      background: white;
     }
   }
   .align-right {
@@ -1541,6 +1503,7 @@ footer {
       right: -90px;
       margin-right: -150px;
       float: right;
+      z-index: 1;
     }
   }
   .img-holder {
@@ -1555,15 +1518,18 @@ footer {
       margin: 0;
       position: relative;
       text-align: center;
+      background: white;
     }
   }
 }
 
+// specifications
 .specifications {
-  border-top: 1px solid rgba($dark, 0.1);
   margin-top: 15px;
   padding-top: 30px;
+  text-align: center;
   @media #{$tablet} {
+    text-align: left;
     margin-top: 0;
     padding-top: 0;
     border: 0;
@@ -1572,36 +1538,61 @@ footer {
   }
   .content {
     text-align: left;
+    width: 200px;
+    display: inline-block;
     @media #{$tablet} {
       float: right;
     }
   }
   h4 {
     text-transform: uppercase;
-    color: $orange;
-    font-size: 13px;
-    font-weight: 400;
+    color: $dark;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
     margin-bottom: 5px;
     @media #{$tablet} {
-      font-size: 15px;
+      font-size: 13px;
     }
   }
   ul {
-    margin: 0 0 30px;
+    margin: 0;
+    padding: 10px 20px;
+    border: 1px solid $dark;
+    border-bottom: 0;
+    border-top: 0;
+    &.tags {
+      padding-bottom: 20px;
+    }
     &:last-of-type {
       margin-bottom: 0;
+      padding: 20px;
+      border: 1px solid $dark;
     }
-    &.tags {
-
+    &:nth-child(2) {
+      padding-top: 20px;
+    }
+    &.logo {
+      display: block;
+      width: 100%;
+      padding: 20px;
+      border-top: 1px solid $dark;
+      border-bottom: 1px solid $dark;
+      li {
+        width: 100%;
+      }
+      img {
+        width: 130px;
+      }
     }
   }
   li {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
     line-height: 1.5;
     width: 100%;
     @media #{$tablet} {
-      font-size: 18px;
+      font-size: 15px;
     }
     a {
       display: inline-block;
@@ -1611,20 +1602,27 @@ footer {
       }
     }
   }
+  .svg {
+    display: inline;
+    fill: none;
+    stroke-width: 5px;
+    stroke: $blue;
+    stroke-linecap: round;
+    margin-left: 15px;
+    svg {
+      width: 15px;
+    }
+  }
 }
 
-.author {
-  @include cf;
-  margin-bottom: 40px;
-}
-
+// author
 .author-holder {
   @include cf;
-  border-top: 1px solid rgba($dark, 0.1);
   max-width: 700px;
   margin: 30px 0 0 0;
   padding: 30px 0 0 0;
   @media #{$tablet} {
+    border-top: 1px solid rgba($dark, 0.1);
     margin: 30px 0 0 0;
     padding: 40px 0 0 0;
   }
@@ -1656,5 +1654,147 @@ footer {
   }
 }
 
+// next peice of work
+.nextprev-nav {
+  position: relative;
+  img {
+    object-fit: cover;
+    height: 300px;
+    @media #{$tablet} {
+      height: 400px;
+    }
+  }
+  a {
+    display: block;
+    // makes entire block clickable
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  .container {
+    position: relative;
+    padding: 0 $container-padding-sml;
+    padding: 0 $container-padding;
+  }
+  .content {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    max-width: 700px;
+    width: 100%;
+    z-index: 1;
+    padding: 0 $container-padding-sml;
+    @media #{$tablet} {
+      padding: 0 $container-padding;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: $container-padding;
+      height: 1px;
+      background: white;
+      width: 0;
+      @include custom-bounce;
+    }
+  }
+  h2, .client {
+    color: white;
+    text-align: left;
+    @include custom-bounce;
+  }
+  h2 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 400;
+    transform: translate3d(0,0,0);
+    transition-delay: 0s;
+    @media #{$tablet} {
+      font-size: 65px;
+    }
+  }
+  .client {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    transform: translate3d(0,0,0);
+    transition-delay: 0.1s;
+    @media #{$tablet} {
+      font-size: 14px;
+    }
+  }
+  .next {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba($dark, 0.35);
+      background: linear-gradient(to top, rgba(43,48,51,0.9), rgba(43,48,51,0));
+      mix-blend-mode: multiply;
+    }
+  }
+  &:hover {
+    @media #{$tablet} {
+      .client {
+        transform: translate3d(0,-20px,0);
+        transition-delay: 0s;
+      }
+      h2 {
+        transform: translate3d(0,-20px,0);
+        transition-delay: 0.1s;
+      }
+      .content {
+        &:after {
+          width: calc(100% - (#{$container-padding * 2}));
+          left: $container-padding;
+          right: auto;
+        }
+      }
+    }
+  }
+}
+
+// work index page =============================================================
+
+.work-list {
+  $height: 495px;
+  $height-mobile: 350px;
+
+  // same as .home-work
+  @extend .home-work;
+  .credit {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    color: white;
+    //
+    display: none;
+  }
+  .image-container {
+    img {
+      height: $height-mobile;
+      @media #{$tablet} {
+        height: $height;
+      }
+    }
+  }
+  li {
+    width: 25%;
+    margin-bottom: 30px;
+    &:first-of-type {
+      width: 50%;
+    }
+    &:nth-child(6) {
+      width: 50%;
+    }
+  }
+}
 
 

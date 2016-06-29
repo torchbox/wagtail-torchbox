@@ -2,15 +2,19 @@
 
 {% if jobs %}
 <div class="jobs">
-    <h2>We're looking for great people</h2>
+    <h2><a href="">Jobs</a> – We're looking for great people</h2>
     <ul>
         {% for job in jobs %}
             <li>
-                <a href="{{ job.url }}">{{ job.job_title }}</a>
-                <p>{{ job.job_intro }}</p>
+                <a href="{{ job.url }}">
+                    <div class="content">
+                        <h3>{{ job.job_title }}</h3>
+                        <p>{{ job.job_intro }}</p>
+                    </div>
+                </a>
             </li>
         {% endfor %}
-        <li><a href="" class="sml">Nothing that fits? <span>Get in touch anyway.</span></a></li>
     </ul>
+    <a href="" class="sml">Nothing that fits? <span>Get in touch anyway.</span></a>
 </div>
 {% endif %}

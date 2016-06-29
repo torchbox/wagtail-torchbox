@@ -5,68 +5,71 @@
 
     {% get_popular_tags self as poptags %}
 
-    <div class="dropdown">Tags</div>
+    <div class="container">
+        <div class="dropdown">Tags</div>
 
-     <div class="popular-tags container">
-        {% if poptags and not self.hide_popular_tags %}
-            <div class="closed">
-                <p>
-                    {% for tag in poptags %}
-                        {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
-                            <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% else %}
-                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% endif %}
-                    {% endfor %}
-                    {# Optional 'show all' appears if filtering by tag #}
-                    {% if request.GET.tag|length %}
+         <div class="popular-tags">
+            {% if poptags and not self.hide_popular_tags %}
+                <div class="closed">
+                    <p>
                         {% for tag in poptags %}
-                            {% if request.GET.tag|safe == tag.slug %}
-                                <a class="before" href="{% pageurl self %}">show all</a>
+                            {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                                <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
+                            {% else %}
+                                <a href="?tag={{ tag.slug }}">{{ tag }}</a>
                             {% endif %}
                         {% endfor %}
-                    {% endif %}
-                </p>
-            </div>
-        {% endif %}
+                        {# Optional 'show all' appears if filtering by tag #}
+                        {% if request.GET.tag|length %}
+                            {% for tag in poptags %}
+                                {% if request.GET.tag|safe == tag.slug %}
+                                    <a class="before" href="{% pageurl self %}">show all</a>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </p>
+                </div>
+            {% endif %}
+        </div>
     </div>
 
     <div class="container">
-        <h1 class="visuallyhidden">{{ self.title }}</h1>
         {% if self.intro %}
             {{ self.intro|richtext }}
         {% endif %}
     </div>
 
-    <section class="work">
-        {% if works %}
-            <ul class="listing clearfix">
-                {% for work in works %}
-                    {% with work.screenshots.all|first as screenshot %}
-                    {% image screenshot.image width-2000 as screenshotimage %}
-                    <li style='background-image: url({{ screenshotimage.url}});'>
-                        <a href="{% pageurl work %}">
-                            {% if screenshot.image.credit_text %}
-                                <div class="credit">
-                                    <h5>{{ screenshot.image.credit_text }}</h5>
-                                </div>
-                            {% endif %}
-                            <div class="about">
-                                <h2>{{ work.descriptive_title }}</h2>
-                                <h3>{{ work.title }}</h3>
-                                <p>
-                                    {% if work.summary %}
-                                        {{ work.summary }}
+    <div class="work">
+        <section class="container">
+            {% if works %}
+                <ul class="work-list">
+                    {% for work in works %}
+                        {% with work.screenshots.all|first as screenshot %}
+                        {% image screenshot.image width-2000 as screenshotimage %}
+                        <li>
+                            <a href="{% pageurl work %}">
+                                <div class="content">
+                                    <div class="image-container">
+                                        <img src="{{ screenshotimage.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
+                                        {% if screenshot.image.credit_text %}
+                                    </div>
                                     {% endif %}
-                                </p>
-                             </div>
-                        </a>
-                        {% endwith %}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </section>
+                                    <div class="credit">
+                                        <h5>{{ screenshot.image.credit_text }}</h5>
+                                    </div>
+                                    <div class="work-text">
+                                        <h3>{{ work.descriptive_title }}</h3>
+                                        <h4>{{ work.title }}</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endwith %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+    </div>
 
     <div class="container pagination">
         {# Pagination #}

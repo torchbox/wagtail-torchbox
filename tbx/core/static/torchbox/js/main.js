@@ -1,3 +1,7 @@
+/**
+ * Type some JavaScript here and click either
+ * fix or diff.
+ */
 // Sign up form page form
 function bindSignUpFormPageForm(element) {
     $(element).on('submit', function(e) {
@@ -5,45 +9,53 @@ function bindSignUpFormPageForm(element) {
         e.stopImmediatePropagation();
         $(".sign-up-form-button").html("Submitting...");
         $.ajax({
-            url : $(this).attr('action'),
+            url: $(this).attr('action'),
             type: "POST",
             data: $(this).serialize(),
-            success: function (data) {
+            success: function(data) {
                 // Google Tag Manager voodoo
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
-                    'event' : 'formSubmissionSuccess',
-                    'formId' : 'sign-up-form'
+                    'event': 'formSubmissionSuccess',
+                    'formId': 'sign-up-form'
                 });
                 // end voodoo
                 $(".sign-up-form").html(data);
                 $('.page-signupformpage form.sign-up-form').each(function() {
-                    bindSignUpFormPageForm(this)
+                    bindSignUpFormPageForm(this);
                 });
             }
         });
     });
 }
 
-$(function(){
+$(function() {
 
     // new for redesign
 
     // Add active to second mainstage item on load
-    $(window).on('load', function () {
+    $(window).on('load', function() {
         $('.featured-case-studies li:nth-child(2)').addClass('active');
     });
 
     // hero hover on li change background image
     $('.featured-case-studies li:nth-child(1)').hover(
-       function(){ $('.hero').addClass('first-feature') },
-       function(){ $('.hero').removeClass('first-feature') }
-    )
+        function() {
+            $('.hero').addClass('first-feature');
+        },
+        function() {
+            $('.hero').removeClass('first-feature');
+        }
+    );
 
     $('.featured-case-studies li:nth-child(3)').hover(
-       function(){ $('.hero').addClass('third-feature') },
-       function(){ $('.hero').removeClass('third-feature') }
-    )
+        function() {
+            $('.hero').addClass('third-feature');
+        },
+        function() {
+            $('.hero').removeClass('third-feature');
+        }
+    );
 
     $('.menu-button').click(function() {
         $('.bleed').toggleClass('visible out-animation');
@@ -55,32 +67,58 @@ $(function(){
         $('.clients ul').toggleClass('visible');
     });
 
-    // background move
-    var movementStrength = 25;
-    var height = movementStrength / $(window).height();
-    var width = movementStrength / $(window).width();
-    $("#top-image").mousemove(function(e) {
-      var pageX = e.pageX - ($(window).width() / 1);
-      var pageY = e.pageY - ($(window).height() / 1);
-      var newvalueX = width * pageX * -1 - 20;
-      var newvalueY = height * pageY * -1 - 30;
-      $('#top-image').css("background-position", newvalueX + "px     " + newvalueY + "px");
-    });
-
-    // work page title fade on scroll
-    $(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-
-        if (scroll >= 50) {
-            $(".work-hero").addClass("fade");
-        } else {
-            $(".work-hero").removeClass("fade");
+        // load either desktop or mobile
+        if ($(window).width() < 768) {
+            // load on mobile
         }
-    });
+        else {
+            // load on desktop
+
+           // clip thorugh
+           // https://github.com/salsita/jq-clipthru
+           $(document).ready(function() {
+               $('#tester-unique').clipthru({
+                   autoUpdate: true,
+                   autoUpdateInterval: 30,
+                   debug: true
+               });
+           });
+
+           // stop work page title
+           $(window).scroll(function() {
+               var scroll = $(window).scrollTop();
+
+               if (scroll >= 335) {
+                   $(".hero-text").addClass("stop");
+               } else {
+                   $(".hero-text").removeClass("stop");
+               }
+           });
+
+           //grow #work-content padding top on scroll
+           $(window).bind('scroll', function(){
+               var paddingStart = 0,
+               paddingStop = 285,
+               element = $('#work-content'),
+               offset = $(document).scrollTop(),
+               paddingTop = 340;
+
+               if ( offset <= paddingStop ) {
+                   paddingTop = (60+(offset));
+               }
+
+               element.css({
+               'paddingTop' : paddingTop
+               });
+           });
+        };
+
+        // match height
+        $('.jobs li .content').matchHeight();
 
 });
 
-    // end redesign
+// end redesign
 
 //     var inOutState = function( trigger, target, speed ){
 
@@ -89,13 +127,13 @@ $(function(){
 //             outClass    = 'mouseLeave',
 //             resetClass  = 'reset',
 //             speed       = speed ? speed : 500,
-//             state 		= {
+//             state        = {
 //                 busy : false
 //             }
 
 //         $trigger.each(function(){
 
-//             var $item 	= $( this ),
+//             var $item    = $( this ),
 //                 $target = $item.find( target );
 
 //             $item.on( 'mouseenter', function(){
@@ -324,13 +362,13 @@ $(function(){
 //                 outClass    = 'mouseLeave',
 //                 resetClass  = 'reset',
 //                 speed       = speed ? speed : 500,
-//                 state 		= {
+//                 state        = {
 //                     busy : false
 //                 }
 
 //             $trigger.each(function(){
 
-//                 var $item 	= $( this ),
+//                 var $item    = $( this ),
 //                     $target = $item.find( target );
 
 //                 $item.on( 'mouseenter', function(){

@@ -27,12 +27,12 @@ module.exports = {
         settings: {
             outputStyle: 'compressed',
         },
-        liveLinting: true,
+        // liveLinting: true,
     },
     scripts: {
         src: src + '/js/**',
         dest: dest + '/js',
-        liveLinting: true,
+        // liveLinting: true,
     },
     browserify: {
         // A separate bundle will be generated for each
