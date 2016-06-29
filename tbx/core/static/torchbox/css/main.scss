@@ -1054,39 +1054,52 @@ footer {
       padding: 0 $container-padding;
     }
   }
+  a.listing {
+    display: block;
+    margin: 0 15px 15px;
+    background: white;
+    @media #{$tablet} {
+      margin: 0 15px 20px;
+      width: 33%;
+      float: left;
+      margin-bottom: 30px;
+    }
+  }
   ul {
     @include cf;
+    max-width: 1000px;
+    margin: 0 auto;
     text-align: center;
+    @media #{$tablet} {
+      display: flex;
+    }
   }
   .jobs {
     padding: 70px 0;
     width: 100%;
     text-align: center;
     li {
-      display: inline-block;
+      position: relative;
       width: 100%;
       margin-bottom: 15px;
-      padding: 0 15px;
+      padding: 100px $padding 20px;
       @media #{$tablet} {
-        padding: 0 10px;
-        width: 25%;
-        margin-bottom: 30px;
+        padding: 160px $padding 20px;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        right: $padding;
+        bottom: 10px;
+        width: 0;
+        height: 1px;
+        background: $orange;
+        @include custom-bounce;
       }
       .content {
         position: relative;
         text-align: left;
-        padding: 160px $padding $padding;
-        background: white;
-        &:after {
-          content: '';
-          position: absolute;
-          right: $padding;
-          bottom: 20px;
-          width: 0;
-          height: 1px;
-          background: $orange;
-          @include custom-bounce;
-        }
+        padding: 0;
       }
       &:hover {
         @media #{$tablet-large} {
@@ -1098,12 +1111,10 @@ footer {
             transform: translate3d(0,-30px,0);
             transition-delay: 0.1s;
           }
-          .content {
-            &:after {
-              left: $padding;
-              right: auto;
-              width: calc(100% - (#{$padding * 2}));
-            }
+          &:after {
+            left: $padding;
+            right: auto;
+            width: calc(100% - (#{$padding * 2}));
           }
         }
       }
@@ -1111,7 +1122,13 @@ footer {
   }
   .sml {
     color: $dark;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
     @include line-hover;
+    @media #{$tablet-large} {
+      margin-top: 0;
+    }
     &:after {
       background: white;
     }
@@ -1128,6 +1145,7 @@ footer {
     }
     a {
       color: white;
+      display: inline;
       @include line-hover;
       &:after {
         background: white;

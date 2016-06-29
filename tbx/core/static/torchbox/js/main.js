@@ -114,7 +114,7 @@ $(function() {
         };
 
         // match height
-        $('.jobs li .content').matchHeight();
+        // $('.jobs li .content').matchHeight();
 
 });
 

@@ -5,14 +5,14 @@
     <h2><a href="">Jobs</a> – We're looking for great people</h2>
     <ul>
         {% for job in jobs %}
-            <li>
-                <a href="{{ job.url }}">
+            <a href="{{ job.url }}" class="listing">
+                <li>
                     <div class="content">
                         <h3>{{ job.job_title }}</h3>
                         <p>{{ job.job_intro }}</p>
                     </div>
-                </a>
-            </li>
+                </li>
+            </a>
         {% endfor %}
     </ul>
     <a href="" class="sml">Nothing that fits? <span>Get in touch anyway.</span></a>
