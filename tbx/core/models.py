@@ -439,48 +439,6 @@ class StandardPage(Page):
         ImageChooserPanel('feed_image'),
     ]
 
-
-# Services page
-
-class ServicesPageContentBlock(Orderable, ContentBlock):
-    page = ParentalKey('torchbox.ServicesPage', related_name='content_block')
-
-
-class ServicesPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.ServicesPage', related_name='related_links')
-
-
-class ServicesPage(Page):
-    intro = RichTextField(blank=True)
-    body = RichTextField(blank=True)
-
-    feed_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    search_fields = Page.search_fields + (
-        index.SearchField('intro'),
-        index.SearchField('body'),
-    )
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
-        InlinePanel('content_block', label="Content block"),
-        InlinePanel('related_links', label="Related links"),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
-    ]
-
-
 # Blog index page
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
@@ -1330,6 +1288,75 @@ class MarketingLandingPage(Page):
         InlinePanel( 'clients', label="Clients"),
     ]
 
+# Contact page
+
+class Contact(Page):
+    intro = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = "Contact Index Page"
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro'),
+    ]
+
+# Services page
+
+class ServicesPage(Page):
+    subpage_types = ['torchbox.ServicesItem']
+    intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
+
+    class Meta:
+        verbose_name = "Services Index Page"
+
+    feed_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+        InlinePanel('content_block', label="Content block"),
+        InlinePanel('related_links', label="Related links"),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        ImageChooserPanel('feed_image'),
+    ]
+
+class ServicesPageContentBlock(Orderable, ContentBlock):
+    page = ParentalKey('torchbox.ServicesPage', related_name='content_block')
+
+
+class ServicesPageRelatedLink(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.ServicesPage', related_name='related_links')
+
+# Services item page
+
+class ServicesItem(Page):
+    parent_page_types = ['torchbox.ServicesPage']
+    intro = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = "Service"
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro'),
+    ]
 
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 
