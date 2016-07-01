@@ -5,47 +5,122 @@
     {% if self.main_image %}
         {% image self.main_image fill-1300x750 as header_image %}
         <style>
-            .page-banner {
+            .about-hero {
                 background-image: url('{{ header_image.url }}');
             }
         </style>
     {% endif %}
-    <div class="page-banner">
-        {{ self.heading|richtext }}
+    <div class="about-hero">
     </div>
 
-    <div class="coloured-background">
-        {% if self.quote %}
-            <div class="italic">
-                <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
+    <div class="about-text" id="tester-unique">
+        <div class="container">
+            <div class="content">
+                {{ self.heading|richtext }}
             </div>
-        {% endif %}
-    </div>
-
-    <section class="intro were-tbx container">
-        {{ self.intro|richtext }}
-    </section>
-
-    <div class="quote">
-        <div class="dark">
-            {{ self.middle_break|richtext }}
         </div>
     </div>
 
-    <section class="intro were-tbx container">
-        {{ self.body|richtext }}
-    </section>
+    <section class="text-content" data-jq-clipthru="testclass-1" id="about-content">
+        <div class="container">
+            <div class="main-content">
+                <!--
+                {% if self.quote %}
+                    <div class="italic">
+                        <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
+                    </div>
+                {% endif %}
 
-    {% include "torchbox/includes/streamfield.html" %}
+                <div class="intro were-tbx ">
+                    {{ self.intro|richtext }}
+                </div>
 
-    <section class="container">
-        {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+                <div class="quote">
+                    <div class="dark">
+                        {{ self.middle_break|richtext }}
+                    </div>
+                </div>
 
-        {% if not self|in_play %}
-            <div class="button">
-                <a href="mailto:{{ self.email }}">Get in touch</a>
+                <div class="intro were-tbx ">
+                    {{ self.body|richtext }}
+                </div>
+
+                {% include "torchbox/includes/streamfield.html" %}
+                -->
+                <!-- fields ned added for blow -->
+                <!-- hard coded -->
+                <div class="we-do">
+                    <!-- <h2>What we do</h2> -->
+                    <p>We design and build beautiful websites for some of the world’s great universities and academic institutions, globally-renowned think tanks, fundraising charities, campaigning NGOs, research programmes, and leading membership organisations.</p>
+                </div>
             </div>
-        {% endif %}
+        </div>
+
+        <ul class="services">
+            <li>
+                <div class="content">
+                    <img src="/static/torchbox/images/bespoke.svg" alt="">
+                    <h3>Bespoke solutions</h3>
+                    <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                </div>
+            </li>
+            <li>
+                <div class="content">
+                    <img src="/static/torchbox/images/digital-marketing.svg" alt="">
+                    <h3>Digital marketing</h3>
+                    <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                </div>
+            </li>
+            <li>
+                <div class="content">
+                    <img src="/static/torchbox/images/design.svg" alt="">
+                    <h3>Design and animation</h3>
+                    <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                </div>
+            </li>
+            <li>
+                <div class="content">
+                    <img src="/static/torchbox/images/ux.svg" alt="">
+                    <h3>UX</h3>
+                    <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="offices">
+            <li>
+                <div class="content">
+                    <img src="/static/torchbox/images/oxford.svg" alt="">
+                    <h3>In the glorious Cotswolds</h3>
+                    <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
+                </div>
+            </li>
+            <li>
+                <div class="content">
+                    <img src="/static/torchbox/images/bristol.svg" alt="">
+                    <h3>The Vibrant centre of Bristol</h3>
+                    <p>Go out with the team to try the endless supply of real ales, or try the abumdance of street food and sit in the vibrant parks. </p>
+                </div>
+            </li>
+            <li>
+                <div class="content">
+                    <img src="/static/torchbox/images/philadelphia.svg" alt="">
+                    <h3>Historic Philadelphia</h3>
+                    <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
+                </div>
+            </li>
+        </ul>
+
+        <div>
+            {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+
+            {% if not self|in_play %}
+                <div class="button">
+                    <a href="mailto:{{ self.email }}">Get in touch</a>
+                </div>
+            {% endif %}
+        </div>
+
     </section>
 
 {% endblock %}

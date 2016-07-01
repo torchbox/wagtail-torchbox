@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 
 {# orange arrow navigation #}
-<div class="nextprev-nav">
+<!-- <div class="nextprev-nav">
     {% if blog_posts.has_previous %}
         <div class="nextprev prev">
             <a href="?page={{ blog_posts.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="previous"><span>Previous page</span></a>
@@ -12,42 +12,50 @@
             <a href="?page={{ blog_posts.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="next"><span>Next page</span></a>
         </div>
     {% endif %}
-</div>
+</div> -->
 
-<ul class="listing clearfix">
+<ul class="blogpage-listing">
 {% for post in blog_posts %}
-    <li>
+    <li class="blue">
         <a class="block-link" href="{% pageurl post %}">
-            <div class="container">
-                <h2>{{ post.title }}</h2>
+            <div class="content">
+                <div class="image-container">
+                    <img src="" alt="">
+                </div>
+                <div class="blog-text">
+    <!--                 {% if post.intro %}
+                        {{ post.intro|richtext }}
+                    {% endif %} -->
+                    <div class="author">
+                        {% with post.related_author.all as authors %}
+                            {% if authors %}
+                                {% for author in authors %}
+                                    <div class="author-image">
+                                        {% if author.author.image %}
+                                        {% image author.author.image fill-300x300 as photo %}
+                                        <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
 
-                {% if post.intro %}
-                    {{ post.intro|richtext }}
-                {% endif %}
+                            <h3>{{ post.title }}</h3>
 
-                {% with post.related_author.all as authors %}
-                    {% if authors %}
-                        {% for author in authors %}
-                            <div class="centertall">
-                                {% if author.author.image %}
-                                    {% image author.author.image fill-300x300 as photo %}
-                                    <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
-                                {% endif %}
-                            </div>
+                            {% if post.related_author.all %}
+                                {% for author in post.related_author.all %}
+                                    <div class="name">{{ author.author.title }}</div>
+                                {% endfor %}
+                            {% endif %}
 
-                        <span>{{ author.author.title }}</span>
+                            {% if post.date %}
+                                <span class="date">{{ post.date|date:"j F Y" }}</span>
+                            {% endif %}
 
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
+                        {% endwith %}
 
-                {% if post.author_left %}
-                    <span>{{ post.author_left }}</span>
-                {% endif %}
+                    </div>
 
-                {% if post.date %}
-                    <span>|&nbsp;{{ post.date|date:"j F Y" }}</span>
-                {% endif %}
+                </div>
 
             </div>
         </a>
@@ -56,26 +64,25 @@
 </ul>
 
 <div class="container pagination">
-            {# Pagination #}
+    {# Pagination #}
 
-            {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+    {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+    <div class="previous">
+        {% if blog_posts.has_previous %}
+            <a href="?page={{ works.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Previous &nbsp;</p></a>
+        {% endif %}
+    </div>
 
-            <div>&nbsp;
-                {% if blog_posts.has_previous %}
-                    <a href="?page={{ blog_posts.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="previous"><p> Previous &nbsp;</p></a>
-                {% endif %}
-            </div>
+    <div class="number">
+        <p>{{ blog_posts.number }} of {{ blog_posts.paginator.num_pages }} </p>
+    </div>
 
-            <div>&nbsp;
-                <p> Page <span class="this-page-number">{{ blog_posts.number }}</span> of {{ blog_posts.paginator.num_pages }} </p>
-            </div>
-
-            <div> &nbsp;
-                {% if blog_posts.has_next %}
-                    <a href="?page={{ blog_posts.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="next"><p> Next </p></a>
-                {% endif %}
-            </div>
-        </div>
+    <div class="next">
+        {% if blog_posts.has_next %}
+            <a href="?page={{ works.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
+        {% endif %}
+    </div>
+</div>
 
 <script type="text/javascript">
         {% if blog_posts.has_next %}

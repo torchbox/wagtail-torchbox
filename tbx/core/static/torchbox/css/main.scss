@@ -198,7 +198,7 @@ nav {
 }
 
 // hero ========================================================================
-.hero {
+.home-hero {
   position: relative;
   height: 75vh;
   background-size: cover;
@@ -576,6 +576,17 @@ nav {
     z-index: 1;
     @include custom-bounce;
   }
+  label {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: white;
+    font-weight: 600;
+    z-index: 1;
+    @media #{$tablet} {
+      display: none;
+    }
+  }
   h3 {
     color: white;
     font-weight: 400;
@@ -659,8 +670,7 @@ nav {
           background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
           background-size: cover;
           mix-blend-mode: soft-light;
-          opacity: 0.25;
-          filter: blur(2px);
+          opacity: 0.3;
         }
       }
       .name {
@@ -696,7 +706,7 @@ nav {
           background: $orange;
         }
       }
-      h3, .date {
+      h3, .date, label {
         color: $dark;
       }
       .name {
@@ -791,6 +801,17 @@ nav {
   .author, h3, .date {
     position: relative;
     z-index: 1;
+  }
+  label {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: white;
+    font-weight: 600;
+    z-index: 1;
+    @media #{$tablet} {
+      display: none;
+    }
   }
   h3 {
     color: white;
@@ -1024,28 +1045,13 @@ footer {
 
 // Jobs listing homepage =======================================================
 .hiring {
-  // vertical space
-  $vertical-space-sml: 60px;
-  $vertical-space: 100px;
-
   // padding
   $padding: 30px;
+  //
+  $color: $grey;
 
   position: relative;
   background: $blue;
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
-    background-size: cover;
-    mix-blend-mode: soft-light;
-    filter: blur(5px);
-    opacity: 0.25;
-  }
   .container {
     position: relative;
     z-index: 1;
@@ -1057,17 +1063,23 @@ footer {
   a.listing {
     display: block;
     margin: 0 15px 15px;
-    background: white;
+    background: $color;
     @media #{$tablet} {
       margin: 0 15px 20px;
       width: 33%;
       float: left;
       margin-bottom: 30px;
     }
+    &:last-of-type {
+      margin-bottom: 40px;
+      @media #{$tablet-large} {
+        margin-bottom: 30px;
+      }
+    }
   }
   ul {
     @include cf;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
     @media #{$tablet} {
@@ -1075,31 +1087,39 @@ footer {
     }
   }
   .jobs {
-    padding: 70px 0;
+    padding: 70px 0 40px;
     width: 100%;
     text-align: center;
+    @media #{$tablet} {
+      padding: 70px 0;
+    }
     li {
       position: relative;
       width: 100%;
-      margin-bottom: 15px;
-      padding: 100px $padding 20px;
+      height: 150px;
       @media #{$tablet} {
-        padding: 160px $padding 20px;
+        height: 250px;
       }
       &:after {
         content: '';
         position: absolute;
         right: $padding;
-        bottom: 10px;
+        bottom: 20px;
         width: 0;
         height: 1px;
-        background: $orange;
+        background: $blue;
         @include custom-bounce;
       }
       .content {
-        position: relative;
+        position: absolute;
+        width: calc(100% - (#{$padding * 2}));
+        left: 15px;
+        bottom: 30px;
         text-align: left;
         padding: 0;
+        @media #{$tablet} {
+          left: $padding;
+        }
       }
       &:hover {
         @media #{$tablet-large} {
@@ -1118,6 +1138,17 @@ footer {
           }
         }
       }
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
+        background-size: 650px;
+        opacity: 1;
+      }
     }
   }
   .sml {
@@ -1125,12 +1156,13 @@ footer {
     display: inline-block;
     text-align: center;
     margin-top: 20px;
+    margin: 0 20px;
     @include line-hover;
     @media #{$tablet-large} {
       margin-top: 0;
     }
     &:after {
-      background: white;
+      background: rgba(white, 0.75);
     }
     span {
       color: white;
@@ -1156,7 +1188,9 @@ footer {
     color: $dark;
     font-weight: 400;
     margin-bottom: 10px;
+    font-size: 20px;
     @media #{$tablet-large} {
+      font-size: 30px;
       transform: translate3d(0,0,0);
       @include custom-bounce;
       transition-delay: 0.1s;
@@ -1164,11 +1198,11 @@ footer {
   }
   p {
     color: $dark;
-    font-size: 12px;
+    font-size: 14px;
     margin: 0 auto;
     font-weight: 400;
     @media #{$tablet-large} {
-      font-size: 14px;
+      font-size: 16px;
       transform: translate3d(0,0,0);
       @include custom-bounce;
       transition-delay: 0s;
@@ -1187,7 +1221,7 @@ footer {
   margin-bottom: 30px;
   @media #{$tablet-large} {
     padding: 40px 0;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
   }
   .container {
     max-width: 750px;
@@ -1316,20 +1350,22 @@ footer {
       max-width: 1350px;
       right: 0;
       margin: 0 auto;
+      padding: 15px 50px;
     }
   }
   .author {
     @include cf;
     margin-bottom: 40px;
   }
-  .text-content {
-    @media #{$tablet} {
-      background: white;
-      position: relative;
-      z-index: 2;
-      margin-top:  calc(555px + 109px);
-      padding-top: 60px;
-    }
+}
+
+.text-content {
+  @media #{$tablet} {
+    background: white;
+    position: relative;
+    z-index: 2;
+    margin-top:  calc(555px + 109px);
+    padding-top: 60px;
   }
 }
 
@@ -1355,10 +1391,10 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 70%;
+    height: 75%;
     width: 100%;
     background: rgba($dark, 0.75);
-    background: linear-gradient(to top, rgba($dark, 0.9) , rgba($dark, 0));
+    background: linear-gradient(to top, rgba($dark, 1) , rgba($dark, 0));
     mix-blend-mode: multiply;
   }
   img {
@@ -1380,8 +1416,8 @@ footer {
   overflow: visible;
   z-index: 3;
   @media #{$tablet} {
-      position: fixed;
-      top: 400px;
+    position: fixed;
+    top: 400px;
   }
   .container {
     position: relative;
@@ -1390,6 +1426,7 @@ footer {
   }
   .content {
     max-width: 700px;
+    margin: 0 auto;
   }
   p, h1, a {
     color: white;
@@ -1397,13 +1434,13 @@ footer {
   h1 {
     font-size: 35px;
     line-height: 1;
-    font-weight: 400;
+    font-weight: 200;
     @media #{$tablet} {
       font-size: 65px;
     }
   }
   .client {
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
     font-size: 11px;
     letter-spacing: 1px;
@@ -1434,8 +1471,8 @@ footer {
 .main-content {
   @include cf;
   @media #{$tablet} {
-    max-width: 70%;
-    float: left;
+    max-width: 700px;
+    margin: 0 auto;
   }
 }
 
@@ -1477,21 +1514,48 @@ footer {
       margin: 40px 0 10px;
     }
   }
+  li {
+    max-width: 650px;
+    font-size: 15px;
+    font-weight: 300;
+    color: $dark;
+    @media #{$tablet} {
+      font-size: 18px;
+    }
+  }
   blockquote {
     position: relative;
-    padding: 20px;
+    padding: 20px 0;
     margin: 30px 0 0 0;
-    border: 1px solid $orange;
-    background: white;
+    z-index: 1;
     @media #{$tablet} {
-      padding: 40px;
-      margin: 60px 0 50px -41px;
+      left: -50px;
+      padding: 40px 40px 20px;
+      margin: 60px 0 0;
+      width: calc(100% + 100px);
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: -20px;
+      width: 190px;
+      height: 190px;
+      background: url('/static/torchbox/images/pattern-sml.png') no-repeat center;
+      background-size: cover;
+      transform: rotate(90deg);
+      opacity: 0.15;
+      z-index: 0;
     }
     p {
+      max-width: 100%;
       font-weight: 300;
       line-height: 1.4;
       margin-bottom: 20px;
       font-style: italic;
+      @media #{$tablet} {
+        font-size: 23px;
+      }
     }
     cite {
       font-weight: 500;
@@ -1512,7 +1576,6 @@ footer {
     height: auto;
     @media #{$tablet} {
       margin: 0;
-      background: white;
     }
   }
   .align-right {
@@ -1527,7 +1590,7 @@ footer {
   .img-holder {
     margin: 30px 0 10px;
     @media #{$tablet} {
-      margin: 50px 0 -15px;
+      margin: 50px 0 40px;
     }
     @include cf;
     p {
@@ -1536,30 +1599,41 @@ footer {
       margin: 0;
       position: relative;
       text-align: center;
-      background: white;
     }
   }
 }
 
 // specifications
 .specifications {
-  margin-top: 15px;
-  padding-top: 30px;
+  position: relative;
   text-align: center;
+  margin-top: 40px;
   @media #{$tablet} {
-    text-align: left;
-    margin-top: 0;
-    padding-top: 0;
-    border: 0;
-    float: right;
-    width: 30%;
+      margin-top: 70px;
+  }
+  .container {
+    padding: 40px 15px;
+    border-top: 1px solid rgba($dark, 0.15);
+    @media #{$tablet} {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 70px 0;
+    }
   }
   .content {
+    position: relative;
     text-align: left;
-    width: 200px;
-    display: inline-block;
+    z-index: 1;
+  }
+  h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-variant: small-caps;
     @media #{$tablet} {
-      float: right;
+      font-size: 30px;
+      margin-bottom: 40px;
     }
   }
   h4 {
@@ -1568,44 +1642,23 @@ footer {
     font-size: 12px;
     letter-spacing: 1px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     @media #{$tablet} {
       font-size: 13px;
     }
   }
   ul {
     margin: 0;
-    padding: 10px 20px;
-    border: 1px solid $dark;
+    padding: 10px 0;
     border-bottom: 0;
-    border-top: 0;
-    &.tags {
-      padding-bottom: 20px;
-    }
-    &:last-of-type {
-      margin-bottom: 0;
-      padding: 20px;
-      border: 1px solid $dark;
-    }
-    &:nth-child(2) {
-      padding-top: 20px;
-    }
-    &.logo {
-      display: block;
-      width: 100%;
-      padding: 20px;
-      border-top: 1px solid $dark;
-      border-bottom: 1px solid $dark;
-      li {
-        width: 100%;
-      }
-      img {
-        width: 130px;
-      }
+    @media #{$tablet} {
+      width: 25%;
+      float: left;
     }
   }
   li {
     font-size: 14px;
+    margin-bottom: 5px;
     font-weight: 300;
     line-height: 1.5;
     width: 100%;
@@ -1619,6 +1672,32 @@ footer {
         text-transform: uppercase;
       }
     }
+    &.visit {
+      border: 1px dashed $blue;
+      display: inline-block;
+      padding: 10px 25px;
+      width: auto;
+      border-radius: $border-radius;
+      transition: all 0.25s ease 0s;
+      a {
+        color: $blue;
+        transition: all 0.25s ease 0s;
+      }
+      &:hover {
+        background: $blue;
+        border: 1px solid $blue;
+        color: white;
+        a {
+          color: white;
+          &:after {
+            display: none;
+          }
+        }
+        svg {
+          stroke: white;
+        }
+      }
+    }
   }
   .svg {
     display: inline;
@@ -1627,48 +1706,10 @@ footer {
     stroke: $blue;
     stroke-linecap: round;
     margin-left: 15px;
+    transition: all 0.25s ease 0s;
     svg {
-      width: 15px;
+      width: 10px;
     }
-  }
-}
-
-// author
-.author-holder {
-  @include cf;
-  max-width: 700px;
-  margin: 30px 0 0 0;
-  padding: 30px 0 0 0;
-  @media #{$tablet} {
-    border-top: 1px solid rgba($dark, 0.1);
-    margin: 30px 0 0 0;
-    padding: 40px 0 0 0;
-  }
-  img {
-    float: left;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    @media #{$tablet} {
-      width: 90px;
-      height: 90px;
-    }
-  }
-  .text {
-    float: left;
-    position: relative;
-    top: 10px;
-    @media #{$tablet} {
-      top: 30px;
-    }
-  }
-  a {
-    @include line-hover;
-  }
-  .role {
-    padding-left: 13px;
-    margin-left: 10px;
-    border-left: 1px solid rgba($dark, 0.5);
   }
 }
 
@@ -1680,6 +1721,26 @@ footer {
     height: 300px;
     @media #{$tablet} {
       height: 400px;
+    }
+  }
+  &:before {
+    content: 'Next';
+    position: absolute;
+    top: -1px;
+    left: 15px;
+    padding: 41px 20px 20px;
+    background: white;
+    z-index: 2;
+    color: $dark;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transform: translate3d(0,0,0);
+    @include custom-bounce;
+    transition-delay: 0.3s;
+    @media #{$tablet} {
+      left: 90px;
     }
   }
   a {
@@ -1717,7 +1778,7 @@ footer {
       @include custom-bounce;
     }
   }
-  h2, .client {
+  h2, .client, .author {
     color: white;
     text-align: left;
     @include custom-bounce;
@@ -1725,21 +1786,21 @@ footer {
   h2 {
     font-size: 35px;
     line-height: 1;
-    font-weight: 400;
+    font-weight: 200;
     transform: translate3d(0,0,0);
-    transition-delay: 0s;
+    transition-delay: 0.1s;
     @media #{$tablet} {
       font-size: 65px;
     }
   }
-  .client {
-    font-weight: 600;
+  .client, .author {
+    font-weight: 400;
     text-transform: uppercase;
     font-size: 11px;
     letter-spacing: 1px;
     margin-bottom: 15px;
     transform: translate3d(0,0,0);
-    transition-delay: 0.1s;
+    transition-delay: 0.2s;
     @media #{$tablet} {
       font-size: 14px;
     }
@@ -1760,13 +1821,17 @@ footer {
   }
   &:hover {
     @media #{$tablet} {
-      .client {
-        transform: translate3d(0,-20px,0);
+      &:before {
+        transform: translate3d(0,-10px,0);
         transition-delay: 0s;
+      }
+      .client, .author {
+        transform: translate3d(0,-20px,0);
+        transition-delay: 0.1s;
       }
       h2 {
         transform: translate3d(0,-20px,0);
-        transition-delay: 0.1s;
+        transition-delay: 0.2s;
       }
       .content {
         &:after {
@@ -1780,13 +1845,74 @@ footer {
 }
 
 // work index page =============================================================
+.page-workindexpage {
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    color: $orange;
+    padding: 60px 0 0;
+    @media #{$tablet} {
+      padding: 140px 0 10px;
+      font-size: 65px;
+    }
+  }
+}
 
+
+// popular tags ================================================================
+.popular-tags {
+  margin: 10px 0 20px;
+  @media #{$tablet} {
+    margin: 50px 0 40px;
+    padding: 0 15px;
+  }
+  a {
+    display: inline-block;
+    color: $dark;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin: 5px 5px 0 0;
+    background: rgba($dark, 0.1);
+    border: 1px solid transparent;
+    padding: 4px 7px 3px;
+    transition: all 0.35s ease 0s;
+    @media #{$tablet} {
+      margin: 0 5px;
+    }
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:hover {
+      border-color: $blue;
+      background: transparent;
+    }
+    // active
+    &.filtering {
+      border-color: $blue;
+      background: $blue;
+      color: white;
+    }
+    // clear all
+    &.before {
+      border-color: $orange;
+      background: $orange;
+      color: white;
+    }
+  }
+}
+
+
+// work listing ================================================================
 .work-list {
   $height: 495px;
   $height-mobile: 350px;
 
   // same as .home-work
   @extend .home-work;
+  margin-bottom: 0;
   .credit {
     position: absolute;
     left: 25px;
@@ -1804,15 +1930,403 @@ footer {
     }
   }
   li {
-    width: 25%;
-    margin-bottom: 30px;
-    &:first-of-type {
-      width: 50%;
-    }
-    &:nth-child(6) {
-      width: 50%;
+    @media #{$tablet} {
+      width: 25%;
+      margin-bottom: 30px;
+      &:first-of-type {
+        width: 50%;
+      }
+      &:nth-child(6) {
+        width: 50%;
+      }
     }
   }
 }
+
+// pagination ==================================================================
+.pagination {
+  text-transform: uppercase;
+  padding-left: 65px;
+  margin: 30px 0 50px;
+  a, p {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+  }
+  div {
+    float: left;
+    margin-right: 20px;
+    &:nth-child(2) {
+      position: relative;
+      top: 5px;
+    }
+    &.previous, &.next {
+      p {
+        color: $blue;
+        border: 1px dashed $blue;
+        border-radius: $border-radius;
+        padding: 5px 25px;
+        transition: all 0.25s ease 0s;
+      }
+      &:hover {
+        cursor: pointer;
+        p {
+          color: white;
+          border-style: solid;
+          background: $blue;
+        }
+      }
+    }
+  }
+}
+
+// Blog index ==================================================================
+.page-blogindexpage {
+  .hero {
+    position: relative;
+    background: url('/static/torchbox/images/office-01.jpg') no-repeat center;
+    background-size: cover;
+    height: 450px;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 75%;
+      width: 100%;
+      background: rgba(43,48,51,0.75);
+      background: linear-gradient(to top, #2b3033, rgba(43,48,51,0));
+      mix-blend-mode: multiply;
+    }
+    .container {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    .blog-title {
+      h1 {
+        color: white;
+        font-size: 35px;
+        line-height: 1;
+        font-weight: 200;
+        @media #{$tablet} {
+          font-size: 65px;
+        }
+      }
+    }
+  }
+  .pagination {
+    margin-top: 10px;
+  }
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    color: $orange;
+    padding: 60px 0 0;
+    @media #{$tablet} {
+      padding: 140px 0 10px;
+      font-size: 65px;
+    }
+  }
+}
+
+.blogpage-listing {
+  @extend .blog-list;
+  margin-bottom: 0px;
+}
+
+// blog-page ===================================================================
+.page-blog-single {
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    color: $orange;
+    padding: 60px 0 0;
+    @media #{$tablet} {
+      padding: 100px 0 0;
+      font-size: 65px;
+      margin-bottom: 20px;
+    }
+  }
+  .next {
+    height: 300px;
+    // needs to be inline
+    background: url('/static/torchbox/images/office-01.jpg') no-repeat center;
+    background-size: cover;
+    @media #{$tablet} {
+      height: 400px;
+    }
+      &:after {
+        mix-blend-mode: multiply;
+        height: 100%;
+        background-color: rgba(43,48,51,0.75);
+        background: linear-gradient(to top, #2b3033, rgba(43,48,51,0));
+      }
+    .container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      z-index: 10;
+    }
+    h2 {
+      font-size: 25px;
+      @media #{$tablet} {
+        font-size: 50px;
+      }
+    }
+    &.blue {
+      background: $blue;
+      background-image: none;
+      &:after {
+        background-image: url("/static/torchbox/images/dot-pattern.png");
+        background-size: cover;
+        background-color: transparent;
+        mix-blend-mode: soft-light;
+        opacity: 0.3;
+        filter: blur(3px);
+      }
+    }
+    &.orange {
+      @extend .blue;
+      background: $orange;
+    }
+    &.white {
+      @extend .blue;
+      background: $grey;
+      &:after {
+        mix-blend-mode: unset;
+        opacity: 1;
+      }
+      .content:after {
+        background: $orange
+      }
+      h2 {
+        color: $dark;
+      }
+    }
+  }
+}
+
+// article meta
+.article-meta {
+  @include cf;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+// blog-meta
+.blog-meta {
+  @include cf;
+  padding: 30px 0;
+  margin: 30px 0 0;
+  border-top: 1px solid rgba(43,48,51,0.15);
+  @media #{$tablet} {
+    padding: 60px 0;
+    margin: 50px 0 0;
+  }
+  > * {
+    @media #{$tablet} {
+      float: left;
+    }
+    &:first-of-type {
+      margin-bottom: 30px;
+      @media #{$tablet} {
+        width: 70%;
+        margin-bottom: 0;
+      }
+    }
+    &:last-of-type {
+      @media #{$tablet} {
+        width: 30%;
+      }
+    }
+  }
+}
+
+// author-holder
+.author-holder {
+  @include cf;
+  a {
+    margin-right: 10px;
+    font-weight: 300;
+    @include line-hover;
+  }
+  .role {
+    display: block;
+    font-weight: 300;
+  }
+  .text {
+    position: relative;
+    top: 27px;
+  }
+}
+
+// tags blog page
+.tags {
+  display: block;
+  h4 {
+    text-transform: uppercase;
+    color: #2b3033;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    @media #{$tablet} {
+      font-size: 13px;
+    }
+  }
+  a {
+    @include line-hover;
+    font-weight: 300;
+  }
+  ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// page-standardpage ===========================================================
+.page-standardpage {
+  nav {
+    @media #{$tablet} {
+      position: fixed;
+      left: 0;
+      max-width: 1350px;
+      right: 0;
+      margin: 0 auto;
+      padding: 15px 50px;
+    }
+  }
+}
+
+// about text
+.about-text {
+  @extend .hero-text;
+  top: 200px;
+  @media #{$tablet} {
+    top: 260px;
+  }
+  h2 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    color: white;
+    text-align: center;
+    @media #{$tablet} {
+      font-size: 65px;
+    }
+  }
+  // clip through
+  &.testclass-1 {
+     h2 {
+      color: $orange;
+     }
+  }
+  &.stop {
+    position: absolute;
+    top: 535px;
+    @media #{$tablet} {
+      top: 60px;
+    }
+  }
+}
+
+.about-hero {
+  @extend .work-hero;
+}
+
+.we-do {
+  @media #{$tablet} {
+    margin-bottom: 90px;
+    @include cf;
+  }
+  p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 25px;
+    @media #{$tablet} {
+      font-size: 23px;
+    }
+  }
+}
+
+.services {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba($dark, 0.15);
+  padding: 0 50px 30px;
+  margin-bottom: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    margin-bottom: 30px;
+    @media #{$tablet} {
+      width: 50%;
+      float: left;
+      margin-bottom: 40px;
+    }
+  }
+  .content {
+    padding: 0 15px;
+    text-align: center;
+    @media #{$tablet} {
+      padding: 0 60px;
+    }
+    img {
+      display: inline-block;
+      max-width: 50px;
+      min-height: 50px;
+    }
+    h3 {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      @media #{$tablet} {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+// offices
+.offices {
+  @extend .services;
+  max-width: 1200px;
+  padding: 0 0 10px;
+  li {
+    @media #{$tablet} {
+      width: 33.3%;
+    }
+    &:last-of-type {
+      img {
+        max-width: 40px;
+      }
+    }
+  }
+  .content {
+    padding: 0 30px;
+    img {
+      max-width: 80px;
+      max-height: 50px;
+    }
+  }
+  p {
+    font-size: 16px;
+  }
+}
+
+
+
 
 

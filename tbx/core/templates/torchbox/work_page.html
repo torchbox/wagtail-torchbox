@@ -36,13 +36,16 @@
                     {% include "torchbox/includes/streamfield.html" %}
                 </div>
             </div>
-            <div class="specifications">
+        </div>
+        <div class="specifications">
+            <div class="container">
                 <div class="content">
-                <ul class="logo">
+                <h2>specifications</h2>
+<!--                 <ul class="logo">
                     <li>
                         <img src="/static/torchbox/images/RAU.svg" alt="">
                     </li>
-                </ul>
+                </ul> -->
                 <ul>
                     <li><h4>sector</h4></li>
                     <li>Non-profit</li>
@@ -69,7 +72,7 @@
                     {% endwith %}
                 </ul>
                 <ul>
-                    <li>
+                    <li class="visit">
                         <a href="">
                             Visit the site
                             <span class="svg">
@@ -89,28 +92,7 @@
                 </ul>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="author" >
-                {% with self.related_author.all as authors %}
-                    {% if authors %}
-                        {% for author in authors %}
-                        <div class="author-holder">
-                            {% if author.author.image %}
-                                {% image author.author.image fill-300x300 as photo %}
-                                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
-                            {% endif %}
-                            <div class="text">
-                                {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
-                                {% if author.author.role %}
-                                <span class="role">{{ author.author.role }}</span>
-                            </div>
-                        </div>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </div>
+
         </div>
     </section>
 

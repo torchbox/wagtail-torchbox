@@ -6,7 +6,8 @@
     {% get_popular_tags self as poptags %}
 
     <div class="container">
-        <div class="dropdown">Tags</div>
+
+        <h1>Our case studies</h1>
 
          <div class="popular-tags">
             {% if poptags and not self.hide_popular_tags %}
@@ -75,17 +76,17 @@
         {# Pagination #}
 
         {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-        <div>&nbsp;
+        <div class="previous">
             {% if works.has_previous %}
                 <a href="?page={{ works.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Previous &nbsp;</p></a>
             {% endif %}
         </div>
 
-        <div>&nbsp;
-            <p> Page {{ works.number }} of {{ works.paginator.num_pages }} </p>
+        <div class="number">
+            <p> {{ works.number }} of {{ works.paginator.num_pages }} </p>
         </div>
 
-        <div> &nbsp;
+        <div class="next">
             {% if works.has_next %}
                 <a href="?page={{ works.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
             {% endif %}

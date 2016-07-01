@@ -22,11 +22,12 @@
 
     <section id="posts" class="container">
 
+        <h2>{{ self.blog_title|safe }}</h2>
+        {% homepage_blog_listing %}
+
         <h2>{{ self.work_title|safe }}</h2>
         {% homepage_work_listing %}
 
-        <h2>{{ self.blog_title|safe }}</h2>
-        {% homepage_blog_listing %}
     </section>
 
     <!-- /clients -->

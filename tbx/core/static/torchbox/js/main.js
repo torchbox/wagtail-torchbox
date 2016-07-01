@@ -41,19 +41,19 @@ $(function() {
     // hero hover on li change background image
     $('.featured-case-studies li:nth-child(1)').hover(
         function() {
-            $('.hero').addClass('first-feature');
+            $('.home-hero').addClass('first-feature');
         },
         function() {
-            $('.hero').removeClass('first-feature');
+            $('.home-hero').removeClass('first-feature');
         }
     );
 
     $('.featured-case-studies li:nth-child(3)').hover(
         function() {
-            $('.hero').addClass('third-feature');
+            $('.home-hero').addClass('third-feature');
         },
         function() {
-            $('.hero').removeClass('third-feature');
+            $('.home-hero').removeClass('third-feature');
         }
     );
 
@@ -112,6 +112,34 @@ $(function() {
                });
            });
         };
+
+          // stop about page title
+          $(window).scroll(function() {
+              var scroll = $(window).scrollTop();
+
+              if (scroll >= 465) {
+                  $(".about-text").addClass("stop");
+              } else {
+                  $(".about-text").removeClass("stop");
+              }
+          });
+
+           //grow #about-content padding top on scroll
+           $(window).bind('scroll', function(){
+               var paddingStart = 60,
+               paddingStop = 300,
+               element = $('#about-content'),
+               offset = $(document).scrollTop(),
+               paddingTop = 350;
+
+               if ( offset <= paddingStop ) {
+                   paddingTop = (60+(offset));
+               }
+
+               element.css({
+               'paddingTop' : paddingTop
+               });
+           });
 
         // match height
         // $('.jobs li .content').matchHeight();
