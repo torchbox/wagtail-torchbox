@@ -1042,7 +1042,6 @@ footer {
   margin: 0 auto;
 }
 
-
 // Jobs listing homepage =======================================================
 .hiring {
   // padding
@@ -1280,6 +1279,9 @@ footer {
         opacity: 1;
       }
     }
+  }
+  a {
+    width: 100%;
   }
   li {
     width: 50%;
@@ -2207,6 +2209,23 @@ footer {
       padding: 15px 50px;
     }
   }
+  footer {
+    position: relative;
+    z-index: 10;
+  }
+  .text-content {
+    &:last-of-type {
+      margin-top: 0px;
+    }
+  }
+  .full-image {
+    position: relative;
+    z-index: 1;
+    height: 600px;
+    background: url('/static/torchbox/images/full-width-bristol.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
 }
 
 // about text
@@ -2264,9 +2283,8 @@ footer {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  border-bottom: 1px solid rgba($dark, 0.15);
-  padding: 0 50px 30px;
-  margin-bottom: 70px;
+  padding: 0 50px 70px;
+  margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
   li {
@@ -2287,6 +2305,7 @@ footer {
       display: inline-block;
       max-width: 50px;
       min-height: 50px;
+      margin-bottom: 10px;
     }
     h3 {
       font-size: 20px;
@@ -2297,13 +2316,26 @@ footer {
       }
     }
   }
+  button {
+    margin: 0 auto;
+  }
 }
 
 // offices
 .offices {
   @extend .services;
   max-width: 1200px;
-  padding: 0 0 10px;
+  padding: 70px 0 10px;
+  margin-bottom: 70px;
+  display: block;
+  border-bottom: 1px solid rgba($dark, 0.15);
+  @include cf;
+  @media #{$tablet} {
+    padding-top: 0;
+  }
+  h2 {
+    margin-bottom: 40px;
+  }
   li {
     @media #{$tablet} {
       width: 33.3%;
@@ -2323,6 +2355,23 @@ footer {
   }
   p {
     font-size: 16px;
+  }
+}
+
+.values {
+  max-width: 1200px;
+  margin: 0 auto 70px;
+  @include cf;
+  h2 {
+    margin-bottom: 40px;
+  }
+  li {
+    padding: 0 15px;
+    float: left;
+    margin-bottom: 15px;
+    @media #{$tablet} {
+      width: 50%;
+    }
   }
 }
 

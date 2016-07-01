@@ -31,10 +31,12 @@
     </section>
 
     <!-- /clients -->
-    <section class="clients">
-        <h2>{{ self.clients_title|safe }}</h2>
-        {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
-    </section>
+    <div class="container">
+        <section class="clients">
+            <h2>{{ self.clients_title|safe }}</h2>
+            {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+        </section>
+    </div>
 
     <section class="hiring">
         <div class="container">

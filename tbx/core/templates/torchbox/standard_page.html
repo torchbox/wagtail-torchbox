@@ -50,76 +50,105 @@
                 <!-- fields ned added for blow -->
                 <!-- hard coded -->
                 <div class="we-do">
-                    <!-- <h2>What we do</h2> -->
                     <p>We design and build beautiful websites for some of the world’s great universities and academic institutions, globally-renowned think tanks, fundraising charities, campaigning NGOs, research programmes, and leading membership organisations.</p>
                 </div>
             </div>
+
+            <div class="services">
+                <ul>
+                    <li>
+                        <div class="content">
+                            <img src="/static/torchbox/images/bespoke.svg" alt="">
+                            <h3>Bespoke solutions</h3>
+                            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="/static/torchbox/images/digital-marketing.svg" alt="">
+                            <h3>Digital marketing</h3>
+                            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="/static/torchbox/images/design.svg" alt="">
+                            <h3>Design and animation</h3>
+                            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="/static/torchbox/images/ux.svg" alt="">
+                            <h3>UX</h3>
+                            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                        </div>
+                    </li>
+                </ul>
+                <button>All Services</button>
+            </div>
+
         </div>
+    </section>
 
-        <ul class="services">
-            <li>
-                <div class="content">
-                    <img src="/static/torchbox/images/bespoke.svg" alt="">
-                    <h3>Bespoke solutions</h3>
-                    <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <img src="/static/torchbox/images/digital-marketing.svg" alt="">
-                    <h3>Digital marketing</h3>
-                    <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <img src="/static/torchbox/images/design.svg" alt="">
-                    <h3>Design and animation</h3>
-                    <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <img src="/static/torchbox/images/ux.svg" alt="">
-                    <h3>UX</h3>
-                    <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
-                </div>
-            </li>
-        </ul>
+    <div class="full-image">
+    </div>
 
-        <ul class="offices">
-            <li>
-                <div class="content">
-                    <img src="/static/torchbox/images/oxford.svg" alt="">
-                    <h3>In the glorious Cotswolds</h3>
-                    <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <img src="/static/torchbox/images/bristol.svg" alt="">
-                    <h3>The Vibrant centre of Bristol</h3>
-                    <p>Go out with the team to try the endless supply of real ales, or try the abumdance of street food and sit in the vibrant parks. </p>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <img src="/static/torchbox/images/philadelphia.svg" alt="">
-                    <h3>Historic Philadelphia</h3>
-                    <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
-                </div>
-            </li>
-        </ul>
+    <section class="text-content">
+        <div class="container">
 
-        <div>
-            {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+            <div class="offices">
+                <h2>Our offices</h2>
+                <ul>
+                    <li>
+                        <div class="content">
+                            <img src="/static/torchbox/images/oxford.svg" alt="">
+                            <h3>In the glorious Cotswolds</h3>
+                            <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="/static/torchbox/images/bristol.svg" alt="">
+                            <h3>The Vibrant centre of Bristol</h3>
+                            <p>Go out with the team to try the endless supply of real ales, or try the abumdance of street food and sit in the vibrant parks. </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="/static/torchbox/images/philadelphia.svg" alt="">
+                            <h3>Historic Philadelphia</h3>
+                            <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-            {% if not self|in_play %}
-                <div class="button">
-                    <a href="mailto:{{ self.email }}">Get in touch</a>
-                </div>
-            {% endif %}
+            <div class="values">
+                <h2>Our four core values</h2>
+                <ul>
+                    <li>
+                        <img src="/static/torchbox/images/happy.png" alt="">
+                    </li>
+                    <li>
+                        <img src="/static/torchbox/images/better.png" alt="">
+                    </li>
+                    <li>
+                        <img src="/static/torchbox/images/stand.png" alt="">
+                    </li>
+                    <li>
+                        <img src="/static/torchbox/images/enjoy.png" alt="">
+                    </li>
+                </ul>
+            </div>
+
+            <div class="clients">
+                <h2>We're proud to have worked with</h2>
+                {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+            </div>
         </div>
+    </section>
+
 
     </section>
 
