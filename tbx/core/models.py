@@ -1304,6 +1304,7 @@ class Contact(Page):
 # Services page
 
 class ServicesPage(Page):
+    subpage_types = ['torchbox.ServicesItem']
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
 
@@ -1346,6 +1347,7 @@ class ServicesPageRelatedLink(Orderable, RelatedLink):
 # Services item page
 
 class ServicesItem(Page):
+    parent_page_types = ['torchbox.ServicesPage']
     intro = models.TextField(blank=True)
 
     class Meta:
