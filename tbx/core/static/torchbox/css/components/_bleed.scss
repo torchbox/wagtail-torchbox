@@ -1,4 +1,7 @@
 .bleed {
+    @include custom-transition (200ms);
+    @include custom-transition;
+    transition-delay: 200ms;
     overflow: hidden;
     height: 0;
     float: right;
@@ -8,23 +11,25 @@
     position: absolute;
     left: 0;
     top: 55px;
-    @include custom-transition (200ms);
-    &:before {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background: white;
-    @include custom-transition;
-    transition-delay: 200ms;
+
+    // Prevent links being cut off
+    // FIXME
+    padding-left: 1px;
+    padding-right: 1px;
+
+      &:before {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: white;
     }
     @media #{$tablet} {
       height: auto;
       width: auto;
-      //
       position: relative;
       top: 0;
       &:before {
