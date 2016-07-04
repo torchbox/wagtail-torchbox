@@ -64,7 +64,27 @@ $(function() {
 
     // load more logos
     $('.clients button').click(function() {
-        $('.clients ul').toggleClass('visible');
+        var $button = $(this);
+        var $list   = $( '.clients ul' );
+        var visible = 'visible';
+
+        // If already open
+        if ( $list.hasClass( visible ) ) {
+          $list.removeClass( visible )
+
+          setTimeout(function() {
+            $button.html( 'Show more' );
+          }, 900);
+        } 
+
+        // If closed
+        else {
+          $list.addClass( visible );
+
+          setTimeout(function() {
+              $button.html( 'Show less' );
+          }, 1300);
+        }
     });
 
         // load either desktop or mobile
@@ -95,7 +115,7 @@ $(function() {
                }
            });
 
-           //grow #work-content padding top on scroll
+           // grow #work-content padding top on scroll
            $(window).bind('scroll', function(){
                var paddingStart = 0,
                paddingStop = 285,
@@ -108,9 +128,10 @@ $(function() {
                }
 
                element.css({
-               'paddingTop' : paddingTop
+                'paddingTop' : paddingTop
                });
            });
+
         };
 
           // stop about page title

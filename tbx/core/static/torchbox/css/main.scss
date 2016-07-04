@@ -1349,7 +1349,7 @@ footer {
     @media #{$tablet} {
       position: fixed;
       left: 0;
-      max-width: 1350px;
+      max-width: 1450px;
       right: 0;
       margin: 0 auto;
       padding: 15px 50px;
@@ -1366,8 +1366,17 @@ footer {
     background: white;
     position: relative;
     z-index: 2;
-    margin-top:  calc(555px + 109px);
+    margin-top: calc(555px + 109px);
     padding-top: 60px;
+  }
+
+  .overlay {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    bottom: 0;
   }
 }
 
