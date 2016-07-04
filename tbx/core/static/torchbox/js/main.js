@@ -62,30 +62,47 @@ $(function() {
         $('.menu-button').toggleClass('twist');
     });
 
+
+
+
     // load more logos
-    $('.clients button').click(function() {
-        var $button = $(this);
-        var $list   = $( '.clients ul' );
-        var visible = 'visible';
+    var loadMore = function() {
 
-        // If already open
-        if ( $list.hasClass( visible ) ) {
-          $list.removeClass( visible )
+      var $clients          = $('.clients'),
+          $clientsButton    = $clients.find( 'button' ),
+          $list             = $( '.clients ul' ),
+          visible           = 'visible',
+          moreLabel         = 'Load more',
+          lessLabel         = 'Show less';
 
-          setTimeout(function() {
-            $button.html( 'Show more' );
-          }, 900);
-        } 
+      $clientsButton.click(function() {
 
-        // If closed
-        else {
-          $list.addClass( visible );
+        var $clientsButton  = $(this);
+          
+          // If already open
+          if ( $list.hasClass( visible ) ) {
+            $list.removeClass( visible )
 
-          setTimeout(function() {
-              $button.html( 'Show less' );
-          }, 1300);
-        }
-    });
+            setTimeout(function() {
+              $clientsButton.html( moreLabel );
+            }, 900);
+          } 
+
+          // If already closed
+          else {
+            $list.addClass( visible );
+
+            setTimeout(function() {
+                $clientsButton.html( lessLabel );
+            }, 1300);
+          }
+      });
+    }
+
+    loadMore();
+
+
+
 
         // load either desktop or mobile
         if ($(window).width() < 768) {
