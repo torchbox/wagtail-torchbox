@@ -1,0 +1,18 @@
+.feature-image {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  height: 75vh;
+  background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
+  background-size: cover;
+  -webkit-transition: opacity 0.25s ease 0s;
+  transition: opacity 0.25s ease 0s;
+  @media #{$tablet} {
+    height: 85vh;
+  }
+  &:nth-child(2) {
+    opacity: 1;
+  }
+}

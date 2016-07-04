@@ -1,0 +1,11 @@
+// site structure ==============================================================
+.container {
+    max-width: 1450px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 $container-padding-sml;
+    @include cf;
+    @media #{$tablet} {
+      padding: 0 $container-padding;
+    }
+}

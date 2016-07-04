@@ -1,0 +1,36 @@
+// offices
+.offices {
+  @extend .services;
+  max-width: 1200px;
+  padding: 70px 0 10px;
+  margin-bottom: 70px;
+  display: block;
+  border-bottom: 1px solid rgba($dark, 0.15);
+  @include cf;
+  @media #{$tablet} {
+    padding-top: 0;
+  }
+  h2 {
+    margin-bottom: 40px;
+  }
+  li {
+    @media #{$tablet} {
+      width: 33.3%;
+    }
+    &:last-of-type {
+      img {
+        max-width: 40px;
+      }
+    }
+  }
+  .content {
+    padding: 0 30px;
+    img {
+      max-width: 80px;
+      max-height: 50px;
+    }
+  }
+  p {
+    font-size: 16px;
+  }
+}

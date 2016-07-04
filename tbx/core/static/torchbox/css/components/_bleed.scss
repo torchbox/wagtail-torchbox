@@ -1,0 +1,107 @@
+.bleed {
+    overflow: hidden;
+    height: 0;
+    float: right;
+    margin-top: 12px;
+    z-index: 5;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 55px;
+    @include custom-transition (200ms);
+    &:before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: white;
+    @include custom-transition;
+    transition-delay: 200ms;
+    }
+    @media #{$tablet} {
+      height: auto;
+      width: auto;
+      //
+      position: relative;
+      top: 0;
+      &:before {
+      display: none;
+      }
+    }
+    &.visible {
+      padding: 50px 0 0;
+      height: 100vh;
+      &:before {
+        width: 100%;
+      }
+      li {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    &.out-animation {
+      transition-delay: 900ms;
+    &:before {
+      transition-delay: 650ms;
+      left: auto;
+      right: 0;
+    }
+    li {
+      transition: all 75ms cubic-bezier(0.705, 0.000, 1.000, 1.130);
+    }
+    }
+    li {
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translate3d(0, -20px, 0);
+      @include custom-transition (500ms);
+    &:nth-child(1) {
+      transition-delay: 0.2s;
+    }
+    &:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+    &:nth-child(3) {
+      transition-delay: 0.4s;
+    }
+    &:nth-child(4) {
+      transition-delay: 0.5s;
+    }
+    &:nth-child(5) {
+      transition-delay: 0.6s;
+    }
+    &:nth-child(6) {
+      transition-delay: 0.7s;
+    }
+    @media #{$tablet} {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      text-align: left;
+      float: left;
+      margin-right: 60px;
+      margin-bottom: 0;
+      transition-delay: 0 !important;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+    a {
+      color: $dark;
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 400;
+      @media #{$tablet} {
+        font-size: 15px;
+        position: relative;
+        top: 0;
+        @include line-hover;
+      }
+    }
+  }
+}

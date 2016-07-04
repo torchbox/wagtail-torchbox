@@ -1,0 +1,73 @@
+// about tbx homepage ==========================================================
+.about-tbx {
+  //padding
+  $padding: 20px;
+
+  @include cf;
+  padding: 0;
+  margin-bottom: 30px;
+  @media #{$tablet-large} {
+    padding: 40px 0;
+    margin-bottom: 70px;
+  }
+  .container {
+    max-width: 750px;
+  }
+  .title, .body {
+    position: relative;
+    @include cf;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    @media #{$tablet-large} {
+      margin-bottom: 30px;
+    }
+  }
+  p {
+    text-align: center;
+    margin-bottom: 0;
+    @media #{$tablet-large} {
+      font-size: 22px;
+    }
+  }
+}
+
+// about text
+.about-text {
+  @extend .hero-text;
+  top: 200px;
+  @media #{$tablet} {
+    top: 260px;
+  }
+  &,
+  .rich-text {
+    h2 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    color: white;
+    text-align: center;
+    @media #{$tablet} {
+      font-size: 65px;
+    }
+  }
+  // clip through
+  &.testclass-1 {
+     h2 {
+      color: $orange;
+     }
+  }
+  &.stop {
+    position: absolute;
+    top: 535px;
+    @media #{$tablet} {
+      top: 60px;
+    }
+  }
+  }
+}
+
+.about-hero {
+  @extend .work-hero;
+}
