@@ -70,11 +70,19 @@ p {
   }
 }
 
-button {
-
+input, textarea {
+  transition: all 0.25s ease 0s;
+  outline: none;
+  border: 1px solid #DDDDDD;
 }
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 5px $orange;
+  border: 1px solid $orange;
+}
+
 // button ======================================================================
-button {
+button, .btn {
   border: none;
   font-family: $secondaryFont;
   line-height: 1;
