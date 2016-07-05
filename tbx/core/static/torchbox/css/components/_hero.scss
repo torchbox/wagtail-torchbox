@@ -29,21 +29,6 @@
       top: 35vh;
     }
   }
-  &.third-feature {
-    .feature-image {
-      &:nth-child(3) {
-        opacity: 1;
-      }
-    }
-  }
-  &.first-feature {
-    .feature-image {
-      &:nth-child(1) {
-        opacity: 1;
-        z-index: 1;
-      }
-    }
-  }
 }
 
 

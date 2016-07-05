@@ -1,273 +1,320 @@
+// Load in required functions
+$(document).ready(function() {
+    tbx.heroImages();
+    tbx.mobileMenu();
+    tbx.loadMore();
+    tbx.clipThru();
+    tbx.scrollEvents();
+    tbx.map();
+    tbx.signUp();
+});
+
+var tbx = {
+
+  // Hero image carousel/slider
+  heroImages: function() {
+
+     var $heroButton       = $('.featured-case-studies li'),
+      $heroContainer    = $( '.home-hero' ),
+      $heroList         = $( '.feature-images' ),
+      $heroImage        = $( '.feature-image' ),
+      activeClass       = 'active',
+      currentItem       = null;
+
+      // On load we're forcing the second item to appear (via CSS)
+      // but once the user interacts with the hero we need to 
+      // revert this behaviour to default
+      function resetHero() {
+        $heroContainer.removeClass( 'initial-load' );
+      }
+
+      function hideHeroItems( $item ) {
+        $heroButton.not( $item ).removeClass( activeClass );
+        $heroImage.removeClass( activeClass );
+      }
+
+      function showHeroItem( $item ) {
+        currentItem = $item.data( 'name' );
+      
+        // Set hover state on button/link            
+        $item.addClass( activeClass );
+
+        // Show corresponding image
+        $heroList.find( '[data-name="' + currentItem + '"]' ).addClass( activeClass );      
+      }
+
+      $heroButton.mouseenter(function() {
+
+        resetHero();
+        hideHeroItems( $(this) );
+        showHeroItem( $(this) );
+        
+      });
+  },
+
+
+  // Mobile menu functionality
+  mobileMenu: function() {
+    var $bleed            = $( '.bleed' ),
+        $bleedItem        = $bleed.find( 'li' ),
+        $menuButton       = $( '.menu-button' ),
+        twist             = 'twist',
+        bleedVisible      = 'visible out-animation',
+        showItem          = 'show';
+
+    function close() {
+
+      $bleedItem.removeClass( showItem ); 
+      $menuButton.removeClass( twist );
+
+      setTimeout(function() {
+        $bleed.removeClass( bleedVisible );
+      }, 500);
+
+    }
+
+    function open( $item ) {
+
+      // Open tray
+      $bleed.addClass( bleedVisible )
+      $menuButton.addClass( twist );
+
+      // Fade in nav items
+      $bleedItem.each(function() {
+        $item = $(this);
+        $item.addClass( showItem ); 
+      });
+    }
+
+    $menuButton.click(function() {
+
+      if ( $menuButton.hasClass( twist ) ) {
+        close();
+      } 
+
+      else {
+        open($(this));
+      }
+
+    });
+
+    // Reset/close on resize
+    $( window ).on( 'resize', function(){
+        close();
+    });
+  },
+
+
+  // 'Load more' functionality (show/hide)
+  loadMore: function() {
+    var $clients          = $('.clients'),
+        $clientsButton    = $clients.find( 'button' ),
+        $list             = $( '.clients ul' ),
+        visible           = 'visible',
+        moreLabel         = 'Load more',
+        lessLabel         = 'Show less';
+
+    $clientsButton.click(function() {
+
+      var $clientsButton  = $(this);
+      
+      // If already open
+      if ( $list.hasClass( visible ) ) {
+        $list.removeClass( visible )
+
+        setTimeout(function() {
+          $clientsButton.html( moreLabel );
+        }, 900);
+      } 
+
+      // If already closed
+      else {
+        $list.addClass( visible );
+
+        setTimeout(function() {
+            $clientsButton.html( lessLabel );
+        }, 1300);
+      }
+    });
+  },
+
+
+  // Scroll events
+  scrollEvents: function() {
+    $( window ).on( 'scroll', function(){
+
+        var $aboutText              = $( '.about-text' ), 
+            $heroText               = $( '.hero-text' ),
+            scrollTop               = $(window).scrollTop(),
+            stopClass               = 'stop';
+
+        // Stop hero text
+        ( function() {
+           if (scrollTop >= 335) {
+               $heroText.addClass( stopClass );
+           } else {
+               $heroText.removeClass( stopClass );
+           }
+        }());
+
+        // Stop about text
+        ( function() {
+          if ( scrollTop >= 465) {
+              $aboutText.addClass( stopClass );
+          } else {
+              $aboutText.removeClass( stopClass );
+          }
+        }());
+
+        // Add padding as page is scrolled
+        ( function() {
+          var paddingStart          = 0,
+              paddingStop           = 285,
+              textContent           = $('.text-content'),
+              offset                = Math.abs( $(document).scrollTop() + 60 ),
+              paddingStop           = 340;
+
+          if ( offset <= paddingStop ) {
+            paddingTop = offset;
+          }
+
+          textContent.css({
+            'paddingTop' : paddingTop
+          });
+        }());
+     });
+  },
+
+
+  // Clip Thru
+  // https://github.com/salsita/jq-clipthru
+  clipThru: function() {
+    $('#tester-unique').clipthru({
+        autoUpdate: true,
+        autoUpdateInterval: 30
+    });
+  },
+
+
+  // Google map
+  map: function() {
+    if (( '#map' ).length) {
+        google.maps.event.addDomListener(window, 'load', init);
+
+        function init() {
+          var mapOptions = {
+            zoom: 4,
+            scrollwheel: false,
+            center: new google.maps.LatLng(45, -30),
+            styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"lightness":"69"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"geometry","stylers":[{"lightness":"35"}]},{"featureType":"administrative.country","elementType":"geometry.fill","stylers":[{"lightness":"1"}]},{"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"weight":"3.94"},{"lightness":"45"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+        };
+
+        var mapElement = document.getElementById('map');
+        var map = new google.maps.Map(mapElement, mapOptions);
+
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(51.858469, -1.480863),
+          map: map,
+          title: 'Oxford',
+          icon: '/static/torchbox/images/pin.png'
+        });
+
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(51.454814, -2.597802),
+          map: map,
+          title: 'Bristol',
+          icon: '/static/torchbox/images/pin.png'
+        });
+
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(39.950865, -75.145590),
+          map: map,
+          title: 'PHILADELPHIA',
+          icon: '/static/torchbox/images/pin.png'
+        });
+      }
+    }
+  },
+
+
+  // SignUp form
+  signUp: function() {
+    function bindSignUpFormPageForm(element) {
+      $(element).on('submit', function(e) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          $(".sign-up-form-button").html("Submitting...");
+          $.ajax({
+            url: $(this).attr('action'),
+            type: "POST",
+            data: $(this).serialize(),
+            success: function(data) {
+              // Google Tag Manager voodoo
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                  'event': 'formSubmissionSuccess',
+                  'formId': 'sign-up-form'
+              });
+              // end voodoo
+              $(".sign-up-form").html(data);
+              $('.page-signupformpage form.sign-up-form').each(function() {
+                  bindSignUpFormPageForm(this);
+              });
+            }
+          });
+      });
+    }
+  }
+};
+
+// OLD/NON-REFACTORED JS
+// // hero hover on li change background image
+// $('.featured-case-studies li:nth-child(1)').hover(
+//     function() {
+//         $('.home-hero').addClass('first-feature');
+//     },
+//     function() {
+//         $('.home-hero').removeClass('first-feature');
+//     }
+// );
+
+// $('.featured-case-studies li:nth-child(3)').hover(
+//     function() {
+//         $('.home-hero').addClass('third-feature');
+//     },
+//     function() {
+//         $('.home-hero').removeClass('third-feature');
+//     }
+// );
+
+
+// // hero hover on li change background image
+// $('.featured-case-studies li:nth-child(1)').hover(
+//     function() {
+//         $('.home-hero').addClass('first-feature');
+//     },
+//     function() {
+//         $('.home-hero').removeClass('first-feature');
+//     }
+// );
+
+// $('.featured-case-studies li:nth-child(3)').hover(
+//     function() {
+//         $('.home-hero').addClass('third-feature');
+//     },
+//     function() {
+//         $('.home-hero').removeClass('third-feature');
+//     }
+// );
+
+// end redesign
+
 /**
  * Type some JavaScript here and click either
  * fix or diff.
  */
 // Sign up form page form
-function bindSignUpFormPageForm(element) {
-    $(element).on('submit', function(e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        $(".sign-up-form-button").html("Submitting...");
-        $.ajax({
-            url: $(this).attr('action'),
-            type: "POST",
-            data: $(this).serialize(),
-            success: function(data) {
-                // Google Tag Manager voodoo
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                    'event': 'formSubmissionSuccess',
-                    'formId': 'sign-up-form'
-                });
-                // end voodoo
-                $(".sign-up-form").html(data);
-                $('.page-signupformpage form.sign-up-form').each(function() {
-                    bindSignUpFormPageForm(this);
-                });
-            }
-        });
-    });
-}
 
-$(function() {
-
-    // new for redesign
-
-    // Add active to second mainstage item on load
-    $(window).on('load', function() {
-        $('.featured-case-studies li:nth-child(2)').addClass('active');
-    });
-
-    // hero hover on li change background image
-    $('.featured-case-studies li:nth-child(1)').hover(
-        function() {
-            $('.home-hero').addClass('first-feature');
-        },
-        function() {
-            $('.home-hero').removeClass('first-feature');
-        }
-    );
-
-    $('.featured-case-studies li:nth-child(3)').hover(
-        function() {
-            $('.home-hero').addClass('third-feature');
-        },
-        function() {
-            $('.home-hero').removeClass('third-feature');
-        }
-    );
-
-    var mobileMenu = function() {
-
-      $('.menu-button').click(function() {
-
-        var $bleed            = $( '.bleed' ),
-            $bleedItem        = $bleed.find( 'li' ),
-            $menuButton       = $( '.menu-button' ),
-            twist             = 'twist',
-            bleedVisible      = 'visible out-animation',
-            showItem          = 'show';
-
-        // If already open
-        if ( $menuButton.hasClass( twist ) ) {
-
-          // Close it
-          $bleedItem.removeClass( showItem ); 
-          $menuButton.removeClass( twist );
-
-          setTimeout(function() {
-            $bleed.removeClass( bleedVisible );
-          }, 500);
-        } 
-
-        // If already closed
-        else {
-          $bleed.addClass( bleedVisible )
-
-          // Open it
-          $menuButton.addClass( twist );
-
-          // Fade in nav items
-          $bleedItem.each(function() {
-            $(this).addClass( showItem ); 
-          });
-        }
-
-      });
-
-    }
-
-    mobileMenu();
-
-
-    // load more logos
-    var loadMore = function() {
-
-      var $clients          = $('.clients'),
-          $clientsButton    = $clients.find( 'button' ),
-          $list             = $( '.clients ul' ),
-          visible           = 'visible',
-          moreLabel         = 'Load more',
-          lessLabel         = 'Show less';
-
-      $clientsButton.click(function() {
-
-        var $clientsButton  = $(this);
-          
-          // If already open
-          if ( $list.hasClass( visible ) ) {
-            $list.removeClass( visible )
-
-            setTimeout(function() {
-              $clientsButton.html( moreLabel );
-            }, 900);
-          } 
-
-          // If already closed
-          else {
-            $list.addClass( visible );
-
-            setTimeout(function() {
-                $clientsButton.html( lessLabel );
-            }, 1300);
-          }
-      });
-    }
-
-    loadMore();
-
-
-
-
-        // load either desktop or mobile
-        if ($(window).width() < 768) {
-            // load on mobile
-        }
-        else {
-            // load on desktop
-
-           // clip thorugh
-           // https://github.com/salsita/jq-clipthru
-           $(document).ready(function() {
-               $('#tester-unique').clipthru({
-                   autoUpdate: true,
-                   autoUpdateInterval: 30,
-                   debug: true
-               });
-           });
-
-           // stop work page title
-           $(window).scroll(function() {
-               var scroll = $(window).scrollTop();
-
-               if (scroll >= 335) {
-                   $(".hero-text").addClass("stop");
-               } else {
-                   $(".hero-text").removeClass("stop");
-               }
-           });
-
-           // grow #work-content padding top on scroll
-           $(window).bind('scroll', function(){
-               var paddingStart = 0,
-               paddingStop = 285,
-               element = $('#work-content'),
-               offset = $(document).scrollTop(),
-               paddingTop = 340;
-
-               if ( offset <= paddingStop ) {
-                   paddingTop = (60+(offset));
-               }
-
-               element.css({
-                'paddingTop' : paddingTop
-               });
-           });
-
-        };
-
-          // stop about page title
-          $(window).scroll(function() {
-              var scroll = $(window).scrollTop();
-
-              if (scroll >= 465) {
-                  $(".about-text").addClass("stop");
-              } else {
-                  $(".about-text").removeClass("stop");
-              }
-          });
-
-           //grow #about-content padding top on scroll
-           $(window).bind('scroll', function(){
-               var paddingStart = 60,
-               paddingStop = 300,
-               element = $('#about-content'),
-               offset = $(document).scrollTop(),
-               paddingTop = 350;
-
-               if ( offset <= paddingStop ) {
-                   paddingTop = (60+(offset));
-               }
-
-               element.css({
-               'paddingTop' : paddingTop
-               });
-           });
-
-});
-
-
-// Only load in googlemaps on pages that use the map
-if ( ( '#map' ).length ) {
-  google.maps.event.addDomListener(window, 'load', init);
-
-  function init() {
-    var mapOptions = {
-      zoom: 4,
-      scrollwheel: false,
-
-      // The latitude and longitude to center the map 
-      center: new google.maps.LatLng(45, -30),
-
-      // Styles
-      styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"lightness":"69"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"geometry","stylers":[{"lightness":"35"}]},{"featureType":"administrative.country","elementType":"geometry.fill","stylers":[{"lightness":"1"}]},{"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"weight":"3.94"},{"lightness":"45"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
-  };
-
-  // Get the HTML DOM element that will contain your map
-  var mapElement = document.getElementById('map');
-
-  // Create the Google Map
-  var map = new google.maps.Map(mapElement, mapOptions);
-
-  // Adding marker
-  var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(51.858469, -1.480863),
-    map: map,
-    title: 'Oxford',
-    icon: '/static/torchbox/images/pin.png'
-  });
-
-  var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(51.454814, -2.597802),
-    map: map,
-    title: 'Bristol',
-    icon: '/static/torchbox/images/pin.png'
-  });
-
-  var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(39.950865, -75.145590),
-    map: map,
-    title: 'PHILADELPHIA',
-    icon: '/static/torchbox/images/pin.png'
-  });
-
-  }
-}
-
-
-
-
-// end redesign
 
 //     var inOutState = function( trigger, target, speed ){
 

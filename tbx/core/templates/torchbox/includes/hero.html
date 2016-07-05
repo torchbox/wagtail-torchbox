@@ -1,6 +1,6 @@
 {% load torchbox_tags wagtailcore_tags wagtailimages_tags %}
 
-<section class="home-hero">
+<section class="home-hero initial-load">
 
     <style>
     {% for heroItem in hero %}
@@ -23,8 +23,7 @@
 
     {% for heroItem in hero %}
         {% image heroItem.background fill-1800x978 as imgbanner %}
-        <div class="feature-image" style="background-image: url({{ imgbanner.url }})">
-        </div>
+        <div class="feature-image" data-name="{% cycle '1' '2' '3' %}" style="background-image: url({{ imgbanner.url }})"></div>
     {% endfor %}
     </div>
 
@@ -33,7 +32,7 @@
         <h1>{{ self.hero_intro }}</h1>
         <ul class="featured-case-studies">
             {% for heroItem in hero %}
-            <li class="featured-case-study{% cycle '-one' '-two' '-three' %}">
+            <li class="featured-case-study{% cycle '-one' '-two' '-three' %}" data-name="{% cycle '1' '2' '3' %}">
                 {% if heroItem.link %}
                 <a href="{{ heroItem.link }}">
                 {% endif %}

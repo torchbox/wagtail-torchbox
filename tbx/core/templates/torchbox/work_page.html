@@ -10,8 +10,7 @@
         {% if screenshots %}
                 {% for screenshot in screenshots %}
                     {% image screenshot.image width-9999 as shot %}
-                    <div class="work-hero" style=" background-image:url({{ shot.url }});">
-                    </div>
+                    <div class="work-hero" style=" background-image:url({{ shot.url }});"></div>
                     <div class="hero-text" id="tester-unique">
                         <div class="container">
                             <div class="content">

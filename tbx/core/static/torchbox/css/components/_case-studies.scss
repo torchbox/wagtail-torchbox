@@ -128,7 +128,8 @@
       }
     }
     // active before interaction
-    &.active {
+    &.active,
+    .initial-load &:nth-child(2) {
       &:before {
           opacity: 0.5;
       }
