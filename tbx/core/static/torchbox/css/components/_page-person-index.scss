@@ -1,0 +1,31 @@
+// page-personindexpage ========================================================
+.page-personindexpage {
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    color: #fd5938;
+    padding: 60px 0 0;
+    @media #{$tablet} {
+      padding: 140px 0 10px 15px;
+      font-size: 65px;
+    }
+  }
+}
+
+.people-list {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  li {
+    width: 25%;
+    float: left;
+  }
+  img {
+    height: auto;
+  }
+  .content {
+    padding: 0 15px;
+  }
+}
