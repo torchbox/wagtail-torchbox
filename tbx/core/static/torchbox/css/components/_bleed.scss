@@ -12,6 +12,10 @@
     left: 0;
     top: 55px;
 
+    @media #{$tablet} {
+      transition: none;
+    }
+
     // Prevent links being cut off
     // FIXME
     padding-left: 1px;
@@ -49,14 +53,28 @@
     }
     &.out-animation {
       transition-delay: 900ms;
-    &:before {
-      transition-delay: 650ms;
-      left: auto;
-      right: 0;
-    }
-    li {
-      transition: all 75ms cubic-bezier(0.705, 0.000, 1.000, 1.130);
-    }
+
+      &:before {
+        transition-delay: 650ms;
+        left: auto;
+        right: 0;
+      }
+
+      li {
+        transition: all 75ms cubic-bezier(0.705, 0.000, 1.000, 1.130);
+      }
+
+      @media #{$tablet} {
+        transition-delay: 0ms;
+
+        &:before {
+          transition-delay: 0ms;
+        }
+
+        li {
+          transition: none;
+        }
+      }
     }
     li {
       text-align: center;
