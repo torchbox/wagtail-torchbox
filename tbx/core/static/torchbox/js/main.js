@@ -57,12 +57,47 @@ $(function() {
         }
     );
 
-    $('.menu-button').click(function() {
-        $('.bleed').toggleClass('visible out-animation');
-        $('.menu-button').toggleClass('twist');
-    });
+    var mobileMenu = function() {
 
+      $('.menu-button').click(function() {
 
+        var $bleed            = $( '.bleed' ),
+            $bleedItem        = $bleed.find( 'li' ),
+            $menuButton       = $( '.menu-button' ),
+            twist             = 'twist',
+            bleedVisible      = 'visible out-animation',
+            showItem          = 'show';
+
+        // If already open
+        if ( $menuButton.hasClass( twist ) ) {
+
+          // Close it
+          $bleedItem.removeClass( showItem ); 
+          $menuButton.removeClass( twist );
+
+          setTimeout(function() {
+            $bleed.removeClass( bleedVisible );
+          }, 500);
+        } 
+
+        // If already closed
+        else {
+          $bleed.addClass( bleedVisible )
+
+          // Open it
+          $menuButton.addClass( twist );
+
+          // Fade in nav items
+          $bleedItem.each(function() {
+            $(this).addClass( showItem ); 
+          });
+        }
+
+      });
+
+    }
+
+    mobileMenu();
 
 
     // load more logos
@@ -228,6 +263,8 @@ if ( ( '#map' ).length ) {
 
   }
 }
+
+
 
 
 // end redesign

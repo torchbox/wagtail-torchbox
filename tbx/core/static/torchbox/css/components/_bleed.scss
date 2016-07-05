@@ -1,20 +1,15 @@
 .bleed {
-    @include custom-transition (200ms);
     @include custom-transition;
-    transition-delay: 200ms;
     overflow: hidden;
     height: 0;
     float: right;
     margin-top: 12px;
     z-index: 5;
     width: 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 55px;
-
-    @media #{$tablet} {
-      transition: none;
-    }
+    opacity: 0;
 
     // Prevent links being cut off
     // FIXME
@@ -35,7 +30,10 @@
       height: auto;
       width: auto;
       position: relative;
-      top: 0;
+      top: auto;
+      opacity: 1;
+      transition: none;
+
       &:before {
       display: none;
       }
@@ -43,25 +41,30 @@
     &.visible {
       padding: 50px 0 0;
       height: 100vh;
+      opacity: 1;
       &:before {
         width: 100%;
       }
       li {
-        opacity: 1;
         transform: translate3d(0, 0, 0);
+      }
+      li.show {
+        opacity: 1;
+
+        &:nth-of-type(1) { transition-delay: 0.4s }
+        &:nth-of-type(2) { transition-delay: 0.6s }
+        &:nth-of-type(3) { transition-delay: 0.8s }
+        &:nth-of-type(4) { transition-delay: 1.0s }
+        &:nth-of-type(5) { transition-delay: 1.2s }
+        &:nth-of-type(6) { transition-delay: 1.4s }
+        &:nth-of-type(7) { transition-delay: 1.6s }
       }
     }
     &.out-animation {
-      transition-delay: 900ms;
 
       &:before {
-        transition-delay: 650ms;
         left: auto;
         right: 0;
-      }
-
-      li {
-        transition: all 75ms cubic-bezier(0.705, 0.000, 1.000, 1.130);
       }
 
       @media #{$tablet} {
@@ -82,25 +85,8 @@
       margin-bottom: 30px;
       opacity: 0;
       transform: translate3d(0, -20px, 0);
-      @include custom-transition (500ms);
-    &:nth-child(1) {
-      transition-delay: 0.2s;
-    }
-    &:nth-child(2) {
-      transition-delay: 0.3s;
-    }
-    &:nth-child(3) {
-      transition-delay: 0.4s;
-    }
-    &:nth-child(4) {
-      transition-delay: 0.5s;
-    }
-    &:nth-child(5) {
-      transition-delay: 0.6s;
-    }
-    &:nth-child(6) {
-      transition-delay: 0.7s;
-    }
+      transition: all 450ms ease;
+    
     @media #{$tablet} {
       transform: translate3d(0, 0, 0);
       opacity: 1;
@@ -108,7 +94,7 @@
       float: left;
       margin-right: 60px;
       margin-bottom: 0;
-      transition-delay: 0 !important;
+      transition: none;
     }
     &:last-of-type {
       margin-right: 0;
