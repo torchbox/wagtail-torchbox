@@ -12,9 +12,7 @@ body {
 }
 
 body * {
-  box-sizing: border-box;   /* Everything else */
-  -webkit-transition: opacity 0.25s ease 0s;
-  transition: opacity 0.25s ease 0s;
+  box-sizing: border-box;
 }
 
 main {
