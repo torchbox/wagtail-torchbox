@@ -97,6 +97,10 @@ button, .btn {
     background: $blue;
     color: white;
   }
+  &:active,
+  &:focus {
+    outline: none;
+  }
 }
 
 ::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {

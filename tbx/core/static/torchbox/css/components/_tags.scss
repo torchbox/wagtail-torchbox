@@ -1,0 +1,24 @@
+// tags blog page
+.tags {
+  display: block;
+  h4 {
+    text-transform: uppercase;
+    color: #2b3033;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    @media #{$tablet} {
+      font-size: 13px;
+    }
+  }
+  a {
+    @include line-hover;
+    font-weight: 300;
+  }
+  ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}

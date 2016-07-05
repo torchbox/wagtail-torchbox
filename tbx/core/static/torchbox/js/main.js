@@ -62,10 +62,47 @@ $(function() {
         $('.menu-button').toggleClass('twist');
     });
 
+
+
+
     // load more logos
-    $('.clients button').click(function() {
-        $('.clients ul').toggleClass('visible');
-    });
+    var loadMore = function() {
+
+      var $clients          = $('.clients'),
+          $clientsButton    = $clients.find( 'button' ),
+          $list             = $( '.clients ul' ),
+          visible           = 'visible',
+          moreLabel         = 'Load more',
+          lessLabel         = 'Show less';
+
+      $clientsButton.click(function() {
+
+        var $clientsButton  = $(this);
+          
+          // If already open
+          if ( $list.hasClass( visible ) ) {
+            $list.removeClass( visible )
+
+            setTimeout(function() {
+              $clientsButton.html( moreLabel );
+            }, 900);
+          } 
+
+          // If already closed
+          else {
+            $list.addClass( visible );
+
+            setTimeout(function() {
+                $clientsButton.html( lessLabel );
+            }, 1300);
+          }
+      });
+    }
+
+    loadMore();
+
+
+
 
         // load either desktop or mobile
         if ($(window).width() < 768) {
@@ -95,7 +132,7 @@ $(function() {
                }
            });
 
-           //grow #work-content padding top on scroll
+           // grow #work-content padding top on scroll
            $(window).bind('scroll', function(){
                var paddingStart = 0,
                paddingStop = 285,
@@ -108,9 +145,10 @@ $(function() {
                }
 
                element.css({
-               'paddingTop' : paddingTop
+                'paddingTop' : paddingTop
                });
            });
+
         };
 
           // stop about page title

@@ -1,0 +1,16 @@
+.values {
+  max-width: 1200px;
+  margin: 0 auto 70px;
+  @include cf;
+  h2 {
+    margin-bottom: 40px;
+  }
+  li {
+    padding: 0 15px;
+    float: left;
+    margin-bottom: 15px;
+    @media #{$tablet} {
+      width: 50%;
+    }
+  }
+}
