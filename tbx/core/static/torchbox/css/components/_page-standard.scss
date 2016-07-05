@@ -18,6 +18,9 @@
     &:last-of-type {
       margin-top: 0px;
     }
+    &:nth-last-of-type(2) {
+      margin-top: 0px;
+    }
   }
   .full-image {
     position: relative;
