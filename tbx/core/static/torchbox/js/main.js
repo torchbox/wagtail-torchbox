@@ -14,12 +14,12 @@ var tbx = {
   // Hero image carousel/slider
   heroImages: function() {
 
-     var $heroButton       = $('.featured-case-studies li'),
-      $heroContainer    = $( '.home-hero' ),
-      $heroList         = $( '.feature-images' ),
-      $heroImage        = $( '.feature-image' ),
-      activeClass       = 'active',
-      currentItem       = null;
+    var $heroButton       = $('.featured-case-studies li'),
+        $heroContainer    = $( '.home-hero' ),
+        $heroList         = $( '.feature-images' ),
+        $heroImage        = $( '.feature-image' ),
+        activeClass       = 'active',
+        currentItem       = null;
 
       // On load we're forcing the second item to appear (via CSS)
       // but once the user interacts with the hero we need to 
@@ -141,48 +141,50 @@ var tbx = {
 
   // Scroll events
   scrollEvents: function() {
-    $( window ).on( 'scroll', function(){
+    if ( $( window ).width() > 768 ) {
+      $( window ).on( 'scroll', function(){
 
-        var $aboutText              = $( '.about-text' ), 
-            $heroText               = $( '.hero-text' ),
-            scrollTop               = $(window).scrollTop(),
-            stopClass               = 'stop';
+          var $aboutText              = $( '.about-text' ), 
+              $heroText               = $( '.hero-text' ),
+              scrollTop               = $(window).scrollTop(),
+              stopClass               = 'stop';
 
-        // Stop hero text
-        ( function() {
-           if (scrollTop >= 335) {
-               $heroText.addClass( stopClass );
-           } else {
-               $heroText.removeClass( stopClass );
-           }
-        }());
+          // Stop hero text
+          ( function() {
+             if (scrollTop >= 335) {
+                 $heroText.addClass( stopClass );
+             } else {
+                 $heroText.removeClass( stopClass );
+             }
+          }());
 
-        // Stop about text
-        ( function() {
-          if ( scrollTop >= 465) {
-              $aboutText.addClass( stopClass );
-          } else {
-              $aboutText.removeClass( stopClass );
-          }
-        }());
+          // Stop about text
+          ( function() {
+            if ( scrollTop >= 465) {
+                $aboutText.addClass( stopClass );
+            } else {
+                $aboutText.removeClass( stopClass );
+            }
+          }());
 
-        // Add padding as page is scrolled
-        ( function() {
-          var paddingStart          = 0,
-              paddingStop           = 285,
-              textContent           = $('.text-content'),
-              offset                = Math.abs( $(document).scrollTop() + 60 ),
-              paddingStop           = 340;
+          // Add padding as page is scrolled
+          ( function() {
+            var paddingStart          = 0,
+                paddingStop           = 285,
+                textContent           = $('.text-content'),
+                offset                = Math.abs( $(document).scrollTop() + 60 ),
+                paddingStop           = 340;
 
-          if ( offset <= paddingStop ) {
-            paddingTop = offset;
-          }
+            if ( offset <= paddingStop ) {
+              paddingTop = offset;
+            }
 
-          textContent.css({
-            'paddingTop' : paddingTop
-          });
-        }());
-     });
+            textContent.css({
+              'paddingTop' : paddingTop
+            });
+          }());
+       });
+    }
   },
 
 
@@ -308,12 +310,6 @@ var tbx = {
 // );
 
 // end redesign
-
-/**
- * Type some JavaScript here and click either
- * fix or diff.
- */
-// Sign up form page form
 
 
 //     var inOutState = function( trigger, target, speed ){
