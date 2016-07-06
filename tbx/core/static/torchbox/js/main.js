@@ -200,7 +200,8 @@ var tbx = {
 
   // Google map
   map: function() {
-    if (( '#map' ).length) {
+
+    if ( $( '#map' ).length) {
         google.maps.event.addDomListener(window, 'load', init);
 
         function init() {
