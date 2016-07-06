@@ -9,7 +9,7 @@
     <a href="{% pageurl post %}">
         <div class="content">
             {% image post.feed_image fill-1200x700 as background %}
-            <div class="image-container" style="background-image: url('{{ background.url }}');"></div>
+            <div class="image-container" {% if not post.homepage_color %}style="background-image: url('{{ background.url }}');"{% endif %}></div>
             <div class="blog-text">
                 <div id="author" class="author clearfix" >
                     {% if post.related_author.all %}
