@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 50px 70px;
+  padding-bottom: 70px;
   margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
@@ -12,10 +12,10 @@
       width: 50%;
       float: left;
       margin-bottom: 40px;
+      padding: 0 50px 70px;
     }
   }
   .content {
-    padding: 0 15px;
     text-align: center;
     @media #{$tablet} {
       padding: 0 60px;

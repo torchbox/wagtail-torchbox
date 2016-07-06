@@ -11,7 +11,9 @@
   h1 {
     position: absolute;
     top: 30%;
+    margin: 0 auto;
     left: 0;
+    right: 0;
     width: 100%;
     text-align: center;
     color: white;
@@ -20,6 +22,8 @@
     padding: 0 20px;
     line-height: 1.2;
     z-index: 1;
+    max-width: 1450px;
+
     @media #{$tablet} {
       font-weight: 100;
       font-size: 60px;

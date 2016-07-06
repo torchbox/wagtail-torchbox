@@ -25,9 +25,13 @@
   .full-image {
     position: relative;
     z-index: 1;
-    height: 600px;
+    height: 315px;
     background: url('/static/torchbox/images/full-width-bristol.jpg') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
+
+    @media #{$tablet} {
+      height: 600px;
+    }
   }
 }
