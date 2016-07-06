@@ -3,7 +3,8 @@
 <li>
     <a href="{% pageurl work %}">
         <div class="content">
-            <div class="image-container">
+            {% image work.homepage_image fill-500x500 as background %}
+            <div class="image-container" >
                 {% if work.homepage_image %}
                     {% image work.homepage_image fill-500x500 as screenshot %}
                     <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />

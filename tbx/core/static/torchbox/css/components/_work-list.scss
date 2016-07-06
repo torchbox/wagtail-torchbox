@@ -56,16 +56,24 @@
     }
   }
   .image-container {
+    position: relative;
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    height: 350px;
+
     @media #{$tablet-large} {
-      height: auto;
+      height: 425px;
     }
-    img {
-      object-fit: cover;
-      height: 350px;
-      @media #{$tablet-large} {
-        height: 425px;
-      }
-    }
+
+    // Replaced with bg
+    // img {
+    //   object-fit: cover;
+    //   height: 350px;
+    //   @media #{$tablet-large} {
+    //     height: 425px;
+    //   }
+    // }
   }
   .work-text {
     position: absolute;

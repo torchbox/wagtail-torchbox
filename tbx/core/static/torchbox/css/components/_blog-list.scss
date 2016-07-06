@@ -134,16 +134,25 @@
   }
   .image-container {
     position: relative;
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    height: 350px;
+
     @media #{$tablet-large} {
-      height: auto;
+      height: 495px;
     }
-    img {
-      object-fit: cover;
-      height: 350px;
-      @media #{$tablet-large} {
-        height: 495px;
-      }
-    }
+
+    // Replaced with bg image on container
+    // img {
+    //   object-fit: cover;
+    //   height: 350px;
+    //   display: none;
+    //   @media #{$tablet-large} {
+    //     height: 495px;
+    //   }
+    // }
+    
     &:after {
       content: '';
       position: absolute;
