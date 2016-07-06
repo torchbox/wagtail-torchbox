@@ -87,6 +87,12 @@ class BustoutBlock(StructBlock):
         icon = "pick"
 
 
+class WideImage(StructBlock):
+    image = ImageChooserBlock()
+
+    class Meta:
+        icon = "image"
+
 class StatsBlock(StructBlock):
     pass
 
@@ -101,6 +107,7 @@ class StoryBlock(StreamBlock):
     intro = RichTextBlock(icon="pilcrow")
     paragraph = RichTextBlock(icon="pilcrow")
     aligned_image = ImageBlock(label="Aligned image")
+    wide_image = WideImage(label="Wide image")
     bustout = BustoutBlock()
     pullquote = PullQuoteBlock()
     raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
