@@ -51,6 +51,13 @@
                         {% endif %}
                     </div>
                 </div>
+            {% elif child.block_type == 'wide_image' %}
+                <div class="">
+                    <div class="img-holder">
+                        {% image child.value.image width-1280 as blockimage %}
+                        <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
+                    </div>
+                </div>
             {% elif child.block_type == 'raw_html' %}
                 {{ child.value|safe }}
             {% elif child.block_type == 'embed' %}
