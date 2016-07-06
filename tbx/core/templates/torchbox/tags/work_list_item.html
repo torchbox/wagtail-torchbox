@@ -3,13 +3,11 @@
 <li>
     <a href="{% pageurl work %}">
         <div class="content">
-            {% image work.homepage_image fill-500x500 as background %}
-            <div class="image-container" >
-                {% if work.homepage_image %}
-                    {% image work.homepage_image fill-500x500 as screenshot %}
-                    <img src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
-                {% endif %}
-            </div>
+            {% if work.homepage_image %}
+                {% image work.homepage_image fill-500x500 as background %}
+                <div class="image-container" style="background-image: url('{{ background.url }}');"></div>
+            {% endif %}
+
 
             <div class="work-text">
                 <label>work</label>
