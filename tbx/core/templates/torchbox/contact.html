@@ -27,7 +27,19 @@
                 <h1>Drop us a line</h1>
                 {{ page.intro|richtext }}
                 {% csrf_token %}
-                {{ form.as_p }}
+                {% for field in form %}
+                    <div>
+                        {{ field.errors }}
+                        <label for="{{ field.id_for_label }}">
+                            {% if field.field.required %}
+                                <span class="required">{{ field.label }}</span>
+                            {% else %}
+                                {{ field.label }}
+                            {% endif %}
+                        </label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
                 <input type="submit">
             </form>
         </div>
