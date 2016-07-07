@@ -9,13 +9,18 @@
   @include cf;
   padding: 0 $container-padding-sml;
   text-align: center;
+  margin-top: 50px;
   margin-bottom: 80px;
+
   @media #{$tablet} {
     padding: 0;
+    margin-top: 0;
   }
+
   h2 {
     margin-bottom: 30px;
   }
+  
   ul {
     @include cf;
     height: calc(#{$height-mob * 2});
