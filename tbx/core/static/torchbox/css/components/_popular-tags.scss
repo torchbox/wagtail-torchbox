@@ -1,0 +1,43 @@
+// popular tags ================================================================
+.popular-tags {
+  margin: 10px 0 20px;
+  @media #{$tablet} {
+    margin: 50px 0 40px;
+    padding: 0 15px;
+  }
+  a {
+    display: inline-block;
+    color: $dark;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin: 5px 5px 0 0;
+    background: rgba($dark, 0.1);
+    border: 1px solid transparent;
+    padding: 4px 7px 3px;
+    transition: all 0.35s ease 0s;
+    @media #{$tablet} {
+      margin: 0 5px;
+    }
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:hover {
+      border-color: $blue;
+      background: transparent;
+    }
+    // active
+    &.filtering {
+      border-color: $blue;
+      background: $blue;
+      color: white;
+    }
+    // clear all
+    &.before {
+      border-color: $orange;
+      background: $orange;
+      color: white;
+    }
+  }
+}

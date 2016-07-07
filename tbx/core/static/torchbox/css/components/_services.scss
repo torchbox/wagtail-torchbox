@@ -1,0 +1,41 @@
+.services {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 70px;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    margin-bottom: 30px;
+    @media #{$tablet} {
+      width: 50%;
+      float: left;
+      margin-bottom: 40px;
+      padding: 0 50px 70px;
+    }
+  }
+  .content {
+    text-align: center;
+    @media #{$tablet} {
+      padding: 0 60px;
+    }
+    img {
+      display: inline-block;
+      max-width: 50px;
+      min-height: 50px;
+      margin-bottom: 10px;
+    }
+    h3 {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      @media #{$tablet} {
+        font-size: 25px;
+      }
+    }
+  }
+  button {
+    margin: 0 auto;
+  }
+}

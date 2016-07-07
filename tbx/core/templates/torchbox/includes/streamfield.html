@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% if self.streamfield %}
-    <section class="body-copy stream-field container">
+    <section class="stream-field">
         {% for child in self.streamfield %}
             {% if child.block_type == 'h2' %}
                 <h2>{{ child }}</h2>

@@ -1,0 +1,97 @@
+// hero ========================================================================
+.home-hero {
+  position: relative;
+  height: 75vh;
+  background-size: cover;
+  margin: 0 0 50px 0;
+  @media #{$tablet} {
+      height: 85vh;
+      margin: 0 0 70px 0;
+  }
+  h1 {
+    position: absolute;
+    top: 30%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    padding: 0 20px;
+    line-height: 1.2;
+    z-index: 1;
+    max-width: 1450px;
+
+    @media #{$tablet} {
+      font-weight: 100;
+      font-size: 60px;
+      top: 30%;
+    }
+    @media #{$tablet-large} {
+      top: 35vh;
+    }
+  }
+}
+
+
+// text on hero
+.hero-text {
+  position: absolute;
+  top: 240px;
+  right: 0;
+  left: 0;
+  overflow: visible;
+  z-index: 3;
+  @media #{$tablet} {
+    position: fixed;
+    top: 400px;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    transition: all 0.5s ease 0s;
+  }
+  .content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  p, h1, a {
+    color: white;
+  }
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    @media #{$tablet} {
+      font-size: 65px;
+    }
+  }
+  .client {
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    @media #{$tablet} {
+      font-size: 14px;
+    }
+  }
+  // clip through
+  &.testclass-1 {
+     h1 {
+      color: $orange;
+     }
+     .client {
+      color: $dark;
+     }
+  }
+  &.stop {
+    position: absolute;
+    top: 535px;
+    @media #{$tablet} {
+      top: 70px;
+    }
+  }
+}

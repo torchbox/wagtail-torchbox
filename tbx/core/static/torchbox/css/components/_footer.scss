@@ -1,0 +1,165 @@
+
+// footer ======================================================================
+footer {
+  // vertical space
+  $vertical-space-sml: 35px;
+  $vertical-space: 55px;
+
+  background: $dark;
+  clear: both;
+  svg {
+    fill: white;
+    width: 100%;
+  }
+  .offices {
+    @include cf;
+    padding: $vertical-space 0;
+    border-bottom: 1px solid rgba(white, 0.15);
+    li {
+      @include cf;
+      margin-bottom: 30px;
+      @media #{$tablet-large} {
+        margin-bottom: 0;
+        width: 33.3%;
+        float: left;
+        padding: 0 80px;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      color: white;
+      @media #{$tablet-large} {
+        font-size: 22px;
+      }
+    }
+    .vcard {
+      color: white;
+      font-weight: 300;
+      line-height: 1.5;
+      font-size: 13px;
+      @media #{$tablet-large} {
+        font-size: 15px;
+      }
+    }
+    .svg {
+      position: relative;
+      float: left;
+      width: 15%;
+      margin-right: 10%;
+      top: 20px;
+      @media #{$tablet-large} {
+        margin-right: 5%;
+        top: 30px;
+      }
+      svg {
+        max-height: 40px;
+      }
+    }
+    .content {
+      float: left;
+      width: 75%;
+      @media #{$tablet-large} {
+        width: 80%;
+      }
+    }
+  }
+  .contact {
+    @include cf;
+    border-bottom: 1px solid rgba(white, 0.15);
+    margin-bottom: $vertical-space-sml;
+    @media #{$tablet-large} {
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
+    ul {
+      @include cf;
+      padding: $vertical-space-sml 0;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      @media #{$tablet-large} {
+        padding: $vertical-space 0;
+      }
+    }
+    li {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 300;
+      @media #{$tablet-large} {
+        margin-bottom: 0;
+        text-align: center;
+        float: left;
+        width: 33.3%;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    .svg {
+      display: inline-block;
+      width: 20px;
+      @media #{$tablet-large} {
+        display: inline;
+        margin-right: 15px;
+      }
+    }
+    .content {
+      display: block;
+      @media #{$tablet-large} {
+        display: inline;
+      }
+    }
+    svg {
+      position: relative;
+      top: 3px;
+      width: 20px;
+    }
+    a {
+      color: white;
+    }
+  }
+  // Newsletter ================================================================
+  .newsletter {
+    text-align: center;
+    padding: 0 0 $vertical-space-sml;
+    @media #{$tablet-large} {
+      padding: 0 0 $vertical-space;
+    }
+    h3 {
+      color: white;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+    form {
+      display: inline-block;
+      input {
+        border: 0;
+        background: white;
+        border-radius: $border-radius 0 0 $border-radius;
+        padding: 10px 20px;
+        width: 63%;
+        float: left;
+        @media #{$tablet-large} {
+          width: auto;
+        }
+      }
+      button {
+        background: $blue;
+        color: white;
+        padding: 10px 20px;
+        position: relative;
+        left: -5px;
+        float: left;
+        border-radius: 0 $border-radius $border-radius 0;
+      }
+    }
+  }
+}

@@ -1,13 +1,12 @@
 {% load torchbox_tags wagtailcore_tags wagtailimages_tags %}
-<div class="clients">
-    {% if self|in_play %}
-        <h2>Some of our clients</h2>
-    {% else %}
-        <h2>We're proud to have worked with</h2>
-    {% endif %}
-    <ul>
-        {% for client in clients %}
-            <li>{% if client.link %}<a href="{{ client.link }}">{% endif %}{% image client.image max-250x80 %}{% if client.link %}</a>{% endif %}</li>
-        {% endfor %}
-    </ul>
-</div>
+
+<ul>
+    {% for client in clients %}
+        <li>
+            {% if client.link %}<a href="{{ client.link }}">{% endif %}
+                {% image client.image max-250x80 %}
+            {% if client.link %}</a>{% endif %}
+        </li>
+    {% endfor %}
+</ul>
+<button>Load more</button>
