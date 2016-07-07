@@ -24,23 +24,10 @@
                 </div>
             </div>
             <form class="contact-us" action="{% pageurl page %}" method="post">
-                <h1>Drop us a line</h1>
-                {{ page.intro|richtext }}
+                <h1>Thanks</h1>
+                {{ page.thank_you_text|richtext }}
                 {% csrf_token %}
-                {% for field in form %}
-                    <div>
-                        {{ field.errors }}
-                        <label for="{{ field.id_for_label }}">
-                            {% if field.field.required %}
-                                <span class="required">{{ field.label }}</span>
-                            {% else %}
-                                {{ field.label }}
-                            {% endif %}
-                        </label>
-                        {{ field }}
-                    </div>
-                {% endfor %}
-                <input type="submit">
+                {{ form.as_p }}
             </form>
         </div>
     </div>
