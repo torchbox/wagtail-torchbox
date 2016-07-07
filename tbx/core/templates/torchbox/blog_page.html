@@ -77,18 +77,17 @@
 
         {% if next_page %}
             <a href="{% pageurl next_page %}">
-                <!-- Add class to ".next" / orange / blue or white -->
-                <div class="next ">
+                {% image next_page.feed_image original as image %}
+                <div class="next {{ next_page.homepage_color }}"{% if not next_page.homepage_color and image %} style='background-image: url({{ image.url }});'{% endif %}>
                     <div class="container">
                         <div class="content">
-                            {% with self.related_author.all as authors %}
+                            {% with next_page.related_author.all as authors %}
                                 {% for author in authors %}
                                     {% if author.author %}
                                         <p class="author">{{ author.author.title }}</p>
                                     {% endif %}
                                 {% endfor %}
                             {% endwith %}
-
                             <h2>{{ next_page.title }}</h2>
                         </div>
                     </div>
