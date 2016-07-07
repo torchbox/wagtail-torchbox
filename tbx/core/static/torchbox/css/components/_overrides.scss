@@ -34,7 +34,10 @@
     z-index: 2;
     margin-top: calc(555px + 109px);
     padding-top: 60px;
-    padding-top: 340px;
+
+    &:first-of-type {
+      padding-top: 340px;
+    }
   }
 
   .overlay {

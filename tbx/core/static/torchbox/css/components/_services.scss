@@ -6,15 +6,24 @@
   margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
+
   li {
+
     margin-bottom: 30px;
+
     @media #{$tablet} {
       width: 50%;
       float: left;
       margin-bottom: 40px;
+      padding: 0 0 70px;
+    }
+
+    @media #{$desktop} {
       padding: 0 50px 70px;
     }
+
   }
+
   .content {
     text-align: center;
     @media #{$tablet} {
