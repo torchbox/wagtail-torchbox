@@ -147,6 +147,11 @@ footer {
         padding: 10px 20px;
         width: 63%;
         float: left;
+
+        &::placeholder {
+          font-family: $primaryFont;
+        }
+
         @media #{$tablet-large} {
           width: auto;
         }

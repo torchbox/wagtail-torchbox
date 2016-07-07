@@ -1,12 +1,11 @@
 {% extends "torchbox/base.html" %}
 {% load torchbox_tags wagtailcore_tags wagtailimages_tags %}
-
+{% block googlemap %}
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+{% endblock %}
 {% block content %}
 
-<div class="map" id="map">
-</div>
-
-
+    <div class="map" id="map"></div>
     <div class="container">
         <div class="contact">
             <div class="find-us">
@@ -27,23 +26,18 @@
             <form class="contact-us" action="#">
                 <h1>Drop us a line</h1>
                 <ul>
-
                     <li>
                         <input type="text" name="Name" placeholder="Your name" />
                         <input type="email" name="email" placeholder="Your email address" />
                     </li>
-
                     <li>
                         <textarea cols="46" rows="3" name="comments" placeholder="How can we help?"></textarea>
                     </li>
-
                     <li>
                         <input class="btn" type="submit" value="Submit" />
                     </li>
-
                 </ul>
             </form>
         </div>
     </div>
-
 {% endblock %}

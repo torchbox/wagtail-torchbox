@@ -14,7 +14,7 @@ var tbx = {
   // Hero image carousel/slider
   heroImages: function() {
 
-    var $heroButton       = $('.featured-case-studies li'),
+    var $heroButton       = $( '.featured-case-studies li' ),
         $heroContainer    = $( '.home-hero' ),
         $heroList         = $( '.feature-images' ),
         $heroImage        = $( '.feature-image' ),
@@ -107,7 +107,7 @@ var tbx = {
 
   // 'Load more' functionality (show/hide)
   loadMore: function() {
-    var $clients          = $('.clients'),
+    var $clients          = $( '.clients' ),
         $clientsButton    = $clients.find( 'button' ),
         $list             = $( '.clients ul' ),
         visible           = 'visible',
@@ -171,7 +171,7 @@ var tbx = {
           ( function() {
             var paddingStart          = 0,
                 paddingStop           = 285,
-                textContent           = $('.text-content'),
+                textContent           = $( '.main-content' ),
                 offset                = Math.abs( $(document).scrollTop() + 60 ),
                 paddingStop           = 340;
 
@@ -180,7 +180,7 @@ var tbx = {
             }
 
             textContent.css({
-              'paddingTop' : paddingTop
+              // 'paddingTop' : paddingTop
             });
           }());
        });
@@ -191,7 +191,7 @@ var tbx = {
   // Clip Thru
   // https://github.com/salsita/jq-clipthru
   clipThru: function() {
-    $('#tester-unique').clipthru({
+    $( '#tester-unique' ).clipthru({
         autoUpdate: true,
         autoUpdateInterval: 30
     });
@@ -200,7 +200,8 @@ var tbx = {
 
   // Google map
   map: function() {
-    if (( '#map' ).length) {
+
+    if ( $( '#map' ).length) {
         google.maps.event.addDomListener(window, 'load', init);
 
         function init() {

@@ -52,6 +52,8 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 1.2;
+    clear: both;
+
     -webkit-transition: opacity 0.25s ease 0s;
             transition: opacity 0.25s ease 0s;
     transition-delay: 0.15s;
@@ -171,6 +173,7 @@
   .img-cont {
     @include cf;
     width: 100%;
+    display: block;
   }
   img {
     display: inline-block;
