@@ -1,5 +1,5 @@
 {% extends "torchbox/base.html" %}
-{% load torchbox_tags wagtailcore_tags wagtailimages_tags %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags static %}
 
 {% block content %}
     {% if self.main_image %}
@@ -58,28 +58,28 @@
                 <ul>
                     <li>
                         <div class="content">
-                            <img src="/static/torchbox/images/bespoke.svg" alt="">
+                            <img src="{% static 'torchbox/images/bespoke.svg' %}" alt="">
                             <h3>Bespoke solutions</h3>
                             <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
                         </div>
                     </li>
                     <li>
                         <div class="content">
-                            <img src="/static/torchbox/images/digital-marketing.svg" alt="">
+                            <img src="{% static 'torchbox/images/digital-marketing.svg' %}" alt="">
                             <h3>Digital marketing</h3>
                             <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
                         </div>
                     </li>
                     <li>
                         <div class="content">
-                            <img src="/static/torchbox/images/design.svg" alt="">
+                            <img src="{% static 'torchbox/images/design.svg' %}" alt="">
                             <h3>Design and animation</h3>
                             <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
                         </div>
                     </li>
                     <li>
                         <div class="content">
-                            <img src="/static/torchbox/images/ux.svg" alt="">
+                            <img src="{% static 'torchbox/images/ux.svg' %}" alt="">
                             <h3>UX</h3>
                             <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
                         </div>
@@ -102,21 +102,21 @@
                 <ul>
                     <li>
                         <div class="content">
-                            <img src="/static/torchbox/images/oxford.svg" alt="">
+                            <img src="{% static 'torchbox/images/oxford.svg' %}" alt="">
                             <h3>In the glorious Cotswolds</h3>
                             <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
                         </div>
                     </li>
                     <li>
                         <div class="content">
-                            <img src="/static/torchbox/images/bristol.svg" alt="">
+                            <img src="{% static 'torchbox/images/bristol.svg' %}" alt="">
                             <h3>The Vibrant centre of Bristol</h3>
                             <p>Go out with the team to try the endless supply of real ales, or try the abumdance of street food and sit in the vibrant parks. </p>
                         </div>
                     </li>
                     <li>
                         <div class="content">
-                            <img src="/static/torchbox/images/philadelphia.svg" alt="">
+                            <img src="{% static 'torchbox/images/philadelphia.svg' %}" alt="">
                             <h3>Historic Philadelphia</h3>
                             <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
                         </div>
@@ -150,21 +150,21 @@
         <ul class="involved-in">
             <li>
                 <div class="content">
-                    <img src="/static/torchbox/images/geek-nights.svg" alt="">
+                    <img src="{% static 'torchbox/images/geek-nights.svg' %}" alt="">
                     <h3>Oxford Geek Nights</h3>
                     <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
                 </div>
             </li>
             <li>
                 <div class="content">
-                    <img src="/static/torchbox/images/wagtail.svg" alt="">
+                    <img src="{% static 'torchbox/images/wagtail.svg' %}" alt="">
                     <h3>Wagtail</h3>
                     <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
                 </div>
             </li>
             <li>
                 <div class="content">
-                    <img src="/static/torchbox/images/drupal.svg" alt="">
+                    <img src="{% static 'torchbox/images/drupal.svg' %}" alt="">
                     <h3>Drupal</h3>
                     <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
                 </div>
