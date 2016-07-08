@@ -9,3 +9,4 @@
 /Vagrantfile.local
 /docs/_build/
 .idea/
+node_modules*
