@@ -176,13 +176,16 @@ var tbx = {
                 offset                = Math.abs( $(document).scrollTop() + 60 ),
                 paddingStop           = 340;
 
-            if ( offset <= paddingStop ) {
-              paddingTop = offset;
-            }
+            if ( textContent.length ) {
+              
+              if ( offset <= paddingStop ) {
+                paddingTop = offset;
+              }
 
-            textContent.css({
-              'paddingTop' : paddingTop,
-            });
+              textContent.css({
+                'paddingTop' : paddingTop,
+              });
+            }
           }());
        });
     }
