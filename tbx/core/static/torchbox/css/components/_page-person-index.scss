@@ -6,7 +6,6 @@
     font-weight: 200;
     color: #fd5938;
     padding: 80px 0 0;
-
     @media #{$tablet} {
       padding: 140px 0 10px 15px;
       font-size: 65px;
@@ -17,17 +16,58 @@
 
 .people-list {
   ul {
-    display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 40px;
+    @media #{$tablet} {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
   li {
-    width: 25%;
-    float: left;
+    margin-bottom: 25px;
+    @media #{$small} {
+      width: 50%;
+      float: left;
+    }
+    @media #{$tablet} {
+      width: 33%;
+    }
+    @media #{$desktop} {
+      width: 25%;
+    }
+    &:hover {
+      .img-holder {
+        &:after {
+          opacity: 0.5;
+        }
+      }
+    }
   }
   img {
     height: auto;
+    margin-bottom: 10px;
   }
   .content {
     padding: 0 15px;
+  }
+  .img-holder {
+    position: relative;
+    background: red;
+    display: block;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      mix-blend-mode: multiply;
+      opacity: 0;
+      transition: opacity 0.25s ease 0s;
+    }
+  }
+  h2 {
+    text-align: left;
+    font-size: 30px;
   }
 }
