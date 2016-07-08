@@ -1,7 +1,4 @@
-///
 /// Contact form styles
-///
-
 $gutter: 15px;
 
 .contact-form {
@@ -22,7 +19,7 @@ $gutter: 15px;
 		.contact-form__row {
 			padding: 10px $gutter 0;
 
-			input,
+			input[type='text'],
 			textarea {
 				width: 100%;
 				padding: 15px 25px;
@@ -48,10 +45,10 @@ $gutter: 15px;
 		    id_phone;
 
 		@each $label in $inputs {
-		  .contact-form__row--#{$label} {
-		    width: 50%;
-		    display: inline-block;
-		  }
+			.contact-form__row--#{$label} {
+				width: 50%;
+				display: inline-bslock;
+			}
 		}
 
 			.contact-form__label {
