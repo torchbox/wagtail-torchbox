@@ -37,10 +37,7 @@
                     {% for service in self.services.all %}
                     <li>
                         <div class="content">
-                            {% if service.image %}
-                            {% image service.image original as image %}
-                            <img src="{{ image.url }}" alt="{{ image.alt }}">
-                            {% endif %}
+                            {{ service.svg|safe }}
                             <h3>{{ service.title }}</h3>
                             <p>{{ service.description }}</p>
                         </div>
@@ -66,10 +63,7 @@
                     {% for office in self.offices.all %}
                     <li>
                         <div class="content">
-                            {% if office.image %}
-                            {% image office.image original as image %}
-                            <img src="{{ image.url }}" alt="{{ image.alt }}">
-                            {% endif %}
+                            {{ office.svg|safe }}
                             <h3>{{ office.title }}</h3>
                             <p>{{ office.description }}</p>
                         </div>
@@ -104,10 +98,7 @@
             {% for involvement in self.involvement.all %}
             <li>
                 <div class="content">
-                    {% if involvement.image %}
-                    {% image involvement.image original as involvement_image %}
-                    <img src="{{ involvement_image.url }}" alt="{{ involvement_image.alt }}">
-                    {% endif %}
+                    {{ involvement.svg|safe }}
                     <h3>{{ involvement.title }}</h3>
                     <p>{{ involvement.description }}</p>
                 </div>
