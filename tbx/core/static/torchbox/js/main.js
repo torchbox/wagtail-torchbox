@@ -19,13 +19,14 @@ var tbx = {
         $heroList         = $( '.feature-images' ),
         $heroImage        = $( '.feature-image' ),
         activeClass       = 'active',
+        initialLoad       = 'initial-load',
         currentItem       = null;
 
       // On load we're forcing the second item to appear (via CSS)
       // but once the user interacts with the hero we need to 
       // revert this behaviour to default
       function resetHero() {
-        $heroContainer.removeClass( 'initial-load' );
+        $heroContainer.removeClass( initialLoad );
       }
 
       function hideHeroItems( $item ) {

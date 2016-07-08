@@ -4,6 +4,8 @@
   height: 75vh;
   background-size: cover;
   margin: 0 0 50px 0;
+  overflow-x: hidden;
+  
   @media #{$tablet} {
     height: 85vh;
     min-height: 600px;
