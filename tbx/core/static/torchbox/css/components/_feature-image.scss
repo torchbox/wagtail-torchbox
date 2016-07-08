@@ -19,6 +19,7 @@
 
   @media #{$tablet} {
     height: 85vh;
+    min-height: 600px;
   }
 
   .initial-load & {

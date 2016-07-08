@@ -2,7 +2,9 @@
 .pagination {
   text-transform: uppercase;
   padding-left: 65px;
-  margin: 30px 0 50px;
+  margin: 30px auto 50px;
+  max-width: 1450px;
+  
   a, p {
     font-size: 14px;
     font-weight: 400;
