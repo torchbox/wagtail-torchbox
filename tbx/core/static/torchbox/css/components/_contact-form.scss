@@ -47,7 +47,7 @@ $gutter: 15px;
 		@each $label in $inputs {
 			.contact-form__row--#{$label} {
 				width: 50%;
-				display: inline-bslock;
+				display: inline-block;
 			}
 		}
 
