@@ -5,8 +5,9 @@
   background-size: cover;
   margin: 0 0 50px 0;
   @media #{$tablet} {
-      height: 85vh;
-      margin: 0 0 70px 0;
+    height: 85vh;
+    min-height: 600px;
+    margin: 0 0 70px 0;
   }
   h1 {
     position: absolute;
@@ -28,8 +29,9 @@
       font-weight: 100;
       font-size: 60px;
       top: 30%;
+      top: 17vh;
     }
-    @media #{$tablet-large} {
+    @media #{$desktop} {
       top: 35vh;
     }
   }
