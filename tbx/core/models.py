@@ -447,6 +447,118 @@ class StandardPage(Page):
         ImageChooserPanel('feed_image'),
     ]
 
+# About page
+
+class AboutPageService(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='services')
+    title = models.TextField()
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    description = models.TextField()
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        ImageChooserPanel('image')
+    ]
+
+class AboutPageOffice(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='offices')
+    title = models.TextField()
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    description = models.TextField()
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        ImageChooserPanel('image')
+    ]
+
+class AboutPageValues(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='values')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('image')
+    ]
+
+class AboutPageInvolvement(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='involvement')
+    title = models.TextField()
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    description = models.TextField()
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        ImageChooserPanel('image')
+    ]
+
+class AboutPageClients(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.AboutPage', related_name='clients')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('image')
+    ]
+
+class AboutPage(Page):
+    main_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    heading = models.TextField(blank=True)
+    intro = models.TextField(blank=True)
+    values_title = models.TextField(blank=True)
+    involvement_title = models.TextField(blank=True)
+
+    content_panels = [
+        FieldPanel('title', classname='full title'),
+        ImageChooserPanel('main_image'),
+        FieldPanel('heading'),
+        FieldPanel('intro', classname='full'),
+        InlinePanel('services', label='Services'),
+        InlinePanel('offices', label='Offices'),
+        FieldPanel('values_title'),
+        InlinePanel('values', label='Values'),
+        FieldPanel('involvement_title'),
+        InlinePanel('involvement', label='Involvement'),
+        InlinePanel('clients', label='Clients')
+    ]
+
+
 # Blog index page
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
