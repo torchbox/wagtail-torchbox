@@ -452,37 +452,25 @@ class StandardPage(Page):
 class AboutPageService(Orderable):
     page = ParentalKey('torchbox.AboutPage', related_name='services')
     title = models.TextField()
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    svg = models.TextField(null=True)
     description = models.TextField()
 
     panels = [
         FieldPanel('title'),
         FieldPanel('description'),
-        ImageChooserPanel('image')
+        FieldPanel('svg')
     ]
 
 class AboutPageOffice(Orderable):
     page = ParentalKey('torchbox.AboutPage', related_name='offices')
     title = models.TextField()
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    svg = models.TextField(null=True)
     description = models.TextField()
 
     panels = [
         FieldPanel('title'),
         FieldPanel('description'),
-        ImageChooserPanel('image')
+        FieldPanel('svg')
     ]
 
 class AboutPageValues(Orderable):
@@ -502,19 +490,13 @@ class AboutPageValues(Orderable):
 class AboutPageInvolvement(Orderable):
     page = ParentalKey('torchbox.AboutPage', related_name='involvement')
     title = models.TextField()
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    svg = models.TextField(null=True)
     description = models.TextField()
 
     panels = [
         FieldPanel('title'),
         FieldPanel('description'),
-        ImageChooserPanel('image')
+        FieldPanel('svg')
     ]
 
 class AboutPageClients(Orderable, RelatedLink):
