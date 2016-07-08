@@ -1,0 +1,81 @@
+/// Contact form styles
+$gutter: 15px;
+
+.contact-form {
+	@include cf;
+	padding: 0 0 0 15px;
+}
+	
+	.contact-form__group {
+		border: 0;
+		margin: 0;
+		padding: 0;
+
+		h1 {
+			padding-left: $gutter;
+		}
+	}
+
+		.contact-form__row {
+			padding: 10px $gutter 0;
+
+			input[type='text'],
+			textarea {
+				width: 100%;
+				padding: 15px 25px;
+				border: 1px solid rgba($dark, 0.1);
+				border-radius: $border-radius;
+				font-family: $primaryFont;
+				font-size: 16px;
+				background: $grey;
+			}
+
+			textarea {
+			  min-height: 200px;
+			  resize: vertical;
+			}
+		}
+
+		// Special styles for half-width inputs
+		// List the hooks for elements that require it
+		$inputs: 
+			id_email,
+		    id_name,
+		    id_company,
+		    id_phone;
+
+		@each $label in $inputs {
+			.contact-form__row--#{$label} {
+				width: 50%;
+				display: inline-block;
+			}
+		}
+
+			.contact-form__label {
+				position: relative;
+			}
+
+			.contact-form__label--required {
+				&:after {
+					content: '*';
+				    position: absolute;
+				    right: -5px;
+				    font-size: 18px;
+				    color: $orange;
+				}
+			}
+
+			.contact-form__submit {
+				display: inline-block;
+				width: auto;
+				border: 1px dashed $blue;
+				padding: 10px 25px;
+				margin: 30px 0 0 $gutter;
+				background: transparent;
+
+				&:hover {
+					border: 1px solid $blue;
+					background: $blue;
+				}
+			}
+

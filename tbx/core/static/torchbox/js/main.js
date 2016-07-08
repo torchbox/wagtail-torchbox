@@ -152,7 +152,7 @@ var tbx = {
 
           // Stop hero text
           ( function() {
-             if (scrollTop >= 335) {
+             if ( scrollTop >= 335 ) {
                  $heroText.addClass( stopClass );
              } else {
                  $heroText.removeClass( stopClass );
@@ -161,7 +161,7 @@ var tbx = {
 
           // Stop about text
           ( function() {
-            if ( scrollTop >= 465) {
+            if ( scrollTop >= 465 ) {
                 $aboutText.addClass( stopClass );
             } else {
                 $aboutText.removeClass( stopClass );
@@ -176,13 +176,16 @@ var tbx = {
                 offset                = Math.abs( $(document).scrollTop() + 60 ),
                 paddingStop           = 340;
 
-            if ( offset <= paddingStop ) {
-              paddingTop = offset;
-            }
+            if ( textContent.length ) {
+              
+              if ( offset <= paddingStop ) {
+                paddingTop = offset;
+              }
 
-            textContent.css({
-              'paddingTop' : paddingTop,
-            });
+              textContent.css({
+                'paddingTop' : paddingTop,
+              });
+            }
           }());
        });
     }
@@ -216,25 +219,48 @@ var tbx = {
         var mapElement = document.getElementById('map');
         var map = new google.maps.Map(mapElement, mapOptions);
 
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(51.858469, -1.480863),
-          map: map,
-          title: 'Oxford',
-          icon: '/static/torchbox/images/pin.png'
-        });
+        function philiMarker() {
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(39.950865, -75.145590),
+            map: map,
+            title: 'PHILADELPHIA',
+            icon: '/static/torchbox/images/pin.png'
+          });
+        }
 
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(51.454814, -2.597802),
-          map: map,
-          title: 'Bristol',
-          icon: '/static/torchbox/images/pin.png'
-        });
+        function oxfordMarker() {
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(51.858469, -1.480863),
+            map: map,
+            title: 'Oxford',
+            icon: '/static/torchbox/images/pin.png'
+          });
+        }
 
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(39.950865, -75.145590),
-          map: map,
-          title: 'PHILADELPHIA',
-          icon: '/static/torchbox/images/pin.png'
+        function bristolMarker() {
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(51.454814, -2.597802),
+            map: map,
+            title: 'Bristol',
+            icon: '/static/torchbox/images/pin.png'
+          });
+        }
+
+        philiMarker();
+        oxfordMarker();
+        
+        var zoomLevel =  map.getZoom();
+
+        // Only show second UK marker when zoomed in
+        // Should be refactored to store markers in an array, and display required
+        // Markers depending on zoom level
+        map.addListener('zoom_changed', function() {
+          if (zoomLevel > 5) { 
+              oxfordMarker();
+          } else {
+              oxfordMarker();
+              bristolMarker();
+          }
         });
       }
     }

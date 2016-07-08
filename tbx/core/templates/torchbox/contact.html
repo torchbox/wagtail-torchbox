@@ -23,24 +23,24 @@
                     <p>Indy Hall, 22 N. 3rd St., Philadelphia, PA 19106, US</p>
                 </div>
             </div>
-            <form class="contact-us" action="{% pageurl page %}" method="post">
-                <h1>Drop us a line</h1>
-                {{ page.intro|richtext }}
-                {% csrf_token %}
-                {% for field in form %}
-                    <div>
-                        {{ field.errors }}
-                        <label for="{{ field.id_for_label }}">
-                            {% if field.field.required %}
-                                <span class="required">{{ field.label }}</span>
-                            {% else %}
+            <form class="contact-form" action="{% pageurl page %}" method="post">
+                {% spaceless %}
+                <fieldset class="contact-form__group">
+                    <h1>Drop us a line</h1>
+                    {{ page.intro|richtext }}
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="contact-form__row contact-form__row--{{ field.id_for_label }}">
+                            {{ field.errors }}
+                            <label for="{{ field.id_for_label }}" class="contact-form__label {% if field.field.required %} contact-form__label--required {% endif %}">
                                 {{ field.label }}
-                            {% endif %}
-                        </label>
-                        {{ field }}
-                    </div>
-                {% endfor %}
-                <input type="submit">
+                            </label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <input type="submit" class="contact-form__submit">
+                </fieldset>    
+                {% endspaceless %}
             </form>
         </div>
     </div>
