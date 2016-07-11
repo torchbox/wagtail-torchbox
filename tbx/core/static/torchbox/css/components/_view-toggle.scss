@@ -3,16 +3,17 @@
   margin: 50px 0;
   .list-view, .text-view {
     display: inline-block;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     margin: 0;
     text-transform: uppercase;
+    color: #23b0b0;
+    border: 1px dashed #23b0b0;
+    border-radius: 3px;
+    padding: 5px 25px;
     @media #{$tablet} {
-      color: #23b0b0;
-      border: 1px dashed #23b0b0;
-      border-radius: 3px;
-      padding: 5px 25px;
-      transition: all 0.25s ease 0s;
+      font-size: 14px;
+      transition: background 0.25s ease 0s, border 0.25s ease 0s, color 0.25s ease 0s;
     }
     &:hover {
       cursor: pointer;

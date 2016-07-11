@@ -29,11 +29,13 @@
     @media #{$tablet} {
       padding: 0 60px;
     }
-    img {
+    img,
+    svg {
       display: inline-block;
       max-width: 50px;
       min-height: 50px;
       margin-bottom: 10px;
+      fill: $blue;
     }
     h3 {
       font-size: 20px;

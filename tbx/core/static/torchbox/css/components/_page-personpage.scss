@@ -1,0 +1,65 @@
+// page-personpage ==============================================================
+.page-personpage {
+  .sml-container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 $container-padding-sml;
+    @media #{$tablet} {
+      padding: 0 $container-padding 80px;
+    }
+  }
+  img {
+    height: auto;
+    width: auto;
+    max-width: 400px;
+    border-radius: 50%;
+    margin-bottom: 50px;
+  }
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    color: #fd5938;
+    padding: 0px 0 0;
+    @media #{$tablet} {
+      padding: 0 0 10px;
+      font-size: 65px;
+    }
+  }
+  .role {
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+  .intro .rich-text p {
+    margin-bottom: 20px;
+  }
+  .blog-listing {
+    border-top: 1px solid rgba($dark,0.15);
+    margin-top: 60px;
+    padding-top: 40px;
+    h2 {
+      text-align: left;
+      font-size: 35px;
+      margin-bottom: 30px;
+    }
+    li {
+      margin-bottom: 20px;
+      .text {
+        span {
+          color: $dark;
+          text-transform: uppercase;
+          font-size: 14px;
+          display: block;
+        }
+        h3 {
+          color: $blue;
+          font-weight: 300;
+          font-size: 20px;
+          display: inline-block;
+          @include line-hover;
+        }
+      }
+    }
+  }
+}
