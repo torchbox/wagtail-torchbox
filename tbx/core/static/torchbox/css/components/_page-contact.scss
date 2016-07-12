@@ -13,12 +13,21 @@
     }
   }
   .contact-us, .find-us {
-    width: 50%;
     float: left;
   }
   .contact {
     @include cf;
     margin-bottom: 70px;
+  }
+
+  .contact__block {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+
+    @media #{$tablet} {
+      width: 50%;
+    }
   }
 }
 
