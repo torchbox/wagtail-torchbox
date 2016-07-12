@@ -3,7 +3,10 @@ $gutter: 15px;
 
 .contact-form {
 	@include cf;
-	padding: 0 0 0 15px;
+
+	@media #{$tablet} {
+		padding-left: 15px;
+	}
 }
 	
 	.contact-form__group {
@@ -12,12 +15,19 @@ $gutter: 15px;
 		padding: 0;
 
 		h1 {
-			padding-left: $gutter;
+			@media #{$tablet} {
+				padding-left: $gutter;
+			}
 		}
 	}
 
 		.contact-form__row {
-			padding: 10px $gutter 0;
+
+			padding: 10px 0;
+
+			@media #{$tablet} {
+				padding: 10px $gutter 0;
+			}
 
 			input[type='text'],
 			input[type='email'],
@@ -47,8 +57,12 @@ $gutter: 15px;
 
 		@each $label in $inputs {
 			.contact-form__row--#{$label} {
-				width: 50%;
 				display: inline-block;
+				width: 100%;
+
+				@media #{$tablet} {
+					width: 50%;
+				}
 			}
 		}
 
@@ -71,8 +85,12 @@ $gutter: 15px;
 				width: auto;
 				border: 1px dashed $blue;
 				padding: 10px 25px;
-				margin: 30px 0 0 $gutter;
+				margin: 30px 0 0;
 				background: transparent;
+
+				@media #{$tablet} {
+					margin: 30px 0 0 $gutter;
+				}
 
 				&:hover {
 					border: 1px solid $blue;

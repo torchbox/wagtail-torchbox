@@ -44,12 +44,14 @@ var tbx = {
         $heroList.find( '[data-name="' + currentItem + '"]' ).addClass( activeClass );      
       }
 
-      $heroButton.mouseenter(function() {
-
+      // Reset but only on first hover
+      $heroButton.one('mouseenter', function() {
         resetHero();
+      });
+
+      $heroButton.on('mouseenter', function() {
         hideHeroItems( $(this) );
         showHeroItem( $(this) );
-        
       });
   },
 
