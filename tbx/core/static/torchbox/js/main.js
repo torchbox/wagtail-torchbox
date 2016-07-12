@@ -174,7 +174,7 @@ var tbx = {
           ( function() {
             var paddingStart          = 0,
                 paddingStop           = 285,
-                textContent           = $( '.text-content' ),
+                textContent           = $( '.text-content:first-of-type' ),
                 offset                = Math.abs( $(document).scrollTop() + 60 ),
                 paddingStop           = 340;
 
