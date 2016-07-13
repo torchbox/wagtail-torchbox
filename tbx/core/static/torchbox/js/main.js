@@ -197,10 +197,12 @@ var tbx = {
   // Clip Thru
   // https://github.com/salsita/jq-clipthru
   clipThru: function() {
-    $( '#tester-unique' ).clipthru({
+    if ( $( '#tester-unique' ).length ) {
+      $( '#tester-unique' ).clipthru({
         autoUpdate: true,
         autoUpdateInterval: 30
-    });
+      });
+    }
   },
 
 
