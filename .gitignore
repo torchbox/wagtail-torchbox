@@ -4,6 +4,7 @@
 /venv/
 /static/
 /media/
+/media.old/
 /tmp/
 /.vagrant/
 /Vagrantfile.local
