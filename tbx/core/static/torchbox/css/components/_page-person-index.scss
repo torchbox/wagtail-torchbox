@@ -76,4 +76,13 @@
   .img-holder {
     display: none;
   }
+
+  h2 {
+    display: inline;
+    @include line-hover();
+  }
+
+  p {
+    margin-top: 5px;
+  }
 }
