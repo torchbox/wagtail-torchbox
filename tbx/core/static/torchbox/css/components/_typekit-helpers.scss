@@ -5,14 +5,14 @@
 
 // Prevent FOUC before Typekit has loaded
 .wf-loading {
-  h1, h2 {
+  h1, h2, .bleed {
     opacity: 0;
   }
 }
  
 // Show once fonts have been loaded and are ready
 .wf-active {
-  h1, h2 {
+  h1, h2, .bleed {
     opacity: 1;
   }
 }
