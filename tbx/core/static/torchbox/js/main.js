@@ -3,6 +3,7 @@ $(document).ready(function() {
     tbx.heroImages();
     tbx.mobileMenu();
     tbx.loadMore();
+    tbx.team();
     tbx.clipThru();
     tbx.scrollEvents();
     tbx.map();
@@ -138,6 +139,29 @@ var tbx = {
             $clientsButton.html( lessLabel );
         }, 1300);
       }
+    });
+  },
+
+
+  // Team filtering
+  team: function() {
+
+    var $textFilter   = $( '.js-text-view' ),
+        $imageFilter  = $( '.js-image-view' ),
+        $peopleList   = $( '.people-list' ),
+        textView      = 'people-list--text',
+        active        = 'active';
+
+    $textFilter.on( 'click', function(){
+      $( this ).addClass( active );
+      $imageFilter.removeClass( active );
+      $peopleList.addClass( textView );
+    });
+
+    $imageFilter.on( 'click', function(){
+      $( this ).addClass( active );
+      $textFilter.removeClass( active );
+      $peopleList.removeClass( textView );
     });
   },
 
