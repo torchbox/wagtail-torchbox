@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="contact__block">
-                <form class="contact-form" action="{% pageurl page %}" method="post">
+                <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
                     <fieldset class="contact-form__group">
                         <h1>Drop us a line</h1>
                         {{ page.intro|richtext }}
@@ -41,7 +41,7 @@
                                 {{ field }}
                             </div>
                         {% endfor %}
-                        <input type="submit" class="contact-form__submit">
+                        <input type="submit" class="contact-form__submit" id="contact-us-submit">
                     </fieldset>    
                 </form>
             </div>
