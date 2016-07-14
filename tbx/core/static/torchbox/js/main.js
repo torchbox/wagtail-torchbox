@@ -6,7 +6,7 @@ $(document).ready(function() {
     tbx.team();
     tbx.clipThru();
     tbx.scrollEvents();
-    tbx.map();
+    // tbx.map();
     tbx.signUp();
 });
 
@@ -46,11 +46,11 @@ var tbx = {
       }
 
       // Reset but only on first hover
-      $heroButton.one('mouseenter', function() {
+      $heroButton.one( 'mouseenter', function() {
         resetHero();
       });
 
-      $heroButton.on('mouseenter', function() {
+      $heroButton.on( 'mouseenter', function() {
         hideHeroItems( $(this) );
         showHeroItem( $(this) );
       });
