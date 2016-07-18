@@ -21,7 +21,7 @@ module.exports = {
         src: src + '/css/**/*.{sass,scss}',
         dest: dest + '/css',
         autoprefixer: {
-            browsers: ['last 2 versions', 'ie 9-11'],
+            browsers: ['last 2 versions', 'ie 9-11', 'iOS 8'],
             cascade: false,
         },
         settings: {
