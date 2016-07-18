@@ -2,6 +2,13 @@
 {% load wagtailcore_tags wagtailimages_tags humanize staticfiles torchbox_tags %}
 
 {% block content %}
+
+    <style>
+        .img-darken {
+            background-image: url("{% static 'torchbox/images/torchbox-all-02.jpg' %}");
+        }
+    </style>
+
     <div class="page-banner crop-height jobs-header">
         <div class="img-darken">
             <div class="jobs-header-content">
