@@ -80,47 +80,73 @@
     </section>
     {% endif %}
 
-    <section class="jobs-offices">
-        <div class="center our-offices-container">
-            <h2>Our offices</h2>
-            <ul class="our-offices">
-                <li class="cotswolds first">
-                    <img src="{% static "torchbox/images/icons/cotswolds.svg" %}" />
-                    <h3>In the glorious Cotswolds</h3>
-                    <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
-                </li>
-                <li class="bristol">
-                    <img src="{% static "torchbox/images/icons/bristol.svg" %}" />
-                    <h3>The vibrant centre of Bristol</h3>
-                    <p>Go out with the team to try the endless supply of real ales, or try the abundance of street food and sit in the vibrant parks.</p>
-                </li>
-                <li class="philadelphia last">
-                    <img src="{% static "torchbox/images/icons/philadelphia.svg" %}" />
-                    <h3>Historic Philadelphia</h3>
-                    <p>Soak up the historic Old City, kick back in a bar on South Street, or head to Passyunk square for an original cheese-steak.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <section class="jobs-core-values clearfix">
-        <div class="center">
-            <h2>Our four core values</h2>
-            <ul class="image-tiles">
-                <li>
-                    <img src="{% static "torchbox/images/corevalue-better.jpg" %}" alt="Make things better" />
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/corevalue-happy.jpg" %}" alt="Make clients happy" />
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/corevalue-never.jpg" %}" alt="Never stand still" />
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/corevalue-enjoy.jpg" %}" alt="Enjoy it" />
-                </li>
-            </ul>
-        </div>
-    </section>
+    <section class="text-content">
+            <div class="container">
+
+                
+                <div class="offices">
+                    <h2>Our offices</h2>
+                    <ul>
+                        
+                        <li>
+                            <div class="content">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.7 27.9"><path class="st0" d="M32 15.1V14c1.6-.3 2.8-1.6 2.8-3.3 0-1.8-1.5-3.3-3.3-3.3s-3.3 1.5-3.3 3.3c0 1.6 1.2 3 2.8 3.3v.8c-.4-.1-.9-.1-1.3-.1-2.2 0-4.3.8-5.9 2.2v-1.1c1.4-.2 2.5-1.4 2.5-2.8 0-1.5-1.3-2.8-2.8-2.8s-2.8 1.3-2.8 2.8c0 1.4 1 2.6 2.4 2.8v1.6c0 .1 0 .2.1.3-1 1-1.7 2.3-2.1 3.8-1.7-1-3.7-1.5-5.8-1.5-1.2 0-2.4.2-3.5.5v-3.3c2.3-.2 4.1-2.1 4.1-4.5 0-2.5-2-4.5-4.5-4.5s-4.5 2-4.5 4.5c0 2.4 1.8 4.3 4.1 4.5v3.5c-2.9 1.1-5.4 3.4-6.7 6.5-.1.2 0 .5.2.6h.2c.2 0 .4-.1.4-.3 1.1-2.7 3.2-4.7 5.8-5.8v.8c0 .3.1.5.4.5.3 0 .4-.2.4-.5v-1.1c1.1-.4 2.3-.6 3.5-.6 2.1 0 4.1.6 5.8 1.7 1 .6 1.8 1.4 2.6 2.3.2.2.5.2.7.1.2-.2.2-.5.1-.7-.7-.9-1.6-1.7-2.5-2.3.9-3.6 4.2-6.2 7.9-6.2.4 0 .9 0 1.3.1v4.4c0 .3.3.5.5.5.3 0 .5-.2.5-.5v-4.1c3.4 1 5.8 4.1 5.8 7.8v.9s.2.5.4.5.4-.2.5-.4V24c-.1-4.3-2.9-7.8-6.8-8.9zm-2.9-4.3c0-1.3 1.1-2.4 2.4-2.4s2.4 1.1 2.4 2.4-1.1 2.4-2.4 2.4c-1.3 0-2.4-1.1-2.4-2.4zm-21.5 2c0-2 1.6-3.6 3.6-3.6s3.6 1.6 3.6 3.6-1.6 3.6-3.6 3.6-3.6-1.7-3.6-3.6zm13.9.3c0-1 .8-1.9 1.9-1.9 1 0 1.9.8 1.9 1.9s-.9 1.9-1.9 1.9c-1.1 0-1.9-.8-1.9-1.9zM7.4 4.5c0-.6-.5-1.6-1.3-1.6C6 2 5.2 1.2 4.2 1.2c-.3 0-.6.1-.9.2-.3-.2-.7-.2-1.1-.2C1 1.2 0 2.5 0 3.7s1 2.5 2.2 2.5H6c.9 0 1.4-1 1.4-1.7zM.9 3.7c0-.7.6-1.6 1.3-1.6.3 0 .6.1.8.3.2.1.4.1.6 0 .2-.2.4-.3.6-.3.6 0 1 .4 1 1v.2c0 .2 0 .4.2.5.1.2.3.2.4.1H6s.4.4.4.7c0 .3-.3.7-.4.7H2.2C1.5 5.3.9 4.4.9 3.7zM21.7 7.2h5.6c1.7 0 3.1-2 3.1-3.6S29 0 27.3 0c-.6 0-1.1.2-1.6.4-.4-.2-.8-.3-1.3-.3-1.4 0-2.6 1.1-2.6 2.5-1.1-.1-1.9 1.3-1.9 2.3 0 .9.7 2.3 1.8 2.3zm0-3.7c.1 0 .3 0 .4.1.2.1.4.1.5 0s.2-.3.2-.5c0-.1-.1-.3-.1-.4 0-.9.8-1.7 1.7-1.7.4 0 .7.1 1 .3.2.1.4.1.6 0 .4-.3.8-.4 1.3-.4 1.2 0 2.2 1.4 2.2 2.6s-1 2.6-2.2 2.6h-5.6c-.4 0-.8-.7-.8-1.3s.4-1.3.8-1.3z"></path></svg>
+                                <h3>In the glorious Cotswolds</h3>
+                                <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="content">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46.6 27.8"><path class="st0" d="M6.2 4.7h4.5c.9 0 1.5-.5 1.5-1.3s-.6-1.3-1.5-1.3C10.6 1 9.6.1 8.5.1c-.4 0-.7.1-1 .3C7.1.1 6.7 0 6.2 0 4.7 0 3.7 1 3.7 2.4s1 2.3 2.5 2.3zm0-3.7c.3 0 .7.1 1 .3.2.1.4.1.6 0 .2-.1.5-.2.7-.2.7 0 1.2.5 1.2 1.2v.3c0 .2 0 .4.2.5s.4.1.5 0c.1 0 .2-.1.3-.1.5 0 .5.2.5.3s0 .3-.5.3H6.2c-.8 0-1.6-.4-1.6-1.4S5.4 1 6.2 1zM27.6 11.7h6.6c1.8 0 2-1.1 2-1.6s-.2-1.6-2-1.6H34c0-1.6-1.4-3-3-3-.5 0-1.1.1-1.5.4-.6-.3-1.2-.5-1.9-.5-2.1 0-3.6 1.3-3.6 3.1s1.5 3.2 3.6 3.2zm0-5.2c.6 0 1.1.2 1.6.5.2.1.4.1.6 0 .4-.3.8-.4 1.2-.4 1.1 0 2 .9 2 2 0 .2 0 .3-.1.5 0 .2 0 .4.2.5s.4.1.5 0c.2-.1.3-.1.5-.1 1 0 1 .4 1 .6 0 .2 0 .6-1 .6h-6.6c-1.2 0-2.6-.6-2.6-2.1s1.5-2.1 2.7-2.1zM45.9 13.4c0-.3-.2-.7-.5-.7h-3.1c-.3 0-.5.4-.5.7v1.4c-.1.1-.2.3-.2.4 0 3.9-8.4 7.3-18.4 7.3S4.8 19.2 4.8 15.3c0-.1-.1-.3-.2-.4l-.1-1.5c0-.3-.2-.7-.5-.7H.9c-.3 0-.5.4-.5.7l-.4 14c0 .1 0 .2.1.3.1.1.2 0 .4 0h4.2c.1 0 .3.1.4 0s.1-.2.1-.3L5 23.7h36.5l-.1 3.8c0 .1 0 .1.1.2s.2 0 .4 0h4.2c.1 0 .3.1.4 0 .1-.1.1-.3.1-.4l-.7-13.9zM1 26.7l.4-13h2.1l.6 13H1zm3.8-8.8c1.6 2.1 5.2 3.8 9.8 4.8H5l-.2-4.8zm27 4.8c4.7-1 8.3-2.7 9.9-4.9l-.2 4.9h-9.7zm10.6 4l.4-13H45l.6 13h-3.2z"></path></svg>
+                                <h3>The Vibrant centre of Bristol</h3>
+                                <p>Go out with the team to try the endless supply of real ales, or try the abumdance of street food and sit in the vibrant parks.</p>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="content">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.6 33"><path class="st0" d="M21.3 23.9c-2-1.8-2.7-9-2.7-11.4 0-1.2-1.4-2.1-4.4-2.7-.5-.1-1-.2-1.6-.2v-3c.9.1 1.8.4 2.7 1l4.1 2.1c.1 0 .1.1.2.1H23c.1 0 .3-.1.4-.1.1-.1.1-.2.1-.4V.5c0-.3-.2-.5-.5-.5H.5C.3 0 0 .2 0 .5v8.8c0 .3.2.5.5.5H3.9l4.8-2.1s.1 0 .1-.1c.8-.7 1.8-1.1 2.8-1.1v3c-.7 0-1.5.1-2.2.2-3 .6-4.4 1.5-4.4 2.7 0 2.3-.7 9.6-2.7 11.4C.8 25.1-.2 26 0 27c.2.7 1 1.2 2.8 1.6 1.7.4 3.7.6 5.4.8.2 2 1.9 3.6 3.9 3.6 2.1 0 3.8-1.6 3.9-3.7 1.5-.1 3.2-.4 4.8-.7 1.8-.4 2.6-.8 2.8-1.6.2-.9-.8-1.8-2.3-3.1zM8.2 6.8l-4.6 2H1V1h21.5v7.7h-2.8l-4-2C13.5 5 10.4 5 8.2 6.8zM12.1 32c-1.5 0-2.7-1.1-2.9-2.5 1.5.1 2.5.1 2.6.1s1.4 0 3.2-.2c-.1 1.5-1.4 2.6-2.9 2.6zm8.5-4.4c-3.6.8-8.7 1-8.8 1s-5.2-.1-8.8-1c-1.8-.4-2-.8-2-.8-.1-.4 1.1-1.4 2-2.2 2.9-2.5 3-12.1 3-12.2 0-.5 1-1.2 3.6-1.7.7-.1 1.4-.2 2.2-.2.7 0 1.4.1 2.2.2 2.7.6 3.6 1.3 3.6 1.7 0 .1.2 9.7 3 12.2.9.8 2.1 1.8 2 2.2 0 .1-.2.4-2 .8z"></path></svg>
+                                <h3>Historic Philadelphia</h3>
+                                <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                
+
+                
+                <div class="values">
+                    <h2>Our four core values</h2>
+                    <ul>
+                        
+                        
+                        <li>
+                            <img src="//d3qvmcd5gl39ag.cloudfront.net/tbxwagtail/media/images/happy.original.png" alt="Make clients happy">
+                        </li>
+                        
+                        
+                        <li>
+                            <img src="//d3qvmcd5gl39ag.cloudfront.net/tbxwagtail/media/images/better.original.png" alt="Make things better">
+                        </li>
+                        
+                        
+                        <li>
+                            <img src="//d3qvmcd5gl39ag.cloudfront.net/tbxwagtail/media/images/stand.original.png" alt="Never stand still">
+                        </li>
+                        
+                        
+                        <li>
+                            <img src="//d3qvmcd5gl39ag.cloudfront.net/tbxwagtail/media/images/enjoy.original.png" alt="Enjoy it">
+                        </li>
+                        
+                    </ul>
+                </div>
+                
+
+            </div>
+        </section>
     <section class="jobs-refer">
         <div class="center space-footer">
             <h2>Refer a friend and make £500</h2>
