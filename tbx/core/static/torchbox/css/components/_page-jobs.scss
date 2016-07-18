@@ -18,8 +18,12 @@
     .center {
         max-width: 96em;
         margin: 0 auto;
-        padding: 0 4em;
         overflow: visible;
+        padding: 0 15px;
+
+        @media #{$tablet} {
+            padding: 0 4em;
+        }
     }
 
     header {
@@ -27,17 +31,6 @@
         position: absolute;
         width: 100%;
         max-width: 100%;
-    }
-
-    .menu-button {
-        background-color: #f85a40;
-        color: #fff;
-
-        &:hover {
-            background-color: #fff;
-            color: rgba(67,74,79,0.8);
-            transition: all 0.2s ease;
-        }
     }
 
     main {
@@ -99,8 +92,6 @@
         display: block;
         overflow: hidden;
         margin-bottom: 3em;
-        -webkit-clip-path: polygon(100% 0,100% 88%,50% 100%,0 88%,0 0);
-        clip-path: polygon(100% 0,100% 88%,50% 100%,0 88%,0 0);
     }
 
     .center.saying {
@@ -188,10 +179,14 @@
             display: block;
             margin-right: 2.25%;
             margin-bottom: 2.25%;
-            width: 31.5%;
+            width: 100%;
             float: left;
             display: block;
             position: relative;
+
+            @media #{$tablet} {
+                width: 31.5%;
+            }
 
             a {
                 // Existing site uses js to find tallest of the elements
@@ -342,7 +337,6 @@
 .jobs-refer {
     position: relative;
     top: 1px;
-    -webkit-clip-path: polygon(50% 0%, 100% 12%, 100% 100%, 0 100%, 0 12%);
     min-height: 390px;
     color: #ffffff;
     background: #2EB1B0;

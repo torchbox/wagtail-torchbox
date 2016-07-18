@@ -11,14 +11,19 @@
   .container {
     position: relative;
     z-index: 1;
-    padding: 0;
+    padding: 0 15px;
+
+    @media #{$tablet} {
+      padding: 0;
+    }
+
     @media #{$tablet-large} {
       padding: 0 $container-padding;
     }
   }
   a.listing {
     display: block;
-    margin: 0 15px 15px;
+    margin: 0 0 20px;
     background: $color;
     @media #{$tablet} {
       margin: 0 15px 20px;
