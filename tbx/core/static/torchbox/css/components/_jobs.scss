@@ -165,3 +165,33 @@
     }
   }
 }
+
+.our-offices {
+  margin: 0 0 2.75em 0;
+  padding-bottom: 3em;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+.jobs-offices li {
+        width: 28%;
+        text-align: center;
+        display: block;
+        float: left;
+        margin-right: 5%;
+    }
+
+    .jobs-offices li img {
+        display: inline-block;
+        width: 50%;
+        margin: 1em 0 1.25em;
+    }
+
+    .jobs-offices h2 {
+        font-size: 3.6em;
+        margin: 0.75em 0;
+    }
+
+    .jobs-offices li.first {
+        margin-left: 3%;
+    }

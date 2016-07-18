@@ -8,6 +8,7 @@ $(document).ready(function() {
     tbx.scrollEvents();
     // tbx.map();
     tbx.signUp();
+    tbx.jobs();
 });
 
 var tbx = {
@@ -21,7 +22,7 @@ var tbx = {
         $heroImage        = $( '.feature-image' ),
         activeClass       = 'active',
         initialLoad       = 'initial-load',
-        currentItem       = null;
+        currentItem       = null;    
 
       // On load we're forcing the second item to appear (via CSS)
       // but once the user interacts with the hero we need to 
@@ -293,6 +294,38 @@ var tbx = {
         });
       }
     }
+  },
+
+  jobs: function() {
+
+    $('.jobs-carousel').each(function (index, item) {
+      var carouselId = "carousel" + index;
+      this.id = carouselId;
+
+        $(this).slick({
+          slide: '#' + carouselId + ' li',
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          slidesPerRow: 1,
+          infinite: false,
+          vertical: true,
+          verticalSwiping: true
+        });
+    });
+
+    /*
+     * Check for window resize and reinitialise Slick
+     * because it doens't calculate height correctly.
+    */
+    var resizeId;
+    $(window).resize(function() {
+      clearTimeout(resizeId);
+
+      resizeId = setTimeout(function() {
+        $('.jobs-carousel').slick('setPosition');
+      }, 500);
+
+    });
   },
 
 

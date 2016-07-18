@@ -43,6 +43,7 @@
             {% endif %}
         </div>
     </section>
+
     {% if self.reasons_to_join.all %}
     <section class="jobs-benefits" id="reasons">
         <div class="jobs-carousel-container">
@@ -63,6 +64,7 @@
         </div>
     </section>
     {% endif %}
+
     <section class="jobs-offices">
         <div class="center our-offices-container">
             <h2>Our offices</h2>
@@ -112,8 +114,8 @@
     </section>
 {% endblock %}
 {% block extra_js %}
-    <script src="{% static 'torchbox/js/vendor/jquery.matchHeight-min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'torchbox/js/vendor/slick/slick.min.js' %}" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'torchbox/js/vendor/slick/slick.css' %}"/>
+    <!--<script src="{% static 'torchbox/js/vendor/jquery.matchHeight-min.js' %}" type="text/javascript"></script>-->
+    <script src="{% static 'torchbox/vendor/slick/slick.min.js' %}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'torchbox/vendor/slick/slick.css' %}"/>
     <script src="{% static 'torchbox/js/jobs.js' %}"></script>
 {% endblock %}

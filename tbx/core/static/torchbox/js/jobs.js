@@ -1,6 +1,6 @@
 $(function() {
 
-  $('.jobs-listing li > a').matchHeight();
+  // $('.jobs-listing li > a').matchHeight();
 
   $('.jobs-carousel').each(function (index, item) {
     var carouselId = "carousel" + index;
