@@ -147,9 +147,14 @@ footer {
         border: 0;
         background: white;
         border-radius: $border-radius 0 0 $border-radius;
-        padding: 10px 20px;
+        padding: 10px 20px 8px;
         width: 63%;
         float: left;
+        font-family: $primaryFont;
+
+        &:focus {
+          box-shadow: none;
+        }
 
         &::placeholder {
           font-family: $primaryFont;
