@@ -66,7 +66,7 @@
                         <li>
                             <a href="{{ settings.torchbox.GlobalSettings.OxfordAddressLink }}">
                                 <div class="svg">
-                                    {{ settings.torchbox.GlobalSettings.OxfordAddressSVG }}
+                                    <svg>{{ settings.torchbox.GlobalSettings.OxfordAddressSVG|safe }}</svg>
                                 </div>
                                 <div class="content">
                                     <h3>{{ settings.torchbox.GlobalSettings.OxfordAddressTitle }}</h3>
@@ -79,7 +79,7 @@
                         <li>
                             <a href="{{ settings.torchbox.GlobalSettings.BristolAddressSVG }}">
                                 <div class="svg">
-                                    {{ settings.torchbox.GlobalSettings.BristolAddressSVG }}
+                                <svg>{{ settings.torchbox.GlobalSettings.BristolAddressSVG|safe }}</svg>
                                 </div>
                                 <div class="content">
                                     <h3>{{ settings.torchbox.GlobalSettings.BristolAddressTitle }}</h3>
@@ -92,7 +92,7 @@
                         <li>
                             <a href="{{ settings.torchbox.GlobalSettings.PhiliAddressLink }}">
                                 <div class="svg">
-                                    {{ settings.torchbox.GlobalSettings.PhiliAddressSVG }}
+                                <svg>{{ settings.torchbox.GlobalSettings.PhiliAddressSVG|safe }}</svg>
                                 </div>
                                 <div class="content">
                                     <h3>{{ settings.torchbox.GlobalSettings.PhiliAddressTitle }}</h3>
