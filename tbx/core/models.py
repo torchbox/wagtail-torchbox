@@ -449,8 +449,7 @@ class StandardPage(Page):
 
 # About page
 
-class AboutPageService(Orderable):
-    page = ParentalKey('torchbox.AboutPage', related_name='services')
+class AbstractBaseService(Orderable):
     title = models.TextField()
     svg = models.TextField(null=True)
     description = models.TextField()
@@ -460,6 +459,14 @@ class AboutPageService(Orderable):
         FieldPanel('description'),
         FieldPanel('svg')
     ]
+
+    class Meta:
+        abstract = True
+
+
+class AboutPageService(AbstractBaseService):
+    page = ParentalKey('torchbox.AboutPage', related_name='services')
+
 
 class AboutPageOffice(Orderable):
     page = ParentalKey('torchbox.AboutPage', related_name='offices')
@@ -538,6 +545,36 @@ class AboutPage(Page):
         FieldPanel('involvement_title'),
         InlinePanel('involvement', label='Involvement'),
         InlinePanel('clients', label='Clients')
+    ]
+
+
+# Services page
+
+class ServicesPageService(AbstractBaseService):
+    page = ParentalKey('torchbox.ServicesPage', related_name='services')
+
+
+class ServicesPage(Page):
+    main_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    heading = models.TextField(blank=True)
+    intro = models.TextField(blank=True)
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+    )
+
+    content_panels = [
+        FieldPanel('title', classname='full title'),
+        ImageChooserPanel('main_image'),
+        FieldPanel('heading'),
+        FieldPanel('intro', classname='full'),
+        InlinePanel('services', label='Services'),
     ]
 
 
@@ -1456,63 +1493,6 @@ class Contact(AbstractEmailForm):
             FieldPanel('from_address', classname="full"),
             FieldPanel('subject', classname="full"),
         ], "Email")
-    ]
-
-# Services page
-
-class ServicesPage(Page):
-    subpage_types = ['torchbox.ServicesItem']
-    intro = RichTextField(blank=True)
-    body = RichTextField(blank=True)
-
-    class Meta:
-        verbose_name = "Services Index Page"
-
-    feed_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    search_fields = Page.search_fields + (
-        index.SearchField('intro'),
-        index.SearchField('body'),
-    )
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
-        InlinePanel('content_block', label="Content block"),
-        InlinePanel('related_links', label="Related links"),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
-    ]
-
-class ServicesPageContentBlock(Orderable, ContentBlock):
-    page = ParentalKey('torchbox.ServicesPage', related_name='content_block')
-
-
-class ServicesPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.ServicesPage', related_name='related_links')
-
-# Services item page
-
-class ServicesItem(Page):
-    parent_page_types = ['torchbox.ServicesPage']
-    intro = models.TextField(blank=True)
-
-    class Meta:
-        verbose_name = "Service"
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro'),
     ]
 
 from wagtail.contrib.settings.models import BaseSetting, register_setting

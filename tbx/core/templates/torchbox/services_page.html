@@ -1,29 +1,62 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
 
 {% block content %}
-    <section class="services-intro">
-        <h1>{{ self.title }}</h1>
+    {% if self.main_image %}
+        {% image self.main_image fill-1300x750 as header_image %}
+        <style>
+            .about-hero {
+                background-image: url('{{ header_image.url }}');
+            }
+        </style>
+    {% endif %}
+    <div class="about-hero">
+    </div>
 
-        {% if self.intro %}
-            {{ self.intro|richtext }}
-        {% endif %}
+    <div class="about-text" id="tester-unique">
+        <div class="container">
+            <div class="content">
+                <h2>{{ self.heading }}</h2>
+            </div>
+        </div>
+    </div>
 
-        {% if self.body %}
-            {{ self.body|richtext }}
-        {% endif %}
+    <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="about-content">
+        <div class="container">
+            {% if self.intro %}
+            <div class="main-content">
+                <div class="we-do">
+                    <p>{{ self.intro }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if self.services.all %}
+            <div class="services">
+                <ul>
+                    {% for service in self.services.all %}
+                    <li>
+                        <div class="content">
+                            {{ service.svg|safe }}
+                            <h3>{{ service.title }}</h3>
+                            <p>{{ service.description }}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
     </section>
 
-    <section class="container">
-        {% if self.content_block.all %}
-        <ul class="listing clearfix services">
-            {% for block in self.content_block.all %}
-            <li class="{{ forloop.counter }} {% cycle 'odd' 'even' %}">
-                {{ block.content|richtext }}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+    <section class="text-content">
+        <div class="container">
+            <div class="clients">
+                <h2>We're proud to have worked with</h2>
+                {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+            </div>
+        </div>
     </section>
 
 {% endblock %}
