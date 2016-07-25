@@ -25,6 +25,7 @@
     transform: translate3d(0,0,0);
     @include custom-bounce;
     transition-delay: 0.3s;
+    pointer-events: none;
     @media #{$tablet} {
       left: 90px;
     }

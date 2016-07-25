@@ -5,49 +5,38 @@
 {% endblock %}
 {% block content %}
 
-    <div class="map" id="map"></div>
-    <div class="container">
-        <div class="contact">
-            {% spaceless %}
-            <div class="contact__block">
-                <div class="find-us">
-                    <h1>Come say hello</h1>
-                    <div class="address">
-                        <h3>Oxford</h3>
-                        <p>Unit 9, Southill Business Park, Charlbury, OX7 3EW, UK</p>
-                    </div>
-                    <div class="address">
-                        <h3>Bristol</h3>
-                        <p>3rd Floor, 15 Colston Street, Bristol, BS1 5AP, UK</p>
-                    </div>
-                    <div class="address">
-                        <h3>Philadelphia</h3>
-                        <p>Indy Hall, 22 N. 3rd St., Philadelphia, PA 19106, US</p>
-                    </div>
-                </div>
-            </div>
-            <div class="contact__block">
-                <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
-                    <fieldset class="contact-form__group">
-                        <h1>Drop us a line</h1>
-                        {{ page.intro|richtext }}
-                        {% csrf_token %}
-                        {% for field in form %}
-                            <div class="contact-form__row contact-form__row--{{ field.id_for_label }}">
-                                {{ field.errors }}
-                                <label for="{{ field.id_for_label }}" class="contact-form__label {% if field.field.required %} contact-form__label--required {% endif %}">
-                                    {{ field.label }}
-                                </label>
-                                {{ field }}
-                            </div>
-                        {% endfor %}
-                        <input type="submit" class="contact-form__submit" id="contact-us-submit">
-                    </fieldset>    
-                </form>
-            </div>
-            {% endspaceless %}
+<div class="map" id="map"></div>
+    <div class="contact-bar">
+        <div class="contact-bar__item">+44 (0) 1608 811870</div>
+        <div class="contact-bar__item">
+            <a href="mailto:hello@torchbox.com">hello@torchbox.com</a>
         </div>
     </div>
+<div class="container">
+    <div class="main-content">
+        <div class="contact">
+            <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
+                <fieldset class="contact-form__group">
+                    <h1>Drop us a line</h1>
+                    {{ page.intro|richtext }}
+                    {% csrf_token %}
+                    {% spaceless %}
+                    {% for field in form %}
+                        <div class="contact-form__row contact-form__row--{{ field.id_for_label }}">
+                            {{ field.errors }}
+                            <label for="{{ field.id_for_label }}" class="contact-form__label {% if field.field.required %} contact-form__label--required {% endif %}">
+                                {{ field.label }}
+                            </label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    {% endspaceless %}
+                    <button type="submit" class="contact-form__submit" id="contact-us-submit">Submit</button>
+                </fieldset>    
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -90,7 +79,17 @@
             }   
         }
 
+        function positionMap(){
+
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i].getPosition());
+            }
+            map.fitBounds(bounds);
+        }
+
         // Hide a single marker/list of markers
+        // Refactor to pass location name
         function hideMarkers() {
             markers[1].setMap(null);
         }
@@ -123,6 +122,7 @@
         createMarkers();
         hideMarkers();
         zoomChange();
+        positionMap();
     
     });
 

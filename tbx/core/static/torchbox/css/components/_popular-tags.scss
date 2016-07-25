@@ -38,6 +38,11 @@
       border-color: $orange;
       background: $orange;
       color: white;
+
+      &:hover {
+        border-color: darken($orange, 5%);
+        background: darken($orange, 5%);
+      }
     }
   }
 }

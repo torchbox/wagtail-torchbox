@@ -28,7 +28,23 @@
     font-weight: 400;
   }
 
+  li {
+    padding: 0 20px 40px;
+
+    a {
+      display: block;
+
+      &:hover .content {
+        border-color: #fff;
+      }
+    }
+  }
+
   .content {
+    border: 1px solid transparent;
+    padding: 30px;
+    transition: border-color 450ms ease;
+
     svg {
       fill: #fff;
     }

@@ -4,7 +4,7 @@
     p {
       font-size: 18px;
       margin-bottom: 25px;
-      max-width: 700px;
+      max-width: $container-width;
       @media #{$tablet} {
         font-size: 23px;
         margin-bottom: 40px;
@@ -16,7 +16,7 @@
 // rich text styles
 .rich-text, .stream-field {
   p {
-    max-width: 650px;
+    max-width: $container-width;
     font-size: 16px;
     @media #{$tablet} {
       font-size: 19px;
@@ -37,7 +37,7 @@
     }
   }
   li {
-    max-width: 650px;
+    max-width: $container-width;
     font-size: 15px;
     font-weight: 300;
     color: $dark;

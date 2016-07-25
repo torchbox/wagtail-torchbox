@@ -20,6 +20,10 @@
   h2 {
     margin-bottom: 30px;
   }
+
+  button {
+    width: 135px;
+  }
   
   ul {
     @include cf;

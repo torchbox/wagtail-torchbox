@@ -79,6 +79,13 @@ input:focus, textarea:focus {
   border: 1px solid $orange;
 }
 
+input[type="checkbox"], input[type="radio"] {
+  &:focus {
+    box-shadow: none;
+    border: none;
+  }
+}
+
 // button ======================================================================
 button, .btn {
   border: none;

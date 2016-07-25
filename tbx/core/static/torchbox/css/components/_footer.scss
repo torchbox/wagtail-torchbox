@@ -175,4 +175,24 @@ footer {
       }
     }
   }
+
+  .award-logos {
+    display: table;
+    text-align: center;
+    position: relative;
+    z-index: 9;
+    width: 100%;
+    background: #212527;
+    margin-top: 40px;
+    padding: 60px 0 50px;
+
+    img {
+      width: auto;
+      display: inline-block;
+
+      &:not(:last-of-type) {
+        margin-right: 30px;
+      }
+    }
+  }
 }

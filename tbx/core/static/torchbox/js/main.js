@@ -116,7 +116,7 @@ var tbx = {
         $clientsButton    = $clients.find( 'button' ),
         $list             = $( '.clients ul' ),
         visible           = 'visible',
-        moreLabel         = 'Load more',
+        moreLabel         = 'Show more',
         lessLabel         = 'Show less';
 
     $clientsButton.click(function() {
@@ -298,20 +298,22 @@ var tbx = {
 
   jobs: function() {
 
-    $('.jobs-carousel').each(function (index, item) {
-      var carouselId = "carousel" + index;
-      this.id = carouselId;
+    if ( $('.jobs-carousel' ).length()) {
+        $('.jobs-carousel').each(function (index, item) {
+        var carouselId = "carousel" + index;
+        this.id = carouselId;
 
-        $(this).slick({
-          slide: '#' + carouselId + ' li',
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          slidesPerRow: 1,
-          infinite: false,
-          vertical: true,
-          verticalSwiping: true
-        });
-    });
+          $(this).slick({
+            slide: '#' + carouselId + ' li',
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            slidesPerRow: 1,
+            infinite: false,
+            vertical: true,
+            verticalSwiping: true
+          });
+      });
+    }
 
     /*
      * Check for window resize and reinitialise Slick

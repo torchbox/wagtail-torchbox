@@ -97,11 +97,13 @@
         <ul class="involved-in">
             {% for involvement in self.involvement.all %}
             <li>
-                <div class="content">
-                    {{ involvement.svg|safe }}
-                    <h3>{{ involvement.title }}</h3>
-                    <p>{{ involvement.description }}</p>
-                </div>
+                <a href="">
+                    <div class="content">
+                        {{ involvement.svg|safe }}
+                        <h3>{{ involvement.title }}</h3>
+                        <p>{{ involvement.description }}</p>
+                    </div>
+                </a>
             </li>
             {% endfor %}
         </ul>
