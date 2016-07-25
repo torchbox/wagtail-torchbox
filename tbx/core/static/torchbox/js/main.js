@@ -298,7 +298,7 @@ var tbx = {
 
   jobs: function() {
 
-    if ( $('.jobs-carousel' ).length()) {
+    if ( $('.jobs-carousel' ).length ) {
         $('.jobs-carousel').each(function (index, item) {
         var carouselId = "carousel" + index;
         this.id = carouselId;
