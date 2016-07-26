@@ -6,7 +6,6 @@ $(document).ready(function() {
     tbx.team();
     tbx.clipThru();
     tbx.scrollEvents();
-    // tbx.map();
     tbx.signUp();
     tbx.jobs();
 });
@@ -116,7 +115,7 @@ var tbx = {
         $clientsButton    = $clients.find( 'button' ),
         $list             = $( '.clients ul' ),
         visible           = 'visible',
-        moreLabel         = 'Show more',
+        moreLabel         = 'Load more',
         lessLabel         = 'Show less';
 
     $clientsButton.click(function() {
@@ -232,74 +231,9 @@ var tbx = {
   },
 
 
-  // Google map
-  map: function() {
-
-    if ( $( '#map' ).length) {
-        google.maps.event.addDomListener(window, 'load', init);
-
-        function init() {
-          var mapOptions = {
-            zoom: 4,
-            scrollwheel: false,
-            center: new google.maps.LatLng(45, -30),
-            styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"lightness":"69"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"geometry","stylers":[{"lightness":"35"}]},{"featureType":"administrative.country","elementType":"geometry.fill","stylers":[{"lightness":"1"}]},{"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"weight":"3.94"},{"lightness":"45"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
-        };
-
-        var mapElement = document.getElementById('map');
-        var map = new google.maps.Map(mapElement, mapOptions);
-
-        function philiMarker() {
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(39.950865, -75.145590),
-            map: map,
-            title: 'PHILADELPHIA',
-            icon: '/static/torchbox/images/pin.png'
-          });
-        }
-
-        function oxfordMarker() {
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(51.858469, -1.480863),
-            map: map,
-            title: 'Oxford',
-            icon: '/static/torchbox/images/pin.png'
-          });
-        }
-
-        function bristolMarker() {
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(51.454814, -2.597802),
-            map: map,
-            title: 'Bristol',
-            icon: '/static/torchbox/images/pin.png'
-          });
-        }
-
-        philiMarker();
-        oxfordMarker();
-        
-        var zoomLevel =  map.getZoom();
-
-        // Only show second UK marker when zoomed in
-        // Should be refactored to store markers in an array, and display required
-        // Markers depending on zoom level
-        map.addListener('zoom_changed', function() {
-          if (zoomLevel > 5) { 
-              oxfordMarker();
-          } else {
-              oxfordMarker();
-              bristolMarker();
-          }
-        });
-      }
-    }
-  },
-
   jobs: function() {
-
-    if ( $('.jobs-carousel' ).length ) {
-        $('.jobs-carousel').each(function (index, item) {
+    if ( $( '.jobs-carousel' ).length ) {
+      $('.jobs-carousel').each(function (index, item) {
         var carouselId = "carousel" + index;
         this.id = carouselId;
 
@@ -313,21 +247,21 @@ var tbx = {
             verticalSwiping: true
           });
       });
+
+      /*
+       * Check for window resize and reinitialise Slick
+       * because it doens't calculate height correctly.
+      */
+      var resizeId;
+      $(window).resize(function() {
+        clearTimeout(resizeId);
+
+        resizeId = setTimeout(function() {
+          $('.jobs-carousel').slick('setPosition');
+        }, 500);
+
+      });
     }
-
-    /*
-     * Check for window resize and reinitialise Slick
-     * because it doens't calculate height correctly.
-    */
-    var resizeId;
-    $(window).resize(function() {
-      clearTimeout(resizeId);
-
-      resizeId = setTimeout(function() {
-        $('.jobs-carousel').slick('setPosition');
-      }, 500);
-
-    });
   },
 
 
