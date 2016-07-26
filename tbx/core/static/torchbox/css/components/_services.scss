@@ -12,7 +12,7 @@
   }
 
   li {
-
+    @include cf();
     margin-bottom: 30px;
 
     @media #{$tablet} {
