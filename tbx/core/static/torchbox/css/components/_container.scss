@@ -1,0 +1,33 @@
+// site structure ==============================================================
+.container {
+    max-width: 1450px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 $container-padding-sml;
+    @include cf;
+    @media #{$tablet} {
+      padding: 0 $container-padding;
+    }
+}
+
+.container-header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 4;
+	padding: 0;
+	background-color: #fff;
+
+	@media #{$tablet} {
+	  position: static;
+	  padding: 0 50px;
+	}
+}
+
+.play-nav-container {
+	padding: 0 15px;
+	@media #{$tablet} {
+	  padding: 0;
+	}
+}

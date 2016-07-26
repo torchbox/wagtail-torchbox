@@ -1,0 +1,202 @@
+
+// Jobs listing homepage =======================================================
+.hiring {
+  // padding
+  $padding: 30px;
+  //
+  $color: $grey;
+
+  position: relative;
+  background: $blue;
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 0 15px;
+
+    @media #{$tablet} {
+      padding: 0;
+    }
+
+    @media #{$tablet-large} {
+      padding: 0 $container-padding;
+    }
+  }
+  a.listing {
+    display: block;
+    margin: 0 0 20px;
+    background: $color;
+    @media #{$tablet} {
+      margin: 0 15px 20px;
+      width: 33%;
+      float: left;
+      margin-bottom: 30px;
+    }
+    &:last-of-type {
+      margin-bottom: 40px;
+      @media #{$tablet-large} {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  ul {
+    @include cf;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    @media #{$tablet} {
+      display: flex;
+    }
+  }
+  .jobs {
+    padding: 70px 0 40px;
+    width: 100%;
+    text-align: center;
+    @media #{$tablet} {
+      padding: 70px 0;
+    }
+    li {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      @media #{$tablet} {
+        height: 250px;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        right: $padding;
+        bottom: 20px;
+        width: 0;
+        height: 1px;
+        background: $blue;
+        @include custom-bounce;
+      }
+      .content {
+        position: absolute;
+        width: calc(100% - (#{$padding * 2}));
+        left: 15px;
+        bottom: 30px;
+        text-align: left;
+        padding: 0;
+        @media #{$tablet} {
+          left: $padding;
+        }
+      }
+      &:hover {
+        @media #{$tablet-large} {
+          h3 {
+            transform: translate3d(0,-30px,0);
+            transition-delay: 0s;
+          }
+          p {
+            transform: translate3d(0,-30px,0);
+            transition-delay: 0.1s;
+          }
+          &:after {
+            left: $padding;
+            right: auto;
+            width: calc(100% - (#{$padding * 2}));
+          }
+        }
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
+        background-size: 650px;
+        opacity: 1;
+      }
+    }
+  }
+  .sml {
+    color: $dark;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    margin: 0 20px;
+    @include line-hover;
+    @media #{$tablet-large} {
+      margin-top: 0;
+    }
+    &:after {
+      background: rgba(white, 0.75);
+    }
+    span {
+      color: white;
+    }
+  }
+  h2 {
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: white;
+    @media #{$tablet-large} {
+      margin-bottom: 60px;
+    }
+    a {
+      color: white;
+      display: inline;
+      @include line-hover;
+      &:after {
+        background: white;
+      }
+    }
+  }
+  h3 {
+    color: $dark;
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-size: 20px;
+    @media #{$tablet-large} {
+      font-size: 30px;
+      transform: translate3d(0,0,0);
+      @include custom-bounce;
+      transition-delay: 0.1s;
+    }
+  }
+  p {
+    color: $dark;
+    font-size: 14px;
+    margin: 0 auto;
+    font-weight: 400;
+    @media #{$tablet-large} {
+      font-size: 16px;
+      transform: translate3d(0,0,0);
+      @include custom-bounce;
+      transition-delay: 0s;
+    }
+  }
+}
+
+.our-offices {
+  margin: 0 0 2.75em 0;
+  padding-bottom: 3em;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+.jobs-offices li {
+        width: 28%;
+        text-align: center;
+        display: block;
+        float: left;
+        margin-right: 5%;
+    }
+
+    .jobs-offices li img {
+        display: inline-block;
+        width: 50%;
+        margin: 1em 0 1.25em;
+    }
+
+    .jobs-offices h2 {
+        font-size: 3.6em;
+        margin: 0.75em 0;
+    }
+
+    .jobs-offices li.first {
+        margin-left: 3%;
+    }

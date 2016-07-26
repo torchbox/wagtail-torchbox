@@ -5,83 +5,88 @@
 
     {% get_popular_tags self as poptags %}
 
-    <div class="dropdown">Tags</div>
+    <div class="container">
 
-     <div class="popular-tags container">
-        {% if poptags and not self.hide_popular_tags %}
-            <div class="closed">
-                <p>
-                    {% for tag in poptags %}
-                        {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
-                            <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% else %}
-                            <a href="?tag={{ tag.slug }}">{{ tag }}</a>
-                        {% endif %}
-                    {% endfor %}
-                    {# Optional 'show all' appears if filtering by tag #}
-                    {% if request.GET.tag|length %}
+        <h1>Our case studies</h1>
+
+         <div class="popular-tags">
+            {% if poptags and not self.hide_popular_tags %}
+                <div class="closed">
+                    <p>
                         {% for tag in poptags %}
-                            {% if request.GET.tag|safe == tag.slug %}
-                                <a class="before" href="{% pageurl self %}">show all</a>
+                            {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                                <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
+                            {% else %}
+                                <a href="?tag={{ tag.slug }}">{{ tag }}</a>
                             {% endif %}
                         {% endfor %}
-                    {% endif %}
-                </p>
-            </div>
-        {% endif %}
+                        {# Optional 'show all' appears if filtering by tag #}
+                        {% if request.GET.tag|length %}
+                            {% for tag in poptags %}
+                                {% if request.GET.tag|safe == tag.slug %}
+                                    <a class="before" href="{% pageurl self %}">show all</a>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </p>
+                </div>
+            {% endif %}
+        </div>
     </div>
 
     <div class="container">
-        <h1 class="visuallyhidden">{{ self.title }}</h1>
         {% if self.intro %}
             {{ self.intro|richtext }}
         {% endif %}
     </div>
 
-    <section class="work">
-        {% if works %}
-            <ul class="listing clearfix">
-                {% for work in works %}
-                    {% with work.screenshots.all|first as screenshot %}
-                    {% image screenshot.image width-2000 as screenshotimage %}
-                    <li style='background-image: url({{ screenshotimage.url}});'>
-                        <a href="{% pageurl work %}">
-                            {% if screenshot.image.credit_text %}
-                                <div class="credit">
-                                    <h5>{{ screenshot.image.credit_text }}</h5>
-                                </div>
-                            {% endif %}
-                            <div class="about">
-                                <h2>{{ work.title }}</h2>
-                                <p>
-                                    {% if work.summary %}
-                                        {{ work.summary }}
+    <div class="work">
+        <section class="container">
+            {% if works %}
+                <ul class="work-list">
+                    {% for work in works %}
+                        {% with work.screenshots.all|first as screenshot %}
+                        {% image screenshot.image width-2000 as screenshotimage %}
+                        <li>
+                            <a href="{% pageurl work %}">
+                                <div class="content">
+                                    {% image screenshot.image width-1000 as background %}
+                                    <div class="image-container" style="background-image: url('{{ background.url }}');">
+                                        {% if screenshot.image.credit_text %}
+                                    </div>
                                     {% endif %}
-                                </p>
-                             </div>
-                        </a>
-                        {% endwith %}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </section>
+                                    <div class="credit">
+                                        <h5>{{ screenshot.image.credit_text }}</h5>
+                                    </div>
+                                    <div class="work-text">
+                                        <h3>{{ work.descriptive_title }}</h3>
+                                        <h4>{{ work.title }}</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endwith %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+    </div>
 
     <div class="container pagination">
         {# Pagination #}
 
         {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-        <div>&nbsp;
+        <div class="previous">
             {% if works.has_previous %}
                 <a href="?page={{ works.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Previous &nbsp;</p></a>
             {% endif %}
         </div>
 
-        <div>&nbsp;
-            <p> Page {{ works.number }} of {{ works.paginator.num_pages }} </p>
+        <div class="number">
+            <p> {{ works.number }} of {{ works.paginator.num_pages }} </p>
         </div>
 
-        <div> &nbsp;
+        <div class="next">
             {% if works.has_next %}
                 <a href="?page={{ works.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
             {% endif %}

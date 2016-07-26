@@ -27,6 +27,7 @@ from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
@@ -87,6 +88,12 @@ class BustoutBlock(StructBlock):
         icon = "pick"
 
 
+class WideImage(StructBlock):
+    image = ImageChooserBlock()
+
+    class Meta:
+        icon = "image"
+
 class StatsBlock(StructBlock):
     pass
 
@@ -101,6 +108,7 @@ class StoryBlock(StreamBlock):
     intro = RichTextBlock(icon="pilcrow")
     paragraph = RichTextBlock(icon="pilcrow")
     aligned_image = ImageBlock(label="Aligned image")
+    wide_image = WideImage(label="Wide image")
     bustout = BustoutBlock()
     pullquote = PullQuoteBlock()
     raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
@@ -242,7 +250,6 @@ class Advert(models.Model):
 
 register_snippet(Advert)
 
-
 # Custom image
 class TorchboxImage(AbstractImage):
     credit = models.CharField(max_length=255, blank=True)
@@ -280,7 +287,7 @@ def rendition_delete(sender, instance, **kwargs):
 
 
 class HomePage(Page):
-    intro = models.TextField(blank=True)
+    hero_intro = models.TextField(blank=True)
     hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
     hero_video_poster_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -289,16 +296,76 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    intro_title = models.TextField(blank=True)
+    intro_body = models.TextField(blank=True)
+    work_title = models.TextField(blank=True)
+    blog_title = models.TextField(blank=True)
+    clients_title = models.TextField(blank=True)
 
     class Meta:
         verbose_name = "Homepage"
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('intro'),
-        FieldPanel('hero_video_id'),
-        ImageChooserPanel('hero_video_poster_image'),
+        FieldPanel('hero_intro'),
+        InlinePanel( 'hero', label="Hero"),
+        FieldPanel('intro_title'),
+        FieldPanel('intro_body'),
+        FieldPanel('work_title'),
+        FieldPanel('blog_title'),
+        FieldPanel('clients_title'),
+        InlinePanel( 'clients', label="Clients"),
     ]
+
+    @property
+    def blog_posts(self):
+        # Get list of blog pages.
+        blog_posts = BlogPage.objects.filter(
+            live=True
+        )
+
+        # Order by most recent date first
+        blog_posts = blog_posts.order_by('-date')
+
+        return blog_posts
+
+    class HomePageHero(Orderable, RelatedLink):
+        page = ParentalKey('torchbox.HomePage', related_name='hero')
+        colour = models.CharField(max_length=255, help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue")
+        background = models.ForeignKey(
+            'torchbox.TorchboxImage',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL,
+            related_name='+'
+        )
+        logo = models.ForeignKey(
+            'torchbox.TorchboxImage',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL,
+            related_name='+'
+        )
+
+        panels = RelatedLink.panels + [
+            ImageChooserPanel('background'),
+            ImageChooserPanel('logo'),
+            FieldPanel('colour'),
+        ]
+
+    class HomePageClients(Orderable, RelatedLink):
+        page = ParentalKey('torchbox.HomePage', related_name='clients')
+        image = models.ForeignKey(
+            'torchbox.TorchboxImage',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL,
+            related_name='+'
+        )
+
+        panels = RelatedLink.panels + [
+            ImageChooserPanel('image')
+        ]
 
 
 # Standard page
@@ -380,22 +447,42 @@ class StandardPage(Page):
         ImageChooserPanel('feed_image'),
     ]
 
+# About page
 
-# Services page
+class AbstractBaseService(Orderable):
+    title = models.TextField()
+    svg = models.TextField(null=True)
+    description = models.TextField()
 
-class ServicesPageContentBlock(Orderable, ContentBlock):
-    page = ParentalKey('torchbox.ServicesPage', related_name='content_block')
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        FieldPanel('svg')
+    ]
+
+    class Meta:
+        abstract = True
 
 
-class ServicesPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.ServicesPage', related_name='related_links')
+class AboutPageService(AbstractBaseService):
+    page = ParentalKey('torchbox.AboutPage', related_name='services')
 
 
-class ServicesPage(Page):
-    intro = RichTextField(blank=True)
-    body = RichTextField(blank=True)
+class AboutPageOffice(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='offices')
+    title = models.TextField()
+    svg = models.TextField(null=True)
+    description = models.TextField()
 
-    feed_image = models.ForeignKey(
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        FieldPanel('svg')
+    ]
+
+class AboutPageValues(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='values')
+    image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
         blank=True,
@@ -403,22 +490,91 @@ class ServicesPage(Page):
         related_name='+'
     )
 
+    panels = [
+        ImageChooserPanel('image')
+    ]
+
+class AboutPageInvolvement(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='involvement')
+    title = models.TextField()
+    svg = models.TextField(null=True)
+    description = models.TextField()
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        FieldPanel('svg')
+    ]
+
+class AboutPageClients(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.AboutPage', related_name='clients')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('image')
+    ]
+
+class AboutPage(Page):
+    main_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    heading = models.TextField(blank=True)
+    intro = models.TextField(blank=True)
+    values_title = models.TextField(blank=True)
+    involvement_title = models.TextField(blank=True)
+
+    content_panels = [
+        FieldPanel('title', classname='full title'),
+        ImageChooserPanel('main_image'),
+        FieldPanel('heading'),
+        FieldPanel('intro', classname='full'),
+        InlinePanel('services', label='Services'),
+        InlinePanel('offices', label='Offices'),
+        FieldPanel('values_title'),
+        InlinePanel('values', label='Values'),
+        FieldPanel('involvement_title'),
+        InlinePanel('involvement', label='Involvement'),
+        InlinePanel('clients', label='Clients')
+    ]
+
+
+# Services page
+
+class ServicesPageService(AbstractBaseService):
+    page = ParentalKey('torchbox.ServicesPage', related_name='services')
+
+
+class ServicesPage(Page):
+    main_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    heading = models.TextField(blank=True)
+    intro = models.TextField(blank=True)
+
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
-        index.SearchField('body'),
     )
 
     content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
-        InlinePanel('content_block', label="Content block"),
-        InlinePanel('related_links', label="Related links"),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
+        FieldPanel('title', classname='full title'),
+        ImageChooserPanel('main_image'),
+        FieldPanel('heading'),
+        FieldPanel('intro', classname='full'),
+        InlinePanel('services', label='Services'),
     ]
 
 
@@ -544,6 +700,7 @@ class BlogPageAuthor(Orderable):
 class BlogPage(Page):
     intro = RichTextField("Intro (used for blog index and Planet Drupal listings)", blank=True)
     body = RichTextField("body (deprecated. Use streamfield instead)", blank=True)
+    homepage_color = models.TextField("Homepage colour (orange, blue, white) if left blank will display image", blank=True)
     streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
@@ -559,7 +716,6 @@ class BlogPage(Page):
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
-
     @property
     def blog_index(self):
         # Find blog index in ancestors
@@ -579,6 +735,7 @@ class BlogPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('homepage_color'),
         InlinePanel('related_author', label="Author"),
         FieldPanel('author_left'),
         FieldPanel('date'),
@@ -597,7 +754,6 @@ class BlogPage(Page):
 
 
 # Jobs index page
-
 class ReasonToJoin(Orderable):
     page = ParentalKey('torchbox.JobIndexPage', related_name='reasons_to_join')
     image = models.ForeignKey(
@@ -620,11 +776,13 @@ class ReasonToJoin(Orderable):
 class JobIndexPageJob(Orderable):
     page = ParentalKey('torchbox.JobIndexPage', related_name='job')
     job_title = models.CharField(max_length=255)
+    job_intro = models.CharField(max_length=255)
     url = models.URLField(null=True)
     location = models.CharField(max_length=255, blank=True)
 
     panels = [
         FieldPanel('job_title'),
+        FieldPanel('job_intro'),
         FieldPanel("url"),
         FieldPanel("location"),
     ]
@@ -704,6 +862,7 @@ class WorkPageAuthor(Orderable):
 class WorkPage(Page):
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     summary = models.CharField(max_length=255)
+    descriptive_title = models.CharField(max_length=255)
     intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
     body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
@@ -737,6 +896,7 @@ class WorkPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('descriptive_title'),
         InlinePanel('related_author', label="Author"),
         FieldPanel('author_left'),
         FieldPanel('summary'),
@@ -1309,3 +1469,51 @@ class MarketingLandingPage(Page):
         InlinePanel('featured_items', label="Featured Items"),
         InlinePanel( 'clients', label="Clients"),
     ]
+
+# Contact page
+
+class ContactFormField(AbstractFormField):
+    page = ParentalKey('Contact', related_name='form_fields')
+
+
+class Contact(AbstractEmailForm):
+    intro = RichTextField(blank=True)
+    thank_you_text = RichTextField(blank=True)
+
+    class Meta:
+        verbose_name = "Contact Page"
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        InlinePanel('form_fields', label="Form fields"),
+        FieldPanel('thank_you_text', classname="full"),
+        MultiFieldPanel([
+            FieldPanel('to_address', classname="full"),
+            FieldPanel('from_address', classname="full"),
+            FieldPanel('subject', classname="full"),
+        ], "Email")
+    ]
+
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+
+@register_setting
+class GlobalSettings(BaseSetting):
+    class Meta:
+        verbose_name = 'Global Settings'
+    ContactTelephone = models.CharField(max_length=255, help_text='Telephone')
+    ContactEmail = models.CharField(max_length=255, help_text='Email address')
+    ContactTwitter = models.CharField(max_length=255, help_text='Twitter')
+    EmailNewsletterTeaser = models.CharField(max_length=255, help_text='Text that sits above the email newsletter')
+    OxfordAddressTitle = models.CharField(max_length=255, help_text='Full address')
+    OxfordAddress = models.CharField(max_length=255, help_text='Full address')
+    OxfordAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
+    OxfordAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
+    BristolAddressTitle = models.CharField(max_length=255, help_text='Full address')
+    BristolAddress = models.CharField(max_length=255, help_text='Full address')
+    BristolAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
+    BristolAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
+    PhiliAddressTitle = models.CharField(max_length=255, help_text='Full address')
+    PhiliAddress = models.CharField(max_length=255, help_text='Full address')
+    PhiliAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
+    PhiliAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')

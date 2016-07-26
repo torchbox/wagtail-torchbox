@@ -1,0 +1,123 @@
+{% extends "torchbox/base.html" %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
+
+{% block content %}
+    {% if self.main_image %}
+        {% image self.main_image fill-1300x750 as header_image %}
+        <style>
+            .about-hero {
+                background-image: url('{{ header_image.url }}');
+            }
+        </style>
+    {% endif %}
+    <div class="about-hero">
+    </div>
+
+    <div class="about-text" id="tester-unique">
+        <div class="container">
+            <div class="content">
+                <h2>{{ self.heading }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="about-content">
+        <div class="container">
+            {% if self.intro %}
+            <div class="main-content">
+                <div class="we-do">
+                    <p>{{ self.intro }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if self.services.all %}
+            <div class="services">
+                <ul>
+                    {% for service in self.services.all %}
+                    <li>
+                        <div class="content">
+                            {{ service.svg|safe }}
+                            <h3>{{ service.title }}</h3>
+                            <p>{{ service.description }}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
+    </section>
+
+    <div class="full-image">
+    </div>
+
+    <section class="text-content">
+        <div class="container">
+
+            {% if self.offices.all %}
+            <div class="offices">
+                <h2>Our offices</h2>
+                <ul>
+                    {% for office in self.offices.all %}
+                    <li>
+                        <div class="content">
+                            {{ office.svg|safe }}
+                            <h3>{{ office.title }}</h3>
+                            <p>{{ office.description }}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if self.values.all %}
+            <div class="values">
+                <h2>{{ self.values_title }}</h2>
+                <ul>
+                    {% for item in self.values.all %}
+                    {% image item.image original as value_image %}
+                    <li>
+                        <img src="{{ value_image.url }}" alt="{{ value_image.alt }}">
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
+    </section>
+
+    {% if self.involvement_title or self.involvement.all %}
+    <div class="involved">
+        <h2>{{ self.involvement_title }}</h2>
+        {% if self.involvement.all %}
+        <ul class="involved-in">
+            {% for involvement in self.involvement.all %}
+            <li>
+                <a href="">
+                    <div class="content">
+                        {{ involvement.svg|safe }}
+                        <h3>{{ involvement.title }}</h3>
+                        <p>{{ involvement.description }}</p>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <section class="text-content">
+        <div class="container">
+            <div class="clients">
+                <h2>We're proud to have worked with</h2>
+                {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

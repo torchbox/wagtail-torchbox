@@ -6,105 +6,133 @@
 {% get_prev_sibling_by_order self as prev_page %}
 
 <main class="single">
-
     {% with self.screenshots.all as screenshots %}
         {% if screenshots %}
-            <ul>
                 {% for screenshot in screenshots %}
-                    <li  class="img-wrapper">
-                        <div class="crop-height">
-                            {% image screenshot.image width-9999 as shot %}
-                            <img class="scale" src="{{ shot.url }}" width="{{ shot.width }}" height="{{ shot.height }}" alt="{{ shot.alt }}" />
+                    {% image screenshot.image width-9999 as shot %}
+                    <div class="work-hero" style=" background-image:url({{ shot.url }});"></div>
+                    <div class="hero-text" id="tester-unique">
+                        <div class="container">
+                            <div class="content">
+                                {% include "torchbox/includes/breadcrumb.html" %}
+                                <p class="client">{{ self.title }}</p>
+                                <h1>{{self.descriptive_title}}</h1>
+                            </div>
                         </div>
-                    </li>
+                    </div>
                 {% endfor %}
-            </ul>
         {% endif %}
     {% endwith %}
 
+    <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="work-content">
+        <div class="container">
+            <div class="main-content">
+                <div class="fixed">
+                    {% if self.body %}
+                            {{ self.body|richtext }}
+                    {% endif %}
+
+                    {% include "torchbox/includes/streamfield.html" %}
+                </div>
+            </div>
+        </div>
+        <div class="specifications">
+            <div class="container">
+                <div class="content">
+                <h2>specifications</h2>
+<!--                 <ul class="logo">
+                    <li>
+                        <img src="/static/torchbox/images/RAU.svg" alt="">
+                    </li>
+                </ul> -->
+                <ul>
+                    <li><h4>sector</h4></li>
+                    <li>Non-profit</li>
+                </ul>
+                <ul>
+                    <li><h4>Services</h4></li>
+                    <li>
+                        <a href="">Paid Search</a>
+                    </li>
+                    <li>
+                        <a href="">Social media</a>
+                    </li>
+                </ul>
+                <ul class="tags">
+                    <li><h4>tags</h4></li>
+                    {% with self.tags.all as tags %}
+                        {% if tags %}
+                            {% for tag in tags %}
+                                <li>
+                                    <a href="{% pageurl self.work_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </ul>
+                <ul>
+                    <li class="visit">
+                        <a href="">
+                            Visit the site
+                            <span class="svg">
+                                <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In  -->
+                                <svg version="1.1"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+                                         x="0px" y="0px" viewBox="0 0 71 71" style="enable-background:new 0 0 71 71;" xml:space="preserve">
+                                    <defs>
+                                    </defs>
+                                    <polyline points="70.5,55.5 70.5,70.5 0.5,70.5 0.5,0.5 15.5,0.5 "/>
+                                    <polyline points="47.2,0.5 70.5,0.5 70.5,23.8 "/>
+                                    <line  x1="70.5" y1="0.5" x2="35.5" y2="35.5"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <div class="nextprev-nav">
+<!--
         {% if prev_page %}
             <div class="nextprev prev">
                 <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
             </div>
         {% endif %}
-
-
+-->
         {% if next_page %}
-            <div class="nextprev next">
-                <a href="{% pageurl next_page %}">{% image next_page.homepage_image fill-80x80 class="thumb" %} <span>{{ next_page.title }}</span></a>
-            </div>
+            <a href="{% pageurl next_page %}">
+                <div class="next">
+                    {% image next_page.homepage_image fill-2000x600 class="thumb" %}
+                    <div class="container">
+                        <div class="content">
+                            <p class="client">{{ next_page.title }}</p>
+                            <h2>{{next_page.descriptive_title}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
         {% endif %}
     </div>
 
-    <section class="intro">
-        <div class="container body-copy">
-            {% include "torchbox/includes/breadcrumb.html" %}
-
-            <h1>{{ self.title }}</h1>
-
-            {% if self.intro %}
-                {{ self.intro|richtext }}
-            {% endif %}
-
-            {# note these tags are all squashed together in order to avoid a space before the comma if there are current authors as well as an author who has left #}
-            {% with self.related_author.all as authors %}{% if authors %}{% for author in authors %}{% if author.author %}<a href="{% pageurl author.author %}">{{ author.author.title }}</a>{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}{% endif %}{% endwith %}{% if self.author_left %}{% if self.has_authors %}, {% endif %}{{ self.author_left }}{% endif %}
-
-            <div class="share">
-                {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
-                <ul class="options">
-                    <li>
-                        <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                    </li>
-                    <li>
-                        <a href="http://www.twitter.com/share" class="twitter-share-button">Tweet</a>
-                    </li>
-                </ul>
-            </div>
-
-            <section class="tags">
-                {% with self.tags.all as tags %}
-                    {% if tags %}
-                        {% for tag in tags %}
-                            <a href="{% pageurl self.work_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </section>
-        </div>
-    </section>
-
-    {% if self.body %}
-        <section class="body-copy container height">
-            {{ self.body|richtext }}
-        </section>
-    {% endif %}
-
-    {% include "torchbox/includes/streamfield.html" %}
-
-    <section class="container body-copy">
-        <div id="author" class="author clearfix" >
-            {% with self.related_author.all as authors %}
-                {% if authors %}
-                    {% for author in authors %}
-                    <div class="author-holder">
-                        {% if author.author.image %}
-                            {% image author.author.image fill-300x300 as photo %}
-                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
-                        {% endif %}
-                        {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
-
-                        {% if author.author.role %}
-                            <span class="role">{{ author.author.role }}</span>
-                    </div>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </div>
-    </section>
-
 </main>
+
+<!--
+<div class="share">
+    {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
+    <ul class="options">
+        <li>
+            <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+        </li>
+        <li>
+            <a href="http://www.twitter.com/share" class="twitter-share-button">Tweet</a>
+        </li>
+    </ul>
+</div>
+-->
 
 <div id="fb-root"></div>
 {% endblock %}

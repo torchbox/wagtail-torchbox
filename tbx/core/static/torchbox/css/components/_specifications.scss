@@ -1,0 +1,111 @@
+
+// specifications
+.specifications {
+  position: relative;
+  text-align: center;
+  margin-top: 40px;
+  @media #{$tablet} {
+      margin-top: 70px;
+  }
+  .container {
+    padding: 40px 15px;
+    border-top: 1px solid rgba($dark, 0.15);
+    @media #{$tablet} {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 70px 0;
+    }
+  }
+  .content {
+    position: relative;
+    text-align: left;
+    z-index: 1;
+  }
+  h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-variant: small-caps;
+    @media #{$tablet} {
+      font-size: 30px;
+      margin-bottom: 40px;
+    }
+  }
+  h4 {
+    text-transform: uppercase;
+    color: $dark;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    @media #{$tablet} {
+      font-size: 13px;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 0;
+    @media #{$tablet} {
+      width: 25%;
+      float: left;
+    }
+  }
+  li {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 300;
+    line-height: 1.5;
+    width: 100%;
+    @media #{$tablet} {
+      font-size: 15px;
+    }
+    a {
+      display: inline-block;
+      @include line-hover;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+    &.visit {
+      border: 1px dashed $blue;
+      display: inline-block;
+      padding: 10px 25px;
+      width: auto;
+      border-radius: $border-radius;
+      transition: all 0.25s ease 0s;
+      a {
+        color: $blue;
+        transition: all 0.25s ease 0s;
+      }
+      &:hover {
+        background: $blue;
+        border: 1px solid $blue;
+        color: white;
+        a {
+          color: white;
+          &:after {
+            display: none;
+          }
+        }
+        svg {
+          stroke: white;
+        }
+      }
+    }
+  }
+  .svg {
+    display: inline;
+    fill: none;
+    stroke-width: 5px;
+    stroke: $blue;
+    stroke-linecap: round;
+    margin-left: 15px;
+    transition: all 0.25s ease 0s;
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}

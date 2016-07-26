@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'wagtail.contrib.settings',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -82,6 +83,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'tbx.core.context_processors.fb_app_id',
+                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },

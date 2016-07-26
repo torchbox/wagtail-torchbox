@@ -4,37 +4,45 @@
 {% block content %}
 <section>
     <div class="container">
-        <h1 class="visuallyhidden">{{ self.title }}</h1>
-    </div>
-    <div class="grid people-list clearfix">
+        <h1>{{ self.title }}</h1>
+        <div class="view-toggle">
+            <div class="text-view active js-image-view">Image view</div>
+            <div class="list-view js-text-view">Text view</div>
+        </div>
+        <div class="people-list">
 
-        {% if self.intro %}
-            {{ self.intro|richtext }}
-        {% endif %}
+            {% if self.intro %}
+                {{ self.intro|richtext }}
+            {% endif %}
 
-        {% if self.people.all %}
-            <ul>
-                {% for person in self.people.all %}
-                    <li>
-                        <a href="{% pageurl person %}">
-                        {% if person.image %}
-                            {% image person.image fill-400x400 as photo %}
-                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
-                        {% else %}
-                            <img src="http://placehold.it/400&text=Please+update+me" width="400" height="400" alt="Please change me!" class="img-thumbnail" />
-                        {% endif %}
-                            <div>
-                                <h2>{{ person.title }}</h2>
+            {% if self.people.all %}
+                <ul>
+                    {% for person in self.people.all %}
+                        <li>
+                            <div class="content">
+                                <a href="{% pageurl person %}">
+                                {% if person.image %}
+                                    {% image person.image fill-400x400 as photo %}
+                                    <span class="img-holder">
+                                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+                                        {% else %}
+                                            <img src="http://placehold.it/400&text=Please+update+me" width="400" height="400" alt="Please change me!" class="img-thumbnail" />
+                                        {% endif %}
+                                    </span>
+                                    <div>
+                                        <h2>{{ person.title }}</h2>
 
-                                {% if person.role %}
-                                    <p>{{ person.role }}</p>
-                                {% endif %}
+                                        {% if person.role %}
+                                            <p>{{ person.role }}</p>
+                                        {% endif %}
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 </section>
 {% endblock %}

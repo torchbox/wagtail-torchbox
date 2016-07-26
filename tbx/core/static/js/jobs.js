@@ -1,0 +1,1 @@
+$(function(){$(".jobs-carousel").each(function(i,e){var s="carousel"+i;this.id=s,$(this).slick({slide:"#"+s+" li",slidesToShow:1,slidesToScroll:1,slidesPerRow:1,infinite:!1,vertical:!0,verticalSwiping:!0})})});var resizeId;$(window).resize(function(){clearTimeout(resizeId),resizeId=setTimeout(function(){$(".jobs-carousel").slick("setPosition")},500)});

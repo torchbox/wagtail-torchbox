@@ -1,0 +1,21 @@
+// logo ========================================================================
+.logo {
+    display: inline-block;
+
+    svg {
+    	height: 40px;
+    	width: 165px;
+      fill: #2b2b2b;
+    	
+    	@media #{$tablet} {
+    		margin-top: 5px;
+    	}
+    }
+}
+
+// Wagtail logo ================================================================
+.wagtail {
+  padding: 0 0 20px;
+  max-width: 150px;
+  margin: 0 auto;
+}

@@ -1,0 +1,126 @@
+// intro
+.intro {
+  .rich-text {
+    p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      max-width: $container-width;
+      @media #{$tablet} {
+        font-size: 23px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+// rich text styles
+.rich-text, .stream-field {
+  p {
+    max-width: $container-width;
+    font-size: 16px;
+    @media #{$tablet} {
+      font-size: 19px;
+    }
+    a {
+      @include line-hover;
+    }
+  }
+  h2 {
+    text-align: left;
+    font-size: 23px;
+    font-weight: 400;
+    margin: 30px 0 10px;
+    color: $dark;
+    @media #{$tablet} {
+      font-size: 25px;
+      margin: 40px 0 10px;
+    }
+  }
+  li {
+    max-width: $container-width;
+    font-size: 15px;
+    font-weight: 300;
+    color: $dark;
+    @media #{$tablet} {
+      font-size: 18px;
+    }
+  }
+  blockquote {
+    position: relative;
+    padding: 20px 0;
+    margin: 30px 0 0 0;
+    z-index: 1;
+    @media #{$tablet} {
+      left: -50px;
+      padding: 40px 40px 20px;
+      margin: 60px 0 0;
+      width: calc(100% + 100px);
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: -20px;
+      width: 190px;
+      height: 190px;
+      background: url('/static/torchbox/images/pattern-sml.png') no-repeat center;
+      background-size: cover;
+      transform: rotate(90deg);
+      opacity: 0.15;
+      z-index: 0;
+    }
+    p {
+      max-width: 100%;
+      font-weight: 300;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      font-style: italic;
+      @media #{$tablet} {
+        font-size: 23px;
+      }
+    }
+    cite {
+      font-weight: 500;
+      font-style: normal;
+      font-size: 13px;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+  }
+  img {
+    margin-bottom: 25px;
+    max-width: 100%;
+    max-height: 600px;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    @media #{$tablet} {
+      margin: 0;
+    }
+  }
+  .align-right {
+    position: relative;
+    @media #{$tablet} {
+      right: -90px;
+      margin-right: -150px;
+      float: right;
+      z-index: 1;
+    }
+  }
+  .img-holder {
+    margin: 30px 0 10px;
+    @media #{$tablet} {
+      margin: 50px 0 40px;
+    }
+    @include cf;
+    p {
+      font-style: italic;
+      font-size: 14px;
+      margin: 0;
+      position: relative;
+      text-align: center;
+    }
+  }
+}
