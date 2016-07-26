@@ -6,8 +6,7 @@
         {% image self.main_image fill-1300x750 as header_image %}
         <style>
             .about-hero {
-                /*background-image: url('{{ header_image.url }}');*/
-                background-image: url('{% static 'torchbox/images/torchbox-all-02.jpg' %}');
+                background-image: url('{{ header_image.url }}');
             }
         </style>
     {% endif %}
