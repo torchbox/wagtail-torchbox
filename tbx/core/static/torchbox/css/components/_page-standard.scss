@@ -1,6 +1,7 @@
 // page-standardpage ===========================================================
 .page-standardpage,
-.page-aboutpage {
+.page-aboutpage,
+.page-servicespage {
   nav {
     @media #{$tablet} {
       position: fixed;
