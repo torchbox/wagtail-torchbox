@@ -5,37 +5,27 @@
 {% endblock %}
 {% block content %}
 
-    <div class="map" id="map"></div>
-    <div class="container">
-        <div class="contact">
-        {% spaceless %}
-        <div class="contact__block">
-            <div class="find-us">
-                <h1>Come say hello</h1>
-                <div class="address">
-                    <h3>Oxford</h3>
-                    <p>Unit 9, Southill Business Park, Charlbury, OX7 3EW, UK</p>
-                </div>
-                <div class="address">
-                    <h3>Bristol</h3>
-                    <p>3rd Floor, 15 Colston Street, Bristol, BS1 5AP, UK</p>
-                </div>
-                <div class="address">
-                    <h3>Philadelphia</h3>
-                    <p>Indy Hall, 22 N. 3rd St., Philadelphia, PA 19106, US</p>
-                </div>
-            </div>
+<div class="map" id="map"></div>
+    <div class="contact-bar">
+        <div class="contact-bar__item">+44 (0) 1608 811870</div>
+        <div class="contact-bar__item">
+            <a href="mailto:hello@torchbox.com">hello@torchbox.com</a>
         </div>
-        <div class="contact__block">
-            <form class="contact-us" action="{% pageurl page %}" method="post">
-                <h1>Thanks</h1>
-                {{ page.thank_you_text|richtext }}
-                {% csrf_token %}
-                {{ form.as_p }}
+    </div>
+<div class="container">
+    <div class="main-content">
+        <div class="contact">
+            <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
+                <fieldset class="contact-form__group">
+                    <h1>Thanks</h1>
+                   {{ page.thank_you_text|richtext }}
+                   {% csrf_token %}
+                   {{ form.as_p }}
+                </fieldset>    
             </form>
         </div>
-        {% endspaceless %}
     </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -60,12 +50,9 @@
             mapTypeId:      google.maps.MapTypeId.ROADMAP,
             zoom:           4,
             scrollwheel:    false,
-
-            // Snazzy styles
             styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"lightness":"69"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"geometry","stylers":[{"lightness":"35"}]},{"featureType":"administrative.country","elementType":"geometry.fill","stylers":[{"lightness":"1"}]},{"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"weight":"3.94"},{"lightness":"45"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
         });
 
-        // Create markers
         function createMarkers() {
             for (var i = 0; i < locations.length; i++) {
 
@@ -73,18 +60,25 @@
 
                     map: map,
                     icon: '{% static "torchbox/images/pin.png" %}',
-
-                    // Set positions    
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
 
                 });
 
-                // Push each marker to array
                 markers.push(marker);
             }   
         }
 
+        function positionMap(){
+
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i].getPosition());
+            }
+            map.fitBounds(bounds);
+        }
+
         // Hide a single marker/list of markers
+        // Refactor to pass location name
         function hideMarkers() {
             markers[1].setMap(null);
         }
@@ -117,6 +111,7 @@
         createMarkers();
         hideMarkers();
         zoomChange();
+        positionMap();
     
     });
 
