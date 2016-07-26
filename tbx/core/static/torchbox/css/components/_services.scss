@@ -9,15 +9,16 @@
 
   ul {
     width: 100%;
+    font-size: 0;
   }
 
   li {
-    @include cf();
     margin-bottom: 30px;
 
     @media #{$tablet} {
+      display: inline-block;
       width: 50%;
-      float: left;
+      vertical-align: top;
       margin-bottom: 40px;
       padding: 0 0 70px;
     }
@@ -25,7 +26,6 @@
     @media #{$desktop} {
       padding: 0 50px 70px;
     }
-
   }
 
   .content {
