@@ -222,6 +222,7 @@
       font-size: 30px;
       transform: translate3d(0,0,0);
       @include custom-bounce;
+      transition-property: transform;
       // out hover
       transition-delay: 0.2s;
     }
@@ -249,6 +250,7 @@
       margin-bottom: 15px;
       transform: translate3d(0,0,0);
       @include custom-bounce;
+      transition-property: transform;
       // out hover
       transition-delay: 0.3s;
     }
