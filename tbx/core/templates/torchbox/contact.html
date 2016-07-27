@@ -44,9 +44,7 @@
 
     $(function() {
 
-        var zoomMin         = 5,
-            mapZoom         = null; 
-            markers         = [],
+        var markers         = [],
 
             // Define locations and labels
             locations       = [
@@ -75,15 +73,16 @@
 
                 var lat             = locations[i][0],
                     long            = locations[i][1],
-                    address         = locations[i][2],
+                    title           = locations[i][2],
                     markerLocation  = new google.maps.LatLng(lat, long),
-                    infowindow      = new google.maps.InfoWindow();
+                    infowindow      = new google.maps.InfoWindow(),
+                    markerInfo      = '<div class="map-infobox">' + title + '</div>';
 
                 // Create markers    
                 var marker = new google.maps.Marker({
                     map:        map,
                     position:   markerLocation,
-                    title:      address,
+                    title:      title,
                     icon:       '{% static "torchbox/images/pin.png" %}'
                 });
 
@@ -91,12 +90,12 @@
                 markers.push(marker);
 
                 // Upon marker click, show info box
-                google.maps.event.addListener( marker, 'click', ( function( marker, address, infowindow ) {
+                google.maps.event.addListener( marker, 'click', ( function( marker, markerInfo, infowindow ) {
                     return function() {
-                        infowindow.setContent( address );
+                        infowindow.setContent( markerInfo );
                         infowindow.open( map, marker );
                     };
-                })( marker, address, infowindow ));
+                })( marker, markerInfo, infowindow ));
             }
         }
 
@@ -112,40 +111,7 @@
             map.fitBounds(bounds);
         }
 
-        // Hide a single marker/list of markers
-        // Refactor to pass location name
-        function hideMarkers() {
-            markers[1].setMap(null);
-        }
-
-        // Show all markers
-        function showAllMarkers() {
-            for (var i = 0; i < locations.length; i++) {    
-                markers[i].setMap(map);
-            }
-        }
-
-        // On user zoom change
-        function zoomChange() {
-           google.maps.event.addListener(map, 'zoom_changed', function() {
-
-                mapZoom = map.getZoom();
-
-                // When zoomed out
-                if ( mapZoom < zoomMin ) {
-                    hideMarkers();
-                }
-
-                // When zoomed in
-                else {
-                    showAllMarkers();
-                }
-           }); 
-        }
-
         setMarkers(map, locations)
-        hideMarkers();
-        zoomChange();
         positionMap();
     
     });
