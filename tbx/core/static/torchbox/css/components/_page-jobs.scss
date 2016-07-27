@@ -1,11 +1,6 @@
 /*Jobs index*/
 
 .page-jobindexpage {
-
-    .text-content {
-        margin-top: 0;
-    }
-
     h1 {
         font-weight: bold;
         font-size: 3em;
@@ -531,7 +526,6 @@ ul.image-tiles {
 
 .jobs-benefits {
     background: #F8F8F8;
-    margin-top: 3em;
 
     h3 {
         font-size: 1.7em;
@@ -561,6 +555,11 @@ ul.image-tiles {
 .jobs-core-values {
     -webkit-font-smoothing: antialiased;
     margin-bottom: 3em;
+}
+
+.jobs-benefits {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 // Carousel

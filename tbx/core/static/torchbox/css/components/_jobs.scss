@@ -11,14 +11,14 @@
   .container {
     position: relative;
     z-index: 1;
-    padding: 0 15px;
+    padding: 30px 15px;
 
     @media #{$tablet} {
-      padding: 0;
+      padding: 30px;
     }
 
     @media #{$tablet-large} {
-      padding: 0 $container-padding;
+      padding: 50px $container-padding;
     }
   }
   a.listing {
@@ -179,24 +179,24 @@
 }
 
 .jobs-offices li {
-        width: 28%;
-        text-align: center;
-        display: block;
-        float: left;
-        margin-right: 5%;
-    }
+    width: 28%;
+    text-align: center;
+    display: block;
+    float: left;
+    margin-right: 5%;
+}
 
-    .jobs-offices li img {
-        display: inline-block;
-        width: 50%;
-        margin: 1em 0 1.25em;
-    }
+.jobs-offices li img {
+    display: inline-block;
+    width: 50%;
+    margin: 1em 0 1.25em;
+}
 
-    .jobs-offices h2 {
-        font-size: 3.6em;
-        margin: 0.75em 0;
-    }
+.jobs-offices h2 {
+    font-size: 3.6em;
+    margin: 0.75em 0;
+}
 
-    .jobs-offices li.first {
-        margin-left: 3%;
-    }
+.jobs-offices li.first {
+    margin-left: 3%;
+}
