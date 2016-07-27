@@ -14,6 +14,8 @@
     margin-bottom: 40px;
   }
   li {
+    font-size: 0;
+    
     @media #{$tablet} {
       width: 33.3%;
     }
