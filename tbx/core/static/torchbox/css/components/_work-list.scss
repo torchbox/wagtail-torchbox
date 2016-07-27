@@ -181,6 +181,8 @@
     }
   }
   li {
+    overflow: hidden;
+    
     @media #{$tablet} {
       width: 25%;
       margin-bottom: 30px;
