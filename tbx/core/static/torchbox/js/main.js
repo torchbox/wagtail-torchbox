@@ -115,7 +115,7 @@ var tbx = {
         $clientsButton    = $clients.find( 'button' ),
         $list             = $( '.clients ul' ),
         visible           = 'visible',
-        moreLabel         = 'Load more',
+        moreLabel         = 'Show more',
         lessLabel         = 'Show less';
 
     $clientsButton.click(function() {
@@ -125,19 +125,13 @@ var tbx = {
       // If already open
       if ( $list.hasClass( visible ) ) {
         $list.removeClass( visible )
-
-        setTimeout(function() {
-          $clientsButton.html( moreLabel );
-        }, 900);
+        $clientsButton.html( moreLabel );
       } 
 
       // If already closed
       else {
         $list.addClass( visible );
-
-        setTimeout(function() {
-            $clientsButton.html( lessLabel );
-        }, 1300);
+        $clientsButton.html( lessLabel );
       }
     });
   },
