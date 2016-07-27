@@ -8,16 +8,22 @@ env:
   DJANGO_SETTINGS_MODULE: tbx.settings.production
 
 # Python version: 2.7, 3.4, 3.5...
-python: '2.7'
+python:
+  version: '2.7'
 
-# You almost certainly want a virtualenv; put it in /local, the
-# server-specific persistest data directory.
-virtualenv: /local/venv
+  # You almost certainly want a virtualenv; put it in /local, the
+  # server-specific persistent data directory.
+  virtualenv: /local/venv
+
+  # If set, install this requirements file at application startup.
+  requirements: requirements.txt
 
 # WSGI module to load.
 module: tbx.wsgi
 
 # Postgres version: 9.4, 9.5, 9.6...
+# If set, this will run a local Postgres instance.  If you're using a remote
+# database, you don't need to set this.
 postgres: '9.4'
 
 # Provide a Redis database at the URL in $CFG_REDIS_URL.
@@ -29,7 +35,47 @@ public-dirs:
 
 static-maps:
   /static: /app/static
-  /media/images: /local/media/images
+  /media/images: /shared/media
+
+# SSL support.  You almost certainly want this.
+ssl:
+  # Redirect plaintext requests to SSL.  Again, you almost certainly want this.
+  # (default: false)
+  force: true
+
+  # Send an HSTS header (https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security),
+  # This is generally a good idea, but by design, you can't turn it off since 
+  # browsers will have cached it.  This is specified in seconds; 31536000 is
+  # one year.
+  # (default: off)
+  hsts: 31536000
+
+  # If set, use Let's Encrypt to generate the SSL certificate automatically.
+  # This is currently the only method to obtain an SSL certificate.  Do not
+  # use this for production; SSL certificates on production are handled by
+  # sysadmin.
+  #
+  # One certificate will be issued for each entry in 'hostnames', below.
+  # To issue / renew the certificate, run 'weaver --letsencrypt'.
+  #
+  # (default: off)
+  letsencrypt: true
+
+# Authentication.
+auth:
+  # Use an htpasswd file to control access.  You can commit this to your
+  # repository (insecure), or create it locally:
+  #
+  #   htpasswd -d -c /shared/htpasswd myuser
+  htpasswd: /shared/htpasswd
+  # Override the default authentication realm ('Login required')
+  realm: Torchbox staging site
+
+  # Specify a list of CIDR networks to exempt from authentication  The
+  # special value "tbx" means Torchbox addresses.
+  ip-whitelist:
+  - 127.0.0.0/8
+  - tbx
 
 # Configuration for staging only.
 staging:
