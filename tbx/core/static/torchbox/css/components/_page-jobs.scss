@@ -667,6 +667,10 @@ ul.image-tiles {
         width: 3.25em;
         border: 0;
         overflow: hidden;
+
+        &:hover {
+            
+        }
     }
 
     .slick-prev {
@@ -674,7 +678,7 @@ ul.image-tiles {
         bottom: auto;
         left: auto;
         right: 2em;
-        z-index: 11;
+        z-index: 2;
         background-size: 70%;
     }
 
