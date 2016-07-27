@@ -1,6 +1,11 @@
 /*Jobs index*/
 
 .page-jobindexpage {
+    section {
+        position: relative;
+        z-index: 5;
+    }
+
     h1 {
         font-weight: bold;
         font-size: 3em;
@@ -31,7 +36,6 @@
     main {
         .jobs {
             margin-top: -19.5em;
-
             padding: 19.5em 0 0 0;
         }
     }
@@ -597,6 +601,7 @@ ul.image-tiles {
             max-width: none;
             max-width: 65%;
             clip-path: polygon(95% 0,100% 50%,95% 100%,0 100%,0 0);
+            height: 700px;
         }
     }
 
