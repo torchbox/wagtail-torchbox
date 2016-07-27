@@ -8,6 +8,7 @@ $(document).ready(function() {
     tbx.scrollEvents();
     tbx.signUp();
     tbx.jobs();
+    // tbx.map();
 });
 
 var tbx = {
@@ -258,7 +259,116 @@ var tbx = {
     }
   },
 
+  map: function() {
 
+    var zoomMin         = 5,
+        mapZoom         = null; 
+        markers         = [],
+
+        // Define locations and labels
+        locations       = [
+            [51.858469, -1.480863, 'Oxford'],
+            [51.454814, -2.597802, 'Bristol'],
+            [39.950865, -75.145590, 'Philadelphia']
+        ],
+
+        // Define basic map options
+        mapOptions = {
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            zoom: 4,
+            scrollwheel: false,
+            styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"lightness":"69"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"geometry","stylers":[{"lightness":"35"}]},{"featureType":"administrative.country","elementType":"geometry.fill","stylers":[{"lightness":"1"}]},{"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"weight":"3.94"},{"lightness":"45"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+
+        },
+
+        // Build map
+        map = new google.maps.Map(document.getElementById( 'map' ), mapOptions);
+
+
+    // Set up markers    
+    function setMarkers(map, locations) {
+
+        for (i = 0; i < locations.length; i++) {
+
+            var lat             = locations[i][0],
+                long            = locations[i][1],
+                title           = locations[i][2],
+                markerLocation  = new google.maps.LatLng(lat, long),
+                infowindow      = new google.maps.InfoWindow(),
+                markerInfo      = '<div class="map-infobox">' + title + '</div>';
+
+            // Create markers    
+            var marker = new google.maps.Marker({
+                map:        map,
+                position:   markerLocation,
+                title:      title,
+                icon:       '{% static "torchbox/images/pin.png" %}'
+            });
+
+            // Add each marker to the markers array
+            markers.push(marker);
+
+            // Upon marker click, show info box
+            google.maps.event.addListener( marker, 'click', ( function( marker, markerInfo, infowindow ) {
+                return function() {
+                    infowindow.setContent( markerInfo );
+                    infowindow.open( map, marker );
+                };
+            })( marker, markerInfo, infowindow ));
+        }
+    }
+
+    // Position map to display within bounds of the markers
+    function positionMap(){
+
+        var bounds = new google.maps.LatLngBounds();
+
+        for (var i = 0; i < markers.length; i++) {
+            bounds.extend(markers[i].getPosition());
+        }
+
+        map.fitBounds(bounds);
+    }
+
+    // Hide a single marker/list of markers
+    // Refactor to pass location name
+    function hideMarkers() {
+        markers[1].setMap(null);
+    }
+
+    // Show all markers
+    function showAllMarkers() {
+        for (var i = 0; i < locations.length; i++) {    
+            markers[i].setMap(map);
+        }
+    }
+
+    // On user zoom change
+    function zoomChange() {
+       google.maps.event.addListener(map, 'zoom_changed', function() {
+
+            mapZoom = map.getZoom();
+
+            // When zoomed out
+            if ( mapZoom < zoomMin ) {
+                hideMarkers();
+            }
+
+            // When zoomed in
+            else {
+                showAllMarkers();
+            }
+       }); 
+    }
+
+    setMarkers(map, locations)
+    hideMarkers();
+    zoomChange();
+    positionMap();
+
+  },
+
+  
   // SignUp form
   signUp: function() {
     function bindSignUpFormPageForm(element) {
