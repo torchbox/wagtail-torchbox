@@ -154,6 +154,7 @@
       font-size: 30px;
       transform: translate3d(0,0,0);
       @include custom-bounce;
+      transition-property: transform;
       transition-delay: 0.1s;
     }
   }
