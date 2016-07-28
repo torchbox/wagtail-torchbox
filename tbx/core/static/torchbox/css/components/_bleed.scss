@@ -3,7 +3,7 @@
     overflow: hidden;
     height: 0;
     float: right;
-    margin-top: 12px;
+    margin-top: 21px;
     z-index: 5;
     width: 100%;
     position: fixed;
@@ -92,9 +92,12 @@
       opacity: 1;
       text-align: left;
       float: left;
-      margin-right: 60px;
+      margin-right: 20px;
       margin-bottom: 0;
       transition: none;
+    }
+    @media #{$tablet-large} {
+      margin-right: 60px;
     }
     &:last-of-type {
       margin-right: 0;
