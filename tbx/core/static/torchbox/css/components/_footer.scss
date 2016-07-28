@@ -184,14 +184,25 @@ footer {
     width: 100%;
     background: #212527;
     margin-top: 40px;
-    padding: 60px 0 50px;
+    padding: 60px 0 40px;
 
     img {
       width: auto;
-      display: inline-block;
+      display: block;
+      border-radius: 0;
+      margin: 0 auto;
+
+      @media #{$tablet} {
+        display: inline-block;
+      }
 
       &:not(:last-of-type) {
-        margin-right: 30px;
+        margin-bottom: 10px;
+
+        @media #{$tablet} {
+          margin-right: 30px;
+          margin-bottom: 0;
+        }
       }
     }
   }
