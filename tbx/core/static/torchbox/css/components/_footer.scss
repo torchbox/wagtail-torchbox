@@ -211,11 +211,12 @@ footer {
       padding: 60px 0 40px;
     }
 
-    img {
-      width: auto;
-      display: block;
-      border-radius: 0;
+    .logo-container {
+      display: inline-block;
       margin: 0 auto;
+      width: auto;
+      border: 1px solid #3d4244;
+      padding: 20px;
 
       @media #{$tablet} {
         display: inline-block;
@@ -228,6 +229,14 @@ footer {
           margin-right: 30px;
           margin-bottom: 0;
         }
+      }
+
+      img,
+      svg {
+        max-height: 90px;
+        max-width: 210px;
+        display: block;
+        border-radius: 0;
       }
     }
   }
