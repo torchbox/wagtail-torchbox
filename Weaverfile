@@ -35,7 +35,7 @@ public-dirs:
 
 static-maps:
   /static: /app/static
-  /media/images: /shared/media
+  /media: /local/media
 
 # SSL support.  You almost certainly want this.
 ssl:
@@ -61,24 +61,24 @@ ssl:
   # (default: off)
   letsencrypt: true
 
-# Authentication.
-auth:
-  # Use an htpasswd file to control access.  You can commit this to your
-  # repository (insecure), or create it locally:
-  #
-  #   htpasswd -d -c /shared/htpasswd myuser
-  htpasswd: /shared/htpasswd
-  # Override the default authentication realm ('Login required')
-  realm: Torchbox staging site
-
-  # Specify a list of CIDR networks to exempt from authentication  The
-  # special value "tbx" means Torchbox addresses.
-  ip-whitelist:
-  - 127.0.0.0/8
-  - tbx
-
 # Configuration for staging only.
 staging:
   # List of hostnames this site should serve.
   hostnames:
   - torchbox.weaver.torchboxapps.com
+
+  # Authentication.
+  auth:
+    # Use an htpasswd file to control access.  You can commit this to your
+    # repository (insecure), or create it locally:
+    #
+    #   htpasswd -d -c /shared/htpasswd myuser
+    htpasswd: /shared/htpasswd
+    # Override the default authentication realm ('Login required')
+    realm: Torchbox staging site
+
+    # Specify a list of CIDR networks to exempt from authentication  The
+    # special value "tbx" means Torchbox addresses.
+    ip-whitelist:
+    - 127.0.0.0/8
+    - tbx
