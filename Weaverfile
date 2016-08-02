@@ -18,13 +18,17 @@ python:
   # If set, install this requirements file at application startup.
   requirements: requirements.txt
 
+commands:
+- /local/venv/bin/python /app/manage.py migrate
+- /local/venv/bin/python /app/manage.py collectstatic --noinput
+
 # WSGI module to load.
 module: tbx.wsgi
 
-# Postgres version: 9.4, 9.5, 9.6...
 # If set, this will run a local Postgres instance.  If you're using a remote
-# database, you don't need to set this.
-postgres: '9.4'
+# database, you don't need to set this.  (Generally, you should use a remote
+# database unless you have a good reason not to.)
+#postgres: '9.4'
 
 # Provide a Redis database at the URL in $CFG_REDIS_URL.
 redis: 64m
@@ -35,7 +39,7 @@ public-dirs:
 
 static-maps:
   /static: /app/static
-  /media: /local/media
+  /media/images: /shared/media
 
 # SSL support.  You almost certainly want this.
 ssl:
