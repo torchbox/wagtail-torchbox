@@ -1,9 +1,9 @@
 /*Jobs index*/
 
 .page-jobindexpage {
-
-    .text-content {
-        margin-top: 0;
+    section {
+        position: relative;
+        z-index: 5;
     }
 
     h1 {
@@ -26,17 +26,9 @@
         }
     }
 
-    header {
-        margin-bottom: 2em;
-        position: absolute;
-        width: 100%;
-        max-width: 100%;
-    }
-
     main {
         .jobs {
             margin-top: -19.5em;
-
             padding: 19.5em 0 0 0;
         }
     }
@@ -531,7 +523,6 @@ ul.image-tiles {
 
 .jobs-benefits {
     background: #F8F8F8;
-    margin-top: 3em;
 
     h3 {
         font-size: 1.7em;
@@ -561,6 +552,11 @@ ul.image-tiles {
 .jobs-core-values {
     -webkit-font-smoothing: antialiased;
     margin-bottom: 3em;
+}
+
+.jobs-benefits {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 // Carousel
@@ -598,6 +594,7 @@ ul.image-tiles {
             max-width: none;
             max-width: 65%;
             clip-path: polygon(95% 0,100% 50%,95% 100%,0 100%,0 0);
+            height: 700px;
         }
     }
 
@@ -668,6 +665,10 @@ ul.image-tiles {
         width: 3.25em;
         border: 0;
         overflow: hidden;
+
+        &:hover {
+            
+        }
     }
 
     .slick-prev {
@@ -675,7 +676,7 @@ ul.image-tiles {
         bottom: auto;
         left: auto;
         right: 2em;
-        z-index: 11;
+        z-index: 2;
         background-size: 70%;
     }
 

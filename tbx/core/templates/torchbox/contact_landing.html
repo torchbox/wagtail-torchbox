@@ -67,15 +67,14 @@
                     infowindow      = new google.maps.InfoWindow(),
                     markerInfo      = '<div class="map-infobox">' + title + '</div>';
 
-                // Create markers    
+                // Create markers and add to array
                 var marker = new google.maps.Marker({
-                    map:        map,
-                    position:   markerLocation,
-                    title:      title,
-                    icon:       '{% static "torchbox/images/pin.png" %}'
+                    map:            map,
+                    position:       markerLocation,
+                    title:          title,
+                    icon:           '{% static "torchbox/images/pin.png" %}'
                 });
 
-                // Add each marker to the markers array
                 markers.push(marker);
 
                 // Upon marker click, show info box
@@ -100,7 +99,7 @@
             map.fitBounds(bounds);
         }
 
-        setMarkers(map, locations);
+        setMarkers( map, locations );
         positionMap();
     
     });

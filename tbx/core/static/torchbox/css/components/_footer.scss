@@ -18,13 +18,23 @@ footer {
     border-bottom: 1px solid rgba(white, 0.15);
     li {
       @include cf;
+      padding-bottom: 0;
       margin-bottom: 30px;
-      @media #{$tablet-large} {
+
+      @media #{$tablet} {
         margin-bottom: 0;
+      }
+
+      @media #{$tablet-large} {
         width: 33.3%;
         float: left;
         padding: 0 80px;
       }
+
+      @media #{$desktop} {
+        margin-bottom: 30px;
+      }
+
       &:last-of-type {
         margin-bottom: 0;
       }
@@ -49,10 +59,14 @@ footer {
     }
     .svg {
       position: relative;
+      display: none;
       float: left;
       width: 15%;
       margin-right: 10%;
       top: 20px;
+      @media #{$tablet} {
+        display: block;
+      }
       @media #{$tablet-large} {
         margin-right: 5%;
         top: 30px;
@@ -63,9 +77,16 @@ footer {
     }
     .content {
       float: left;
-      width: 75%;
-      text-align: left;
-      padding-left: 15px;
+      width: 100%;
+      text-align: center;
+      padding-left: 0;
+
+      @media #{$tablet} {
+        width: 75%;
+        text-align: left;
+        padding-left: 15px;
+      }
+
       @media #{$tablet-large} {
         width: 80%;
       }
@@ -180,18 +201,41 @@ footer {
     display: table;
     text-align: center;
     position: relative;
-    z-index: 9;
     width: 100%;
     background: #212527;
     margin-top: 40px;
-    padding: 60px 0 50px;
+    padding: 60px 0 55px;
 
-    img {
-      width: auto;
+    @media #{$tablet} {
+      padding: 60px 0 40px;
+    }
+
+    .logo-container {
       display: inline-block;
+      margin: 0 auto;
+      width: auto;
+      border: 1px solid #3d4244;
+      padding: 20px;
+
+      @media #{$tablet} {
+        display: inline-block;
+      }
 
       &:not(:last-of-type) {
-        margin-right: 30px;
+        margin-bottom: 10px;
+
+        @media #{$tablet} {
+          margin-right: 30px;
+          margin-bottom: 0;
+        }
+      }
+
+      img,
+      svg {
+        max-height: 90px;
+        max-width: 210px;
+        display: block;
+        border-radius: 0;
       }
     }
   }

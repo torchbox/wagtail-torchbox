@@ -17,8 +17,9 @@
     border: 1px solid transparent;
     padding: 4px 7px 3px;
     transition: all 0.35s ease 0s;
+    transition-property: background, border;
     @media #{$tablet} {
-      margin: 0 5px;
+      margin: 0 5px 10px 0;
     }
     &:first-of-type {
       margin-left: 0;

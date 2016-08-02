@@ -7,8 +7,12 @@
 
     .body-copy {
         max-width: $container-width;
-    }
+        padding: 0 20px;
 
+        @media #{$tablet-large} {
+            padding: 0;
+        }
+    }
 }
 
 .body-copy {
