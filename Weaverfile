@@ -39,7 +39,7 @@ public-dirs:
 
 static-maps:
   /static: /app/static
-  /media/images: /shared/media
+  /media/images: /shared/media/images
 
 # SSL support.  You almost certainly want this.
 ssl:
