@@ -69,7 +69,7 @@ ssl:
 staging:
   # List of hostnames this site should serve.
   hostnames:
-  - torchbox.weaver.torchboxapps.com
+  - ${CFG_APP_NAME}.weaver.torchboxapps.com
 
   # Authentication.
   auth:
