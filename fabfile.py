@@ -119,7 +119,7 @@ def _pull_media():
     if env['host'] == PRODUCTION_HOST_2:
         # No need to pull media twice
         return
-    non_env_remote_media_path = _fetch_remote_variable(REMOTE_MEDIA_DIR)
+    non_env_remote_media_path = os.path.join(_fetch_remote_variable(REMOTE_MEDIA_DIR), '*')
     local('rm -rf media.old')
     local('cp -r {} {}.old || true'.format(LOCAL_MEDIA_DIR, LOCAL_MEDIA_DIR))
 
