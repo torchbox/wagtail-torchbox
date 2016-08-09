@@ -65,12 +65,22 @@ ssl:
   # (default: off)
   letsencrypt: true
 
-# Configuration for staging only.
-staging:
-  # List of hostnames this site should serve.
-  hostnames:
-  - ${CFG_APP_NAME}.weaver.torchboxapps.com
+# List of hostnames this site should serve.  ${CFG_APP_NAME} is the name of
+# the application in the Weaver UI.  ${CFG_DOMAIN} is the domain name suffix
+# for this instance of Weaver (e.g. 'weaver.torchboxapps.com').  You can also
+# set this in 'production', 'staging' or 'dev' blocks; they will *not* be
+# merged with the global value.
+#
+# This default is correct for most application.
+hostnames:
+- ${CFG_APP_NAME}.${CFG_DOMAIN}
+# - ${CFG_APP_NAME}-altsite.${CFG_DOMAIN}
+# - ...
 
+# Specify configuration for staging or dev instances only.  This will override
+# any global configuration for settings specified here.
+
+staging:
   # Authentication.
   auth:
     # Use an htpasswd file to control access.  You can commit this to your
@@ -91,5 +101,3 @@ dev:
   ssl:
     force: false
     letsencrypt: false
-  hostnames:
-  - ${CFG_APP_NAME}.dev.torchbox.net
