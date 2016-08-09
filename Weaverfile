@@ -5,7 +5,7 @@ env:
   CFG_ERROR_LOG: /log/error.log
   CFG_SECRET_KEY: ${prandchars:secret-key:128}
   CFG_ALLOWED_HOSTS: ${CFG_APP_NAME}.weaver.torchboxapps.com
-  DJANGO_SETTINGS_MODULE: tbx.settings.production
+  DJANGO_SETTINGS_MODULE: tbx.settings.production
 
 # Python version: 2.7, 3.4, 3.5...
 python:
