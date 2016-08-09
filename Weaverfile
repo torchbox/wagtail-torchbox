@@ -4,7 +4,7 @@ env:
   CFG_LOG_DIR: /log
   CFG_ERROR_LOG: /log/error.log
   CFG_SECRET_KEY: ${prandchars:secret-key:128}
-  CFG_ALLOWED_HOSTS: ${CFG_APP_NAME}.weaver.torchboxapps.com
+  CFG_ALLOWED_HOSTS: ${CFG_APP_NAME}.weaver.torchboxapps.com,${CFG_APP_NAME}.dev.torchbox.net
   DJANGO_SETTINGS_MODULE: tbx.settings.production
 
 # Python version: 2.7, 3.4, 3.5...
@@ -86,3 +86,10 @@ staging:
     ip-whitelist:
     - 127.0.0.0/8
     - tbx
+
+dev:
+  ssl:
+    force: false
+    letsencrypt: false
+  hostnames:
+  - ${CFG_APP_NAME}.dev.torchbox.net
