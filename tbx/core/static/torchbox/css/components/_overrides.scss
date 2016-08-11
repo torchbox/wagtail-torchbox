@@ -11,16 +11,16 @@
     position: relative;
     z-index: 10;
   }
-  nav {
-    @media #{$tablet} {
-      position: fixed;
-      left: 0;
-      max-width: 1450px;
-      right: 0;
-      margin: 0 auto;
-      padding: 15px 50px;
-    }
-  }
+  // nav {
+  //   @media #{$tablet} {
+  //     position: fixed;
+  //     left: 0;
+  //     max-width: 1450px;
+  //     right: 0;
+  //     margin: 0 auto;
+  //     padding: 15px 50px;
+  //   }
+  // }
   .author {
     @include cf;
     margin-bottom: 40px;
@@ -32,12 +32,12 @@
     background: white;
     position: relative;
     z-index: 5;
-    margin-top: calc(555px + 109px);
+    //margin-top: calc(730px);
     padding-top: 60px;
 
     &:first-of-type {
       // padding-top: 340px;
-      padding-top: 60px;
+      //padding-top: 300px;
     }
   }
 
@@ -53,19 +53,18 @@
 
 // hero / work page
 .work-hero {
-  $height: 585px;
+  $height: calc(100vh - 85px);
   $height-mob: 400px;
-
   position: relative;
   width: 100%;
   margin-bottom: 30px;
-  height: $height-mob;
+  height: calc(100vh - 70px);
   background-size: cover;
   @media #{$tablet} {
-    top: 79px;
-    position: fixed;
+    //top: 79px;
+    //position: fixed;
     height: $height;
-    margin-bottom: 60px;
+    margin-bottom: 0;
     background-size: cover;
   }
   &:before {
@@ -73,7 +72,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 75%;
+    height: 50%;
     width: 100%;
     background: rgba($dark, 0.75);
     background: linear-gradient(to top, rgba($dark, 1) , rgba($dark, 0));

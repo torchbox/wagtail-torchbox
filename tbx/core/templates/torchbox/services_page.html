@@ -6,7 +6,7 @@
         {% image self.main_image fill-1300x750 as header_image %}
         <style>
             .about-hero {
-                background-image: url('{{ header_image.url }}');
+                background-image: url("{% static 'torchbox/images/bikes.jpg' %}");
             }
         </style>
     {% endif %}
@@ -22,6 +22,7 @@
 
     <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="about-content">
         <div class="container">
+            <!--
             {% if self.intro %}
             <div class="main-content">
                 <div class="we-do">
@@ -29,6 +30,7 @@
                 </div>
             </div>
             {% endif %}
+            -->
 
             {% if self.services.all %}
             <div class="services">
@@ -49,8 +51,10 @@
         </div>
     </section>
 
+    <!--
     <div class="full-image">
     </div>
+    -->
 
     <section class="text-content">
         <div class="container">

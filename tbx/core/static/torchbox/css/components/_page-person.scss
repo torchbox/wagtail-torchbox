@@ -10,17 +10,28 @@
   }
   img {
     height: auto;
-    width: auto;
-    max-width: 400px;
-    border-radius: 50%;
-    margin-bottom: 50px;
+    width: 100%;
   }
   h1 {
     font-size: 35px;
     line-height: 1;
     font-weight: 200;
     color: #fd5938;
-    padding: 0px 0 0;
+    padding: 0px 0 5px;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      left: -100px;
+      top: -50px;
+      width: 220px;
+      height: 220px;
+      background: url('/static/torchbox/images/pattern-sml-orange.png') no-repeat center;
+      background-size: cover;
+      transform: rotate(90deg);
+      opacity: 0.15;
+      z-index: 0;
+    }
     @media #{$tablet} {
       padding: 0 0 10px;
       font-size: 65px;
@@ -28,8 +39,8 @@
   }
   .role {
     text-transform: uppercase;
-    font-size: 14px;
-    padding-bottom: 10px;
+    font-size: 22px;
+    padding-bottom: 20px;
   }
   .intro .rich-text p {
     margin-bottom: 20px;
@@ -54,12 +65,32 @@
         }
         h3 {
           color: $blue;
-          font-weight: 300;
-          font-size: 20px;
+          font-weight: 400;
+          font-size: 24px;
           display: inline-block;
           @include line-hover;
         }
+
       }
     }
+  }
+}
+
+.bio-img {
+  margin: 0 0 30px;
+  @media #{$tablet} {
+    width: 50%;
+    float: left;
+    margin: 60px 0;
+  }
+}
+
+.bio-text {
+  margin: 0 0 30px;
+  @media #{$tablet} {
+    width: 50%;
+    float: left;
+    margin: 30px 0;
+    padding: 50px;
   }
 }

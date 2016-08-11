@@ -1,40 +1,69 @@
 // hero ========================================================================
 .home-hero {
   position: relative;
-  height: 75vh;
+  height: 100vh;
   background-size: cover;
-  margin: 0 0 50px 0;
+  margin: 0 0 30px 0;
   overflow-x: hidden;
   
   @media #{$tablet} {
-    height: 85vh;
+    height: calc(100vh - 84px);
     min-height: 600px;
-    margin: 0 0 70px 0;
+    margin: 0 0 50px 0;
   }
   h1 {
     position: absolute;
-    top: 40%;
+    top: 0;
     margin: 0 auto;
     left: 0;
     right: 0;
-    width: 100%;
+    width: auto;
     text-align: center;
     color: white;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 300;
-    padding: 0 20px;
-    line-height: 1.2;
+    padding: 10px 20px 15px;
+    line-height: 1;
     z-index: 1;
-    max-width: 85%;
+    max-width: 100%;
+    background-color: $orange;
+    display: inline;
+    // &:after {
+    //   background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
+    //   background-size: cover;
+    //   mix-blend-mode: soft-light;
+    //   opacity: 0.3;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   content: '';
+    //   height: 100%;
+    // }
+    // &:before {
+    //   content: '';
+    //   position: absolute;
+    //   bottom: -35px;
+    //   left: calc(50% - 80px);
+    //   width: 160px;
+    //   height: 50px;
+    //   background: url('/static/torchbox/images/down-chevron.svg') center no-repeat;
+    // }
+
+    span {
+      font-weight: 400;
+      //display: block;
+    }
 
     @media #{$tablet} {
       font-weight: 100;
-      font-size: 60px;
-      top: 30%;
-      top: 17vh;
+      font-size: 55px;
+      top: 200px;
+      line-height: 1;
+      max-width: 65%;
     }
     @media #{$desktop} {
-      top: 35vh;
+      top: 260px;
     }
   }
 }
@@ -43,14 +72,14 @@
 // text on hero
 .hero-text {
   position: absolute;
-  top: 240px;
   right: 0;
   left: 0;
+  bottom: 20px;
   overflow: visible;
   z-index: 6;
   @media #{$tablet} {
-    position: fixed;
-    top: 400px;
+    //position: fixed;
+    bottom: 30px;
   }
   .container {
     position: relative;
@@ -67,19 +96,21 @@
   h1 {
     font-size: 35px;
     line-height: 1;
-    font-weight: 200;
+    font-weight: 300;
     @media #{$tablet} {
       font-size: 65px;
+      letter-spacing: -0.02em;
     }
   }
   .client {
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin: 15px 0;
+    color: $orange-lt;
     @media #{$tablet} {
-      font-size: 14px;
+      font-size: 18px;
     }
   }
   // clip through

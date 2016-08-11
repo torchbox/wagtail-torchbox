@@ -161,57 +161,57 @@ var tbx = {
   },
 
 
-  // Scroll events
-  scrollEvents: function() {
-    if ( $( window ).width() > 768 ) {
-      $( window ).on( 'scroll', function(){
+  // // Scroll events
+  // scrollEvents: function() {
+  //   if ( $( window ).width() > 768 ) {
+  //     $( window ).on( 'scroll', function(){
 
-          var $aboutText              = $( '.about-text' ), 
-              $heroText               = $( '.hero-text' ),
-              scrollTop               = $(window).scrollTop(),
-              stopClass               = 'stop';
+  //         var $aboutText              = $( '.about-text' ), 
+  //             $heroText               = $( '.hero-text' ),
+  //             scrollTop               = $(window).scrollTop(),
+  //             stopClass               = 'stop';
 
-          // Stop hero text
-          ( function() {
-             if ( scrollTop >= 335 ) {
-                 $heroText.addClass( stopClass );
-             } else {
-                 $heroText.removeClass( stopClass );
-             }
-          }());
+  //         // Stop hero text
+  //         ( function() {
+  //            if ( scrollTop >= 335 ) {
+  //                $heroText.addClass( stopClass );
+  //            } else {
+  //                $heroText.removeClass( stopClass );
+  //            }
+  //         }());
 
-          // Stop about text
-          ( function() {
-            if ( scrollTop >= 465 ) {
-                $aboutText.addClass( stopClass );
-            } else {
-                $aboutText.removeClass( stopClass );
-            }
-          }());
+  //         // Stop about text
+  //         ( function() {
+  //           if ( scrollTop >= 465 ) {
+  //               $aboutText.addClass( stopClass );
+  //           } else {
+  //               $aboutText.removeClass( stopClass );
+  //           }
+  //         }());
 
-          // Add padding as page is scrolled
-          ( function() {
-            var paddingStart          = 0,
-                paddingStop           = 285,
-                textContent           = $( '.js-text-content' ),
-                offset                = Math.abs( $(document).scrollTop() + 60 ),
-                paddingStop           = 340,
-                paddingTop            = null;
+  //         // Add padding as page is scrolled
+  //         ( function() {
+  //           var paddingStart          = 0,
+  //               paddingStop           = 285,
+  //               textContent           = $( '.js-text-content' ),
+  //               offset                = Math.abs( $(document).scrollTop() + 60 ),
+  //               paddingStop           = 340,
+  //               paddingTop            = null;
 
-            if ( textContent.length ) {
+  //           if ( textContent.length ) {
               
-              if ( offset <= paddingStop ) {
-                paddingTop = offset;
-              }
+  //             if ( offset <= paddingStop ) {
+  //               paddingTop = offset;
+  //             }
 
-              textContent.css({
-                'paddingTop' : paddingTop,
-              });
-            }
-          }());
-       });
-    }
-  },
+  //             textContent.css({
+  //               'paddingTop' : paddingTop,
+  //             });
+  //           }
+  //         }());
+  //      });
+  //   }
+  // },
 
 
   // Clip Thru

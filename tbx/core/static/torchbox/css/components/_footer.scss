@@ -13,9 +13,8 @@ footer {
   }
   .offices {
     @include cf;
-    padding: $vertical-space 0;
-    margin-bottom: 0;
-    border-bottom: 1px solid rgba(white, 0.15);
+    padding: 0 0 20px;
+    margin-bottom: 20px;
     li {
       @include cf;
       padding-bottom: 0;
@@ -28,7 +27,7 @@ footer {
       @media #{$tablet-large} {
         width: 33.3%;
         float: left;
-        padding: 0 80px;
+        padding: 0 0 0 120px;
       }
 
       @media #{$desktop} {
@@ -39,18 +38,18 @@ footer {
         margin-bottom: 0;
       }
     }
-    h3 {
-      font-size: 18px;
-      font-weight: 300;
+    .content h3 {
+      font-size: 22px;
+      font-weight: 400;
       margin-bottom: 10px;
       color: white;
       @media #{$tablet-large} {
-        font-size: 22px;
+        font-size: 24px;
       }
     }
     .vcard {
       color: white;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.5;
       font-size: 13px;
       @media #{$tablet-large} {
@@ -63,16 +62,20 @@ footer {
       float: left;
       width: 15%;
       margin-right: 10%;
-      top: 20px;
+      top: 0;
+      left: -90px;
       @media #{$tablet} {
         display: block;
       }
       @media #{$tablet-large} {
         margin-right: 5%;
-        top: 30px;
       }
       svg {
-        max-height: 40px;
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
     .content {
@@ -85,16 +88,20 @@ footer {
         width: 75%;
         text-align: left;
         padding-left: 15px;
+        width: 100%;
       }
 
       @media #{$tablet-large} {
-        width: 80%;
+        width: 90%;
       }
+    }
+    @media #{$tablet-large} {
+      padding: 50px 0;
     }
   }
   .contact {
+    background: #212527;
     @include cf;
-    border-bottom: 1px solid rgba(white, 0.15);
     margin-bottom: $vertical-space-sml;
     @media #{$tablet-large} {
       border-bottom: 0;
@@ -103,19 +110,19 @@ footer {
     ul {
       @include cf;
       padding: $vertical-space-sml 0;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
       text-align: center;
       @media #{$tablet-large} {
-        padding: $vertical-space 0;
+        padding: 30px 0 40px;
       }
     }
     li {
       display: inline-block;
       width: 100%;
       margin-bottom: 20px;
-      font-size: 16px;
-      font-weight: 300;
+      font-size: 24px;
+      font-weight: 400;
       @media #{$tablet-large} {
         margin-bottom: 0;
         text-align: center;
@@ -140,27 +147,48 @@ footer {
         display: inline;
       }
     }
-    svg {
-      position: relative;
-      top: 3px;
-      width: 30px;
-    }
     a {
-      color: white;
+      transition: all 0.1s ease 0s;
+      color: $blue;
+      display: block;
+      svg {
+        position: relative;
+        top: 13px;
+        width: 40px;
+        height: 40px;
+        fill: $blue;
+      }
+      &:hover {
+        color: $orange;
+        transform: scale(1.1);
+        svg {
+          fill: $orange;
+        }
+      }
     }
   }
   // Newsletter ================================================================
   .newsletter {
     text-align: center;
-    padding: 0 0 $vertical-space-sml;
+    padding: 40px 0 20px;
+    border-top: 1px solid rgba(white, 0.15);
+    border-bottom: 1px solid rgba(white, 0.15);
+    margin: 0 0 30px;
     @media #{$tablet-large} {
-      padding: 0 0 $vertical-space;
+      padding: 20px 0 0;
     }
     h3 {
       color: white;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 400;
       margin-bottom: 15px;
+      margin-right: 10px;
+      display: inline-block;
+      position: relative;
+      top: -12px;
+      @media #{$tablet-large} {
+        font-size: 22px;
+      }
     }
     form {
       display: inline-block;
@@ -186,13 +214,14 @@ footer {
         }
       }
       button {
-        background: $blue;
+        background: $orange;
         color: white;
         padding: 10px 20px;
         position: relative;
         left: -5px;
         float: left;
         border-radius: 0 $border-radius $border-radius 0;
+        border: 1px solid $orange;
       }
     }
   }

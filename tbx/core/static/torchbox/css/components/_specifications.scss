@@ -5,7 +5,7 @@
   text-align: center;
   margin-top: 40px;
   @media #{$tablet} {
-      margin-top: 70px;
+      margin-top: 50px;
   }
   .container {
     padding: 40px 15px;
@@ -13,7 +13,7 @@
     @media #{$tablet} {
       max-width: 900px;
       margin: 0 auto;
-      padding: 70px 0;
+      padding: 40px 0;
     }
   }
   .content {
@@ -35,12 +35,12 @@
   h4 {
     text-transform: uppercase;
     color: $dark;
-    font-size: 12px;
+    font-size: 18px;
     letter-spacing: 1px;
     font-weight: 600;
     margin-bottom: 10px;
     @media #{$tablet} {
-      font-size: 13px;
+      font-size: 18px;
     }
   }
   ul {
@@ -53,13 +53,13 @@
     }
   }
   li {
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 5px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.5;
     width: 100%;
     @media #{$tablet} {
-      font-size: 15px;
+      font-size: 18px;
     }
     a {
       display: inline-block;
@@ -69,7 +69,7 @@
       }
     }
     &.visit {
-      border: 1px dashed $blue;
+      border: 1px solid $blue;
       display: inline-block;
       padding: 10px 25px;
       width: auto;
@@ -96,16 +96,19 @@
     }
   }
   .svg {
+    transition: all 0.25s ease 0s;
     display: inline;
     fill: none;
-    stroke-width: 5px;
+    stroke-width: 10px;
     stroke: $blue;
     stroke-linecap: round;
     margin-left: 15px;
     transition: all 0.25s ease 0s;
+    position: relative;
+    top: 3px;
     svg {
-      width: 10px;
-      height: 10px;
+      width: 15px;
+      height: 15px;
     }
   }
 }

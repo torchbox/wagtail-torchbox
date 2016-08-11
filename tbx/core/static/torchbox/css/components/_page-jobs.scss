@@ -26,12 +26,12 @@
         }
     }
 
-    main {
-        .jobs {
-            margin-top: -19.5em;
-            padding: 19.5em 0 0 0;
-        }
-    }
+    // main {
+    //     .jobs {
+    //         margin-top: -19.5em;
+    //         padding: 19.5em 0 0 0;
+    //     }
+    // }
 
     .richtext{
         border-bottom: 1px dotted #DAD7D7;
@@ -688,4 +688,89 @@ ul.image-tiles {
         background-color: #f85a40;
         text-indent: -10em;
     }
+}
+
+.reasons {
+    //background-color: $orange;
+    padding: 60px 0;
+    .page-aboutpage & {
+        margin-top: -240px;
+        position:relative;
+    }
+    h2 {
+        margin: 0 0 40px;
+    }
+    li {
+        display: block;
+        overflow: hidden;
+        margin: 0 0 30px;
+        img {
+            @media #{$tablet} {
+                float: left;
+                width: 50%;
+            }
+        }
+        .text {
+            @media #{$tablet} {
+                width: 50%;
+                padding: 60px;
+                float: left;
+            }
+            .number {
+                font-size: 60px;
+                position: relative;
+                font-weight: 200;
+                color: $blue;
+                line-height: 1.4;
+                &:before {
+                  content: '';
+                  position: absolute;
+                  left: -100px;
+                  top: -35px;
+                  width: 220px;
+                  height: 220px;
+                  background: url('/static/torchbox/images/pattern-sml.png') no-repeat center;
+                  background-size: cover;
+                  transform: rotate(90deg);
+                  opacity: 0.2;
+                  z-index: 0;
+                }
+                @media #{$tablet} {
+                    font-size: 80px;
+                    line-height: 1.6;
+                }
+            }
+            h3 {
+                font-size: 30px;
+                margin: 0 0 10px;
+                @media #{$tablet} {
+                    font-size: 34px;
+                }
+            }
+            p {
+                font-size: 18px;
+            }
+        }
+        @media #{$tablet} {
+            margin: 0;
+            p {
+                font-size: 20px;
+            }
+            &:nth-of-type(even) {
+                img {
+                    float: right;
+                }
+                .text {
+                    text-align: right;
+                    .number {
+                        &:before {
+                            right: -100px;
+                            left: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

@@ -36,14 +36,14 @@
     img,
     svg {
       display: inline-block;
-      max-width: 50px;
-      height: 50px;
+      max-width: 100px;
+      height: 100px;
       margin-bottom: 10px;
-      fill: $blue;
+      fill: $orange;
     }
     h3 {
       font-size: 20px;
-      font-weight: 300;
+      font-weight: 400;
       margin-bottom: 10px;
       @media #{$tablet} {
         font-size: 25px;

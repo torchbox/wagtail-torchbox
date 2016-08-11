@@ -2,11 +2,11 @@
 .intro {
   .rich-text {
     p {
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 25px;
       max-width: $container-width;
       @media #{$tablet} {
-        font-size: 23px;
+        font-size: 26px;
         margin-bottom: 40px;
       }
     }
@@ -19,7 +19,7 @@
     max-width: $container-width;
     font-size: 16px;
     @media #{$tablet} {
-      font-size: 19px;
+      font-size: 21px;
     }
     a {
       @include line-hover;
@@ -28,7 +28,7 @@
   h2 {
     text-align: left;
     font-size: 23px;
-    font-weight: 400;
+    font-weight: 600;
     margin: 30px 0 10px;
     color: $dark;
     @media #{$tablet} {
@@ -36,10 +36,14 @@
       margin: 40px 0 10px;
     }
   }
+  ul {
+    margin-left: 40px;
+  }
   li {
     max-width: $container-width;
     font-size: 15px;
-    font-weight: 300;
+    font-weight: 400;
+    list-style-type: square;
     color: $dark;
     @media #{$tablet} {
       font-size: 18px;
@@ -47,13 +51,13 @@
   }
   blockquote {
     position: relative;
-    padding: 20px 0;
-    margin: 30px 0 0 0;
+    padding: 20px 20px 20px 20px;
+    margin: 30px 0 30px 0;
     z-index: 1;
     @media #{$tablet} {
       left: -50px;
-      padding: 40px 40px 20px;
-      margin: 60px 0 0;
+      padding: 40px 40px 20px 80px;
+      margin: 60px 0 60px;
       width: calc(100% + 100px);
     }
     &:before {
@@ -61,8 +65,8 @@
       position: absolute;
       left: -40px;
       top: -20px;
-      width: 190px;
-      height: 190px;
+      width: 220px;
+      height: 220px;
       background: url('/static/torchbox/images/pattern-sml.png') no-repeat center;
       background-size: cover;
       transform: rotate(90deg);
@@ -71,12 +75,13 @@
     }
     p {
       max-width: 100%;
-      font-weight: 300;
-      line-height: 1.4;
+      font-weight: 400;
+      line-height: 1.5;
       margin-bottom: 20px;
-      font-style: italic;
+      //font-style: italic;
+      font-size: 20px;
       @media #{$tablet} {
-        font-size: 23px;
+        font-size: 26px;
       }
     }
     cite {
@@ -87,17 +92,16 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       display: inline-block;
+      color: $blue;
     }
   }
   img {
     margin-bottom: 25px;
-    max-width: 100%;
-    max-height: 600px;
-    margin: 0 auto;
-    width: auto;
+    width: 100%;
     height: auto;
+    margin: 40px auto;
     @media #{$tablet} {
-      margin: 0;
+      margin: 40px 0;
     }
   }
   .align-right {
@@ -110,9 +114,12 @@
     }
   }
   .img-holder {
-    margin: 30px 0 10px;
+    margin: 30px 0 30px;
+    img {
+      margin: 0;
+    }
     @media #{$tablet} {
-      margin: 50px 0 40px;
+      margin: 50px 0 50px;
     }
     @include cf;
     p {
@@ -121,6 +128,7 @@
       margin: 0;
       position: relative;
       text-align: center;
+      opacity: 0.8;
     }
   }
 }

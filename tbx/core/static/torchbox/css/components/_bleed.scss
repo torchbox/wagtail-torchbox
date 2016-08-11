@@ -98,7 +98,7 @@
       transition: none;
     }
     @media #{$tablet-large} {
-      margin-right: 60px;
+      margin-right: 45px;
     }
     &:last-of-type {
       margin-right: 0;
@@ -108,9 +108,9 @@
       font-size: 16px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      font-weight: 400;
+      font-weight: 500;
       @media #{$tablet} {
-        font-size: 15px;
+        font-size: 14px;
         position: relative;
         top: 0;
         @include line-hover;

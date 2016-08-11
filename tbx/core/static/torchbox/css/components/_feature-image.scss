@@ -10,7 +10,7 @@
   left: 0;
   top: 0;
   opacity: 0;
-  height: 75vh;
+  height: 100vh;
   z-index: 0;
   background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
   background-size: cover;
@@ -18,7 +18,7 @@
   transition: opacity 0.35s ease 0s;
 
   @media #{$tablet} {
-    height: 85vh;
+    height: calc(100vh - 84px);
     min-height: 600px;
   }
 

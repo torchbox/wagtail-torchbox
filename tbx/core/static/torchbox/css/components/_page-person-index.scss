@@ -16,7 +16,7 @@
 
 .people-list {
   ul {
-    margin-bottom: 40px;
+    margin: 40px 0;
     @media #{$tablet} {
       display: flex;
       flex-wrap: wrap;
