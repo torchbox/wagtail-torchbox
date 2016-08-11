@@ -29,7 +29,8 @@
 
     <!--/feature-images -->
     <div class="container">
-        <h1>{{ self.hero_intro }}</h1>
+        <!--<h1>{{ self.hero_intro }}</h1>-->
+        <h1><!-- <span>We're Torchbox.</span> --> <span>We do digital</span> for the good guys.</h1>
         <ul class="featured-case-studies">
             {% for heroItem in hero %}
             <li class="featured-case-study{% cycle '-one' '-two' '-three' %}" data-name="{% cycle '1' '2' '3' %}">
@@ -39,7 +40,7 @@
                     <span class="img-cont">
                         {% image heroItem.logo max-270x270 %}
                     </span>
-                    <p class="link">Read the case study</p>
+                    <p class="link"><span>Recent case study</span>Bringing the RAU experience to life</p>
                 {% if heroItem.link %}
                 </a>
                 {% endif %}

@@ -6,9 +6,10 @@
   margin-bottom: 70px;
   display: block;
   border-bottom: 1px solid rgba($dark, 0.15);
+  border-top: 1px solid rgba(43,48,51,0.15);
   @include cf;
   @media #{$tablet} {
-    padding-top: 0;
+    //padding-top: 0;
   }
   h2 {
     margin-bottom: 40px;

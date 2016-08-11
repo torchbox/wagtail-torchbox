@@ -11,21 +11,22 @@
 }
 
 .container-header {
-	position: fixed;
+	//position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	z-index: 4;
 	background-color: #fff;
 	padding: 0;
+  //height: 80px;
+  position: relative;
 
 	@media #{$tablet} {
 		padding: 0 20px;
 	}
 
 	@media #{$tablet-large} {
-		position: static;
-	  	padding: 0 $container-padding;
+	  padding: 0 $container-padding;
 	}
 }
 

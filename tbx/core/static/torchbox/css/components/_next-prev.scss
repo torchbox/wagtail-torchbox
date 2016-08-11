@@ -71,23 +71,24 @@
     @include custom-bounce;
   }
   h2 {
-    font-size: 35px;
+    font-size: 30px;
     line-height: 1;
-    font-weight: 200;
+    font-weight: 300;
     transform: translate3d(0,0,0);
     transition-delay: 0.1s;
     @media #{$tablet} {
-      font-size: 65px;
+      font-size: 45px;
     }
   }
   .client, .author {
-    font-weight: 400;
+    font-weight: 500;
     text-transform: uppercase;
     font-size: 11px;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin: 15px 0;
     transform: translate3d(0,0,0);
     transition-delay: 0.2s;
+    color: $orange-lt;
     @media #{$tablet} {
       font-size: 14px;
     }

@@ -81,6 +81,7 @@
                 <div class="next {{ next_page.homepage_color }}"{% if not next_page.homepage_color and image %} style='background-image: url({{ image.url }});'{% endif %}>
                     <div class="container">
                         <div class="content">
+                            <h2>{{ next_page.title }}</h2>
                             {% with next_page.related_author.all as authors %}
                                 {% for author in authors %}
                                     {% if author.author %}
@@ -88,7 +89,6 @@
                                     {% endif %}
                                 {% endfor %}
                             {% endwith %}
-                            <h2>{{ next_page.title }}</h2>
                         </div>
                     </div>
                 </div>

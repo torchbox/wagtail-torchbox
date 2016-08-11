@@ -4,14 +4,14 @@
 .page-servicespage,
 .page-jobindexpage {
   nav {
-    @media #{$tablet} {
-      position: fixed;
-      left: 0;
-      max-width: 1450px;
-      right: 0;
-      margin: 0 auto;
-      padding: 12px 50px;
-    }
+    // @media #{$tablet} {
+    //   position: fixed;
+    //   left: 0;
+    //   max-width: 1450px;
+    //   right: 0;
+    //   margin: 0 auto;
+    //   padding: 12px 50px;
+    // }
   }
   footer {
     @media #{$tablet-large} {

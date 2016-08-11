@@ -2,16 +2,46 @@
 .about-tbx {
   //padding
   $padding: 20px;
-
   @include cf;
   padding: 0;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  p {
+    font-size: 20px;
+    border-bottom: 1px solid rgba(black, 0.1);
+    padding-bottom: 30px;
+    font-weight: 300;
+    span {
+      //font-weight: 600;
+    }
+  }
   @media #{$tablet-large} {
-    padding: 40px 0;
-    margin-bottom: 70px;
+    padding: 0;
+    p {
+      padding-bottom: 50px;
+      a {
+        position: relative;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          right: 0;
+          width: 0;
+          height: 1px;
+          background: #23b0b0;
+          transition: all 0.25s ease 0s;
+        }
+        &:hover {
+          &:after {
+            width: 100%;
+            left: 0;
+            right: auto;
+          }
+        }
+      }
+    }
   }
   .container {
-    max-width: 750px;
+    max-width: 1024px;
   }
   .title, .body {
     position: relative;
@@ -28,7 +58,7 @@
     text-align: center;
     margin-bottom: 0;
     @media #{$tablet-large} {
-      font-size: 22px;
+      font-size: 28px;
     }
   }
 }
@@ -36,9 +66,16 @@
 // about text
 .about-text {
   @extend .hero-text;
-  top: 200px;
+  bottom: auto;
+  top: 60px;
   @media #{$tablet} {
-    top: 400px;
+    top: 60px;
+    .page-aboutpage & {
+      top: 240px;
+    }
+  }
+  .content {
+    max-width: none;
   }
   &,
   .rich-text {
@@ -48,8 +85,41 @@
     font-weight: 200;
     color: white;
     text-align: center;
+    //background-color: rgba($orange, 0.5);
+    padding: 10px 20px 15px;
+    position: relative;
+    //display: inline;
+    // &:after {
+    //   background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
+    //   background-size: cover;
+    //   mix-blend-mode: soft-light;
+    //   opacity: 0.3;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   content: '';
+    //   height: 100%;
+    // }
+    // &:before {
+    //   content: '';
+    //   position: absolute;
+    //   bottom: -35px;
+    //   left: calc(50% - 80px);
+    //   width: 160px;
+    //   height: 50px;
+    //   background: url('/static/torchbox/images/down-chevron.svg') center no-repeat;
+    // }
+    .page-aboutpage & {
+      color: $blue;
+      //background-color:$blue;
+    }
     @media #{$tablet} {
       font-size: 65px;
+      letter-spacing: -0.02em;
+      .page-aboutpage & {
+        font-size: 80px;
+      }
     }
   }
   // clip through
@@ -70,4 +140,7 @@
 
 .about-hero {
   @extend .work-hero;
+  margin-bottom: 0 !important;
+  height: auto !important;
+  min-height: 700px;
 }

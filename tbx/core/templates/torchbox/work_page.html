@@ -10,13 +10,14 @@
         {% if screenshots %}
                 {% for screenshot in screenshots %}
                     {% image screenshot.image width-9999 as shot %}
-                    <div class="work-hero" style=" background-image:url({{ shot.url }});"></div>
-                    <div class="hero-text" id="tester-unique">
-                        <div class="container">
-                            <div class="content">
-                                {% include "torchbox/includes/breadcrumb.html" %}
-                                <p class="client">{{ self.title }}</p>
-                                <h1>{{self.descriptive_title}}</h1>
+                    <div class="work-hero" style=" background-image:url({{ shot.url }});">
+                        <div class="hero-text" id="tester-unique">
+                            <div class="container">
+                                <div class="content">
+                                    {% include "torchbox/includes/breadcrumb.html" %}
+                                    <h1>{{self.descriptive_title}}</h1>
+                                    <p class="client">{{ self.title }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -39,7 +40,7 @@
         <div class="specifications">
             <div class="container">
                 <div class="content">
-                <h2>specifications</h2>
+                <!--<h2>specifications</h2>-->
 <!--                 <ul class="logo">
                     <li>
                         <img src="/static/torchbox/images/RAU.svg" alt="">
@@ -109,8 +110,8 @@
                     {% image next_page.homepage_image fill-2000x600 class="thumb" %}
                     <div class="container">
                         <div class="content">
-                            <p class="client">{{ next_page.title }}</p>
                             <h2>{{next_page.descriptive_title}}</h2>
+                            <p class="client">{{ next_page.title }}</p>
                         </div>
                     </div>
                 </div>

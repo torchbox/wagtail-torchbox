@@ -53,6 +53,8 @@
     margin-right: 10px;
     font-weight: 300;
     @include line-hover;
+    font-size: 24px;
+    font-weight: 500;
   }
   .role {
     display: block;
@@ -60,7 +62,7 @@
   }
   .text {
     position: relative;
-    top: 27px;
+    top: 20px;
   }
 }
 
