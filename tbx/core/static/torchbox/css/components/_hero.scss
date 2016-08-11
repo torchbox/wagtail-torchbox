@@ -58,12 +58,12 @@
     @media #{$tablet} {
       font-weight: 100;
       font-size: 55px;
-      top: 200px;
+      //top: 200px;
       line-height: 1;
       max-width: 65%;
     }
     @media #{$desktop} {
-      top: 260px;
+      top: calc(50% - 70px);
     }
   }
 }

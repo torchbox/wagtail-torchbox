@@ -69,15 +69,20 @@
       }
     }
     &.visit {
-      border: 1px solid $blue;
+      border: 1px solid $orange;
+      background: $orange;
       display: inline-block;
       padding: 10px 25px;
       width: auto;
       border-radius: $border-radius;
       transition: all 0.25s ease 0s;
       a {
-        color: $blue;
+        color: white;
+        font-weight: 600;
         transition: all 0.25s ease 0s;
+      }
+      svg {
+        stroke: white;
       }
       &:hover {
         background: $blue;

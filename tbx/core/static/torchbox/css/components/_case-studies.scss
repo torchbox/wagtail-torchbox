@@ -1,7 +1,7 @@
 // case studies ================================================================
 .featured-case-studies {
   position: absolute;
-  bottom: 40px;
+  bottom: 7%;
   left: 0;
   width: 100%;
   max-width: 1250px;
@@ -60,22 +60,23 @@
     -webkit-transition: opacity 0.25s ease 0s;
             transition: opacity 0.25s ease 0s;
     transition-delay: 0.15s;
+    // &:before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 8px;
+    //   right: 10px;
+    //   width: 15px;
+    //   height: 15px;
+    //   background: url('/static/torchbox/images/arrow-right.svg') center no-repeat;
+    // }
     span {
+      display: none;
       color: $orange-lt;
-      display: block;
+      //display: block;
       font-size: 12px;
       text-transform: uppercase;
       margin: 0 0 5px;
       position: relative;
-      // &:before {
-      //   content: '';
-      //   position: absolute;
-      //   top: 8px;
-      //   right: 10px;
-      //   width: 15px;
-      //   height: 15px;
-      //   background: url('/static/torchbox/images/arrow-right.svg') center no-repeat;
-      // }
     }
     &:after {
       content: '';
@@ -88,7 +89,7 @@
       @include custom-bounce;
     }
     @media #{$tablet} {
-      font-size: 26px;
+      font-size: 24px;
       display: inline-block;
       &:before {
         top: 10px;
