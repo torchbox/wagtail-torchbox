@@ -13,9 +13,16 @@
     }
   }
 
-  .contact {
+  .contact-form-wrapper {
     @include cf;
-    margin-bottom: 70px;
+    //background-color: rgba(white,1);
+    position: relative;
+    //margin: -500px 0 60px 0;
+    padding: 20px 20px;
+    @media #{$tablet} {
+      //margin: -500px 0 60px 0;
+      padding: 40px 120px;
+    }
   }
 
   .contact-bar {

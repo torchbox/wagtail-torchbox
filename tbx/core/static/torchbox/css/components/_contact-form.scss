@@ -35,7 +35,7 @@ $gutter: 15px;
 			textarea {
 				width: 100%;
 				padding: 10px 15px;
-				border: 1px solid rgba($dark, 0.1);
+				border: 1px solid rgba($orange, 0.7);
 				border-radius: $border-radius;
 				font-family: $primaryFont;
 				font-size: 16px;
@@ -69,6 +69,7 @@ $gutter: 15px;
 
 			.contact-form__label {
 				position: relative;
+				color: white;
 			}
 
 			.contact-form__label--required {
@@ -81,16 +82,21 @@ $gutter: 15px;
 				}
 			}
 
+			.contact-action {
+				text-align: center;
+			}
+
 			.contact-form__submit {
 				display: inline-block;
 				width: auto;
-				border: 1px solid $blue;
-				padding: 10px 25px;
-				margin: 30px 0 0;
-				background: transparent;
+				border: 1px solid $orange;
+				padding: 15px 50px;
+				margin: 30px auto 0;
+				background: $orange;
+				color: white;
 
 				@media #{$tablet} {
-					margin: 30px 0 0 $gutter;
+					margin: 30px auto 0;
 				}
 
 				&:hover {

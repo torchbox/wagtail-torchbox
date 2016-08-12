@@ -12,10 +12,11 @@
   }
   div {
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 5px;
     &:nth-child(2) {
       position: relative;
       top: 0;
+      display: none;
     }
     &.previous, &.next {
       p {

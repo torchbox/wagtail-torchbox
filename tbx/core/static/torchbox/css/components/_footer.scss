@@ -121,10 +121,11 @@ footer {
       display: inline-block;
       width: 100%;
       margin-bottom: 20px;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 400;
       @media #{$tablet-large} {
         margin-bottom: 0;
+        font-size: 24px;
         text-align: center;
         float: left;
         width: 33.3%;
@@ -136,6 +137,7 @@ footer {
     .svg {
       display: inline-block;
       width: 30px;
+      margin-right: 15px;
       @media #{$tablet-large} {
         display: inline;
         margin-right: 15px;
