@@ -82,7 +82,7 @@
     h2 {
     font-size: 35px;
     line-height: 1;
-    font-weight: 200;
+    font-weight: 300;
     color: white;
     text-align: center;
     //background-color: rgba($orange, 0.5);
@@ -117,6 +117,7 @@
     @media #{$tablet} {
       font-size: 65px;
       letter-spacing: -0.02em;
+      font-weight: 200;
       .page-aboutpage & {
         font-size: 80px;
       }
@@ -141,6 +142,8 @@
 .about-hero {
   @extend .work-hero;
   margin-bottom: 0 !important;
-  height: auto !important;
   min-height: 700px;
+  .page-aboutpage & {
+    height: auto !important;
+  }
 }
