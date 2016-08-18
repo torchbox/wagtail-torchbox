@@ -38,9 +38,13 @@
     }
   }
   .role {
-    text-transform: uppercase;
+    //text-transform: uppercase;
     font-size: 22px;
     padding-bottom: 20px;
+    font-weight: 600;
+    @media #{$tablet} {
+      font-size: 28px;
+    }
   }
   .intro .rich-text p {
     margin-bottom: 20px;
