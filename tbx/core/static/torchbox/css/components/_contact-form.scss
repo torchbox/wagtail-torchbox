@@ -14,6 +14,13 @@ $gutter: 15px;
 		margin: 0;
 		padding: 0;
 
+		.errorlist {
+			color: $orange-lt;
+			font-weight: 600;
+			line-height: 1;
+			margin-top: 15px;
+		}
+
 		h1 {
 			text-align: center;
 
@@ -30,6 +37,8 @@ $gutter: 15px;
 				padding: 10px $gutter 0;
 			}
 
+
+
 			input[type='text'],
 			input[type='email'],
 			textarea {
@@ -38,8 +47,15 @@ $gutter: 15px;
 				border: 1px solid rgba($orange, 0.7);
 				border-radius: $border-radius;
 				font-family: $primaryFont;
-				font-size: 16px;
-				background: $grey;
+				font-size: 18px;
+				//background: $grey;
+				background: rgba(white,0.8);
+				font-weight: 500;
+
+				&:focus {
+					background: rgba(white,1);
+				}
+
 			}
 
 			textarea {
