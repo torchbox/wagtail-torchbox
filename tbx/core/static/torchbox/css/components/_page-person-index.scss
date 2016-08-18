@@ -46,9 +46,13 @@
     height: auto;
     margin-bottom: 10px;
   }
-  .content {
-    padding: 0 15px;
+
+  @media #{$small} {
+    .content {
+      padding: 0 15px;
+    }
   }
+  
   .img-holder {
     position: relative;
     display: block;

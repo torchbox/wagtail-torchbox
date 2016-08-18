@@ -693,12 +693,17 @@ ul.image-tiles {
 .reasons {
     //background-color: $orange;
     padding: 60px 0;
-    .page-aboutpage & {
-        margin-top: -240px;
-        position:relative;
-    }
     h2 {
         margin: 0 0 40px;
+    }
+    .page-aboutpage & {
+        margin-top: -70px;
+        position:relative;
+    }
+    @media #{$tablet} {
+        .page-aboutpage & {
+            margin-top: -100px;
+        }
     }
     li {
         display: block;
@@ -742,7 +747,7 @@ ul.image-tiles {
             }
             h3 {
                 font-size: 30px;
-                margin: 0 0 10px;
+                margin: 10px 0 10px;
                 @media #{$tablet} {
                     font-size: 34px;
                 }

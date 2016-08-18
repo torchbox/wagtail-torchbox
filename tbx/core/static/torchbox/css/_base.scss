@@ -98,6 +98,7 @@ button, .btn {
   padding: 10px 25px;
   transition: all 0.25s ease 0s;
   border-radius: $border-radius;
+  font-size: 18px;
   &:hover {
     background: $blue;
     color: white;
