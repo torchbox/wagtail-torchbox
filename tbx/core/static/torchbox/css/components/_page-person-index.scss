@@ -24,6 +24,8 @@
   }
   li {
     margin-bottom: 25px;
+    width: 50%;
+    float: left;
     @media #{$small} {
       width: 50%;
       float: left;
@@ -45,6 +47,10 @@
   img {
     height: auto;
     margin-bottom: 10px;
+  }
+
+  .content {
+    padding: 0 5px;
   }
 
   @media #{$small} {
@@ -72,7 +78,16 @@
   h2 {
     font-weight: 300;
     text-align: left;
-    font-size: 30px;
+    font-size: 20px;
+    @media #{$tablet} {
+      font-size: 30px;
+    }
+  }
+  p {
+    font-size: 14px;
+    @media #{$tablet} {
+      font-size: 18px;
+    }
   }
 }
 
