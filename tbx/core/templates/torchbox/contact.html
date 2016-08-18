@@ -22,33 +22,31 @@
 </style>
 
 <div class="about-hero">
-    <div class="about-text" id="tester-unique">
-        <div class="container">
-            <div class="content">
-                <h2><span>Drop us a line</span></h2>
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
-                        <fieldset class="contact-form__group">
-                            {# <h1>Drop us a line</h1> #}
-                            {{ page.intro|richtext }}
-                            {% csrf_token %}
-                            {% spaceless %}
-                            {% for field in form %}
-                                <div class="contact-form__row contact-form__row--{{ field.id_for_label }}">
-                                    {{ field.errors }}
-                                    <label for="{{ field.id_for_label }}" class="contact-form__label {% if field.field.required %} contact-form__label--required {% endif %}">
-                                        {{ field.label }}
-                                    </label>
-                                    {{ field }}
-                                </div>
-                            {% endfor %}
-                            {% endspaceless %}
-                            <div class="contact-action">
-                                <button type="submit" class="contact-form__submit" id="contact-us-submit">Submit</button>
+    <div class="container">
+        <div class="content">
+            <h2><span>Drop us a line</span></h2>
+            <div class="contact-form-wrapper">
+                <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
+                    <fieldset class="contact-form__group">
+                        {# <h1>Drop us a line</h1> #}
+                        {{ page.intro|richtext }}
+                        {% csrf_token %}
+                        {% spaceless %}
+                        {% for field in form %}
+                            <div class="contact-form__row contact-form__row--{{ field.id_for_label }}">
+                                {{ field.errors }}
+                                <label for="{{ field.id_for_label }}" class="contact-form__label {% if field.field.required %} contact-form__label--required {% endif %}">
+                                    {{ field.label }}
+                                </label>
+                                {{ field }}
                             </div>
-                        </fieldset>    
-                    </form>
-                </div>
+                        {% endfor %}
+                        {% endspaceless %}
+                        <div class="contact-action">
+                            <button type="submit" class="contact-form__submit" id="contact-us-submit">Submit</button>
+                        </div>
+                    </fieldset>    
+                </form>
             </div>
         </div>
     </div>

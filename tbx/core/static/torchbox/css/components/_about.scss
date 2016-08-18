@@ -63,87 +63,157 @@
   }
 }
 
-// about text
-.about-text {
-  @extend .hero-text;
-  bottom: auto;
-  top: 60px;
-  @media #{$tablet} {
-    top: 60px;
-    .page-aboutpage & {
-      top: 240px;
-    }
-  }
-  .content {
-    max-width: none;
-  }
-  &,
-  .rich-text {
-    h2 {
-    font-size: 35px;
-    line-height: 1;
-    font-weight: 300;
+// // about text
+// .about-text {
+//   @extend .hero-text;
+//   bottom: auto;
+//   top: 60px;
+//   .content {
+//     max-width: none;
+//   }
+//   &,
+//   .rich-text {
+//     h2 {
+//     font-size: 35px;
+//     line-height: 1;
+//     font-weight: 300;
+//     color: white;
+//     text-align: center;
+//     padding: 10px 20px 15px;
+//     position: relative;
+//     @media #{$tablet} {
+//       font-size: 65px;
+//       letter-spacing: -0.02em;
+//       font-weight: 200;
+//       .page-aboutpage & {
+//         font-size: 80px;
+//       }
+//     }
+//   }
+//   // clip through
+//   &.testclass-1 {
+//      h2 {
+//       color: $orange;
+//      }
+//   }
+//   &.stop {
+//     position: absolute;
+//     top: 535px;
+//     @media #{$tablet} {
+//       top: 60px;
+//     }
+//   }
+// }
+
+// .about-hero {
+//   @extend .work-hero;
+//   margin-bottom: 0 !important;
+//   min-height: 700px;
+//   .page-aboutpage & {
+//     height: auto !important;
+//   }
+// }
+
+
+// hero / work page
+.about-hero {
+  $height: calc(100vh - 85px);
+  $height-mob: 400px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+
+  h2 {
     color: white;
-    text-align: center;
-    //background-color: rgba($orange, 0.5);
-    padding: 10px 20px 15px;
-    position: relative;
-    //display: inline;
-    // &:after {
-    //   background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
-    //   background-size: cover;
-    //   mix-blend-mode: soft-light;
-    //   opacity: 0.3;
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100%;
-    //   content: '';
-    //   height: 100%;
-    // }
-    // &:before {
-    //   content: '';
-    //   position: absolute;
-    //   bottom: -35px;
-    //   left: calc(50% - 80px);
-    //   width: 160px;
-    //   height: 50px;
-    //   background: url('/static/torchbox/images/down-chevron.svg') center no-repeat;
-    // }
-    .page-aboutpage & {
+    margin: 40px 0 0;
+    font-size: 35px;
+
+    &.story {
       color: $blue;
-      //background-color:$blue;
+      //font-weight: 300;
     }
+
+  }
+
+  .intro {
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    font-size: 18px;
+    margin: 30px auto 0;
     @media #{$tablet} {
-      font-size: 65px;
-      letter-spacing: -0.02em;
-      font-weight: 200;
-      .page-aboutpage & {
-        font-size: 80px;
+      font-size: 22px;
+    }
+  }
+
+  .btns {
+    text-align: center;
+    margin: 0 auto;
+    .btn {
+      border: 1px solid $blue;
+      padding: 15px 50px;
+      margin: 30px auto 0;
+      background: $blue;
+      color: white;
+      font-size: 24px;
+      &:hover {
+        border: 1px solid $orange;
+        background: $orange;
       }
     }
   }
-  // clip through
-  &.testclass-1 {
-     h2 {
-      color: $orange;
-     }
-  }
-  &.stop {
+
+  &:before {
+    content: '';
     position: absolute;
-    top: 535px;
-    @media #{$tablet} {
-      top: 60px;
+    left: 0;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    background: rgba($dark, 0.75);
+    background: linear-gradient(to top, rgba($dark, 1) , rgba($dark, 0));
+    mix-blend-mode: multiply;
+  }
+
+  .page-aboutpage &, .page-servicespage & {
+    &:before {
+      background: transparent;
+      height: 0;
     }
   }
+
+  img {
+    object-fit: cover;
+    height: $height-mob;
+    @media #{$tablet} {
+      display: none;
+      height: $height;
+    }
   }
+
+  .page-aboutpage & {
+    height: 100vh;
+  }
+
+  @media #{$tablet} {
+    margin-bottom: 0;
+    background-size: cover;
+    h2 {
+      margin: 60px 0 0;
+      font-size: 65px;
+    }
+
+    .page-aboutpage & {
+      height: calc(100vh - 200px);
+    }
+
+  }
+
 }
 
-.about-hero {
-  @extend .work-hero;
-  margin-bottom: 0 !important;
-  min-height: 700px;
-  .page-aboutpage & {
-    height: auto !important;
-  }
-}
+
+
+

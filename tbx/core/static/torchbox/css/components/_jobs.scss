@@ -1,20 +1,14 @@
 
 // Jobs listing homepage =======================================================
 .hiring {
-  // padding
   $padding: 30px;
-  //
   $color: $grey;
   position: relative;
   background: $blue;
-  // background: url('/static/torchbox/images/bikes.jpg') no-repeat center;
-  // background-size: cover;
 
   .page-jobindexpage & {
     background: transparent;
-    padding-top: 160px;
-
-    //margin-top: -600px;
+    padding-top: 0;
 
     h2 {
       display: none;
@@ -27,7 +21,7 @@
     }
 
     @media #{$tablet} {
-      //padding-top: 200px;
+      padding-top: 100px;
     }
 
   }
@@ -194,6 +188,7 @@
     color: white;
     font-size: 26px;
     margin: 20px 0 10px;
+    font-weight: 400;
   }
   p {
     color: $dark;
