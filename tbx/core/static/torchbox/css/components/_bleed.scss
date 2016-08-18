@@ -111,6 +111,7 @@
       margin-right: 0;
     }
     a {
+      transition: all 0.25s ease 0s;
       color: $dark;
       font-size: 16px;
       letter-spacing: 1px;
@@ -122,7 +123,25 @@
         font-size: 14px;
         position: relative;
         top: 0;
-        @include line-hover;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 10px;
+          right: 0;
+          width: 0;
+          height: 1px;
+          background: $orange;
+          transition: all 0.25s ease 0s;
+        }
+        &:hover {
+          cursor: pointer;
+          color: $orange;
+          &:after {
+            width: 100%;
+            left: 0;
+            right: auto;
+          }
+        }
       }
     }
   }

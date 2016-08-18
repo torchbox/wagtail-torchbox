@@ -21,11 +21,13 @@
     &:nth-child(2) {
       top: 11px;
       width: 70%;
+      background: $orange;
     }
     &:nth-child(3) {
       width: 85%;
       top: auto;
       bottom: 0;
+      background: $blue;
     }
   }
   &.twist {

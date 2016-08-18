@@ -19,19 +19,22 @@
       display: inline-block;
       width: 50%;
       vertical-align: top;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       padding: 0 20px 0;
     }
 
     @media #{$desktop} {
-      padding: 0 20px 0;
+      padding: 0 40px 0;
+      margin-bottom: 70px;
     }
   }
 
+
   .services-content {
+    transition: all 0.2s ease 0s;
     text-align: center;
     padding: 30px 20px;
-    background-color: rgba(white, 0.8);
+    background-color: rgba(white, 0.9);
     cursor: pointer;
     position: relative;
 
@@ -43,32 +46,46 @@
       width: 100%;
       height: 100%;
       background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
-      background-size: 650px;
+      background-size: 700px;
       opacity: 0.1;
       z-index: 0;
     }
 
     @media #{$tablet} {
-      padding: 40px 60px;
+      padding: 40px 40px;
     }
-    img,
     svg {
+      transition: all 0.2s ease 0s;
       display: inline-block;
       max-width: 100px;
       height: 100px;
       margin-bottom: 20px;
       fill: $green;
+      // position: absolute;
+      // top: 100px;
+      // left: calc(50% - 50px);
+      // z-index: 4;
+    }
+    .bg {
+      display: none;
+      opacity: 0.4;
+      width: 100%;
+      height: auto;
+      z-index: 0;
+      position: relative;
+      margin: 0 0 20px;
+      filter: grayscale(100%);
     }
     h3 {
       font-size: 22px;
       font-weight: 400;
       margin-bottom: 10px;
       @media #{$tablet} {
-        font-size: 28px;
+        font-size: 34px;
       }
     }
     &:hover {
-      background-color: $green;
+      background-color: $green-lt;
       svg {
         fill: white;
       }
