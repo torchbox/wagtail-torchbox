@@ -1,11 +1,11 @@
 // blog-page ===================================================================
 .page-blog-single {
   h1 {
-    font-size: 35px;
+    font-size: 45px;
     line-height: 1;
     font-weight: 200;
     color: $orange;
-    padding: 80px 0 0;
+    padding: 30px 0 0;
     @media #{$tablet} {
       padding: 100px 0 0;
       font-size: 65px;
