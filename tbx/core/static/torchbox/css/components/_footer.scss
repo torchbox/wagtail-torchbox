@@ -15,6 +15,10 @@ footer {
     @include cf;
     padding: 0 0 20px;
     margin-bottom: 20px;
+    margin-top: 0;
+    @media #{$tablet} {
+      margin-bottom: 0;
+    }
     li {
       @include cf;
       padding-bottom: 0;
@@ -114,7 +118,7 @@ footer {
       margin: 0 auto;
       text-align: center;
       @media #{$tablet-large} {
-        padding: 30px 0 40px;
+        padding: 30px 0 30px;
       }
     }
     li {
@@ -153,6 +157,7 @@ footer {
       transition: all 0.1s ease 0s;
       color: $blue;
       display: block;
+      padding: 0 0 10px 0;
       svg {
         position: relative;
         top: 13px;
@@ -202,7 +207,6 @@ footer {
         width: 63%;
         float: left;
         font-family: $primaryFont;
-
         &:focus {
           box-shadow: none;
         }
@@ -224,6 +228,7 @@ footer {
         float: left;
         border-radius: 0 $border-radius $border-radius 0;
         border: 1px solid $orange;
+        font-size: 16px;
       }
     }
   }

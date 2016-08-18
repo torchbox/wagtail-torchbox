@@ -124,16 +124,40 @@
   margin-bottom: 0;
   height: auto;
   background-size: cover;
-  background-position: center;
+  background-attachment: fixed;
 
   h2 {
     color: white;
     margin: 40px 0 0;
     font-size: 35px;
+    font-weight: 300;
 
     &.story {
       color: $blue;
-      //font-weight: 300;
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      left: 0;
+      font-size: 25px;
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -25px;
+        left: calc(50% - 25px);
+        width: 50px;
+        height: 20px;
+        background: url('/static/torchbox/images/down-chevron-blue.svg') center no-repeat;
+      }
+
+      @media #{$tablet} {
+        font-size: 45px;
+        bottom: 140px;
+      }
+
+    }
+
+    @media #{$tablet} {
+      font-weight: 200;
     }
 
   }
@@ -207,7 +231,7 @@
     }
 
     .page-aboutpage & {
-      height: calc(100vh - 200px);
+      //height: calc(100vh - 100px);
     }
 
   }

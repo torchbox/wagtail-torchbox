@@ -9,7 +9,7 @@
   @include cf;
   padding: 0 $container-padding-sml;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 0;
   margin-bottom: 80px;
 
   @media #{$tablet} {
@@ -22,7 +22,7 @@
   }
 
   button {
-    //width: 135px;
+    margin-top: 30px;
   }
   
   ul {
