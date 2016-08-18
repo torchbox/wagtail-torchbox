@@ -21,7 +21,7 @@
     }
 
     @media #{$tablet} {
-      padding-top: 100px;
+      padding-top: 0;
     }
 
   }
@@ -44,16 +44,10 @@
     margin: 0 0 20px;
     background: $color;
     @media #{$tablet} {
-      margin: 0 15px 20px;
-      width: 33%;
+      margin: 0 1% 20px;
+      width: 31.3%;
       float: left;
       margin-bottom: 30px;
-    }
-    &:last-of-type {
-      margin-bottom: 40px;
-      @media #{$tablet-large} {
-        margin-bottom: 30px;
-      }
     }
   }
   ul {
@@ -62,11 +56,11 @@
     margin: 0 auto;
     text-align: center;
     @media #{$tablet} {
-      display: flex;
+      //display: flex;
     }
   }
   .jobs {
-    padding: 70px 0 40px;
+    padding: 40px 0 40px;
     width: 100%;
     text-align: center;
     @media #{$tablet} {
@@ -160,7 +154,7 @@
     font-weight: 300;
     color: white;
     @media #{$tablet-large} {
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
     a {
       color: white;
@@ -187,7 +181,7 @@
   h4 {
     color: white;
     font-size: 26px;
-    margin: 20px 0 10px;
+    margin: 10px 0 10px;
     font-weight: 400;
   }
   p {

@@ -2,12 +2,23 @@
 .involved {
   position: relative;
   background: $blue;
-  padding: 90px 0 70px;
+  padding: 40px 0 0;
   @include cf;
   h2 {
     color: white;
     font-weight: 300;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 500px;
+    height: 100%;
+    background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
+    opacity: 1;
+    z-index: 10;
   }
 }
 
@@ -29,13 +40,13 @@
   }
 
   li {
-    padding: 0 20px 40px;
+    padding: 0 20px 0 20px;
 
     a {
       display: block;
 
       &:hover .content {
-        border-color: #fff;
+        background-color: rgba(black,0.2);
       }
     }
   }
