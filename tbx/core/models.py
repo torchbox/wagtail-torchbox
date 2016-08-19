@@ -346,11 +346,15 @@ class HomePage(Page):
             on_delete=models.SET_NULL,
             related_name='+'
         )
+        text = models.CharField(
+            max_length=255
+        )
 
         panels = RelatedLink.panels + [
             ImageChooserPanel('background'),
             ImageChooserPanel('logo'),
             FieldPanel('colour'),
+            FieldPanel('text'),
         ]
 
     class HomePageClients(Orderable, RelatedLink):
