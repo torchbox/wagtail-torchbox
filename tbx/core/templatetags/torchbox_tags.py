@@ -68,8 +68,11 @@ def in_play(page):
 
 @register.simple_tag
 def main_menu():
-    return [
+    try:
+        return [
         item.page for item in MainMenu.objects.first().main_menu_items.all()]
+    except AttributeError:
+        return []
 
 
 # Person feed for home page
