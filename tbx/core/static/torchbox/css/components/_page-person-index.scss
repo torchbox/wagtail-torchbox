@@ -26,6 +26,9 @@
     margin-bottom: 25px;
     width: 50%;
     float: left;
+    &:nth-child(odd) {
+      clear: left;
+    }
     @media #{$small} {
       width: 50%;
       float: left;
@@ -47,6 +50,7 @@
   img {
     height: auto;
     margin-bottom: 10px;
+    filter: contrast(100%) saturate(120%);
   }
 
   .content {
@@ -55,7 +59,7 @@
 
   @media #{$small} {
     .content {
-      padding: 0 15px;
+      padding: 0 5px;
     }
   }
   
