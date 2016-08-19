@@ -3,10 +3,10 @@
 
 {% block content %}
 <section>
-    <div class="container">
-        <h1>Meet the senior management team</h1>
-        <div class="people-list">
-            {% if self.senior_management.all %}
+    {% if self.senior_management.all %}
+        <div class="container">
+            <h1>Meet the senior management team</h1>
+            <div class="people-list">
                 <ul>
                     {% for senior in self.senior_management.all %}
                         <li>
@@ -32,14 +32,14 @@
                         </li>
                     {% endfor %}
                 </ul>
-            {% endif %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
-    <div class="container">
-        <h1>Meet the team</h1>
-        <div class="people-list">
-            {% if self.people.all %}
+    {% if self.people.all %}
+        <div class="container">
+            <h1>Meet the team</h1>
+            <div class="people-list">
                 <ul>
                     {% for person in self.people.all %}
                         <li>
@@ -65,8 +65,8 @@
                         </li>
                     {% endfor %}
                 </ul>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
