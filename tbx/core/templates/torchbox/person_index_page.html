@@ -3,21 +3,43 @@
 
 {% block content %}
 <section>
-    <div class="container">
-        <h1>{# {{ self.title }} #}Meet the team</h1>
-        <!--
-        <div class="view-toggle">
-            <div class="text-view active js-image-view">Image view</div>
-            <div class="list-view js-text-view">Text view</div>
+    {% if self.senior_management.all %}
+        <div class="container">
+            <h1>Meet the senior management team</h1>
+            <div class="people-list">
+                <ul>
+                    {% for senior in self.senior_management.all %}
+                        <li>
+                            <div class="content">
+                                <a href="{% pageurl senior %}">
+                                {% if senior.image %}
+                                    {% image senior.image fill-400x400 as photo %}
+                                    <span class="img-holder">
+                                            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+                                        {% else %}
+                                            <img src="http://placehold.it/400&text=Please+update+me" width="400" height="400" alt="Please change me!" class="img-thumbnail" />
+                                        {% endif %}
+                                    </span>
+                                    <div>
+                                        <h2>{{ senior.title }}</h2>
+
+                                        {% if senior.role %}
+                                            <p>{{ senior.role }}</p>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-        -->
-        <div class="people-list">
+    {% endif %}
 
-            {% if self.intro %}
-                {{ self.intro|richtext }}
-            {% endif %}
-
-            {% if self.people.all %}
+    {% if self.people.all %}
+        <div class="container">
+            <h1>Meet the team</h1>
+            <div class="people-list">
                 <ul>
                     {% for person in self.people.all %}
                         <li>
@@ -43,8 +65,8 @@
                         </li>
                     {% endfor %}
                 </ul>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
