@@ -1,4 +1,4 @@
-{% load torchbox_tags cache staticfiles wagtailuserbar wagtailimages_tags wagtailsettings_tags %}<!DOCTYPE html>
+{% load torchbox_tags cache staticfiles wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
@@ -56,9 +56,26 @@
         {% wagtailuserbar %} {# Don't delete this #}
 
         <header class="container container-header">
-            {% block menu %}
-                {% top_menu calling_page=self %}
-            {% endblock %}
+            <nav role="navigation">
+                <a href="/" class="logo">
+                    {% include "torchbox/includes/torchbox_logo.html" %}
+                </a>
+
+                <a href="#menu" class="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+
+                {% main_menu as menu %}
+                <ul class="bleed out-animation">
+                    {% for item in menu %}
+                        <li>
+                            <a href="{% pageurl item %}">{{ item.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
         </header>
 
         <main>{% block content %}{% endblock %}</main>
