@@ -10,6 +10,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -990,6 +991,7 @@ class PersonPage(Page, ContactFields):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     role = models.CharField(max_length=255, blank=True)
+    is_senior = models.BooleanField(default=False)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     image = models.ForeignKey(
@@ -1020,6 +1022,7 @@ class PersonPage(Page, ContactFields):
         FieldPanel('first_name'),
         FieldPanel('last_name'),
         FieldPanel('role'),
+        FieldPanel('is_senior'),
         FieldPanel('intro', classname="full"),
         FieldPanel('biography', classname="full"),
         ImageChooserPanel('image'),
@@ -1035,51 +1038,13 @@ class PersonPage(Page, ContactFields):
 
 # Person index
 class PersonIndexPage(Page):
-    intro = RichTextField(blank=True)
-    show_in_play_menu = models.BooleanField(default=False)
-
-    search_fields = Page.search_fields + (
-        index.SearchField('intro'),
-    )
-
-    @property
+    @cached_property
     def people(self):
-        # Get list of person pages that are descendants of this page
-        people = PersonPage.objects.filter(
-            live=True,
-            path__startswith=self.path
-        )
+        return PersonPage.objects.exclude(is_senior=True).live().public()
 
-        return people
-
-    def serve(self, request):
-        # Get people
-        people = self.people
-
-        # Pagination
-        page = request.GET.get('page')
-        paginator = Paginator(people, 10)  # Show 10 jobs per page
-        try:
-            people = paginator.page(page)
-        except PageNotAnInteger:
-            people = paginator.page(1)
-        except EmptyPage:
-            people = paginator.page(paginator.num_pages)
-
-        return render(request, self.template, {
-            'self': self,
-            'people': people,
-        })
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('show_in_play_menu'),
-    ]
+    @cached_property
+    def senior_management(self):
+        return PersonPage.objects.exclude(is_senior=False).live().public()
 
 
 class TshirtPage(Page):
