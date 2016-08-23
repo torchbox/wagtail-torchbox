@@ -105,9 +105,11 @@
     }
   }
   .full-width {
-    border: 1px solid rgba(black,0.1);
-    margin: 0 0 30px;
+    //border: 1px solid rgba(black,0.05);
+    box-shadow: 0 0 30px rgba(#000, 0.05);
+    margin: 40px 0 30px;
     padding: 10px;
+    background: white;
     .img-holder {
       margin: 0;
     }
