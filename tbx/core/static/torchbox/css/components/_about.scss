@@ -173,7 +173,7 @@
       }
 
       @media #{$tablet} {
-        font-size: 45px;
+        font-size: 40px;
         bottom: 140px;
       }
 
@@ -198,12 +198,12 @@
 
   .btns {
     text-align: center;
-    margin: 0 auto;
+    margin: 30px auto 0;
     .btn {
-      border: 1px solid $blue;
+      border: 1px solid $orange;
       padding: 15px 50px;
-      margin: 30px auto 0;
-      background: $blue;
+      margin: 0 auto 10px;
+      background: $orange;
       color: white;
       font-size: 24px;
       &:hover {
