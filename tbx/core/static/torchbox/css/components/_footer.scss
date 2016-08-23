@@ -111,6 +111,17 @@ footer {
       border-bottom: 0;
       margin-bottom: 0;
     }
+    h2 {
+      color: white;
+      margin-top: 40px;
+      font-weight: 200;
+      span {
+        font-weight: 400;
+      }
+      @media #{$tablet} {
+        
+      }
+    }
     ul {
       @include cf;
       padding: $vertical-space-sml 0;
