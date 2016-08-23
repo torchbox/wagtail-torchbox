@@ -17,8 +17,7 @@
 	width: 100%;
 	z-index: 10;
 	background-color: #fff;
-	padding: 0;
-  //height: 80px;
+	padding: 0 15px;
   position: relative;
 
 	@media #{$tablet} {
@@ -28,11 +27,6 @@
 	@media #{$tablet-large} {
 	  padding: 0 $container-padding;
 	}
+
 }
 
-.play-nav-container {
-	padding: 0 15px;
-	@media #{$tablet} {
-	  padding: 0;
-	}
-}
