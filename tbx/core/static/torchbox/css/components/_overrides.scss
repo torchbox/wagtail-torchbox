@@ -28,6 +28,12 @@
 }
 
 .text-content {
+
+  .page-workpage & {
+    background: #f1f4f4;
+    padding-top: 30px;
+  }
+
   @media #{$tablet} {
     background: white;
     position: relative;
@@ -39,6 +45,7 @@
       // padding-top: 340px;
       //padding-top: 300px;
     }
+
   }
 
   .overlay {
@@ -57,7 +64,6 @@
   $height-mob: 400px;
   position: relative;
   width: 100%;
-  margin-bottom: 30px;
   height: calc(100vh - 70px);
   background-size: cover;
   @media #{$tablet} {

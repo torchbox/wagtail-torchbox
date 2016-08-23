@@ -135,6 +135,11 @@
     margin: 40px 0 0;
     font-size: 35px;
     font-weight: 300;
+    //etter-spacing: -0.02em;
+
+    span {
+      font-weight: 300;
+    }
 
     &.thanks {
       margin: 150px 0;

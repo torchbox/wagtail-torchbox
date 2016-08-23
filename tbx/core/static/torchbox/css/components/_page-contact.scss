@@ -20,6 +20,17 @@
     @media #{$tablet} {
       padding: 40px 120px 60px 120px;
     }
+    text-align: center;
+    h3 {
+      color: white;
+      margin: 0 auto;
+      display: inline-block;
+      font-weight: 300;
+      font-size: 30px;
+      @media #{$tablet} {
+        font-size: 40px;
+      }
+    }
   }
 
   .contact-bar {
