@@ -41,12 +41,14 @@
   }
   li {
     max-width: $container-width;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     list-style-type: square;
     color: $dark;
+    line-height: 1.5;
+    margin: 0 0 20px;
     @media #{$tablet} {
-      font-size: 18px;
+      font-size: 21px;
     }
   }
   blockquote {
@@ -105,7 +107,7 @@
     }
   }
   .full-width {
-    //border: 1px solid rgba(black,0.05);
+    border: 1px solid rgba(black,0.05);
     box-shadow: 0 0 30px rgba(#000, 0.05);
     margin: 40px 0 30px;
     padding: 10px;
