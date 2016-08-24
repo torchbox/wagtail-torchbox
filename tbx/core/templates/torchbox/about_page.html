@@ -2,14 +2,12 @@
 {% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
 
 {% block content %}
-    {% if self.main_image %}
-        {% image self.main_image fill-1300x750 as header_image %}
-        <style>
-            .about-hero {
-                background-image: url("{% static 'torchbox/images/story2.jpg' %}");
-            }
-        </style>
-    {% endif %}
+
+    <style>
+        .about-hero {
+            background-image: url("{% static 'torchbox/images/story2.jpg' %}");
+        }
+    </style>
 
     <div class="about-hero">
         <div class="container">
@@ -162,15 +160,5 @@
         </div>
     </section>
 
-    
-
-    <section class="">
-        <div class="container">
-            <div class="clients">
-                <h2>We're proud to have worked with</h2>
-                {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
-            </div>
-        </div>
-    </section>
 
 {% endblock %}
