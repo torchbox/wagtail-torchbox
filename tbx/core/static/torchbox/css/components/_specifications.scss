@@ -1,25 +1,21 @@
 
 // specifications
 .specifications {
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
   position: relative;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 0;
+  padding: 10px 0 10px;
   @media #{$tablet} {
-      margin-top: 50px;
-  }
-  .container {
-    padding: 40px 15px;
-    border-top: 1px solid rgba($dark, 0.15);
-    @media #{$tablet} {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 0;
-    }
+      margin-top: 0;
   }
   .content {
     position: relative;
     text-align: left;
     z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
   }
   h2 {
     text-align: left;
@@ -43,61 +39,39 @@
       font-size: 18px;
     }
   }
-  ul {
+  .tags {
     margin: 0;
-    padding: 10px 0;
     border-bottom: 0;
+    display: none;
     @media #{$tablet} {
-      width: 25%;
-      float: left;
+      display: block;
     }
   }
   li {
     font-size: 16px;
-    margin-bottom: 5px;
     font-weight: 400;
     line-height: 1.5;
-    width: 100%;
+    display: inline-block;
+    float: left;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    &:last-child {
+      border-right: 1px solid rgba(0,0,0,0.05);
+    }
     @media #{$tablet} {
       font-size: 18px;
     }
     a {
       display: inline-block;
-      @include line-hover;
-      &::first-letter {
-        text-transform: uppercase;
-      }
-    }
-    &.visit {
-      border: 1px solid $orange;
-      background: $orange;
-      display: inline-block;
-      padding: 10px 25px;
-      width: auto;
-      border-radius: $border-radius;
+      color: #2b3033;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      padding: 14px;
       transition: all 0.25s ease 0s;
-      a {
-        color: white;
-        font-weight: 600;
-        transition: all 0.25s ease 0s;
-      }
-      svg {
-        stroke: white;
-      }
-      &:hover {
-        background: $blue;
-        border: 1px solid $blue;
-        color: white;
-        a {
-          color: white;
-          &:after {
-            display: none;
-          }
-        }
-        svg {
-          stroke: white;
-        }
-      }
     }
   }
   .svg {
@@ -114,6 +88,38 @@
     svg {
       width: 15px;
       height: 15px;
+    }
+  }
+  .visit {
+    border: 1px solid $orange;
+    background: $orange;
+    display: inline-block;
+    padding: 10px 25px;
+    width: auto;
+    border-radius: $border-radius;
+    transition: all 0.25s ease 0s;
+    color: white;
+    font-weight: 600;
+    transition: all 0.25s ease 0s;
+    @media #{$tablet} {
+      float: right;
+    }
+    svg {
+      stroke: white;
+    }
+    &:hover {
+      background: $blue;
+      border: 1px solid $blue;
+      color: white;
+      a {
+        color: white;
+        &:after {
+          display: none;
+        }
+      }
+      svg {
+        stroke: white;
+      }
     }
   }
 }
