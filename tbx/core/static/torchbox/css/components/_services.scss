@@ -35,7 +35,7 @@
     text-align: center;
     padding: 30px 20px;
     background-color: rgba(white, 0.9);
-    cursor: pointer;
+    //cursor: pointer;
     position: relative;
 
     &:before {
@@ -85,10 +85,10 @@
       }
     }
     &:hover {
-      background-color: $green-lt;
-      svg {
-        fill: white;
-      }
+      // background-color: $green-lt;
+      // svg {
+      //   fill: white;
+      // }
     }
   }
   button {
