@@ -299,6 +299,7 @@ footer {
       background: $orange;
       footer & {
         color: $orange;
+        background: none;
       }
       svg {
         fill: white;
