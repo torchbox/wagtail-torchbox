@@ -184,7 +184,7 @@
     overflow: hidden;
     
     @media #{$tablet} {
-      width: 25%;
+      width: 50%;
       margin-bottom: 30px;
       &:first-of-type {
         width: 50%;
@@ -192,6 +192,10 @@
       &:nth-child(6) {
         width: 50%;
       }
+    }
+
+    @media #{$tablet-large} {
+      width: 25%;
     }
   }
 
