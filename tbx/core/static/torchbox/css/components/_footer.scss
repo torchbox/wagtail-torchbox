@@ -70,16 +70,25 @@ footer {
       left: -90px;
       @media #{$tablet} {
         display: block;
+        margin: 0 auto 20px;
+        width: 100%;
+        left: auto;
       }
       @media #{$tablet-large} {
         margin-right: 5%;
+        left: -90px;
       }
       svg {
         width: 80px;
         height: 80px;
-        position: absolute;
-        top: 0;
-        left: 0;
+        margin: 0 auto;
+        display: block;
+        
+        @media #{$tablet-large} {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
       }
     }
     .content {
