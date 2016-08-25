@@ -5,6 +5,7 @@ $(document).ready(function() {
     tbx.loadMore();
     tbx.signUp();
     tbx.jobs();
+    tbx.scrollEvents();
 });
 
 var tbx = {
@@ -283,6 +284,27 @@ var tbx = {
     zoomChange();
     positionMap();
 
+  },
+
+  scrollEvents: function() {
+
+    var $specifications     = $( '.specifications' ),
+        $client             = $( '.specifications .client' ),
+        offset              = $specifications.offset().top,
+        fixedClass          = 'specifications--fixed',
+        showClient          = 'client--show';
+
+    $( window ).on( 'scroll', function() {
+        
+      if ( $( window ).scrollTop() >= offset ) {
+              $specifications.addClass( fixedClass );
+              $client.addClass( showClient )
+          }
+      else {
+        $specifications.removeClass( fixedClass );
+        $client.removeClass( showClient )
+      }  
+    });
   },
 
   
