@@ -11,14 +11,13 @@
 }
 
 .container-header {
-	//position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	z-index: 10;
 	background-color: #fff;
 	padding: 0 15px;
-  position: relative;
+  	position: relative;
 
 	@media #{$tablet} {
 		padding: 0 20px;
@@ -27,6 +26,9 @@
 	@media #{$tablet-large} {
 	  padding: 0 $container-padding;
 	}
-
 }
 
+// Prevent header 'disappearing' on scroll
+.container-header--fixed {
+	position: fixed;
+}
