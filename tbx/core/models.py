@@ -799,8 +799,12 @@ class JobIndexPageJob(Orderable):
 
 
 class JobIndexPage(Page):
-    intro = RichTextField(blank=True)
-    no_jobs_that_fit = models.URLField(null=True)
+    intro = models.TextField(blank=True)
+    listing_intro = models.TextField(
+        blank=True,
+        help_text="Shown instead of the intro when job listings are included "
+        "on other pages")
+    no_jobs_that_fit = RichTextField(blank=True)
     terms_and_conditions = models.URLField(null=True)
     refer_a_friend = models.URLField(null=True)
     reasons_intro = models.TextField(blank=True)
@@ -820,6 +824,7 @@ class JobIndexPage(Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('listing_intro', classname="full"),
         FieldPanel('no_jobs_that_fit', classname="full"),
         FieldPanel('terms_and_conditions', classname="full"),
         FieldPanel('refer_a_friend', classname="full"),

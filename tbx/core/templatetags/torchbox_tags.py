@@ -121,7 +121,12 @@ def homepage_job_listing(context, count=3):
             jobs = jobs[:count]
     else:
         jobs = []
+    if context['page'] == jobindex:
+        jobintro = jobindex.intro
+    else:
+        jobintro = jobindex.listing_intro
     return {
+        'jobintro': jobintro,
         'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
