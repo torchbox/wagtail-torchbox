@@ -112,7 +112,7 @@ def homepage_work_listing(context, count=3):
 
 # Jobs feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
-def homepage_job_listing(context, count=3):
+def homepage_job_listing(context, count=3, intro_text=None):
     # Assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True).first()
     if jobindex:
@@ -121,10 +121,7 @@ def homepage_job_listing(context, count=3):
             jobs = jobs[:count]
     else:
         jobs = []
-    if context['page'] == jobindex:
-        jobintro = jobindex.intro
-    else:
-        jobintro = jobindex.listing_intro
+    jobintro = intro_text or jobindex.listing_intro
     return {
         'jobintro': jobintro,
         'jobs': jobs,
