@@ -47,7 +47,7 @@ if 'ALLOWED_HOSTS' in env:
     ALLOWED_HOSTS = env['ALLOWED_HOSTS'].split(',')
 
 if 'PRIMARY_HOST' in env:
-    BASE_URL = 'http://%s/' % env['PRIMARY_HOST']
+    BASE_URL = 'http://%s' % env['PRIMARY_HOST']
 
 if 'SERVER_EMAIL' in env:
     SERVER_EMAIL = env['SERVER_EMAIL']

@@ -720,6 +720,8 @@ class BlogPage(Page):
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this blog post only on marketing landing page')
 
+    canonical_url = models.URLField(blank=True, max_length=255)
+
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
@@ -756,6 +758,7 @@ class BlogPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
+        FieldPanel('canonical_url'),
         FieldPanel('marketing_only'),
     ]
 
