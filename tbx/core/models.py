@@ -12,6 +12,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.functional import cached_property
 
+from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
@@ -35,6 +36,7 @@ from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
                                           Image)
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 from tbx.core.utils import export_event
 
@@ -1464,8 +1466,6 @@ class Contact(AbstractEmailForm):
         ], "Email")
     ]
 
-from wagtail.contrib.settings.models import BaseSetting, register_setting
-
 @register_setting
 class GlobalSettings(BaseSetting):
     class Meta:
@@ -1486,3 +1486,26 @@ class GlobalSettings(BaseSetting):
     PhiliAddress = models.CharField(max_length=255, help_text='Full address')
     PhiliAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
     PhiliAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
+
+
+@register_setting
+class MainMenu(BaseSetting, ClusterableModel):
+    panels = [
+        InlinePanel('main_menu_items', label="Main Menu Items")
+    ]
+
+
+class MainMenuItem(Orderable):
+    main_menu = ParentalKey(
+        MainMenu,
+        related_name='main_menu_items'
+    )
+    page = models.ForeignKey(
+        'wagtailcore.Page',
+        on_delete=models.CASCADE,
+        related_name='+'
+    )
+
+    panels = [
+        PageChooserPanel('page')
+    ]
