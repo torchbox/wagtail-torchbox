@@ -803,6 +803,7 @@ class JobIndexPage(Page):
     no_jobs_that_fit = models.URLField(null=True)
     terms_and_conditions = models.URLField(null=True)
     refer_a_friend = models.URLField(null=True)
+    reasons_intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -823,6 +824,7 @@ class JobIndexPage(Page):
         FieldPanel('terms_and_conditions', classname="full"),
         FieldPanel('refer_a_friend', classname="full"),
         InlinePanel('job', label="Job"),
+        FieldPanel('reasons_intro', classname="full"),
         InlinePanel('reasons_to_join', label="Reasons To Join"),
     ]
 

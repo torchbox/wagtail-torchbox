@@ -56,90 +56,27 @@
     </section>
     -->
 
-
-    <!--
     {% if self.reasons_to_join.all %}
-    <section class="jobs-benefits" id="reasons">
-        <div class="jobs-carousel-container">
-            <ul class="jobs-carousel">
-                {% for reason in self.reasons_to_join.all %}
-                    <li>
-                        {% image reason.image original %}
-                        <div class="slide-caption-container">
-                            <div>
-                                <span class="reason-no">Reasons to join us</span>
-                                <h3>{{ reason.title }}</h3>
-                                <p>{{ reason.body }}</p>
-                            </div>
-                        </div>
-                    </li>
-                 {% endfor %}
-            </ul>
-        </div>
-    </section>
-    {% endif %}
-    -->
-    
-    
-
-
     <section>
         <div class="container">
             <div class="reasons">
-                <h2>6 killer reasons to join Torchbox</h2>
+                <h2>{{ reasons_intro }}</h2>
                 <ul>
+                    {% for reason in self.reasons_to_join.all %}
                     <li>
-                        <img src="{% static 'torchbox/images/thislot.jpg' %}" alt="">
+                        {% image reason.image original %}
                         <div class="text">
-                            <div class="number">01</div>
-                            <h3>Work with this lot</h3>
-                            <p>Work with our brilliant and talented team of designers, developers, project managers, and digital marketers. We’re a lovely bunch of sports enthusiasts, creatives, musicians, cyclists, readers, cooks and more.</p>
+                            <div class="number">{{ forloop.counter|stringformat:"02d" }}</div>
+                            <h3>{{ reason.title }}</h3>
+                            <p>{{ reason.body }}</p>
                         </div>
                     </li>
-                    <li>
-                        <img src="{% static 'torchbox/images/clients.jpg' %}" alt="">
-                        <div class="text">
-                            <div class="number">02</div>
-                            <h3>Lovely clients</h3>
-                            <p>We're very selective about who we work with. At the end of the day you'll go home knowing you've helped to make the world a better place.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{% static 'torchbox/images/cool.jpg' %}" alt="">
-                        <div class="text">
-                            <div class="number">03</div>
-                            <h3>Cool projects</h3>
-                            <p>From large, complex website projects to campaign platforms and custom apps, we've always got lots of interesting creative and technical challenges to tackle.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{% static 'torchbox/images/ski.jpg' %}" alt="">
-                        <div class="text">
-                            <div class="number">04</div>
-                            <h3>Ski trips</h3>
-                            <p>Occasionally we all head off together for a few days of fun in the snow, complete with ski chalet, hot tub and lots of food and drink.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{% static 'torchbox/images/office.jpg' %}" alt="">
-                        <div class="text">
-                            <div class="number">05</div>
-                            <h3>Awesome office perks</h3>
-                            <p>Our offices come equipped with superior coffee, tea, fresh fruit and bread. We’ve got standing desks and comfortable sofas. Make sure you try out the juicer.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{% static 'torchbox/images/manuel.jpg' %}" alt="">
-                        <div class="text">
-                            <div class="number">06</div>
-                            <h3>Viral Christmas cards</h3>
-                            <p>Most years we put together a collaborative company Christmas card - and sometimes they go viral! Past initiatives have included talking mooses, iPad dances, on-demand snow machines, creative map plotting and interactive choirs.</p>
-                        </div>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
     </section>
+    {% endif %}
 
     <section class="text-content">
                 <div class="container">
@@ -238,6 +175,3 @@
     <script src="{% static 'torchbox/vendor/slick/slick.min.js' %}" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'torchbox/vendor/slick/slick.css' %}"/>
 {% endblock %}
-
-
-   
