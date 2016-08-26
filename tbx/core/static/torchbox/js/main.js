@@ -295,11 +295,14 @@ var tbx = {
         showClient          = 'client--show';
 
     $( window ).on( 'scroll', function() {
-        
+      
+      // Stick the specs bar
       if ( $( window ).scrollTop() >= offset ) {
-              $specifications.addClass( fixedClass );
-              $client.addClass( showClient )
-          }
+        $specifications.addClass( fixedClass );
+        $client.addClass( showClient )
+      } 
+
+      // Un-stick
       else {
         $specifications.removeClass( fixedClass );
         $client.removeClass( showClient )
