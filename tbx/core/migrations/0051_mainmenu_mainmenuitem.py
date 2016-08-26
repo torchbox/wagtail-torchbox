@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
-        ('torchbox', '0050_merge'),
+        ('torchbox', '0049_auto_20160819_1421'),
     ]
 
     operations = [
