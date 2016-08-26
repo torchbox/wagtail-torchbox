@@ -298,7 +298,7 @@ class HomePage(Page):
         related_name='+'
     )
     intro_title = models.TextField(blank=True)
-    intro_body = models.TextField(blank=True)
+    intro_body = RichTextField(blank=True)
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
