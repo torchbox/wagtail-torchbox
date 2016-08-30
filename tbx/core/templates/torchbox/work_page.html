@@ -25,7 +25,60 @@
         {% endif %}
     {% endwith %}
 
+    <div class="specifications">
+        <div class="container">
+            <div class="content">
+            <!--<h2>specifications</h2>-->
+            <!--
+            <ul>
+                <li><h4>sector</h4></li>
+                <li>Non-profit</li>
+            </ul>
+            <ul>
+                <li><h4>Services</h4></li>
+                <li>
+                    <a href="">Paid Search</a>
+                </li>
+                <li>
+                    <a href="">Social media</a>
+                </li>
+            </ul>
+            -->
+            <ul class="tags">
+                {% with self.tags.all as tags %}
+                    {% if tags %}
+                        {% for tag in tags %}
+                            <li>
+                                <a href="{% pageurl self.work_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </ul>
+            <div class="client">
+                {{ self.title }}
+            </div>
+            <a class="visit" href="">
+                Visit the site
+                <span class="svg">
+                    <svg version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+                             x="0px" y="0px" viewBox="0 0 71 71" style="enable-background:new 0 0 71 71;" xml:space="preserve">
+                        <defs>
+                        </defs>
+                        <polyline points="70.5,55.5 70.5,70.5 0.5,70.5 0.5,0.5 15.5,0.5 "/>
+                        <polyline points="47.2,0.5 70.5,0.5 70.5,23.8 "/>
+                        <line  x1="70.5" y1="0.5" x2="35.5" y2="35.5"/>
+                    </svg>
+                </span>
+            </a>
+            </div>
+        </div>
+
+    </div>
+
     <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="work-content">
+
         <div class="container">
             <div class="main-content">
                 <div class="fixed">
@@ -37,59 +90,7 @@
                 </div>
             </div>
         </div>
-        <div class="specifications">
-            <div class="container">
-                <div class="content">
-                <!--<h2>specifications</h2>-->
 
-                <ul>
-                    <li><h4>sector</h4></li>
-                    <li>Non-profit</li>
-                </ul>
-                <ul>
-                    <li><h4>Services</h4></li>
-                    <li>
-                        <a href="">Paid Search</a>
-                    </li>
-                    <li>
-                        <a href="">Social media</a>
-                    </li>
-                </ul>
-                <ul class="tags">
-                    <li><h4>tags</h4></li>
-                    {% with self.tags.all as tags %}
-                        {% if tags %}
-                            {% for tag in tags %}
-                                <li>
-                                    <a href="{% pageurl self.work_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
-                                </li>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                </ul>
-                <ul>
-                    <li class="visit">
-                        <a href="">
-                            Visit the site
-                            <span class="svg">
-                                <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In  -->
-                                <svg version="1.1"
-                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                                         x="0px" y="0px" viewBox="0 0 71 71" style="enable-background:new 0 0 71 71;" xml:space="preserve">
-                                    <defs>
-                                    </defs>
-                                    <polyline points="70.5,55.5 70.5,70.5 0.5,70.5 0.5,0.5 15.5,0.5 "/>
-                                    <polyline points="47.2,0.5 70.5,0.5 70.5,23.8 "/>
-                                    <line  x1="70.5" y1="0.5" x2="35.5" y2="35.5"/>
-                                </svg>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                </div>
-            </div>
-
-        </div>
     </section>
 
     <div class="nextprev-nav">

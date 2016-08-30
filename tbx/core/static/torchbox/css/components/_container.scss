@@ -11,15 +11,13 @@
 }
 
 .container-header {
-	//position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	z-index: 10;
 	background-color: #fff;
-	padding: 0;
-  //height: 80px;
-  position: relative;
+	padding: 0 15px;
+  	position: relative;
 
 	@media #{$tablet} {
 		padding: 0 20px;
@@ -30,9 +28,7 @@
 	}
 }
 
-.play-nav-container {
-	padding: 0 15px;
-	@media #{$tablet} {
-	  padding: 0;
-	}
+// Prevent header 'disappearing' on scroll
+.container-header--fixed {
+	position: fixed;
 }

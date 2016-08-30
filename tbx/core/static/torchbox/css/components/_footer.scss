@@ -70,16 +70,25 @@ footer {
       left: -90px;
       @media #{$tablet} {
         display: block;
+        margin: 0 auto 20px;
+        width: 100%;
+        left: auto;
       }
       @media #{$tablet-large} {
         margin-right: 5%;
+        left: -90px;
       }
       svg {
         width: 80px;
         height: 80px;
-        position: absolute;
-        top: 0;
-        left: 0;
+        margin: 0 auto;
+        display: block;
+        
+        @media #{$tablet-large} {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
       }
     }
     .content {
@@ -101,77 +110,6 @@ footer {
     }
     @media #{$tablet-large} {
       padding: 50px 0;
-    }
-  }
-  .contact {
-    background: #212527;
-    @include cf;
-    margin-bottom: $vertical-space-sml;
-    @media #{$tablet-large} {
-      border-bottom: 0;
-      margin-bottom: 0;
-    }
-    ul {
-      @include cf;
-      padding: $vertical-space-sml 0;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-      @media #{$tablet-large} {
-        padding: 30px 0 30px;
-      }
-    }
-    li {
-      display: inline-block;
-      width: 100%;
-      margin-bottom: 20px;
-      font-size: 20px;
-      font-weight: 400;
-      @media #{$tablet-large} {
-        margin-bottom: 0;
-        font-size: 24px;
-        text-align: center;
-        float: left;
-        width: 33.3%;
-      }
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-    .svg {
-      display: inline-block;
-      width: 30px;
-      margin-right: 15px;
-      @media #{$tablet-large} {
-        display: inline;
-        margin-right: 15px;
-      }
-    }
-    .content {
-      display: block;
-      @media #{$tablet-large} {
-        display: inline;
-      }
-    }
-    a {
-      transition: all 0.1s ease 0s;
-      color: $blue;
-      display: block;
-      padding: 0 0 10px 0;
-      svg {
-        position: relative;
-        top: 13px;
-        width: 40px;
-        height: 40px;
-        fill: $blue;
-      }
-      &:hover {
-        color: $orange;
-        transform: scale(1.1);
-        svg {
-          fill: $orange;
-        }
-      }
     }
   }
   // Newsletter ================================================================
@@ -272,6 +210,111 @@ footer {
         max-width: 210px;
         display: block;
         border-radius: 0;
+      }
+    }
+  }
+}
+
+.contact {
+
+  footer & {
+    background: #212527;
+  }
+
+  @include cf;
+  margin-bottom: 35px;
+  @media #{$tablet-large} {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+  h2 {
+    color: white;
+    margin-top: 40px;
+    font-weight: 200;
+    span {
+      font-weight: 400;
+    }
+    @media #{$tablet} {
+      
+    }
+  }
+  ul {
+    @include cf;
+    padding: 35px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    @media #{$tablet-large} {
+      padding: 30px 0 30px;
+    }
+  }
+  li {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    @media #{$tablet-large} {
+      margin-bottom: 0;
+      font-size: 24px;
+      text-align: center;
+      float: left;
+      width: 33.3%;
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  .svg {
+    display: inline-block;
+    width: 30px;
+    margin-right: 15px;
+    @media #{$tablet-large} {
+      display: inline;
+      margin-right: 15px;
+    }
+  }
+  .content {
+    display: block;
+    @media #{$tablet-large} {
+      display: inline;
+    }
+  }
+  a {
+    transition: all 0.1s ease 0s;
+    color: white;
+    display: block;
+    padding: 0 0 10px 0;
+    background: $blue;
+    margin: 0 10px;
+    border-radius: 5px;
+    footer & {
+      background: none;
+      color: $blue;
+    }
+    svg {
+      position: relative;
+      top: 13px;
+      width: 40px;
+      height: 40px;
+      fill: white;
+      footer & {
+        fill: $blue;
+      }
+    }
+    &:hover {
+      color: white;
+      transform: scale(1.05);
+      background: $orange;
+      footer & {
+        color: $orange;
+        background: none;
+      }
+      svg {
+        fill: white;
+        footer & {
+          fill: $orange;
+        }
       }
     }
   }

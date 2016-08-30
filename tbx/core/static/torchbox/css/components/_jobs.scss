@@ -5,24 +5,14 @@
   $color: $grey;
   position: relative;
   background: $blue;
-  // background: url('/static/torchbox/images/bikes.jpg') no-repeat center;
-  // background-size: cover;
+  background: url('/static/torchbox/images/bikes-blue.jpg') no-repeat center;
+  background-size: cover;
 
 
 
   .page-jobindexpage & {
     background: transparent;
     padding-top: 0;
-
-    h2 {
-      display: none;
-    }
-
-    .jobs .jobs-followon {
-      a {
-        color: $orange;
-      }
-    }
 
     @media #{$tablet} {
       padding-top: 0;
@@ -46,7 +36,7 @@
   a.listing {
     display: block;
     margin: 0 0 20px;
-    background: $color;
+    background: #12504f;
     @media #{$tablet} {
       margin: 0 1% 20px;
       width: 31.3%;
@@ -73,9 +63,13 @@
     .jobs-followon {
       color: #fff;
       opacity: 1;
-      font-size: 20px;
+      font-size: 16px;
+      max-width: 900px;
       a {
-        color: #0b3939;
+        //color: $orange;
+      }
+      @media #{$tablet} {
+        font-size: 20px;
       }
     }
     li {
@@ -133,7 +127,7 @@
         height: 100%;
         background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
         background-size: 650px;
-        opacity: 1;
+        opacity: 0.05;
       }
     }
   }
@@ -171,7 +165,7 @@
     }
   }
   h3 {
-    color: $dark;
+    color: #9ee5e4;
     font-weight: 400;
     margin-bottom: 10px;
     font-size: 26px;
@@ -190,7 +184,7 @@
     font-weight: 400;
   }
   p {
-    color: $dark;
+    color: white;
     font-size: 16px;
     opacity: 0.8;
     margin: 0 auto;

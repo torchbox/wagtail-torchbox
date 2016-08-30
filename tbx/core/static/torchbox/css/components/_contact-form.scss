@@ -3,6 +3,7 @@ $gutter: 15px;
 
 .contact-form {
 	@include cf;
+	text-align: left;
 
 	@media #{$tablet} {
 		margin-left: -15px;
@@ -120,4 +121,6 @@ $gutter: 15px;
 					background: $blue;
 				}
 			}
+
+
 

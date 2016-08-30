@@ -300,7 +300,7 @@ class HomePage(Page):
         related_name='+'
     )
     intro_title = models.TextField(blank=True)
-    intro_body = models.TextField(blank=True)
+    intro_body = RichTextField(blank=True)
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
@@ -799,10 +799,15 @@ class JobIndexPageJob(Orderable):
 
 
 class JobIndexPage(Page):
-    intro = RichTextField(blank=True)
-    no_jobs_that_fit = models.URLField(null=True)
+    intro = models.TextField(blank=True)
+    listing_intro = models.TextField(
+        blank=True,
+        help_text="Shown instead of the intro when job listings are included "
+        "on other pages")
+    no_jobs_that_fit = RichTextField(blank=True)
     terms_and_conditions = models.URLField(null=True)
     refer_a_friend = models.URLField(null=True)
+    reasons_intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -819,10 +824,12 @@ class JobIndexPage(Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('listing_intro', classname="full"),
         FieldPanel('no_jobs_that_fit', classname="full"),
         FieldPanel('terms_and_conditions', classname="full"),
         FieldPanel('refer_a_friend', classname="full"),
         InlinePanel('job', label="Job"),
+        FieldPanel('reasons_intro', classname="full"),
         InlinePanel('reasons_to_join', label="Reasons To Join"),
     ]
 
@@ -1491,24 +1498,26 @@ class GlobalSettings(BaseSetting):
     PhiliAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
 
 
+class SubMenuItemBlock(StreamBlock):
+    subitem = PageChooserBlock()
+
+
+class MenuItemBlock(StructBlock):
+    page = PageChooserBlock()
+    subitems = SubMenuItemBlock()
+
+    class Meta:
+        template = "torchbox/includes/menu_item.html"
+
+
+class MenuBlock(StreamBlock):
+    items = MenuItemBlock()
+
+
 @register_setting
-class MainMenu(BaseSetting, ClusterableModel):
-    panels = [
-        InlinePanel('main_menu_items', label="Main Menu Items")
-    ]
-
-
-class MainMenuItem(Orderable):
-    main_menu = ParentalKey(
-        MainMenu,
-        related_name='main_menu_items'
-    )
-    page = models.ForeignKey(
-        'wagtailcore.Page',
-        on_delete=models.CASCADE,
-        related_name='+'
-    )
+class MainMenu(BaseSetting):
+    menu = StreamField(MenuBlock(), blank=True)
 
     panels = [
-        PageChooserPanel('page')
+        StreamFieldPanel('menu'),
     ]

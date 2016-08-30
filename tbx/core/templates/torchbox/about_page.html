@@ -2,22 +2,21 @@
 {% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
 
 {% block content %}
-    {% if self.main_image %}
-        {% image self.main_image fill-1300x750 as header_image %}
-        <style>
-            .about-hero {
-                background-image: url("{% static 'torchbox/images/about.jpg' %}");
-            }
-        </style>
-    {% endif %}
+
+    <style>
+        .about-hero {
+            background-image: url("{% static 'torchbox/images/story2.jpg' %}");
+        }
+    </style>
 
     <div class="about-hero">
         <div class="container">
             <div class="content">
-                <h2><span>A digital agency with a difference.</span></h2>
+                <h2>A digital agency with a difference.</h2>
                 <p class="intro">Beautiful websites for some of the world’s great universities and academic institutions, globally-renowned think tanks, fundraising charities, campaigning NGOs, research programmes, and leading membership organisations.</p>
                 <div class="btns">
                     <a href="#" class="btn">Meet the team</a>
+                    <a href="#" class="btn">Current jobs</a>
                 </div>
                 <h2 class="story"><span>Read our story</span></h2>
             </div>
@@ -161,15 +160,5 @@
         </div>
     </section>
 
-    
-
-    <section class="">
-        <div class="container">
-            <div class="clients">
-                <h2>We're proud to have worked with</h2>
-                {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
-            </div>
-        </div>
-    </section>
 
 {% endblock %}

@@ -125,6 +125,11 @@
   height: auto;
   background-size: cover;
   background-position: center;
+  padding-bottom: 35%;
+
+  @media #{$tablet} {
+    padding-bottom: 0;
+  }
 
   @media #{$desktop} {
     background-attachment: fixed;
@@ -135,6 +140,11 @@
     margin: 40px 0 0;
     font-size: 35px;
     font-weight: 300;
+    //etter-spacing: -0.02em;
+
+    span {
+      font-weight: 300;
+    }
 
     &.thanks {
       margin: 150px 0;
@@ -173,7 +183,7 @@
       }
 
       @media #{$tablet} {
-        font-size: 45px;
+        font-size: 40px;
         bottom: 140px;
       }
 
@@ -198,12 +208,12 @@
 
   .btns {
     text-align: center;
-    margin: 0 auto;
+    margin: 30px auto 0;
     .btn {
-      border: 1px solid $blue;
+      border: 1px solid $orange;
       padding: 15px 50px;
-      margin: 30px auto 0;
-      background: $blue;
+      margin: 0 auto 10px;
+      background: $orange;
       color: white;
       font-size: 24px;
       &:hover {
@@ -242,7 +252,11 @@
   }
 
   .page-aboutpage & {
-    height: 100vh;
+    height: auto;
+
+    @media #{$tablet} {
+      height: 100vh;
+    }
   }
 
   @media #{$tablet} {

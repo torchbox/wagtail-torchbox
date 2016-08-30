@@ -1,8 +1,9 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% if jobs %}
+<h2 style="display:block;">{{ jobintro }}</h2>
+
 <div class="jobs">
-    <h2>{# <a href="">Jobs</a> #}We're looking for great people</h2>
     <ul>
         {% for job in jobs %}
             <a href="{{ job.url }}" class="listing">
@@ -15,9 +16,12 @@
             </a>
         {% endfor %}
     </ul>
-    <h4>Nothing that fits?</h4>
-    <p class="jobs-followon"><a href="contact">Get in touch</a> anyway</a>, or find out more about <a href="jobs/#reasons">life at Torchbox</a>.</p>
-{#     <a href="contact" class="sml">Nothing that fits? <span>Get in touch anyway</span></a> #}
-    {# <a href="jobs/#reasons" class="sml"><span>Life at torchbox</span></a> #}
+
+    {% if jobindex.no_jobs_that_fit %}
+    <div class="jobs-followon">
+        {{ jobindex.no_jobs_that_fit|richtext }}
+    </div>
+    {% endif %}
+
 </div>
 {% endif %}
