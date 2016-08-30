@@ -1498,24 +1498,26 @@ class GlobalSettings(BaseSetting):
     PhiliAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
 
 
+class SubMenuItemBlock(StreamBlock):
+    subitem = PageChooserBlock()
+
+
+class MenuItemBlock(StructBlock):
+    page = PageChooserBlock()
+    subitems = SubMenuItemBlock()
+
+    class Meta:
+        template = "torchbox/includes/menu_item.html"
+
+
+class MenuBlock(StreamBlock):
+    items = MenuItemBlock()
+
+
 @register_setting
-class MainMenu(BaseSetting, ClusterableModel):
-    panels = [
-        InlinePanel('main_menu_items', label="Main Menu Items")
-    ]
-
-
-class MainMenuItem(Orderable):
-    main_menu = ParentalKey(
-        MainMenu,
-        related_name='main_menu_items'
-    )
-    page = models.ForeignKey(
-        'wagtailcore.Page',
-        on_delete=models.CASCADE,
-        related_name='+'
-    )
+class MainMenu(BaseSetting):
+    menu = StreamField(MenuBlock(), blank=True)
 
     panels = [
-        PageChooserPanel('page')
+        StreamFieldPanel('menu'),
     ]

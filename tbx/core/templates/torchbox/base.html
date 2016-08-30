@@ -67,12 +67,10 @@
                     <span></span>
                 </a>
 
-                {% main_menu as menu %}
                 <ul class="bleed out-animation">
-                    {% for item in menu %}
-                        <li>
-                            <a href="{% pageurl item %}">{{ item.title }}</a>
-                        </li>
+                    {% main_menu as menu %}
+                    {% for block in menu.menu %}
+                        {{ block }}
                     {% endfor %}
                 </ul>
             </nav>
