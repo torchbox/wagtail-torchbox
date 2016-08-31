@@ -10,6 +10,7 @@
     left: 0;
     top: 54px;
     opacity: 0;
+    overflow: visible;
 
     // Prevent links being cut off
     // FIXME
@@ -90,8 +91,10 @@
       border-top: 1px solid rgba(#000, 0.1);
   
       &:hover {
-        ul {
-          display: block;
+        @media #{$tablet} {
+          ul {
+            display: block;
+          }
         }
       }
 
@@ -102,12 +105,12 @@
       ul {
         position: absolute;
         z-index: 1;
-        background: #fff;
+        background-color: #fff;
         width: 200px;
-        bottom: -105px;
-        padding: 0px 15px;
+        top: 100%;
+        padding: 15px 15px 0;
         left: -15px;
-        display: none;  
+        display: none;
 
         li a {
           width: 100%;
