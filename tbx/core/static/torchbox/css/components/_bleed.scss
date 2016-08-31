@@ -89,7 +89,7 @@
       transition: all 450ms ease;
       border-top: 1px solid rgba(#000, 0.1);
   
-      li:hover {
+      &:hover {
         ul {
           display: block;
         }
