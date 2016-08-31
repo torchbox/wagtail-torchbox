@@ -88,9 +88,32 @@
       transform: translate3d(0, -20px, 0);
       transition: all 450ms ease;
       border-top: 1px solid rgba(#000, 0.1);
+  
+      a:hover {
+        ul {
+          display: block;
+        }
+      }
+
       &:last-child {
         border-bottom: 1px solid rgba(#000, 0.1);
       }
+
+      ul {
+        position: absolute;
+        z-index: 1;
+        background: #fff;
+        width: 200px;
+        bottom: -105px;
+        padding: 0px 15px;
+        left: -15px;
+        display: none;  
+
+        li a {
+          width: 100%;
+        }
+      }
+
     @media #{$tablet} {
       transform: translate3d(0, 0, 0);
       opacity: 1;
