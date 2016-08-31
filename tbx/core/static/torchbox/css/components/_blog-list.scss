@@ -7,85 +7,56 @@
 
   @include cf;
   margin-bottom: 50px;
+  margin-left: 1.1%;
   @media #{$tablet-large} {
     margin-bottom: 70px;
   }
   li {
-    margin-bottom: 20px;
+    margin: 0px 2% 0px 0px;
+    height: 350px;
     @media #{$tablet} {
-      width: 50%;
+      width: 48%;
       float: left;
     }
     @media #{$tablet-large} {
       margin-bottom: 40px;
-      width: 25%;
+      width: 23%;
+      height: 495px;
     }
-    .content {
-      position: relative;
-      @media #{$tablet} {
-        padding: 0 $padding-sml;
-      }
-      @media #{$tablet-large} {
-        padding: 0 $padding;
-      }
-    }
-    // larger cards
-    &:first-of-type, &:last-of-type {
-      @media #{$tablet-large} {
-        width: 50%;
-      }
-      .blog-text {
-        @media #{$tablet-large} {
-          max-width: 65%;
-          h3 {
-            font-size: 35px;
-          }
-        }
-      }
-    }
-    // additional blog styles
-    // orange
-    &.orange {
-      .image-container {
-        background: $orange;
-        height: 350px;
-        @media #{$tablet-large} {
-          height: 495px;
+    &.orange, &.blue, &.white {
+        &:hover {
+            @media #{$tablet-large} {
+                .image-container {
+                    &:after {
+                        height: 100%;
+                    }
+                }
+            }
         }
         img {
-          display: none;
+            display: none;
         }
-        &:after {
-          height: 100%;
-          background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
-          background-size: cover;
-          mix-blend-mode: soft-light;
-          opacity: 0.3;
+        .image-container:after {
+            height: 100%;
+            background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
+            background-size: cover;
+            mix-blend-mode: soft-light;
+            opacity: 0.3;
         }
-      }
-      .name {
-        color: white;
-      }
-      &:hover {
-        @media #{$tablet-large} {
-          .image-container {
-            &:after {
-              height: 100%;
-            }
-          }
-        }
-      }
     }
-    // blue
+    &.orange {
+        background: $orange;
+        .name {
+            color: white;
+        }
+    }
     &.blue {
-      @extend .orange;
-      .image-container {
         background: $blue;
-      }
+        .name {
+            color: white;
+        }
     }
-    // white
     &.white {
-      @extend .orange;
       .image-container {
         background: $grey;
         &:after {
@@ -101,6 +72,24 @@
       }
       .name {
         color: $orange;
+      }
+    }
+    .content {
+      position: relative;
+      height: 100%;
+    }
+    // larger cards
+    &:first-of-type, &:last-of-type {
+      @media #{$tablet-large} {
+        width: 48%;
+      }
+      .blog-text {
+        @media #{$tablet-large} {
+          max-width: 65%;
+          h3 {
+            font-size: 35px;
+          }
+        }
       }
     }
     // hover
@@ -142,16 +131,6 @@
     @media #{$tablet-large} {
       height: 495px;
     }
-
-    // Replaced with bg image on container
-    // img {
-    //   object-fit: cover;
-    //   height: 350px;
-    //   display: none;
-    //   @media #{$tablet-large} {
-    //     height: 495px;
-    //   }
-    // }
     
     &:after {
       content: '';
