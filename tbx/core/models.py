@@ -707,7 +707,16 @@ class BlogPageAuthor(Orderable):
 class BlogPage(Page):
     intro = RichTextField("Intro (used for blog index and Planet Drupal listings)", blank=True)
     body = RichTextField("body (deprecated. Use streamfield instead)", blank=True)
-    homepage_color = models.TextField("Homepage colour (orange, blue, white) if left blank will display image", blank=True)
+    colour = models.CharField(
+        "Listing card colour if left blank will display image",
+        choices=(
+            ('orange', "Orange"),
+            ('blue', "Blue"),
+            ('white', "White")
+        ),
+        max_length=255,
+        blank=True
+    )
     streamfield = StreamField(StoryBlock())
     author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
@@ -744,7 +753,7 @@ class BlogPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('homepage_color'),
+        FieldPanel('colour'),
         InlinePanel('related_author', label="Author"),
         FieldPanel('author_left'),
         FieldPanel('date'),
