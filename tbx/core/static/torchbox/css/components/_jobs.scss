@@ -64,7 +64,7 @@
       color: #fff;
       opacity: 1;
       font-size: 16px;
-      max-width: 900px;
+      //max-width: 900px;
       a {
         //color: $orange;
       }
@@ -150,10 +150,12 @@
   }
   h2 {
     margin-bottom: 30px;
+    margin-top: 30px;
     font-weight: 300;
     color: white;
     @media #{$tablet-large} {
       margin-bottom: 40px;
+      margin-top: 30px;
     }
     a {
       color: white;
