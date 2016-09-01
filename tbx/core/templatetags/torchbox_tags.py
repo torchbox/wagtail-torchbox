@@ -68,11 +68,7 @@ def in_play(page):
 
 @register.simple_tag
 def main_menu():
-    try:
-        return [
-        item.page for item in MainMenu.objects.first().main_menu_items.all()]
-    except AttributeError:
-        return []
+    return MainMenu.objects.first()
 
 
 # Person feed for home page
@@ -112,7 +108,7 @@ def homepage_work_listing(context, count=3):
 
 # Jobs feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
-def homepage_job_listing(context, count=3):
+def homepage_job_listing(context, count=3, intro_text=None):
     # Assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True).first()
     if jobindex:
@@ -121,7 +117,9 @@ def homepage_job_listing(context, count=3):
             jobs = jobs[:count]
     else:
         jobs = []
+    jobintro = intro_text or jobindex.listing_intro
     return {
+        'jobintro': jobintro,
         'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],

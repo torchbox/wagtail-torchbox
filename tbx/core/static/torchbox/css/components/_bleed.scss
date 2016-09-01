@@ -10,6 +10,7 @@
     left: 0;
     top: 54px;
     opacity: 0;
+    overflow: visible;
 
     // Prevent links being cut off
     // FIXME
@@ -88,9 +89,34 @@
       transform: translate3d(0, -20px, 0);
       transition: all 450ms ease;
       border-top: 1px solid rgba(#000, 0.1);
+  
+      &:hover {
+        @media #{$tablet} {
+          ul {
+            display: block;
+          }
+        }
+      }
+
       &:last-child {
         border-bottom: 1px solid rgba(#000, 0.1);
       }
+
+      ul {
+        position: absolute;
+        z-index: 1;
+        background-color: #fff;
+        width: 200px;
+        top: 100%;
+        padding: 15px 15px 0;
+        left: -15px;
+        display: none;
+
+        li a {
+          width: 100%;
+        }
+      }
+
     @media #{$tablet} {
       transform: translate3d(0, 0, 0);
       opacity: 1;

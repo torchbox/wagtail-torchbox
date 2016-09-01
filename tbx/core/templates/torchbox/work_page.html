@@ -55,7 +55,10 @@
                     {% endif %}
                 {% endwith %}
             </ul>
-            <a class="visit" href="">
+            <div class="client">
+                {{ self.title }}
+            </div>
+            <a class="visit" href="{{ page.visit_the_site }}">
                 Visit the site
                 <span class="svg">
                     <svg version="1.1"
