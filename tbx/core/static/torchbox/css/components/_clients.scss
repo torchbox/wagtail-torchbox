@@ -58,7 +58,7 @@
       height: $height;
     }
     &:nth-last-child(-n+12) {
-      opacity: 0;
+      //opacity: 0;
     }
     // Loop through the items and add some delay
     @for $i from 5 through 16 {
