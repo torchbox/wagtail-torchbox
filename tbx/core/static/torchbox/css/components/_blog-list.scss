@@ -12,14 +12,14 @@
     margin-bottom: 70px;
   }
   li {
-    margin: 0px 2% 0px 0px;
+    margin: 0px 2% 20px 0px;
     height: 350px;
     @media #{$tablet} {
       width: 48%;
       float: left;
     }
     @media #{$tablet-large} {
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       width: 23%;
       height: 495px;
     }
@@ -171,7 +171,7 @@
       width: calc(100% - (#{$padding-sml * 2}));
     }
     @media #{$tablet-large} {
-      padding: $padding 25px 30px;
+      padding: $padding 10px 30px;
       left: $padding;
       width: calc(100% - (#{$padding * 2}));
     }
@@ -198,7 +198,7 @@
     font-weight: 400;
     margin-bottom: 5px;
     @media #{$tablet-large} {
-      font-size: 30px;
+      font-size: 27px;
       transform: translate3d(0,0,0);
       @include custom-bounce;
       transition-property: transform;
