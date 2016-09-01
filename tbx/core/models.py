@@ -1,25 +1,20 @@
 from __future__ import unicode_literals
 
-from datetime import date
-
 from django import forms
 from django.core.mail import EmailMessage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.functional import cached_property
 
-from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
-from modelcluster.tags import ClusterTaggableManager
-from taggit.models import Tag, TaggedItemBase
-from wagtail.wagtailadmin.blocks import (CharBlock, ChooserBlock, FieldBlock,
-                                         ListBlock, PageChooserBlock,
-                                         RawHTMLBlock, RichTextBlock,
-                                         StreamBlock, StructBlock)
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.wagtailadmin.blocks import (CharBlock, FieldBlock, ListBlock,
+                                         PageChooserBlock, RawHTMLBlock,
+                                         RichTextBlock, StreamBlock,
+                                         StructBlock)
 from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
                                                 MultiFieldPanel,
                                                 PageChooserPanel,
@@ -36,19 +31,16 @@ from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
                                           Image)
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.contrib.settings.models import BaseSetting, register_setting
-
-from tbx.core.utils import export_event
 
 
-### Streamfield blocks and config ###
+# Streamfield blocks and config
 
 class ImageFormatChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
-        ('left','Wrap left'),
-        ('right','Wrap right'),
-        ('half','Half width'),
-        ('full','Full width'),
+        ('left', 'Wrap left'),
+        ('right', 'Wrap right'),
+        ('half', 'Half width'),
+        ('full', 'Full width'),
     ))
 
 
@@ -96,6 +88,7 @@ class WideImage(StructBlock):
 
     class Meta:
         icon = "image"
+
 
 class StatsBlock(StructBlock):
     pass
@@ -253,6 +246,7 @@ class Advert(models.Model):
 
 register_snippet(Advert)
 
+
 # Custom image
 class TorchboxImage(AbstractImage):
     credit = models.CharField(max_length=255, blank=True)
@@ -311,13 +305,13 @@ class HomePage(Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('hero_intro'),
-        InlinePanel( 'hero', label="Hero"),
+        InlinePanel('hero', label="Hero"),
         FieldPanel('intro_title'),
         FieldPanel('intro_body'),
         FieldPanel('work_title'),
         FieldPanel('blog_title'),
         FieldPanel('clients_title'),
-        InlinePanel( 'clients', label="Clients"),
+        InlinePanel('clients', label="Clients"),
     ]
 
     @property
@@ -443,9 +437,9 @@ class StandardPage(Page):
         FieldPanel('body', classname="full"),
         StreamFieldPanel('streamfield'),
         FieldPanel('email', classname="full"),
-        InlinePanel( 'content_block', label="Content block"),
-        InlinePanel( 'related_links', label="Related links"),
-        InlinePanel( 'clients', label="Clients"),
+        InlinePanel('content_block', label="Content block"),
+        InlinePanel('related_links', label="Related links"),
+        InlinePanel('clients', label="Clients"),
     ]
 
     promote_panels = [
@@ -503,6 +497,7 @@ class AboutPageValue(Orderable):
     panels = [
         ImageChooserPanel('image')
     ]
+
 
 class AboutPage(Page):
     main_image = models.ForeignKey(
@@ -723,6 +718,7 @@ class BlogPage(Page):
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
+
     @property
     def blog_index(self):
         # Find blog index in ancestors
@@ -1021,7 +1017,6 @@ class PersonPage(Page, ContactFields):
         related_name='+'
     )
 
-
     search_fields = Page.search_fields + (
         index.SearchField('first_name'),
         index.SearchField('last_name'),
@@ -1211,9 +1206,9 @@ class GoogleAdGrantsPage(Page):
 class SignUpFormPageBullet(Orderable):
     page = ParentalKey('torchbox.SignUpFormPage', related_name='bullet_points')
     icon = models.CharField(max_length=100, choices=(
-        ('torchbox/includes/svg/bulb-svg.html','Light bulb'),
-        ('torchbox/includes/svg/pro-svg.html','Chart'),
-        ('torchbox/includes/svg/tick-svg.html','Tick'),
+        ('torchbox/includes/svg/bulb-svg.html', 'Light bulb'),
+        ('torchbox/includes/svg/pro-svg.html', 'Chart'),
+        ('torchbox/includes/svg/tick-svg.html', 'Tick'),
     ))
     title = models.CharField(max_length=100)
     body = models.TextField()
@@ -1448,11 +1443,11 @@ class MarketingLandingPage(Page):
         FieldPanel('intro_subtitle'),
         InlinePanel('intro_related_links', label="Intro related items"),
         InlinePanel('featured_items', label="Featured Items"),
-        InlinePanel( 'clients', label="Clients"),
+        InlinePanel('clients', label="Clients"),
     ]
 
-# Contact page
 
+# Contact page
 class ContactFormField(AbstractFormField):
     page = ParentalKey('Contact', related_name='form_fields')
 
@@ -1475,6 +1470,7 @@ class Contact(AbstractEmailForm):
             FieldPanel('subject', classname="full"),
         ], "Email")
     ]
+
 
 @register_setting
 class GlobalSettings(BaseSetting):
