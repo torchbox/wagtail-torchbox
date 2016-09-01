@@ -1,15 +1,10 @@
 {% load wagtailcore_tags wagtailimages_tags torchbox_tags staticfiles %}
 
-<!-- no class uses image -->
-<!-- .orange uses orange background -->
-<!-- .blue uses blue background -->
-<!-- .white uses white background -->
-
-<li {% if post.homepage_color %}class="{{ post.homepage_color }}"{% endif %}>
+<li {% if post.colour %}class="{{ post.colour }}"{% endif %}>
     <a href="{% pageurl post %}">
         <div class="content">
             {% image post.feed_image fill-1200x700 as background %}
-            <div class="image-container" {% if not post.homepage_color %}style="background-image: url('{{ background.url }}');"{% endif %}></div>
+            <div class="image-container" {% if not post.colour %}style="background-image: url('{{ background.url }}');"{% endif %}></div>
             <div class="blog-text">
                 <div id="author" class="author clearfix" >
                     {% if post.related_author.all %}

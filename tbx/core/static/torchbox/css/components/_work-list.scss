@@ -93,7 +93,7 @@
     &:before {
       content: '';
       position: absolute;
-      height: 180%;
+      height: 150%;
       width: 100%;
       left: 0;
       bottom: 0;
@@ -136,7 +136,7 @@
     margin-bottom: 5px;
     font-size: 25px;
     @media #{$tablet-large} {
-      font-size: 30px;
+      font-size: 27px;
       margin-bottom: 10px;
       transition-delay: 0.15s;
     }

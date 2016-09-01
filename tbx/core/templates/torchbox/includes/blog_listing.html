@@ -1,31 +1,17 @@
 {% load wagtailcore_tags wagtailimages_tags staticfiles %}
 
 {# orange arrow navigation #}
-<!-- <div class="nextprev-nav">
-    {% if blog_posts.has_previous %}
-        <div class="nextprev prev">
-            <a href="?page={{ blog_posts.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="previous"><span>Previous page</span></a>
-        </div>
-    {% endif %}
-    {% if blog_posts.has_next %}
-        <div class="nextprev next">
-            <a href="?page={{ blog_posts.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="next"><span>Next page</span></a>
-        </div>
-    {% endif %}
-</div> -->
 
 <ul class="blogpage-listing">
 {% for post in blog_posts %}
-    <li class="blue">
+    <li {% if not post.feed_image %}class="{{ post.colour|default:'blue' }}"{% endif %}>
         <a class="block-link" href="{% pageurl post %}">
             <div class="content">
-                <div class="image-container">
-                    <img src="" alt="">
-                </div>
+                {% if post.feed_image %}
+                    {% image post.feed_image fill-1200x700 as background %}
+                {% endif %}
+                    <div class="image-container" {% if post.feed_image %}style="background-image: url('{{ background.url }}');"{% endif %}></div>
                 <div class="blog-text">
-    <!--                 {% if post.intro %}
-                        {{ post.intro|richtext }}
-                    {% endif %} -->
                     <div class="author">
                         {% with post.related_author.all as authors %}
                             {% if authors %}
@@ -69,27 +55,13 @@
     {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
     <div class="previous">
         {% if blog_posts.has_previous %}
-            <a href="?page={{ works.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Previous &nbsp;</p></a>
+            <a href="?page={{ blog_posts.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Previous &nbsp;</p></a>
         {% endif %}
-    </div>
-
-    <div class="number">
-        <p>{{ blog_posts.number }} of {{ blog_posts.paginator.num_pages }} </p>
     </div>
 
     <div class="next">
         {% if blog_posts.has_next %}
-            <a href="?page={{ works.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
+            <a href="?page={{ blog_posts.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
         {% endif %}
     </div>
 </div>
-
-<script type="text/javascript">
-        {% if blog_posts.has_next %}
-            var next_params = 'page=' + {{ blog_posts.next_page_number }};
-        {% endif %}
-        {% if blog_posts.has_previous %}
-            var prev_params = 'page=' + {{ blog_posts.previous_page_number }};
-        {% endif %}
-        //var this_page = {{ blog_posts.number }}
-</script>

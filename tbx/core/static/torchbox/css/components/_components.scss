@@ -84,10 +84,11 @@
   }
 }
 
-.responsive-object {
+.marketing-responsive-object {
   width: 100%;
   position: relative;
-  padding-bottom: 56.25% !important; /* 16:9 */
+  /* 16:9 */
+  padding-bottom: 56.25% !important;
   height: 0 !important;
   margin: 0 0 30px;
 
@@ -103,5 +104,4 @@
     width: 120%;
     margin-left: -10%;
   }
-
 }

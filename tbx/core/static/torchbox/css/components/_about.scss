@@ -5,13 +5,18 @@
   @include cf;
   padding: 0;
   margin-bottom: 40px;
-  p {
-    font-size: 20px;
+  .rich-text p {
+    font-size: 22px;
     border-bottom: 1px solid rgba(black, 0.1);
     padding-bottom: 30px;
     font-weight: 300;
+    max-width: none;
     span {
       //font-weight: 600;
+    }
+    @media #{$tablet-large} {
+      font-size: 28px;
+      padding-bottom: 50px;
     }
   }
   @media #{$tablet-large} {
