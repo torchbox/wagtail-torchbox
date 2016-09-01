@@ -454,27 +454,8 @@ class StandardPage(Page):
         ImageChooserPanel('feed_image'),
     ]
 
+
 # About page
-
-class AbstractBaseService(Orderable):
-    title = models.TextField()
-    svg = models.TextField(null=True)
-    description = models.TextField()
-
-    panels = [
-        FieldPanel('title'),
-        FieldPanel('description'),
-        FieldPanel('svg')
-    ]
-
-    class Meta:
-        abstract = True
-
-
-class AboutPageService(AbstractBaseService):
-    page = ParentalKey('torchbox.AboutPage', related_name='services')
-
-
 class AboutPageOffice(Orderable):
     page = ParentalKey('torchbox.AboutPage', related_name='offices')
     title = models.TextField()
@@ -487,7 +468,29 @@ class AboutPageOffice(Orderable):
         FieldPanel('svg')
     ]
 
-class AboutPageValues(Orderable):
+
+class AboutPageContentBlock(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='content_blocks')
+    year = models.IntegerField()
+    title = models.TextField()
+    description = models.TextField()
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        FieldPanel('year'),
+        FieldPanel('title'),
+        FieldPanel('description'),
+        ImageChooserPanel('image')
+    ]
+
+
+class AboutPageValue(Orderable):
     page = ParentalKey('torchbox.AboutPage', related_name='values')
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -498,32 +501,6 @@ class AboutPageValues(Orderable):
     )
 
     panels = [
-        ImageChooserPanel('image')
-    ]
-
-class AboutPageInvolvement(Orderable):
-    page = ParentalKey('torchbox.AboutPage', related_name='involvement')
-    title = models.TextField()
-    svg = models.TextField(null=True)
-    description = models.TextField()
-
-    panels = [
-        FieldPanel('title'),
-        FieldPanel('description'),
-        FieldPanel('svg')
-    ]
-
-class AboutPageClients(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.AboutPage', related_name='clients')
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    panels = RelatedLink.panels + [
         ImageChooserPanel('image')
     ]
 
@@ -545,17 +522,29 @@ class AboutPage(Page):
         ImageChooserPanel('main_image'),
         FieldPanel('heading'),
         FieldPanel('intro', classname='full'),
-        InlinePanel('services', label='Services'),
+        InlinePanel('content_blocks', label='Content blocks'),
         InlinePanel('offices', label='Offices'),
         FieldPanel('values_title'),
         InlinePanel('values', label='Values'),
         FieldPanel('involvement_title'),
-        InlinePanel('involvement', label='Involvement'),
-        InlinePanel('clients', label='Clients')
     ]
 
 
 # Services page
+class AbstractBaseService(Orderable):
+    title = models.TextField()
+    svg = models.TextField(null=True)
+    description = models.TextField()
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        FieldPanel('svg')
+    ]
+
+    class Meta:
+        abstract = True
+
 
 class ServicesPageService(AbstractBaseService):
     page = ParentalKey('torchbox.ServicesPage', related_name='services')
