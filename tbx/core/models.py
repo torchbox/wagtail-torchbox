@@ -885,7 +885,7 @@ class WorkPage(Page):
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
     streamfield = StreamField(StoryBlock())
-    visit_the_site = models.URLField()
+    visit_the_site = models.URLField(blank=True)
 
     show_in_play_menu = models.BooleanField(default=False)
 
@@ -918,7 +918,7 @@ class WorkPage(Page):
         ImageChooserPanel('homepage_image'),
         InlinePanel('screenshots', label="Screenshots"),
         InlinePanel('tags', label="Tags"),
-        FieldPanel('visit_the_site')
+        FieldPanel('visit_the_site'),
     ]
 
     promote_panels = [
