@@ -1,6 +1,7 @@
 
 // specifications
 .specifications {
+  transition: all 0.2s ease 0s;
   position: absolute;
   background: white;
   border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -10,29 +11,36 @@
   width: 100%;
   z-index: 6;
   @media #{$tablet} {
-      margin-top: 0;
-      padding: 10px 0 0;
+    margin-top: 0;
+    padding: 10px 0 0;
   }
 
   &--fixed {
     position: fixed;
     top: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba($dark, 0.95);
+
+    @media #{$tablet} {
+      .tags {
+        display: none !important;
+      }
+    }
+
   }
 
   .client {
     vertical-align: top;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: 1px;
-    margin: 12px 0 0 14px;
-    color: #fc8977;
+    margin: 8px 0 15px 0;
+    color: $orange-lt;
     display: none;
 
     &--show {
       @media #{$tablet} {
-          display: inline-block;
+        display: inline-block;
       }
     }
   }
@@ -121,7 +129,7 @@
     border: 1px solid $orange;
     background: $orange;
     display: inline-block;
-    padding: 10px 25px;
+    padding: 8px 25px;
     width: auto;
     border-radius: $border-radius;
     transition: all 0.25s ease 0s;
@@ -150,3 +158,4 @@
     }
   }
 }
+
