@@ -39,6 +39,13 @@
   ul {
     margin-left: 40px;
   }
+  ol {
+    margin-left: 40px;
+    li {
+      //list-style: normal;
+      list-style-type: decimal;
+    }
+  }
   li {
     max-width: $container-width;
     font-size: 16px;
