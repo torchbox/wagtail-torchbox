@@ -58,6 +58,7 @@
             <div class="client">
                 {{ self.title }}
             </div>
+            {% if page.visit_the_site %}
             <a class="visit" href="{{ page.visit_the_site }}">
                 Visit the site
                 <span class="svg">
@@ -72,6 +73,7 @@
                     </svg>
                 </span>
             </a>
+            {% endif %}
             </div>
         </div>
 
