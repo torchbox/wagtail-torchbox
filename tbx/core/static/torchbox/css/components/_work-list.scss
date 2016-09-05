@@ -186,10 +186,10 @@
     @media #{$tablet} {
       width: 50%;
       margin-bottom: 30px;
-      &:first-of-type {
+      &:first-of-type, &:last-of-type {
         width: 50%;
       }
-      &:nth-child(6) {
+      &:nth-child(6), &:nth-child(7) {
         width: 50%;
       }
     }

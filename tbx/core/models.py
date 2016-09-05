@@ -616,7 +616,7 @@ class BlogIndexPage(Page):
             blog_posts = blog_posts.filter(tags__tag__slug=tag)
 
         # Pagination
-        per_page = 10
+        per_page = 12
         page = request.GET.get('page')
         paginator = Paginator(blog_posts, per_page)  # Show 10 blog_posts per page
         try:
@@ -965,7 +965,7 @@ class WorkIndexPage(Page):
 
         # Pagination
         page = request.GET.get('page')
-        paginator = Paginator(works, 10)  # Show 10 works per page
+        paginator = Paginator(works, 12)  # Show 10 works per page
         try:
             works = paginator.page(page)
         except PageNotAnInteger:

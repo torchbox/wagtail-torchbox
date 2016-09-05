@@ -92,6 +92,21 @@
         }
       }
     }
+
+    &:nth-child(6), &:nth-child(7) {
+      @media #{$tablet-large} {
+        width: 48%;
+      }
+      .blog-text {
+        @media #{$tablet-large} {
+          max-width: 65%;
+          h3 {
+            font-size: 35px;
+          }
+        }
+      }
+    }
+
     // hover
     &:hover {
       @media #{$tablet-large} {
