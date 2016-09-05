@@ -576,7 +576,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 
 
 class BlogIndexPage(Page):
-    intro = RichTextField(blank=True)
+    intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
