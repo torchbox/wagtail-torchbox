@@ -602,7 +602,7 @@ class BlogIndexPage(Page):
         ).exclude(marketing_only=True)
 
         # Order by most recent date first
-        blog_posts = blog_posts.order_by('-date')
+        blog_posts = blog_posts.order_by('-date', 'pk')
 
         return blog_posts
 
