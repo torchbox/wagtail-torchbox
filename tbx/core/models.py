@@ -314,7 +314,7 @@ class HomePageHero(Orderable, RelatedLink):
     ]
 
 
-class HomePageClients(Orderable, RelatedLink):
+class HomePageClient(Orderable, RelatedLink):
     page = ParentalKey('torchbox.HomePage', related_name='clients')
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -383,7 +383,7 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='related_links')
 
 
-class StandardPageClients(Orderable, RelatedLink):
+class StandardPageClient(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='clients')
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -517,7 +517,8 @@ class AboutPage(Page):
 
 
 # Services page
-class AbstractBaseService(Orderable):
+class ServicesPageService(Orderable):
+    page = ParentalKey('torchbox.ServicesPage', related_name='services')
     title = models.TextField()
     svg = models.TextField(null=True)
     description = models.TextField()
@@ -527,13 +528,6 @@ class AbstractBaseService(Orderable):
         FieldPanel('description'),
         FieldPanel('svg')
     ]
-
-    class Meta:
-        abstract = True
-
-
-class ServicesPageService(AbstractBaseService):
-    page = ParentalKey('torchbox.ServicesPage', related_name='services')
 
 
 class ServicesPage(Page):
