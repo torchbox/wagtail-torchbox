@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'compressor',
     'taggit',
+    'raven.contrib.django.raven_compat',
 
     'django.contrib.humanize',
     'django.contrib.admin',
