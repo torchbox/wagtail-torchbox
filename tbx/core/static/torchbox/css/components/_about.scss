@@ -161,11 +161,11 @@
       }
       a {
         font-size: 22px;
-        font-weight: 600;
-        //color: $orange-lt;
-        @media #{$desktop} {
-          font-size: 28px;
-          @include line-hover;
+        padding: 20px;
+        border: none;
+        margin-top: 40px;
+        &:hover {
+          border: none;
         }
       }
     }
