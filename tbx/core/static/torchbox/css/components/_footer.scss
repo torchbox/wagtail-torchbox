@@ -292,6 +292,10 @@ footer {
       background: none;
       color: $blue;
     }
+    &.thanks-btn {
+      display: inline-block;
+      font-weight: 400;
+    }
     svg {
       position: relative;
       top: 13px;
