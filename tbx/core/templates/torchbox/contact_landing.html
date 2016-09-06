@@ -5,19 +5,10 @@
 {% endblock %}
 {% block content %}
 
-<!--
-<div class="map" id="map"></div>
-<div class="contact-bar">
-    <div class="contact-bar__item">+44 (0) 1608 811870</div>
-    <div class="contact-bar__item">
-        <a href="mailto:hello@torchbox.com">hello@torchbox.com</a>
-    </div>
-</div>
--->
-
 <style>
     .about-hero {
-        background-image: url("{% static 'torchbox/images/mountain.jpg' %}");
+        {% image page.landing_image original as landing_image %}
+        background-image: url("{{ landing_image.url }}");
     }
 </style>
 
@@ -28,10 +19,12 @@
                 <fieldset class="contact-form__group">
                     <div class="container">
                         <div class="content">
-                            <h2 class="thanks"><span>Thanks!</span> We'll be in touch.<br><a class="btn thanks-btn" href="#">Check out our case studies</a></h2>
+                            <h2 class="thanks">
+                                <span>{{ page.thank_you_text }}</span> {{ page.thank_you_follow_up }}<br>
+                                <a class="btn thanks-btn" href="{% pageurl page.landing_page_button_link %}" class="btn">{{ page.landing_page_button_title }}</a>
+                            </h2>
                         </div>
                     </div>
-                   {{ page.thank_you_text|richtext }}
                    {% csrf_token %}
                    {{ form.as_p }}
                 </fieldset>    
@@ -42,83 +35,4 @@
 
 
 
-{% endblock %}
-
-{% block extra_js %}
-<script type="text/javascript">
-
-    $(function() {
-
-        var markers         = [],
-
-            // Define locations and labels
-            locations       = [
-                [51.858469, -1.480863, 'Oxford'],
-                [51.454814, -2.597802, 'Bristol'],
-                [39.950865, -75.145590, 'Philadelphia']
-            ],
-
-            // Define basic map options
-            mapOptions = {
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                zoom: 4,
-                scrollwheel: false,
-                styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"lightness":"69"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"geometry","stylers":[{"lightness":"35"}]},{"featureType":"administrative.country","elementType":"geometry.fill","stylers":[{"lightness":"1"}]},{"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"weight":"3.94"},{"lightness":"45"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}
-                ]
-            },
-
-            // Build map
-            map = new google.maps.Map(document.getElementById( 'map' ), mapOptions);
-
-
-        // Set up markers    
-        function setMarkers( map, locations ) {
-
-            for ( i = 0; i < locations.length; i++ ) {
-
-                var lat             = locations[i][0],
-                    long            = locations[i][1],
-                    title           = locations[i][2],
-                    markerLocation  = new google.maps.LatLng(lat, long),
-                    infowindow      = new google.maps.InfoWindow(),
-                    markerInfo      = '<div class="map-infobox">' + title + '</div>';
-
-                // Create markers and add to array
-                var marker = new google.maps.Marker({
-                    map:            map,
-                    position:       markerLocation,
-                    title:          title,
-                    icon:           '{% static "torchbox/images/pin.png" %}'
-                });
-
-                markers.push(marker);
-
-                // Upon marker click, show info box
-                google.maps.event.addListener( marker, 'click', ( function( marker, markerInfo, infowindow ) {
-                    return function() {
-                        infowindow.setContent( markerInfo );
-                        infowindow.open( map, marker );
-                    };
-                })( marker, markerInfo, infowindow ));
-            }
-        }
-
-        // Position map to display within bounds of the markers
-        function positionMap(){
-
-            var bounds = new google.maps.LatLngBounds();
-
-            for (var i = 0; i < markers.length; i++) {
-                bounds.extend(markers[i].getPosition());
-            }
-
-            map.fitBounds(bounds);
-        }
-
-        setMarkers( map, locations );
-        positionMap();
-    
-    });
-
-</script>
 {% endblock %}

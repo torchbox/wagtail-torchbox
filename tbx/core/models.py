@@ -283,6 +283,52 @@ def rendition_delete(sender, instance, **kwargs):
     instance.file.delete(False)
 
 
+# Home Page
+
+class HomePageHero(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.HomePage', related_name='hero')
+    colour = models.CharField(max_length=255, help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue")
+    background = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    logo = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    text = models.CharField(
+        max_length=255
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('background'),
+        ImageChooserPanel('logo'),
+        FieldPanel('colour'),
+        FieldPanel('text'),
+    ]
+
+
+class HomePageClient(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.HomePage', related_name='clients')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('image')
+    ]
+
+
 class HomePage(Page):
     hero_intro = models.TextField(blank=True)
     hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
@@ -326,48 +372,6 @@ class HomePage(Page):
 
         return blog_posts
 
-    class HomePageHero(Orderable, RelatedLink):
-        page = ParentalKey('torchbox.HomePage', related_name='hero')
-        colour = models.CharField(max_length=255, help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue")
-        background = models.ForeignKey(
-            'torchbox.TorchboxImage',
-            null=True,
-            blank=True,
-            on_delete=models.SET_NULL,
-            related_name='+'
-        )
-        logo = models.ForeignKey(
-            'torchbox.TorchboxImage',
-            null=True,
-            blank=True,
-            on_delete=models.SET_NULL,
-            related_name='+'
-        )
-        text = models.CharField(
-            max_length=255
-        )
-
-        panels = RelatedLink.panels + [
-            ImageChooserPanel('background'),
-            ImageChooserPanel('logo'),
-            FieldPanel('colour'),
-            FieldPanel('text'),
-        ]
-
-    class HomePageClients(Orderable, RelatedLink):
-        page = ParentalKey('torchbox.HomePage', related_name='clients')
-        image = models.ForeignKey(
-            'torchbox.TorchboxImage',
-            null=True,
-            blank=True,
-            on_delete=models.SET_NULL,
-            related_name='+'
-        )
-
-        panels = RelatedLink.panels + [
-            ImageChooserPanel('image')
-        ]
-
 
 # Standard page
 
@@ -379,7 +383,7 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='related_links')
 
 
-class StandardPageClients(Orderable, RelatedLink):
+class StandardPageClient(Orderable, RelatedLink):
     page = ParentalKey('torchbox.StandardPage', related_name='clients')
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -513,7 +517,8 @@ class AboutPage(Page):
 
 
 # Services page
-class AbstractBaseService(Orderable):
+class ServicesPageService(Orderable):
+    page = ParentalKey('torchbox.ServicesPage', related_name='services')
     title = models.TextField()
     svg = models.TextField(null=True)
     description = models.TextField()
@@ -523,13 +528,6 @@ class AbstractBaseService(Orderable):
         FieldPanel('description'),
         FieldPanel('svg')
     ]
-
-    class Meta:
-        abstract = True
-
-
-class ServicesPageService(AbstractBaseService):
-    page = ParentalKey('torchbox.ServicesPage', related_name='services')
 
 
 class ServicesPage(Page):
@@ -1032,6 +1030,10 @@ class PersonPage(Page, ContactFields):
 
 # Person index
 class PersonIndexPage(Page):
+    intro = models.TextField()
+    senior_management_intro = models.TextField()
+    team_intro = models.TextField()
+
     @cached_property
     def people(self):
         return PersonPage.objects.exclude(is_senior=True).live().public()
@@ -1039,6 +1041,12 @@ class PersonIndexPage(Page):
     @cached_property
     def senior_management(self):
         return PersonPage.objects.exclude(is_senior=False).live().public()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
+        FieldPanel('senior_management_intro', classname="full"),
+        FieldPanel('team_intro', classname="full"),
+    ]
 
 
 class TshirtPage(Page):
@@ -1439,9 +1447,25 @@ class ContactFormField(AbstractFormField):
     page = ParentalKey('Contact', related_name='form_fields')
 
 
+class ContactLandingPageRelatedLinkButton(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.Contact', related_name='related_link_buttons')
+
+
 class Contact(AbstractEmailForm):
     intro = RichTextField(blank=True)
-    thank_you_text = RichTextField(blank=True)
+    main_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
+                                   blank=True, on_delete=models.SET_NULL,
+                                   related_name='+')
+    landing_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
+                                      blank=True, on_delete=models.SET_NULL,
+                                      related_name='+')
+    thank_you_text = models.CharField(max_length=255, help_text='e.g. Thanks!')
+    thank_you_follow_up = models.CharField(max_length=255, help_text='e.g. We\'ll be in touch')
+    landing_page_button_title = models.CharField(max_length=255, blank=True)
+    landing_page_button_link = models.ForeignKey(
+        'wagtailcore.Page', null=True, blank=True, related_name='+',
+        on_delete=models.SET_NULL
+    )
 
     class Meta:
         verbose_name = "Contact Page"
@@ -1449,13 +1473,20 @@ class Contact(AbstractEmailForm):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
+        ImageChooserPanel('main_image'),
         InlinePanel('form_fields', label="Form fields"),
-        FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel([
             FieldPanel('to_address', classname="full"),
             FieldPanel('from_address', classname="full"),
             FieldPanel('subject', classname="full"),
-        ], "Email")
+        ], "Email"),
+        MultiFieldPanel([
+            ImageChooserPanel('landing_image'),
+            FieldPanel('thank_you_text'),
+            FieldPanel('thank_you_follow_up'),
+            PageChooserPanel('landing_page_button_link'),
+            FieldPanel('landing_page_button_title'),
+        ], "Landing page"),
     ]
 
 

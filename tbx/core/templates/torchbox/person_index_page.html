@@ -4,11 +4,11 @@
 {% block content %}
 <section>
     <div class="container">
-        <h1>Musicians, cyclists, brewers...</h1>
+        <h1>{{ page.intro }}</h1>
     </div>
     {% if self.senior_management.all %}
         <div class="container">
-            <h2 class="people-list-heading">Meet senior management</h2>
+            <h2 class="people-list-heading">{{ page.senior_management_intro }}</h2>
             <div class="people-list">
                 <ul>
                     {% for senior in self.senior_management.all %}
@@ -41,7 +41,7 @@
 
     {% if self.people.all %}
         <div class="container">
-            <h2 class="people-list-heading">Meet the team</h2>
+            <h2 class="people-list-heading">{{ page.team_intro }}</h2>
             <div class="people-list">
                 <ul>
                     {% for person in self.people.all %}
