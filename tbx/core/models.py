@@ -283,6 +283,52 @@ def rendition_delete(sender, instance, **kwargs):
     instance.file.delete(False)
 
 
+# Home Page
+
+class HomePageHero(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.HomePage', related_name='hero')
+    colour = models.CharField(max_length=255, help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue")
+    background = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    logo = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    text = models.CharField(
+        max_length=255
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('background'),
+        ImageChooserPanel('logo'),
+        FieldPanel('colour'),
+        FieldPanel('text'),
+    ]
+
+
+class HomePageClients(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.HomePage', related_name='clients')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('image')
+    ]
+
+
 class HomePage(Page):
     hero_intro = models.TextField(blank=True)
     hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
@@ -325,48 +371,6 @@ class HomePage(Page):
         blog_posts = blog_posts.order_by('-date')
 
         return blog_posts
-
-    class HomePageHero(Orderable, RelatedLink):
-        page = ParentalKey('torchbox.HomePage', related_name='hero')
-        colour = models.CharField(max_length=255, help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue")
-        background = models.ForeignKey(
-            'torchbox.TorchboxImage',
-            null=True,
-            blank=True,
-            on_delete=models.SET_NULL,
-            related_name='+'
-        )
-        logo = models.ForeignKey(
-            'torchbox.TorchboxImage',
-            null=True,
-            blank=True,
-            on_delete=models.SET_NULL,
-            related_name='+'
-        )
-        text = models.CharField(
-            max_length=255
-        )
-
-        panels = RelatedLink.panels + [
-            ImageChooserPanel('background'),
-            ImageChooserPanel('logo'),
-            FieldPanel('colour'),
-            FieldPanel('text'),
-        ]
-
-    class HomePageClients(Orderable, RelatedLink):
-        page = ParentalKey('torchbox.HomePage', related_name='clients')
-        image = models.ForeignKey(
-            'torchbox.TorchboxImage',
-            null=True,
-            blank=True,
-            on_delete=models.SET_NULL,
-            related_name='+'
-        )
-
-        panels = RelatedLink.panels + [
-            ImageChooserPanel('image')
-        ]
 
 
 # Standard page
