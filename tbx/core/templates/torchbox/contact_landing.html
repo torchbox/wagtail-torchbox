@@ -7,7 +7,8 @@
 
 <style>
     .about-hero {
-        background-image: url("{% static 'torchbox/images/mountain.jpg' %}");
+        {% image page.landing_image original as landing_image %}
+        background-image: url("{{ landing_image.url }}");
     }
 </style>
 
@@ -18,10 +19,12 @@
                 <fieldset class="contact-form__group">
                     <div class="container">
                         <div class="content">
-                            <h2 class="thanks"><span>Thanks!</span> We'll be in touch.<br><a class="btn thanks-btn" href="#">Check out our case studies</a></h2>
+                            <h2 class="thanks">
+                                <span>{{ page.thank_you_text }}</span> {{ page.thank_you_follow_up }}<br>
+                                <a class="btn thanks-btn" href="{% pageurl page.landing_page_button_link %}" class="btn">{{ page.landing_page_button_title }}</a>
+                            </h2>
                         </div>
                     </div>
-                   {{ page.thank_you_text|richtext }}
                    {% csrf_token %}
                    {{ form.as_p }}
                 </fieldset>    
