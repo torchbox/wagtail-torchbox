@@ -1030,6 +1030,10 @@ class PersonPage(Page, ContactFields):
 
 # Person index
 class PersonIndexPage(Page):
+    intro = models.TextField()
+    senior_management_intro = models.TextField()
+    team_intro = models.TextField()
+
     @cached_property
     def people(self):
         return PersonPage.objects.exclude(is_senior=True).live().public()
@@ -1037,6 +1041,12 @@ class PersonIndexPage(Page):
     @cached_property
     def senior_management(self):
         return PersonPage.objects.exclude(is_senior=False).live().public()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
+        FieldPanel('senior_management_intro', classname="full"),
+        FieldPanel('team_intro', classname="full"),
+    ]
 
 
 class TshirtPage(Page):
