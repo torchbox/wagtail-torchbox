@@ -30,8 +30,7 @@
                 <ul>
                     {% for content_block in page.content_blocks.all %}
                     <li>
-                        {% image content_block.image width-675 as content_block_image %}
-                        <img src="{{ content_block_image.url }}" alt="{{ tmp_photo.alt }}" />
+                        {% image content_block.image width-675 height="auto" %}
                         <div class="text">
                             <div class="number">{{ content_block.year }}</div>
                             <h3>{{ content_block.title }}</h3>

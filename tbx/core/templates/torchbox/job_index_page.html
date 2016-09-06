@@ -58,8 +58,7 @@
                 <ul>
                     {% for reason in self.reasons_to_join.all %}
                     <li>
-                        {% image reason.image width-675 as reason_image %}
-                        <img src="{{ reason_image.url }}" alt="{{ tmp_photo.alt }}" />
+                        {% image reason.image width-675 height="auto" %}
                         <div class="text">
                             <div class="number">{{ forloop.counter|stringformat:"02d" }}</div>
                             <h3>{{ reason.title }}</h3>
