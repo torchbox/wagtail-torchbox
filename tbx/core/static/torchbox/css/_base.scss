@@ -2,6 +2,7 @@ html {
   font-family: $secondaryFont;
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
