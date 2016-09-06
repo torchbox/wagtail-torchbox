@@ -171,7 +171,7 @@
     }
 
     &.story {
-      color: $orange;
+      color: white;
       position: absolute;
       bottom: 50px;
       width: 100%;
@@ -184,7 +184,7 @@
         left: calc(50% - 25px);
         width: 50px;
         height: 20px;
-        background: url('/static/torchbox/images/down-chevron.svg') center no-repeat;
+        background: url('/static/torchbox/images/down-chevron-blue.svg') center no-repeat;
       }
 
       @media #{$tablet} {
