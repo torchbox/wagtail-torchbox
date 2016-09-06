@@ -484,21 +484,6 @@ class AboutPageContentBlock(Orderable):
     ]
 
 
-class AboutPageValue(Orderable):
-    page = ParentalKey('torchbox.AboutPage', related_name='values')
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    panels = [
-        ImageChooserPanel('image')
-    ]
-
-
 class AboutPage(Page):
     main_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -509,7 +494,6 @@ class AboutPage(Page):
     )
     heading = models.TextField(blank=True)
     intro = models.TextField(blank=True)
-    values_title = models.TextField(blank=True)
     involvement_title = models.TextField(blank=True)
 
     content_panels = [
@@ -519,8 +503,6 @@ class AboutPage(Page):
         FieldPanel('intro', classname='full'),
         InlinePanel('content_blocks', label='Content blocks'),
         InlinePanel('offices', label='Offices'),
-        FieldPanel('values_title'),
-        InlinePanel('values', label='Values'),
         FieldPanel('involvement_title'),
     ]
 
