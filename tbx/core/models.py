@@ -450,6 +450,10 @@ class StandardPage(Page):
 
 
 # About page
+class AboutPageRelatedLinkButton(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.AboutPage', related_name='related_link_buttons')
+
+
 class AboutPageOffice(Orderable):
     page = ParentalKey('torchbox.AboutPage', related_name='offices')
     title = models.TextField()
@@ -501,6 +505,7 @@ class AboutPage(Page):
         ImageChooserPanel('main_image'),
         FieldPanel('heading'),
         FieldPanel('intro', classname='full'),
+        InlinePanel('related_link_buttons', label='Header buttons'),
         InlinePanel('content_blocks', label='Content blocks'),
         InlinePanel('offices', label='Offices'),
         FieldPanel('involvement_title'),
