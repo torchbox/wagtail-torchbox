@@ -1,6 +1,6 @@
 .bleed {
     @include custom-transition;
-    overflow: hidden;
+    overflow: visible;
     height: 0;
     float: right;
     margin-top: 14px;
