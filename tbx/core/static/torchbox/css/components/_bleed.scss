@@ -1,6 +1,6 @@
 .bleed {
     @include custom-transition;
-    overflow: visible;
+    overflow: hidden;
     height: 0;
     float: right;
     margin-top: 14px;
@@ -34,9 +34,10 @@
       top: auto;
       opacity: 1;
       transition: none;
+      overflow: visible;
 
       &:before {
-      display: none;
+        display: none;
       }
     }
     &.visible {
