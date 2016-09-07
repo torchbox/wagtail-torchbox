@@ -1,14 +1,14 @@
 {% load wagtailcore_tags wagtailimages_tags torchbox_tags staticfiles %}
 
 <li {% if post.colour %}class="{{ post.colour }}"{% endif %}>
-    <a href="{% pageurl post %}">
+    <a class="block-link" href="{% pageurl post %}">
         <div class="content">
             {% image post.feed_image fill-1200x700 as background %}
             <div class="image-container" {% if not post.colour %}style="background-image: url('{{ background.url }}');"{% endif %}></div>
             <div class="blog-text">
                 <div id="author" class="author clearfix" >
-                    {% if post.related_author.all %}
-                        {% for author in post.related_author.all %}
+                    {% with post.related_author.all as authors %}
+                        {% for author in authors %}
                             <div class="author-image">
                                 {% if author.author.image %}
                                  {% image author.author.image fill-300x300 as photo %}
@@ -16,19 +16,18 @@
                                  {% endif %}
                             </div>
                         {% endfor %}
-                    {% endif %}
-                    <label>blog</label>
-                    <h3>{{ post.title }}</h3>
 
-                    {% if post.related_author.all %}
-                        {% for author in post.related_author.all %}
-                                <div class="name">{{ author.author.title }}</div>
+                        <label>blog</label>
+                        <h3>{{ post.title }}</h3>
+
+                        {% for author in authors %}
+                            <div class="name">{{ author.author.title }}</div>
                         {% endfor %}
-                    {% endif %}
 
-                    {% if post.date %}
-                        <span class="date">{{ post.date|date:"j F Y" }}</span>
-                    {% endif %}
+                        {% if post.date %}
+                            <span class="date">{{ post.date|date:"j F Y" }}</span>
+                        {% endif %}
+                    {% endwith %}
                 </div>
             </div>
         </div>
