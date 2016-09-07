@@ -5,7 +5,8 @@
 
     <style>
         .about-hero {
-            background-image: url("{% static 'torchbox/images/tom.jpg' %}");
+            {% image page.main_image original as main_image %}
+            background-image: url("{{ main_image.url }}");
         }
     </style>
 
