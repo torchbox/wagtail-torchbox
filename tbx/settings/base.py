@@ -8,8 +8,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 ADMINS = (
-    ('Dave Cranwell', 'david@torchbox.com'),
-    ('Wes West', 'wes@torchbox.com'),
+    ('Nick Smith', 'nicks@torchbox.com'),
 )
 
 MANAGERS = ADMINS
