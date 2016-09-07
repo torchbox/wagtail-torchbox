@@ -220,3 +220,15 @@ try:
     from .local import *
 except ImportError:
     pass
+
+
+# Raven (sentry error logging)
+
+# This must be after the .local import as RAVEN_DSN is set in local.py
+if 'RAVEN_DSN' in os.environ:
+    import raven
+
+    RAVEN_CONFIG = {
+        'dsn': os.environ['RAVEN_DSN'],
+        'release': raven.fetch_git_sha(os.path.abspath(BASE_DIR)),
+    }
