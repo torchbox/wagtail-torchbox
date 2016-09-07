@@ -13,8 +13,8 @@
     <div class="about-hero">
         <div class="container">
             <div class="content">
-                <h2>A digital agency with a difference.</h2>
-                <p class="intro">Beautiful websites for some of the world’s great universities and academic institutions, globally-renowned think tanks, fundraising charities, campaigning NGOs, research programmes, and leading membership organisations.</p>
+                <h2>{{ page.heading }}</h2>
+                <p class="intro">{{ page.intro }}</p>
                 {% if page.related_link_buttons.all %}
                 <div class="btns">
                     {% for button in page.related_link_buttons.all %}
