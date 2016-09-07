@@ -697,8 +697,12 @@ ul.image-tiles {
         margin: 0 0 40px;
     }
     .page-aboutpage & {
-        margin-top: -70px;
-        position:relative;
+        position: relative;
+        margin-top: -40px;
+
+        @media #{$tablet} {
+            margin-top: -70px;
+        }
     }
     @media #{$tablet} {
         .page-aboutpage & {
