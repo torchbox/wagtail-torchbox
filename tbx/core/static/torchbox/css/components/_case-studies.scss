@@ -1,0 +1,230 @@
+// case studies ================================================================
+.featured-case-studies {
+  position: absolute;
+  bottom: 7%;
+  left: 0;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  min-height: 120px;
+  z-index: 2;
+  @media #{$tablet} {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  // ul hover states / go back to default
+  // Important it is here / ta the top
+  &:hover {
+    li {
+      cursor: pointer;
+      a {
+        display: block;
+      }
+      &:before {
+          opacity: 0;
+      }
+      img {
+        opacity: 0.5;
+      }
+      &.active {
+        &:before {
+          opacity: 0;
+        }
+        img {
+          opacity: 0.5;
+        }
+        .link {
+          opacity: 0;
+          transition-delay: 0.25s;
+          &:after {
+            width: 0%;
+            right: 0;
+            left: auto;
+          }
+        }
+      }
+    }
+  }
+  .link {
+    display: inline-block;
+    position: relative;
+    color: white !important;
+    margin: 20px 0 0;
+    padding: 5px 0 0 0;
+    opacity: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
+    clear: both;
+    //display: block;
+    -webkit-transition: opacity 0.25s ease 0s;
+            transition: opacity 0.25s ease 0s;
+    transition-delay: 0.15s;
+    // &:before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 8px;
+    //   right: 10px;
+    //   width: 15px;
+    //   height: 15px;
+    //   background: url('/static/torchbox/images/arrow-right.svg') center no-repeat;
+    // }
+    span {
+      display: none;
+      color: $orange-lt;
+      //display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin: 0 0 5px;
+      position: relative;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: 0;
+      height: 1px;
+      width: 0;
+      background: $blue;
+      @include custom-bounce;
+    }
+    @media #{$tablet} {
+      font-size: 24px;
+      margin: 30px 0 0;
+      display: inline-block;
+      &:before {
+        top: 10px;
+      }
+    }
+  }
+  li {
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    text-align: center;
+    float: left;
+    margin-right: 5%;
+    display: block;
+    width: 260px;
+    //padding: 30px;
+    @media #{$tablet} {
+      width: 30%;
+      position: relative;
+      left: 0;
+      bottom: 0;
+      transform: translateY(0);
+    }
+    &:nth-child(1), &:nth-child(3) {
+      display: none;
+      @media #{$tablet} {
+        display: block;
+      }
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -10%;
+      height: 120%;
+      width: 100%;
+      opacity: 0;
+      -webkit-transition: opacity 0.25s ease 0s;
+      transition: opacity 0.25s ease 0s;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#23b0b0+0,23b0b0+69&1+0,0+58 */
+      background: -moz-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%, rgba(35,176,176,0) 58%, rgba(35,176,176,0) 69%); /* FF3.6-15 */
+      background: -webkit-radial-gradient(center, ellipse cover,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* Chrome10-25,Safari5.1-6 */
+      background: radial-gradient(ellipse at center,  rgba(35,176,176,1) 0%,rgba(35,176,176,0) 58%,rgba(35,176,176,0) 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23b0b0', endColorstr='#0023b0b0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+    &:last-of-type {
+        margin-right: 0;
+    }
+    &:hover {
+      &:before {
+        opacity: 0.5;
+      }
+      img {
+        opacity: 1;
+        //-webkit-filter: drop-shadow( 0 0 2px white );
+        //filter: drop-shadow( 0 0 1px white );
+        /* polyfil for old browsers */
+        /* https://github.com/Schepp/CSS-Filters-Polyfill */
+      }
+      .link {
+          opacity: 1;
+          transition-delay: 0s;
+          &:after {
+            width: 100%;
+            right: auto;
+            left: 0;
+          }
+      }
+    }
+    // active before interaction
+    &.active,
+    .initial-load &:nth-child(2) {
+      &:before {
+          opacity: 0.5;
+      }
+      img {
+        opacity: 1;
+        //-webkit-filter: drop-shadow( 0 0 2px white );
+        //filter: drop-shadow( 0 0 1px white );
+      }
+      //background-color: rgba(black,0.5);
+      //border: 1px solid $orange-lt;
+      .link {
+        opacity: 1;
+        transition-delay: 0s;
+        &:after {
+          width: 100%;
+          left: 0;
+          right: auto;
+        }
+      }
+      &:hover {
+        img {
+          transition: all 0.25s ease 0s;
+          opacity: 1;
+          //-webkit-filter: drop-shadow( 0 0 2px white );
+          //filter: drop-shadow( 0 0 2px white );
+          //transform: scale(1.2);
+        }
+        .link {
+          opacity: 1;
+          transition-delay: 0s;
+          &:after {
+            right: auto;
+            left: 0;
+            width: 100%;
+          }
+        }
+        &:before {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  .img-cont {
+    @include cf;
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+  img {
+    display: inline-block;
+    -webkit-backface-visibility: hidden;
+    width: auto;
+    height: auto;
+    max-height: 80px;
+    fill: white;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.25s ease 0s;
+            transition: opacity 0.25s ease 0s;
+    @media #{$tablet} {
+      max-height: 110px;
+    }
+  }
+}

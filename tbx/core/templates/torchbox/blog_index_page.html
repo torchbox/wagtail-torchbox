@@ -1,53 +1,42 @@
 {% extends "torchbox/base.html" %}
-{% load compress static torchbox_tags wagtailcore_tags wagtailimages_tags %}
+{% load staticfiles torchbox_tags wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
     {% get_popular_tags self as poptags %}
 
-    <div class= "crop-height">
-    {% if self|in_play %}
-        <img class="scale" src="{% static "torchbox/images/play_blog.jpg" %}" width="" height="" alt="">
-    {% else %}
-        <img class="scale" src="{% static "torchbox/images/blog_placeholder2.jpg" %}" width="" height="" alt="">
-    {% endif %}
-    </div>
-
-    <div class="hero container">
-        <div class="blog-title">
-            <h1>{{ self.title }}</h1>
-        </div>
+    <div class="container">
+        <h1>{{ self.intro }}</h1>
     </div>
 
     <section class="blog">
-        <div class="dropdown">Tags</div>
-
-        <div class="popular-tags">
-            {% if poptags %}
-                <div class="closed">
-                    <p>
-                        {% for tag in poptags %}
-                            {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
-                                <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
-                            {% else %}
-                                <a href="?tag={{ tag.slug }}">{{ tag }}</a>
-                            {% endif %}
-                        {% endfor %}
-                        {# Optional 'show all' appears if filtering by tag #}
-                        {% if request.GET.tag|length %}
+        <div class="container">
+            <div class="popular-tags">
+                {% if poptags %}
+                    <div class="closed">
+                        <p>
                             {% for tag in poptags %}
-                                {% if request.GET.tag|safe == tag.slug %}
-                                    <a class="before" href="{% pageurl self %}">show all</a>
+                                {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                                    <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
+                                {% else %}
+                                    <a href="?tag={{ tag.slug }}">{{ tag }}</a>
                                 {% endif %}
                             {% endfor %}
-                        {% endif %}
-                    </p>
-                </div>
-            {% endif %}
-
+                            {# Optional 'show all' appears if filtering by tag #}
+                            {% if request.GET.tag|length %}
+                                {% for tag in poptags %}
+                                    {% if request.GET.tag|safe == tag.slug %}
+                                        <a class="before" href="{% pageurl self %}">show all</a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
         </div>
 
-        <div id="listing">
+        <div class="container">
             {% include "torchbox/includes/blog_listing.html" %}
         </div>
 
@@ -57,11 +46,9 @@
 {% block extra_js %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
 
-    {% compress js %}
-        <script>
-            //global var for current_page set here so that it can be used by the script being called
-            var blog_page = window.location.pathname;
-        </script>
-        <script src="{% static 'torchbox/js/ajax-load.js' %}"></script>
-    {% endcompress %}
+    <script>
+        //global var for current_page set here so that it can be used by the script being called
+        var blog_page = window.location.pathname;
+    </script>
+    <script src="{% static 'torchbox/js/ajax-load.js' %}"></script>
 {% endblock %}

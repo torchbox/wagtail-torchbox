@@ -1,0 +1,36 @@
+.feature-images {
+  height: 100%;
+  width: 100%;
+  background: #000;
+}
+
+.feature-image {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  height: 100%;
+  z-index: 0;
+  background: url('/static/torchbox/images/test-header-02.jpg') no-repeat center;
+  background-size: cover;
+  -webkit-transition: opacity 0.35s ease 0s;
+  transition: opacity 0.35s ease 0s;
+
+  @media #{$tablet} {
+    height: calc(100vh - 84px);
+    min-height: 600px;
+  }
+
+  .initial-load & {
+    &:nth-child(2) {
+      z-index: 1;
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    z-index: 1;
+    opacity: 1;
+  }
+}

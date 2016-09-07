@@ -1,0 +1,93 @@
+{% extends "torchbox/base.html" %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
+
+{% block content %}
+
+    <style>
+        .about-hero {
+            {% image page.main_image original as main_image %}
+            background-image: url("{{ main_image.url }}");
+        }
+    </style>
+
+    <div class="about-hero">
+        <div class="container">
+            <div class="content">
+                <h2>A digital agency with a difference.</h2>
+                <p class="intro">Beautiful websites for some of the world’s great universities and academic institutions, globally-renowned think tanks, fundraising charities, campaigning NGOs, research programmes, and leading membership organisations.</p>
+                {% if page.related_link_buttons.all %}
+                <div class="btns">
+                    {% for button in page.related_link_buttons.all %}
+                    <a href="{{ button.link }}" class="btn">{{ button.title }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <h2 class="story"><span>Read our story</span></h2>
+            </div>
+        </div>
+    </div>
+
+    {% if page.content_blocks.all %}
+    <section>
+        <div class="container">
+            <div class="reasons">
+                <ul>
+                    {% for content_block in page.content_blocks.all %}
+                    <li>
+                        {% image content_block.image width-675 height="auto" %}
+                        <div class="text">
+                            <div class="number">{{ content_block.year }}</div>
+                            <h3>{{ content_block.title }}</h3>
+                            <p>{{ content_block.description }}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="text-content">
+        <div class="container">
+
+            {% if page.offices.all %}
+            <div class="offices">
+                <h2>Our offices</h2>
+                <ul>
+                    {% for office in page.offices.all %}
+                    <li>
+                        <div class="content">
+                            {{ office.svg|safe }}
+                            <h3>{{ office.title }}</h3>
+                            <p>{{ office.description }}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="values">
+                <h2>Our four core values</h2>
+                <ul>
+                    <li>
+                        <img src="{% static 'torchbox/images/corevalue-better.jpg' %}" alt="Make clients happy">
+                    </li>
+                    <li>
+                        <img src="{% static 'torchbox/images/corevalue-happy.jpg' %}" alt="Make things better">
+                    </li>
+                    <li>
+                        <img src="{% static 'torchbox/images/corevalue-never.jpg' %}" alt="Never stand still">
+                    </li>
+                    <li>
+                        <img src="{% static 'torchbox/images/corevalue-enjoy.jpg' %}" alt="Enjoy it">
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+
+{% endblock %}

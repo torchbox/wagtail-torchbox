@@ -53,13 +53,6 @@ def get_site_root(context):
     return context['request'].site.root_page
 
 
-def has_menu_children(page):
-    if page.get_children().filter(live=True, show_in_menus=True):
-        return True
-    else:
-        return False
-
-
 @register.filter
 def content_type(value):
     # marketing landing page should behave like the homepage in templates
@@ -73,87 +66,9 @@ def in_play(page):
     return is_in_play(page)
 
 
-@register.inclusion_tag('torchbox/tags/top_menu.html', takes_context=True)
-def top_menu(context, calling_page=None):
-    """
-    Checks to see if we're in the Play section in order to return pages with
-    show_in_play_menu set to True, otherwise retrieves the top menu
-    items - the immediate children of the site root. Also detects 404s in the
-    Play section.
-    """
-    if (calling_page and in_play(calling_page)) or context.get(
-            'play_404', False
-    ):
-        play_models = [
-            StandardPage,
-            PersonIndexPage,
-            WorkIndexPage,
-            WorkPage,
-            BlogIndexPage
-        ]
-        menuitems = chain.from_iterable([
-            model.objects.filter(
-                live=True,
-                show_in_play_menu=True,
-                show_in_menus=False
-            ).exclude(
-                show_in_play_menu=True,
-                show_in_menus=True
-            ) for model in play_models
-        ])
-    else:
-        menuitems = get_site_root(context).get_children().filter(
-            live=True,
-            show_in_menus=True
-        )
-    return {
-        'calling_page': calling_page,
-        'menuitems': menuitems,
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-        'play_404': context.get('play_404', False)
-    }
-
-
-# Retrieves the children of the top menu items for the drop downs
-@register.inclusion_tag('torchbox/tags/top_menu_children.html', takes_context=True)
-def top_menu_children(context, parent):
-    menuitems_children = parent.get_children()
-    menuitems_children = menuitems_children.filter(
-        live=True,
-        show_in_menus=True
-    )
-    return {
-        'calling_page': calling_page,
-        'parent': parent,
-        'menuitems_children': menuitems_children,
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-    }
-
-
-# Retrieves the secondary links - only the children of the current page, NOT the siblings, and only when not viewing the homepage
-@register.inclusion_tag('torchbox/tags/secondary_menu.html', takes_context=True)
-def secondary_menu(context, calling_page=None):
-    menuitems = []
-    if calling_page and calling_page.id != get_site_root(context).id:
-        menuitems = calling_page.get_children().filter(
-            live=True,
-            show_in_menus=True
-        )
-
-        # If no children found and calling page parent isn't the root, get the parent's children
-        if len(menuitems) == 0 and calling_page.get_parent().id != get_site_root(context).id:
-            menuitems = calling_page.get_parent().get_children().filter(
-                live=True,
-                show_in_menus=True
-            )
-    return {
-        'calling_page': calling_page,
-        'menuitems': menuitems,
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-    }
+@register.simple_tag
+def main_menu():
+    return MainMenu.objects.first()
 
 
 # Person feed for home page
@@ -170,7 +85,7 @@ def homepage_people_listing(context, count=3):
 
 # Blog feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_blog_listing.html', takes_context=True)
-def homepage_blog_listing(context, count=3):
+def homepage_blog_listing(context, count=6):
     blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
     return {
         'blog_posts': blog_posts,
@@ -193,7 +108,7 @@ def homepage_work_listing(context, count=3):
 
 # Jobs feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
-def homepage_job_listing(context, count=3):
+def homepage_job_listing(context, count=3, intro_text=None):
     # Assume there is only one job index page
     jobindex = JobIndexPage.objects.filter(live=True).first()
     if jobindex:
@@ -202,7 +117,10 @@ def homepage_job_listing(context, count=3):
             jobs = jobs[:count]
     else:
         jobs = []
+    jobintro = intro_text or jobindex and jobindex.listing_intro
     return {
+        'jobintro': jobintro,
+        'jobindex': jobindex,
         'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],

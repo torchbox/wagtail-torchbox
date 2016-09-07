@@ -2,32 +2,17 @@
 
 <li>
     <a href="{% pageurl work %}">
-        <div class="block">
+        <div class="content">
+            {% if work.homepage_image %}
+                {% image work.homepage_image fill-500x500 as background %}
+                <div class="image-container" style="background-image: url('{{ background.url }}');"></div>
+            {% endif %}
 
-            <div class="workcontainer">
-                {% if work.homepage_image %}
-                    {% image work.homepage_image fill-764x448 as screenshot %}
 
-                    <div class="label">
-                        <p>Our work</p>
-                    </div>
-
-                    <div class="crop-height">
-                        <img class="scale" src="{{ screenshot.url }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" alt="{{ screenshot.alt }}" />
-                    </div>
-                {% endif %}
-            </div>
-
-            <div class="work-intro">
-                <h3>{{ work.title }}</h3>
-                {% if work.summary %}
-                    <div class="hide">
-                        <p>{{ work.summary|striptags|truncatewords:30 }}</p>
-                    </div>
-                {% endif %}
-                <div class="go">
-                    See the project
-                </div>
+            <div class="work-text">
+                <label>work</label>
+                <h3>{{ work.descriptive_title }}</h3>
+                <h4>{{ work.title }}</h4>
             </div>
         </div>
     </a>

@@ -1,0 +1,57 @@
+// popular tags ================================================================
+.popular-tags {
+  margin: 10px 0 20px 0;
+  border-left: 1px solid rgba(black, 0.1);
+  display: none;
+  // border-top: 1px solid rgba(black, 0.1);
+  // border-bottom: 1px solid rgba(black, 0.1);
+  p {
+    margin: 0;
+  }
+  @media #{$tablet} {
+    margin: 20px 0 0 15px;
+    display: block;
+  }
+  a {
+    display: inline-block;
+    margin-left: -5px;
+    color: $dark;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    border-right: 1px solid rgba(black, 0.1);
+    border-top: 1px solid rgba(white, 1);
+    border-bottom: 1px solid rgba(white, 1);
+    padding: 10px 18px 10px 18px;
+    transition: all 0.25s ease 0s;
+    @media #{$tablet} {
+
+    }
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:hover {
+      border-top: 1px solid rgba(black, 0.1);
+      border-bottom: 1px solid rgba(black, 0.1);
+      color: $orange;
+    }
+    // active
+    &.filtering {
+      border-color: $orange;
+      background: $orange;
+      color: white;
+    }
+    // clear all
+    &.before {
+      border-color: $blue;
+      background: $blue;
+      color: white;
+
+      &:hover {
+        border-color: darken($orange, 5%);
+        background: darken($orange, 5%);
+      }
+    }
+  }
+}

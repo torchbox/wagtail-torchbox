@@ -4,8 +4,11 @@
 /venv/
 /static/
 /media/
+/media.old/
 /tmp/
 /.vagrant/
 /Vagrantfile.local
 /docs/_build/
 .idea/
+node_modules*
+/None

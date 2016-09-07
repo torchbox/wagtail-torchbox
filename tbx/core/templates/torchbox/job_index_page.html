@@ -1,121 +1,159 @@
 {% extends "torchbox/base.html" %}
-{% load compress wagtailcore_tags wagtailimages_tags humanize static torchbox_tags %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
 
 {% block content %}
-    <div class="page-banner crop-height jobs-header">
-        <div class="img-darken">
-            <div class="jobs-header-content">
-                <h1>Work with us</h1>
-                <p>We design and build beautiful websites and robust, scalable custom applications for some of the world's great universities and academic institutions, globally-renowned think tanks, high profile charities and NGOs, and other organisations seeking to have a positive impact.
-                <a href="#reasons" class="button">Reasons to join us</a>
+        {% image self.main_image fill-1300x750 as header_image %}
+        <style>
+            .about-hero {
+                background-image: url('{{ header_image.url }}');
+            }
+            .about-hero {
+                background-image: url("{% static 'torchbox/images/bikes-blue.jpg' %}");
+            }
+
+/*            .slick-prev,
+            .slick-prev:hover {
+                background: url('{% static 'torchbox/images/icons/arrow-up.svg' %}') center no-repeat transparent;
+                background-color: #f85a40;
+                background-size: 70%;
+            }
+
+            .slick-next,
+            .slick-next:hover {
+                background: url('{% static 'torchbox/images/icons/arrow-down.svg' %}') center no-repeat transparent;
+                background-color: #f85a40;
+                background-size: 70%;
+            }*/
+        </style>
+
+
+    <div class="about-hero">
+        <section class="hiring">
+            <div class="container">
+                <span style="display: block !important; margin: 0 0 60px 0;">
+                {% homepage_job_listing 0 intro_text=page.intro %}
+                </span>
             </div>
-        </div>
+        </section>
     </div>
 
-    <section class="jobs-listing">
-         <div class="center">
-            <h2>Current opportunities</h2>
-            {% if jobs %}
-                <ul class="listing clearfix">
-                    {% for job in jobs %}
-                        <li>
-                            <a href="{{ job.url }}" class="job-link">
-                                {{ job.job_title }}
-                                {% if job.location %}
-                                    <div class="location">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 585 841.9" enable-background="new 0 0 585 841.9" xml:space="preserve">
-                                            <path fill="" d="M363.8,267.3c-19.5-18.1-45.5-28.4-71.3-28.4s-51.8,10.4-71.3,28.4c-20.2,18.7-31.3,43-31.3,68.5  c0,66.7,100.8,255.4,101.8,257.3c0.2,0.3,0.5,0.5,0.9,0.5c0.4,0,0.7-0.2,0.9-0.5c1-1.9,101.8-190.6,101.8-257.3  C395.1,310.3,384,286,363.8,267.3z"></path>
-                                        </svg>
-                                        {{ job.location }}
-                                    </div>
-                                {% endif %}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-                <p class="no-job">We are always interested in hearing from smart people who want to work at Torchbox. If there's not an obvious position to apply for, <a href="mailto:hello@torchbox.com">do get in touch</a> anyway.</p>
-            {% endif %}
-
-            {% if self.intro %}
-                <div class="sign-up">
-                    {{ self.intro|richtext }}
+    <!--
+    <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="about-content">
+        <div class="container">
+            
+            <div class="main-content">
+                <div class="we-do">
+                    <p>Some text about careers, lorem ipsum dolor sit amet</p>
                 </div>
-            {% endif %}
+            </div>
         </div>
     </section>
+    -->
+
     {% if self.reasons_to_join.all %}
-    <section class="jobs-benefits" id="reasons">
-        <div class="jobs-carousel-container">
-            <ul class="jobs-carousel">
-                {% for reason in self.reasons_to_join.all %}
+    <section>
+        <div class="container">
+            <div class="reasons">
+                <h2>{{ self.reasons_intro }}</h2>
+                <ul>
+                    {% for reason in self.reasons_to_join.all %}
                     <li>
-                        {% image reason.image original %}
-                        <div class="slide-caption-container">
-                            <div>
-                                <span class="reason-no">Reasons to join us</span>
-                                <h3>{{ reason.title }}</h3>
-                                <p>{{ reason.body }}</p>
-                            </div>
+                        {% image reason.image width-675 height="auto" %}
+                        <div class="text">
+                            <div class="number">{{ forloop.counter|stringformat:"02d" }}</div>
+                            <h3>{{ reason.title }}</h3>
+                            <p>{{ reason.body }}</p>
                         </div>
                     </li>
-                 {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </section>
     {% endif %}
-    <section class="jobs-offices">
-        <div class="center our-offices-container">
-            <h2>Our offices</h2>
-            <ul class="our-offices">
-                <li class="cotswolds first">
-                    <img src="{% static "torchbox/images/icons/cotswolds.svg" %}" />
-                    <h3>In the glorious Cotswolds</h3>
-                    <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
-                </li>
-                <li class="bristol">
-                    <img src="{% static "torchbox/images/icons/bristol.svg" %}" />
-                    <h3>The vibrant centre of Bristol</h3>
-                    <p>Go out with the team to try the endless supply of real ales, or try the abundance of street food and sit in the vibrant parks.</p>
-                </li>
-                <li class="philadelphia last">
-                    <img src="{% static "torchbox/images/icons/philadelphia.svg" %}" />
-                    <h3>Historic Philadelphia</h3>
-                    <p>Soak up the historic Old City, kick back in a bar on South Street, or head to Passyunk square for an original cheese-steak.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <section class="jobs-core-values clearfix">
-        <div class="center">
-            <h2>Our four core values</h2>
-            <ul class="image-tiles">
-                <li>
-                    <img src="{% static "torchbox/images/corevalue-better.jpg" %}" alt="Make things better" />
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/corevalue-happy.jpg" %}" alt="Make clients happy" />
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/corevalue-never.jpg" %}" alt="Never stand still" />
-                </li>
-                <li>
-                    <img src="{% static "torchbox/images/corevalue-enjoy.jpg" %}" alt="Enjoy it" />
-                </li>
-            </ul>
-        </div>
-    </section>
-    <section class="jobs-refer">
-        <div class="center space-footer">
-            <h2>Refer a friend and make £500</h2>
-            <p>Not a Torchbox employee? Doesn't matter. If we hire someone for a permanent role and they pass their probation, if they've told us during the interview process that you recommended they apply the bounty is yours.</p>
-        </div>
-    </section>
+
+    <section class="text-content">
+                <div class="container">
+
+                    
+                    <div class="offices">
+                        <h2>Our offices</h2>
+                        <ul>
+                            
+                            <li>
+                                <div class="content">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.7 27.9"><path class="st0" d="M32 15.1V14c1.6-.3 2.8-1.6 2.8-3.3 0-1.8-1.5-3.3-3.3-3.3s-3.3 1.5-3.3 3.3c0 1.6 1.2 3 2.8 3.3v.8c-.4-.1-.9-.1-1.3-.1-2.2 0-4.3.8-5.9 2.2v-1.1c1.4-.2 2.5-1.4 2.5-2.8 0-1.5-1.3-2.8-2.8-2.8s-2.8 1.3-2.8 2.8c0 1.4 1 2.6 2.4 2.8v1.6c0 .1 0 .2.1.3-1 1-1.7 2.3-2.1 3.8-1.7-1-3.7-1.5-5.8-1.5-1.2 0-2.4.2-3.5.5v-3.3c2.3-.2 4.1-2.1 4.1-4.5 0-2.5-2-4.5-4.5-4.5s-4.5 2-4.5 4.5c0 2.4 1.8 4.3 4.1 4.5v3.5c-2.9 1.1-5.4 3.4-6.7 6.5-.1.2 0 .5.2.6h.2c.2 0 .4-.1.4-.3 1.1-2.7 3.2-4.7 5.8-5.8v.8c0 .3.1.5.4.5.3 0 .4-.2.4-.5v-1.1c1.1-.4 2.3-.6 3.5-.6 2.1 0 4.1.6 5.8 1.7 1 .6 1.8 1.4 2.6 2.3.2.2.5.2.7.1.2-.2.2-.5.1-.7-.7-.9-1.6-1.7-2.5-2.3.9-3.6 4.2-6.2 7.9-6.2.4 0 .9 0 1.3.1v4.4c0 .3.3.5.5.5.3 0 .5-.2.5-.5v-4.1c3.4 1 5.8 4.1 5.8 7.8v.9s.2.5.4.5.4-.2.5-.4V24c-.1-4.3-2.9-7.8-6.8-8.9zm-2.9-4.3c0-1.3 1.1-2.4 2.4-2.4s2.4 1.1 2.4 2.4-1.1 2.4-2.4 2.4c-1.3 0-2.4-1.1-2.4-2.4zm-21.5 2c0-2 1.6-3.6 3.6-3.6s3.6 1.6 3.6 3.6-1.6 3.6-3.6 3.6-3.6-1.7-3.6-3.6zm13.9.3c0-1 .8-1.9 1.9-1.9 1 0 1.9.8 1.9 1.9s-.9 1.9-1.9 1.9c-1.1 0-1.9-.8-1.9-1.9zM7.4 4.5c0-.6-.5-1.6-1.3-1.6C6 2 5.2 1.2 4.2 1.2c-.3 0-.6.1-.9.2-.3-.2-.7-.2-1.1-.2C1 1.2 0 2.5 0 3.7s1 2.5 2.2 2.5H6c.9 0 1.4-1 1.4-1.7zM.9 3.7c0-.7.6-1.6 1.3-1.6.3 0 .6.1.8.3.2.1.4.1.6 0 .2-.2.4-.3.6-.3.6 0 1 .4 1 1v.2c0 .2 0 .4.2.5.1.2.3.2.4.1H6s.4.4.4.7c0 .3-.3.7-.4.7H2.2C1.5 5.3.9 4.4.9 3.7zM21.7 7.2h5.6c1.7 0 3.1-2 3.1-3.6S29 0 27.3 0c-.6 0-1.1.2-1.6.4-.4-.2-.8-.3-1.3-.3-1.4 0-2.6 1.1-2.6 2.5-1.1-.1-1.9 1.3-1.9 2.3 0 .9.7 2.3 1.8 2.3zm0-3.7c.1 0 .3 0 .4.1.2.1.4.1.5 0s.2-.3.2-.5c0-.1-.1-.3-.1-.4 0-.9.8-1.7 1.7-1.7.4 0 .7.1 1 .3.2.1.4.1.6 0 .4-.3.8-.4 1.3-.4 1.2 0 2.2 1.4 2.2 2.6s-1 2.6-2.2 2.6h-5.6c-.4 0-.8-.7-.8-1.3s.4-1.3.8-1.3z"></path></svg>
+                                    <h3>Glorious Oxfordshire</h3>
+                                    <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div class="content">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M30.225 103.79c2.33 1.52 5.257 1.784 7.834.735 2.576-1.04 4.47-3.277 5.11-5.982 1.793-7.774 8.603-13.21 16.564-13.21 3.106 0 6.144.845 8.772 2.45 4.028 2.44 9.284 1.16 11.716-2.868 2.458-4.036 1.17-9.284-2.867-11.725-5.3-3.217-11.4-4.924-17.62-4.924-12.647 0-23.87 6.844-29.748 17.45-1.442-.255-2.91-.383-4.386-.383-14.113 0-25.6 11.486-25.6 25.6s11.487 25.6 25.6 25.6h25.6c4.72 0 8.534-3.823 8.534-8.533s-3.814-8.533-8.533-8.533H25.6c-4.71 0-8.533-3.83-8.533-8.533 0-6.332 7.586-10.727 13.158-7.143zM424.14 48.725c2.484-2.44 7.715-6.06 11.06-6.06 6.878 0 8.43 4.694 8.533 8.534-.008.008-.008.016 0 .042-.008.01-.008.026 0 .034V51.328c.068 4.65 3.857 8.405 8.533 8.405 4.685 0 8.49-3.772 8.533-8.448.1-3.934 1.67-8.62 8.532-8.62 3.345 0 8.576 3.62 11.034 6.034 3.337 3.336 8.73 3.336 12.066 0 3.336-3.337 3.336-8.73 0-12.067-1.126-1.126-11.366-11.034-23.1-11.034-7.475 0-13.056 2.422-17.067 5.998-4.01-3.576-9.59-6-17.067-6-11.733 0-21.973 9.908-23.1 11.035-3.328 3.32-3.328 8.695-.01 12.032 3.298 3.33 8.69 3.363 12.053.06zM492.237 307.874c-6.938-20.506-26.402-34.807-48.503-34.807-4.72 0-8.533 3.823-8.533 8.533s3.815 8.533 8.534 8.533c16.188 0 30.26 11.51 33.45 27.366.846 4.18 4.788 7.133 8.867 6.834.31-.015.614-.048.462-.063 4.66.06 8.422 3.864 8.422 8.53 0 4.7-3.823 8.532-8.533 8.532h-93.866c-4.72 0-8.533 3.823-8.533 8.533s3.815 8.533 8.534 8.533H486.4c14.114 0 25.6-11.486 25.6-25.6 0-12.107-8.448-22.28-19.763-24.924z"/><path d="M256 0c-.29 0-.563.043-.862.043h-.008C148.548.486 68.267 81.007 68.267 187.733c0 52.096 33.502 97.434 65.894 141.286 27.547 37.29 53.573 72.515 53.573 106.18v51.2c0 14.113 11.486 25.6 25.6 25.6h85.333c14.114 0 25.6-11.487 25.6-25.6v-51.2c0-4.71-3.814-8.534-8.533-8.534H230.4c-4.72 0-8.533 3.823-8.533 8.533s3.814 8.532 8.533 8.532h76.8V486.4c0 4.702-3.823 8.533-8.533 8.533h-85.333c-4.71 0-8.533-3.83-8.533-8.533v-51.2c0-39.287-27.647-76.706-56.916-116.326-30.746-41.626-62.55-84.668-62.55-131.14 0-87.15 58.932-154.923 141.134-168.15-29.17 25.48-72.868 78.575-72.868 168.15 0 67.967 21.7 113.945 39.134 150.885 11.51 24.387 20.6 43.647 20.6 62.446 0 4.71 3.813 8.533 8.532 8.533s8.533-3.824 8.533-8.534c0-22.622-10.3-44.46-22.24-69.734-16.707-35.396-37.494-79.454-37.494-143.6 0-94.36 52.07-144.7 76.8-163.276v376.61c0 4.71 3.814 8.533 8.533 8.533s8.532-3.824 8.532-8.534V24.456c24.72 18.578 76.8 68.916 76.8 163.278 0 64.145-20.796 108.203-37.504 143.6-11.93 25.275-22.23 47.112-22.23 69.733 0 4.71 3.815 8.533 8.534 8.533s8.533-3.823 8.533-8.533c0-18.8 9.088-38.06 20.6-62.447C336.7 301.68 358.4 255.7 358.4 187.733c0-89.574-43.7-142.67-72.866-168.15 82.202 13.228 141.133 81 141.133 168.15 0 51.473-33.58 93.33-63.215 130.26-22.485 28.016-43.716 54.486-47.633 81.86-.667 4.67 2.568 8.995 7.235 9.66 4.693.667 8.994-2.576 9.66-7.235 3.25-22.758 23.066-47.454 44.04-73.6 31.395-39.125 66.98-83.473 66.98-140.945C443.732 80.708 363.024 0 256 0z"/></svg>
+                                    <h3>Vibrant Bristol</h3>
+                                    <p>Go out with the team to try the endless supply of real ales, or try the abundance of street food and sit in the vibrant parks.</p>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div class="content">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.6 33"><path class="st0" d="M21.3 23.9c-2-1.8-2.7-9-2.7-11.4 0-1.2-1.4-2.1-4.4-2.7-.5-.1-1-.2-1.6-.2v-3c.9.1 1.8.4 2.7 1l4.1 2.1c.1 0 .1.1.2.1H23c.1 0 .3-.1.4-.1.1-.1.1-.2.1-.4V.5c0-.3-.2-.5-.5-.5H.5C.3 0 0 .2 0 .5v8.8c0 .3.2.5.5.5H3.9l4.8-2.1s.1 0 .1-.1c.8-.7 1.8-1.1 2.8-1.1v3c-.7 0-1.5.1-2.2.2-3 .6-4.4 1.5-4.4 2.7 0 2.3-.7 9.6-2.7 11.4C.8 25.1-.2 26 0 27c.2.7 1 1.2 2.8 1.6 1.7.4 3.7.6 5.4.8.2 2 1.9 3.6 3.9 3.6 2.1 0 3.8-1.6 3.9-3.7 1.5-.1 3.2-.4 4.8-.7 1.8-.4 2.6-.8 2.8-1.6.2-.9-.8-1.8-2.3-3.1zM8.2 6.8l-4.6 2H1V1h21.5v7.7h-2.8l-4-2C13.5 5 10.4 5 8.2 6.8zM12.1 32c-1.5 0-2.7-1.1-2.9-2.5 1.5.1 2.5.1 2.6.1s1.4 0 3.2-.2c-.1 1.5-1.4 2.6-2.9 2.6zm8.5-4.4c-3.6.8-8.7 1-8.8 1s-5.2-.1-8.8-1c-1.8-.4-2-.8-2-.8-.1-.4 1.1-1.4 2-2.2 2.9-2.5 3-12.1 3-12.2 0-.5 1-1.2 3.6-1.7.7-.1 1.4-.2 2.2-.2.7 0 1.4.1 2.2.2 2.7.6 3.6 1.3 3.6 1.7 0 .1.2 9.7 3 12.2.9.8 2.1 1.8 2 2.2 0 .1-.2.4-2 .8z"></path></svg>
+                                    <h3>Historic Philadelphia</h3>
+                                    <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    
+
+                    <div class="values">
+                        <h2>Our four core values</h2>
+                        <ul>
+                            <li>
+                                <img src="{% static 'torchbox/images/corevalue-better.jpg' %}" alt="Make clients happy">
+                            </li>
+                            <li>
+                                <img src="{% static 'torchbox/images/corevalue-happy.jpg' %}" alt="Make things better">
+                            </li>
+                            <li>
+                                <img src="{% static 'torchbox/images/corevalue-never.jpg' %}" alt="Never stand still">
+                            </li>
+                            <li>
+                                <img src="{% static 'torchbox/images/corevalue-enjoy.jpg' %}" alt="Enjoy it">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+    {% if self.involvement_title or self.involvement.all %}
+    <div class="involved">
+        <h2>{{ self.involvement_title }}</h2>
+        {% if self.involvement.all %}
+        <ul class="involved-in">
+            {% for involvement in self.involvement.all %}
+            <li>
+                <a href="">
+                    <div class="content">
+                        {{ involvement.svg|safe }}
+                        <h3>{{ involvement.title }}</h3>
+                        <p>{{ involvement.description }}</p>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!--<div class="full-image"></div>-->
+
 {% endblock %}
 {% block extra_js %}
-    <script src="{% static 'torchbox/js/vendor/jquery.matchHeight-min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'torchbox/js/vendor/slick/slick.min.js' %}" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'torchbox/js/vendor/slick/slick.css' %}"/>
-    {% compress js %}
-        <script src="{% static 'torchbox/js/jobs.js' %}"></script>
-    {% endcompress %}
+    <!--<script src="{% static 'torchbox/js/vendor/jquery.matchHeight-min.js' %}" type="text/javascript"></script>-->
+    <script src="{% static 'torchbox/vendor/slick/slick.min.js' %}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'torchbox/vendor/slick/slick.css' %}"/>
 {% endblock %}

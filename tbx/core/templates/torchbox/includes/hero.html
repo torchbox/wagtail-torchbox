@@ -1,0 +1,52 @@
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags %}
+
+<section class="home-hero initial-load">
+
+    <style>
+    {% for heroItem in hero %}
+    {% if heroItem.colour %}
+    .featured-case-studies .featured-case-study{% cycle '-one' '-two' '-three' %} .link {
+        color: {{ heroItem.colour }};
+    }
+    .featured-case-studies .featured-case-study{% cycle '-one' '-two' '-three' %} .link:after {
+        background-color: {{ heroItem.colour }};
+    }
+    .featured-case-studies .featured-case-study{% cycle '-one' '-two' '-three' %}:before {
+        background: radial-gradient(ellipse at center, {{ heroItem.colour }}  0%, rgba(35,176,176,0) 58%, rgba(35,176,176,0) 69%);
+    }
+    {% endif %}
+    {% endfor %}
+    </style>
+
+    <!-- background images for features -->
+    <div class="feature-images">
+
+    {% for heroItem in hero %}
+        {% image heroItem.background fill-1800x978 as imgbanner %}
+        <div class="feature-image" data-name="{% cycle '1' '2' '3' %}" style="background-image: url({{ imgbanner.url }})"></div>
+    {% endfor %}
+    </div>
+
+    <!--/feature-images -->
+    <div class="container">
+        <!--<h1>{{ self.hero_intro }}</h1>-->
+        <h1><!-- <span>We're Torchbox.</span> --> <span>We do digital</span> for the good guys.</h1>
+        <ul class="featured-case-studies">
+            {% for heroItem in hero %}
+            <li class="featured-case-study{% cycle '-one' '-two' '-three' %}" data-name="{% cycle '1' '2' '3' %}">
+                {% if heroItem.link %}
+                <a href="{{ heroItem.link }}">
+                {% endif %}
+                    <span class="img-cont">
+                        {% image heroItem.logo max-270x270 %}
+                    </span>
+                    <p class="link">{{ heroItem.text }}</p>
+                {% if heroItem.link %}
+                </a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>

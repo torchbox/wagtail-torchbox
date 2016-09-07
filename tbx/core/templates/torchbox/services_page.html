@@ -1,29 +1,40 @@
 {% extends "torchbox/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
 
-{% block content %}
-    <section class="services-intro">
-        <h1>{{ self.title }}</h1>
+{% block content %}    
 
-        {% if self.intro %}
-            {{ self.intro|richtext }}
-        {% endif %}
+    <style>
+        .about-hero {
+            {% image page.main_image original as main_image %}
+            background-image: url("{{ main_image.url }}");
+        }
+    </style>
 
-        {% if self.body %}
-            {{ self.body|richtext }}
-        {% endif %}
-    </section>
-
-    <section class="container">
-        {% if self.content_block.all %}
-        <ul class="listing clearfix services">
-            {% for block in self.content_block.all %}
-            <li class="{{ forloop.counter }} {% cycle 'odd' 'even' %}">
-                {{ block.content|richtext }}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    </section>
+    <div class="about-hero">
+        <div class="" id="tester-unique">
+            <div class="container">
+                <div class="content">
+                    <h2>Our services</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            {% if self.services.all %}
+            <div class="services">
+                <ul>
+                    {% for service in self.services.all %}
+                    <li>
+                        <div class="services-content">
+                            {{ service.svg|safe }}
+                            <h3>{{ service.title }}</h3>
+                            <p>{{ service.description }}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
 
 {% endblock %}

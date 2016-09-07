@@ -1,0 +1,10 @@
+// navigation ==================================================================
+nav {
+    width: 100%;
+    padding: 15px 0 5px;
+
+    @media #{$tablet} {
+      padding: 15px 0;
+      z-index: 40;
+    }
+}
