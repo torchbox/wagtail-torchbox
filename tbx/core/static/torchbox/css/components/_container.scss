@@ -18,9 +18,11 @@
 	background-color: #fff;
 	padding: 0 15px;
   	position: relative;
-
+  	height: 69px;
+	
 	@media #{$tablet} {
 		padding: 0 20px;
+		height: auto;
 	}
 
 	@media #{$tablet-large} {
