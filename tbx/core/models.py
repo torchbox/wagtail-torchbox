@@ -507,7 +507,7 @@ class AboutPage(Page):
     content_panels = [
         FieldPanel('title', classname='full title'),
         ImageChooserPanel('main_image'),
-        FieldPanel('heading'),
+        FieldPanel('heading', classname='full'),
         FieldPanel('intro', classname='full'),
         InlinePanel('related_link_buttons', label='Header buttons'),
         InlinePanel('content_blocks', label='Content blocks'),
