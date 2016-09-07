@@ -5,7 +5,8 @@
 
     <style>
         .about-hero {
-            background-image: url("{% static 'torchbox/images/tom.jpg' %}");
+            {% image page.main_image original as main_image %}
+            background-image: url("{{ main_image.url }}");
         }
     </style>
 
@@ -25,10 +26,8 @@
                     <li>
                         <div class="services-content">
                             {{ service.svg|safe }}
-                            <img class="bg" src="{% static 'torchbox/images/cool.jpg' %}" alt="">
                             <h3>{{ service.title }}</h3>
                             <p>{{ service.description }}</p>
-                            {# <a href="#" class="btn">Find out more</a> #}
                         </div>
                     </li>
                     {% endfor %}
