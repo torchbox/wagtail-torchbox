@@ -4,6 +4,7 @@
     height: 0;
     float: right;
     margin-top: 14px;
+    z-index: 5;
     width: 100%;
     position: fixed;
     left: 0;
@@ -33,9 +34,10 @@
       top: auto;
       opacity: 1;
       transition: none;
+      overflow: visible;
 
       &:before {
-      display: none;
+        display: none;
       }
     }
     &.visible {
