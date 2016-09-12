@@ -94,6 +94,10 @@
       content: '';
       position: absolute;
       height: 150%;
+      max-height: 350px;
+      @media #{$tablet-large} {
+        max-height: 425px;
+      }
       width: 100%;
       left: 0;
       bottom: 0;
@@ -180,6 +184,7 @@
       }
     }
   }
+
   li {
     overflow: hidden;
     
