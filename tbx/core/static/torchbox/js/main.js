@@ -68,7 +68,8 @@ var tbx = {
 
     function close() {
 
-      $bleedItem.removeClass( showItem ); 
+      $( 'body' ).removeClass( 'menu-open' );
+      $bleedItem.removeClass( showItem );
       $menuButton.removeClass( twist );
       $header.removeClass( headerFixed );
 
@@ -87,12 +88,13 @@ var tbx = {
       // Fade in nav items
       $bleedItem.each(function() {
         $item = $(this);
-        $item.addClass( showItem ); 
+        $item.addClass( showItem );
       });
 
       // Fix header
       // Delay for animation
       setTimeout(function() {
+        $( 'body' ).addClass( 'menu-open' );
         $header.addClass( headerFixed );
       }, 300);
     }
@@ -101,7 +103,7 @@ var tbx = {
 
       if ( $menuButton.hasClass( twist ) ) {
         close();
-      } 
+      }
 
       else {
         open($(this));
@@ -128,12 +130,12 @@ var tbx = {
     $clientsButton.click(function() {
 
       var $clientsButton  = $(this);
-      
+
       // If already open
       if ( $list.hasClass( visible ) ) {
         $list.removeClass( visible )
         $clientsButton.html( moreLabel );
-      } 
+      }
 
       // If already closed
       else {
@@ -180,7 +182,7 @@ var tbx = {
   map: function() {
 
     var zoomMin         = 5,
-        mapZoom         = null; 
+        mapZoom         = null;
         markers         = [],
 
         // Define locations and labels

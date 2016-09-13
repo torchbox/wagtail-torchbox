@@ -4,48 +4,7 @@
 
 <ul class="blogpage-listing">
 {% for post in blog_posts %}
-    <li {% if not post.feed_image %}class="{{ post.colour|default:'blue' }}"{% endif %}>
-        <a class="block-link" href="{% pageurl post %}">
-            <div class="content">
-                {% if post.feed_image %}
-                    {% image post.feed_image fill-1200x700 as background %}
-                {% endif %}
-                    <div class="image-container" {% if post.feed_image %}style="background-image: url('{{ background.url }}');"{% endif %}></div>
-                <div class="blog-text">
-                    <div class="author">
-                        {% with post.related_author.all as authors %}
-                            {% if authors %}
-                                {% for author in authors %}
-                                    <div class="author-image">
-                                        {% if author.author.image %}
-                                        {% image author.author.image fill-300x300 as photo %}
-                                        <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar"/>
-                                        {% endif %}
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-
-                            <h3>{{ post.title }}</h3>
-
-                            {% if post.related_author.all %}
-                                {% for author in post.related_author.all %}
-                                    <div class="name">{{ author.author.title }}</div>
-                                {% endfor %}
-                            {% endif %}
-
-                            {% if post.date %}
-                                <span class="date">{{ post.date|date:"j F Y" }}</span>
-                            {% endif %}
-
-                        {% endwith %}
-
-                    </div>
-
-                </div>
-
-            </div>
-        </a>
-    </li>
+{% include 'torchbox/tags/blog_list_item.html' %}
 {% endfor %}
 </ul>
 
