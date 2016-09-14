@@ -294,9 +294,13 @@ var tbx = {
 
         if ($specifications.length) {
             var $client             = $( '.specifications .client' ),
-                offset              = $specifications.offset().top,
+                offset              = 0,
                 fixedClass          = 'specifications--fixed',
                 showClient          = 'client--show';
+
+            if( $specifications.length > 0 ){
+                offset = $specifications.offset().top;
+            }
 
             $( window ).on( 'scroll', function() {
                 // Stick the specs bar
