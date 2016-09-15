@@ -35,10 +35,7 @@
       height: calc(#{$height * 2});
     }
     &.visible {
-      height: calc(#{$height-mob * 8});
-      @media #{$tablet-large} {
-        height: calc(#{$height * 4});
-      }
+      height: 100%;
       li:nth-last-child(-n+12) {
         opacity: 1;
       }
