@@ -3,7 +3,6 @@ $(document).ready(function() {
     tbx.heroImages();
     tbx.mobileMenu();
     tbx.loadMore();
-    tbx.signUp();
     tbx.jobs();
     tbx.scrollEvents();
     tbx.newsletterSignUp();
@@ -292,7 +291,7 @@ var tbx = {
     scrollEvents: function() {
         var $specifications     = $( '.specifications' );
 
-        if ($specifications.length) {
+        if ($specifications.length > 0) {
             var $client             = $( '.specifications .client' ),
                 offset              = $specifications.offset().top,
                 fixedClass          = 'specifications--fixed',
@@ -314,34 +313,28 @@ var tbx = {
         }
     },
 
-    
     // SignUp form
-    signUp: function() {
-        function bindSignUpFormPageForm(element) {
-            $(element).on('submit', function(e) {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                $(".sign-up-form-button").html("Submitting...");
-                $.ajax({
-                    url: $(this).attr('action'),
-                    type: "POST",
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        // Google Tag Manager voodoo
-                        window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({
-                            'event': 'formSubmissionSuccess',
-                            'formId': 'sign-up-form'
-                        });
-                        // end voodoo
-                        $(".sign-up-form").html(data);
-                        $('.page-signupformpage form.sign-up-form').each(function() {
-                            bindSignUpFormPageForm(this);
-                        });
-                    }
-                });
+    signUp: function(element) {
+        $(element).on('submit', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            $(".sign-up-form-button").html("Submitting...");
+            $.ajax({
+                url: $(this).attr('action'),
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(data) {
+                    // Google Tag Manager voodoo
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        'event': 'formSubmissionSuccess',
+                        'formId': 'sign-up-form'
+                    });
+                    // end voodoo
+                    $(".sign-up-form").html(data);
+                }
             });
-        }
+        });
     },
 
     // Newsletter signup
