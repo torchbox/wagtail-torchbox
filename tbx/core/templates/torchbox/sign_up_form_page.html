@@ -1,10 +1,6 @@
 {% extends "torchbox/base.html" %}
 {% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags staticfiles %}
 
-{% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'torchbox/css/vendor/owl.carousel.css' %}">
-{% endblock %}
-
 {% block content %}
     <div class="hero">
         <div class="green-line"></div>
@@ -81,28 +77,9 @@
     </footer>
 {% endblock %}
 {% block extra_js %}
-    <script src="{% static 'torchbox/js/vendor/owl.carousel.min.js' %}"></script>
     <script type="text/javascript">
         $(function(){
-            //owl // quotes
-            var carousel = $(".carousel");
-
-            $('.carousel').owlCarousel({
-                loop:               true,
-                margin:             10,
-                nav:                true,
-                pagination:         true,
-                paginationNumbers:  false,
-                // Navigation
-                navText : [""],
-                responsive: {
-                    0: {
-                        nav:        true,
-                        items:      1,
-                        pagination: true
-                    }
-                }
-            });
+            tbx.signUp('.sign-up-form');
         });
     </script>
 {% endblock %}
