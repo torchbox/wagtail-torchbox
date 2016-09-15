@@ -11,15 +11,15 @@ from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.wagtailadmin.blocks import (CharBlock, FieldBlock, ListBlock,
-                                         PageChooserBlock, RawHTMLBlock,
-                                         RichTextBlock, StreamBlock,
-                                         StructBlock)
 from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
                                                 MultiFieldPanel,
                                                 PageChooserPanel,
                                                 StreamFieldPanel)
 from wagtail.wagtailadmin.utils import send_mail
+from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
+                                        PageChooserBlock, RawHTMLBlock,
+                                        RichTextBlock, StreamBlock,
+                                        StructBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
