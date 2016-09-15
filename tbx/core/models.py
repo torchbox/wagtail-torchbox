@@ -425,10 +425,10 @@ class StandardPage(Page):
 
     show_in_play_menu = models.BooleanField(default=False)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('intro'),
         index.SearchField('body'),
-    )
+    ]
 
     content_panels = [
         FieldPanel('title', classname="full title"),
@@ -541,9 +541,9 @@ class ServicesPage(Page):
     heading = models.TextField(blank=True)
     intro = models.TextField(blank=True)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('intro'),
-    )
+    ]
 
     content_panels = [
         FieldPanel('title', classname='full title'),
@@ -563,9 +563,9 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 class BlogIndexPage(Page):
     intro = models.TextField(blank=True)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('intro'),
-    )
+    ]
 
     show_in_play_menu = models.BooleanField(default=False)
 
@@ -700,9 +700,9 @@ class BlogPage(Page):
 
     canonical_url = models.URLField(blank=True, max_length=255)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('body'),
-    )
+    ]
 
     @property
     def blog_index(self):
@@ -788,9 +788,9 @@ class JobIndexPage(Page):
     refer_a_friend = models.URLField(null=True)
     reasons_intro = models.TextField(blank=True)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('intro'),
-    )
+    ]
 
     def get_context(self, request, *args, **kwargs):
         context = super(
@@ -1002,12 +1002,12 @@ class PersonPage(Page, ContactFields):
         related_name='+'
     )
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('first_name'),
         index.SearchField('last_name'),
         index.SearchField('intro'),
         index.SearchField('biography'),
-    )
+    ]
 
     content_panels = [
         FieldPanel('title', classname="full title"),
@@ -1140,10 +1140,10 @@ class GoogleAdGrantsPage(Page):
     call_to_action_title = models.CharField(max_length=255, blank=True)
     call_to_action_embed_url = models.URLField(blank=True)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('intro'),
         index.SearchField('body')
-    )
+    ]
 
     def get_context(self, request):
         form = GoogleAdGrantApplicationForm()
