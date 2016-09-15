@@ -332,9 +332,6 @@ var tbx = {
                     });
                     // end voodoo
                     $(".sign-up-form").html(data);
-                    $('.page-signupformpage form.sign-up-form').each(function() {
-                        bindSignUpFormPageForm(this);
-                    });
                 }
             });
         });
