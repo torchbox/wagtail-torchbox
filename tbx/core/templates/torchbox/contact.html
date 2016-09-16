@@ -30,7 +30,9 @@
                                 <label for="{{ field.id_for_label }}" class="contact-form__label {% if field.field.required %} contact-form__label--required {% endif %}">
                                     {{ field.label }}
                                 </label>
+                                <div class="contact-form__field-wrapper">
                                 {{ field }}
+                                </div>
                             </div>
                         {% endfor %}
                         {% endspaceless %}
