@@ -29,6 +29,14 @@
   .main-content {
     padding-top: 80px;
   }
+
+  // reduce space above main content at mobile when there is no visit button on a work page
+  .main-content--no-visit {
+    padding-top: 20px;
+    @media #{$tablet} {
+      padding-top: 80px;
+    }
+  }
 }
 
 .text-content {
