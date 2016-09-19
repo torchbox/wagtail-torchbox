@@ -157,6 +157,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+# Serve /public directory with whitenoise
+WHITENOISE_ROOT = os.path.join(BASE_DIR, 'public')
+
+
 # Django compressor settings
 # http://django-compressor.readthedocs.org/en/latest/settings/
 
