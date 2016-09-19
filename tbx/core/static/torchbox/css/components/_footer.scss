@@ -16,8 +16,14 @@ footer {
     padding: 0 0 20px;
     margin-bottom: 20px;
     margin-top: 0;
+    &:first-child {
+      margin-top: 20px;
+    }
     @media #{$tablet} {
       margin-bottom: 0;
+      &:first-child {
+        margin-top: 0;
+      }
     }
     li {
       @include cf;
@@ -222,7 +228,7 @@ footer {
   }
 
   @include cf;
-  margin-bottom: 35px;
+
   @media #{$tablet-large} {
     border-bottom: 0;
     margin-bottom: 0;
@@ -304,6 +310,15 @@ footer {
       fill: white;
       footer & {
         fill: $blue;
+      }
+    }
+    span {
+      //tweak vertical position at mobile - see ticket 111
+      position: relative;
+      top: -3px;
+       @media #{$tablet-large} {
+        position: static;
+        top: 0;
       }
     }
     &:hover {
