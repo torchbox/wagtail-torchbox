@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% if self.streamfield %}
-    <section class="body-copy stream-field container">
+    <section class="stream-field">
         {% for child in self.streamfield %}
             {% if child.block_type == 'h2' %}
                 <h2>{{ child }}</h2>
@@ -49,6 +49,13 @@
                         {% if child.value.caption %}
                             <p>{{ child.value.caption }}</p>
                         {% endif %}
+                    </div>
+                </div>
+            {% elif child.block_type == 'wide_image' %}
+                <div class="">
+                    <div class="img-holder">
+                        {% image child.value.image width-1280 as blockimage %}
+                        <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
                     </div>
                 </div>
             {% elif child.block_type == 'raw_html' %}

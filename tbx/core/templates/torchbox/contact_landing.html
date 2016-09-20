@@ -1,0 +1,38 @@
+{% extends "torchbox/base.html" %}
+{% load static torchbox_tags wagtailcore_tags wagtailimages_tags %}
+{% block googlemap %}
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+{% endblock %}
+{% block content %}
+
+<style>
+    .about-hero {
+        {% image page.landing_image original as landing_image %}
+        background-image: url("{{ landing_image.url }}");
+    }
+</style>
+
+<div class="about-hero">
+    <div class="main-content">
+        <div class="contact">
+            <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
+                <fieldset class="contact-form__group">
+                    <div class="container">
+                        <div class="content">
+                            <h2 class="thanks">
+                                <span>{{ page.thank_you_text }}</span> {{ page.thank_you_follow_up }}<br>
+                                <a class="btn thanks-btn" href="{% pageurl page.landing_page_button_link %}" class="btn">{{ page.landing_page_button_title }}</a>
+                            </h2>
+                        </div>
+                    </div>
+                   {% csrf_token %}
+                   {{ form.as_p }}
+                </fieldset>    
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

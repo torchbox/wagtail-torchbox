@@ -1,0 +1,103 @@
+---
+# Environment settings.
+env:
+  CFG_LOG_DIR: /log
+  CFG_ERROR_LOG: /log/error.log
+  CFG_SECRET_KEY: ${prandchars:secret-key:128}
+  CFG_ALLOWED_HOSTS: ${CFG_APP_NAME}.weaver.torchboxapps.com,${CFG_APP_NAME}.dev.torchbox.net
+  DJANGO_SETTINGS_MODULE: tbx.settings.production
+
+# Python version: 2.7, 3.4, 3.5...
+python:
+  version: '2.7'
+
+  # You almost certainly want a virtualenv; put it in /local, the
+  # server-specific persistent data directory.
+  virtualenv: /local/venv
+
+  # If set, install this requirements file at application startup.
+  requirements: requirements.txt
+
+commands:
+- /local/venv/bin/python /app/manage.py migrate
+- /local/venv/bin/python /app/manage.py collectstatic --noinput
+
+# WSGI module to load.
+module: tbx.wsgi
+
+# If set, this will run a local Postgres instance.  If you're using a remote
+# database, you don't need to set this.  (Generally, you should use a remote
+# database unless you have a good reason not to.)
+#postgres: '9.4'
+
+# Provide a Redis database at the URL in $CFG_REDIS_URL.
+redis: 64m
+
+# List of directories to check for static files in.
+public-dirs:
+- /app/public
+
+static-maps:
+  /static: /app/static
+  /media/images: /shared/media/images
+
+# SSL support.  You almost certainly want this.
+ssl:
+  # Redirect plaintext requests to SSL.  Again, you almost certainly want this.
+  # (default: false)
+  force: true
+
+  # Send an HSTS header (https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security),
+  # This is generally a good idea, but by design, you can't turn it off since 
+  # browsers will have cached it.  This is specified in seconds; 31536000 is
+  # one year.
+  # (default: off)
+  hsts: 31536000
+
+  # If set, use Let's Encrypt to generate the SSL certificate automatically.
+  # This is currently the only method to obtain an SSL certificate.  Do not
+  # use this for production; SSL certificates on production are handled by
+  # sysadmin.
+  #
+  # One certificate will be issued for each entry in 'hostnames', below.
+  # To issue / renew the certificate, run 'weaver --letsencrypt'.
+  #
+  # (default: off)
+  letsencrypt: true
+
+# List of hostnames this site should serve.  ${CFG_APP_NAME} is the name of
+# the application in the Weaver UI.  ${CFG_DOMAIN} is the domain name suffix
+# for this instance of Weaver (e.g. 'weaver.torchboxapps.com').  You can also
+# set this in 'production', 'staging' or 'dev' blocks; they will *not* be
+# merged with the global value.
+#
+# This default is correct for most application.
+hostnames:
+- ${CFG_APP_NAME}.${CFG_DOMAIN}
+# - ${CFG_APP_NAME}-altsite.${CFG_DOMAIN}
+# - ...
+
+# Specify configuration for staging or dev instances only.  This will override
+# any global configuration for settings specified here.
+
+staging:
+  # Authentication.
+  auth:
+    # Use an htpasswd file to control access.  You can commit this to your
+    # repository (insecure), or create it locally:
+    #
+    #   htpasswd -d -c /shared/htpasswd myuser
+    htpasswd: /shared/htpasswd
+    # Override the default authentication realm ('Login required')
+    realm: Torchbox staging site
+
+    # Specify a list of CIDR networks to exempt from authentication  The
+    # special value "tbx" means Torchbox addresses.
+    ip-whitelist:
+    - 127.0.0.0/8
+    - tbx
+
+dev:
+  ssl:
+    force: false
+    letsencrypt: false

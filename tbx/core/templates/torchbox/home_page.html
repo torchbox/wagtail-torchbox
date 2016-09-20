@@ -1,46 +1,47 @@
 {% extends "torchbox/base.html" %}
-{% load torchbox_tags wagtailcore_tags wagtailimages_tags wagtailembeds_tags static %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags wagtailembeds_tags staticfiles %}
 {% block body_class %}{% if self.hero_video_id %}hasvideo{% endif %}{% endblock %}
 {% block title_postfix %}{% endblock %}
 {% block content %}
 
-    <section class="hero {% if self.hero_video_id %}hero-video{% endif %}">
-        {% if self.hero_video_id %}
-            <div class="responsive-object">
-                {% if self.hero_video_poster_image %}
-                    <div class="poster">
-                        {% image self.hero_video_poster_image fill-900x505 %}
-                        <div class="arrow play" title="Play"></div>
-                    </div>
-                {% endif %}
+    {% include "torchbox/includes/hero.html" with hero=self.hero.all %}
 
-                <iframe id="vimeo{{ self.hero_video_id }}" src="//player.vimeo.com/video/{{ self.hero_video_id }}?api=1&portrait=0&badge=0&byline=0&title=0&player_id=vimeo{{ self.hero_video_id }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <!-- /about-tbx -->
+    <section class="about-tbx">
+        <div class="container">
+            <!--
+            <div class="title">
+                <h2>{{ self.intro_title }}</h2>
             </div>
-        {% endif %}
-        <div class="animated fadeInDown container">
-            {% if self.hero_video_id %}
-                <div class="arrow play" title="Play"></div>
-            {% endif %}
-
-            <h1>{{ self.intro }}</h1>
-
-            {% if not self.hero_video_id %}
-                <a href="/about"><div class="button">Who are we</div> </a>
-                <a href="mailto:hello@torchbox.com"> <div class="button"> Get in touch</div></a>
-                <a href="#posts" class="arrow"></a>
-            {% endif %}
+            -->
+            <div class="body">
+                {{ self.intro_body|richtext }}
+            </div>
         </div>
     </section>
 
-    <section id="posts" class="listing clearfix">
-        {% work_and_blog_listing %}
+    <section id="posts" class="container">
+
+        <h2>{{ self.blog_title|safe }}</h2>
+        {% homepage_blog_listing %}
+
+        <h2>{{ self.work_title|safe }}</h2>
+        {% homepage_work_listing %}
+
     </section>
 
-    <section class="container hiring">
-        <div>
-            <h2>By the way, we're hiring</h2>
+    <!-- /clients -->
+    <div class="container">
+        <section class="clients">
+            <h2>{{ self.clients_title|safe }}</h2>
+            {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+        </section>
+    </div>
+
+    <section class="hiring">
+        <div class="container">
             {% homepage_job_listing 0 %}
-        </div>
-    </section>
+        </div> <!-- /container -->
+    </section> <!-- /hiring -->
 
 {% endblock %}

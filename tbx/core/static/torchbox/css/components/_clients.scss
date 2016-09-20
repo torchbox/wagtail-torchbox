@@ -1,0 +1,89 @@
+
+
+// Clients home ================================================================
+.clients {
+  // height
+  $height-mob: 100px;
+  $height: 120px;
+
+  @include cf;
+  padding: 0 $container-padding-sml;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 80px;
+
+  @media #{$tablet} {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  h2 {
+    margin-bottom: 30px;
+  }
+
+  button {
+    margin-top: 30px;
+  }
+  
+  ul {
+    @include cf;
+    height: calc(#{$height-mob * 2});
+    overflow: hidden;
+    @include custom-bounce (0.45s);
+    @media #{$tablet} {
+      margin-bottom: 20px;
+      height: calc(#{$height * 2});
+    }
+    &.visible {
+      height: 100%;
+      li:nth-last-child(-n+12) {
+        opacity: 1;
+      }
+    }
+  }
+  a {
+    width: 100%;
+  }
+  li {
+    width: 50%;
+    float: left;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    @media #{$tablet} {
+      // not needed for center
+      height: $height;
+    }
+    &:nth-last-child(-n+12) {
+      //opacity: 0;
+    }
+    // Loop through the items and add some delay
+    @for $i from 5 through 16 {
+        &:nth-child(#{$i}) {
+          @include custom-transition;
+         transition-delay: calc((0.1s * #{$i}) - 0.65s);
+        }
+    }
+    @media #{$tablet-large} {
+      width: 25%;
+      opacity: 1;
+      &:nth-child(-n+8) {
+        opacity: 1;
+      }
+      &:nth-last-child(-n+8) {
+        //opacity: 0;
+      }
+    }
+    img {
+      opacity: 0.5;
+      width: auto;
+      height: auto;
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 0 15px;
+      @media #{$tablet-large} {
+        max-width: 60%;
+      }
+    }
+  }
+}

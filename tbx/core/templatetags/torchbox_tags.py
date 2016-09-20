@@ -53,15 +53,11 @@ def get_site_root(context):
     return context['request'].site.root_page
 
 
-def has_menu_children(page):
-    if page.get_children().filter(live=True, show_in_menus=True):
-        return True
-    else:
-        return False
-
-
 @register.filter
 def content_type(value):
+    # marketing landing page should behave like the homepage in templates
+    if value.__class__.__name__.lower() == 'marketinglandingpage':
+        return 'homepage'
     return value.__class__.__name__.lower()
 
 
@@ -70,87 +66,9 @@ def in_play(page):
     return is_in_play(page)
 
 
-@register.inclusion_tag('torchbox/tags/top_menu.html', takes_context=True)
-def top_menu(context, calling_page=None):
-    """
-    Checks to see if we're in the Play section in order to return pages with
-    show_in_play_menu set to True, otherwise retrieves the top menu
-    items - the immediate children of the site root. Also detects 404s in the
-    Play section.
-    """
-    if (calling_page and in_play(calling_page)) or context.get(
-            'play_404', False
-    ):
-        play_models = [
-            StandardPage,
-            PersonIndexPage,
-            WorkIndexPage,
-            WorkPage,
-            BlogIndexPage
-        ]
-        menuitems = chain.from_iterable([
-            model.objects.filter(
-                live=True,
-                show_in_play_menu=True,
-                show_in_menus=False
-            ).exclude(
-                show_in_play_menu=True,
-                show_in_menus=True
-            ) for model in play_models
-        ])
-    else:
-        menuitems = get_site_root(context).get_children().filter(
-            live=True,
-            show_in_menus=True
-        )
-    return {
-        'calling_page': calling_page,
-        'menuitems': menuitems,
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-        'play_404': context.get('play_404', False)
-    }
-
-
-# Retrieves the children of the top menu items for the drop downs
-@register.inclusion_tag('torchbox/tags/top_menu_children.html', takes_context=True)
-def top_menu_children(context, parent):
-    menuitems_children = parent.get_children()
-    menuitems_children = menuitems_children.filter(
-        live=True,
-        show_in_menus=True
-    )
-    return {
-        'calling_page': calling_page,
-        'parent': parent,
-        'menuitems_children': menuitems_children,
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-    }
-
-
-# Retrieves the secondary links - only the children of the current page, NOT the siblings, and only when not viewing the homepage
-@register.inclusion_tag('torchbox/tags/secondary_menu.html', takes_context=True)
-def secondary_menu(context, calling_page=None):
-    menuitems = []
-    if calling_page and calling_page.id != get_site_root(context).id:
-        menuitems = calling_page.get_children().filter(
-            live=True,
-            show_in_menus=True
-        )
-
-        # If no children found and calling page parent isn't the root, get the parent's children
-        if len(menuitems) == 0 and calling_page.get_parent().id != get_site_root(context).id:
-            menuitems = calling_page.get_parent().get_children().filter(
-                live=True,
-                show_in_menus=True
-            )
-    return {
-        'calling_page': calling_page,
-        'menuitems': menuitems,
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-    }
+@register.simple_tag
+def main_menu():
+    return MainMenu.objects.first()
 
 
 # Person feed for home page
@@ -167,7 +85,7 @@ def homepage_people_listing(context, count=3):
 
 # Blog feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_blog_listing.html', takes_context=True)
-def homepage_blog_listing(context, count=3):
+def homepage_blog_listing(context, count=6):
     blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
     return {
         'blog_posts': blog_posts,
@@ -190,13 +108,19 @@ def homepage_work_listing(context, count=3):
 
 # Jobs feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_job_listing.html', takes_context=True)
-def homepage_job_listing(context, count=3):
+def homepage_job_listing(context, count=3, intro_text=None):
     # Assume there is only one job index page
-    jobindex = JobIndexPage.objects.filter(live=True)[0]
-    jobs = jobindex.jobs
-    if count:
-        jobs = jobs[:count]
+    jobindex = JobIndexPage.objects.filter(live=True).first()
+    if jobindex:
+        jobs = jobindex.job.all()
+        if count:
+            jobs = jobs[:count]
+    else:
+        jobs = []
+    jobintro = intro_text or jobindex and jobindex.listing_intro
     return {
+        'jobintro': jobintro,
+        'jobindex': jobindex,
         'jobs': jobs,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
@@ -225,26 +149,40 @@ def person_blog_post_listing(context, calling_page=None):
 
 
 @register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
-def work_and_blog_listing(context, count=10):
+def work_and_blog_listing(context, count=10, marketing=False):
     """
     An interleaved list of work and blog items.
     """
-    # Exercise for the reader: what should this do if count is an odd number?
-    count /= 2
-    blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
-    works = play_filter(WorkPage.objects.filter(live=True).order_by('-pk'), count)
-    blog_items = [template.loader.render_to_string(
-        "torchbox/tags/blog_list_item.html",
-        {'post': post,
-         'request': context['request']}
-    ) for post in blog_posts]
-    work_items = [template.loader.render_to_string(
-        "torchbox/tags/work_list_item.html",
-        {'work': work,
-         'request': context['request']}
-    ) for work in works]
+    blog_posts = BlogPage.objects.filter(live=True)
+    works = WorkPage.objects.filter(live=True)
+    if marketing:
+        featured_items = context['page'].featured_items.all()
+
+        # Reduce remaining item count accordingly, but not to below 0.
+        count = max(count - featured_items.count(), 0)
+
+        # For marketing landing page return only posts and works
+        # tagged with "digital_marketing"
+        featured_items_ids = featured_items.values_list('related_page_id', flat=True)
+        filter_tag = "digital_marketing"
+        blog_posts = blog_posts.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items_ids)
+        works = works.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items_ids)
+    else:
+        # For normal case, do not display "marketing_only" posts and works
+        blog_posts = blog_posts.exclude(marketing_only=True)
+        works = works.exclude(marketing_only=True)
+        featured_items = []
+    
+    # If (remaining) count is odd, blog_count = work_count + 1
+    blog_count = (count + 1) / 2
+    work_count = count / 2
+
+    blog_posts = play_filter(blog_posts.order_by('-date'), blog_count)
+    works = play_filter(works.order_by('-pk'), work_count)
+
     return {
-        'items': list(roundrobin(blog_items, work_items)),
+        'featured_items': featured_items,
+        'items': list(roundrobin(blog_posts, works)),
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }

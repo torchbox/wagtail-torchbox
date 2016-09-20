@@ -10,11 +10,10 @@
 
     main {
         width: 100%;
-        margin: 1em 0 0 0;
     }
 
     .container {
-        padding: 0 2em;
+        padding: 0 4em;
         max-width: 96em;
         margin: 0 auto;
     }
@@ -24,7 +23,7 @@
     }
 
     .bleed {
-        margin: 2.2em 0.5em 0 0;
+        margin: 3.2em 4em 0 0;
         height: 55px;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -68,7 +67,7 @@
     }
 
     header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
         -o-transition: all 0.15s ease;
         -webkit-transition: all 0.15s ease;
         -moz-transition: all 0.15s ease;
@@ -85,15 +84,15 @@
     /*Active*/
 
     .active {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .active a:hover {
-        color: #F7A42C;
+        color: #FD5938;
         border-bottom: none;
     }
 
@@ -131,7 +130,7 @@
     }
 
     .nextprev a {
-        background-color: #ea853a;
+        background-color: #FD5938;
         background-repeat: no-repeat;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -199,7 +198,7 @@
     }
 
     .pagination a p:hover {
-        color: #EA853A;
+        color: #FD5938;
     }
 
     /*Homepage*/
@@ -256,7 +255,7 @@
     }
 
     .page-homepage .listing a:hover h3 {
-        color: #ea853a;
+        color: #FD5938;
     }
 
     .page-homepage .logo {
@@ -342,25 +341,30 @@
         padding: 1.25em;
     }
 
+    .page-homepage .related-links,
     .page-homepage .hiring {
         padding: 3em 2em;
     }
 
+    .page-homepage .related-links h2,
     .page-homepage .hiring h2 {
         text-align: center;
         font-size: 3em;
         color: #424A4F;
     }
 
+    .page-homepage .related-links a,
     .page-homepage .hiring a {
         font-size: 1em;
     }
 
+    .page-homepage .related-links ul,
     .page-homepage .hiring ul {
         text-align: center;
         border: none;
     }
 
+    .page-homepage .related-links li,
     .page-homepage .hiring li {
         display: inline-block;
         border: none;
@@ -419,8 +423,9 @@
         width: 100%;
     }
 
-    .page-standardpage.page-standardpage .heading {
+    .page-standardpage.page-standardpage .page-banner .rich-text {
         padding-top: 12em;
+        padding-bottom: 12em;
     }
 
     .page-standardpage main {
@@ -585,11 +590,11 @@
     }
 
     .page-workindexpage header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-workindexpage header nav li.active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-workindexpage section.work {
@@ -714,6 +719,9 @@
     .closed:after {
         display: none;
     }
+    .center {
+        padding: 0;
+    }
 
     .closed {
         display: block;
@@ -743,6 +751,10 @@
         position: absolute;
         top: 0;
         bottom: 0;
+    }
+
+    .jobs-core-values h2 {
+        font-size: 3.6em;
     }
 
     .centertall {
@@ -876,6 +888,41 @@
         -moz-border-radius: 3px;
     }
 
+    .jobs-benefits h2 {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+
+    .jobs-offices li {
+        width: 28%;
+        text-align: center;
+        display: block;
+        float: left;
+        margin-right: 5%;
+    }
+
+    .jobs-offices li img {
+        display: inline-block;
+        width: 50%;
+        margin: 1em 0 1.25em;
+    }
+
+    .jobs-offices h2 {
+        font-size: 3.6em;
+        margin: 0.75em 0;
+    }
+
+    .our-offices {
+        margin: 0 0 2.75em 0;
+        padding-bottom: 3em;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+
+    ul.image-tiles li {
+        flex-basis: calc(50% - 38px);
+    }
+
     .body-copy p,
     .body-copy ul {
         font-size: 1.25em;
@@ -963,48 +1010,6 @@
         transition: 0.2s ease;
     }
 
-    .page-jobindexpage h1 {
-        margin:-2em auto 0.5em auto;
-        max-width: 96em;
-        font-size: 5em;
-        padding-bottom: 0.3em;
-        color: #97CB9B;
-        display: none;
-    }
-
-    .page-jobindexpage .intro p {
-        font-size: 1.1em;
-        padding-top: 1em;
-        margin-bottom: -2em;
-    }
-
-    .page-jobindexpage main .listing a {
-        font-size: 2em;
-    }
-
-    .benefits {
-        max-width: 96em;
-        margin: 3em auto 0 auto;
-    }
-
-    .page-jobindexpage .benefits li {
-        position: relative;
-        margin: 0em 0em 0em 0em;
-        padding: 8em 4em 8em 4em;
-        border-top: 1px solid white;
-        display: block;
-    }
-
-    .page-jobindexpage main .listing li:nth-child(2) a {
-        border-top: none;
-    }
-
-    .page-jobindexpage main .benefits h2 {
-        font-size: 4em;
-        padding: 0;
-        margin: 0 0 0.8em 0;
-    }
-
     .icon {
         display: block;
         margin: 0em 1em 0 0;
@@ -1040,6 +1045,26 @@
         background-image: url("../images/icons/salary.png");
     }
 
+    .page-jobindexpage .logo {
+        background: url("../images/logo-torchbox-white.png") center left no-repeat;
+        background-size: auto 3em;
+        padding: 1em 0;
+    }
+
+    .page-jobindexpage header {
+        margin-bottom: inherit;
+    }
+
+    .page-jobindexpage .bleed {
+        background: transparent; // this might be in more places
+    }
+
+    .page-jobindexpage .intro p {
+        font-size: 1.1em;
+        padding-top: 1em;
+        margin-bottom: -2em;
+    }
+
     .page-jobindexpage .intro p a {
         font-size: 1em;
     }
@@ -1048,50 +1073,21 @@
         clear: both;
     }
 
+    .jobs-carousel-container .slick-slide img {
+        max-width: 65%;
+        -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 0);
+        clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 0);
+    }
+
     .sign-up {
         margin-top: -0.5em;
-    }
-
-    .page-jobindexpage main .benefits .heading-block {
-        position: relative;
-    }
-
-    .page-jobindexpage .benefits h2 {
-        font-size: 3em;
-    }
-
-    .page-jobindexpage .benefits h3 {
-        font-size: 2em;
-        line-height: 1em;
-    }
-
-    .page-jobindexpage .benefits li > div > div {
-        max-width: 30em;
-        float: left;
-    }
-
-    .page-jobindexpage .logo {
-        background: url("../images/logo-torchbox-grey.png") center left no-repeat;
-        background-size: auto 3em;
-    }
-
-    .page-jobindexpage footer {
-        margin: -1em 0 0 0;
     }
 
     .page-jobindexpage .center {
         max-width: 96em;
         margin: 0 auto;
-        padding: 2em 4em 1em 4em;
-        overflow: hidden;
-    }
-
-    .page-jobindexpage .benefits .one {
-        width: 48%;
-        float: left;
-        margin: 2% 2%  3% 0;
-        padding: 0 0 0 4em;
-        border-top: none;
+        padding: 0 4em;
+        overflow: visible; /* let margins collapse, please */
     }
 
     .news {
@@ -1106,30 +1102,23 @@
     }
 
     .page-jobindexpage main .jobs {
-        padding: 19.5em 2em 2em 2em;
+        padding: 19.5em 0 0 0;
     }
 
     .page-jobindexpage .button {
-        margin: 0em 1em -1em 0;
-    }
-
-    .page-jobindexpage .benefits .one:nth-of-type(odd) {
-        clear: left;
-    }
-
-    .page-jobindexpage .benefits .one:nth-of-type(5) {
-        margin-bottom: 5%;
+        font-size: 1em;
     }
 
     .page-personindexpage main h1 {
         font-size: 5em;
     }
 
-    .page-jobindexpage  .crop-height {
+    .page-jobindexpage .crop-height {
         display: block;
-        max-height: 35em;
         overflow: hidden;
-        margin-top: -10em;
+        margin-bottom: 3em;
+        -webkit-clip-path: polygon(100% 0, 100% 88%, 50% 100%, 0 88%, 0 0);
+        clip-path: polygon(100% 0, 100% 88%, 50% 100%, 0 88%, 0 0);
     }
 
     .page-jobindexpage img.scale {
@@ -1139,6 +1128,198 @@
         float: right;
         width: auto\9;
         -ms-interpolation-mode: bicubic;
+    }
+
+    .jobs-listing .listing li {
+        margin-right: 2.25%;
+        margin-bottom: 2.25%;
+        width: 31.5%;
+        float: left;
+        display: block;
+    }
+
+    .jobs-listing h2 {
+        margin-bottom: 1.5em;
+        font-size: 2.6em;
+    }
+
+    .jobs-listing .listing li:nth-child(2n + 2) {
+        margin-right: 2.25%;
+    }
+
+    .jobs-listing .listing li:nth-child(3n + 3) {
+        margin-right: 0;
+    }
+
+    .jobs-header-content {
+        max-width: 70em;
+        margin-left: auto;
+        margin-right: auto;
+        color: #ffffff;
+        padding: 215px 0 130px 0;
+        text-align: center;
+    }
+
+    .img-darken {
+        background-image: url('../images/torchbox-all-02.jpg');
+    }
+
+    .jobs-header-content h1 {
+        font-size: 4.5em;
+    }
+
+    .jobs-header-content p {
+        max-width: 50%;
+    }
+
+    .jobs-what-saying li img {
+        width: 8em;
+        position: absolute;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .jobs-what-saying h2 {
+        font-size: 2.5em;
+        margin-bottom: 1em;
+    }
+
+    .jobs-what-saying li {
+        text-align: left;
+        min-height: 8em;
+        padding-top: 1.5em;
+        padding-left: 10em;
+    }
+
+    .jobs-what-saying h3 {
+        position: relative;
+    }
+
+    .jobs-what-saying li {
+        margin: 6em 0;
+        position: relative;
+    }
+    .jobs-what-saying li:first-of-type {
+        margin-top: 4em;
+    }
+
+    .jobs-what-saying li .meta {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .jobs-offices li.first {
+        margin-left: 3%;
+    }
+
+    .center.our-offices-container {
+        background: transparent;
+        padding: 0 1em;
+        margin-bottom: 0;
+    }
+
+     .jobs-refer .center.space-footer {
+        padding-bottom: 6em;
+     }
+
+    .jobs-header h1,
+    .jobs-header p {
+        text-shadow: 0 0 15px rgba(0,0,0,0.8);
+    }
+
+    .jobs-refer h2 {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+
+    .jobs-header h1 {
+        font-size: 78px;
+    }
+
+    .jobs-header p {
+        font-size: 1.1em;
+        line-height: 1.4;
+    }
+
+    .jobs-refer {
+        padding-top: 6em;
+    }
+
+    .jobs-refer .center {
+        top: 6em;
+    }
+
+    .jobs-refer p {
+        font-size: 1.25em;
+        line-height: 1.5em;
+        max-width: 650px;
+        margin: 0 auto 0.125em auto;
+    }
+
+    .jobs-carousel-container .slick-slide {
+        overflow: hidden;
+    }
+
+    .jobs-carousel-container .slick-prev {
+        right: 2em;
+        left: auto;
+        top: 2em;
+        bottom: auto;
+    }
+
+    .jobs-carousel-container .slick-next {
+        bottom: 2em;
+        top: auto;
+        right: 2em;
+    }
+
+    .jobs-carousel-container .slick-prev,
+    .jobs-carousel-container .slick-next {
+        height: 3.25em;
+        width: 3.25em;
+    }
+
+    .jobs-carousel-container .slide-caption-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 2em 1em 2em 4%;
+        width: 35%;
+        height: 100%;
+        white-space: nowrap;
+    }
+
+    .jobs-carousel-container .slide-caption-container > div {
+        display: inline-block;
+        vertical-align: middle;
+        white-space: initial;
+    }
+
+    .jobs-carousel-container .slide-caption-container:after {
+        content: " ";
+        display: inline-block;
+        height: 100%;
+        width: 1%;
+        vertical-align: middle;
+    }
+
+    .jobs-carousel-container .slide-caption-container h3 {
+        font-size: 2.25em;
+    }
+
+    .jobs-carousel-container .slide-caption-container p {
+        padding-right: 5em;
+        margin-top: 10px;
+        line-height: 2;
+    }
+
+    .jobs-carousel-container .slide-caption-container span {
+        font-size: 1.25em;
+        color: rgba(0,0,0, 0.5);
+        font-weight: normal;
+        display: block;
     }
 
     .info-holder {
@@ -1160,11 +1341,11 @@
     }
 
     .page-personindexpage header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-personindexpage header nav li.active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .grid.people-list li div {
@@ -1195,18 +1376,17 @@
     }
 
     .page-personpage header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-personpage header nav li.active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-personpage main img {
         width: 35%;
         margin-right: 4%;
         float: left;
-        z-index: -1;
     }
 
     .page-personpage .bio-text {
@@ -1300,7 +1480,7 @@
     }
 
     .page-servicespage .services li:hover:before {
-        color: #EA853a;
+        color: #FD5938;
         -o-transition: all 0.15s ease;
         -webkit-transition: all 0.15s ease;
         -moz-transition: all 0.15s ease;
@@ -1328,11 +1508,11 @@
     }
 
     .page-blogpage  header nav li a:hover {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-blogpage  header nav li.active a {
-        color: #F7A42C;
+        color: #FD5938;
     }
 
     .page-blogpage .next {
@@ -1498,10 +1678,15 @@
     }
 
     footer .contact span.newsletter-cta {
+        text-align: center;
         font-size: 1.45em;
-        margin: 1em 0 0.5em 0;
+        margin: 2em 0 0.5em 0;
         float: none;
         display: block;
+    }
+
+    footer .contact span.newsletter-cta strong {
+        display: inline;
     }
 
     footer .contact form input {
@@ -1528,7 +1713,7 @@
         transition: all 0.15s ease;
         height: 100px;
         float: left;
-        fill: #EA853A;
+        fill: #FD5938;
         width: 68px;
         margin-top: -25px;
         padding-bottom: 1em;
@@ -1544,7 +1729,207 @@
         height: 1100px !important;
     }
 
+    .page-googleadgrantspage .bleed {
+        background: none;
+        margin: 2.2em 0.5em 0 0;
+    }
+
+    .page-googleadgrantspage header.container {
+        padding: 0 2em;
+    }
+
+    .grant-form {
+        box-shadow: 0px 2px 10px #bdc6cc;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        width: 880px;
+        padding: 3em 2em;
+        margin: 0 auto -120px;
+    }
+
+    .landing-page-body {
+        max-width: 880px;
+    }
+
+    .landing-header {
+        padding: 150px 0 180px;
+    }
+
+    .grant-form form .input {
+        width: 60%;
+    }
+
+    .our-clients ul li {
+        float: left;
+        width: 50%;
+        margin: 0 0 2em;
+        min-height: 51px;
+    }
+    .our-clients ul li:nth-of-type(2n+3) {
+        clear: left;
+    }
+    .testimonials {
+        border-top: none;
+        padding: 7em 0 6em 0;
+        margin: 2em 0 3em 0;
+        color: #434a4f;
+        background-color: #424A4F;
+        background: url("http://torchbox.com/static/torchbox/images/about-placeholder6.jpg?ec983614c72d") center right no-repeat;
+        background-size: cover;
+    }
+
+
+    .page-signupformpage .hero {
+        margin-bottom: 40px;
+    }
+
+    .page-signupformpage .bleed {
+        background-color: transparent;
+    }
+    .page-signupformpage header nav li a {
+        color: #434a4f;
+    }
+
+    .page-signupformpage header nav li a:hover {
+        color: #F7A42C;
+    }
+
+    .page-signupformpage .hero .container {
+        padding: 60px 0 90px;
+    }
+    .page-signupformpage .hero h1 {
+        font-size: 100px;
+    }
+
+    .page-signupformpage .hero:after,.page-signupformpage .hero:before,.page-signupformpage .hero .green-line {
+        height: 15px;
+        top: 23%;
+    }
+    .page-signupformpage .hero:before {
+        top: 45%;
+    }
+    .page-signupformpage .hero .green-line {
+        top: 65%;
+    }
+    .page-signupformpage .hero button {
+        font-size: 14px;
+    }
+
+    .page-signupformpage .rich-text {
+        margin: 50px auto 30px;
+        font-size: 23px;
+    }
+    .page-signupformpage .rich-text img {
+        float: right;
+        width: 50%;
+    }
+    .page-signupformpage .form input {
+        width: 40%;
+        max-width: 300px;
+    }
+
+    .page-signupformpage main button {
+        display: inline-block;
+        width: auto;
+        left: -5px;
+    }
+    .page-signupformpage .sign-up-form {
+        font-size: 20px;
+        color: white;
+    }
+    .page-signupformpage .sign-up-form.top {
+        margin: 20px 0 90px;
+        font-size: 20px;
+    }
+    .page-signupformpage .sign-up-form.top h3 {
+        font-size: 22px;
+        margin: 1em 0;
+    }
+    .page-signupformpage .advantage {
+        margin-bottom: 20px;
+        width: 50%;
+        padding: 25px;
+        box-sizing: border-box;
+    }
+    .page-signupformpage .advantage h3 {
+        font-size: 20px;
+
+    }
+    .page-signupformpage .advantage:last-of-type {
+        width: 55%;
+        text-align: center;
+        clear: both;
+        float: none;
+        margin: 0 auto;
+    }
+    .page-signupformpage .logos li {
+        float: left;
+        padding: 20px;
+        box-sizing: border-box;
+        width: 33.3%;
+    }
+    .page-signupformpage .quotes {
+        margin-bottom: 100px;
+    }
+    /* When the new header and footer go on this will clash */
+    .page-signupformpage .active {
+        color: inherit;
+    }
+    .page-signupformpage blockquote p {
+        font-size: 18px;
+    }
+    .page-signupformpage .cta {
+        padding: 50px 0 90px;
+        z-index: 1;
+        position: relative;
+    }
+    .page-signupformpage .cta img {
+        display: block;
+        position: absolute;
+        bottom: -150px;
+        left: -80px;
+        width: 220px;
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+        box-shadow: 5px -3px 6px 0 rgba(38,39,40,0.25);
+    }
+    .page-signupformpage .thank-you .text {
+        margin-bottom: 0;
+        width: 60%;
+    }
+    .page-signupformpage footer.thanks  {
+        z-index: 1;
+        position: relative;
+    }
+    .page-signupformpage footer.thanks .container {
+        float:none;
+    }
+
+    .owl-dots {
+        max-width: 100px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .owl-dot {
+        float: left;
+    }
+    .owl-dot span {
+        transition: all 0.35s ease-out 0s;
+        background: none repeat scroll 0 0 #869791;
+        border-radius: 20px;
+        display: block;
+        height: 12px;
+        margin: 5px 7px;
+        opacity: 0.5;
+        width: 12px;
+    }
+    .owl-dots .active span {
+        background: #de4f44;
+        opacity: 0.75;
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
 }
+
 
 @media print,
 (-o-min-device-pixel-ratio: 5/4),
@@ -1561,7 +1946,7 @@
         margin: 0;
         float: left;
     }
-    .page-standardpage .heading {
+    .page-standardpage .heading .rich-text {
         padding: 6em 1em;
         text-align: center;
     }
@@ -1642,7 +2027,7 @@
         left: 0;
         right: 0;
         margin: auto;
-        background: #EA853a;
+        background: #FD5938;
         color: #fff;
         padding: 0.3em 0.8em 0.3em 1em;
         border-radius: 3px;
@@ -1698,10 +2083,6 @@
         display: block;
     }
 
-    .page-standardpage .heading {
-        top: 15em;
-    }
-
     .uslist {
         margin: 0 auto;
         padding: 3em 0 0em 0;
@@ -1747,6 +2128,14 @@
 
     .page-homepage .hero {
         margin-bottom: -3em;
+    }
+
+    .our-clients ul li {
+        width: 25%;
+        margin: 0 0 2em;
+    }
+    .our-clients ul li:nth-of-type(2n+3) {
+        clear: none;
     }
 }
 
@@ -1839,8 +2228,8 @@
         max-width: 200px;
         text-align: center;
         padding: 1em 1.5em;
-        border: solid 1px #EA853a;
-        color: #EA853a;
+        border: solid 1px #FD5938;
+        color: #FD5938;
         margin: 0;
         line-height: 1em;
         border-radius: 0.2em;
@@ -1858,9 +2247,9 @@
     }
 
     .page-homepage .go:hover {
-        border: solid 1px #EA853a;
+        border: solid 1px #FD5938;
         color: #fff;
-        background: #EA853a;
+        background: #FD5938;
     }
 
     .page-homepage .block:hover .go {
@@ -1883,7 +2272,7 @@
         -webkit-transition: 0.2s ease;
         -moz-transition: 0.2s ease;
         transition: 0.2s ease;
-        color: #ea853a;
+        color: #FD5938;
     }
 
     .page-homepage .block .workcontainer {
@@ -2035,7 +2424,7 @@
     }
 
     .stat-holder h2 {
-        color: #ea853a;
+        color: #FD5938;
     }
 
     .stat {
@@ -2220,6 +2609,10 @@
 /* Desktop */
 @media only screen and (min-width: 1250px) {
 
+    .jobs-refer .center {
+        width: 100%;
+    }
+
     .italic {
         font-size: 2em;
         margin: 1.5em auto 1.5em auto;
@@ -2230,20 +2623,8 @@
         font-size: 4em;
     }
 
-    .page-jobindexpage main .listing li:nth-child(2) a {
-        border-top: 1px solid #6F6E6E;
-    }
-
     .page-homepage .work-intro {
         padding: 4em 0 0 3em;
-    }
-
-    .page-jobindexpage main .listing li {
-        float: left;
-        width: 48%;
-        margin-right: 2%;
-        min-height: 60px;
-        font-size: 0.8em;
     }
 
     .page-workindexpage main .listing .about {

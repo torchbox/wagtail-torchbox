@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import wagtail.wagtailadmin.taggable
 import wagtail.wagtailimages.models
 import wagtail.wagtailcore.fields
+import wagtail.wagtailsearch.index
 import modelcluster.fields
 import django.db.models.deletion
 from django.conf import settings
@@ -360,7 +360,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=(models.Model, wagtail.wagtailadmin.taggable.TagSearchable),
+            bases=(models.Model, wagtail.wagtailsearch.index.Indexed),
         ),
         migrations.CreateModel(
             name='TorchboxRendition',

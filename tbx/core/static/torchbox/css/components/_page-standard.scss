@@ -1,0 +1,42 @@
+// page-standardpage ===========================================================
+.page-standardpage,
+.page-aboutpage,
+.page-servicespage,
+.page-jobindexpage {
+  nav {
+    // @media #{$tablet} {
+    //   position: fixed;
+    //   left: 0;
+    //   max-width: 1450px;
+    //   right: 0;
+    //   margin: 0 auto;
+    //   padding: 12px 50px;
+    // }
+  }
+  footer {
+    @media #{$tablet-large} {
+      position: relative;
+      z-index: 10;
+    }
+  }
+  .text-content {
+    &:last-of-type {
+      margin-top: 0px;
+    }
+    &:nth-last-of-type(2) {
+      margin-top: 0px;
+    }
+  }
+  .full-image {
+    position: relative;
+    z-index: 1;
+    height: 315px;
+    background: url('/static/torchbox/images/full-width-bristol.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    @media #{$tablet} {
+      height: 600px;
+    }
+  }
+}

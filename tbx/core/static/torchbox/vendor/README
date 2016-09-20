@@ -1,0 +1,2 @@
+Vendor files are assumed to be already compiled and minified, so will not be processed by gulp
+apart from copying them to the correct folder in static_compiled.
