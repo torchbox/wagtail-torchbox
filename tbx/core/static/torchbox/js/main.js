@@ -2,7 +2,8 @@
 $(document).ready(function() {
     tbx.heroImages();
     tbx.mobileMenu();
-    tbx.loadMore();
+    tbx.loadMore($('.clients'));
+    tbx.loadMore($('.blog-listing'));
     tbx.jobs();
     tbx.scrollEvents();
     tbx.newsletterSignUp();
@@ -117,30 +118,28 @@ var tbx = {
         });
     },
 
-
     // 'Load more' functionality (show/hide)
-    loadMore: function() {
-        var $clients          = $( '.clients' ),
-            $clientsButton    = $clients.find( 'button' ),
-            $list             = $( '.clients ul' ),
+    loadMore: function($parent) {
+        var $clients          = $parent,
+            $button           = $parent.find( 'button' ),
+            $list             = $parent.find( 'ul' ),
             visible           = 'visible',
             moreLabel         = 'Show more',
             lessLabel         = 'Show less';
 
-        $clientsButton.click(function() {
-
-            var $clientsButton  = $(this);
+        $button.click(function() {
+            var $button  = $(this);
 
             // If already open
             if ( $list.hasClass( visible ) ) {
                 $list.removeClass( visible )
-                $clientsButton.html( moreLabel );
+                $button.html( moreLabel );
             }
 
             // If already closed
             else {
                 $list.addClass( visible );
-                $clientsButton.html( lessLabel );
+                $button.html( lessLabel );
             }
         });
     },
