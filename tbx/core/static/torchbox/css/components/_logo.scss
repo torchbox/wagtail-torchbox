@@ -25,4 +25,25 @@
   padding: 0 0 20px;
   max-width: 150px;
   margin: 0 auto;
+
+  a {
+    font-size: 11px;
+    color: white;
+  }
+}
+
+.wagtail-logo-inline {
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  &:after {
+    content: '';
+    background-image: url('/static/torchbox/images/wagtail-logo-white.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 5em;
+    height: 1.75em;
+    position: absolute;
+    left: 0;
+  }
 }
