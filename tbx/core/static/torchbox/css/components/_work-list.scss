@@ -7,7 +7,7 @@
 
   clear: both;
   @include cf;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   @media #{$tablet} {
     margin-bottom: 100px;
   }
