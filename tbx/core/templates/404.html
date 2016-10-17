@@ -1,0 +1,45 @@
+{% extends "torchbox/base.html" %}
+
+{% block extra_css %}
+    <style>
+        .page-standardpage {
+            padding: 2em 1em;
+        }
+        .page-standardpage.page-standardpage .heading {
+            position: relative;
+            top: 0;
+            padding: 0;
+        }
+        .page-standardpage .heading h2 {
+            color: #434a4f;
+            text-align: center;
+        }
+        .page-standardpage .intro p {
+            text-align: center;
+        }
+
+        @media only screen and (min-width: 45em) {
+            .page-standardpage {
+                padding: 8em 2em;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% if "/play/" in request_path %}
+        play 404 message goes here
+    {% else %}
+        <div class="page-standardpage">
+            <div class="container">
+                <div class="heading">
+                    <h2>OMG, you broke it! Our lovely website is in tatters!</h2>
+                </div>
+                <div class="were-tbx intro">
+                    <p class="intro">Actually, it's likely that either you've followed an out-of-date link, typed something in wrong, or have a bookmark to a page that no longer exists, so don't worry, you <em>probably</em> haven't broken anything.</p>
+                   {#  <p>One of the links above will help you on your way.</p> #}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

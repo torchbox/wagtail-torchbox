@@ -1,0 +1,55 @@
+{% extends "torchbox/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags torchbox_tags %}
+
+{% block content %}
+<div class="container clearfix">
+
+    <div class="bio-img">
+        {% if self.image %}
+            {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+            {% image self.image fill-900x900 as photo %}
+                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+        {% endif %}
+    </div>
+
+    <div class="bio-text">
+
+        <div class="title">
+            {% include "torchbox/includes/breadcrumb.html" %}
+
+            <h1>{{ self.title }}</h1>
+
+             <div class="role">
+                {% if self.role %}
+                    {{ self.role|richtext }}
+                {% endif %}
+            </div>
+
+        </div>
+
+        <section class="body-copy">
+
+            <div class="person-bio">
+                <div class="intro">
+                    {% if self.intro %}
+                        {{ self.intro|richtext }}
+                    {% endif %}
+                </div>
+
+
+                {% if self.biography %}
+                    {{ self.biography|richtext }}
+                {% endif %}
+            </div>
+        </section>
+
+        <div class="blog-listing">
+            {% person_blog_post_listing calling_page=self %}
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

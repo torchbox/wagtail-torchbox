@@ -1,0 +1,22 @@
+Django==1.9.2
+psycopg2==2.6.1
+elasticsearch==1.2.0
+django-redis==4.3.0
+wagtail==1.6.2
+Pillow==2.9.0
+embedly==0.5.0
+requests==2.7.0
+wagtailmodeladmin==2.2.6
+raven==5.26.0
+django-compressor==2.0
+
+# Development requirements
+django-debug-toolbar==1.2.2
+
+# Production dependencies
+dj-database-url==0.3.0
+whitenoise==2.0.4
+ConcurrentLogHandler==0.9.1
+
+# Fix for html5lib issue, see https://github.com/torchbox/wagtail/issues/2843, fixed in Wagtail 1.4.6 and 1.5.3
+html5lib==0.999999

@@ -1,0 +1,49 @@
+// logo ========================================================================
+.logo {
+    display: inline-block;
+
+    svg {
+    	height: 40px;
+    	width: 165px;
+      fill: #2b2b2b;
+    	
+    	@media #{$tablet} {
+    		margin-top: 5px;
+    	}
+    }
+
+  &:hover {
+    svg {
+      fill: $orange;
+    }
+  }
+
+}
+
+// Wagtail logo ================================================================
+.wagtail {
+  padding: 0 0 20px;
+  max-width: 150px;
+  margin: 0 auto;
+
+  a {
+    font-size: 11px;
+    color: white;
+  }
+}
+
+.wagtail-logo-inline {
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  &:after {
+    content: '';
+    background-image: url('/static/torchbox/images/wagtail-logo-white.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 5em;
+    height: 1.75em;
+    position: absolute;
+    left: 0;
+  }
+}

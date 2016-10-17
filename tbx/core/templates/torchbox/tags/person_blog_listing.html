@@ -1,0 +1,23 @@
+{% load wagtailcore_tags %}
+
+{% if posts %}
+{% comment %} Does not use blog_list_item.html include because we don't want to show authors on the person page {% endcomment %}
+    <h2>Blog posts by {{ calling_page.specific.first_name }}</h2>
+    <ul class="clearfix">
+    {% for post in posts %}
+        <li>
+            <a href="{% pageurl post %}">
+                <div class="text">
+                    <h3>{{ post.title }}</h3>
+
+                    {% if post.date %}<span>{{ post.date|date:"j F Y" }}</span>{% endif %}
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% if posts|length > 3 %}
+        <button>Show more</button>
+    {% endif %}
+{% endif %}

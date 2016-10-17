@@ -1,0 +1,7 @@
+{% if work %}
+<ul class="home-work">
+    {% for item in work %}
+        {% include "torchbox/tags/work_list_item.html" with work=item %}
+    {% endfor %}
+</ul>
+{% endif %}

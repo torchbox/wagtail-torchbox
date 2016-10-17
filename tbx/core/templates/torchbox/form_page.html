@@ -1,0 +1,52 @@
+{% extends "torchbox/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+<div class="block-colour">
+
+    <div class="container">
+        <section class="body-copy">
+            <h1>{{ self.title }}</h1>
+            {{ self.intro|richtext }}
+
+            <h4>
+                <span>Strategy </span>
+                <span>UX</span>
+                <span>Design</span>
+                <span>Animation</span>
+                <span>Implementation</span>
+            </h4>
+            <p>Take your pick. Mix and match.</p>
+
+        </section>
+    </div>
+
+</div>
+
+<div class="container">
+    <section class="were-tbx">
+        <form action="{% pageurl self %}" method="POST">
+            {% csrf_token %}
+            {% if form.errors %}
+                <p class="error">There were some errors with your form. Please amend the fields highlighted below.</p>
+            {% endif %}
+            <ul class="fields">
+                {% for field in form %}
+                    <li class="field-container {% if field.field.required %}required{% endif %} {% if field.errors %}errors{% endif %}">
+                        {{ field }}
+                        <label for="{{ field.id_for_label }}">{{ field.label }} {% if field.field.required %}<span class="required">*</span>{% endif %}</label>
+                        {% if field.errors %}
+                            {{ field.errors }}
+                        {% endif %}
+                        <div class="form-help">{% if field.help_text %}{{ field.help_text }}{% endif %}</div>
+                    </li>
+                {% endfor %}
+                <li class="submit">
+                    <input type="submit" class="button button-inverse" value="{% if self.action_text %}{{ self.action_text|safe }}{% else %}Submit{%endif%}" />
+                </li>
+            </ul>
+        </form>
+    </section>
+</div>
+{% endblock %}

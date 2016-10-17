@@ -1,0 +1,183 @@
+{% extends "torchbox/base.html" %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
+
+{% block content %}
+    {% if self.main_image %}
+        {% image self.main_image fill-1300x750 as header_image %}
+        <style>
+            .about-hero {
+                background-image: url('{{ header_image.url }}');
+            }
+        </style>
+    {% endif %}
+    <div class="about-hero">
+    </div>
+
+    <div class="about-text" id="tester-unique">
+        <div class="container">
+            <div class="content">
+                {{ self.heading|richtext }}
+            </div>
+        </div>
+    </div>
+
+    <section class="text-content" data-jq-clipthru="testclass-1" id="about-content">
+        <div class="container">
+            <div class="main-content">
+                <!--
+                {% if self.quote %}
+                    <div class="italic">
+                        <p class="hangingindent"> &#8220; {{ self.quote }}&#8221; </p>
+                    </div>
+                {% endif %}
+
+                <div class="intro were-tbx ">
+                    {{ self.intro|richtext }}
+                </div>
+
+                <div class="quote">
+                    <div class="dark">
+                        {{ self.middle_break|richtext }}
+                    </div>
+                </div>
+
+                <div class="intro were-tbx ">
+                    {{ self.body|richtext }}
+                </div>
+
+                {% include "torchbox/includes/streamfield.html" %}
+                -->
+                <!-- fields ned added for blow -->
+                <!-- hard coded -->
+                <div class="we-do">
+                    <p>We create beautiful websites and build clever tech applications for people trying to make the world a better place.</p>
+                </div>
+            </div>
+
+            <div class="services">
+                <ul>
+                    <li>
+                        <div class="content">
+                            <img src="{% static 'torchbox/images/bespoke.svg' %}" alt="">
+                            <h3>Bespoke solutions</h3>
+                            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="{% static 'torchbox/images/digital-marketing.svg' %}" alt="">
+                            <h3>Digital marketing</h3>
+                            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="{% static 'torchbox/images/design.svg' %}" alt="">
+                            <h3>Design and animation</h3>
+                            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="{% static 'torchbox/images/ux.svg' %}" alt="">
+                            <h3>UX</h3>
+                            <p>Sometimes only a bespoke solution will do, and that's fine too. Our custom software engineering team use Django to build robust.</p>
+                        </div>
+                    </li>
+                </ul>
+                <button>All Services</button>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="full-image">
+    </div>
+
+    <section class="text-content">
+        <div class="container">
+
+            <div class="offices">
+                <h2>Our offices</h2>
+                <ul>
+                    <li>
+                        <div class="content">
+                            <img src="{% static 'torchbox/images/oxford.svg' %}" alt="">
+                            <h3>In the glorious Cotswolds</h3>
+                            <p>Have lunch by the river at our head office in a beautiful Oxfordshire deer park, or take long walks along the river.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="{% static 'torchbox/images/bristol.svg' %}" alt="">
+                            <h3>The Vibrant centre of Bristol</h3>
+                            <p>Go out with the team to try the endless supply of real ales, or try the abumdance of street food and sit in the vibrant parks. </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <img src="{% static 'torchbox/images/philadelphia.svg' %}" alt="">
+                            <h3>Historic Philadelphia</h3>
+                            <p>Visit the sights with our team in America’s original capital. Rich in history and culture, Philadelphia is a great place to be.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="values">
+                <h2>Our four core values</h2>
+                <ul>
+                    <li>
+                        <img src="{% static 'torchbox/images/happy.png' %}" alt="">
+                    </li>
+                    <li>
+                        <img src="{% static 'torchbox/images/better.png' %}" alt="">
+                    </li>
+                    <li>
+                        <img src="{% static 'torchbox/images/stand.png' %}" alt="">
+                    </li>
+                    <li>
+                        <img src="{% static 'torchbox/images/enjoy.png' %}" alt="">
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="involved">
+        <h2>Things we're involved in</h2>
+        <ul class="involved-in">
+            <li>
+                <div class="content">
+                    <img src="{% static 'torchbox/images/geek-nights.svg' %}" alt="">
+                    <h3>Oxford Geek Nights</h3>
+                    <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
+                </div>
+            </li>
+            <li>
+                <div class="content">
+                    <img src="{% static 'torchbox/images/wagtail.svg' %}" alt="">
+                    <h3>Wagtail</h3>
+                    <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
+                </div>
+            </li>
+            <li>
+                <div class="content">
+                    <img src="{% static 'torchbox/images/drupal.svg' %}" alt="">
+                    <h3>Drupal</h3>
+                    <p>Scenester hella Echo Park, church-key taxidermy ethical yr bespoke sartorial bicycle rights drinking vinegar.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <section class="text-content">
+        <div class="container">
+            <div class="clients">
+                <h2>We're proud to have worked with</h2>
+                {% include "torchbox/includes/clients.html" with clients=self.clients.all %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

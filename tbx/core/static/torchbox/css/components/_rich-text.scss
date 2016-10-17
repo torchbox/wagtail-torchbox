@@ -1,0 +1,159 @@
+// intro
+.intro {
+  .rich-text {
+    p {
+      font-size: 20px;
+      margin-bottom: 25px;
+      max-width: $container-width;
+      @media #{$tablet} {
+        font-size: 26px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+// rich text styles
+.rich-text, .stream-field {
+  p {
+    max-width: $container-width;
+    font-size: 16px;
+    @media #{$tablet} {
+      font-size: 21px;
+    }
+    a {
+      @include line-hover;
+    }
+  }
+  h2 {
+    text-align: left;
+    font-size: 23px;
+    font-weight: 600;
+    margin: 30px 0 10px;
+    color: $dark;
+    @media #{$tablet} {
+      font-size: 25px;
+      margin: 40px 0 10px;
+    }
+  }
+  ul {
+    margin-left: 40px;
+  }
+  ol {
+    margin-left: 40px;
+    li {
+      //list-style: normal;
+      list-style-type: decimal;
+    }
+  }
+  li {
+    max-width: $container-width;
+    font-size: 16px;
+    font-weight: 400;
+    list-style-type: square;
+    color: $dark;
+    line-height: 1.5;
+    margin: 0 0 20px;
+    @media #{$tablet} {
+      font-size: 21px;
+    }
+  }
+  blockquote {
+    position: relative;
+    padding: 20px 20px 20px 20px;
+    margin: 30px 0 30px 0;
+    z-index: 1;
+    @media #{$tablet-large} {
+      left: auto;
+      padding: 40px 40px 20px 80px;
+      margin: 60px 0 60px -20%;
+      width: 140%;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: -20px;
+      width: 220px;
+      height: 220px;
+      background: url('/static/torchbox/images/pattern-sml.png') no-repeat center;
+      background-size: cover;
+      transform: rotate(90deg);
+      opacity: 0.15;
+      z-index: 0;
+    }
+    p {
+      max-width: 100%;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      //font-style: italic;
+      font-size: 20px;
+      @media #{$tablet} {
+        font-size: 26px;
+      }
+    }
+    cite {
+      font-weight: 500;
+      font-style: normal;
+      font-size: 13px;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      color: $blue;
+    }
+  }
+  img {
+    margin-bottom: 25px;
+    width: 100%;
+    height: auto;
+    margin: 40px auto;
+    @media #{$tablet} {
+      margin: 40px 0;
+    }
+  }
+  .full-width {
+    border: 1px solid rgba(black,0.05);
+    box-shadow: 0 0 30px rgba(#000, 0.05);
+    margin: 40px 0 30px;
+    padding: 10px;
+    background: white;
+    .img-holder {
+      margin: 0;
+    }
+    @media #{$desktop} {
+      width: 120%;
+      margin-left: -10%;
+      padding: 20px;
+    }
+  }
+  .align-right {
+    position: relative;
+    @media #{$tablet} {
+      right: -90px;
+      margin-right: -150px;
+      float: right;
+      z-index: 1;
+    }
+  }
+  .img-holder {
+    margin: 30px 0 30px;
+    img {
+      margin: 0 0 15px;
+    }
+    @media #{$tablet} {
+      margin: 50px 0 50px;
+    }
+    @include cf;
+    p {
+      font-style: italic;
+      font-size: 14px;
+      margin: 0;
+      position: relative;
+      text-align: center;
+      opacity: 0.8;
+      max-width: none;
+    }
+  }
+}

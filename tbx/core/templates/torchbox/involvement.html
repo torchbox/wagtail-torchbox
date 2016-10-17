@@ -1,0 +1,20 @@
+    {% if self.involvement_title or self.involvement.all %}
+    <div class="involved">
+        <h2>{{ self.involvement_title }}</h2>
+        {% if self.involvement.all %}
+        <ul class="involved-in">
+            {% for involvement in self.involvement.all %}
+            <li>
+                <a href="">
+                    <div class="content">
+                        {{ involvement.svg|safe }}
+                        <h3>{{ involvement.title }}</h3>
+                        <p>{{ involvement.description }}</p>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endif %}

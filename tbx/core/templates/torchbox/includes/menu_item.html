@@ -1,0 +1,10 @@
+<li>
+    <a href="{{ value.page.url }}">{{ value.page.title }}</a>
+    {% if value.subitems %}
+    <ul>
+        <li>
+            {{ value.subitems }}
+        </li>
+    </ul>
+    {% endif %}
+</li>

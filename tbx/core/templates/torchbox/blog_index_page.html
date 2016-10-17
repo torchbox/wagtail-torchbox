@@ -1,0 +1,44 @@
+{% extends "torchbox/base.html" %}
+{% load staticfiles torchbox_tags wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+    {% get_popular_tags self as poptags %}
+
+    <div class="container">
+        <h1>{{ self.intro }}</h1>
+    </div>
+
+    <section class="blog">
+        <div class="container">
+            <div class="popular-tags">
+                {% if poptags %}
+                    <div class="closed">
+                        <p>
+                            {% for tag in poptags %}
+                                {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                                    <a class="filtering" href="?tag={{ tag.slug }}">{{ tag }}</a>
+                                {% else %}
+                                    <a href="?tag={{ tag.slug }}">{{ tag }}</a>
+                                {% endif %}
+                            {% endfor %}
+                            {# Optional 'show all' appears if filtering by tag #}
+                            {% if request.GET.tag|length %}
+                                {% for tag in poptags %}
+                                    {% if request.GET.tag|safe == tag.slug %}
+                                        <a class="before" href="{% pageurl self %}">show all</a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="container">
+            {% include "torchbox/includes/blog_listing.html" %}
+        </div>
+
+    </section>
+{% endblock %}

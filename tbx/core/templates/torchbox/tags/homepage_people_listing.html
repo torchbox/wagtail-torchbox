@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if people %}
+    {% for person in people %}
+        {% if person.image %}
+            {% image person.image width-300 as photo %}
+            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" />
+        {% endif %}
+    {% endfor %}
+{% endif %}

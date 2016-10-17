@@ -1,0 +1,51 @@
+.menu-button {
+  position: relative;
+  top: 10px;
+  display: block;
+  float: right;
+  width: 30px;
+  height: 25px;
+  @include custom-transition;
+  @media #{$tablet} {
+      display: none;
+  }
+  span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 3px;
+    width: 100%;
+    background: $dark;
+    border-radius: 100px;
+    @include custom-transition;
+    &:nth-child(2) {
+      top: 11px;
+      width: 70%;
+      background: $orange;
+    }
+    &:nth-child(3) {
+      width: 85%;
+      top: auto;
+      bottom: 0;
+      background: $blue;
+    }
+  }
+  &.twist {
+    span {
+      width: 100%;
+      &:nth-child(1) {
+        opacity: 0;
+      }
+      &:nth-child(2) {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        top: 10px;
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        bottom: 12px;
+      }
+    }
+  }
+}

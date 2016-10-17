@@ -1,0 +1,26 @@
+{% extends "torchbox/base.html" %}
+
+{% load staticfiles %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static "torchbox/css/play-404.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="page-standardpage">
+        <div class="center-text">
+            <div class="top-top">
+                <div class="bg">
+                    <div class="heading">
+                        <h2>Looks like you've taken a tumble! Yellow card for simulation!</h2>
+                    </div>
+                    <div class="were-tbx intro">
+                    <p>Actually it's likely you followed an out of date link, typed something wrong, or have a bookmark to a page that no longer exists. So please don't fret, card rescinded.</p>
+                    <p>One of the links above will find you on your way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="credit">Photo by DSanchez17</p>
+    </div>
+{% endblock %}

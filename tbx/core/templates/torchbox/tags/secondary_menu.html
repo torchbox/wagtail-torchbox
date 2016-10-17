@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+
+{% if menuitems %}
+    <nav role="navigation">
+        <ul>
+            {% for menuitem in menuitems %}
+                <li class="{% if calling_page.url == menuitem.url %}active{% endif %}"><a href="{% pageurl menuitem %}">{{ menuitem.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endif %}
+

@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if jobs %}
+<h2 style="display:block;">{{ jobintro }}</h2>
+
+<div class="jobs">
+    <ul>
+        {% for job in jobs %}
+            <a href="{{ job.url }}" class="listing">
+                <li>
+                    <div class="content">
+                        <h3>{{ job.job_title }}</h3>
+                        <p>{{ job.job_intro }}</p>
+                    </div>
+                </li>
+            </a>
+        {% endfor %}
+    </ul>
+
+    {% if jobindex.no_jobs_that_fit %}
+    <div class="jobs-followon">
+        {{ jobindex.no_jobs_that_fit|richtext }}
+    </div>
+    {% endif %}
+
+</div>
+{% endif %}
