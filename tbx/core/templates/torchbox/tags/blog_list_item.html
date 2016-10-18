@@ -9,11 +9,11 @@
                 <div id="author" class="author clearfix" >
                     {% with post.related_author.all as authors %}
 
-                        <label>blog</label>
+                        <label>Blog post</label>
                         <h3>{{ post.title }}</h3>
 
                         {% for author in authors %}
-                            <div class="name">{{ author.author.title }}</div>
+                            <div class="name">{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</div>
                         {% endfor %}
 
                         {% if post.date %}
