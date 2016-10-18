@@ -77,7 +77,7 @@
             </nav>
         </header>
 
-        <main>{% block content %}{% endblock %}</main>
+        <main>{% spaceless %}{% block content %}{% endblock %}{% endspaceless %}</main>
 
         <footer>
             <div class="contact">
