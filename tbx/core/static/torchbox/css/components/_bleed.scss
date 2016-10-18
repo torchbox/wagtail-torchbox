@@ -201,7 +201,8 @@
           background: $orange;
           transition: all 0.25s ease 0s;
         }
-        &:hover {
+        &:hover,
+        &.active {
           cursor: pointer;
           color: $orange;
           &:after {
