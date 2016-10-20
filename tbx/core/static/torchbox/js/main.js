@@ -1,5 +1,6 @@
 // Load in required functions
 $(document).ready(function() {
+    tbx.onLoad();
     tbx.heroImages();
     tbx.mobileMenu();
     tbx.loadMore($('.clients'));
@@ -11,6 +12,17 @@ $(document).ready(function() {
 });
 
 var tbx = {
+
+    onLoad: function() {
+        var $avatar           = $( '.services-avatar' ),
+            avatarClass       = 'services-avatar--show';
+
+        function displayAvatar() {
+            $avatar.addClass( avatarClass );
+        }
+
+        displayAvatar();
+    },
 
     // Hero image carousel/slider
     heroImages: function() {

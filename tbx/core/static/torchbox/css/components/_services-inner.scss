@@ -76,6 +76,11 @@ $services-slider-height: 400px;
     border: 2px solid #252526;
     overflow: hidden;
     z-index: 5;
+    opacity: 0;
+    transform: translate3d(0,30px,0);
+    transition:
+        opacity 500ms ease,
+        transform 700ms ease;
 
     &__image {
         margin-top: -10px;
@@ -90,6 +95,11 @@ $services-slider-height: 400px;
         text-align: center;
         font-size: 14px;
         line-height: 14px;
+    }
+
+    &--show {
+        opacity: 1;
+        transform: translate3d(0,0,0);
     }
 
     &--fixed {
@@ -237,7 +247,6 @@ $services-slider-height: 400px;
     margin-top: 40px;
 
     &__item {
-        
         opacity: 0;
         transform: translate3d(0,30px,0);
         transition:
