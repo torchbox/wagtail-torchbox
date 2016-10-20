@@ -6,6 +6,7 @@ $(document).ready(function() {
     tbx.loadMore($('.blog-listing'));
     tbx.jobs();
     tbx.scrollEvents();
+    tbx.servicesScrollEvents();
     tbx.newsletterSignUp();
 });
 
@@ -310,6 +311,45 @@ var tbx = {
                 }  
             });
         }
+    },
+
+    servicesScrollEvents: function() {
+
+            // Avatar
+        var $avatar             = $( '.services-avatar' ),
+            avatarOffset        = $avatar.offset().top - 50,
+            avatarClass         = 'services-avatar--fixed',
+
+            // Reason list
+            $reasonItem         = $( '.services-reasons-list__item' ),
+            reasonItemOffset    = $reasonItem.offset().top - 650,
+            reasonClass         = 'services-reasons-list__item--show',
+            delayDuration       = 200;
+
+        $( window ).on( 'scroll', function() {
+
+            // Stick
+            if ( $( window ).scrollTop() >= avatarOffset ) {
+                $avatar.addClass( avatarClass );
+            } else {
+                $avatar.removeClass( avatarClass );
+            } 
+
+            if ( $( window ).scrollTop() >= reasonItemOffset ) {
+
+                // Fade in each item with a delay
+                $reasonItem.each(function(i) {
+                    var $item = $(this);
+
+                    setTimeout(function() {
+                        $item.addClass( reasonClass );
+                    }, delayDuration * i);
+                });
+
+            } else {
+                $reasonItem.removeClass( reasonClass );
+            }
+        });
     },
 
     // SignUp form
