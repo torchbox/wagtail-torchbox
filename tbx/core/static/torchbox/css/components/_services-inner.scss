@@ -5,17 +5,16 @@
 $services-blue: #35b8b9;
 $services-orange: #ff572d;
 $services-dark-grey: #2b2b2b;
-$services-wrapper-width: 1300px;
+$services-wrapper-width: calc(100% - 100px);
 $services-slider-height: 400px;
 
 .services-wrapper {
     width: 100%;
-    max-width: $services-wrapper-width;
     margin: 0 auto;
     padding: 0 15px;
 
     @media #{$tablet} {
-        padding: 0 50px;
+        max-width: $services-wrapper-width;
     }
 
     &--relative {
@@ -25,21 +24,32 @@ $services-slider-height: 400px;
 
 .services-hero {
     width: 100%;
-    height: 500px;
+    padding: 50px 0;
     background-color: $services-blue;
+        
+    @media #{$tablet} {
+        height: 500px;
+        padding: 0;
+    }
 
     &__wrapper {
         position: relative;
         width: 100%;
         height: 100%;
         z-index: 1;
-        padding: 0 50px;
+        padding: 0 15px;
+
+        @media #{$tablet} {
+            max-width: $services-wrapper-width;
+        }
     }
 
     &__inner {
-        position: absolute;
-        bottom: 90px;
-        left: 50px;
+        @media #{$tablet} {
+            position: absolute;
+            bottom: 90px;
+            left: 50px;
+        }
     }
 
     &__breadcrumbs {
@@ -50,19 +60,28 @@ $services-slider-height: 400px;
 
     &__title {
         margin: 10px 0;
-        font-size: 60px;
+        font-size: 40px;
         font-weight: 500;
         color: #fff;
         text-transform: uppercase;
+
+        @media #{$tablet} {
+            font-size: 60px;
+        }
     }
 
     &__description {
         margin: 0;
-        font-size: 30px;
+        font-size: 22px;
         max-width: 800px;
         color: #305758;
         font-weight: 300;
-        line-height: 36px;
+        line-height: 30px;
+
+        @media #{$tablet} {
+            font-size: 30px;
+            line-height: 36px;
+        }
     }
 }
 
@@ -191,10 +210,6 @@ $services-slider-height: 400px;
         }
     }
 
-        &__meta-content {
-
-        }
-
     &__button {
         width: 64px;
         height: 60px;
@@ -252,7 +267,6 @@ $services-slider-height: 400px;
             opacity 500ms ease,
             transform 700ms ease;
 
-
         span {
             position: relative;
             display: block;
@@ -293,16 +307,16 @@ $services-slider-height: 400px;
         padding-right: 120px;
 
         &:before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: -20px;
-                width: 200px;
-                height: 200px;
-                background-image: url(/static/torchbox/images/pattern-sml.png);
-                background-size: 200px;
-                opacity: 0.3;
-            }
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -20px;
+            width: 200px;
+            height: 200px;
+            background-image: url(/static/torchbox/images/pattern-sml.png);
+            background-size: 200px;
+            opacity: 0.3;
+        }
     }
 
     blockquote {
