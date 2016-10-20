@@ -15,7 +15,7 @@ $services-slider-height: 400px;
     padding: 0 15px;
 
     @media #{$tablet} {
-        ppadding: 0 50px;
+        padding: 0 50px;
     }
 
     &--relative {
@@ -238,7 +238,6 @@ $services-slider-height: 400px;
             display: inline-block;
             vertical-align: top;
             margin-right: 2.333%;
-            background-color: red;
             background-color: rgba(137, 215, 216, 0.29);
         }
 }
@@ -373,6 +372,7 @@ $services-slider-height: 400px;
 
         svg {
             width: 72%;
+            max-height: 150px;
             margin-top: 30px;
             fill: $services-blue;
         }
