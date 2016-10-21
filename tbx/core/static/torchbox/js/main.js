@@ -327,8 +327,12 @@ var tbx = {
 
     servicesScrollEvents: function() {
 
+        if ( $( '.js-services-inner' ).length ) {
+
+            var $window         = $( window ),
+
             // Avatar
-        var $avatar             = $( '.services-avatar' ),
+            $avatar             = $( '.services-avatar' ),
             avatarOffset        = $avatar.offset().top - 50,
             avatarClass         = 'services-avatar--fixed',
 
@@ -338,30 +342,29 @@ var tbx = {
             reasonClass         = 'services-reasons-list__item--show',
             delayDuration       = 200;
 
-        $( window ).on( 'scroll', function() {
+            $( window ).on( 'scroll', function() {
 
-            // Stick
-            if ( $( window ).scrollTop() >= avatarOffset ) {
-                $avatar.addClass( avatarClass );
-            } else {
-                $avatar.removeClass( avatarClass );
-            } 
+                // Stick avatar
+                if ( $window.scrollTop() >= avatarOffset ) {
+                    $avatar.addClass( avatarClass );
+                } else {
+                    $avatar.removeClass( avatarClass );
+                } 
 
-            if ( $( window ).scrollTop() >= reasonItemOffset ) {
+                // Fade in reasons
+                if ( $window.scrollTop() >= reasonItemOffset ) {
 
-                // Fade in each item with a delay
-                $reasonItem.each(function(i) {
-                    var $item = $(this);
+                    // Fade in each item with a delay
+                    $reasonItem.each(function(i) {
+                        var $item = $(this);
 
-                    setTimeout(function() {
-                        $item.addClass( reasonClass );
-                    }, delayDuration * i);
-                });
-
-            } else {
-                $reasonItem.removeClass( reasonClass );
-            }
-        });
+                        setTimeout(function() {
+                            $item.addClass( reasonClass );
+                        }, delayDuration * i);
+                    });
+                }
+            });
+        }
     },
 
     // SignUp form
