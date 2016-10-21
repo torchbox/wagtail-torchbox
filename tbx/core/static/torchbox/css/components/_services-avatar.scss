@@ -1,0 +1,41 @@
+.services-avatar {
+    position: absolute;
+    top: 200px;
+    right: 50px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid #252526;
+    overflow: hidden;
+    z-index: 5;
+    opacity: 0;
+    transform: translate3d(0,30px,0);
+    transition:
+        opacity 500ms ease,
+        transform 700ms ease;
+
+    &__image {
+        margin-top: -10px;
+    }
+
+    &__text {
+        position: absolute;
+        bottom: -10px;
+        padding: 7px 25px 16px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    &--show {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+
+    &--fixed {
+        position: fixed;
+        top: 50px;
+    }
+}

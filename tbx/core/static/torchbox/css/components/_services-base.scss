@@ -1,0 +1,47 @@
+///
+/// Setup for individual services pages
+///
+
+$services-blue: #35b8b9;
+$services-orange: #ff572d;
+$services-dark-grey: #2b2b2b;
+$services-wrapper-width: calc(100% - 100px);
+$services-slider-height: 400px;
+
+.services-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    @media #{$tablet} {
+        max-width: $services-wrapper-width;
+    }
+
+    &--relative {
+        position: relative;
+    }
+}
+
+.services-grid {
+    &__item {
+        width: 100%;
+        display: inline-block;
+        vertical-align: top;
+
+        &--one-half {
+            width: 100%;
+
+            @media #{$tablet} {
+                width: 50%;
+            }
+        }
+
+        &--one-quarter {
+            width: 25%;
+        }
+
+        &--three-quarters {
+            width: 75%;
+        }
+    }
+}
