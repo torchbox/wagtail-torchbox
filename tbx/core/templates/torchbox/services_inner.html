@@ -3,7 +3,10 @@
 {% block content %}
 
     {# Hero #}
+    <!-- particles.js container -->
+
     <div class="services-hero js-services-inner">
+        <div class="particles-js" id="particles-js"></div>
         <div class="services-hero__wrapper">
             <div class="services-hero__inner">
                 <div class="services-hero__breadcrumbs">Services</div>
@@ -13,6 +16,8 @@
                 </p>
             </div>
         </div>
+
+        {# Avatar #}
         <div class="services-avatar">
             <div class="services-avatar__image">
                 <img src="{% static 'torchbox/images/will-services-test.jpg' %}">
@@ -21,22 +26,19 @@
                 Find out more
             </div>
         </div>
+
     </div>
     
     {# Slider #}
-    <div class="services-section services-section--white services-section--overflow-hidden">
+    <div class="services-section services-section--white">
         <div class="services-wrapper">
             <h2 class="services-section__heading">We're helping leading organisations do more with data.</h2>
             
             {% spaceless %}
             <div class="services-slider">
-                <div class="services-slider__meta">
-                    <div class="services-slider__meta-content">
+                <h2 class="services-slider__heading">
                         Our team of leading experts in requirements analysis, technical programming, database design and code optimisation have created;
-                    </div>
-                    <div class="services-slider__button services-slider__button--inactive"></div>
-                    <div class="services-slider__button"></div>
-                </div>
+                </h2>
 
                 {# Slider #}
                 <div class="services-slider__tiles">
@@ -167,7 +169,7 @@
             <div class="services-grid">
 
                 {# Team member #}
-                <div class="services-grid__item services-grid__item--one-half">
+                <div class="services-grid__item services-grid__item--one-quarter">
                     <div class="services-team-member">
                         <div class="services-team-member__image">
                             <img src="http://placehold.it/300x300">
@@ -176,14 +178,14 @@
                             <div class="services-team-member__name">Dr Helen Warren</div>
                             <div class="services-team-member__title">Senior Developer</div>
                             <p class="services-team-member__description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tincidunt sem, nec convallis odio. Integer sagittis augue quis accumsan tempus. Aliquam egestas nunc in nisl cursus congue. Nulla eu elit luctus, varius dolor id, faucibus eros. Vivamus consequat, orci ut imperdiet eleifend, mauris orci scelerisque ligula, eu ultrices ipsum ex pretium massa.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tincidunt sem, nec convallis odio. Integer sagittis augue quis accumsan tempus. Aliquam egestas nunc in nisl cursus congue.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 {# Team member #}
-                <div class="services-grid__item services-grid__item--one-half">
+                <div class="services-grid__item services-grid__item--one-quarter">
                     <div class="services-team-member">
                         <div class="services-team-member__image">
                             <img src="http://placehold.it/300x300">
@@ -192,14 +194,14 @@
                             <div class="services-team-member__name">Dr Helen Warren</div>
                             <div class="services-team-member__title">Senior Developer</div>
                             <p class="services-team-member__description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tincidunt sem, nec convallis odio. Integer sagittis augue quis accumsan tempus. Aliquam egestas nunc in nisl cursus congue. Nulla eu elit luctus, varius dolor id, faucibus eros. Vivamus consequat, orci ut imperdiet eleifend, mauris orci scelerisque ligula, eu ultrices ipsum ex pretium massa.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tincidunt sem, nec convallis odio. Integer sagittis augue quis accumsan tempus. Aliquam egestas nunc in nisl cursus congue.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 {# Team member #}
-                <div class="services-grid__item services-grid__item--one-half">
+                <div class="services-grid__item services-grid__item--one-quarter">
                     <div class="services-team-member">
                         <div class="services-team-member__image">
                             <img src="http://placehold.it/300x300">
@@ -208,14 +210,14 @@
                             <div class="services-team-member__name">Dr Helen Warren</div>
                             <div class="services-team-member__title">Senior Developer</div>
                             <p class="services-team-member__description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tincidunt sem, nec convallis odio. Integer sagittis augue quis accumsan tempus. Aliquam egestas nunc in nisl cursus congue. Nulla eu elit luctus, varius dolor id, faucibus eros. Vivamus consequat, orci ut imperdiet eleifend, mauris orci scelerisque ligula, eu ultrices ipsum ex pretium massa.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tincidunt sem, nec convallis odio. Integer sagittis augue quis accumsan tempus. Aliquam egestas nunc in nisl cursus congue.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 {# Team member #}
-                <div class="services-grid__item services-grid__item--one-half">
+                <div class="services-grid__item services-grid__item--one-quarter">
                     <div class="services-team-member">
                         <div class="services-team-member__image">
                             <img src="http://placehold.it/300x300">
@@ -224,7 +226,7 @@
                             <div class="services-team-member__name">Dr Helen Warren</div>
                             <div class="services-team-member__title">Senior Developer</div>
                             <p class="services-team-member__description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tincidunt sem, nec convallis odio. Integer sagittis augue quis accumsan tempus. Aliquam egestas nunc in nisl cursus congue. Nulla eu elit luctus, varius dolor id, faucibus eros. Vivamus consequat, orci ut imperdiet eleifend, mauris orci scelerisque ligula, eu ultrices ipsum ex pretium massa.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tincidunt sem, nec convallis odio. Integer sagittis augue quis accumsan tempus. Aliquam egestas nunc in nisl cursus congue.
                             </p>
                         </div>
                     </div>

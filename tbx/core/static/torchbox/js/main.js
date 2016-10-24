@@ -8,6 +8,7 @@ $(document).ready(function() {
     tbx.jobs();
     tbx.scrollEvents();
     tbx.servicesScrollEvents();
+    tbx.particles();
     tbx.newsletterSignUp();
 });
 
@@ -333,13 +334,13 @@ var tbx = {
 
             // Avatar
             $avatar             = $( '.services-avatar' ),
-            avatarOffset        = $avatar.offset().top - 50,
             avatarClass         = 'services-avatar--fixed',
+            avatarOffset        = $avatar.offset().top - 80,
 
             // Reason list
             $reasonItem         = $( '.services-reasons-list__item' ),
-            reasonItemOffset    = $reasonItem.offset().top - 650,
             reasonClass         = 'services-reasons-list__item--show',
+            reasonItemOffset    = $reasonItem.offset().top - 650,
             delayDuration       = 200;
 
             $( window ).on( 'scroll', function() {
@@ -355,16 +356,119 @@ var tbx = {
                 if ( $window.scrollTop() >= reasonItemOffset ) {
 
                     // Fade in each item with a delay
-                    $reasonItem.each(function(i) {
+                    $reasonItem.each( function(i) {
                         var $item = $(this);
 
-                        setTimeout(function() {
+                        setTimeout( function() {
                             $item.addClass( reasonClass );
-                        }, delayDuration * i);
+                        }, delayDuration * i );
                     });
                 }
             });
         }
+    },
+
+    particles: function() {
+        particlesJS("particles-js", {
+          "particles": {
+            "number": {
+              "value": 50,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#ffffff"
+            },
+            "shape": {
+              "type": "circle",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": 5
+              },
+            },
+            "opacity": {
+              "value": 0.9,
+              "random": false,
+              "anim": {
+                "enable": false,
+                "speed": 2,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 2.5,
+              "anim": {
+                "enable": false,
+                "speed": 50,
+                "size_min": 0.1,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#ffffff",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 2.5,
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 140,
+                "line_linked": {
+                  "opacity": 1
+                }
+              },
+              "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+              },
+              "repulse": {
+                "distance": 200,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              },
+              "remove": {
+                "particles_nb": 2
+              }
+            }
+          },
+          "retina_detect": true
+        });
     },
 
     // SignUp form
