@@ -50,20 +50,32 @@
     &__icon {
         display: inline-block;
         vertical-align: top;
-        width: 25%;
+        width: 100%;
+
+        @media #{$tablet} {
+            width: 25%;
+        }
 
         svg {
-            width: 72%;
+            width: 20%;
+            min-width: 80px;
             max-height: 150px;
             margin-top: 30px;
             fill: $services-blue;
+
+            @media #{$tablet} {
+                width: 72%;
+            }
         }
     }
 
     &__content-wrapper {
         display: inline-block;
         vertical-align: top;
-        width: 75%;
+
+        @media #{$tablet} {
+            width: 75%;
+        }
     }
 
         &__number {
@@ -92,12 +104,17 @@
 }
 
 .services-team-member {
-    margin-top: 40px;
+    margin-bottom: 30px;
+
+    @media #{$small} {
+        margin-bottom: 0;
+        padding-right: 30px;
+    }
 
     &__image {
         display: inline-block;
         vertical-align: top;
-        width: 30%;
+        width: 100%;
 
         img {
             width: 100%;
@@ -106,14 +123,7 @@
     }
 
     &__content {
-        display: inline-block;
-        vertical-align: top;
-        width: 70%;
-        padding: 0 0 0 30px;
-
-        @media #{$tablet} {
-            padding: 0 50px 0 30px;
-        }
+        margin-top: 20px;
     }
 
         &__name {
@@ -134,4 +144,11 @@
             font-weight: 400;
             color: #555;
         }
+}
+
+.particles-js {
+    position: absolute;
+    width: 100%;
+    height: $services-hero-height;
+    opacity: 0.6;
 }

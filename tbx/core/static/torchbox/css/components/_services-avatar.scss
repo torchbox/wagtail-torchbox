@@ -4,6 +4,7 @@
     right: 50px;
     width: 110px;
     height: 110px;
+    display: none;
     border-radius: 50%;
     border: 2px solid #252526;
     overflow: hidden;
@@ -13,6 +14,10 @@
     transition:
         opacity 500ms ease,
         transform 700ms ease;
+
+    @media #{$tablet-large} {
+        display: block;
+    }
 
     &__image {
         margin-top: -10px;

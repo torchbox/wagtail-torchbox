@@ -2,9 +2,10 @@
     width: 100%;
     padding: 50px 0;
     background-color: $services-blue;
+    // background: -webkit-gradient(radial, 15% center, 0, center center, 460, from(#45cccc), to(#23b0b0))
         
     @media #{$tablet} {
-        height: 500px;
+        height: $services-hero-height;
         padding: 0;
     }
 
@@ -13,6 +14,7 @@
         width: 100%;
         height: 100%;
         z-index: 1;
+        margin: 0 auto;
         padding: 0 15px;
 
         @media #{$tablet} {
@@ -24,14 +26,25 @@
         @media #{$tablet} {
             position: absolute;
             bottom: 90px;
+        }
+
+        @media #{$tablet-large} {
             left: 50px;
         }
     }
 
     &__breadcrumbs {
+        position: relative;
+        display: inline-block;
         font-size: 18px;
         text-transform: uppercase;
         color: $services-dark-grey;
+
+        &:after {
+            content: '/';
+            position: absolute;
+            right: -15px;
+        }
     }
 
     &__title {

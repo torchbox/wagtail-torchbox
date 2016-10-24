@@ -1,4 +1,3 @@
-
 .services-section {
     width: 100%;
     padding: 50px 0;
@@ -53,6 +52,10 @@
             border-bottom: 1px solid #dedfdf;
 
             @media #{$tablet} {
+                width: calc(100% - 40px);
+            }
+
+            @media #{$tablet-large} {
                 width: calc(100% - 100px);
             }
         }
