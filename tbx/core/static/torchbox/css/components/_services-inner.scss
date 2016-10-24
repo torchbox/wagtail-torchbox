@@ -4,38 +4,23 @@
 
 .services-reasons-list {
     margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     &__item {
         opacity: 0;
         transform: translate3d(0,30px,0);
+        width: 32%;
+        padding: 20px;
+        margin-bottom: 30px;
+        font-size: 20px;
+        line-height: 30px;
+        background-color: $services-blue;
+        color: #fff;
         transition:
             opacity 500ms ease,
             transform 700ms ease;
-
-        span {
-            position: relative;
-            display: block;
-            margin-bottom: 5px;
-            padding: 20px 20px 20px 40px;
-            line-height: 30px;
-            font-size: 21px;
-            background-color: #fff;
-            color: #0F6B6B;
-
-            @media #{$tablet} {
-                display: inline-block;
-            }
-
-            &:before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 10px;
-                height: 100%;
-                background-color: $services-orange;
-            }
-        }
 
         &--show {
             opacity: 1;

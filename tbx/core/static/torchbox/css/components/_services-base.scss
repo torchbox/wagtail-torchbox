@@ -27,6 +27,19 @@
         display: inline-block;
         vertical-align: top;
 
+        &--hidden {
+            opacity: 0;
+            transform: translate3d(0,30px,0);
+            transition:
+                opacity 500ms ease,
+                transform 700ms ease;
+        }
+
+        &--show {
+            opacity: 1;
+            transform: translate3d(0,0,0);
+        }
+
         &--one-half {
             width: 100%;
 

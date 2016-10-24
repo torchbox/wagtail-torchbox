@@ -8,6 +8,7 @@ $(document).ready(function() {
     tbx.jobs();
     tbx.scrollEvents();
     tbx.servicesScrollEvents();
+    tbx.servicesAvatar();
     tbx.particles();
     tbx.newsletterSignUp();
 });
@@ -15,14 +16,7 @@ $(document).ready(function() {
 var tbx = {
 
     onLoad: function() {
-        var $avatar           = $( '.services-avatar' ),
-            avatarClass       = 'services-avatar--show';
-
-        function displayAvatar() {
-            $avatar.addClass( avatarClass );
-        }
-
-        displayAvatar();
+        
     },
 
     // Hero image carousel/slider
@@ -333,23 +327,30 @@ var tbx = {
             var $window         = $( window ),
 
             // Avatar
-            $avatar             = $( '.services-avatar' ),
-            avatarClass         = 'services-avatar--fixed',
-            avatarOffset        = $avatar.offset().top - 80,
+            $avatarContainer    = $( '.services-avatar-container' ),
+            avatarClass         = 'services-avatar-container--fixed',
+            avatarOffset        = $avatarContainer.offset().top - 40,
 
             // Reason list
             $reasonItem         = $( '.services-reasons-list__item' ),
             reasonClass         = 'services-reasons-list__item--show',
             reasonItemOffset    = $reasonItem.offset().top - 650,
+
+            // Process list
+            $processItem        = $( '.services-grid__item--hidden' ),
+            processClass        = 'services-grid__item--show',
+            processItemOffset   = $processItem.offset().top - 650,
+
+            // Speeds
             delayDuration       = 200;
 
             $( window ).on( 'scroll', function() {
 
                 // Stick avatar
                 if ( $window.scrollTop() >= avatarOffset ) {
-                    $avatar.addClass( avatarClass );
+                    $avatarContainer.addClass( avatarClass );
                 } else {
-                    $avatar.removeClass( avatarClass );
+                    $avatarContainer.removeClass( avatarClass );
                 } 
 
                 // Fade in reasons
@@ -364,8 +365,49 @@ var tbx = {
                         }, delayDuration * i );
                     });
                 }
+
+                // Fade in process items
+                if ( $window.scrollTop() >= processItemOffset ) {
+
+                    // Fade in each item with a delay
+                    $processItem.each( function(i) {
+                        var $item = $(this);
+
+                        setTimeout( function() {
+                            $item.addClass( processClass );
+                        }, delayDuration * i );
+                    });
+                }
             });
         }
+    },
+
+    servicesAvatar: function() {
+        var $avatar                 = $( '.services-avatar' ),
+            $avatarContainer        = $( '.services-avatar-container' );
+            $avatarLink             = $( '.services-avatar-container__button' );
+            $avatarTitle            = $( '.services-avatar-container__find-out-more' );
+            $avatarInfo1            = $( '.services-avatar-container__contact-info' );
+            $avatarInfo2            = $( '.services-avatar-container__contact-details' );
+            $avatarText             = $( '.services-avatar__text' );
+            avatarTextHide          = 'services-avatar__text--hide';
+            avatarInfo2Show         = 'services-avatar-container__contact-details--show';
+            avatarTitleAlt          = 'services-avatar-container__find-out-more--alt';
+            avatarContainerAlt      = 'services-avatar-container--alt';
+            avatarContainerLeft     = 'services-avatar-container--move-left';
+
+        $avatar.on( 'mouseenter', function() {
+            $avatarContainer.addClass( avatarContainerLeft );
+        });
+
+        $avatarLink.on( 'click', function() {
+            $avatarTitle.addClass( avatarTitleAlt );
+            $avatarTitle.text( 'Contact Will' );
+            $avatarContainer.addClass( avatarContainerAlt );
+            $avatarInfo1.hide();
+            $avatarInfo2.addClass( avatarInfo2Show );
+            $avatarText.addClass( avatarTextHide );
+        });
     },
 
     particles: function() {
