@@ -386,19 +386,23 @@ var tbx = {
 
             // Avatar containers
         var $avatar                 = $( '.services-avatar' ),
-            $avatarContainer        = $( '.services-avatar-container' );
+            $avatarContainer        = $( '.services-avatar-container' ),
 
             // Avatar components
-            $avatarLink             = $( '.services-avatar-container__button' );
-            $avatarTitle            = $( '.services-avatar-container__find-out-more' );
-            $avatarInfo1            = $( '.services-avatar-container__contact-info' );
-            $avatarInfo2            = $( '.services-avatar-container__contact-details' );
+            $avatarLink             = $( '.services-avatar-container__button' ),
+            $avatarTitle            = $( '.services-avatar-container__find-out-more' ),
+            $avatarInfo1            = $( '.services-avatar-container__contact-info' ),
+            $avatarInfo2            = $( '.services-avatar-container__contact-details' ),
 
             // Avatar classes
-            avatarInfo2Show         = 'services-avatar-container__contact-details--show';
-            avatarTitleAlt          = 'services-avatar-container__find-out-more--alt';
-            avatarContainerAlt      = 'services-avatar-container--alt';
-            avatarContainerLeft     = 'services-avatar-container--move-left';
+            avatarInfo2Show         = 'services-avatar-container__contact-details--show',
+            avatarTitleAlt          = 'services-avatar-container__find-out-more--alt',
+            avatarContainerAlt      = 'services-avatar-container--alt',
+            avatarContainerLeft     = 'services-avatar-container--move-left',
+            avatarContainerHide     = 'services-avatar-container--hide',
+
+            // Close avatar
+            $closeButton            = $( '.services-avatar-container__close' );
 
         $avatar.on( 'mouseenter', function() {
             $avatarContainer.addClass( avatarContainerLeft );
@@ -410,6 +414,10 @@ var tbx = {
             $avatarContainer.addClass( avatarContainerAlt );
             $avatarInfo1.hide();
             $avatarInfo2.addClass( avatarInfo2Show );
+       });
+
+        $closeButton.on( 'click', function() {
+            $avatarContainer.addClass( avatarContainerHide );
         });
     },
 

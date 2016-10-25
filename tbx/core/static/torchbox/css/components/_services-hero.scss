@@ -4,8 +4,8 @@
     padding: 50px 0;
     overflow: hidden;
     background-color: $services-blue;
-    // background: -webkit-gradient(radial, 15% center, 0, center center, 460, from(#45cccc), to(#23b0b0))
-        
+    background: linear-gradient(to right, #23b0b0 0%,#39c7c7 28%,#23b0b0 100%);
+
     @media #{$tablet} {
         height: $services-hero-height;
         padding: 0;
