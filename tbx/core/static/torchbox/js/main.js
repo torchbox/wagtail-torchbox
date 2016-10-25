@@ -383,14 +383,18 @@ var tbx = {
     },
 
     servicesAvatar: function() {
+
+            // Avatar containers
         var $avatar                 = $( '.services-avatar' ),
             $avatarContainer        = $( '.services-avatar-container' );
+
+            // Avatar components
             $avatarLink             = $( '.services-avatar-container__button' );
             $avatarTitle            = $( '.services-avatar-container__find-out-more' );
             $avatarInfo1            = $( '.services-avatar-container__contact-info' );
             $avatarInfo2            = $( '.services-avatar-container__contact-details' );
-            $avatarText             = $( '.services-avatar__text' );
-            avatarTextHide          = 'services-avatar__text--hide';
+
+            // Avatar classes
             avatarInfo2Show         = 'services-avatar-container__contact-details--show';
             avatarTitleAlt          = 'services-avatar-container__find-out-more--alt';
             avatarContainerAlt      = 'services-avatar-container--alt';
@@ -406,7 +410,6 @@ var tbx = {
             $avatarContainer.addClass( avatarContainerAlt );
             $avatarInfo1.hide();
             $avatarInfo2.addClass( avatarInfo2Show );
-            $avatarText.addClass( avatarTextHide );
         });
     },
 

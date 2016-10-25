@@ -35,14 +35,21 @@
                 </button>
             </div>
             <div class="services-avatar-container__contact-details">
-                Contact 1 <br /> Contact 2
+                <div class="services-avatar-container__contact-item">
+                    {% include "torchbox/includes/svg/phone-svg.html" %}
+                    <a class="phone" href="tel:01608811870">(01608) 811 870</a>
+                </div>
+                <div class="services-avatar-container__contact-item">
+                    {% include "torchbox/includes/svg/envelope-svg.html" %}
+                    <a href="will@torchbox.com">will@torchbox.com</a>
+                </div>
             </div>
         </div>
 
     </div>
     
     {# Slider #}
-    <div class="services-section services-section--white">
+    <div class="services-section services-section--white services-section--border-bottom">
         <div class="services-wrapper">
             <h2 class="services-section__heading">We're helping leading organisations do more with data.</h2>
             
@@ -53,12 +60,47 @@
                 </h2>
 
                 {# Slider #}
-                <div class="services-slider__tiles">
-                    <div class="services-slider__tile-item"></div>
-                    <div class="services-slider__tile-item"></div>
-                    <div class="services-slider__tile-item"></div>
-                </div>
-
+                <ul class="work-list services-slider__tiles">
+                    <li class="services-slider__tile-item">
+                        <a href="/work/centrepoint/"></a>
+                        <div class="content">
+                            <a href="/work/centrepoint/">
+                                <div class="image-container" style="background-image: url('/media/images/wag4.width-1000.jpg');">
+                                    <div class="work-text">
+                                        <h3>This is a heading</h3>
+                                        <h4>Subheading</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="services-slider__tile-item">
+                        <a href="/work/centrepoint/"></a>
+                        <div class="content">
+                            <a href="/work/centrepoint/">
+                                <div class="image-container" style="background-image: url('/media/images/mol.width-1000.jpg');">
+                                    <div class="work-text">
+                                        <h3>This is a heading</h3>
+                                        <h4>Subheading</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="services-slider__tile-item">
+                        <a href="/work/centrepoint/"></a>
+                        <div class="content">
+                            <a href="/work/centrepoint/">
+                                <div class="image-container" style="background-image: url('/media/images/ox.width-1000.jpg');">
+                                    <div class="work-text">
+                                        <h3>This is a heading</h3>
+                                        <h4>Subheading</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
             </div>
             {% endspaceless %}
 
@@ -66,7 +108,7 @@
     </div>
 
     {# Services reasons #}
-    <div class="services-section services-section--white">
+    <div class="services-section services-section--white services-section--border-bottom">
         <div class="services-wrapper">
             <h2 class="services-section__heading">The web applications we design and build</h2>
             <ul class="services-reasons-list">

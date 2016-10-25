@@ -49,7 +49,7 @@
         display: inline-block;
         vertical-align: top;
         padding-left: 12px;
-        padding-top: 12px;
+        padding-top: 20px;
         width: 180px;
         line-height: 21px;
         color: #fff;
@@ -72,6 +72,29 @@
         font-weight: 600;
     }
 
+    &__contact-item {
+        margin: 5px 0 10px;
+
+        svg {
+            width: 17px;
+            fill: $services-blue;
+        }
+
+        a {
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .phone {
+            color: #fff;
+        }
+
+        .mail {
+            
+        }
+    }
+
     &--move-left {
         transform: translate3d(0,0,0);
         background-color: #fff;
@@ -87,6 +110,14 @@
 
         .services-avatar {
             transform: scale(0.8);
+        }
+
+        .services-avatar__text {
+            opacity: 0;
+        }
+
+        .services-avatar__image {
+            margin-top: 0;
         }
     }
 
@@ -116,6 +147,8 @@
 
     &__image {
         margin-top: -10px;
+        transition:
+            margin-top 300ms ease;
     }
 
     &__text {
