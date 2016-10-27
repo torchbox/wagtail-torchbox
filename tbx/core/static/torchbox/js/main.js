@@ -347,12 +347,10 @@ var tbx = {
             // Reason list
             $reasonItem         = $( '.services-reasons-list__item' ),
             reasonClass         = 'services-reasons-list__item--show',
-            reasonItemOffset    = $reasonItem.offset().top - 650,
 
             // Process list
             $processItem        = $( '.services-grid__item--hidden' ),
             processClass        = 'services-grid__item--show',
-            processItemOffset   = $processItem.offset().top - 650,
 
             // Speeds
             delayDuration       = 200;
@@ -367,29 +365,39 @@ var tbx = {
                 } 
 
                 // Fade in reasons
-                if ( $window.scrollTop() >= reasonItemOffset ) {
+                if ( $reasonItem.length ) {
 
-                    // Fade in each item with a delay
-                    $reasonItem.each( function(i) {
-                        var $item = $(this);
+                    var reasonItemOffset = $reasonItem.offset().top - 650;
 
-                        setTimeout( function() {
-                            $item.addClass( reasonClass );
-                        }, delayDuration * i );
-                    });
+                    if ( $window.scrollTop() >= reasonItemOffset ) {
+
+                        // Fade in each item with a delay
+                        $reasonItem.each( function(i) {
+                            var $item = $(this);
+
+                            setTimeout( function() {
+                                $item.addClass( reasonClass );
+                            }, delayDuration * i );
+                        });
+                    }
                 }
 
                 // Fade in process items
-                if ( $window.scrollTop() >= processItemOffset ) {
+                if ( $processItem.length ) {
 
-                    // Fade in each item with a delay
-                    $processItem.each( function(i) {
-                        var $item = $(this);
+                    var processItemOffset   = $processItem.offset().top - 650;
 
-                        setTimeout( function() {
-                            $item.addClass( processClass );
-                        }, delayDuration * i );
-                    });
+                    if ( $window.scrollTop() >= processItemOffset ) {
+
+                        // Fade in each item with a delay
+                        $processItem.each( function(i) {
+                            var $item = $(this);
+
+                            setTimeout( function() {
+                                $item.addClass( processClass );
+                            }, delayDuration * i );
+                        });
+                    }
                 }
             });
         }
