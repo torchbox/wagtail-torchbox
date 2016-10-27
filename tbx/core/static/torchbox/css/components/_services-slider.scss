@@ -1,0 +1,49 @@
+.services-slider {
+    position: relative;
+    margin-top: 30px;
+
+    &__heading {
+        max-width: 800px;
+        margin: 0 0 40px;
+        color: #222;
+        font-size: 22px;
+        font-weight: 300;
+        text-align: left;
+        line-height: 30px;
+    }
+
+    &__tiles {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        
+        @media #{$tablet} {
+            width: calc(100% + 26px);
+            margin-left: -13px;
+        }
+    }
+
+    li,
+    li:first-of-type,
+    li:last-of-type {
+        width: 100%;
+
+        @media #{$tablet} {
+            width: 33.33%;
+        }
+
+        .content {
+            @media #{$tablet} {
+                padding: 0 13px;
+            }
+        }
+    }
+
+        &__tile-item {
+            
+            .content {
+
+            }
+
+        }
+}

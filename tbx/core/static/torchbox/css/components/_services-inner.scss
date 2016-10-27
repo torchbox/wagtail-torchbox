@@ -1,0 +1,150 @@
+///
+/// Individual services pages
+///
+
+.services-reasons-list {
+    margin-top: 40px;
+    margin-bottom: -20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__item {
+        opacity: 0;
+        transform: translate3d(0,30px,0);
+        width: 100%;
+        min-height: 100px;
+        padding: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        line-height: 30px;
+        background-color: $services-orange;
+        color: #fff;
+        transition:
+            opacity 500ms ease,
+            transform 700ms ease;
+
+        @media #{$tablet} {
+            width: 48%;
+        }
+
+        @media #{$tablet-large} {
+            width: 32%;
+            margin-bottom: 30px;
+        }
+
+        &--show {
+            opacity: 1;
+            transform: translate3d(0,0,0);
+        }
+    }
+}
+
+.services-process {
+    margin-top: 40px;
+
+    &__icon {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+
+        @media #{$tablet} {
+            width: 25%;
+        }
+
+        svg {
+            width: 20%;
+            min-width: 80px;
+            max-height: 150px;
+            margin-top: 30px;
+            fill: $services-blue;
+
+            @media #{$tablet} {
+                width: 72%;
+            }
+        }
+    }
+
+    &__content-wrapper {
+        display: inline-block;
+        vertical-align: top;
+
+        @media #{$tablet} {
+            width: 75%;
+        }
+    }
+
+        &__number {
+            font-size: 32px;
+            font-weight: 600;
+            color: $services-orange;
+        }
+
+        &__title {
+            font-size: 30px;
+            font-weight: 500;
+            color: #222;
+            margin-top: -16px;
+            margin-bottom: -3px;
+        }
+
+        &__description {
+            font-size: 18px;
+            font-weight: 400;
+            color: #555;
+
+            @media #{$tablet} {
+                max-width: 85%;
+            }
+        }
+}
+
+.services-team-member {
+    margin-bottom: 30px;
+
+    @media #{$small} {
+        margin-bottom: 0;
+        padding-right: 30px;
+    }
+
+    &__image {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+
+        img {
+            width: 100%;
+            margin-top: 12px;
+        }
+    }
+
+    &__content {
+        margin-top: 20px;
+    }
+
+        &__name {
+            font-size: 25px;
+            font-weight: 400;
+            color: #222;
+        }
+
+        &__title {
+            font-size: 15px;
+            font-weight: 400;
+            color: $services-blue;
+            text-transform: uppercase;
+        }
+
+        &__description {
+            font-size: 16px;
+            font-weight: 400;
+            color: #555;
+        }
+}
+
+.particles-js {
+    position: absolute;
+    width: 100%;
+    height: $services-hero-height;
+    opacity: 0.6;
+}

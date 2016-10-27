@@ -1,15 +1,23 @@
 // Load in required functions
 $(document).ready(function() {
+    tbx.onLoad();
     tbx.heroImages();
     tbx.mobileMenu();
     tbx.loadMore($('.clients'));
     tbx.loadMore($('.blog-listing'));
     tbx.jobs();
     tbx.scrollEvents();
+    tbx.servicesScrollEvents();
+    tbx.servicesAvatar();
+    tbx.particles();
     tbx.newsletterSignUp();
 });
 
 var tbx = {
+
+    onLoad: function() {
+        
+    },
 
     // Hero image carousel/slider
     heroImages: function() {
@@ -323,6 +331,210 @@ var tbx = {
                 $specifications.removeClass( fixedClass );
                 $client.removeClass( showClient )
             }    });
+    },
+
+    servicesScrollEvents: function() {
+
+        if ( $( '.js-services-inner' ).length ) {
+
+            var $window         = $( window ),
+
+            // Avatar
+            $avatarContainer    = $( '.services-avatar-container' ),
+            avatarClass         = 'services-avatar-container--fixed',
+            avatarOffset        = $avatarContainer.offset().top - 40,
+
+            // Reason list
+            $reasonItem         = $( '.services-reasons-list__item' ),
+            reasonClass         = 'services-reasons-list__item--show',
+            reasonItemOffset    = $reasonItem.offset().top - 650,
+
+            // Process list
+            $processItem        = $( '.services-grid__item--hidden' ),
+            processClass        = 'services-grid__item--show',
+            processItemOffset   = $processItem.offset().top - 650,
+
+            // Speeds
+            delayDuration       = 200;
+
+            $( window ).on( 'scroll', function() {
+
+                // Stick avatar
+                if ( $window.scrollTop() >= avatarOffset ) {
+                    $avatarContainer.addClass( avatarClass );
+                } else {
+                    $avatarContainer.removeClass( avatarClass );
+                } 
+
+                // Fade in reasons
+                if ( $window.scrollTop() >= reasonItemOffset ) {
+
+                    // Fade in each item with a delay
+                    $reasonItem.each( function(i) {
+                        var $item = $(this);
+
+                        setTimeout( function() {
+                            $item.addClass( reasonClass );
+                        }, delayDuration * i );
+                    });
+                }
+
+                // Fade in process items
+                if ( $window.scrollTop() >= processItemOffset ) {
+
+                    // Fade in each item with a delay
+                    $processItem.each( function(i) {
+                        var $item = $(this);
+
+                        setTimeout( function() {
+                            $item.addClass( processClass );
+                        }, delayDuration * i );
+                    });
+                }
+            });
+        }
+    },
+
+    servicesAvatar: function() {
+
+            // Avatar containers
+        var $avatar                 = $( '.services-avatar' ),
+            $avatarContainer        = $( '.services-avatar-container' ),
+
+            // Avatar components
+            $avatarLink             = $( '.services-avatar-container__button' ),
+            $avatarTitle            = $( '.services-avatar-container__find-out-more' ),
+            $avatarInfo1            = $( '.services-avatar-container__contact-info' ),
+            $avatarInfo2            = $( '.services-avatar-container__contact-details' ),
+
+            // Avatar classes
+            avatarInfo2Show         = 'services-avatar-container__contact-details--show',
+            avatarTitleAlt          = 'services-avatar-container__find-out-more--alt',
+            avatarContainerAlt      = 'services-avatar-container--alt',
+            avatarContainerLeft     = 'services-avatar-container--move-left',
+            avatarContainerHide     = 'services-avatar-container--hide',
+
+            // Close avatar
+            $closeButton            = $( '.services-avatar-container__close' );
+
+        $avatar.on( 'mouseenter', function() {
+            $avatarContainer.addClass( avatarContainerLeft );
+        });
+
+        $avatarLink.on( 'click', function() {
+            $avatarTitle.addClass( avatarTitleAlt );
+            $avatarTitle.text( 'Contact Will' );
+            $avatarContainer.addClass( avatarContainerAlt );
+            $avatarInfo1.hide();
+            $avatarInfo2.addClass( avatarInfo2Show );
+       });
+
+        $closeButton.on( 'click', function() {
+            $avatarContainer.addClass( avatarContainerHide );
+        });
+    },
+
+    particles: function() {
+        particlesJS("particles-js", {
+          "particles": {
+            "number": {
+              "value": 50,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#ffffff"
+            },
+            "shape": {
+              "type": "circle",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": 5
+              },
+            },
+            "opacity": {
+              "value": 0.9,
+              "random": false,
+              "anim": {
+                "enable": false,
+                "speed": 2,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 2.5,
+              "anim": {
+                "enable": false,
+                "speed": 50,
+                "size_min": 0.1,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#ffffff",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 2.5,
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 140,
+                "line_linked": {
+                  "opacity": 1
+                }
+              },
+              "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+              },
+              "repulse": {
+                "distance": 200,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              },
+              "remove": {
+                "particles_nb": 2
+              }
+            }
+          },
+          "retina_detect": true
+        });
     },
 
     // SignUp form
