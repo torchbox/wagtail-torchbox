@@ -19,7 +19,7 @@ from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
                                         PageChooserBlock, RawHTMLBlock,
                                         RichTextBlock, StreamBlock,
-                                        StructBlock)
+                                        StructBlock, TextBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -555,6 +555,65 @@ class ServicesPage(Page):
     ]
 
 
+# Service Page
+
+class CaseStudyBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=True)
+    case_studies = ListBlock(PageChooserBlock(['torchbox.WorkPage']))
+
+    class Meta:
+        template = 'blocks/case_study_block.html'
+
+
+class HighlightBlock(StructBlock):
+    intro = TextBlock(required=True)
+    highlights = ListBlock(TextBlock())
+
+    class Meta:
+        template = 'blocks/highlight_block.html'
+
+
+class StepByStepBlock(StructBlock):
+    title = CharBlock(required=True)
+    steps = ListBlock(StructBlock([
+        ('title', CharBlock(required=True)),
+        ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
+        ('description', TextBlock(required=True))
+    ]))
+
+    class Meta:
+        template = 'blocks/step_by_step_block.html'
+
+
+class PeopleBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=True)
+    people = ListBlock(PageChooserBlock())
+
+    class Meta:
+        template = 'blocks/people_block.html'
+
+
+class ServicePageBlock(StreamBlock):
+    case_studies = CaseStudyBlock()
+    highlights = HighlightBlock()
+    pull_quote = PullQuoteBlock(template='blocks/pull_quote_block.html')
+    process = StepByStepBlock()
+    people = PeopleBlock()
+
+
+class ServicePage(Page):
+    description = models.TextField()
+    streamfield = StreamField(ServicePageBlock())
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('description', classname="full"),
+        StreamFieldPanel('streamfield'),
+    ]
+
+
 # Blog index page
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
@@ -989,6 +1048,10 @@ class PersonPage(Page, ContactFields):
     is_senior = models.BooleanField(default=False)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
+    short_biography = models.CharField(
+        max_length=255, blank=True,
+        help_text='A shorter summary biography for including in other pages'
+    )
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -1019,6 +1082,7 @@ class PersonPage(Page, ContactFields):
         FieldPanel('is_senior'),
         FieldPanel('intro', classname="full"),
         FieldPanel('biography', classname="full"),
+        FieldPanel('short_biography', classname="full"),
         ImageChooserPanel('image'),
         MultiFieldPanel(ContactFields.panels, "Contact"),
         InlinePanel('related_links', label="Related links"),

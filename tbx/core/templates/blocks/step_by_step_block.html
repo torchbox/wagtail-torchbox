@@ -1,0 +1,31 @@
+<div class="services-section services-section--white services-section--border-bottom">
+    <div class="services-wrapper">
+        <h2 class="services-section__heading services-section__heading--oversize">{{ value.title }}</h2>
+
+        {% spaceless %}
+        <div class="services-grid">
+
+            {% for step in value.steps %}
+            <div class="services-grid__item services-grid__item--one-half services-grid__item--hidden">
+                <div class="services-process">
+                    <div class="services-process__icon">
+                        <div class="svg">
+                            {{ step.icon|safe }}
+                        </div>
+                    </div>
+                    <div class="services-process__content-wrapper">
+                        <div class="services-process__number">{{ forloop.counter|stringformat:"02d" }}</div>
+                        <div class="services-process__title">{{ step.title }}</div>
+                        <p class="services-process__description">
+                        {{ step.description }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% endspaceless %}
+
+    </div> 
+</div>

@@ -1,0 +1,12 @@
+<div class="services-section services-section--white services-section--border-bottom">
+    <div class="services-wrapper">
+        <h2 class="services-section__heading">{{ value.intro }}</h2>
+        <ul class="services-reasons-list">
+            {% for highlight in value.highlights %}
+            <li class="services-reasons-list__item">
+                {{ highlight }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
