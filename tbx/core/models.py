@@ -493,7 +493,6 @@ class AboutPageContentBlock(Orderable):
 
 
 class AboutPage(Page):
-    template = 'torchbox/services_inner.html'
     main_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
