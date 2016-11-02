@@ -54,7 +54,6 @@ def _deploy():
     run('pip install -r requirements.txt')
     run('dj migrate --noinput')
     run('dj collectstatic --noinput')
-    run('dj update_index')
     run('restart')
 
 
