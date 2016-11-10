@@ -569,8 +569,9 @@ class BlogIndexPage(Page):
     show_in_play_menu = models.BooleanField(default=False)
 
     def get_popular_tags(self):
-        # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = BlogPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        # Get a ValuesQuerySet of tags ordered by most popular (exclude 'planet-drupal' as this is effectively
+        # the same as Drupal and only needed for the rss feed)
+        popular_tags = BlogPageTagSelect.objects.all().exclude(tag__name='planet-drupal').values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
@@ -1491,24 +1492,26 @@ class Contact(AbstractEmailForm):
 
 @register_setting
 class GlobalSettings(BaseSetting):
+
+    contact_telephone = models.CharField(max_length=255, help_text='Telephone')
+    contact_email = models.CharField(max_length=255, help_text='Email address')
+    contact_twitter = models.CharField(max_length=255, help_text='Twitter')
+    email_newsletter_teaser = models.CharField(max_length=255, help_text='Text that sits above the email newsletter')
+    oxford_address_title = models.CharField(max_length=255, help_text='Full address')
+    oxford_address = models.CharField(max_length=255, help_text='Full address')
+    oxford_address_link = models.URLField(max_length=255, help_text='Link to google maps')
+    oxford_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
+    bristol_address_title = models.CharField(max_length=255, help_text='Full address')
+    bristol_address = models.CharField(max_length=255, help_text='Full address')
+    bristol_address_link = models.URLField(max_length=255, help_text='Link to google maps')
+    bristol_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
+    phili_address_title = models.CharField(max_length=255, help_text='Full address')
+    phili_address = models.CharField(max_length=255, help_text='Full address')
+    phili_address_link = models.URLField(max_length=255, help_text='Link to google maps')
+    phili_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
+
     class Meta:
         verbose_name = 'Global Settings'
-    ContactTelephone = models.CharField(max_length=255, help_text='Telephone')
-    ContactEmail = models.CharField(max_length=255, help_text='Email address')
-    ContactTwitter = models.CharField(max_length=255, help_text='Twitter')
-    EmailNewsletterTeaser = models.CharField(max_length=255, help_text='Text that sits above the email newsletter')
-    OxfordAddressTitle = models.CharField(max_length=255, help_text='Full address')
-    OxfordAddress = models.CharField(max_length=255, help_text='Full address')
-    OxfordAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
-    OxfordAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
-    BristolAddressTitle = models.CharField(max_length=255, help_text='Full address')
-    BristolAddress = models.CharField(max_length=255, help_text='Full address')
-    BristolAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
-    BristolAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
-    PhiliAddressTitle = models.CharField(max_length=255, help_text='Full address')
-    PhiliAddress = models.CharField(max_length=255, help_text='Full address')
-    PhiliAddressLink = models.URLField(max_length=255, help_text='Link to google maps')
-    PhiliAddressSVG = models.CharField(max_length=9000, help_text='Paste SVG code here')
 
 
 class SubMenuItemBlock(StreamBlock):

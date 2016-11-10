@@ -16,4 +16,8 @@
         </li>
     {% endfor %}
     </ul>
+
+    {% if posts|length > 3 %}
+        <button>Show more</button>
+    {% endif %}
 {% endif %}

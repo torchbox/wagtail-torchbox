@@ -54,8 +54,8 @@ def _deploy():
     run('pip install -r requirements.txt')
     run('dj migrate --noinput')
     run('dj collectstatic --noinput')
-    run('dj update_index')
     run('restart')
+    run('python -m whitenoise.compress $CFG_STATIC_DIR')
 
 
 def _pull_data():

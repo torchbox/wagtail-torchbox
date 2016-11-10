@@ -124,6 +124,7 @@
 .about-hero {
   $height: calc(100vh - 85px);
   $height-mob: 400px;
+  $height-tablet: 600px;
   position: relative;
   width: 100%;
   margin-bottom: 0;
@@ -138,6 +139,10 @@
 
   @media #{$desktop} {
     background-attachment: fixed;
+  }
+
+  .page-servicespage & {
+    padding-bottom: 0;
   }
 
   h2 {
@@ -252,6 +257,9 @@
     height: $height-mob;
     @media #{$tablet} {
       display: none;
+      height: $height-tablet;
+    }
+    @media #{$desktop} {
       height: $height;
     }
   }
@@ -260,12 +268,16 @@
     height: auto;
 
     @media #{$tablet} {
-      height: 100vh;
+      height: $height-tablet;
 
       h2 {
         margin-top: 140px;
       }
 
+    }
+
+    @media #{$desktop} {
+      height: 100vh;
     }
   }
 
