@@ -2,9 +2,12 @@
     position: absolute;
     top: 40px;
     right: 0;
-    width: 345px;
+    width: 414px;
     z-index: 1;
     transform: translate3d(185px, 0, 0);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    overflow: hidden;
     display: none;
     transition:
         background-color 500ms ease,
@@ -37,11 +40,11 @@
     &__contact-info {
         display: inline-block;
         vertical-align: top;
-        padding-left: 12px;
-        padding-top: 12px;
-        width: 180px;
-        line-height: 21px;
+        padding: 20px 0 20px 20px;
+        width: 270px;
+        line-height: 26px;
         opacity: 0;
+        font-size: 22px;
         transition:
             opacity 500ms ease;
     }
@@ -87,12 +90,13 @@
     }
 
     &__button {
-        border: 1px solid #23b0b0;
-        padding: 5px 10px;
-        margin-top: 10px;
+        border: none;
+        background: $orange;
+        margin-top: 12px;
         display: inline-block;
         font-size: 15px;
         font-weight: 600;
+        color: #fff;
     }
 
     &__contact-item {
@@ -131,16 +135,8 @@
             opacity: 1;
         }
 
-        .services-avatar {
-            transform: scale(0.8);
-        }
-
         .services-avatar__text {
             opacity: 0;
-        }
-
-        .services-avatar__image {
-            margin-top: 0;
         }
     }
 
@@ -163,20 +159,24 @@
     position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 2px solid #252526;
-    overflow: hidden;
+    width: 139px;
+    height: 139px;
     z-index: 5;
     cursor: pointer;
     transition:
         transform 300ms ease;
 
     &__image {
-        margin-top: -10px;
+        border-radius: 50%;
+        @media #{$tablet-large} {
+            border-radius: 0;
+        }
         transition:
             margin-top 300ms ease;
+    }
+
+    &__image img {
+        height: auto;
     }
 
     &__text {

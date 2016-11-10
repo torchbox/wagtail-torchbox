@@ -1,33 +1,35 @@
 .services-blockquote {
     position: relative;
+    background: #102626;
+    padding: 20px;
 
     @media #{$tablet} {
-        padding-left: 120px;
-        padding-right: 120px;
+        padding: 50px 95px 50px 190px;
+        overflow: hidden;
 
         &:before {
             content: '';
             position: absolute;
-            left: 0;
+            left: -80px;
             top: -20px;
-            width: 200px;
-            height: 200px;
+            width: 340px;
+            height: 340px;
             background-image: url(/static/torchbox/images/pattern-sml.png);
-            background-size: 200px;
+            background-size: 340px;
             opacity: 0.3;
         }
     }
 
     blockquote {
         margin: 0;
-        font-weight: 300;
+        font-weight: 400;
 
-        font-size: 24px;
+        font-size: 20px;
         line-height: 33px;
-        color: #222;
+        color: #fff;
 
         @media #{$tablet} {
-            font-size: 30px;
+            font-size: 26px;
             line-height: 40px;
         }
     }
@@ -39,7 +41,7 @@
         font-size: 13px;
         color: $services-blue;
         font-style: normal;
-        font-weight: 600;
+        font-weight: 500;
         display: block;
 
         @media #{$tablet} {
