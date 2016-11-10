@@ -1,25 +1,21 @@
 .services-section {
     width: 100%;
-    padding: 50px 0;
+    padding: 50px 0 0 0;
 
     @media #{$tablet} {
-        padding: 90px 0;
+        padding: 55px 0 0 0;
     }
 
     &__heading {
         font-size: 32px;
         color: #000;
-        font-weight: 300;
+        font-weight: 600;
         text-align: left;
 
         @media #{$tablet} {
             font-size: 35px;
         }
 
-        &--oversize {
-            font-size: 40px;
-            font-weight: 400;
-        }
     }
 
     &__paragraph {
@@ -36,6 +32,10 @@
 
     &--grey {
         background-color: #e4e9ec;
+    }
+
+    &--dark-grey {
+        background-color: #102626;
     }
 
     &--overflow-hidden {
@@ -64,4 +64,8 @@
             }
         }
     }
+}
+
+.block-people .services-section {
+    padding-bottom: 50px;
 }

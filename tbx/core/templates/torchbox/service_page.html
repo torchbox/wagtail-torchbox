@@ -16,13 +16,7 @@
         </div>
 
         {# Avatar #}
-        <div class="services-avatar-container">
-            <div class="services-avatar-container__find-out-more">
-                {{ settings.torchbox.GlobalSettings.contact_widget_intro }}
-            </div>
-            <div class="services-avatar-container__close">
-                {% include "torchbox/includes/svg/close-svg.html" %}
-            </div>
+        <div class="services-avatar-container services-avatar-container--move-left">
             <div class="services-avatar">
                 <div class="services-avatar__image">
                     {% image settings.torchbox.GlobalSettings.contact_person.image fill-100x100-c100 %}
