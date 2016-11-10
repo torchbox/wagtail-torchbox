@@ -2,9 +2,9 @@
     <a href="{{ value.page.url }}"{% if value.page.url in request.path %} class="active"{% endif %}>{{ value.page.title }}</a>
     {% if value.subitems %}
     <ul>
-        <li>
-            {{ value.subitems }}
-        </li>
+        {% for subitem in value.subitems %}
+        <li>{{ subitem }}</li>
+        {% endfor %}
     </ul>
     {% endif %}
 </li>
