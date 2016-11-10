@@ -32,6 +32,7 @@
         <link rel="shortcut icon" href="{% static "torchbox/images/favicon.ico" %}" />
 
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'torchbox/vendor/pygments.css' %}">
 
         {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
 
@@ -86,7 +87,7 @@
                     <ul>
                         <li>
                             <div class="content">
-                                <a href="tel:{{ settings.torchbox.GlobalSettings.ContactTelephone }}">
+                                <a href="tel:{{ settings.torchbox.GlobalSettings.contact_telephone }}">
                                     <div class="svg">
                                         <svg version="1.1"
                                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
@@ -122,13 +123,13 @@
                                         </svg>
                                     </div>
                                     <i class="icon-phone"></i>
-                                    <span>{{ settings.torchbox.GlobalSettings.ContactTelephone }}</span>
+                                    <span>{{ settings.torchbox.GlobalSettings.contact_telephone }}</span>
                                 </a>
                             </div>
                         </li>
                         <li>
                             <div class="content">
-                                <a href="mailto:{{ settings.torchbox.GlobalSettings.ContactEmail }}">
+                                <a href="mailto:{{ settings.torchbox.GlobalSettings.contact_email }}">
                                     <div class="svg">
                                         <svg version="1.1"
                                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
@@ -149,13 +150,13 @@
                                         </svg>
                                     </div>
                                     <i class="icon-mail"></i>
-                                    <span>{{ settings.torchbox.GlobalSettings.ContactEmail }}</span>
+                                    <span>{{ settings.torchbox.GlobalSettings.contact_email }}</span>
                                 </a>
                             </div>
                         </li>
                         <li>
                             <div class="content">
-                                <a href="https://twitter.com/{{ settings.torchbox.GlobalSettings.ContactTwitter }}">
+                                <a href="https://twitter.com/{{ settings.torchbox.GlobalSettings.contact_twitter }}">
                                     <div class="svg">
                                         <svg version="1.1"
                                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
@@ -183,7 +184,7 @@
                                         </svg>
                                     </div>
                                     <i class="icon-twitter"></i>
-                                    <span>@{{ settings.torchbox.GlobalSettings.ContactTwitter }}</span>
+                                    <span>@{{ settings.torchbox.GlobalSettings.contact_twitter }}</span>
                                 </a>
                             </div>
                         </li>
@@ -198,40 +199,40 @@
                 <div class="offices">
                     <ul>
                         <li>
-                            <a href="{{ settings.torchbox.GlobalSettings.OxfordAddressLink }}">
+                            <a href="{{ settings.torchbox.GlobalSettings.oxford_address_link }}">
                                 <div class="svg">
-                                    {{ settings.torchbox.GlobalSettings.OxfordAddressSVG|safe }}
+                                    {{ settings.torchbox.GlobalSettings.oxford_address_svg|safe }}
                                 </div>
                                 <div class="content">
-                                    <h3>{{ settings.torchbox.GlobalSettings.OxfordAddressTitle }}</h3>
+                                    <h3>{{ settings.torchbox.GlobalSettings.oxford_address_title }}</h3>
                                     <div class="vcard">
-                                        {{ settings.torchbox.GlobalSettings.OxfordAddress }}
+                                        {{ settings.torchbox.GlobalSettings.oxford_address }}
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ settings.torchbox.GlobalSettings.BristolAddressLink }}">
+                            <a href="{{ settings.torchbox.GlobalSettings.bristol_address_link }}">
                                 <div class="svg">
-                                    {{ settings.torchbox.GlobalSettings.BristolAddressSVG|safe }}
+                                    {{ settings.torchbox.GlobalSettings.bristol_address_svg|safe }}
                                 </div>
                                 <div class="content">
-                                    <h3>{{ settings.torchbox.GlobalSettings.BristolAddressTitle }}</h3>
+                                    <h3>{{ settings.torchbox.GlobalSettings.bristol_address_title }}</h3>
                                     <div class="vcard">
-                                        {{ settings.torchbox.GlobalSettings.BristolAddress }}
+                                        {{ settings.torchbox.GlobalSettings.bristol_address }}
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ settings.torchbox.GlobalSettings.PhiliAddressLink }}">
+                            <a href="{{ settings.torchbox.GlobalSettings.phili_address_link }}">
                                 <div class="svg">
-                                    {{ settings.torchbox.GlobalSettings.PhiliAddressSVG|safe }}
+                                    {{ settings.torchbox.GlobalSettings.phili_address_svg|safe }}
                                 </div>
                                 <div class="content">
-                                    <h3>{{ settings.torchbox.GlobalSettings.PhiliAddressTitle }}</h3>
+                                    <h3>{{ settings.torchbox.GlobalSettings.phili_address_title }}</h3>
                                     <div class="vcard">
-                                        {{ settings.torchbox.GlobalSettings.PhiliAddress }}
+                                        {{ settings.torchbox.GlobalSettings.phili_address }}
                                     </div>
                                 </div>
                             </a>
@@ -242,7 +243,7 @@
 
 
                 <div class="newsletter">
-                    <h3>{{ settings.torchbox.GlobalSettings.EmailNewsletterTeaser }}</h3>
+                    <h3>{{ settings.torchbox.GlobalSettings.email_newsletter_teaser }}</h3>
                     <form class="newsletter-signup" action="/newsletter-subscribe" method="get">
                         <input class="newsletter-email" name="email" type="text" placeholder="Your email">
                         <button class="newsletter-button">Sign up</button>
