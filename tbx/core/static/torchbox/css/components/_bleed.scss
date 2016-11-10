@@ -205,11 +205,11 @@
         &.active {
           cursor: pointer;
           color: $orange;
-          &:after {
-            width: 100%;
-            left: 0;
-            right: auto;
-          }
+        }
+        &:hover:after {
+          width: 100%;
+          left: 0;
+          right: auto;
         }
       }
     }
