@@ -7,19 +7,16 @@
             <div class="image-container" {% if not post.colour %}style="background-image: url('{{ background.url }}');"{% endif %}></div>
             <div class="blog-text">
                 <div id="author" class="author clearfix" >
-                    {% with post.related_author.all as authors %}
+                    <label>Blog</label>
+                    <h3>{{ post.title }}</h3>
 
-                        <label>Blog post</label>
-                        <h3>{{ post.title }}</h3>
+                    {% for author in post.related_author.all %}
+                        <div class="name">{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</div>
+                    {% endfor %}
 
-                        {% for author in authors %}
-                            <div class="name">{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</div>
-                        {% endfor %}
-
-                        {% if post.date %}
-                            <span class="date">{{ post.date|date:"j F Y" }}</span>
-                        {% endif %}
-                    {% endwith %}
+                    {% if post.date %}
+                        <span class="date">{{ post.date|date:"j F Y" }}</span>
+                    {% endif %}
                 </div>
             </div>
         </div>
