@@ -50,5 +50,15 @@
     </div>
 
     {% include_block page.streamfield %}
+
+    <div class="services-avatar-footer">
+        <div class="services-avatar-footer__image">
+            {% image settings.torchbox.GlobalSettings.contact_person.image fill-150x150-c100 %}
+        </div>
+        <div class="services-avatar-footer__info">
+            <h3>{{ settings.torchbox.GlobalSettings.contact_widget_intro }}</h3>
+            <button>{{ settings.torchbox.GlobalSettings.contact_widget_button_text }}</button>
+        </div>
+    </div>
     
 {% endblock %}

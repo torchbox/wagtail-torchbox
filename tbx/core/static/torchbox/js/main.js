@@ -372,7 +372,8 @@ var tbx = {
                 // Fade in process items
                 if ( $processItem.length ) {
 
-                    var processItemOffset   = $processItem.offset().top - 650;
+                    var processItemOffset   = $processItem.offset().top - 650,
+                        processItemDefault  = $processItem.offset().top;
 
                     if ( $window.scrollTop() >= processItemOffset ) {
 
@@ -385,7 +386,15 @@ var tbx = {
                             }, delayDuration * i );
                         });
                     }
+
+                    // Show/hide 'fly-in' CTA
+                    if ( $window.scrollTop() >= processItemDefault ) {
+                        $( '.services-avatar-container' ).removeClass( 'services-avatar-container--move-left' );
+                    } else {
+                        $( '.services-avatar-container' ).addClass( 'services-avatar-container--move-left' );
+                    }
                 }
+
             });
         }
     },
