@@ -9,6 +9,7 @@ $(document).ready(function() {
     tbx.scrollEvents();
     tbx.servicesScrollEvents();
     tbx.servicesAvatar();
+    tbx.servicesCarousel();
     tbx.particles();
     tbx.newsletterSignUp();
 });
@@ -436,6 +437,30 @@ var tbx = {
         $closeButton.on( 'click', function() {
             $avatarContainer.addClass( avatarContainerHide );
         });
+    },
+
+    servicesCarousel: function() {
+
+        if ( $( '.services-slider ul' ).length ) {
+            $( '.services-slider ul' ).owlCarousel({
+                loop: true,
+                margin: 20,
+                items: 1,
+                autoplay: true,
+                autoplayTimeout: 500000,
+                slideSpeed: 500,
+                paginationSpeed: 500,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    1100: {
+                        items: 1,
+                        stagePadding: 100
+                    }   
+                }
+            });
+        }
     },
 
     particles: function() {
