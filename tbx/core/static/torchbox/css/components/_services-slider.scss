@@ -38,12 +38,98 @@
             }
         }
     }
+    
+    // Apologies.
+    // Backend dev is reusing components from elsewhere on the
+    // site, so due to inability to change markup at this time,
+    // beating the specificity is the only option in order to
+    // alter the look of the component (I can't alter the markup).
+    .work-list {
+        li {
+            width: 100%;
+            background-color: #fbfcfc;
 
-        &__tile-item {
-            
             .content {
-
+                padding: 0;
             }
 
+            .image-container {
+                width: 100%;
+                height: 330px;
+                display: inline-block;
+                vertical-align: top;
+
+                @media #{$tablet} { 
+                    width: 330px;
+                }
+            }
+
+            .work-text {
+                position: static;
+                display: inline-block;
+                vertical-align: top;
+                width: 100%;
+                padding: 10px 30px 30px;
+
+                @media #{$tablet} { 
+                    width: calc(100% - 425px);
+                    padding: 100px 60px 0;
+                }
+
+                &:before {
+                    display: none;
+                }
+
+                h3 {
+                    color: #222;
+                    font-size: 32px;
+                    font-weight: 500;
+                }
+            }
+
+            &:hover {
+                .work-text {
+                    h3,
+                    h4 {
+                        transform: translate3d(0, 0, 0);
+                    }
+
+                    &:after {
+                        width: 0;
+                    }
+                }
+            }
         }
+    }
+}
+
+// Carousel UI overrides
+.services-slider {
+
+    .owl-stage {
+        @media (min-width: 1100px) { 
+            left: -100px;
+        }
+    }
+
+    .owl-dot span {
+        width: 10px;
+        height: 10px;
+        background: none repeat scroll 0 0 #cbcdce;
+        transition:
+            background 300ms ease;
+
+        &:hover {
+            background: none repeat scroll 0 0 #333;
+        }
+    }
+
+    .owl-dots {
+        padding-bottom: 60px;
+
+        .active span {
+            transform: none;
+            background: #333;
+        }
+    }
 }

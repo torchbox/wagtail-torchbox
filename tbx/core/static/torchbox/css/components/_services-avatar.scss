@@ -3,7 +3,7 @@
     top: 40px;
     right: 0;
     width: 414px;
-    z-index: 1;
+    z-index: 9;
     transform: translate3d(525px, 0, 0);
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -200,6 +200,13 @@
 .services-avatar-footer {
     max-width: 800px;
     margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+
+    @media #{$tablet} { 
+        padding: 0;
+        text-align: left;
+    }
 
     &__image {
         width: 150px;
@@ -216,6 +223,7 @@
         vertical-align: top;
         padding-left: 35px;
         margin-top: 30px;
+        text-align: left;
 
         h3 {
             font-size: 28px;
