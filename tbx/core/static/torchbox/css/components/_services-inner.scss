@@ -11,25 +11,16 @@
 
     &__item {
         position: relative;
-        opacity: 0;
-        transform: translate3d(0,30px,0);
         width: 100%;
         margin-bottom: 20px;
-        padding: 10px 0 10px 60px;
+        padding: 10px 0 10px 0;
         font-size: 26px;
         line-height: 30px;
         transition:
             opacity 500ms ease,
             transform 700ms ease;
-        &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            height: 35px;
-            width: 35px;
-            background: $orange;
-            border-radius: 50%;
-        }
+
+
         @media #{$tablet} {
             width: 48%;
         }
@@ -37,17 +28,22 @@
         @media #{$tablet-large} {
             margin-bottom: 30px;
         }
-
-        &--show {
-            opacity: 1;
-            transform: translate3d(0,0,0);
-        }
     }
-    &__item span {
-        padding-bottom: 8px;
+
+    &__tick {
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__detail {
         border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 20px;
+        display: inline-block;
+        width: calc(100% - 50px);
+        margin-left: 10px;
     }
-
 }
 
 .services-process {
