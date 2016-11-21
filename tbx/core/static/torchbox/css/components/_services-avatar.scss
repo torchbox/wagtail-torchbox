@@ -4,7 +4,7 @@
     right: 0;
     width: 414px;
     z-index: 1;
-    transform: translate3d(185px, 0, 0);
+    transform: translate3d(525px, 0, 0);
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     overflow: hidden;
@@ -193,6 +193,44 @@
 
         &--hide {
             opacity: 0;
+        }
+    }
+}
+
+.services-avatar-footer {
+    max-width: 800px;
+    margin: 60px auto;
+
+    &__image {
+        width: 150px;
+        display: inline-block;
+        vertical-align: top;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__info {
+        display: inline-block;
+        vertical-align: top;
+        padding-left: 35px;
+        margin-top: 30px;
+
+        h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #222;
+        }
+
+        button {
+            border: none;
+            background: $orange;
+            margin-top: 12px;
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
         }
     }
 }

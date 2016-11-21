@@ -353,27 +353,28 @@ var tbx = {
                 } 
 
                 // Fade in reasons
-                if ( $reasonItem.length ) {
+                // if ( $reasonItem.length ) {
 
-                    var reasonItemOffset = $reasonItem.offset().top - 650;
+                //     var reasonItemOffset = $reasonItem.offset().top - 650;
 
-                    if ( $window.scrollTop() >= reasonItemOffset ) {
+                //     if ( $window.scrollTop() >= reasonItemOffset ) {
 
-                        // Fade in each item with a delay
-                        $reasonItem.each( function(i) {
-                            var $item = $(this);
+                //         // Fade in each item with a delay
+                //         $reasonItem.each( function(i) {
+                //             var $item = $(this);
 
-                            setTimeout( function() {
-                                $item.addClass( reasonClass );
-                            }, delayDuration * i );
-                        });
-                    }
-                }
+                //             setTimeout( function() {
+                //                 $item.addClass( reasonClass );
+                //             }, delayDuration * i );
+                //         });
+                //     }
+                // }
 
                 // Fade in process items
                 if ( $processItem.length ) {
 
-                    var processItemOffset   = $processItem.offset().top - 650;
+                    var processItemOffset   = $processItem.offset().top - 650,
+                        processItemDefault  = $processItem.offset().top + 100;
 
                     if ( $window.scrollTop() >= processItemOffset ) {
 
@@ -386,7 +387,15 @@ var tbx = {
                             }, delayDuration * i );
                         });
                     }
+
+                    // Show/hide 'fly-in' CTA
+                    if ( $window.scrollTop() >= processItemDefault ) {
+                        $( '.services-avatar-container' ).removeClass( 'services-avatar-container--move-left' );
+                    } else {
+                        $( '.services-avatar-container' ).addClass( 'services-avatar-container--move-left' );
+                    }
                 }
+
             });
         }
     },
