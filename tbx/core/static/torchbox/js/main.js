@@ -329,8 +329,10 @@ var tbx = {
 
             // Avatar
             $avatarContainer    = $( '.services-avatar-container' ),
-            avatarClass         = 'services-avatar-container--fixed',
-            avatarOffset        = $avatarContainer.offset().top - 40,
+            avatarFixedClass    = 'services-avatar-container--fixed',
+            avatarRightClass    = 'services-avatar-container--move-right',
+            avatarOffset        = $avatarContainer.offset().top - 350,
+            avatarOffsetBottom  = 200;
 
             // Reason list
             $reasonItem         = $( '.services-reasons-list__item' ),
@@ -346,11 +348,18 @@ var tbx = {
             $( window ).on( 'scroll', function() {
 
                 // Stick avatar
+                var scrollBottom = $(window).scrollTop() + $(window).height();
+                var atBottom = parseInt(scrollBottom) >= parseInt($(document).height() - avatarOffsetBottom);
                 if ( $window.scrollTop() >= avatarOffset ) {
-                    $avatarContainer.addClass( avatarClass );
+                    $avatarContainer.addClass( avatarFixedClass );
+                    $avatarContainer.addClass( avatarRightClass );
+                     if (atBottom) {
+                        $avatarContainer.removeClass( avatarRightClass );
+                    }
                 } else {
-                    $avatarContainer.removeClass( avatarClass );
-                } 
+                    $avatarContainer.removeClass( avatarFixedClass );
+                    $avatarContainer.removeClass( avatarRightClass );
+                }
 
                 // Fade in reasons
                 // if ( $reasonItem.length ) {
@@ -388,12 +397,13 @@ var tbx = {
                         });
                     }
 
+                    // commented this out as now handled above
                     // Show/hide 'fly-in' CTA
-                    if ( $window.scrollTop() >= processItemDefault ) {
-                        $( '.services-avatar-container' ).removeClass( 'services-avatar-container--move-left' );
-                    } else {
-                        $( '.services-avatar-container' ).addClass( 'services-avatar-container--move-left' );
-                    }
+                    // if ( $window.scrollTop() >= processItemDefault ) {
+                    //     $( '.services-avatar-container' ).removeClass( 'services-avatar-container--move-left' );
+                    // } else {
+                    //     $( '.services-avatar-container' ).addClass( 'services-avatar-container--move-left' );
+                    // }
                 }
 
             });
@@ -417,12 +427,14 @@ var tbx = {
             avatarTitleAlt          = 'services-avatar-container__find-out-more--alt',
             avatarContainerAlt      = 'services-avatar-container--alt',
             avatarContainerLeft     = 'services-avatar-container--move-left',
+            avatarContainerRight    = 'services-avatar-container--move-right',
             avatarContainerHide     = 'services-avatar-container--hide',
 
             // Close avatar
             $closeButton            = $( '.services-avatar-container__close' );
 
         $avatar.on( 'mouseenter', function() {
+            $avatarContainer.removeClass( avatarContainerRight );
             $avatarContainer.addClass( avatarContainerLeft );
         });
 
