@@ -34,14 +34,14 @@
             <div class="services-avatar-container__contact-details">
                 <div class="services-avatar-container__contact-item">
                     {% include "torchbox/includes/svg/phone-svg.html" %}
-                    <a class="phone" href="tel:{{ settings.torchbox.GlobalSettings.contact_person.telephone }}">
-                        {{ settings.torchbox.GlobalSettings.contact_person.telephone }}
+                    <a class="phone" href="tel:{{ settings.torchbox.GlobalSettings.contact_telephone }}">
+                        {{ settings.torchbox.GlobalSettings.contact_telephone }}
                     </a>
                 </div>
                 <div class="services-avatar-container__contact-item">
                     {% include "torchbox/includes/svg/envelope-svg.html" %}
-                    <a href="mailto:{{ settings.torchbox.GlobalSettings.contact_person.email }}">
-                        {{ settings.torchbox.GlobalSettings.contact_person.email }}
+                    <a href="mailto:{{ settings.torchbox.GlobalSettings.contact_email }}">
+                        {{ settings.torchbox.GlobalSettings.contact_email }}
                     </a>
                 </div>
             </div>
