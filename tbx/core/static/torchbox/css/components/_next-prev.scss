@@ -106,6 +106,7 @@
       background: rgba($dark, 0.35);
       background: linear-gradient(to top, rgba(43,48,51,0.9), rgba(43,48,51,0));
       mix-blend-mode: multiply;
+      will-change: opacity;
     }
   }
   &:hover {
