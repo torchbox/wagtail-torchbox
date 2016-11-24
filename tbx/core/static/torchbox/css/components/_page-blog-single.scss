@@ -21,8 +21,6 @@
       height: 400px;
     }
       &:after {
-        mix-blend-mode: multiply;
-        will-change: opacity;
         height: 100%;
         background-color: rgba(43,48,51,0.75);
         background: linear-gradient(to top, #2b3033, rgba(43,48,51,0));
@@ -47,8 +45,6 @@
         background-image: url("/static/torchbox/images/dot-pattern.png");
         background-size: cover;
         background-color: transparent;
-        mix-blend-mode: soft-light;
-        will-change: opacity;
         opacity: 0.3;
         filter: blur(3px);
       }
@@ -61,8 +57,6 @@
       @extend .blue;
       background: $grey;
       &:after {
-        mix-blend-mode: unset;
-        will-change: opacity;
         opacity: 1;
       }
       .content:after {
