@@ -2,7 +2,6 @@
     position: relative;
     width: 100%;
     padding: 50px 0;
-    overflow: hidden;
     background-color: #102626;
     background: linear-gradient(to right, #102626 0%,#243e3f 28%,#102626 100%);
 
@@ -40,7 +39,7 @@
         display: inline-block;
         font-size: 18px;
         text-transform: uppercase;
-        color: $services-dark-grey;
+        color: white;
 
         &:after {
             content: '/';

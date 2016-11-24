@@ -1,6 +1,6 @@
 .services-avatar-container {
     position: absolute;
-    top: 40px;
+    top: 350px;
     right: 0;
     width: 414px;
     z-index: 9;
@@ -140,13 +140,31 @@
         }
     }
 
+    &--move-right {
+        transform: translate3d(275px, 0, 0);
+        background-color: #fff;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+        .services-avatar-container__find-out-more {
+            opacity: 0;
+        }
+
+        .services-avatar-container__contact-info {
+            opacity: 0;
+        }
+
+        .services-avatar__text {
+            opacity: 0;
+        }
+    }
+
     &--alt {
         background-color: #2c2c2c;
     }
 
     &--fixed {
         position: fixed;
-        top: 40px;
+        top: 350px;
     }
 
     &--hide {

@@ -72,7 +72,7 @@
                 padding: 10px 30px 30px;
 
                 @media #{$tablet} { 
-                    width: calc(100% - 425px);
+                    width: calc(100% - 330px);
                     padding: 60px 60px 0;
                 }
 
@@ -131,5 +131,45 @@
             transform: none;
             background: #333;
         }
+    }
+
+    .owl-prev,
+    .owl-next {
+        text-indent: -9999px;
+        //@include hidden();
+        position: absolute;
+        width: 50px;
+        height: 120px;
+        top: calc((330px / 2) - (120px / 2)); // height of carousel/2 - height of button/2
+        background-color: rgba($orange, 0.8);
+    }
+
+    .owl-prev {
+        left: 0;
+    }
+
+    .owl-next {
+        right: 0;
+    }
+
+    .owl-prev::after,
+    .owl-next::after {
+        display: block;
+        text-indent: 0;
+        color: white;
+        font-size: 100px;
+        font-weight: 100;
+        position: relative;
+        top: -60px;
+    }
+
+    .owl-prev::after {
+        content: "\2039";
+        left: 10px;
+    }
+
+    .owl-next::after {
+        content: "\203A";
+        left: 15px;
     }
 }
