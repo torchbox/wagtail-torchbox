@@ -6,7 +6,6 @@
 
     {% include "torchbox/includes/hero.html" with hero=self.hero.all %}
 
-    <!-- /about-tbx -->
     <section class="about-tbx">
         <div class="container">
             <!--
@@ -21,16 +20,13 @@
     </section>
 
     <section id="posts" class="container">
-
         <h2>{{ self.blog_title|safe }}</h2>
         {% homepage_blog_listing %}
 
         <h2>{{ self.work_title|safe }}</h2>
         {% homepage_work_listing %}
-
     </section>
 
-    <!-- /clients -->
     <div class="container">
         <section class="clients">
             <h2>{{ self.clients_title|safe }}</h2>
@@ -41,7 +37,6 @@
     <section class="hiring">
         <div class="container">
             {% homepage_job_listing 0 %}
-        </div> <!-- /container -->
-    </section> <!-- /hiring -->
-
+        </div>
+    </section>
 {% endblock %}

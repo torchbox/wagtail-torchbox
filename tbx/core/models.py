@@ -31,6 +31,7 @@ from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
                                           Image)
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtailmarkdown.fields import MarkdownBlock
 
 
 # Streamfield blocks and config
@@ -109,9 +110,7 @@ class StoryBlock(StreamBlock):
     pullquote = PullQuoteBlock()
     raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
     embed = EmbedBlock(icon="code")
-    # photogrid = PhotoGridBlock()
-    # testimonial = PullQuoteImageBlock(label="Testimonial", icon="group")
-    # stats = StatsBlock()
+    markdown = MarkdownBlock(icon="code")
 
 
 # A couple of abstract classes that contain commonly used fields
