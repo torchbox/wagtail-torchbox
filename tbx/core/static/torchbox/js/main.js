@@ -446,10 +446,11 @@ var tbx = {
                 loop: true,
                 margin: 20,
                 items: 1,
-                autoplay: true,
+                autoplay: 5000,
                 autoplayTimeout: 500000,
                 slideSpeed: 500,
                 paginationSpeed: 500,
+                nav: true,
                 responsive: {
                     0: {
                         items: 1

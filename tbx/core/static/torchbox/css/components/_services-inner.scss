@@ -12,7 +12,7 @@
     &__item {
         position: relative;
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         padding: 10px 0 10px 0;
         font-size: 26px;
         line-height: 30px;
@@ -38,6 +38,16 @@
         display: inline-block;
         width: calc(100% - 50px);
         margin-left: 10px;
+    }
+
+    &__item:last-child &__detail {
+        border-bottom: 0;
+    }
+    @media #{$tablet} {
+        &__item:last-child &__detail,
+        &__item:nth-last-child(2) &__detail {
+            border-bottom: 0;
+        }
     }
 }
 
@@ -73,6 +83,10 @@
         @media #{$tablet} {
             width: 75%;
             float: right;
+        }
+
+        @media #{$tablet-large} {
+             width: 82%;
         }
     }
 
