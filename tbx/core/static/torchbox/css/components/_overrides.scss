@@ -90,8 +90,6 @@
     width: 100%;
     background: rgba($dark, 0.75);
     background: linear-gradient(to top, rgba($dark, 1) , rgba($dark, 0));
-    mix-blend-mode: multiply;
-    will-change: opacity;
   }
   img {
     object-fit: cover;

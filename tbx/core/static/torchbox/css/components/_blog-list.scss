@@ -157,8 +157,6 @@
       left: 0;
       bottom: 0;
       background: linear-gradient(to top, rgba($dark, 1) 50%,rgba($dark, 0) 100%);
-      mix-blend-mode: multiply;
-      will-change: opacity;
       @include custom-bounce;
       @media #{$tablet-large} {
         height: 50%;
