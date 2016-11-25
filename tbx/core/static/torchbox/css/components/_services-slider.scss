@@ -73,6 +73,10 @@
 
                 @media #{$tablet} { 
                     width: calc(100% - 330px);
+                    padding: 30px 60px 0;
+                }
+
+                @media #{$tablet-large} {
                     padding: 60px 60px 0;
                 }
 
@@ -84,6 +88,14 @@
                     color: #222;
                     font-size: 32px;
                     font-weight: 500;
+
+                    @media #{$tablet} { 
+                        font-size: 28px;
+                    }
+
+                    @media #{$tablet-large} {
+                        font-size: 32px;
+                    }
                 }
             }
 
