@@ -1,0 +1,20 @@
+<div class="services-section services-section--grey">
+    <div class="services-wrapper">
+        <h2 class="services-section__heading">{{ value.title }}</h2>
+
+        {% spaceless %}
+        <div class="services-slider">
+            <h2 class="services-slider__heading">
+                {{ value.intro }}
+            </h2>
+
+            <ul class="work-list">
+                {% for case_study in value.case_studies %}
+                {% include "torchbox/tags/work_list_item.html" with work=case_study.specific %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endspaceless %}
+
+    </div>
+</div>
