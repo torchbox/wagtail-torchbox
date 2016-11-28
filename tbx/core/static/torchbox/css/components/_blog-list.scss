@@ -41,6 +41,7 @@
             background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
             background-size: cover;
             mix-blend-mode: soft-light;
+            will-change: opacity;
             opacity: 0.3;
         }
     }
@@ -61,6 +62,7 @@
         background: $grey;
         &:after {
           mix-blend-mode: unset;
+          will-change: opacity;
           opacity: 1;
         }
         &:before {
@@ -155,7 +157,6 @@
       left: 0;
       bottom: 0;
       background: linear-gradient(to top, rgba($dark, 1) 50%,rgba($dark, 0) 100%);
-      mix-blend-mode: multiply;
       @include custom-bounce;
       @media #{$tablet-large} {
         height: 50%;
