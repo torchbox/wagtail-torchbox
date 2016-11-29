@@ -1,7 +1,7 @@
 <form class="grant-application" action="{{ self.url }}" method="post">
     {% csrf_token %}
     {% if form.errors %}
-    <p class="error">There were some errors with your form. Please amend the fields highlighted below.</p>
+        <p class="error">There were some errors with your form. Please amend the fields highlighted below.</p>
     {% endif %}
     <div class="input">
         {{ form.name.errors }}

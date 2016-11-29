@@ -42,13 +42,3 @@
 
     </section>
 {% endblock %}
-
-{% block extra_js %}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
-
-    <script>
-        //global var for current_page set here so that it can be used by the script being called
-        var blog_page = window.location.pathname;
-    </script>
-    <script src="{% static 'torchbox/js/ajax-load.js' %}"></script>
-{% endblock %}

@@ -14,7 +14,6 @@
       width: 100%;
       background: rgba(43,48,51,0.75);
       background: linear-gradient(to top, #2b3033, rgba(43,48,51,0));
-      mix-blend-mode: multiply;
     }
     .container {
       position: absolute;
@@ -64,25 +63,35 @@
   padding: 30px 0;
   margin: 30px 0 0;
   border-top: 1px solid rgba(43,48,51,0.15);
+
   @media #{$tablet} {
     padding: 30px 0 60px;
     margin: 30px 0 0;
   }
-  > * {
+
+  .author-holder {
+    margin-bottom: 30px;
     @media #{$tablet} {
       float: left;
+
+      width: 70%;
+      margin-bottom: 0;
     }
-    &:first-of-type {
-      margin-bottom: 30px;
-      @media #{$tablet} {
-        width: 70%;
-        margin-bottom: 0;
-      }
+  }
+
+  .author {
+    margin-bottom: 1em;
+    overflow: hidden;
+
+    @media #{$tablet} {
+      clear: both;
     }
-    &:last-of-type {
-      @media #{$tablet} {
-        width: 30%;
-      }
+  }
+
+  .tags {
+    @media #{$tablet} {
+      float: left;
+      width: 30%;
     }
   }
 }
