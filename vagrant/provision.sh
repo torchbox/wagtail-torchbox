@@ -15,13 +15,15 @@ set +e
 su - vagrant -c "createdb $PROJECT_NAME"
 set -e
 
-# Replace previous line with this if you are using Python 2
+
+# Set up virtual environment
 su - vagrant -c "virtualenv --python=python3 $VIRTUALENV_DIR"
 
 su - vagrant -c "echo $PROJECT_DIR > $VIRTUALENV_DIR/.project"
 
 
 # Install PIP requirements
+su - vagrant -c "$PIP install pip --upgrade"
 su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements.txt"
 
 # Install Fabric 2
