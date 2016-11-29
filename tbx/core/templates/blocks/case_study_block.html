@@ -10,7 +10,9 @@
 
             <ul class="work-list">
                 {% for case_study in value.case_studies %}
-                {% include "torchbox/tags/work_list_item.html" with work=case_study.specific %}
+                {% with case_study.page.specific as page %}
+                  {% include "torchbox/includes/work_item.html" with page=page title=case_study.title|default:page.title descriptive_title=case_study.descriptive_title|default:page.descriptive_title image=case_study.image|default:page.homepage_image %}
+                {% endwith %}
                 {% endfor %}
             </ul>
         </div>
