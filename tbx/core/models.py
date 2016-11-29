@@ -19,7 +19,7 @@ from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
                                         PageChooserBlock, RawHTMLBlock,
                                         RichTextBlock, StreamBlock,
-                                        StructBlock)
+                                        StructBlock, TextBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -553,6 +553,67 @@ class ServicesPage(Page):
     ]
 
 
+# Service Page
+
+class CaseStudyBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=True)
+    case_studies = ListBlock(PageChooserBlock(['torchbox.WorkPage']))
+
+    class Meta:
+        template = 'blocks/case_study_block.html'
+
+
+class HighlightBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=True)
+    highlights = ListBlock(TextBlock())
+
+    class Meta:
+        template = 'blocks/highlight_block.html'
+
+
+class StepByStepBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=True)
+    steps = ListBlock(StructBlock([
+        ('title', CharBlock(required=True)),
+        ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
+        ('description', TextBlock(required=True))
+    ]))
+
+    class Meta:
+        template = 'blocks/step_by_step_block.html'
+
+
+class PeopleBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=True)
+    people = ListBlock(PageChooserBlock())
+
+    class Meta:
+        template = 'blocks/people_block.html'
+
+
+class ServicePageBlock(StreamBlock):
+    case_studies = CaseStudyBlock()
+    highlights = HighlightBlock()
+    pull_quote = PullQuoteBlock(template='blocks/pull_quote_block.html')
+    process = StepByStepBlock()
+    people = PeopleBlock()
+
+
+class ServicePage(Page):
+    description = models.TextField()
+    streamfield = StreamField(ServicePageBlock())
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('description', classname="full"),
+        StreamFieldPanel('streamfield'),
+    ]
+
+
 # Blog index page
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
@@ -987,6 +1048,10 @@ class PersonPage(Page, ContactFields):
     is_senior = models.BooleanField(default=False)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
+    short_biography = models.CharField(
+        max_length=255, blank=True,
+        help_text='A shorter summary biography for including in other pages'
+    )
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -1017,6 +1082,7 @@ class PersonPage(Page, ContactFields):
         FieldPanel('is_senior'),
         FieldPanel('intro', classname="full"),
         FieldPanel('biography', classname="full"),
+        FieldPanel('short_biography', classname="full"),
         ImageChooserPanel('image'),
         MultiFieldPanel(ContactFields.panels, "Contact"),
         InlinePanel('related_links', label="Related links"),
@@ -1494,7 +1560,7 @@ class Contact(AbstractEmailForm):
 class GlobalSettings(BaseSetting):
 
     contact_telephone = models.CharField(max_length=255, help_text='Telephone')
-    contact_email = models.CharField(max_length=255, help_text='Email address')
+    contact_email = models.EmailField(max_length=255, help_text='Email address')
     contact_twitter = models.CharField(max_length=255, help_text='Twitter')
     email_newsletter_teaser = models.CharField(max_length=255, help_text='Text that sits above the email newsletter')
     oxford_address_title = models.CharField(max_length=255, help_text='Full address')
@@ -1510,8 +1576,43 @@ class GlobalSettings(BaseSetting):
     phili_address_link = models.URLField(max_length=255, help_text='Link to google maps')
     phili_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
 
+    # Contact widget
+    contact_person = models.ForeignKey(
+        'torchbox.PersonPage', related_name='+', null=True,
+        on_delete=models.SET_NULL,
+        help_text="Ensure this person has telephone and email fields set")
+    contact_widget_intro = models.TextField()
+    contact_widget_call_to_action = models.TextField()
+    contact_widget_button_text = models.TextField()
+
     class Meta:
         verbose_name = 'Global Settings'
+
+    panels = [
+        FieldPanel('contact_telephone'),
+        FieldPanel('contact_email'),
+        FieldPanel('contact_twitter'),
+        FieldPanel('email_newsletter_teaser'),
+        FieldPanel('oxford_address_title'),
+        FieldPanel('oxford_address'),
+        FieldPanel('oxford_address_link'),
+        FieldPanel('oxford_address_svg'),
+        FieldPanel('bristol_address_title'),
+        FieldPanel('bristol_address'),
+        FieldPanel('bristol_address_link'),
+        FieldPanel('bristol_address_svg'),
+        FieldPanel('phili_address_title'),
+        FieldPanel('phili_address'),
+        FieldPanel('phili_address_link'),
+        FieldPanel('phili_address_svg'),
+
+        MultiFieldPanel([
+            PageChooserPanel('contact_person'),
+            FieldPanel('contact_widget_intro'),
+            FieldPanel('contact_widget_call_to_action'),
+            FieldPanel('contact_widget_button_text'),
+        ], 'Contact widget')
+    ]
 
 
 class SubMenuItemBlock(StreamBlock):
