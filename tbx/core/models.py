@@ -566,7 +566,7 @@ class CaseStudyBlock(StructBlock):
 
 class HighlightBlock(StructBlock):
     title = CharBlock(required=True)
-    intro = TextBlock(required=True)
+    intro = TextBlock(required=False)
     highlights = ListBlock(TextBlock())
 
     class Meta:
@@ -575,7 +575,7 @@ class HighlightBlock(StructBlock):
 
 class StepByStepBlock(StructBlock):
     title = CharBlock(required=True)
-    intro = TextBlock(required=True)
+    intro = TextBlock(required=False)
     steps = ListBlock(StructBlock([
         ('title', CharBlock(required=True)),
         ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
