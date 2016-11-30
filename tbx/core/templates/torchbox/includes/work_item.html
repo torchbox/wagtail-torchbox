@@ -1,0 +1,18 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<li>
+    <a href="{% pageurl page %}">
+        <div class="content">
+            {% if image %}
+                {% image image fill-500x500 as background %}
+                <div class="image-container" style="background-image: url('{{ background.url }}');"></div>
+            {% endif %}
+
+            <div class="work-text">
+                <label>Work</label>
+                <h3>{{ descriptive_title }}</h3>
+                <h4>{{ title }}</h4>
+            </div>
+        </div>
+    </a>
+</li>
