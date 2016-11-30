@@ -3,8 +3,8 @@
 <li>
     <a href="{% pageurl page %}">
         <div class="content">
-            {% if homepage_image %}
-                {% image homepage_image fill-500x500 as background %}
+            {% if image %}
+                {% image image fill-500x500 as background %}
                 <div class="image-container" style="background-image: url('{{ background.url }}');"></div>
             {% endif %}
 
