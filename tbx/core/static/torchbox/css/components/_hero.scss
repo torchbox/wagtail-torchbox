@@ -8,9 +8,33 @@
   
   @media #{$tablet} {
     height: calc(100vh - 84px);
-    min-height: 600px;
     margin: 0 0 50px 0;
   }
+
+  //ios7 doesn't like vh and means the
+  // hero fills masses of space. So for 
+  // mobile and tablet (with contained media queries)
+  // set some max heights.
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (orientation: portrait) {
+    max-height: 400px;
+  }
+
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (orientation: landscape) {
+    max-height: 250px;
+  }
+
+  @media only screen 
+  and (min-device-width: 569px) 
+  and (max-device-width: 1024px) {
+    max-height: 600px;
+  }
+
   h1 {
     position: absolute;
     top: 0;

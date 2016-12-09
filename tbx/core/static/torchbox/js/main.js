@@ -1,14 +1,24 @@
 // Load in required functions
 $(document).ready(function() {
+    tbx.onLoad();
     tbx.heroImages();
     tbx.mobileMenu();
-    tbx.loadMore();
+    tbx.loadMore($('.clients'));
+    tbx.loadMore($('.blog-listing'));
     tbx.jobs();
     tbx.scrollEvents();
+    tbx.servicesScrollEvents();
+    tbx.servicesAvatar();
+    tbx.servicesCarousel();
+    tbx.particles();
     tbx.newsletterSignUp();
 });
 
 var tbx = {
+
+    onLoad: function() {
+        
+    },
 
     // Hero image carousel/slider
     heroImages: function() {
@@ -117,30 +127,28 @@ var tbx = {
         });
     },
 
-
     // 'Load more' functionality (show/hide)
-    loadMore: function() {
-        var $clients          = $( '.clients' ),
-            $clientsButton    = $clients.find( 'button' ),
-            $list             = $( '.clients ul' ),
+    loadMore: function($parent) {
+        var $clients          = $parent,
+            $button           = $parent.find( 'button' ),
+            $list             = $parent.find( 'ul' ),
             visible           = 'visible',
             moreLabel         = 'Show more',
             lessLabel         = 'Show less';
 
-        $clientsButton.click(function() {
-
-            var $clientsButton  = $(this);
+        $button.click(function() {
+            var $button  = $(this);
 
             // If already open
             if ( $list.hasClass( visible ) ) {
                 $list.removeClass( visible )
-                $clientsButton.html( moreLabel );
+                $button.html( moreLabel );
             }
 
             // If already closed
             else {
                 $list.addClass( visible );
-                $clientsButton.html( lessLabel );
+                $button.html( lessLabel );
             }
         });
     },
@@ -311,6 +319,264 @@ var tbx = {
                 }  
             });
         }
+    },
+
+    servicesScrollEvents: function() {
+
+        if ( $( '.js-services-inner' ).length ) {
+
+            var $window         = $( window ),
+
+            // Avatar
+            $avatarContainer    = $( '.services-avatar-container' ),
+            avatarFixedClass    = 'services-avatar-container--fixed',
+            avatarRightClass    = 'services-avatar-container--move-right',
+            avatarOffset        = $avatarContainer.offset().top - 350,
+            avatarOffsetBottom  = 200;
+
+            // Reason list
+            $reasonItem         = $( '.services-reasons-list__item' ),
+            reasonClass         = 'services-reasons-list__item--show',
+
+            // Process list
+            $processItem        = $( '.services-grid__item--hidden' ),
+            processClass        = 'services-grid__item--show',
+
+            // Speeds
+            delayDuration       = 200;
+
+            $( window ).on( 'scroll', function() {
+
+                // Stick avatar
+                var scrollBottom = $(window).scrollTop() + $(window).height();
+                var atBottom = parseInt(scrollBottom) >= parseInt($(document).height() - avatarOffsetBottom);
+                if ( $window.scrollTop() >= avatarOffset ) {
+                    $avatarContainer.addClass( avatarFixedClass );
+                    $avatarContainer.addClass( avatarRightClass );
+                     if (atBottom) {
+                        $avatarContainer.removeClass( avatarRightClass );
+                    }
+                } else {
+                    $avatarContainer.removeClass( avatarFixedClass );
+                    $avatarContainer.removeClass( avatarRightClass );
+                }
+
+                // Fade in reasons
+                // if ( $reasonItem.length ) {
+
+                //     var reasonItemOffset = $reasonItem.offset().top - 650;
+
+                //     if ( $window.scrollTop() >= reasonItemOffset ) {
+
+                //         // Fade in each item with a delay
+                //         $reasonItem.each( function(i) {
+                //             var $item = $(this);
+
+                //             setTimeout( function() {
+                //                 $item.addClass( reasonClass );
+                //             }, delayDuration * i );
+                //         });
+                //     }
+                // }
+
+                // Fade in process items
+                if ( $processItem.length ) {
+
+                    var processItemOffset   = $processItem.offset().top - 650,
+                        processItemDefault  = $processItem.offset().top + 100;
+
+                    if ( $window.scrollTop() >= processItemOffset ) {
+
+                        // Fade in each item with a delay
+                        $processItem.each( function(i) {
+                            var $item = $(this);
+
+                            setTimeout( function() {
+                                $item.addClass( processClass );
+                            }, delayDuration * i );
+                        });
+                    }
+
+                    // commented this out as now handled above
+                    // Show/hide 'fly-in' CTA
+                    // if ( $window.scrollTop() >= processItemDefault ) {
+                    //     $( '.services-avatar-container' ).removeClass( 'services-avatar-container--move-left' );
+                    // } else {
+                    //     $( '.services-avatar-container' ).addClass( 'services-avatar-container--move-left' );
+                    // }
+                }
+
+            });
+        }
+    },
+
+    servicesAvatar: function() {
+
+            // Avatar containers
+        var $avatar                 = $( '.services-avatar' ),
+            $avatarContainer        = $( '.services-avatar-container' ),
+
+            // Avatar components
+            $avatarLink             = $( '.services-avatar-container__button' ),
+            $avatarTitle            = $( '.services-avatar-container__find-out-more' ),
+            $avatarInfo1            = $( '.services-avatar-container__contact-info' ),
+            $avatarInfo2            = $( '.services-avatar-container__contact-details' ),
+
+            // Avatar classes
+            avatarInfo2Show         = 'services-avatar-container__contact-details--show',
+            avatarTitleAlt          = 'services-avatar-container__find-out-more--alt',
+            avatarContainerAlt      = 'services-avatar-container--alt',
+            avatarContainerLeft     = 'services-avatar-container--move-left',
+            avatarContainerRight    = 'services-avatar-container--move-right',
+            avatarContainerHide     = 'services-avatar-container--hide',
+
+            // Close avatar
+            $closeButton            = $( '.services-avatar-container__close' );
+
+        $avatar.on( 'mouseenter', function() {
+            $avatarContainer.removeClass( avatarContainerRight );
+            $avatarContainer.addClass( avatarContainerLeft );
+        });
+
+        $avatarLink.on( 'click', function() {
+            $avatarTitle.addClass( avatarTitleAlt );
+            $avatarTitle.text( 'Contact Will' );
+            $avatarContainer.addClass( avatarContainerAlt );
+            $avatarInfo1.hide();
+            $avatarInfo2.addClass( avatarInfo2Show );
+       });
+
+        $closeButton.on( 'click', function() {
+            $avatarContainer.addClass( avatarContainerHide );
+        });
+    },
+
+    servicesCarousel: function() {
+
+        if ( $( '.services-slider ul' ).length ) {
+            $( '.services-slider ul' ).owlCarousel({
+                loop: true,
+                margin: 20,
+                items: 1,
+                autoplay: 5000,
+                autoplayTimeout: 500000,
+                slideSpeed: 500,
+                paginationSpeed: 500,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    1100: {
+                        items: 1,
+                        stagePadding: 100
+                    }   
+                }
+            });
+        }
+    },
+
+    particles: function() {
+        particlesJS("particles-js", {
+          "particles": {
+            "number": {
+              "value": 50,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#ffffff"
+            },
+            "shape": {
+              "type": "circle",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": 5
+              },
+            },
+            "opacity": {
+              "value": 0.9,
+              "random": false,
+              "anim": {
+                "enable": false,
+                "speed": 2,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 2.5,
+              "anim": {
+                "enable": false,
+                "speed": 50,
+                "size_min": 0.1,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#ffffff",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 2.5,
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 140,
+                "line_linked": {
+                  "opacity": 1
+                }
+              },
+              "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+              },
+              "repulse": {
+                "distance": 200,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              },
+              "remove": {
+                "particles_nb": 2
+              }
+            }
+          },
+          "retina_detect": true
+        });
     },
 
     // SignUp form

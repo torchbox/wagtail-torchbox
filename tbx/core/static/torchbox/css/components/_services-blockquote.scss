@@ -1,0 +1,64 @@
+.services-blockquote {
+    position: relative;
+    background: #102626;
+    padding: 20px;
+
+    @media #{$tablet} {
+        padding: 50px 95px 50px 190px;
+        overflow: hidden;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: -80px;
+            top: -20px;
+            width: 340px;
+            height: 340px;
+            background-image: url(/static/torchbox/images/pattern-sml.png);
+            background-size: 340px;
+            opacity: 0.3;
+        }
+    }
+
+    blockquote {
+        margin: 0;
+        font-weight: 400;
+
+        font-size: 20px;
+        line-height: 33px;
+        color: #fff;
+
+        @media #{$tablet} {
+            font-size: 26px;
+            line-height: 40px;
+        }
+    }
+
+    cite {
+        position: relative;
+        margin-top: 20px;
+        text-transform: uppercase;
+        font-size: 13px;
+        color: $services-blue;
+        font-style: normal;
+        font-weight: 500;
+        display: block;
+
+        @media #{$tablet} {
+            padding-left: 15px;
+            font-size: 16px;
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                width: 10px;
+                height: 1px;
+                background-color: $services-blue;
+            }
+        }
+    }
+}

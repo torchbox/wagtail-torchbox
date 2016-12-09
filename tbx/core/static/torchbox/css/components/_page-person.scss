@@ -74,8 +74,20 @@
           display: inline-block;
           @include line-hover;
         }
-
       }
+    }
+
+    // Hide blog posts after the third until
+    // show more button is clicked.
+    // More accurate to do it this way than using a height
+    // like the clients on the home page - also in this case the
+    // heights of the list items vary so animating height wouldn't work.
+    li:nth-child(n+4) {
+      display: none;
+    }
+
+    ul.visible li:nth-child(n+4) {
+      display: list-item;
     }
   }
 }

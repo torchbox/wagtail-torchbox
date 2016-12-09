@@ -7,7 +7,7 @@
 
   clear: both;
   @include cf;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   @media #{$tablet} {
     margin-bottom: 100px;
   }
@@ -102,7 +102,6 @@
       left: 0;
       bottom: 0;
       background: linear-gradient(to top, rgba($dark, 0.75) 50%,rgba($dark, 0) 100%);
-      mix-blend-mode: multiply;
       @include custom-bounce;
     }
     &:after {

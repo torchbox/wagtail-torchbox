@@ -66,16 +66,20 @@
 .work-hero {
   $height: calc(100vh - 85px);
   $height-mob: 400px;
+  $height-tablet: 600px;
   position: relative;
   width: 100%;
-  height: calc(100vh - 70px);
+  height: $height-mob;
   background-size: cover;
   @media #{$tablet} {
     //top: 79px;
     //position: fixed;
-    height: $height;
+    height: $height-tablet;
     margin-bottom: 0;
     background-size: cover;
+  }
+  @media #{$desktop} {
+    height: $height;
   }
   &:before {
     content: '';
@@ -86,14 +90,24 @@
     width: 100%;
     background: rgba($dark, 0.75);
     background: linear-gradient(to top, rgba($dark, 1) , rgba($dark, 0));
-    mix-blend-mode: multiply;
   }
   img {
     object-fit: cover;
     height: $height-mob;
     @media #{$tablet} {
       display: none;
+      height: $height-tablet;
+    }
+    @media #{$desktop} {
       height: $height;
     }
   }
+}
+
+.page-contact .about-hero {
+  padding-bottom: 0;
+}
+
+.page-contact footer .contact {
+  display: none;
 }
