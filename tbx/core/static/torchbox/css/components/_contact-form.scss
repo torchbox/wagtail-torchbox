@@ -33,7 +33,6 @@ $gutter: 15px;
 
 		.contact-form__row {
 			padding: 10px 0;
-			position: relative; //prevents jumping bug on page load (ticket 107).
 
 			@media #{$tablet} {
 				padding: 10px $gutter 0;
@@ -98,6 +97,10 @@ $gutter: 15px;
 				    font-size: 18px;
 				    color: $orange;
 				}
+			}
+
+			.contact-form__field-wrapper {
+				position: relative;
 			}
 
 			.contact-action {
