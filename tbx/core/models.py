@@ -521,10 +521,17 @@ class ServicesPageService(Orderable):
     title = models.TextField()
     svg = models.TextField(null=True)
     description = models.TextField()
+    link = models.ForeignKey(
+        'torchbox.ServicePage',
+        related_name='+',
+        blank=True,
+        null=True,
+    )
 
     panels = [
         FieldPanel('title'),
         FieldPanel('description'),
+        PageChooserPanel('link'),
         FieldPanel('svg')
     ]
 
