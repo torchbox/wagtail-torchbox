@@ -164,3 +164,20 @@
     height: $services-hero-height;
     opacity: 0.6;
 }
+
+
+// StreamField section for featured pages
+.services-grid .home-work {
+    margin-top: 40px;
+}
+.services-grid .home-work .content {
+    padding: 0;
+}
+.services-grid .home-work .work-text {
+    left: 0;
+    width: 100%;
+}
+.services-grid .featured-page {
+    margin-bottom: 30px;
+    padding-right: 30px;
+}
