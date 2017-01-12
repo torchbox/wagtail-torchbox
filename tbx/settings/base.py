@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'tbx.core',
 
     'wagtail.contrib.wagtailsearchpromotions',
+    'wagtail.contrib.wagtailsitemaps',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
