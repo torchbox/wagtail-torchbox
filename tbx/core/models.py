@@ -607,12 +607,26 @@ class PeopleBlock(StructBlock):
         template = 'blocks/people_block.html'
 
 
+class FeaturedPagesBlock(StructBlock):
+    title = CharBlock()
+    pages = ListBlock(StructBlock([
+        ('page', PageChooserBlock()),
+        ('image', ImageChooserBlock()),
+        ('text', TextBlock()),
+        ('sub_text', CharBlock(max_length=100)),
+    ]))
+
+    class Meta:
+        template = 'blocks/featured_pages_block.html'
+
+
 class ServicePageBlock(StreamBlock):
     case_studies = CaseStudyBlock()
     highlights = HighlightBlock()
     pull_quote = PullQuoteBlock(template='blocks/pull_quote_block.html')
     process = StepByStepBlock()
     people = PeopleBlock()
+    featured_pages = FeaturedPagesBlock()
 
 
 class ServicePage(Page):
