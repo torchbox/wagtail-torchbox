@@ -470,13 +470,17 @@ var tbx = {
                     1100: {
                         items: 1,
                         stagePadding: 100
-                    }   
+                    }
                 }
             });
         }
     },
 
     particles: function() {
+        if(!window.particlesJS){
+            return;
+        }
+
         particlesJS("particles-js", {
           "particles": {
             "number": {
