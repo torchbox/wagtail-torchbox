@@ -17,7 +17,7 @@ $(document).ready(function() {
 var tbx = {
 
     onLoad: function() {
-        
+
     },
 
     // Hero image carousel/slider
@@ -32,7 +32,7 @@ var tbx = {
             currentItem       = null;
 
         // On load we're forcing the second item to appear (via CSS)
-        // but once the user interacts with the hero we need to 
+        // but once the user interacts with the hero we need to
         // revert this behaviour to default
         function resetHero() {
             $heroContainer.removeClass( initialLoad );
@@ -213,7 +213,7 @@ var tbx = {
         map = new google.maps.Map(document.getElementById( 'map' ), mapOptions);
 
 
-        // Set up markers    
+        // Set up markers
         function setMarkers(map, locations) {
 
             for (i = 0; i < locations.length; i++) {
@@ -225,7 +225,7 @@ var tbx = {
                     infowindow      = new google.maps.InfoWindow(),
                     markerInfo      = '<div class="map-infobox">' + title + '</div>';
 
-                // Create markers    
+                // Create markers
                 var marker = new google.maps.Marker({
                     map:        map,
                     position:   markerLocation,
@@ -266,7 +266,7 @@ var tbx = {
 
         // Show all markers
         function showAllMarkers() {
-            for (var i = 0; i < locations.length; i++) {    
+            for (var i = 0; i < locations.length; i++) {
                 markers[i].setMap(map);
             }
         }
@@ -286,7 +286,7 @@ var tbx = {
                 else {
                     showAllMarkers();
                 }
-            }); 
+            });
         }
 
         setMarkers(map, locations)
@@ -310,13 +310,13 @@ var tbx = {
                 if ( $( window ).scrollTop() >= offset ) {
                     $specifications.addClass( fixedClass );
                     $client.addClass( showClient )
-                } 
+                }
 
                 // Un-stick
                 else {
                     $specifications.removeClass( fixedClass );
                     $client.removeClass( showClient )
-                }  
+                }
             });
         }
     },
