@@ -329,16 +329,6 @@ class HomePageClient(Orderable, RelatedLink):
 
 
 class HomePage(Page):
-    hero_intro = models.TextField(blank=True)
-    hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
-    hero_video_poster_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    intro_title = models.TextField(blank=True)
     intro_body = RichTextField(blank=True)
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
@@ -349,9 +339,7 @@ class HomePage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('hero_intro'),
         InlinePanel('hero', label="Hero"),
-        FieldPanel('intro_title'),
         FieldPanel('intro_body'),
         FieldPanel('work_title'),
         FieldPanel('blog_title'),
