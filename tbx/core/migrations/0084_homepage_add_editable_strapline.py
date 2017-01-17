@@ -15,11 +15,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='homepage',
             name='hero_intro_primary',
-            field=models.TextField(blank=True),
+            field=models.TextField(blank=True, default='We do digital'),
+            preserve_default=False
         ),
         migrations.AddField(
             model_name='homepage',
             name='hero_intro_secondary',
-            field=models.TextField(blank=True),
+            field=models.TextField(blank=True, default='for the good guys.'),
+            preserve_default=False
         ),
     ]
