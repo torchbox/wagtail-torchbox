@@ -3,7 +3,7 @@
 {% block title_postfix %}{% endblock %}
 {% block content %}
 
-    {% include "torchbox/includes/hero.html" with hero=self.hero.all %}
+    {% include "torchbox/includes/hero.html" with hero=self.hero.all primary_title=self.hero_intro_primary secondary_title=self.hero_intro_secondary %}
 
     <section class="about-tbx">
         <div class="container">
