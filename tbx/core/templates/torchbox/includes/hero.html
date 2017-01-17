@@ -29,8 +29,13 @@
 
     <!--/feature-images -->
     <div class="container">
-        <!--<h1>{{ self.hero_intro }}</h1>-->
-        <h1><!-- <span>We're Torchbox.</span> --> <span>We do digital</span> for the good guys.</h1>
+        {% if primary_title or secondary_title %}
+            <h1>
+                {% if primary_title %}<span>{{ primary_title }}</span>{% endif %}
+                {{ secondary_title }}
+            </h1>
+        {% endif %}
+
         <ul class="featured-case-studies">
             {% for heroItem in hero %}
             <li class="featured-case-study{% cycle '-one' '-two' '-three' %}" data-name="{% cycle '1' '2' '3' %}">

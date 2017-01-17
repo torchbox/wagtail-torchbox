@@ -329,16 +329,8 @@ class HomePageClient(Orderable, RelatedLink):
 
 
 class HomePage(Page):
-    hero_intro = models.TextField(blank=True)
-    hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
-    hero_video_poster_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    intro_title = models.TextField(blank=True)
+    hero_intro_primary = models.TextField(blank=True)
+    hero_intro_secondary = models.TextField(blank=True)
     intro_body = RichTextField(blank=True)
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
@@ -349,9 +341,14 @@ class HomePage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('hero_intro'),
+        MultiFieldPanel(
+            [
+                FieldPanel('hero_intro_primary'),
+                FieldPanel('hero_intro_secondary'),
+            ],
+            heading="Hero intro"
+        ),
         InlinePanel('hero', label="Hero"),
-        FieldPanel('intro_title'),
         FieldPanel('intro_body'),
         FieldPanel('work_title'),
         FieldPanel('blog_title'),
@@ -362,9 +359,7 @@ class HomePage(Page):
     @property
     def blog_posts(self):
         # Get list of blog pages.
-        blog_posts = BlogPage.objects.filter(
-            live=True
-        )
+        blog_posts = BlogPage.objects.live().public()
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date')

@@ -1,50 +1,30 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<style type="text/css">
-    .services-grid .home-work {
-        margin-top: 40px;
-    }
-    .services-grid .home-work .content {
-        padding: 0;
-    }
-    .services-grid .home-work .work-text {
-        left: 0;
-        width: 100%;
-    }
-    .services-grid .featured-page {
-        margin-bottom: 30px;
-        padding-right: 30px;
-    }
-</style>
-
-
-<div class="services-section services-section--white services-section--border-bottom">
+<div class="services-section services-section--white services-section">
     <div class="services-wrapper">
         <h2 class="services-section__heading">{{ value.title }}</h2>
 
         {% spaceless %}
         <div class="services-grid">
+            <ul class="home-work">
+                {% for item in value.pages %}
+                    <li class="featured-page">
+                        <a href="{% pageurl item.page %}">
+                            <div class="content">
+                                {% if item.image %}
+                                    {% image item.image fill-466x466 as background %}
+                                    <div class="image-container" style="background-image: url('{{ background.url }}');"></div>
+                                {% endif %}
 
-                <ul class="home-work">
-                    {% for item in value.pages %}
-                        <li class="featured-page">
-                            <a href="{% pageurl item.page %}">
-                                <div class="content">
-                                    {% if item.image %}
-                                        {% image item.image fill-466x466 as background %}
-                                        <div class="image-container" style="background-image: url('{{ background.url }}');"></div>
-                                    {% endif %}
-
-                                    <div class="work-text">
-                                        <h3>{{ item.text }}</h3>
-                                        <h4>{{ item.sub_text }}</h4>
-                                    </div>
+                                <div class="work-text">
+                                    <h3>{{ item.text }}</h3>
+                                    <h4>{{ item.sub_text }}</h4>
                                 </div>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
         {% endspaceless %}
     </div>

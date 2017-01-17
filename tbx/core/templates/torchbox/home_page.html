@@ -1,18 +1,12 @@
 {% extends "torchbox/base.html" %}
 {% load torchbox_tags wagtailcore_tags wagtailimages_tags wagtailembeds_tags staticfiles %}
-{% block body_class %}{% if self.hero_video_id %}hasvideo{% endif %}{% endblock %}
 {% block title_postfix %}{% endblock %}
 {% block content %}
 
-    {% include "torchbox/includes/hero.html" with hero=self.hero.all %}
+    {% include "torchbox/includes/hero.html" with hero=self.hero.all primary_title=self.hero_intro_primary secondary_title=self.hero_intro_secondary %}
 
     <section class="about-tbx">
         <div class="container">
-            <!--
-            <div class="title">
-                <h2>{{ self.intro_title }}</h2>
-            </div>
-            -->
             <div class="body">
                 {{ self.intro_body|richtext }}
             </div>
