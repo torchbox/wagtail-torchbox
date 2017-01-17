@@ -350,9 +350,7 @@ class HomePage(Page):
     @property
     def blog_posts(self):
         # Get list of blog pages.
-        blog_posts = BlogPage.objects.filter(
-            live=True
-        )
+        blog_posts = BlogPage.objects.live().public()
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date')
