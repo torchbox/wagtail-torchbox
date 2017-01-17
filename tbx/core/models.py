@@ -271,7 +271,7 @@ class TorchboxRendition(AbstractRendition):
 
     class Meta:
         unique_together = (
-            ('image', 'filter', 'focal_point_key'),
+            ('image', 'filter_spec', 'focal_point_key'),
         )
 
 

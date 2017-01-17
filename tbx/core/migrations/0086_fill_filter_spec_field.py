@@ -9,10 +9,10 @@ from wagtail.wagtailimages.utils import get_fill_filter_spec_migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0085_upgrade_to_wagtail17'),
+        ('torchbox', '0085_add_filter_spec_field'),
     ]
 
-    forward, reverse = get_fill_filter_spec_migrations('myapp', 'CustomRendition')
+    forward, reverse = get_fill_filter_spec_migrations('torchbox', 'TorchboxRendition')
     operations = [
         migrations.RunPython(forward, reverse),
     ]
