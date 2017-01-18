@@ -14,7 +14,9 @@
                         </div>
                     </div>
                     <div class="services-process__content-wrapper">
-                        <div class="services-process__number">{{ forloop.counter|stringformat:"02d" }}</div>
+                        {% if step.subtitle %}
+                            <div class="services-process__number">{{ step.subtitle }}</div>
+                        {% endif %}
                         <div class="services-process__title">{{ step.title }}</div>
                         <p class="services-process__description">
                         {{ step.description }}

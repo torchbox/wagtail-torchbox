@@ -584,6 +584,7 @@ class StepByStepBlock(StructBlock):
     title = CharBlock(required=True)
     intro = TextBlock(required=False)
     steps = ListBlock(StructBlock([
+        ('subtitle', CharBlock(required=False)),
         ('title', CharBlock(required=True)),
         ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
         ('description', TextBlock(required=True))
