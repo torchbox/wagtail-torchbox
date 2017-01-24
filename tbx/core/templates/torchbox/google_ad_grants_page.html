@@ -51,7 +51,7 @@
             {% endif %}
             {% if self.call_to_action_embed_url %}
             <div class="aspect-ratio">
-                {{ self.call_to_action_embed_url|embed }}
+                {% embed self.call_to_action_embed_url %}
             </div>
             {% endif %}
         </div>
