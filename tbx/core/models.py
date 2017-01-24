@@ -1387,6 +1387,8 @@ class SignUpFormPage(Page):
         verbose_name='from address',
         help_text="Anything ending in @torchbox.com is good.")
 
+    sign_up_form_class = SignUpFormPageForm
+
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title', classname="title"),
@@ -1410,16 +1412,15 @@ class SignUpFormPage(Page):
         ], 'Email'),
     ]
 
-    def get_context(self, request):
-        form = SignUpFormPageForm()
-        context = super(SignUpFormPage, self).get_context(request)
-        context['form'] = form
+    def get_context(self, request, *args, **kwargs):
+        context = super(SignUpFormPage, self).get_context(request, *args, **kwargs)
+        context['form'] = self.sign_up_form_class()
         return context
 
     @vary_on_headers('X-Requested-With')
     def serve(self, request, *args, **kwargs):
         if request.is_ajax() and request.method == "POST":
-            form = SignUpFormPageForm(request.POST)
+            form = self.sign_up_form_class(request.POST)
 
             if form.is_valid():
                 form.save()
