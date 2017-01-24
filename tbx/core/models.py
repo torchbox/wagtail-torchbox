@@ -8,6 +8,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.functional import cached_property
+from django.views.decorators.vary import vary_on_headers
 
 from modelcluster.fields import ParentalKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
@@ -1415,6 +1416,7 @@ class SignUpFormPage(Page):
         context['form'] = form
         return context
 
+    @vary_on_headers('X-Requested-With')
     def serve(self, request, *args, **kwargs):
         if request.is_ajax() and request.method == "POST":
             form = SignUpFormPageForm(request.POST)
