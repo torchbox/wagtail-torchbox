@@ -5,7 +5,6 @@
         <p class="error">There were some errors with your form. Please amend the fields highlighted below.</p>
     {% endif %}
     {% for field in form %}
-        {{ field.errors }}
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
         {{ field }}
     {% endfor %}
