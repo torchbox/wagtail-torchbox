@@ -587,13 +587,16 @@ var tbx = {
     // SignUp form
     signUp: function(element) {
         $(element).on('submit', function(e) {
+            var $form = $(this);
+
             e.preventDefault();
             e.stopImmediatePropagation();
             $(".sign-up-form-button").html("Submitting...");
             $.ajax({
-                url: $(this).attr('action'),
+                url: $form.attr('action'),
                 type: "POST",
-                data: $(this).serialize(),
+                data: $form.serialize(),
+                cache: false,
                 success: function(data) {
                     // Google Tag Manager voodoo
                     window.dataLayer = window.dataLayer || [];
@@ -602,7 +605,7 @@ var tbx = {
                         'formId': 'sign-up-form'
                     });
                     // end voodoo
-                    $(".sign-up-form").html(data);
+                    $form.html(data);
                 }
             });
         });

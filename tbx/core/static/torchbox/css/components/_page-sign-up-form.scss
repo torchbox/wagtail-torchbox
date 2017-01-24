@@ -105,7 +105,7 @@
     margin: 50px auto 20px;
 }
 
-.page-signupformpage .sign-up-form.top {
+.page-signupformpage .sign-up-form-wrapper.top {
     text-align: center;
     margin: 20px 0 60px;
     clear: both;
@@ -121,15 +121,15 @@
     margin-bottom: 1em;
 }
 
-.page-signupformpage .sign-up-form.top label {
+.page-signupformpage .sign-up-form-wrapper label {
     display: none;
 }
 
-.page-signupformpage .sign-up-form .rule {
+.page-signupformpage .sign-up-form-wrapper .rule {
     background: #f4bc2a;
 }
 
-.page-signupformpage .sign-up-form.top img {
+.page-signupformpage .sign-up-form-wrapper.top img {
     display: none;
 }
 
@@ -476,15 +476,15 @@ ul.image-tiles li {
       width: auto;
       left: -5px;
   }
-  .page-signupformpage .sign-up-form {
+  .page-signupformpage .sign-up-form-wrapper {
       font-size: 20px;
       color: white;
   }
-  .page-signupformpage .sign-up-form.top {
+  .page-signupformpage .sign-up-form-wrapper.top {
       margin: 20px 0 90px;
       font-size: 20px;
   }
-  .page-signupformpage .sign-up-form.top h3 {
+  .page-signupformpage .sign-up-form-wrapper.top h3 {
       font-size: 22px;
       margin: 1em 0;
   }

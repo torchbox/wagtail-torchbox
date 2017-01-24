@@ -11,7 +11,7 @@
 
     <div class="container">
         {{ page.intro|richtext }}
-        <div class="form sign-up-form top">
+        <div class="form sign-up-form-wrapper top">
             <h3>{{ page.call_to_action_text }}</h3>
 
             {% include "torchbox/includes/sign_up_form_page_form.html" %}
@@ -59,7 +59,7 @@
     </div>
     <div class="cta">
         <div class="container">
-            <div class="form sign-up-form">
+            <div class="form sign-up-form-wrapper">
                 <h3>{{ page.call_to_action_text }}</h3>
                 {% include "torchbox/includes/sign_up_form_page_form.html" %}
             </div> <!-- /sign-up-form -->
@@ -69,7 +69,7 @@
     <footer class="thanks">
         <div class="thank-you">
             <div class="container">
-                <div class="text">
+                <div class="tex-t">
                     <p>This guide is aimed at anyone working for a charity who is responsible for digital marketing or communications. It has been produced by Torchbox, with special thanks to all the charities which took our survey.</p>
                 </div>
             </div>
@@ -79,7 +79,7 @@
 {% block extra_js %}
     <script type="text/javascript">
         $(function(){
-            tbx.signUp('.sign-up-form');
+            tbx.signUp('.sign-up-form-wrapper .sign-up-form');
         });
     </script>
 {% endblock %}

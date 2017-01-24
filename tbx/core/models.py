@@ -8,6 +8,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.functional import cached_property
+from django.views.decorators.vary import vary_on_headers
 
 from modelcluster.fields import ParentalKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
@@ -616,6 +617,20 @@ class FeaturedPagesBlock(StructBlock):
         template = 'blocks/featured_pages_block.html'
 
 
+class SignUpFormPageBlock(StructBlock):
+    page = PageChooserBlock('torchbox.SignUpFormPage')
+
+    def get_context(self, value):
+        context = super(SignUpFormPageBlock, self).get_context(value)
+        context['form'] = value['page'].sign_up_form_class()
+
+        return context
+
+    class Meta:
+        icon = 'doc-full'
+        template = 'blocks/sign_up_form_page_block.html'
+
+
 class ServicePageBlock(StreamBlock):
     case_studies = CaseStudyBlock()
     highlights = HighlightBlock()
@@ -623,6 +638,7 @@ class ServicePageBlock(StreamBlock):
     process = StepByStepBlock()
     people = PeopleBlock()
     featured_pages = FeaturedPagesBlock()
+    sign_up_form_page = SignUpFormPageBlock()
 
 
 class ServicePage(Page):
@@ -1386,6 +1402,8 @@ class SignUpFormPage(Page):
         verbose_name='from address',
         help_text="Anything ending in @torchbox.com is good.")
 
+    sign_up_form_class = SignUpFormPageForm
+
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title', classname="title"),
@@ -1409,15 +1427,15 @@ class SignUpFormPage(Page):
         ], 'Email'),
     ]
 
-    def get_context(self, request):
-        form = SignUpFormPageForm()
-        context = super(SignUpFormPage, self).get_context(request)
-        context['form'] = form
+    def get_context(self, request, *args, **kwargs):
+        context = super(SignUpFormPage, self).get_context(request, *args, **kwargs)
+        context['form'] = self.sign_up_form_class()
         return context
 
+    @vary_on_headers('X-Requested-With')
     def serve(self, request, *args, **kwargs):
         if request.is_ajax() and request.method == "POST":
-            form = SignUpFormPageForm(request.POST)
+            form = self.sign_up_form_class(request.POST)
 
             if form.is_valid():
                 form.save()
