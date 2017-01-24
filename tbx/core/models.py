@@ -617,6 +617,20 @@ class FeaturedPagesBlock(StructBlock):
         template = 'blocks/featured_pages_block.html'
 
 
+class SignUpFormPageBlock(StructBlock):
+    page = PageChooserBlock('torchbox.SignUpFormPage')
+
+    def get_context(self, value):
+        context = super(SignUpFormPageBlock, self).get_context(value)
+        context['form'] = value['page'].sign_up_form_class()
+
+        return context
+
+    class Meta:
+        icon = 'doc-full'
+        template = 'blocks/sign_up_form_page_block.html'
+
+
 class ServicePageBlock(StreamBlock):
     case_studies = CaseStudyBlock()
     highlights = HighlightBlock()
@@ -624,6 +638,7 @@ class ServicePageBlock(StreamBlock):
     process = StepByStepBlock()
     people = PeopleBlock()
     featured_pages = FeaturedPagesBlock()
+    sign_up_form_page = SignUpFormPageBlock()
 
 
 class ServicePage(Page):
