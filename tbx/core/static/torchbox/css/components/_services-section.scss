@@ -65,7 +65,37 @@
         }
     }
 }
-
-.block-people .services-section {
-    padding-bottom: 50px;
+.block-people {
+    .services-section {
+        //padding-bottom: 50px;
+        // altered for UX Design spacing. #154
+        padding-bottom: 0;
+        &__heading,
+        &__paragraph {
+            padding: 0 50px;
+        }
+    }
+    .services-wrapper {
+        padding: 0;
+    }
+    .services-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .services-grid__item--one-quarter {
+        padding: 0 15px;
+        &:first-child {
+            padding-left: 35px;
+        }
+        &:last-child {
+            padding-right: 35px;
+        }
+    }
+    .services-team-member {
+        padding-right: 0;
+        &__image {
+            height: 280px;
+            overflow: hidden;
+        }
+    }
 }
