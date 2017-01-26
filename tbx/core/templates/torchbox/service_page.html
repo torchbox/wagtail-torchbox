@@ -3,7 +3,7 @@
 {% block content %}
 
     {# Hero #}
-    <div class="services-hero js-services-inner">
+    <div class="services-hero js-services-inner" {% if particles_css_background_url %}style="background-image: url({{ self.particles_css_background_url }});"{% endif %}>
         <div class="particles-js" id="particles-js"></div>
         <div class="services-hero__wrapper">
             <div class="services-hero__inner">
@@ -56,4 +56,109 @@
 
 {% block extra_js %}
     <script src="{% static 'torchbox/vendor/particles.min.js' %}"></script>
+
+    <script>
+        var options = {
+          "particles": {
+            "number": {
+              "value": {% if self.particles_number %}{{ self.particles_number }}{% else %}50{% endif %},
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#ffffff"
+            },
+            "shape": {
+              "type": "{% if self.particles_move_direction %}{{ self.get_particles_shape_type_display }}{% else %}circle{% endif %}",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": {% if self.particles_polygon_sides %}{{ self.particles_polygon_sides }}{% else %}5{% endif %}
+              },
+            },
+            "opacity": {
+              "value": 0.9,
+              "random": false,
+              "anim": {
+                "enable": false,
+                "speed": 2,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": {% if self.particles_size %}{{ self.particles_size }}{% else %}2.5{% endif %},
+              "random": {% if self.particles_size_random %}true{% else %}false{% endif %},
+              "anim": {
+                "enable": false,
+                "speed": 50,
+                "size_min": 0.1,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#ffffff",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 2.5,
+              "direction": "{% if self.particles_move_direction %}{{ self.get_particles_move_direction_display }}{% else %}none{% endif %}",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 140,
+                "line_linked": {
+                  "opacity": 1
+                }
+              },
+              "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+              },
+              "repulse": {
+                "distance": 200,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              },
+              "remove": {
+                "particles_nb": 2
+              }
+            }
+          },
+          "retina_detect": true
+        };
+        particlesJS("particles-js", options);
+    </script>
 {% endblock extra_js %}
