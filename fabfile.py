@@ -52,8 +52,9 @@ def _deploy():
         return
     run('git pull')
     run('pip install -r requirements.txt')
-    run('dj migrate --noinput')
-    run('dj collectstatic --noinput')
+    run('django-admin migrate --noinput')
+    run('django-admin collectstatic --noinput')
+    run('django-admin compress')
     run('restart')
     run('python -m whitenoise.compress $CFG_STATIC_DIR')
 
