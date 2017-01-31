@@ -1,6 +1,5 @@
 // Load in required functions
 $(document).ready(function() {
-    tbx.onLoad();
     tbx.heroImages();
     tbx.mobileMenu();
     tbx.loadMore($('.clients'));
@@ -14,10 +13,6 @@ $(document).ready(function() {
 });
 
 var tbx = {
-
-    onLoad: function() {
-
-    },
 
     // Hero image carousel/slider
     heroImages: function() {
@@ -479,11 +474,14 @@ var tbx = {
     // SignUp form
     signUp: function(element) {
         $(element).on('submit', function(e) {
-            var $form = $(this);
+            var $form       = $( this ),
+                $fieldset   = $form.find( 'fieldset' );
 
             e.preventDefault();
             e.stopImmediatePropagation();
+
             $(".sign-up-form-button").html("Submitting...");
+
             $.ajax({
                 url: $form.attr('action'),
                 type: "POST",
@@ -496,8 +494,13 @@ var tbx = {
                         'event': 'formSubmissionSuccess',
                         'formId': 'sign-up-form'
                     });
-                    // end voodoo
-                    $form.html(data);
+                    //  >> Use response as confirmation text
+                    // First remove our fieldset as we don't need it anymore
+                    $fieldset.remove();
+                    // Create a response text container so we can style it (instead of loose text!)
+                    var $response = $( '<div>' ).addClass( 'success' ).html( data );
+                    // Add response to page
+                    $form.prepend( $response );
                 }
             });
         });
