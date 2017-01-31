@@ -5345,7 +5345,7 @@ ul.image-tiles li {
   padding: 50px 0;
   overflow: hidden;
   background-color: #2b2b2b;
-  background: linear-gradient(to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%); }
+  /*background: linear-gradient(to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%);*/ }
   @media (min-width: 768px) {
     .services-hero {
       height: 500px;
