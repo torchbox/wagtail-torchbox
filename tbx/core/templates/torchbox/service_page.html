@@ -56,4 +56,21 @@
 
 {% block extra_js %}
     <script src="{% static 'torchbox/vendor/particles.min.js' %}"></script>
+
+    {% comment %}
+    At the moment, there is no better way to initialise JS for streamfield,
+    if it depends on jQuery or something else that we load at the end of document.
+    {% endcomment %}
+    {% for block in page.streamfield %}
+        {% if block.block_type == 'sign_up_form_page' %}
+
+            <script>
+                $(function() {
+                    tbx.signUp('#sign-up-form-{{ block.page.pk|escapejs }}');
+                });
+            </script>
+
+        {% endif %}
+    {% endfor %}
+
 {% endblock extra_js %}

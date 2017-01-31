@@ -1,6 +1,5 @@
 // Load in required functions
 $(document).ready(function() {
-    tbx.onLoad();
     tbx.heroImages();
     tbx.mobileMenu();
     tbx.loadMore($('.clients'));
@@ -15,10 +14,6 @@ $(document).ready(function() {
 });
 
 var tbx = {
-
-    onLoad: function() {
-
-    },
 
     // Hero image carousel/slider
     heroImages: function() {
@@ -586,13 +581,19 @@ var tbx = {
     // SignUp form
     signUp: function(element) {
         $(element).on('submit', function(e) {
+            var $form       = $( this ),
+                $fieldset   = $form.find( 'fieldset' );
+
             e.preventDefault();
             e.stopImmediatePropagation();
+
             $(".sign-up-form-button").html("Submitting...");
+
             $.ajax({
-                url: $(this).attr('action'),
+                url: $form.attr('action'),
                 type: "POST",
-                data: $(this).serialize(),
+                data: $form.serialize(),
+                cache: false,
                 success: function(data) {
                     // Google Tag Manager voodoo
                     window.dataLayer = window.dataLayer || [];
@@ -600,8 +601,13 @@ var tbx = {
                         'event': 'formSubmissionSuccess',
                         'formId': 'sign-up-form'
                     });
-                    // end voodoo
-                    $(".sign-up-form").html(data);
+                    //  >> Use response as confirmation text
+                    // First remove our fieldset as we don't need it anymore
+                    $fieldset.remove();
+                    // Create a response text container so we can style it (instead of loose text!)
+                    var $response = $( '<div>' ).addClass( 'success' ).html( data );
+                    // Add response to page
+                    $form.prepend( $response );
                 }
             });
         });
