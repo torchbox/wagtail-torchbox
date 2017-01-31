@@ -113,6 +113,13 @@
       margin: 40px 0;
     }
   }
+  .embed {
+    // For some reason it produces an anonymous div, quicker to style around it than work out why
+    > div {
+      display: flex;
+      justify-content: center;
+    }
+  }
   .full-width {
     border: 1px solid rgba(black,0.05);
     box-shadow: 0 0 30px rgba(#000, 0.05);
