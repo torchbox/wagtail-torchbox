@@ -90,7 +90,7 @@
         }
     }
 
-        &__number {
+        &__subtitle {
             font-size: 32px;
             font-weight: 700;
             color: $services-orange;
@@ -120,13 +120,13 @@
 
     @media #{$small} {
         margin-bottom: 0;
-        padding-right: 30px;
     }
 
     &__image {
         display: inline-block;
         vertical-align: top;
         width: 100%;
+        margin-bottom: 20px;
 
         img {
             width: 100%;
@@ -134,28 +134,25 @@
         }
     }
 
-    &__content {
-        margin-top: 20px;
+
+    &__name {
+        font-size: 25px;
+        font-weight: 400;
+        color: #222;
     }
 
-        &__name {
-            font-size: 25px;
-            font-weight: 400;
-            color: #222;
-        }
+    &__title {
+        font-size: 15px;
+        font-weight: 400;
+        color: $services-blue;
+        text-transform: uppercase;
+    }
 
-        &__title {
-            font-size: 15px;
-            font-weight: 400;
-            color: $services-blue;
-            text-transform: uppercase;
-        }
-
-        &__description {
-            font-size: 16px;
-            font-weight: 400;
-            color: #555;
-        }
+    &__description {
+        font-size: 16px;
+        font-weight: 400;
+        color: #555;
+    }
 }
 
 .particles-js {
@@ -163,21 +160,4 @@
     width: 100%;
     height: $services-hero-height;
     opacity: 0.6;
-}
-
-
-// StreamField section for featured pages
-.services-grid .home-work {
-    margin-top: 40px;
-}
-.services-grid .home-work .content {
-    padding: 0;
-}
-.services-grid .home-work .work-text {
-    left: 0;
-    width: 100%;
-}
-.services-grid .featured-page {
-    margin-bottom: 30px;
-    padding-right: 30px;
 }

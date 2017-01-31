@@ -19,7 +19,8 @@
     }
 
     &__paragraph {
-        max-width: 90%;
+        // been asked to remove in #154
+        //max-width: 90%;
         margin-top: 40px;
         font-size: 22px;
         font-weight: 300;
@@ -65,7 +66,43 @@
         }
     }
 }
+.block-people {
+    .services-section {
+        //padding-bottom: 50px;
+        // altered for UX Design spacing. #154
+        padding-bottom: 0;
+    }
+}
 
-.block-people .services-section {
-    padding-bottom: 50px;
+// StreamField section for featured pages
+.block-featured_pages {
+    .services-grid {
+        display: block;
+        .home-work {
+            // swap to flexbox, not sure if I can do this site wide so just going for here now
+            // reset the cf.. erk!
+            &:before, &:after {
+                display: none;
+            }
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            li {
+                float: none;
+                width: 31.3%;
+            }
+        }
+    }
+
+    .services-grid .home-work .content {
+        padding: 0;
+    }
+    .services-grid .home-work .work-text {
+        left: 0;
+        width: 100%;
+    }
+    .services-grid .featured-page {
+        margin-bottom: 30px;
+    }
 }

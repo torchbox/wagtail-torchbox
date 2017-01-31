@@ -271,7 +271,7 @@ class TorchboxRendition(AbstractRendition):
 
     class Meta:
         unique_together = (
-            ('image', 'filter', 'focal_point_key'),
+            ('image', 'filter_spec', 'focal_point_key'),
         )
 
 
@@ -561,7 +561,7 @@ class CaseStudyBlock(StructBlock):
     title = CharBlock(required=True)
     intro = TextBlock(required=True)
     case_studies = ListBlock(StructBlock([
-        ('page', PageChooserBlock(['torchbox.WorkPage'])),
+        ('page', PageChooserBlock('torchbox.WorkPage')),
         ('title', CharBlock(required=False)),
         ('descriptive_title', CharBlock(required=False)),
         ('image', ImageChooserBlock(required=False)),
@@ -584,6 +584,7 @@ class StepByStepBlock(StructBlock):
     title = CharBlock(required=True)
     intro = TextBlock(required=False)
     steps = ListBlock(StructBlock([
+        ('subtitle', CharBlock(required=False)),
         ('title', CharBlock(required=True)),
         ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
         ('description', TextBlock(required=True))

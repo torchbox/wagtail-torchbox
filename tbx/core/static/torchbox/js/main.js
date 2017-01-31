@@ -617,7 +617,10 @@ var tbx = {
             $(".newsletter-email").animate({
                 width: "0px"
             });
-            $(".newsletter-email").hide("slow");
+            $(".newsletter-email").hide("slow", function(){
+                $(".newsletter-button").css('border-radius', $(".newsletter-button").css('border-top-right-radius'));
+            });
+
             $.ajax({
                 url : $(this).attr('action'),
                 type: "GET",
