@@ -8,6 +8,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.functional import cached_property
+from django.views.decorators.vary import vary_on_headers
 
 from modelcluster.fields import ParentalKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
@@ -616,6 +617,20 @@ class FeaturedPagesBlock(StructBlock):
         template = 'blocks/featured_pages_block.html'
 
 
+class SignUpFormPageBlock(StructBlock):
+    page = PageChooserBlock('torchbox.SignUpFormPage')
+
+    def get_context(self, value):
+        context = super(SignUpFormPageBlock, self).get_context(value)
+        context['form'] = value['page'].sign_up_form_class()
+
+        return context
+
+    class Meta:
+        icon = 'doc-full'
+        template = 'blocks/sign_up_form_page_block.html'
+
+
 class ServicePageBlock(StreamBlock):
     case_studies = CaseStudyBlock()
     highlights = HighlightBlock()
@@ -623,16 +638,72 @@ class ServicePageBlock(StreamBlock):
     process = StepByStepBlock()
     people = PeopleBlock()
     featured_pages = FeaturedPagesBlock()
+    sign_up_form_page = SignUpFormPageBlock()
 
 
 class ServicePage(Page):
+    # particlejs type choices
+    CIRCLE = 1
+    EDGE = 2
+    TRIANGLE = 3
+    POLYGON = 4
+    STAR = 5
+    IMAGE = 6
+    PARTICLES_TYPE_CHOICES = (
+        (CIRCLE, 'circle'),
+        (EDGE, 'edge'),
+        (TRIANGLE, 'triangle'),
+        (POLYGON, 'polygon'),
+        (STAR, 'star'),
+        (IMAGE, 'image'),
+    )
+    # particlejs movement direction choices
+    NONE = 1
+    TOP = 2
+    TOP_RIGHT = 3
+    RIGHT = 4
+    BOTTOM_RIGHT = 5
+    BOTTOM = 6
+    BOTTOM_LEFT = 7
+    LEFT = 8
+    PARTICLES_MOVE_DIRECTION_CHOICES = (
+        (NONE, 'none'),
+        (TOP, 'top'),
+        (TOP_RIGHT, 'top-right'),
+        (RIGHT, 'right'),
+        (BOTTOM_RIGHT, 'bottom-right'),
+        (BOTTOM, 'bottom'),
+        (BOTTOM_LEFT, 'bottom-left'),
+        (LEFT, 'left'),
+    )
     description = models.TextField()
     streamfield = StreamField(ServicePageBlock())
+    # particles.js settings fields
+    particles_number = models.PositiveSmallIntegerField(default=50)
+    particles_shape_type = models.PositiveSmallIntegerField(choices=PARTICLES_TYPE_CHOICES, default=CIRCLE)
+    particles_polygon_sides = models.PositiveSmallIntegerField(default=5)
+    particles_size = models.DecimalField(default=2.5, max_digits=3, decimal_places=1)
+    particles_size_random = models.BooleanField(default=False)
+    particles_move_direction = models.PositiveSmallIntegerField(choices=PARTICLES_MOVE_DIRECTION_CHOICES, default=NONE)
+    particles_css_background_url = models.URLField(blank=True, max_length=255)
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('description', classname="full"),
         StreamFieldPanel('streamfield'),
+        MultiFieldPanel(
+            [
+                FieldPanel('particles_number'),
+                FieldPanel('particles_shape_type'),
+                FieldPanel('particles_polygon_sides'),
+                FieldPanel('particles_size'),
+                FieldPanel('particles_size_random'),
+                FieldPanel('particles_move_direction'),
+                FieldPanel('particles_css_background_url'),
+            ],
+            heading='ParticleJS options'
+        )
+
     ]
 
 
@@ -1386,6 +1457,8 @@ class SignUpFormPage(Page):
         verbose_name='from address',
         help_text="Anything ending in @torchbox.com is good.")
 
+    sign_up_form_class = SignUpFormPageForm
+
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title', classname="title"),
@@ -1409,15 +1482,15 @@ class SignUpFormPage(Page):
         ], 'Email'),
     ]
 
-    def get_context(self, request):
-        form = SignUpFormPageForm()
-        context = super(SignUpFormPage, self).get_context(request)
-        context['form'] = form
+    def get_context(self, request, *args, **kwargs):
+        context = super(SignUpFormPage, self).get_context(request, *args, **kwargs)
+        context['form'] = self.sign_up_form_class()
         return context
 
+    @vary_on_headers('X-Requested-With')
     def serve(self, request, *args, **kwargs):
         if request.is_ajax() and request.method == "POST":
-            form = SignUpFormPageForm(request.POST)
+            form = self.sign_up_form_class(request.POST)
 
             if form.is_valid():
                 form.save()

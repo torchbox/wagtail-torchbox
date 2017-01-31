@@ -7,10 +7,10 @@
     }
 
     &__heading {
-        font-size: 32px;
         color: #000;
-        font-weight: 600;
         text-align: left;
+        font-size: 32px;
+        font-weight: 600;
 
         @media #{$tablet} {
             font-size: 35px;
