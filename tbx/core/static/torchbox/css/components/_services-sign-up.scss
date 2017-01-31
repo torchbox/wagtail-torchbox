@@ -41,15 +41,16 @@
             }
         }
         .error {
-            color: white;
+            
         }
         .success {
-            color: white;
-            font-size: 32px;
-            font-weight: 600;
-            line-height: 1.2;
+            font-size: 20px;
+            line-height: 33px;
+            color: #fff;
+
             @media #{$tablet} {
-                font-size: 35px;
+                font-size: 26px;
+                line-height: 40px;
             }
         }
         input {
