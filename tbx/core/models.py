@@ -642,68 +642,13 @@ class ServicePageBlock(StreamBlock):
 
 
 class ServicePage(Page):
-    # particlejs type choices
-    CIRCLE = 1
-    EDGE = 2
-    TRIANGLE = 3
-    POLYGON = 4
-    STAR = 5
-    IMAGE = 6
-    PARTICLES_TYPE_CHOICES = (
-        (CIRCLE, 'circle'),
-        (EDGE, 'edge'),
-        (TRIANGLE, 'triangle'),
-        (POLYGON, 'polygon'),
-        (STAR, 'star'),
-        (IMAGE, 'image'),
-    )
-    # particlejs movement direction choices
-    NONE = 1
-    TOP = 2
-    TOP_RIGHT = 3
-    RIGHT = 4
-    BOTTOM_RIGHT = 5
-    BOTTOM = 6
-    BOTTOM_LEFT = 7
-    LEFT = 8
-    PARTICLES_MOVE_DIRECTION_CHOICES = (
-        (NONE, 'none'),
-        (TOP, 'top'),
-        (TOP_RIGHT, 'top-right'),
-        (RIGHT, 'right'),
-        (BOTTOM_RIGHT, 'bottom-right'),
-        (BOTTOM, 'bottom'),
-        (BOTTOM_LEFT, 'bottom-left'),
-        (LEFT, 'left'),
-    )
     description = models.TextField()
     streamfield = StreamField(ServicePageBlock())
-    # particles.js settings fields
-    particles_number = models.PositiveSmallIntegerField(default=50)
-    particles_shape_type = models.PositiveSmallIntegerField(choices=PARTICLES_TYPE_CHOICES, default=CIRCLE)
-    particles_polygon_sides = models.PositiveSmallIntegerField(default=5)
-    particles_size = models.DecimalField(default=2.5, max_digits=3, decimal_places=1)
-    particles_size_random = models.BooleanField(default=False)
-    particles_move_direction = models.PositiveSmallIntegerField(choices=PARTICLES_MOVE_DIRECTION_CHOICES, default=NONE)
-    particles_css_background_url = models.URLField(blank=True, max_length=255)
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('description', classname="full"),
         StreamFieldPanel('streamfield'),
-        MultiFieldPanel(
-            [
-                FieldPanel('particles_number'),
-                FieldPanel('particles_shape_type'),
-                FieldPanel('particles_polygon_sides'),
-                FieldPanel('particles_size'),
-                FieldPanel('particles_size_random'),
-                FieldPanel('particles_move_direction'),
-                FieldPanel('particles_css_background_url'),
-            ],
-            heading='ParticleJS options'
-        )
-
     ]
 
 
