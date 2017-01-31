@@ -1,6 +1,5 @@
 // Load in required functions
 $(document).ready(function() {
-    tbx.onLoad();
     tbx.heroImages();
     tbx.mobileMenu();
     tbx.loadMore($('.clients'));
@@ -15,10 +14,6 @@ $(document).ready(function() {
 });
 
 var tbx = {
-
-    onLoad: function() {
-
-    },
 
     // Hero image carousel/slider
     heroImages: function() {
