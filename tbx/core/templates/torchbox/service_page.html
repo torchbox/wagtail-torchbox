@@ -14,39 +14,6 @@
                 </p>
             </div>
         </div>
-
-        {# Avatar #}
-        <div class="services-avatar-container services-avatar-container--move-left">
-            <div class="services-avatar">
-                <div class="services-avatar__image">
-                    {% image settings.torchbox.GlobalSettings.contact_person.image fill-150x150-c100 %}
-                </div>
-                <div class="services-avatar__text">
-                    {{ settings.torchbox.GlobalSettings.contact_widget_intro }}
-                </div>
-            </div>
-            <div class="services-avatar-container__contact-info">
-                {{ settings.torchbox.GlobalSettings.contact_widget_call_to_action }}
-                <button class="services-avatar-container__button">
-                    {{ settings.torchbox.GlobalSettings.contact_widget_button_text }}
-                </button>
-            </div>
-            <div class="services-avatar-container__contact-details">
-                <div class="services-avatar-container__contact-item">
-                    {% include "torchbox/includes/svg/phone-svg.html" %}
-                    <a class="phone" href="tel:{{ settings.torchbox.GlobalSettings.contact_telephone }}">
-                        {{ settings.torchbox.GlobalSettings.contact_telephone }}
-                    </a>
-                </div>
-                <div class="services-avatar-container__contact-item">
-                    {% include "torchbox/includes/svg/envelope-svg.html" %}
-                    <a href="mailto:{{ settings.torchbox.GlobalSettings.contact_email }}">
-                        {{ settings.torchbox.GlobalSettings.contact_email }}
-                    </a>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     {% include_block page.streamfield %}
@@ -161,4 +128,5 @@
         };
         particlesJS("particles-js", options);
     </script>
+
 {% endblock extra_js %}
