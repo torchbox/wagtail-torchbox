@@ -13,6 +13,7 @@
         overflow: hidden;
         padding: 50px 0;
         background: #142b2b;
+        color: white;
         display: flex;
         flex-direction: column;
 
@@ -40,7 +41,17 @@
             }
         }
         .error {
-            color: white;
+            
+        }
+        .success {
+            font-size: 20px;
+            line-height: 33px;
+            color: #fff;
+
+            @media #{$tablet} {
+                font-size: 26px;
+                line-height: 40px;
+            }
         }
         input {
             border: 0;
