@@ -6,15 +6,7 @@
     width: 100%;
     max-width: $services-wrapper-width;
     margin: 0 auto;
-    padding: 0 15px;
-
-    @media #{$tablet} {
-        padding: 0 20px;
-    }
-
-    @media #{$tablet-large} {
-        padding: 0 50px;
-    }
+    @include row-padding;
 
     &--relative {
         position: relative;
@@ -22,6 +14,10 @@
 }
 
 .services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
     &__item {
         width: 100%;
         display: inline-block;
@@ -44,7 +40,7 @@
             width: 100%;
 
             @media #{$tablet} {
-                width: 50%;
+                width: 48%;
             }
         }
 
@@ -52,16 +48,16 @@
             width: 100%;
 
             @media #{$small} {
-                width: 50%;
+                width: 48%;
             }
 
             @media #{$tablet-large} {
-                width: 25%;
+                width: 23%;
             }
         }
 
         &--three-quarters {
-            width: 75%;
+            width: 73%;
         }
     }
 }
