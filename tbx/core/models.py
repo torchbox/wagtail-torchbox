@@ -34,7 +34,7 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtailmarkdown.fields import MarkdownBlock
 
-from tbx.core.fields import ColorField
+from .fields import ColorField
 
 
 # Streamfield blocks and config
@@ -643,6 +643,23 @@ class ServicePageBlock(StreamBlock):
     sign_up_form_page = SignUpFormPageBlock()
 
 
+class ServicePage(Page):
+    description = models.TextField()
+    streamfield = StreamField(ServicePageBlock())
+    particle = models.ForeignKey(
+        'ParticleSnippet',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL)
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('description', classname="full"),
+        StreamFieldPanel('streamfield'),
+        FieldPanel('particle'),
+    ]
+
+
 @register_snippet
 class ParticleSnippet(models.Model):
     """
@@ -692,34 +709,23 @@ class ParticleSnippet(models.Model):
     colour = ColorField(default='ffffff', help_text="Don't include # symbol.")
     opacity = models.DecimalField(default=0.9, max_digits=2, decimal_places=1)
     opacity_random = models.BooleanField(default=False)
-    move_speed = models.DecimalField(default=2.5, max_digits=2, decimal_places=1)
+    move_speed = models.DecimalField(
+        default=2.5, max_digits=2, decimal_places=1)
     move_direction = models.PositiveSmallIntegerField(
         choices=PARTICLES_MOVE_DIRECTION_CHOICES,
         default=NONE)
     line_linked = models.BooleanField(default=True)
     css_background_colour = ColorField(
-        blank=True, help_text="Don't include # symbol. Will be overridden by linear gradient")
-    css_background_linear_gradient = models.CharField(max_length=255,
         blank=True,
+        help_text="Don't include # symbol. Will be overridden by linear gradient")
+    css_background_linear_gradient = models.CharField(
+        blank=True,
+        max_length=255,
         help_text="Enter in the format 'to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%'")
     css_background_url = models.URLField(blank=True, max_length=255)
 
     def __str__(self):
         return self.title
-
-
-class ServicePage(Page):
-    description = models.TextField()
-    streamfield = StreamField(ServicePageBlock())
-    particle = models.ForeignKey(ParticleSnippet, blank=True, null=True,
-        on_delete=models.SET_NULL)
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('description', classname="full"),
-        StreamFieldPanel('streamfield'),
-        FieldPanel('particle'),
-    ]
 
 
 # Blog index page

@@ -56,25 +56,27 @@
 
         {% wagtailuserbar %} {# Don't delete this #}
 
-        <header class="container container-header">
-            <nav role="navigation">
-                <a href="/" class="logo">
-                    {% include "torchbox/includes/torchbox_logo.html" %}
-                </a>
+        <header class="header">
+            <div class="container">
+                <nav role="navigation">
+                    <a href="/" class="logo">
+                        {% include "torchbox/includes/torchbox_logo.html" %}
+                    </a>
 
-                <a href="#menu" class="menu-button">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
+                    <a href="#menu" class="menu-button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
 
-                <ul class="bleed out-animation">
-                    {% main_menu as menu %}
-                    {% for block in menu.menu %}
-                        {% include_block block %}
-                    {% endfor %}
-                </ul>
-            </nav>
+                    <ul class="bleed out-animation">
+                        {% main_menu as menu %}
+                        {% for block in menu.menu %}
+                            {% include_block block %}
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
         </header>
 
         <main>{% spaceless %}{% block content %}{% endblock %}{% endspaceless %}</main>

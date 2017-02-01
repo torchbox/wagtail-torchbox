@@ -5,7 +5,7 @@ $(document).ready(function() {
     tbx.loadMore($('.clients'));
     tbx.loadMore($('.blog-listing'));
     tbx.jobs();
-    tbx.scrollEvents();
+    tbx.checkSticky();
     tbx.servicesCarousel();
     tbx.newsletterSignUp();
 });
@@ -62,8 +62,6 @@ var tbx = {
         var $bleed            = $( '.bleed' ),
             $bleedItem        = $bleed.find( 'li' ),
             $menuButton       = $( '.menu-button' ),
-            $header           = $( '.container-header' ),
-            headerFixed       = 'container-header--fixed',
             twist             = 'twist',
             bleedVisible      = 'visible out-animation',
             showItem          = 'show';
@@ -73,7 +71,6 @@ var tbx = {
             $( 'body' ).removeClass( 'menu-open' );
             $bleedItem.removeClass( showItem );
             $menuButton.removeClass( twist );
-            $header.removeClass( headerFixed );
 
             setTimeout(function() {
                 $bleed.removeClass( bleedVisible );
@@ -93,11 +90,9 @@ var tbx = {
                 $item.addClass( showItem );
             });
 
-            // Fix header
             // Delay for animation
             setTimeout(function() {
                 $( 'body' ).addClass( 'menu-open' );
-                $header.addClass( headerFixed );
             }, 300);
         }
 
@@ -288,29 +283,68 @@ var tbx = {
 
     },
 
-    scrollEvents: function() {
-        var $specifications     = $( '.specifications' );
+    /*
+        areYouStuck();
+        Fire events for when an element with `position: sticky;` is stuck/unstuck
+        Adds CSS classes to elements that are stuck/unstuck
 
-        if ($specifications.length > 0) {
-            var $client             = $( '.specifications .client' ),
-                offset              = $specifications.offset().top,
-                fixedClass          = 'specifications--fixed',
-                showClient          = 'client--show';
+        Elements must be given the class '.sticky' to be observed
+    */
+    checkSticky: function() {
 
-            $( window ).on( 'scroll', function() {
-                // Stick the specs bar
-                if ( $( window ).scrollTop() >= offset ) {
-                    $specifications.addClass( fixedClass );
-                    $client.addClass( showClient )
-                }
+        var $stickyItems = $( '.sticky' ),
+            resizeTimer;
 
-                // Un-stick
-                else {
-                    $specifications.removeClass( fixedClass );
-                    $client.removeClass( showClient )
-                }
-            });
+        function checkStuck( $item, scrollPos ){
+
+            if( scrollPos >= $item.stickyPos && !$item.stuck ){
+                $item.addClass( 'stuck' );
+                $item.trigger( 'stuck' );
+                $item.stuck = true;
+            } else if( scrollPos < $item.stickyPos && $item.stuck ) {
+                $item.removeClass( 'stuck' );
+                $item.trigger( 'unstuck' );
+                $item.stuck = false;
+            }
+
         }
+
+        function updateValues( $item ){
+
+            var offset  = +$item.css( 'top' ).split( 'px' )[0], // get top value used, make sure it is a number
+                topPos  = $item.offset().top, // get top position (even if it is stuck, it preserves offset)
+                stuckAt = topPos - offset; // where the element will actually stick
+
+            $item.stickyPos = stuckAt;
+
+        }
+
+        $stickyItems.each(function( e ){
+
+            var $item = $( this );
+
+            $item.stuck = false;    // default to unstuck
+            updateValues( $item );  // update vars
+
+            $( window ).on( 'load', function( e ){
+                checkStuck( $item, e.currentTarget.scrollY );
+            });
+
+            $( window ).on( 'scroll', function( e ){
+                checkStuck( $item, e.currentTarget.scrollY );
+            });
+
+            $( window ).on( 'resize', function( e ){
+                clearTimeout( resizeTimer );
+                resizeTimer = setTimeout(function(){
+
+                    updateValues( $item );
+                    checkStuck( $item, e.currentTarget.scrollY );
+
+                }, 100 );
+            });
+
+        });
 
     },
 
@@ -373,7 +407,6 @@ var tbx = {
             });
         });
     },
-
 
     // Newsletter signup
     newsletterSignUp: function() {
