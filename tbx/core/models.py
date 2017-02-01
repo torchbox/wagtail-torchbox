@@ -34,6 +34,8 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtailmarkdown.fields import MarkdownBlock
 
+from .fields import ColorField
+
 
 # Streamfield blocks and config
 
@@ -644,12 +646,86 @@ class ServicePageBlock(StreamBlock):
 class ServicePage(Page):
     description = models.TextField()
     streamfield = StreamField(ServicePageBlock())
+    particle = models.ForeignKey(
+        'ParticleSnippet',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL)
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('description', classname="full"),
         StreamFieldPanel('streamfield'),
+        FieldPanel('particle'),
     ]
+
+
+@register_snippet
+class ParticleSnippet(models.Model):
+    """
+    Snippet for configuring particlejs options
+    """
+    # particle type choices
+    CIRCLE = 1
+    EDGE = 2
+    TRIANGLE = 3
+    POLYGON = 4
+    STAR = 5
+    IMAGE = 6
+    PARTICLES_TYPE_CHOICES = (
+        (CIRCLE, 'circle'),
+        (EDGE, 'edge'),
+        (TRIANGLE, 'triangle'),
+        (POLYGON, 'polygon'),
+        (STAR, 'star'),
+        (IMAGE, 'image'),
+    )
+    # particle movement direction choices
+    NONE = 1
+    TOP = 2
+    TOP_RIGHT = 3
+    RIGHT = 4
+    BOTTOM_RIGHT = 5
+    BOTTOM = 6
+    BOTTOM_LEFT = 7
+    LEFT = 8
+    PARTICLES_MOVE_DIRECTION_CHOICES = (
+        (NONE, 'none'),
+        (TOP, 'top'),
+        (TOP_RIGHT, 'top-right'),
+        (RIGHT, 'right'),
+        (BOTTOM_RIGHT, 'bottom-right'),
+        (BOTTOM, 'bottom'),
+        (BOTTOM_LEFT, 'bottom-left'),
+        (LEFT, 'left'),
+    )
+    title = models.CharField(max_length=50)
+    number = models.PositiveSmallIntegerField(default=50)
+    shape_type = models.PositiveSmallIntegerField(
+        choices=PARTICLES_TYPE_CHOICES, default=CIRCLE)
+    polygon_sides = models.PositiveSmallIntegerField(default=5)
+    size = models.DecimalField(default=2.5, max_digits=4, decimal_places=1)
+    size_random = models.BooleanField(default=False)
+    colour = ColorField(default='ffffff', help_text="Don't include # symbol.")
+    opacity = models.DecimalField(default=0.9, max_digits=2, decimal_places=1)
+    opacity_random = models.BooleanField(default=False)
+    move_speed = models.DecimalField(
+        default=2.5, max_digits=2, decimal_places=1)
+    move_direction = models.PositiveSmallIntegerField(
+        choices=PARTICLES_MOVE_DIRECTION_CHOICES,
+        default=NONE)
+    line_linked = models.BooleanField(default=True)
+    css_background_colour = ColorField(
+        blank=True,
+        help_text="Don't include # symbol. Will be overridden by linear gradient")
+    css_background_linear_gradient = models.CharField(
+        blank=True,
+        max_length=255,
+        help_text="Enter in the format 'to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%'")
+    css_background_url = models.URLField(blank=True, max_length=255)
+
+    def __str__(self):
+        return self.title
 
 
 # Blog index page
