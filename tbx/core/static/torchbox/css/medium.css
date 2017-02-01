@@ -418,7 +418,7 @@
         margin: 4em auto 3em auto;
     }
 
-    .page-standardpage header.container {
+    .page-standardpage header .container {
         position: absolute;
         width: 100%;
     }
@@ -1734,7 +1734,7 @@
         margin: 2.2em 0.5em 0 0;
     }
 
-    .page-googleadgrantspage header.container {
+    .page-googleadgrantspage header .container {
         padding: 0 2em;
     }
 

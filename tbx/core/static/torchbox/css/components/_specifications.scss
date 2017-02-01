@@ -1,8 +1,11 @@
 
 // specifications
 .specifications {
+  $root: &;
+
   transition: all 0.2s ease 0s;
-  position: absolute;
+  position: sticky;
+  top: 69px;
   background: white;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   text-align: center;
@@ -11,21 +14,13 @@
   width: 100%;
   z-index: 6;
   @media #{$tablet} {
+    top: 85px;
     margin-top: 0;
     padding: 10px 0 0;
   }
 
-  &--fixed {
-    position: fixed;
-    top: 0;
+  &.stuck {
     background: rgba($dark, 0.95);
-
-    @media #{$tablet} {
-      .tags {
-        display: none !important;
-      }
-    }
-
   }
 
   &--no-visit {
@@ -40,6 +35,7 @@
   }
 
   .client {
+    display: none;
     vertical-align: top;
     font-weight: 600;
     text-transform: uppercase;
@@ -47,12 +43,11 @@
     letter-spacing: 1px;
     margin: 8px 0 15px 0;
     color: $orange-lt;
-    display: none;
+  }
 
-    &--show {
-      @media #{$tablet} {
-        display: inline-block;
-      }
+  &.stuck .client {
+    @media #{$tablet} {
+      display: inline-block;
     }
   }
 
@@ -92,6 +87,9 @@
     @media #{$tablet} {
       display: inline-block;
     }
+  }
+  &.stuck .tags {
+    display: none !important;
   }
   li {
     font-size: 16px;
