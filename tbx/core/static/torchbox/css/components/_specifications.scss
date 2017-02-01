@@ -1,8 +1,6 @@
 
 // specifications
 .specifications {
-  $root: &;
-
   transition: all 0.2s ease 0s;
   position: sticky;
   top: 69px;
@@ -13,6 +11,8 @@
   padding: 10px 0;
   width: 100%;
   z-index: 6;
+  will-change: transform;
+
   @media #{$tablet} {
     top: 85px;
     margin-top: 0;
