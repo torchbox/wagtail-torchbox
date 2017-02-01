@@ -7,6 +7,7 @@
 	padding: 0 15px;
 	background-color: rgba( #fff, 0.9 );	
   	border-bottom: solid 1px #f2f2f2;
+  	will-change: transform;
 	
 	@media #{$tablet} {
 		padding: 0 20px;
