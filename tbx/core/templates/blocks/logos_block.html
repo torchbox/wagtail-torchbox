@@ -5,9 +5,10 @@
         <h2 class="services-section__heading">{{ value.title }}</h2>
         {% if value.intro %}<p class="services-section__paragraph">{{ value.intro }}</p>{% endif %}
 
-        <section class="clients">
+        <section class="logos-block">
             <ul>
-                {% for logo in value.logos %}
+                {# Display only 8 logos. Ignore rest #}
+                {% for logo in value.logos|slice:":8" %}
 
                     {% firstof logo.link_page.url logo.link_external "not_a_link" as link %}
 
@@ -21,7 +22,6 @@
                 {% endfor %}
 
             </ul>
-            <button>Show more</button>
         </section>
 
     </div>
