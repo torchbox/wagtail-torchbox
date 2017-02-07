@@ -1533,13 +1533,21 @@ class SignUpFormPage(Page):
                 return render(
                     request,
                     'torchbox/includes/sign_up_form_page_landing.html',
-                    {'page': self, 'form': form}
+                    {
+                        'page': self,
+                        'form': form,
+                        'legend': self.call_to_action_text
+                     }
                 )
             else:
                 return render(
                     request,
                     'torchbox/includes/sign_up_form_page_form.html',
-                    {'page': self, 'form': form}
+                    {
+                        'page': self,
+                        'form': form,
+                        'legend': self.call_to_action_text
+                    }
                 )
         else:
             return super(SignUpFormPage, self).serve(request)

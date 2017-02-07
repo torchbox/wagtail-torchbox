@@ -1,1 +1,7 @@
-{{ page.thank_you_text }}
+{% load wagtailimages_tags %}
+
+{% image page.call_to_action_image original %}
+
+<div class="success">
+    {{ page.thank_you_text }}
+</div>
