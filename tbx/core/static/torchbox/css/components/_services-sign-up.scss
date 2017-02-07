@@ -41,7 +41,14 @@
             }
         }
         .error {
-            
+            font-size: 16px;
+            line-height: 29px;
+            color: #fff;
+
+            @media #{$tablet} {
+                font-size: 20px;
+                line-height: 20px;
+            }
         }
         .success {
             font-size: 20px;

@@ -12,9 +12,7 @@
     <div class="container">
         {{ page.intro|richtext }}
         <div class="form sign-up-form-wrapper top">
-            <h3>{{ page.call_to_action_text }}</h3>
-
-            {% include "torchbox/includes/sign_up_form_page_form.html" %}
+            {% include "torchbox/includes/sign_up_form_page_form.html" with legend=page.call_to_action_text %}
         </div> <!-- /sign-up-form -->
     </div>
 
@@ -60,8 +58,7 @@
     <div class="cta">
         <div class="container">
             <div class="form sign-up-form-wrapper">
-                <h3>{{ page.call_to_action_text }}</h3>
-                {% include "torchbox/includes/sign_up_form_page_form.html" %}
+                {% include "torchbox/includes/sign_up_form_page_form.html" with legend=page.call_to_action_text %}
             </div> <!-- /sign-up-form -->
 
         </div>

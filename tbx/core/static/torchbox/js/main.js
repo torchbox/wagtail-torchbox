@@ -376,13 +376,12 @@ var tbx = {
     // SignUp form
     signUp: function(element) {
         $(element).on('submit', function(e) {
-            var $form       = $( this ),
-                $fieldset   = $form.find( 'fieldset' );
+            var $form       = $( this );
 
             e.preventDefault();
             e.stopImmediatePropagation();
 
-            $(".sign-up-form-button").html("Submitting...");
+            $form.find(".sign-up-form-button").html("Submitting...");
 
             $.ajax({
                 url: $form.attr('action'),
@@ -396,13 +395,8 @@ var tbx = {
                         'event': 'formSubmissionSuccess',
                         'formId': 'sign-up-form'
                     });
-                    //  >> Use response as confirmation text
-                    // First remove our fieldset as we don't need it anymore
-                    $fieldset.remove();
-                    // Create a response text container so we can style it (instead of loose text!)
-                    var $response = $( '<div>' ).addClass( 'success' ).html( data );
-                    // Add response to page
-                    $form.prepend( $response );
+                    //  >> Use response as confirmation text/validation error response
+                    $form.html( data );
                 }
             });
         });
