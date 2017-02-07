@@ -5,26 +5,24 @@
         <h2 class="services-section__heading">{{ value.title }}</h2>
         {% if value.intro %}<p class="services-section__paragraph">{{ value.intro }}</p>{% endif %}
 
-        <div class="container">
-            <section class="clients">
-                <ul>
-                    {% for logo in value.logos %}
+        <section class="clients">
+            <ul>
+                {% for logo in value.logos %}
 
-                        {% firstof logo.link_page.url logo.link_external "not_a_link" as link %}
+                    {% firstof logo.link_page.url logo.link_external "not_a_link" as link %}
 
-                        {# Is there more elegant way? #}
-                        <li>
-                            {% if link != "not_a_link" %}<a href="{{ link }}">{% endif %}
-                                {% image logo.image max-250x80 %}
-                            {% if link != "not_a_link" %}</a>{% endif %}
-                        </li>
+                    {# Is there more elegant way? #}
+                    <li>
+                        {% if link != "not_a_link" %}<a href="{{ link }}">{% endif %}
+                            {% image logo.image max-250x80 %}
+                        {% if link != "not_a_link" %}</a>{% endif %}
+                    </li>
 
-                    {% endfor %}
+                {% endfor %}
 
-                </ul>
-                <button>Show more</button>
-            </section>
-        </div>
+            </ul>
+            <button>Show more</button>
+        </section>
 
     </div>
 </div>
