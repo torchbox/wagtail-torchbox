@@ -20,7 +20,7 @@ from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
                                         PageChooserBlock, RawHTMLBlock,
                                         RichTextBlock, StreamBlock,
-                                        StructBlock, TextBlock)
+                                        StructBlock, TextBlock, URLBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -633,6 +633,19 @@ class SignUpFormPageBlock(StructBlock):
         template = 'blocks/sign_up_form_page_block.html'
 
 
+class LogosBlock(StructBlock):
+    title = CharBlock()
+    intro = CharBlock()
+    logos = ListBlock(StructBlock((
+        ('image', ImageChooserBlock()),
+        ('link_page', PageChooserBlock(required=False)),
+        ('link_external', URLBlock(required=False)),
+    )))
+
+    class Meta:
+        icon = 'site'
+        template = 'blocks/logos_block.html'
+
 class ServicePageBlock(StreamBlock):
     case_studies = CaseStudyBlock()
     highlights = HighlightBlock()
@@ -641,6 +654,7 @@ class ServicePageBlock(StreamBlock):
     people = PeopleBlock()
     featured_pages = FeaturedPagesBlock()
     sign_up_form_page = SignUpFormPageBlock()
+    logos = LogosBlock()
 
 
 class ServicePage(Page):
