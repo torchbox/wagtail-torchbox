@@ -5,20 +5,14 @@
   @include cf;
   padding: 0 $container-padding-sml;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 40px;
 
   @media #{$tablet} {
     padding: 0;
-    margin-top: 0;
   }
 
   ul {
     @include cf;
     @include custom-bounce (0.45s);
-    @media #{$tablet} {
-      margin-bottom: 20px;
-    }
   }
   a {
     width: 100%;
