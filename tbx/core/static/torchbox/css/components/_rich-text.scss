@@ -114,10 +114,14 @@
     }
   }
   .embed {
+    margin-top: 35px;
     // For some reason it produces an anonymous div, quicker to style around it than work out why
     > div {
       display: flex;
       justify-content: center;
+    }
+    + .rich-text {
+      margin-top: 35px;
     }
   }
   .full-width {
