@@ -1,0 +1,28 @@
+{% load wagtailimages_tags %}
+
+<div class="services-section services-section--white">
+    <div class="services-wrapper">
+        <h2 class="services-section__heading">{{ value.title }}</h2>
+        {% if value.intro %}<p class="services-section__paragraph">{{ value.intro }}</p>{% endif %}
+
+        <section class="logos-block">
+            <ul>
+                {# Display only 8 logos. Ignore rest #}
+                {% for logo in value.logos|slice:":8" %}
+
+                    {% firstof logo.link_page.url logo.link_external "not_a_link" as link %}
+
+                    {# Is there more elegant way? #}
+                    <li>
+                        {% if link != "not_a_link" %}<a href="{{ link }}">{% endif %}
+                            {% image logo.image max-250x80 %}
+                        {% if link != "not_a_link" %}</a>{% endif %}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+        </section>
+
+    </div>
+</div>

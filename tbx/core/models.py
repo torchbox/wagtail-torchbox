@@ -8,6 +8,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.functional import cached_property
+from django.views.decorators.vary import vary_on_headers
 
 from modelcluster.fields import ParentalKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
@@ -19,7 +20,7 @@ from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
                                         PageChooserBlock, RawHTMLBlock,
                                         RichTextBlock, StreamBlock,
-                                        StructBlock, TextBlock)
+                                        StructBlock, TextBlock, URLBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -32,6 +33,8 @@ from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtailmarkdown.fields import MarkdownBlock
+
+from .fields import ColorField
 
 
 # Streamfield blocks and config
@@ -616,6 +619,33 @@ class FeaturedPagesBlock(StructBlock):
         template = 'blocks/featured_pages_block.html'
 
 
+class SignUpFormPageBlock(StructBlock):
+    page = PageChooserBlock('torchbox.SignUpFormPage')
+
+    def get_context(self, value):
+        context = super(SignUpFormPageBlock, self).get_context(value)
+        context['form'] = value['page'].sign_up_form_class()
+
+        return context
+
+    class Meta:
+        icon = 'doc-full'
+        template = 'blocks/sign_up_form_page_block.html'
+
+
+class LogosBlock(StructBlock):
+    title = CharBlock()
+    intro = CharBlock()
+    logos = ListBlock(StructBlock((
+        ('image', ImageChooserBlock()),
+        ('link_page', PageChooserBlock(required=False)),
+        ('link_external', URLBlock(required=False)),
+    )))
+
+    class Meta:
+        icon = 'site'
+        template = 'blocks/logos_block.html'
+
 class ServicePageBlock(StreamBlock):
     case_studies = CaseStudyBlock()
     highlights = HighlightBlock()
@@ -623,17 +653,93 @@ class ServicePageBlock(StreamBlock):
     process = StepByStepBlock()
     people = PeopleBlock()
     featured_pages = FeaturedPagesBlock()
+    sign_up_form_page = SignUpFormPageBlock()
+    logos = LogosBlock()
 
 
 class ServicePage(Page):
     description = models.TextField()
     streamfield = StreamField(ServicePageBlock())
+    particle = models.ForeignKey(
+        'ParticleSnippet',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL)
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('description', classname="full"),
         StreamFieldPanel('streamfield'),
+        FieldPanel('particle'),
     ]
+
+
+@register_snippet
+class ParticleSnippet(models.Model):
+    """
+    Snippet for configuring particlejs options
+    """
+    # particle type choices
+    CIRCLE = 1
+    EDGE = 2
+    TRIANGLE = 3
+    POLYGON = 4
+    STAR = 5
+    IMAGE = 6
+    PARTICLES_TYPE_CHOICES = (
+        (CIRCLE, 'circle'),
+        (EDGE, 'edge'),
+        (TRIANGLE, 'triangle'),
+        (POLYGON, 'polygon'),
+        (STAR, 'star'),
+        (IMAGE, 'image'),
+    )
+    # particle movement direction choices
+    NONE = 1
+    TOP = 2
+    TOP_RIGHT = 3
+    RIGHT = 4
+    BOTTOM_RIGHT = 5
+    BOTTOM = 6
+    BOTTOM_LEFT = 7
+    LEFT = 8
+    PARTICLES_MOVE_DIRECTION_CHOICES = (
+        (NONE, 'none'),
+        (TOP, 'top'),
+        (TOP_RIGHT, 'top-right'),
+        (RIGHT, 'right'),
+        (BOTTOM_RIGHT, 'bottom-right'),
+        (BOTTOM, 'bottom'),
+        (BOTTOM_LEFT, 'bottom-left'),
+        (LEFT, 'left'),
+    )
+    title = models.CharField(max_length=50)
+    number = models.PositiveSmallIntegerField(default=50)
+    shape_type = models.PositiveSmallIntegerField(
+        choices=PARTICLES_TYPE_CHOICES, default=CIRCLE)
+    polygon_sides = models.PositiveSmallIntegerField(default=5)
+    size = models.DecimalField(default=2.5, max_digits=4, decimal_places=1)
+    size_random = models.BooleanField(default=False)
+    colour = ColorField(default='ffffff', help_text="Don't include # symbol.")
+    opacity = models.DecimalField(default=0.9, max_digits=2, decimal_places=1)
+    opacity_random = models.BooleanField(default=False)
+    move_speed = models.DecimalField(
+        default=2.5, max_digits=2, decimal_places=1)
+    move_direction = models.PositiveSmallIntegerField(
+        choices=PARTICLES_MOVE_DIRECTION_CHOICES,
+        default=NONE)
+    line_linked = models.BooleanField(default=True)
+    css_background_colour = ColorField(
+        blank=True,
+        help_text="Don't include # symbol. Will be overridden by linear gradient")
+    css_background_linear_gradient = models.CharField(
+        blank=True,
+        max_length=255,
+        help_text="Enter in the format 'to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%'")
+    css_background_url = models.URLField(blank=True, max_length=255)
+
+    def __str__(self):
+        return self.title
 
 
 # Blog index page
@@ -1386,6 +1492,8 @@ class SignUpFormPage(Page):
         verbose_name='from address',
         help_text="Anything ending in @torchbox.com is good.")
 
+    sign_up_form_class = SignUpFormPageForm
+
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title', classname="title"),
@@ -1409,15 +1517,15 @@ class SignUpFormPage(Page):
         ], 'Email'),
     ]
 
-    def get_context(self, request):
-        form = SignUpFormPageForm()
-        context = super(SignUpFormPage, self).get_context(request)
-        context['form'] = form
+    def get_context(self, request, *args, **kwargs):
+        context = super(SignUpFormPage, self).get_context(request, *args, **kwargs)
+        context['form'] = self.sign_up_form_class()
         return context
 
+    @vary_on_headers('X-Requested-With')
     def serve(self, request, *args, **kwargs):
         if request.is_ajax() and request.method == "POST":
-            form = SignUpFormPageForm(request.POST)
+            form = self.sign_up_form_class(request.POST)
 
             if form.is_valid():
                 form.save()
@@ -1425,13 +1533,21 @@ class SignUpFormPage(Page):
                 return render(
                     request,
                     'torchbox/includes/sign_up_form_page_landing.html',
-                    {'page': self, 'form': form}
+                    {
+                        'page': self,
+                        'form': form,
+                        'legend': self.call_to_action_text
+                     }
                 )
             else:
                 return render(
                     request,
                     'torchbox/includes/sign_up_form_page_form.html',
-                    {'page': self, 'form': form}
+                    {
+                        'page': self,
+                        'form': form,
+                        'legend': self.call_to_action_text
+                    }
                 )
         else:
             return super(SignUpFormPage, self).serve(request)
