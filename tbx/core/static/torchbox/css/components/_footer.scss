@@ -219,6 +219,22 @@ footer {
       }
     }
   }
+  .links {
+    padding: 0 0 20px 30px;
+    max-width: 150px;
+    margin: 0 auto;
+    color: white;
+    a {
+      color: white;
+      font-size: 13px;
+    }
+    span {
+      font-size: 18px;
+      padding: 0 0.3em;
+      position: relative;
+      top: 2px;
+    }
+  }
 }
 
 .contact {
