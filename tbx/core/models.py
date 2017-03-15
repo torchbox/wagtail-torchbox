@@ -22,7 +22,8 @@ from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
                                         PageChooserBlock, RawHTMLBlock,
                                         RichTextBlock, StreamBlock,
-                                        StructBlock, TextBlock, URLBlock)
+                                        StructBlock, TextBlock, URLBlock,
+                                        ChoiceBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -94,13 +95,6 @@ class WideImage(StructBlock):
 
     class Meta:
         icon = "image"
-
-
-class StatsBlock(StructBlock):
-    pass
-
-    class Meta:
-        icon = "order"
 
 
 class StoryBlock(StreamBlock):
@@ -1034,6 +1028,58 @@ class WorkPageScreenshot(Orderable):
     ]
 
 
+IMAGE_POSITIONS = (('left', 'Left'),
+                   ('right', 'Right'))
+
+
+class IntroBlock(StructBlock):
+    text = TextBlock()
+    image = ImageChooserBlock()
+    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
+
+
+class DeviceBlock(StructBlock):
+    text = RichTextBlock()
+    DEVICES = (('desktop', 'Desktop'),
+               ('tablet', 'Tablet'),
+               ('mobile', 'Mobile'))
+    device_type = ChoiceBlock(choices=DEVICES, default='desktop')
+    image = ImageChooserBlock()
+    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
+    background_image = ImageChooserBlock()
+
+
+class FramedImageBlock(StructBlock):
+    text = RichTextBlock()
+    image = ImageChooserBlock()
+    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
+    background_image = ImageChooserBlock(blank=True)
+
+    class Meta:
+        icon = 'image'
+
+
+class StatsBlock(StructBlock):
+    title = CharBlock(max_length=7)
+    subtitle = CharBlock(max_length=20)
+    description = CharBlock(max_length=50)
+
+
+class VerboseStatsBlock(StructBlock):
+    title = CharBlock(max_length=7)
+    subtitle = CharBlock(max_length=20)
+    description = RichTextBlock()
+
+
+class ContactUsBlock(StructBlock):
+    title = CharBlock(max_length=20)
+    subtitle = CharBlock(max_length=40)
+    person = PageChooserBlock('torchbox.PersonPage')
+
+    class Meta:
+        icon = 'mail'
+
+
 class WorkPage(Page):
     descriptive_title = models.CharField(max_length=255)
     homepage_image = models.ForeignKey(
@@ -1044,7 +1090,15 @@ class WorkPage(Page):
         related_name='+'
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
-    streamfield = StreamField(StoryBlock())
+    streamfield = StreamField([
+        ('intro', IntroBlock()),
+        ('device', DeviceBlock()),
+        ('framed_image', FramedImageBlock()),
+        ('stats', StatsBlock()),
+        ('verbose_stats', VerboseStatsBlock()),
+        ('pull_quote', PullQuoteBlock(
+            template='blocks/pull_quote_block_work_page.html')),
+        ('contact_us', ContactUsBlock())])
     expertises = TaggableManager(through=ExpertiseTag, blank=True,
                                  related_name='+', verbose_name='expertises')
     sectors = TaggableManager(through=SectorTag, blank=True, related_name='+',
