@@ -11,6 +11,8 @@ from django.utils.functional import cached_property
 from django.views.decorators.vary import vary_on_headers
 
 from modelcluster.fields import ParentalKey
+from taggit.managers import TaggableManager
+from taggit.models import ItemBase
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
                                                 MultiFieldPanel,
@@ -1007,12 +1009,14 @@ class JobIndexPage(Page):
 
 
 # Work page
-class WorkPageTagSelect(Orderable):
-    page = ParentalKey('torchbox.WorkPage', related_name='tags')
-    tag = models.ForeignKey(
-        'torchbox.BlogPageTagList',
-        related_name='work_page_tag_select'
-    )
+class ExpertiseTag(ItemBase):
+    content_object = ParentalKey('wagtailcore.Page')
+    tag = models.ForeignKey('torchbox.BlogPageTagList', related_name='+')
+
+
+class SectorTag(ItemBase):
+    content_object = ParentalKey('wagtailcore.Page')
+    tag = models.ForeignKey('torchbox.BlogPageTagList', related_name='+')
 
 
 class WorkPageScreenshot(Orderable):
@@ -1030,26 +1034,8 @@ class WorkPageScreenshot(Orderable):
     ]
 
 
-class WorkPageAuthor(Orderable):
-    page = ParentalKey('torchbox.WorkPage', related_name='related_author')
-    author = models.ForeignKey(
-        'torchbox.PersonPage',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
-
-    panels = [
-        PageChooserPanel('author'),
-    ]
-
-
 class WorkPage(Page):
-    author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
-    summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
-    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
-    body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -1059,6 +1045,10 @@ class WorkPage(Page):
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
     streamfield = StreamField(StoryBlock())
+    expertises = TaggableManager(through=ExpertiseTag, blank=True,
+                                 related_name='+', verbose_name='expertises')
+    sectors = TaggableManager(through=SectorTag, blank=True, related_name='+',
+                              verbose_name='sectors')
     visit_the_site = models.URLField(blank=True)
 
     show_in_play_menu = models.BooleanField(default=False)
@@ -1074,24 +1064,14 @@ class WorkPage(Page):
         # just return first work index in database
         return WorkIndexPage.objects.first()
 
-    @property
-    def has_authors(self):
-        for author in self.related_author.all():
-            if author.author:
-                return True
-
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('descriptive_title'),
-        InlinePanel('related_author', label="Author"),
-        FieldPanel('author_left'),
-        FieldPanel('summary'),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
         StreamFieldPanel('streamfield'),
         ImageChooserPanel('homepage_image'),
         InlinePanel('screenshots', label="Screenshots"),
-        InlinePanel('tags', label="Tags"),
+        FieldPanel('expertises'),
+        FieldPanel('sectors'),
         FieldPanel('visit_the_site'),
     ]
 
@@ -1111,7 +1091,7 @@ class WorkIndexPage(Page):
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = WorkPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        popular_tags = ExpertiseTag.objects.values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
