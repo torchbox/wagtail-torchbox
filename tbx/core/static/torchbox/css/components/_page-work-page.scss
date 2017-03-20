@@ -127,7 +127,7 @@
         height: 100%;
       }
     }
-    .device {
+    .framed-image {
       position: relative;
       background: white;
       align-items: center;
@@ -153,14 +153,17 @@
       .image {
         flex: 1.1;
         width: 100%;
-        padding: 40vw $container-padding-sml 0;
+        padding: 30vw $container-padding-sml 0;
         z-index: 1;
         svg {
           display: block;
+          rect {
+            fill: none;
+            stroke: $orange;
+          }
           path, circle {
             fill: #FFFFFF;
             stroke: $orange;
-            stroke-miterlimit: 10;
           }
         }
       }

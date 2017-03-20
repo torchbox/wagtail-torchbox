@@ -1,0 +1,25 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="framed-image flex-row{% if value.image_position == 'right' %} reverse{% endif %}">
+    {% if value.background_image %}
+        {% image value.background_image fill-500x600 as bg_img %}
+    {% else %}
+        {% image value.image fill-500x600 as bg_img %}
+    {% endif %}
+    <div class="background {{ value.image_position }}">
+        <div class="inner" style="background-image: url({{ bg_img.url }});"></div>
+    </div>
+
+    <div class="image">
+        {% block svg %}
+            {% image value.image fill-600x450 as img %}
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2 -2 662 482">
+                <rect x="{% if value.image_position == 'left' %}0{% else %}60{% endif %}" y="30" width="600" height="450" />
+                <image xlink:href="{{ img.url }}" x="30" y="0" width="600" height="450"/>
+            </svg>
+        {% endblock %}
+    </div>
+    <div class="text">
+        {{ value.text|richtext }}
+    </div>
+</div>

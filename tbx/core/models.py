@@ -1062,6 +1062,7 @@ class FramedImageBlock(StructBlock):
 
     class Meta:
         icon = 'image'
+        template = 'blocks/framed_image_block.html'
 
 
 class StatsBlock(StructBlock):
