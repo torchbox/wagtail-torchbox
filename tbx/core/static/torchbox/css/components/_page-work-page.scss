@@ -196,5 +196,64 @@
         }
       }
     }
+    .stats {
+      position: relative;
+      min-height: 100vh;
+      background: white;
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 270px;
+        line-height: 1;
+        color: $orange;
+        .amount {
+          font-size: 140px;
+          font-weight: bold;
+          .unit {
+            font-size: 70%;
+          }
+        }
+        .detail {
+          font-size: $large-font-size;
+          margin-left: 21px;
+          .subtitle {
+            font-weight: bold;
+          }
+        }
+        @media #{$tablet} {
+          margin-left: $container-padding;
+          margin-right: $container-padding;
+          max-width: initial;
+          .amount, .detail {
+            display: inline-block;
+            vertical-align: bottom;
+          }
+          .amount {
+            font-size: 170px;
+            border-bottom: 20px solid $orange;
+            margin-right: $container-padding;
+            margin-bottom: $container-padding-sml;
+          }
+          .detail {
+            margin-left: 0;
+            .subtitle {
+              font-size: 120px;
+            }
+            .description {
+              font-size: 70px;
+              color: #A5A5A5;
+            }
+          }
+        }
+        @media #{$desktop} {
+          width: 1000px;
+          .amount {
+            margin-bottom: 92px;
+          }
+        }
+      }
+    }
   }
 }
