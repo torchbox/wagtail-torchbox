@@ -255,5 +255,34 @@
         }
       }
     }
+    .quote {
+      min-height: 100vh;
+      background: white;
+      .content {
+        margin: 0 $container-padding-sml;
+        line-height: 1.15;
+        .text {
+          margin-bottom: 30px;
+          font-size: $large-font-size;
+          font-weight: bold;
+          color: #2F3437;
+        }
+        .attribution {
+          font-size: 16px;
+          color: $orange;
+          text-transform: uppercase;
+        }
+      }
+      @media #{$tablet} {
+        position: relative;
+        .content {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          max-width: 650px;
+        }
+      }
+    }
   }
 }
