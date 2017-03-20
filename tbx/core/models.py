@@ -1339,9 +1339,9 @@ class GoogleAdGrantsPage(Page):
         index.SearchField('body')
     ]
 
-    def get_context(self, request):
+    def get_context(self, request, *args, **kwargs):
         form = GoogleAdGrantApplicationForm()
-        context = super(GoogleAdGrantsPage, self).get_context(request)
+        context = super(GoogleAdGrantsPage, self).get_context(request, *args, **kwargs)
         context['form'] = form
         return context
 
