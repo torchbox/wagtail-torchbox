@@ -197,15 +197,10 @@
       }
     }
     .stats {
-      position: relative;
-      min-height: 100vh;
       background: white;
       .content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 270px;
+        margin-left: $container-padding;
+        margin-right: $container-padding;
         line-height: 1;
         color: $orange;
         .amount {
@@ -222,10 +217,15 @@
             font-weight: bold;
           }
         }
-        @media #{$tablet} {
-          margin-left: $container-padding;
-          margin-right: $container-padding;
-          max-width: initial;
+      }
+      @media #{$tablet} {
+        position: relative;
+        min-height: 100vh;
+        .content {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
           .amount, .detail {
             display: inline-block;
             vertical-align: bottom;
@@ -247,7 +247,9 @@
             }
           }
         }
-        @media #{$desktop} {
+      }
+      @media #{$desktop} {
+        .content {
           width: 1000px;
           .amount {
             margin-bottom: 92px;
@@ -255,11 +257,77 @@
         }
       }
     }
+    .verbose-stats {
+      background: white;
+      line-height: 1;
+      .detail, .description {
+        .content {
+          padding: $container-padding;
+        }
+      }
+      .detail {
+        background: $orange;
+        .amount {
+          font-size: 150px;
+          font-weight: bold;
+          line-height: 0.8;
+          color: #FD8777;
+          .unit {
+            font-size: 70%;
+          }
+        }
+        .subtitle {
+          font-size: 40px;
+          color: white;
+        }
+      }
+      .description {
+        h2, h3, h4, h5, h6 {
+          margin-bottom: $container-padding-sml;
+          font-weight: normal;
+          color: $orange;
+          line-height: 1;
+        }
+        @include headers-size(45px);
+        p {
+          font-size: $small-font-size;
+          color: $paragraph-grey;
+        }
+      }
+      @media #{$tablet} {
+        min-height: 100vh;
+        flex-direction: row-reverse;
+        .detail, .description {
+          position: relative;
+          .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            max-width: 100%;
+          }
+        }
+        .detail {
+          .amount {
+            font-size: 250px;
+          }
+          .subtitle {
+            font-size: 60px;
+          }
+        }
+        .description {
+          @include headers-size(65px);
+          p {
+            font-size: $normal-font-size;
+          }
+        }
+      }
+    }
     .quote {
-      min-height: 100vh;
       background: white;
       .content {
-        margin: 0 $container-padding-sml;
+        padding: $container-padding $container-padding-sml;
         line-height: 1.15;
         .text {
           margin-bottom: 30px;
@@ -275,6 +343,7 @@
       }
       @media #{$tablet} {
         position: relative;
+        min-height: 100vh;
         .content {
           position: absolute;
           top: 50%;

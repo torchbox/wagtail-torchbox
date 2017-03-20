@@ -1066,7 +1066,7 @@ class FramedImageBlock(StructBlock):
 
 
 class StatsBlock(StructBlock):
-    amount = CharBlock(max_length=7)
+    amount = CharBlock(max_length=5)
     unit = CharBlock(max_length=5)
     subtitle = CharBlock(max_length=20)
     description = CharBlock(max_length=50)
@@ -1076,9 +1076,13 @@ class StatsBlock(StructBlock):
 
 
 class VerboseStatsBlock(StructBlock):
-    title = CharBlock(max_length=7)
-    subtitle = CharBlock(max_length=20)
+    amount = CharBlock(max_length=5)
+    unit = CharBlock(max_length=5)
+    subtitle = CharBlock(max_length=40)
     description = RichTextBlock()
+
+    class Meta:
+        template = 'blocks/verbose_stats_block.html'
 
 
 class ContactUsBlock(StructBlock):
