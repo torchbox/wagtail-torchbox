@@ -1,0 +1,43 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="device flex-row{% if value.image_position == 'right' %} reverse{% endif %}">
+    {% if value.background_image %}
+        {% image value.background_image fill-500x600 as bg_img %}
+    {% else %}
+        {% image value.image fill-500x600 as bg_img %}
+    {% endif %}
+    <div class="background {{ value.image_position }}">
+        <div class="inner" style="background-image: url({{ bg_img.url }});"></div>
+    </div>
+
+    <div class="image">
+        {% if value.device_type == 'desktop' %}
+            {% image value.image fill-1150x796 as img %}
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2 -2 724 456">
+                <image xlink:href="{{ img.url }}" x="73" y="26" width="575" height="398"/>
+                <path d="M667,0H53c-5,0-9,4-9,9v416h28V27h575v398h28V9C676,4,672,0,667,0z"/>
+                <path d="M0,425h720v0c0,15-12,27-27,27H28C12,452,0,440,0,425L0,425z"/>
+                <circle cx="360" cy="14" r="4"/>
+            </svg>
+        {% elif value.device_type == 'tablet' %}
+            {% image value.image fill-1244x984 as img %}
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2 -2 724 521">
+                <image xlink:href="{{ img.url }}" x="49" y="24" width="622" height="492"/>
+                <path d="M709,0H11C5,0,0,5,0,11v494c0,6,5,11,11,11h697c6,0,11-5,11-11V11C720,5,715,0,709,0z M671,492H49V24H671V492z"/>
+                <circle cx="695" cy="258" r="5"/>
+                <circle cx="26" cy="258" r="13"/>
+            </svg>
+        {% elif value.device_type == 'mobile' %}
+            {% image value.image fill-1086x656 as img %}
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2 -2 724 354">
+                <image xlink:href="{{ img.url }}" x="89" y="22" width="543" height="328"/>
+                <path d="M1,34v282c0,19,15,34,34,34h652c19,0,34-15,34-34V34c0-19-15-34-34-34h-652C16,1,1,16,1,34z M631,22v307H89v-307H631z"/>
+                <circle cx="51" cy="175" r="4"/>
+                <circle cx="675" cy="175" r="19"/>
+            </svg>
+        {% endif %}
+    </div>
+    <div class="text">
+        {{ value.text|richtext }}
+    </div>
+</div>

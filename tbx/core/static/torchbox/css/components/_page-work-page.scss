@@ -1,0 +1,197 @@
+@mixin headers-size($font-size) {
+  h2 {
+    font-size: $font-size;
+  }
+  h3 {
+    font-size: $font-size * 0.8;
+  }
+  h4 {
+    font-size: $font-size * 0.6;
+  }
+  h5 {
+    font-size: $font-size * 0.4;
+  }
+  h6 {
+    font-size: $font-size * 0.3;
+  }
+}
+
+.page-workpage {
+  $small-font-size: 18px;
+  $normal-font-size: 25px;
+  $large-font-size: 36px;
+  $big-font-size: 50px;
+  $huge-font-size: 94px;
+  $background: $grey;
+  $border-color: #D3D3D3;
+  $paragraph-grey: #7E6C73;
+
+  &, .specifications, .text-content {
+    background: $background;
+  }
+
+  .flex-row {
+    display: flex;
+    flex-flow: column nowrap;
+
+    > * {
+      flex: 0;
+    }
+
+    @media #{$tablet} {
+      flex-direction: row;
+      &.reverse {
+        flex-direction: row-reverse;
+      }
+      > * {
+        flex: 1;
+      }
+    }
+  }
+
+  .stream-field {
+    .intro {
+      .text {
+        padding: $container-padding - $container-padding-sml;
+        p {
+          font-size: $small-font-size;
+          font-weight: bold;
+          line-height: 1.2;
+          color: $orange;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .image {
+        overflow: hidden;
+        padding-left: $container-padding - $container-padding-sml;
+        padding-right: $container-padding - $container-padding-sml;
+        svg {
+          display: block;
+          path, circle {
+            fill: transparent;
+            stroke: $border-color;
+            stroke-width: 2px;
+          }
+        }
+        img {
+          margin: 0;
+          border: 1px solid $border-color;
+        }
+      }
+      @media #{$tablet} {
+        .text {
+          padding: $container-padding;
+          p {
+            font-size: $normal-font-size;
+          }
+        }
+        .image img {
+          border-width: 2px;
+        }
+      }
+      @media #{$desktop} {
+        .text, .image {
+          min-height: 100vh;
+        }
+        .text {
+          max-width: 550px;
+          p {
+            font-size: $large-font-size;
+          }
+        }
+      }
+    }
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 80vw;
+      z-index: 0;
+      overflow: hidden;
+      &.left {
+        left: 0;
+      }
+      &.right {
+        right: 0;
+      }
+      .inner {
+        width: 100%;
+        height: 100%;
+        transform: scale(1.1);
+        background-size: cover;
+        filter: blur(5px);
+      }
+      @media #{$tablet} {
+        width: 40vw;
+        height: 100%;
+      }
+    }
+    .device {
+      position: relative;
+      background: white;
+      align-items: center;
+      overflow: hidden;
+      .text {
+        padding: $container-padding;
+        h2, h3, h4, h5, h6 {
+          color: $orange;
+          font-weight: normal;
+          line-height: 0.9;
+        }
+        @include headers-size($big-font-size);
+        p {
+          margin-top: $container-padding-sml;
+          margin-bottom: $container-padding-sml;
+          font-size: $small-font-size;
+          color: $paragraph-grey;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .image {
+        flex: 1.1;
+        width: 100%;
+        padding: 40vw $container-padding-sml 0;
+        z-index: 1;
+        svg {
+          display: block;
+          path, circle {
+            fill: #FFFFFF;
+            stroke: $orange;
+            stroke-miterlimit: 10;
+          }
+        }
+      }
+      @media #{$tablet} {
+        min-height: 100vh;
+        .text {
+          padding-right: $container-padding * 2;
+        }
+        .image {
+          padding: $container-padding $container-padding
+                   $container-padding $container-padding * 2;
+        }
+        &.reverse {
+          .text {
+            padding-left: $container-padding * 2;
+            padding-right: $container-padding;
+          }
+          .image {
+            padding-left: $container-padding;
+            padding-right: $container-padding * 2;
+          }
+        }
+      }
+      @media #{$desktop} {
+        .text {
+          @include headers-size($huge-font-size);
+          p {
+            font-size: $normal-font-size;
+          }
+        }
+      }
+    }
+  }
+}

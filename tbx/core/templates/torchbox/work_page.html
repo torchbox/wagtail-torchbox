@@ -65,17 +65,7 @@
 
     <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="work-content">
 
-        <div class="container">
-            <div class="main-content  {% if not page.visit_the_site %}main-content--no-visit{% endif %}">
-                <div class="fixed">
-                    {% if self.body %}
-                            {{ self.body|richtext }}
-                    {% endif %}
-
-                    {% include "torchbox/includes/streamfield.html" %}
-                </div>
-            </div>
-        </div>
+        {% include "torchbox/includes/streamfield.html" %}
 
     </section>
 
@@ -106,7 +96,7 @@
 
 <!--
 <div class="share">
-    {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
+    <a>Share &#10084;</a>
     <ul class="options">
         <li>
             <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>

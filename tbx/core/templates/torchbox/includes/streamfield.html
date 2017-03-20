@@ -9,8 +9,6 @@
                 <h3>{{ child }}</h3>
             {% elif child.block_type == 'h4' %}
                 <h4>{{ child }}</h4>
-            {% elif child.block_type == 'intro' %}
-                <div class="intro drop-cap">{{ child }}</div>
             {% elif child.block_type == 'pullquote' %}
                 <blockquote class="pull-quote">
                     <p>{{ child.value.quote }}</p>

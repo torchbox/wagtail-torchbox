@@ -9,9 +9,8 @@ from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.functional import cached_property
 from django.views.decorators.vary import vary_on_headers
-
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
-from taggit.managers import TaggableManager
 from taggit.models import ItemBase
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
@@ -1037,6 +1036,9 @@ class IntroBlock(StructBlock):
     image = ImageChooserBlock()
     image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
 
+    class Meta:
+        template = 'blocks/intro_block.html'
+
 
 class DeviceBlock(StructBlock):
     text = RichTextBlock()
@@ -1046,14 +1048,17 @@ class DeviceBlock(StructBlock):
     device_type = ChoiceBlock(choices=DEVICES, default='desktop')
     image = ImageChooserBlock()
     image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
-    background_image = ImageChooserBlock()
+    background_image = ImageChooserBlock(required=False)
+
+    class Meta:
+        template = 'blocks/device_block.html'
 
 
 class FramedImageBlock(StructBlock):
     text = RichTextBlock()
     image = ImageChooserBlock()
     image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
-    background_image = ImageChooserBlock(blank=True)
+    background_image = ImageChooserBlock(required=False)
 
     class Meta:
         icon = 'image'
@@ -1099,10 +1104,12 @@ class WorkPage(Page):
         ('pull_quote', PullQuoteBlock(
             template='blocks/pull_quote_block_work_page.html')),
         ('contact_us', ContactUsBlock())])
-    expertises = TaggableManager(through=ExpertiseTag, blank=True,
-                                 related_name='+', verbose_name='expertises')
-    sectors = TaggableManager(through=SectorTag, blank=True, related_name='+',
-                              verbose_name='sectors')
+    expertises = ClusterTaggableManager(
+        through=ExpertiseTag, blank=True, related_name='+',
+        verbose_name='expertises')
+    sectors = ClusterTaggableManager(
+        through=SectorTag, blank=True, related_name='+',
+        verbose_name='sectors')
     visit_the_site = models.URLField(blank=True)
 
     show_in_play_menu = models.BooleanField(default=False)
