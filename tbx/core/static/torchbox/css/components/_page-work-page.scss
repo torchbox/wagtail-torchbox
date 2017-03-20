@@ -92,11 +92,9 @@
         }
       }
       @media #{$desktop} {
-        .text, .image {
-          min-height: 100vh;
-        }
         .text {
           max-width: 550px;
+          padding-top: 100px;
           p {
             font-size: $large-font-size;
           }
