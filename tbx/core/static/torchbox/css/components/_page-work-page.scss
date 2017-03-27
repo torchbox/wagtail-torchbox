@@ -53,6 +53,9 @@
   }
 
   .stream-field {
+    @media #{$tablet} {
+      padding-top: $container-padding;
+    }
     .intro {
       .text {
         padding: $container-padding - $container-padding-sml;
@@ -67,9 +70,11 @@
         }
       }
       .image {
+        max-height: calc(100vh - #{$container-padding});
+        margin-left: $container-padding - $container-padding-sml;
+        margin-right: $container-padding - $container-padding-sml;
         overflow: hidden;
-        padding-left: $container-padding - $container-padding-sml;
-        padding-right: $container-padding - $container-padding-sml;
+        border-bottom: 1px solid $border-color;
         svg {
           display: block;
           path, circle {
@@ -81,17 +86,16 @@
         img {
           margin: 0;
           border: 1px solid $border-color;
+          border-bottom-width: 0;
         }
       }
       @media #{$tablet} {
+        padding-top: $container-padding;
         .text {
           padding: $container-padding;
           p {
             font-size: $normal-font-size;
           }
-        }
-        .image img {
-          border-width: 2px;
         }
       }
       @media #{$desktop} {
@@ -100,6 +104,14 @@
           padding-top: 100px;
           p {
             font-size: $large-font-size;
+          }
+        }
+        .image {
+          &, img {
+            border-width: 2px;
+          }
+          img {
+            border-bottom-width: 0;
           }
         }
       }
@@ -231,6 +243,7 @@
       }
       @media #{$tablet} {
         .text {
+          padding-left: $container-padding * 2;
           padding-right: $container-padding * 2;
         }
         .image {
@@ -239,12 +252,6 @@
           margin: 0;
           padding-left: $container-padding * 2;
           padding-right: $container-padding * 2;
-        }
-        &.reverse {
-          .text {
-            padding-left: $container-padding * 2;
-            padding-right: $container-padding * 2;
-          }
         }
       }
       @media #{$desktop} {
