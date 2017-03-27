@@ -1102,6 +1102,7 @@ class ContactUsBlock(StructBlock):
 
     class Meta:
         icon = 'mail'
+        template = 'blocks/contact_us_block.html'
 
 
 class WorkPage(Page):

@@ -1,4 +1,7 @@
 @mixin headers-size($font-size) {
+  h1 {
+    font-size: $font-size * 1.2;
+  }
   h2 {
     font-size: $font-size;
   }
@@ -407,6 +410,136 @@
           left: 50%;
           transform: translate(-50%, -50%);
           max-width: 650px;
+        }
+      }
+    }
+    .contact-us {
+      padding: $container-padding 0;
+      text-align: center;
+      background: white;
+      .content {
+        padding-left: $container-padding-sml;
+        padding-right: $container-padding-sml;
+        h1, h3 {
+        color: $orange;
+        }
+        @include headers-size($big-font-size);
+        h3 {
+          margin-bottom: $container-padding * 3 / 4;
+          font-weight: normal;
+        }
+        .person {
+          display: inline-block;
+          padding-top: $container-padding;
+          border-top: 1px solid $orange;
+          color: #646768;
+          img, .text {
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+          img {
+            width: 100px;
+            height: 100px;
+            margin-right: $container-padding / 2;
+            border-radius: 50%;
+          }
+          .text, .links {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+          }
+          .text {
+            margin-top: $container-padding-sml / 2;
+            margin-bottom: $container-padding-sml / 2;
+            font-size: $normal-font-size;
+            .name {
+              font-weight: bold;
+            }
+            .role {
+              display: block;
+            }
+          }
+          .links {
+            padding-top: $container-padding-sml / 2;
+            padding-bottom: $container-padding-sml / 2;
+            a {
+              display: block;
+              font-size: $small-font-size;
+              color: inherit;
+              padding-top: $container-padding-sml / 2;
+              padding-bottom: $container-padding-sml / 2;
+              svg {
+                display: inline-block;
+                width: 30px;
+                padding-right: 5px;
+                vertical-align: middle;
+                path {
+                  fill: $orange;
+                }
+              }
+            }
+          }
+        }
+      }
+      .more {
+        display: none;
+      }
+      @media #{$tablet} {
+        position: relative;
+        min-height: 100vh;
+        .content {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          padding-left: 0;
+          padding-right: 0;
+          .person {
+            white-space: nowrap;
+            img {
+              float: left;
+            }
+            .text, .links {
+              text-align: left;
+            }
+            .text {
+              .role {
+                display: inline-block;
+              }
+            }
+            .links {
+              padding-top: 0;
+              padding-bottom: 0;
+              a {
+                display: inline-block;
+                padding-top: 0;
+                padding-bottom: 0;
+                + a {
+                  margin-left: $container-padding / 2;
+                }
+              }
+            }
+          }
+        }
+        .more {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          display: block;
+          font-size: $small-font-size;
+          color: $orange;
+          svg {
+            margin: 0 auto;
+            width: 30px;
+            height: 15px;
+            path {
+              fill: none;
+              stroke: $orange;
+            }
+          }
         }
       }
     }
