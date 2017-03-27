@@ -1146,6 +1146,11 @@ class WorkPage(Page):
         # just return first work index in database
         return WorkIndexPage.objects.first()
 
+    def other_works(self):
+        return [self, self, self]
+        return (WorkPage.objects.exclude(pk=self.pk)
+                .order_by('-first_published_at')[:3])
+
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('descriptive_title'),

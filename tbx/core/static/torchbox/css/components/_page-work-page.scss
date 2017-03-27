@@ -331,7 +331,7 @@
           font-size: 150px;
           font-weight: bold;
           line-height: 0.8;
-          color: #FD8777;
+          color: $orange-lt;
           .unit {
             font-size: 70%;
           }
@@ -488,12 +488,12 @@
       }
       @media #{$tablet} {
         position: relative;
+        display: flex;
         min-height: 100vh;
+        align-items: center;
         .content {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          margin-left: auto;
+          margin-right: auto;
           padding-left: 0;
           padding-right: 0;
           .person {
@@ -538,6 +538,85 @@
             path {
               fill: none;
               stroke: $orange;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #more-like-this {
+    $gutter: 40px;
+    $padding: $gutter / 2;
+    min-height: 100vh;
+    background: white;
+    padding-top: $container-padding;
+    padding-bottom: $container-padding;
+    .container {
+      width: 100%;
+      h1 {
+        margin-bottom: $container-padding * 2;
+        font-size: $big-font-size * 1.2;
+        font-weight: normal;
+        text-align: center;
+        color: $orange;
+      }
+      .flex-row {
+        display: block;
+        .work {
+          position: relative;
+          display: inline-block;
+          width: 100%;
+          height: 250px;
+          .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+          }
+          .content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: $container-padding-sml * 2;
+            background: linear-gradient(to bottom, transparent 40%,
+                                        rgba(0,0,0,0.5) 100%);
+            .descriptive-title {
+              line-height: 2.5;
+              font-size: $normal-font-size;
+              color: white;
+            }
+            .title {
+              line-height: 1;
+              font-size: $small-font-size;
+              font-weight: bold;
+              color: $orange-lt;
+              text-transform: uppercase;
+            }
+          }
+          + .work {
+            margin-top: $container-padding-sml;
+          }
+        }
+      }
+    }
+    @media #{$desktop} {
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      .container {
+        .flex-row {
+          display: flex;
+          margin-left: -$padding;
+          margin-right: -$padding;
+          justify-content: space-between;
+          .work {
+            height: 425px;
+            margin-left: $padding;
+            margin-right: $padding;
+            + .work {
+              margin-top: 0;
             }
           }
         }

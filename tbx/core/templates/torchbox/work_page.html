@@ -6,7 +6,7 @@
 {% get_prev_sibling_by_order self as prev_page %}
 
 <main class="single">
-    {% with self.screenshots.all as screenshots %}
+    {% with screenshots=self.screenshots.all %}
         {% if screenshots %}
                 {% for screenshot in screenshots %}
                     {% image screenshot.image width-9999 as shot %}
@@ -29,7 +29,7 @@
         <div class="container">
             <div class="content">
                 <ul class="tags">
-                    {% with self.tags.all as tags %}
+                    {% with tags=self.tags.all %}
                         {% if tags %}
                             {% for tag in tags %}
                                 <li>
@@ -69,44 +69,31 @@
         </section>
     {% endif %}
 
-    <div class="nextprev-nav">
-<!--
-        {% if prev_page %}
-            <div class="nextprev prev">
-                <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
-            </div>
-        {% endif %}
--->
-        {% if next_page %}
-            <a href="{% pageurl next_page %}">
-                <div class="next">
-                    {% image next_page.homepage_image fill-2000x600 class="thumb" %}
-                    <div class="container">
-                        <div class="content">
-                            <h2>{{next_page.descriptive_title}}</h2>
-                            <p class="client">{{ next_page.title }}</p>
-                        </div>
+    {% with other_works=page.other_works %}
+        {% if other_works %}
+            <div id="more-like-this">
+                <div class="container">
+                    <h1>Want to see <strong>more?</strong></h1>
+                    <div class="flex-row">
+                        {% for work in other_works %}
+                            <a href="{% pageurl work %}" class="work">
+                                {% image work.homepage_image fill-1100x425 as img %}
+                                <div class="background" style="background-image: url({{ img.url }});"></div>
+                                <div class="content">
+                                    <div class="descriptive-title">
+                                        {{ work.descriptive_title }}
+                                    </div>
+                                    <div class="title">{{ work.title }}</div>
+                                </div>
+                            </a>
+                        {% endfor %}
                     </div>
                 </div>
-            </a>
+            </div>
         {% endif %}
-    </div>
+    {% endwith %}
 
 </main>
-
-<!--
-<div class="share">
-    <a>Share &#10084;</a>
-    <ul class="options">
-        <li>
-            <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-        </li>
-        <li>
-            <a href="http://www.twitter.com/share" class="twitter-share-button">Tweet</a>
-        </li>
-    </ul>
-</div>
--->
 
 <div id="fb-root"></div>
 {% endblock %}
