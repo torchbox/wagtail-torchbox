@@ -63,11 +63,11 @@
 
     </div>
 
-    <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="work-content">
-
-        {% include "torchbox/includes/streamfield.html" %}
-
-    </section>
+    {% if page.streamfield %}
+        <section class="stream-field">
+            {{ page.streamfield }}
+        </section>
+    {% endif %}
 
     <div class="nextprev-nav">
 <!--

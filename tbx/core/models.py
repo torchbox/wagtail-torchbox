@@ -1065,6 +1065,16 @@ class FramedImageBlock(StructBlock):
         template = 'blocks/framed_image_block.html'
 
 
+class AlignedImageBlock(StructBlock):
+    text = RichTextBlock()
+    image = ImageChooserBlock()
+    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
+
+    class Meta:
+        icon = 'image'
+        template = 'blocks/aligned_image_block.html'
+
+
 class StatsBlock(StructBlock):
     amount = CharBlock(max_length=5)
     unit = CharBlock(max_length=5)
@@ -1108,6 +1118,7 @@ class WorkPage(Page):
         ('intro', IntroBlock()),
         ('device', DeviceBlock()),
         ('framed_image', FramedImageBlock()),
+        ('aligned_image', AlignedImageBlock()),
         ('stats', StatsBlock()),
         ('verbose_stats', VerboseStatsBlock()),
         ('pull_quote', PullQuoteBlock(
