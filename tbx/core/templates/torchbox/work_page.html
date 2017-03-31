@@ -78,7 +78,7 @@
                         {% for work in other_works %}
                             <a href="{% pageurl work %}" class="work{% if forloop.counter0 > 1 %} hidden-mobile{% endif %}">
                                 {% image work.homepage_image fill-1100x425 as img %}
-                                <div class="background" style="background-image: url({{ img.url }});"></div>
+                                <div class="background" style="background-image: url('{{ img.url }}');"></div>
                                 <div class="content">
                                     <div class="descriptive-title">
                                         {{ work.descriptive_title }}
