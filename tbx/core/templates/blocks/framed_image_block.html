@@ -7,7 +7,7 @@
         {% image value.image fill-500x600 as bg_img %}
     {% endif %}
     <div class="background {{ value.image_position }}">
-        <div class="inner" style="background-image: url({{ bg_img.url }});"></div>
+        <div class="inner" style="background-image: url('{{ bg_img.url }}');"></div>
     </div>
 
     <div class="image">
