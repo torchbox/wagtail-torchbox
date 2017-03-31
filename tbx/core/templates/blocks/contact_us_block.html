@@ -16,13 +16,13 @@
                 <br />
                 <span class="links">
                     {% if person.telephone %}
-                        <a class="telephone" href="tel:{{ person.telephone }}">
+                        <a href="tel:{{ person.telephone }}">
                             {% include "torchbox/includes/svg/phone.svg" %}
                             {{ person.telephone }}
                         </a>
                     {% endif %}
                     {% if person.email %}
-                        <a class="phone" href="mailto:{{ person.email }}">
+                        <a href="mailto:{{ person.email }}">
                             {% include "torchbox/includes/svg/envelope.svg" %}
                             {{ person.email }}
                         </a>

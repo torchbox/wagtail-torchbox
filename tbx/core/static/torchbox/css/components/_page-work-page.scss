@@ -1,30 +1,9 @@
-@mixin headers-size($font-size) {
-  h1 {
-    font-size: $font-size * 1.2;
-  }
-  h2 {
-    font-size: $font-size;
-  }
-  h3 {
-    font-size: $font-size * 0.8;
-  }
-  h4 {
-    font-size: $font-size * 0.6;
-  }
-  h5 {
-    font-size: $font-size * 0.4;
-  }
-  h6 {
-    font-size: $font-size * 0.3;
-  }
-}
-
 .page-workpage {
-  $small-font-size: 18px;
-  $normal-font-size: 25px;
-  $large-font-size: 36px;
-  $big-font-size: 50px;
-  $huge-font-size: 94px;
+  $small-font-size: 14px;
+  $normal-font-size: 16px;
+  $large-font-size: 20px;
+  $big-font-size: 30px;
+  $huge-font-size: 60px;
   $background: $grey;
   $border-color: #D3D3D3;
   $paragraph-grey: #7E6C73;
@@ -60,7 +39,7 @@
       .text {
         padding: $container-padding - $container-padding-sml;
         p {
-          font-size: $small-font-size;
+          font-size: $normal-font-size;
           font-weight: bold;
           line-height: 1.2;
           color: $orange;
@@ -94,7 +73,7 @@
         .text {
           padding: $container-padding;
           p {
-            font-size: $normal-font-size;
+            font-size: $large-font-size;
           }
         }
       }
@@ -103,7 +82,7 @@
           max-width: 550px;
           padding-top: 100px;
           p {
-            font-size: $large-font-size;
+            font-size: $big-font-size;
           }
         }
         .image {
@@ -143,21 +122,22 @@
     }
     .framed-image {
       position: relative;
+      min-height: 100vh;
       background: white;
       align-items: center;
       overflow: hidden;
       .text {
         padding: $container-padding;
         h2, h3, h4, h5, h6 {
+          font-size: $big-font-size;
+          font-weight: 300;
           color: $orange;
-          font-weight: normal;
           line-height: 0.9;
         }
-        @include headers-size($big-font-size);
         p {
           margin-top: $container-padding-sml;
           margin-bottom: $container-padding-sml;
-          font-size: $small-font-size;
+          font-size: $normal-font-size;
           color: $paragraph-grey;
           &:last-child {
             margin-bottom: 0;
@@ -171,18 +151,19 @@
         z-index: 1;
         svg {
           display: block;
+          rect, path, circle {
+            stroke: $orange;
+            stroke-width: 1.5px;
+          }
           rect {
             fill: none;
-            stroke: $orange;
           }
           path, circle {
             fill: #FFFFFF;
-            stroke: $orange;
           }
         }
       }
       @media #{$tablet} {
-        min-height: 100vh;
         .text {
           padding-right: $container-padding * 2;
         }
@@ -203,30 +184,33 @@
       }
       @media #{$desktop} {
         .text {
-          @include headers-size($huge-font-size);
+          h2, h3, h4, h5, h6 {
+            font-size: $huge-font-size;
+          }
           p {
-            font-size: $normal-font-size;
+            font-size: $large-font-size;
           }
         }
       }
     }
     .aligned-image {
       position: relative;
+      min-height: 100vh;
       background: white;
       align-items: center;
       overflow: hidden;
       .text {
         padding: $container-padding;
         h2, h3, h4, h5, h6 {
-          color: $orange;
-          font-weight: normal;
+          font-size: $big-font-size;
+          font-weight: 300;
           line-height: 0.9;
+          color: $orange;
         }
-        @include headers-size($big-font-size);
         p {
           margin-top: $container-padding-sml;
           margin-bottom: $container-padding-sml;
-          font-size: $small-font-size;
+          font-size: $normal-font-size;
           color: $paragraph-grey;
           &:last-child {
             margin-bottom: 0;
@@ -256,18 +240,25 @@
       }
       @media #{$desktop} {
         .text {
-          @include headers-size($huge-font-size);
+          h2, h3, h4, h5, h6 {
+            font-size: $huge-font-size;
+          }
           p {
-            font-size: $normal-font-size;
+            font-size: $large-font-size;
           }
         }
       }
     }
     .stats {
+      display: flex;
+      min-height: 100vh;
       background: white;
+      align-items: center;
       .content {
-        margin-left: $container-padding;
-        margin-right: $container-padding;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: $container-padding;
+        padding-right: $container-padding;
         line-height: 1;
         color: $orange;
         .amount {
@@ -286,13 +277,7 @@
         }
       }
       @media #{$tablet} {
-        position: relative;
-        min-height: 100vh;
         .content {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
           .amount, .detail {
             display: inline-block;
             vertical-align: bottom;
@@ -328,6 +313,9 @@
       background: white;
       line-height: 1;
       .detail, .description {
+        display: flex;
+        min-height: 50vh;
+        align-items: center;
         .content {
           padding: $container-padding;
         }
@@ -351,13 +339,13 @@
       .description {
         h2, h3, h4, h5, h6 {
           margin-bottom: $container-padding-sml;
-          font-weight: normal;
+          font-size: $big-font-size;
+          font-weight: 300;
           color: $orange;
           line-height: 1;
         }
-        @include headers-size(45px);
         p {
-          font-size: $small-font-size;
+          font-size: $normal-font-size;
           color: $paragraph-grey;
         }
       }
@@ -365,12 +353,11 @@
         min-height: 100vh;
         flex-direction: row-reverse;
         .detail, .description {
-          position: relative;
+          min-height: 100vh;
+          width: 50vw;
           .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            margin-left: auto;
+            margin-right: auto;
             width: 500px;
             max-width: 100%;
           }
@@ -384,43 +371,53 @@
           }
         }
         .description {
-          @include headers-size(65px);
+          h2, h3, h4, h5, h6 {
+            font-size: $huge-font-size;
+          }
           p {
-            font-size: $normal-font-size;
+            font-size: $large-font-size;
           }
         }
       }
     }
     .quote {
+      display: flex;
+      min-height: 100vh;
       background: white;
+      align-items: center;
       .content {
-        padding: $container-padding $container-padding-sml;
+        padding: $container-padding;
         line-height: 1.15;
         .text {
           margin-bottom: 30px;
-          font-size: $large-font-size;
+          font-size: $big-font-size;
           font-weight: bold;
           color: #2F3437;
         }
         .attribution {
-          font-size: 16px;
+          font-size: $small-font-size;
           color: $orange;
           text-transform: uppercase;
         }
       }
       @media #{$tablet} {
-        position: relative;
-        min-height: 100vh;
         .content {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          max-width: 650px;
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+          .text {
+            font-size: $big-font-size * 1.2;
+          }
+          .attribution {
+            font-size: $normal-font-size;
+          }
         }
       }
     }
     .contact-us {
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
       padding: $container-padding 0;
       text-align: center;
       background: white;
@@ -428,12 +425,12 @@
         padding-left: $container-padding-sml;
         padding-right: $container-padding-sml;
         h1, h3 {
-        color: $orange;
+          font-size: $big-font-size;
+          color: $orange;
         }
-        @include headers-size($big-font-size);
         h3 {
           margin-bottom: $container-padding * 3 / 4;
-          font-weight: normal;
+          font-weight: 300;
         }
         .person {
           display: inline-block;
@@ -460,7 +457,7 @@
           .text {
             margin-top: $container-padding-sml / 2;
             margin-bottom: $container-padding-sml / 2;
-            font-size: $normal-font-size;
+            font-size: $large-font-size;
             .name {
               font-weight: bold;
             }
@@ -473,7 +470,7 @@
             padding-bottom: $container-padding-sml / 2;
             a {
               display: block;
-              font-size: $small-font-size;
+              font-size: $normal-font-size;
               color: inherit;
               padding-top: $container-padding-sml / 2;
               padding-bottom: $container-padding-sml / 2;
@@ -495,15 +492,16 @@
       }
       @media #{$tablet} {
         position: relative;
-        display: flex;
-        min-height: 100vh;
-        align-items: center;
         .content {
           margin-left: auto;
           margin-right: auto;
           padding-left: 0;
           padding-right: 0;
+          h1 {
+            font-size: $huge-font-size;
+          }
           .person {
+            min-width: 500px;
             white-space: nowrap;
             img {
               float: left;
@@ -530,13 +528,15 @@
             }
           }
         }
+      }
+      @media #{$desktop} {
         .more {
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
           display: block;
-          font-size: $small-font-size;
+          font-size: $normal-font-size;
           color: $orange;
           svg {
             margin: 0 auto;
@@ -555,15 +555,17 @@
   #more-like-this {
     $gutter: 40px;
     $padding: $gutter / 2;
+    display: flex;
     min-height: 100vh;
+    align-items: center;
     background: white;
     padding-top: $container-padding;
     padding-bottom: $container-padding;
     .container {
       width: 100%;
       h1 {
-        margin-bottom: $container-padding * 2;
-        font-size: $big-font-size * 1.2;
+        margin-bottom: $container-padding-sml * 2;
+        font-size: $big-font-size;
         font-weight: normal;
         text-align: center;
         color: $orange;
@@ -575,6 +577,9 @@
           display: inline-block;
           width: 100%;
           height: 250px;
+          &.hidden-mobile {
+            display: none;
+          }
           .background {
             position: absolute;
             width: 100%;
@@ -591,12 +596,12 @@
                                         rgba(0,0,0,0.5) 100%);
             .descriptive-title {
               line-height: 2.5;
-              font-size: $normal-font-size;
+              font-size: $large-font-size * 1.2;
               color: white;
             }
             .title {
               line-height: 1;
-              font-size: $small-font-size;
+              font-size: $normal-font-size;
               font-weight: bold;
               color: $orange-lt;
               text-transform: uppercase;
@@ -609,10 +614,11 @@
       }
     }
     @media #{$desktop} {
-      display: flex;
-      min-height: 100vh;
-      align-items: center;
       .container {
+        h1 {
+          font-size: $huge-font-size;
+          margin-bottom: $container-padding * 2;
+        }
         .flex-row {
           display: flex;
           margin-left: -$padding;
@@ -622,6 +628,9 @@
             height: 425px;
             margin-left: $padding;
             margin-right: $padding;
+            &.hidden-mobile {
+              display: inline-block;
+            }
             + .work {
               margin-top: 0;
             }
