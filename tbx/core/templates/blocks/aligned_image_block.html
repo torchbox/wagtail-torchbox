@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="aligned-image flex-row{% if value.image_position == 'right' %} reverse{% endif %}">
+<div class="aligned-image flex-row{% if value.image_position == 'right' %} reverse{% endif %}" data-slide="true">
     {% image value.image fill-1280x1024 as img %}
     <div class="image" style="background-image: url('{{ img.url }}');"></div>
     <div class="text">

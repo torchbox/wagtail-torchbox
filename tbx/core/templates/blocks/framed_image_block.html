@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="framed-image flex-row{% if value.image_position == 'right' %} reverse{% endif %}">
+<div class="framed-image flex-row{% if value.image_position == 'right' %} reverse{% endif %}" data-slide="true">
     {% if value.background_image %}
         {% image value.background_image fill-500x600 as bg_img %}
     {% else %}

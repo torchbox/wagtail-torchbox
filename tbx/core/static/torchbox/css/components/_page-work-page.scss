@@ -1,16 +1,13 @@
 .page-workpage {
+  $navbar-height: 84px;
   $small-font-size: 14px;
   $normal-font-size: 16px;
   $large-font-size: 20px;
   $big-font-size: 30px;
+  $enormous-font-size: 45px;
   $huge-font-size: 60px;
-  $background: $grey;
   $border-color: #D3D3D3;
   $paragraph-grey: #7E6C73;
-
-  &, .specifications, .text-content {
-    background: $background;
-  }
 
   .flex-row {
     display: flex;
@@ -29,15 +26,79 @@
     }
   }
 
-  .stream-field {
-    @media #{$tablet} {
-      padding-top: $container-padding;
+  .work {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: calc(100vh - #{$navbar-height});
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
     }
+    .content {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: $container-padding-sml * 2;
+      background: linear-gradient(to bottom, transparent 40%,
+                                  rgba(0,0,0,0.5) 100%);
+      .descriptive-title {
+        font-weight: bold;
+        color: white;
+      }
+      .title {
+        line-height: 1;
+        font-size: $normal-font-size;
+        font-weight: bold;
+        color: $orange-lt;
+        text-transform: uppercase;
+      }
+    }
+    &.hero {
+      .content {
+        > div {
+          max-width: 950px;
+          margin-left: auto;
+          margin-right: auto;
+          .descriptive-title {
+            margin-bottom: 30px;
+            line-height: 1;
+            font-size: $big-font-size;
+          }
+        }
+      }
+      @media #{$tablet} {
+        .content {
+          padding: $container-padding * 2;
+          > div {
+            .descriptive-title {
+              font-size: $enormous-font-size;
+            }
+          }
+        }
+      }
+      @media #{$desktop} {
+        .content {
+          > div {
+            .descriptive-title {
+              font-size: 75px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .stream-field {
+    background: $grey;
     .intro {
       .text {
         padding: $container-padding - $container-padding-sml;
         p {
-          font-size: $normal-font-size;
+          font-size: $large-font-size;
           font-weight: bold;
           line-height: 1.2;
           color: $orange;
@@ -71,7 +132,7 @@
         .text {
           padding: $container-padding;
           p {
-            font-size: $large-font-size;
+            font-size: 25px;
           }
         }
       }
@@ -80,7 +141,7 @@
           max-width: 550px;
           padding-top: 100px;
           p {
-            font-size: $big-font-size;
+            font-size: 35px;
           }
         }
         .image {
@@ -164,6 +225,9 @@
       @media #{$tablet} {
         .text {
           padding-right: $container-padding * 2;
+          h2, h3, h4, h5, h6 {
+            font-size: $enormous-font-size;
+          }
         }
         .image {
           flex: 1.1;
@@ -226,6 +290,9 @@
       @media #{$tablet} {
         .text, .image {
           flex-basis: 0;
+          h2, h3, h4, h5, h6 {
+            font-size: $enormous-font-size;
+          }
         }
         .text {
           padding-left: $container-padding * 2;
@@ -256,13 +323,19 @@
       background: white;
       align-items: center;
       .content {
+        display: flex;
+        flex-flow: column wrap;
         margin-left: auto;
         margin-right: auto;
         padding-left: $container-padding;
         padding-right: $container-padding;
         line-height: 1;
         color: $orange;
+        .amount, .detail {
+          vertical-align: bottom;
+        }
         .amount {
+          flex: 0;
           font-size: 140px;
           font-weight: bold;
           .unit {
@@ -270,42 +343,34 @@
           }
         }
         .detail {
-          font-size: $large-font-size;
-          margin-left: 21px;
-          .subtitle {
-            font-weight: bold;
-          }
+          flex: 1;
+          font-size: $enormous-font-size;
         }
       }
       @media #{$tablet} {
         .content {
-          .amount, .detail {
-            display: inline-block;
-            vertical-align: bottom;
-          }
+          flex-flow: row nowrap;
+          align-items: flex-end;
+          max-width: 800px;
           .amount {
-            font-size: 170px;
-            border-bottom: 20px solid $orange;
             margin-right: $container-padding;
-            margin-bottom: $container-padding-sml;
+            font-size: 170px;
           }
           .detail {
+            padding-bottom: 20px;
             margin-left: 0;
-            .subtitle {
-              font-size: 120px;
-            }
-            .description {
-              font-size: 70px;
-              color: #A5A5A5;
-            }
           }
         }
       }
       @media #{$desktop} {
         .content {
-          width: 1000px;
+          max-width: 1000px;
           .amount {
-            margin-bottom: 92px;
+            font-size: 250px;
+          }
+          .detail {
+            padding-bottom: 40px;
+            font-size: $huge-font-size;
           }
         }
       }
@@ -373,10 +438,17 @@
         }
         .description {
           h2, h3, h4, h5, h6 {
-            font-size: $huge-font-size;
+            font-size: $enormous-font-size;
           }
           p {
             font-size: $large-font-size;
+          }
+        }
+      }
+      @media #{$desktop} {
+        .description {
+          h2, h3, h4, h5, h6 {
+            font-size: $huge-font-size;
           }
         }
       }
@@ -501,7 +573,7 @@
           padding-left: 0;
           padding-right: 0;
           h1 {
-            font-size: $huge-font-size;
+            font-size: $enormous-font-size;
           }
           .person {
             min-width: 500px;
@@ -533,6 +605,11 @@
         }
       }
       @media #{$desktop} {
+        .content {
+          h1 {
+            font-size: $huge-font-size;
+          }
+        }
         .more {
           position: absolute;
           bottom: 0;
@@ -576,38 +653,12 @@
       .flex-row {
         display: block;
         .work {
-          position: relative;
-          display: inline-block;
-          width: 100%;
           height: 250px;
-          &.hidden-mobile {
-            display: none;
-          }
-          .background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-          }
           .content {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: $container-padding-sml * 2;
-            background: linear-gradient(to bottom, transparent 40%,
-                                        rgba(0,0,0,0.5) 100%);
             .descriptive-title {
               line-height: 2.5;
               font-size: $large-font-size * 1.2;
-              color: white;
-            }
-            .title {
-              line-height: 1;
-              font-size: $normal-font-size;
-              font-weight: bold;
-              color: $orange-lt;
-              text-transform: uppercase;
+              font-weight: normal;
             }
           }
           + .work {
@@ -631,9 +682,6 @@
             height: 425px;
             margin-left: $padding;
             margin-right: $padding;
-            &.hidden-mobile {
-              display: inline-block;
-            }
             + .work {
               margin-top: 0;
             }

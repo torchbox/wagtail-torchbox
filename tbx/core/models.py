@@ -1078,8 +1078,7 @@ class AlignedImageBlock(StructBlock):
 class StatsBlock(StructBlock):
     amount = CharBlock(max_length=5)
     unit = CharBlock(max_length=5)
-    subtitle = CharBlock(max_length=20)
-    description = CharBlock(max_length=50)
+    description = CharBlock(max_length=100)
 
     class Meta:
         template = 'blocks/stats_block.html'
@@ -1154,8 +1153,8 @@ class WorkPage(Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('descriptive_title'),
-        StreamFieldPanel('streamfield'),
         ImageChooserPanel('homepage_image'),
+        StreamFieldPanel('streamfield'),
         InlinePanel('screenshots', label="Screenshots"),
         FieldPanel('expertises'),
         FieldPanel('sectors'),
