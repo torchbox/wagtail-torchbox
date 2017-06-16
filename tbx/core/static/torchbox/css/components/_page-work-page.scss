@@ -653,12 +653,20 @@
       .flex-row {
         display: block;
         .work {
-          height: 250px;
+          height: 200px;
+          &.hidden-mobile {
+            display: none;
+          }
           .content {
+            padding: $container-padding-sml;
             .descriptive-title {
-              line-height: 2.5;
-              font-size: $large-font-size * 1.2;
+              line-height: 1.3;
+              font-size: $normal-font-size;
               font-weight: normal;
+              margin-bottom: $container-padding-sml;
+            }
+            .title {
+              font-size: $small-font-size * 0.8;
             }
           }
           + .work {
@@ -682,6 +690,17 @@
             height: 425px;
             margin-left: $padding;
             margin-right: $padding;
+            &.hidden-mobile {
+              display: block;
+            }
+            .content {
+              .descriptive-title {
+                font-size: $large-font-size * 1.2;
+              }
+              .title {
+                font-size: $normal-font-size;
+              }
+            }
             + .work {
               margin-top: 0;
             }

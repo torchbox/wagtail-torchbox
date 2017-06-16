@@ -56,7 +56,7 @@
                     <h1>Want to see <strong>more?</strong></h1>
                     <div class="flex-row">
                         {% for work in other_works %}
-                            <a href="{% pageurl work %}" class="work">
+                            <a href="{% pageurl work %}" class="work{% cycle '' '' ' hidden-mobile' %}">
                                 {% image work.homepage_image fill-1100x425 as img %}
                                 <div class="background" style="background-image: url('{{ img.url }}');"></div>
                                 <div class="content">
