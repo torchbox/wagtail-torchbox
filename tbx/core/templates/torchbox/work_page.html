@@ -43,11 +43,7 @@
         {% endif %}
     {% endwith %}
 
-    {% if page.streamfield %}
-        <section class="stream-field">
-            {{ page.streamfield }}
-        </section>
-    {% endif %}
+    {{ page.streamfield }}
 
     {% with other_works=page.other_works %}
         {% if other_works %}
@@ -56,7 +52,7 @@
                     <h1>Want to see <strong>more?</strong></h1>
                     <div class="flex-row">
                         {% for work in other_works %}
-                            <a href="{% pageurl work %}" class="work{% cycle '' '' ' hidden-mobile' %}">
+                            <a href="{% pageurl work %}" class="work{% cycle '' '' ' hidden-tablet' %}">
                                 {% image work.homepage_image fill-1100x425 as img %}
                                 <div class="background" style="background-image: url('{{ img.url }}');"></div>
                                 <div class="content">
@@ -78,6 +74,10 @@
 <div id="fb-root"></div>
 {% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.css" />
+{% endblock %}
+
 {% block extra_js %}
 {% if FB_APP_ID %}
     <script>(function(d, s, id) {
@@ -91,76 +91,18 @@
 
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-    <script>
-      $(function () {
-        var $window = $(window);
-        var $slides = $('[data-slide="true"]');
-        var $currentSlide = null;
-        var lastScroll = $window.scrollTop();
-        var inAnimation = false;
-        var $animated = $('body, html');
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
 
-        function autoSlide(dy) {
-          if (dy == 0) {
-            return;
-          }
-          var windowHeight = $window.height();
-          var $validSlides = $slides;
-          if ($currentSlide !== null) {
-            $validSlides = $validSlides.not($currentSlide);
-          }
-          $validSlides.each(function () {
-            var bounds = this.getBoundingClientRect();
-            var isTopVisible = (bounds.top > 0)
-                               && (bounds.top < windowHeight);
-            var isBottomVisible = (bounds.bottom > 0)
-                                  && (bounds.bottom < windowHeight);
-            if (isTopVisible && isBottomVisible) {
-              return;
-            }
-            if (((dy < 0) && isBottomVisible) || ((dy > 0) && isTopVisible)) {
-              $currentSlide = $(this);
-              inAnimation = true;
-              var newScroll = $currentSlide.offset().top;
-              if (dy < 0) {
-                newScroll += bounds.height - windowHeight;
-              }
-              $animated.stop().animate({
-                scrollTop: newScroll
-              }, 800).promise().then(function () {
-                inAnimation = false;
-                lastScroll = $window.scrollTop();
-              });
-              return false;
-            }
-          });
-        }
+  <script>
+    $('body > footer').addClass('fp-normal-scroll');
+    $('main.single').fullpage({
+      fitToSection: true,
+      scrollBar: true,
+      controlArrows: false,
+      verticalCentered: false,
+      paddingTop: '69px',
+      sectionSelector: '.work.hero, [class^="block-"], #more-like-this'
+    });
+  </script>
 
-        var jobKey = -1;
-
-        $window.scroll(function (event) {
-          var scroll = $window.scrollTop();
-          var dy = scroll - lastScroll;
-          lastScroll = scroll;
-          if (!event.originalEvent) {
-            return;  // Returns if the event is not a manual scroll.
-          }
-          if (inAnimation) {
-            if (Math.abs(dy) > 100) {
-              $animated.stop();
-              $currentSlide = null;
-              clearTimeout(jobKey);
-              jobKey = setTimeout(function () {
-                autoSlide(1);
-              }, 300);
-              return;
-            }
-            return;
-          }
-          autoSlide(dy);
-        });
-
-        autoSlide(1);
-      });
-    </script>
 {% endblock %}

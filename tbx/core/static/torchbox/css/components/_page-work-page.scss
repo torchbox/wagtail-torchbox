@@ -1,5 +1,6 @@
 .page-workpage {
-  $navbar-height: 84px;
+  $navbar-height: 69px;
+  $navbar-height-tablet: 84px;
   $small-font-size: 14px;
   $normal-font-size: 16px;
   $large-font-size: 20px;
@@ -8,6 +9,14 @@
   $huge-font-size: 60px;
   $border-color: #D3D3D3;
   $paragraph-grey: #7E6C73;
+  $framed-image-background-height: 70vw;
+
+  header.header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: white;
+  }
 
   .flex-row {
     display: flex;
@@ -30,7 +39,7 @@
     position: relative;
     display: inline-block;
     width: 100%;
-    height: calc(100vh - #{$navbar-height});
+    height: 100%;
     .background {
       position: absolute;
       width: 100%;
@@ -58,6 +67,9 @@
       }
     }
     &.hero {
+      .background {
+        height: 100%;
+      }
       .content {
         > div {
           max-width: 950px;
@@ -92,540 +104,577 @@
     }
   }
 
-  .stream-field {
+  .block-intro {
     background: $grey;
-    .intro {
+  }
+
+  .intro {
+    .text {
+      padding: $container-padding - $container-padding-sml;
+      p {
+        font-size: $large-font-size;
+        font-weight: bold;
+        line-height: 1.2;
+        color: $orange;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .image {
+      max-height: calc(100% - #{$container-padding});
+      margin-left: $container-padding - $container-padding-sml;
+      margin-right: $container-padding - $container-padding-sml;
+      overflow: hidden;
+      border-bottom: 1px solid $border-color;
+      svg {
+        display: block;
+        path, circle {
+          fill: transparent;
+          stroke: $border-color;
+          stroke-width: 2px;
+        }
+      }
+      img {
+        height: auto;
+        margin: 0;
+        border: 1px solid $border-color;
+        border-bottom-width: 0;
+      }
+    }
+    @media #{$tablet} {
+      padding-top: $container-padding;
       .text {
-        padding: $container-padding - $container-padding-sml;
+        padding: $container-padding;
         p {
-          font-size: $large-font-size;
-          font-weight: bold;
-          line-height: 1.2;
-          color: $orange;
-          &:last-child {
-            margin-bottom: 0;
-          }
+          font-size: 25px;
+        }
+      }
+    }
+    @media #{$desktop} {
+      .text {
+        max-width: 550px;
+        padding-top: 100px;
+        p {
+          font-size: 35px;
         }
       }
       .image {
-        max-height: calc(100vh - #{$container-padding});
-        margin-left: $container-padding - $container-padding-sml;
-        margin-right: $container-padding - $container-padding-sml;
-        overflow: hidden;
-        border-bottom: 1px solid $border-color;
-        svg {
-          display: block;
-          path, circle {
-            fill: transparent;
-            stroke: $border-color;
-            stroke-width: 2px;
-          }
+        &, img {
+          border-width: 2px;
         }
         img {
-          margin: 0;
-          border: 1px solid $border-color;
           border-bottom-width: 0;
         }
       }
-      @media #{$tablet} {
-        padding-top: $container-padding;
-        .text {
-          padding: $container-padding;
-          p {
-            font-size: 25px;
-          }
-        }
-      }
-      @media #{$desktop} {
-        .text {
-          max-width: 550px;
-          padding-top: 100px;
-          p {
-            font-size: 35px;
-          }
-        }
-        .image {
-          &, img {
-            border-width: 2px;
-          }
-          img {
-            border-bottom-width: 0;
-          }
-        }
-      }
     }
-    .background {
-      position: absolute;
+  }
+  .background {
+    position: absolute;
+    width: 100%;
+    height: $framed-image-background-height;
+    z-index: 0;
+    overflow: hidden;
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: 0;
+    }
+    .inner {
       width: 100%;
-      height: 80vw;
-      z-index: 0;
-      overflow: hidden;
-      &.left {
-        left: 0;
-      }
-      &.right {
-        right: 0;
-      }
+      height: 100%;
+      transform: scale(1.1);
+      background-size: cover;
+      background-position: center;
+      filter: blur(5px);
+    }
+    @media #{$tablet} {
+      bottom: 0;
+      width: 40vw;
+      height: 100%;
       .inner {
-        width: 100%;
-        height: 100%;
-        transform: scale(1.1);
-        background-size: cover;
-        background-position: center;
-        filter: blur(5px);
-      }
-      @media #{$tablet} {
-        width: 40vw;
         height: 100%;
       }
     }
-    .framed-image {
-      position: relative;
-      min-height: 100vh;
-      background: white;
-      align-items: center;
-      overflow: hidden;
-      .text {
-        display: flex;
-        padding: $container-padding;
-        h2, h3, h4, h5, h6 {
-          font-size: $big-font-size;
-          font-weight: 300;
-          color: $orange;
-          line-height: 0.9;
-        }
-        p {
-          margin-top: $container-padding-sml;
-          margin-bottom: $container-padding-sml;
-          font-size: $normal-font-size;
-          color: $paragraph-grey;
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-      .image {
-        width: 100%;
-        padding: 30vw $container-padding-sml 0;
-        z-index: 1;
-        svg {
-          display: block;
-          rect, path, circle {
-            stroke: $orange;
-            stroke-width: 1.5px;
-          }
-          rect {
-            fill: none;
-          }
-          path, circle {
-            fill: #FFFFFF;
-          }
-        }
-      }
-      @media #{$tablet} {
-        .text {
-          padding-right: $container-padding * 2;
-          h2, h3, h4, h5, h6 {
-            font-size: $enormous-font-size;
-          }
-        }
-        .image {
-          flex: 1.1;
-          padding: $container-padding $container-padding
-                   $container-padding $container-padding * 2;
-        }
-        &.reverse {
-          .text {
-            padding-left: $container-padding * 2;
-            padding-right: $container-padding;
-          }
-          .image {
-            padding-left: $container-padding;
-            padding-right: $container-padding * 2;
-          }
-        }
-      }
-      @media #{$desktop} {
-        .text {
-          h2, h3, h4, h5, h6 {
-            font-size: $huge-font-size;
-          }
-          p {
-            font-size: $large-font-size;
-          }
-        }
-      }
-    }
-    .aligned-image {
-      min-height: 100vh;
-      background: white;
-      overflow: hidden;
-      .text, .image {
-        flex-basis: 50vh;
-      }
-      .text {
-        display: flex;
-        padding: $container-padding;
-        h2, h3, h4, h5, h6 {
-          font-size: $big-font-size;
-          font-weight: 300;
-          line-height: 0.9;
-          color: $orange;
-        }
-        p {
-          margin-top: $container-padding-sml;
-          margin-bottom: $container-padding-sml;
-          font-size: $normal-font-size;
-          color: $paragraph-grey;
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-      .image {
-        width: 100%;
-        background-size: cover;
-        background-position: center;
-      }
-      @media #{$tablet} {
-        .text, .image {
-          flex-basis: 0;
-          h2, h3, h4, h5, h6 {
-            font-size: $enormous-font-size;
-          }
-        }
-        .text {
-          padding-left: $container-padding * 2;
-          padding-right: $container-padding * 2;
-        }
-        .image {
-          height: 100vh;
-          max-height: initial;
-          margin: 0;
-          padding-left: $container-padding * 2;
-          padding-right: $container-padding * 2;
-        }
-      }
-      @media #{$desktop} {
-        .text {
-          h2, h3, h4, h5, h6 {
-            font-size: $huge-font-size;
-          }
-          p {
-            font-size: $large-font-size;
-          }
-        }
-      }
-    }
-    .stats {
+  }
+  .framed-image {
+    position: relative;
+    height: 100%;
+    background: white;
+    align-items: center;
+    overflow: hidden;
+    .text {
       display: flex;
-      min-height: 100vh;
-      background: white;
-      align-items: center;
-      .content {
-        display: flex;
-        flex-flow: column wrap;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: $container-padding;
-        padding-right: $container-padding;
-        line-height: 1;
+      padding: $container-padding;
+      h2, h3, h4, h5, h6 {
+        font-size: $big-font-size;
+        font-weight: 300;
         color: $orange;
-        .amount, .detail {
-          vertical-align: bottom;
+        line-height: 0.9;
+      }
+      p {
+        margin-top: $container-padding-sml;
+        margin-bottom: $container-padding-sml;
+        font-size: $normal-font-size;
+        line-height: 1.2;
+        color: $paragraph-grey;
+        &:last-child {
+          margin-bottom: 0;
         }
-        .amount {
-          flex: 0;
-          font-size: 140px;
-          font-weight: bold;
-          .unit {
-            font-size: 70%;
-          }
+      }
+    }
+    .image {
+      position: relative;
+      flex: 0 0 $framed-image-background-height;
+      width: 100%;
+      z-index: 1;
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: $container-padding-sml;
+        rect, path, circle {
+          stroke: $orange;
+          stroke-width: 1.5px;
         }
-        .detail {
-          flex: 1;
+        rect {
+          fill: none;
+        }
+        path, circle {
+          fill: #FFFFFF;
+        }
+      }
+    }
+    @media #{$tablet} {
+      .text {
+        padding-right: $container-padding * 2;
+        h2, h3, h4, h5, h6 {
           font-size: $enormous-font-size;
         }
       }
-      @media #{$tablet} {
-        .content {
-          flex-flow: row nowrap;
-          align-items: flex-end;
-          max-width: 800px;
-          .amount {
-            margin-right: $container-padding;
-            font-size: 170px;
-          }
-          .detail {
-            padding-bottom: 20px;
-            margin-left: 0;
-          }
+      .image {
+        flex: 1.1;
+        padding: $container-padding $container-padding
+                 $container-padding $container-padding * 2;
+        svg {
+          position: static;
+          top: initial;
+          left: initial;
+          transform: none;
         }
       }
-      @media #{$desktop} {
-        .content {
-          max-width: 1000px;
-          .amount {
-            font-size: 250px;
-          }
-          .detail {
-            padding-bottom: 40px;
-            font-size: $huge-font-size;
-          }
+      &.reverse {
+        .text {
+          padding-left: $container-padding * 2;
+          padding-right: $container-padding;
+        }
+        .image {
+          padding-left: $container-padding;
+          padding-right: $container-padding * 2;
         }
       }
     }
-    .verbose-stats {
-      background: white;
+    @media #{$desktop} {
+      .text {
+        h2, h3, h4, h5, h6 {
+          font-size: $huge-font-size;
+        }
+        p {
+          font-size: $large-font-size;
+        }
+      }
+    }
+  }
+  .aligned-image {
+    height: 100%;
+    background: white;
+    overflow: hidden;
+    .text, .image {
+      flex-basis: 50vh;
+    }
+    .text {
+      display: flex;
+      padding: $container-padding;
+      h2, h3, h4, h5, h6 {
+        font-size: $big-font-size;
+        font-weight: 300;
+        line-height: 0.9;
+        color: $orange;
+      }
+      p {
+        margin-top: $container-padding-sml;
+        margin-bottom: $container-padding-sml;
+        font-size: $normal-font-size;
+        line-height: 1.2;
+        color: $paragraph-grey;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .image {
+      position: relative;
+      flex: 0 0 $framed-image-background-height;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+      }
+    }
+    @media #{$tablet} {
+      .text, .image {
+        flex-basis: 0;
+        h2, h3, h4, h5, h6 {
+          font-size: $enormous-font-size;
+        }
+      }
+      .text {
+        padding-left: $container-padding * 2;
+        padding-right: $container-padding * 2;
+      }
+      .image {
+        flex: 1;
+        max-height: initial;
+        margin: 0;
+        padding-left: $container-padding * 2;
+        padding-right: $container-padding * 2;
+      }
+    }
+    @media #{$desktop} {
+      .text {
+        h2, h3, h4, h5, h6 {
+          font-size: $huge-font-size;
+        }
+        p {
+          font-size: $large-font-size;
+        }
+      }
+    }
+  }
+  .stats {
+    display: flex;
+    height: 100%;
+    background: white;
+    align-items: center;
+    .content {
+      display: flex;
+      flex-flow: column wrap;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: $container-padding;
+      padding-right: $container-padding;
       line-height: 1;
-      .detail, .description {
-        display: flex;
-        min-height: 50vh;
-        align-items: center;
-        .content {
-          padding: $container-padding;
+      color: $orange;
+      .amount, .detail {
+        vertical-align: bottom;
+      }
+      .amount {
+        flex: 0;
+        font-size: 140px;
+        font-weight: bold;
+        .unit {
+          font-size: 70%;
         }
       }
       .detail {
-        background: $orange;
+        flex: 1;
+        font-size: $enormous-font-size;
+      }
+    }
+    @media #{$tablet} {
+      .content {
+        flex-flow: row nowrap;
+        align-items: flex-end;
+        max-width: 800px;
         .amount {
-          font-size: 150px;
-          font-weight: bold;
-          line-height: 0.8;
-          color: $orange-lt;
-          .unit {
-            font-size: 70%;
-          }
+          margin-right: $container-padding;
+          font-size: 170px;
+        }
+        .detail {
+          padding-bottom: 20px;
+          margin-left: 0;
+        }
+      }
+    }
+    @media #{$desktop} {
+      .content {
+        max-width: 1000px;
+        .amount {
+          font-size: 250px;
+        }
+        .detail {
+          padding-bottom: 40px;
+          font-size: $huge-font-size;
+        }
+      }
+    }
+  }
+  .verbose-stats {
+    height: 100%;
+    background: white;
+    line-height: 1;
+    .detail, .description {
+      display: flex;
+      align-items: center;
+      .content {
+        padding: $container-padding-sml $container-padding;
+      }
+    }
+    .detail {
+      background: $orange;
+      .amount {
+        font-size: 120px;
+        font-weight: bold;
+        line-height: 0.8;
+        color: $orange-lt;
+        .unit {
+          font-size: 70%;
+        }
+      }
+      .subtitle {
+        font-size: 30px;
+        color: white;
+      }
+    }
+    .description {
+      h2, h3, h4, h5, h6 {
+        margin-bottom: $container-padding-sml;
+        font-size: $big-font-size;
+        font-weight: 300;
+        color: $orange;
+        line-height: 1;
+      }
+      p {
+        font-size: $normal-font-size;
+        color: $paragraph-grey;
+      }
+    }
+    @media #{$tablet} {
+      flex-direction: row-reverse;
+      .detail, .description {
+        width: 50vw;
+        .content {
+          margin-left: auto;
+          margin-right: auto;
+          padding: $container-padding;
+          width: 380px;
+          max-width: 100%;
+        }
+      }
+      .detail {
+        .amount {
+          font-size: 250px;
         }
         .subtitle {
-          font-size: 40px;
-          color: white;
+          font-size: 60px;
         }
       }
       .description {
         h2, h3, h4, h5, h6 {
-          margin-bottom: $container-padding-sml;
-          font-size: $big-font-size;
-          font-weight: 300;
-          color: $orange;
-          line-height: 1;
+          font-size: $enormous-font-size;
         }
         p {
-          font-size: $normal-font-size;
-          color: $paragraph-grey;
-        }
-      }
-      @media #{$tablet} {
-        min-height: 100vh;
-        flex-direction: row-reverse;
-        .detail, .description {
-          min-height: 100vh;
-          width: 50vw;
-          .content {
-            margin-left: auto;
-            margin-right: auto;
-            width: 500px;
-            max-width: 100%;
-          }
-        }
-        .detail {
-          .amount {
-            font-size: 250px;
-          }
-          .subtitle {
-            font-size: 60px;
-          }
-        }
-        .description {
-          h2, h3, h4, h5, h6 {
-            font-size: $enormous-font-size;
-          }
-          p {
-            font-size: $large-font-size;
-          }
-        }
-      }
-      @media #{$desktop} {
-        .description {
-          h2, h3, h4, h5, h6 {
-            font-size: $huge-font-size;
-          }
+          font-size: $large-font-size;
         }
       }
     }
-    .quote {
-      display: flex;
-      min-height: 100vh;
-      background: white;
-      align-items: center;
+    @media #{$desktop} {
+      .detail, .description {
+        .content {
+          width: 500px;
+        }
+      }
+      .description {
+        h2, h3, h4, h5, h6 {
+          font-size: $huge-font-size;
+        }
+      }
+    }
+  }
+  .quote {
+    display: flex;
+    height: 100%;
+    background: white;
+    align-items: center;
+    .content {
+      padding: $container-padding-sml $container-padding;
+      line-height: 1.15;
+      .text {
+        margin-bottom: 30px;
+        font-size: $large-font-size;
+        font-weight: bold;
+        color: #2F3437;
+      }
+      .attribution {
+        font-size: $small-font-size;
+        color: $orange;
+        text-transform: uppercase;
+      }
+    }
+    @media #{$tablet} {
       .content {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
         padding: $container-padding;
-        line-height: 1.15;
         .text {
-          margin-bottom: 30px;
-          font-size: $big-font-size;
-          font-weight: bold;
-          color: #2F3437;
+          font-size: $big-font-size * 1.2;
         }
         .attribution {
-          font-size: $small-font-size;
-          color: $orange;
-          text-transform: uppercase;
+          font-size: $normal-font-size;
         }
       }
-      @media #{$tablet} {
-        .content {
-          max-width: 700px;
-          margin-left: auto;
-          margin-right: auto;
-          .text {
-            font-size: $big-font-size * 1.2;
+    }
+  }
+  .contact-us {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: $container-padding 0;
+    text-align: center;
+    background: white;
+    .content {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: $container-padding-sml;
+      padding-right: $container-padding-sml;
+      h1, h3 {
+        font-size: $big-font-size;
+        color: $orange;
+      }
+      h3 {
+        margin-bottom: $container-padding * 3 / 4;
+        font-weight: 300;
+      }
+      .person {
+        display: inline-block;
+        padding-top: $container-padding;
+        border-top: 1px solid $orange;
+        color: #646768;
+        img, .text {
+          display: inline-block;
+          vertical-align: middle;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+        img {
+          width: 100px;
+          height: 100px;
+          margin-right: $container-padding / 2;
+          border-radius: 50%;
+        }
+        .text, .links {
+          display: inline-block;
+          text-align: center;
+          vertical-align: middle;
+        }
+        .text {
+          margin-top: $container-padding-sml / 2;
+          margin-bottom: $container-padding-sml / 2;
+          font-size: $large-font-size;
+          .name {
+            font-weight: bold;
           }
-          .attribution {
+          .role {
+            display: block;
+          }
+        }
+        .links {
+          padding-top: $container-padding-sml / 2;
+          padding-bottom: $container-padding-sml / 2;
+          a {
+            display: block;
             font-size: $normal-font-size;
+            color: inherit;
+            padding-top: $container-padding-sml / 2;
+            padding-bottom: $container-padding-sml / 2;
+            svg {
+              display: inline-block;
+              width: 30px;
+              padding-right: 5px;
+              vertical-align: middle;
+              path {
+                fill: $orange;
+              }
+            }
           }
         }
       }
     }
-    .contact-us {
-      display: flex;
-      min-height: 100vh;
-      align-items: center;
-      padding: $container-padding 0;
-      text-align: center;
-      background: white;
+    .more {
+      display: none;
+    }
+    @media #{$tablet} {
+      position: relative;
       .content {
         margin-left: auto;
         margin-right: auto;
-        padding-left: $container-padding-sml;
-        padding-right: $container-padding-sml;
-        h1, h3 {
-          font-size: $big-font-size;
-          color: $orange;
-        }
-        h3 {
-          margin-bottom: $container-padding * 3 / 4;
-          font-weight: 300;
+        padding-left: 0;
+        padding-right: 0;
+        h1 {
+          font-size: $enormous-font-size;
         }
         .person {
-          display: inline-block;
-          padding-top: $container-padding;
-          border-top: 1px solid $orange;
-          color: #646768;
-          img, .text {
-            display: inline-block;
-            vertical-align: middle;
-            margin-top: 0;
-            margin-bottom: 0;
-          }
+          min-width: 500px;
+          white-space: nowrap;
           img {
-            width: 100px;
-            height: 100px;
-            margin-right: $container-padding / 2;
-            border-radius: 50%;
+            float: left;
           }
           .text, .links {
-            display: inline-block;
-            text-align: center;
-            vertical-align: middle;
+            text-align: left;
           }
           .text {
-            margin-top: $container-padding-sml / 2;
-            margin-bottom: $container-padding-sml / 2;
-            font-size: $large-font-size;
-            .name {
-              font-weight: bold;
-            }
             .role {
-              display: block;
+              display: inline-block;
             }
           }
           .links {
-            padding-top: $container-padding-sml / 2;
-            padding-bottom: $container-padding-sml / 2;
+            padding-top: 0;
+            padding-bottom: 0;
             a {
-              display: block;
-              font-size: $normal-font-size;
-              color: inherit;
-              padding-top: $container-padding-sml / 2;
-              padding-bottom: $container-padding-sml / 2;
-              svg {
-                display: inline-block;
-                width: 30px;
-                padding-right: 5px;
-                vertical-align: middle;
-                path {
-                  fill: $orange;
-                }
+              display: inline-block;
+              padding-top: 0;
+              padding-bottom: 0;
+              + a {
+                margin-left: $container-padding / 2;
               }
             }
           }
+        }
+      }
+    }
+    @media #{$desktop} {
+      .content {
+        h1 {
+          font-size: $huge-font-size;
         }
       }
       .more {
-        display: none;
-      }
-      @media #{$tablet} {
-        position: relative;
-        .content {
-          margin-left: auto;
-          margin-right: auto;
-          padding-left: 0;
-          padding-right: 0;
-          h1 {
-            font-size: $enormous-font-size;
-          }
-          .person {
-            min-width: 500px;
-            white-space: nowrap;
-            img {
-              float: left;
-            }
-            .text, .links {
-              text-align: left;
-            }
-            .text {
-              .role {
-                display: inline-block;
-              }
-            }
-            .links {
-              padding-top: 0;
-              padding-bottom: 0;
-              a {
-                display: inline-block;
-                padding-top: 0;
-                padding-bottom: 0;
-                + a {
-                  margin-left: $container-padding / 2;
-                }
-              }
-            }
-          }
-        }
-      }
-      @media #{$desktop} {
-        .content {
-          h1 {
-            font-size: $huge-font-size;
-          }
-        }
-        .more {
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          display: block;
-          font-size: $normal-font-size;
-          color: $orange;
-          svg {
-            margin: 0 auto;
-            width: 30px;
-            height: 15px;
-            path {
-              fill: none;
-              stroke: $orange;
-            }
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+        font-size: $normal-font-size;
+        color: $orange;
+        svg {
+          margin: 0 auto;
+          width: 30px;
+          height: 15px;
+          path {
+            fill: none;
+            stroke: $orange;
           }
         }
       }
@@ -636,7 +685,7 @@
     $gutter: 40px;
     $padding: $gutter / 2;
     display: flex;
-    min-height: 100vh;
+    height: 100%;
     align-items: center;
     background: white;
     padding-top: $container-padding;
@@ -653,8 +702,8 @@
       .flex-row {
         display: block;
         .work {
-          height: 200px;
-          &.hidden-mobile {
+          height: 160px;
+          &.hidden-tablet {
             display: none;
           }
           .content {
@@ -675,7 +724,7 @@
         }
       }
     }
-    @media #{$desktop} {
+    @media #{$tablet} {
       .container {
         h1 {
           font-size: $huge-font-size;
@@ -690,10 +739,8 @@
             height: 425px;
             margin-left: $padding;
             margin-right: $padding;
-            &.hidden-mobile {
-              display: block;
-            }
             .content {
+              padding: $container-padding-sml * 2;
               .descriptive-title {
                 font-size: $large-font-size * 1.2;
               }
@@ -703,6 +750,17 @@
             }
             + .work {
               margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+    @media #{$desktop} {
+      .container {
+        .flex-row {
+          .work {
+            &.hidden-tablet {
+              display: block;
             }
           }
         }
