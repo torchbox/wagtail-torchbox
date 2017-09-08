@@ -8,7 +8,7 @@ embedly==0.5.0
 requests==2.7.0
 wagtailmodeladmin==2.2.6
 raven==5.26.0
-django-compressor==2.0
+django-compressor==2.2
 
 # Development requirements
 django-debug-toolbar==1.2.2
