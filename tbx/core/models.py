@@ -9,8 +9,9 @@ from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.functional import cached_property
 from django.views.decorators.vary import vary_on_headers
-
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
+from taggit.models import ItemBase
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
                                                 MultiFieldPanel,
@@ -20,7 +21,8 @@ from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
                                         PageChooserBlock, RawHTMLBlock,
                                         RichTextBlock, StreamBlock,
-                                        StructBlock, TextBlock, URLBlock)
+                                        StructBlock, TextBlock, URLBlock,
+                                        ChoiceBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -92,13 +94,6 @@ class WideImage(StructBlock):
 
     class Meta:
         icon = "image"
-
-
-class StatsBlock(StructBlock):
-    pass
-
-    class Meta:
-        icon = "order"
 
 
 class StoryBlock(StreamBlock):
@@ -993,12 +988,18 @@ class JobIndexPage(Page):
 
 
 # Work page
-class WorkPageTagSelect(Orderable):
-    page = ParentalKey('torchbox.WorkPage', related_name='tags')
-    tag = models.ForeignKey(
-        'torchbox.BlogPageTagList',
-        related_name='work_page_tag_select'
-    )
+class ExpertiseTag(ItemBase):
+    content_object = ParentalKey('wagtailcore.Page',
+                                 related_name='expertise_tags')
+    tag = models.ForeignKey('torchbox.BlogPageTagList',
+                            related_name='expertise_tags')
+
+
+class SectorTag(ItemBase):
+    content_object = ParentalKey('wagtailcore.Page',
+                                 related_name='sector_tags')
+    tag = models.ForeignKey('torchbox.BlogPageTagList',
+                            related_name='sector_tags')
 
 
 class WorkPageScreenshot(Orderable):
@@ -1016,26 +1017,85 @@ class WorkPageScreenshot(Orderable):
     ]
 
 
-class WorkPageAuthor(Orderable):
-    page = ParentalKey('torchbox.WorkPage', related_name='related_author')
-    author = models.ForeignKey(
-        'torchbox.PersonPage',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
+IMAGE_POSITIONS = (('left', 'Left'),
+                   ('right', 'Right'))
 
-    panels = [
-        PageChooserPanel('author'),
-    ]
+
+class IntroBlock(StructBlock):
+    text = TextBlock()
+    image = ImageChooserBlock()
+    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
+
+    class Meta:
+        template = 'blocks/intro_block.html'
+
+
+class DeviceBlock(StructBlock):
+    text = RichTextBlock()
+    DEVICES = (('desktop', 'Desktop'),
+               ('tablet', 'Tablet'),
+               ('mobile', 'Mobile'))
+    device_type = ChoiceBlock(choices=DEVICES, default='desktop')
+    image = ImageChooserBlock()
+    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
+    background_image = ImageChooserBlock(required=False)
+
+    class Meta:
+        template = 'blocks/device_block.html'
+
+
+class FramedImageBlock(StructBlock):
+    text = RichTextBlock()
+    image = ImageChooserBlock()
+    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
+    background_image = ImageChooserBlock(required=False)
+
+    class Meta:
+        icon = 'image'
+        template = 'blocks/framed_image_block.html'
+
+
+class AlignedImageBlock(StructBlock):
+    text = RichTextBlock()
+    image = ImageChooserBlock()
+    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
+
+    class Meta:
+        icon = 'image'
+        template = 'blocks/aligned_image_block.html'
+
+
+class StatsBlock(StructBlock):
+    amount = CharBlock(max_length=5)
+    unit = CharBlock(max_length=5)
+    description = CharBlock(max_length=100)
+
+    class Meta:
+        template = 'blocks/stats_block.html'
+
+
+class VerboseStatsBlock(StructBlock):
+    amount = CharBlock(max_length=5)
+    unit = CharBlock(max_length=5)
+    subtitle = CharBlock(max_length=40)
+    description = RichTextBlock()
+
+    class Meta:
+        template = 'blocks/verbose_stats_block.html'
+
+
+class ContactUsBlock(StructBlock):
+    title = CharBlock(max_length=20)
+    subtitle = CharBlock(max_length=40)
+    person = PageChooserBlock('torchbox.PersonPage')
+
+    class Meta:
+        icon = 'mail'
+        template = 'blocks/contact_us_block.html'
 
 
 class WorkPage(Page):
-    author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
-    summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
-    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
-    body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -1044,7 +1104,22 @@ class WorkPage(Page):
         related_name='+'
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
-    streamfield = StreamField(StoryBlock())
+    streamfield = StreamField([
+        ('intro', IntroBlock()),
+        ('device', DeviceBlock()),
+        ('framed_image', FramedImageBlock()),
+        ('aligned_image', AlignedImageBlock()),
+        ('stats', StatsBlock()),
+        ('verbose_stats', VerboseStatsBlock()),
+        ('pull_quote', PullQuoteBlock(
+            template='blocks/pull_quote_block_work_page.html')),
+        ('contact_us', ContactUsBlock())])
+    expertises = ClusterTaggableManager(
+        through=ExpertiseTag, blank=True, related_name='+',
+        verbose_name='expertises')
+    sectors = ClusterTaggableManager(
+        through=SectorTag, blank=True, related_name='+',
+        verbose_name='sectors')
     visit_the_site = models.URLField(blank=True)
 
     show_in_play_menu = models.BooleanField(default=False)
@@ -1060,24 +1135,19 @@ class WorkPage(Page):
         # just return first work index in database
         return WorkIndexPage.objects.first()
 
-    @property
-    def has_authors(self):
-        for author in self.related_author.all():
-            if author.author:
-                return True
+    def other_works(self):
+        return [self, self, self]
+        return (WorkPage.objects.exclude(pk=self.pk)
+                .order_by('-first_published_at')[:3])
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('descriptive_title'),
-        InlinePanel('related_author', label="Author"),
-        FieldPanel('author_left'),
-        FieldPanel('summary'),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
-        StreamFieldPanel('streamfield'),
         ImageChooserPanel('homepage_image'),
+        StreamFieldPanel('streamfield'),
         InlinePanel('screenshots', label="Screenshots"),
-        InlinePanel('tags', label="Tags"),
+        FieldPanel('expertises'),
+        FieldPanel('sectors'),
         FieldPanel('visit_the_site'),
     ]
 
@@ -1097,7 +1167,7 @@ class WorkIndexPage(Page):
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = WorkPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        popular_tags = ExpertiseTag.objects.values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
