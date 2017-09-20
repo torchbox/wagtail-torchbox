@@ -1003,12 +1003,12 @@ class JobIndexPage(Page):
 
 # Work page
 class ExpertiseTag(ItemBase):
-    content_object = ParentalKey('wagtailcore.Page')
+    content_object = ParentalKey('wagtailcore.Page', related_name='+')
     tag = models.ForeignKey('torchbox.BlogPageTagList', related_name='+')
 
 
 class SectorTag(ItemBase):
-    content_object = ParentalKey('wagtailcore.Page')
+    content_object = ParentalKey('wagtailcore.Page', related_name='+')
     tag = models.ForeignKey('torchbox.BlogPageTagList', related_name='+')
 
 
