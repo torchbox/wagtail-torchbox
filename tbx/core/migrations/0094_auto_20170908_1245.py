@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0093_wagtail19_upgrade'),
+        ('torchbox', '0092_merge'),
     ]
 
     operations = [

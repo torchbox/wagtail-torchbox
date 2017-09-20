@@ -11,7 +11,7 @@ import wagtail.wagtailimages.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0094_merge'),
+        ('torchbox', '0094_auto_20170908_1245'),
     ]
 
     operations = [
