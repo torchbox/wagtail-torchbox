@@ -3,7 +3,8 @@
 .page-jobindexpage {
     section {
         position: relative;
-        z-index: 5;
+        // was z-index 5 but changed to 4 for dropdown to work. Not really sure why it's declared.
+        z-index: 4;
     }
 
     h1 {

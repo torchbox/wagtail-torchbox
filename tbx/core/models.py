@@ -617,8 +617,8 @@ class FeaturedPagesBlock(StructBlock):
 class SignUpFormPageBlock(StructBlock):
     page = PageChooserBlock('torchbox.SignUpFormPage')
 
-    def get_context(self, value):
-        context = super(SignUpFormPageBlock, self).get_context(value)
+    def get_context(self, value, parent_context=None):
+        context = super(SignUpFormPageBlock, self).get_context(value, parent_context)
         context['form'] = value['page'].sign_up_form_class()
 
         return context
@@ -1405,9 +1405,9 @@ class GoogleAdGrantsPage(Page):
         index.SearchField('body')
     ]
 
-    def get_context(self, request):
+    def get_context(self, request, *args, **kwargs):
         form = GoogleAdGrantApplicationForm()
-        context = super(GoogleAdGrantsPage, self).get_context(request)
+        context = super(GoogleAdGrantsPage, self).get_context(request, *args, **kwargs)
         context['form'] = form
         return context
 
