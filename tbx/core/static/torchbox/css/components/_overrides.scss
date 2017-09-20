@@ -1,51 +1,6 @@
 
 // general overrides
-.page-workpage {
-  .container {
-    max-width: 1200px;
-  }
-  header.container, footer .container {
-    max-width: 1450px;
-  }
-  footer {
-    position: relative;
-    z-index: 10;
-  }
-  // nav {
-  //   @media #{$tablet} {
-  //     position: fixed;
-  //     left: 0;
-  //     max-width: 1450px;
-  //     right: 0;
-  //     margin: 0 auto;
-  //     padding: 15px 50px;
-  //   }
-  // }
-  .author {
-    @include cf;
-    margin-bottom: 40px;
-  }
-
-  .main-content {
-    padding-top: 80px;
-  }
-
-  // reduce space above main content at mobile when there is no visit button on a work page
-  .main-content--no-visit {
-    padding-top: 0px;
-    @media #{$tablet} {
-      padding-top: 80px;
-    }
-  }
-}
-
 .text-content {
-
-  .page-workpage & {
-    //background: #f1f4f4;
-    padding-top: 30px;
-  }
-
   @media #{$tablet} {
     background: white;
     position: relative;

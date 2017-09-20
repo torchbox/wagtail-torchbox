@@ -6,7 +6,25 @@
 {% get_prev_sibling_by_order self as prev_page %}
 
 <main class="single">
-    {% with self.screenshots.all as screenshots %}
+
+    <div class="work hero" data-slide="true">
+        {% with image=page.homepage_image %}
+          {% with focal_rect=image.get_focal_point %}
+            {% image image fill-1920x1080 as img %}
+            <div class="background" style="background-image: url('{{ img.url }}');{% if focal_rect %} background-position: {% widthratio focal_rect.x image.width 100 %}% {% widthratio focal_rect.y image.height 100 %}%;{% endif %}"></div>
+          {% endwith %}
+        {% endwith %}
+        <div class="content">
+            <div>
+                <div class="descriptive-title">
+                    {{ page.descriptive_title }}
+                </div>
+                <div class="title">{{ page.title }}</div>
+            </div>
+        </div>
+    </div>
+
+    {% with screenshots=self.screenshots.all %}
         {% if screenshots %}
                 {% for screenshot in screenshots %}
                     {% image screenshot.image width-9999 as shot %}
@@ -25,100 +43,39 @@
         {% endif %}
     {% endwith %}
 
-    <div class="specifications {% if not page.visit_the_site %}specifications--no-visit{% endif %}">
-        <div class="container">
-            <div class="content">
-                <ul class="tags">
-                    {% with self.tags.all as tags %}
-                        {% if tags %}
-                            {% for tag in tags %}
-                                <li>
-                                    <a href="{% pageurl self.work_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
-                                </li>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                </ul>
-                <div class="client">
-                    {{ self.title }}
-                </div>
-                {% if page.visit_the_site %}
-                <a class="visit" href="{{ page.visit_the_site }}">
-                    Visit the site
-                    <span class="svg">
-                        <svg version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                                 x="0px" y="0px" viewBox="0 0 71 71" style="enable-background:new 0 0 71 71;" xml:space="preserve">
-                            <defs>
-                            </defs>
-                            <polyline points="70.5,55.5 70.5,70.5 0.5,70.5 0.5,0.5 15.5,0.5 "/>
-                            <polyline points="47.2,0.5 70.5,0.5 70.5,23.8 "/>
-                            <line  x1="70.5" y1="0.5" x2="35.5" y2="35.5"/>
-                        </svg>
-                    </span>
-                </a>
-                {% endif %}
-            </div>
-        </div>
+    {{ page.streamfield }}
 
-    </div>
-
-    <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="work-content">
-
-        <div class="container">
-            <div class="main-content  {% if not page.visit_the_site %}main-content--no-visit{% endif %}">
-                <div class="fixed">
-                    {% if self.body %}
-                            {{ self.body|richtext }}
-                    {% endif %}
-
-                    {% include "torchbox/includes/streamfield.html" %}
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <div class="nextprev-nav">
-<!--
-        {% if prev_page %}
-            <div class="nextprev prev">
-                <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
-            </div>
-        {% endif %}
--->
-        {% if next_page %}
-            <a href="{% pageurl next_page %}">
-                <div class="next">
-                    {% image next_page.homepage_image fill-2000x600 class="thumb" %}
-                    <div class="container">
-                        <div class="content">
-                            <h2>{{next_page.descriptive_title}}</h2>
-                            <p class="client">{{ next_page.title }}</p>
-                        </div>
+    {% with other_works=page.other_works %}
+        {% if other_works %}
+            <div id="more-like-this" data-slide="true">
+                <div class="container">
+                    <h1>Want to see <strong>more?</strong></h1>
+                    <div class="flex-row">
+                        {% for work in other_works %}
+                            <a href="{% pageurl work %}" class="work{% cycle '' '' ' hidden-tablet' %}">
+                                {% image work.homepage_image fill-1100x425 as img %}
+                                <div class="background" style="background-image: url('{{ img.url }}');"></div>
+                                <div class="content">
+                                    <div class="descriptive-title">
+                                        {{ work.descriptive_title }}
+                                    </div>
+                                    <div class="title">{{ work.title }}</div>
+                                </div>
+                            </a>
+                        {% endfor %}
                     </div>
                 </div>
-            </a>
+            </div>
         {% endif %}
-    </div>
+    {% endwith %}
 
 </main>
 
-<!--
-<div class="share">
-    {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
-    <ul class="options">
-        <li>
-            <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-        </li>
-        <li>
-            <a href="http://www.twitter.com/share" class="twitter-share-button">Tweet</a>
-        </li>
-    </ul>
-</div>
--->
-
 <div id="fb-root"></div>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.css" />
 {% endblock %}
 
 {% block extra_js %}
@@ -133,4 +90,19 @@
 {% endif %}
 
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
+
+  <script>
+    $('body > footer').addClass('fp-normal-scroll');
+    $('main.single').fullpage({
+      fitToSection: true,
+      scrollBar: true,
+      controlArrows: false,
+      verticalCentered: false,
+      paddingTop: '69px',
+      sectionSelector: '.work.hero, [class^="block-"], #more-like-this'
+    });
+  </script>
+
 {% endblock %}
