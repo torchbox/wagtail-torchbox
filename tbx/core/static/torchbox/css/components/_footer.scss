@@ -25,6 +25,12 @@ footer {
         margin-top: 0;
       }
     }
+    ul {
+      @media #{$tablet} {
+        display: flex;
+        justify-content: center;
+      }
+    }
     li {
       @include cf;
       padding-bottom: 0;
@@ -36,7 +42,6 @@ footer {
 
       @media #{$tablet-large} {
         width: 33.3%;
-        float: left;
         padding: 0 0 0 120px;
       }
 
@@ -73,7 +78,7 @@ footer {
       width: 15%;
       margin-right: 10%;
       top: 0;
-      left: -90px;
+      left: -110px;
       @media #{$tablet} {
         display: block;
         margin: 0 auto 20px;
@@ -82,14 +87,14 @@ footer {
       }
       @media #{$tablet-large} {
         margin-right: 5%;
-        left: -90px;
+        left: -110px;
       }
       svg {
-        width: 80px;
+        width: 100px;
         height: 80px;
         margin: 0 auto;
         display: block;
-        
+
         @media #{$tablet-large} {
           position: absolute;
           top: 0;
