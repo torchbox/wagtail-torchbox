@@ -118,6 +118,14 @@
 // Carousel UI overrides
 .services-slider {
 
+    .owl-controls {
+        display: none;
+
+        @media #{$tablet-large} {
+            display: block;
+        }
+    }
+
     .owl-dots {
         max-width: 100px;
         text-align: center;
