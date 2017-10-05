@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% if jobs %}
-<h2 style="display:block;">{{ jobintro }}</h2>
+<h2 style="display:block;"><a class="link link--heading" href="{% slugurl 'jobs' %}">{{ jobintro }}</a></h2>
 
 <div class="jobs">
     <ul>
