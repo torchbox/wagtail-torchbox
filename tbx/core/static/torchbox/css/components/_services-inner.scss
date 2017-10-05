@@ -55,11 +55,12 @@
     margin-top: 40px;
 
     &__icon {
-        display: inline-block;
+        display: none;
         vertical-align: top;
         width: 100%;
 
         @media #{$tablet} {
+            display: inline-block;
             width: 18%;
         }
 
