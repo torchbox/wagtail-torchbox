@@ -58,7 +58,7 @@
       font-size: 21px;
     }
   }
-  blockquote {
+  blockquote:not(.twitter-tweet) {
     position: relative;
     padding: 20px 20px 20px 20px;
     margin: 30px 0 30px 0;
@@ -104,6 +104,10 @@
       color: $blue;
     }
   }
+  .twitter-tweet {
+    margin-left: 0;
+    padding-left: 0;
+  }
   img {
     margin-bottom: 25px;
     width: 100%;
@@ -111,6 +115,17 @@
     margin: 40px auto;
     @media #{$tablet} {
       margin: 40px 0;
+    }
+  }
+  .embed {
+    margin-top: 35px;
+    // For some reason it produces an anonymous div, quicker to style around it than work out why
+    > div {
+      display: flex;
+      justify-content: center;
+    }
+    + .rich-text {
+      margin-top: 35px;
     }
   }
   .full-width {

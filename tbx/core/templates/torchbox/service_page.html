@@ -3,7 +3,7 @@
 {% block content %}
 
     {# Hero #}
-    <div class="services-hero js-services-inner">
+    <div class="services-hero js-services-inner" style="{% if self.particle.css_background_url %}background-image: url({{ self.particle.css_background_url }});{% endif %}{% if self.particle.css_background_colour %}background-color: #{{ self.particle.css_background_colour }};{% endif %} {% if self.particle %}{% if self.particle.css_background_linear_gradient %}background: linear-gradient({{ self.particle.css_background_linear_gradient }});{% endif %}{% else %}background: linear-gradient(to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%{% endif %});">
         <div class="particles-js" id="particles-js"></div>
         <div class="services-hero__wrapper">
             <div class="services-hero__inner">

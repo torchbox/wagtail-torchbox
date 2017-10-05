@@ -9,28 +9,3 @@
       padding: 0 $container-padding;
     }
 }
-
-.container-header {
-	left: 0;
-	top: 0;
-	width: 100%;
-	z-index: 10;
-	background-color: #fff;
-	padding: 0 15px;
-  	position: relative;
-  	height: 69px;
-	
-	@media #{$tablet} {
-		padding: 0 20px;
-		height: auto;
-	}
-
-	@media #{$tablet-large} {
-	  padding: 0 $container-padding;
-	}
-}
-
-// Prevent header 'disappearing' on scroll
-.container-header--fixed {
-	position: fixed;
-}

@@ -59,7 +59,7 @@
             {% elif child.block_type == 'raw_html' %}
                 {{ child.value|safe }}
             {% elif child.block_type == 'embed' %}
-                <div>{{ child}}</div>
+                <div class="embed">{{ child.value }}</div>
             {% else %}
                 {{ child }}
             {% endif %}
