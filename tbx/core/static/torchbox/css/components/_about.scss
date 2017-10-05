@@ -131,10 +131,9 @@
   height: auto;
   background-size: cover;
   background-position: center;
-  padding-bottom: 35%;
 
   @media #{$tablet} {
-    padding-bottom: 0;
+    padding-bottom: 35%;
   }
 
   @media #{$desktop} {
@@ -147,7 +146,7 @@
 
   h2 {
     color: white;
-    margin: 40px 0 0;
+    margin: 40px 0;
     font-size: 35px;
     font-weight: 300;
     //etter-spacing: -0.02em;
