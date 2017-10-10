@@ -86,7 +86,7 @@ def homepage_people_listing(context, count=3):
 # Blog feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_blog_listing.html', takes_context=True)
 def homepage_blog_listing(context, count=6):
-    blog_posts = play_filter(BlogPage.objects.filter(live=True).order_by('-date'), count)
+    blog_posts = play_filter(BlogPage.objects.live().in_menu().order_by('-date'), count)
     return {
         'blog_posts': blog_posts,
         # required by the pageurl tag that we want to use within this template
