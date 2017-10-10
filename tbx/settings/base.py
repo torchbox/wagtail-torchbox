@@ -23,7 +23,7 @@ EMAIL_SUBJECT_PREFIX = '[wagtail-torchbox] '
 # Application definition
 
 INSTALLED_APPS = [
-    'tbx.core',
+    'tbx.core.apps.TorchboxCoreAppConfig',
 
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.contrib.wagtailsitemaps',

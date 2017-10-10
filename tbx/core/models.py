@@ -765,10 +765,7 @@ class BlogIndexPage(Page):
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
         # and are not marketing_only
-        blog_posts = BlogPage.objects.filter(
-            live=True,
-            path__startswith=self.path
-        ).exclude(marketing_only=True)
+        blog_posts = BlogPage.objects.live().in_menu().descendant_of(self).exclude(marketing_only=True)
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date', 'pk')
