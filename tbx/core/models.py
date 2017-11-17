@@ -1121,7 +1121,7 @@ class WorkIndexPage(Page):
         works = WorkPage.objects.filter(
             live=True,
             path__startswith=self.path
-        ).exclude(marketing_only=True)
+        ).exclude(marketing_only=True).order_by('-first_published_at')
 
         return works
 
