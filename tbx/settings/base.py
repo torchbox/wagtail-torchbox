@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailcore',
     'wagtailmodeladmin',
     'wagtailmarkdown',
+    'wagtail.contrib.postgres_search',
 
     'modelcluster',
     'compressor',
@@ -185,12 +186,9 @@ CACHES = {
 }
 
 
-# Use Elasticsearch as the search backend for extra performance and better search results
-
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
-        'INDEX': 'tbx',
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
     },
 }
 
