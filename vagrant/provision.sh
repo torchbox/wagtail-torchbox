@@ -13,7 +13,7 @@ PIP=$VIRTUALENV_DIR/bin/pip
 su - vagrant -c "createdb $PROJECT_NAME"
 
 # Replace previous line with this if you are using Python 2
-su - vagrant -c "virtualenv --python=python2 $VIRTUALENV_DIR"
+su - vagrant -c "virtualenv --python=python3 $VIRTUALENV_DIR"
 
 su - vagrant -c "echo $PROJECT_DIR > $VIRTUALENV_DIR/.project"
 
