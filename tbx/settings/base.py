@@ -25,20 +25,20 @@ EMAIL_SUBJECT_PREFIX = '[wagtail-torchbox] '
 INSTALLED_APPS = [
     'tbx.core.apps.TorchboxCoreAppConfig',
 
-    'wagtail.contrib.wagtailsearchpromotions',
-    'wagtail.contrib.wagtailsitemaps',
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
-    'wagtailmodeladmin',
+    'wagtail.contrib.search_promotions',
+    'wagtail.contrib.sitemaps',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+    'wagtail.contrib.modeladmin',
     'wagtailmarkdown',
     'wagtail.contrib.postgres_search',
 
@@ -68,8 +68,8 @@ MIDDLEWARE_CLASSES = [
 
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'tbx.urls'

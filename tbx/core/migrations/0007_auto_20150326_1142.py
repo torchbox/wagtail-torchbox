@@ -2,7 +2,7 @@
 
 
 from django.db import models, migrations
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='blogpage',
             name='body',
-            field=wagtail.wagtailcore.fields.RichTextField(verbose_name='body (deprecated. Use streamfield instead)', blank=True),
+            field=wagtail.core.fields.RichTextField(verbose_name='body (deprecated. Use streamfield instead)', blank=True),
             preserve_default=True,
         ),
     ]

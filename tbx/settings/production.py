@@ -53,10 +53,10 @@ if 'SERVER_EMAIL' in env:
     SERVER_EMAIL = env['SERVER_EMAIL']
 
 if 'CACHE_PURGE_URL' in env:
-    INSTALLED_APPS += ( 'wagtail.contrib.wagtailfrontendcache', )
+    INSTALLED_APPS += ( 'wagtail.contrib.frontend_cache', )
     WAGTAILFRONTENDCACHE = {
         'default': {
-            'BACKEND': 'wagtail.contrib.wagtailfrontendcache.backends.HTTPBackend',
+            'BACKEND': 'wagtail.contrib.frontend_cache.backends.HTTPBackend',
             'LOCATION': env['CACHE_PURGE_URL'],
         },
     }

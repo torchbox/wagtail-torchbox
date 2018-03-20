@@ -5,7 +5,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -70,12 +70,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='workpage',
             name='body',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, verbose_name='Body (deprecated. Use streamfield instead)'),
+            field=wagtail.core.fields.RichTextField(blank=True, verbose_name='Body (deprecated. Use streamfield instead)'),
         ),
         migrations.AddField(
             model_name='workpage',
             name='intro',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, verbose_name='Intro (deprecated. Use streamfield instead)'),
+            field=wagtail.core.fields.RichTextField(blank=True, verbose_name='Intro (deprecated. Use streamfield instead)'),
         ),
         migrations.AddField(
             model_name='workpage',
