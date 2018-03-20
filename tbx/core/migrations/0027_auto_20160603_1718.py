@@ -3,7 +3,7 @@
 
 
 from django.db import migrations
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='blogpage',
             name='intro',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, verbose_name='Intro (used for blog index and Planet Drupal listings)'),
+            field=wagtail.core.fields.RichTextField(blank=True, verbose_name='Intro (used for blog index and Planet Drupal listings)'),
         ),
     ]

@@ -3,7 +3,7 @@
 
 
 from django.db import migrations, models
-import wagtail.wagtailimages.models
+import wagtail.images.models
 
 
 class Migration(migrations.Migration):
@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='torchboxrendition',
             name='file',
-            field=models.ImageField(height_field='height', upload_to=wagtail.wagtailimages.models.get_rendition_upload_to, width_field='width'),
+            field=models.ImageField(height_field='height', upload_to=wagtail.images.models.get_rendition_upload_to, width_field='width'),
         ),
     ]
