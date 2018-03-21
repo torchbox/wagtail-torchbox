@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.db import models, migrations
-import wagtail.wagtailimages.models
+import wagtail.images.models
 import django.db.models.deletion
 from django.conf import settings
 import taggit.managers
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='torchboximage',
             name='file',
-            field=models.ImageField(height_field='height', upload_to=wagtail.wagtailimages.models.get_upload_to, width_field='width', verbose_name='file'),
+            field=models.ImageField(height_field='height', upload_to=wagtail.images.models.get_upload_to, width_field='width', verbose_name='file'),
             preserve_default=True,
         ),
         migrations.AlterField(

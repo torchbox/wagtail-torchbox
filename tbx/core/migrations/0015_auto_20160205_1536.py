@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.db import models, migrations
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 import modelcluster.fields
 import django.db.models.deletion
 
@@ -41,11 +41,11 @@ class Migration(migrations.Migration):
             name='GoogleAdGrantsPage',
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', wagtail.wagtailcore.fields.RichTextField()),
+                ('intro', wagtail.core.fields.RichTextField()),
                 ('form_title', models.CharField(max_length=255)),
                 ('form_subtitle', models.CharField(max_length=255)),
                 ('form_button_text', models.CharField(max_length=255)),
-                ('body', wagtail.wagtailcore.fields.RichTextField()),
+                ('body', wagtail.core.fields.RichTextField()),
                 ('grants_managed_title', models.CharField(max_length=255)),
                 ('call_to_action_title', models.CharField(max_length=255)),
                 ('call_to_action_embed_url', models.URLField()),

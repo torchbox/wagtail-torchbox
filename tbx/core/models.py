@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django import forms
 from django.core.mail import EmailMessage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -11,28 +9,25 @@ from django.utils.functional import cached_property
 from django.views.decorators.vary import vary_on_headers
 
 from modelcluster.fields import ParentalKey
+from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
+                                         MultiFieldPanel, PageChooserPanel,
+                                         StreamFieldPanel)
+from wagtail.admin.utils import send_mail
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
-                                                MultiFieldPanel,
-                                                PageChooserPanel,
-                                                StreamFieldPanel)
-from wagtail.wagtailadmin.utils import send_mail
-from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
-                                        PageChooserBlock, RawHTMLBlock,
-                                        RichTextBlock, StreamBlock,
-                                        StructBlock, TextBlock, URLBlock)
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailcore.models import Orderable, Page
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
-                                          Image)
-from wagtail.wagtailsearch import index
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtailmarkdown.fields import MarkdownBlock
+from wagtail.core.blocks import (CharBlock, FieldBlock, ListBlock,
+                                 PageChooserBlock, RawHTMLBlock, RichTextBlock,
+                                 StreamBlock, StructBlock, TextBlock, URLBlock)
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Orderable, Page
+from wagtail.documents.edit_handlers import DocumentChooserPanel
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.models import AbstractImage, AbstractRendition, Image
+from wagtail.search import index
+from wagtail.snippets.models import register_snippet
+from wagtailmarkdown.blocks import MarkdownBlock
 
 from .fields import ColorField
 
@@ -243,7 +238,7 @@ class Advert(models.Model):
         FieldPanel('text'),
     ]
 
-    def __unicode__(self):
+    def __str__(self):
         return self.text
 
 register_snippet(Advert)
@@ -262,13 +257,6 @@ class TorchboxImage(AbstractImage):
         return self.credit
 
 
-# Receive the pre_delete signal and delete the file associated with the model instance.
-@receiver(pre_delete, sender=TorchboxImage)
-def image_delete(sender, instance, **kwargs):
-    # Pass false so FileField doesn't save the model.
-    instance.file.delete(False)
-
-
 class TorchboxRendition(AbstractRendition):
     image = models.ForeignKey('TorchboxImage', related_name='renditions')
 
@@ -276,13 +264,6 @@ class TorchboxRendition(AbstractRendition):
         unique_together = (
             ('image', 'filter_spec', 'focal_point_key'),
         )
-
-
-# Receive the pre_delete signal and delete the file associated with the model instance.
-@receiver(pre_delete, sender=TorchboxRendition)
-def rendition_delete(sender, instance, **kwargs):
-    # Pass false so FileField doesn't save the model.
-    instance.file.delete(False)
 
 
 # Home Page
@@ -831,7 +812,7 @@ class BlogPageTagList(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 register_snippet(BlogPageTagList)

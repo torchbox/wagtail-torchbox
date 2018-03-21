@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.db import models, migrations
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 from django.conf import settings
 
 
@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='blogpage',
             name='intro',
-            field=wagtail.wagtailcore.fields.RichTextField(verbose_name='Intro (used only for blog index listing)', blank=True),
+            field=wagtail.core.fields.RichTextField(verbose_name='Intro (used only for blog index listing)', blank=True),
             preserve_default=True,
         ),
         migrations.AlterField(
