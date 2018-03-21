@@ -16,9 +16,6 @@ dj-database-url==0.3.0
 whitenoise==3.2.1
 ConcurrentLogHandler==0.9.1
 
-# Fix for html5lib issue, see https://github.com/torchbox/wagtail/issues/2843, fixed in Wagtail 1.4.6 and 1.5.3
-html5lib==0.999999
-
 # Wagtail-markdown
 # Wagtail 2.0 compatible version
 wagtail-markdown==0.5a2.post1
