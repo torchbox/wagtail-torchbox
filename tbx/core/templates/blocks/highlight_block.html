@@ -1,0 +1,14 @@
+<div class="services-section services-section--white">
+    <div class="services-wrapper">
+        <h2 class="services-section__heading">{{ value.title }}</h2>
+        {% if value.intro %}<p class="services-section__paragraph">{{ value.intro }}</p>{% endif %}
+        <ul class="services-reasons-list">
+            {% for highlight in value.highlights %}
+            <li class="services-reasons-list__item">
+                <svg class="services-reasons-list__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 138.4 138.4"><style>.st12{fill:#FF4F2F;} .st13{fill:#FFFFFF;}</style><circle class="st12" cx="69.2" cy="69.2" r="69.2"/><path class="st13" d="M53.9 87.8L35.8 69.6l-6.1 6.1 24.2 24.2L105.8 48l-6-6.1z" id="check"/></svg>
+                <span class="services-reasons-list__detail">{{ highlight }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

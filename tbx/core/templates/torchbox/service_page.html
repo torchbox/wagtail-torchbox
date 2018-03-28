@@ -1,0 +1,146 @@
+{% extends "torchbox/base.html" %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
+{% block content %}
+
+    {# Hero #}
+    <div class="services-hero js-services-inner">
+        <div class="particles-js" id="particles-js"></div>
+        <div class="services-hero__wrapper">
+            <div class="services-hero__inner">
+                <div class="services-hero__breadcrumbs">Services</div>
+                <h1 class="services-hero__title">{{ page.title }}</h1>
+                <p class="services-hero__description">
+                    {{ page.description }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% include_block page.streamfield %}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'torchbox/vendor/particles.min.js' %}"></script>
+    <script>
+      var options = {
+        "particles": {
+          "number": {
+            "value": {% if self.particle.number %}{{ self.particle.number }}{% else %}50{% endif %},
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#{% if self.particle.colour %}{{ self.particle.colour }}{% else %}ffffff{% endif %}"
+          },
+          "shape": {
+            "type": "{% if self.particle.move_direction %}{{ self.particle.get_shape_type_display }}{% else %}circle{% endif %}",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": {% if self.particle.polygon_sides %}{{ self.particle.polygon_sides }}{% else %}5{% endif %}
+            },
+          },
+          "opacity": {
+            "value": {% if self.particle.opacity %}{{ self.particle.opacity }}{% else %}0.9{% endif %},
+            "random": {% if self.particle.opacity_random %}true{% else %}false{% endif %},
+            "anim": {
+              "enable": false,
+              "speed": 2,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": {% if self.particle.size %}{{ self.particle.size }}{% else %}2.5{% endif %},
+            "random": {% if self.particle.size_random %}true{% else %}false{% endif %},
+            "anim": {
+              "enable": false,
+              "speed": 50,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": {% if self.particle.line_linked %}true{% else %}false{% endif %},
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": {% if self.particle.move_speed %}{{ self.particle.move_speed }}{% else %}2.5{% endif %},
+            "direction": "{% if self.particle.move_direction %}{{ self.particle.get_move_direction_display }}{% else %}none{% endif %}",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      };
+      particlesJS("particles-js", options);
+    </script>
+
+    {% comment %}
+    At the moment, there is no better way to initialise JS for streamfield,
+    if it depends on jQuery or something else that we load at the end of document.
+    {% endcomment %}
+    {% for block in page.streamfield %}
+        {% if block.block_type == 'sign_up_form_page' %}
+
+            <script>
+                $(function() {
+                    tbx.signUp('#sign-up-form-{{ block.value.page.pk|escapejs }}');
+                });
+            </script>
+
+        {% endif %}
+    {% endfor %}
+
+{% endblock extra_js %}

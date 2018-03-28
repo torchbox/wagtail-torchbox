@@ -8,7 +8,7 @@ footer {
   background: $dark;
   clear: both;
   svg {
-    fill: white;
+    fill: #fff;
     width: 100%;
   }
   .offices {
@@ -114,7 +114,7 @@ footer {
         width: 90%;
       }
     }
-    @media #{$tablet-large} {
+    @media #{$tablet} {
       padding: 50px 0;
     }
   }
@@ -219,6 +219,22 @@ footer {
       }
     }
   }
+  .links {
+    padding: 0 0 20px 30px;
+    max-width: 150px;
+    margin: 0 auto;
+    color: white;
+    a {
+      color: white;
+      font-size: 13px;
+    }
+    span {
+      font-size: 18px;
+      padding: 0 0.3em;
+      position: relative;
+      top: 2px;
+    }
+  }
 }
 
 .contact {
@@ -273,8 +289,9 @@ footer {
   }
   .svg {
     display: inline-block;
-    width: 30px;
     margin-right: 15px;
+    width: 30px;
+
     @media #{$tablet-large} {
       display: inline;
       margin-right: 15px;
@@ -305,6 +322,7 @@ footer {
     svg {
       position: relative;
       top: 13px;
+      margin-right: 15px;
       width: 40px;
       height: 40px;
       fill: white;

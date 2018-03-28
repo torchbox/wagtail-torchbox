@@ -130,7 +130,7 @@ if REDIS_LOCATION is not None:
 if 'ELASTICSEARCH_URL' in env:
     WAGTAILSEARCH_BACKENDS = {
         'default': {
-            'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
+            'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
             'URLS': [env['ELASTICSEARCH_URL']],
             'INDEX': APP_NAME,
             'ATOMIC_REBUILD': True,

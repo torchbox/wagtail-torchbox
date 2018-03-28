@@ -28,6 +28,17 @@
 
   }
 
+  &--no-visit {
+    // for pages wihtout a visit button, hide the grey bottom margin
+    // and the padding at mobile, as tags are hidden anyway at mobile
+    border-bottom: none;
+    padding: 0;
+    @media #{$tablet} {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 10px 0 0;
+    }
+  }
+
   .client {
     vertical-align: top;
     font-weight: 600;

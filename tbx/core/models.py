@@ -8,6 +8,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.functional import cached_property
+from django.views.decorators.vary import vary_on_headers
 
 from modelcluster.fields import ParentalKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
@@ -19,7 +20,7 @@ from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
                                         PageChooserBlock, RawHTMLBlock,
                                         RichTextBlock, StreamBlock,
-                                        StructBlock)
+                                        StructBlock, TextBlock, URLBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -31,6 +32,9 @@ from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
                                           Image)
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtailmarkdown.fields import MarkdownBlock
+
+from .fields import ColorField
 
 
 # Streamfield blocks and config
@@ -109,9 +113,7 @@ class StoryBlock(StreamBlock):
     pullquote = PullQuoteBlock()
     raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
     embed = EmbedBlock(icon="code")
-    # photogrid = PhotoGridBlock()
-    # testimonial = PullQuoteImageBlock(label="Testimonial", icon="group")
-    # stats = StatsBlock()
+    markdown = MarkdownBlock(icon="code")
 
 
 # A couple of abstract classes that contain commonly used fields
@@ -272,7 +274,7 @@ class TorchboxRendition(AbstractRendition):
 
     class Meta:
         unique_together = (
-            ('image', 'filter', 'focal_point_key'),
+            ('image', 'filter_spec', 'focal_point_key'),
         )
 
 
@@ -330,16 +332,8 @@ class HomePageClient(Orderable, RelatedLink):
 
 
 class HomePage(Page):
-    hero_intro = models.TextField(blank=True)
-    hero_video_id = models.IntegerField(blank=True, null=True, help_text="Optional. The numeric ID of a Vimeo video to replace the background image.")
-    hero_video_poster_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    intro_title = models.TextField(blank=True)
+    hero_intro_primary = models.TextField(blank=True)
+    hero_intro_secondary = models.TextField(blank=True)
     intro_body = RichTextField(blank=True)
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
@@ -350,9 +344,14 @@ class HomePage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('hero_intro'),
+        MultiFieldPanel(
+            [
+                FieldPanel('hero_intro_primary'),
+                FieldPanel('hero_intro_secondary'),
+            ],
+            heading="Hero intro"
+        ),
         InlinePanel('hero', label="Hero"),
-        FieldPanel('intro_title'),
         FieldPanel('intro_body'),
         FieldPanel('work_title'),
         FieldPanel('blog_title'),
@@ -363,9 +362,7 @@ class HomePage(Page):
     @property
     def blog_posts(self):
         # Get list of blog pages.
-        blog_posts = BlogPage.objects.filter(
-            live=True
-        )
+        blog_posts = BlogPage.objects.live().public()
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date')
@@ -522,10 +519,17 @@ class ServicesPageService(Orderable):
     title = models.TextField()
     svg = models.TextField(null=True)
     description = models.TextField()
+    link = models.ForeignKey(
+        'torchbox.ServicePage',
+        related_name='+',
+        blank=True,
+        null=True,
+    )
 
     panels = [
         FieldPanel('title'),
         FieldPanel('description'),
+        PageChooserPanel('link'),
         FieldPanel('svg')
     ]
 
@@ -552,6 +556,190 @@ class ServicesPage(Page):
         FieldPanel('intro', classname='full'),
         InlinePanel('services', label='Services'),
     ]
+
+
+# Service Page
+
+class CaseStudyBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=True)
+    case_studies = ListBlock(StructBlock([
+        ('page', PageChooserBlock('torchbox.WorkPage')),
+        ('title', CharBlock(required=False)),
+        ('descriptive_title', CharBlock(required=False)),
+        ('image', ImageChooserBlock(required=False)),
+    ]))
+
+    class Meta:
+        template = 'blocks/case_study_block.html'
+
+
+class HighlightBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=False)
+    highlights = ListBlock(TextBlock())
+
+    class Meta:
+        template = 'blocks/highlight_block.html'
+
+
+class StepByStepBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=False)
+    steps = ListBlock(StructBlock([
+        ('subtitle', CharBlock(required=False)),
+        ('title', CharBlock(required=True)),
+        ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
+        ('description', TextBlock(required=True))
+    ]))
+
+    class Meta:
+        template = 'blocks/step_by_step_block.html'
+
+
+class PeopleBlock(StructBlock):
+    title = CharBlock(required=True)
+    intro = TextBlock(required=True)
+    people = ListBlock(PageChooserBlock())
+
+    class Meta:
+        template = 'blocks/people_block.html'
+
+
+class FeaturedPagesBlock(StructBlock):
+    title = CharBlock()
+    pages = ListBlock(StructBlock([
+        ('page', PageChooserBlock()),
+        ('image', ImageChooserBlock()),
+        ('text', TextBlock()),
+        ('sub_text', CharBlock(max_length=100)),
+    ]))
+
+    class Meta:
+        template = 'blocks/featured_pages_block.html'
+
+
+class SignUpFormPageBlock(StructBlock):
+    page = PageChooserBlock('torchbox.SignUpFormPage')
+
+    def get_context(self, value, parent_context=None):
+        context = super(SignUpFormPageBlock, self).get_context(value, parent_context)
+        context['form'] = value['page'].sign_up_form_class()
+
+        return context
+
+    class Meta:
+        icon = 'doc-full'
+        template = 'blocks/sign_up_form_page_block.html'
+
+
+class LogosBlock(StructBlock):
+    title = CharBlock()
+    intro = CharBlock()
+    logos = ListBlock(StructBlock((
+        ('image', ImageChooserBlock()),
+        ('link_page', PageChooserBlock(required=False)),
+        ('link_external', URLBlock(required=False)),
+    )))
+
+    class Meta:
+        icon = 'site'
+        template = 'blocks/logos_block.html'
+
+class ServicePageBlock(StreamBlock):
+    case_studies = CaseStudyBlock()
+    highlights = HighlightBlock()
+    pull_quote = PullQuoteBlock(template='blocks/pull_quote_block.html')
+    process = StepByStepBlock()
+    people = PeopleBlock()
+    featured_pages = FeaturedPagesBlock()
+    sign_up_form_page = SignUpFormPageBlock()
+    logos = LogosBlock()
+
+
+class ServicePage(Page):
+    description = models.TextField()
+    streamfield = StreamField(ServicePageBlock())
+    particle = models.ForeignKey(
+        'ParticleSnippet',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL)
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('description', classname="full"),
+        StreamFieldPanel('streamfield'),
+        FieldPanel('particle'),
+    ]
+
+
+@register_snippet
+class ParticleSnippet(models.Model):
+    """
+    Snippet for configuring particlejs options
+    """
+    # particle type choices
+    CIRCLE = 1
+    EDGE = 2
+    TRIANGLE = 3
+    POLYGON = 4
+    STAR = 5
+    IMAGE = 6
+    PARTICLES_TYPE_CHOICES = (
+        (CIRCLE, 'circle'),
+        (EDGE, 'edge'),
+        (TRIANGLE, 'triangle'),
+        (POLYGON, 'polygon'),
+        (STAR, 'star'),
+        (IMAGE, 'image'),
+    )
+    # particle movement direction choices
+    NONE = 1
+    TOP = 2
+    TOP_RIGHT = 3
+    RIGHT = 4
+    BOTTOM_RIGHT = 5
+    BOTTOM = 6
+    BOTTOM_LEFT = 7
+    LEFT = 8
+    PARTICLES_MOVE_DIRECTION_CHOICES = (
+        (NONE, 'none'),
+        (TOP, 'top'),
+        (TOP_RIGHT, 'top-right'),
+        (RIGHT, 'right'),
+        (BOTTOM_RIGHT, 'bottom-right'),
+        (BOTTOM, 'bottom'),
+        (BOTTOM_LEFT, 'bottom-left'),
+        (LEFT, 'left'),
+    )
+    title = models.CharField(max_length=50)
+    number = models.PositiveSmallIntegerField(default=50)
+    shape_type = models.PositiveSmallIntegerField(
+        choices=PARTICLES_TYPE_CHOICES, default=CIRCLE)
+    polygon_sides = models.PositiveSmallIntegerField(default=5)
+    size = models.DecimalField(default=2.5, max_digits=4, decimal_places=1)
+    size_random = models.BooleanField(default=False)
+    colour = ColorField(default='ffffff', help_text="Don't include # symbol.")
+    opacity = models.DecimalField(default=0.9, max_digits=2, decimal_places=1)
+    opacity_random = models.BooleanField(default=False)
+    move_speed = models.DecimalField(
+        default=2.5, max_digits=2, decimal_places=1)
+    move_direction = models.PositiveSmallIntegerField(
+        choices=PARTICLES_MOVE_DIRECTION_CHOICES,
+        default=NONE)
+    line_linked = models.BooleanField(default=True)
+    css_background_colour = ColorField(
+        blank=True,
+        help_text="Don't include # symbol. Will be overridden by linear gradient")
+    css_background_linear_gradient = models.CharField(
+        blank=True,
+        max_length=255,
+        help_text="Enter in the format 'to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%'")
+    css_background_url = models.URLField(blank=True, max_length=255)
+
+    def __str__(self):
+        return self.title
 
 
 # Blog index page
@@ -582,10 +770,7 @@ class BlogIndexPage(Page):
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
         # and are not marketing_only
-        blog_posts = BlogPage.objects.filter(
-            live=True,
-            path__startswith=self.path
-        ).exclude(marketing_only=True)
+        blog_posts = BlogPage.objects.live().in_menu().descendant_of(self).exclude(marketing_only=True)
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date', 'pk')
@@ -988,6 +1173,10 @@ class PersonPage(Page, ContactFields):
     is_senior = models.BooleanField(default=False)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
+    short_biography = models.CharField(
+        max_length=255, blank=True,
+        help_text='A shorter summary biography for including in other pages'
+    )
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -1018,6 +1207,7 @@ class PersonPage(Page, ContactFields):
         FieldPanel('is_senior'),
         FieldPanel('intro', classname="full"),
         FieldPanel('biography', classname="full"),
+        FieldPanel('short_biography', classname="full"),
         ImageChooserPanel('image'),
         MultiFieldPanel(ContactFields.panels, "Contact"),
         InlinePanel('related_links', label="Related links"),
@@ -1146,9 +1336,9 @@ class GoogleAdGrantsPage(Page):
         index.SearchField('body')
     ]
 
-    def get_context(self, request):
+    def get_context(self, request, *args, **kwargs):
         form = GoogleAdGrantApplicationForm()
-        context = super(GoogleAdGrantsPage, self).get_context(request)
+        context = super(GoogleAdGrantsPage, self).get_context(request, *args, **kwargs)
         context['form'] = form
         return context
 
@@ -1299,6 +1489,8 @@ class SignUpFormPage(Page):
         verbose_name='from address',
         help_text="Anything ending in @torchbox.com is good.")
 
+    sign_up_form_class = SignUpFormPageForm
+
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title', classname="title"),
@@ -1322,15 +1514,15 @@ class SignUpFormPage(Page):
         ], 'Email'),
     ]
 
-    def get_context(self, request):
-        form = SignUpFormPageForm()
-        context = super(SignUpFormPage, self).get_context(request)
-        context['form'] = form
+    def get_context(self, request, *args, **kwargs):
+        context = super(SignUpFormPage, self).get_context(request, *args, **kwargs)
+        context['form'] = self.sign_up_form_class()
         return context
 
+    @vary_on_headers('X-Requested-With')
     def serve(self, request, *args, **kwargs):
         if request.is_ajax() and request.method == "POST":
-            form = SignUpFormPageForm(request.POST)
+            form = self.sign_up_form_class(request.POST)
 
             if form.is_valid():
                 form.save()
@@ -1338,13 +1530,21 @@ class SignUpFormPage(Page):
                 return render(
                     request,
                     'torchbox/includes/sign_up_form_page_landing.html',
-                    {'page': self, 'form': form}
+                    {
+                        'page': self,
+                        'form': form,
+                        'legend': self.call_to_action_text
+                     }
                 )
             else:
                 return render(
                     request,
                     'torchbox/includes/sign_up_form_page_form.html',
-                    {'page': self, 'form': form}
+                    {
+                        'page': self,
+                        'form': form,
+                        'legend': self.call_to_action_text
+                    }
                 )
         else:
             return super(SignUpFormPage, self).serve(request)
@@ -1495,7 +1695,7 @@ class Contact(AbstractEmailForm):
 class GlobalSettings(BaseSetting):
 
     contact_telephone = models.CharField(max_length=255, help_text='Telephone')
-    contact_email = models.CharField(max_length=255, help_text='Email address')
+    contact_email = models.EmailField(max_length=255, help_text='Email address')
     contact_twitter = models.CharField(max_length=255, help_text='Twitter')
     email_newsletter_teaser = models.CharField(max_length=255, help_text='Text that sits above the email newsletter')
     oxford_address_title = models.CharField(max_length=255, help_text='Full address')
@@ -1511,8 +1711,43 @@ class GlobalSettings(BaseSetting):
     phili_address_link = models.URLField(max_length=255, help_text='Link to google maps')
     phili_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
 
+    # Contact widget
+    contact_person = models.ForeignKey(
+        'torchbox.PersonPage', related_name='+', null=True,
+        on_delete=models.SET_NULL,
+        help_text="Ensure this person has telephone and email fields set")
+    contact_widget_intro = models.TextField()
+    contact_widget_call_to_action = models.TextField()
+    contact_widget_button_text = models.TextField()
+
     class Meta:
         verbose_name = 'Global Settings'
+
+    panels = [
+        FieldPanel('contact_telephone'),
+        FieldPanel('contact_email'),
+        FieldPanel('contact_twitter'),
+        FieldPanel('email_newsletter_teaser'),
+        FieldPanel('oxford_address_title'),
+        FieldPanel('oxford_address'),
+        FieldPanel('oxford_address_link'),
+        FieldPanel('oxford_address_svg'),
+        FieldPanel('bristol_address_title'),
+        FieldPanel('bristol_address'),
+        FieldPanel('bristol_address_link'),
+        FieldPanel('bristol_address_svg'),
+        FieldPanel('phili_address_title'),
+        FieldPanel('phili_address'),
+        FieldPanel('phili_address_link'),
+        FieldPanel('phili_address_svg'),
+
+        MultiFieldPanel([
+            PageChooserPanel('contact_person'),
+            FieldPanel('contact_widget_intro'),
+            FieldPanel('contact_widget_call_to_action'),
+            FieldPanel('contact_widget_button_text'),
+        ], 'Contact widget')
+    ]
 
 
 class SubMenuItemBlock(StreamBlock):

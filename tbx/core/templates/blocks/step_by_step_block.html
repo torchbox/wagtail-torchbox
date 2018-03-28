@@ -1,0 +1,33 @@
+<div class="services-section services-section--white">
+    <div class="services-wrapper">
+        <h2 class="services-section__heading">{{ value.title }}</h2>
+        {% if value.intro %}<p class="services-section__paragraph">{{ value.intro }}</p>{% endif %}
+        {% spaceless %}
+        <div class="services-grid">
+
+            {% for step in value.steps %}
+            <div class="services-grid__item services-grid__item--one-half">
+                <div class="services-process">
+                    <div class="services-process__icon">
+                        <div class="svg">
+                            {{ step.icon|safe }}
+                        </div>
+                    </div>
+                    <div class="services-process__content-wrapper">
+                        {% if step.subtitle %}
+                            <div class="services-process__subtitle">{{ step.subtitle }}</div>
+                        {% endif %}
+                        <div class="services-process__title">{{ step.title }}</div>
+                        <p class="services-process__description">
+                        {{ step.description }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% endspaceless %}
+
+    </div> 
+</div>

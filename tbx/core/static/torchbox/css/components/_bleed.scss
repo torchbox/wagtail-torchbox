@@ -201,14 +201,15 @@
           background: $orange;
           transition: all 0.25s ease 0s;
         }
-        &:hover {
+        &:hover,
+        &.active {
           cursor: pointer;
           color: $orange;
-          &:after {
-            width: 100%;
-            left: 0;
-            right: auto;
-          }
+        }
+        &:hover:after {
+          width: 100%;
+          left: 0;
+          right: auto;
         }
       }
     }

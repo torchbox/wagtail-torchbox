@@ -52,10 +52,11 @@ def _deploy():
         return
     run('git pull')
     run('pip install -r requirements.txt')
-    run('dj migrate --noinput')
-    run('dj collectstatic --noinput')
-    run('dj update_index')
+    run('django-admin migrate --noinput')
+    run('django-admin collectstatic --noinput')
+    run('django-admin compress')
     run('restart')
+    run('python -m whitenoise.compress $CFG_STATIC_DIR')
 
 
 def _pull_data():
@@ -122,7 +123,7 @@ def _pull_media():
     local('rm -rf media.old')
     local('cp -r {} {}.old || true'.format(LOCAL_MEDIA_DIR, LOCAL_MEDIA_DIR))
 
-    local('rsync -avz %s:%s /vagrant/media/' % (env['host_string'], non_env_remote_media_path))
+    local('rsync -avz %s:%s/ /vagrant/media/' % (env['host_string'], non_env_remote_media_path))
 
 
 def _pull_live_media_from_staging():
@@ -135,7 +136,7 @@ def _pull_live_media_from_staging():
     non_env_remote_media_path = _fetch_remote_variable(REMOTE_MEDIA_DIR)
     local_media_dir = os.getenv(ENV_MEDIA_DIR_VARIABLE)
 
-    local('rsync -avz {}:{} {}'.format(env['host_string'],
+    local('rsync -avz {}:{}/ {}'.format(env['host_string'],
                                         non_env_remote_media_path,
                                         local_media_dir))
 

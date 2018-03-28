@@ -1,0 +1,22 @@
+{% load wagtailimages_tags %}
+<div class="services-section services-section--white services-section">
+    <div class="services-wrapper">
+        <h2 class="services-section__heading">{{ value.title }}</h2>
+        <p class="services-section__paragraph">{{ value.intro }}</p>
+
+        {% spaceless %}
+        <div class="services-grid">
+
+            {% for person in value.people %}
+            <div class="services-grid__item services-grid__item--one-quarter services-team-member">
+                {% image person.specific.image fill-466x466-c100 height="auto" class="services-team-member__image" %}
+                <h3 class="services-team-member__name">{{ person.title }}</h3>
+                <span class="services-team-member__title">{{ person.specific.role }}</span>
+                <p class="services-team-member__description">{{ person.specific.short_biography }}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% endspaceless %}
+    </div>
+</div>

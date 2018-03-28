@@ -84,6 +84,20 @@
         font-size: 34px;
       }
     }
+    a.service__link {
+      color: $green;
+      font-size: 18px;
+      position: relative;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    a.service__link--header {
+      color: $green;
+      position: relative;
+    }
+
     &:hover {
       // background-color: $green-lt;
       // svg {

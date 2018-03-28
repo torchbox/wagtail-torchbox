@@ -29,6 +29,14 @@
   .main-content {
     padding-top: 80px;
   }
+
+  // reduce space above main content at mobile when there is no visit button on a work page
+  .main-content--no-visit {
+    padding-top: 0px;
+    @media #{$tablet} {
+      padding-top: 80px;
+    }
+  }
 }
 
 .text-content {
@@ -90,7 +98,6 @@
     width: 100%;
     background: rgba($dark, 0.75);
     background: linear-gradient(to top, rgba($dark, 1) , rgba($dark, 0));
-    mix-blend-mode: multiply;
   }
   img {
     object-fit: cover;

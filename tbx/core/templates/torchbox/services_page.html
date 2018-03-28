@@ -26,8 +26,9 @@
                     <li>
                         <div class="services-content">
                             {{ service.svg|safe }}
-                            <h3>{{ service.title }}</h3>
+                            <h3>{% if service.link %}<a href="{% pageurl service.link %}" class="service__link--header">{% endif %}{{ service.title }}{% if service.link %}</a>{% endif %}</h3>
                             <p>{{ service.description }}</p>
+                            {% if service.link %}<a href="{% pageurl service.link %}" class="service__link">Find out more</a>{% endif %}
                         </div>
                     </li>
                     {% endfor %}

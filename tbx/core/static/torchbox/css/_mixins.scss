@@ -49,3 +49,14 @@
     }
   }
 }
+
+// row padding for site widths.
+@mixin row-padding {
+  padding: 0 15px;
+  @media #{$tablet} {
+    padding: 0 20px;
+  }
+  @media #{$tablet-large} {
+    padding: 0 50px;
+  }
+}

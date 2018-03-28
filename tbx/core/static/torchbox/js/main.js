@@ -6,6 +6,7 @@ $(document).ready(function() {
     tbx.loadMore($('.blog-listing'));
     tbx.jobs();
     tbx.scrollEvents();
+    tbx.servicesCarousel();
     tbx.newsletterSignUp();
 });
 
@@ -23,7 +24,7 @@ var tbx = {
             currentItem       = null;
 
         // On load we're forcing the second item to appear (via CSS)
-        // but once the user interacts with the hero we need to 
+        // but once the user interacts with the hero we need to
         // revert this behaviour to default
         function resetHero() {
             $heroContainer.removeClass( initialLoad );
@@ -204,7 +205,7 @@ var tbx = {
         map = new google.maps.Map(document.getElementById( 'map' ), mapOptions);
 
 
-        // Set up markers    
+        // Set up markers
         function setMarkers(map, locations) {
 
             for (i = 0; i < locations.length; i++) {
@@ -216,7 +217,7 @@ var tbx = {
                     infowindow      = new google.maps.InfoWindow(),
                     markerInfo      = '<div class="map-infobox">' + title + '</div>';
 
-                // Create markers    
+                // Create markers
                 var marker = new google.maps.Marker({
                     map:        map,
                     position:   markerLocation,
@@ -257,7 +258,7 @@ var tbx = {
 
         // Show all markers
         function showAllMarkers() {
-            for (var i = 0; i < locations.length; i++) {    
+            for (var i = 0; i < locations.length; i++) {
                 markers[i].setMap(map);
             }
         }
@@ -277,7 +278,7 @@ var tbx = {
                 else {
                     showAllMarkers();
                 }
-            }); 
+            });
         }
 
         setMarkers(map, locations)
@@ -301,13 +302,38 @@ var tbx = {
                 if ( $( window ).scrollTop() >= offset ) {
                     $specifications.addClass( fixedClass );
                     $client.addClass( showClient )
-                } 
+                }
 
                 // Un-stick
                 else {
                     $specifications.removeClass( fixedClass );
                     $client.removeClass( showClient )
-                }  
+                }
+            });
+        }
+    },
+
+    servicesCarousel: function() {
+
+        if ( $( '.services-slider ul' ).length ) {
+            $( '.services-slider ul' ).owlCarousel({
+                loop: true,
+                margin: 20,
+                items: 1,
+                autoplay: 5000,
+                autoplayTimeout: 500000,
+                slideSpeed: 500,
+                paginationSpeed: 500,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    1100: {
+                        items: 1,
+                        stagePadding: 100
+                    }
+                }
             });
         }
     },
@@ -315,13 +341,18 @@ var tbx = {
     // SignUp form
     signUp: function(element) {
         $(element).on('submit', function(e) {
+            var $form       = $( this );
+
             e.preventDefault();
             e.stopImmediatePropagation();
-            $(".sign-up-form-button").html("Submitting...");
+
+            $form.find(".sign-up-form-button").html("Submitting...");
+
             $.ajax({
-                url: $(this).attr('action'),
+                url: $form.attr('action'),
                 type: "POST",
-                data: $(this).serialize(),
+                data: $form.serialize(),
+                cache: false,
                 success: function(data) {
                     // Google Tag Manager voodoo
                     window.dataLayer = window.dataLayer || [];
@@ -329,8 +360,8 @@ var tbx = {
                         'event': 'formSubmissionSuccess',
                         'formId': 'sign-up-form'
                     });
-                    // end voodoo
-                    $(".sign-up-form").html(data);
+                    //  >> Use response as confirmation text/validation error response
+                    $form.html( data );
                 }
             });
         });
@@ -344,7 +375,10 @@ var tbx = {
             $(".newsletter-email").animate({
                 width: "0px"
             });
-            $(".newsletter-email").hide("slow");
+            $(".newsletter-email").hide("slow", function(){
+                $(".newsletter-button").css('border-radius', $(".newsletter-button").css('border-top-right-radius'));
+            });
+
             $.ajax({
                 url : $(this).attr('action'),
                 type: "GET",

@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'base';
 @import 'blog-detail';
+@import 'owl.carousel';
 @import 'components/container';
 @import 'components/nav';
 @import 'components/menu-button';
@@ -17,6 +18,7 @@
 @import 'components/jobs';
 @import 'components/about';
 @import 'components/clients';
+@import 'components/logos_block';
 @import 'components/overrides';
 @import 'components/rich-text';
 @import 'components/specifications';
@@ -43,3 +45,11 @@
 @import 'components/slick';
 @import 'components/clipstop';
 @import 'components/page-sign-up-form';
+@import 'components/services-base';
+@import 'components/services-section';
+@import 'components/services-inner';
+@import 'components/services-hero';
+@import 'components/services-avatar';
+@import 'components/services-slider';
+@import 'components/services-blockquote';
+@import 'components/services-sign-up';

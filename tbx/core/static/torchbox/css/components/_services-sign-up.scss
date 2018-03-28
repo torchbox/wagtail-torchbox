@@ -1,0 +1,120 @@
+
+.block-sign_up_form_page {
+
+    .services-section {
+        padding-top: 55px;
+    }
+    .services-wrapper {}
+
+
+    .sign-up-form {
+
+        position: relative;
+        overflow: hidden;
+        padding: 50px 0;
+        background: #142b2b;
+        color: white;
+        display: flex;
+        flex-direction: column;
+
+        @media #{$tablet} {
+            flex-direction: row;
+            padding-left: 270px;
+        }
+
+        // Would be better in fieldset but don't want to break markup usage in other (unknown) places
+        fieldset {
+            position: relative;
+            z-index: 2;
+            outline: 0;
+            border: 0;
+            order: 2;
+        }
+
+        legend {
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+            @media #{$tablet} {
+                font-size: 35px;
+            }
+        }
+        .error {
+            font-size: 16px;
+            line-height: 29px;
+            color: #fff;
+
+            @media #{$tablet} {
+                font-size: 20px;
+                line-height: 20px;
+            }
+        }
+        .success {
+            font-size: 20px;
+            line-height: 33px;
+            color: #fff;
+
+            @media #{$tablet} {
+                font-size: 26px;
+                line-height: 40px;
+            }
+        }
+        input {
+            border: 0;
+            color: white;
+            background: rgba( white, 0.2 );
+            border-radius: $border-radius 0 0 $border-radius;
+            padding: 10px 20px 8px;
+            width: 63%;
+            float: left;
+            font-family: $primaryFont;
+            &:focus {
+              box-shadow: none;
+            }
+            &::placeholder {
+              font-family: $primaryFont;
+              color: white;
+            }
+
+            @media #{$tablet} {
+              width: 300px;
+            }
+            @media #{$tablet-large} {
+              width: 400px;
+            }
+        }
+        label {
+            display: none;
+        }
+        button {
+            background: $blue; // 3fbaba
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+            left: -5px;
+            float: left;
+            border-radius: 0 $border-radius $border-radius 0;
+            border: 1px solid $blue;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        img {
+            position: relative;
+            left: 30px;
+            z-index: 1;
+            width: auto; height: 230px;
+            margin-bottom: 30px;
+            transform: rotate( -9deg );
+            align-self: flex-start;
+            order: 1;
+
+            @media #{$tablet} {
+                position: absolute;
+                top: 30px; left: 80px;
+            }
+        }
+    }
+
+}

@@ -23,9 +23,10 @@ EMAIL_SUBJECT_PREFIX = '[wagtail-torchbox] '
 # Application definition
 
 INSTALLED_APPS = [
-    'tbx.core',
+    'tbx.core.apps.TorchboxCoreAppConfig',
 
     'wagtail.contrib.wagtailsearchpromotions',
+    'wagtail.contrib.wagtailsitemaps',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
     'wagtailmodeladmin',
+    'wagtailmarkdown',
 
     'modelcluster',
     'compressor',
@@ -62,6 +64,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
@@ -155,6 +159,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+# Serve /public directory with whitenoise
+WHITENOISE_ROOT = os.path.join(BASE_DIR, 'public')
+
+
 # Django compressor settings
 # http://django-compressor.readthedocs.org/en/latest/settings/
 
@@ -181,7 +189,7 @@ CACHES = {
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
+        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
         'INDEX': 'tbx',
     },
 }
