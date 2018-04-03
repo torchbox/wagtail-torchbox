@@ -25,13 +25,14 @@ from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
+from wagtail.wagtailforms.models import AbstractFormField
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
                                           Image)
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from wagtailmarkdown.fields import MarkdownBlock
 
 from .fields import ColorField
@@ -1652,7 +1653,7 @@ class ContactLandingPageRelatedLinkButton(Orderable, RelatedLink):
     page = ParentalKey('torchbox.Contact', related_name='related_link_buttons')
 
 
-class Contact(AbstractEmailForm):
+class Contact(WagtailCaptchaEmailForm):
     intro = RichTextField(blank=True)
     main_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
                                    blank=True, on_delete=models.SET_NULL,

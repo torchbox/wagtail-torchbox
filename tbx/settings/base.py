@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'compressor',
     'taggit',
     'raven.contrib.django.raven_compat',
+    'captcha',
+    'wagtailcaptcha',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -204,3 +206,7 @@ WAGTAILIMAGES_IMAGE_MODEL = 'torchbox.TorchboxImage'
 
 # Facebook JSSDK app Id
 FB_APP_ID = ''
+
+
+# reCAPTCHA
+NOCAPTCHA = True
