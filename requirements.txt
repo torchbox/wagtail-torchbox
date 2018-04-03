@@ -24,3 +24,6 @@ html5lib==0.999999
 # Wagtail-markdown
 git+https://github.com/torchbox/wagtail-markdown.git@mediafix#egg=wagtail-markdown
 Pygments==2.1.3  # actually more of a dependency of wagtail-markdown, watch that space
+
+# DRF compatibility with Django 1.9
+djangorestframework<3.7
