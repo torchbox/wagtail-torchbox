@@ -1706,10 +1706,6 @@ class GlobalSettings(BaseSetting):
     bristol_address = models.CharField(max_length=255, help_text='Full address')
     bristol_address_link = models.URLField(max_length=255, help_text='Link to google maps')
     bristol_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
-    phili_address_title = models.CharField(max_length=255, help_text='Full address')
-    phili_address = models.CharField(max_length=255, help_text='Full address')
-    phili_address_link = models.URLField(max_length=255, help_text='Link to google maps')
-    phili_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
 
     # Contact widget
     contact_person = models.ForeignKey(
@@ -1736,10 +1732,6 @@ class GlobalSettings(BaseSetting):
         FieldPanel('bristol_address'),
         FieldPanel('bristol_address_link'),
         FieldPanel('bristol_address_svg'),
-        FieldPanel('phili_address_title'),
-        FieldPanel('phili_address'),
-        FieldPanel('phili_address_link'),
-        FieldPanel('phili_address_svg'),
 
         MultiFieldPanel([
             PageChooserPanel('contact_person'),
