@@ -127,7 +127,7 @@
           transition: all 0.4s ease;
           position: absolute;
           z-index: 0;
-          background-color: rgba(#fff,01);
+          background-color: rgba( #fff, 0.9 );
           width: 200px;
           //transform: translateY(-200px);
           //height: 0;
@@ -136,7 +136,7 @@
           padding: 0 15px 0;
           left: -15px;
           opacity: 0;
-          top: 56px;
+          top: 58px;
 
           li {
             display: block;
@@ -155,6 +155,11 @@
               }
             }
           }
+
+          li:first-of-type a {
+            border-top: none;
+          }
+
         }
       }
 

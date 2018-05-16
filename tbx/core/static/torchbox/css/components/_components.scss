@@ -105,3 +105,15 @@
   }
 
 }
+
+.recent-projects-heading {
+  @media #{$tablet} {
+    margin-top: 70px;
+  }
+}
+
+.latest-blog-heading {
+  @media #{$tablet} {
+    margin-top: 40px;
+  }
+}

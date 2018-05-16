@@ -62,6 +62,14 @@
     }
   }
 
+  .contact li {
+    @media #{$tablet} {
+      max-width: 50%;
+      display: block;
+      margin: 0 auto 20px;
+    }
+  }
+
 }
 
 .find-us {

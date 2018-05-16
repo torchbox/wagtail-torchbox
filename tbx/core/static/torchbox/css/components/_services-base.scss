@@ -61,3 +61,14 @@
         }
     }
 }
+
+.services {
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .services-content {
+        height: 100%;
+    }
+}

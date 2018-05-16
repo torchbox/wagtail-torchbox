@@ -1,0 +1,49 @@
+.link {
+  &--heading {
+    position: relative;
+
+    .page-jobindexpage & {
+      pointer-events: none;
+    }
+
+    &::before {
+      border-style: solid;
+      border-width: 1px 1px 0 0;
+      content: '';
+      display: none;
+      height: .45em;
+      position: absolute;
+      right: -30px;
+      top: 10px;
+      transform: translateX(0) rotate(45deg);
+      transition: transform .25s ease-out;
+      width: .45em;
+
+      @media #{$small} {
+        display: inline-block;
+      }
+
+      @media #{$tablet} {
+        top: 16px;
+      }
+
+      .page-jobindexpage & {
+        display: none;
+      }
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      &::before {
+        transform: translateX(30%) rotate(45deg);
+        }
+      }
+    }
+
+  &--dark {
+    color: $dark;
+  }
+}

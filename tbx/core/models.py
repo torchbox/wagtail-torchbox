@@ -263,13 +263,6 @@ class TorchboxImage(AbstractImage):
         return self.credit
 
 
-# Receive the pre_delete signal and delete the file associated with the model instance.
-@receiver(pre_delete, sender=TorchboxImage)
-def image_delete(sender, instance, **kwargs):
-    # Pass false so FileField doesn't save the model.
-    instance.file.delete(False)
-
-
 class TorchboxRendition(AbstractRendition):
     image = models.ForeignKey('TorchboxImage', related_name='renditions')
 
@@ -277,13 +270,6 @@ class TorchboxRendition(AbstractRendition):
         unique_together = (
             ('image', 'filter_spec', 'focal_point_key'),
         )
-
-
-# Receive the pre_delete signal and delete the file associated with the model instance.
-@receiver(pre_delete, sender=TorchboxRendition)
-def rendition_delete(sender, instance, **kwargs):
-    # Pass false so FileField doesn't save the model.
-    instance.file.delete(False)
 
 
 # Home Page
