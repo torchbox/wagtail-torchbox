@@ -9,9 +9,8 @@ from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.functional import cached_property
 from django.views.decorators.vary import vary_on_headers
-from modelcluster.contrib.taggit import ClusterTaggableManager
+
 from modelcluster.fields import ParentalKey
-from taggit.models import ItemBase
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
                                                 MultiFieldPanel,
@@ -21,19 +20,19 @@ from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailcore.blocks import (CharBlock, FieldBlock, ListBlock,
                                         PageChooserBlock, RawHTMLBlock,
                                         RichTextBlock, StreamBlock,
-                                        StructBlock, TextBlock, URLBlock,
-                                        ChoiceBlock)
+                                        StructBlock, TextBlock, URLBlock)
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
+from wagtail.wagtailforms.models import AbstractFormField
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import (AbstractImage, AbstractRendition,
                                           Image)
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from wagtailmarkdown.fields import MarkdownBlock
 
 from .fields import ColorField
@@ -94,6 +93,13 @@ class WideImage(StructBlock):
 
     class Meta:
         icon = "image"
+
+
+class StatsBlock(StructBlock):
+    pass
+
+    class Meta:
+        icon = "order"
 
 
 class StoryBlock(StreamBlock):
@@ -751,10 +757,7 @@ class BlogIndexPage(Page):
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
         # and are not marketing_only
-        blog_posts = BlogPage.objects.filter(
-            live=True,
-            path__startswith=self.path
-        ).exclude(marketing_only=True)
+        blog_posts = BlogPage.objects.live().in_menu().descendant_of(self).exclude(marketing_only=True)
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date', 'pk')
@@ -988,18 +991,12 @@ class JobIndexPage(Page):
 
 
 # Work page
-class ExpertiseTag(ItemBase):
-    content_object = ParentalKey('wagtailcore.Page',
-                                 related_name='expertise_tags')
-    tag = models.ForeignKey('torchbox.BlogPageTagList',
-                            related_name='expertise_tags')
-
-
-class SectorTag(ItemBase):
-    content_object = ParentalKey('wagtailcore.Page',
-                                 related_name='sector_tags')
-    tag = models.ForeignKey('torchbox.BlogPageTagList',
-                            related_name='sector_tags')
+class WorkPageTagSelect(Orderable):
+    page = ParentalKey('torchbox.WorkPage', related_name='tags')
+    tag = models.ForeignKey(
+        'torchbox.BlogPageTagList',
+        related_name='work_page_tag_select'
+    )
 
 
 class WorkPageScreenshot(Orderable):
@@ -1017,85 +1014,26 @@ class WorkPageScreenshot(Orderable):
     ]
 
 
-IMAGE_POSITIONS = (('left', 'Left'),
-                   ('right', 'Right'))
+class WorkPageAuthor(Orderable):
+    page = ParentalKey('torchbox.WorkPage', related_name='related_author')
+    author = models.ForeignKey(
+        'torchbox.PersonPage',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
 
-
-class IntroBlock(StructBlock):
-    text = TextBlock()
-    image = ImageChooserBlock()
-    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
-
-    class Meta:
-        template = 'blocks/intro_block.html'
-
-
-class DeviceBlock(StructBlock):
-    text = RichTextBlock()
-    DEVICES = (('desktop', 'Desktop'),
-               ('tablet', 'Tablet'),
-               ('mobile', 'Mobile'))
-    device_type = ChoiceBlock(choices=DEVICES, default='desktop')
-    image = ImageChooserBlock()
-    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
-    background_image = ImageChooserBlock(required=False)
-
-    class Meta:
-        template = 'blocks/device_block.html'
-
-
-class FramedImageBlock(StructBlock):
-    text = RichTextBlock()
-    image = ImageChooserBlock()
-    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
-    background_image = ImageChooserBlock(required=False)
-
-    class Meta:
-        icon = 'image'
-        template = 'blocks/framed_image_block.html'
-
-
-class AlignedImageBlock(StructBlock):
-    text = RichTextBlock()
-    image = ImageChooserBlock()
-    image_position = ChoiceBlock(choices=IMAGE_POSITIONS, default='right')
-
-    class Meta:
-        icon = 'image'
-        template = 'blocks/aligned_image_block.html'
-
-
-class StatsBlock(StructBlock):
-    amount = CharBlock(max_length=5)
-    unit = CharBlock(max_length=5)
-    description = CharBlock(max_length=100)
-
-    class Meta:
-        template = 'blocks/stats_block.html'
-
-
-class VerboseStatsBlock(StructBlock):
-    amount = CharBlock(max_length=5)
-    unit = CharBlock(max_length=5)
-    subtitle = CharBlock(max_length=40)
-    description = RichTextBlock()
-
-    class Meta:
-        template = 'blocks/verbose_stats_block.html'
-
-
-class ContactUsBlock(StructBlock):
-    title = CharBlock(max_length=20)
-    subtitle = CharBlock(max_length=40)
-    person = PageChooserBlock('torchbox.PersonPage')
-
-    class Meta:
-        icon = 'mail'
-        template = 'blocks/contact_us_block.html'
+    panels = [
+        PageChooserPanel('author'),
+    ]
 
 
 class WorkPage(Page):
+    author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
+    summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
+    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
+    body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -1104,22 +1042,7 @@ class WorkPage(Page):
         related_name='+'
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
-    streamfield = StreamField([
-        ('intro', IntroBlock()),
-        ('device', DeviceBlock()),
-        ('framed_image', FramedImageBlock()),
-        ('aligned_image', AlignedImageBlock()),
-        ('stats', StatsBlock()),
-        ('verbose_stats', VerboseStatsBlock()),
-        ('pull_quote', PullQuoteBlock(
-            template='blocks/pull_quote_block_work_page.html')),
-        ('contact_us', ContactUsBlock())])
-    expertises = ClusterTaggableManager(
-        through=ExpertiseTag, blank=True, related_name='+',
-        verbose_name='expertises')
-    sectors = ClusterTaggableManager(
-        through=SectorTag, blank=True, related_name='+',
-        verbose_name='sectors')
+    streamfield = StreamField(StoryBlock())
     visit_the_site = models.URLField(blank=True)
 
     show_in_play_menu = models.BooleanField(default=False)
@@ -1135,19 +1058,24 @@ class WorkPage(Page):
         # just return first work index in database
         return WorkIndexPage.objects.first()
 
-    def other_works(self):
-        return [self, self, self]
-        return (WorkPage.objects.exclude(pk=self.pk)
-                .order_by('-first_published_at')[:3])
+    @property
+    def has_authors(self):
+        for author in self.related_author.all():
+            if author.author:
+                return True
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('descriptive_title'),
-        ImageChooserPanel('homepage_image'),
+        InlinePanel('related_author', label="Author"),
+        FieldPanel('author_left'),
+        FieldPanel('summary'),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
         StreamFieldPanel('streamfield'),
+        ImageChooserPanel('homepage_image'),
         InlinePanel('screenshots', label="Screenshots"),
-        FieldPanel('expertises'),
-        FieldPanel('sectors'),
+        InlinePanel('tags', label="Tags"),
         FieldPanel('visit_the_site'),
     ]
 
@@ -1167,7 +1095,7 @@ class WorkIndexPage(Page):
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
-        popular_tags = ExpertiseTag.objects.values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+        popular_tags = WorkPageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
@@ -1711,7 +1639,7 @@ class ContactLandingPageRelatedLinkButton(Orderable, RelatedLink):
     page = ParentalKey('torchbox.Contact', related_name='related_link_buttons')
 
 
-class Contact(AbstractEmailForm):
+class Contact(WagtailCaptchaEmailForm):
     intro = RichTextField(blank=True)
     main_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
                                    blank=True, on_delete=models.SET_NULL,

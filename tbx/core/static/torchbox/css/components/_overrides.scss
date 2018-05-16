@@ -4,7 +4,7 @@
   .container {
     max-width: 1200px;
   }
-  header .container, footer .container {
+  header.container, footer .container {
     max-width: 1450px;
   }
   footer {
@@ -40,6 +40,12 @@
 }
 
 .text-content {
+
+  .page-workpage & {
+    //background: #f1f4f4;
+    padding-top: 30px;
+  }
+
   @media #{$tablet} {
     background: white;
     position: relative;
