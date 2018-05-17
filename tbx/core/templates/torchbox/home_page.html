@@ -14,10 +14,20 @@
     </section>
 
     <section id="posts" class="container">
-        <h2>{{ self.blog_title|safe }}</h2>
+        <h2>
+            <a class="link link--heading link--dark" href="{% slugurl 'blog' %}">
+                {{ self.blog_title|safe }}
+                <span class="link__arrow"></span>
+            </a>
+        </h2>
         {% homepage_blog_listing %}
 
-        <h2>{{ self.work_title|safe }}</h2>
+        <h2>
+            <a class="link link--heading link--dark" href="{% slugurl 'work' %}">
+                {{ self.work_title|safe }}
+                <span class="link__arrow"></span>
+            </a>
+        </h2>
         {% homepage_work_listing %}
     </section>
 

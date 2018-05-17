@@ -163,7 +163,6 @@
     }
     a {
       color: white;
-      display: inline;
       @include line-hover;
       &:after {
         background: white;
