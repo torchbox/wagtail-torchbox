@@ -118,6 +118,14 @@
 // Carousel UI overrides
 .services-slider {
 
+    .owl-controls {
+        display: none;
+
+        @media #{$tablet-large} {
+            display: block;
+        }
+    }
+
     .owl-stage {
         @media (min-width: 1100px) { 
             left: -100px;
