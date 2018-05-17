@@ -1,0 +1,49 @@
+.link {
+  &--heading {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+
+    .page-jobindexpage & {
+      pointer-events: none;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      .link__arrow {
+        transform: translateX(50%) rotate(45deg);
+      }
+    }
+  }
+
+  &__arrow {
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    content: '';
+    display: none;
+    height: .45em;
+    left: 5px;
+    position: relative;
+    transform: translateX(0) rotate(45deg);
+    transition: transform .25s ease-out;
+    width: .45em;
+
+    @media #{$small} {
+      display: inline-block;
+    }
+
+    @media #{$tablet} {
+    }
+
+    .page-jobindexpage & {
+      display: none;
+    }
+  }
+
+  &--dark {
+    color: $dark;
+  }
+}
