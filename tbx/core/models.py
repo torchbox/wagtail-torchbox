@@ -648,6 +648,7 @@ class LogosBlock(StructBlock):
         template = 'blocks/logos_block.html'
 
 class ServicePageBlock(StreamBlock):
+    paragraph = RichTextBlock(icon="pilcrow")
     case_studies = CaseStudyBlock()
     highlights = HighlightBlock()
     pull_quote = PullQuoteBlock(template='blocks/pull_quote_block.html')
