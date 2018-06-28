@@ -7,22 +7,17 @@ from wagtail.contrib.modeladmin.options import ModelAdminGroup, ModelAdmin, mode
 
 from .models import GoogleAdGrantApplication, SignUpFormPageResponse
 
+from wagtail.admin.rich_text import HalloPlugin
 
-@hooks.register('insert_editor_js')
-def editor_js():
-    js_files = [
-        'torchbox/js/hallo-plugins/span.js'
-    ]
-    js_includes = format_html_join(
-        '\n', '<script src="{0}{1}"></script>',
-        ((settings.STATIC_URL, filename) for filename in js_files)
-    )
-    return js_includes + format_html(
-        """
-        <script>
-          registerHalloPlugin('spanbutton');
-        </script>
-        """
+
+@hooks.register('register_rich_text_features')
+def register_embed_feature(features):
+    features.register_editor_plugin(
+        'hallo', 'span',
+        HalloPlugin(
+            name='spanbutton',
+            js=['torchbox/js/hallo-plugins/span.js'],
+        )
     )
 
 
