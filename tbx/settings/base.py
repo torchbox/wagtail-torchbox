@@ -193,6 +193,15 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 
+# Use hallo.js editor instead of draftail after upgrading to 2.0
+
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.admin.rich_text.HalloRichTextArea'
+    }
+}
+
+
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "Torchbox"
