@@ -287,6 +287,15 @@ LOGGING = {
 }
 
 
+# Use hallo.js editor instead of draftail after upgrading to 2.0
+
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.admin.rich_text.HalloRichTextArea'
+    }
+}
+
+
 # Email settings
 if 'EMAIL_HOST' in env:
     EMAIL_HOST = env['EMAIL_HOST']
