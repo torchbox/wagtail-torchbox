@@ -136,6 +136,12 @@
     background-attachment: fixed;
   }
 
+  .page-contact & {
+    @media #{$desktop} {
+      background-attachment: initial;
+    }
+  }
+
   .page-servicespage & {
     padding-bottom: 0;
   }
