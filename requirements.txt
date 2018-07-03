@@ -4,7 +4,7 @@ django-redis==4.3.0
 wagtail==2.0
 Pillow==4.3.0
 embedly==0.5.0
-requests==2.7.0
+requests==2.19.1
 raven==5.26.0
 django-compressor==2.0
 
