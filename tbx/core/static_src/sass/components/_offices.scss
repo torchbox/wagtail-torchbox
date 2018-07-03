@@ -1,0 +1,60 @@
+// offices
+.offices {
+  @extend .services;
+  max-width: 1200px;
+  padding: 30px 0 0;
+  margin-bottom: 40px;
+  margin-top: 0;
+  display: block;
+  border-bottom: 1px solid rgba($dark, 0.15);
+  border-top: 1px solid rgba(43,48,51,0.15);
+  @include cf;
+  @media #{$tablet} {
+    padding: 70px 0 0;
+    margin-bottom: 70px;
+  }
+  h2 {
+    margin-bottom: 40px;
+  }
+  li {
+    font-size: 0;
+    
+    @media #{$tablet} {
+      width: 33.3%;
+    }
+    &:last-of-type {
+      img {
+        max-width: 40px;
+      }
+    }
+  }
+  .content {
+    text-align: center;
+    padding: 0;
+
+    svg {
+      display: inline-block;
+      max-width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      fill: $orange;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      @media #{$tablet} {
+        font-size: 28px;
+      }
+    }
+
+    img {
+      max-width: 80px;
+      max-height: 50px;
+    }
+  }
+  p {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,122 @@
+// page-personindexpage ========================================================
+.page-personindexpage {
+  h1 {
+    font-size: 50px;
+    line-height: 1;
+    font-weight: 200;
+    color: #fd5938;
+    padding: 30px 0 0;
+    @media #{$tablet} {
+      padding: 140px 0 10px 0;
+      font-size: 65px;
+    }
+  }
+  .people-list-heading {
+    text-align: left;
+    color: $dark !important;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 200;
+    color: #fd5938;
+    padding: 30px 0 0;
+    @media #{$tablet} {
+      padding: 30px 0 10px 0;
+      font-size: 44px;
+    }
+  }
+}
+
+.people-list {
+  ul {
+    margin: 40px 0 0;
+    @media #{$tablet} {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  li {
+    margin-bottom: 25px;
+    width: 50%;
+    float: left;
+    &:nth-child(odd) {
+      clear: left;
+    }
+    @media #{$small} {
+      width: 50%;
+      float: left;
+    }
+    @media #{$tablet} {
+      width: 33%;
+    }
+    @media #{$desktop} {
+      width: 25%;
+    }
+    &:hover {
+      .img-holder {
+        &:after {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  img {
+    height: auto;
+    margin-bottom: 10px;
+    filter: contrast(130%) saturate(40%);
+  }
+
+  .content {
+    padding: 0 5px;
+  }
+
+  @media #{$small} {
+    .content {
+      padding: 0 5px;
+    }
+  }
+  
+  .img-holder {
+    position: relative;
+    display: block;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      opacity: 0;
+      transition: opacity 0.25s ease 0s;
+    }
+  }
+  h2 {
+    font-weight: 300;
+    text-align: left;
+    font-size: 20px;
+    @media #{$tablet} {
+      font-size: 30px;
+    }
+  }
+  p {
+    font-size: 14px;
+    @media #{$tablet} {
+      font-size: 18px;
+    }
+  }
+}
+
+.people-list--text {  
+  .img-holder {
+    display: none;
+  }
+
+  h2 {
+    display: inline;
+    @include line-hover();
+  }
+
+  p {
+    margin-top: 5px;
+  }
+}

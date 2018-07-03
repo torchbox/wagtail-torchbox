@@ -1,0 +1,111 @@
+.services {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding-bottom: 70px;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  ul {
+    width: 100%;
+    font-size: 0;
+  }
+
+  li {
+    margin-bottom: 30px;
+
+    @media #{$tablet} {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      margin-bottom: 20px;
+      padding: 0 20px 0;
+    }
+
+    @media #{$desktop} {
+      padding: 0 40px 0;
+      margin-bottom: 70px;
+    }
+  }
+
+
+  .services-content {
+    transition: all 0.2s ease 0s;
+    text-align: center;
+    padding: 30px 20px;
+    background-color: rgba(white, 0.9);
+    //cursor: pointer;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
+      background-size: 700px;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    @media #{$tablet} {
+      padding: 40px 40px;
+    }
+    svg {
+      transition: all 0.2s ease 0s;
+      display: inline-block;
+      max-width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      fill: $green;
+      // position: absolute;
+      // top: 100px;
+      // left: calc(50% - 50px);
+      // z-index: 4;
+    }
+    .bg {
+      display: none;
+      opacity: 0.4;
+      width: 100%;
+      height: auto;
+      z-index: 0;
+      position: relative;
+      margin: 0 0 20px;
+      filter: grayscale(100%);
+    }
+    h3 {
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      @media #{$tablet} {
+        font-size: 34px;
+      }
+    }
+    a.service__link {
+      color: $green;
+      font-size: 18px;
+      position: relative;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    a.service__link--header {
+      color: $green;
+      position: relative;
+    }
+
+    &:hover {
+      // background-color: $green-lt;
+      // svg {
+      //   fill: white;
+      // }
+    }
+  }
+  button {
+    margin: 0 auto;
+  }
+}

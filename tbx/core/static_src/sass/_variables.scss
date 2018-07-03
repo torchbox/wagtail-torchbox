@@ -1,0 +1,37 @@
+// Colours
+$blue: #23b0b0;
+$orange: #fd5938;
+$orange-lt: #fc8977;
+$dark: #2b3033;
+$grey: #f7f7f7;
+$green: #68aa6c;
+$green-lt: #93c296;
+$yellow: #f5c157;
+
+//
+$border-radius: 3px;
+
+//
+$container-padding-sml: 15px;
+$container-padding: 50px;
+$container-width: 800px;
+
+// Services inner
+$services-blue: $blue;
+$services-orange: $orange;
+$services-dark-grey: #2b2b2b;
+$services-wrapper-width: 1450px;
+$services-slider-height: 400px;
+$services-hero-height: 400px;
+
+// Media queries
+$small: '(min-width: 500px)';
+$tablet: '(min-width: 768px)';
+$tablet-large: '(min-width: 1025px)';
+$desktop: '(min-width: 1205px)';
+$desktop-large: '(min-width: 1600px)';
+$desktop-xl: '(min-width: 1800px)';
+
+// Fonts
+$primaryFont: 'proxima-nova', helvetica, arial, sans-serif;
+$secondaryFont: 'proxima-nova', helvetica, arial, sans-serif;

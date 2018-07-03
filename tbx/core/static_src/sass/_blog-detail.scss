@@ -1,0 +1,47 @@
+.page-blogpage {
+
+    h1 {
+        font-size: 52px;
+        line-height: 1.2;
+    }
+
+    .body-copy {
+        max-width: $container-width;
+        padding: 0 20px;
+
+        @media #{$tablet-large} {
+            padding: 0;
+        }
+    }
+}
+
+.body-copy {
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    ul {
+        margin: 0 0 30px;
+
+        li {
+            list-style-type: circle;
+            margin-left: 20px;
+        }
+    }
+}
+
+.author-holder {
+
+    img {
+        display: block;
+        width: 100px;
+        height: auto;
+        float: left;
+        margin-right: 1em;
+        border-radius: 50%;
+        margin-bottom: 0;
+    }
+
+}

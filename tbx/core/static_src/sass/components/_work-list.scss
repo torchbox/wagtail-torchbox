@@ -1,0 +1,210 @@
+// Work listing
+.home-work {
+  // padding
+  $padding: 15px;
+  $padding-sml: 10px;
+  $padding-large: 25px;
+
+  clear: both;
+  @include cf;
+  margin-bottom: 40px;
+  @media #{$tablet} {
+    margin-bottom: 100px;
+  }
+  li {
+    margin-bottom: 20px;
+    @media #{$tablet} {
+      margin-bottom: 0;
+      width: 33.3%;
+      float: left;
+    }
+    .content {
+      position: relative;
+      @include custom-transition;
+      @media #{$tablet} {
+        padding: 0 $padding-sml;
+      }
+      @media #{$tablet-large} {
+        padding: 0 $padding;
+      }
+    }
+    &:hover {
+      @media #{$tablet} {
+        //text up
+        .work-text {
+          &:before {
+            height: 190%;
+          }
+          // delays for way in
+          &:after {
+            width: calc(100% - (#{$padding-large * 2}));
+            left: $padding-large;
+            right: auto;
+            transition-delay: 0.25s;
+          }
+          h3, h4 {
+            transform: translate3d(0, -40px, 0);
+          }
+          h3 {
+            transition-delay: 0.1s;
+          }
+          h4 {
+            transition-delay: 0.15s;
+          }
+        }
+      }
+    }
+  }
+  .image-container {
+    //position: relative;
+    background-size: cover;
+    width: 100%;
+    background-position: left;
+    height: 350px;
+
+    @media #{$tablet-large} {
+      height: 425px;
+    }
+
+    // img {
+    //   object-fit: cover;
+    //   height: 350px;
+    //   @media #{$tablet-large} {
+    //     height: 425px;
+    //   }
+    // }
+  }
+  .work-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 15px 15px;
+    width: 100%;
+    @media #{$tablet} {
+      padding: $padding-sml $padding-large 30px;
+      left: $padding-sml;
+      width: calc(100% - (#{$padding-sml * 2}));
+    }
+    @media #{$tablet-large} {
+      padding: $padding $padding-large 30px;
+      left: $padding;
+      width: calc(100% - (#{$padding * 2}));
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      height: 150%;
+      max-height: 350px;
+      @media #{$tablet-large} {
+        max-height: 425px;
+      }
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba($dark, 0.75) 50%,rgba($dark, 0) 100%);
+      @include custom-bounce;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 25px;
+      bottom: 20px;
+      width: 0;
+      height: 1px;
+      background: white;
+      @include custom-bounce;
+      transition-delay: 0s;
+    }
+  }
+  h3, h4 {
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    z-index: 1;
+    @include custom-bounce;
+  }
+  label {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: white;
+    font-weight: 600;
+    z-index: 1;
+    @media #{$tablet} {
+      display: none;
+    }
+  }
+  h3 {
+    color: white;
+    font-weight: 400;
+    margin-bottom: 5px;
+    font-size: 25px;
+    @media #{$tablet-large} {
+      font-size: 27px;
+      margin-bottom: 10px;
+      transition-delay: 0.15s;
+    }
+  }
+  h4 {
+    font-size: 15px;
+    color: $orange-lt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition-delay: 0.1s;
+  }
+}
+
+// Work page ===================================================================
+.breadcrumb {
+  display: none;
+}
+
+// work listing ================================================================
+.work-list {
+  $height: 495px;
+  $height-mobile: 350px;
+
+  // same as .home-work
+  @extend .home-work;
+  margin-bottom: 0;
+  .credit {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    color: white;
+    //
+    display: none;
+  }
+  .image-container {
+    img {
+      height: $height-mobile;
+      @media #{$tablet} {
+        height: $height;
+      }
+    }
+  }
+
+  li {
+    overflow: hidden;
+    
+    @media #{$tablet} {
+      width: 50%;
+      margin-bottom: 30px;
+      &:first-of-type, &:last-of-type {
+        width: 50%;
+      }
+      &:nth-child(6), &:nth-child(7) {
+        width: 50%;
+      }
+    }
+
+    @media #{$tablet-large} {
+      width: 25%;
+    }
+  }
+
+  .page-workindexpage & {
+    margin-top: 40px;
+  }
+
+}

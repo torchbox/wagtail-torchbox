@@ -1,0 +1,130 @@
+/// Contact form styles
+$gutter: 15px;
+
+.contact-form {
+	@include cf;
+	text-align: left;
+
+	@media #{$tablet} {
+		margin-left: -15px;
+	}
+}
+	
+	.contact-form__group {
+		border: 0;
+		margin: 0;
+		padding: 0;
+
+		.errorlist {
+			color: $orange-lt;
+			font-weight: 600;
+			line-height: 1;
+			margin-top: 15px;
+		}
+
+		h1 {
+			text-align: center;
+
+			@media #{$tablet} {
+				padding-left: $gutter;
+			}
+		}
+	}
+
+		.contact-form__row {
+			padding: 10px 0;
+
+			@media #{$tablet} {
+				padding: 10px $gutter 0;
+			}
+
+
+
+			input[type='text'],
+			input[type='email'],
+			textarea {
+				width: 100%;
+				padding: 10px 15px;
+				border: 1px solid rgba($orange, 0.7);
+				border-radius: $border-radius;
+				font-family: $primaryFont;
+				font-size: 18px;
+				//background: $grey;
+				background: rgba(white,0.8);
+				font-weight: 500;
+
+				&:focus {
+					background: rgba(white,1);
+				}
+
+			}
+
+			textarea {
+			  min-height: 200px;
+			  resize: vertical;
+			}
+		}
+
+		// Special styles for half-width inputs
+		// List the hooks for elements that require it
+		$inputs: 
+			id_email,
+		    id_name,
+		    id_company,
+		    id_phone;
+
+		@each $label in $inputs {
+			.contact-form__row--#{$label} {
+				display: inline-block;
+				width: 100%;
+
+				@media #{$tablet} {
+					width: 50%;
+				}
+			}
+		}
+
+			.contact-form__label {
+				position: relative;
+				color: white;
+			}
+
+			.contact-form__label--required {
+				&:after {
+					content: '*';
+				    position: absolute;
+				    right: -5px;
+				    font-size: 18px;
+				    color: $orange;
+				}
+			}
+
+			.contact-form__field-wrapper {
+				position: relative;
+			}
+
+			.contact-action {
+				text-align: center;
+			}
+
+			.contact-form__submit {
+				display: inline-block;
+				width: auto;
+				border: 1px solid $orange;
+				padding: 15px 50px;
+				margin: 30px auto 0;
+				background: $orange;
+				color: white;
+
+				@media #{$tablet} {
+					margin: 30px auto 0;
+				}
+
+				&:hover {
+					border: 1px solid $blue;
+					background: $blue;
+				}
+			}
+
+
+

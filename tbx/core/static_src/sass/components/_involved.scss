@@ -1,0 +1,63 @@
+// involved in
+.involved {
+  position: relative;
+  background: $blue;
+  padding: 40px 0 0;
+  @include cf;
+  h2 {
+    color: white;
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 500px;
+    height: 100%;
+    background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+.involved-in {
+  @extend .offices;
+  border: none;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 0;
+  h3, p {
+    color: white;
+  }
+  h3 {
+    font-weight: 300;
+  }
+  p {
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+
+  li {
+    padding: 0 20px 0 20px;
+
+    a {
+      display: block;
+
+      &:hover .content {
+        background-color: rgba(black,0.2);
+      }
+    }
+  }
+
+  .content {
+    border: 1px solid transparent;
+    padding: 30px;
+    transition: border-color 450ms ease;
+
+    svg {
+      fill: #fff;
+    }
+  }
+}

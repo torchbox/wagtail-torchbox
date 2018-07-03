@@ -1,0 +1,135 @@
+html {
+  font-family: $secondaryFont;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+body {
+  margin: 0 auto;
+  color: $dark;
+  line-height: 1.75;
+  background-color: #fff;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+main {
+  padding: 0;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: #23b0b0;
+}
+
+ol, ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+// General Type styles =========================================================
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 32px;
+  text-align: center;
+  line-height: 1.2;
+  @media #{$tablet} {
+    font-size: 44px;
+    font-weight: 100;
+  }
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 1.2;
+  @media #{$tablet} {
+    font-size: 24px;
+  }
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 1.2;
+  @media #{$tablet} {
+    font-size: 22px;
+  }
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: $dark;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  @media #{$tablet-large} {
+      font-size: 18px;
+      margin-bottom: 25px;
+  }
+}
+
+input, textarea {
+  transition: all 0.25s ease 0s;
+  outline: none;
+  border: 1px solid #DDD;
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 5px $orange;
+  border: 1px solid $orange;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  &:focus {
+    box-shadow: none;
+    border: none;
+  }
+}
+
+// button ======================================================================
+button, .btn {
+  border: none;
+  font-family: $secondaryFont;
+  line-height: 1;
+  display: inline-block;
+  background: white;
+  border: 1px solid $blue;
+  color: $blue;
+  padding: 10px 25px;
+  transition: all 0.25s ease 0s;
+  border-radius: $border-radius;
+  font-size: 18px;
+  &:hover {
+    background: $blue;
+    color: white;
+  }
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+  font-family: $secondaryFont;
+  color: rgba($dark, 0.7);
+}
+

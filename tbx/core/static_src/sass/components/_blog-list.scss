@@ -1,0 +1,253 @@
+
+// Blog listing
+.blog-list {
+  // padding
+  $padding: 15px;
+  $padding-sml: 10px;
+
+  @include cf;
+  margin-bottom: 20px;
+  margin-left: 1.1%;
+  @media #{$tablet-large} {
+    margin-bottom: 70px;
+  }
+  li {
+    margin: 0px 2% 20px 0px;
+    height: 350px;
+    @media #{$tablet} {
+      width: 48%;
+      float: left;
+    }
+    @media #{$tablet-large} {
+      margin-bottom: 30px;
+      width: 23%;
+      height: 495px;
+    }
+    &.orange, &.blue, &.white {
+        &:hover {
+            @media #{$tablet-large} {
+                .image-container {
+                    &:after {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        img {
+            display: none;
+        }
+        .image-container:after {
+            height: 100%;
+            background: url('/static/torchbox/images/dot-pattern.png') no-repeat center;
+            background-size: cover;
+            mix-blend-mode: soft-light;
+            will-change: opacity;
+            opacity: 0.3;
+        }
+    }
+    &.orange {
+        background: $orange;
+        .name {
+            color: white;
+        }
+    }
+    &.blue {
+        background: $blue;
+        .name {
+            color: white;
+        }
+    }
+    &.white {
+      .image-container {
+        background: $grey;
+        &:after {
+          mix-blend-mode: unset;
+          will-change: opacity;
+          opacity: 1;
+        }
+        &:before {
+          background: $orange;
+        }
+      }
+      h3, .date, label {
+        color: $dark;
+      }
+      .name {
+        color: $orange;
+      }
+    }
+    .content {
+      position: relative;
+      height: 100%;
+    }
+    // larger cards
+    &:first-of-type, &:last-of-type {
+      @media #{$tablet-large} {
+        width: 48%;
+      }
+      .blog-text {
+        @media #{$tablet-large} {
+          max-width: 65%;
+          h3 {
+            font-size: 35px;
+          }
+        }
+      }
+    }
+
+    &:nth-child(6), &:nth-child(7) {
+      @media #{$tablet-large} {
+        width: 48%;
+      }
+      .blog-text {
+        @media #{$tablet-large} {
+          max-width: 65%;
+          h3 {
+            font-size: 35px;
+          }
+        }
+      }
+    }
+
+    // hover
+    &:hover {
+      @media #{$tablet-large} {
+        .image-container {
+          &:after {
+            height: 60%;
+          }
+          &:before {
+            width: calc(100% - 50px);
+            left: 25px;
+            right: auto;
+          }
+        }
+        .author-image {
+          transform: translate3d(0, -30px, 0);
+          // in hover
+          transition-delay: 0.1s;
+        }
+        h3 {
+          transform: translate3d(0, -30px, 0);
+        }
+        .name, .date {
+          transform: translate3d(0, -30px, 0);
+          // in hover
+          transition-delay: 0.3s;
+        }
+      }
+    }
+  }
+  .image-container {
+    position: relative;
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    height: 350px;
+
+    @media #{$tablet-large} {
+      height: 495px;
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      height: 70%;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba($dark, 1) 50%,rgba($dark, 0) 100%);
+      @include custom-bounce;
+      @media #{$tablet-large} {
+        height: 50%;
+      }
+    }
+    &:before {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      right: 25px;
+      bottom: 20px;
+      width: 0;
+      height: 1px;
+      background: white;
+      @include custom-bounce;
+      transition-delay: 0s;
+    }
+  }
+  .blog-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 15px 15px;
+    width: 100%;
+    @media #{$tablet} {
+      padding: $padding-sml 25px;
+      left: $padding-sml;
+      width: calc(100% - (#{$padding-sml * 2}));
+    }
+    @media #{$tablet-large} {
+      padding: $padding 10px 30px;
+      left: $padding;
+      width: calc(100% - (#{$padding * 2}));
+    }
+  }
+  .author, h3, .date {
+    position: relative;
+    z-index: 1;
+  }
+  label {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: white;
+    font-weight: 600;
+    z-index: 1;
+    @media #{$tablet} {
+      display: none;
+    }
+  }
+  h3 {
+    color: white;
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 5px;
+    @media #{$tablet-large} {
+      font-size: 27px;
+      transform: translate3d(0,0,0);
+      @include custom-bounce;
+      transition-property: transform;
+      // out hover
+      transition-delay: 0.2s;
+    }
+  }
+  .name {
+    color: $orange;
+    font-size: 15px;
+  }
+  .date {
+    color: white;
+    font-size: 15px;
+    margin-left: 5px;
+  }
+  .name, .date {
+    // animation hover
+    display: inline-block;
+    transform: translate3d(0,0,0);
+    @include custom-bounce;
+    // out hover
+    transition-delay: 0.1s;
+  }
+  .author-image {
+    margin-bottom: 10px;
+    @media #{$tablet-large} {
+      margin-bottom: 15px;
+      transform: translate3d(0,0,0);
+      @include custom-bounce;
+      transition-property: transform;
+      // out hover
+      transition-delay: 0.3s;
+    }
+  }
+}

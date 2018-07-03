@@ -1,0 +1,24 @@
+///
+/// This method could be avoided by reducing the filesize that Typekit
+/// is serving - languages, weights, etc.
+///
+
+// Prevent FOUC before Typekit has loaded
+.wf-loading {
+  h1, 
+  h2, 
+  .bleed,
+  .popular-tags {
+    opacity: 0;
+  }
+}
+ 
+// Show once fonts have been loaded and are ready
+.wf-active {
+  h1, 
+  h2, 
+  .bleed,
+  .popular-tags {
+    opacity: 1;
+  }
+}

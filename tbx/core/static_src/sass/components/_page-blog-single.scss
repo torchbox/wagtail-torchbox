@@ -1,0 +1,70 @@
+// blog-page ===================================================================
+.page-blog-single {
+  h1 {
+    font-size: 45px;
+    line-height: 1;
+    font-weight: 200;
+    color: $orange;
+    padding: 30px 0 0;
+    @media #{$tablet} {
+      padding: 100px 0 0;
+      font-size: 65px;
+      margin-bottom: 20px;
+    }
+  }
+  .next {
+    height: 300px;
+    // needs to be inline
+    background: url('/static/torchbox/images/office-01.jpg') no-repeat center;
+    background-size: cover;
+    @media #{$tablet} {
+      height: 400px;
+    }
+      &:after {
+        height: 100%;
+        background-color: rgba(43,48,51,0.75);
+        background: linear-gradient(to top, #2b3033, rgba(43,48,51,0));
+      }
+    .container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      z-index: 10;
+    }
+    h2 {
+      font-size: 25px;
+      @media #{$tablet} {
+        font-size: 50px;
+      }
+    }
+    &.blue {
+      background: $blue;
+      background-image: none;
+      &:after {
+        background-image: url("/static/torchbox/images/dot-pattern.png");
+        background-size: cover;
+        background-color: transparent;
+        opacity: 0.3;
+        filter: blur(3px);
+      }
+    }
+    &.orange {
+      @extend .blue;
+      background: $orange;
+    }
+    &.white {
+      @extend .blue;
+      background: $grey;
+      &:after {
+        opacity: 1;
+      }
+      .content:after {
+        background: $orange
+      }
+      h2 {
+        color: $dark;
+      }
+    }
+  }
+}

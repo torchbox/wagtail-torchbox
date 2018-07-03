@@ -1,0 +1,112 @@
+// page-personpage ==============================================================
+.page-personpage {
+  .sml-container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $container-padding-sml;
+    @media #{$tablet} {
+      padding: 0 $container-padding 80px;
+    }
+  }
+  img {
+    height: auto;
+    width: 100%;
+  }
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+    font-weight: 200;
+    color: #fd5938;
+    padding: 0px 0 5px;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      left: -100px;
+      top: -50px;
+      width: 220px;
+      height: 220px;
+      background: url('/static/torchbox/images/pattern-sml-orange.png') no-repeat center;
+      background-size: cover;
+      transform: rotate(90deg);
+      opacity: 0.15;
+      z-index: 0;
+    }
+    @media #{$tablet} {
+      padding: 0 0 10px;
+      font-size: 65px;
+    }
+  }
+  .role {
+    //text-transform: uppercase;
+    font-size: 22px;
+    padding-bottom: 20px;
+    font-weight: 600;
+    @media #{$tablet} {
+      font-size: 28px;
+    }
+  }
+  .intro .rich-text p {
+    margin-bottom: 20px;
+  }
+  .blog-listing {
+    border-top: 1px solid rgba($dark,0.15);
+    margin-top: 60px;
+    padding-top: 40px;
+    h2 {
+      text-align: left;
+      font-size: 35px;
+      margin-bottom: 30px;
+    }
+    li {
+      margin-bottom: 20px;
+      .text {
+        span {
+          color: $dark;
+          text-transform: uppercase;
+          font-size: 14px;
+          display: block;
+        }
+        h3 {
+          color: $blue;
+          font-weight: 400;
+          font-size: 24px;
+          display: inline-block;
+          @include line-hover;
+        }
+      }
+    }
+
+    // Hide blog posts after the third until
+    // show more button is clicked.
+    // More accurate to do it this way than using a height
+    // like the clients on the home page - also in this case the
+    // heights of the list items vary so animating height wouldn't work.
+    li:nth-child(n+4) {
+      display: none;
+    }
+
+    ul.visible li:nth-child(n+4) {
+      display: list-item;
+    }
+  }
+}
+
+.bio-img {
+  margin: 0 0 30px;
+  @media #{$tablet} {
+    width: 50%;
+    float: left;
+    margin: 60px 0;
+  }
+}
+
+.bio-text {
+  margin: 0 0 30px;
+  @media #{$tablet} {
+    width: 50%;
+    float: left;
+    margin: 30px 0;
+    padding: 50px;
+  }
+}

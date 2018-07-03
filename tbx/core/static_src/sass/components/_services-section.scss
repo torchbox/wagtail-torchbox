@@ -1,0 +1,109 @@
+.services-section {
+    width: 100%;
+    padding: 50px 0 0 0;
+
+    @media #{$tablet} {
+        padding: 55px 0 0 0;
+    }
+
+    &__heading {
+        color: #000;
+        text-align: left;
+        font-size: 32px;
+        font-weight: 600;
+
+        @media #{$tablet} {
+            font-size: 35px;
+        }
+
+    }
+
+    &__paragraph {
+        // been asked to remove in #154
+        //max-width: 90%;
+        margin-top: 40px;
+        font-size: 22px;
+        font-weight: 300;
+        color: #222;
+    }
+
+    &--white {
+        background-color: #fff;
+    }
+
+    &--grey {
+        background-color: #e4e9ec;
+    }
+
+    &--dark-grey {
+        background-color: #102626;
+    }
+
+    &--overflow-hidden {
+        overflow: hidden;
+    }
+
+    &--border-bottom {
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: calc(100% - 30px);
+            margin: auto;
+            border-bottom: 1px solid #dedfdf;
+
+            @media #{$tablet} {
+                width: calc(100% - 40px);
+            }
+
+            @media #{$tablet-large} {
+                width: calc(100% - 100px);
+            }
+        }
+    }
+}
+.block-people {
+    .services-section {
+        //padding-bottom: 50px;
+        // altered for UX Design spacing. #154
+        // re-added for spacing between footer #174
+        padding-bottom: 50px;
+    }
+}
+
+// StreamField section for featured pages
+.block-featured_pages {
+    .services-grid {
+        display: block;
+        .home-work {
+            // swap to flexbox, not sure if I can do this site wide so just going for here now
+            // reset the cf.. erk!
+            &:before, &:after {
+                display: none;
+            }
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            li {
+                float: none;
+                width: 31.3%;
+            }
+        }
+    }
+
+    .services-grid .home-work .content {
+        padding: 0;
+    }
+    .services-grid .home-work .work-text {
+        left: 0;
+        width: 100%;
+    }
+    .services-grid .featured-page {
+        margin-bottom: 30px;
+    }
+}
