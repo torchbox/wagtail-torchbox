@@ -10,17 +10,6 @@ from .models import GoogleAdGrantApplication, SignUpFormPageResponse
 from wagtail.admin.rich_text import HalloPlugin
 
 
-@hooks.register('register_rich_text_features')
-def register_embed_feature(features):
-    features.register_editor_plugin(
-        'hallo', 'span',
-        HalloPlugin(
-            name='spanbutton',
-            js=['torchbox/js/hallo-plugins/span.js'],
-        )
-    )
-
-
 class GoogleAdGrantApplicationModelAdmin(ModelAdmin):
     model = GoogleAdGrantApplication
     menu_label = 'Ad Grant Applications'
