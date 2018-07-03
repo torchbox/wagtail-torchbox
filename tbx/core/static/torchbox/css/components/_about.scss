@@ -132,10 +132,6 @@
   background-size: cover;
   background-position: center;
 
-  @media #{$desktop} {
-    background-attachment: fixed;
-  }
-
   .page-servicespage & {
     padding-bottom: 0;
   }
