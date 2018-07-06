@@ -15,7 +15,7 @@
   .next {
     height: 300px;
     // needs to be inline
-    background: url('/static/torchbox/images/office-01.jpg') no-repeat center;
+    background: url('/static/images/office-01.jpg') no-repeat center;
     background-size: cover;
     @media #{$tablet} {
       height: 400px;
@@ -42,7 +42,7 @@
       background: $blue;
       background-image: none;
       &:after {
-        background-image: url("/static/torchbox/images/dot-pattern.png");
+        background-image: url("/static/images/dot-pattern.png");
         background-size: cover;
         background-color: transparent;
         opacity: 0.3;

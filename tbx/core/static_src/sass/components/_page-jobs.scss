@@ -339,7 +339,7 @@
 
     &:before {
         content: '';
-        background: url('/static/torchbox/images/pattern-03.png');
+        background: url('/static/images/pattern-03.png');
         position: absolute;
         background-size: 200px;
         top: 0;
@@ -733,7 +733,7 @@ ul.image-tiles {
                   top: -35px;
                   width: 220px;
                   height: 220px;
-                  background: url('/static/torchbox/images/pattern-sml.png') no-repeat center;
+                  background: url('/static/images/pattern-sml.png') no-repeat center;
                   background-size: cover;
                   transform: rotate(90deg);
                   opacity: 0.2;

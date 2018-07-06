@@ -866,7 +866,7 @@ body.menu-open {
   display: inline-block; }
   .wagtail-logo-inline:after {
     content: '';
-    background-image: url("/static/torchbox/images/wagtail-logo-white.svg");
+    background-image: url("/static/images/wagtail-logo-white.svg");
     background-repeat: no-repeat;
     background-position: center;
     width: 5em;
@@ -983,7 +983,7 @@ body.menu-open {
   opacity: 0;
   height: 100%;
   z-index: 0;
-  background: url("/static/torchbox/images/test-header-02.jpg") no-repeat center;
+  background: url("/static/images/test-header-02.jpg") no-repeat center;
   background-size: cover;
   -webkit-transition: opacity 0.35s ease 0s;
   transition: opacity 0.35s ease 0s; }
@@ -1368,7 +1368,7 @@ body.menu-open {
       display: none; }
     .blog-list li.orange .image-container:after, .blogpage-listing li.orange .image-container:after, .blog-list li.blue .image-container:after, .blogpage-listing li.blue .image-container:after, .blog-list .page-blog-single li.next.orange .image-container:after, .page-blog-single .blog-list li.next.orange .image-container:after, .blogpage-listing .page-blog-single li.next.orange .image-container:after, .page-blog-single .blogpage-listing li.next.orange .image-container:after, .blog-list .page-blog-single li.next.white .image-container:after, .page-blog-single .blog-list li.next.white .image-container:after, .blogpage-listing .page-blog-single li.next.white .image-container:after, .page-blog-single .blogpage-listing li.next.white .image-container:after, .blog-list li.white .image-container:after, .blogpage-listing li.white .image-container:after {
       height: 100%;
-      background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
+      background: url("/static/images/dot-pattern.png") no-repeat center;
       background-size: cover;
       mix-blend-mode: soft-light;
       opacity: 0.3; }
@@ -1827,7 +1827,7 @@ footer {
 .hiring {
   position: relative;
   background: #23b0b0;
-  background: url("/static/torchbox/images/bikes-blue.jpg") no-repeat center;
+  background: url("/static/images/bikes-blue.jpg") no-repeat center;
   background-size: cover; }
   .page-jobindexpage .hiring {
     background: transparent;
@@ -1921,7 +1921,7 @@ footer {
         top: 0;
         width: 100%;
         height: 100%;
-        background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
+        background: url("/static/images/dot-pattern.png") no-repeat center;
         background-size: 650px;
         opacity: 0.05; }
   .hiring .sml {
@@ -2165,7 +2165,7 @@ footer {
         left: calc(50% - 25px);
         width: 50px;
         height: 20px;
-        background: url("/static/torchbox/images/down-chevron-blue.svg") center no-repeat; }
+        background: url("/static/images/down-chevron-blue.svg") center no-repeat; }
       @media (min-width: 768px) {
         .about-hero h2.story {
           font-size: 32px;
@@ -2508,7 +2508,7 @@ footer {
     top: -20px;
     width: 220px;
     height: 220px;
-    background: url("/static/torchbox/images/pattern-sml.png") no-repeat center;
+    background: url("/static/images/pattern-sml.png") no-repeat center;
     background-size: cover;
     transform: rotate(90deg);
     opacity: 0.15;
@@ -2933,7 +2933,7 @@ footer {
       top: 0;
       width: 100%;
       height: 100%;
-      background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
+      background: url("/static/images/dot-pattern.png") no-repeat center;
       background-size: 700px;
       opacity: 0.1;
       z-index: 0; }
@@ -3179,7 +3179,7 @@ footer {
 
 .page-blogindexpage .hero {
   position: relative;
-  background: url("/static/torchbox/images/office-01.jpg") no-repeat center;
+  background: url("/static/images/office-01.jpg") no-repeat center;
   background-size: cover;
   height: 450px; }
   .page-blogindexpage .hero:after {
@@ -3266,7 +3266,7 @@ footer {
       margin-bottom: 20px; } }
 .page-blog-single .next {
   height: 300px;
-  background: url("/static/torchbox/images/office-01.jpg") no-repeat center;
+  background: url("/static/images/office-01.jpg") no-repeat center;
   background-size: cover; }
   @media (min-width: 768px) {
     .page-blog-single .next {
@@ -3291,7 +3291,7 @@ footer {
     background: #23b0b0;
     background-image: none; }
     .page-blog-single .next.blue:after, .page-blog-single .next.orange:after, .page-blog-single .next.white:after {
-      background-image: url("/static/torchbox/images/dot-pattern.png");
+      background-image: url("/static/images/dot-pattern.png");
       background-size: cover;
       background-color: transparent;
       mix-blend-mode: soft-light;
@@ -3545,7 +3545,7 @@ footer {
   margin-top: 5em; }
   .jobs-refer:before {
     content: '';
-    background: url("/static/torchbox/images/pattern-03.png");
+    background: url("/static/images/pattern-03.png");
     position: absolute;
     background-size: 200px;
     top: 0;
@@ -3852,7 +3852,7 @@ ul.image-tiles {
         top: -35px;
         width: 220px;
         height: 220px;
-        background: url("/static/torchbox/images/pattern-sml.png") no-repeat center;
+        background: url("/static/images/pattern-sml.png") no-repeat center;
         background-size: cover;
         transform: rotate(90deg);
         opacity: 0.2;
@@ -4014,7 +4014,7 @@ ul.image-tiles {
     top: -50px;
     width: 220px;
     height: 220px;
-    background: url("/static/torchbox/images/pattern-sml-orange.png") no-repeat center;
+    background: url("/static/images/pattern-sml-orange.png") no-repeat center;
     background-size: cover;
     transform: rotate(90deg);
     opacity: 0.15;
@@ -4116,7 +4116,7 @@ ul.image-tiles {
   position: relative;
   z-index: 1;
   height: 315px;
-  background: url("/static/torchbox/images/full-width-bristol.jpg") no-repeat center;
+  background: url("/static/images/full-width-bristol.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed; }
   @media (min-width: 768px) {
@@ -4378,7 +4378,7 @@ ul.image-tiles {
     top: 0;
     width: 500px;
     height: 100%;
-    background: url("/static/torchbox/images/dot-pattern.png") no-repeat center;
+    background: url("/static/images/dot-pattern.png") no-repeat center;
     opacity: 1;
     z-index: 10; }
 
@@ -5575,7 +5575,7 @@ ul.image-tiles li {
         top: -20px;
         width: 200px;
         height: 200px;
-        background-image: url(/static/torchbox/images/pattern-sml.png);
+        background-image: url(/static/images/pattern-sml.png);
         background-size: 200px;
         opacity: 0.3; } }
   .services-blockquote blockquote {

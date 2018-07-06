@@ -20,7 +20,7 @@ def whitelister_element_rules():
 @hooks.register('insert_editor_js')
 def editor_js():
     js_files = [
-        'torchbox/js/hallo-plugins/span.js'
+        'js/hallo-plugins/span.js'
     ]
     js_includes = format_html_join(
         '\n', '<script src="{0}{1}"></script>',
@@ -64,7 +64,7 @@ wagtailmodeladmin_register(SubmissionsModelAdminGroup)
 
 @hooks.register('insert_global_admin_css')
 def import_fontawesome_stylesheet():
-    elem = '<link rel="stylesheet" href="{}torchbox/vendor/fontawesome/css/font-awesome.min.css">'.format(
+    elem = '<link rel="stylesheet" href="{}vendor/fontawesome/css/font-awesome.min.css">'.format(
         settings.STATIC_URL
     )
     return format_html(elem)

@@ -222,7 +222,7 @@ var tbx = {
                     map:        map,
                     position:   markerLocation,
                     title:      title,
-                    icon:       '{% static "torchbox/images/pin.png" %}'
+                    icon:       '{% static "images/pin.png" %}'
                 });
 
                 // Add each marker to the markers array
