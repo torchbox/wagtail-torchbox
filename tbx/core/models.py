@@ -2,7 +2,6 @@ from django import forms
 from django.core.mail import EmailMessage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from django.db.models.signals import pre_delete
 from django.shortcuts import render
 from django.utils.functional import cached_property
 from django.views.decorators.vary import vary_on_headers
@@ -30,8 +29,8 @@ from wagtailmarkdown.blocks import MarkdownBlock
 
 from .fields import ColorField
 
-
 # Streamfield blocks and config
+
 
 class ImageFormatChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
@@ -239,6 +238,7 @@ class Advert(models.Model):
 
     def __str__(self):
         return self.text
+
 
 register_snippet(Advert)
 
@@ -626,6 +626,7 @@ class LogosBlock(StructBlock):
         icon = 'site'
         template = 'blocks/logos_block.html'
 
+
 class ServicePageBlock(StreamBlock):
     case_studies = CaseStudyBlock()
     highlights = HighlightBlock()
@@ -813,6 +814,7 @@ class BlogPageTagList(models.Model):
 
     def __str__(self):
         return self.name
+
 
 register_snippet(BlogPageTagList)
 
@@ -1229,6 +1231,7 @@ class TshirtPage(Page):
         related_name='+'
     )
 
+
 TshirtPage.content_panels = [
     FieldPanel('title', classname="full title"),
     ImageChooserPanel('main_image'),
@@ -1514,7 +1517,7 @@ class SignUpFormPage(Page):
                         'page': self,
                         'form': form,
                         'legend': self.call_to_action_text
-                     }
+                    }
                 )
             else:
                 return render(

@@ -1,13 +1,11 @@
-from django.utils.html import format_html_join, format_html
 from django.conf import settings
+from django.utils.html import format_html
 
+from wagtail.contrib.modeladmin.options import (ModelAdmin, ModelAdminGroup,
+                                                modeladmin_register)
 from wagtail.core import hooks
 
-from wagtail.contrib.modeladmin.options import ModelAdminGroup, ModelAdmin, modeladmin_register
-
 from .models import GoogleAdGrantApplication, SignUpFormPageResponse
-
-from wagtail.admin.rich_text import HalloPlugin
 
 
 class GoogleAdGrantApplicationModelAdmin(ModelAdmin):
@@ -30,9 +28,10 @@ class SignUpFormPageResponseModelAdmin(ModelAdmin):
 
 class SubmissionsModelAdminGroup(ModelAdminGroup):
     menu_label = 'Form Submissions'
-    menu_icon = 'folder-open-inverse' # change as required
+    menu_icon = 'folder-open-inverse'  # change as required
     menu_order = 600
     items = (SignUpFormPageResponseModelAdmin, GoogleAdGrantApplicationModelAdmin)
+
 
 modeladmin_register(SubmissionsModelAdminGroup)
 

@@ -1,7 +1,8 @@
 import os
+
 import dj_database_url
 
-from .base import *
+from .base import *  # noqa
 
 # Do not set SECRET_KEY, Postgres or LDAP password or any other sensitive data here.
 # Instead, use environment variables or create a local.py file on the server.
@@ -53,7 +54,7 @@ if 'SERVER_EMAIL' in env:
     SERVER_EMAIL = env['SERVER_EMAIL']
 
 if 'CACHE_PURGE_URL' in env:
-    INSTALLED_APPS += ( 'wagtail.contrib.frontend_cache', )
+    INSTALLED_APPS += ('wagtail.contrib.frontend_cache',)
     WAGTAILFRONTENDCACHE = {
         'default': {
             'BACKEND': 'wagtail.contrib.frontend_cache.backends.HTTPBackend',
@@ -73,7 +74,7 @@ if 'MEDIA_URL' in env:
 if 'MEDIA_DIR' in env:
     MEDIA_ROOT = env['MEDIA_DIR']
 
-STATICFILES_STORAGE='django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Database
 
@@ -143,28 +144,28 @@ LOGGING = {
     },
     'loggers': {
         'tbx': {
-            'handlers':     [],
-            'level':        'INFO',
-            'propagate':    False,
-            'formatter':    'verbose',
+            'handlers': [],
+            'level': 'INFO',
+            'propagate': False,
+            'formatter': 'verbose',
         },
         'wagtail': {
-            'handlers':     [],
-            'level':        'INFO',
-            'propagate':    False,
-            'formatter':    'verbose',
+            'handlers': [],
+            'level': 'INFO',
+            'propagate': False,
+            'formatter': 'verbose',
         },
         'django.request': {
-            'handlers':     ['mail_admins'],
-            'level':        'ERROR',
-            'propagate':    False,
-            'formatter':    'verbose',
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+            'formatter': 'verbose',
         },
         'django.security': {
-            'handlers':     ['mail_admins'],
-            'level':        'ERROR',
-            'propagate':    False,
-            'formatter':    'verbose',
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+            'formatter': 'verbose',
         },
     },
 }
@@ -173,31 +174,31 @@ LOGGING = {
 if 'LOG_DIR' in env:
     # Torchbox log
     LOGGING['handlers']['tbx_file'] = {
-        'level':        'INFO',
-        'class':        'cloghandler.ConcurrentRotatingFileHandler',
-        'filename':     os.path.join(env['LOG_DIR'], 'tbx.log'),
-        'maxBytes':     5242880, # 5MB
-        'backupCount':  5
+        'level': 'INFO',
+        'class': 'cloghandler.ConcurrentRotatingFileHandler',
+        'filename': os.path.join(env['LOG_DIR'], 'tbx.log'),
+        'maxBytes': 5242880,  # 5MB
+        'backupCount': 5
     }
     LOGGING['loggers']['wagtail']['handlers'].append('tbx_file')
 
     # Wagtail log
     LOGGING['handlers']['wagtail_file'] = {
-        'level':        'INFO',
-        'class':        'cloghandler.ConcurrentRotatingFileHandler',
-        'filename':     os.path.join(env['LOG_DIR'], 'wagtail.log'),
-        'maxBytes':     5242880, # 5MB
-        'backupCount':  5
+        'level': 'INFO',
+        'class': 'cloghandler.ConcurrentRotatingFileHandler',
+        'filename': os.path.join(env['LOG_DIR'], 'wagtail.log'),
+        'maxBytes': 5242880,  # 5MB
+        'backupCount': 5
     }
     LOGGING['loggers']['wagtail']['handlers'].append('wagtail_file')
 
     # Error log
     LOGGING['handlers']['errors_file'] = {
-        'level':        'ERROR',
-        'class':        'cloghandler.ConcurrentRotatingFileHandler',
-        'filename':     os.path.join(env['LOG_DIR'], 'error.log'),
-        'maxBytes':     5242880, # 5MB
-        'backupCount':  5
+        'level': 'ERROR',
+        'class': 'cloghandler.ConcurrentRotatingFileHandler',
+        'filename': os.path.join(env['LOG_DIR'], 'error.log'),
+        'maxBytes': 5242880,  # 5MB
+        'backupCount': 5
     }
     LOGGING['loggers']['django.request']['handlers'].append('errors_file')
     LOGGING['loggers']['django.security']['handlers'].append('errors_file')
@@ -213,7 +214,7 @@ if 'RECAPTCHA_PRIVATE_KEY' in env:
 
 
 try:
-    from .local import *
+    from .local import *  # noqa
 except ImportError:
     pass
 

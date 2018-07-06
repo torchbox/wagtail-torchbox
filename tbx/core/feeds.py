@@ -1,15 +1,15 @@
 from datetime import datetime, time
 
-import imghdr
-
 from django.conf import settings
 from django.contrib.syndication.views import Feed
+
+import imghdr
 
 from tbx.core.models import BlogPage
 from tbx.core.utils import play_filter
 
-
 # Main blog feed
+
 
 class BlogFeed(Feed):
     title = "The Torchbox Blog"
