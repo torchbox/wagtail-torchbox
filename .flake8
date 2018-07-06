@@ -1,0 +1,3 @@
+[flake8]
+ignore = E501,F405
+exclude = */migrations/*,node_modules/,tbx/settings/local.py
