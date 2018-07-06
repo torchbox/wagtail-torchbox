@@ -1,7 +1,6 @@
 import hashlib
-
 from datetime import datetime, time, timedelta
-from itertools import chain, cycle, islice
+from itertools import cycle, islice
 
 
 def export_event(event, format='ical'):
