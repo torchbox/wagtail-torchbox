@@ -1,8 +1,8 @@
 from .base import *  # noqa
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-TEMPLATES[0]['OPTIONS']['debug'] = True
+
+SECURE_SSL_REDIRECT = False
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'CHANGEME!!!'

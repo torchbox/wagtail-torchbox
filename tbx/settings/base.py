@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Basic settings
 DEBUG = False
 
-APP_NAME = env.get('APP_NAME', 'tbx')
+APP_NAME = env.get('APP_NAME', 'torchbox')
 
 if 'SECRET_KEY' in env:
     SECRET_KEY = env['SECRET_KEY']
