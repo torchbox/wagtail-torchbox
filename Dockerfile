@@ -40,9 +40,9 @@ RUN npm run build:prod
 # Don't use the root user as it's an anti-pattern and Heroku does not run
 # containers as root either.
 # https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime
-RUN useradd tbx
-RUN chown -R tbx .
-USER tbx
+#RUN useradd tbx
+#RUN chown -R tbx .
+#USER tbx
 
 # Install assets
 RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
