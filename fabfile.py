@@ -70,13 +70,11 @@ def pull_staging_media(c):
 
 @task
 def push_staging_media(c):
-    raise RuntimeError('Please check the configuration of the fabfile before using it.')
     push_media_to_s3_dokku(c, STAGING_REMOTE, STAGING_APP_INSTANCE)
 
 
 @task
 def push_staging_data(c):
-    raise RuntimeError('Please check the configuration of the fabfile before using it.')
     push_database_to_dokku(c, STAGING_REMOTE, STAGING_APP_INSTANCE,
                            STAGING_APP_DB_INSTANCE)
 
@@ -260,20 +258,20 @@ def pull_media_from_s3_dokku(c, dokku_remote, app_instance):
                        aws_storage_bucket_name)
 
 
-def push_media_to_s3_dokku(dokku_remote, app_instance):
+def push_media_to_s3_dokku(c, dokku_remote, app_instance):
     prompt_msg = 'You are about to push your media folder contents to the ' \
                  'S3 bucket. It\'s a destructive operation. \n' \
                  'Please type the application name "{app_instance}" to ' \
                  'proceed:\n>>> '.format(app_instance=make_bold(app_instance))
     if input(prompt_msg) != app_instance:
         raise Exit("Aborted")
-    aws_access_key_id = get_dokku_variable(dokku_remote, app_instance,
+    aws_access_key_id = get_dokku_variable(c, dokku_remote, app_instance,
                                            'AWS_ACCESS_KEY_ID')
-    aws_secret_access_key = get_dokku_variable(dokku_remote, app_instance,
+    aws_secret_access_key = get_dokku_variable(c, dokku_remote, app_instance,
                                                'AWS_SECRET_ACCESS_KEY')
-    aws_storage_bucket_name = get_dokku_variable(dokku_remote, app_instance,
+    aws_storage_bucket_name = get_dokku_variable(c, dokku_remote, app_instance,
                                                  'AWS_STORAGE_BUCKET_NAME')
-    push_media_to_s3(aws_access_key_id, aws_secret_access_key,
+    push_media_to_s3(c, aws_access_key_id, aws_secret_access_key,
                      aws_storage_bucket_name)
 
 
