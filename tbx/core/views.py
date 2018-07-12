@@ -1,6 +1,7 @@
 from django.conf import settings
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import Http404, HttpResponse
+from django.shortcuts import render, redirect
+from django.templatetags.static import static
 
 import requests
 
@@ -21,3 +22,20 @@ def newsletter_subsribe(request):
                   'email': {'email': request.GET.get('email')}}
         )
     return HttpResponse()
+
+
+def favicon(request):
+    try:
+        favicon_path = settings.FAVICON_STATIC_PATH
+    except AttributeError:
+        raise Http404
+    return redirect(static(favicon_path), permanent=True)
+
+
+def robots(request):
+    content = "\n".join([
+        "User-Agent: *",
+        "Disallow: /search/",
+        "Allow: /",
+    ])
+    return HttpResponse(content, content_type='text/plain')

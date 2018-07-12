@@ -325,6 +325,9 @@ if 'RECAPTCHA_PUBLIC_KEY' in env and 'RECAPTCHA_PRIVATE_KEY' in env:
 # Wagtail settings
 WAGTAIL_SITE_NAME = "Torchbox"
 
+FAVICON_STATIC_PATH = 'images/favicon.ico'
+
+
 # Override the Image class used by wagtailimages with a custom one
 WAGTAILIMAGES_IMAGE_MODEL = 'torchbox.TorchboxImage'
 
