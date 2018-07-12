@@ -70,7 +70,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -330,3 +330,21 @@ WAGTAILIMAGES_IMAGE_MODEL = 'torchbox.TorchboxImage'
 
 # Facebook JSSDK app Id
 FB_APP_ID = ''
+
+
+# Basic auth settings
+if env.get('BASIC_AUTH_ENABLED', 'false').lower().strip() == 'true':
+    MIDDLEWARE.insert(0, 'baipw.middleware.BasicAuthIPWhitelistMiddleware')
+    BASIC_AUTH_LOGIN = env.get('BASIC_AUTH_LOGIN')
+    BASIC_AUTH_PASSWORD = env.get('BASIC_AUTH_PASSWORD')
+    BASIC_AUTH_WHITELISTED_IP_NETWORKS = [
+        # Torchbox networks.
+        '78.32.251.192/28',
+        '89.197.53.244/30',
+        '193.227.244.0/23',
+        '2001:41c8:103::/48',
+    ]
+    if 'BASIC_AUTH_WHITELISTED_HTTP_HOSTS' in env:
+        BASIC_AUTH_WHITELISTED_HTTP_HOSTS = (
+            env['BASIC_AUTH_WHITELISTED_HTTP_HOSTS'].split(',')
+        )
