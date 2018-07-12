@@ -27,7 +27,6 @@ def pull_production_media(c):
 
 @task
 def push_production_media(c):
-    raise RuntimeError('Please check the configuration of the fabfile before using it.')
     push_media_to_s3_heroku(c, PRODUCTION_APP_INSTANCE)
 
 
@@ -38,7 +37,6 @@ def pull_production_data(c):
 
 @task
 def push_production_data(c):
-    raise RuntimeError('Please check the configuration of the fabfile before using it.')
     push_database_to_heroku(c, PRODUCTION_APP_INSTANCE)
 
 
@@ -170,8 +168,11 @@ def push_database_to_heroku(c, app_instance):
     local('heroku maintenance:on --app {app}'.format(app=app_instance))
     local('heroku ps:stop --app {app} web'.format(app=app_instance))
     local('heroku pg:backups:capture --app {app}'.format(app=app_instance))
-    local('heroku pg:reset --app {app}'.format(app=app_instance))
-    local('heroku pg:push --app {app}'.format(app=app_instance))
+    local('heroku pg:reset --app {app} --confirm {app}'.format(app=app_instance))
+    local('heroku pg:push --app {app} {local_db} DATABASE_URL'.format(
+        app=app_instance,
+        local_db=LOCAL_DATABASE_NAME
+    ))
     local('heroku ps:restart --app {app}'.format(app=app_instance))
     local('heroku maintenance:off --app {app}'.format(app=app_instance))
 
