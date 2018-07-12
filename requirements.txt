@@ -10,6 +10,8 @@ django-compressor==2.0
 wagtail-django-recaptcha==1.0
 django-recaptcha>=1.3,<1.4  # v1.4 removed support for Django 1.9
 djangorestframework>=3.6,<3.7  # v3.7 removed support for Django 1.9
+boto3==1.7.9
+django-storages==1.6.6
 
 
 # Development requirements
@@ -17,7 +19,7 @@ django-debug-toolbar==1.2.2
 
 # Production dependencies
 dj-database-url==0.3.0
-whitenoise==3.2.1
+whitenoise==3.3.1
 ConcurrentLogHandler==0.9.1
 
 # Wagtail-markdown

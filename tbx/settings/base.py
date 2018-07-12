@@ -2,6 +2,7 @@
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
 
 # Configuration from environment variables
 env = os.environ.copy()
@@ -18,18 +19,14 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Basic settings
 DEBUG = False
 
+APP_NAME = env.get('APP_NAME', 'tbx')
+
 if 'SECRET_KEY' in env:
     SECRET_KEY = env['SECRET_KEY']
 
 if 'ALLOWED_HOSTS' in env:
     ALLOWED_HOSTS = env['ALLOWED_HOSTS'].split(',')
 
-
-ADMINS = (
-    ('Nick Smith', 'nicks@torchbox.com'),
-)
-
-MANAGERS = ADMINS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -94,6 +91,9 @@ ROOT_URLCONF = 'tbx.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(PROJECT_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,16 +110,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tbx.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'torchbox',
-    }
-}
+# https://docs.djangoproject.com/en/stable/ref/settings/#databases
+# https://github.com/kennethreitz/dj-database-url
 
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600,
+                                      default=f"postgres:///{APP_NAME}")
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -161,7 +159,7 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [
-#    os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(PROJECT_DIR, 'static'),
 ]
 
 STATIC_ROOT = env.get('STATIC_DIR', os.path.join(BASE_DIR, 'static'))
@@ -182,18 +180,6 @@ COMPRESS_PRECOMPILERS = [
 ]
 
 
-# Use Redis as the cache backend for extra performance
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379',
-        'KEY_PREFIX': 'tbx',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
-
 # Do not use the same Redis instance for other things like Celery!
 if 'REDIS_URL' in env:
     CACHES = {
@@ -211,11 +197,15 @@ else:
     }
 
 
+# Search
+# https://docs.wagtail.io/en/latest/topics/search/backends.html
+
 WAGTAILSEARCH_BACKENDS = {
     'default': {
         'BACKEND': 'wagtail.contrib.postgres_search.backend',
     },
 }
+
 
 # S3 configuration
 if 'AWS_STORAGE_BUCKET_NAME' in env:
@@ -353,6 +343,3 @@ WAGTAILIMAGES_IMAGE_MODEL = 'torchbox.TorchboxImage'
 
 # Facebook JSSDK app Id
 FB_APP_ID = ''
-
-# reCAPTCHA
-NOCAPTCHA = True
