@@ -1,3 +1,4 @@
+from invoke import run as local
 from invoke.exceptions import Exit
 from invoke.tasks import task
 
@@ -96,7 +97,7 @@ def staging_shell(c):
 
 
 def clean_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
-    c.run(
+    local(
         'sudo -u postgres psql  -d {database_name} -c "DROP SCHEMA public '
         'CASCADE; CREATE SCHEMA public;"'.format(
             database_name=local_database_name
@@ -105,7 +106,7 @@ def clean_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
 
 
 def delete_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
-    c.run('dropdb {database_name}'.format(
+    local('dropdb {database_name}'.format(
         database_name=LOCAL_DATABASE_NAME
     ), warn=True)
 
@@ -116,7 +117,7 @@ def delete_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
 
 
 def get_heroku_variable(c, app_instance, variable):
-    return c.run('heroku config:get {var} --app {app}'.format(
+    return local('heroku config:get {var} --app {app}'.format(
         app=app_instance,
         var=variable,
     )).stdout.strip()
@@ -152,7 +153,7 @@ def push_media_to_s3_heroku(c, app_instance):
 
 def pull_database_from_heroku(c, app_instance):
     delete_local_database(c)
-    c.run('heroku pg:pull --app {app} DATABASE_URL {local_database}'.format(
+    local('heroku pg:pull --app {app} DATABASE_URL {local_database}'.format(
         app=app_instance,
         local_database=LOCAL_DATABASE_NAME
     ))
@@ -166,18 +167,18 @@ def push_database_to_heroku(c, app_instance):
                  'proceed:\n>>> '.format(app_instance=make_bold(app_instance))
     if input(prompt_msg) != app_instance:
         raise Exit("Aborted")
-    c.run('heroku maintenance:on --app {app}'.format(app=app_instance))
-    c.run('heroku ps:stop --app {app} web'.format(app=app_instance))
-    c.run('heroku pg:backups:capture --app {app}'.format(app=app_instance))
-    c.run('heroku pg:reset --app {app}'.format(app=app_instance))
-    c.run('heroku pg:push --app {app}'.format(app=app_instance))
-    c.run('heroku ps:restart --app {app}'.format(app=app_instance))
-    c.run('heroku maintenance:off --app {app}'.format(app=app_instance))
+    local('heroku maintenance:on --app {app}'.format(app=app_instance))
+    local('heroku ps:stop --app {app} web'.format(app=app_instance))
+    local('heroku pg:backups:capture --app {app}'.format(app=app_instance))
+    local('heroku pg:reset --app {app}'.format(app=app_instance))
+    local('heroku pg:push --app {app}'.format(app=app_instance))
+    local('heroku ps:restart --app {app}'.format(app=app_instance))
+    local('heroku maintenance:off --app {app}'.format(app=app_instance))
 
 
 def setup_heroku_git_remote(c, app_instance):
     remote_name = 'heroku-{app}'.format(app=app_instance)
-    c.run('heroku git:remote --app {app} --remote {remote}'.format(
+    local('heroku git:remote --app {app} --remote {remote}'.format(
         app=app_instance, remote=remote_name
     ))
     return remote_name
@@ -194,7 +195,7 @@ def deploy_to_heroku(c, app_instance, local_branch='master',
     )
     deploy_prompt(c, app_instance)
     remote_name = setup_heroku_git_remote(c, app_instance)
-    c.run('git push {remote} {local_branch}:{remote_branch}'.format(
+    local('git push {remote} {local_branch}:{remote_branch}'.format(
         remote=remote_name,
         local_branch=local_branch,
         remote_branch=remote_branch,
@@ -202,7 +203,7 @@ def deploy_to_heroku(c, app_instance, local_branch='master',
 
 
 def open_heroku_shell(c, app_instance, shell_command='bash'):
-    c.run('heroku run --app {app} {command}'.format(
+    local('heroku run --app {app} {command}'.format(
         app=app_instance,
         command=shell_command,
     ))
@@ -215,7 +216,7 @@ def open_heroku_shell(c, app_instance, shell_command='bash'):
 
 def pull_database_from_dokku(c, dokku_remote, app_db_instance):
     clean_local_database(c)
-    c.run('ssh {remote} postgres:export {db_instance} | '
+    local('ssh {remote} postgres:export {db_instance} | '
           'pg_restore -d {local_database}'.format(
               remote=dokku_remote,
               db_instance=app_db_instance,
@@ -231,10 +232,10 @@ def push_database_to_dokku(c, dokku_remote, app_instance, db_instance):
                  'proceed:\n>>> '.format(db_instance=make_bold(db_instance))
     if input(prompt_msg) != db_instance:
         raise Exit("Aborted")
-    c.run('ssh {remote} ps:stop {app}'.format(remote=dokku_remote,
+    local('ssh {remote} ps:stop {app}'.format(remote=dokku_remote,
                                               app=app_instance))
-    clean_dokku_database(dokku_remote, db_instance)
-    c.run(
+    clean_dokku_database(c, dokku_remote, db_instance)
+    local(
         'pg_dump -Fc --no-acl --no-owner -w {local_db} | '
         'ssh -t {remote} postgres:import {db_instance} '
         '|| true'.format(
@@ -243,7 +244,7 @@ def push_database_to_dokku(c, dokku_remote, app_instance, db_instance):
             db_instance=db_instance,
         )
     )
-    c.run('ssh {remote} ps:start {app}'.format(remote=dokku_remote,
+    local('ssh {remote} ps:start {app}'.format(remote=dokku_remote,
                                                app=app_instance))
 
 
@@ -276,7 +277,7 @@ def push_media_to_s3_dokku(c, dokku_remote, app_instance):
 
 
 def get_dokku_variable(c, dokku_remote, app_instance, variable):
-    return c.run('ssh {remote} config:get {app} {var}'.format(
+    return local('ssh {remote} config:get {app} {var}'.format(
         remote=dokku_remote,
         app=app_instance,
         var=variable,
@@ -295,7 +296,7 @@ def deploy_to_dokku(c, dokku_remote, app_instance, local_branch='master',
         )
     )
     deploy_prompt(c, app_instance)
-    c.run('git push {remote}:{app} {local_branch}:{remote_branch}'.format(
+    local('git push {remote}:{app} {local_branch}:{remote_branch}'.format(
         remote=dokku_remote,
         app=app_instance,
         local_branch=local_branch,
@@ -304,19 +305,19 @@ def deploy_to_dokku(c, dokku_remote, app_instance, local_branch='master',
 
 
 def open_dokku_shell(c, dokku_remote, app_instance):
-    c.run('ssh -t {remote} enter {app}'.format(remote=dokku_remote,
+    local('ssh -t {remote} enter {app}'.format(remote=dokku_remote,
                                                app=app_instance))
 
 
 def clean_dokku_database(c, dokku_remote, db_instance):
-    c.run(
+    local(
         'ssh -t {remote} postgres:export {db_instance} > '
         '{db_instance}-backup.pg'.format(
             remote=dokku_remote,
             db_instance=db_instance,
         )
     )
-    c.run(
+    local(
         'echo "DROP SCHEMA public CASCADE; CREATE SCHEMA public;" | '
         'ssh -t {remote} postgres:connect {db_instance}'.format(
             remote=dokku_remote,
@@ -331,7 +332,7 @@ def clean_dokku_database(c, dokku_remote, db_instance):
 
 
 def aws(c, command, aws_access_key_id, aws_secret_access_key, **kwargs):
-    return c.run(
+    return local(
         'AWS_ACCESS_KEY_ID={access_key_id} AWS_SECRET_ACCESS_KEY={secret_key} '
         'aws {command}'.format(
             access_key_id=aws_access_key_id,
