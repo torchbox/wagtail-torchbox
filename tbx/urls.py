@@ -1,21 +1,27 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.decorators.vary import vary_on_headers
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
+from wagtail.core.models import Page
 from wagtail.documents import urls as wagtaildocs_urls
+from wagtail.utils.urlpatterns import decorate_urlpatterns
 
 from tbx.core import urls as torchbox_urls
 from tbx.core.views import favicon, robots
+from tbx.core.utils.cache import get_default_cache_control_decorator
 
 
-urlpatterns = [
+private_urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
-
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
+]
+
+urlpatterns = [
     url(r'^sitemap\.xml$', sitemap),
     url(r'^favicon.ico$', favicon),
     url(r'^robots.txt$', robots),
@@ -40,7 +46,29 @@ if settings.DEBUG:
 
 urlpatterns += [
     url(r'', include(torchbox_urls)),
-    url(r'', include(wagtail_urls)),
 ]
 
 handler404 = 'tbx.core.views.error404'
+
+
+# Set public URLs to use public cache.
+urlpatterns = decorate_urlpatterns(urlpatterns,
+                                   get_default_cache_control_decorator())
+
+# Set vary header to instruct cache to serve different version on different
+# cookies, different request method (e.g. AJAX) and different protocol
+# (http vs https).
+urlpatterns = decorate_urlpatterns(
+    urlpatterns,
+    vary_on_headers('Cookie', 'X-Requested-With', 'X-Forwarded-Proto',
+                    'Accept-Encoding')
+)
+
+Page.serve = get_default_cache_control_decorator()(Page.serve)
+
+# Join private and public URLs.
+urlpatterns = private_urlpatterns + urlpatterns + [
+    # Add Wagtail URLs at the end.
+    # Wagtail cache-control is set on the page models's serve methods.
+    url(r'', include(wagtail_urls)),
+]

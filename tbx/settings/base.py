@@ -351,3 +351,41 @@ if env.get('BASIC_AUTH_ENABLED', 'false').lower().strip() == 'true':
         BASIC_AUTH_WHITELISTED_HTTP_HOSTS = (
             env['BASIC_AUTH_WHITELISTED_HTTP_HOSTS'].split(',')
         )
+
+
+# Front-end cache
+# https://docs.wagtail.io/en/latest/reference/contrib/frontendcache.html
+
+if 'FRONTEND_CACHE_PURGE_URL' in env:
+    INSTALLED_APPS.append('wagtail.contrib.frontend_cache')
+    WAGTAILFRONTENDCACHE = {
+        'default': {
+            'BACKEND': 'wagtail.contrib.frontend_cache.backends.HTTPBackend',
+            'LOCATION': env['FRONTEND_CACHE_PURGE_URL'],
+        },
+    }
+elif 'FRONTEND_CACHE_CLOUDFLARE_TOKEN' in env:
+    INSTALLED_APPS.append('wagtail.contrib.frontend_cache')
+    WAGTAILFRONTENDCACHE = {
+        'default': {
+            'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudflareBackend',
+            'EMAIL': env['FRONTEND_CACHE_CLOUDFLARE_EMAIL'],
+            'TOKEN': env['FRONTEND_CACHE_CLOUDFLARE_TOKEN'],
+            'ZONEID': env['FRONTEND_CACHE_CLOUDFLARE_ZONEID'],
+        },
+    }
+
+
+# Set s-max-age header that is used by reverse proxy/front end cache. See
+# urls.py
+try:
+    CACHE_CONTROL_S_MAXAGE = int(env.get('CACHE_CONTROL_S_MAXAGE', 600))
+except ValueError:
+    pass
+
+
+# Give front-end cache 30 second to revalidate the cache to avoid hitting the
+# backend. See urls.py
+CACHE_CONTROL_STALE_WHILE_REVALIDATE = int(
+    env.get('CACHE_CONTROL_STALE_WHILE_REVALIDATE', 30)
+)

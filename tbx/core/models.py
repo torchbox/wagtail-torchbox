@@ -4,6 +4,8 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
 from django.utils.functional import cached_property
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
 from modelcluster.fields import ParentalKey
@@ -1439,6 +1441,7 @@ class SignUpFormPageForm(forms.ModelForm):
         }
 
 
+@method_decorator(never_cache, name='serve')
 class SignUpFormPage(Page):
     formatted_title = models.CharField(
         max_length=255, blank=True,
@@ -1529,8 +1532,12 @@ class SignUpFormPage(Page):
                         'legend': self.call_to_action_text
                     }
                 )
-        else:
-            return super(SignUpFormPage, self).serve(request)
+        response = super(SignUpFormPage, self).serve(request)
+        try:
+            del response['cache-control']
+        except KeyError:
+            pass
+        return response
 
     def send_email_response(self, to_address):
         email_message = EmailMessage(
@@ -1635,7 +1642,8 @@ class ContactLandingPageRelatedLinkButton(Orderable, RelatedLink):
     page = ParentalKey('torchbox.Contact', related_name='related_link_buttons')
 
 
-class Contact(WagtailCaptchaEmailForm):
+@method_decorator(never_cache, name='serve')
+class Contact(AbstractEmailForm):
     intro = RichTextField(blank=True)
     main_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
                                    blank=True, on_delete=models.SET_NULL,
