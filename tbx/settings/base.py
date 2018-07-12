@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'wagtail.contrib.postgres_search',
 
     'modelcluster',
-    'compressor',
     'taggit',
     'raven.contrib.django.raven_compat',
     'captcha',
@@ -155,11 +154,10 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(PROJECT_DIR, 'core', 'static', 'torchbox'),
 ]
 
 STATIC_ROOT = env.get('STATIC_DIR', os.path.join(BASE_DIR, 'static'))
@@ -167,17 +165,6 @@ STATIC_URL = env.get('STATIC_URL', '/static/')
 
 MEDIA_ROOT = env.get('MEDIA_DIR', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = env.get('MEDIA_URL', '/media/')
-
-
-# Serve /public directory with whitenoise
-WHITENOISE_ROOT = os.path.join(BASE_DIR, 'public')
-
-
-# Django compressor settings
-# http://django-compressor.readthedocs.org/en/latest/settings/
-COMPRESS_PRECOMPILERS = [
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-]
 
 
 # Do not use the same Redis instance for other things like Celery!

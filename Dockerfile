@@ -31,17 +31,11 @@ RUN npm install
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Compile static files
-COPY ./tbx/static ./static
-RUN npm run build:prod
-
-WORKDIR /app
-
 # Copy application code.
 COPY . .
 
-# Install assets
-RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
+# Compile static files
+RUN npm run build:prod
 
 # Don't use the root user as it's an anti-pattern and Heroku does not run
 # containers as root either.
@@ -49,6 +43,9 @@ RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 RUN useradd tbx
 RUN chown -R tbx .
 USER tbx
+
+# Install assets
+RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 
 # Run application
 CMD gunicorn tbx.wsgi:application
