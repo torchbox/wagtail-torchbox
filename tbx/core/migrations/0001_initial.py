@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.db import models, migrations
-import wagtail.wagtailimages.models
-import wagtail.wagtailcore.fields
-import wagtail.wagtailsearch.index
+import wagtail.images.models
+import wagtail.core.fields
+import wagtail.search.index
 import modelcluster.fields
 import django.db.models.deletion
 from django.conf import settings
@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
             name='BlogIndexPage',
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('show_in_play_menu', models.BooleanField(default=False)),
             ],
             options={
@@ -74,8 +74,8 @@ class Migration(migrations.Migration):
             name='BlogPage',
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('body', wagtail.wagtailcore.fields.RichTextField()),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('body', wagtail.core.fields.RichTextField()),
                 ('author_left', models.CharField(help_text=b'author who has left Torchbox', max_length=255, blank=True)),
                 ('date', models.DateField(verbose_name=b'Post date')),
             ],
@@ -152,7 +152,7 @@ class Migration(migrations.Migration):
             name='JobIndexPage',
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
@@ -164,7 +164,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
-                ('content', wagtail.wagtailcore.fields.RichTextField()),
+                ('content', wagtail.core.fields.RichTextField()),
                 ('page', modelcluster.fields.ParentalKey(related_name='content_block', to='torchbox.JobIndexPage')),
             ],
             options={
@@ -193,7 +193,7 @@ class Migration(migrations.Migration):
             name='PersonIndexPage',
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('show_in_play_menu', models.BooleanField(default=False)),
             ],
             options={
@@ -215,8 +215,8 @@ class Migration(migrations.Migration):
                 ('first_name', models.CharField(max_length=255)),
                 ('last_name', models.CharField(max_length=255)),
                 ('role', models.CharField(max_length=255, blank=True)),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('biography', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('biography', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
@@ -242,8 +242,8 @@ class Migration(migrations.Migration):
             name='ServicesPage',
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('body', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
@@ -255,7 +255,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
-                ('content', wagtail.wagtailcore.fields.RichTextField()),
+                ('content', wagtail.core.fields.RichTextField()),
                 ('page', modelcluster.fields.ParentalKey(related_name='content_block', to='torchbox.ServicesPage')),
             ],
             options={
@@ -284,11 +284,11 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('credit', models.CharField(max_length=255, blank=True)),
-                ('heading', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('heading', wagtail.core.fields.RichTextField(blank=True)),
                 ('quote', models.CharField(max_length=255, blank=True)),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('middle_break', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('middle_break', wagtail.core.fields.RichTextField(blank=True)),
+                ('body', wagtail.core.fields.RichTextField(blank=True)),
                 ('email', models.EmailField(max_length=75, blank=True)),
                 ('show_in_play_menu', models.BooleanField(default=False)),
             ],
@@ -316,7 +316,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
-                ('content', wagtail.wagtailcore.fields.RichTextField()),
+                ('content', wagtail.core.fields.RichTextField()),
                 ('page', modelcluster.fields.ParentalKey(related_name='content_block', to='torchbox.StandardPage')),
             ],
             options={
@@ -345,7 +345,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=255, verbose_name='Title')),
-                ('file', models.ImageField(height_field='height', upload_to=wagtail.wagtailimages.models.get_upload_to, width_field='width', verbose_name='File')),
+                ('file', models.ImageField(height_field='height', upload_to=wagtail.images.models.get_upload_to, width_field='width', verbose_name='File')),
                 ('width', models.IntegerField(editable=False)),
                 ('height', models.IntegerField(editable=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
@@ -360,7 +360,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=(models.Model, wagtail.wagtailsearch.index.Indexed),
+            bases=(models.Model, wagtail.search.index.Indexed),
         ),
         migrations.CreateModel(
             name='TorchboxRendition',
@@ -392,7 +392,7 @@ class Migration(migrations.Migration):
             name='WorkIndexPage',
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('show_in_play_menu', models.BooleanField(default=False)),
                 ('hide_popular_tags', models.BooleanField(default=False)),
             ],
@@ -406,8 +406,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('summary', models.CharField(max_length=255)),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('body', wagtail.core.fields.RichTextField(blank=True)),
                 ('homepage_image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True)),
             ],
             options={

@@ -1,15 +1,48 @@
 language: python
-python: "2.7"
+python: "3.6"
 cache:
   pip: true
+  directories:
+    - node_modules
 
 # Use container-based infrastructure
 dist: trusty
 sudo: false
 
+# Services
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.6"
+
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE=tbx.settings.production
+    - DATABASE_URL=postgres://postgres@localhost/test_db
+    - CFG_SECRET_KEY=iamnotsosecret
+    - CFG_ALLOWED_HOSTS=localhost
+
+before_script:
+  # Create a database
+  - psql -c 'create database test_db;' -U postgres
+
 install:
   - pip install wheel
   - pip install -r requirements.txt
+  - pip install flake8
+  - pip install isort
 
 script:
+  # Code style, missing imports, etc
+  - flake8 tbx
+  - isort --check-only --diff --recursive tbx
+
+  # Run system checks
   - python manage.py check
+
+  # Check for missing migrations
+  - python manage.py makemigrations --check
+
+  # Run tests
+  - python manage.py test

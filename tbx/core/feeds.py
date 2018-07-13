@@ -1,15 +1,15 @@
 from datetime import datetime, time
 
-import imghdr
-
 from django.conf import settings
 from django.contrib.syndication.views import Feed
+
+import imghdr
 
 from tbx.core.models import BlogPage
 from tbx.core.utils import play_filter
 
-
 # Main blog feed
+
 
 class BlogFeed(Feed):
     title = "The Torchbox Blog"
@@ -26,7 +26,7 @@ class BlogFeed(Feed):
         return item.intro if item.intro else item.body
 
     def item_link(self, item):
-        return item.full_url
+        return item.get_full_url()
 
     def item_author_name(self, item):
         pass
@@ -53,7 +53,7 @@ class PlanetDrupalFeed(Feed):
         return item.intro
 
     def item_link(self, item):
-        return item.full_url
+        return item.get_full_url()
 
     def item_pubdate(self, item):
         return datetime.combine(item.date, time())
