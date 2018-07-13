@@ -389,3 +389,18 @@ except ValueError:
 CACHE_CONTROL_STALE_WHILE_REVALIDATE = int(
     env.get('CACHE_CONTROL_STALE_WHILE_REVALIDATE', 30)
 )
+
+
+# Embledly
+
+if 'EMBEDLY_KEY' in env:
+    EMBEDLY_KEY = env['EMBEDLY_KEY']
+
+
+# Newsletter
+
+if 'MAILCHIMP_KEY' in env:
+    MAILCHIMP_KEY = env['MAILCHIMP_KEY']
+
+if 'MAILCHIMP_MAILING_LIST_ID' in env:
+    MAILCHIMP_MAILING_LIST_ID = env['MAILCHIMP_MAILING_LIST_ID']

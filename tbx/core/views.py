@@ -18,7 +18,7 @@ def newsletter_subsribe(request):
         requests.post(
             "https://us10.api.mailchimp.com/2.0/lists/subscribe",
             json={'apikey': settings.MAILCHIMP_KEY,
-                  'id': settings.MAILING_LIST_ID,
+                  'id': settings.MAILCHIMP_MAILING_LIST_ID,
                   'email': {'email': request.GET.get('email')}}
         )
     return HttpResponse()
