@@ -3,8 +3,8 @@ from django.core.mail import EmailMessage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
-from django.utils.functional import cached_property
 from django.utils.decorators import method_decorator
+from django.utils.functional import cached_property
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
