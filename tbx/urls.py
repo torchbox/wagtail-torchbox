@@ -11,9 +11,8 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.utils.urlpatterns import decorate_urlpatterns
 
 from tbx.core import urls as torchbox_urls
-from tbx.core.views import favicon, robots
 from tbx.core.utils.cache import get_default_cache_control_decorator
-
+from tbx.core.views import favicon, robots
 
 private_urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
