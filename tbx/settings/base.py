@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'tbx.core.apps.TorchboxCoreAppConfig',
 
     'wagtail.contrib.search_promotions',
-    'wagtail.contrib.sitemaps',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -66,6 +65,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'wagtail.contrib.settings',
 ]
