@@ -1,7 +1,7 @@
 Torchbox.com on Wagtail
 =======================
 
-[![Build Status](https://travis-ci.org/torchbox/wagtail-torchbox.svg?branch=master)](https://travis-ci.org/torchbox/wagtail-torchbo)
+[![Build Status](https://travis-ci.org/torchbox/wagtail-torchbox.svg?branch=master)](https://travis-ci.org/torchbox/wagtail-torchbox)
 
 This project was originally a clone of [wagtaildemo](http://github.com/torchbox/wagtaildemo), customised for the Torchbox site.
 
