@@ -1,28 +1,36 @@
-from django.conf.urls import include, url
 from django.conf import settings
+from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.decorators.vary import vary_on_headers
 
-from wagtail.contrib.wagtailsitemaps.views import sitemap
-from wagtail.wagtailadmin import urls as wagtailadmin_urls
-from wagtail.wagtaildocs import urls as wagtaildocs_urls
-from wagtail.wagtailcore import urls as wagtail_urls
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.contrib.sitemaps.views import sitemap
+from wagtail.core import urls as wagtail_urls
+from wagtail.core.models import Page
+from wagtail.documents import urls as wagtaildocs_urls
+from wagtail.utils.urlpatterns import decorate_urlpatterns
 
 from tbx.core import urls as torchbox_urls
+from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.core.views import favicon, robots
 
-
-urlpatterns = [
+private_urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
-
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
+]
+
+urlpatterns = [
     url(r'^sitemap\.xml$', sitemap),
+    url(r'^favicon.ico$', favicon),
+    url(r'^robots.txt$', robots),
 ]
 
 
 if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-    from django.views.generic import TemplateView, RedirectView
+    from django.views.generic import TemplateView
 
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
@@ -34,15 +42,32 @@ if settings.DEBUG:
         url(r'^test500/$', TemplateView.as_view(template_name='500.html')),
     ]
 
-    # Favicon
-    urlpatterns += [
-        url(r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'torchbox.com/images/favicon.ico')),
-    ]
-
 
 urlpatterns += [
     url(r'', include(torchbox_urls)),
-    url(r'', include(wagtail_urls)),
 ]
 
 handler404 = 'tbx.core.views.error404'
+
+
+# Set public URLs to use public cache.
+urlpatterns = decorate_urlpatterns(urlpatterns,
+                                   get_default_cache_control_decorator())
+
+# Set vary header to instruct cache to serve different version on different
+# cookies, different request method (e.g. AJAX) and different protocol
+# (http vs https).
+urlpatterns = decorate_urlpatterns(
+    urlpatterns,
+    vary_on_headers('Cookie', 'X-Requested-With', 'X-Forwarded-Proto',
+                    'Accept-Encoding')
+)
+
+Page.serve = get_default_cache_control_decorator()(Page.serve)
+
+# Join private and public URLs.
+urlpatterns = private_urlpatterns + urlpatterns + [
+    # Add Wagtail URLs at the end.
+    # Wagtail cache-control is set on the page models's serve methods.
+    url(r'', include(wagtail_urls)),
+]
