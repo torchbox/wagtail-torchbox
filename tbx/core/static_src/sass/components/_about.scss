@@ -1,0 +1,302 @@
+// about tbx homepage ==========================================================
+.about-tbx {
+  //padding
+  $padding: 20px;
+  @include cf;
+  padding: 0;
+  margin-bottom: 40px;
+  .rich-text p {
+    font-size: 22px;
+    border-bottom: 1px solid rgba(black, 0.1);
+    padding-bottom: 30px;
+    font-weight: 300;
+    max-width: none;
+    span {
+      //font-weight: 600;
+    }
+    @media #{$tablet-large} {
+      font-size: 28px;
+      padding-bottom: 50px;
+    }
+  }
+  @media #{$tablet-large} {
+    padding: 0;
+    p {
+      padding-bottom: 50px;
+      a {
+        position: relative;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          right: 0;
+          width: 0;
+          height: 1px;
+          background: #23b0b0;
+          transition: all 0.25s ease 0s;
+        }
+        &:hover {
+          &:after {
+            width: 100%;
+            left: 0;
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+  .container {
+    max-width: 1024px;
+  }
+  .title, .body {
+    position: relative;
+    @include cf;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    @media #{$tablet-large} {
+      margin-bottom: 30px;
+    }
+  }
+  p {
+    text-align: center;
+    margin-bottom: 0;
+    @media #{$tablet-large} {
+      font-size: 28px;
+    }
+  }
+}
+
+// // about text
+// .about-text {
+//   @extend .hero-text;
+//   bottom: auto;
+//   top: 60px;
+//   .content {
+//     max-width: none;
+//   }
+//   &,
+//   .rich-text {
+//     h2 {
+//     font-size: 35px;
+//     line-height: 1;
+//     font-weight: 300;
+//     color: white;
+//     text-align: center;
+//     padding: 10px 20px 15px;
+//     position: relative;
+//     @media #{$tablet} {
+//       font-size: 65px;
+//       letter-spacing: -0.02em;
+//       font-weight: 200;
+//       .page-aboutpage & {
+//         font-size: 80px;
+//       }
+//     }
+//   }
+//   // clip through
+//   &.testclass-1 {
+//      h2 {
+//       color: $orange;
+//      }
+//   }
+//   &.stop {
+//     position: absolute;
+//     top: 535px;
+//     @media #{$tablet} {
+//       top: 60px;
+//     }
+//   }
+// }
+
+// .about-hero {
+//   @extend .work-hero;
+//   margin-bottom: 0 !important;
+//   min-height: 700px;
+//   .page-aboutpage & {
+//     height: auto !important;
+//   }
+// }
+
+
+// hero / work page
+.about-hero {
+  $height: calc(100vh - 85px);
+  $height-mob: 400px;
+  $height-tablet: 600px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+
+  @media #{$desktop} {
+    background-attachment: fixed;
+  }
+
+  .page-contact & {
+    @media #{$desktop} {
+      background-attachment: initial;
+    }
+  }
+
+  .page-servicespage & {
+    padding-bottom: 0;
+  }
+
+  h2 {
+    color: white;
+    margin: 40px 0;
+    font-size: 35px;
+    font-weight: 300;
+    //etter-spacing: -0.02em;
+
+    span {
+      font-weight: 300;
+    }
+
+    &.thanks {
+      margin: 150px 0;
+      span {
+        font-weight: 400;
+      }
+      @media #{$desktop} {
+        margin: 300px 0;
+      }
+      a {
+        font-size: 22px;
+        padding: 20px;
+        border: none;
+        margin-top: 40px;
+        &:hover {
+          border: none;
+        }
+      }
+    }
+
+    &.story {
+      color: white;
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      left: 0;
+      font-size: 25px;
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -25px;
+        left: calc(50% - 25px);
+        width: 50px;
+        height: 20px;
+        background: url('/static/images/down-chevron-blue.svg') center no-repeat;
+      }
+
+      @media #{$tablet} {
+        font-size: 32px;
+        bottom: 140px;
+      }
+
+    }
+
+    @media #{$tablet} {
+      font-weight: 200;
+    }
+
+  }
+
+  .intro {
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    font-size: 18px;
+    margin: 30px auto 0;
+    @media #{$tablet} {
+      font-size: 22px;
+    }
+  }
+
+  .btns {
+    text-align: center;
+    margin: 30px auto 0;
+    .btn {
+      border: 1px solid $orange;
+      padding: 15px 50px;
+      margin: 0 auto 10px;
+      background: $orange;
+      color: white;
+      font-size: 24px;
+      &:hover {
+        border: 1px solid $orange;
+        background: $orange;
+      }
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    background: rgba($dark, 0.75);
+    background: linear-gradient(to top, rgba($dark, 1) , rgba($dark, 0));
+  }
+
+  .page-aboutpage &, .page-servicespage &, .page-contact & {
+    &:before {
+      background: transparent;
+      height: 0;
+    }
+  }
+
+  img {
+    object-fit: cover;
+    height: $height-mob;
+    @media #{$tablet} {
+      display: none;
+      height: $height-tablet;
+    }
+    @media #{$desktop} {
+      height: $height;
+    }
+  }
+
+  .page-aboutpage & {
+    height: auto;
+
+    @media #{$tablet} {
+      height: $height-tablet;
+
+      h2 {
+        margin-top: 140px;
+      }
+
+    }
+
+    @media #{$desktop} {
+      height: 100vh;
+    }
+  }
+
+  @media #{$tablet} {
+    margin-bottom: 0;
+    background-size: cover;
+    h2 {
+      margin: 60px 0 0;
+      font-size: 65px;
+    }
+
+    .page-aboutpage & {
+      //height: calc(100vh - 100px);
+    }
+
+  }
+
+}
+
+
+
+

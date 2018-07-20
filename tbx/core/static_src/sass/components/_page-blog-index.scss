@@ -1,0 +1,101 @@
+// Blog index ==================================================================
+.page-blogindexpage {
+  .hero {
+    position: relative;
+    background: url('/static/images/office-01.jpg') no-repeat center;
+    background-size: cover;
+    height: 450px;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 75%;
+      width: 100%;
+      background: rgba(43,48,51,0.75);
+      background: linear-gradient(to top, #2b3033, rgba(43,48,51,0));
+    }
+    .container {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    .blog-title {
+      h1 {
+        color: white;
+        font-size: 35px;
+        line-height: 1;
+        font-weight: 200;
+        @media #{$tablet} {
+          font-size: 65px;
+        }
+      }
+    }
+  }
+  .pagination {
+    margin-top: 10px;
+  }
+  h1 {
+    font-size: 50px;
+    line-height: 1;
+    font-weight: 200;
+    color: $blue;
+    padding: 30px 0 0;
+    @media #{$tablet} {
+      padding: 140px 15px 10px;
+      font-size: 65px;
+    }
+  }
+}
+
+.blogpage-listing {
+  @extend .blog-list;
+  margin-bottom: 0px;
+  margin-top: 40px;
+}
+
+// blog-meta
+.blog-meta {
+  @include cf;
+  padding: 30px 0 0;
+  margin: 30px 0 0;
+  border-top: 1px solid rgba(43,48,51,0.15);
+
+  @media #{$tablet} {
+    padding: 30px 0 60px;
+    margin: 30px 0 0;
+  }
+
+  .author-holder {
+    margin-bottom: 30px;
+    @media #{$tablet} {
+      float: left;
+
+      width: 70%;
+      margin-bottom: 0;
+    }
+  }
+
+  .author {
+    margin-bottom: 1em;
+    overflow: hidden;
+
+    @media #{$tablet} {
+      clear: both;
+    }
+  }
+
+  .tags {
+    ul {
+      margin-bottom: 0;
+    }
+
+    @media #{$tablet} {
+      float: left;
+      width: 30%;
+    }
+  }
+}

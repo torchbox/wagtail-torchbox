@@ -152,17 +152,21 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'core', 'static', 'torchbox'),
+    os.path.join(PROJECT_DIR, 'core', 'static_compiled'),
 ]
 
 STATIC_ROOT = env.get('STATIC_DIR', os.path.join(BASE_DIR, 'static'))
 STATIC_URL = env.get('STATIC_URL', '/static/')
+
+
+# Media files
 
 MEDIA_ROOT = env.get('MEDIA_DIR', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = env.get('MEDIA_URL', '/media/')
