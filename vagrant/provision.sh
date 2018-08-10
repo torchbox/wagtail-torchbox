@@ -60,10 +60,3 @@ EOF
 # Install node.js and npm
 curl -sSL https://deb.nodesource.com/setup_4.x | bash -
 apt-get install -y nodejs
-
-# Build the static files
-if [ -d "$PROJECT_DIR/node_modules" ]; then
-    rm -rf "$PROJECT_DIR/node_modules"
-fi
-su - vagrant -c "cd $PROJECT_DIR; npm install"
-su - vagrant -c "cd $PROJECT_DIR; npm run build:prod"
