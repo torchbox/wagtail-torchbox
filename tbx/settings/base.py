@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.contrib.modeladmin',
+    'wagtail_personalisation',
+    'wagtailfontawesome',
     'wagtailmarkdown',
     'wagtail.contrib.postgres_search',
 
