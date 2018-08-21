@@ -30,6 +30,7 @@ from wagtail.snippets.models import register_snippet
 from wagtailmarkdown.blocks import MarkdownBlock
 
 from tbx.core.utils.cache import get_default_cache_control_decorator
+
 from .fields import ColorField
 
 # Streamfield blocks and config
