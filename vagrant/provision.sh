@@ -58,5 +58,5 @@ EOF
 
 
 # Install node.js and npm
-curl -sSL https://deb.nodesource.com/setup_4.x | bash -
+curl -sSL https://deb.nodesource.com/setup_8.x | bash -
 apt-get install -y nodejs

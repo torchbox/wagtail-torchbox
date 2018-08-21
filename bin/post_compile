@@ -1,1 +1,0 @@
-python manage.py compress --settings tbx.settings.production

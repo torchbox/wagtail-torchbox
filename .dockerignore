@@ -14,3 +14,4 @@ node_modules*
 /None
 /npm-debug.log
 /tbx/core/static_compiled/
+/tbx/core/settings/local.py
