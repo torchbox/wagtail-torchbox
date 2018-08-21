@@ -95,8 +95,5 @@
     "sass-lint": "^1.12.1",
     "webpack": "^4.8.1",
     "webpack-cli": "^3.0.3"
-  },
-  "engines": {
-    "node": ">=8"
   }
 }

@@ -12,3 +12,5 @@
 .idea/
 node_modules*
 /None
+/npm-debug.log
+/tbx/core/static_compiled/

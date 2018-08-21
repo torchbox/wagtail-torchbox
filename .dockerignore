@@ -1,0 +1,17 @@
+*.pyc
+.DS_Store
+*.swp
+/venv/
+/static/
+/media/
+/media.old/
+/tmp/
+/.vagrant/
+/Vagrantfile.local
+/docs/_build/
+.idea/
+node_modules*
+/None
+/npm-debug.log
+/tbx/core/static_compiled/
+/tbx/core/settings/local.py
