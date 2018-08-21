@@ -1551,7 +1551,10 @@ class SignUpFormPage(Page):
             from_email=self.email_from_address,
             to=[to_address],
         )
-        email_message.attach_file(self.email_attachment.file.path)
+        email_message.attach(
+            self.email_attachment.file.name.split('/')[-1],
+            self.email_attachment.file.read()
+        )
         email_message.send()
 
 
