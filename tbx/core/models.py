@@ -7,7 +7,6 @@ from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
-from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel,
@@ -27,6 +26,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from wagtailmarkdown.blocks import MarkdownBlock
 
 from tbx.core.utils.cache import get_default_cache_control_decorator
