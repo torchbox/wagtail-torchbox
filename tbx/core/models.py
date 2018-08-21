@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
+
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel,
