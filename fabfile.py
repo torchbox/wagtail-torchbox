@@ -42,7 +42,6 @@ def push_production_data(c):
 
 @task
 def deploy_production(c):
-    raise RuntimeError('Please check the configuration of the fabfile before using it.')
     deploy_to_heroku(c, PRODUCTION_APP_INSTANCE, local_branch='master',
                      remote_branch='master')
 
