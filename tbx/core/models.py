@@ -29,6 +29,7 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtailmarkdown.blocks import MarkdownBlock
 
+from tbx.core.utils.cache import get_default_cache_control_decorator
 from .fields import ColorField
 
 # Streamfield blocks and config
@@ -731,6 +732,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogIndexPage', related_name='related_links')
 
 
+@method_decorator(get_default_cache_control_decorator(), name='serve')
 class BlogIndexPage(Page):
     intro = models.TextField(blank=True)
 
@@ -1084,6 +1086,7 @@ class WorkPage(Page):
 
 
 # Work index page
+@method_decorator(get_default_cache_control_decorator(), name='serve')
 class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
