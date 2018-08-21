@@ -390,3 +390,5 @@ var tbx = {
         });
     }
 };
+
+window.tbx = tbx;

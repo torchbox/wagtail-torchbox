@@ -13,7 +13,7 @@ from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel,
                                          StreamFieldPanel)
 from wagtail.admin.utils import send_mail
-from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.contrib.forms.models import AbstractFormField
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.blocks import (CharBlock, FieldBlock, ListBlock,
                                  PageChooserBlock, RawHTMLBlock, RichTextBlock,
@@ -27,7 +27,10 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from wagtailmarkdown.blocks import MarkdownBlock
+
+from tbx.core.utils.cache import get_default_cache_control_decorator
 
 from .fields import ColorField
 
@@ -731,6 +734,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('torchbox.BlogIndexPage', related_name='related_links')
 
 
+@method_decorator(get_default_cache_control_decorator(), name='serve')
 class BlogIndexPage(Page):
     intro = models.TextField(blank=True)
 
@@ -1084,6 +1088,7 @@ class WorkPage(Page):
 
 
 # Work index page
+@method_decorator(get_default_cache_control_decorator(), name='serve')
 class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
@@ -1546,7 +1551,10 @@ class SignUpFormPage(Page):
             from_email=self.email_from_address,
             to=[to_address],
         )
-        email_message.attach_file(self.email_attachment.file.path)
+        email_message.attach(
+            self.email_attachment.file.name.split('/')[-1],
+            self.email_attachment.file.read()
+        )
         email_message.send()
 
 
@@ -1643,7 +1651,7 @@ class ContactLandingPageRelatedLinkButton(Orderable, RelatedLink):
 
 
 @method_decorator(never_cache, name='serve')
-class Contact(AbstractEmailForm):
+class Contact(WagtailCaptchaEmailForm):
     intro = RichTextField(blank=True)
     main_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
                                    blank=True, on_delete=models.SET_NULL,
