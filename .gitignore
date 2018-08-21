@@ -12,3 +12,4 @@
 .idea/
 node_modules*
 /None
+/npm-debug.log
