@@ -15,7 +15,7 @@ EXPOSE 8000
 # Install operating system dependencies.
 RUN apt-get update -y && \
     apt-get install -y apt-transport-https rsync && \
-    curl -sL https://deb.nodesource.com/setup_4.x | bash - &&\
+    curl -sL https://deb.nodesource.com/setup_8.x | bash - &&\
     apt-get install -y nodejs &&\
     rm -rf /var/lib/apt/lists/*
 
