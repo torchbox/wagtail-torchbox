@@ -7,13 +7,13 @@ from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
-
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel,
                                          StreamFieldPanel)
 from wagtail.admin.utils import send_mail
-from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.contrib.forms.models import AbstractFormField
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.blocks import (CharBlock, FieldBlock, ListBlock,
                                  PageChooserBlock, RawHTMLBlock, RichTextBlock,
@@ -1647,7 +1647,7 @@ class ContactLandingPageRelatedLinkButton(Orderable, RelatedLink):
 
 
 @method_decorator(never_cache, name='serve')
-class Contact(AbstractEmailForm):
+class Contact(WagtailCaptchaEmailForm):
     intro = RichTextField(blank=True)
     main_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
                                    blank=True, on_delete=models.SET_NULL,
