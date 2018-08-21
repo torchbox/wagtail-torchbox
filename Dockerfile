@@ -22,7 +22,6 @@ RUN apt-get update -y && \
 # Install Gunicorn.
 RUN pip install "gunicorn>=19.8,<19.9"
 
-
 # Install front-end dependencies.
 WORKDIR /app/tbx/core/static_src
 COPY tbx/core/static_src/package.json .
@@ -35,15 +34,16 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Copy application code.
-COPY . .
-
+# Copy front-end code
 WORKDIR /app/tbx/core/static_src
+COPY tbx/core/static_src .
 
 # Compile static files
 RUN npm run build:prod
 
 WORKDIR /app
+
+COPY . .
 
 # Don't use the root user as it's an anti-pattern and Heroku does not run
 # containers as root either.
