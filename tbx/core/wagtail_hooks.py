@@ -1,9 +1,5 @@
-from django.conf import settings
-from django.utils.html import format_html
-
 from wagtail.contrib.modeladmin.options import (ModelAdmin, ModelAdminGroup,
                                                 modeladmin_register)
-from wagtail.core import hooks
 
 from .models import GoogleAdGrantApplication, SignUpFormPageResponse
 
