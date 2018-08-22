@@ -36,6 +36,7 @@ if 'ALLOWED_HOSTS' in env:
 # Application definition
 
 INSTALLED_APPS = [
+    'scout_apm.django',
     'tbx.core.apps.TorchboxCoreAppConfig',
 
     'wagtail.contrib.search_promotions',
