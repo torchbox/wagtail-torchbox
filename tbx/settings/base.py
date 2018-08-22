@@ -334,6 +334,9 @@ WAGTAIL_SITE_NAME = "Torchbox"
 
 FAVICON_STATIC_PATH = 'images/favicon.ico'
 
+if 'PRIMARY_HOST' in env:
+    BASE_URL = 'https://{}'.format(env['PRIMARY_HOST'])
+
 
 # Override the Image class used by wagtailimages with a custom one
 WAGTAILIMAGES_IMAGE_MODEL = 'torchbox.TorchboxImage'
