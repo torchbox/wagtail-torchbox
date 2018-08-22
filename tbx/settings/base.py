@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'raven.contrib.django.raven_compat',
     'captcha',
     'wagtailcaptcha',
+    'wagtailfontawesome',
 
     'django.contrib.humanize',
     'django.contrib.admin',
