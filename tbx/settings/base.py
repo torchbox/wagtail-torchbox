@@ -208,13 +208,32 @@ if 'AWS_STORAGE_BUCKET_NAME' in env:
     AWS_QUERYSTRING_AUTH = False
     AWS_S3_FILE_OVERWRITE = False
 
-    if 'AWS_S3_CUSTOM_DOMAIN' in env:
-        AWS_S3_CUSTOM_DOMAIN = env['AWS_S3_CUSTOM_DOMAIN']
+    # You need this to enable signing files. Some old regions may have use a
+    # different version than v4.
+    AWS_S3_SIGNATURE_VERSION = env.get('AWS_S3_SIGNATURE_VERSION', 's3v4')
+
+    # Set individual files to be private and only allow access to them via
+    # bucket policy.
+    AWS_DEFAULT_ACL = 'private'
 
     if 'AWS_S3_SECURE_URLS' in env:
         AWS_S3_SECURE_URLS = (
             env['AWS_S3_SECURE_URLS'].strip().lower() == 'true'
         )
+
+    if 'AWS_S3_ENDPOINT_URL' in env:
+        # This setting is required for signing.
+        # Please use endpoint from
+        # https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
+        # e.g. "https://s3.eu-west-2.amazonaws.com"
+        AWS_S3_ENDPOINT_URL = env['AWS_S3_ENDPOINT_URL']
+
+    if 'AWS_S3_REGION_NAME' in env:
+        # This setting is required for signing.
+        AWS_S3_REGION_NAME = env['AWS_S3_REGION_NAME']
+
+    if 'AWS_S3_CUSTOM_DOMAIN' in env:
+        AWS_S3_CUSTOM_DOMAIN = env['AWS_S3_CUSTOM_DOMAIN']
 
     INSTALLED_APPS += (
         'storages',
