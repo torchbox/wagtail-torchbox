@@ -51,8 +51,8 @@ def serve_document_from_s3(document, request):
     document_served.send(sender=get_document_model(), instance=document,
                          request=request)
 
-    # Generate signed URL so it can have private ACL on S3.
-    file_url = S3Boto3StorageWithQuerystring().url(document.file.name)
+    # Get direct S3 link.
+    file_url = document.file.url
 
     # Generate redirect response and add never_cache headers.
     response = redirect(file_url)
