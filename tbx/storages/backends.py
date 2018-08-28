@@ -9,3 +9,4 @@ class S3Boto3StorageWithQuerystring(S3Boto3Storage):
     """
     querystring_auth = True
     querystring_expire = 150
+    custom_domain = None
