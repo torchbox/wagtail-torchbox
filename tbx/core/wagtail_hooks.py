@@ -8,8 +8,6 @@ from wagtail.contrib.modeladmin.options import (ModelAdmin, ModelAdminGroup,
 from wagtail.core import hooks
 from wagtail.documents.models import document_served, get_document_model
 
-from tbx.storages.backends import S3Boto3StorageWithQuerystring
-
 from .models import GoogleAdGrantApplication, SignUpFormPageResponse
 
 
