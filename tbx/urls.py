@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
 from wagtail.admin import urls as wagtailadmin_urls
@@ -17,8 +18,9 @@ from tbx.core.views import favicon, robots
 private_urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
     url(r'^admin/', include(wagtailadmin_urls)),
+] + decorate_urlpatterns([
     url(r'^documents/', include(wagtaildocs_urls)),
-]
+], never_cache)
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap),
