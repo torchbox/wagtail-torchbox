@@ -27,6 +27,7 @@ vagrant ssh
 # then, within the SSH session:
 
 dj createcachetable
+dj migrate
 dj createsuperuser
 djrun
 ```
