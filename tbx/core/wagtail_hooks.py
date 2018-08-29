@@ -1,38 +1,14 @@
-from django.utils.html import format_html_join, format_html
-from django.conf import settings
+from django.core.files.storage import get_storage_class
+from django.shortcuts import redirect
+from django.utils.cache import add_never_cache_headers
 
-from wagtail.wagtailcore import hooks
-from wagtail.wagtailcore.whitelist import allow_without_attributes
-
-from wagtailmodeladmin.options import ModelAdminGroup, ModelAdmin, wagtailmodeladmin_register
+from storages.backends.s3boto3 import S3Boto3Storage
+from wagtail.contrib.modeladmin.options import (ModelAdmin, ModelAdminGroup,
+                                                modeladmin_register)
+from wagtail.core import hooks
+from wagtail.documents.models import document_served, get_document_model
 
 from .models import GoogleAdGrantApplication, SignUpFormPageResponse
-
-
-@hooks.register('construct_whitelister_element_rules')
-def whitelister_element_rules():
-    return {
-        'blockquote': allow_without_attributes,
-        'span': allow_without_attributes
-    }
-
-
-@hooks.register('insert_editor_js')
-def editor_js():
-    js_files = [
-        'torchbox/js/hallo-plugins/span.js'
-    ]
-    js_includes = format_html_join(
-        '\n', '<script src="{0}{1}"></script>',
-        ((settings.STATIC_URL, filename) for filename in js_files)
-    )
-    return js_includes + format_html(
-        """
-        <script>
-          registerHalloPlugin('spanbutton');
-        </script>
-        """
-    )
 
 
 class GoogleAdGrantApplicationModelAdmin(ModelAdmin):
@@ -55,16 +31,29 @@ class SignUpFormPageResponseModelAdmin(ModelAdmin):
 
 class SubmissionsModelAdminGroup(ModelAdminGroup):
     menu_label = 'Form Submissions'
-    menu_icon = 'folder-open-inverse' # change as required
+    menu_icon = 'folder-open-inverse'  # change as required
     menu_order = 600
     items = (SignUpFormPageResponseModelAdmin, GoogleAdGrantApplicationModelAdmin)
 
-wagtailmodeladmin_register(SubmissionsModelAdminGroup)
+
+modeladmin_register(SubmissionsModelAdminGroup)
 
 
-@hooks.register('insert_global_admin_css')
-def import_fontawesome_stylesheet():
-    elem = '<link rel="stylesheet" href="{}torchbox/vendor/fontawesome/css/font-awesome.min.css">'.format(
-        settings.STATIC_URL
-    )
-    return format_html(elem)
+@hooks.register('before_serve_document', order=100)
+def serve_document_from_s3(document, request):
+    # Skip this hook if not using django-storages boto3 backend.
+    if not issubclass(get_storage_class(), S3Boto3Storage):
+        return
+
+    # Send document_served signal.
+    document_served.send(sender=get_document_model(), instance=document,
+                         request=request)
+
+    # Get direct S3 link.
+    file_url = document.file.url
+
+    # Generate redirect response and add never_cache headers.
+    response = redirect(file_url)
+    del response['Cache-control']
+    add_never_cache_headers(response)
+    return response

@@ -1,8 +1,9 @@
 from django import template
 from django.conf import settings
 
-from tbx.core.models import *
-from tbx.core.utils import *
+from tbx.core.models import (Advert, BlogPage, JobIndexPage, MainMenu,
+                             PersonPage, WorkPage)
+from tbx.core.utils import is_in_play, play_filter, roundrobin
 
 register = template.Library()
 
@@ -172,7 +173,7 @@ def work_and_blog_listing(context, count=10, marketing=False):
         blog_posts = blog_posts.exclude(marketing_only=True)
         works = works.exclude(marketing_only=True)
         featured_items = []
-    
+
     # If (remaining) count is odd, blog_count = work_count + 1
     blog_count = (count + 1) / 2
     work_count = count / 2

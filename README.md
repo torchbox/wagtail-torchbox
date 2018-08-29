@@ -1,7 +1,7 @@
 Torchbox.com on Wagtail
 =======================
 
-[![Build Status](http://ci.torchbox.com/api/badges/torchbox/wagtail-torchbox/status.svg)](http://ci.torchbox.com/torchbox/wagtail-torchbox)
+[![Build Status](https://travis-ci.org/torchbox/wagtail-torchbox.svg?branch=master)](https://travis-ci.org/torchbox/wagtail-torchbox)
 
 This project was originally a clone of [wagtaildemo](http://github.com/torchbox/wagtaildemo), customised for the Torchbox site.
 
@@ -17,8 +17,8 @@ We recommend running Wagtail in a virtual machine using Vagrant, to ensure that 
 ### Installation
 
 Run the following commands:
-	
-```
+
+```bash
 git clone [the url you copied above]
 cd wagtail-torchbox
 vagrant up
@@ -28,7 +28,19 @@ vagrant ssh
 ./manage.py runserver 0.0.0.0:8000
 ```
 
-This will make the app accessible on the host machine as http://localhost:8000/ - you can access the Wagtail admin interface at http://localhost:8000/admin/. The codebase is located on the host
+To build static files you will additionally need to run the following commands:
+
+```bash
+npm install
+npm run build:prod
+```
+
+**Note:** You can run it within the VM where node is pre-installed, but if you are using Mac OS, you will likely have issues with performance of these commands. It is adviced to Mac OS users to have node on the host machine.
+
+To install node on the host machine we recommend using [`nvm`](https://github.com/creationix/nvm). Once you have `nvm` installed simply run `nvm install` to install and activate the version of node required for the project. Refer to the nvm docs for more details about available commands.
+
+
+After the installation the app will accessible on the host machine as http://localhost:8000/ - you can access the Wagtail admin interface at http://localhost:8000/admin/. The codebase is located on the host
 machine, exported to the VM as a shared folder; code editing and Git operations will generally be done on the host.
 
 To make code changes:
