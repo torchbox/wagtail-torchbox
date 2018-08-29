@@ -12,3 +12,5 @@
 .idea/
 node_modules*
 /None
+*.log
+/tbx/core/static_compiled/
