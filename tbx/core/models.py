@@ -561,7 +561,7 @@ class CaseStudyBlock(StructBlock):
 
 class HighlightBlock(StructBlock):
     title = CharBlock(required=True)
-    intro = TextBlock(required=False)
+    intro = RichTextBlock(required=False)
     highlights = ListBlock(TextBlock())
 
     class Meta:
@@ -575,7 +575,7 @@ class StepByStepBlock(StructBlock):
         ('subtitle', CharBlock(required=False)),
         ('title', CharBlock(required=True)),
         ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
-        ('description', TextBlock(required=True))
+        ('description', RichTextBlock(required=True))
     ]))
 
     class Meta:
@@ -584,7 +584,7 @@ class StepByStepBlock(StructBlock):
 
 class PeopleBlock(StructBlock):
     title = CharBlock(required=True)
-    intro = TextBlock(required=True)
+    intro = RichTextBlock(required=True)
     people = ListBlock(PageChooserBlock())
 
     class Meta:
