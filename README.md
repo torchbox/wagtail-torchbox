@@ -26,10 +26,10 @@ vagrant ssh
 
 # then, within the SSH session:
 
-dj createcachetable
-dj migrate
-dj createsuperuser
-djrun
+./manage.py createcachetable
+./manage.py migrate
+./manage.py createsuperuser
+./manage.py runserver 0.0.0.0:8000
 ```
 
 To build static files you will additionally need to run the following commands:
