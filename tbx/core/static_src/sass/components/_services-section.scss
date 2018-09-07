@@ -22,9 +22,15 @@
         // been asked to remove in #154
         //max-width: 90%;
         margin-top: 40px;
-        font-size: 22px;
-        font-weight: 300;
         color: #222;
+
+        .rich-text {
+            p {
+                max-width: 100%;
+                font-size: 22px;
+                font-weight: 300;
+            }
+        }
     }
 
     &--white {
