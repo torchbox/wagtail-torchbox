@@ -91,35 +91,48 @@
         }
     }
 
-        &__subtitle {
-            font-size: 32px;
-            font-weight: 700;
-            color: $services-orange;
-        }
+    &__subtitle {
+        font-size: 32px;
+        font-weight: 700;
+        color: $services-orange;
+    }
 
-        &__title {
-            font-size: 30px;
-            font-weight: 500;
-            color: #222;
-            margin-top: -16px;
-            margin-bottom: -3px;
-        }
+    &__title {
+        font-size: 30px;
+        font-weight: 500;
+        color: #222;
+        margin-top: -16px;
+        margin-bottom: -3px;
+    }
 
-        &__description {
-            .rich-text {
-                p {
-                    max-width: 100%;
-                    font-size: 18px;
-                    font-weight: 400;
-                    color: #555;
-                }
+    &__description {
+        font-size: 18px;
+        font-weight: 400;
+        color: #555;
+
+        .rich-text {
+            margin-bottom: 25px;
+
+            // duplicated styles catch editor quirk where unedited textfields are rendered without rich text wrapper or p tags
+            font-size: 18px;
+            font-weight: 400;
+            color: #555;
+
+            p {
+                max-width: 100%;
+
+                // duplicated styles as above
+                font-size: 18px;
+                font-weight: 400;
+                color: #555;
             }
-
-            @media #{$tablet} {
-                max-width: 85%;
-            }
-
         }
+
+        @media #{$tablet} {
+            max-width: 85%;
+        }
+
+    }
 }
 
 .services-team-member {

@@ -21,12 +21,22 @@
     &__paragraph {
         // been asked to remove in #154
         //max-width: 90%;
+        font-size: 22px;
+        font-weight: 300;
         margin-top: 40px;
         color: #222;
 
         .rich-text {
+            margin-bottom: 25px;
+
+            // duplicated styles catch editor quirk where unedited textfields are rendered without .rich-text wrapper or p tags
+            font-size: 22px;
+            font-weight: 300;
+
             p {
                 max-width: 100%;
+
+                // duplicated styles as above
                 font-size: 22px;
                 font-weight: 300;
             }
