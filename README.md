@@ -23,7 +23,11 @@ git clone [the url you copied above]
 cd wagtail-torchbox
 vagrant up
 vagrant ssh
+
 # then, within the SSH session:
+
+./manage.py createcachetable
+./manage.py migrate
 ./manage.py createsuperuser
 ./manage.py runserver 0.0.0.0:8000
 ```
@@ -31,6 +35,7 @@ vagrant ssh
 To build static files you will additionally need to run the following commands:
 
 ```bash
+cd /vagrant/tbx/core/static_src/
 npm install
 npm run build:prod
 ```
@@ -53,3 +58,15 @@ To make code changes:
  - Click 'create pull request.'
 
 You will probably need to first merge to the staging branch in order to stage your changes and show them to the client. You still follow the process above, but add a comment to the pull request asking to manually merge to staging and deploy to the staging site. When you are ready to deploy, add another comment requesting that the pull request is merged to master and deployed.
+
+### Download production data and media to local VM
+
+Within the vagrant box:
+
+```
+heroku login
+fab pull-production-data
+fab pull-production-media
+```
+
+You may need to check on Heroku dashboard (https://dashboard.heroku.com) if you have the permission to access the `torchbox-production` app.
