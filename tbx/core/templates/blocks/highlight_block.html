@@ -1,7 +1,7 @@
 <div class="services-section services-section--white">
     <div class="services-wrapper">
         <h2 class="services-section__heading">{{ value.title }}</h2>
-        {% if value.intro %}<p class="services-section__paragraph">{{ value.intro }}</p>{% endif %}
+        {% if value.intro %}<div class="services-section__paragraph">{{ value.intro }}</div>{% endif %}
         <ul class="services-reasons-list">
             {% for highlight in value.highlights %}
             <li class="services-reasons-list__item">
