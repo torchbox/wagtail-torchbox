@@ -19,13 +19,13 @@
         <meta name="twitter:creator" content="@torchbox">
         <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox">
         <meta name="twitter:description" content="{% if self.intro %}{{ self.intro|striptags }}{% elif self.search_description %}{{ self.search_description }}{% endif %}">
-        <meta name="twitter:image:src" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-400 as img %}{{ img.url }}{% else %}{% static "images/about-placeholder6.jpg" %}{% endif %}" />
+        <meta name="twitter:image:src" content="{% if self.feed_image %}{% image self.feed_image width-400 as img %}{{ img.url }}{% else %}{% static "images/about-placeholder6.jpg" %}{% endif %}" />
 
         <meta property="fb:app_id" content="995117193836517" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://{{ request.site.hostname }}{{ self.url }}" />
+        <meta property="og:url" content="https://{{ request.site.hostname }}{{ self.url }}" />
         <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox" />
-        <meta property="og:image" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% else %}{% static "images/about-placeholder6.jpg" %}{% endif %}" />
+        <meta property="og:image" content="{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% else %}{% static "images/about-placeholder6.jpg" %}{% endif %}" />
         <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
         <meta property="og:site_name" content="Torchbox" />
 
