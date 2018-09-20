@@ -8,6 +8,7 @@
   
   @media #{$tablet} {
     height: calc(100vh - 84px);
+    min-height: 620px;
     margin: 0 0 50px 0;
   }
 
