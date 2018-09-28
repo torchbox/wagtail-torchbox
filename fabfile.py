@@ -206,7 +206,7 @@ def open_heroku_shell(c, app_instance, shell_command='bash'):
     local('heroku run --app {app} {command}'.format(
         app=app_instance,
         command=shell_command,
-    ))
+    ), pty=True)
 
 
 #######
@@ -306,7 +306,7 @@ def deploy_to_dokku(c, dokku_remote, app_instance, local_branch='master',
 
 def open_dokku_shell(c, dokku_remote, app_instance):
     local('ssh -t {remote} enter {app}'.format(remote=dokku_remote,
-                                               app=app_instance))
+                                               app=app_instance), pty=True)
 
 
 def clean_dokku_database(c, dokku_remote, db_instance):
