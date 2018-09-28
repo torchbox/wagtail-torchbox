@@ -1045,6 +1045,7 @@ class WorkPage(Page):
     )
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
+        help_text='Image used on listings and social media.',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
