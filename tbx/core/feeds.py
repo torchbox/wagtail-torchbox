@@ -1,4 +1,5 @@
 from datetime import datetime, time
+from urllib.parse import urljoin, urlparse
 
 from django.conf import settings
 from django.contrib.syndication.views import Feed
@@ -60,13 +61,16 @@ class PlanetDrupalFeed(Feed):
 
     def item_enclosure_url(self, item):
         if item.feed_image:
-            return settings.BASE_URL + item.feed_image.file.url
+            url = item.feed_image.get_rendition('original').url
+            if not urlparse(url).netloc:
+                return urljoin(settings.BASE_URL, url)
+            return url
 
     def item_enclosure_mime_type(self, item):
         if item.feed_image:
-            image_format = imghdr.what(item.feed_image.file)
+            image_format = imghdr.what(item.feed_image.get_rendition('original').file)
             return 'image/{}'.format(image_format)
 
     def item_enclosure_length(self, item):
         if item.feed_image:
-            return item.feed_image.file.size
+            return item.feed_image.get_rendition('original').file.size
