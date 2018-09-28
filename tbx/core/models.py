@@ -1043,6 +1043,13 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    feed_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
     streamfield = StreamField(StoryBlock())
     visit_the_site = models.URLField(blank=True)
@@ -1083,6 +1090,7 @@ class WorkPage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        ImageChooserPanel('feed_image'),
         FieldPanel('show_in_play_menu'),
         FieldPanel('marketing_only'),
     ]
