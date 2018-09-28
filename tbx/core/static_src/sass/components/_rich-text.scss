@@ -137,6 +137,15 @@
       z-index: 1;
     }
   }
+  .align-left {
+    position: relative;
+    @media #{$tablet} {
+      left: -90px;
+      margin-left: -150px;
+      float: left;
+      z-index: 1;
+    }
+  }
   .img-holder {
     margin: 30px 0 30px;
     img {
