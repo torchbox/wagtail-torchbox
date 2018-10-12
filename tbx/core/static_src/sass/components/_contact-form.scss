@@ -9,14 +9,14 @@ $gutter: 15px;
 		margin-left: -15px;
 	}
 }
-	
+
 	.contact-form__group {
 		border: 0;
 		margin: 0;
 		padding: 0;
 
 		.errorlist {
-			color: $orange-lt;
+			color: $coral-lt;
 			font-weight: 600;
 			line-height: 1;
 			margin-top: 15px;
@@ -45,7 +45,7 @@ $gutter: 15px;
 			textarea {
 				width: 100%;
 				padding: 10px 15px;
-				border: 1px solid rgba($orange, 0.7);
+				border: 1px solid rgba($coral, 0.7);
 				border-radius: $border-radius;
 				font-family: $primaryFont;
 				font-size: 18px;
@@ -67,7 +67,7 @@ $gutter: 15px;
 
 		// Special styles for half-width inputs
 		// List the hooks for elements that require it
-		$inputs: 
+		$inputs:
 			id_email,
 		    id_name,
 		    id_company,
@@ -95,7 +95,7 @@ $gutter: 15px;
 				    position: absolute;
 				    right: -5px;
 				    font-size: 18px;
-				    color: $orange;
+				    color: $coral;
 				}
 			}
 
@@ -110,10 +110,10 @@ $gutter: 15px;
 			.contact-form__submit {
 				display: inline-block;
 				width: auto;
-				border: 1px solid $orange;
+				border: 1px solid $coral;
 				padding: 15px 50px;
 				margin: 30px auto 0;
-				background: $orange;
+				background: $coral;
 				color: white;
 
 				@media #{$tablet} {

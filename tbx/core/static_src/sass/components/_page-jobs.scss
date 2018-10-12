@@ -63,11 +63,11 @@
     }
 
     .button {
-        background-color: #f85a40;
+        background-color: $coral;
         display: inline-block;
         padding: 0.8em 1em;
         color: #fff;
-        border: 1px solid #f85a40;
+        border: 1px solid $coral;
         border-radius: 2px;
         text-align: center;
         font-size: 0.9em;
@@ -202,7 +202,7 @@
             transition: all 0.2s ease;
 
             &:hover {
-                border-color: #f85a40;
+                border-color: $coral;
             }
         }
     }
@@ -304,7 +304,7 @@
 
         a {
             font-size: 1.25em;
-            color: #f85a40;
+            color: $coral;
         }
     }
 }
@@ -489,7 +489,7 @@ ul.image-tiles {
 }
 
 .jobs-listing .job-link {
-    color: #f85a40;
+    color: $coral;
     padding: 0.875em 0.875em 2.625em 0.875em;
     min-height: 5.25em;
     font-size: 1.75em;
@@ -659,14 +659,14 @@ ul.image-tiles {
         position: absolute;
         overflow: hidden;
         text-indent: -10em;
-        background-color: #f85a40;
+        background-color: $coral;
         height: 3.25em;
         width: 3.25em;
         border: 0;
         overflow: hidden;
 
         &:hover {
-            
+
         }
     }
 
@@ -684,13 +684,13 @@ ul.image-tiles {
         top: auto;
         right: 2em;
         background-size: 70%;
-        background-color: #f85a40;
+        background-color: $coral;
         text-indent: -10em;
     }
 }
 
 .reasons {
-    //background-color: $orange;
+    //background-color: $coral;
     padding: 60px 0 0;
     h2 {
         margin: 0 0 40px;

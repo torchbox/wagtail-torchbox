@@ -5,7 +5,7 @@
   background-size: cover;
   margin: 0 0 30px 0;
   overflow-x: hidden;
-  
+
   @media #{$tablet} {
     height: calc(100vh - 84px);
     min-height: 620px;
@@ -13,25 +13,25 @@
   }
 
   //ios7 doesn't like vh and means the
-  // hero fills masses of space. So for 
+  // hero fills masses of space. So for
   // mobile and tablet (with contained media queries)
   // set some max heights.
-  @media only screen 
-  and (min-device-width: 320px) 
+  @media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (orientation: portrait) {
     max-height: 400px;
   }
 
-  @media only screen 
-  and (min-device-width: 320px) 
+  @media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (orientation: landscape) {
     max-height: 250px;
   }
 
-  @media only screen 
-  and (min-device-width: 569px) 
+  @media only screen
+  and (min-device-width: 569px)
   and (max-device-width: 1024px) {
     max-height: 600px;
   }
@@ -51,7 +51,7 @@
     line-height: 1;
     z-index: 1;
     max-width: 100%;
-    background-color: $orange;
+    background-color: $coral;
     display: inline;
     // &:after {
     //   background: url("/static/images/dot-pattern.png") no-repeat center;
@@ -133,7 +133,7 @@
     font-size: 14px;
     letter-spacing: 1px;
     margin: 15px 0;
-    color: $orange-lt;
+    color: $coral-lt;
     @media #{$tablet} {
       font-size: 18px;
     }
@@ -141,7 +141,7 @@
   // clip through
   &.testclass-1 {
      h1 {
-      color: $orange;
+      color: $coral;
      }
      .client {
       color: $dark;

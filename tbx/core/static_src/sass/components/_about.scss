@@ -98,7 +98,7 @@
 //   // clip through
 //   &.testclass-1 {
 //      h2 {
-//       color: $orange;
+//       color: $coral;
 //      }
 //   }
 //   &.stop {
@@ -221,15 +221,15 @@
     text-align: center;
     margin: 30px auto 0;
     .btn {
-      border: 1px solid $orange;
+      border: 1px solid $coral;
       padding: 15px 50px;
       margin: 0 auto 10px;
-      background: $orange;
+      background: $coral;
       color: white;
       font-size: 24px;
       &:hover {
-        border: 1px solid $orange;
-        background: $orange;
+        border: 1px solid $coral;
+        background: $coral;
       }
     }
   }

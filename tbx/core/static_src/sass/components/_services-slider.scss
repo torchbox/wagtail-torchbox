@@ -16,7 +16,7 @@
         display: inline-block;
         vertical-align: top;
         width: 100%;
-        
+
         @media #{$tablet} {
             width: calc(100% + 26px);
             margin-left: -13px;
@@ -38,7 +38,7 @@
             }
         }
     }
-    
+
     // Apologies.
     // Backend dev is reusing components from elsewhere on the
     // site, so due to inability to change markup at this time,
@@ -59,7 +59,7 @@
                 display: inline-block;
                 vertical-align: top;
 
-                @media #{$tablet} { 
+                @media #{$tablet} {
                     width: 330px;
                 }
             }
@@ -71,7 +71,7 @@
                 width: 100%;
                 padding: 10px 30px 30px;
 
-                @media #{$tablet} { 
+                @media #{$tablet} {
                     width: calc(100% - 330px);
                     padding: 30px 60px 0;
                 }
@@ -89,7 +89,7 @@
                     font-size: 32px;
                     font-weight: 500;
 
-                    @media #{$tablet} { 
+                    @media #{$tablet} {
                         font-size: 28px;
                     }
 
@@ -127,7 +127,7 @@
     }
 
     .owl-stage {
-        @media (min-width: 1100px) { 
+        @media (min-width: 1100px) {
             left: -100px;
         }
     }
@@ -161,7 +161,7 @@
         width: 50px;
         height: 120px;
         top: calc((330px / 2) - (120px / 2)); // height of carousel/2 - height of button/2
-        background-color: rgba($orange, 0.8);
+        background-color: rgba($coral, 0.8);
     }
 
     .owl-prev {

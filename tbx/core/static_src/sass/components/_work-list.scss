@@ -146,7 +146,7 @@
   }
   h4 {
     font-size: 15px;
-    color: $orange-lt;
+    color: $coral-lt;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -186,7 +186,7 @@
 
   li {
     overflow: hidden;
-    
+
     @media #{$tablet} {
       width: 50%;
       margin-bottom: 30px;

@@ -198,13 +198,13 @@
           right: 0;
           width: 0;
           height: 1px;
-          background: $orange;
+          background: $coral;
           transition: all 0.25s ease 0s;
         }
         &:hover,
         &.active {
           cursor: pointer;
-          color: $orange;
+          color: $coral;
         }
         &:hover:after {
           width: 100%;

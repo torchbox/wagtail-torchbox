@@ -1,5 +1,7 @@
 // Colours
 $blue: #23b0b0;
+$coral: #fd5765;
+$coral-lt: lighten($coral, 10%);
 $orange: #fd5938;
 $orange-lt: #fc8977;
 $dark: #2b3033;
@@ -18,7 +20,7 @@ $container-width: 800px;
 
 // Services inner
 $services-blue: $blue;
-$services-orange: $orange;
+$services-orange: $coral;
 $services-dark-grey: #2b2b2b;
 $services-wrapper-width: 1450px;
 $services-slider-height: 400px;
