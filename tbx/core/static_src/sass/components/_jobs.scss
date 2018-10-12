@@ -23,15 +23,6 @@
   .container {
     position: relative;
     z-index: 1;
-
-    @media #{$tablet} {
-
-    }
-
-    @media #{$tablet-large} {
-
-    }
-
   }
   a.listing {
     display: block;
@@ -49,9 +40,6 @@
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-    @media #{$tablet} {
-      //display: flex;
-    }
   }
   .jobs {
     width: 100%;
@@ -63,7 +51,6 @@
       color: #fff;
       opacity: 1;
       font-size: 16px;
-      //max-width: 900px;
       a {
         color: #9ee5e4;
       }
@@ -101,7 +88,6 @@
       }
       &:hover {
         @media #{$tablet-large} {
-          //background: $coral-lt;
           h3 {
             transform: translate3d(0,-30px,0);
             transition-delay: 0s;

@@ -53,37 +53,14 @@
     max-width: 100%;
     background-color: $coral;
     display: inline;
-    // &:after {
-    //   background: url("/static/images/dot-pattern.png") no-repeat center;
-    //   background-size: cover;
-    //   mix-blend-mode: soft-light;
-    //   opacity: 0.3;
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100%;
-    //   content: '';
-    //   height: 100%;
-    // }
-    // &:before {
-    //   content: '';
-    //   position: absolute;
-    //   bottom: -35px;
-    //   left: calc(50% - 80px);
-    //   width: 160px;
-    //   height: 50px;
-    //   background: url('/static/images/down-chevron.svg') center no-repeat;
-    // }
 
     span {
       font-weight: 400;
-      //display: block;
     }
 
     @media #{$tablet} {
       font-weight: 100;
       font-size: 55px;
-      //top: 200px;
       line-height: 1;
       max-width: 65%;
     }
@@ -103,7 +80,6 @@
   overflow: visible;
   z-index: 6;
   @media #{$tablet} {
-    //position: fixed;
     bottom: 30px;
   }
   .container {
