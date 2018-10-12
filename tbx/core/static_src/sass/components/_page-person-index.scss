@@ -4,7 +4,7 @@
     font-size: 50px;
     line-height: 1;
     font-weight: 200;
-    color: #fd5938;
+    color: $coral;
     padding: 30px 0 0;
     @media #{$tablet} {
       padding: 140px 0 10px 0;
@@ -17,7 +17,7 @@
     font-size: 30px;
     line-height: 1;
     font-weight: 200;
-    color: #fd5938;
+    color: $coral;
     padding: 30px 0 0;
     @media #{$tablet} {
       padding: 30px 0 10px 0;
@@ -74,7 +74,7 @@
       padding: 0 5px;
     }
   }
-  
+
   .img-holder {
     position: relative;
     display: block;
@@ -106,7 +106,7 @@
   }
 }
 
-.people-list--text {  
+.people-list--text {
   .img-holder {
     display: none;
   }
