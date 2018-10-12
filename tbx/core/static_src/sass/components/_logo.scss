@@ -6,7 +6,7 @@
     	height: 40px;
     	width: 165px;
       fill: #2b2b2b;
-    	
+
     	@media #{$tablet} {
     		margin-top: 5px;
     	}
@@ -14,7 +14,7 @@
 
   &:hover {
     svg {
-      fill: $orange;
+      fill: $coral;
     }
   }
 

@@ -311,7 +311,7 @@
 
 .page-signupformpage blockquote {
     position: relative;
-    border: 1px solid #fd5938;
+    border: 1px solid $coral;
     padding: 10px 25px;
     margin-bottom: 20px;
 }
@@ -324,7 +324,7 @@
     right: -7px;
     bottom: -7px;
     fill: #fff;
-    stroke: #fd5938;
+    stroke: $coral;
     stroke-width: .5px;
     width: 30px;
 }
@@ -389,7 +389,7 @@
 }
 
 .page-signupformpage .cta button .rule {
-    background: #fd5938;
+    background: $coral;
 }
 
 .page-signupformpage .cta ::-webkit-input-placeholder {

@@ -3,7 +3,7 @@ html {
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
 }
 
 body {
@@ -94,8 +94,8 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-  box-shadow: 0 0 5px $orange;
-  border: 1px solid $orange;
+  box-shadow: 0 0 5px $coral;
+  border: 1px solid $coral;
 }
 
 input[type="checkbox"], input[type="radio"] {

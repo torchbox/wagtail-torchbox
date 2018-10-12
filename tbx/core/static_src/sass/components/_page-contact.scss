@@ -5,7 +5,7 @@
     font-size: 30px;
     line-height: 1;
     font-weight: 200;
-    color: #fd5938;
+    color: $coral;
     padding: 60px 0 0;
     @media #{$tablet} {
       padding: 70px 0 60px 0;
@@ -133,7 +133,7 @@
   svg {
     width: 50px;
     max-height: 43px;
-    fill: $orange;
+    fill: $coral;
   }
 }
 

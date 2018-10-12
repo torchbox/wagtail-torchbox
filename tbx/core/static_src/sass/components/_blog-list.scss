@@ -46,7 +46,7 @@
         }
     }
     &.orange {
-        background: $orange;
+        background: $coral;
         .name {
             color: white;
         }
@@ -66,14 +66,14 @@
           opacity: 1;
         }
         &:before {
-          background: $orange;
+          background: $coral;
         }
       }
       h3, .date, label {
         color: $dark;
       }
       .name {
-        color: $orange;
+        color: $coral;
       }
     }
     .content {
@@ -148,7 +148,7 @@
     @media #{$tablet-large} {
       height: 495px;
     }
-    
+
     &:after {
       content: '';
       position: absolute;
@@ -223,7 +223,7 @@
     }
   }
   .name {
-    color: $orange;
+    color: $coral;
     font-size: 15px;
   }
   .date {

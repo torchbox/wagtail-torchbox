@@ -18,7 +18,7 @@
   }
   li {
     font-size: 0;
-    
+
     @media #{$tablet} {
       width: 33.3%;
     }
@@ -37,7 +37,7 @@
       max-width: 120px;
       height: 120px;
       margin-bottom: 20px;
-      fill: $orange;
+      fill: $coral;
     }
 
     h3 {

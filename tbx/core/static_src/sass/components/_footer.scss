@@ -169,14 +169,14 @@ footer {
         }
       }
       button {
-        background: $orange;
+        background: $coral;
         color: white;
         padding: 10px 20px;
         position: relative;
         left: -5px;
         float: left;
         border-radius: 0 $border-radius $border-radius 0;
-        border: 1px solid $orange;
+        border: 1px solid $coral;
         font-size: 16px;
       }
     }
@@ -262,7 +262,7 @@ footer {
       font-weight: 400;
     }
     @media #{$tablet} {
-      
+
     }
   }
   ul {
@@ -347,15 +347,15 @@ footer {
     &:hover {
       color: white;
       transform: scale(1.05);
-      background: $orange;
+      background: $coral;
       footer & {
-        color: $orange;
+        color: $coral;
         background: none;
       }
       svg {
         fill: white;
         footer & {
-          fill: $orange;
+          fill: $coral;
         }
       }
     }

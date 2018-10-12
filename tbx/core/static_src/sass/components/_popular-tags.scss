@@ -34,12 +34,12 @@
     &:hover {
       border-top: 1px solid rgba(black, 0.1);
       border-bottom: 1px solid rgba(black, 0.1);
-      color: $orange;
+      color: $coral;
     }
     // active
     &.filtering {
-      border-color: $orange;
-      background: $orange;
+      border-color: $coral;
+      background: $coral;
       color: white;
     }
     // clear all
@@ -49,8 +49,8 @@
       color: white;
 
       &:hover {
-        border-color: darken($orange, 5%);
-        background: darken($orange, 5%);
+        border-color: darken($coral, 5%);
+        background: darken($coral, 5%);
       }
     }
   }

@@ -4,7 +4,7 @@
     font-size: 45px;
     line-height: 1;
     font-weight: 200;
-    color: $orange;
+    color: $coral;
     padding: 30px 0 0;
     @media #{$tablet} {
       padding: 100px 0 0;
@@ -51,7 +51,7 @@
     }
     &.orange {
       @extend .blue;
-      background: $orange;
+      background: $coral;
     }
     &.white {
       @extend .blue;
@@ -60,7 +60,7 @@
         opacity: 1;
       }
       .content:after {
-        background: $orange
+        background: $coral
       }
       h2 {
         color: $dark;

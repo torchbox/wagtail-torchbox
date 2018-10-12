@@ -91,7 +91,7 @@
 
     &__button {
         border: none;
-        background: $orange;
+        background: $coral;
         margin-top: 12px;
         display: inline-block;
         font-size: 15px;
@@ -118,7 +118,7 @@
         }
 
         .mail {
-            
+
         }
     }
 
@@ -221,7 +221,7 @@
     padding: 0 20px;
     text-align: center;
 
-    @media #{$tablet} { 
+    @media #{$tablet} {
         padding: 0;
         text-align: left;
     }
@@ -251,7 +251,7 @@
 
         button {
             border: none;
-            background: $orange;
+            background: $coral;
             margin-top: 12px;
             display: inline-block;
             font-size: 15px;
