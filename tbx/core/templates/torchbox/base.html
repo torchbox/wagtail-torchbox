@@ -1,4 +1,4 @@
-{% load torchbox_tags cache staticfiles wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}<!DOCTYPE html>
+{% load torchbox_tags cache staticfiles wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailreview_tags wagtailsettings_tags %}<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
@@ -176,6 +176,8 @@
         <!--<script src="{% static 'vendor/match-height.js' %}" type="text/javascript"></script>-->
         <script src="{% static 'vendor/owl.carousel.min.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>
+
+        {% wagtailreview %}
 
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}
     </body>
