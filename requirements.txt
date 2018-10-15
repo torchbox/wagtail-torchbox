@@ -10,6 +10,7 @@ wagtail-django-recaptcha==1.0
 django-basic-auth-ip-whitelist==0.2
 boto3==1.7.82
 django-storages==1.6.6
+wagtail-review==0.1
 
 # Development requirements
 django-debug-toolbar==1.2.2

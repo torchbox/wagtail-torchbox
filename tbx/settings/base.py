@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'captcha',
     'wagtailcaptcha',
     'wagtailfontawesome',
+    'wagtail_review',
 
     'django.contrib.humanize',
     'django.contrib.admin',
