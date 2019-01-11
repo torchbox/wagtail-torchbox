@@ -5,6 +5,7 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
 from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.images.views.serve import ServeView
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
 from wagtail.core.models import Page
@@ -15,6 +16,7 @@ from wagtail_review import urls as wagtailreview_urls
 from tbx.core import urls as torchbox_urls
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.core.views import favicon, robots
+
 
 private_urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -73,5 +75,6 @@ Page.serve = get_default_cache_control_decorator()(Page.serve)
 urlpatterns = private_urlpatterns + urlpatterns + [
     # Add Wagtail URLs at the end.
     # Wagtail cache-control is set on the page models's serve methods.
+    url(r'^images/([^/]*)/(\d*)/([^/]*)/[^/]*$', ServeView.as_view(), name='wagtailimages_serve'),
     url(r'', include(wagtail_urls)),
 ]

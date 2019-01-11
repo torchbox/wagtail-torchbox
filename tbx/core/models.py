@@ -1702,7 +1702,7 @@ class Contact(WagtailCaptchaEmailForm):
 
 @register_setting
 class GlobalSettings(BaseSetting):
-
+    name = models.CharField(max_length=255, help_text='Name', default='Torchbox')
     contact_telephone = models.CharField(max_length=255, help_text='Telephone')
     contact_email = models.EmailField(max_length=255, help_text='Email address')
     contact_twitter = models.CharField(max_length=255, help_text='Twitter')
@@ -1777,6 +1777,7 @@ class MenuBlock(StreamBlock):
 
 @register_setting
 class MainMenu(BaseSetting):
+    name = models.CharField(max_length=255, help_text='Name', default='Main Menu')
     menu = StreamField(MenuBlock(), blank=True)
 
     panels = [
