@@ -1,0 +1,29 @@
+{% extends "wagtailadmin/base.html" %}
+{% load i18n modeladmin_tags %}
+
+{% block titletag %}{{ view.get_meta_title }}{% endblock %}
+
+{% block content %}
+
+    {% block header %}
+        {% include "wagtailadmin/shared/header.html" with title=view.get_page_title subtitle=view.get_page_subtitle icon=view.header_icon %}
+    {% endblock %}
+
+    {% block content_main %}
+        <div class="nice-padding">
+            {% if can_be_deleted %}
+                <p>{{ view.confirmation_message }}</p>
+                <form action="{{ view.delete_url }}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="{% trans 'Yes, delete' %}" class="button serious" />
+                </form>
+            {% else %}
+                <h2>{% blocktrans with view.verbose_name|capfirst as model_name %}{{ model_name }} could not be deleted{% endblocktrans %}</h2>
+                <p>{% blocktrans with instance as instance_name %}'{{ instance_name }}' is currently in use on the site, and cannot be deleted without jeopardising data integrity.{% endblocktrans %}</p>
+
+                <p><a href="{{ view.usage_url }}" class="button">{% blocktrans with instance as instance_name %}View pages that reference '{{ instance_name }}'{% endblocktrans %}</a></p>
+                <p><a href="{{ view.index_url }}" class="button">{% trans 'Go back to listing' %}</a></p>
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endblock %}
