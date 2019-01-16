@@ -27,7 +27,7 @@ from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from tbx.core.utils.cache import get_default_cache_control_decorator
 
-from .blocks import ServicePageBlock, StoryBlock
+from .blocks import StoryBlock
 from .fields import ColorField
 
 
@@ -412,68 +412,6 @@ class AboutPage(Page):
         InlinePanel('content_blocks', label='Content blocks'),
         InlinePanel('offices', label='Offices'),
         FieldPanel('involvement_title'),
-    ]
-
-
-# Services page
-class ServicesPageService(Orderable):
-    page = ParentalKey('torchbox.ServicesPage', related_name='services')
-    title = models.TextField()
-    svg = models.TextField(null=True)
-    description = models.TextField()
-    link = models.ForeignKey(
-        'torchbox.ServicePage',
-        related_name='+',
-        blank=True,
-        null=True,
-    )
-
-    panels = [
-        FieldPanel('title'),
-        FieldPanel('description'),
-        PageChooserPanel('link'),
-        FieldPanel('svg')
-    ]
-
-
-class ServicesPage(Page):
-    main_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    heading = models.TextField(blank=True)
-    intro = models.TextField(blank=True)
-
-    search_fields = Page.search_fields + [
-        index.SearchField('intro'),
-    ]
-
-    content_panels = [
-        FieldPanel('title', classname='full title'),
-        ImageChooserPanel('main_image'),
-        FieldPanel('heading'),
-        FieldPanel('intro', classname='full'),
-        InlinePanel('services', label='Services'),
-    ]
-
-
-class ServicePage(Page):
-    description = models.TextField()
-    streamfield = StreamField(ServicePageBlock())
-    particle = models.ForeignKey(
-        'ParticleSnippet',
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL)
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('description', classname="full"),
-        StreamFieldPanel('streamfield'),
-        FieldPanel('particle'),
     ]
 
 
