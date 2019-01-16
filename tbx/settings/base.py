@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     'wagtailcaptcha',
     'wagtailfontawesome',
     'wagtail_review',
-    'wagtail_graphql',
     'graphene_django',
 
     'django.contrib.humanize',
@@ -440,15 +439,5 @@ if 'MAILCHIMP_MAILING_LIST_ID' in env:
 
 # GraphQL API Endpoint
 GRAPHENE = {
-    'SCHEMA': 'wagtail_graphql.schema.schema',
-}
-
-GRAPHQL_API = {
-    'APPS': [
-        'torchbox'
-    ],
-    'PREFIX': {
-        'torchbox': ''
-    },
-    'URL_PREFIX': '/home'
+    'SCHEMA': 'tbx.graphql.schema.schema',
 }
