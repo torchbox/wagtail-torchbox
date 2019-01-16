@@ -38,6 +38,7 @@ if 'ALLOWED_HOSTS' in env:
 INSTALLED_APPS = [
     'scout_apm.django',
 
+    'tbx.blog',
     'tbx.core.apps.TorchboxCoreAppConfig',
     'tbx.services',
     'tbx.work',

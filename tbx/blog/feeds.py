@@ -5,8 +5,9 @@ from django.contrib.syndication.views import Feed
 
 import imghdr
 
-from tbx.core.models import BlogPage
 from tbx.core.utils import play_filter
+
+from .models import BlogPage
 
 # Main blog feed
 

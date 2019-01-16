@@ -1,8 +1,8 @@
 from django import template
 from django.conf import settings
 
-from tbx.core.models import (Advert, BlogPage, JobIndexPage, MainMenu,
-                             PersonPage)
+from tbx.blog.models import BlogPage
+from tbx.core.models import Advert, JobIndexPage, MainMenu, PersonPage
 from tbx.core.utils import is_in_play, play_filter, roundrobin
 from tbx.work.models import WorkPage
 
