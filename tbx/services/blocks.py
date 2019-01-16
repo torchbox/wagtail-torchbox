@@ -10,7 +10,7 @@ class CaseStudyBlock(StructBlock):
     title = CharBlock(required=True)
     intro = TextBlock(required=True)
     case_studies = ListBlock(StructBlock([
-        ('page', PageChooserBlock('torchbox.WorkPage')),
+        ('page', PageChooserBlock('work.WorkPage')),
         ('title', CharBlock(required=False)),
         ('descriptive_title', CharBlock(required=False)),
         ('image', ImageChooserBlock(required=False)),

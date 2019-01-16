@@ -2,8 +2,9 @@ from django import template
 from django.conf import settings
 
 from tbx.core.models import (Advert, BlogPage, JobIndexPage, MainMenu,
-                             PersonPage, WorkPage)
+                             PersonPage)
 from tbx.core.utils import is_in_play, play_filter, roundrobin
+from tbx.work.models import WorkPage
 
 register = template.Library()
 

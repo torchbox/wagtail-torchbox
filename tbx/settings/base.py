@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'tbx.core.apps.TorchboxCoreAppConfig',
     'tbx.services',
+    'tbx.work',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
