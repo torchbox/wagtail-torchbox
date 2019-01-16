@@ -66,7 +66,7 @@ class FeaturedPagesBlock(StructBlock):
 
 
 class SignUpFormPageBlock(StructBlock):
-    page = PageChooserBlock('torchbox.SignUpFormPage')
+    page = PageChooserBlock('sign_up_form.SignUpFormPage')
 
     def get_context(self, value, parent_context=None):
         context = super(SignUpFormPageBlock, self).get_context(value, parent_context)

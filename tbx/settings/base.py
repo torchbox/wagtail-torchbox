@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'tbx.blog',
     'tbx.core.apps.TorchboxCoreAppConfig',
     'tbx.services',
+    'tbx.sign_up_form',
     'tbx.work',
 
     'wagtail.contrib.search_promotions',
