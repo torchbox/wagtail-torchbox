@@ -13,7 +13,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from tbx.core.blocks import StoryBlock
-from tbx.core.models import BlogPageTagList, RelatedLink
+from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 
 
@@ -38,7 +38,7 @@ class BlogIndexPage(Page):
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
-        return [BlogPageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
     def blog_posts(self):
@@ -104,7 +104,7 @@ class BlogPageRelatedLink(Orderable, RelatedLink):
 class BlogPageTagSelect(Orderable):
     page = ParentalKey('blog.BlogPage', related_name='tags')
     tag = models.ForeignKey(
-        'torchbox.BlogPageTagList',
+        'torchbox.Tag',
         related_name='blog_page_tag_select'
     )
 

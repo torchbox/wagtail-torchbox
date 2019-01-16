@@ -482,9 +482,8 @@ class ParticleSnippet(models.Model):
         return self.title
 
 
-# Note: despite the name, this is not specific to blogs
 @register_snippet
-class BlogPageTagList(models.Model):
+class Tag(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
 

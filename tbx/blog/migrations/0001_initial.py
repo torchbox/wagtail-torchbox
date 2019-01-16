@@ -68,6 +68,10 @@ class Migration(migrations.Migration):
         ('wagtailcore', '0040_page_draft_title'),
     ]
 
+    run_before = [
+        ('torchbox', '0110_rename_blogpagetaglist_to_tag'),
+    ]
+
     state_operations = [
         migrations.CreateModel(
             name='BlogIndexPage',

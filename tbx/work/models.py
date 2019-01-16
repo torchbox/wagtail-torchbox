@@ -12,14 +12,14 @@ from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from tbx.core.blocks import StoryBlock
-from tbx.core.models import BlogPageTagList
+from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 
 
 class WorkPageTagSelect(Orderable):
     page = ParentalKey('work.WorkPage', related_name='tags')
     tag = models.ForeignKey(
-        'torchbox.BlogPageTagList',
+        'torchbox.Tag',
         related_name='work_page_tag_select'
     )
 
@@ -134,7 +134,7 @@ class WorkIndexPage(Page):
 
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
-        return [BlogPageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
+        return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
     def works(self):

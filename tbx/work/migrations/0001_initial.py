@@ -67,6 +67,10 @@ class Migration(migrations.Migration):
         ('torchbox', '0108_move_work_into_new_app'),
     ]
 
+    run_before = [
+        ('torchbox', '0110_rename_blogpagetaglist_to_tag'),
+    ]
+
     state_operations = [
         migrations.CreateModel(
             name='WorkIndexPage',
