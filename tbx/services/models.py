@@ -57,6 +57,7 @@ class ServiceIndexPage(Page):
 
 
 class ServicePage(Page):
+    service = models.OneToOneField('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True, help_text="Link to this service in taxonomy")
     description = models.TextField()
     streamfield = StreamField(ServicePageBlock())
     particle = models.ForeignKey(
@@ -67,6 +68,7 @@ class ServicePage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('service'),
         FieldPanel('description', classname="full"),
         StreamFieldPanel('streamfield'),
         FieldPanel('particle'),
