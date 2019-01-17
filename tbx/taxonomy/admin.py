@@ -4,12 +4,12 @@ from django.core.exceptions import PermissionDenied
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext as _
 
-from wagtail.admin.utils import get_object_usage
 from wagtail.contrib.modeladmin.helpers import ButtonHelper
 from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup
 from wagtail.contrib.modeladmin.views import DeleteView, InstanceSpecificView
 
 from . import models
+from .utils import get_object_usage
 
 
 class UsageView(InstanceSpecificView):

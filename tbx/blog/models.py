@@ -1,9 +1,11 @@
+from django import forms
+
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
-from modelcluster.fields import ParentalKey
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
 from wagtail.core.fields import StreamField
@@ -140,8 +142,8 @@ class BlogPage(Page):
         related_name='+'
     )
     listing_summary = models.TextField(blank=True)
-
     canonical_url = models.URLField(blank=True, max_length=255)
+    related_services = ParentalManyToManyField('taxonomy.Service', related_name='blog_posts')
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
@@ -177,4 +179,5 @@ class BlogPage(Page):
         ImageChooserPanel('feed_image'),
         FieldPanel('listing_summary'),
         FieldPanel('canonical_url'),
+        FieldPanel('related_services', widget=forms.CheckboxSelectMultiple),
     ]
