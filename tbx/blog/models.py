@@ -112,7 +112,7 @@ class BlogPageTagSelect(Orderable):
 class BlogPageAuthor(Orderable):
     page = ParentalKey('blog.BlogPage', related_name='related_author')
     author = models.ForeignKey(
-        'torchbox.PersonPage',
+        'people.PersonPage',
         null=True,
         blank=True,
         related_name='+'

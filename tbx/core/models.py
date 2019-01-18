@@ -2,7 +2,6 @@ from django import forms
 from django.db import models
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
-from django.utils.functional import cached_property
 from django.views.decorators.cache import never_cache
 
 from modelcluster.fields import ParentalKey
@@ -566,85 +565,6 @@ class JobIndexPage(Page):
     ]
 
 
-# Person page
-class PersonPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.PersonPage', related_name='related_links')
-
-
-class PersonPage(Page, ContactFields):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    role = models.CharField(max_length=255, blank=True)
-    is_senior = models.BooleanField(default=False)
-    intro = RichTextField(blank=True)
-    biography = RichTextField(blank=True)
-    short_biography = models.CharField(
-        max_length=255, blank=True,
-        help_text='A shorter summary biography for including in other pages'
-    )
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    feed_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    search_fields = Page.search_fields + [
-        index.SearchField('first_name'),
-        index.SearchField('last_name'),
-        index.SearchField('intro'),
-        index.SearchField('biography'),
-    ]
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('first_name'),
-        FieldPanel('last_name'),
-        FieldPanel('role'),
-        FieldPanel('is_senior'),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('biography', classname="full"),
-        FieldPanel('short_biography', classname="full"),
-        ImageChooserPanel('image'),
-        MultiFieldPanel(ContactFields.panels, "Contact"),
-        InlinePanel('related_links', label="Related links"),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
-    ]
-
-
-# Person index
-class PersonIndexPage(Page):
-    intro = models.TextField()
-    senior_management_intro = models.TextField()
-    team_intro = models.TextField()
-
-    @cached_property
-    def people(self):
-        return PersonPage.objects.exclude(is_senior=True).live().public()
-
-    @cached_property
-    def senior_management(self):
-        return PersonPage.objects.exclude(is_senior=False).live().public()
-
-    content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full"),
-        FieldPanel('senior_management_intro', classname="full"),
-        FieldPanel('team_intro', classname="full"),
-    ]
-
-
 class TshirtPage(Page):
     main_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -948,7 +868,7 @@ class GlobalSettings(BaseSetting):
 
     # Contact widget
     contact_person = models.ForeignKey(
-        'torchbox.PersonPage', related_name='+', null=True,
+        'people.PersonPage', related_name='+', null=True,
         on_delete=models.SET_NULL,
         help_text="Ensure this person has telephone and email fields set")
     contact_widget_intro = models.TextField()

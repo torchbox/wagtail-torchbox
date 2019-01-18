@@ -42,7 +42,7 @@ class WorkPageScreenshot(Orderable):
 class WorkPageAuthor(Orderable):
     page = ParentalKey('work.WorkPage', related_name='related_author')
     author = models.ForeignKey(
-        'torchbox.PersonPage',
+        'people.PersonPage',
         null=True,
         blank=True,
         related_name='+'
