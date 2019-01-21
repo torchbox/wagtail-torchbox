@@ -37,7 +37,11 @@
                                     <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="avatar" />
                                 {% endif %}
                                 <p class="text">
-                                    {% if author.author %}<a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a>{% endif %}
+                                    {% if author.author.person_page %}
+                                        <a href="{% pageurl author.author.person_page %}" class="name">{{ author.author.name }}</a>
+                                    {% else %}
+                                        <span class="name">{{ author.author.name }}</span>
+                                    {% endif %}
 
                                     {% if author.author.role %}
                                         <span class="role">{{ author.author.role }}</span>
@@ -80,9 +84,7 @@
                             <h2>{{ next_page.title }}</h2>
                             {% with next_page.related_author.all as authors %}
                                 {% for author in authors %}
-                                    {% if author.author %}
-                                        <p class="author">{{ author.author.title }}</p>
-                                    {% endif %}
+                                    <p class="author">{{ author.author.name }}</p>
                                 {% endfor %}
                             {% endwith %}
                         </div>

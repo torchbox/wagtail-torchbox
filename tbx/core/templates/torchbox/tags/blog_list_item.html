@@ -11,7 +11,7 @@
                     <h3>{{ post.title }}</h3>
 
                     {% for author in post.related_author.all %}
-                        <div class="name">{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</div>
+                        <div class="name">{{ author.author.name }}{% if not forloop.last %},&nbsp;{% endif %}</div>
                     {% endfor %}
 
                     {% if post.date %}

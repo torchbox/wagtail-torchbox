@@ -5,11 +5,11 @@ from django.utils.decorators import method_decorator
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                         MultiFieldPanel, PageChooserPanel,
-                                         StreamFieldPanel)
+                                         MultiFieldPanel, StreamFieldPanel)
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
@@ -42,14 +42,12 @@ class WorkPageScreenshot(Orderable):
 class WorkPageAuthor(Orderable):
     page = ParentalKey('work.WorkPage', related_name='related_author')
     author = models.ForeignKey(
-        'people.PersonPage',
-        null=True,
-        blank=True,
+        'people.Author',
         related_name='+'
     )
 
     panels = [
-        PageChooserPanel('author'),
+        SnippetChooserPanel('author'),
     ]
 
 
@@ -93,9 +91,7 @@ class WorkPage(Page):
 
     @property
     def has_authors(self):
-        for author in self.related_author.all():
-            if author.author:
-                return True
+        return self.related_author.exists()
 
     content_panels = [
         FieldPanel('title', classname="full title"),

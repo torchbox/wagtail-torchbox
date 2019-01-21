@@ -9,12 +9,14 @@ def populate_authors(apps, schema_editor):
     PersonPage = apps.get_model('people.PersonPage')
     Author = apps.get_model('people.Author')
 
-    for person_page in PersonPage.objects.filter(live=True):
-        Author.objects.create(
+    for person_page in PersonPage.objects.all():
+        Author.objects.get_or_create(
             person_page=person_page,
-            name=person_page.title,
-            role=person_page.role,
-            image=person_page.image,
+            defaults={
+                'name': person_page.title,
+                'role': person_page.role,
+                'image': person_page.image,
+            }
         )
 
 
