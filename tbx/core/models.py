@@ -562,22 +562,6 @@ class JobIndexPage(Page):
     ]
 
 
-class TshirtPage(Page):
-    main_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-
-TshirtPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    ImageChooserPanel('main_image'),
-]
-
-
 class GoogleAdGrantApplication(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=255)
