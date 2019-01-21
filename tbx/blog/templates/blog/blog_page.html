@@ -16,14 +16,6 @@
                 </div>
             {% endif %}
 
-            {% if not self.streamfield and self.intro %}
-                {{ self.intro|richtext }}
-            {% endif %}
-
-            {% if self.body %}
-                {{ self.body|richtext }}
-            {% endif %}
-
             {% include "torchbox/includes/streamfield.html" %}
 
             <div class="blog-meta">

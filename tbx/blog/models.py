@@ -123,7 +123,6 @@ class BlogPageAuthor(Orderable):
 
 class BlogPage(Page):
     intro = RichTextField("Intro (used for blog index and Planet Drupal listings)", blank=True)
-    body = RichTextField("body (deprecated. Use streamfield instead)", blank=True)
     colour = models.CharField(
         "Listing card colour if left blank will display image",
         choices=(
@@ -148,7 +147,7 @@ class BlogPage(Page):
     canonical_url = models.URLField(blank=True, max_length=255)
 
     search_fields = Page.search_fields + [
-        index.SearchField('body'),
+        index.SearchField('streamfield'),
     ]
 
     @property
@@ -172,7 +171,6 @@ class BlogPage(Page):
         InlinePanel('authors', label="Author"),
         FieldPanel('date'),
         FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
         StreamFieldPanel('streamfield'),
         InlinePanel('related_links', label="Related links"),
         InlinePanel('tags', label="Tags")
