@@ -27,7 +27,7 @@
             {% include "torchbox/includes/streamfield.html" %}
 
             <div class="blog-meta">
-                {% with self.related_author.all as authors %}
+                {% with self.authors.all as authors %}
                     {% if authors %}
                     <div class="author-holder" >
                         {% for author in authors %}
@@ -82,7 +82,7 @@
                     <div class="container">
                         <div class="content">
                             <h2>{{ next_page.title }}</h2>
-                            {% with next_page.related_author.all as authors %}
+                            {% with next_page.authors.all as authors %}
                                 {% for author in authors %}
                                     <p class="author">{{ author.author.name }}</p>
                                 {% endfor %}

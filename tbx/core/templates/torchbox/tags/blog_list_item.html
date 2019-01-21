@@ -10,7 +10,7 @@
                     <label>Blog</label>
                     <h3>{{ post.title }}</h3>
 
-                    {% for author in post.related_author.all %}
+                    {% for author in post.authors.all %}
                         <div class="name">{{ author.author.name }}{% if not forloop.last %},&nbsp;{% endif %}</div>
                     {% endfor %}
 

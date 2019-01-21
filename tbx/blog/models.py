@@ -110,7 +110,7 @@ class BlogPageTagSelect(Orderable):
 
 
 class BlogPageAuthor(Orderable):
-    page = ParentalKey('blog.BlogPage', related_name='related_author')
+    page = ParentalKey('blog.BlogPage', related_name='authors')
     author = models.ForeignKey(
         'people.Author',
         related_name='+',
@@ -164,12 +164,12 @@ class BlogPage(Page):
 
     @property
     def has_authors(self):
-        return self.related_author.exists()
+        return self.authors.exists()
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('colour'),
-        InlinePanel('related_author', label="Author"),
+        InlinePanel('authors', label="Author"),
         FieldPanel('date'),
         FieldPanel('intro', classname="full"),
         FieldPanel('body', classname="full"),
