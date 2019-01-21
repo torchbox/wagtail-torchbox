@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'wagtailcaptcha',
     'wagtailfontawesome',
     'wagtail_review',
+    'phonenumber_field',
 
     'django.contrib.humanize',
     'django.contrib.admin',

@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
+from phonenumber_field.modelfields import PhoneNumberField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel)
 from wagtail.core.fields import RichTextField
@@ -144,3 +145,25 @@ def update_author_on_page_publish(instance, **kwargs):
     author, created = Author.objects.get_or_create(person_page=instance)
     author.update_manual_fields(instance)
     author.save()
+
+
+@register_snippet
+class Contact(index.Indexed, models.Model):
+    name = models.CharField(max_length=255, blank=True)
+    role = models.CharField(max_length=255, blank=True)
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    email_address = models.EmailField()
+    phone_number = PhoneNumberField()
+
+    def __str__(self):
+        return self.name
+
+    search_fields = [
+        index.SearchField('name'),
+    ]
