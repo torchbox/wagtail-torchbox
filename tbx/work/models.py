@@ -52,7 +52,6 @@ class WorkPageAuthor(Orderable):
 
 
 class WorkPage(Page):
-    author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
     intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
@@ -97,7 +96,6 @@ class WorkPage(Page):
         FieldPanel('title', classname="full title"),
         FieldPanel('descriptive_title'),
         InlinePanel('related_author', label="Author"),
-        FieldPanel('author_left'),
         FieldPanel('summary'),
         FieldPanel('intro', classname="full"),
         FieldPanel('body', classname="full"),

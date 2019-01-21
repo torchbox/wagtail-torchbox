@@ -135,7 +135,6 @@ class BlogPage(Page):
         blank=True
     )
     streamfield = StreamField(StoryBlock())
-    author_left = models.CharField(max_length=255, blank=True, help_text='author who has left Torchbox')
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -171,7 +170,6 @@ class BlogPage(Page):
         FieldPanel('title', classname="full title"),
         FieldPanel('colour'),
         InlinePanel('related_author', label="Author"),
-        FieldPanel('author_left'),
         FieldPanel('date'),
         FieldPanel('intro', classname="full"),
         FieldPanel('body', classname="full"),
