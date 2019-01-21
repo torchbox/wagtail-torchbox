@@ -318,8 +318,6 @@ class StandardPage(Page):
         related_name='+'
     )
 
-    show_in_play_menu = models.BooleanField(default=False)
-
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
         index.SearchField('body'),
@@ -343,7 +341,6 @@ class StandardPage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('show_in_play_menu'),
         ImageChooserPanel('feed_image'),
     ]
 

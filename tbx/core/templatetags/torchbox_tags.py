@@ -3,7 +3,7 @@ from django.conf import settings
 
 from tbx.blog.models import BlogPage
 from tbx.core.models import Advert, JobIndexPage, MainMenu
-from tbx.core.utils import is_in_play, play_filter, roundrobin
+from tbx.core.utils import roundrobin
 from tbx.people.models import PersonPage
 from tbx.work.models import WorkPage
 
@@ -64,11 +64,6 @@ def content_type(value):
     return value.__class__.__name__.lower()
 
 
-@register.filter
-def in_play(page):
-    return is_in_play(page)
-
-
 @register.simple_tag
 def main_menu():
     return MainMenu.objects.first()
@@ -77,8 +72,7 @@ def main_menu():
 # Person feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_people_listing.html', takes_context=True)
 def homepage_people_listing(context, count=3):
-    people = play_filter(PersonPage.objects.filter(live=True).order_by('?'),
-                         count)
+    people = PersonPage.objects.filter(live=True).order_by('?')[:count]
     return {
         'people': people,
         # required by the pageurl tag that we want to use within this template
@@ -89,7 +83,7 @@ def homepage_people_listing(context, count=3):
 # Blog feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_blog_listing.html', takes_context=True)
 def homepage_blog_listing(context, count=6):
-    blog_posts = play_filter(BlogPage.objects.live().in_menu().order_by('-date'), count)
+    blog_posts = BlogPage.objects.live().in_menu().order_by('-date')[:count]
     return {
         'blog_posts': blog_posts,
         # required by the pageurl tag that we want to use within this template
@@ -100,8 +94,7 @@ def homepage_blog_listing(context, count=6):
 # Work feed for home page
 @register.inclusion_tag('torchbox/tags/homepage_work_listing.html', takes_context=True)
 def homepage_work_listing(context, count=3):
-    work = play_filter(WorkPage.objects.filter(live=True),
-                       count)
+    work = WorkPage.objects.filter(live=True)[:count]
     return {
         'work': work,
         # required by the pageurl tag that we want to use within this template
@@ -142,7 +135,7 @@ def adverts(context):
 # blog posts by team member
 @register.inclusion_tag('torchbox/tags/person_blog_listing.html', takes_context=True)
 def person_blog_post_listing(context, calling_page=None):
-    posts = play_filter(BlogPage.objects.filter(authors__author__person_page_id=calling_page.id).live().order_by('-date'))
+    posts = BlogPage.objects.filter(authors__author__person_page_id=calling_page.id).live().order_by('-date')
     return {
         'posts': posts,
         'calling_page': calling_page,
@@ -180,8 +173,8 @@ def work_and_blog_listing(context, count=10, marketing=False):
     blog_count = (count + 1) / 2
     work_count = count / 2
 
-    blog_posts = play_filter(blog_posts.order_by('-date'), blog_count)
-    works = play_filter(works.order_by('-pk'), work_count)
+    blog_posts = blog_posts.order_by('-date')[:blog_count]
+    works = works.order_by('-pk')[:work_count]
 
     return {
         'featured_items': featured_items,

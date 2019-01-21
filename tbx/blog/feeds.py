@@ -5,8 +5,6 @@ from django.contrib.syndication.views import Feed
 
 import imghdr
 
-from tbx.core.utils import play_filter
-
 from .models import BlogPage
 
 # Main blog feed
@@ -18,7 +16,7 @@ class BlogFeed(Feed):
     description = "The latest news and views from Torchbox on the work we do, the web and the wider world"
 
     def items(self):
-        return play_filter(BlogPage.objects.live().order_by('-date'), 10)
+        return BlogPage.objects.live().order_by('-date')[:10]
 
     def item_title(self, item):
         return item.title

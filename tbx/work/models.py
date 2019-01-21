@@ -74,8 +74,6 @@ class WorkPage(Page):
     streamfield = StreamField(StoryBlock())
     visit_the_site = models.URLField(blank=True)
 
-    show_in_play_menu = models.BooleanField(default=False)
-
     @property
     def work_index(self):
         # Find work index in ancestors
@@ -107,7 +105,6 @@ class WorkPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
-        FieldPanel('show_in_play_menu'),
         FieldPanel('marketing_only'),
     ]
 
@@ -117,7 +114,6 @@ class WorkPage(Page):
 class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
-    show_in_play_menu = models.BooleanField(default=False)
     hide_popular_tags = models.BooleanField(default=False)
 
     def get_popular_tags(self):
@@ -171,5 +167,4 @@ class WorkIndexPage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('show_in_play_menu'),
     ]

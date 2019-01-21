@@ -29,8 +29,6 @@ class BlogIndexPage(Page):
         index.SearchField('intro'),
     ]
 
-    show_in_play_menu = models.BooleanField(default=False)
-
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular (exclude 'planet-drupal' as this is effectively
         # the same as Drupal and only needed for the rss feed)
@@ -92,7 +90,6 @@ class BlogIndexPage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('show_in_play_menu'),
     ]
 
 
