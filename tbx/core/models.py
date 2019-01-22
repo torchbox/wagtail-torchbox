@@ -304,9 +304,7 @@ class StandardPage(Page):
     credit = models.CharField(max_length=255, blank=True)
     heading = RichTextField(blank=True)
     quote = models.CharField(max_length=255, blank=True)
-    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
-    body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
-    streamfield = StreamField(StoryBlock())
+    body = StreamField(StoryBlock())
     email = models.EmailField(blank=True)
 
     feed_image = models.ForeignKey(
@@ -317,20 +315,13 @@ class StandardPage(Page):
         related_name='+'
     )
 
-    search_fields = Page.search_fields + [
-        index.SearchField('intro'),
-        index.SearchField('body'),
-    ]
-
     content_panels = [
         FieldPanel('title', classname="full title"),
         ImageChooserPanel('main_image'),
         FieldPanel('credit', classname="full"),
         FieldPanel('heading', classname="full"),
         FieldPanel('quote', classname="full"),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
-        StreamFieldPanel('streamfield'),
+        StreamFieldPanel('body'),
         FieldPanel('email', classname="full"),
         InlinePanel('content_block', label="Content block"),
         InlinePanel('related_links', label="Related links"),
