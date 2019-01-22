@@ -147,14 +147,14 @@ class BlogPage(Page):
 
     @property
     def blog_index(self):
-        # Find blog index in ancestors
-        for ancestor in reversed(self.get_ancestors()):
-            if isinstance(ancestor.specific, BlogIndexPage):
-                return ancestor
+        ancestor = BlogIndexPage.objects.ancestor_of(self).order_by('-depth').first()
 
-        # No ancestors are blog indexes,
-        # just return first blog index in database
-        return BlogIndexPage.objects.first()
+        if ancestor:
+            return ancestor
+        else:
+            # No ancestors are blog indexes,
+            # just return first blog index in database
+            return BlogIndexPage.objects.first()
 
     @property
     def has_authors(self):

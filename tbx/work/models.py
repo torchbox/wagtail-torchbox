@@ -75,14 +75,14 @@ class WorkPage(Page):
 
     @property
     def work_index(self):
-        # Find work index in ancestors
-        for ancestor in reversed(self.get_ancestors()):
-            if isinstance(ancestor.specific, WorkIndexPage):
-                return ancestor
+        ancestor = WorkIndexPage.objects.ancestor_of(self).order_by('-depth').first()
 
-        # No ancestors are work indexes,
-        # just return first work index in database
-        return WorkIndexPage.objects.first()
+        if ancestor:
+            return ancestor
+        else:
+            # No ancestors are work indexes,
+            # just return first work index in database
+            return WorkIndexPage.objects.first()
 
     @property
     def has_authors(self):
@@ -125,12 +125,7 @@ class WorkIndexPage(Page):
     @property
     def works(self):
         # Get list of work pages that are descendants of this page
-        works = WorkPage.objects.filter(
-            live=True,
-            path__startswith=self.path
-        )
-
-        return works
+        return WorkPage.objects.descendant_of(self).live()
 
     def serve(self, request):
         # Get work pages
