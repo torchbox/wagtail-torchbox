@@ -58,9 +58,6 @@ def get_site_root(context):
 
 @register.filter
 def content_type(value):
-    # marketing landing page should behave like the homepage in templates
-    if value.__class__.__name__.lower() == 'marketinglandingpage':
-        return 'homepage'
     return value.__class__.__name__.lower()
 
 
@@ -145,29 +142,12 @@ def person_blog_post_listing(context, calling_page=None):
 
 
 @register.inclusion_tag('torchbox/tags/work_and_blog_listing.html', takes_context=True)
-def work_and_blog_listing(context, count=10, marketing=False):
+def work_and_blog_listing(context, count=10):
     """
     An interleaved list of work and blog items.
     """
     blog_posts = BlogPage.objects.filter(live=True)
     works = WorkPage.objects.filter(live=True)
-    if marketing:
-        featured_items = context['page'].featured_items.all()
-
-        # Reduce remaining item count accordingly, but not to below 0.
-        count = max(count - featured_items.count(), 0)
-
-        # For marketing landing page return only posts and works
-        # tagged with "digital_marketing"
-        featured_items_ids = featured_items.values_list('related_page_id', flat=True)
-        filter_tag = "digital_marketing"
-        blog_posts = blog_posts.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items_ids)
-        works = works.filter(tags__tag__slug=filter_tag).exclude(pk__in=featured_items_ids)
-    else:
-        # For normal case, do not display "marketing_only" posts and works
-        blog_posts = blog_posts.exclude(marketing_only=True)
-        works = works.exclude(marketing_only=True)
-        featured_items = []
 
     # If (remaining) count is odd, blog_count = work_count + 1
     blog_count = (count + 1) / 2
@@ -177,7 +157,6 @@ def work_and_blog_listing(context, count=10, marketing=False):
     works = works.order_by('-pk')[:work_count]
 
     return {
-        'featured_items': featured_items,
         'items': list(roundrobin(blog_posts, works)),
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],

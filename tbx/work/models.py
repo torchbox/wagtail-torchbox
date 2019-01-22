@@ -70,7 +70,6 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
     body = StreamField(StoryBlock())
     visit_the_site = models.URLField(blank=True)
 
@@ -105,7 +104,6 @@ class WorkPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
-        FieldPanel('marketing_only'),
     ]
 
 
@@ -127,11 +125,10 @@ class WorkIndexPage(Page):
     @property
     def works(self):
         # Get list of work pages that are descendants of this page
-        # and are not marketing only
         works = WorkPage.objects.filter(
             live=True,
             path__startswith=self.path
-        ).exclude(marketing_only=True)
+        )
 
         return works
 

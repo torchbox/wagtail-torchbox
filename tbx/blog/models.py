@@ -41,8 +41,7 @@ class BlogIndexPage(Page):
     @property
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
-        # and are not marketing_only
-        blog_posts = BlogPage.objects.live().in_menu().descendant_of(self).exclude(marketing_only=True)
+        blog_posts = BlogPage.objects.live().in_menu().descendant_of(self)
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by('-date', 'pk')
@@ -139,7 +138,6 @@ class BlogPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    marketing_only = models.BooleanField(default=False, help_text='Display this blog post only on marketing landing page')
 
     canonical_url = models.URLField(blank=True, max_length=255)
 
@@ -177,5 +175,4 @@ class BlogPage(Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
         FieldPanel('canonical_url'),
-        FieldPanel('marketing_only'),
     ]
