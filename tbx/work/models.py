@@ -22,6 +22,7 @@ from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 
 
+# Currently hidden. These were used in the past and may be used again in the future
 class WorkPageTagSelect(Orderable):
     page = ParentalKey('work.WorkPage', related_name='tags')
     tag = models.ForeignKey(
@@ -112,7 +113,6 @@ class WorkPage(Page):
         StreamFieldPanel('body'),
         ImageChooserPanel('homepage_image'),
         InlinePanel('screenshots', label="Screenshots"),
-        InlinePanel('tags', label="Tags"),
         FieldPanel('visit_the_site'),
     ]
 

@@ -468,7 +468,8 @@ class ParticleSnippet(models.Model):
         return self.title
 
 
-@register_snippet
+# Currently hidden. These were used in the past and may be used again in the future
+# @register_snippet
 class Tag(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)

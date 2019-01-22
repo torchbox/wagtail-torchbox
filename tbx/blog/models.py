@@ -103,6 +103,7 @@ class BlogPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('blog.BlogPage', related_name='related_links')
 
 
+# Currently hidden. These were used in the past and may be used again in the future
 class BlogPageTagSelect(Orderable):
     page = ParentalKey('blog.BlogPage', related_name='tags')
     tag = models.ForeignKey(
@@ -173,7 +174,6 @@ class BlogPage(Page):
         FieldPanel('date'),
         StreamFieldPanel('body'),
         InlinePanel('related_links', label="Related links"),
-        InlinePanel('tags', label="Tags")
     ]
 
     promote_panels = [
