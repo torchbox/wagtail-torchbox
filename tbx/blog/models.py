@@ -119,16 +119,16 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
-    intro = RichTextField("Intro (used for blog index and Planet Drupal listings)", blank=True)
+    intro = RichTextField(blank=True, help_text="Used for blog index and Planet Drupal listings")
     colour = models.CharField(
-        "Listing card colour if left blank will display image",
         choices=(
             ('orange', "Orange"),
             ('blue', "Blue"),
             ('white', "White")
         ),
         max_length=255,
-        blank=True
+        blank=True,
+        help_text="Listing card colour if left blank will display image"
     )
     body = StreamField(StoryBlock())
     date = models.DateField("Post date")
