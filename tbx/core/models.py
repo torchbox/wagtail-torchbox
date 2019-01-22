@@ -305,7 +305,6 @@ class StandardPage(Page):
     heading = RichTextField(blank=True)
     quote = models.CharField(max_length=255, blank=True)
     intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
-    middle_break = RichTextField(blank=True)
     body = RichTextField("Body (deprecated. Use streamfield instead)", blank=True)
     streamfield = StreamField(StoryBlock())
     email = models.EmailField(blank=True)
@@ -330,7 +329,6 @@ class StandardPage(Page):
         FieldPanel('heading', classname="full"),
         FieldPanel('quote', classname="full"),
         FieldPanel('intro', classname="full"),
-        FieldPanel('middle_break', classname="full"),
         FieldPanel('body', classname="full"),
         StreamFieldPanel('streamfield'),
         FieldPanel('email', classname="full"),
