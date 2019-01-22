@@ -1,7 +1,10 @@
-from django import forms
+import string
 
+from bs4 import BeautifulSoup
+from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
@@ -10,6 +13,7 @@ from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
+from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
@@ -74,8 +78,16 @@ class WorkPage(Page):
         related_name='+'
     )
     body = StreamField(StoryBlock())
+    body_word_count = models.PositiveIntegerField(null=True, editable=False)
     visit_the_site = models.URLField(blank=True)
     related_services = ParentalManyToManyField('taxonomy.Service', related_name='case_studies')
+
+    def set_body_word_count(self):
+        body_basic_html = self.body.stream_block.render_basic(self.body)
+        body_text = BeautifulSoup(body_basic_html, 'html.parser').get_text()
+        remove_chars = string.punctuation + '“”’'
+        body_words = body_text.translate(body_text.maketrans(dict.fromkeys(remove_chars))).split()
+        self.body_word_count = len(body_words)
 
     @property
     def work_index(self):
@@ -164,3 +176,9 @@ class WorkIndexPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
+
+
+@receiver(page_published, sender=WorkPage)
+def update_body_word_count_on_page_publish(instance, **kwargs):
+    instance.set_body_word_count()
+    instance.save(update_fields=['body_word_count'])
