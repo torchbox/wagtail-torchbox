@@ -61,7 +61,7 @@ class WorkPageAuthor(Orderable):
 
 
 class WorkPage(Page):
-    summary = models.CharField(max_length=255)
+    listing_summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -109,7 +109,6 @@ class WorkPage(Page):
         FieldPanel('title', classname="full title"),
         FieldPanel('descriptive_title'),
         InlinePanel('authors', label="Author"),
-        FieldPanel('summary'),
         StreamFieldPanel('body'),
         ImageChooserPanel('homepage_image'),
         InlinePanel('screenshots', label="Screenshots"),
@@ -119,6 +118,7 @@ class WorkPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
+        FieldPanel('listing_summary'),
         FieldPanel('related_services', widget=forms.CheckboxSelectMultiple),
     ]
 
