@@ -122,18 +122,8 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
-    colour = models.CharField(
-        choices=(
-            ('orange', "Orange"),
-            ('blue', "Blue"),
-            ('white', "White")
-        ),
-        max_length=255,
-        blank=True,
-        help_text="Listing card colour if left blank will display image"
-    )
-    body = StreamField(StoryBlock())
     date = models.DateField("Post date")
+    body = StreamField(StoryBlock())
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -166,7 +156,6 @@ class BlogPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('colour'),
         InlinePanel('authors', label="Author"),
         FieldPanel('date'),
         StreamFieldPanel('body'),
