@@ -68,7 +68,7 @@
         <div class="container">
             <div class="main-content  {% if not page.visit_the_site %}main-content--no-visit{% endif %}">
                 <div class="fixed">
-                    {% include "torchbox/includes/streamfield.html" %}
+                    {% include "torchbox/includes/streamfield.html" with content=page.body %}
                 </div>
             </div>
         </div>

@@ -71,7 +71,7 @@ class WorkPage(Page):
         related_name='+'
     )
     marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
-    streamfield = StreamField(StoryBlock())
+    body = StreamField(StoryBlock())
     visit_the_site = models.URLField(blank=True)
 
     @property
@@ -95,7 +95,7 @@ class WorkPage(Page):
         InlinePanel('authors', label="Author"),
         FieldPanel('summary'),
         FieldPanel('intro', classname="full"),
-        StreamFieldPanel('streamfield'),
+        StreamFieldPanel('body'),
         ImageChooserPanel('homepage_image'),
         InlinePanel('screenshots', label="Screenshots"),
         InlinePanel('tags', label="Tags"),

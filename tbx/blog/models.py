@@ -130,7 +130,7 @@ class BlogPage(Page):
         max_length=255,
         blank=True
     )
-    streamfield = StreamField(StoryBlock())
+    body = StreamField(StoryBlock())
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
@@ -144,7 +144,7 @@ class BlogPage(Page):
     canonical_url = models.URLField(blank=True, max_length=255)
 
     search_fields = Page.search_fields + [
-        index.SearchField('streamfield'),
+        index.SearchField('body'),
     ]
 
     @property
@@ -168,7 +168,7 @@ class BlogPage(Page):
         InlinePanel('authors', label="Author"),
         FieldPanel('date'),
         FieldPanel('intro', classname="full"),
-        StreamFieldPanel('streamfield'),
+        StreamFieldPanel('body'),
         InlinePanel('related_links', label="Related links"),
         InlinePanel('tags', label="Tags")
     ]

@@ -16,7 +16,7 @@
                 </div>
             {% endif %}
 
-            {% include "torchbox/includes/streamfield.html" %}
+            {% include "torchbox/includes/streamfield.html" with content=page.body %}
 
             <div class="blog-meta">
                 {% with self.authors.all as authors %}
