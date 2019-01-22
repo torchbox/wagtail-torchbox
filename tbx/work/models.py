@@ -61,8 +61,9 @@ class WorkPageAuthor(Orderable):
 
 
 class WorkPage(Page):
-    listing_summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
+    body = StreamField(StoryBlock())
+    body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -70,6 +71,8 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    visit_the_site = models.URLField(blank=True)
+
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         help_text='Image used on listings and social media.',
@@ -78,9 +81,7 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    body = StreamField(StoryBlock())
-    body_word_count = models.PositiveIntegerField(null=True, editable=False)
-    visit_the_site = models.URLField(blank=True)
+    listing_summary = models.CharField(max_length=255, blank=True)
     related_services = ParentalManyToManyField('taxonomy.Service', related_name='case_studies')
 
     def set_body_word_count(self):
