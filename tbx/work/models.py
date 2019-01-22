@@ -54,7 +54,6 @@ class WorkPageAuthor(Orderable):
 class WorkPage(Page):
     summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
-    intro = RichTextField("Intro (deprecated. Use streamfield instead)", blank=True)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -93,7 +92,6 @@ class WorkPage(Page):
         FieldPanel('descriptive_title'),
         InlinePanel('authors', label="Author"),
         FieldPanel('summary'),
-        FieldPanel('intro', classname="full"),
         StreamFieldPanel('body'),
         ImageChooserPanel('homepage_image'),
         InlinePanel('screenshots', label="Screenshots"),
