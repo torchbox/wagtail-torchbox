@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
-from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.fields import StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
@@ -118,7 +118,6 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
-    intro = RichTextField(blank=True, help_text="Used for blog index and Planet Drupal listings")
     colour = models.CharField(
         choices=(
             ('orange', "Orange"),
@@ -138,6 +137,7 @@ class BlogPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    listing_summary = models.TextField(blank=True)
 
     canonical_url = models.URLField(blank=True, max_length=255)
 
@@ -165,7 +165,6 @@ class BlogPage(Page):
         FieldPanel('colour'),
         InlinePanel('authors', label="Author"),
         FieldPanel('date'),
-        FieldPanel('intro', classname="full"),
         StreamFieldPanel('body'),
         InlinePanel('related_links', label="Related links"),
         InlinePanel('tags', label="Tags")
@@ -174,5 +173,6 @@ class BlogPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
+        FieldPanel('listing_summary'),
         FieldPanel('canonical_url'),
     ]
