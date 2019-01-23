@@ -12,10 +12,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='torchboxrendition',
-            name='filter',
-        ),
         migrations.AlterField(
             model_name='torchboxrendition',
             name='focal_point_key',

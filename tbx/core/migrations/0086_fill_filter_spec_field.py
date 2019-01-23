@@ -3,7 +3,6 @@
 
 
 from django.db import migrations
-from wagtail.images.utils import get_fill_filter_spec_migrations
 
 
 class Migration(migrations.Migration):
@@ -12,7 +11,6 @@ class Migration(migrations.Migration):
         ('torchbox', '0085_add_filter_spec_field'),
     ]
 
-    forward, reverse = get_fill_filter_spec_migrations('torchbox', 'TorchboxRendition')
     operations = [
-        migrations.RunPython(forward, reverse),
+        # Removed to make initial migrations work again
     ]

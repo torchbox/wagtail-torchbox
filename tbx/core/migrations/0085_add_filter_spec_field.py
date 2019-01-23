@@ -18,9 +18,4 @@ class Migration(migrations.Migration):
             name='filter_spec',
             field=models.CharField(blank=True, db_index=True, default='', max_length=255),
         ),
-        migrations.AlterField(
-            model_name='torchboxrendition',
-            name='filter',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailimages.Filter'),
-        ),
     ]
