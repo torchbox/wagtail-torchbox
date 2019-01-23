@@ -10,18 +10,18 @@ from tbx.work.models import WorkPage
 register = template.Library()
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_popular_tags(model):
     return model.get_popular_tags()
 
 
 # settings value
-@register.assignment_tag
+@register.simple_tag
 def get_googe_maps_key():
     return getattr(settings, 'GOOGLE_MAPS_KEY', "")
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_next_sibling_by_order(page):
     sibling = page.get_next_siblings().live().first()
 
@@ -29,7 +29,7 @@ def get_next_sibling_by_order(page):
         return sibling.specific
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_prev_sibling_by_order(page):
     sibling = page.get_prev_siblings().live().first()
 
@@ -37,21 +37,21 @@ def get_prev_sibling_by_order(page):
         return sibling.specific
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_next_sibling_blog(page):
     sibling = BlogPage.objects.filter(date__lt=page.date).order_by('-date').live().first()
     if sibling:
         return sibling.specific
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_prev_sibling_blog(page):
     sibling = BlogPage.objects.filter(date__gt=page.date).order_by('-date').live().last()
     if sibling:
         return sibling.specific
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_site_root(context):
     return context['request'].site.root_page
 
