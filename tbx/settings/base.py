@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'wagtailfontawesome',
     'wagtail_review',
     'phonenumber_field',
+    'graphene_django',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -442,3 +443,9 @@ if 'MAILCHIMP_KEY' in env:
 
 if 'MAILCHIMP_MAILING_LIST_ID' in env:
     MAILCHIMP_MAILING_LIST_ID = env['MAILCHIMP_MAILING_LIST_ID']
+
+
+# GraphQL API Endpoint
+GRAPHENE = {
+    'SCHEMA': 'tbx.graphql.schema.schema',
+}
