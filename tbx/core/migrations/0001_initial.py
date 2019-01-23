@@ -370,7 +370,6 @@ class Migration(migrations.Migration):
                 ('width', models.IntegerField(editable=False)),
                 ('height', models.IntegerField(editable=False)),
                 ('focal_point_key', models.CharField(default='', max_length=255, editable=False, blank=True)),
-                ('filter', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.CASCADE, to='wagtailimages.Filter')),
                 ('image', models.ForeignKey(related_name='renditions', on_delete=django.db.models.deletion.CASCADE, to='torchbox.TorchboxImage')),
             ],
             options={
@@ -445,7 +444,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='torchboxrendition',
-            unique_together=set([('image', 'filter', 'focal_point_key')]),
+            unique_together=set([('image', 'focal_point_key')]),
         ),
         migrations.AddField(
             model_name='standardpagerelatedlink',
