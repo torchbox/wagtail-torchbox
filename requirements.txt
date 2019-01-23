@@ -1,7 +1,7 @@
-Django==1.11.16
+Django==2.1.5
 psycopg2==2.7.4
 django-redis==4.10.0
-wagtail==2.2.2
+wagtail==2.4
 Pillow==4.3.0
 embedly==0.5.0
 requests==2.20.0
@@ -10,7 +10,7 @@ wagtail-django-recaptcha==1.0
 django-basic-auth-ip-whitelist==0.2
 boto3==1.7.82
 django-storages==1.6.6
-wagtail-review==0.1
+wagtail-review==0.1.1
 
 # Development requirements
 django-debug-toolbar==1.2.2

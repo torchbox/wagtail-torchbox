@@ -20,6 +20,7 @@ class WorkPageTagSelect(Orderable):
     page = ParentalKey('work.WorkPage', related_name='tags')
     tag = models.ForeignKey(
         'torchbox.Tag',
+        on_delete=models.CASCADE,
         related_name='work_page_tag_select'
     )
 
@@ -43,6 +44,7 @@ class WorkPageAuthor(Orderable):
     page = ParentalKey('work.WorkPage', related_name='authors')
     author = models.ForeignKey(
         'people.Author',
+        on_delete=models.CASCADE,
         related_name='+'
     )
 

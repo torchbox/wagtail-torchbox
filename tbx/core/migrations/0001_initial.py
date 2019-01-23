@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
             name='AdvertPlacement',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('advert', models.ForeignKey(related_name='+', to='torchbox.Advert')),
+                ('advert', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.CASCADE, to='torchbox.Advert')),
             ],
             options={
             },
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BlogIndexPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('show_in_play_menu', models.BooleanField(default=False)),
             ],
@@ -62,7 +62,7 @@ class Migration(migrations.Migration):
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
                 ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
                 ('title', models.CharField(help_text=b'Link title', max_length=255)),
-                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+                ('link_document', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='wagtaildocs.Document', null=True)),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -73,7 +73,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BlogPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('body', wagtail.core.fields.RichTextField()),
                 ('author_left', models.CharField(help_text=b'author who has left Torchbox', max_length=255, blank=True)),
@@ -103,7 +103,7 @@ class Migration(migrations.Migration):
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
                 ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
                 ('title', models.CharField(help_text=b'Link title', max_length=255)),
-                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+                ('link_document', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='wagtaildocs.Document', null=True)),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -128,7 +128,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
                 ('page', modelcluster.fields.ParentalKey(related_name='tags', to='torchbox.BlogPage')),
-                ('tag', models.ForeignKey(related_name='blog_page_tag_select', to='torchbox.BlogPageTagList')),
+                ('tag', models.ForeignKey(related_name='blog_page_tag_select', on_delete=django.db.models.deletion.CASCADE, to='torchbox.BlogPageTagList')),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -139,7 +139,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='HomePage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('intro', models.TextField(blank=True)),
                 ('hero_video_id', models.IntegerField(help_text=b'Optional. The numeric ID of a Vimeo video to replace the background image.', null=True, blank=True)),
             ],
@@ -151,7 +151,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='JobIndexPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
@@ -192,7 +192,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PersonIndexPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('show_in_play_menu', models.BooleanField(default=False)),
             ],
@@ -204,7 +204,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PersonPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('telephone', models.CharField(max_length=20, blank=True)),
                 ('email', models.EmailField(max_length=75, blank=True)),
                 ('address_1', models.CharField(max_length=255, blank=True)),
@@ -230,7 +230,7 @@ class Migration(migrations.Migration):
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
                 ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
                 ('title', models.CharField(help_text=b'Link title', max_length=255)),
-                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+                ('link_document', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='wagtaildocs.Document', null=True)),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -241,7 +241,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ServicesPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('body', wagtail.core.fields.RichTextField(blank=True)),
             ],
@@ -271,7 +271,7 @@ class Migration(migrations.Migration):
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
                 ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
                 ('title', models.CharField(help_text=b'Link title', max_length=255)),
-                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+                ('link_document', models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtaildocs.Document', null=True)),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -282,7 +282,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='StandardPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('credit', models.CharField(max_length=255, blank=True)),
                 ('heading', wagtail.core.fields.RichTextField(blank=True)),
                 ('quote', models.CharField(max_length=255, blank=True)),
@@ -332,7 +332,7 @@ class Migration(migrations.Migration):
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
                 ('link_external', models.URLField(verbose_name=b'External link', blank=True)),
                 ('title', models.CharField(help_text=b'Link title', max_length=255)),
-                ('link_document', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+                ('link_document', models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtaildocs.Document', null=True)),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -355,7 +355,7 @@ class Migration(migrations.Migration):
                 ('focal_point_height', models.PositiveIntegerField(null=True, blank=True)),
                 ('credit', models.CharField(max_length=255, blank=True)),
                 ('tags', taggit.managers.TaggableManager(to='taggit.Tag', through='taggit.TaggedItem', blank=True, help_text=None, verbose_name='Tags')),
-                ('uploaded_by_user', models.ForeignKey(blank=True, editable=False, to=settings.AUTH_USER_MODEL, null=True)),
+                ('uploaded_by_user', models.ForeignKey(blank=True, editable=False, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, null=True)),
             ],
             options={
                 'abstract': False,
@@ -370,8 +370,7 @@ class Migration(migrations.Migration):
                 ('width', models.IntegerField(editable=False)),
                 ('height', models.IntegerField(editable=False)),
                 ('focal_point_key', models.CharField(default='', max_length=255, editable=False, blank=True)),
-                ('filter', models.ForeignKey(related_name='+', to='wagtailimages.Filter')),
-                ('image', models.ForeignKey(related_name='renditions', to='torchbox.TorchboxImage')),
+                ('image', models.ForeignKey(related_name='renditions', on_delete=django.db.models.deletion.CASCADE, to='torchbox.TorchboxImage')),
             ],
             options={
             },
@@ -380,7 +379,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TshirtPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('main_image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='torchbox.TorchboxImage', null=True)),
             ],
             options={
@@ -391,7 +390,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='WorkIndexPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('show_in_play_menu', models.BooleanField(default=False)),
                 ('hide_popular_tags', models.BooleanField(default=False)),
@@ -404,7 +403,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='WorkPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('summary', models.CharField(max_length=255)),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('body', wagtail.core.fields.RichTextField(blank=True)),
@@ -435,7 +434,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
                 ('page', modelcluster.fields.ParentalKey(related_name='tags', to='torchbox.WorkPage')),
-                ('tag', models.ForeignKey(related_name='work_page_tag_select', to='torchbox.BlogPageTagList')),
+                ('tag', models.ForeignKey(related_name='work_page_tag_select', on_delete=django.db.models.deletion.CASCADE, to='torchbox.BlogPageTagList')),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -445,12 +444,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='torchboxrendition',
-            unique_together=set([('image', 'filter', 'focal_point_key')]),
+            unique_together=set([('image', 'focal_point_key')]),
         ),
         migrations.AddField(
             model_name='standardpagerelatedlink',
             name='link_page',
-            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            field=models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.Page', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -468,13 +467,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='standardpageclients',
             name='link_document',
-            field=models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True),
+            field=models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.CASCADE, to='wagtaildocs.Document', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='standardpageclients',
             name='link_page',
-            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            field=models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailcore.Page', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -498,7 +497,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='servicespagerelatedlink',
             name='link_page',
-            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            field=models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailcore.Page', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -516,7 +515,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='personpagerelatedlink',
             name='link_page',
-            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            field=models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailcore.Page', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -546,7 +545,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='blogpagerelatedlink',
             name='link_page',
-            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            field=models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailcore.Page', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -558,7 +557,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='blogpageauthor',
             name='author',
-            field=models.ForeignKey(related_name='+', blank=True, to='torchbox.PersonPage', null=True),
+            field=models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='torchbox.PersonPage', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -576,7 +575,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='blogindexpagerelatedlink',
             name='link_page',
-            field=models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True),
+            field=models.ForeignKey(related_name='+', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailcore.Page', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -594,7 +593,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='advert',
             name='page',
-            field=models.ForeignKey(related_name='adverts', blank=True, to='wagtailcore.Page', null=True),
+            field=models.ForeignKey(related_name='adverts', blank=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailcore.Page', null=True),
             preserve_default=True,
         ),
     ]

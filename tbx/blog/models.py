@@ -101,6 +101,7 @@ class BlogPageTagSelect(Orderable):
     page = ParentalKey('blog.BlogPage', related_name='tags')
     tag = models.ForeignKey(
         'torchbox.Tag',
+        on_delete=models.CASCADE,
         related_name='blog_page_tag_select'
     )
 
@@ -109,6 +110,7 @@ class BlogPageAuthor(Orderable):
     page = ParentalKey('blog.BlogPage', related_name='authors')
     author = models.ForeignKey(
         'people.Author',
+        on_delete=models.CASCADE,
         related_name='+',
     )
 
