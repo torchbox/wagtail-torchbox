@@ -1,0 +1,82 @@
+{% extends "torchbox/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags staticfiles %}
+
+{% block content %}
+    <div class="hero">
+        <div class="green-line"></div>
+        <div class="container">
+            <h1>{{ page.formatted_title|safe }}</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        {{ page.intro|richtext }}
+        <div class="form sign-up-form-wrapper top">
+            {% include "sign_up_form/includes/sign_up_form_page_form.html" with legend=page.call_to_action_text %}
+        </div> <!-- /sign-up-form -->
+    </div>
+
+    <div class="advantages">
+        <div class="container">
+            {% for bullet in self.bullet_points.all %}
+            <div class="advantage">
+                <div class="svg">
+                    {% include bullet.icon %}
+                </div>
+                <h3>{{ bullet.title }}</h3>
+                <p>{{ bullet.body }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Case studies and contributions from</h2>
+        <ul class="logos">
+            {% for logo in page.logos.all %}
+            <li>
+                {% image logo.logo height-100 %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="quotes">
+        <div class="container">
+            <div class="carousel">
+                {% for quote in page.quotes.all %}
+                <blockquote>
+                    <p>{{ quote.quote }}</p>
+                    <p class="author">– {{ quote.author }} <span>{{ quote.organisation }}</span></p>
+                    <div class="svg">
+                        {% include "torchbox/includes/svg/tail-svg.html" %}
+                    </div>
+                </blockquote>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="cta">
+        <div class="container">
+            <div class="form sign-up-form-wrapper">
+                {% include "sign_up_form/includes/sign_up_form_page_form.html" with legend=page.call_to_action_text %}
+            </div> <!-- /sign-up-form -->
+
+        </div>
+    </div>
+    <footer class="thanks">
+        <div class="thank-you">
+            <div class="container">
+                <div class="text">
+                    <p>This guide is aimed at anyone working for a charity who is responsible for digital marketing or communications. It has been produced by Torchbox, with special thanks to all the charities which took our survey.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+{% block extra_js %}
+    <script type="text/javascript">
+        $(function(){
+            tbx.signUp('.sign-up-form-wrapper .sign-up-form');
+        });
+    </script>
+{% endblock %}

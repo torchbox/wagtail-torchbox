@@ -1,0 +1,22 @@
+<div class="services-section services-section--grey">
+    <div class="services-wrapper">
+        <h2 class="services-section__heading">{{ value.title }}</h2>
+
+        {% spaceless %}
+        <div class="services-slider">
+            <h2 class="services-slider__heading">
+                {{ value.intro }}
+            </h2>
+
+            <ul class="work-list">
+                {% for case_study in value.case_studies %}
+                {% with case_study.page.specific as page %}
+                  {% include "work/includes/work_item.html" with page=page title=case_study.title|default:page.title descriptive_title=case_study.descriptive_title|default:page.descriptive_title image=case_study.image|default:page.homepage_image %}
+                {% endwith %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endspaceless %}
+
+    </div>
+</div>

@@ -1,8 +1,8 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% if self.streamfield %}
+{% if content %}
     <section class="stream-field">
-        {% for child in self.streamfield %}
+        {% for child in content %}
             {% if child.block_type == 'h2' %}
                 <h2>{{ child }}</h2>
             {% elif child.block_type == 'h3' %}

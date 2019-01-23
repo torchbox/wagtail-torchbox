@@ -1,0 +1,41 @@
+{% extends "torchbox/base.html" %}
+{% load torchbox_tags wagtailcore_tags wagtailimages_tags staticfiles %}
+
+{% block content %}
+
+    <style>
+        .about-hero {
+            {% image page.main_image original as main_image %}
+            background-image: url("{{ main_image.url }}");
+        }
+    </style>
+
+    <div class="about-hero">
+        <div class="" id="tester-unique">
+            <div class="container">
+                <div class="content">
+                    <h2>Our services</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            {% if self.services.all %}
+            <div class="services">
+                <ul>
+                    {% for service in self.services.all %}
+                    <li>
+                        <div class="services-content">
+                            {{ service.svg|safe }}
+                            <h3>{% if service.link %}<a href="{% pageurl service.link %}" class="service__link--header">{% endif %}{{ service.title }}{% if service.link %}</a>{% endif %}</h3>
+                            <p>{{ service.description }}</p>
+                            {% if service.link %}<a href="{% pageurl service.link %}" class="service__link">Find out more</a>{% endif %}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

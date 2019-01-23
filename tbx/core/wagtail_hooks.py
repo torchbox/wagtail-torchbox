@@ -8,7 +8,9 @@ from wagtail.contrib.modeladmin.options import (ModelAdmin, ModelAdminGroup,
 from wagtail.core import hooks
 from wagtail.documents.models import document_served, get_document_model
 
-from .models import GoogleAdGrantApplication, SignUpFormPageResponse
+from tbx.sign_up_form.models import SignUpFormPageResponse
+
+from .models import GoogleAdGrantApplication
 
 
 class GoogleAdGrantApplicationModelAdmin(ModelAdmin):

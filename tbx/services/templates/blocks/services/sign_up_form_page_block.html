@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="services-section">
+	<div class="services-wrapper">
+		{% with page_id=value.page.pk|stringformat:"s" %}
+		    {% include 'sign_up_form/includes/sign_up_form_page_form.html' with page=value.page legend=value.page.call_to_action_text form=form form_id='sign-up-form-'|add:page_id %}
+		{% endwith %}
+	</div>
+</div>
