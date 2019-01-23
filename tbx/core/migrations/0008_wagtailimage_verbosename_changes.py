@@ -3,6 +3,7 @@
 
 from django.db import models, migrations
 from django.conf import settings
+import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
@@ -27,7 +28,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='torchboximage',
             name='uploaded_by_user',
-            field=models.ForeignKey(blank=True, editable=False, to=settings.AUTH_USER_MODEL, null=True, verbose_name='Uploaded by user'),
+            field=models.ForeignKey(blank=True, editable=False, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, null=True, verbose_name='Uploaded by user'),
             preserve_default=True,
         ),
         migrations.AlterField(

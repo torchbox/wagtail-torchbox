@@ -41,12 +41,14 @@ class LinkFields(models.Model):
     link_external = models.URLField("External link", blank=True)
     link_page = models.ForeignKey(
         'wagtailcore.Page',
+        on_delete=models.SET_NULL,
         null=True,
         blank=True,
         related_name='+'
     )
     link_document = models.ForeignKey(
         'wagtaildocs.Document',
+        on_delete=models.SET_NULL,
         null=True,
         blank=True,
         related_name='+'
@@ -133,15 +135,16 @@ class RelatedLink(LinkFields):
 # Advert Snippet
 class AdvertPlacement(models.Model):
     page = ParentalKey('wagtailcore.Page', related_name='advert_placements')
-    advert = models.ForeignKey('torchbox.Advert', related_name='+')
+    advert = models.ForeignKey('torchbox.Advert', on_delete=models.CASCADE, related_name='+')
 
 
 class Advert(models.Model):
     page = models.ForeignKey(
         'wagtailcore.Page',
-        related_name='adverts',
+        on_delete=models.SET_NULL,
         null=True,
-        blank=True
+        blank=True,
+        related_name='adverts'
     )
     url = models.URLField(null=True, blank=True)
     text = models.CharField(max_length=255)
@@ -173,7 +176,7 @@ class TorchboxImage(AbstractImage):
 
 
 class TorchboxRendition(AbstractRendition):
-    image = models.ForeignKey('TorchboxImage', related_name='renditions')
+    image = models.ForeignKey('TorchboxImage', on_delete=models.CASCADE, related_name='renditions')
 
     class Meta:
         unique_together = (
