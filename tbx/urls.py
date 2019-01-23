@@ -1,6 +1,6 @@
 from django.conf import settings
-from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
@@ -17,16 +17,16 @@ from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.core.views import favicon, robots
 
 private_urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
-    url(r'^admin/', include(wagtailadmin_urls)),
+    path('django-admin/', admin.site.urls),
+    path('admin/', include(wagtailadmin_urls)),
 ] + decorate_urlpatterns([
-    url(r'^documents/', include(wagtaildocs_urls)),
+    path('documents/', include(wagtaildocs_urls)),
 ], never_cache)
 
 urlpatterns = [
-    url(r'^sitemap\.xml$', sitemap),
-    url(r'^favicon.ico$', favicon),
-    url(r'^robots.txt$', robots),
+    path('sitemap.xml', sitemap),
+    path('favicon.ico', favicon),
+    path('robots.txt', robots),
 ]
 
 
@@ -41,14 +41,14 @@ if settings.DEBUG:
 
     # Add views for testing 404 and 500 templates
     urlpatterns += [
-        url(r'^test404/$', TemplateView.as_view(template_name='404.html')),
-        url(r'^test500/$', TemplateView.as_view(template_name='500.html')),
+        path('test404/', TemplateView.as_view(template_name='404.html')),
+        path('test500/', TemplateView.as_view(template_name='500.html')),
     ]
 
 
 urlpatterns += [
-    url(r'^review/', include(wagtailreview_urls)),
-    url(r'', include(torchbox_urls)),
+    path('review', include(wagtailreview_urls)),
+    path('', include(torchbox_urls)),
 ]
 
 handler404 = 'tbx.core.views.error404'
@@ -73,5 +73,5 @@ Page.serve = get_default_cache_control_decorator()(Page.serve)
 urlpatterns = private_urlpatterns + urlpatterns + [
     # Add Wagtail URLs at the end.
     # Wagtail cache-control is set on the page models's serve methods.
-    url(r'', include(wagtail_urls)),
+    path(r'', include(wagtail_urls)),
 ]
