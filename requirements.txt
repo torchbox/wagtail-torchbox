@@ -13,6 +13,7 @@ django-storages==1.6.6
 wagtail-review==0.1.1
 django-phonenumber-field==2.1.0
 phonenumbers==8.10.3
+graphene_django==2.2.0
 
 # Development requirements
 django-debug-toolbar==1.2.2
