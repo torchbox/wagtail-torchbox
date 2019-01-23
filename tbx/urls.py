@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
+from graphene_django.views import GraphQLView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
@@ -49,6 +50,7 @@ if settings.DEBUG:
 urlpatterns += [
     path('review', include(wagtailreview_urls)),
     path('', include(torchbox_urls)),
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
 
 handler404 = 'tbx.core.views.error404'
