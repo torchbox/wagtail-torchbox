@@ -18,6 +18,7 @@ class ServiceIndexPageService(Orderable):
     description = models.TextField()
     link = models.ForeignKey(
         'services.ServicePage',
+        on_delete=models.SET_NULL,
         related_name='+',
         blank=True,
         null=True,
