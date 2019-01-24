@@ -51,8 +51,6 @@ urlpatterns += [
     path('', include(torchbox_urls)),
 ]
 
-handler404 = 'tbx.core.views.error404'
-
 
 # Set public URLs to use public cache.
 urlpatterns = decorate_urlpatterns(urlpatterns,

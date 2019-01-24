@@ -6,13 +6,6 @@ from django.templatetags.static import static
 import requests
 
 
-def error404(request):
-    if '/play/' in request.path:
-        return render(request, 'play_404.html', {'play_404': True}, status=404)
-    else:
-        return render(request, '404.html', status=404)
-
-
 def newsletter_subsribe(request):
     if request.is_ajax() and request.GET.get('email'):
         requests.post(
