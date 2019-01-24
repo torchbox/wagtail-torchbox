@@ -273,67 +273,11 @@ class HomePage(Page):
 
 # Standard page
 
-class StandardPageContentBlock(Orderable, ContentBlock):
-    page = ParentalKey('torchbox.StandardPage', related_name='content_block')
-
-
-class StandardPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.StandardPage', related_name='related_links')
-
-
-class StandardPageClient(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.StandardPage', related_name='clients')
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    panels = RelatedLink.panels + [
-        ImageChooserPanel('image')
-    ]
-
-
 class StandardPage(Page):
-    main_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    credit = models.CharField(max_length=255, blank=True)
-    heading = RichTextField(blank=True)
-    quote = models.CharField(max_length=255, blank=True)
     body = StreamField(StoryBlock())
-    email = models.EmailField(blank=True)
 
-    feed_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        ImageChooserPanel('main_image'),
-        FieldPanel('credit', classname="full"),
-        FieldPanel('heading', classname="full"),
-        FieldPanel('quote', classname="full"),
+    content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
-        FieldPanel('email', classname="full"),
-        InlinePanel('content_block', label="Content block"),
-        InlinePanel('related_links', label="Related links"),
-        InlinePanel('clients', label="Clients"),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
     ]
 
 
