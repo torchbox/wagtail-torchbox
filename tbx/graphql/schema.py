@@ -48,7 +48,7 @@ class ImageObjectType(graphene.ObjectType):
         return self.title
 
     def resolve_src(self, info):
-        return self.url
+        return self.file.url
 
     def resolve_rendition(self, info, format):
         if format in ImageObjectType.FORMATS:
