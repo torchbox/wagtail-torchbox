@@ -167,3 +167,11 @@ class Contact(index.Indexed, models.Model):
     search_fields = [
         index.SearchField('name'),
     ]
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('role'),
+        ImageChooserPanel('image'),
+        FieldPanel('email_address'),
+        FieldPanel('phone_number'),
+   ]
