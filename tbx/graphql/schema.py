@@ -154,8 +154,8 @@ class ServicePageObjectType(graphene.ObjectType):
     client_logos = graphene.List(ServicePageClientLogoObjectType)
     usa_client_logos = graphene.List(ServicePageClientLogoObjectType)
     testimonials = graphene.List(ServicePageTestimonialObjectType)
-    case_studies = graphene.List(CaseStudyObjectType)
-    blog_posts = graphene.List(BlogPostObjectType)
+    blog_posts = graphene.List(BlogPostObjectType, limit=graphene.Int())
+    case_studies = graphene.List(CaseStudyObjectType, limit=graphene.Int())
 
     def resolve_key_points(self, info):
         return self.key_points.all()
@@ -169,13 +169,41 @@ class ServicePageObjectType(graphene.ObjectType):
     def resolve_testimonials(self, info):
         return self.testimonials.all()
 
-    def resolve_case_studies(self, info):
-        # TODO
-        return []
+    def resolve_blog_posts(self, info, **kwargs):
+        limit = kwargs.get('limit', 10)
+        blog_pages = BlogPage.objects.live().public()
 
-    def resolve_blog_posts(self, info):
-        # TODO
-        return []
+        # Get featured in same order as in the editor
+        featured_ids = list(self.featured_blog_posts.values_list('blog_post_id', flat=True)[:limit])
+        featured_pages = blog_pages.in_bulk(featured_ids)
+        featured = [
+            featured_pages[featured_id]
+            for featured_id in featured_ids
+        ]
+
+        # Get additional work pages
+        num_additional_required = limit - len(featured)
+        additional = list(blog_pages.exclude(id__in=featured_ids).order_by('-date')[:num_additional_required])
+
+        return featured + additional
+
+    def resolve_case_studies(self, info, **kwargs):
+        limit = kwargs.get('limit', 10)
+        work_pages = WorkPage.objects.live().public()
+
+        # Get featured in same order as in the editor
+        featured_ids = list(self.featured_case_studies.values_list('case_study_id', flat=True)[:limit])
+        featured_pages = work_pages.in_bulk(featured_ids)
+        featured = [
+            featured_pages[featured_id]
+            for featured_id in featured_ids
+        ]
+
+        # Get additional work pages
+        num_additional_required = limit - len(featured)
+        additional = list(work_pages.exclude(id__in=featured_ids).order_by('-first_published_at')[:num_additional_required])
+
+        return featured + additional
 
     class Meta:
         interfaces = [PageInterface]
