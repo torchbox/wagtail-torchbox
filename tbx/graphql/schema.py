@@ -38,6 +38,7 @@ class ImageObjectType(graphene.ObjectType):
     }
 
     id = graphene.Int()
+    src = graphene.String()
     alt = graphene.String()
     rendition = graphene.Field(ImageRenditionObjectType, format=graphene.String())
     width = graphene.Int()
@@ -45,6 +46,9 @@ class ImageObjectType(graphene.ObjectType):
 
     def resolve_alt(self, info):
         return self.title
+
+    def resolve_src(self, info):
+        return self.url
 
     def resolve_rendition(self, info, format):
         if format in ImageObjectType.FORMATS:
