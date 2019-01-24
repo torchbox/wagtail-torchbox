@@ -1,9 +1,11 @@
+from django import forms
+
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
-from modelcluster.fields import ParentalKey
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
 from wagtail.core.fields import RichTextField, StreamField
@@ -73,6 +75,7 @@ class WorkPage(Page):
     )
     body = StreamField(StoryBlock())
     visit_the_site = models.URLField(blank=True)
+    related_services = ParentalManyToManyField('taxonomy.Service', related_name='case_studies')
 
     @property
     def work_index(self):
@@ -104,6 +107,7 @@ class WorkPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
+        FieldPanel('related_services', widget=forms.CheckboxSelectMultiple),
     ]
 
 
