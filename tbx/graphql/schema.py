@@ -34,9 +34,11 @@ class ImageObjectType(graphene.ObjectType):
         'half': 'width-800',  # Used by aligned image when alignment is "half"
         'full': 'width-1280',  # Used by aligned image when alignment is "full"
         'logo': 'max-250x80',  # Used by logo block
+        'icon': 'fill-100x100',
     }
 
     id = graphene.Int()
+    src = graphene.String()
     alt = graphene.String()
     rendition = graphene.Field(ImageRenditionObjectType, format=graphene.String())
     width = graphene.Int()
@@ -44,6 +46,9 @@ class ImageObjectType(graphene.ObjectType):
 
     def resolve_alt(self, info):
         return self.title
+
+    def resolve_src(self, info):
+        return self.url
 
     def resolve_rendition(self, info, format):
         if format in ImageObjectType.FORMATS:
