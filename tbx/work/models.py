@@ -1,7 +1,10 @@
-from django import forms
+import string
 
+from bs4 import BeautifulSoup
+from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
@@ -10,6 +13,7 @@ from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
+from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
@@ -18,6 +22,7 @@ from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 
 
+# Currently hidden. These were used in the past and may be used again in the future
 class WorkPageTagSelect(Orderable):
     page = ParentalKey('work.WorkPage', related_name='tags')
     tag = models.ForeignKey(
@@ -56,8 +61,9 @@ class WorkPageAuthor(Orderable):
 
 
 class WorkPage(Page):
-    summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
+    body = StreamField(StoryBlock())
+    body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -65,6 +71,8 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    visit_the_site = models.URLField(blank=True)
+
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         help_text='Image used on listings and social media.',
@@ -73,9 +81,15 @@ class WorkPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    body = StreamField(StoryBlock())
-    visit_the_site = models.URLField(blank=True)
+    listing_summary = models.CharField(max_length=255, blank=True)
     related_services = ParentalManyToManyField('taxonomy.Service', related_name='case_studies')
+
+    def set_body_word_count(self):
+        body_basic_html = self.body.stream_block.render_basic(self.body)
+        body_text = BeautifulSoup(body_basic_html, 'html.parser').get_text()
+        remove_chars = string.punctuation + '“”’'
+        body_words = body_text.translate(body_text.maketrans(dict.fromkeys(remove_chars))).split()
+        self.body_word_count = len(body_words)
 
     @property
     def work_index(self):
@@ -96,17 +110,16 @@ class WorkPage(Page):
         FieldPanel('title', classname="full title"),
         FieldPanel('descriptive_title'),
         InlinePanel('authors', label="Author"),
-        FieldPanel('summary'),
         StreamFieldPanel('body'),
         ImageChooserPanel('homepage_image'),
         InlinePanel('screenshots', label="Screenshots"),
-        InlinePanel('tags', label="Tags"),
         FieldPanel('visit_the_site'),
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel('feed_image'),
+        FieldPanel('listing_summary'),
         FieldPanel('related_services', widget=forms.CheckboxSelectMultiple),
     ]
 
@@ -164,3 +177,9 @@ class WorkIndexPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
+
+
+@receiver(page_published, sender=WorkPage)
+def update_body_word_count_on_page_publish(instance, **kwargs):
+    instance.set_body_word_count()
+    instance.save(update_fields=['body_word_count'])

@@ -468,7 +468,8 @@ class ParticleSnippet(models.Model):
         return self.title
 
 
-@register_snippet
+# Currently hidden. These were used in the past and may be used again in the future
+# @register_snippet
 class Tag(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
@@ -684,55 +685,6 @@ class GoogleAdGrantsPage(Page):
             FieldPanel('call_to_action_embed_url'),
             InlinePanel('accreditations', label="Accreditations")
         ], "Call To Action")
-    ]
-
-
-# Contact page
-class ContactFormField(AbstractFormField):
-    page = ParentalKey('Contact', related_name='form_fields')
-
-
-class ContactLandingPageRelatedLinkButton(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.Contact', related_name='related_link_buttons')
-
-
-@method_decorator(never_cache, name='serve')
-class Contact(WagtailCaptchaEmailForm):
-    intro = RichTextField(blank=True)
-    main_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
-                                   blank=True, on_delete=models.SET_NULL,
-                                   related_name='+')
-    landing_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
-                                      blank=True, on_delete=models.SET_NULL,
-                                      related_name='+')
-    thank_you_text = models.CharField(max_length=255, help_text='e.g. Thanks!')
-    thank_you_follow_up = models.CharField(max_length=255, help_text='e.g. We\'ll be in touch')
-    landing_page_button_title = models.CharField(max_length=255, blank=True)
-    landing_page_button_link = models.ForeignKey(
-        'wagtailcore.Page', null=True, blank=True, related_name='+',
-        on_delete=models.SET_NULL
-    )
-
-    class Meta:
-        verbose_name = "Contact Page"
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-        ImageChooserPanel('main_image'),
-        InlinePanel('form_fields', label="Form fields"),
-        MultiFieldPanel([
-            FieldPanel('to_address', classname="full"),
-            FieldPanel('from_address', classname="full"),
-            FieldPanel('subject', classname="full"),
-        ], "Email"),
-        MultiFieldPanel([
-            ImageChooserPanel('landing_image'),
-            FieldPanel('thank_you_text'),
-            FieldPanel('thank_you_follow_up'),
-            PageChooserPanel('landing_page_button_link'),
-            FieldPanel('landing_page_button_title'),
-        ], "Landing page"),
     ]
 
 
