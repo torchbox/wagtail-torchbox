@@ -3,7 +3,7 @@ from graphene.types import Scalar
 
 from tbx.blog.models import BlogPage
 from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage
-from tbx.people.models import Author, PersonPage
+from tbx.people.models import Author, PersonIndexPage, PersonPage
 from tbx.services.models import ServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkPage
@@ -233,6 +233,13 @@ class JobsIndexPageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+class PersonIndexPageObjectType(graphene.ObjectType):
+    strapline = graphene.String()
+
+    class Meta:
+        interfaces = [PageInterface]
+
+
 class Query(graphene.ObjectType):
     services = graphene.List(ServiceObjectType, slug=graphene.String())
     person_pages = graphene.List(PersonPageObjectType, slug=graphene.String())
@@ -241,6 +248,7 @@ class Query(graphene.ObjectType):
     service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
     standard_pages = graphene.List(StandardPageObjectType, service_slug=graphene.String())
     jobs_index_page = graphene.Field(JobsIndexPageObjectType)
+    person_index_page = graphene.Field(PersonIndexPageObjectType)
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
 
     def resolve_services(self, info, **kwargs):
@@ -300,6 +308,9 @@ class Query(graphene.ObjectType):
 
     def resolve_jobs_index_page(self, info):
         return JobIndexPage.objects.live().public().first()
+
+    def resolve_person_index_page(self, info):
+        return PersonIndexPage.objects.live().public().first()
 
     def resolve_images(self, info, **kwargs):
         images = TorchboxImage.objects.all()
