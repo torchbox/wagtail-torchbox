@@ -34,6 +34,7 @@ class ImageObjectType(graphene.ObjectType):
         'half': 'width-800',  # Used by aligned image when alignment is "half"
         'full': 'width-1280',  # Used by aligned image when alignment is "full"
         'logo': 'max-250x80',  # Used by logo block
+        'icon': 'fill-100x100',
     }
 
     id = graphene.Int()
