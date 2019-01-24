@@ -3,11 +3,7 @@ from graphene.types import Scalar
 
 from tbx.blog.models import BlogPage
 from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage
-<<<<<<< HEAD
-from tbx.people.models import Author, PersonPage
-=======
 from tbx.people.models import Author, PersonIndexPage, PersonPage
->>>>>>> graphql
 from tbx.services.models import ServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkPage
