@@ -76,9 +76,7 @@ class PersonPage(Page, ContactFields):
 
 # Person index
 class PersonIndexPage(Page):
-    intro = models.TextField()
-    senior_management_intro = models.TextField()
-    team_intro = models.TextField()
+    strapline = models.CharField(max_length=255)
 
     @cached_property
     def people(self):
@@ -89,9 +87,7 @@ class PersonIndexPage(Page):
         return PersonPage.objects.exclude(is_senior=False).live().public()
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full"),
-        FieldPanel('senior_management_intro', classname="full"),
-        FieldPanel('team_intro', classname="full"),
+        FieldPanel('strapline', classname="full"),
     ]
 
 
