@@ -13,15 +13,7 @@
                     </div>
                 {% endif %}
 
-                <div class="intro were-tbx ">
-                    {{ self.intro|richtext }}
-                </div>
-
-                <div class="intro were-tbx ">
-                    {{ self.body|richtext }}
-                </div>
-
-                {% include "torchbox/includes/streamfield.html" with content=page.streamfield %}
+                {% include "torchbox/includes/streamfield.html" with content=page.body %}
             </div>
         </section>
     </main>
