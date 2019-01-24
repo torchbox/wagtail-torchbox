@@ -46,8 +46,8 @@ class ImageObjectType(graphene.ObjectType):
         return self.title
 
     def resolve_rendition(self, info, format):
-        if format in Image.FORMATS:
-            return self.get_rendition(Image.FORMATS[format])
+        if format in ImageObjectType.FORMATS:
+            return self.get_rendition(ImageObjectType.FORMATS[format])
 
         # TODO: Error
 
