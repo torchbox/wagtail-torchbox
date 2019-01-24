@@ -2,7 +2,7 @@ import graphene
 from graphene.types import Scalar
 
 from tbx.blog.models import BlogPage
-from tbx.core.models import TorchboxImage
+from tbx.core.models import TorchboxImage, StandardPage
 from tbx.people.models import Author, PersonPage
 from tbx.services.models import ServicePage
 from tbx.taxonomy.models import Service
@@ -209,12 +209,20 @@ class ServicePageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+class StandardPageObjectType(graphene.ObjectType):
+    body = StreamField()
+
+    class Meta:
+        interfaces = [PageInterface]
+
+
 class Query(graphene.ObjectType):
     services = graphene.List(ServiceObjectType, slug=graphene.String())
     person_pages = graphene.List(PersonPageObjectType, slug=graphene.String())
     blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String())
     case_studies = graphene.List(CaseStudyObjectType, slug=graphene.String(), service_slug=graphene.String())
     service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
+    standard_pages = graphene.List(StandardPageObjectType, service_slug=graphene.String())
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
 
     def resolve_services(self, info, **kwargs):
@@ -263,6 +271,14 @@ class Query(graphene.ObjectType):
             person_pages = person_pages.filter(slug=kwargs['slug'])
 
         return person_pages
+
+    def resolve_standard_pages(self, info, **kwargs):
+        standard_pages = StandardPage.objects.live().public().order_by('title')
+
+        if 'slug' in kwargs:
+            standard_pages = standard_pages.filter(slug=kwargs['slug'])
+
+        return standard_pages
 
     def resolve_images(self, info, **kwargs):
         images = TorchboxImage.objects.all()
