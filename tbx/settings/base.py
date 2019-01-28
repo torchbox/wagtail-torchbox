@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'wagtail_review',
     'phonenumber_field',
     'graphene_django',
+    'corsheaders',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -92,6 +93,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Must be placed above anything that can generate a response
+    'corsheaders.middleware.CorsMiddleware',
 
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
@@ -449,3 +453,9 @@ if 'MAILCHIMP_MAILING_LIST_ID' in env:
 GRAPHENE = {
     'SCHEMA': 'tbx.graphql.schema.schema',
 }
+
+
+# CORS settings
+
+CORS_URLS_REGEX = r'^/graphql/.*$'
+CORS_ORIGIN_ALLOW_ALL = True
