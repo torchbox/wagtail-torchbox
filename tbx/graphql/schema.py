@@ -1,5 +1,6 @@
 import graphene
 from graphene.types import Scalar
+from django.conf import settings
 
 from tbx.blog.models import BlogPage
 from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage
@@ -26,6 +27,13 @@ class ImageRenditionObjectType(graphene.ObjectType):
     url = graphene.String()
     width = graphene.Int()
     height = graphene.Int()
+    hash = graphene.String()
+
+    def resolve_url(self, info):
+        return settings.MEDIA_PREFIX + self.file.url
+
+    def resolve_hash(self, format):
+        return self.image.get_file_hash()
 
 
 class ImageObjectType(graphene.ObjectType):
@@ -35,11 +43,13 @@ class ImageObjectType(graphene.ObjectType):
         'full': 'width-1280',  # Used by aligned image when alignment is "full"
         'logo': 'max-250x80',  # Used by logo block
         'icon': 'fill-100x100',
+        'large-icon': 'fill-400x400',
     }
 
     id = graphene.Int()
     src = graphene.String()
     alt = graphene.String()
+    hash = graphene.String()
     rendition = graphene.Field(ImageRenditionObjectType, format=graphene.String())
     width = graphene.Int()
     height = graphene.Int()
@@ -48,7 +58,10 @@ class ImageObjectType(graphene.ObjectType):
         return self.title
 
     def resolve_src(self, info):
-        return self.file.url
+        return settings.MEDIA_PREFIX + self.file.url
+
+    def resolve_hash(self, info):
+        return self.get_file_hash()
 
     def resolve_rendition(self, info, format):
         if format in ImageObjectType.FORMATS:

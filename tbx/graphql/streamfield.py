@@ -1,7 +1,7 @@
 from wagtail.core import blocks
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
-
+from django.conf import settings
 
 class StreamFieldSerialiser:
     def serialise_struct_block(self, block, value):
@@ -44,6 +44,8 @@ class StreamFieldSerialiser:
             return {
                 'id': value.id,
                 'alt': value.title,
+                'src': settings.MEDIA_PREFIX + value.file.url,
+                'hash': value.get_file_hash()
             }
         elif isinstance(block, blocks.FieldBlock):
             return value
