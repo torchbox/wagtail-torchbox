@@ -44,7 +44,7 @@ class StreamFieldSerialiser:
             return {
                 'id': value.id,
                 'alt': value.title,
-                'src': settings.MEDIA_PREFIX + value.get_rendition('width-1280'),
+                'src': settings.MEDIA_PREFIX + value.get_rendition('width-1280').image.file.url,
                 'hash': value.get_file_hash()
             }
         elif isinstance(block, blocks.FieldBlock):
