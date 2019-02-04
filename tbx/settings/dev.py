@@ -16,6 +16,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTH_PASSWORD_VALIDATORS = []
 
 
+MEDIA_PREFIX = BASE_URL
+
 try:
     from .local import *  # noqa
 except ImportError:

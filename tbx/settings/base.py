@@ -89,7 +89,6 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -186,6 +185,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = env.get('MEDIA_DIR', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = env.get('MEDIA_URL', '/media/')
+MEDIA_PREFIX = env.get('MEDIA_PREFIX', '')
 
 
 # Do not use the same Redis instance for other things like Celery!
@@ -454,8 +454,9 @@ GRAPHENE = {
     'SCHEMA': 'tbx.graphql.schema.schema',
 }
 
-
 # CORS settings
 
 CORS_URLS_REGEX = r'^/graphql/.*$'
 CORS_ORIGIN_ALLOW_ALL = True
+
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
