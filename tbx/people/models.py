@@ -6,14 +6,16 @@ from django.utils.functional import cached_property
 from modelcluster.fields import ParentalKey
 from phonenumber_field.modelfields import PhoneNumberField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                         MultiFieldPanel, PageChooserPanel)
-from wagtail.core.fields import RichTextField
+                                         MultiFieldPanel, PageChooserPanel, StreamFieldPanel)
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+from tbx.core.blocks import StoryBlock
 from tbx.core.models import ContactFields, RelatedLink
 
 
@@ -88,6 +90,43 @@ class PersonIndexPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('strapline', classname="full"),
+    ]
+
+
+class CulturePageLink(Orderable):
+    page = ParentalKey('people.CulturePage', related_name='links')
+    title = models.TextField()
+    description = models.TextField()
+    link = models.ForeignKey('wagtailcore.Page', on_delete=models.CASCADE, blank=True, null=True)
+
+    content_panels = [
+        FieldPanel('title', classname="full"),
+        FieldPanel('description', classname="full"),
+        PageChooserPanel('link')
+    ]
+
+
+class CulturePage(Page):
+    strapline = models.TextField()
+    hero_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    intro = RichTextField(blank=True)
+    body = StreamField(StoryBlock())
+    contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('strapline', classname="full"),
+        ImageChooserPanel('hero_image'),
+        FieldPanel('intro', classname="full"),
+        InlinePanel('links', label='Link'),
+        StreamFieldPanel('body'),
+        SnippetChooserPanel('contact'),
     ]
 
 

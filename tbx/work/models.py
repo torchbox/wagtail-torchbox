@@ -83,6 +83,7 @@ class WorkPage(Page):
     )
     listing_summary = models.CharField(max_length=255, blank=True)
     related_services = ParentalManyToManyField('taxonomy.Service', related_name='case_studies')
+    client = models.TextField(blank=True)
 
     def set_body_word_count(self):
         body_basic_html = self.body.stream_block.render_basic(self.body)
@@ -108,6 +109,7 @@ class WorkPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('client', classname="client"),
         FieldPanel('descriptive_title'),
         InlinePanel('authors', label="Author"),
         StreamFieldPanel('body'),

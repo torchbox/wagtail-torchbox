@@ -4,8 +4,8 @@ from django.conf import settings
 
 from tbx.blog.models import BlogPage
 from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage
-from tbx.people.models import Author, PersonIndexPage, PersonPage
-from tbx.services.models import ServicePage
+from tbx.people.models import Author, PersonIndexPage, PersonPage, CulturePage
+from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkPage
 
@@ -73,6 +73,7 @@ class ImageObjectType(graphene.ObjectType):
 class ServiceObjectType(graphene.ObjectType):
     name = graphene.String()
     slug = graphene.String()
+    description = graphene.String()
 
 
 class PersonPageObjectType(graphene.ObjectType):
@@ -82,9 +83,13 @@ class PersonPageObjectType(graphene.ObjectType):
     intro = graphene.String()
     biography = graphene.String()
     image = graphene.Field(ImageObjectType)
+    is_senior = graphene.Boolean()
 
     class Meta:
         interfaces = [PageInterface]
+
+    def resolve_is_senior(self, info):
+        return self.is_senior
 
 
 class AuthorObjectType(graphene.ObjectType):
@@ -125,6 +130,7 @@ class BlogPostObjectType(graphene.ObjectType):
 
 class CaseStudyObjectType(graphene.ObjectType):
     body = StreamField()
+    client = graphene.String()
     body_word_count = graphene.Int()
     authors = graphene.List(AuthorObjectType)
     feed_image = graphene.Field(ImageObjectType)
@@ -143,8 +149,17 @@ class CaseStudyObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+class PageLink(graphene.ObjectType):
+    type = graphene.String()
+    slug = graphene.String()
+
+    def resolve_type(self, info):
+        return self.specific.__class__.__name__
+
+
 class ServicePageKeyPointObjectType(graphene.ObjectType):
     text = graphene.String()
+    linked_page = graphene.Field(PageLink)
 
 
 class ServicePageClientLogoObjectType(graphene.ObjectType):
@@ -157,17 +172,38 @@ class ServicePageTestimonialObjectType(graphene.ObjectType):
     role = graphene.String()
 
 
+class ProcessObjectType(graphene.ObjectType):
+    title = graphene.String()
+    description = graphene.String()
+    page_link = graphene.Field(PageLink)
+    page_link_label = graphene.String()
+
+
 class ServicePageObjectType(graphene.ObjectType):
     service = graphene.Field(ServiceObjectType)
+    is_darktheme = graphene.Boolean()
+    
     strapline = graphene.String()
     intro = graphene.String()
+    
+    key_points_section_title = graphene.String()
     heading_for_key_points = graphene.String()
     key_points = graphene.List(ServicePageKeyPointObjectType)
+    
     contact = graphene.Field(ContactObjectType)
+
+    process_section_title = graphene.String()
+    use_process_block_image = graphene.Boolean()
+    processes = graphene.List(ProcessObjectType)
+
+    testimonials_section_title = graphene.String()
     client_logos = graphene.List(ServicePageClientLogoObjectType)
     usa_client_logos = graphene.List(ServicePageClientLogoObjectType)
     testimonials = graphene.List(ServicePageTestimonialObjectType)
+    
+    blogs_section_title = graphene.String()
     blog_posts = graphene.List(BlogPostObjectType, limit=graphene.Int())
+    case_studies_section_title = graphene.String()
     case_studies = graphene.List(CaseStudyObjectType, limit=graphene.Int())
 
     def resolve_key_points(self, info):
@@ -181,6 +217,9 @@ class ServicePageObjectType(graphene.ObjectType):
 
     def resolve_testimonials(self, info):
         return self.testimonials.all()
+
+    def resolve_processes(self, info):
+        return self.processes.all()
 
     def resolve_blog_posts(self, info, **kwargs):
         limit = kwargs.get('limit', 10)
@@ -253,15 +292,39 @@ class PersonIndexPageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+class CulturePageLinkObjectType(graphene.ObjectType):
+    title = graphene.String()
+    description = graphene.String()
+    link = graphene.Field(PageLink)
+
+
+class CulturePageObjectType(graphene.ObjectType):
+    strapline = graphene.String()
+    hero_image = graphene.Field(ImageObjectType)
+    intro = graphene.String()
+    body = graphene.Field(StreamField)
+    contact = graphene.Field(ContactObjectType)
+    links = graphene.List(CulturePageLinkObjectType)
+
+    def resolve_links(self, info):
+        return self.links.all()
+
+    class Meta:
+        interfaces = [PageInterface]
+
+
 class Query(graphene.ObjectType):
     services = graphene.List(ServiceObjectType, slug=graphene.String())
     person_pages = graphene.List(PersonPageObjectType, slug=graphene.String())
     blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String())
     case_studies = graphene.List(CaseStudyObjectType, slug=graphene.String(), service_slug=graphene.String())
+    services = graphene.List(ServiceObjectType, slug=graphene.String())
     service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
+    sub_service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
     standard_pages = graphene.List(StandardPageObjectType, service_slug=graphene.String())
     jobs_index_page = graphene.Field(JobsIndexPageObjectType)
     person_index_page = graphene.Field(PersonIndexPageObjectType)
+    culture_pages = graphene.List(CulturePageObjectType, slug=graphene.String())
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
 
     def resolve_services(self, info, **kwargs):
@@ -279,6 +342,14 @@ class Query(graphene.ObjectType):
             service_pages = service_pages.filter(service__slug=kwargs['service_slug'])
 
         return service_pages
+
+    def resolve_sub_service_pages(self, info, **kwargs):
+        sub_service_pages = SubServicePage.objects.live().public()
+
+        if 'service_slug' in kwargs:
+            sub_service_pages = sub_service_pages.filter(service__slug=kwargs['service_slug'])
+
+        return sub_service_pages
 
     def resolve_blog_posts(self, info, **kwargs):
         blog_pages = BlogPage.objects.live().public().order_by('-date')
@@ -324,6 +395,14 @@ class Query(graphene.ObjectType):
 
     def resolve_person_index_page(self, info):
         return PersonIndexPage.objects.live().public().first()
+
+    def resolve_culture_pages(self, info, **kwargs):
+        culture_pages = CulturePage.objects.live().public()
+
+        if 'slug' in kwargs:
+                culture_pages = culture_pages.filter(slug=kwargs['slug'])
+
+        return culture_pages
 
     def resolve_images(self, info, **kwargs):
         images = TorchboxImage.objects.all()

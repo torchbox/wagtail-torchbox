@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'tbx.sign_up_form',
     'tbx.taxonomy',
     'tbx.work',
+    'tbx.netlify',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -89,6 +90,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -460,3 +462,6 @@ CORS_URLS_REGEX = r'^/graphql/.*$'
 CORS_ORIGIN_ALLOW_ALL = True
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+NETLIFY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', '')
+NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
