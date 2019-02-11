@@ -463,5 +463,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
-NETLIFY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', '')
+NETLIFY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', 'http://localhost:8000')
 NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)

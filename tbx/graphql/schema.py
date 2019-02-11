@@ -93,6 +93,7 @@ class PersonPageObjectType(graphene.ObjectType):
 
 
 class AuthorObjectType(graphene.ObjectType):
+    id = graphene.Int()
     name = graphene.String()
     role = graphene.String()
     image = graphene.Field(ImageObjectType)
@@ -180,6 +181,7 @@ class ProcessObjectType(graphene.ObjectType):
 
 
 class ServicePageObjectType(graphene.ObjectType):
+    parent_service = graphene.Field(ServiceObjectType)
     service = graphene.Field(ServiceObjectType)
     is_darktheme = graphene.Boolean()
     
@@ -316,12 +318,12 @@ class CulturePageObjectType(graphene.ObjectType):
 class Query(graphene.ObjectType):
     services = graphene.List(ServiceObjectType, slug=graphene.String())
     person_pages = graphene.List(PersonPageObjectType, slug=graphene.String())
-    blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String())
+    blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String(), author=graphene.Int(), limit=graphene.Int())
     case_studies = graphene.List(CaseStudyObjectType, slug=graphene.String(), service_slug=graphene.String())
     services = graphene.List(ServiceObjectType, slug=graphene.String())
     service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
-    sub_service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
-    standard_pages = graphene.List(StandardPageObjectType, service_slug=graphene.String())
+    sub_service_pages = graphene.List(ServicePageObjectType, slug=graphene.String(), service_slug=graphene.String())
+    standard_pages = graphene.List(StandardPageObjectType, slug=graphene.String())
     jobs_index_page = graphene.Field(JobsIndexPageObjectType)
     person_index_page = graphene.Field(PersonIndexPageObjectType)
     culture_pages = graphene.List(CulturePageObjectType, slug=graphene.String())
@@ -346,6 +348,9 @@ class Query(graphene.ObjectType):
     def resolve_sub_service_pages(self, info, **kwargs):
         sub_service_pages = SubServicePage.objects.live().public()
 
+        if 'slug' in kwargs:
+            sub_service_pages = sub_service_pages.filter(slug=kwargs['slug'])
+
         if 'service_slug' in kwargs:
             sub_service_pages = sub_service_pages.filter(service__slug=kwargs['service_slug'])
 
@@ -359,6 +364,12 @@ class Query(graphene.ObjectType):
 
         if 'service_slug' in kwargs:
             blog_pages = blog_pages.filter(related_services__slug=kwargs['service_slug'])
+
+        if 'author' in kwargs:
+            blog_pages = blog_pages.filter(authors__id=kwargs['author'])
+
+        if 'limit' in kwargs:
+            blog_pages = blog_pages.order_by("-date")[:kwargs['limit']]
 
         return blog_pages
 

@@ -3,6 +3,9 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          PageChooserPanel, StreamFieldPanel, MultiFieldPanel)
+from wagtail.contrib.modeladmin.options import (
+    ModelAdmin, modeladmin_register
+)
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -123,9 +126,7 @@ class ServicePage(Page):
     blogs_section_title = models.TextField(blank=True, default="Thinking")
     process_section_title = models.TextField(blank=True, default="Process")
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('service'),
+    service_content_panels = [
         FieldPanel('is_darktheme'),
         MultiFieldPanel(
             [
@@ -182,6 +183,17 @@ class ServicePage(Page):
         ),
     ]
 
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('service'),
+    ] + service_content_panels
+
 
 class SubServicePage(ServicePage):
-    pass
+    parent_service = models.ForeignKey('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True,
+                                   help_text="Link to this service in taxonomy")
+
+    content_panels = [
+        FieldPanel('title'),
+        FieldPanel('parent_service'),
+    ] + ServicePage.service_content_panels
