@@ -3,13 +3,9 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          PageChooserPanel, StreamFieldPanel, MultiFieldPanel)
-from wagtail.contrib.modeladmin.options import (
-    ModelAdmin, modeladmin_register
-)
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 
@@ -36,7 +32,7 @@ class ServicePageKeyPoint(Orderable):
         related_name='+',
     )
 
-    content_panels = [
+    panels = [
         PageChooserPanel('linked_page'),
     ]
 
