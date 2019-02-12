@@ -187,6 +187,7 @@ class ServicePageObjectType(graphene.ObjectType):
     
     strapline = graphene.String()
     intro = graphene.String()
+    greeting_image_type=graphene.String()
     
     key_points_section_title = graphene.String()
     heading_for_key_points = graphene.String()

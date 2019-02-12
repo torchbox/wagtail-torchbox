@@ -3,11 +3,11 @@ from invoke.exceptions import Exit
 from invoke.tasks import task
 
 
-PRODUCTION_APP_INSTANCE = 'torchbox-production'
+PRODUCTION_APP_INSTANCE = 'torchbox-graphql-production'
 
 
-STAGING_APP_INSTANCE = 'torchbox-staging'
-STAGING_APP_DB_INSTANCE = 'torchbox-staging'
+STAGING_APP_INSTANCE = 'torchbox-graphql-production'
+STAGING_APP_DB_INSTANCE = 'torchbox-graphql-production'
 STAGING_REMOTE = 'dokku@staging.torchbox.com'
 
 
