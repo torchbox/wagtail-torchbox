@@ -109,8 +109,15 @@ class ServicePageProcess(Orderable):
 class ServicePage(Page):
     service = models.OneToOneField('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True, help_text="Link to this service in taxonomy")
     is_darktheme = models.BooleanField(default=False)
+
     strapline = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
+    greeting_image_type = models.CharField(max_length=255, choices=(
+        ('woman-left', 'Woman (Left Aligned)'),
+        ('man-left', 'Man (Left aligned)'),
+        ('wagtail', 'Wagtail (Right aligned)'),
+    ), default='woman-left', blank=True, null=True)
+
     heading_for_key_points = RichTextField()
     contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
     use_process_block_image = models.BooleanField(default=False)
@@ -128,6 +135,7 @@ class ServicePage(Page):
             [
                 FieldPanel('strapline', classname="full title"),
                 FieldPanel('intro', classname="full"),
+                FieldPanel('greeting_image_type', classname="full")
             ],
             heading="Hero",
             classname="collapsible"
