@@ -22,6 +22,8 @@ env:
     - DATABASE_URL=postgres://postgres@localhost/test_db
     - CFG_SECRET_KEY=iamnotsosecret
     - CFG_ALLOWED_HOSTS=localhost
+    - RECAPTCHA_PUBLIC_KEY=dummy-key-value
+    - RECAPTCHA_PRIVATE_KEY=dummy-key-value
 
 before_script:
   # Create a database
