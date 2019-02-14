@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.utils.functional import cached_property
 
@@ -13,7 +14,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
-from tbx.core.models import ContactFields, RelatedLink
+from tbx.core.models import ContactFields, RelatedLink, purge_parent_index
 
 
 class PersonPageRelatedLink(Orderable, RelatedLink):
@@ -144,3 +145,13 @@ def update_author_on_page_publish(instance, **kwargs):
     author, created = Author.objects.get_or_create(person_page=instance)
     author.update_manual_fields(instance)
     author.save()
+
+
+@receiver(page_published, sender=PersonPage)
+def person_page_published_handler(instance, **kwargs):
+    purge_parent_index(PersonIndexPage, instance)
+
+
+@receiver(pre_delete, sender=PersonPage)
+def person_page_deleted_handler(instance, **kwargs):
+    purge_parent_index(PersonIndexPage, instance)

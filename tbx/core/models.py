@@ -1,5 +1,6 @@
 from django import forms
 from django.db import models
+from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -10,15 +11,18 @@ from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          StreamFieldPanel)
 from wagtail.admin.utils import send_mail
 from wagtail.contrib.forms.models import AbstractFormField
+from wagtail.contrib.frontend_cache.utils import PurgeBatch
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.blocks import PageChooserBlock, StreamBlock, StructBlock
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
+from wagtail.core.signals import page_published
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from .blocks import StoryBlock
@@ -269,6 +273,20 @@ class HomePage(Page):
         blog_posts = blog_posts.order_by('-date')
 
         return blog_posts
+
+
+def purge_parent_index(index_page_model, child_page):
+    # Purge FE cache for indexes containing specified child page
+    batch = PurgeBatch()
+    batch.add_pages(index_page_model.objects.live().ancestor_of(child_page))
+    batch.purge()
+
+
+def purge_homepage():
+    # Purge FE cache for homepage
+    batch = PurgeBatch()
+    batch.add_page(HomePage.objects.first())
+    batch.purge()
 
 
 # Standard page
@@ -552,6 +570,11 @@ class JobIndexPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
+
+
+@receiver(page_published, sender=JobIndexPage)
+def job_index_page_published_handler(instance, **kwargs):
+    purge_homepage()
 
 
 class GoogleAdGrantApplication(models.Model):

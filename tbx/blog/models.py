@@ -1,5 +1,7 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
@@ -8,12 +10,14 @@ from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Orderable, Page
+from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from tbx.core.blocks import StoryBlock
-from tbx.core.models import RelatedLink, Tag
+from tbx.core.models import (RelatedLink, Tag, purge_homepage,
+                             purge_parent_index)
 from tbx.core.utils.cache import get_default_cache_control_decorator
 
 
@@ -178,3 +182,15 @@ class BlogPage(Page):
         FieldPanel('listing_summary'),
         FieldPanel('canonical_url'),
     ]
+
+
+@receiver(page_published, sender=BlogPage)
+def blog_page_published_handler(instance, **kwargs):
+    purge_parent_index(BlogIndexPage, instance)
+    purge_homepage()
+
+
+@receiver(pre_delete, sender=BlogPage)
+def blog_page_deleted_handler(instance, **kwargs):
+    purge_parent_index(BlogIndexPage, instance)
+    purge_homepage()
