@@ -3,8 +3,8 @@ from graphene.types import Scalar
 from django.conf import settings
 
 from tbx.blog.models import BlogPage
-from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage
-from tbx.people.models import Author, PersonIndexPage, PersonPage, CulturePage
+from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage, MainMenu
+from tbx.people.models import Author, PersonIndexPage, PersonPage, CulturePage, Contact
 from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkPage
@@ -15,6 +15,14 @@ from .streamfield import StreamFieldSerialiser
 class PageInterface(graphene.Interface):
     title = graphene.String()
     slug = graphene.String()
+
+
+class PageLink(graphene.ObjectType):
+    type = graphene.String()
+    slug = graphene.String()
+
+    def resolve_type(self, info):
+        return self.specific.__class__.__name__
 
 
 class StreamField(Scalar):
@@ -40,7 +48,8 @@ class ImageObjectType(graphene.ObjectType):
     FORMATS = {
         'quarter': 'width-400',  # Used by aligned image when alignment is either "left" or "right"
         'half': 'width-800',  # Used by aligned image when alignment is "half"
-        'full': 'width-1280',  # Used by aligned image when alignment is "full"
+        'full': 'width-1280',
+        'max': 'width-1920',
         'logo': 'max-250x80',  # Used by logo block
         'icon': 'fill-100x100',
         'large-icon': 'fill-400x400',
@@ -70,15 +79,40 @@ class ImageObjectType(graphene.ObjectType):
         # TODO: Error
 
 
+class ContactObjectType(graphene.ObjectType):
+    name = graphene.String()
+    role = graphene.String()
+    image = graphene.Field(ImageObjectType)
+    email_address = graphene.String()
+    phone_number = graphene.String()
+
+
 class ServiceObjectType(graphene.ObjectType):
     name = graphene.String()
     slug = graphene.String()
     description = graphene.String()
+    service_page = graphene.Field(PageLink)
+    preferred_contact = graphene.Field(ContactObjectType)
+
+    def resolve_service_page(self, info):
+        service_pages = ServicePage.objects.live().public()
+        service_pages = service_pages.filter(service__slug=self.slug)
+        if len(service_pages):
+            return service_pages.filter(service__slug=self.slug)[0]
+        return None
+
+    def resolve_preferred_contact(self, info):
+        if self.preferred_contact is None:
+            return Contact.objects.first()
+
+        return self.preferred_contact
 
 
 class PersonPageObjectType(graphene.ObjectType):
     first_name = graphene.String()
     last_name = graphene.String()
+    short_intro = graphene.String()
+    alt_short_intro = graphene.String()
     role = graphene.String()
     intro = graphene.String()
     biography = graphene.String()
@@ -100,14 +134,6 @@ class AuthorObjectType(graphene.ObjectType):
     person_page = graphene.Field(PersonPageObjectType)
 
 
-class ContactObjectType(graphene.ObjectType):
-    name = graphene.String()
-    role = graphene.String()
-    image = graphene.Field(ImageObjectType)
-    email_address = graphene.String()
-    phone_number = graphene.String()
-
-
 class BlogPostObjectType(graphene.ObjectType):
     body = StreamField()
     body_word_count = graphene.Int()
@@ -116,6 +142,7 @@ class BlogPostObjectType(graphene.ObjectType):
     feed_image = graphene.Field(ImageObjectType)
     listing_summary = graphene.String()
     related_services = graphene.List(ServiceObjectType)
+    contact = graphene.Field(ContactObjectType)
 
     def resolve_authors(self, info):
         return Author.objects.filter(
@@ -123,7 +150,14 @@ class BlogPostObjectType(graphene.ObjectType):
         )
 
     def resolve_related_services(self, info):
-        return self.related_services.all()
+        return self.related_services.order_by('sort_order').all()
+
+    def resolve_contact(self, info):
+        service = self.related_services.order_by('sort_order').first()
+        if service is not None:
+            if service.preferred_contact is not None:
+                return service.preferred_contact
+        return Contact.objects.get(default_contact=True)
 
     class Meta:
         interfaces = [PageInterface]
@@ -135,8 +169,10 @@ class CaseStudyObjectType(graphene.ObjectType):
     body_word_count = graphene.Int()
     authors = graphene.List(AuthorObjectType)
     feed_image = graphene.Field(ImageObjectType)
+    homepage_image = graphene.Field(ImageObjectType)
     listing_summary = graphene.String()
     related_services = graphene.List(ServiceObjectType)
+    contact = graphene.Field(ContactObjectType)
 
     def resolve_authors(self, info):
         return Author.objects.filter(
@@ -146,16 +182,15 @@ class CaseStudyObjectType(graphene.ObjectType):
     def resolve_related_services(self, info):
         return self.related_services.all()
 
+    def resolve_contact(self, info):
+        service = self.related_services.order_by('sort_order').first()
+        if service is not None:
+            if service.preferred_contact is not None:
+                return service.preferred_contact
+        return Contact.objects.get(default_contact=True)
+
     class Meta:
         interfaces = [PageInterface]
-
-
-class PageLink(graphene.ObjectType):
-    type = graphene.String()
-    slug = graphene.String()
-
-    def resolve_type(self, info):
-        return self.specific.__class__.__name__
 
 
 class ServicePageKeyPointObjectType(graphene.ObjectType):
@@ -184,18 +219,19 @@ class ServicePageObjectType(graphene.ObjectType):
     parent_service = graphene.Field(ServiceObjectType)
     service = graphene.Field(ServiceObjectType)
     is_darktheme = graphene.Boolean()
-    
+
     strapline = graphene.String()
     intro = graphene.String()
-    greeting_image_type=graphene.String()
-    
+    greeting_image_type = graphene.String()
+
     key_points_section_title = graphene.String()
     heading_for_key_points = graphene.String()
     key_points = graphene.List(ServicePageKeyPointObjectType)
-    
+
     contact = graphene.Field(ContactObjectType)
 
     process_section_title = graphene.String()
+    heading_for_processes = graphene.String()
     use_process_block_image = graphene.Boolean()
     processes = graphene.List(ProcessObjectType)
 
@@ -203,7 +239,7 @@ class ServicePageObjectType(graphene.ObjectType):
     client_logos = graphene.List(ServicePageClientLogoObjectType)
     usa_client_logos = graphene.List(ServicePageClientLogoObjectType)
     testimonials = graphene.List(ServicePageTestimonialObjectType)
-    
+
     blogs_section_title = graphene.String()
     blog_posts = graphene.List(BlogPostObjectType, limit=graphene.Int())
     case_studies_section_title = graphene.String()
@@ -236,6 +272,11 @@ class ServicePageObjectType(graphene.ObjectType):
             for featured_id in featured_ids
         ]
 
+        if self.service is not None:
+            blog_pages = blog_pages.filter(related_services__slug=self.service.slug)
+            if len(blog_pages) == 0:
+                return None
+
         # Get additional work pages
         num_additional_required = limit - len(featured)
         additional = list(blog_pages.exclude(id__in=featured_ids).order_by('-date')[:num_additional_required])
@@ -254,9 +295,15 @@ class ServicePageObjectType(graphene.ObjectType):
             for featured_id in featured_ids
         ]
 
+        if self.service is not None:
+            work_pages = work_pages.filter(related_services__slug=self.service.slug)
+            if len(work_pages) == 0:
+                return None
+
         # Get additional work pages
         num_additional_required = limit - len(featured)
-        additional = list(work_pages.exclude(id__in=featured_ids).order_by('-first_published_at')[:num_additional_required])
+        additional = list(
+            work_pages.exclude(id__in=featured_ids).order_by('-first_published_at')[:num_additional_required])
 
         return featured + additional
 
@@ -319,7 +366,8 @@ class CulturePageObjectType(graphene.ObjectType):
 class Query(graphene.ObjectType):
     services = graphene.List(ServiceObjectType, slug=graphene.String())
     person_pages = graphene.List(PersonPageObjectType, slug=graphene.String())
-    blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String(), author=graphene.Int(), limit=graphene.Int())
+    blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String(),
+                               author_slug=graphene.String(), limit=graphene.Int())
     case_studies = graphene.List(CaseStudyObjectType, slug=graphene.String(), service_slug=graphene.String())
     services = graphene.List(ServiceObjectType, slug=graphene.String())
     service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
@@ -366,8 +414,8 @@ class Query(graphene.ObjectType):
         if 'service_slug' in kwargs:
             blog_pages = blog_pages.filter(related_services__slug=kwargs['service_slug'])
 
-        if 'author' in kwargs:
-            blog_pages = blog_pages.filter(authors__id=kwargs['author'])
+        if 'author_slug' in kwargs:
+            blog_pages = blog_pages.filter(authors__author__person_page__slug=kwargs['author_slug'])
 
         if 'limit' in kwargs:
             blog_pages = blog_pages.order_by("-date")[:kwargs['limit']]
@@ -382,7 +430,6 @@ class Query(graphene.ObjectType):
 
         if 'service_slug' in kwargs:
             work_pages = work_pages.filter(related_services__slug=kwargs['service_slug'])
-
 
         return work_pages
 
@@ -412,7 +459,7 @@ class Query(graphene.ObjectType):
         culture_pages = CulturePage.objects.live().public()
 
         if 'slug' in kwargs:
-                culture_pages = culture_pages.filter(slug=kwargs['slug'])
+            culture_pages = culture_pages.filter(slug=kwargs['slug'])
 
         return culture_pages
 

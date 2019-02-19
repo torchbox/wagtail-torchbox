@@ -1,3 +1,4 @@
+from django import forms
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.dispatch import receiver
@@ -28,6 +29,8 @@ class PersonPage(Page, ContactFields):
     last_name = models.CharField(max_length=255)
     role = models.CharField(max_length=255, blank=True)
     is_senior = models.BooleanField(default=False)
+    short_intro = models.TextField(blank=True, null=True)
+    alt_short_intro = models.TextField(blank=True, null=True)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     short_biography = models.CharField(
@@ -62,6 +65,8 @@ class PersonPage(Page, ContactFields):
         FieldPanel('last_name'),
         FieldPanel('role'),
         FieldPanel('is_senior'),
+        FieldPanel('short_intro', classname="full"),
+        FieldPanel('alt_short_intro', classname="full"),
         FieldPanel('intro', classname="full"),
         FieldPanel('biography', classname="full"),
         FieldPanel('short_biography', classname="full"),
@@ -195,6 +200,7 @@ class Contact(index.Indexed, models.Model):
     )
     email_address = models.EmailField()
     phone_number = PhoneNumberField()
+    default_contact = models.BooleanField(default=False, blank=True, null=True, unique=True)
 
     def __str__(self):
         return self.name
@@ -206,6 +212,7 @@ class Contact(index.Indexed, models.Model):
     panels = [
         FieldPanel('name'),
         FieldPanel('role'),
+        FieldPanel('default_contact', widget=forms.CheckboxInput),
         ImageChooserPanel('image'),
         FieldPanel('email_address'),
         FieldPanel('phone_number'),

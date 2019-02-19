@@ -641,12 +641,13 @@ class GlobalSettings(BaseSetting):
 
 
 class SubMenuItemBlock(StreamBlock):
-    subitem = PageChooserBlock()
+    # subitem = PageChooserBlock()
+    related_listing_page = PageChooserBlock()
 
 
 class MenuItemBlock(StructBlock):
     page = PageChooserBlock()
-    subitems = SubMenuItemBlock()
+    subitems = SubMenuItemBlock(blank=True, null=True)
 
     class Meta:
         template = "torchbox/includes/menu_item.html"

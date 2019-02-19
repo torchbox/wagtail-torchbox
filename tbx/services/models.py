@@ -33,6 +33,7 @@ class ServicePageKeyPoint(Orderable):
     )
 
     panels = [
+        FieldPanel('text'),
         PageChooserPanel('linked_page'),
     ]
 
@@ -93,16 +94,11 @@ class ServicePageProcess(Orderable):
     page_link = models.ForeignKey('wagtailcore.Page', on_delete=models.CASCADE, blank=True, null=True)
     page_link_label = models.TextField(blank=True, null=True)
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('description', classname="full title"),
-        MultiFieldPanel(
-            [
-                FieldPanel('page_link_label', classname="full title"),
-                FieldPanel('page_link', classname="full title"),
-            ],
-            heading="Link"
-        )
+    panels = [
+        FieldPanel('title', classname="title"),
+        FieldPanel('description', classname="title"),
+        PageChooserPanel('page_link'),
+        FieldPanel('page_link_label'),
     ]
 
 
@@ -121,6 +117,7 @@ class ServicePage(Page):
     heading_for_key_points = RichTextField()
     contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
     use_process_block_image = models.BooleanField(default=False)
+    heading_for_processes = models.TextField(blank=True, null=True)
 
     # Section titles
     key_points_section_title = models.TextField(blank=True, default="Services")
@@ -163,6 +160,7 @@ class ServicePage(Page):
         MultiFieldPanel(
             [
                 FieldPanel('process_section_title', classname="full"),
+                FieldPanel('heading_for_processes', classname="full"),
                 FieldPanel('use_process_block_image', classname="full"),
                 InlinePanel('processes', label="Processes")
             ],
