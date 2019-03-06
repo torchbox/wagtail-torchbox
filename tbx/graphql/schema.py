@@ -14,7 +14,17 @@ from .streamfield import StreamFieldSerialiser
 
 class PageInterface(graphene.Interface):
     title = graphene.String()
+    page_title = graphene.String()
     slug = graphene.String()
+
+    def resolve_page_title(self, info):
+        title = ''
+        if self.seo_title:
+            title += self.seo_title
+        else:
+            title += self.title
+
+        return title
 
 
 class PageLink(graphene.ObjectType):
@@ -368,7 +378,7 @@ class Query(graphene.ObjectType):
     person_pages = graphene.List(PersonPageObjectType, slug=graphene.String())
     blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String(),
                                author_slug=graphene.String(), limit=graphene.Int())
-    case_studies = graphene.List(CaseStudyObjectType, slug=graphene.String(), service_slug=graphene.String())
+    case_studies = graphene.List(CaseStudyObjectType, slug=graphene.String(), service_slug=graphene.String(), limit=graphene.Int())
     services = graphene.List(ServiceObjectType, slug=graphene.String())
     service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
     sub_service_pages = graphene.List(ServicePageObjectType, slug=graphene.String(), service_slug=graphene.String())
