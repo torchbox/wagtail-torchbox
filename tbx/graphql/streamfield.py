@@ -1,6 +1,7 @@
 from wagtail.core import blocks
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.embeds import get_embed
 from django.conf import settings
 
 class StreamFieldSerialiser:
@@ -35,10 +36,17 @@ class StreamFieldSerialiser:
         elif isinstance(block, blocks.RichTextBlock):
             return value.source
         elif isinstance(block, EmbedBlock):
-            # FIXME
-            return {
-                'url': value.url,
-            }
+            try:
+                embed = get_embed(value.url)
+                return {
+                    'html': embed.html,
+                    'url': value.url,
+                }
+            except EmbedException:
+                return {
+                    'html': '',
+                    'url': None
+                }
         elif isinstance(block, ImageChooserBlock):
             # FIXME
             return {
