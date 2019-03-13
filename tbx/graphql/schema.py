@@ -11,7 +11,6 @@ from tbx.work.models import WorkPage
 
 from .streamfield import StreamFieldSerialiser
 
-
 class ImageRenditionObjectType(graphene.ObjectType):
     url = graphene.String()
     width = graphene.Int()
@@ -125,6 +124,14 @@ class ServiceObjectType(graphene.ObjectType):
         return self.preferred_contact
 
 
+class ServicePageLink(PageLink):
+    service_slug = graphene.String()
+    
+    def resolve_service_slug(self, info):
+        if hasattr(self.specific, 'parent_service'):
+            return self.specific.parent_service.slug
+
+
 class PersonPageObjectType(graphene.ObjectType):
     first_name = graphene.String()
     last_name = graphene.String()
@@ -212,7 +219,7 @@ class CaseStudyObjectType(graphene.ObjectType):
 
 class ServicePageKeyPointObjectType(graphene.ObjectType):
     text = graphene.String()
-    linked_page = graphene.Field(PageLink)
+    linked_page = graphene.Field(ServicePageLink)
 
 
 class ServicePageClientLogoObjectType(graphene.ObjectType):
