@@ -12,35 +12,6 @@ from tbx.work.models import WorkPage
 from .streamfield import StreamFieldSerialiser
 
 
-class PageInterface(graphene.Interface):
-    title = graphene.String()
-    page_title = graphene.String()
-    slug = graphene.String()
-
-    def resolve_page_title(self, info):
-        title = ''
-        if self.seo_title:
-            title += self.seo_title
-        else:
-            title += self.title
-
-        return title
-
-
-class PageLink(graphene.ObjectType):
-    type = graphene.String()
-    slug = graphene.String()
-
-    def resolve_type(self, info):
-        return self.specific.__class__.__name__
-
-
-class StreamField(Scalar):
-    @staticmethod
-    def serialize(val):
-        return StreamFieldSerialiser().serialise_stream_block(val)
-
-
 class ImageRenditionObjectType(graphene.ObjectType):
     url = graphene.String()
     width = graphene.Int()
@@ -97,6 +68,42 @@ class ContactObjectType(graphene.ObjectType):
     phone_number = graphene.String()
 
 
+class PageInterface(graphene.Interface):
+    title = graphene.String()
+    page_title = graphene.String()
+    slug = graphene.String()
+    contact = graphene.Field(ContactObjectType)
+
+    def resolve_page_title(self, info):
+        title = ''
+        if self.seo_title:
+            title += self.seo_title
+        else:
+            title += self.title
+
+        return title
+
+    def resolve_contact(self, info):
+        if hasattr(self, 'contact'):
+            if self.contact is not None:
+                return self.contact
+        return Contact.objects.get(default_contact=True)
+
+
+class PageLink(graphene.ObjectType):
+    type = graphene.String()
+    slug = graphene.String()
+
+    def resolve_type(self, info):
+        return self.specific.__class__.__name__
+
+
+class StreamField(Scalar):
+    @staticmethod
+    def serialize(val):
+        return StreamFieldSerialiser().serialise_stream_block(val)
+
+
 class ServiceObjectType(graphene.ObjectType):
     name = graphene.String()
     slug = graphene.String()
@@ -113,7 +120,7 @@ class ServiceObjectType(graphene.ObjectType):
 
     def resolve_preferred_contact(self, info):
         if self.preferred_contact is None:
-            return Contact.objects.first()
+            return Contact.objects.get(default_contact=True)
 
         return self.preferred_contact
 
