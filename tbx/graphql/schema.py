@@ -92,9 +92,14 @@ class PageInterface(graphene.Interface):
 class PageLink(graphene.ObjectType):
     type = graphene.String()
     slug = graphene.String()
+    service_slug = graphene.String()
 
     def resolve_type(self, info):
         return self.specific.__class__.__name__
+
+    def resolve_service_slug(self, info):
+        if hasattr(self.specific, 'parent_service'):
+            return self.specific.parent_service.slug
 
 
 class StreamField(Scalar):
@@ -122,14 +127,6 @@ class ServiceObjectType(graphene.ObjectType):
             return Contact.objects.get(default_contact=True)
 
         return self.preferred_contact
-
-
-class ServicePageLink(PageLink):
-    service_slug = graphene.String()
-    
-    def resolve_service_slug(self, info):
-        if hasattr(self.specific, 'parent_service'):
-            return self.specific.parent_service.slug
 
 
 class PersonPageObjectType(graphene.ObjectType):
@@ -219,7 +216,7 @@ class CaseStudyObjectType(graphene.ObjectType):
 
 class ServicePageKeyPointObjectType(graphene.ObjectType):
     text = graphene.String()
-    linked_page = graphene.Field(ServicePageLink)
+    linked_page = graphene.Field(PageLink)
 
 
 class ServicePageClientLogoObjectType(graphene.ObjectType):
@@ -237,6 +234,13 @@ class ProcessObjectType(graphene.ObjectType):
     description = graphene.String()
     page_link = graphene.Field(PageLink)
     page_link_label = graphene.String()
+
+    def resolve_page_link_label(self, info):
+        if self.page_link is not None:
+            if self.page_link_label is "":
+                return self.page_link.title
+            return self.page_link_label
+        return ""
 
 
 class ServicePageObjectType(graphene.ObjectType):
