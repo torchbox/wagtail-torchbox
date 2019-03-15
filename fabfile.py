@@ -3,7 +3,7 @@ from invoke.exceptions import Exit
 from invoke.tasks import task
 
 
-PRODUCTION_APP_INSTANCE = 'torchbox-graphql-production'
+PRODUCTION_APP_INSTANCE = 'cms-torchbox-com'
 
 
 STAGING_APP_INSTANCE = 'torchbox-graphql-production'
