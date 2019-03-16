@@ -11,6 +11,7 @@ from tbx.work.models import WorkPage
 
 from .streamfield import StreamFieldSerialiser
 
+
 class ImageRenditionObjectType(graphene.ObjectType):
     url = graphene.String()
     width = graphene.Int()
@@ -70,6 +71,7 @@ class ContactObjectType(graphene.ObjectType):
 class PageInterface(graphene.Interface):
     title = graphene.String()
     page_title = graphene.String()
+    search_description = graphene.String()
     slug = graphene.String()
     contact = graphene.Field(ContactObjectType)
 
@@ -81,6 +83,15 @@ class PageInterface(graphene.Interface):
             title += self.title
 
         return title
+
+    def resolve_search_description(self, info):
+        description = ''
+        if self.search_description:
+            description += self.search_description
+        else:
+            description += self.listing_summary
+
+        return description
 
     def resolve_contact(self, info):
         if hasattr(self, 'contact'):
