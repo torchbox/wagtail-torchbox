@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
 from phonenumber_field.modelfields import PhoneNumberField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel, StreamFieldPanel)
@@ -210,10 +211,33 @@ class Contact(index.Indexed, models.Model):
     ]
 
     panels = [
-        FieldPanel('name'),
+        FieldPanel('name'), 
         FieldPanel('role'),
         FieldPanel('default_contact', widget=forms.CheckboxInput),
         ImageChooserPanel('image'),
         FieldPanel('email_address'),
         FieldPanel('phone_number'),
    ]
+
+
+class ContactReason(Orderable):
+    page = ParentalKey('people.ContactReasonsList', related_name='reasons')
+    title = models.CharField(max_length=255, blank=False)
+    description = models.TextField(blank=False)
+
+
+@register_snippet
+class ContactReasonsList(ClusterableModel):
+    name = models.CharField(max_length=255, blank=True)
+    heading = models.TextField(blank=False)
+    is_default = models.BooleanField(default=False, blank=True, null=True, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('heading'),
+        FieldPanel('is_default', widget=forms.CheckboxInput),
+        InlinePanel('reasons', label='Reasons', max_num=3)
+    ]

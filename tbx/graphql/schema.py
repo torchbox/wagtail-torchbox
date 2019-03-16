@@ -4,7 +4,7 @@ from django.conf import settings
 
 from tbx.blog.models import BlogPage
 from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage, MainMenu
-from tbx.people.models import Author, PersonIndexPage, PersonPage, CulturePage, Contact
+from tbx.people.models import Author, PersonIndexPage, PersonPage, CulturePage, Contact, ContactReasonsList
 from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkPage
@@ -67,11 +67,36 @@ class ContactObjectType(graphene.ObjectType):
     phone_number = graphene.String()
 
 
+class ContactReasonObjectType(graphene.ObjectType):
+    title = graphene.String()
+    description = graphene.String()
+
+
+class ContactReasonsObjectType(graphene.ObjectType):
+    name = graphene.String()
+    heading = graphene.String()
+    is_default = graphene.Boolean()
+    reasons = graphene.List(ContactReasonObjectType)
+
+    def resolve_reasons(self, info):
+        return self.reasons.get_queryset()
+
+
+def get_prioritised_service(self, info):
+        if hasattr(self, 'related_services'):
+            return self.related_services.order_by('sort_order').first()
+
+        if hasattr(self, 'service'):
+            return self.service
+
+        return None
+
 class PageInterface(graphene.Interface):
     title = graphene.String()
     page_title = graphene.String()
     slug = graphene.String()
     contact = graphene.Field(ContactObjectType)
+    contact_reasons = graphene.Field(ContactReasonsObjectType)
 
     def resolve_page_title(self, info):
         title = ''
@@ -82,11 +107,37 @@ class PageInterface(graphene.Interface):
 
         return title
 
+
     def resolve_contact(self, info):
         if hasattr(self, 'contact'):
             if self.contact is not None:
                 return self.contact
-        return Contact.objects.get(default_contact=True)
+        
+        service = get_prioritised_service(self, info)
+        if service is not None:
+            if service.preferred_contact is not None:
+                return service.preferred_contact
+
+        try:
+            return Contact.objects.get(default_contact=True)
+        except:
+            return None
+
+
+    def resolve_contact_reasons(self, info):
+        if hasattr(self, 'contact_reasons'):
+            if self.contact_reasons is not None:
+                return self.contact_reasons
+
+        service = get_prioritised_service(self, info)
+        if service is not None:
+            if service.contact_reasons is not None:
+                return service.contact_reasons
+
+        try:
+            return ContactReasonsList.objects.get(is_default=True)
+        except:
+            return None
 
 
 class PageLink(graphene.ObjectType):
@@ -163,7 +214,6 @@ class BlogPostObjectType(graphene.ObjectType):
     feed_image = graphene.Field(ImageObjectType)
     listing_summary = graphene.String()
     related_services = graphene.List(ServiceObjectType)
-    contact = graphene.Field(ContactObjectType)
 
     def resolve_authors(self, info):
         return Author.objects.filter(
@@ -172,13 +222,6 @@ class BlogPostObjectType(graphene.ObjectType):
 
     def resolve_related_services(self, info):
         return self.related_services.order_by('sort_order').all()
-
-    def resolve_contact(self, info):
-        service = self.related_services.order_by('sort_order').first()
-        if service is not None:
-            if service.preferred_contact is not None:
-                return service.preferred_contact
-        return Contact.objects.get(default_contact=True)
 
     class Meta:
         interfaces = [PageInterface]
@@ -193,7 +236,6 @@ class CaseStudyObjectType(graphene.ObjectType):
     homepage_image = graphene.Field(ImageObjectType)
     listing_summary = graphene.String()
     related_services = graphene.List(ServiceObjectType)
-    contact = graphene.Field(ContactObjectType)
 
     def resolve_authors(self, info):
         return Author.objects.filter(
@@ -202,13 +244,6 @@ class CaseStudyObjectType(graphene.ObjectType):
 
     def resolve_related_services(self, info):
         return self.related_services.all()
-
-    def resolve_contact(self, info):
-        service = self.related_services.order_by('sort_order').first()
-        if service is not None:
-            if service.preferred_contact is not None:
-                return service.preferred_contact
-        return Contact.objects.get(default_contact=True)
 
     class Meta:
         interfaces = [PageInterface]
@@ -255,8 +290,6 @@ class ServicePageObjectType(graphene.ObjectType):
     key_points_section_title = graphene.String()
     heading_for_key_points = graphene.String()
     key_points = graphene.List(ServicePageKeyPointObjectType)
-
-    contact = graphene.Field(ContactObjectType)
 
     process_section_title = graphene.String()
     heading_for_processes = graphene.String()
@@ -381,7 +414,6 @@ class CulturePageObjectType(graphene.ObjectType):
     hero_image = graphene.Field(ImageObjectType)
     intro = graphene.String()
     body = graphene.Field(StreamField)
-    contact = graphene.Field(ContactObjectType)
     links = graphene.List(CulturePageLinkObjectType)
 
     def resolve_links(self, info):
@@ -405,6 +437,8 @@ class Query(graphene.ObjectType):
     person_index_page = graphene.Field(PersonIndexPageObjectType)
     culture_pages = graphene.List(CulturePageObjectType, slug=graphene.String())
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
+    contact = graphene.Field(ContactObjectType)
+    contact_reasons = graphene.Field(ContactReasonsObjectType)
 
     def resolve_services(self, info, **kwargs):
         services = Service.objects.all().order_by('sort_order')
@@ -497,6 +531,18 @@ class Query(graphene.ObjectType):
             images = images.filter(id__in=kwargs['ids'])
 
         return images
+
+    def resolve_contact(self, info):
+        try:
+            return Contact.objects.get(default_contact=True)
+        except:
+            return None
+        
+    def resolve_contact_reasons(self, info):
+        try:
+            return ContactReasonsList.objects.get(is_default=True)
+        except:
+            return None
 
 
 schema = graphene.Schema(
