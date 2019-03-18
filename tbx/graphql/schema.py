@@ -111,13 +111,7 @@ class PageInterface(graphene.Interface):
         return title
 
     def resolve_search_description(self, info):
-        description = ''
-        if self.search_description:
-            description += self.search_description
-        else:
-            description += self.listing_summary
-
-        return description
+        return self.search_description or self.listing_summary
 
     def resolve_contact(self, info):
         if hasattr(self, 'contact'):
