@@ -14,6 +14,13 @@ class Service(models.Model):
         blank=True,
         on_delete=models.SET_NULL
     )
+    contact_reasons = models.ForeignKey(
+        'people.ContactReasonsList',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+    )
+
 
     def __str__(self):
         return self.name
@@ -26,5 +33,6 @@ class Service(models.Model):
         FieldPanel('slug'),
         FieldPanel('description'),
         FieldPanel('sort_order'),
-        SnippetChooserPanel('preferred_contact')
+        SnippetChooserPanel('preferred_contact'),
+        SnippetChooserPanel('contact_reasons')
     ]

@@ -114,15 +114,16 @@ class ServicePage(Page):
         ('wagtail', 'Wagtail (Right aligned)'),
     ), default='woman-left', blank=True, null=True)
 
-    heading_for_key_points = RichTextField(blank=True)
+    heading_for_key_points = RichTextField()
     contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    contact_reasons = models.ForeignKey('people.ContactReasonsList', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
     use_process_block_image = models.BooleanField(default=False)
     heading_for_processes = models.TextField(blank=True, null=True)
 
     # Section titles
     key_points_section_title = models.TextField(blank=True, default="Services")
     testimonials_section_title = models.TextField(blank=True, default="Clients")
-    case_studies_section_title = models.TextField(blank=True, default="Work")
+    case_studies_section_title = models.TextField(blank=True, default="Work") 
     blogs_section_title = models.TextField(blank=True, default="Thinking")
     process_section_title = models.TextField(blank=True, default="Process")
 
@@ -146,7 +147,14 @@ class ServicePage(Page):
             heading="Key Points",
             classname="collapsible"
         ),
-        SnippetChooserPanel('contact'),
+        MultiFieldPanel(
+            [
+                SnippetChooserPanel('contact'),
+                SnippetChooserPanel('contact_reasons'),
+            ],
+            heading="Contact",
+            classname="collapsible"
+        ),
         MultiFieldPanel(
             [
                 FieldPanel('testimonials_section_title', classname="full"),
