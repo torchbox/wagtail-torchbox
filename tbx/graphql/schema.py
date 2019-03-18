@@ -11,6 +11,7 @@ from tbx.work.models import WorkPage
 
 from .streamfield import StreamFieldSerialiser
 
+
 class ImageRenditionObjectType(graphene.ObjectType):
     url = graphene.String()
     width = graphene.Int()
@@ -91,9 +92,11 @@ def get_prioritised_service(self, info):
 
         return None
 
+
 class PageInterface(graphene.Interface):
     title = graphene.String()
     page_title = graphene.String()
+    search_description = graphene.String()
     slug = graphene.String()
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
@@ -107,12 +110,14 @@ class PageInterface(graphene.Interface):
 
         return title
 
+    def resolve_search_description(self, info):
+        return self.search_description or self.listing_summary
 
     def resolve_contact(self, info):
         if hasattr(self, 'contact'):
             if self.contact is not None:
                 return self.contact
-        
+
         service = get_prioritised_service(self, info)
         if service is not None:
             if service.preferred_contact is not None:
@@ -122,7 +127,6 @@ class PageInterface(graphene.Interface):
             return Contact.objects.get(default_contact=True)
         except:
             return None
-
 
     def resolve_contact_reasons(self, info):
         if hasattr(self, 'contact_reasons'):
@@ -537,7 +541,7 @@ class Query(graphene.ObjectType):
             return Contact.objects.get(default_contact=True)
         except:
             return None
-        
+
     def resolve_contact_reasons(self, info):
         try:
             return ContactReasonsList.objects.get(is_default=True)
