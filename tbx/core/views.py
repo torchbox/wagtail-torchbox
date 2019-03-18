@@ -15,3 +15,20 @@ def newsletter_subsribe(request):
                   'email': {'email': request.GET.get('email')}}
         )
     return HttpResponse()
+
+
+def favicon(request):
+    try:
+        favicon_path = settings.FAVICON_STATIC_PATH
+    except AttributeError:
+        raise Http404
+    return redirect(static(favicon_path), permanent=True)
+
+
+def robots(request):
+    content = "\n".join([
+        "User-Agent: *",
+        "Disallow: /search/",
+        "Allow: /",
+    ])
+    return HttpResponse(content, content_type='text/plain')
