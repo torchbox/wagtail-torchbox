@@ -116,6 +116,8 @@ class PageInterface(graphene.Interface):
             description += self.search_description
         elif self.listing_summary:
             description += self.listing_summary
+        else:
+            description += self.title
 
         return description
 
