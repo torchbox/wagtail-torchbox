@@ -14,6 +14,8 @@ from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from headlesspreview.models import HeadlessPreviewMixin
+
 
 class SignUpFormPageBullet(Orderable):
     page = ParentalKey('SignUpFormPage', related_name='bullet_points')
@@ -83,7 +85,7 @@ class SignUpFormPageForm(forms.ModelForm):
 
 
 @method_decorator(never_cache, name='serve')
-class SignUpFormPage(Page):
+class SignUpFormPage(HeadlessPreviewMixin, Page):
     formatted_title = models.CharField(
         max_length=255, blank=True,
         help_text="This is the title displayed on the page, not the document "

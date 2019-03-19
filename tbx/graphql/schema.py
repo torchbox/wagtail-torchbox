@@ -2,6 +2,7 @@ from django.conf import settings
 
 import graphene
 from graphene.types import Scalar
+from graphql.validation.rules import NoUnusedFragments, specified_rules
 
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
@@ -12,6 +13,21 @@ from tbx.taxonomy.models import Service
 from tbx.work.models import WorkIndexPage, WorkPage
 
 from .streamfield import StreamFieldSerialiser
+
+# HACK: Remove NoUnusedFragments validator
+# Due to the way previews work on the frontend, we need to pass all
+# fragments into the query even if they're not used.
+# This would usually cause a validation error. There doesn't appear
+# to be a nice way to disable this validator so we monkey-patch it instead.
+
+
+# We need to update specified_rules in-place so the change appears
+# everywhere it's been imported
+
+specified_rules[:] = [
+    rule for rule in specified_rules
+    if rule is not NoUnusedFragments
+]
 
 
 class ImageRenditionObjectType(graphene.ObjectType):
@@ -450,21 +466,25 @@ class CulturePageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+def get_page_preview(model, token):
+    return model.get_page_from_preview_token(token)
+
+
 class Query(graphene.ObjectType):
     services = graphene.List(ServiceObjectType, slug=graphene.String())
-    person_pages = graphene.List(PersonPageObjectType, slug=graphene.String())
-    blog_index_page = graphene.Field(BlogIndexPageObjectType)
-    blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String(),
+    person_pages = graphene.List(PersonPageObjectType, preview_token=graphene.String(), slug=graphene.String())
+    blog_index_page = graphene.Field(BlogIndexPageObjectType, preview_token=graphene.String())
+    blog_posts = graphene.List(BlogPostObjectType, preview_token=graphene.String(), slug=graphene.String(), service_slug=graphene.String(),
                                author_slug=graphene.String(), limit=graphene.Int())
-    case_studies = graphene.List(CaseStudyObjectType, slug=graphene.String(), service_slug=graphene.String(), limit=graphene.Int())
-    case_studies_index_page = graphene.Field(CaseStudyIndexPageObjectType)
+    case_studies = graphene.List(CaseStudyObjectType, preview_token=graphene.String(), slug=graphene.String(), service_slug=graphene.String(), limit=graphene.Int())
+    case_studies_index_page = graphene.Field(CaseStudyIndexPageObjectType, preview_token=graphene.String())
     services = graphene.List(ServiceObjectType, slug=graphene.String())
-    service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
-    sub_service_pages = graphene.List(ServicePageObjectType, slug=graphene.String(), service_slug=graphene.String())
-    standard_pages = graphene.List(StandardPageObjectType, slug=graphene.String())
-    jobs_index_page = graphene.Field(JobsIndexPageObjectType)
-    person_index_page = graphene.Field(PersonIndexPageObjectType)
-    culture_pages = graphene.List(CulturePageObjectType, slug=graphene.String())
+    service_pages = graphene.List(ServicePageObjectType, preview_token=graphene.String(), service_slug=graphene.String())
+    sub_service_pages = graphene.List(ServicePageObjectType, preview_token=graphene.String(), slug=graphene.String(), service_slug=graphene.String())
+    standard_pages = graphene.List(StandardPageObjectType, preview_token=graphene.String(), slug=graphene.String())
+    jobs_index_page = graphene.Field(JobsIndexPageObjectType, preview_token=graphene.String())
+    person_index_page = graphene.Field(PersonIndexPageObjectType, preview_token=graphene.String())
+    culture_pages = graphene.List(CulturePageObjectType, preview_token=graphene.String(), slug=graphene.String())
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
@@ -480,6 +500,13 @@ class Query(graphene.ObjectType):
     def resolve_service_pages(self, info, **kwargs):
         service_pages = ServicePage.objects.live().public()
 
+        if 'preview_token' in kwargs:
+            page = get_page_preview(ServicePage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
+
         if 'service_slug' in kwargs:
             service_pages = service_pages.filter(service__slug=kwargs['service_slug'])
 
@@ -487,6 +514,13 @@ class Query(graphene.ObjectType):
 
     def resolve_sub_service_pages(self, info, **kwargs):
         sub_service_pages = SubServicePage.objects.live().public()
+
+        if 'preview_token' in kwargs:
+            page = get_page_preview(SubServicePage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
 
         if 'slug' in kwargs:
             sub_service_pages = sub_service_pages.filter(slug=kwargs['slug'])
@@ -498,6 +532,13 @@ class Query(graphene.ObjectType):
 
     def resolve_blog_posts(self, info, **kwargs):
         blog_pages = BlogPage.objects.live().public().order_by('-date')
+
+        if 'preview_token' in kwargs:
+            page = get_page_preview(BlogPage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
 
         if 'slug' in kwargs:
             blog_pages = blog_pages.filter(slug=kwargs['slug'])
@@ -519,6 +560,13 @@ class Query(graphene.ObjectType):
     def resolve_case_studies(self, info, **kwargs):
         work_pages = WorkPage.objects.live().public().order_by('-first_published_at')
 
+        if 'preview_token' in kwargs:
+            page = get_page_preview(WorkPage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
+
         if 'slug' in kwargs:
             work_pages = work_pages.filter(slug=kwargs['slug'])
 
@@ -530,6 +578,13 @@ class Query(graphene.ObjectType):
     def resolve_person_pages(self, info, **kwargs):
         person_pages = PersonPage.objects.live().public().order_by('last_name', 'first_name')
 
+        if 'preview_token' in kwargs:
+            page = get_page_preview(PersonPage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
+
         if 'slug' in kwargs:
             person_pages = person_pages.filter(slug=kwargs['slug'])
 
@@ -538,22 +593,57 @@ class Query(graphene.ObjectType):
     def resolve_standard_pages(self, info, **kwargs):
         standard_pages = StandardPage.objects.live().public().order_by('title')
 
+        if 'preview_token' in kwargs:
+            page = get_page_preview(StandardPage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
+
         if 'slug' in kwargs:
             standard_pages = standard_pages.filter(slug=kwargs['slug'])
 
         return standard_pages
 
-    def resolve_jobs_index_page(self, info):
+    def resolve_jobs_index_page(self, info, **kwargs):
+        if 'preview_token' in kwargs:
+            page = get_page_preview(JobIndexPage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
+
         return JobIndexPage.objects.live().public().first()
 
-    def resolve_blog_index_page(self, info):
+    def resolve_blog_index_page(self, info, **kwargs):
+        if 'preview_token' in kwargs:
+            page = get_page_preview(BlogIndexPage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
+
         return BlogIndexPage.objects.live().public().first()
 
-    def resolve_person_index_page(self, info):
+    def resolve_person_index_page(self, info, **kwargs):
+        if 'preview_token' in kwargs:
+            page = get_page_preview(PersonIndexPage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
+
         return PersonIndexPage.objects.live().public().first()
 
     def resolve_culture_pages(self, info, **kwargs):
         culture_pages = CulturePage.objects.live().public()
+
+        if 'preview_token' in kwargs:
+            page = get_page_preview(CulturePage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
 
         if 'slug' in kwargs:
             culture_pages = culture_pages.filter(slug=kwargs['slug'])
