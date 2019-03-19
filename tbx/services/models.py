@@ -2,12 +2,11 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                         PageChooserPanel, MultiFieldPanel)
+                                         MultiFieldPanel, PageChooserPanel)
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-
 
 # class ServicePageHeroLink(Orderable):
 #     page = ParentalKey('services.ServicePage', related_name='hero_links')

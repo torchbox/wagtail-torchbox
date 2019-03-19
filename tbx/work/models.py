@@ -1,6 +1,5 @@
 import string
 
-from bs4 import BeautifulSoup
 from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
@@ -17,6 +16,7 @@ from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+from bs4 import BeautifulSoup
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator

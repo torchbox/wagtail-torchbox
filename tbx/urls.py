@@ -2,9 +2,8 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
-from django.views.decorators.vary import vary_on_headers
-from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.vary import vary_on_headers
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
@@ -12,11 +11,12 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.core.models import Page
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.utils.urlpatterns import decorate_urlpatterns
-from wagtail_review import urls as wagtailreview_urls
 
+from graphene_django.views import GraphQLView
 from tbx.core import urls as torchbox_urls
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.core.views import favicon, robots
+from wagtail_review import urls as wagtailreview_urls
 
 private_urlpatterns = [
     path('django-admin/', admin.site.urls),

@@ -1,7 +1,9 @@
-from wagtail.contrib.modeladmin.options import (ModelAdmin, modeladmin_register)
-from wagtail.contrib.modeladmin.helpers import PermissionHelper
-from wagtail.core.signals import page_published, page_unpublished
 from django.conf import settings
+
+from wagtail.contrib.modeladmin.helpers import PermissionHelper
+from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
+from wagtail.core.signals import page_published, page_unpublished
+
 from .models import Deployment
 
 

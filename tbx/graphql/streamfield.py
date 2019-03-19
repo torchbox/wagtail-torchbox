@@ -1,9 +1,10 @@
+from django.conf import settings
+
 from wagtail.core import blocks
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail.embeds.embeds import get_embed
 from wagtail.embeds.exceptions import EmbedException
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.embeds.embeds import get_embed
-from django.conf import settings
 
 
 class StreamFieldSerialiser:

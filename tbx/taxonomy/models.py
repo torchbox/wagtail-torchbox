@@ -1,4 +1,5 @@
 from django.db import models
+
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 

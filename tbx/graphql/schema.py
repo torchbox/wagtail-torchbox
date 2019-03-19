@@ -1,10 +1,11 @@
-import graphene
-from graphene.types import Scalar
 from django.conf import settings
 
+import graphene
+from graphene.types import Scalar
 from tbx.blog.models import BlogPage
-from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage
-from tbx.people.models import Author, PersonIndexPage, PersonPage, CulturePage, Contact, ContactReasonsList
+from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
+from tbx.people.models import (Author, Contact, ContactReasonsList,
+                               CulturePage, PersonIndexPage, PersonPage)
 from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkPage
