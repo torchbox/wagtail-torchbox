@@ -6,8 +6,8 @@ from invoke.tasks import task
 PRODUCTION_APP_INSTANCE = 'cms-torchbox-com'
 
 
-STAGING_APP_INSTANCE = 'torchbox-graphql-production'
-STAGING_APP_DB_INSTANCE = 'torchbox-graphql-production'
+STAGING_APP_INSTANCE = 'tbxcms'
+STAGING_APP_DB_INSTANCE = 'tbxcms-db'
 STAGING_REMOTE = 'dokku@staging.torchbox.com'
 
 
@@ -93,19 +93,21 @@ def staging_shell(c):
 #######
 
 
-def clean_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
-    local(
-        'sudo -u postgres psql  -d {database_name} -c "DROP SCHEMA public '
-        'CASCADE; CREATE SCHEMA public;"'.format(
-            database_name=local_database_name
-        )
-    )
+def create_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
+    local('createdb {database_name}'.format(
+        database_name=LOCAL_DATABASE_NAME
+    ))
 
 
 def delete_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
-    local('dropdb {database_name}'.format(
+    local('dropdb --if-exists {database_name}'.format(
         database_name=LOCAL_DATABASE_NAME
-    ), warn=True)
+    ))
+
+
+def clean_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
+    delete_local_database(c)
+    create_local_database(c)
 
 
 ########
