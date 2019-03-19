@@ -113,7 +113,7 @@ class ServicePage(Page):
         ('wagtail', 'Wagtail (Right aligned)'),
     ), default='woman-left', blank=True, null=True)
 
-    heading_for_key_points = RichTextField()
+    heading_for_key_points = RichTextField(blank=True)
     contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
     contact_reasons = models.ForeignKey('people.ContactReasonsList', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
     use_process_block_image = models.BooleanField(default=False)
