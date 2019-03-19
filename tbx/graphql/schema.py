@@ -2,6 +2,7 @@ from django.conf import settings
 
 import graphene
 from graphene.types import Scalar
+
 from tbx.blog.models import BlogPage
 from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
 from tbx.people.models import (Author, Contact, ContactReasonsList,
