@@ -111,13 +111,15 @@ class PageInterface(graphene.Interface):
         return title
 
     def resolve_search_description(self, info):
-        description = ''
-        if self.search_description:
-            description += self.search_description
-        elif self.listing_summary is not None:
-            description += self.listing_summary
-        else:
-            description += self.title
+        description = self.title
+
+        if hasattr(self, 'listing_summary'):
+            if self.listing_summary:
+                description = self.listing_summary
+
+        if hasattr(self, 'search_description'):
+            if self.search_description:
+                description = self.search_description
 
         return description
 
