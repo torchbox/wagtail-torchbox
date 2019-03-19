@@ -115,6 +115,7 @@ class CulturePageLink(Orderable):
 
 class CulturePage(Page):
     strapline = models.TextField()
+    strapline_visible = models.BooleanField()
     hero_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -129,6 +130,7 @@ class CulturePage(Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('strapline', classname="full"),
+        FieldPanel('strapline_visible'),
         ImageChooserPanel('hero_image'),
         FieldPanel('intro', classname="full"),
         InlinePanel('links', label='Link'),
