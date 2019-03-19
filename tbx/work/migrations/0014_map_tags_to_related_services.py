@@ -28,13 +28,15 @@ def map_tags_to_related_services(apps, schema_editor):
     Tag = apps.get_model('torchbox.Tag')
     Service = apps.get_model('taxonomy.Service')
 
-    TAG_ID_TO_SERVICES = {
-        Tag.objects.get(slug=tag_slug).id: [
-            Service.objects.get(slug=service_slug)
-            for service_slug in service_slugs
-        ]
-        for tag_slug, service_slugs in TAGS_TO_SERVICES.items()
-    }
+    TAG_ID_TO_SERVICES = {}
+    for tag_slug, service_slugs in TAGS_TO_SERVICES.items():
+        try:
+            TAG_ID_TO_SERVICES[Tag.objects.get(slug=tag_slug).id]: [
+                Service.objects.get(slug=service_slug)
+                for service_slug in service_slugs
+            ]
+        except Tag.DoesNotExist:
+            continue
 
     for case_study in WorkPage.objects.iterator():
         for tag_id in case_study.tags.values_list('tag_id', flat=True):
