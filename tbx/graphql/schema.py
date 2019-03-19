@@ -17,16 +17,12 @@ class ImageRenditionObjectType(graphene.ObjectType):
     width = graphene.Int()
     height = graphene.Int()
     hash = graphene.String()
-    alt = graphene.String()
 
     def resolve_url(self, info):
         return settings.MEDIA_PREFIX + self.file.url
 
     def resolve_hash(self, format):
         return self.image.get_file_hash()
-
-    def resolve_alt(self, info):
-        return self.title
 
 
 class ImageObjectType(graphene.ObjectType):
