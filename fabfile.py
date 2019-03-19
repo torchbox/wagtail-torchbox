@@ -113,7 +113,16 @@ def delete_local_database(c, local_database_name=LOCAL_DATABASE_NAME):
 ########
 
 
+def check_if_logged_in_to_heroku(c):
+    if not local('heroku auth:whoami', warn=True):
+        raise Exit(
+            'Log-in with the "heroku login -i" command before running this '
+            'command.'
+        )
+
+
 def get_heroku_variable(c, app_instance, variable):
+    check_if_logged_in_to_heroku(c)
     return local('heroku config:get {var} --app {app}'.format(
         app=app_instance,
         var=variable,
@@ -121,6 +130,7 @@ def get_heroku_variable(c, app_instance, variable):
 
 
 def pull_media_from_s3_heroku(c, app_instance):
+    check_if_logged_in_to_heroku(c)
     aws_access_key_id = get_heroku_variable(c, app_instance,
                                             'AWS_ACCESS_KEY_ID')
     aws_secret_access_key = get_heroku_variable(c, app_instance,
@@ -132,6 +142,7 @@ def pull_media_from_s3_heroku(c, app_instance):
 
 
 def push_media_to_s3_heroku(c, app_instance):
+    check_if_logged_in_to_heroku(c)
     prompt_msg = 'You are about to push your media folder contents to the ' \
                  'S3 bucket. It\'s a destructive operation. \n' \
                  'Please type the application name "{app_instance}" to ' \
@@ -149,6 +160,7 @@ def push_media_to_s3_heroku(c, app_instance):
 
 
 def pull_database_from_heroku(c, app_instance):
+    check_if_logged_in_to_heroku(c)
     delete_local_database(c)
     local('heroku pg:pull --app {app} DATABASE_URL {local_database}'.format(
         app=app_instance,
@@ -157,6 +169,7 @@ def pull_database_from_heroku(c, app_instance):
 
 
 def push_database_to_heroku(c, app_instance):
+    check_if_logged_in_to_heroku(c)
     prompt_msg = 'You are about to push your local database to Heroku. ' \
                  'It\'s a destructive operation and will override the ' \
                  'database on the server. \n' \
@@ -177,6 +190,7 @@ def push_database_to_heroku(c, app_instance):
 
 
 def setup_heroku_git_remote(c, app_instance):
+    check_if_logged_in_to_heroku(c)
     remote_name = 'heroku-{app}'.format(app=app_instance)
     local('heroku git:remote --app {app} --remote {remote}'.format(
         app=app_instance, remote=remote_name
@@ -186,6 +200,7 @@ def setup_heroku_git_remote(c, app_instance):
 
 def deploy_to_heroku(c, app_instance, local_branch='master',
                      remote_branch='master'):
+    check_if_logged_in_to_heroku(c)
     print(
         'This will push your local "{local_branch}" branch to remote '
         '"{remote_branch}" branch.'.format(
@@ -203,6 +218,7 @@ def deploy_to_heroku(c, app_instance, local_branch='master',
 
 
 def open_heroku_shell(c, app_instance, shell_command='bash'):
+    check_if_logged_in_to_heroku(c)
     local('heroku run --app {app} {command}'.format(
         app=app_instance,
         command=shell_command,
