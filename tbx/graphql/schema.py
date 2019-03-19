@@ -1,10 +1,12 @@
-import graphene
-from graphene.types import Scalar
 from django.conf import settings
 
+import graphene
+from graphene.types import Scalar
+
 from tbx.blog.models import BlogPage
-from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage, MainMenu
-from tbx.people.models import Author, PersonIndexPage, PersonPage, CulturePage, Contact, ContactReasonsList
+from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
+from tbx.people.models import (Author, Contact, ContactReasonsList,
+                               CulturePage, PersonIndexPage, PersonPage)
 from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkPage
@@ -84,13 +86,13 @@ class ContactReasonsObjectType(graphene.ObjectType):
 
 
 def get_prioritised_service(self, info):
-        if hasattr(self, 'related_services'):
-            return self.related_services.order_by('sort_order').first()
+    if hasattr(self, 'related_services'):
+        return self.related_services.order_by('sort_order').first()
 
-        if hasattr(self, 'service'):
-            return self.service
+    if hasattr(self, 'service'):
+        return self.service
 
-        return None
+    return None
 
 
 class PageInterface(graphene.Interface):
@@ -135,7 +137,7 @@ class PageInterface(graphene.Interface):
 
         try:
             return Contact.objects.get(default_contact=True)
-        except:
+        except Contact.DoesNotExist:
             return None
 
     def resolve_contact_reasons(self, info):
@@ -150,7 +152,7 @@ class PageInterface(graphene.Interface):
 
         try:
             return ContactReasonsList.objects.get(is_default=True)
-        except:
+        except ContactReasonsList.DoesNotExist:
             return None
 
 
@@ -286,7 +288,7 @@ class ProcessObjectType(graphene.ObjectType):
 
     def resolve_page_link_label(self, info):
         if self.page_link is not None:
-            if self.page_link_label is "":
+            if not self.page_link_label:
                 return self.page_link.title
             return self.page_link_label
         return ""
@@ -549,13 +551,13 @@ class Query(graphene.ObjectType):
     def resolve_contact(self, info):
         try:
             return Contact.objects.get(default_contact=True)
-        except:
+        except Contact.DoesNotExist:
             return None
 
     def resolve_contact_reasons(self, info):
         try:
             return ContactReasonsList.objects.get(is_default=True)
-        except:
+        except ContactReasonsList.DoesNotExist:
             return None
 
 

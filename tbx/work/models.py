@@ -1,6 +1,5 @@
 import string
 
-from bs4 import BeautifulSoup
 from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
@@ -8,6 +7,7 @@ from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
+from bs4 import BeautifulSoup
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)

@@ -8,14 +8,15 @@ from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from phonenumber_field.modelfields import PhoneNumberField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                         MultiFieldPanel, PageChooserPanel, StreamFieldPanel)
+                                         MultiFieldPanel, PageChooserPanel,
+                                         StreamFieldPanel)
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.models import register_snippet
 
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import ContactFields, RelatedLink
@@ -211,13 +212,13 @@ class Contact(index.Indexed, models.Model):
     ]
 
     panels = [
-        FieldPanel('name'), 
+        FieldPanel('name'),
         FieldPanel('role'),
         FieldPanel('default_contact', widget=forms.CheckboxInput),
         ImageChooserPanel('image'),
         FieldPanel('email_address'),
         FieldPanel('phone_number'),
-   ]
+    ]
 
 
 class ContactReason(Orderable):
