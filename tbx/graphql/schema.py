@@ -2,12 +2,12 @@ import graphene
 from graphene.types import Scalar
 from django.conf import settings
 
-from tbx.blog.models import BlogPage
+from tbx.blog.models import BlogPage, BlogIndexPage
 from tbx.core.models import JobIndexPage, TorchboxImage, StandardPage, MainMenu
 from tbx.people.models import Author, PersonIndexPage, PersonPage, CulturePage, Contact, ContactReasonsList
 from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
-from tbx.work.models import WorkPage
+from tbx.work.models import WorkPage, WorkIndexPage
 
 from .streamfield import StreamFieldSerialiser
 
@@ -224,6 +224,13 @@ class AuthorObjectType(graphene.ObjectType):
     person_page = graphene.Field(PersonPageObjectType)
 
 
+class BlogIndexPageObjectType(graphene.ObjectType):
+    intro = graphene.String()
+
+    class Meta:
+        interfaces = [PageInterface]
+
+
 class BlogPostObjectType(graphene.ObjectType):
     body = StreamField()
     body_word_count = graphene.Int()
@@ -240,6 +247,13 @@ class BlogPostObjectType(graphene.ObjectType):
 
     def resolve_related_services(self, info):
         return self.related_services.order_by('sort_order').all()
+
+    class Meta:
+        interfaces = [PageInterface]
+
+
+class CaseStudyIndexPageObjectType(graphene.ObjectType):
+    intro = graphene.String()
 
     class Meta:
         interfaces = [PageInterface]
@@ -324,6 +338,11 @@ class ServicePageObjectType(graphene.ObjectType):
     case_studies_section_title = graphene.String()
     case_studies = graphene.List(CaseStudyObjectType, limit=graphene.Int())
 
+    def resolve_parent_service(self, info):
+        if hasattr(self, 'parent_service'):
+            return self.parent_service
+        return None
+
     def resolve_key_points(self, info):
         return self.key_points.all()
 
@@ -406,6 +425,7 @@ class JobsIndexPageJob(graphene.ObjectType):
 
 class JobsIndexPageObjectType(graphene.ObjectType):
     jobs = graphene.List(JobsIndexPageJob)
+    strapline = graphene.String()
 
     def resolve_jobs(self, info):
         return self.jobs.all()
@@ -441,55 +461,107 @@ class CulturePageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+def get_page_revision(page, revision_id):
+        revision = page.revisions.filter(id=revision_id).first()
+        if revision:
+            page = revision.as_page_object()
+            page.revision = revision.id
+            return page
+        return None
+
+
 class Query(graphene.ObjectType):
-    services = graphene.List(ServiceObjectType, slug=graphene.String())
-    person_pages = graphene.List(PersonPageObjectType, slug=graphene.String())
-    blog_posts = graphene.List(BlogPostObjectType, slug=graphene.String(), service_slug=graphene.String(),
-                               author_slug=graphene.String(), limit=graphene.Int())
+    # Service Snippets
+    service = graphene.Field(ServiceObjectType, slug=graphene.String())
+    services = graphene.List(ServiceObjectType)
+    # Person Pages
+    person_page = graphene.Field(PersonPageObjectType, slug=graphene.String(), revision=graphene.String())
+    person_pages = graphene.List(PersonPageObjectType)
+    person_index_page = graphene.Field(PersonIndexPageObjectType, revision=graphene.String())
+    # Blog Posts
+    blog_post = graphene.Field(BlogPostObjectType, slug=graphene.String(), revision=graphene.String() )
+    blog_posts = graphene.List(BlogPostObjectType, service_slug=graphene.String(), author_slug=graphene.String(), limit=graphene.Int())
+    blog_index_page = graphene.Field(BlogIndexPageObjectType, revision=graphene.String())
+    # Case-Study / Work Pages
+    case_study = graphene.Field(CaseStudyObjectType, slug=graphene.String(), revision=graphene.String() )
     case_studies = graphene.List(CaseStudyObjectType, slug=graphene.String(), service_slug=graphene.String(), limit=graphene.Int())
-    services = graphene.List(ServiceObjectType, slug=graphene.String())
-    service_pages = graphene.List(ServicePageObjectType, service_slug=graphene.String())
+    case_study_index_page = graphene.Field(CaseStudyIndexPageObjectType, revision=graphene.String())
+    # Service Pages
+    service_page = graphene.Field(ServicePageObjectType, service_slug=graphene.String(), revision=graphene.String())
+    service_pages = graphene.List(ServicePageObjectType)
+    # Sub-services Pages
+    sub_service_page = graphene.Field(ServicePageObjectType, slug=graphene.String(), revision=graphene.String())
     sub_service_pages = graphene.List(ServicePageObjectType, slug=graphene.String(), service_slug=graphene.String())
-    standard_pages = graphene.List(StandardPageObjectType, slug=graphene.String())
-    jobs_index_page = graphene.Field(JobsIndexPageObjectType)
-    person_index_page = graphene.Field(PersonIndexPageObjectType)
-    culture_pages = graphene.List(CulturePageObjectType, slug=graphene.String())
+    # Standard Pages
+    standard_page = graphene.Field(StandardPageObjectType, slug=graphene.String(), revision=graphene.String())
+    standard_pages = graphene.List(StandardPageObjectType)
+    # Jobs pages
+    jobs_index_page = graphene.Field(JobsIndexPageObjectType, revision=graphene.String())
+    # Culture Pages
+    culture_page = graphene.Field(CulturePageObjectType, slug=graphene.String(), revision=graphene.String())
+    culture_pages = graphene.List(CulturePageObjectType)
+    # Images
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
+    # Contact fields
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
 
+    def resolve_service(self, info, slug, **kwargs):
+        if slug:
+            return Service.objects.first(slug=slug)
+
+        return None
+
     def resolve_services(self, info, **kwargs):
-        services = Service.objects.all().order_by('sort_order')
+        return Service.objects.all().order_by('sort_order')
 
-        if 'slug' in kwargs:
-            services = services.filter(slug=kwargs['slug'])
+    def resolve_person_page(self, info, slug, **kwargs):
+            if slug:
+                person_page = PersonPage.objects.filter(slug=slug).first()
 
-        return services
+            if 'revision' in kwargs:
+                person_page = get_page_revision(person_page, kwargs['revision'])
 
+            return person_page
+
+    def resolve_person_pages(self, info, **kwargs):
+        return PersonPage.objects.live().public().order_by('last_name', 'first_name')
+
+    def resolve_service_page(self, info, service_slug, **kwargs):            
+        if service_slug:
+            service_page = ServicePage.objects.filter(service__slug=service_slug).first()
+
+        if 'revision' in kwargs:
+            service_page = get_page_revision(service_page, kwargs['revision'])
+
+        return service_page
+    
     def resolve_service_pages(self, info, **kwargs):
-        service_pages = ServicePage.objects.live().public()
+        return ServicePage.objects.live().public()
 
-        if 'service_slug' in kwargs:
-            service_pages = service_pages.filter(service__slug=kwargs['service_slug'])
+    def resolve_sub_service_page(self, info, slug, **kwargs):
+        if slug:
+            sub_service_page = SubServicePage.objects.filter(slug=slug).first()
 
-        return service_pages
+        if 'revision' in kwargs:
+            sub_service_page = get_page_revision(sub_service_page, kwargs['revision'])
+
+        return sub_service_page
 
     def resolve_sub_service_pages(self, info, **kwargs):
-        sub_service_pages = SubServicePage.objects.live().public()
+        return SubServicePage.objects.live().public()
 
-        if 'slug' in kwargs:
-            sub_service_pages = sub_service_pages.filter(slug=kwargs['slug'])
+    def resolve_blog_post(self, info, slug, **kwargs):
+        if slug:
+            blog_page = BlogPage.objects.filter(slug=slug).first()
 
-        if 'service_slug' in kwargs:
-            sub_service_pages = sub_service_pages.filter(service__slug=kwargs['service_slug'])
+        if 'revision' in kwargs:
+            blog_page = get_page_revision(blog_page, kwargs['revision'])
 
-        return sub_service_pages
+        return blog_page
 
     def resolve_blog_posts(self, info, **kwargs):
         blog_pages = BlogPage.objects.live().public().order_by('-date')
-
-        if 'slug' in kwargs:
-            blog_pages = blog_pages.filter(slug=kwargs['slug'])
 
         if 'service_slug' in kwargs:
             blog_pages = blog_pages.filter(related_services__slug=kwargs['service_slug'])
@@ -502,46 +574,79 @@ class Query(graphene.ObjectType):
 
         return blog_pages
 
+    def resolve_blog_index_page(self, info, **kwargs):
+        index_page = BlogIndexPage.objects.first()
+
+        if 'revision' in kwargs:
+            index_page = get_page_revision(index_page, kwargs['revision'])
+
+        return index_page
+
+
+    def resolve_case_study(self, info, slug, **kwargs):
+        if slug:
+            work_page = WorkPage.objects.filter(slug=slug).first()
+
+        if 'revision' in kwargs:
+            work_page = get_page_revision(work_page, kwargs['revision'])
+
+        return work_page
+
     def resolve_case_studies(self, info, **kwargs):
         work_pages = WorkPage.objects.live().public().order_by('-first_published_at')
-
-        if 'slug' in kwargs:
-            work_pages = work_pages.filter(slug=kwargs['slug'])
 
         if 'service_slug' in kwargs:
             work_pages = work_pages.filter(related_services__slug=kwargs['service_slug'])
 
         return work_pages
 
-    def resolve_person_pages(self, info, **kwargs):
-        person_pages = PersonPage.objects.live().public().order_by('last_name', 'first_name')
+    def resolve_case_study_index_page(self, info, **kwargs):
+        index_page = WorkIndexPage.objects.first()
 
-        if 'slug' in kwargs:
-            person_pages = person_pages.filter(slug=kwargs['slug'])
+        if 'revision' in kwargs:
+            index_page = get_page_revision(index_page, kwargs['revision'])
 
-        return person_pages
+        return index_page
+    
+    def resolve_standard_page(self, info, slug, **kwargs):
+        if slug:
+            standard_page = StandardPage.objects.filter(slug=slug).first()
+
+        if 'revision' in kwargs:
+            standard_page = get_page_revision(standard_page, kwargs['revision'])
+
+        return standard_page
 
     def resolve_standard_pages(self, info, **kwargs):
-        standard_pages = StandardPage.objects.live().public().order_by('title')
+        return StandardPage.objects.live().public().order_by('title')
 
-        if 'slug' in kwargs:
-            standard_pages = standard_pages.filter(slug=kwargs['slug'])
+    def resolve_jobs_index_page(self, info, **kwargs):
+        jobs_page = JobIndexPage.objects.live().public().first()
 
-        return standard_pages
+        if 'revision' in kwargs:
+            jobs_page = get_page_revision(jobs_page, kwargs['revision'])
 
-    def resolve_jobs_index_page(self, info):
-        return JobIndexPage.objects.live().public().first()
+        return jobs_page
 
-    def resolve_person_index_page(self, info):
-        return PersonIndexPage.objects.live().public().first()
+    def resolve_person_index_page(self, info, **kwargs):
+        persons_page = PersonIndexPage.objects.live().public().first()
 
+        if 'revision' in kwargs:
+            persons_page = get_page_revision(persons_page, kwargs['revision'])
+
+        return persons_page
+
+    def resolve_culture_page(self, info, slug, **kwargs):
+        if slug:
+            culture_page = CulturePage.objects.filter(slug=slug).first()
+
+        if 'revision' in kwargs:
+            culture_page = get_page_revision(culture_page, kwargs['revision'])
+
+        return culture_page
+    
     def resolve_culture_pages(self, info, **kwargs):
-        culture_pages = CulturePage.objects.live().public()
-
-        if 'slug' in kwargs:
-            culture_pages = culture_pages.filter(slug=kwargs['slug'])
-
-        return culture_pages
+        return CulturePage.objects.live().public()
 
     def resolve_images(self, info, **kwargs):
         images = TorchboxImage.objects.all()
