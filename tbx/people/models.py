@@ -211,13 +211,13 @@ class Contact(index.Indexed, models.Model):
     ]
 
     panels = [
-        FieldPanel('name'), 
+        FieldPanel('name'),
         FieldPanel('role'),
         FieldPanel('default_contact', widget=forms.CheckboxInput),
         ImageChooserPanel('image'),
         FieldPanel('email_address'),
         FieldPanel('phone_number'),
-   ]
+    ]
 
 
 class ContactReason(Orderable):

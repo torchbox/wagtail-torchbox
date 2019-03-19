@@ -1,4 +1,3 @@
-import time
 import requests
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from django.db import models
@@ -39,4 +38,4 @@ class Deployment(models.Model):
 
 
 def deploy():
-    req = requests.post(settings.NETLIFY_TRIGGER_URL)
+    requests.post(settings.NETLIFY_TRIGGER_URL)

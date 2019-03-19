@@ -2,8 +2,8 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                         PageChooserPanel, StreamFieldPanel, MultiFieldPanel)
-from wagtail.core.fields import RichTextField, StreamField
+                                         PageChooserPanel, MultiFieldPanel)
+from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
@@ -123,7 +123,7 @@ class ServicePage(Page):
     # Section titles
     key_points_section_title = models.TextField(blank=True, default="Services")
     testimonials_section_title = models.TextField(blank=True, default="Clients")
-    case_studies_section_title = models.TextField(blank=True, default="Work") 
+    case_studies_section_title = models.TextField(blank=True, default="Work")
     blogs_section_title = models.TextField(blank=True, default="Thinking")
     process_section_title = models.TextField(blank=True, default="Process")
 
@@ -201,7 +201,7 @@ class ServicePage(Page):
 
 class SubServicePage(ServicePage):
     parent_service = models.ForeignKey('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True,
-                                   help_text="Link to this service in taxonomy")
+                                       help_text="Link to this service in taxonomy")
 
     content_panels = [
         FieldPanel('title'),

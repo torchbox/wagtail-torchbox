@@ -1,15 +1,12 @@
 from django import forms
 from django.db import models
 from django.shortcuts import render
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import never_cache
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel,
                                          StreamFieldPanel)
 from wagtail.admin.utils import send_mail
-from wagtail.contrib.forms.models import AbstractFormField
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.blocks import PageChooserBlock, StreamBlock, StructBlock
 from wagtail.core.fields import RichTextField, StreamField
@@ -19,7 +16,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from .blocks import StoryBlock
 from .fields import ColorField
