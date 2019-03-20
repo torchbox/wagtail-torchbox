@@ -370,6 +370,7 @@ class ServicePageObjectType(graphene.ObjectType):
         featured = [
             featured_pages[featured_id]
             for featured_id in featured_ids
+            if featured_id in featured_pages
         ]
 
         if self.service is not None:
