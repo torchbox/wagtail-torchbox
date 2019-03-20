@@ -244,10 +244,13 @@ class ContactReasonsList(ClusterableModel):
     ]
 
     def clean(self):
-        if self.is_default and \
-                ContactReasonsList.objects.filter(is_default=True).exists():
-            raise ValidationError({
-                'is_default': [
-                    'There already is another default snippet.',
-                ],
-            })
+        if self.is_default:
+            qs = ContactReasonsList.objects.filter(is_default=True)
+            if self.pk:
+                qs = qs.exclude(pk=self.pk)
+            if qs.exists():
+                raise ValidationError({
+                    'is_default': [
+                        'There already is another default snippet.',
+                    ],
+                })
