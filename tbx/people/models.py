@@ -236,7 +236,7 @@ class ContactReason(Orderable):
 class ContactReasonsList(ClusterableModel):
     name = models.CharField(max_length=255, blank=True)
     heading = models.TextField(blank=False)
-    is_default = models.BooleanField(default=False, blank=True, null=True, unique=True)
+    is_default = models.BooleanField(default=False, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -247,3 +247,15 @@ class ContactReasonsList(ClusterableModel):
         FieldPanel('is_default', widget=forms.CheckboxInput),
         InlinePanel('reasons', label='Reasons', max_num=3)
     ]
+
+    def clean(self):
+        if self.is_default:
+            qs = ContactReasonsList.objects.filter(is_default=True)
+            if self.pk:
+                qs = qs.exclude(pk=self.pk)
+            if qs.exists():
+                raise ValidationError({
+                    'is_default': [
+                        'There already is another default snippet.',
+                    ],
+                })
