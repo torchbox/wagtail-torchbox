@@ -115,7 +115,10 @@ class CulturePageLink(Orderable):
 
 class CulturePage(Page):
     strapline = models.TextField()
-    strapline_visible = models.BooleanField()
+    strapline_visible = models.BooleanField(
+        help_text='Hide strapline visually but leave it readable by screen '
+                  'readers.'
+    )
     hero_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
