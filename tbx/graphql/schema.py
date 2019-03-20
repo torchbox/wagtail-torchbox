@@ -438,6 +438,7 @@ class CulturePageLinkObjectType(graphene.ObjectType):
 
 class CulturePageObjectType(graphene.ObjectType):
     strapline = graphene.String()
+    strapline_visible = graphene.Boolean()
     hero_image = graphene.Field(ImageObjectType)
     intro = graphene.String()
     body = graphene.Field(StreamField)
