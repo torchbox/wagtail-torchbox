@@ -313,7 +313,7 @@ class ProcessObjectType(graphene.ObjectType):
 class ServicePageObjectType(graphene.ObjectType):
     parent_service = graphene.Field(ServiceObjectType)
     service = graphene.Field(ServiceObjectType)
-    is_darktheme = graphene.Boolean()
+    theme = graphene.String()
 
     strapline = graphene.String()
     intro = graphene.String()
