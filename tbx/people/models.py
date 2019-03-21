@@ -18,6 +18,7 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from headlesspreview.models import HeadlessPreviewMixin
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import ContactFields, RelatedLink
 
@@ -26,7 +27,7 @@ class PersonPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('people.PersonPage', related_name='related_links')
 
 
-class PersonPage(Page, ContactFields):
+class PersonPage(HeadlessPreviewMixin, Page, ContactFields):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     role = models.CharField(max_length=255, blank=True)
@@ -84,7 +85,7 @@ class PersonPage(Page, ContactFields):
 
 
 # Person index
-class PersonIndexPage(Page):
+class PersonIndexPage(HeadlessPreviewMixin, Page):
     strapline = models.CharField(max_length=255)
 
     @cached_property
@@ -113,7 +114,7 @@ class CulturePageLink(Orderable):
     ]
 
 
-class CulturePage(Page):
+class CulturePage(HeadlessPreviewMixin, Page):
     strapline = models.TextField()
     strapline_visible = models.BooleanField(
         help_text='Hide strapline visually but leave it readable by screen '

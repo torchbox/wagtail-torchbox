@@ -17,6 +17,7 @@ from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+from headlesspreview.models import HeadlessPreviewMixin
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
@@ -60,7 +61,7 @@ class WorkPageAuthor(Orderable):
     ]
 
 
-class WorkPage(Page):
+class WorkPage(HeadlessPreviewMixin, Page):
     descriptive_title = models.CharField(max_length=255)
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
@@ -128,7 +129,7 @@ class WorkPage(Page):
 
 # Work index page
 @method_decorator(get_default_cache_control_decorator(), name='serve')
-class WorkIndexPage(Page):
+class WorkIndexPage(HeadlessPreviewMixin, Page):
     intro = RichTextField(blank=True)
 
     hide_popular_tags = models.BooleanField(default=False)
