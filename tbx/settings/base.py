@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'graphene_django',
     'corsheaders',
+    'headlesspreview',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -465,3 +466,11 @@ SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 NETLIFY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', 'http://localhost:8000')
 NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
+
+
+# Preview
+
+# Wagtail previews are served from the frontend site, this URL is where they are directed to
+
+if 'PREVIEW_URL' in env:
+    PREVIEW_URL = env['PREVIEW_URL']

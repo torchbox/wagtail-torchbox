@@ -8,6 +8,8 @@ from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+from headlesspreview.models import HeadlessPreviewMixin
+
 # class ServicePageHeroLink(Orderable):
 #     page = ParentalKey('services.ServicePage', related_name='hero_links')
 #     label = models.TextField()
@@ -101,7 +103,7 @@ class ServicePageProcess(Orderable):
     ]
 
 
-class ServicePage(Page):
+class ServicePage(HeadlessPreviewMixin, Page):
     service = models.OneToOneField('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True, help_text="Link to this service in taxonomy")
     is_darktheme = models.BooleanField(default=False)
 
