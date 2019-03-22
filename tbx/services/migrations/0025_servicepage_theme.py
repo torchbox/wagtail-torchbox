@@ -10,13 +10,13 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='servicepage',
-            name='is_darktheme',
-        ),
         migrations.AddField(
             model_name='servicepage',
             name='theme',
-            field=models.CharField(blank=True, choices=[('light', 'Light'), ('coral', 'Coral'), ('dark', 'Dark'), ('dark--transparent', 'Dark with transparent header')], default='light', max_length=255, null=True),
+            field=models.CharField(choices=[('light', 'Light'), ('coral', 'Coral'), ('dark', 'Dark'), ('dark--transparent', 'Dark with transparent header')], default='light', max_length=255),
+        ),
+        migrations.RemoveField(
+            model_name='servicepage',
+            name='is_darktheme',
         ),
     ]

@@ -110,7 +110,7 @@ class ServicePage(HeadlessPreviewMixin, Page):
         ('coral', 'Coral'),
         ('dark', 'Dark'),
         ('dark--transparent', 'Dark with transparent header'),
-    ), default='light', blank=True, null=True)
+    ), default='light')
 
     strapline = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
