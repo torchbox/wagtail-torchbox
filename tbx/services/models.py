@@ -105,7 +105,12 @@ class ServicePageProcess(Orderable):
 
 class ServicePage(HeadlessPreviewMixin, Page):
     service = models.OneToOneField('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True, help_text="Link to this service in taxonomy")
-    is_darktheme = models.BooleanField(default=False)
+    theme = models.CharField(max_length=255, choices=(
+        ('light', 'Light'),
+        ('coral', 'Coral'),
+        ('dark', 'Dark'),
+        ('dark--transparent', 'Dark with transparent header'),
+    ), default='light')
 
     strapline = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
@@ -129,7 +134,7 @@ class ServicePage(HeadlessPreviewMixin, Page):
     process_section_title = models.TextField(blank=True, default="Process")
 
     service_content_panels = [
-        FieldPanel('is_darktheme'),
+        FieldPanel('theme'),
         MultiFieldPanel(
             [
                 FieldPanel('strapline', classname="full title"),
