@@ -318,9 +318,7 @@ class ProcessObjectType(graphene.ObjectType):
         return ""
 
 
-class ServicePageObjectType(graphene.ObjectType):
-    parent_service = graphene.Field(ServiceObjectType)
-    service = graphene.Field(ServiceObjectType)
+class BaseServicePageObjectType(graphene.ObjectType):
     theme = graphene.String()
 
     strapline = graphene.String()
@@ -409,6 +407,27 @@ class ServicePageObjectType(graphene.ObjectType):
 
         return featured + additional
 
+
+class SubServicePageObjectType(BaseServicePageObjectType):
+    service = graphene.Field(ServiceObjectType)
+
+    def resolve_service(self, info):
+        service_page = ServicePage.objects.ancestor_of(self).live().last()
+
+        if service_page:
+            return service_page.service
+
+    class Meta:
+        interfaces = [PageInterface]
+
+
+class ServicePageObjectType(BaseServicePageObjectType):
+    service = graphene.Field(ServiceObjectType)
+    sub_service_pages = graphene.List(SubServicePageObjectType)
+
+    def resolve_sub_service_pages(self, info):
+        return SubServicePage.objects.child_of(self).live()
+
     class Meta:
         interfaces = [PageInterface]
 
@@ -488,8 +507,8 @@ class Query(graphene.ObjectType):
     case_studies = graphene.List(CaseStudyObjectType, preview_token=graphene.String(), slug=graphene.String(), service_slug=graphene.String(), limit=graphene.Int())
     case_studies_index_page = graphene.Field(CaseStudyIndexPageObjectType, preview_token=graphene.String())
     services = graphene.List(ServiceObjectType, slug=graphene.String())
-    service_pages = graphene.List(ServicePageObjectType, preview_token=graphene.String(), service_slug=graphene.String())
-    sub_service_pages = graphene.List(ServicePageObjectType, preview_token=graphene.String(), slug=graphene.String(), service_slug=graphene.String())
+    service_pages = graphene.List(ServicePageObjectType, preview_token=graphene.String(), slug=graphene.String(), service_slug=graphene.String())
+    sub_service_pages = graphene.List(SubServicePageObjectType, preview_token=graphene.String(), slug=graphene.String(), service_slug=graphene.String())
     standard_pages = graphene.List(StandardPageObjectType, preview_token=graphene.String(), slug=graphene.String())
     jobs_index_page = graphene.Field(JobsIndexPageObjectType, preview_token=graphene.String())
     person_index_page = graphene.Field(PersonIndexPageObjectType, preview_token=graphene.String())
@@ -515,6 +534,9 @@ class Query(graphene.ObjectType):
                 return [page]
             else:
                 return []
+
+        if 'slug' in kwargs:
+            service_pages = service_pages.filter(slug=kwargs['slug'])
 
         if 'service_slug' in kwargs:
             service_pages = service_pages.filter(service__slug=kwargs['service_slug'])
