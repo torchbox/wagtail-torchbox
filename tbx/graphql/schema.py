@@ -52,6 +52,9 @@ class ImageObjectType(graphene.ObjectType):
         'logo': 'max-250x80',  # Used by logo block
         'icon': 'fill-100x100',
         'large-icon': 'fill-400x400',
+        # Search images
+        'facebook': 'width-1024',
+        'twitter': 'width-400',
     }
 
     id = graphene.Int()
@@ -115,6 +118,7 @@ class PageInterface(graphene.Interface):
     title = graphene.String()
     page_title = graphene.String()
     search_description = graphene.String()
+    search_image = graphene.Field(ImageObjectType)
     slug = graphene.String()
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
@@ -140,6 +144,10 @@ class PageInterface(graphene.Interface):
                 description = self.search_description
 
         return description
+
+    def resolve_search_image(self, info, **kwargs):
+        if hasattr(self, 'feed_image') and self.feed_image:
+            return self.feed_image
 
     def resolve_contact(self, info):
         if hasattr(self, 'contact'):
