@@ -183,14 +183,9 @@ class PageInterface(graphene.Interface):
 class PageLink(graphene.ObjectType):
     type = graphene.String()
     slug = graphene.String()
-    service_slug = graphene.String()
 
     def resolve_type(self, info):
         return self.specific.__class__.__name__
-
-    def resolve_service_slug(self, info):
-        if hasattr(self.specific, 'parent_service'):
-            return self.specific.parent_service.slug
 
 
 class StreamField(Scalar):
@@ -410,12 +405,6 @@ class BaseServicePageObjectType(graphene.ObjectType):
 
 class SubServicePageObjectType(BaseServicePageObjectType):
     service = graphene.Field(ServiceObjectType)
-
-    def resolve_service(self, info):
-        service_page = ServicePage.objects.ancestor_of(self).live().last()
-
-        if service_page:
-            return service_page.service
 
     class Meta:
         interfaces = [PageInterface]

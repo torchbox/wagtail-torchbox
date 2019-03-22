@@ -258,6 +258,13 @@ class ServicePageProcess(BaseServicePageProcess):
 class SubServicePage(BaseServicePage):
     parent_page_types = ['ServicePage']
 
+    @property
+    def service(self):
+        service_page = ServicePage.objects.ancestor_of(self).live().last()
+
+        if service_page:
+            return service_page.service
+
 
 class SubServicePageKeyPoint(BaseServicePageKeyPoint):
     page = ParentalKey(SubServicePage, related_name='key_points')
