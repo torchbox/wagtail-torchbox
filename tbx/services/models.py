@@ -110,8 +110,7 @@ class BaseServicePage(HeadlessPreviewMixin, Page):
         abstract = True
 
 
-class BaseServicePageKeyPoint(Orderable):
-    page = ParentalKey('services.ServicePage', related_name='key_points')
+class BaseServicePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
     linked_page = models.ForeignKey(
         'wagtailcore.Page',
@@ -130,8 +129,7 @@ class BaseServicePageKeyPoint(Orderable):
         abstract = True
 
 
-class BaseServicePageClientLogo(Orderable):
-    page = ParentalKey('services.ServicePage', related_name='client_logos')
+class BaseServicePageClientLogo(models.Model):
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
         on_delete=models.CASCADE,
@@ -145,8 +143,7 @@ class BaseServicePageClientLogo(Orderable):
         abstract = True
 
 
-class BaseServicePageUSAClientLogo(Orderable):
-    page = ParentalKey('services.ServicePage', related_name='usa_client_logos')
+class BaseServicePageUSAClientLogo(models.Model):
     image = models.ForeignKey(
         'torchbox.TorchboxImage',
         on_delete=models.CASCADE,
@@ -160,8 +157,7 @@ class BaseServicePageUSAClientLogo(Orderable):
         abstract = True
 
 
-class BaseServicePageTestimonial(Orderable):
-    page = ParentalKey('services.ServicePage', related_name='testimonials')
+class BaseServicePageTestimonial(models.Model):
     quote = models.TextField()
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
@@ -170,8 +166,7 @@ class BaseServicePageTestimonial(Orderable):
         abstract = True
 
 
-class BaseServicePageFeaturedCaseStudy(Orderable):
-    page = ParentalKey('services.ServicePage', related_name='featured_case_studies')
+class BaseServicePageFeaturedCaseStudy(models.Model):
     case_study = models.ForeignKey('work.WorkPage', on_delete=models.CASCADE)
 
     panels = [
@@ -182,8 +177,7 @@ class BaseServicePageFeaturedCaseStudy(Orderable):
         abstract = True
 
 
-class BaseServicePageFeaturedBlogPost(Orderable):
-    page = ParentalKey('services.ServicePage', related_name='featured_blog_posts')
+class BaseServicePageFeaturedBlogPost(models.Model):
     blog_post = models.ForeignKey('blog.BlogPage', on_delete=models.CASCADE)
 
     panels = [
@@ -194,8 +188,7 @@ class BaseServicePageFeaturedBlogPost(Orderable):
         abstract = True
 
 
-class BaseServicePageProcess(Orderable):
-    page = ParentalKey('services.ServicePage', related_name='processes')
+class BaseServicePageProcess(models.Model):
     title = models.TextField()
     description = models.TextField()
     page_link = models.ForeignKey('wagtailcore.Page', on_delete=models.CASCADE, blank=True, null=True)
@@ -240,15 +233,15 @@ class ServicePageTestimonial(BaseServicePageTestimonial):
     page = ParentalKey(ServicePage, related_name='testimonials')
 
 
-class ServicePageFeaturedCaseStudy(BaseServicePageFeaturedCaseStudy):
+class ServicePageFeaturedCaseStudy(Orderable, BaseServicePageFeaturedCaseStudy):
     page = ParentalKey(ServicePage, related_name='featured_case_studies')
 
 
-class ServicePageFeaturedBlogPost(BaseServicePageFeaturedBlogPost):
+class ServicePageFeaturedBlogPost(Orderable, BaseServicePageFeaturedBlogPost):
     page = ParentalKey(ServicePage, related_name='featured_blog_posts')
 
 
-class ServicePageProcess(BaseServicePageProcess):
+class ServicePageProcess(Orderable, BaseServicePageProcess):
     page = ParentalKey(ServicePage, related_name='processes')
 
 
@@ -266,27 +259,27 @@ class SubServicePage(BaseServicePage):
             return service_page.service
 
 
-class SubServicePageKeyPoint(BaseServicePageKeyPoint):
+class SubServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):
     page = ParentalKey(SubServicePage, related_name='key_points')
 
 
-class SubServicePageClientLogo(BaseServicePageClientLogo):
+class SubServicePageClientLogo(Orderable, BaseServicePageClientLogo):
     page = ParentalKey(SubServicePage, related_name='client_logos')
 
 
-class SubServicePageUSAClientLogo(BaseServicePageUSAClientLogo):
+class SubServicePageUSAClientLogo(Orderable, BaseServicePageUSAClientLogo):
     page = ParentalKey(SubServicePage, related_name='usa_client_logos')
 
 
-class SubServicePageTestimonial(BaseServicePageTestimonial):
+class SubServicePageTestimonial(Orderable, BaseServicePageTestimonial):
     page = ParentalKey(SubServicePage, related_name='testimonials')
 
 
-class SubServicePageFeaturedCaseStudy(BaseServicePageFeaturedCaseStudy):
+class SubServicePageFeaturedCaseStudy(Orderable, BaseServicePageFeaturedCaseStudy):
     page = ParentalKey(SubServicePage, related_name='featured_case_studies')
 
 
-class SubServicePageFeaturedBlogPost(BaseServicePageFeaturedBlogPost):
+class SubServicePageFeaturedBlogPost(Orderable, BaseServicePageFeaturedBlogPost):
     page = ParentalKey(SubServicePage, related_name='featured_blog_posts')
 
 
