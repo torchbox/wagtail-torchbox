@@ -437,6 +437,7 @@ class JobsIndexPageJob(graphene.ObjectType):
 
 class JobsIndexPageObjectType(graphene.ObjectType):
     jobs = graphene.List(JobsIndexPageJob)
+    strapline = graphene.String()
 
     def resolve_jobs(self, info):
         return self.jobs.all()
