@@ -217,19 +217,19 @@ class ServicePage(BaseServicePage):
     subpage_types = ['SubServicePage']
 
 
-class ServicePageKeyPoint(BaseServicePageKeyPoint):
+class ServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):
     page = ParentalKey(ServicePage, related_name='key_points')
 
 
-class ServicePageClientLogo(BaseServicePageClientLogo):
+class ServicePageClientLogo(Orderable, BaseServicePageClientLogo):
     page = ParentalKey(ServicePage, related_name='client_logos')
 
 
-class ServicePageUSAClientLogo(BaseServicePageUSAClientLogo):
+class ServicePageUSAClientLogo(Orderable, BaseServicePageUSAClientLogo):
     page = ParentalKey(ServicePage, related_name='usa_client_logos')
 
 
-class ServicePageTestimonial(BaseServicePageTestimonial):
+class ServicePageTestimonial(Orderable, BaseServicePageTestimonial):
     page = ParentalKey(ServicePage, related_name='testimonials')
 
 
@@ -249,7 +249,20 @@ class ServicePageProcess(Orderable, BaseServicePageProcess):
 
 
 class SubServicePage(BaseServicePage):
+    show_automatic_blog_listing = models.BooleanField(default=False)
+    show_automatic_case_studies_listing = models.BooleanField(default=False)
     parent_page_types = ['ServicePage']
+
+    content_panels = BaseServicePage.content_panels + [
+        MultiFieldPanel(
+            [
+                FieldPanel('show_automatic_blog_listing'),
+                FieldPanel('show_automatic_case_studies_listing'),
+            ],
+            heading="Listings settings",
+            classname="collapsible"
+        ),
+    ]
 
     @property
     def service(self):
@@ -283,5 +296,5 @@ class SubServicePageFeaturedBlogPost(Orderable, BaseServicePageFeaturedBlogPost)
     page = ParentalKey(SubServicePage, related_name='featured_blog_posts')
 
 
-class SubServicePageProcess(BaseServicePageProcess):
+class SubServicePageProcess(Orderable, BaseServicePageProcess):
     page = ParentalKey(SubServicePage, related_name='processes')

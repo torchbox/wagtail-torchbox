@@ -367,6 +367,9 @@ class BaseServicePageObjectType(graphene.ObjectType):
             if featured_id in featured_pages
         ][:limit]
 
+        if getattr(self, 'show_automatic_blog_listing', True) is False:
+            return featured
+
         if self.service is not None:
             blog_pages = blog_pages.filter(related_services__slug=self.service.slug)
 
@@ -388,6 +391,9 @@ class BaseServicePageObjectType(graphene.ObjectType):
             for featured_id in featured_ids
             if featured_id in featured_pages
         ][:limit]
+
+        if getattr(self, 'show_automatic_case_studies_listing', True) is False:
+            return featured
 
         if self.service is not None:
             work_pages = work_pages.filter(related_services__slug=self.service.slug)
