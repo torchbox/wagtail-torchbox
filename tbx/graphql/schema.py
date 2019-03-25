@@ -411,6 +411,7 @@ class SubServicePageObjectType(BaseServicePageObjectType):
 
 
 class ServicePageObjectType(BaseServicePageObjectType):
+    service = graphene.Field(ServiceObjectType)
     sub_service_pages = graphene.List(SubServicePageObjectType)
 
     def resolve_sub_service_pages(self, info):
