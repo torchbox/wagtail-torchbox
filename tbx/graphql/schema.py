@@ -359,19 +359,21 @@ class BaseServicePageObjectType(graphene.ObjectType):
         blog_pages = BlogPage.objects.live().public()
 
         # Get featured in same order as in the editor
-        featured_ids = list(self.featured_blog_posts.values_list('blog_post_id', flat=True)[:limit])
+        featured_ids = self.featured_blog_posts.values_list('blog_post_id', flat=True)
         featured_pages = blog_pages.in_bulk(featured_ids)
         featured = [
             featured_pages[featured_id]
             for featured_id in featured_ids
-        ]
+            if featured_id in featured_pages
+        ][:limit]
+
+        if getattr(self, 'show_automatic_blog_listing', True) is False:
+            return featured
 
         if self.service is not None:
             blog_pages = blog_pages.filter(related_services__slug=self.service.slug)
-            if len(blog_pages) == 0:
-                return None
 
-        # Get additional work pages
+        # Get additional blog pages
         num_additional_required = limit - len(featured)
         additional = list(blog_pages.exclude(id__in=featured_ids).order_by('-date')[:num_additional_required])
 
@@ -382,18 +384,19 @@ class BaseServicePageObjectType(graphene.ObjectType):
         work_pages = WorkPage.objects.live().public()
 
         # Get featured in same order as in the editor
-        featured_ids = list(self.featured_case_studies.values_list('case_study_id', flat=True)[:limit])
+        featured_ids = self.featured_case_studies.values_list('case_study_id', flat=True)
         featured_pages = work_pages.in_bulk(featured_ids)
         featured = [
             featured_pages[featured_id]
             for featured_id in featured_ids
             if featured_id in featured_pages
-        ]
+        ][:limit]
+
+        if getattr(self, 'show_automatic_case_studies_listing', True) is False:
+            return featured
 
         if self.service is not None:
             work_pages = work_pages.filter(related_services__slug=self.service.slug)
-            if len(work_pages) == 0:
-                return None
 
         # Get additional work pages
         num_additional_required = limit - len(featured)
