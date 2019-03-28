@@ -578,7 +578,10 @@ class Query(graphene.ObjectType):
 
         return blog_pages
 
-    def resolve_case_studies_index_page(self, info):
+    def resolve_case_studies_index_page(self, info, **kwargs):
+        if 'preview_token' in kwargs:
+            return get_page_preview(WorkIndexPage, kwargs['preview_token'])
+
         return WorkIndexPage.objects.live().public().first()
 
     def resolve_case_studies(self, info, **kwargs):
@@ -631,31 +634,19 @@ class Query(graphene.ObjectType):
 
     def resolve_jobs_index_page(self, info, **kwargs):
         if 'preview_token' in kwargs:
-            page = get_page_preview(JobIndexPage, kwargs['preview_token'])
-            if page:
-                return [page]
-            else:
-                return []
+            return get_page_preview(JobIndexPage, kwargs['preview_token'])
 
         return JobIndexPage.objects.live().public().first()
 
     def resolve_blog_index_page(self, info, **kwargs):
         if 'preview_token' in kwargs:
-            page = get_page_preview(BlogIndexPage, kwargs['preview_token'])
-            if page:
-                return [page]
-            else:
-                return []
+            return get_page_preview(BlogIndexPage, kwargs['preview_token'])
 
         return BlogIndexPage.objects.live().public().first()
 
     def resolve_person_index_page(self, info, **kwargs):
         if 'preview_token' in kwargs:
-            page = get_page_preview(PersonIndexPage, kwargs['preview_token'])
-            if page:
-                return [page]
-            else:
-                return []
+            return get_page_preview(PersonIndexPage, kwargs['preview_token'])
 
         return PersonIndexPage.objects.live().public().first()
 
