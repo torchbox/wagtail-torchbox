@@ -62,7 +62,6 @@ class WorkPageAuthor(Orderable):
 
 
 class WorkPage(HeadlessPreviewMixin, Page):
-    descriptive_title = models.CharField(max_length=255)
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
@@ -111,7 +110,6 @@ class WorkPage(HeadlessPreviewMixin, Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('client', classname="client"),
-        FieldPanel('descriptive_title'),
         InlinePanel('authors', label="Author"),
         StreamFieldPanel('body'),
         ImageChooserPanel('homepage_image'),
