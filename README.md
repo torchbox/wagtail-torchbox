@@ -3,7 +3,7 @@ Torchbox.com on Wagtail
 
 [![Build Status](https://travis-ci.org/torchbox/wagtail-torchbox.svg?branch=master)](https://travis-ci.org/torchbox/wagtail-torchbox)
 
-This project is the backend element for the new Torchbox.com site, the [Frontend](https://github.com/torchbox/torchbox-frontend/) is built with Gatsby and consumes the CMS's content via GraphQL. 
+This project is the backend element for the new Torchbox.com site, the [Front-end](https://github.com/torchbox/torchbox-frontend/) is built with Gatsby and consumes the CMS's content via GraphQL. 
 
 Setup (with Vagrant)
 --------------------
