@@ -72,8 +72,12 @@ This project (the backend) is deployed on heroku and is automatically deployed w
 
 
 The admin for the live site can be found at https://cms.torchbox.com/admin/ 
-You can find the GraphQL API at https://cms.torchbox.com/graphql/ 
+You can run test GraphQL queries at https://cms.torchbox.com/graphql/ 
 
+There is a staging version of the app on Dokku:
+
+Admin: https://tbxcms.staging.torchbox.com/admin/
+GraphQL: https://tbxcms.staging.torchbox.com/graphql/
 
 ### What order should I develop in?
 
