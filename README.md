@@ -61,14 +61,18 @@ Any Django/Wagtail specific development is the same (Models, Snippets, Taxonomie
 
 ### ...and the frontend?
 
-As mentioned above, the [frontend](https://github.com/torchbox/torchbox-frontend/) is a seperate project built with [Gatsby](https://www.gatsbyjs.org/). If you want to really know how Gatsby works then you can find out [here](https://www.gatsbyjs.org/docs/behind-the-scenes/) but the basics that you need to know is that Gatsby is a modern static site builder for React that enables you to build blazingly fast sites while keeping the 'reactness' of a React app.
+As mentioned above, the [front-end](https://github.com/torchbox/torchbox-frontend/) is a seperate project built with [Gatsby](https://www.gatsbyjs.org/). If you want to really know how Gatsby works then you can find out [here](https://www.gatsbyjs.org/docs/behind-the-scenes/) but the basics that you need to know is that Gatsby is a modern static site builder for React that enables you to build blazingly fast sites while keeping the 'reactness' of a React app.
 
 The HTML of each page is generated in node during the build process. This means when the user opens the page in a browser that the page renders instantly (because it isn't reliant on JS to bootstrap the page, the HTML is ready to go!) but when JS executes on the page everything becomes dynamic like a traditional React app.
 
 
 ### Where does it live?
 
-This project (the backend) is deployed on heroku and is automatically deployed when the `new` branch is updated. The frontend is hosted on [Netlify](https://www.netlify.com/) and is also linked to the frontend repo for auto deployment (new netlify builds are also triggered by a page publish in Wagtail). Netlify will also create 'deploy previews' whenever an MR is created so that you can preview your changes before you merge!
+This project (the backend) is deployed on heroku and is automatically deployed when the `master` branch is updated. The frontend is hosted on [Netlify](https://www.netlify.com/) and is also linked to the frontend repo for auto deployment (new netlify builds are also triggered by a page publish in Wagtail). Netlify will also create 'deploy previews' whenever an MR is created so that you can preview your changes before you merge!
+
+
+The admin for the live site can be found at https://cms.torchbox.com/admin/ 
+You can find the GraphQL API at https://cms.torchbox.com/graphql/ 
 
 
 ### What order should I develop in?
