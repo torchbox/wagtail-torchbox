@@ -5,7 +5,7 @@ from graphene.types import Scalar
 from graphql.validation.rules import NoUnusedFragments, specified_rules
 
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
+from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage, NotFoundPage
 from tbx.people.models import (Author, Contact, ContactReasonsList,
                                CulturePage, PersonIndexPage, PersonPage)
 from tbx.services.models import ServicePage, SubServicePage
@@ -487,6 +487,13 @@ class CulturePageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+class NotFoundPageObjectType(graphene.ObjectType):
+    strapline = graphene.String()
+    background_image = graphene.Field(ImageObjectType)
+    contact = graphene.Field(ContactObjectType)
+    contact_reasons = graphene.Field(ContactReasonsObjectType)
+
+
 def get_page_preview(model, token):
     return model.get_page_from_preview_token(token)
 
@@ -507,6 +514,7 @@ class Query(graphene.ObjectType):
     person_index_page = graphene.Field(PersonIndexPageObjectType, preview_token=graphene.String())
     culture_pages = graphene.List(CulturePageObjectType, preview_token=graphene.String(), slug=graphene.String())
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
+    notfound_page = graphene.Field(NotFoundPageObjectType, preview_token=graphene.String())
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
 
@@ -664,6 +672,12 @@ class Query(graphene.ObjectType):
             culture_pages = culture_pages.filter(slug=kwargs['slug'])
 
         return culture_pages
+
+    def resolve_notfound_page(self, info, **kwargs):
+        if 'preview_token' in kwargs:
+            return get_page_preview(NotFoundPage, kwargs['preview_token'])
+
+        return NotFoundPage.objects.live().public().first()
 
     def resolve_images(self, info, **kwargs):
         images = TorchboxImage.objects.all()

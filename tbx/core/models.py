@@ -16,6 +16,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from headlesspreview.models import HeadlessPreviewMixin
 
@@ -576,6 +577,34 @@ class GoogleAdGrantsPage(HeadlessPreviewMixin, Page):
             FieldPanel('call_to_action_embed_url'),
             InlinePanel('accreditations', label="Accreditations")
         ], "Call To Action")
+    ]
+
+
+# IE the 404 page
+class NotFoundPage(HeadlessPreviewMixin, Page):
+    strapline = models.CharField(max_length=255)
+    background_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    contact_reasons = models.ForeignKey('people.ContactReasonsList', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+
+    content_panels = [
+        FieldPanel('title'),
+        FieldPanel('strapline'),
+        ImageChooserPanel('background_image'),
+        MultiFieldPanel(
+            [
+                SnippetChooserPanel('contact'),
+                SnippetChooserPanel('contact_reasons'),
+            ],
+            heading="Contact",
+            classname="collapsible"
+        ),
     ]
 
 
