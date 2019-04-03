@@ -1,15 +1,12 @@
 from django import forms
 from django.db import models
 from django.shortcuts import render
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import never_cache
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel,
                                          StreamFieldPanel)
 from wagtail.admin.utils import send_mail
-from wagtail.contrib.forms.models import AbstractFormField
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.blocks import PageChooserBlock, StreamBlock, StructBlock
 from wagtail.core.fields import RichTextField, StreamField
@@ -19,7 +16,8 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-from wagtailcaptcha.models import WagtailCaptchaEmailForm
+
+from headlesspreview.models import HeadlessPreviewMixin
 
 from .blocks import StoryBlock
 from .fields import ColorField
@@ -230,7 +228,7 @@ class HomePageClient(Orderable, RelatedLink):
     ]
 
 
-class HomePage(Page):
+class HomePage(HeadlessPreviewMixin, Page):
     hero_intro_primary = models.TextField(blank=True)
     hero_intro_secondary = models.TextField(blank=True)
     intro_body = RichTextField(blank=True)
@@ -273,67 +271,11 @@ class HomePage(Page):
 
 # Standard page
 
-class StandardPageContentBlock(Orderable, ContentBlock):
-    page = ParentalKey('torchbox.StandardPage', related_name='content_block')
-
-
-class StandardPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.StandardPage', related_name='related_links')
-
-
-class StandardPageClient(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.StandardPage', related_name='clients')
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    panels = RelatedLink.panels + [
-        ImageChooserPanel('image')
-    ]
-
-
-class StandardPage(Page):
-    main_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    credit = models.CharField(max_length=255, blank=True)
-    heading = RichTextField(blank=True)
-    quote = models.CharField(max_length=255, blank=True)
+class StandardPage(HeadlessPreviewMixin, Page):
     body = StreamField(StoryBlock())
-    email = models.EmailField(blank=True)
 
-    feed_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        ImageChooserPanel('main_image'),
-        FieldPanel('credit', classname="full"),
-        FieldPanel('heading', classname="full"),
-        FieldPanel('quote', classname="full"),
+    content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
-        FieldPanel('email', classname="full"),
-        InlinePanel('content_block', label="Content block"),
-        InlinePanel('related_links', label="Related links"),
-        InlinePanel('clients', label="Clients"),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
     ]
 
 
@@ -376,7 +318,7 @@ class AboutPageContentBlock(Orderable):
     ]
 
 
-class AboutPage(Page):
+class AboutPage(HeadlessPreviewMixin, Page):
     main_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -468,7 +410,8 @@ class ParticleSnippet(models.Model):
         return self.title
 
 
-@register_snippet
+# Currently hidden. These were used in the past and may be used again in the future
+# @register_snippet
 class Tag(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
@@ -478,79 +421,28 @@ class Tag(models.Model):
 
 
 # Jobs index page
-class ReasonToJoin(Orderable):
-    page = ParentalKey('torchbox.JobIndexPage', related_name='reasons_to_join')
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    title = models.CharField(max_length=255)
-    body = models.CharField(max_length=511)
-
-    panels = [
-        ImageChooserPanel('image'),
-        FieldPanel('title'),
-        FieldPanel('body')
-    ]
-
 
 class JobIndexPageJob(Orderable):
-    page = ParentalKey('torchbox.JobIndexPage', related_name='job')
-    job_title = models.CharField(max_length=255)
-    job_intro = models.CharField(max_length=255)
+    page = ParentalKey('torchbox.JobIndexPage', related_name='jobs')
+    title = models.CharField(max_length=255)
+    level = models.CharField(max_length=255)
     url = models.URLField(null=True)
     location = models.CharField(max_length=255, blank=True)
 
     panels = [
-        FieldPanel('job_title'),
-        FieldPanel('job_intro'),
-        FieldPanel("url"),
-        FieldPanel("location"),
+        FieldPanel('title'),
+        FieldPanel('level'),
+        FieldPanel('url'),
+        FieldPanel('location'),
     ]
 
 
-class JobIndexPage(Page):
-    intro = models.TextField(blank=True)
-    listing_intro = models.TextField(
-        blank=True,
-        help_text="Shown instead of the intro when job listings are included "
-        "on other pages")
-    no_jobs_that_fit = RichTextField(blank=True)
-    terms_and_conditions = models.URLField(null=True)
-    refer_a_friend = models.URLField(null=True)
-    reasons_intro = models.TextField(blank=True)
+class JobIndexPage(HeadlessPreviewMixin, Page):
+    strapline = models.CharField(max_length=255)
 
-    search_fields = Page.search_fields + [
-        index.SearchField('intro'),
-    ]
-
-    def get_context(self, request, *args, **kwargs):
-        from tbx.blog.models import BlogPage
-
-        context = super(
-            JobIndexPage, self
-        ).get_context(request, *args, **kwargs)
-        context['jobs'] = self.job.all()
-        context['blogs'] = BlogPage.objects.live().order_by('-date')[:4]
-        return context
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('listing_intro', classname="full"),
-        FieldPanel('no_jobs_that_fit', classname="full"),
-        FieldPanel('terms_and_conditions', classname="full"),
-        FieldPanel('refer_a_friend', classname="full"),
-        InlinePanel('job', label="Job"),
-        FieldPanel('reasons_intro', classname="full"),
-        InlinePanel('reasons_to_join', label="Reasons To Join"),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+    content_panels = Page.content_panels + [
+        FieldPanel('strapline', classname="full title"),
+        InlinePanel('jobs', label="Jobs"),
     ]
 
 
@@ -616,7 +508,7 @@ class GoogleAdGrantsAccreditations(Orderable):
     ]
 
 
-class GoogleAdGrantsPage(Page):
+class GoogleAdGrantsPage(HeadlessPreviewMixin, Page):
     intro = RichTextField()
     form_title = models.CharField(max_length=255)
     form_subtitle = models.CharField(max_length=255)
@@ -687,55 +579,6 @@ class GoogleAdGrantsPage(Page):
     ]
 
 
-# Contact page
-class ContactFormField(AbstractFormField):
-    page = ParentalKey('Contact', related_name='form_fields')
-
-
-class ContactLandingPageRelatedLinkButton(Orderable, RelatedLink):
-    page = ParentalKey('torchbox.Contact', related_name='related_link_buttons')
-
-
-@method_decorator(never_cache, name='serve')
-class Contact(WagtailCaptchaEmailForm):
-    intro = RichTextField(blank=True)
-    main_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
-                                   blank=True, on_delete=models.SET_NULL,
-                                   related_name='+')
-    landing_image = models.ForeignKey('torchbox.TorchboxImage', null=True,
-                                      blank=True, on_delete=models.SET_NULL,
-                                      related_name='+')
-    thank_you_text = models.CharField(max_length=255, help_text='e.g. Thanks!')
-    thank_you_follow_up = models.CharField(max_length=255, help_text='e.g. We\'ll be in touch')
-    landing_page_button_title = models.CharField(max_length=255, blank=True)
-    landing_page_button_link = models.ForeignKey(
-        'wagtailcore.Page', null=True, blank=True, related_name='+',
-        on_delete=models.SET_NULL
-    )
-
-    class Meta:
-        verbose_name = "Contact Page"
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-        ImageChooserPanel('main_image'),
-        InlinePanel('form_fields', label="Form fields"),
-        MultiFieldPanel([
-            FieldPanel('to_address', classname="full"),
-            FieldPanel('from_address', classname="full"),
-            FieldPanel('subject', classname="full"),
-        ], "Email"),
-        MultiFieldPanel([
-            ImageChooserPanel('landing_image'),
-            FieldPanel('thank_you_text'),
-            FieldPanel('thank_you_follow_up'),
-            PageChooserPanel('landing_page_button_link'),
-            FieldPanel('landing_page_button_title'),
-        ], "Landing page"),
-    ]
-
-
 @register_setting
 class GlobalSettings(BaseSetting):
 
@@ -796,12 +639,13 @@ class GlobalSettings(BaseSetting):
 
 
 class SubMenuItemBlock(StreamBlock):
-    subitem = PageChooserBlock()
+    # subitem = PageChooserBlock()
+    related_listing_page = PageChooserBlock()
 
 
 class MenuItemBlock(StructBlock):
     page = PageChooserBlock()
-    subitems = SubMenuItemBlock()
+    subitems = SubMenuItemBlock(blank=True, null=True)
 
     class Meta:
         template = "torchbox/includes/menu_item.html"

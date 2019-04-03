@@ -1,17 +1,24 @@
+import string
+
+from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
-from modelcluster.fields import ParentalKey
+from bs4 import BeautifulSoup
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Orderable, Page
+from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+from headlesspreview.models import HeadlessPreviewMixin
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
@@ -22,7 +29,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 
 
 @method_decorator(get_default_cache_control_decorator(), name='serve')
-class BlogIndexPage(Page):
+class BlogIndexPage(HeadlessPreviewMixin, Page):
     intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + [
@@ -97,6 +104,7 @@ class BlogPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('blog.BlogPage', related_name='related_links')
 
 
+# Currently hidden. These were used in the past and may be used again in the future
 class BlogPageTagSelect(Orderable):
     page = ParentalKey('blog.BlogPage', related_name='tags')
     tag = models.ForeignKey(
@@ -119,19 +127,11 @@ class BlogPageAuthor(Orderable):
     ]
 
 
-class BlogPage(Page):
-    colour = models.CharField(
-        choices=(
-            ('orange', "Orange"),
-            ('blue', "Blue"),
-            ('white', "White")
-        ),
-        max_length=255,
-        blank=True,
-        help_text="Listing card colour if left blank will display image"
-    )
-    body = StreamField(StoryBlock())
+class BlogPage(HeadlessPreviewMixin, Page):
     date = models.DateField("Post date")
+    body = StreamField(StoryBlock())
+    body_word_count = models.PositiveIntegerField(null=True, editable=False)
+
     feed_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -140,12 +140,19 @@ class BlogPage(Page):
         related_name='+'
     )
     listing_summary = models.TextField(blank=True)
-
     canonical_url = models.URLField(blank=True, max_length=255)
+    related_services = ParentalManyToManyField('taxonomy.Service', related_name='blog_posts')
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
+
+    def set_body_word_count(self):
+        body_basic_html = self.body.stream_block.render_basic(self.body)
+        body_text = BeautifulSoup(body_basic_html, 'html.parser').get_text()
+        remove_chars = string.punctuation + '“”’'
+        body_words = body_text.translate(body_text.maketrans(dict.fromkeys(remove_chars))).split()
+        self.body_word_count = len(body_words)
 
     @property
     def blog_index(self):
@@ -164,12 +171,10 @@ class BlogPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('colour'),
         InlinePanel('authors', label="Author"),
         FieldPanel('date'),
         StreamFieldPanel('body'),
         InlinePanel('related_links', label="Related links"),
-        InlinePanel('tags', label="Tags")
     ]
 
     promote_panels = [
@@ -177,4 +182,11 @@ class BlogPage(Page):
         ImageChooserPanel('feed_image'),
         FieldPanel('listing_summary'),
         FieldPanel('canonical_url'),
+        FieldPanel('related_services', widget=forms.CheckboxSelectMultiple),
     ]
+
+
+@receiver(page_published, sender=BlogPage)
+def update_body_word_count_on_page_publish(instance, **kwargs):
+    instance.set_body_word_count()
+    instance.save(update_fields=['body_word_count'])

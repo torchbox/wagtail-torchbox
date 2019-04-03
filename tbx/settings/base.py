@@ -40,10 +40,12 @@ INSTALLED_APPS = [
 
     'tbx.blog',
     'tbx.core.apps.TorchboxCoreAppConfig',
+    'tbx.people',
     'tbx.services',
     'tbx.sign_up_form',
-    'tbx.people',
+    'tbx.taxonomy',
     'tbx.work',
+    'tbx.netlify',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -68,6 +70,10 @@ INSTALLED_APPS = [
     'wagtailcaptcha',
     'wagtailfontawesome',
     'wagtail_review',
+    'phonenumber_field',
+    'graphene_django',
+    'corsheaders',
+    'headlesspreview',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -89,6 +95,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Must be placed above anything that can generate a response
+    'corsheaders.middleware.CorsMiddleware',
 
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
@@ -179,6 +188,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = env.get('MEDIA_DIR', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = env.get('MEDIA_URL', '/media/')
+MEDIA_PREFIX = env.get('MEDIA_PREFIX', '')
 
 
 # Do not use the same Redis instance for other things like Celery!
@@ -440,3 +450,27 @@ if 'MAILCHIMP_KEY' in env:
 
 if 'MAILCHIMP_MAILING_LIST_ID' in env:
     MAILCHIMP_MAILING_LIST_ID = env['MAILCHIMP_MAILING_LIST_ID']
+
+
+# GraphQL API Endpoint
+GRAPHENE = {
+    'SCHEMA': 'tbx.graphql.schema.schema',
+}
+
+# CORS settings
+
+CORS_URLS_REGEX = r'^/graphql/.*$'
+CORS_ORIGIN_ALLOW_ALL = True
+
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+NETLIFY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', 'http://localhost:8000')
+NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
+
+
+# Preview
+
+# Wagtail previews are served from the frontend site, this URL is where they are directed to
+
+if 'PREVIEW_URL' in env:
+    PREVIEW_URL = env['PREVIEW_URL']

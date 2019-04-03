@@ -11,6 +11,11 @@ django-basic-auth-ip-whitelist==0.2
 boto3==1.7.82
 django-storages==1.6.6
 wagtail-review==0.1.1
+django-phonenumber-field==2.1.0
+phonenumbers==8.10.3
+graphene_django==2.2.0
+django-cors-headers==2.4.0
+wagtailnetlify==0.2
 
 # Development requirements
 django-debug-toolbar==1.2.2

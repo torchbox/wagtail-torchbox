@@ -22,7 +22,7 @@ class BlogFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return item.intro if item.intro else item.body
+        return item.listing_summary
 
     def item_link(self, item):
         return item.get_full_url()
@@ -49,7 +49,7 @@ class PlanetDrupalFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return item.intro
+        return item.listing_summary
 
     def item_link(self, item):
         return item.get_full_url()

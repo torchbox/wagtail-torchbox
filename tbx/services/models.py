@@ -2,72 +2,299 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                         PageChooserPanel, StreamFieldPanel)
-from wagtail.core.fields import StreamField
+                                         MultiFieldPanel, PageChooserPanel)
+from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.search import index
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from .blocks import ServicePageBlock
+from headlesspreview.models import HeadlessPreviewMixin
 
 
-class ServiceIndexPageService(Orderable):
-    page = ParentalKey('services.ServiceIndexPage', related_name='services')
-    title = models.TextField()
-    svg = models.TextField(null=True)
-    description = models.TextField()
-    link = models.ForeignKey(
-        'services.ServicePage',
+class BaseServicePage(HeadlessPreviewMixin, Page):
+    theme = models.CharField(max_length=255, choices=(
+        ('light', 'Light'),
+        ('coral', 'Coral'),
+        ('dark', 'Dark'),
+        ('dark--transparent', 'Dark with transparent header'),
+    ), default='light')
+
+    strapline = models.CharField(max_length=255)
+    intro = RichTextField(blank=True)
+    greeting_image_type = models.CharField(max_length=255, choices=(
+        ('woman-left', 'Woman (Left Aligned)'),
+        ('man-left', 'Man (Left aligned)'),
+        ('wagtail', 'Wagtail (Right aligned)'),
+    ), default='woman-left', blank=True, null=True)
+
+    heading_for_key_points = RichTextField(blank=True)
+    contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    contact_reasons = models.ForeignKey('people.ContactReasonsList', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    use_process_block_image = models.BooleanField(default=False)
+    heading_for_processes = models.TextField(blank=True, null=True)
+
+    # Section titles
+    key_points_section_title = models.TextField(blank=True, default="Services")
+    testimonials_section_title = models.TextField(blank=True, default="Clients")
+    case_studies_section_title = models.TextField(blank=True, default="Work")
+    blogs_section_title = models.TextField(blank=True, default="Thinking")
+    process_section_title = models.TextField(blank=True, default="Process")
+
+    content_panels = Page.content_panels + [
+        FieldPanel('theme'),
+        MultiFieldPanel(
+            [
+                FieldPanel('strapline', classname="full title"),
+                FieldPanel('intro', classname="full"),
+                FieldPanel('greeting_image_type', classname="full")
+            ],
+            heading="Hero",
+            classname="collapsible"
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('key_points_section_title', classname="full"),
+                FieldPanel('heading_for_key_points', classname="full"),
+                InlinePanel('key_points', label="Key points"),
+            ],
+            heading="Key Points",
+            classname="collapsible"
+        ),
+        MultiFieldPanel(
+            [
+                SnippetChooserPanel('contact'),
+                SnippetChooserPanel('contact_reasons'),
+            ],
+            heading="Contact",
+            classname="collapsible"
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('testimonials_section_title', classname="full"),
+                InlinePanel('client_logos', label="Client logos"),
+                InlinePanel('usa_client_logos', label="Client logos (for USA users)"),
+                InlinePanel('testimonials', label="Testimonials"),
+            ],
+            heading="Testimonials",
+            classname="collapsible"
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('process_section_title', classname="full"),
+                FieldPanel('heading_for_processes', classname="full"),
+                FieldPanel('use_process_block_image', classname="full"),
+                InlinePanel('processes', label="Processes")
+            ],
+            heading="Processes",
+            classname="collapsible"
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('case_studies_section_title', classname="full"),
+                InlinePanel('featured_case_studies', label="Featured case studies"),
+            ],
+            heading="Work",
+            classname="collapsible"
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('blogs_section_title', classname="full"),
+                InlinePanel('featured_blog_posts', label="Featured blog posts"),
+            ],
+            heading="Blogs",
+            classname="collapsible"
+        ),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class BaseServicePageKeyPoint(models.Model):
+    text = models.CharField(max_length=255)
+    linked_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        blank=True,
-        null=True,
     )
 
     panels = [
-        FieldPanel('title'),
-        FieldPanel('description'),
-        PageChooserPanel('link'),
-        FieldPanel('svg')
+        FieldPanel('text'),
+        PageChooserPanel('linked_page'),
     ]
 
+    class Meta:
+        abstract = True
 
-class ServiceIndexPage(Page):
-    main_image = models.ForeignKey(
+
+class BaseServicePageClientLogo(models.Model):
+    image = models.ForeignKey(
         'torchbox.TorchboxImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
+        on_delete=models.CASCADE,
     )
-    heading = models.TextField(blank=True)
-    intro = models.TextField(blank=True)
 
-    search_fields = Page.search_fields + [
-        index.SearchField('intro'),
+    panels = [
+        ImageChooserPanel('image'),
     ]
 
-    content_panels = [
-        FieldPanel('title', classname='full title'),
-        ImageChooserPanel('main_image'),
-        FieldPanel('heading'),
-        FieldPanel('intro', classname='full'),
-        InlinePanel('services', label='Services'),
+    class Meta:
+        abstract = True
+
+
+class BaseServicePageUSAClientLogo(models.Model):
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        on_delete=models.CASCADE,
+    )
+
+    panels = [
+        ImageChooserPanel('image'),
     ]
 
+    class Meta:
+        abstract = True
 
-class ServicePage(Page):
+
+class BaseServicePageTestimonial(models.Model):
+    quote = models.TextField()
+    name = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
+
+    class Meta:
+        abstract = True
+
+
+class BaseServicePageFeaturedCaseStudy(models.Model):
+    case_study = models.ForeignKey('work.WorkPage', on_delete=models.CASCADE)
+
+    panels = [
+        PageChooserPanel('case_study'),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class BaseServicePageFeaturedBlogPost(models.Model):
+    blog_post = models.ForeignKey('blog.BlogPage', on_delete=models.CASCADE)
+
+    panels = [
+        PageChooserPanel('blog_post'),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class BaseServicePageProcess(models.Model):
+    title = models.TextField()
     description = models.TextField()
-    streamfield = StreamField(ServicePageBlock())
-    particle = models.ForeignKey(
-        'torchbox.ParticleSnippet',
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL)
+    page_link = models.ForeignKey('wagtailcore.Page', on_delete=models.CASCADE, blank=True, null=True)
+    page_link_label = models.TextField(blank=True, null=True)
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('description', classname="full"),
-        StreamFieldPanel('streamfield'),
-        FieldPanel('particle'),
+    panels = [
+        FieldPanel('title', classname="title"),
+        FieldPanel('description', classname="title"),
+        PageChooserPanel('page_link'),
+        FieldPanel('page_link_label'),
     ]
+
+    class Meta:
+        abstract = True
+
+
+# Service page
+
+
+class ServicePage(BaseServicePage):
+    service = models.OneToOneField('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True, help_text="Link to this service in taxonomy")
+
+    content_panels = BaseServicePage.content_panels.copy()
+    content_panels.insert(1, FieldPanel('service'))
+
+    subpage_types = ['SubServicePage']
+
+
+class ServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):
+    page = ParentalKey(ServicePage, related_name='key_points')
+
+
+class ServicePageClientLogo(Orderable, BaseServicePageClientLogo):
+    page = ParentalKey(ServicePage, related_name='client_logos')
+
+
+class ServicePageUSAClientLogo(Orderable, BaseServicePageUSAClientLogo):
+    page = ParentalKey(ServicePage, related_name='usa_client_logos')
+
+
+class ServicePageTestimonial(Orderable, BaseServicePageTestimonial):
+    page = ParentalKey(ServicePage, related_name='testimonials')
+
+
+class ServicePageFeaturedCaseStudy(Orderable, BaseServicePageFeaturedCaseStudy):
+    page = ParentalKey(ServicePage, related_name='featured_case_studies')
+
+
+class ServicePageFeaturedBlogPost(Orderable, BaseServicePageFeaturedBlogPost):
+    page = ParentalKey(ServicePage, related_name='featured_blog_posts')
+
+
+class ServicePageProcess(Orderable, BaseServicePageProcess):
+    page = ParentalKey(ServicePage, related_name='processes')
+
+
+# Sub-service page
+
+
+class SubServicePage(BaseServicePage):
+    show_automatic_blog_listing = models.BooleanField(default=False)
+    show_automatic_case_studies_listing = models.BooleanField(default=False)
+    parent_page_types = ['ServicePage']
+
+    content_panels = BaseServicePage.content_panels + [
+        MultiFieldPanel(
+            [
+                FieldPanel('show_automatic_blog_listing'),
+                FieldPanel('show_automatic_case_studies_listing'),
+            ],
+            heading="Listings settings",
+            classname="collapsible"
+        ),
+    ]
+
+    @property
+    def service(self):
+        service_page = ServicePage.objects.ancestor_of(self).live().last()
+
+        if service_page:
+            return service_page.service
+
+
+class SubServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):
+    page = ParentalKey(SubServicePage, related_name='key_points')
+
+
+class SubServicePageClientLogo(Orderable, BaseServicePageClientLogo):
+    page = ParentalKey(SubServicePage, related_name='client_logos')
+
+
+class SubServicePageUSAClientLogo(Orderable, BaseServicePageUSAClientLogo):
+    page = ParentalKey(SubServicePage, related_name='usa_client_logos')
+
+
+class SubServicePageTestimonial(Orderable, BaseServicePageTestimonial):
+    page = ParentalKey(SubServicePage, related_name='testimonials')
+
+
+class SubServicePageFeaturedCaseStudy(Orderable, BaseServicePageFeaturedCaseStudy):
+    page = ParentalKey(SubServicePage, related_name='featured_case_studies')
+
+
+class SubServicePageFeaturedBlogPost(Orderable, BaseServicePageFeaturedBlogPost):
+    page = ParentalKey(SubServicePage, related_name='featured_blog_posts')
+
+
+class SubServicePageProcess(Orderable, BaseServicePageProcess):
+    page = ParentalKey(SubServicePage, related_name='processes')
