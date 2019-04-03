@@ -468,3 +468,5 @@ NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
 
 if 'PREVIEW_URL' in env:
     PREVIEW_URL = env['PREVIEW_URL']
+else:
+    PREVIEW_URL = 'http://localhost:8003/preview/'

@@ -11,6 +11,7 @@ from tbx.people.models import (Author, Contact, ContactReasonsList,
 from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkIndexPage, WorkPage
+from wagtail.contrib.redirects.models import Redirect
 
 from .streamfield import StreamFieldSerialiser
 
@@ -502,6 +503,13 @@ class CulturePageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+class RedirectObjectType(graphene.ObjectType):
+    site = graphene.String()
+    old_path = graphene.String()
+    link = graphene.String()
+    is_permanent = graphene.Boolean()
+
+
 def get_page_preview(model, token):
     return model.get_page_from_preview_token(token)
 
@@ -524,6 +532,7 @@ class Query(graphene.ObjectType):
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
+    redirects = graphene.List(RedirectObjectType)
 
     def resolve_services(self, info, **kwargs):
         services = Service.objects.all().order_by('sort_order')
@@ -698,6 +707,9 @@ class Query(graphene.ObjectType):
             return ContactReasonsList.objects.get(is_default=True)
         except ContactReasonsList.DoesNotExist:
             return None
+
+    def resolve_redirects(self, info):
+        return Redirect.objects.all()
 
 
 schema = graphene.Schema(
