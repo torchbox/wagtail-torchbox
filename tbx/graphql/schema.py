@@ -3,6 +3,7 @@ from django.conf import settings
 import graphene
 from graphene.types import Scalar
 from graphql.validation.rules import NoUnusedFragments, specified_rules
+from wagtail.contrib.redirects.models import Redirect
 
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
@@ -11,7 +12,6 @@ from tbx.people.models import (Author, Contact, ContactReasonsList,
 from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkIndexPage, WorkPage
-from wagtail.contrib.redirects.models import Redirect
 
 from .streamfield import StreamFieldSerialiser
 
