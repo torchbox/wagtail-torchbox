@@ -271,6 +271,8 @@ class CaseStudyObjectType(graphene.ObjectType):
     homepage_image = graphene.Field(ImageObjectType)
     listing_summary = graphene.String()
     related_services = graphene.List(ServiceObjectType)
+    related_case_studies = graphene.List(lambda: CaseStudyObjectType,
+                                         limit=graphene.Int())
 
     def resolve_authors(self, info):
         return Author.objects.filter(
@@ -279,6 +281,19 @@ class CaseStudyObjectType(graphene.ObjectType):
 
     def resolve_related_services(self, info):
         return self.related_services.all()
+
+    def resolve_related_case_studies(self, info, **kwargs):
+        limit = int(kwargs.get('limit', 10))
+
+        work_pages = WorkPage.objects.live().public().exclude(pk=self.pk)
+
+        work_pages = work_pages.filter(
+            related_services__pk__in=self.related_services.values_list(
+                'pk', flat=True
+            )
+        ).distinct()
+
+        return work_pages[:limit]
 
     class Meta:
         interfaces = [PageInterface]
