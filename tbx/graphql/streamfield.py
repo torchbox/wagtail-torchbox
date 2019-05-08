@@ -1,5 +1,6 @@
 from django.conf import settings
 
+from bs4 import BeautifulSoup
 from wagtail.core import blocks
 from wagtail.core.models import Page
 from wagtail.core.rich_text import RichText
@@ -7,8 +8,6 @@ from wagtail.embeds.blocks import EmbedBlock
 from wagtail.embeds.embeds import get_embed
 from wagtail.embeds.exceptions import EmbedException
 from wagtail.images.blocks import ImageChooserBlock
-
-from bs4 import BeautifulSoup
 
 
 class StreamFieldSerialiser:
