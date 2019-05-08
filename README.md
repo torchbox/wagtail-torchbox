@@ -3,7 +3,7 @@ Torchbox.com on Wagtail
 
 [![Build Status](https://travis-ci.org/torchbox/wagtail-torchbox.svg?branch=master)](https://travis-ci.org/torchbox/wagtail-torchbox)
 
-This project is the backend element for the new Torchbox.com site, the [Front-end](https://github.com/torchbox/torchbox-frontend/) is built with Gatsby and consumes the CMS's content via GraphQL. 
+This project is the backend element for the new Torchbox.com site, the [Front-end](https://github.com/torchbox/torchbox-frontend/) is built with Gatsby and consumes the CMS's content via GraphQL.
 
 Setup (with Vagrant)
 --------------------
@@ -71,13 +71,15 @@ The HTML of each page is generated in node during the build process. This means 
 This project (the backend) is deployed on heroku and is automatically deployed when the `master` branch is updated. The frontend is hosted on [Netlify](https://www.netlify.com/) and is also linked to the frontend repo for auto deployment (new netlify builds are also triggered by a page publish in Wagtail). Netlify will also create 'deploy previews' whenever an MR is created so that you can preview your changes before you merge.
 
 
-The admin for the live site can be found at https://cms.torchbox.com/admin/ 
-You can run test GraphQL queries at https://cms.torchbox.com/graphql/ 
+The admin for the live site can be found at https://cms.torchbox.com/admin/
+You can run test GraphQL queries at https://cms.torchbox.com/graphql/
 
-There is a staging version of the app on Dokku:
+There is a staging version of the app on Heroku:
 
-Admin: https://tbxcms.staging.torchbox.com/admin/
-GraphQL: https://tbxcms.staging.torchbox.com/graphql/
+Admin: https://cms.torchbox.staging.torchbox.com/admin/
+GraphQL: https://cms.torchbox.staging.torchbox.com/graphql/
+
+The automatic deployment should happen after merging to `staging`.
 
 ### What order should I develop in?
 
