@@ -25,6 +25,7 @@ def pull_production_media(c):
 
 @task
 def push_production_media(c):
+    raise NotImplementedError("Check first before pushing the data")
     push_media_to_s3_heroku(c, PRODUCTION_APP_INSTANCE)
 
 
@@ -35,6 +36,7 @@ def pull_production_data(c):
 
 @task
 def push_production_data(c):
+    raise NotImplementedError("Check first before pushing the data")
     push_database_to_heroku(c, PRODUCTION_APP_INSTANCE)
 
 
@@ -61,6 +63,7 @@ def pull_staging_media(c):
 
 @task
 def push_staging_media(c):
+    raise NotImplementedError("Check first before pushing the data")
     push_media_to_s3_heroku(c, STAGING_APP_INSTANCE)
 
 
@@ -71,6 +74,7 @@ def pull_staging_data(c):
 
 @task
 def push_staging_data(c):
+    raise NotImplementedError("Check first before pushing the data")
     push_database_to_heroku(c, STAGING_APP_INSTANCE)
 
 
