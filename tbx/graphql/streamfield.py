@@ -79,11 +79,9 @@ class StreamFieldSerialiser:
         for anchor in soup.find_all('a'):
             if anchor.attrs.get('linktype', '') == 'page':
                 try:
-                    pages = (Page.objects.select_related('content_type')
-                                         .live()
-                                         .public())
+                    pages = Page.objects.live().public()
                     page = pages.get(pk=anchor.attrs['id']).specific
-                    page_type = page.content_type.model_class().__name__
+                    page_type = page.__class__.__name__
 
                     new_tag = soup.new_tag(
                         'a',
