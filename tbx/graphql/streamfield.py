@@ -8,6 +8,8 @@ from wagtail.embeds.embeds import get_embed
 from wagtail.embeds.exceptions import EmbedException
 from wagtail.images.blocks import ImageChooserBlock
 
+from bs4 import BeautifulSoup
+
 
 class StreamFieldSerialiser:
     def serialise_struct_block(self, block, value):
@@ -70,23 +72,26 @@ class StreamFieldSerialiser:
             return self.serialise_stream_block(block, value)
 
     def serialize_rich_text(self, source):
-        try:
-            from bs4 import BeautifulSoup
-        except ImportError:
-            return str(RichText(source))
-
+        # Convert raw pseudo-HTML RichText source to a soup object
+        # so it can be manipulated.
         soup = BeautifulSoup(source, 'html5lib')
 
         # Add data required to generate page links in Gatsby.
         for anchor in soup.find_all('a'):
             if anchor.attrs.get('linktype', '') == 'page':
                 try:
-                    pages = Page.objects.select_related('content_type').live().public()
+                    pages = (Page.objects.select_related('content_type')
+                                         .live()
+                                         .public())
                     page = pages.get(pk=anchor.attrs['id']).specific
                     page_type = page.content_type.model_class().__name__
+
                     new_tag = soup.new_tag(
                         'a',
                         href=page.get_url(),
+
+                        # Add dataset arguments to allow processing links on
+                        # the front-end.
                         **{
                             'data-page-type': page_type,
                             'data-page-slug': page.slug,
@@ -98,8 +103,10 @@ class StreamFieldSerialiser:
                     new_tag.append(*anchor.contents)
                     anchor.replace_with(new_tag)
                 except Page.DoesNotExist:
+                    # If page does not exist, add empty anchor tag with text.
                     new_tag = soup.new_tag('a')
                     new_tag.append(*anchor.contents)
                     anchor.replace_with(new_tag)
 
+        # Convert raw pseudo-HTML RichText into a front-end RichText
         return str(RichText(str(soup)))
