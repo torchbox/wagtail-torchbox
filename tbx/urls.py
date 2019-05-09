@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseNotFound
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
@@ -16,7 +18,7 @@ from wagtail_review import urls as wagtailreview_urls
 
 from tbx.core import urls as torchbox_urls
 from tbx.core.utils.cache import get_default_cache_control_decorator
-from tbx.core.views import favicon, robots
+from tbx.core.views import robots
 
 private_urlpatterns = [
     path('django-admin/', admin.site.urls),
@@ -27,7 +29,6 @@ private_urlpatterns = [
 
 urlpatterns = [
     path('sitemap.xml', sitemap),
-    path('favicon.ico', favicon),
     path('robots.txt', robots),
 ]
 
@@ -52,6 +53,7 @@ urlpatterns += [
     path('review', include(wagtailreview_urls)),
     path('', include(torchbox_urls)),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path('', lambda request: HttpResponseNotFound(), name='home'),
 ]
 
 
@@ -71,8 +73,9 @@ urlpatterns = decorate_urlpatterns(
 Page.serve = get_default_cache_control_decorator()(Page.serve)
 
 # Join private and public URLs.
-urlpatterns = private_urlpatterns + urlpatterns + [
-    # Add Wagtail URLs at the end.
-    # Wagtail cache-control is set on the page models's serve methods.
-    path(r'', include(wagtail_urls)),
-]
+urlpatterns = private_urlpatterns + urlpatterns + decorate_urlpatterns([
+    # Wagtail paths have to be enabled for the administration interface to work
+    # properly. This allows them to be visited only by the logged-in users to
+    # avoid the public accessing it.
+    path('wagtail/', include(wagtail_urls))
+], login_required)

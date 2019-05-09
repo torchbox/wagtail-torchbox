@@ -1,7 +1,5 @@
 from django.conf import settings
-from django.http import Http404, HttpResponse
-from django.shortcuts import redirect
-from django.templatetags.static import static
+from django.http import HttpResponse
 
 import requests
 
@@ -17,18 +15,11 @@ def newsletter_subsribe(request):
     return HttpResponse()
 
 
-def favicon(request):
-    try:
-        favicon_path = settings.FAVICON_STATIC_PATH
-    except AttributeError:
-        raise Http404
-    return redirect(static(favicon_path), permanent=True)
-
-
 def robots(request):
     content = "\n".join([
         "User-Agent: *",
-        "Disallow: /search/",
-        "Allow: /",
+        "Disallow: /admin/",
+        "Disallow: /django-admin/",
+        "Disallow: /wagtail/",
     ])
     return HttpResponse(content, content_type='text/plain')

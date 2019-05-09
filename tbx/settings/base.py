@@ -175,10 +175,6 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'core', 'static_compiled'),
-]
-
 STATIC_ROOT = env.get('STATIC_DIR', os.path.join(BASE_DIR, 'static'))
 STATIC_URL = env.get('STATIC_URL', '/static/')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -367,8 +363,6 @@ if 'RECAPTCHA_PUBLIC_KEY' in env and 'RECAPTCHA_PRIVATE_KEY' in env:
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "Torchbox"
-
-FAVICON_STATIC_PATH = 'images/favicon.ico'
 
 if 'PRIMARY_HOST' in env:
     BASE_URL = 'https://{}'.format(env['PRIMARY_HOST'])

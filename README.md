@@ -52,7 +52,7 @@ You may need to check on Heroku dashboard (https://dashboard.heroku.com) if you 
 Site Architecture
 -----------------
 
-In this project Wagtail is used as a headless CMS and its data is consumed via [GraphQL](https://graphql.org/). This means that to preview any UI changes on the site you'll also need to setup the [frontend](https://github.com/torchbox/torchbox-frontend/) component.
+In this project Wagtail is used as a headless CMS and its data is consumed via [GraphQL](https://graphql.org/). This means that to preview any UI changes on the site you'll also need to setup the [frontend](https://github.com/torchbox/torchbox-frontend/) component. Wagtail front-end URLs are only accessible by the logged-in users to avoid unauthorised access.
 
 ### What's different here?
 
