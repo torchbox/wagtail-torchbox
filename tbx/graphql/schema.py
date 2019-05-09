@@ -447,6 +447,7 @@ class StandardPageObjectType(graphene.ObjectType):
 
 
 class JobsIndexPageJob(graphene.ObjectType):
+    id = graphene.ID()
     title = graphene.String()
     level = graphene.String()
     location = graphene.String()
