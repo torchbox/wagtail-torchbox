@@ -513,7 +513,6 @@ class CulturePageObjectType(graphene.ObjectType):
 
 class RedirectObjectType(graphene.ObjectType):
     old_path = graphene.String()
-    url = graphene.String()
     link = graphene.String()
     page = graphene.Field(PageLink)
     is_permanent = graphene.Boolean()
@@ -523,10 +522,8 @@ class RedirectObjectType(graphene.ObjectType):
             return self.link
 
     def resolve_page(self, info, **kwargs):
-        if self.redirect_page is None:
-            return
-
-        return self.redirect_page.specific
+        if self.redirect_page is not None:
+            return self.redirect_page.specific
 
 
 def get_page_preview(model, token):
