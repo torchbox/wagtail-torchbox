@@ -54,7 +54,7 @@ urlpatterns += [
     path('review', include(wagtailreview_urls)),
     path('', include(torchbox_urls)),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    path('', lambda request: HttpResponseNotFound(), name='home-view'),
+    path('', lambda request: HttpResponseNotFound(), name='home'),
 ]
 
 
