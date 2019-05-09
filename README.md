@@ -43,7 +43,7 @@ Within the vagrant box:
 ```
 heroku login
 fab pull-production-data
-fab pull-production-media
+fab pull-production-images
 ```
 
 You may need to check on Heroku dashboard (https://dashboard.heroku.com) if you have the permission to access the `cms-torchbox-com` app.
