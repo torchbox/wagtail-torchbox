@@ -1,6 +1,0 @@
-User-Agent: *
-
-Disallow: /admin/
-Disallow: /django-admin/
-
-Disallow: /wagtail/

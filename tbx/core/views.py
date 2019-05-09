@@ -28,7 +28,8 @@ def favicon(request):
 def robots(request):
     content = "\n".join([
         "User-Agent: *",
-        "Disallow: /search/",
-        "Allow: /",
+        "Disallow: /admin/",
+        "Disallow: /django-admin/",
+        "Disallow: /wagtail/",
     ])
     return HttpResponse(content, content_type='text/plain')
