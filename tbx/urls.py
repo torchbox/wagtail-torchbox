@@ -18,7 +18,7 @@ from wagtail_review import urls as wagtailreview_urls
 
 from tbx.core import urls as torchbox_urls
 from tbx.core.utils.cache import get_default_cache_control_decorator
-from tbx.core.views import favicon, robots
+from tbx.core.views import robots
 
 private_urlpatterns = [
     path('django-admin/', admin.site.urls),
@@ -29,7 +29,6 @@ private_urlpatterns = [
 
 urlpatterns = [
     path('sitemap.xml', sitemap),
-    path('favicon.ico', favicon),
     path('robots.txt', robots),
 ]
 

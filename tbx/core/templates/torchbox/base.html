@@ -29,11 +29,6 @@
         <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
         <meta property="og:site_name" content="Torchbox" />
 
-        <link rel="shortcut icon" href="{% static "images/favicon.ico" %}" />
-
-        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'vendor/pygments.css' %}">
-
         {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
 
         <script type="text/javascript" src="//use.typekit.net/zzm2obu.js"></script>

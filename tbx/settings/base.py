@@ -364,8 +364,6 @@ if 'RECAPTCHA_PUBLIC_KEY' in env and 'RECAPTCHA_PRIVATE_KEY' in env:
 # Wagtail settings
 WAGTAIL_SITE_NAME = "Torchbox"
 
-FAVICON_STATIC_PATH = 'images/favicon.ico'
-
 if 'PRIMARY_HOST' in env:
     BASE_URL = 'https://{}'.format(env['PRIMARY_HOST'])
 
