@@ -3,4 +3,4 @@ User-Agent: *
 Disallow: /admin/
 Disallow: /django-admin/
 
-Allow: /
+Disallow: /wagtail/
