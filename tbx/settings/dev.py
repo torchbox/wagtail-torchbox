@@ -18,6 +18,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTH_PASSWORD_VALIDATORS = []
 
+PREVIEW_URL = 'http://localhost:8003/preview/'
 
 MEDIA_PREFIX = BASE_URL
 
