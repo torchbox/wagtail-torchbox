@@ -184,9 +184,17 @@ class PageInterface(graphene.Interface):
 class PageLink(graphene.ObjectType):
     type = graphene.String()
     slug = graphene.String()
+    service_slug = graphene.String()
 
     def resolve_type(self, info):
         return self.specific.__class__.__name__
+
+    def resolve_service_slug(self, info):
+        try:
+            if self.service is not None:
+                return self.service.slug
+        except AttributeError:
+            pass
 
 
 class StreamField(Scalar):
@@ -504,10 +512,21 @@ class CulturePageObjectType(graphene.ObjectType):
 
 
 class RedirectObjectType(graphene.ObjectType):
-    site = graphene.String()
     old_path = graphene.String()
+    url = graphene.String()
     link = graphene.String()
+    page = graphene.Field(PageLink)
     is_permanent = graphene.Boolean()
+
+    def resolve_link(self, info, **kwargs):
+        if self.redirect_page is None:
+            return self.link
+
+    def resolve_page(self, info, **kwargs):
+        if self.redirect_page is None:
+            return
+
+        return self.redirect_page.specific
 
 
 def get_page_preview(model, token):
@@ -709,7 +728,7 @@ class Query(graphene.ObjectType):
             return None
 
     def resolve_redirects(self, info):
-        return Redirect.objects.all()
+        return Redirect.objects.select_related('redirect_page')
 
 
 schema = graphene.Schema(
