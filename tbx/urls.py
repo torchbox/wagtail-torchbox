@@ -75,6 +75,8 @@ Page.serve = get_default_cache_control_decorator()(Page.serve)
 
 # Join private and public URLs.
 urlpatterns = private_urlpatterns + urlpatterns + decorate_urlpatterns([
-    # Make wagtail paths required by login.
+    # Wagtail paths have to be enabled for the administration interface to work
+    # properly. This allows them to be visited only by the logged-in users to
+    # avoid the public accessing it.
     path('wagtail/', include(wagtail_urls))
 ], login_required)
