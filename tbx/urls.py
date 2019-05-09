@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseNotFound
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
@@ -52,6 +54,7 @@ urlpatterns += [
     path('review', include(wagtailreview_urls)),
     path('', include(torchbox_urls)),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path('', lambda request: HttpResponseNotFound(), name='home-view'),
 ]
 
 
@@ -71,8 +74,7 @@ urlpatterns = decorate_urlpatterns(
 Page.serve = get_default_cache_control_decorator()(Page.serve)
 
 # Join private and public URLs.
-urlpatterns = private_urlpatterns + urlpatterns + [
-    # Add Wagtail URLs at the end.
-    # Wagtail cache-control is set on the page models's serve methods.
-    path(r'', include(wagtail_urls)),
-]
+urlpatterns = private_urlpatterns + urlpatterns + decorate_urlpatterns([
+    # Make wagtail paths required by login.
+    path('wagtail/', include(wagtail_urls))
+], login_required)
