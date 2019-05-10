@@ -3,6 +3,7 @@ from django.conf import settings
 import graphene
 from graphene.types import Scalar
 from graphql.validation.rules import NoUnusedFragments, specified_rules
+from wagtail.contrib.redirects.models import Redirect
 
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
@@ -183,9 +184,17 @@ class PageInterface(graphene.Interface):
 class PageLink(graphene.ObjectType):
     type = graphene.String()
     slug = graphene.String()
+    service_slug = graphene.String()
 
     def resolve_type(self, info):
         return self.specific.__class__.__name__
+
+    def resolve_service_slug(self, info):
+        try:
+            if self.service is not None:
+                return self.service.slug
+        except AttributeError:
+            pass
 
 
 class StreamField(Scalar):
@@ -503,6 +512,21 @@ class CulturePageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+class RedirectObjectType(graphene.ObjectType):
+    old_path = graphene.String()
+    link = graphene.String()
+    page = graphene.Field(PageLink)
+    is_permanent = graphene.Boolean()
+
+    def resolve_link(self, info, **kwargs):
+        if self.redirect_page is None:
+            return self.link
+
+    def resolve_page(self, info, **kwargs):
+        if self.redirect_page is not None:
+            return self.redirect_page.specific
+
+
 def get_page_preview(model, token):
     return model.get_page_from_preview_token(token)
 
@@ -525,6 +549,7 @@ class Query(graphene.ObjectType):
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
+    redirects = graphene.List(RedirectObjectType)
 
     def resolve_services(self, info, **kwargs):
         services = Service.objects.all().order_by('sort_order')
@@ -699,6 +724,9 @@ class Query(graphene.ObjectType):
             return ContactReasonsList.objects.get(is_default=True)
         except ContactReasonsList.DoesNotExist:
             return None
+
+    def resolve_redirects(self, info):
+        return Redirect.objects.select_related('redirect_page')
 
 
 schema = graphene.Schema(
