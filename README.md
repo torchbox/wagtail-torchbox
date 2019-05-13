@@ -79,7 +79,10 @@ There is a staging version of the app on Heroku:
 Admin: https://cms.torchbox.staging.torchbox.com/admin/
 GraphQL: https://cms.torchbox.staging.torchbox.com/graphql/
 
-The automatic deployment should happen after merging to `staging`.
+### Deployments
+
+Merges to `master` and `staging` will automatically trigger a deployment to the production and staging sites, respectively.
+
 
 ### What order should I develop in?
 
