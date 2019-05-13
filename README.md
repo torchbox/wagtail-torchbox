@@ -81,6 +81,8 @@ GraphQL: https://cms.torchbox.staging.torchbox.com/graphql/
 
 The automatic deployment should happen after merging to `staging`.
 
+Pushing changes to the `master` branch will automatically trigger a deployment to the production site.
+
 ### What order should I develop in?
 
 When developing a new feature such as a Page model (with accompanying UI), the best approach is to build the models and graphql schema with the project running locally. Once you've finished your backend work, start developing the frontend by pointing the Gatsby project at your local GraphQL endpoint. Once both sides of the feature are done, get your backend reviewed and deployed to Production/Staging. Once your backend is public you can then submit your front-end code for review because Netlfiy will be able to build a preview of the branch with the correct data (The gatsby build will fail if the GraphQL queries don't match up with the backend).
