@@ -9,6 +9,8 @@ from wagtail.embeds.embeds import get_embed
 from wagtail.embeds.exceptions import EmbedException
 from wagtail.images.blocks import ImageChooserBlock
 
+from .utils import serialize_rich_text
+
 
 class StreamFieldSerialiser:
     def serialise_struct_block(self, block, value):
@@ -40,7 +42,7 @@ class StreamFieldSerialiser:
         if hasattr(block, 'to_graphql_representation'):
             return block.to_graphql_representation(value)
         elif isinstance(block, blocks.RichTextBlock):
-            return self.serialize_rich_text(value.source)
+            return serialize_rich_text(value.source)
         elif isinstance(block, EmbedBlock):
             try:
                 embed = get_embed(value.url)
@@ -69,41 +71,3 @@ class StreamFieldSerialiser:
             return self.serialise_list_block(block, value)
         elif isinstance(block, blocks.StreamBlock):
             return self.serialise_stream_block(block, value)
-
-    def serialize_rich_text(self, source):
-        # Convert raw pseudo-HTML RichText source to a soup object
-        # so it can be manipulated.
-        soup = BeautifulSoup(source, 'html5lib')
-
-        # Add data required to generate page links in Gatsby.
-        for anchor in soup.find_all('a'):
-            if anchor.attrs.get('linktype', '') == 'page':
-                try:
-                    pages = Page.objects.live().public()
-                    page = pages.get(pk=anchor.attrs['id']).specific
-                    page_type = page.__class__.__name__
-
-                    new_tag = soup.new_tag(
-                        'a',
-                        href=page.get_url(),
-
-                        # Add dataset arguments to allow processing links on
-                        # the front-end.
-                        **{
-                            'data-page-type': page_type,
-                            'data-page-slug': page.slug,
-                            'data-page-service-slug': getattr(
-                                getattr(page, 'service', None), 'slug', None
-                            )
-                        }
-                    )
-                    new_tag.append(*anchor.contents)
-                    anchor.replace_with(new_tag)
-                except Page.DoesNotExist:
-                    # If page does not exist, add empty anchor tag with text.
-                    new_tag = soup.new_tag('a')
-                    new_tag.append(*anchor.contents)
-                    anchor.replace_with(new_tag)
-
-        # Convert raw pseudo-HTML RichText into a front-end RichText
-        return str(RichText(str(soup)))

@@ -14,6 +14,7 @@ from tbx.taxonomy.models import Service
 from tbx.work.models import WorkIndexPage, WorkPage
 
 from .streamfield import StreamFieldSerialiser
+from .utils import serialize_rich_text
 
 # HACK: Remove NoUnusedFragments validator
 # Due to the way previews work on the frontend, we need to pass all
@@ -238,6 +239,12 @@ class PersonPageObjectType(graphene.ObjectType):
     class Meta:
         interfaces = [PageInterface]
 
+    def resolve_intro(self, info):
+        return serialize_rich_text(self.intro)
+
+    def resolve_biography(self, info):
+        return serialize_rich_text(self.biography)
+
     def resolve_is_senior(self, info):
         return self.is_senior
 
@@ -329,6 +336,10 @@ class ProcessObjectType(graphene.ObjectType):
     page_link = graphene.Field(PageLink)
     page_link_label = graphene.String()
 
+    def resolve_description(self, info):
+        return serialize_rich_text(self.description)
+
+
     def resolve_page_link_label(self, info):
         if self.page_link is not None:
             if not self.page_link_label:
@@ -362,6 +373,12 @@ class BaseServicePageObjectType(graphene.ObjectType):
     blog_posts = graphene.List(BlogPostObjectType, limit=graphene.Int())
     case_studies_section_title = graphene.String()
     case_studies = graphene.List(CaseStudyObjectType, limit=graphene.Int())
+
+    def resolve_intro(self, info):
+        return serialize_rich_text(self.intro)
+
+    def resolve_heading_for_key_points(self, info):
+        return serialize_rich_text(self.heading_for_key_points)
 
     def resolve_key_points(self, info):
         return self.key_points.all()
@@ -507,6 +524,9 @@ class CulturePageObjectType(graphene.ObjectType):
 
     def resolve_links(self, info):
         return self.links.all()
+
+    def resolve_intro(self, info):
+        return serialize_rich_text(self.intro)
 
     class Meta:
         interfaces = [PageInterface]
