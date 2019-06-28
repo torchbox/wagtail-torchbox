@@ -31,6 +31,7 @@ specified_rules[:] = [
     if rule is not NoUnusedFragments
 ]
 
+
 class RichTextString(Scalar):
     @staticmethod
     def serialize(value):
