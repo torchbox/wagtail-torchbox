@@ -31,6 +31,11 @@ specified_rules[:] = [
     if rule is not NoUnusedFragments
 ]
 
+class RichTextString(Scalar):
+    @staticmethod
+    def serialize(value):
+        return serialize_rich_text(value)
+
 
 class ImageRenditionObjectType(graphene.ObjectType):
     url = graphene.String()
@@ -231,19 +236,13 @@ class PersonPageObjectType(graphene.ObjectType):
     short_intro = graphene.String()
     alt_short_intro = graphene.String()
     role = graphene.String()
-    intro = graphene.String()
-    biography = graphene.String()
+    intro = graphene.Field(RichTextString)
+    biography = graphene.Field(RichTextString)
     image = graphene.Field(ImageObjectType)
     is_senior = graphene.Boolean()
 
     class Meta:
         interfaces = [PageInterface]
-
-    def resolve_intro(self, info):
-        return serialize_rich_text(self.intro)
-
-    def resolve_biography(self, info):
-        return serialize_rich_text(self.biography)
 
     def resolve_is_senior(self, info):
         return self.is_senior
@@ -332,12 +331,9 @@ class ServicePageTestimonialObjectType(graphene.ObjectType):
 
 class ProcessObjectType(graphene.ObjectType):
     title = graphene.String()
-    description = graphene.String()
+    description = graphene.Field(RichTextString)
     page_link = graphene.Field(PageLink)
     page_link_label = graphene.String()
-
-    def resolve_description(self, info):
-        return serialize_rich_text(self.description)
 
     def resolve_page_link_label(self, info):
         if self.page_link is not None:
@@ -351,11 +347,11 @@ class BaseServicePageObjectType(graphene.ObjectType):
     theme = graphene.String()
 
     strapline = graphene.String()
-    intro = graphene.String()
+    intro = graphene.Field(RichTextString)
     greeting_image_type = graphene.String()
 
     key_points_section_title = graphene.String()
-    heading_for_key_points = graphene.String()
+    heading_for_key_points = graphene.Field(RichTextString)
     key_points = graphene.List(ServicePageKeyPointObjectType)
 
     process_section_title = graphene.String()
@@ -372,12 +368,6 @@ class BaseServicePageObjectType(graphene.ObjectType):
     blog_posts = graphene.List(BlogPostObjectType, limit=graphene.Int())
     case_studies_section_title = graphene.String()
     case_studies = graphene.List(CaseStudyObjectType, limit=graphene.Int())
-
-    def resolve_intro(self, info):
-        return serialize_rich_text(self.intro)
-
-    def resolve_heading_for_key_points(self, info):
-        return serialize_rich_text(self.heading_for_key_points)
 
     def resolve_key_points(self, info):
         return self.key_points.all()
@@ -517,15 +507,12 @@ class CulturePageObjectType(graphene.ObjectType):
     strapline = graphene.String()
     strapline_visible = graphene.Boolean()
     hero_image = graphene.Field(ImageObjectType)
-    intro = graphene.String()
+    intro = graphene.Field(RichTextString)
     body = graphene.Field(StreamField)
     links = graphene.List(CulturePageLinkObjectType)
 
     def resolve_links(self, info):
         return self.links.all()
-
-    def resolve_intro(self, info):
-        return serialize_rich_text(self.intro)
 
     class Meta:
         interfaces = [PageInterface]
