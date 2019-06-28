@@ -14,6 +14,7 @@ from tbx.taxonomy.models import Service
 from tbx.work.models import WorkIndexPage, WorkPage
 
 from .streamfield import StreamFieldSerialiser
+from .utils import serialize_rich_text
 
 # HACK: Remove NoUnusedFragments validator
 # Due to the way previews work on the frontend, we need to pass all
@@ -29,6 +30,11 @@ specified_rules[:] = [
     rule for rule in specified_rules
     if rule is not NoUnusedFragments
 ]
+
+class RichTextString(Scalar):
+    @staticmethod
+    def serialize(value):
+        return serialize_rich_text(value)
 
 
 class ImageRenditionObjectType(graphene.ObjectType):
@@ -230,8 +236,8 @@ class PersonPageObjectType(graphene.ObjectType):
     short_intro = graphene.String()
     alt_short_intro = graphene.String()
     role = graphene.String()
-    intro = graphene.String()
-    biography = graphene.String()
+    intro = graphene.Field(RichTextString)
+    biography = graphene.Field(RichTextString)
     image = graphene.Field(ImageObjectType)
     is_senior = graphene.Boolean()
 
@@ -325,7 +331,7 @@ class ServicePageTestimonialObjectType(graphene.ObjectType):
 
 class ProcessObjectType(graphene.ObjectType):
     title = graphene.String()
-    description = graphene.String()
+    description = graphene.Field(RichTextString)
     page_link = graphene.Field(PageLink)
     page_link_label = graphene.String()
 
@@ -341,11 +347,11 @@ class BaseServicePageObjectType(graphene.ObjectType):
     theme = graphene.String()
 
     strapline = graphene.String()
-    intro = graphene.String()
+    intro = graphene.Field(RichTextString)
     greeting_image_type = graphene.String()
 
     key_points_section_title = graphene.String()
-    heading_for_key_points = graphene.String()
+    heading_for_key_points = graphene.Field(RichTextString)
     key_points = graphene.List(ServicePageKeyPointObjectType)
 
     process_section_title = graphene.String()
@@ -501,7 +507,7 @@ class CulturePageObjectType(graphene.ObjectType):
     strapline = graphene.String()
     strapline_visible = graphene.Boolean()
     hero_image = graphene.Field(ImageObjectType)
-    intro = graphene.String()
+    intro = graphene.Field(RichTextString)
     body = graphene.Field(StreamField)
     links = graphene.List(CulturePageLinkObjectType)
 
