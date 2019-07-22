@@ -23,6 +23,8 @@ PREVIEW_URL = 'http://localhost:8003/preview/'
 
 MEDIA_PREFIX = BASE_URL
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 try:
     from .local import *  # noqa
 except ImportError:
