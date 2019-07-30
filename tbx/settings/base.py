@@ -4,6 +4,7 @@
 import os
 
 import dj_database_url
+from corsheaders.defaults import default_headers
 
 # Configuration from environment variables
 env = os.environ.copy()
@@ -453,7 +454,6 @@ GRAPHENE = {
 
 # CORS settings
 
-from corsheaders.defaults import default_headers
 
 CORS_URLS_REGEX = r'^(\/graphql\/.*)|(\/review\/api\/.*)$'
 CORS_ORIGIN_WHITELIST = ['https://torchbox.com']
