@@ -4,6 +4,7 @@
 import os
 
 import dj_database_url
+from corsheaders.defaults import default_headers
 
 # Configuration from environment variables
 env = os.environ.copy()
@@ -69,7 +70,8 @@ INSTALLED_APPS = [
     'captcha',
     'wagtailcaptcha',
     'wagtailfontawesome',
-    'wagtail_review',
+    # Temporarily disable as this is breaking page creation. See ticket #229
+    # 'wagtail_review',
     'phonenumber_field',
     'graphene_django',
     'corsheaders',
@@ -453,8 +455,12 @@ GRAPHENE = {
 
 # CORS settings
 
-CORS_URLS_REGEX = r'^/graphql/.*$'
-CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_URLS_REGEX = r'^(\/graphql\/.*)|(\/review\/api\/.*)$'
+CORS_ORIGIN_WHITELIST = ['https://torchbox.com', 'https://tbx-production.netlify.com', 'https://tbx-staging.netlify.com']
+CORS_ALLOW_HEADERS = default_headers + (
+    'x-review-token',
+)
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
@@ -468,3 +474,9 @@ NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
 
 if 'PREVIEW_URL' in env:
     PREVIEW_URL = env['PREVIEW_URL']
+
+
+# Reviews
+
+# Overrides the URL that wagtail_review sends in emails to reviewers
+# WAGTAILREVIEW_REVIEW_URL_BUILDER = 'tbx.settings.reviews.review_url_builder'

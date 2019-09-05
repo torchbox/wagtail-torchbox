@@ -14,11 +14,13 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.core.models import Page
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.utils.urlpatterns import decorate_urlpatterns
-from wagtail_review import urls as wagtailreview_urls
 
 from tbx.core import urls as torchbox_urls
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.core.views import robots
+
+# from wagtail_review import urls as wagtailreview_urls
+
 
 private_urlpatterns = [
     path('django-admin/', admin.site.urls),
@@ -50,7 +52,7 @@ if settings.DEBUG:
 
 
 urlpatterns += [
-    path('review', include(wagtailreview_urls)),
+    # path('review/', include(wagtailreview_urls)),
     path('', include(torchbox_urls)),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
     path('', lambda request: HttpResponseNotFound(), name='home'),
