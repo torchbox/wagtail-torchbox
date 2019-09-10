@@ -70,7 +70,8 @@ INSTALLED_APPS = [
     'captcha',
     'wagtailcaptcha',
     'wagtailfontawesome',
-    'wagtail_review',
+    # Temporarily disable as this is breaking page creation. See ticket #229
+    # 'wagtail_review',
     'phonenumber_field',
     'graphene_django',
     'corsheaders',
@@ -478,4 +479,4 @@ if 'PREVIEW_URL' in env:
 # Reviews
 
 # Overrides the URL that wagtail_review sends in emails to reviewers
-WAGTAILREVIEW_REVIEW_URL_BUILDER = 'tbx.settings.reviews.review_url_builder'
+# WAGTAILREVIEW_REVIEW_URL_BUILDER = 'tbx.settings.reviews.review_url_builder'
