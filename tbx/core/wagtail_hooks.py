@@ -6,7 +6,8 @@ from storages.backends.s3boto3 import S3Boto3Storage
 from wagtail.contrib.modeladmin.options import (ModelAdmin, ModelAdminGroup,
                                                 modeladmin_register)
 from wagtail.core import hooks
-from wagtail.documents.models import document_served, get_document_model
+from wagtail.documents import get_document_model
+from wagtail.documents.models import document_served
 
 from tbx.sign_up_form.models import SignUpFormPageResponse
 
