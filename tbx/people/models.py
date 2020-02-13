@@ -107,7 +107,7 @@ class CulturePageLink(Orderable):
     description = models.TextField()
     link = models.ForeignKey('wagtailcore.Page', on_delete=models.CASCADE, blank=True, null=True)
 
-    content_panels = [
+    panels = [
         FieldPanel('title', classname="full"),
         FieldPanel('description', classname="full"),
         PageChooserPanel('link')
