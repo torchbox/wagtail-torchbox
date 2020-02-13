@@ -6,8 +6,9 @@ Pillow==6.2.2
 embedly==0.5.0
 requests==2.20.0
 raven==6.9.0
-wagtail-django-recaptcha==1.0
 django-basic-auth-ip-whitelist==0.2.1
+wagtail-django-recaptcha==1.0
+wagtail-headless-preview==0.1.4
 boto3==1.7.82
 django-storages==1.6.6
 -e git://github.com/wagtail/wagtail-review.git@8ec5ec188ee75a075bd83c3a7804aeac9abf71be#egg=wagtail-review

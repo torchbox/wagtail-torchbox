@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'corsheaders',
     'headlesspreview',
+    'wagtail_headless_preview',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -473,8 +474,9 @@ NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
 # Wagtail previews are served from the frontend site, this URL is where they are directed to
 
 if 'PREVIEW_URL' in env:
-    PREVIEW_URL = env['PREVIEW_URL']
-
+    HEADLESS_PREVIEW_CLIENT_URLS = {
+        'default': env['PREVIEW_URL'],
+    }
 
 # Reviews
 

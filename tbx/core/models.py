@@ -16,8 +16,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-
-from headlesspreview.models import HeadlessPreviewMixin
+from wagtail_headless_preview.models import HeadlessPreviewMixin
 
 from .blocks import StoryBlock
 from .fields import ColorField

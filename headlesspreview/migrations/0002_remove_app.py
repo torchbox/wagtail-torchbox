@@ -9,6 +9,10 @@ class Migration(migrations.Migration):
         ('headlesspreview', '0001_initial'),
     ]
 
+    run_before = [
+        ('wagtail_headless_preview', '0001_initial'),
+    ]
+
     operations = [
         migrations.DeleteModel(name='PagePreview')
     ]

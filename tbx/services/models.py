@@ -7,8 +7,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-
-from headlesspreview.models import HeadlessPreviewMixin
+from wagtail_headless_preview.models import HeadlessPreviewMixin
 
 
 class BaseServicePage(HeadlessPreviewMixin, Page):

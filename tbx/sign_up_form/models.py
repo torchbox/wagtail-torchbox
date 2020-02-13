@@ -13,8 +13,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-
-from headlesspreview.models import HeadlessPreviewMixin
+from wagtail_headless_preview.models import HeadlessPreviewMixin
 
 
 class SignUpFormPageBullet(Orderable):
