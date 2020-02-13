@@ -1,6 +1,7 @@
 *.pyc
 .DS_Store
 *.swp
+.vscode/
 /venv/
 /static/
 /media/
