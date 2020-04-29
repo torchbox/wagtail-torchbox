@@ -62,6 +62,7 @@ class PersonPage(TorchboxPage, ContactFields):
     )
 
     def blog_posts(self, info, **kwargs):
+        """GraphQL Resolver - This cannot be manually called"""
         return resolve_queryset(
             BlogPage.objects.live().public().filter(authors__author__person_page=self.id).order_by('-date'),
             info, **kwargs

@@ -34,6 +34,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('blog.BlogIndexPage', related_name='related_links')
 
 
+@method_decorator(get_default_cache_control_decorator(), name='serve')
 class BlogIndexPage(TorchboxPage):
     intro = models.TextField(blank=True)
 
@@ -179,6 +180,7 @@ class BlogPage(TorchboxPage):
         return self.authors.exists()
 
     def related_posts(self, info, **kwargs):
+        """GraphQL Resolver - This cannot be manually called"""
         return resolve_queryset(
             BlogPage.objects.live().public().exclude(id=self.id),
             info, **kwargs

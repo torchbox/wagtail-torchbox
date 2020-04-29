@@ -77,6 +77,7 @@ class WorkPageAuthor(Orderable):
         GraphQLForeignKey('author', 'people.Author'),
     ]
 
+
 class WorkPage(TorchboxPage):
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
@@ -124,6 +125,7 @@ class WorkPage(TorchboxPage):
         return self.authors.exists()
 
     def related_work(self, info, **kwargs):
+        """GraphQL Resolver - This cannot be manually called"""
         work_pages = WorkPage.objects.live().public().exclude(pk=self.pk)
         work_pages = work_pages.filter(
             related_services__pk__in=self.related_services.values_list(
