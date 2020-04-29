@@ -18,16 +18,22 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from headlesspreview.models import HeadlessPreviewMixin
+from grapple.utils import resolve_queryset
+from grapple.models import (
+    GraphQLString, GraphQLBoolean, GraphQLImage, GraphQLForeignKey,
+    GraphQLCollection, GraphQLStreamfield, GraphQLPage
+)
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import ContactFields, RelatedLink
+from tbx.utils.models import TorchboxPage
+from tbx.blog.models import BlogPage
 
 
 class PersonPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('people.PersonPage', related_name='related_links')
 
 
-class PersonPage(HeadlessPreviewMixin, Page, ContactFields):
+class PersonPage(TorchboxPage, ContactFields):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     role = models.CharField(max_length=255, blank=True)
@@ -54,6 +60,12 @@ class PersonPage(HeadlessPreviewMixin, Page, ContactFields):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
+    def blog_posts(self, info, **kwargs):
+        return resolve_queryset(
+            BlogPage.objects.live().public().filter(authors__author__person_page=self.id).order_by('-date'),
+            info, **kwargs
+        )
 
     search_fields = Page.search_fields + [
         index.SearchField('first_name'),
@@ -83,9 +95,28 @@ class PersonPage(HeadlessPreviewMixin, Page, ContactFields):
         ImageChooserPanel('feed_image'),
     ]
 
+    graphql_fields = TorchboxPage.graphql_fields + [
+        GraphQLString('first_name'),
+        GraphQLString('last_name'),
+        GraphQLString('role'),
+        GraphQLBoolean('is_senior'),
+        GraphQLString('short_intro'),
+        GraphQLString('alt_short_intro'),
+        GraphQLString('intro'),
+        GraphQLString('biography'),
+        GraphQLString('short_biography'),
+        GraphQLImage('image'),
+        GraphQLImage('feed_image'),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'blog_posts',
+            'blog.BlogPage'
+        ),
+    ]
+
 
 # Person index
-class PersonIndexPage(HeadlessPreviewMixin, Page):
+class PersonIndexPage(TorchboxPage):
     strapline = models.CharField(max_length=255)
 
     @cached_property
@@ -98,6 +129,10 @@ class PersonIndexPage(HeadlessPreviewMixin, Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('strapline', classname="full"),
+    ]
+
+    graphql_fields = TorchboxPage.graphql_fields + [
+        GraphQLString('strapline')
     ]
 
 
@@ -113,8 +148,15 @@ class CulturePageLink(Orderable):
         PageChooserPanel('link')
     ]
 
+    graphql_fields = [
+        GraphQLString('title'),
+        GraphQLString('description'),
+        GraphQLString('title'),
+        GraphQLPage('link'),
+    ]
 
-class CulturePage(HeadlessPreviewMixin, Page):
+
+class CulturePage(TorchboxPage):
     strapline = models.TextField()
     strapline_visible = models.BooleanField(
         help_text='Hide strapline visually but leave it readable by screen '
@@ -140,6 +182,19 @@ class CulturePage(HeadlessPreviewMixin, Page):
         InlinePanel('links', label='Link'),
         StreamFieldPanel('body'),
         SnippetChooserPanel('contact'),
+    ]
+
+    graphql_fields = TorchboxPage.graphql_fields + [
+        GraphQLString('strapline'),
+        GraphQLString('strapline_visible'),
+        GraphQLImage('hero_image'),
+        GraphQLString('intro'),
+        GraphQLStreamfield('body'),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'links',
+            'people.culturepagelink'
+        ),
     ]
 
 
@@ -174,6 +229,12 @@ class Author(index.Indexed, models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def url(self):
+        if self.person_page:
+            return self.person_page.url
+        return None
+
     search_fields = [
         index.SearchField('name'),
     ]
@@ -185,6 +246,14 @@ class Author(index.Indexed, models.Model):
             FieldPanel('role'),
             ImageChooserPanel('image'),
         ], "Manual fields"),
+    ]
+
+    graphql_fields = [
+        GraphQLString('name'),
+        GraphQLString('role'),
+        GraphQLImage('image'),
+        GraphQLString('url'),
+        GraphQLForeignKey('person_page', 'people.PersonPage')
     ]
 
 
@@ -217,6 +286,10 @@ class Contact(index.Indexed, models.Model):
         index.SearchField('name'),
     ]
 
+    @property
+    def contact_number(self):
+        return self.phone_number.raw_input
+
     panels = [
         FieldPanel('name'),
         FieldPanel('role'),
@@ -226,11 +299,25 @@ class Contact(index.Indexed, models.Model):
         FieldPanel('phone_number'),
     ]
 
+    graphql_fields = [
+        GraphQLString('name'),
+        GraphQLString('role'),
+        GraphQLImage('image'),
+        GraphQLString('email_address'),
+        GraphQLString('number', source='contact_number'),
+        GraphQLBoolean('default_contact'),
+    ]
+
 
 class ContactReason(Orderable):
     page = ParentalKey('people.ContactReasonsList', related_name='reasons')
     title = models.CharField(max_length=255, blank=False)
     description = models.TextField(blank=False)
+
+    graphql_fields = [
+        GraphQLString('title'),
+        GraphQLString('description'),
+    ]
 
 
 @register_snippet
@@ -247,6 +334,17 @@ class ContactReasonsList(ClusterableModel):
         FieldPanel('heading'),
         FieldPanel('is_default', widget=forms.CheckboxInput),
         InlinePanel('reasons', label='Reasons', max_num=3)
+    ]
+
+    graphql_fields = [
+        GraphQLString('name'),
+        GraphQLString('heading'),
+        GraphQLBoolean('is_default'),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'reasons',
+            ContactReason
+        )
     ]
 
     def clean(self):

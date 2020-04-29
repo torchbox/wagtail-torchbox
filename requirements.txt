@@ -15,7 +15,6 @@ django-phonenumber-field==2.1.0
 phonenumbers==8.10.3
 graphene_django==2.2.0
 django-cors-headers==3.0.2
-wagtailnetlify==0.2
 
 # Development requirements
 django-debug-toolbar==1.2.2
@@ -30,3 +29,7 @@ wagtail-markdown==0.6
 Pygments==2.5.2  # for code highlighting in wagtail-markdown
 wagtailfontawesome==1.2.1
 scout-apm==1.1.7
+
+scour==0.37
+wagtail-headless-preview==0.1.4
+wagtailgatsby

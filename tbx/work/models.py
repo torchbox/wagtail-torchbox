@@ -1,3 +1,4 @@
+from tbx.people.models import Contact
 import string
 
 from django import forms
@@ -17,13 +18,20 @@ from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from headlesspreview.models import HeadlessPreviewMixin
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.utils.models import TorchboxPage
+from grapple.utils import resolve_queryset
 
+from grapple.models import (
+    GraphQLString, GraphQLImage, GraphQLForeignKey, GraphQLInt, GraphQLStreamfield,
+    GraphQLCollection, GraphQLPage
+)
 
 # Currently hidden. These were used in the past and may be used again in the future
+
+
 class WorkPageTagSelect(Orderable):
     page = ParentalKey('work.WorkPage', related_name='tags')
     tag = models.ForeignKey(
@@ -47,6 +55,11 @@ class WorkPageScreenshot(Orderable):
         ImageChooserPanel('image'),
     ]
 
+    graphql_fields = [
+        GraphQLForeignKey('page', 'work.WorkPage'),
+        GraphQLImage('image'),
+    ]
+
 
 class WorkPageAuthor(Orderable):
     page = ParentalKey('work.WorkPage', related_name='authors')
@@ -60,8 +73,11 @@ class WorkPageAuthor(Orderable):
         SnippetChooserPanel('author'),
     ]
 
+    graphql_fields = [
+        GraphQLForeignKey('author', 'people.Author'),
+    ]
 
-class WorkPage(HeadlessPreviewMixin, Page):
+class WorkPage(TorchboxPage):
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
@@ -107,6 +123,16 @@ class WorkPage(HeadlessPreviewMixin, Page):
     def has_authors(self):
         return self.authors.exists()
 
+    def related_work(self, info, **kwargs):
+        work_pages = WorkPage.objects.live().public().exclude(pk=self.pk)
+        work_pages = work_pages.filter(
+            related_services__pk__in=self.related_services.values_list(
+                'pk', flat=True
+            )
+        ).distinct()
+
+        return resolve_queryset(work_pages, info, **kwargs)
+
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('client', classname="client"),
@@ -124,10 +150,38 @@ class WorkPage(HeadlessPreviewMixin, Page):
         FieldPanel('related_services', widget=forms.CheckboxSelectMultiple),
     ]
 
+    graphql_fields = TorchboxPage.graphql_fields + [
+        GraphQLStreamfield('body'),
+        GraphQLInt('body_word_count'),
+        GraphQLImage('homepage_image'),
+        GraphQLImage('feed_image'),
+        GraphQLString('visit_the_site'),
+        GraphQLString('listing_summary'),
+        GraphQLString('client'),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'authors',
+            'people.author',
+            source='authors.author'
+        ),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'related_work',
+            'work.WorkPage'
+        ),
+        GraphQLForeignKey('work_index', 'work.WorkIndexPage'),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'screenshots',
+            WorkPageScreenshot
+        ),
+        GraphQLForeignKey('contact', Contact)
+    ]
+
 
 # Work index page
 @method_decorator(get_default_cache_control_decorator(), name='serve')
-class WorkIndexPage(HeadlessPreviewMixin, Page):
+class WorkIndexPage(TorchboxPage):
     intro = RichTextField(blank=True)
 
     hide_popular_tags = models.BooleanField(default=False)

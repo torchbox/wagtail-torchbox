@@ -14,7 +14,7 @@ from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-from headlesspreview.models import HeadlessPreviewMixin
+from tbx.utils.models import TorchboxPage
 
 
 class SignUpFormPageBullet(Orderable):
@@ -85,7 +85,7 @@ class SignUpFormPageForm(forms.ModelForm):
 
 
 @method_decorator(never_cache, name='serve')
-class SignUpFormPage(HeadlessPreviewMixin, Page):
+class SignUpFormPage(TorchboxPage):
     formatted_title = models.CharField(
         max_length=255, blank=True,
         help_text="This is the title displayed on the page, not the document "
