@@ -60,6 +60,39 @@ class BlogIndexPage(TorchboxPage):
 
         return blog_posts
 
+    def serve(self, request):
+        # Get blog_posts
+        blog_posts = self.blog_posts
+
+        # Filter by tag
+        tag = request.GET.get('tag')
+        if tag:
+            blog_posts = blog_posts.filter(tags__tag__slug=tag)
+
+        # Pagination
+        per_page = 12
+        page = request.GET.get('page')
+        paginator = Paginator(blog_posts, per_page)  # Show 10 blog_posts per page
+        try:
+            blog_posts = paginator.page(page)
+        except PageNotAnInteger:
+            blog_posts = paginator.page(1)
+        except EmptyPage:
+            blog_posts = paginator.page(paginator.num_pages)
+
+        if request.is_ajax():
+            return render(request, "blog/includes/blog_listing.html", {
+                'self': self,
+                'blog_posts': blog_posts,
+                'per_page': per_page,
+            })
+        else:
+            return render(request, self.template, {
+                'self': self,
+                'blog_posts': blog_posts,
+                'per_page': per_page,
+            })
+
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),

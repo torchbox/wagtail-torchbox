@@ -183,6 +183,7 @@ class Advert(models.Model):
 
 
 # Custom image
+# GatsbyImage/GatsbyImageRendition expand upon AbstractImage/Rendition
 class TorchboxImage(GatsbyImage):
     credit = models.CharField(max_length=255, blank=True)
 
@@ -290,7 +291,7 @@ class NotFoundPage(TorchboxPage):
     def save(self, *args, **kwargs):
         # Only allow one instance of NotFound Page
         if not self.pk and NotFoundPage.objects.exists():
-            raise ValidationError('There is can be only one 404 page instance')
+            raise ValidationError('There can only be one 404 page instance')
 
         # Only allow a slug of /404/
         return super(NotFoundPage, self).save(*args, **kwargs)

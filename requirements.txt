@@ -32,4 +32,5 @@ scout-apm==1.1.7
 
 scour==0.37
 wagtail-headless-preview==0.1.4
-wagtailgatsby
+wagtail-grapple==0.5.1
+wagtailgatsby==0.1.3

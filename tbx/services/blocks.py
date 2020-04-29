@@ -31,6 +31,9 @@ class CaseStudyBlock(StructBlock):
     intro = TextBlock(required=True)
     case_studies = ListBlock(CaseStudyLink())
 
+    class Meta:
+        template = 'blocks/services/case_study_block.html'
+
     graphql_fields = [
         GraphQLString('title'),
         GraphQLString('intro'),
@@ -43,6 +46,9 @@ class HighlightBlock(StructBlock):
     title = CharBlock(required=True)
     intro = RichTextBlock(required=False)
     highlights = ListBlock(TextBlock())
+
+    class Meta:
+        template = 'blocks/services/highlight_block.html'
 
     graphql_fields = [
         GraphQLString('title'),
@@ -71,6 +77,9 @@ class StepByStepBlock(StructBlock):
     title = CharBlock(required=True)
     intro = TextBlock(required=False)
     steps = ListBlock(Step())
+
+    class Meta:
+        template = 'blocks/services/step_by_step_block.html'
 
     graphql_fields = [
         GraphQLString('title'),
@@ -104,6 +113,9 @@ class FeaturedPage(StructBlock):
 class FeaturedPagesBlock(StructBlock):
     title = CharBlock()
     pages = ListBlock(FeaturedPage())
+
+    class Meta:
+        template = 'blocks/services/featured_pages_block.html'
 
     graphql_fields = [
         GraphQLString('title'),
@@ -145,6 +157,7 @@ class LogosBlock(StructBlock):
 
     class Meta:
         icon = 'site'
+        template = 'blocks/services/logos_block.html'
 
     graphql_fields = [
         GraphQLString('title'),
