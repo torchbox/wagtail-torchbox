@@ -1,8 +1,7 @@
 from django import forms
 
 from grapple.helpers import register_streamfield_block
-from grapple.models import (GraphQLCollection, GraphQLImage,
-                            GraphQLString)
+from grapple.models import GraphQLCollection, GraphQLImage, GraphQLString
 from wagtail.core.blocks import (CharBlock, FieldBlock, ListBlock,
                                  RawHTMLBlock, RichTextBlock, StreamBlock,
                                  StructBlock)

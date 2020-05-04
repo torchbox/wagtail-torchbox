@@ -9,8 +9,7 @@ from django.utils.decorators import method_decorator
 
 from bs4 import BeautifulSoup
 from grapple.models import (GraphQLCollection, GraphQLForeignKey, GraphQLImage,
-                            GraphQLInt, GraphQLStreamfield,
-                            GraphQLString)
+                            GraphQLInt, GraphQLStreamfield, GraphQLString)
 from grapple.utils import resolve_queryset
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
