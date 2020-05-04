@@ -8,6 +8,9 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
 from bs4 import BeautifulSoup
+from grapple.models import (GraphQLCollection, GraphQLForeignKey, GraphQLImage,
+                            GraphQLInt, GraphQLStreamfield, GraphQLString)
+from grapple.utils import resolve_queryset
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
@@ -18,10 +21,10 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from headlesspreview.models import HeadlessPreviewMixin
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.utils.models import TorchboxPage
 
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
@@ -29,7 +32,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 
 
 @method_decorator(get_default_cache_control_decorator(), name='serve')
-class BlogIndexPage(HeadlessPreviewMixin, Page):
+class BlogIndexPage(TorchboxPage):
     intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + [
@@ -98,6 +101,10 @@ class BlogIndexPage(HeadlessPreviewMixin, Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
 
+    graphql_fields = TorchboxPage.graphql_fields + [
+        GraphQLString('intro'),
+    ]
+
 
 # Blog page
 class BlogPageRelatedLink(Orderable, RelatedLink):
@@ -127,7 +134,7 @@ class BlogPageAuthor(Orderable):
     ]
 
 
-class BlogPage(HeadlessPreviewMixin, Page):
+class BlogPage(TorchboxPage):
     date = models.DateField("Post date")
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
@@ -169,6 +176,13 @@ class BlogPage(HeadlessPreviewMixin, Page):
     def has_authors(self):
         return self.authors.exists()
 
+    def related_posts(self, info, **kwargs):
+        """GraphQL Resolver - This cannot be manually called"""
+        return resolve_queryset(
+            BlogPage.objects.live().public().exclude(id=self.id),
+            info, **kwargs
+        )
+
     content_panels = [
         FieldPanel('title', classname="full title"),
         InlinePanel('authors', label="Author"),
@@ -183,6 +197,31 @@ class BlogPage(HeadlessPreviewMixin, Page):
         FieldPanel('listing_summary'),
         FieldPanel('canonical_url'),
         FieldPanel('related_services', widget=forms.CheckboxSelectMultiple),
+    ]
+
+    graphql_fields = TorchboxPage.graphql_fields + [
+        GraphQLString('date'),
+        GraphQLStreamfield('body'),
+        GraphQLInt('body_word_count'),
+        GraphQLImage('feed_image'),
+        GraphQLString('listing_summary'),
+        GraphQLForeignKey('blog_index', 'blog.BlogIndexPage'),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'related_posts',
+            'blog.BlogPage'
+        ),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'authors',
+            'people.author',
+            source="authors.author"
+        ),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            'related_links',
+            BlogPageRelatedLink
+        )
     ]
 
 

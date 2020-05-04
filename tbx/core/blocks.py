@@ -1,5 +1,7 @@
 from django import forms
 
+from grapple.helpers import register_streamfield_block
+from grapple.models import GraphQLCollection, GraphQLImage, GraphQLString
 from wagtail.core.blocks import (CharBlock, FieldBlock, ListBlock,
                                  RawHTMLBlock, RichTextBlock, StreamBlock,
                                  StructBlock)
@@ -16,7 +18,12 @@ class ImageFormatChoiceBlock(FieldBlock):
         ('full', 'Full width'),
     ))
 
+    graphql_fields = [
+        GraphQLString('field')
+    ]
 
+
+@register_streamfield_block
 class ImageBlock(StructBlock):
     image = ImageChooserBlock()
     alignment = ImageFormatChoiceBlock()
@@ -26,14 +33,27 @@ class ImageBlock(StructBlock):
     class Meta:
         icon = "image"
 
+    graphql_fields = [
+        GraphQLImage('image'),
+        GraphQLString("alignment"),
+        GraphQLString('caption'),
+        GraphQLString('attribution'),
+    ]
 
+
+@register_streamfield_block
 class PhotoGridBlock(StructBlock):
     images = ListBlock(ImageChooserBlock())
 
     class Meta:
         icon = "grip"
 
+    graphql_fields = [
+        GraphQLCollection(GraphQLImage, 'images')
+    ]
 
+
+@register_streamfield_block
 class PullQuoteBlock(StructBlock):
     quote = CharBlock(classname="quote title")
     attribution = CharBlock()
@@ -41,13 +61,26 @@ class PullQuoteBlock(StructBlock):
     class Meta:
         icon = "openquote"
 
+    graphql_fields = [
+        GraphQLString('quote'),
+        GraphQLString('attribution'),
+    ]
 
+
+@register_streamfield_block
 class PullQuoteImageBlock(StructBlock):
     quote = CharBlock()
     attribution = CharBlock()
     image = ImageChooserBlock(required=False)
 
+    graphql_fields = [
+        GraphQLString('quote'),
+        GraphQLString('attribution'),
+        GraphQLImage('image'),
+    ]
 
+
+@register_streamfield_block
 class BustoutBlock(StructBlock):
     image = ImageChooserBlock()
     text = RichTextBlock()
@@ -55,12 +88,22 @@ class BustoutBlock(StructBlock):
     class Meta:
         icon = "pick"
 
+    graphql_fields = [
+        GraphQLImage('image'),
+        GraphQLString('text'),
+    ]
 
+
+@register_streamfield_block
 class WideImage(StructBlock):
     image = ImageChooserBlock()
 
     class Meta:
         icon = "image"
+
+    graphql_fields = [
+        GraphQLImage('image')
+    ]
 
 
 class StatsBlock(StructBlock):
