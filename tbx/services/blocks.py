@@ -1,13 +1,12 @@
+from grapple.helpers import register_streamfield_block
+from grapple.models import (GraphQLCollection, GraphQLForeignKey, GraphQLImage,
+                            GraphQLPage, GraphQLString)
 from wagtail.core.blocks import (CharBlock, ListBlock, PageChooserBlock,
                                  RichTextBlock, StreamBlock, StructBlock,
                                  TextBlock, URLBlock)
 from wagtail.images.blocks import ImageChooserBlock
 
 from tbx.core.blocks import PullQuoteBlock
-from grapple.models import (
-    GraphQLForeignKey, GraphQLString, GraphQLImage, GraphQLCollection, GraphQLPage
-)
-from grapple.helpers import register_streamfield_block
 
 
 @register_streamfield_block

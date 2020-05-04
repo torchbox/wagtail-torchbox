@@ -1,4 +1,3 @@
-from tbx.people.models import Contact
 import string
 
 from django import forms
@@ -9,6 +8,10 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
 from bs4 import BeautifulSoup
+from grapple.models import (GraphQLCollection, GraphQLForeignKey, GraphQLImage,
+                            GraphQLInt, GraphQLStreamfield,
+                            GraphQLString)
+from grapple.utils import resolve_queryset
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
@@ -21,17 +24,11 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.people.models import Contact
 from tbx.utils.models import TorchboxPage
-from grapple.utils import resolve_queryset
 
-from grapple.models import (
-    GraphQLString, GraphQLImage, GraphQLForeignKey, GraphQLInt, GraphQLStreamfield,
-    GraphQLCollection, GraphQLPage
-)
 
 # Currently hidden. These were used in the past and may be used again in the future
-
-
 class WorkPageTagSelect(Orderable):
     page = ParentalKey('work.WorkPage', related_name='tags')
     tag = models.ForeignKey(

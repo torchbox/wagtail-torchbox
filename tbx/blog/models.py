@@ -8,6 +8,10 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
 from bs4 import BeautifulSoup
+from grapple.models import (GraphQLCollection, GraphQLForeignKey, GraphQLImage,
+                            GraphQLInt, GraphQLStreamfield,
+                            GraphQLString)
+from grapple.utils import resolve_queryset
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, StreamFieldPanel)
@@ -17,12 +21,6 @@ from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-
-from grapple.utils import resolve_queryset
-from grapple.models import (
-    GraphQLString, GraphQLString, GraphQLStreamfield, GraphQLInt, GraphQLImage,
-    GraphQLForeignKey, GraphQLSnippet, GraphQLCollection
-)
 
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag

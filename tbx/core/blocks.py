@@ -1,13 +1,14 @@
 from django import forms
 
+from grapple.helpers import register_streamfield_block
+from grapple.models import (GraphQLCollection, GraphQLImage,
+                            GraphQLString)
 from wagtail.core.blocks import (CharBlock, FieldBlock, ListBlock,
                                  RawHTMLBlock, RichTextBlock, StreamBlock,
                                  StructBlock)
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailmarkdown.blocks import MarkdownBlock
-from grapple.models import GraphQLString, GraphQLForeignKey, GraphQLImage
-from grapple.helpers import register_streamfield_block
 
 
 class ImageFormatChoiceBlock(FieldBlock):
@@ -47,6 +48,10 @@ class PhotoGridBlock(StructBlock):
 
     class Meta:
         icon = "grip"
+
+    graphql_fields = [
+        GraphQLCollection(GraphQLImage, 'images')
+    ]
 
 
 @register_streamfield_block

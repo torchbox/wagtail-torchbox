@@ -4,6 +4,10 @@ from django.db import models
 from django.dispatch import receiver
 from django.utils.functional import cached_property
 
+from grapple.models import (GraphQLBoolean, GraphQLCollection,
+                            GraphQLForeignKey, GraphQLImage, GraphQLPage,
+                            GraphQLStreamfield, GraphQLString)
+from grapple.utils import resolve_queryset
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from phonenumber_field.modelfields import PhoneNumberField
@@ -18,15 +22,10 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from grapple.utils import resolve_queryset
-from grapple.models import (
-    GraphQLString, GraphQLBoolean, GraphQLImage, GraphQLForeignKey,
-    GraphQLCollection, GraphQLStreamfield, GraphQLPage
-)
+from tbx.blog.models import BlogPage
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import ContactFields, RelatedLink
 from tbx.utils.models import TorchboxPage
-from tbx.blog.models import BlogPage
 
 
 class PersonPageRelatedLink(Orderable, RelatedLink):
@@ -234,7 +233,6 @@ class Author(index.Indexed, models.Model):
     def url(self):
         if self.person_page:
             return self.person_page.url
-        return None
 
     search_fields = [
         index.SearchField('name'),

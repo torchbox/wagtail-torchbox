@@ -1,7 +1,11 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.shortcuts import render
 
+from grapple.helpers import register_query_field, register_streamfield_block
+from grapple.models import (GraphQLCollection, GraphQLForeignKey, GraphQLPage,
+                            GraphQLStreamfield, GraphQLString)
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel,
@@ -13,17 +17,14 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.images.models import AbstractImage, AbstractRendition, Image
+from wagtail.images.models import Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-
-from grapple.models import GraphQLString, GraphQLPage, GraphQLForeignKey, GraphQLStreamfield, GraphQLCollection
-from grapple.helpers import register_streamfield_block, register_query_field
 from wagtailgatsby.models import GatsbyImage, GatsbyImageRendition
 
 from tbx.utils.models import TorchboxPage
+
 from .blocks import StoryBlock
-from .fields import ColorField
 
 
 # A couple of abstract classes that contain commonly used fields

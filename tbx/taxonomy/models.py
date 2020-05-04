@@ -1,12 +1,12 @@
-import graphene
 from django.db import models
 
+import graphene
+from grapple.helpers import register_query_field
+from grapple.models import (GraphQLCollection, GraphQLForeignKey, GraphQLInt,
+                            GraphQLString)
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from grapple.helpers import register_query_field
-from grapple.models import GraphQLString, GraphQLInt, GraphQLForeignKey, GraphQLCollection
-from tbx.services.models import ServicePage
 
 @register_query_field('service', query_params={
     'name': graphene.String()

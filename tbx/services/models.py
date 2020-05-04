@@ -1,5 +1,8 @@
 from django.db import models
 
+from grapple.models import (GraphQLBoolean, GraphQLCollection,
+                            GraphQLForeignKey, GraphQLImage, GraphQLPage,
+                            GraphQLString)
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel)
@@ -8,13 +11,9 @@ from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from grapple.models import (
-    GraphQLString, GraphQLBoolean, GraphQLForeignKey, GraphQLImage, GraphQLPage,
-    GraphQLCollection
-)
 from tbx.blog.models import BlogIndexPage
-from tbx.work.models import WorkIndexPage
 from tbx.utils.models import TorchboxPage
+from tbx.work.models import WorkIndexPage
 
 
 class BaseServicePage(TorchboxPage):

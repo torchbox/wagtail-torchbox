@@ -1,8 +1,6 @@
-from django.db import models
-
+from grapple.models import GraphQLCollection, GraphQLForeignKey
 from wagtail.core.models import Page
 from wagtail_headless_preview.models import HeadlessPreviewMixin
-from grapple.models import GraphQLString, GraphQLForeignKey, GraphQLCollection
 
 
 # Base Page
@@ -14,41 +12,31 @@ class TorchboxPage(HeadlessPreviewMixin, Page):
         if hasattr(self, 'related_services'):
             return self.related_services.order_by('sort_order').first()
 
-        if hasattr(self, 'service'):
-            return self.service
-
-        return None
+        return getattr(self, 'service', None)
 
     @property
     def contact(self):
         from tbx.people.models import Contact
 
         service = self.get_prioritised_service()
-        if service is not None:
-            if service.preferred_contact is not None:
-                return service.preferred_contact
-        try:
-            return Contact.objects.get(default_contact=True)
-        except Contact.DoesNotExist:
-            return None
+        if service and service.preferred_contact:
+            return service.preferred_contact
+
+        return Contact.objects.filter(default_contact=True).first()
 
     @property
     def preferred_contact_reasons(self):
         from tbx.people.models import ContactReasonsList
 
-        if hasattr(self, 'contact_reasons'):
-            if self.contact_reasons is not None:
-                return self.contact_reasons
+        contact_reasons = getattr(self, "contact_reasons", None)
+        if contact_reasons:
+            return contact_reasons
 
-        service = self.get_prioritised_service()
-        if service is not None:
-            if service.contact_reasons is not None:
-                return service.contact_reasons
+        contact_reasons = getattr(self.get_prioritised_service(), "contact_reasons", None)
+        if contact_reasons:
+            return contact_reasons
 
-        try:
-            return ContactReasonsList.objects.get(is_default=True)
-        except ContactReasonsList.DoesNotExist:
-            return []
+        return ContactReasonsList.objects.filter(is_default=True).first() or []
 
     @property
     def page_related_services(self):
