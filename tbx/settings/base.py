@@ -27,8 +27,7 @@ if 'SECRET_KEY' in env:
     SECRET_KEY = env['SECRET_KEY']
 
 ALLOWED_HOSTS = [
-    'torchbox.com',
-    'localhost',
+    'torchbox.com'
 ]
 if 'ALLOWED_HOSTS' in env:
     ALLOWED_HOSTS += env['ALLOWED_HOSTS'].split(',')
