@@ -1,11 +1,7 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.shortcuts import render
 
-from grapple.helpers import register_query_field, register_streamfield_block
-from grapple.models import (GraphQLCollection, GraphQLForeignKey, GraphQLPage,
-                            GraphQLStreamfield, GraphQLString)
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel,
@@ -17,14 +13,14 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.images.models import Image
+from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-from wagtailgatsby.models import GatsbyImage, GatsbyImageRendition
 
-from tbx.utils.models import TorchboxPage
+from headlesspreview.models import HeadlessPreviewMixin
 
 from .blocks import StoryBlock
+from .fields import ColorField
 
 
 # A couple of abstract classes that contain commonly used fields
@@ -97,16 +93,6 @@ class ContactFields(models.Model):
     class Meta:
         abstract = True
 
-    graphql_fields = [
-        GraphQLString('telephone'),
-        GraphQLString('email'),
-        GraphQLString('address_1'),
-        GraphQLString('address_2'),
-        GraphQLString('city'),
-        GraphQLString('country'),
-        GraphQLString('post_code'),
-    ]
-
 
 # Carousel items
 class CarouselItem(LinkFields):
@@ -149,13 +135,7 @@ class AdvertPlacement(models.Model):
     page = ParentalKey('wagtailcore.Page', related_name='advert_placements')
     advert = models.ForeignKey('torchbox.Advert', on_delete=models.CASCADE, related_name='+')
 
-    graphql_fields = [
-        GraphQLPage('page'),
-        GraphQLForeignKey('advert', 'torchbox.Advert')
-    ]
 
-
-@register_snippet
 class Advert(models.Model):
     page = models.ForeignKey(
         'wagtailcore.Page',
@@ -176,16 +156,12 @@ class Advert(models.Model):
     def __str__(self):
         return self.text
 
-    graphql_fields = [
-        GraphQLPage('page'),
-        GraphQLString('url'),
-        GraphQLString('text')
-    ]
+
+register_snippet(Advert)
 
 
 # Custom image
-# GatsbyImage/GatsbyImageRendition expand upon AbstractImage/Rendition
-class TorchboxImage(GatsbyImage):
+class TorchboxImage(AbstractImage):
     credit = models.CharField(max_length=255, blank=True)
 
     admin_form_fields = Image.admin_form_fields + (
@@ -196,13 +172,8 @@ class TorchboxImage(GatsbyImage):
     def credit_text(self):
         return self.credit
 
-    graphql_fields = [
-        GraphQLString("base64"),
-        GraphQLString("tracedSVG", source="traced_SVG"),
-    ]
 
-
-class TorchboxRendition(GatsbyImageRendition):
+class TorchboxRendition(AbstractRendition):
     image = models.ForeignKey('TorchboxImage', on_delete=models.CASCADE, related_name='renditions')
 
     class Meta:
@@ -212,26 +183,231 @@ class TorchboxRendition(GatsbyImageRendition):
 
 
 # Home Page
-class HomePage(TorchboxPage):
+
+class HomePageHero(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.HomePage', related_name='hero')
+    colour = models.CharField(max_length=255, help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue")
+    background = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    logo = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    text = models.CharField(
+        max_length=255
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('background'),
+        ImageChooserPanel('logo'),
+        FieldPanel('colour'),
+        FieldPanel('text'),
+    ]
+
+
+class HomePageClient(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.HomePage', related_name='clients')
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = RelatedLink.panels + [
+        ImageChooserPanel('image')
+    ]
+
+
+class HomePage(HeadlessPreviewMixin, Page):
+    hero_intro_primary = models.TextField(blank=True)
+    hero_intro_secondary = models.TextField(blank=True)
+    intro_body = RichTextField(blank=True)
+    work_title = models.TextField(blank=True)
+    blog_title = models.TextField(blank=True)
+    clients_title = models.TextField(blank=True)
 
     class Meta:
         verbose_name = "Homepage"
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        MultiFieldPanel(
+            [
+                FieldPanel('hero_intro_primary'),
+                FieldPanel('hero_intro_secondary'),
+            ],
+            heading="Hero intro"
+        ),
+        InlinePanel('hero', label="Hero"),
+        FieldPanel('intro_body'),
+        FieldPanel('work_title'),
+        FieldPanel('blog_title'),
+        FieldPanel('clients_title'),
+        InlinePanel('clients', label="Clients"),
     ]
 
+    @property
+    def blog_posts(self):
+        from tbx.blog.models import BlogPage
 
-class StandardPage(TorchboxPage):
+        # Get list of blog pages.
+        blog_posts = BlogPage.objects.live().public()
+
+        # Order by most recent date first
+        blog_posts = blog_posts.order_by('-date')
+
+        return blog_posts
+
+
+# Standard page
+
+class StandardPage(HeadlessPreviewMixin, Page):
     body = StreamField(StoryBlock())
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
     ]
 
-    graphql_fields = TorchboxPage.graphql_fields + [
-        GraphQLStreamfield('body')
+
+# About page
+class AboutPageRelatedLinkButton(Orderable, RelatedLink):
+    page = ParentalKey('torchbox.AboutPage', related_name='related_link_buttons')
+
+
+class AboutPageOffice(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='offices')
+    title = models.TextField()
+    svg = models.TextField(null=True)
+    description = models.TextField()
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        FieldPanel('svg')
     ]
+
+
+class AboutPageContentBlock(Orderable):
+    page = ParentalKey('torchbox.AboutPage', related_name='content_blocks')
+    year = models.IntegerField()
+    title = models.TextField()
+    description = models.TextField()
+    image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        FieldPanel('year'),
+        FieldPanel('title'),
+        FieldPanel('description'),
+        ImageChooserPanel('image')
+    ]
+
+
+class AboutPage(HeadlessPreviewMixin, Page):
+    main_image = models.ForeignKey(
+        'torchbox.TorchboxImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    heading = models.TextField(blank=True)
+    intro = models.TextField(blank=True)
+    involvement_title = models.TextField(blank=True)
+
+    content_panels = [
+        FieldPanel('title', classname='full title'),
+        ImageChooserPanel('main_image'),
+        FieldPanel('heading', classname='full'),
+        FieldPanel('intro', classname='full'),
+        InlinePanel('related_link_buttons', label='Header buttons'),
+        InlinePanel('content_blocks', label='Content blocks'),
+        InlinePanel('offices', label='Offices'),
+        FieldPanel('involvement_title'),
+    ]
+
+
+@register_snippet
+class ParticleSnippet(models.Model):
+    """
+    Snippet for configuring particlejs options
+    """
+    # particle type choices
+    CIRCLE = 1
+    EDGE = 2
+    TRIANGLE = 3
+    POLYGON = 4
+    STAR = 5
+    IMAGE = 6
+    PARTICLES_TYPE_CHOICES = (
+        (CIRCLE, 'circle'),
+        (EDGE, 'edge'),
+        (TRIANGLE, 'triangle'),
+        (POLYGON, 'polygon'),
+        (STAR, 'star'),
+        (IMAGE, 'image'),
+    )
+    # particle movement direction choices
+    NONE = 1
+    TOP = 2
+    TOP_RIGHT = 3
+    RIGHT = 4
+    BOTTOM_RIGHT = 5
+    BOTTOM = 6
+    BOTTOM_LEFT = 7
+    LEFT = 8
+    PARTICLES_MOVE_DIRECTION_CHOICES = (
+        (NONE, 'none'),
+        (TOP, 'top'),
+        (TOP_RIGHT, 'top-right'),
+        (RIGHT, 'right'),
+        (BOTTOM_RIGHT, 'bottom-right'),
+        (BOTTOM, 'bottom'),
+        (BOTTOM_LEFT, 'bottom-left'),
+        (LEFT, 'left'),
+    )
+    title = models.CharField(max_length=50)
+    number = models.PositiveSmallIntegerField(default=50)
+    shape_type = models.PositiveSmallIntegerField(
+        choices=PARTICLES_TYPE_CHOICES, default=CIRCLE)
+    polygon_sides = models.PositiveSmallIntegerField(default=5)
+    size = models.DecimalField(default=2.5, max_digits=4, decimal_places=1)
+    size_random = models.BooleanField(default=False)
+    colour = ColorField(default='ffffff', help_text="Don't include # symbol.")
+    opacity = models.DecimalField(default=0.9, max_digits=2, decimal_places=1)
+    opacity_random = models.BooleanField(default=False)
+    move_speed = models.DecimalField(
+        default=2.5, max_digits=2, decimal_places=1)
+    move_direction = models.PositiveSmallIntegerField(
+        choices=PARTICLES_MOVE_DIRECTION_CHOICES,
+        default=NONE)
+    line_linked = models.BooleanField(default=True)
+    css_background_colour = ColorField(
+        blank=True,
+        help_text="Don't include # symbol. Will be overridden by linear gradient")
+    css_background_linear_gradient = models.CharField(
+        blank=True,
+        max_length=255,
+        help_text="Enter in the format 'to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%'")
+    css_background_url = models.URLField(blank=True, max_length=255)
+
+    def __str__(self):
+        return self.title
 
 
 # Currently hidden. These were used in the past and may be used again in the future
@@ -245,7 +421,7 @@ class Tag(models.Model):
 
 
 # Jobs index page
-@register_query_field('job')
+
 class JobIndexPageJob(Orderable):
     page = ParentalKey('torchbox.JobIndexPage', related_name='jobs')
     title = models.CharField(max_length=255)
@@ -260,15 +436,8 @@ class JobIndexPageJob(Orderable):
         FieldPanel('location'),
     ]
 
-    graphql_fields = [
-        GraphQLString('title'),
-        GraphQLString('level'),
-        GraphQLString('url'),
-        GraphQLString('location'),
-    ]
 
-
-class JobIndexPage(TorchboxPage):
+class JobIndexPage(HeadlessPreviewMixin, Page):
     strapline = models.CharField(max_length=255)
 
     content_panels = Page.content_panels + [
@@ -276,37 +445,7 @@ class JobIndexPage(TorchboxPage):
         InlinePanel('jobs', label="Jobs"),
     ]
 
-    graphql_fields = TorchboxPage.graphql_fields + [
-        GraphQLString('strapline'),
-        GraphQLCollection(
-            GraphQLForeignKey,
-            'jobs',
-            JobIndexPageJob,
-        )
-    ]
 
-
-class NotFoundPage(TorchboxPage):
-    strapline = models.CharField(max_length=255)
-
-    def save(self, *args, **kwargs):
-        # Only allow one instance of NotFound Page
-        if not self.pk and NotFoundPage.objects.exists():
-            raise ValidationError('There can only be one 404 page instance')
-
-        # Only allow a slug of /404/
-        return super(NotFoundPage, self).save(*args, **kwargs)
-
-    content_panels = Page.content_panels + [
-        FieldPanel('strapline', classname="full title"),
-    ]
-
-    graphql_fields = TorchboxPage.graphql_fields + [
-        GraphQLString('strapline'),
-    ]
-
-
-# Currently hidden. These were used in the past and may be used again in the future
 class GoogleAdGrantApplication(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=255)
@@ -316,7 +455,6 @@ class GoogleAdGrantApplication(models.Model):
         ordering = ['-date']
 
 
-# Currently hidden. These were used in the past and may be used again in the future
 class GoogleAdGrantApplicationForm(forms.ModelForm):
     class Meta:
         model = GoogleAdGrantApplication
@@ -329,7 +467,6 @@ class GoogleAdGrantApplicationForm(forms.ModelForm):
         }
 
 
-# Currently hidden. These were used in the past and may be used again in the future
 class GoogleAdGrantsPageGrantsManaged(models.Model):
     page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="grants_managed")
     image = models.ForeignKey(
@@ -344,7 +481,6 @@ class GoogleAdGrantsPageGrantsManaged(models.Model):
     ]
 
 
-# Currently hidden. These were used in the past and may be used again in the future
 class GoogleAdGrantsPageQuote(Orderable):
     page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="quotes")
     text = models.TextField()
@@ -358,7 +494,6 @@ class GoogleAdGrantsPageQuote(Orderable):
     ]
 
 
-# Currently hidden. These were used in the past and may be used again in the future
 class GoogleAdGrantsAccreditations(Orderable):
     page = ParentalKey('torchbox.GoogleAdGrantsPage', related_name="accreditations")
     image = models.ForeignKey(
@@ -373,8 +508,7 @@ class GoogleAdGrantsAccreditations(Orderable):
     ]
 
 
-# Currently hidden. These were used in the past and may be used again in the future
-class GoogleAdGrantsPage(TorchboxPage):
+class GoogleAdGrantsPage(HeadlessPreviewMixin, Page):
     intro = RichTextField()
     form_title = models.CharField(max_length=255)
     form_subtitle = models.CharField(max_length=255)
@@ -503,58 +637,22 @@ class GlobalSettings(BaseSetting):
         ], 'Contact widget')
     ]
 
-    graphql_fields = [
-        GraphQLString('contact_telephone'),
-        GraphQLString('contact_email'),
-        GraphQLString('contact_twitter'),
-        GraphQLString('email_newsletter_teaser'),
-        GraphQLString('oxford_address_title'),
-        GraphQLString('oxford_address'),
-        GraphQLString('oxford_address_link'),
-        GraphQLString('oxford_address_svg'),
-        GraphQLString('bristol_address_title'),
-        GraphQLString('bristol_address'),
-        GraphQLString('bristol_address_link'),
-        GraphQLString('bristol_address_svg'),
-    ]
 
-
-@register_streamfield_block
 class SubMenuItemBlock(StreamBlock):
     # subitem = PageChooserBlock()
     related_listing_page = PageChooserBlock()
 
-    graphql_fields = [
-        GraphQLPage('related_listing_page')
-    ]
 
-
-@register_streamfield_block
 class MenuItemBlock(StructBlock):
     page = PageChooserBlock()
     subitems = SubMenuItemBlock(blank=True, null=True)
 
-    graphql_fields = [
-        GraphQLPage('page'),
-        GraphQLCollection(
-            GraphQLForeignKey,
-            'subitems',
-            SubMenuItemBlock
-        )
-    ]
+    class Meta:
+        template = "torchbox/includes/menu_item.html"
 
 
-@register_streamfield_block
 class MenuBlock(StreamBlock):
     items = MenuItemBlock()
-
-    graphql_fields = [
-        GraphQLCollection(
-            GraphQLForeignKey,
-            'items',
-            MenuItemBlock
-        )
-    ]
 
 
 @register_setting
@@ -563,13 +661,4 @@ class MainMenu(BaseSetting):
 
     panels = [
         StreamFieldPanel('menu'),
-    ]
-
-    graphql_fields = [
-        GraphQLCollection(
-            GraphQLForeignKey,
-            'menu',
-            MenuItemBlock,
-            source="menu.items"
-        )
     ]

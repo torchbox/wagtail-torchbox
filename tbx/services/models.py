@@ -1,8 +1,5 @@
 from django.db import models
 
-from grapple.models import (GraphQLBoolean, GraphQLCollection,
-                            GraphQLForeignKey, GraphQLImage, GraphQLPage,
-                            GraphQLString)
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                          MultiFieldPanel, PageChooserPanel)
@@ -11,12 +8,10 @@ from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from tbx.blog.models import BlogIndexPage
-from tbx.utils.models import TorchboxPage
-from tbx.work.models import WorkIndexPage
+from headlesspreview.models import HeadlessPreviewMixin
 
 
-class BaseServicePage(TorchboxPage):
+class BaseServicePage(HeadlessPreviewMixin, Page):
     theme = models.CharField(max_length=255, choices=(
         ('light', 'Light'),
         ('coral', 'Coral'),
@@ -114,45 +109,6 @@ class BaseServicePage(TorchboxPage):
     class Meta:
         abstract = True
 
-    @property
-    def blog_index_url(self):
-        page = BlogIndexPage.objects.first()
-        if page:
-            return page.url
-        return ''
-
-    @property
-    def work_index_url(self):
-        page = WorkIndexPage.objects.first()
-        if page:
-            return page.url
-        return ''
-
-    graphql_fields = TorchboxPage.graphql_fields + [
-        GraphQLString('theme'),
-        GraphQLString('strapline'),
-        GraphQLString('greeting_image_type'),
-        GraphQLString('heading_for_key_points'),
-        GraphQLForeignKey('contact', 'people.Contact'),
-        GraphQLBoolean('use_process_block_image'),
-        GraphQLString('heading_for_processes'),
-        GraphQLString('key_points_section_title'),
-        GraphQLString('testimonials_section_title'),
-        GraphQLString('case_studies_section_title'),
-        GraphQLString('blogs_section_title'),
-        GraphQLString('process_section_title'),
-        GraphQLString('blog_index_url'),
-        GraphQLString('work_index_url'),
-
-        GraphQLCollection(GraphQLForeignKey, 'key_points', 'services.ServicePageKeyPoint'),
-        GraphQLCollection(GraphQLForeignKey, 'client_logos', 'services.ServicePageClientLogo'),
-        GraphQLCollection(GraphQLForeignKey, 'usa_client_logos', 'services.ServicePageUSAClientLogo'),
-        GraphQLCollection(GraphQLForeignKey, 'testimonials', 'services.ServicePageTestimonial'),
-        GraphQLCollection(GraphQLForeignKey, 'featured_case_studies', 'work.WorkPage', source='featured_case_studies.case_study'),
-        GraphQLCollection(GraphQLForeignKey, 'featured_blog_posts', 'blog.BlogPage', source='featured_blog_posts.blog_post'),
-        GraphQLCollection(GraphQLForeignKey, 'processes', 'services.ServicePageProcess'),
-    ]
-
 
 class BaseServicePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
@@ -172,11 +128,6 @@ class BaseServicePageKeyPoint(models.Model):
     class Meta:
         abstract = True
 
-    graphql_fields = [
-        GraphQLString('text'),
-        GraphQLPage('linked_page'),
-    ]
-
 
 class BaseServicePageClientLogo(models.Model):
     image = models.ForeignKey(
@@ -190,10 +141,6 @@ class BaseServicePageClientLogo(models.Model):
 
     class Meta:
         abstract = True
-
-    graphql_fields = [
-        GraphQLImage('image')
-    ]
 
 
 class BaseServicePageUSAClientLogo(models.Model):
@@ -209,10 +156,6 @@ class BaseServicePageUSAClientLogo(models.Model):
     class Meta:
         abstract = True
 
-    graphql_fields = [
-        GraphQLImage('image')
-    ]
-
 
 class BaseServicePageTestimonial(models.Model):
     quote = models.TextField()
@@ -221,12 +164,6 @@ class BaseServicePageTestimonial(models.Model):
 
     class Meta:
         abstract = True
-
-    graphql_fields = [
-        GraphQLString('quote'),
-        GraphQLString('name'),
-        GraphQLString('role'),
-    ]
 
 
 class BaseServicePageFeaturedCaseStudy(models.Model):
@@ -239,10 +176,6 @@ class BaseServicePageFeaturedCaseStudy(models.Model):
     class Meta:
         abstract = True
 
-    graphql_fields = [
-        GraphQLForeignKey('case_study', 'work.WorkPage')
-    ]
-
 
 class BaseServicePageFeaturedBlogPost(models.Model):
     blog_post = models.ForeignKey('blog.BlogPage', on_delete=models.CASCADE)
@@ -253,10 +186,6 @@ class BaseServicePageFeaturedBlogPost(models.Model):
 
     class Meta:
         abstract = True
-
-    graphql_fields = [
-        GraphQLForeignKey('blog_post', 'blog.BlogPage')
-    ]
 
 
 class BaseServicePageProcess(models.Model):
@@ -275,15 +204,10 @@ class BaseServicePageProcess(models.Model):
     class Meta:
         abstract = True
 
-    graphql_fields = [
-        GraphQLString('title'),
-        GraphQLString('description'),
-        GraphQLPage('page_link'),
-        GraphQLString('page_link_label'),
-    ]
-
 
 # Service page
+
+
 class ServicePage(BaseServicePage):
     service = models.OneToOneField('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True, help_text="Link to this service in taxonomy")
 
@@ -291,10 +215,6 @@ class ServicePage(BaseServicePage):
     content_panels.insert(1, FieldPanel('service'))
 
     subpage_types = ['SubServicePage']
-
-    graphql_fields = BaseServicePage.graphql_fields + [
-        GraphQLForeignKey("service", 'taxonomy.Service')
-    ]
 
 
 class ServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):
@@ -326,6 +246,8 @@ class ServicePageProcess(Orderable, BaseServicePageProcess):
 
 
 # Sub-service page
+
+
 class SubServicePage(BaseServicePage):
     show_automatic_blog_listing = models.BooleanField(default=False)
     show_automatic_case_studies_listing = models.BooleanField(default=False)
@@ -348,19 +270,6 @@ class SubServicePage(BaseServicePage):
 
         if service_page:
             return service_page.service
-
-    graphql_fields = BaseServicePage.graphql_fields + [
-        GraphQLBoolean('show_automatic_blog_listing'),
-        GraphQLBoolean('show_automatic_case_studies_listing'),
-
-        # Service page overrides
-        GraphQLForeignKey('service', 'taxonomy.Service'),
-        GraphQLCollection(GraphQLForeignKey, 'key_points', 'services.SubServicePageKeyPoint'),
-        GraphQLCollection(GraphQLForeignKey, 'client_logos', 'services.SubServicePageClientLogo'),
-        GraphQLCollection(GraphQLForeignKey, 'usa_client_logos', 'services.SubServicePageUSAClientLogo'),
-        GraphQLCollection(GraphQLForeignKey, 'testimonials', 'services.SubServicePageTestimonial'),
-        GraphQLCollection(GraphQLForeignKey, 'processes', 'services.SubServicePageProcess'),
-    ]
 
 
 class SubServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):

@@ -25,8 +25,6 @@ MEDIA_PREFIX = BASE_URL
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-ALLOWED_HOSTS = ['localhost', ]
-
 try:
     from .local import *  # noqa
 except ImportError:

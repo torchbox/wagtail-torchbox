@@ -1,4 +1,4 @@
-from wagtail_headless_preview.models import PagePreview
+from headlesspreview.models import PagePreview
 
 
 def review_url_builder(token):

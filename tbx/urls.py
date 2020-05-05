@@ -4,9 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotFound
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.vary import vary_on_headers
 
-from grapple import urls as grapple_urls
+from graphene_django.views import GraphQLView
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
@@ -53,8 +54,7 @@ if settings.DEBUG:
 urlpatterns += [
     # path('review/', include(wagtailreview_urls)),
     path('', include(torchbox_urls)),
-    path('', include(grapple_urls)),
-
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
     path('', lambda request: HttpResponseNotFound(), name='home'),
 ]
 
@@ -79,5 +79,5 @@ urlpatterns = private_urlpatterns + urlpatterns + decorate_urlpatterns([
     # Wagtail paths have to be enabled for the administration interface to work
     # properly. This allows them to be visited only by the logged-in users to
     # avoid the public accessing it.
-    path('', include(wagtail_urls))
+    path('wagtail/', include(wagtail_urls))
 ], login_required)
