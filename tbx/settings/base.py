@@ -471,7 +471,7 @@ GRAPPLE_APPS = {
 
 # CORS settings
 CORS_URLS_REGEX = r'^(\/graphql\/.*)|(\/review\/api\/.*)$'
-CORS_ORIGIN_WHITELIST = ['https://torchbox.com', 'https://tbx-production.netlify.com', 'https://tbx-staging.netlify.com']
+CORS_ORIGIN_WHITELIST = ['https://torchbox.com', 'https://tbx-production.netlify.app', 'https://tbx-staging.netlify.app']
 CORS_ALLOW_HEADERS = default_headers + (
     'x-review-token',
 )
