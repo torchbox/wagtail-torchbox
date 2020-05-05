@@ -26,12 +26,8 @@ APP_NAME = env.get('APP_NAME', 'torchbox')
 if 'SECRET_KEY' in env:
     SECRET_KEY = env['SECRET_KEY']
 
-ALLOWED_HOSTS = [
-    'torchbox.com',
-    'torchbox-staging.herokuapp.com'
-]
 if 'ALLOWED_HOSTS' in env:
-    ALLOWED_HOSTS += env['ALLOWED_HOSTS'].split(',')
+    ALLOWED_HOSTS = env['ALLOWED_HOSTS'].split(',')
 
 
 # Quick-start development settings - unsuitable for production
@@ -50,7 +46,7 @@ INSTALLED_APPS = [
     'tbx.sign_up_form',
     'tbx.taxonomy',
     'tbx.work',
-    'tbx.utils',
+    'tbx.netlify',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -79,9 +75,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'graphene_django',
     'corsheaders',
-    'wagtail_headless_preview',
-    "wagtailgatsby",
-    'grapple',
+    'headlesspreview',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -456,20 +450,12 @@ if 'MAILCHIMP_MAILING_LIST_ID' in env:
 
 # GraphQL API Endpoint
 GRAPHENE = {
-    'SCHEMA': 'grapple.schema.schema',
-}
-GRAPPLE_APPS = {
-    "people": "",
-    "work": "",
-    "taxonomy": "",
-    "services": "",
-    "blog": "",
-    "sign_up_form": "",
-    "torchbox": "",
-    "utils": "",
+    'SCHEMA': 'tbx.graphql.schema.schema',
 }
 
 # CORS settings
+
+
 CORS_URLS_REGEX = r'^(\/graphql\/.*)|(\/review\/api\/.*)$'
 CORS_ORIGIN_WHITELIST = ['https://torchbox.com', 'https://tbx-production.netlify.app', 'https://tbx-staging.netlify.app']
 CORS_ALLOW_HEADERS = default_headers + (
@@ -478,12 +464,19 @@ CORS_ALLOW_HEADERS = default_headers + (
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
-FRONT_END_URL = env.get("FRONT_END_URL", "http://localhost:8001")
-GATSBY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', 'http://localhost:8000')
+NETLIFY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', 'http://localhost:8000')
+NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
 
 
-# Preview - Wagtail previews are served from the frontend site, this URL is where they are directed to
-HEADLESS_PREVIEW_LIVE = True
-HEADLESS_PREVIEW_CLIENT_URLS = {
-    'default': 'http://localhost:8001/preview',
-}
+# Preview
+
+# Wagtail previews are served from the frontend site, this URL is where they are directed to
+
+if 'PREVIEW_URL' in env:
+    PREVIEW_URL = env['PREVIEW_URL']
+
+
+# Reviews
+
+# Overrides the URL that wagtail_review sends in emails to reviewers
+# WAGTAILREVIEW_REVIEW_URL_BUILDER = 'tbx.settings.reviews.review_url_builder'
