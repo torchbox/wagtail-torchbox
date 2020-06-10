@@ -101,7 +101,6 @@ MIDDLEWARE = [
     # Must be placed above anything that can generate a response
     'corsheaders.middleware.CorsMiddleware',
 
-    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
