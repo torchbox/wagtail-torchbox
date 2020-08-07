@@ -1,13 +1,14 @@
 import html
-import requests
-import graphene
 
+from django.conf import settings
+
+import graphene
+import requests
 from bs4 import BeautifulSoup
 from graphene.types import Scalar
-from django.conf import settings
-from graphql.validation.rules import NoUnusedFragments, specified_rules
 from wagtail.contrib.redirects.models import Redirect
 
+from graphql.validation.rules import NoUnusedFragments, specified_rules
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
 from tbx.people.models import (Author, Contact, ContactReasonsList,
@@ -480,7 +481,7 @@ class JobsIndexPageObjectType(graphene.ObjectType):
 
     def resolve_jobs(self, info):
         # Check xml feed is set
-        if self.jobs_xml_feed is "":
+        if self.jobs_xml_feed == "":
             return []
 
         # Get fresh data from People HR
