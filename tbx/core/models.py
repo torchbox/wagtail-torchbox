@@ -422,6 +422,7 @@ class Tag(models.Model):
 
 # Jobs index page
 
+# NOTE: This block has been retired due to the jobs page now being fed via PeopleHR API
 class JobIndexPageJob(Orderable):
     page = ParentalKey('torchbox.JobIndexPage', related_name='jobs')
     title = models.CharField(max_length=255)
@@ -439,10 +440,11 @@ class JobIndexPageJob(Orderable):
 
 class JobIndexPage(HeadlessPreviewMixin, Page):
     strapline = models.CharField(max_length=255)
+    jobs_xml_feed = models.URLField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('strapline', classname="full title"),
-        InlinePanel('jobs', label="Jobs"),
+        FieldPanel('jobs_xml_feed')
     ]
 
 

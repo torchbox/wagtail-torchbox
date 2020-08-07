@@ -1,7 +1,10 @@
-from django.conf import settings
-
+import html
+import requests
 import graphene
+
+from bs4 import BeautifulSoup
 from graphene.types import Scalar
+from django.conf import settings
 from graphql.validation.rules import NoUnusedFragments, specified_rules
 from wagtail.contrib.redirects.models import Redirect
 
@@ -463,8 +466,9 @@ class StandardPageObjectType(graphene.ObjectType):
 
 
 class JobsIndexPageJob(graphene.ObjectType):
-    id = graphene.ID()
+    id = graphene.String()
     title = graphene.String()
+    description = graphene.String()
     level = graphene.String()
     location = graphene.String()
     url = graphene.String()
@@ -475,7 +479,34 @@ class JobsIndexPageObjectType(graphene.ObjectType):
     strapline = graphene.String()
 
     def resolve_jobs(self, info):
-        return self.jobs.all()
+        # Check xml feed is set
+        if self.jobs_xml_feed is "":
+            return []
+
+        # Get fresh data from People HR
+        res = requests.get(self.jobs_xml_feed)
+
+        # Parse XML Response
+        soup = BeautifulSoup(res.content, features="xml")
+
+        # Store jobs from API
+        jobs = []
+
+        # Loop over all the items in the RSS feed
+        for job in soup.findAll('item'):
+            # Select desired fields and add them to a jobs list
+            jobs.append({
+                "id": job.find("reference").getText(),
+                "title": job.find("vacancyname").getText(),
+                "description": job.find("vacancydescription").getText(),
+                "url": job.find("link").getText(),
+                "level": job.find("department").getText(),
+                "location": html.unescape(
+                    job.find("city").getText()
+                )
+            })
+
+        return jobs
 
     class Meta:
         interfaces = [PageInterface]
