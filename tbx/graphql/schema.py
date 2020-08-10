@@ -4,6 +4,7 @@ from django.conf import settings
 
 import graphene
 import requests
+import logging
 from bs4 import BeautifulSoup
 from graphene.types import Scalar
 from wagtail.contrib.redirects.models import Redirect
@@ -484,30 +485,38 @@ class JobsIndexPageObjectType(graphene.ObjectType):
         if self.jobs_xml_feed == "":
             return []
 
-        # Get fresh data from People HR
-        res = requests.get(self.jobs_xml_feed)
+        try:
+            # Get fresh data from People HR
+            res = requests.get(self.jobs_xml_feed, timeout=5)
 
-        # Parse XML Response
-        soup = BeautifulSoup(res.content, features="xml")
+            # Parse XML Response
+            soup = BeautifulSoup(res.content, features="xml")
 
-        # Store jobs from API
-        jobs = []
+            # Store jobs from API
+            jobs = []
 
-        # Loop over all the items in the RSS feed
-        for job in soup.findAll('item'):
-            # Select desired fields and add them to a jobs list
-            jobs.append({
-                "id": job.find("reference").getText(),
-                "title": job.find("vacancyname").getText(),
-                "description": job.find("vacancydescription").getText(),
-                "url": job.find("link").getText(),
-                "level": job.find("department").getText(),
-                "location": html.unescape(
-                    job.find("city").getText()
-                )
-            })
+            # Loop over all the items in the RSS feed
+            for job in soup.findAll('item'):
+                # Select desired fields and add them to a jobs list
+                jobs.append({
+                    "id": job.find("reference").getText(),
+                    "title": job.find("vacancyname").getText(),
+                    "description": job.find("vacancydescription").getText(),
+                    "url": job.find("link").getText(),
+                    "level": job.find("department").getText(),
+                    "location": html.unescape(
+                        job.find("city").getText()
+                    )
+                })
 
-        return jobs
+            return jobs
+
+        except Exception as err:
+            # Log to sentry so bug can be investigated
+            logging.error(err)
+
+            # Return empty array to preserve response
+            return []
 
     class Meta:
         interfaces = [PageInterface]
