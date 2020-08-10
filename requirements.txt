@@ -1,7 +1,7 @@
 Django==2.2.12
 psycopg2==2.7.4
 django-redis==4.10.0
-wagtail==2.8.1
+wagtail==2.9.3
 Pillow==6.2.2
 embedly==0.5.0
 requests==2.20.0
