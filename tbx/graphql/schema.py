@@ -1,10 +1,16 @@
+import html
+import logging
+
 from django.conf import settings
 
 import graphene
+import requests
+from bs4 import BeautifulSoup
 from graphene.types import Scalar
-from graphql.validation.rules import NoUnusedFragments, specified_rules
+from requests.exceptions import RequestException
 from wagtail.contrib.redirects.models import Redirect
 
+from graphql.validation.rules import NoUnusedFragments, specified_rules
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
 from tbx.people.models import (Author, Contact, ContactReasonsList,
@@ -463,8 +469,9 @@ class StandardPageObjectType(graphene.ObjectType):
 
 
 class JobsIndexPageJob(graphene.ObjectType):
-    id = graphene.ID()
+    id = graphene.String()
     title = graphene.String()
+    description = graphene.String()
     level = graphene.String()
     location = graphene.String()
     url = graphene.String()
@@ -475,7 +482,42 @@ class JobsIndexPageObjectType(graphene.ObjectType):
     strapline = graphene.String()
 
     def resolve_jobs(self, info):
-        return self.jobs.all()
+        # Check xml feed is set
+        if self.jobs_xml_feed == "":
+            return []
+
+        try:
+            # Get fresh data from People HR
+            res = requests.get(self.jobs_xml_feed, timeout=5)
+
+            # Parse XML Response
+            soup = BeautifulSoup(res.content, features="xml")
+
+            # Store jobs from API
+            jobs = []
+
+            # Loop over all the items in the RSS feed
+            for job in soup.findAll('item'):
+                # Select desired fields and add them to a jobs list
+                jobs.append({
+                    "id": job.find("reference").getText(),
+                    "title": job.find("vacancyname").getText(),
+                    "description": job.find("vacancydescription").getText(),
+                    "url": job.find("link").getText(),
+                    "level": job.find("department").getText(),
+                    "location": html.unescape(
+                        job.find("city").getText()
+                    )
+                })
+
+            return jobs
+
+        except RequestException as err:
+            # Log to sentry so bug can be investigated
+            logging.error(err)
+
+            # Return empty array to preserve response
+            return []
 
     class Meta:
         interfaces = [PageInterface]
