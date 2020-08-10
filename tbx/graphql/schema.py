@@ -1,10 +1,10 @@
 import html
+import logging
 
 from django.conf import settings
 
 import graphene
 import requests
-import logging
 from bs4 import BeautifulSoup
 from graphene.types import Scalar
 from wagtail.contrib.redirects.models import Redirect
