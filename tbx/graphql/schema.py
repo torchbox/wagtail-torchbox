@@ -7,6 +7,7 @@ import graphene
 import requests
 from bs4 import BeautifulSoup
 from graphene.types import Scalar
+from requests.exceptions import RequestException
 from wagtail.contrib.redirects.models import Redirect
 
 from graphql.validation.rules import NoUnusedFragments, specified_rules
@@ -511,7 +512,7 @@ class JobsIndexPageObjectType(graphene.ObjectType):
 
             return jobs
 
-        except Exception as err:
+        except RequestException as err:
             # Log to sentry so bug can be investigated
             logging.error(err)
 
