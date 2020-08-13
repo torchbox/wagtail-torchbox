@@ -480,6 +480,7 @@ class JobsIndexPageJob(graphene.ObjectType):
 class JobsIndexPageObjectType(graphene.ObjectType):
     jobs = graphene.List(JobsIndexPageJob)
     strapline = graphene.String()
+    intro = graphene.String()
 
     def resolve_jobs(self, info):
         # Check xml feed is set
