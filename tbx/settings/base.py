@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'tbx.taxonomy',
     'tbx.work',
     'tbx.netlify',
+    'tbx.events',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -456,8 +457,8 @@ GRAPHENE = {
 # CORS settings
 
 
-CORS_URLS_REGEX = r'^(\/graphql\/.*)|(\/review\/api\/.*)$'
-CORS_ORIGIN_WHITELIST = ['https://torchbox.com', 'https://tbx-production.netlify.app', 'https://tbx-staging.netlify.app']
+# CORS_URLS_REGEX = r'^(\/graphql\/.*)|(\/review\/api\/.*)|(\/api\/events\/.*)$'
+CORS_ORIGIN_WHITELIST = ['https://torchbox.com', 'https://tbx-production.netlify.app', 'https://tbx-staging.netlify.app', 'http://localhost:8001']
 CORS_ALLOW_HEADERS = default_headers + (
     'x-review-token',
 )

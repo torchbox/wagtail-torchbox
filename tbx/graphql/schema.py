@@ -18,6 +18,7 @@ from tbx.people.models import (Author, Contact, ContactReasonsList,
 from tbx.services.models import ServicePage, SubServicePage
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkIndexPage, WorkPage
+from tbx.events.models import EventsPage
 
 from .streamfield import StreamFieldSerialiser
 from .utils import serialize_rich_text
@@ -524,6 +525,31 @@ class JobsIndexPageObjectType(graphene.ObjectType):
         interfaces = [PageInterface]
 
 
+class EventObjectType(graphene.ObjectType):
+    id = graphene.ID()
+    event_type = graphene.String()
+    name = graphene.String()
+    start_time = graphene.String()
+    join_url = graphene.String()
+
+
+class EventsPageObjectType(graphene.ObjectType):
+    strapline = graphene.String()
+    hosts = graphene.List(AuthorObjectType)
+    event = graphene.Field(EventObjectType)
+    body = graphene.Field(StreamField)
+    post_registration_body = graphene.Field(StreamField)
+
+    class Meta:
+        interfaces = [PageInterface]
+
+    def resolve_hosts(self, *args, **kwargs):
+        return [
+            host.person
+            for host in self.hosts.all()
+        ]
+
+
 class PersonIndexPageObjectType(graphene.ObjectType):
     strapline = graphene.String()
 
@@ -596,6 +622,7 @@ class Query(graphene.ObjectType):
     jobs_index_page = graphene.Field(JobsIndexPageObjectType, preview_token=graphene.String())
     person_index_page = graphene.Field(PersonIndexPageObjectType, preview_token=graphene.String())
     culture_pages = graphene.List(CulturePageObjectType, preview_token=graphene.String(), slug=graphene.String())
+    events_pages = graphene.List(EventsPageObjectType, preview_token=graphene.String(), slug=graphene.String())
     images = graphene.List(ImageObjectType, ids=graphene.List(graphene.Int))
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
@@ -755,6 +782,21 @@ class Query(graphene.ObjectType):
             culture_pages = culture_pages.filter(slug=kwargs['slug'])
 
         return culture_pages
+
+    def resolve_events_pages(self, info, **kwargs):
+        events_pages = EventsPage.objects.live().public()
+
+        if 'preview_token' in kwargs:
+            page = get_page_preview(EventsPage, kwargs['preview_token'])
+            if page:
+                return [page]
+            else:
+                return []
+
+        if 'slug' in kwargs:
+            events_pages = events_pages.filter(slug=kwargs['slug'])
+
+        return events_pages
 
     def resolve_images(self, info, **kwargs):
         images = TorchboxImage.objects.all()
