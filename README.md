@@ -56,7 +56,7 @@ In this project Wagtail is used as a headless CMS and its data is consumed via [
 
 ### What's different here?
 
-Any Django/Wagtail specific development is done as usuaa (Models, Snippets, Taxonomies etc). The difference is in how this data is accessed. Instead of using data in a django template, we explicity define what data is available to query via GraphQL in the `./tbx/graphql/schema.py` file. If you have done any work with [Graphene](https://docs.graphene-python.org/en/latest/) before then this file will look fairly standard, if not, please take a look through this [simple demo](https://docs.graphene-python.org/projects/django/en/latest/tutorial-plain/) to improve your understanding of how to build on the GraphQL api.
+Any Django/Wagtail specific development is done as usual (Models, Snippets, Taxonomies etc). The difference is in how this data is accessed. Instead of using data in a django template, we explicity define what data is available to query via GraphQL in the `./tbx/graphql/schema.py` file. If you have done any work with [Graphene](https://docs.graphene-python.org/en/latest/) before then this file will look fairly standard, if not, please take a look through this [simple demo](https://docs.graphene-python.org/projects/django/en/latest/tutorial-plain/) to improve your understanding of how to build on the GraphQL api.
 
 
 ### ...and the frontend?
