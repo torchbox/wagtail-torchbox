@@ -7,10 +7,10 @@ import graphene
 import requests
 from bs4 import BeautifulSoup
 from graphene.types import Scalar
+from graphql.validation.rules import NoUnusedFragments, specified_rules
 from requests.exceptions import RequestException
 from wagtail.contrib.redirects.models import Redirect
 
-from graphql.validation.rules import NoUnusedFragments, specified_rules
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.models import (GlobalSettings, JobIndexPage, StandardPage,
                              TorchboxImage)
@@ -577,12 +577,13 @@ class RedirectObjectType(graphene.ObjectType):
         if self.redirect_page is not None:
             return self.redirect_page.specific
 
+
 class GlobalSettingsObjectType(graphene.ObjectType):
     contact_telephone = graphene.String()
     contact_email = graphene.String()
     contact_twitter = graphene.String()
     email_newsletter_teaser = graphene.String()
-    oxford_address_title= graphene.String()
+    oxford_address_title = graphene.String()
     oxford_address = graphene.String()
     oxford_address_link = graphene.String()
     oxford_address_svg = graphene.String()
@@ -598,6 +599,7 @@ class GlobalSettingsObjectType(graphene.ObjectType):
     cambridge_address_link = graphene.String()
     cambridge_address_svg = graphene.String()
     cambridge_address_title = graphene.String()
+
 
 def get_page_preview(model, token):
     return model.get_page_from_preview_token(token)
