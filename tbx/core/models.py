@@ -591,17 +591,22 @@ class GlobalSettings(BaseSetting):
     contact_twitter = models.CharField(max_length=255, help_text='Twitter')
     email_newsletter_teaser = models.CharField(max_length=255, help_text='Text that sits above the email newsletter')
     oxford_address_title = models.CharField(max_length=255, help_text='Full address')
-    oxford_address = models.CharField(max_length=255, help_text='Full address')
+    oxford_address = RichTextField(help_text='Full address')
     oxford_address_link = models.URLField(max_length=255, help_text='Link to google maps')
     oxford_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
     bristol_address_title = models.CharField(max_length=255, help_text='Full address')
-    bristol_address = models.CharField(max_length=255, help_text='Full address')
+    bristol_address = RichTextField(help_text='Full address')
     bristol_address_link = models.URLField(max_length=255, help_text='Link to google maps')
     bristol_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
-    phili_address_title = models.CharField(max_length=255, help_text='Full address')
-    phili_address = models.CharField(max_length=255, help_text='Full address')
-    phili_address_link = models.URLField(max_length=255, help_text='Link to google maps')
-    phili_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
+    us_address_title = models.CharField(max_length=255, help_text='Full address')
+    us_address = RichTextField(help_text='Full address')
+    us_address_link = models.URLField(max_length=255, help_text='Link to google maps')
+    us_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here')
+    us_address_title = models.CharField(max_length=255, help_text='Full address')
+    cambridge_address = RichTextField(help_text='Full address', blank=True)
+    cambridge_address_link = models.URLField(max_length=255, help_text='Link to google maps', blank=True)
+    cambridge_address_svg = models.CharField(max_length=9000, help_text='Paste SVG code here', blank=True)
+    cambridge_address_title = models.CharField(max_length=255, help_text='Full address', blank=True)
 
     # Contact widget
     contact_person = models.ForeignKey(
@@ -628,10 +633,14 @@ class GlobalSettings(BaseSetting):
         FieldPanel('bristol_address'),
         FieldPanel('bristol_address_link'),
         FieldPanel('bristol_address_svg'),
-        FieldPanel('phili_address_title'),
-        FieldPanel('phili_address'),
-        FieldPanel('phili_address_link'),
-        FieldPanel('phili_address_svg'),
+        FieldPanel('us_address_title'),
+        FieldPanel('us_address'),
+        FieldPanel('us_address_link'),
+        FieldPanel('us_address_svg'),
+        FieldPanel('cambridge_address_title'),
+        FieldPanel('cambridge_address'),
+        FieldPanel('cambridge_address_link'),
+        FieldPanel('cambridge_address_svg'),
 
         MultiFieldPanel([
             PageChooserPanel('contact_person'),

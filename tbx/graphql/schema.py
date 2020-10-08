@@ -12,7 +12,8 @@ from wagtail.contrib.redirects.models import Redirect
 
 from graphql.validation.rules import NoUnusedFragments, specified_rules
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage
+from tbx.core.models import (GlobalSettings, JobIndexPage, StandardPage,
+                             TorchboxImage)
 from tbx.people.models import (Author, Contact, ContactReasonsList,
                                CulturePage, PersonIndexPage, PersonPage)
 from tbx.services.models import ServicePage, SubServicePage
@@ -576,6 +577,27 @@ class RedirectObjectType(graphene.ObjectType):
         if self.redirect_page is not None:
             return self.redirect_page.specific
 
+class GlobalSettingsObjectType(graphene.ObjectType):
+    contact_telephone = graphene.String()
+    contact_email = graphene.String()
+    contact_twitter = graphene.String()
+    email_newsletter_teaser = graphene.String()
+    oxford_address_title= graphene.String()
+    oxford_address = graphene.String()
+    oxford_address_link = graphene.String()
+    oxford_address_svg = graphene.String()
+    bristol_address_title = graphene.String()
+    bristol_address = graphene.String()
+    bristol_address_link = graphene.String()
+    bristol_address_svg = graphene.String()
+    us_address_title = graphene.String()
+    us_address = graphene.String()
+    us_address_link = graphene.String()
+    us_address_svg = graphene.String()
+    cambridge_address = graphene.String()
+    cambridge_address_link = graphene.String()
+    cambridge_address_svg = graphene.String()
+    cambridge_address_title = graphene.String()
 
 def get_page_preview(model, token):
     return model.get_page_from_preview_token(token)
@@ -600,6 +622,7 @@ class Query(graphene.ObjectType):
     contact = graphene.Field(ContactObjectType)
     contact_reasons = graphene.Field(ContactReasonsObjectType)
     redirects = graphene.List(RedirectObjectType)
+    global_settings = graphene.Field(GlobalSettingsObjectType)
 
     def resolve_services(self, info, **kwargs):
         services = Service.objects.all().order_by('sort_order')
@@ -777,6 +800,9 @@ class Query(graphene.ObjectType):
 
     def resolve_redirects(self, info):
         return Redirect.objects.select_related('redirect_page')
+
+    def resolve_global_settings(self, info):
+        return GlobalSettings.objects.first()
 
 
 schema = graphene.Schema(
