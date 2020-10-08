@@ -12,7 +12,8 @@ from wagtail.contrib.redirects.models import Redirect
 
 from graphql.validation.rules import NoUnusedFragments, specified_rules
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.core.models import JobIndexPage, StandardPage, TorchboxImage, GlobalSettings
+from tbx.core.models import (GlobalSettings, JobIndexPage, StandardPage,
+                             TorchboxImage)
 from tbx.people.models import (Author, Contact, ContactReasonsList,
                                CulturePage, PersonIndexPage, PersonPage)
 from tbx.services.models import ServicePage, SubServicePage
