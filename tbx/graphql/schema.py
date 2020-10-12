@@ -7,10 +7,10 @@ import graphene
 import requests
 from bs4 import BeautifulSoup
 from graphene.types import Scalar
-from graphql.validation.rules import NoUnusedFragments, specified_rules
 from requests.exceptions import RequestException
 from wagtail.contrib.redirects.models import Redirect
 
+from graphql.validation.rules import NoUnusedFragments, specified_rules
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.models import (GlobalSettings, JobIndexPage, StandardPage,
                              TorchboxImage)
