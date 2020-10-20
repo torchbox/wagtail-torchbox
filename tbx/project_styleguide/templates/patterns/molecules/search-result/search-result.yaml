@@ -1,0 +1,27 @@
+context:
+  result:
+    title: Page title
+    listing_image: fake
+    listing_title: Listing title
+    listing_summary: Listing summary
+    search_description: Search description
+    depth: 6
+    get_ancestors:
+      - is_root: false
+        depth: 3
+        title: Some category
+      - is_root: false
+        depth: 4
+        title: Some sub category
+      - is_root: false
+        depth: 5
+        title: We need to go deeper
+
+tags:
+  pageurl:
+    result:
+      raw: '#'
+  image:
+    result.listing_image fill-450x300:
+      raw: |
+        <img src="http://via.placeholder.com/450x300" width="450" height="300" alt="Some alt">

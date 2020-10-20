@@ -1,0 +1,50 @@
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags navigation_tags util_tags wagtailaccessibility_tags %}
+{% tota11y %}
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        {# TODO fallbacks if page is not defined e.g. for 404 page #}
+        <meta charset="utf-8" />
+        <title>{% block title_prefix %}{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{{ request.site.site_name }} | {% endif %}{% endblock %}{% block title %}{% firstof page.seo_title page.title %}{% endblock %}{% block title_suffix %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {{ request.site.site_name }}{% endif %}{% endblock %}</title>
+        <meta name="description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.listing_summary }}{% endif %}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {% comment %}
+            Set "noindex" if the site is not being requested on a configured
+            domain to prevent search engines crawling admin domains.
+            This ignores ports for simplicity.
+        {% endcomment %}
+        {% if SEO_NOINDEX or request.get_host != request.site.hostname %}
+            <meta name="robots" content="noindex">
+        {% endif %}
+
+        {% block meta_tags %}{% endblock %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+        {% block extra_css %}{% endblock %}
+    </head>
+
+    <body class="{% block body_class %}template-{{ page.get_verbose_name|slugify }}{% endblock %}">
+        {% block body_top %}{% endblock %}
+
+        {% include "patterns/atoms/sprites/sprites.html" %}
+
+        {% wagtailuserbar %}
+
+        {% block header %}{% endblock %}
+
+        <main class="wrapper wrapper--large wrapper--main" id="main-content">
+            {% block content %}
+                {{ pattern_library_rendered_pattern }}
+            {% endblock %}
+        </main>
+
+        {% block footer %}{% endblock %}
+
+        <script src="{% static 'js/main.js' %}"></script>
+
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>
+

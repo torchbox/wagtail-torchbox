@@ -1,0 +1,12 @@
+context:
+  call_to_action:
+    title: Stub content
+    summary: Check out our awesome stub content
+    get_link_text: Click here
+    get_link_url: '#'
+
+tags:
+  image:
+    call_to_action.image fill-450x300:
+      raw: |
+        <img src="http://via.placeholder.com/450x300" width="450" height="300" alt="Some alt">

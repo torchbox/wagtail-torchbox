@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+<h2>Simple video modal with no external library</h2>
+<div data-video-modal>
+    <a data-modal-open>Open video</a>
+    <div data-modal-window class="video-modal" aria-live="polite">
+        <a data-modal-close class="video-modal__close">Close</a>
+        <div class="video-modal__container">
+            {% include_block value.embed %}
+        </div>
+    </div>
+</div>

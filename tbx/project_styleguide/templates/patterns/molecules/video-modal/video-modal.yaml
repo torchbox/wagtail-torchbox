@@ -1,0 +1,8 @@
+tags:
+  include_block:
+    value.embed:
+      raw: |
+        <div style="padding-bottom: 56.25%;" class="responsive-object">
+          <iframe width="480" height="270" src="https://www.youtube.com/embed/1PWTqCBVjjU?feature=oembed" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen>
+          </iframe>
+        </div>

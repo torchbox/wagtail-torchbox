@@ -1,0 +1,14 @@
+context:
+  settings:
+    utils:
+      SocialMediaSettings:
+        site_name: 'Stub site name'
+        twitter_handle: '@test'
+        facebook_app_id: 123
+
+tags:
+  image:
+    page.social_image fill-150x150 as social_img:
+      target_var: social_img
+      raw:
+        url: /some_fake_picture_url.png

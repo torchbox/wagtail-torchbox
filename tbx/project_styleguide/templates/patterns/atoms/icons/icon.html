@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+
+{# Use with include, e.g. `{% include "patterns/atoms/icons/icon.html" with name="mybutton" classname="icon--stroke button__icon" %}` #}
+
+<svg
+    class="icon icon--{{ name }}{% if classname %} {{ classname }}{% endif %}"
+    aria-hidden="true"
+    focusable="false">
+    <use xlink:href="#{{ name }}" href="#{{ name }}"></use>
+</svg>
+
+

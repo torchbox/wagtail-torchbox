@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'tbx.blog',
     'tbx.core.apps.TorchboxCoreAppConfig',
+    "tbx.navigation",
     'tbx.people',
     'tbx.services',
     'tbx.sign_up_form',
@@ -83,6 +84,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'wagtail.contrib.settings',
+
+    "tbx.project_styleguide.apps.ProjectStyleguideConfig",
 ]
 
 MIDDLEWARE = [
@@ -120,6 +123,7 @@ TEMPLATES = [
                 'tbx.core.context_processors.fb_app_id',
                 'wagtail.contrib.settings.context_processors.settings',
             ],
+            "builtins": ["pattern_library.loader_tags"],
         },
     },
 ]
@@ -275,7 +279,7 @@ LOGGING = {
         }
     },
     'loggers': {
-        '{{ cookiecutter.repo_name }}': {
+        'tbx': {
             'handlers': ['console', 'sentry'],
             'level': 'INFO',
             'propagate': False,
@@ -444,6 +448,16 @@ if 'MAILCHIMP_KEY' in env:
 if 'MAILCHIMP_MAILING_LIST_ID' in env:
     MAILCHIMP_MAILING_LIST_ID = env['MAILCHIMP_MAILING_LIST_ID']
 
+
+PASSWORD_REQUIRED_TEMPLATE = "patterns/pages/wagtail/password_required.html"
+# Styleguide
+PATTERN_LIBRARY_ENABLED = env.get("PATTERN_LIBRARY_ENABLED", "false").lower() == "true"
+PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(
+    PROJECT_DIR, "project_styleguide", "templates"
+)
+
+# Google Tag Manager ID from env
+GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID")
 
 
 

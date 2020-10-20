@@ -1,0 +1,10 @@
+context:
+  secondarynav:
+    - dummy
+    - dummy
+    - dummy
+
+tags:
+  include_block:
+    link:
+      template_name: 'patterns/molecules/navigation/blocks/menu_item.html'
