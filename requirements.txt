@@ -13,9 +13,7 @@ django-storages==1.6.6
 -e git://github.com/wagtail/wagtail-review.git@8ec5ec188ee75a075bd83c3a7804aeac9abf71be#egg=wagtail-review
 django-phonenumber-field==2.1.0
 phonenumbers==8.10.3
-graphene_django==2.2.0
 django-cors-headers==3.0.2
-wagtailnetlify==0.2
 lxml==4.5.2
 
 # Development requirements

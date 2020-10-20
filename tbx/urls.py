@@ -7,7 +7,6 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.vary import vary_on_headers
 
-from graphene_django.views import GraphQLView
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
@@ -54,8 +53,6 @@ if settings.DEBUG:
 urlpatterns += [
     # path('review/', include(wagtailreview_urls)),
     path('', include(torchbox_urls)),
-    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    path('', lambda request: HttpResponseNotFound(), name='home'),
 ]
 
 

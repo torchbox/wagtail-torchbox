@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'tbx.sign_up_form',
     'tbx.taxonomy',
     'tbx.work',
-    'tbx.netlify',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -73,9 +72,7 @@ INSTALLED_APPS = [
     # Temporarily disable as this is breaking page creation. See ticket #229
     # 'wagtail_review',
     'phonenumber_field',
-    'graphene_django',
     'corsheaders',
-    'headlesspreview',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -448,32 +445,16 @@ if 'MAILCHIMP_MAILING_LIST_ID' in env:
     MAILCHIMP_MAILING_LIST_ID = env['MAILCHIMP_MAILING_LIST_ID']
 
 
-# GraphQL API Endpoint
-GRAPHENE = {
-    'SCHEMA': 'tbx.graphql.schema.schema',
-}
+
 
 # CORS settings
-
-
-CORS_URLS_REGEX = r'^(\/graphql\/.*)|(\/review\/api\/.*)$'
-CORS_ORIGIN_WHITELIST = ['https://torchbox.com', 'https://tbx-production.netlify.app', 'https://tbx-staging.netlify.app']
+CORS_URLS_REGEX = r'^(\/review\/api\/.*)$'
+CORS_ORIGIN_WHITELIST = ['https://torchbox.com']
 CORS_ALLOW_HEADERS = default_headers + (
     'x-review-token',
 )
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-
-NETLIFY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', 'http://localhost:8000')
-NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
-
-
-# Preview
-
-# Wagtail previews are served from the frontend site, this URL is where they are directed to
-
-if 'PREVIEW_URL' in env:
-    PREVIEW_URL = env['PREVIEW_URL']
 
 
 # Reviews
