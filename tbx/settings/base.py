@@ -468,9 +468,3 @@ CORS_ALLOW_HEADERS = default_headers + (
 )
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-
-
-# Reviews
-
-# Overrides the URL that wagtail_review sends in emails to reviewers
-# WAGTAILREVIEW_REVIEW_URL_BUILDER = 'tbx.settings.reviews.review_url_builder'

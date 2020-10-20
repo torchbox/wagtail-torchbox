@@ -2,7 +2,6 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import headlesspreview.models
 import modelcluster.fields
 import wagtail.core.fields
 
@@ -41,7 +40,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=(headlesspreview.models.HeadlessPreviewMixin, 'wagtailcore.page'),
+            bases=('wagtailcore.page'),
         ),
         migrations.CreateModel(
             name='SubServicePageClientLogo',
