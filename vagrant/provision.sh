@@ -2,13 +2,12 @@
 set -xe
 
 PROJECT_NAME=$1
-
 PROJECT_DIR=/vagrant
 VIRTUALENV_DIR=/home/vagrant/.virtualenvs/$PROJECT_NAME
-
 PYTHON=$VIRTUALENV_DIR/bin/python
 PIP=$VIRTUALENV_DIR/bin/pip
 
+apt-get -qq update -y
 
 # Create database
 set +e
@@ -28,6 +27,8 @@ su - vagrant -c "$PIP install --upgrade pip"
 su - vagrant -c "$PIP install --upgrade six setuptools"
 
 # Install PIP requirements
+ls -al $PROJECT_DIR
+
 su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements.txt"
 
 # Install Fabric 2
