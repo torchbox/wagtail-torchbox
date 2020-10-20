@@ -1,0 +1,102 @@
+/* ============================================
+    Media queries
+*/
+@mixin media-query($queries...) {
+    @each $query in $queries {
+        @each $breakpoint in $breakpoints {
+            $name: nth($breakpoint, 1);
+            $declaration: nth($breakpoint, 2);
+
+            @if $query == $name and $declaration {
+                @media only screen and #{$declaration} {
+                    @content;
+                }
+            }
+        }
+    }
+}
+
+/* ============================================
+    z-index
+*/
+
+@mixin z-index($key) {
+    z-index: z-index($key);
+}
+
+/* ============================================
+  Placeholder text
+*/
+@mixin placeholder-text() {
+    &.placeholder {
+        @content;
+    }
+
+    &::placeholder {
+        @content;
+    }
+}
+
+/* ============================================
+  Hide text
+*/
+@mixin hidden() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ============================================
+  iOS Native vertical scroll
+*/
+@mixin native-vertical-scroll() {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ============================================
+    Output a rem and px fallback value for the given property
+*/
+@mixin rem($property, $values) {
+    $px: ();
+    $rem: ();
+
+    @each $value in $values {
+        @if $value == 0 or $value == auto or $value == inherit {
+            $px: append($px, $value);
+            $rem: append($rem, $value);
+        } @else {
+            $px: append($px, $value);
+            $rem: append($rem, rem(strip-unit($value)));
+        }
+    }
+    #{$property}: $px;
+    #{$property}: $rem;
+}
+
+/* ============================================
+    Output a `font-size: [x]rem;` declaration for the given px value
+*/
+@mixin rem-font-size($font-size) {
+    @include rem(font-size, $font-size);
+}
+
+/* ============================================
+    Font sizes
+*/
+@mixin font-size($keyword) {
+    $size: map-get($font-sizes, $keyword);
+
+    @if $size == null {
+        @warn 'Font size ‘#{$keyword}’ does not exist';
+    } @else {
+        @include rem-font-size($size);
+    }
+}
