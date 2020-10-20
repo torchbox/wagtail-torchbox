@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=('wagtailcore.page'),
+            bases=('wagtailcore.page',),
         ),
         migrations.CreateModel(
             name='SubServicePageClientLogo',

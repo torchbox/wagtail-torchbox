@@ -1,7 +1,6 @@
 from django.apps import apps
 from django.conf import settings
 from django.contrib import admin
-from django.contrib.auth.decorators import login_required
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
@@ -83,9 +82,7 @@ Page.serve = get_default_cache_control_decorator()(Page.serve)
 
 # Join private and public URLs.
 urlpatterns = (
-    private_urlpatterns
-    + urlpatterns
-    + [
+    private_urlpatterns + urlpatterns + [
         # Add Wagtail URLs at the end.
         # Wagtail cache-control is set on the page models's serve methods.
         path("", include(wagtail_urls))

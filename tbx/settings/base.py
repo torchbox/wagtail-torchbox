@@ -459,7 +459,6 @@ PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(
 GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID")
 
 
-
 # CORS settings
 CORS_URLS_REGEX = r'^(\/review\/api\/.*)$'
 CORS_ORIGIN_WHITELIST = ['https://torchbox.com']
