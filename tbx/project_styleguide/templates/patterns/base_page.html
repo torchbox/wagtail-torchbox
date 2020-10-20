@@ -22,10 +22,11 @@
         Twitter summary card - see https://dev.twitter.com/cards/types/summary
         and https://dev.twitter.com/cards/getting-started
     {% endcomment %}
+    {% wagtailsite as current_site %}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@{{ settings.utils.SocialMediaSettings.twitter_handle }}" />
     <meta name="twitter:title" content="{{ page.title }}" />
-    <meta name="twitter:description" content="{{ page|social_text:request.site }}">
+    <meta name="twitter:description" content="{{ page|social_text:current_site }}">
     {% if page.social_image  %}
         {% image page.social_image width-1000 as social_img %}
         {# This will give a full path to the image when on staging or production because S3 storage is used. If testing locally, make sure you use the default localhost:8000 url. Testing via :3000 will give peculiar results. #}
@@ -37,7 +38,7 @@
         {% comment %}
         An example of how to add a default image to use for social sharing in case one is not provided on the page.
         Note that you need to explicitly add the root url here as the static path will not include it
-        <meta name="twitter:image" content="{{ request.site.root_url }}{% static 'images/social-image.png' %}">
+        <meta name="twitter:image" content="{{ current_site.root_url }}{% static 'images/social-image.png' %}">
         {% endcomment %}
     {% endif %}
 
@@ -56,10 +57,10 @@
         {% comment %}
         An example of how to add a default image to use for social sharing in case one is not provided on the page.
         Note that you need to explicitly add the root url here as the static path will not include it
-        <meta name="twitter:image" content="{{ request.site.root_url }}{% static 'images/social-image.png' %}">
+        <meta name="twitter:image" content="{{ current_site.root_url }}{% static 'images/social-image.png' %}">
         {% endcomment %}
     {% endif %}
-    <meta property="og:description" content="{{ page|social_text:request.site }}" />
+    <meta property="og:description" content="{{ page|social_text:current_site }}" />
     <meta property="og:site_name" content="{{ settings.utils.SocialMediaSettings.site_name }}" />
 {% endblock meta_tags %}
 

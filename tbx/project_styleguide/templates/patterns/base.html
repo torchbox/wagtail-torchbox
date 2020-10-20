@@ -5,7 +5,8 @@
     <head>
         {# TODO fallbacks if page is not defined e.g. for 404 page #}
         <meta charset="utf-8" />
-        <title>{% block title_prefix %}{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{{ request.site.site_name }} | {% endif %}{% endblock %}{% block title %}{% firstof page.seo_title page.title %}{% endblock %}{% block title_suffix %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {{ request.site.site_name }}{% endif %}{% endblock %}</title>
+        {% wagtail_site as current_site %}
+        <title>{% block title_prefix %}{% if current_site and page.pk == current_site.root_page.pk and current_site.site_name %}{{ current_site.site_name }} | {% endif %}{% endblock %}{% block title %}{% firstof page.seo_title page.title %}{% endblock %}{% block title_suffix %}{% if current_site and page.pk != current_site.root_page.pk and current_site.site_name %} | {{ current_site.site_name }}{% endif %}{% endblock %}</title>
         <meta name="description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.listing_summary }}{% endif %}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -14,7 +15,7 @@
             domain to prevent search engines crawling admin domains.
             This ignores ports for simplicity.
         {% endcomment %}
-        {% if SEO_NOINDEX or request.get_host != request.site.hostname %}
+        {% if SEO_NOINDEX or request.get_host != current_site.hostname %}
             <meta name="robots" content="noindex">
         {% endif %}
 
