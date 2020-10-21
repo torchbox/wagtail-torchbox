@@ -10,6 +10,7 @@
     --color--light-grey-accessible: #757575;
     --color--grey: #444;
     --color--white: #fff;
+    --color--white-translucent: rgba(white, 0.8);
     --color--black: #000;
 }
 
@@ -22,6 +23,7 @@ $color--light-grey-accessible: var(--color--light-grey-accessible);
 $color--grey: var(--color--grey);
 $color--green: var(--color--green);
 $color--white: var(--color--white);
+$color--white-translucent: var(--color--white-translucent);
 $color--black: var(--color--black);
 
 // Theme Vars (defined in themes.scss)
