@@ -1,0 +1,70 @@
+.author-block {
+    &__container {
+        @include container();
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &__image {
+        width: 55px;
+        height: 55px;
+        margin-right: 20px;
+
+        @include media-query(large) {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__name {
+        color: $primary;
+        font-size: 20px;
+        margin-bottom: 2px;
+        border-bottom: none;
+    }
+
+    &__meta {
+        font-size: 12px;
+        line-height: 1.4;
+        margin: 0 0 0;
+    }
+
+    &__role {
+        margin: 0 0 2px;
+        line-height: 1.4;
+        color: $accent-small-text;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    &__date {
+        font-size: 12px;
+        text-transform: none;
+        letter-spacing: 0;
+        color: #333;
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &_readtime {
+        font-size: 12px;
+        text-transform: none;
+        letter-spacing: 0;
+        color: #333;
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &__tags {
+        margin: 10px 0 0;
+    }
+}
