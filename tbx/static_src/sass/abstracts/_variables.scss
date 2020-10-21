@@ -1,15 +1,38 @@
 // --------------------------------- Colors -------------------------------------
-$color--primary: #444;
-$color--secondary: #fff;
-$color--tertiary: #f9f9f9;
 
-$color--white: #fff;
-$color--black: #000;
-$color--off-black: #141414;
-$color--red: #f00;
-$color--border: rgba($color--off-black, 0.2);
+:root {
+    --color--coral: #fd5765;
+    --color--coral-dark: #eb0316;
+    --color--green: #3beccd;
+    --color--light-blue: #2f128d;
+    --color--blue: #251657;
+    --color--light-grey: #f4f3f6;
+    --color--light-grey-accessible: #757575;
+    --color--grey: #444;
+    --color--white: #fff;
+    --color--black: #000;
+}
 
-$color--default: $color--off-black;
+$color--coral: var(--color--coral);
+$color--coral-dark: var(--color--coral-dark);
+$color--light-blue: var(--color--light-blue);
+$color--blue: var(--color--blue);
+$color--light-grey: var(--color--light-grey);
+$color--light-grey-accessible: var(--color--light-grey-accessible);
+$color--grey: var(--color--grey);
+$color--green: var(--color--green);
+$color--white: var(--color--white);
+$color--black: var(--color--black);
+
+// Theme Vars (defined in themes.scss)
+$color--primary: var(--color-primary);
+$color--accent: var(--color-accent);
+$color--accent-small-text: var(--color-accent-small);
+$color--link-color: var(--color-link);
+$color--link-hover-color: var(--color-link-hover);
+
+// Text colour
+$color--default: var(--color--grey);
 
 // Button colours
 $button-colours: (
@@ -29,8 +52,7 @@ $button-colours: (
 
 // --------------------------------- Fonts --------------------------------------
 
-$font--primary: Sans-Serif;
-$font--secondary: Sans-Serif;
+$font--primary: 'Apercu Pro', arial, helvetica, sans-serif;
 
 // Font weights
 $weight--bold: 700;
