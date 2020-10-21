@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg fill="#fd5765" viewBox="0 0 298 298" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+    <title>Tick icon</title>
+    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="Group" transform="translate(149.000000, 149.000000) scale(-1, 1) rotate(-180.000000) translate(-149.000000, -149.000000) ">
+            <path d="M0,149 L0,0 L149,0 L298,0 L298,123 C298,191.8 297.6,246 297.1,246 C296.7,246 268,197 233.4,137 C198.8,77.1 170.2,28 169.8,28 C168.9,28 34,105.7 32.6,107 C32.2,107.4 39.8,121.6 49.5,138.4 L67.2,169 L69.8,167.6 C71.3,166.8 86.4,158.1 103.5,148.2 C120.6,138.3 134.8,130.5 135.3,130.9 C136.5,132.1 231,296.1 231,297.1 C231,297.6 186.8,298 115.5,298 L0,298 L0,149 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

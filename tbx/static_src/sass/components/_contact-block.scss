@@ -7,7 +7,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
     padding-top: $gutter;
     padding-bottom: $gutter;
 
-    &__Content {
+    &__content {
         @include container();
         display: flex;
         flex-direction: column;
@@ -86,7 +86,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         border-bottom: none;
 
         @include media-query(medium) {
-            margin: 0px ($gutter * 0.75) 0 0;
+            margin: 0 ($gutter * 0.75) 0 0;
         }
 
         &:hover {

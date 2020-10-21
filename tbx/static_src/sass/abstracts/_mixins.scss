@@ -49,42 +49,25 @@
 }
 
 /* ============================================
-    Output a rem and px fallback value for the given property
-*/
-@mixin rem($property, $values) {
-    $px: ();
-    $rem: ();
-
-    @each $value in $values {
-        @if $value == 0 or $value == auto or $value == inherit {
-            $px: append($px, $value);
-            $rem: append($rem, $value);
-        } @else {
-            $px: append($px, $value);
-            $rem: append($rem, rem(strip-unit($value)));
-        }
-    }
-    #{$property}: $px;
-    #{$property}: $rem;
-}
-
-/* ============================================
-    Output a `font-size: [x]rem;` declaration for the given px value
-*/
-@mixin rem-font-size($font-size) {
-    @include rem(font-size, $font-size);
-}
-
-/* ============================================
     Font sizes
 */
-@mixin font-size($keyword) {
-    $size: map-get($font-sizes, $keyword);
 
+@mixin font-size($size) {
     @if $size == null {
         @warn 'Font size ‘#{$keyword}’ does not exist';
     } @else {
-        @include rem-font-size($size);
+        $small-size: map-get($small-font-sizes, $size);
+        font-size: $small-size;
+
+        @include media-query(medium) {
+            $medium-size: map-get($medium-font-sizes, $size);
+            font-size: $medium-size;
+        }
+
+        @include media-query(large) {
+            $large-size: map-get($large-font-sizes, $size);
+            font-size: $large-size;
+        }
     }
 }
 
@@ -94,18 +77,14 @@
 
 @mixin container() {
     position: relative;
-    margin: 0px 8.33vw;
-
-    @include media-query(medium) {
-        margin: 0 8.33vw 0;
-    }
+    margin: 0 8.33vw;
 }
 
 /* ============================================
     Streamfield spacing
 */
 
-@mixin streamblockPadding() {
+@mixin streamblock-padding() {
     @include media-query(large) {
         max-width: 50vw;
         margin-left: 16.66vw;

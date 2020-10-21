@@ -1,7 +1,7 @@
 // Component theme overrides:
-$hero-background: var(--hero-background, white);
-$hero-title-color: var(--hero-title-color, $primary);
-$hero-link-color: var(--hero-link-color, $link-color);
+$hero-background: var(--hero-background, $color--white);
+$hero-title-color: var(--hero-title-color, $color--primary);
+$hero-link-color: var(--hero-link-color, $color--link-color);
 
 .hero {
     $root: &;
@@ -63,7 +63,7 @@ $hero-link-color: var(--hero-link-color, $link-color);
         }
 
         span {
-            color: var(--hero-title-accent-color, $accent) !important;
+            color: var(--hero-title-accent-color, $color--accent);
         }
     }
 
@@ -93,8 +93,8 @@ $hero-link-color: var(--hero-link-color, $link-color);
         display: flex;
         margin-top: 20px;
         flex-wrap: wrap;
-        @include for-tablet-landscape-up {
-            padding-top: 0px;
+        @include media-query(medium) {
+            padding-top: 0;
             margin: 0;
         }
     }
@@ -107,21 +107,20 @@ $hero-link-color: var(--hero-link-color, $link-color);
         padding-bottom: 25px;
 
         @include media-query(medium) {
-            padding-bottom: 0px;
+            padding-bottom: 0;
             padding-right: 50px;
         }
 
         a {
             transition: all 0.2s ease;
-            color: $hero-link-color !important;
+            color: $hero-link-color;
             font-size: 13px;
-            font-family: $mainFont;
             text-decoration: none;
             border-bottom: 2px solid $hero-background;
 
             &:hover {
                 border-bottom: 2px solid
-                    var(--hero-link-underscore-color, $accent);
+                    var(--hero-link-underscore-color, $color--accent);
             }
 
             @include media-query(medium) {
@@ -141,10 +140,10 @@ $hero-link-color: var(--hero-link-color, $link-color);
     }
 
     .dark-theme & {
-        margin-bottom: 50px !important;
+        margin-bottom: 50px;
 
         @include media-query(medium) {
-            min-height: calc(100vh - 180px) !important;
+            min-height: calc(100vh - 180px);
         }
     }
 }

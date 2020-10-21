@@ -4,10 +4,7 @@
     padding: ($gutter * 5) 0 $gutter;
 
     &__content {
-        @include container;
-    }
-
-    &__intro {
+        @include container();
     }
 
     &__intro-opinion {
@@ -21,7 +18,7 @@
             height: 8px;
             left: 0;
             top: 0;
-            background: $accent;
+            background: $color--accent;
         }
 
         @include media-query(large) {
@@ -30,13 +27,13 @@
     }
 
     &__intro-title {
-        color: $accent;
+        color: $color--accent;
     }
 
     &__intro-text {
         line-height: 30px;
         margin: 0 0 ($gutter * 2);
-        color: $primary;
+        color: $color--primary;
 
         @include media-query(large) {
             line-height: 42px;
@@ -53,7 +50,7 @@
             grid-column-gap: 8.33vw;
         }
 
-        @include target-ie {
+        @include target-ie() {
             display: flex;
             flex-direction: column;
         }

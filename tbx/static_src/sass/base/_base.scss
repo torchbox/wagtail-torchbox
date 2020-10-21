@@ -1,5 +1,5 @@
 // Theme overrides:
-$page-section-title-color: var(--page-section-title-color, $accent);
+$page-section-title-color: var(--page-section-title-color, $color--accent);
 
 // Box Sizing
 *,
@@ -10,7 +10,7 @@ $page-section-title-color: var(--page-section-title-color, $accent);
 
 body {
     overflow-x: hidden;
-    background-color: $color--tertiary;
+    background-color: $color--white;
     scroll-behavior: smooth;
 
     @media (prefers-reduced-motion: reduce) {
@@ -42,12 +42,12 @@ textarea {
 }
 
 a {
-    color: $color--primary;
+    color: $color--link-color;
     text-decoration: none;
     transition: color $transition;
 
     &:hover {
-        color: darken($color--primary, 20%);
+        color: $color--link-hover-color;
         cursor: pointer;
     }
 }

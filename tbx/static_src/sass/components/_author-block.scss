@@ -37,7 +37,7 @@
     &__role {
         margin: 0 0 2px;
         line-height: 1.4;
-        color: $accent-small-text;
+        color: $color--accent-small-text;
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;
@@ -51,17 +51,17 @@
         color: $color--default;
         margin-left: 5px;
         padding-left: 5px;
-        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        border-left: 1px solid rgba($color--black, 0.1);
     }
 
-    &_readtime {
+    &__readtime {
         font-size: 12px;
         text-transform: none;
         letter-spacing: 0;
         color: $color--default;
         margin-left: 5px;
         padding-left: 5px;
-        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        border-left: 1px solid rgba($color--black, 0.1);
     }
 
     &__tags {

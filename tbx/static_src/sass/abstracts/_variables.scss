@@ -10,7 +10,7 @@
     --color--light-grey-accessible: #757575;
     --color--grey: #444;
     --color--white: #fff;
-    --color--white-translucent: rgba(white, 0.8);
+    --color--white-translucent: rgba(255, 255, 255, 0.8);
     --color--black: #000;
 }
 
@@ -35,22 +35,6 @@ $color--link-hover-color: var(--color-link-hover);
 
 // Text colour
 $color--default: var(--color--grey);
-
-// Button colours
-$button-colours: (
-    primary: (
-        bg: $color--primary,
-        color: #fff,
-    ),
-    secondary: (
-        bg: $color--secondary,
-        color: #000,
-    ),
-    tertiary: (
-        bg: $color--tertiary,
-        color: #000,
-    ),
-);
 
 // --------------------------------- Fonts --------------------------------------
 

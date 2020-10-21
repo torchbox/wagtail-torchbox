@@ -18,7 +18,7 @@ $blog-author: var(--testimonial-name);
     &--featured {
         border-top: none;
         padding-top: 0;
-        padding-bottom: ($gutter * 2.5) !important;
+        padding-bottom: ($gutter * 2.5);
 
         @include media-query(large) {
             width: 58.33vw;
@@ -30,7 +30,7 @@ $blog-author: var(--testimonial-name);
             font-weight: 800;
 
             @include media-query(large) {
-                font-size: 65px !important;
+                font-size: 65px;
                 line-height: 80px;
             }
         }
@@ -72,7 +72,7 @@ $blog-author: var(--testimonial-name);
     }
 
     &__author-name {
-        color: $primary;
+        color: $color--primary;
         font-size: 20px;
     }
 
@@ -91,7 +91,7 @@ $blog-author: var(--testimonial-name);
         font-weight: normal;
         text-transform: none;
         letter-spacing: 0;
-        color: #333;
+        color: $color--grey;
         margin-left: 5px;
         padding-left: 5px;
         border-left: 1px solid rgba(0, 0, 0, 0.1);
