@@ -27,8 +27,6 @@ su - vagrant -c "$PIP install --upgrade pip"
 su - vagrant -c "$PIP install --upgrade six setuptools"
 
 # Install PIP requirements
-ls -al $PROJECT_DIR
-
 su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements.txt"
 
 # Install Fabric 2
