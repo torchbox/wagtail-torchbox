@@ -130,21 +130,21 @@ $hero-link-color: var(--hero-link-color, $link-color);
             }
         }
     }
+
+    .collapsed-hero-container & {
+        #{$root}__links-container {
+            @include media-query(medium) {
+                animation: fadeOut 0.2s forwards;
+                pointer-events: none;
+            }
+        }
+    }
+
+    .dark-theme & {
+        margin-bottom: 50px !important;
+
+        @include media-query(medium) {
+            min-height: calc(100vh - 180px) !important;
+        }
+    }
 }
-
-// .collapsedHeroContainer {
-//     @extend .heroContainer;
-//     @include for-tablet-landscape-up {
-//         .heroLinksContainer {
-//             animation: fadeOut 0.2s forwards;
-//             pointer-events: none;
-//         }
-//     }
-// }
-
-// .darkTheme {
-//     margin-bottom: 50px !important;
-//     @include for-tablet-landscape-up {
-//         min-height: calc(100vh - 180px) !important;
-//     }
-// }
