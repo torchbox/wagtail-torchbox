@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'wagtail.contrib.settings',
 
+    "pattern_library",
     "tbx.project_styleguide.apps.ProjectStyleguideConfig",
 ]
 
