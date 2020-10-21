@@ -1,0 +1,55 @@
+.mobile-nav {
+    &__container {
+        display: block;
+
+        @include media-query(large) {
+            display: none;
+        }
+    }
+
+    &__modal {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-300%);
+        min-height: 100vh;
+        width: 100vw;
+        background-color: $color--primary;
+        overflow-x: hidden;
+        transition: all 0.4s ease-in;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -50vh;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 100vh 50vh 0 0;
+            border-color: #231749 transparent transparent transparent;
+            z-index: 2;
+        }
+    }
+
+    &__modal-open {
+        transform: translateX(0);
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        padding: 90px 8.33vw 0 8.33vw;
+
+        li {
+            margin-left: 0 !important;
+
+            &:last-child {
+                a {
+                    border-bottom: none !important;
+                }
+            }
+        }
+    }
+}

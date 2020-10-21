@@ -1,0 +1,85 @@
+.footer {
+    position: relative;
+    background-color: $color--light-grey;
+    padding: ($gutter * 5) 0 ($gutter * 1.5);
+
+    &__content {
+        @include container();
+    }
+
+    &__address {
+        position: relative;
+        padding: 0 ($gutter * 5) $gutter 0;
+
+        p {
+            line-height: 22px;
+            color: $color--grey;
+            font-size: 14px;
+            max-width: 300px;
+        }
+    }
+
+    &__address-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: $color--primary;
+        margin: 0 0 ($gutter / 2);
+        line-height: 1;
+
+        &::after {
+            position: absolute;
+            top: -6px;
+            margin-left: 10px;
+            content: '';
+            width: 20px;
+            height: 30px;
+            background: url('../../images/icons/diamond.svg');
+            transform: rotate(30deg);
+        }
+    }
+
+    &__address-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 0 ($gutter * 3);
+    }
+
+    &__copyright {
+        font-size: 0.7em;
+        color: $color--grey;
+        margin-right: ($gutter / 2);
+    }
+
+    &__link {
+        display: inline-block;
+        height: 30px;
+        font-size: 14px;
+        margin-right: ($gutter / 2);
+    }
+
+    a {
+        font-size: 14px;
+        height: 23px;
+        font-weight: $weight--bold;
+        border-bottom: 2px solid $color--green;
+        color: $color--blue;
+
+        &:hover {
+            color: $color--blue;
+        }
+    }
+
+    &__image {
+        @include z-index(overlap);
+        display: none;
+        position: absolute;
+        bottom: 0;
+        right: 20px;
+        width: 25vw;
+
+        @include media-query(medium) {
+            display: block;
+        }
+    }
+}

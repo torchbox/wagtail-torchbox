@@ -1,0 +1,32 @@
+.logo {
+    width: 110px;
+    height: 40px;
+    position: relative;
+    display: inline-block;
+    fill: $header-logo-color;
+
+    @include media-query(medium) {
+        width: 130px;
+        height: 50px;
+    }
+
+    &__container {
+        width: 20.8vw;
+        height: 100%;
+
+        @include media-query(large) {
+            margin-left: -4.17vw;
+            margin-right: 4.17vw;
+            margin-top: -10px;
+        }
+    }
+
+    &__flame {
+        width: 25px;
+        height: 25px;
+    }
+
+    &__link {
+        border-bottom: none;
+    }
+}
