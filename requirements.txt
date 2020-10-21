@@ -16,6 +16,7 @@ phonenumbers==8.10.3
 django-cors-headers==3.0.2
 lxml==4.5.2
 django-pattern-library==0.2.8
+wagtail-accessibility==0.2.1
 
 # Development requirements
 django-debug-toolbar==1.2.2
