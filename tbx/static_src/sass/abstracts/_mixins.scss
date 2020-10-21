@@ -25,19 +25,6 @@
 }
 
 /* ============================================
-  Placeholder text
-*/
-@mixin placeholder-text() {
-    &.placeholder {
-        @content;
-    }
-
-    &::placeholder {
-        @content;
-    }
-}
-
-/* ============================================
   Hide text
 */
 @mixin hidden() {
