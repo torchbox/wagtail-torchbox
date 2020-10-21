@@ -41,12 +41,12 @@ INSTALLED_APPS = [
 
     'tbx.blog',
     'tbx.core.apps.TorchboxCoreAppConfig',
+    "tbx.navigation",
     'tbx.people',
     'tbx.services',
     'tbx.sign_up_form',
     'tbx.taxonomy',
     'tbx.work',
-    'tbx.netlify',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -73,9 +73,7 @@ INSTALLED_APPS = [
     # Temporarily disable as this is breaking page creation. See ticket #229
     # 'wagtail_review',
     'phonenumber_field',
-    'graphene_django',
     'corsheaders',
-    'headlesspreview',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -86,6 +84,10 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'wagtail.contrib.settings',
+
+    "pattern_library",
+    "tbx.project_styleguide.apps.ProjectStyleguideConfig",
+    "wagtailaccessibility"
 ]
 
 MIDDLEWARE = [
@@ -101,7 +103,6 @@ MIDDLEWARE = [
     # Must be placed above anything that can generate a response
     'corsheaders.middleware.CorsMiddleware',
 
-    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
@@ -123,6 +124,7 @@ TEMPLATES = [
                 'tbx.core.context_processors.fb_app_id',
                 'wagtail.contrib.settings.context_processors.settings',
             ],
+            "builtins": ["pattern_library.loader_tags"],
         },
     },
 ]
@@ -278,7 +280,7 @@ LOGGING = {
         }
     },
     'loggers': {
-        '{{ cookiecutter.repo_name }}': {
+        'tbx': {
             'handlers': ['console', 'sentry'],
             'level': 'INFO',
             'propagate': False,
@@ -448,35 +450,22 @@ if 'MAILCHIMP_MAILING_LIST_ID' in env:
     MAILCHIMP_MAILING_LIST_ID = env['MAILCHIMP_MAILING_LIST_ID']
 
 
-# GraphQL API Endpoint
-GRAPHENE = {
-    'SCHEMA': 'tbx.graphql.schema.schema',
-}
+PASSWORD_REQUIRED_TEMPLATE = "patterns/pages/wagtail/password_required.html"
+# Styleguide
+PATTERN_LIBRARY_ENABLED = env.get("PATTERN_LIBRARY_ENABLED", "false").lower() == "true"
+PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(
+    PROJECT_DIR, "project_styleguide", "templates"
+)
+
+# Google Tag Manager ID from env
+GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID")
+
 
 # CORS settings
-
-
-CORS_URLS_REGEX = r'^(\/graphql\/.*)|(\/review\/api\/.*)$'
-CORS_ORIGIN_WHITELIST = ['https://torchbox.com', 'https://tbx-production.netlify.app', 'https://tbx-staging.netlify.app']
+CORS_URLS_REGEX = r'^(\/review\/api\/.*)$'
+CORS_ORIGIN_WHITELIST = ['https://torchbox.com']
 CORS_ALLOW_HEADERS = default_headers + (
     'x-review-token',
 )
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-
-NETLIFY_TRIGGER_URL = os.getenv('NETLIFY_TRIGGER_URL', 'http://localhost:8000')
-NETLIFY_AUTO_DEPLOY = os.getenv('NETLIFY_AUTO_DEPLOY', True)
-
-
-# Preview
-
-# Wagtail previews are served from the frontend site, this URL is where they are directed to
-
-if 'PREVIEW_URL' in env:
-    PREVIEW_URL = env['PREVIEW_URL']
-
-
-# Reviews
-
-# Overrides the URL that wagtail_review sends in emails to reviewers
-# WAGTAILREVIEW_REVIEW_URL_BUILDER = 'tbx.settings.reviews.review_url_builder'

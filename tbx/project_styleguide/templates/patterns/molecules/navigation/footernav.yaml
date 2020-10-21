@@ -1,0 +1,10 @@
+context:
+  footernav:
+    - dummy
+    - dummy
+    - dummy
+
+tags:
+  include_block:
+    footer:
+      template_name: 'patterns/molecules/navigation/blocks/footer_column.html'

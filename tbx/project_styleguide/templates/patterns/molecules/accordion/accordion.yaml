@@ -1,0 +1,11 @@
+context:
+  accordions:
+    - accordion:
+      title: Accordion title
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam magna justo, sollicitudin sit amet laoreet id, sodales vel metus. Etiam bibendum, augue in porta ultricies, elit sapien fringilla nisl, sit amet fermentum ligula augue nec sapien. Aliquam eu aliquet metus. Donec quis dolor at tellus viverra molestie.'
+    - accordion:
+      title: Accordion 2 title
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam magna justo, sollicitudin sit amet laoreet id, sodales vel metus. Etiam bibendum, augue in porta ultricies, elit sapien fringilla nisl, sit amet fermentum ligula augue nec sapien. Aliquam eu aliquet metus. Donec quis dolor at tellus viverra molestie.'
+    - accordion:
+      title: Accordion 3 title
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam magna justo, sollicitudin sit amet laoreet id, sodales vel metus. Etiam bibendum, augue in porta ultricies, elit sapien fringilla nisl, sit amet fermentum ligula augue nec sapien. Aliquam eu aliquet metus. Donec quis dolor at tellus viverra molestie.'

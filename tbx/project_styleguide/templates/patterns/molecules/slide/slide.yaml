@@ -1,0 +1,11 @@
+context:
+  slide:
+    title: 'This is a slide'
+    text: 'This is the slide text'
+    link: 'http://www.whatshouldireadnext.com'
+
+tags:
+  image:
+    slide.image fill-450x450:
+      raw: |
+        <img src="http://placekitten.com/450/450" alt="kitten">

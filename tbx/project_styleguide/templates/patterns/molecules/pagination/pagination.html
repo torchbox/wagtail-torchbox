@@ -1,0 +1,16 @@
+{% if paginator_page.paginator.num_pages > 1 %}
+<nav aria-label="Pagination">
+    <ul class="pagination">
+        {% if paginator_page.has_previous %}
+            <li><a href="?page={{ paginator_page.previous_page_number }}{% if search_query %}&amp;query={{ search_query|urlencode }}{% endif %}{% if extra_url_params %}&amp;{{ extra_url_params }}{% endif %}" class="previous">Previous <span class="u-sr-only">page</span></a></li>
+        {% endif %}
+
+        <li class="current" aria-current="page">
+            {{ paginator_page.number }}/{{ paginator_page.paginator.num_pages }}
+        </li>
+
+        {% if paginator_page.has_next %}
+            <li><a href="?page={{ paginator_page.next_page_number }}{% if search_query %}&amp;query={{ search_query|urlencode }}{% endif %}{% if extra_url_params %}&amp;{{ extra_url_params }}{% endif %}" class="next">Next <span class="u-sr-only">page</span></a></li>
+        {% endif %}
+    </ul>
+</nav>{% endif %}

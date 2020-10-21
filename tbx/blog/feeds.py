@@ -33,30 +33,6 @@ class BlogFeed(Feed):
     def item_pubdate(self, item):
         return datetime.combine(item.date, time())
 
-
-# Planet Drupal feed
-
-class PlanetDrupalFeed(Feed):
-    title = "The Torchbox Planet Drupal Feed"
-    link = "/blog/?tag=planet-drupal"
-    description = "The Torchbox Planet Drupal Feed"
-
-    def items(self):
-        return BlogPage.objects.live().filter(tags__tag__slug='planet-drupal')\
-            .order_by('-date')
-
-    def item_title(self, item):
-        return item.title
-
-    def item_description(self, item):
-        return item.listing_summary
-
-    def item_link(self, item):
-        return item.get_full_url()
-
-    def item_pubdate(self, item):
-        return datetime.combine(item.date, time())
-
     def item_enclosure_url(self, item):
         if item.feed_image:
             return settings.BASE_URL + item.feed_image.file.url

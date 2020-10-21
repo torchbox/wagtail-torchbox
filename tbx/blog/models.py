@@ -18,7 +18,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from headlesspreview.models import HeadlessPreviewMixin
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
@@ -29,7 +28,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 
 
 @method_decorator(get_default_cache_control_decorator(), name='serve')
-class BlogIndexPage(HeadlessPreviewMixin, Page):
+class BlogIndexPage(Page):
     intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + [
@@ -127,7 +126,7 @@ class BlogPageAuthor(Orderable):
     ]
 
 
-class BlogPage(HeadlessPreviewMixin, Page):
+class BlogPage(Page):
     date = models.DateField("Post date")
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)

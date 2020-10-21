@@ -14,6 +14,7 @@
             <link rel="canonical" href="{{ self.canonical_url }}" />
         {% endif %}
 
+        {% wagtail_site as current_site %}
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@torchbox">
         <meta name="twitter:creator" content="@torchbox">
@@ -23,7 +24,7 @@
 
         <meta property="fb:app_id" content="995117193836517" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://{{ request.site.hostname }}{{ self.url }}" />
+        <meta property="og:url" content="https://{{ current_site.hostname }}{{ self.url }}" />
         <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Torchbox" />
         <meta property="og:image" content="{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% endif %}" />
         <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />

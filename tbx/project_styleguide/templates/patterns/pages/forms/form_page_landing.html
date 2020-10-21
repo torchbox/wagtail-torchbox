@@ -1,0 +1,13 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    <div class="intro">
+        <div class="container">
+            <h1>Thank you</h1>
+            <div>{{ page.thank_you_text|richtext }}</div>
+        </div>
+    </div>
+
+{% endblock %}

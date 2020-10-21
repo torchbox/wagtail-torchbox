@@ -1,0 +1,6 @@
+context:
+  value:
+    title: 'Some title'
+    document:
+      title: 'Document title'
+      url: '#'

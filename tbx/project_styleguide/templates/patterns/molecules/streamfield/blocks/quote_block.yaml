@@ -1,0 +1,4 @@
+context:
+  value:
+    quote: 'Some quote'
+    attribution: 'Some attribution'

@@ -1,0 +1,6 @@
+context:
+  settings:
+    utils:
+      SystemMessagesSettings:
+        title_404: Page not found
+        body_404: <p>You may be trying to find a page that doesn&apos;t exist or has been moved.</p>

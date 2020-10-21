@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+<nav class="grid grid--narrow" aria-label="Tertiary">
+    {% for footer in footernav %}
+        {% include_block footer %}
+    {% endfor %}
+</nav>

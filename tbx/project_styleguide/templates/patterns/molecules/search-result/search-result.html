@@ -1,0 +1,35 @@
+{% load static wagtailcore_tags wagtailsearchpromotions_tags wagtailimages_tags %}
+
+{# breadcrumbs #}
+{% if result.get_ancestors|length > 2 %}
+    <div>
+    {% for ancestor in result.get_ancestors %}
+        {% if not ancestor.is_root %}
+            {% if ancestor.depth > 2 %}
+                {{ ancestor.title }}
+                {% if ancestor.depth|add:1 < result.depth %}
+                    &nbsp;/&nbsp;
+                {% endif %}
+            {% else %}/{% endif %} {# the first one #}
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endif %}
+
+{% if result.listing_image %}
+    <a href="{% pageurl result %}">
+        {% image result.listing_image fill-450x300 %}
+    </a>
+{% endif %}
+
+<h2>
+    <a href="{% pageurl result %}">
+        {% firstof result.listing_title result.title %}
+    </a>
+</h2>
+
+{% if pick.description or result.listing_summary or result.search_description %}
+    <p>{% firstof pick.description result.listing_summary result.search_description %}</p>
+{% endif %}
+
+

@@ -1,0 +1,9 @@
+context:
+  value:
+    caption: Some caption
+
+tags:
+  image:
+    value.image width-1000:
+      raw: |
+        <img src="http://via.placeholder.com/1000x300" width="1000" height="300" alt="Some alt">
