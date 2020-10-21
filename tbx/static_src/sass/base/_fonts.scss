@@ -1,7 +1,47 @@
 @font-face {
-    font-family: 'Montserrat';
+    font-family: 'Apercu Pro';
+    src: url('../fonts/apercu/apercu-light-pro.eot');
+    src: url('../fonts/apercu/apercu-light-pro.eot?#iefix')
+            format('embedded-opentype'),
+        url('../fonts/apercu/apercu-light-pro.woff') format('woff'),
+        url('../fonts/apercu/apercu-light-pro.woff2') format('woff2'),
+        url('../fonts/apercu/apercu-light-pro.ttf') format('truetype');
+    font-weight: 300;
     font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(../fonts/Montserrat.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Apercu Pro';
+    src: url('../fonts/apercu/apercu-regular-pro.eot');
+    src: url('../fonts/apercu/apercu-regular-pro.eot?#iefix')
+            format('embedded-opentype'),
+        url('../fonts/apercu/apercu-regular-pro.woff') format('woff'),
+        url('../fonts/apercu/apercu-regular-pro.woff2') format('woff2'),
+        url('../fonts/apercu/apercu-regular-pro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apercu Pro';
+    src: url('../fonts/apercu/apercu-bold-pro.eot');
+    src: url('../fonts/apercu/apercu-bold-pro.eot?#iefix')
+            format('embedded-opentype'),
+        url('../fonts/apercu/apercu-bold-pro.woff') format('woff'),
+        url('../fonts/apercu/apercu-bold-pro.woff2') format('woff2'),
+        url('../fonts/apercu/apercu-bold-pro.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apercu Pro';
+    src: url('../fonts/apercu/apercu-black-pro.eot');
+    src: url('../fonts/apercu/apercu-black-pro.eot?#iefix')
+            format('embedded-opentype'),
+        url('../fonts/apercu/apercu-black-pro.woff') format('woff'),
+        url('../fonts/apercu/apercu-black-pro.woff2') format('woff2'),
+        url('../fonts/apercu/apercu-black-pro.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
 }

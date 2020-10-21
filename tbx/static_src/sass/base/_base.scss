@@ -1,16 +1,11 @@
+// Theme overrides:
+$page-section-title-color: var(--page-section-title-color, $accent);
+
 // Box Sizing
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-}
-
-// Prevent text size change on orientation change.
-html {
-    font-family: $font--primary;
-    text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 body {

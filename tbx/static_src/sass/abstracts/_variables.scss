@@ -55,24 +55,54 @@ $button-colours: (
 $font--primary: 'Apercu Pro', arial, helvetica, sans-serif;
 
 // Font weights
+$weight--heavy: 800;
 $weight--bold: 700;
 $weight--semibold: 600;
 $weight--medium: 500;
 $weight--normal: 400;
-$weight--light: 200;
+$weight--light: 100;
 
 // Font sizes
-$base-font-size: 16px;
-$base-line-height: 25px;
-$font-sizes: (
-    default: $base-font-size,
-    xxl: 36px,
+$base-font-size: 18px;
+
+$large-font-sizes: (
+    xxxxl: 90px,
+    xxxl: 76px,
+    xxl: 64px,
+    xl: 46px,
+    l: 32px,
+    m: 30px,
+    s: 24px,
+    xs: 18px,
+    xxs: 14px,
+    xxxs: 12px,
+);
+
+$medium-font-sizes: (
+    xxxxl: 78px,
+    xxxl: 68px,
+    xxl: 52px,
+    xl: 38px,
+    l: 28px,
+    m: 26px,
+    s: 20px,
+    xs: 16px,
+    xxs: 14px,
+    xxxs: 12px,
+);
+
+$small-font-sizes: (
+    xxxxl: 44px,
+    xxxl: 38px,
+    xxl: 32px,
     xl: 28px,
-    l: 21px,
-    m: 18px,
-    s: 15px,
+    l: 24px,
+    m: 22px,
+    s: 18px,
     xs: 14px,
-    xxs: 12px,
+    xxs: 14px,
+    // no value in styleguide
+    xxxs: 12px,
 );
 
 // --------------------------------- Breakpoints --------------------------------------
@@ -86,6 +116,7 @@ $wrapper--small: 790px;
 
 // Grid setup
 $grid: 20px;
+$gutter: $grid;
 
 // --------------------------------- Transitions --------------------------------------
 
