@@ -2,7 +2,7 @@
     @include container();
     background: $color--white;
 
-    &__title {
+    &__heading {
         font-size: 50px;
         line-height: 55px;
         margin: 0 0 20px 0;
@@ -17,7 +17,7 @@
         }
     }
 
-    &__title-inner {
+    &__heading-inner {
         font-size: 45px;
         line-height: 50px;
 

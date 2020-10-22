@@ -1,8 +1,0 @@
-{% load wagtailcore_tags %}
-<nav aria-label="Secondary">
-    <ul class="secondary-nav">
-        {% for link in secondarynav %}
-            <li class="secondary-nav__item">{% include_block link with nav_type="secondary-nav" %}</li>
-        {% endfor %}
-    </ul>
-</nav>

@@ -1,8 +1,0 @@
-context:
-  value:
-    - dummy
-
-tags:
-  include_block:
-    block:
-      template_name: 'patterns/_pattern_library_only/streamfield/story_container.html'
