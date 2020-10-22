@@ -1,0 +1,65 @@
+.team-listing {
+    position: relative;
+    background-color: $color--white;
+    padding: $gutter 0;
+
+    &__content {
+        @include container();
+    }
+
+    &__person-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__person-link {
+        cursor: pointer;
+        padding-bottom: 50px;
+        text-decoration: none;
+        border-bottom: none;
+        width: 50%;
+
+        @include media-query(medium) {
+            width: 33.333%;
+        }
+
+        @include media-query(large) {
+            width: 25%;
+        }
+
+        &__avatar {
+            width: 100%;
+        }
+    }
+
+    &__person-name {
+        display: block;
+        margin: 10px 0 5px;
+        line-height: 1;
+        font-size: 18px;
+        font-weight: 800;
+        color: $color--primary;
+
+        @include media-query(medium) {
+            font-size: 22px;
+        }
+
+        &:hover {
+            color: $color--blue;
+        }
+    }
+
+    &__person-role {
+        line-height: 1.4;
+        color: $color--accent;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: $weight--bold;
+        font-size: 9px;
+        margin: 0;
+
+        @include media-query(medium) {
+            font-size: 11px;
+        }
+    }
+}
