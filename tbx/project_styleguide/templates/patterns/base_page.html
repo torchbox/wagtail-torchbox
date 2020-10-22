@@ -22,7 +22,7 @@
         Twitter summary card - see https://dev.twitter.com/cards/types/summary
         and https://dev.twitter.com/cards/getting-started
     {% endcomment %}
-    {% wagtailsite as current_site %}
+    {% wagtail_site as current_site %}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@{{ settings.utils.SocialMediaSettings.twitter_handle }}" />
     <meta name="twitter:title" content="{{ page.title }}" />
