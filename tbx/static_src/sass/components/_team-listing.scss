@@ -26,10 +26,10 @@
         @include media-query(large) {
             width: 25%;
         }
+    }
 
-        &__avatar {
-            width: 100%;
-        }
+    &__person-avatar {
+        width: 100%;
     }
 
     &__person-name {
