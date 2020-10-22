@@ -35,10 +35,12 @@
                 }
 
                 #{$root}__image-inner {
+                    /* stylelint-disable-next-line max-nesting-depth */
                     &::before {
                         left: auto;
                         right: 0;
                         border-width: 0 0 60vw 25vw;
+                        /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
                         border-color: transparent transparent $color--white;
                         bottom: auto;
                         top: 0;
