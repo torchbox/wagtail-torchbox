@@ -124,3 +124,20 @@
         @content;
     }
 }
+
+/* ============================================
+    Link underscore
+*/
+
+@mixin link-underscore($height) {
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: #{$height}px;
+        bottom: -5px;
+        left: 0;
+        background: $header-link-underscore-color;
+        transition: all 0.2s ease;
+    }
+}
