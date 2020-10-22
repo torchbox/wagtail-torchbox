@@ -1,0 +1,151 @@
+// Theme overrides:
+$testimonial-name: var(--testimonial-name);
+
+.quote {
+    &__slider-block {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    &__icon {
+        fill: var(--icon-color, $color--accent);
+        width: 20vw;
+        max-width: 100px;
+        grid-column: 1;
+        grid-row: 1;
+        margin-right: 50px;
+
+        @include media-query(medium) {
+            max-width: 120px;
+            width: 8.33vw;
+            margin-top: -50px;
+            margin-left: 4.33vw;
+        }
+    }
+
+    &__slider {
+        position: relative;
+        grid-column: 1 / span 2;
+        margin-top: 20px;
+        grid-row: 2;
+
+        @include media-query(medium) {
+            margin-top: 0;
+            grid-column-start: 2;
+            grid-row: 1;
+        }
+    }
+
+    &__slider-bullets {
+        grid-column: span 2;
+        grid-row: 3;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 20px;
+        transition: 0.2s all ease;
+
+        @include media-query(medium) {
+            grid-row: 2;
+        }
+    }
+
+    &__slider-bullet {
+        width: 9px;
+        height: 15px;
+        content: '';
+        background: rgba(0, 0, 0, 0.1);
+        transform: rotate(30deg);
+        margin-right: 20px;
+        cursor: pointer;
+        transition: 0.2s all ease;
+
+        &--active {
+            width: 14px;
+            height: 20px;
+            background: var(--icon-color, $color--accent);
+        }
+    }
+
+    &__slides {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        margin-bottom: $gutter;
+    }
+
+    &__slide {
+        transition: all 0.2s ease-in;
+        display: flex;
+        flex-direction: column;
+        grid-column: 1;
+        grid-row: 1;
+        opacity: 0;
+
+        &--active {
+            opacity: 1;
+        }
+    }
+
+    &__slide-quote {
+        font-style: normal;
+        margin: 0 0 20px;
+        padding: 0 0 0;
+        color: $color--primary;
+        font-size: 22px;
+        line-height: 38px;
+
+        @include media-query(large) {
+            font-size: 26px;
+            line-height: 46px;
+            padding-right: 8.33vw;
+        }
+
+        &::after {
+            content: '”';
+            font-style: italic;
+        }
+    }
+
+    &__slide-cite {
+        color: $color--grey;
+        font-size: 12px;
+        margin: 0 0 15px;
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+    }
+
+    &__slide-cite-name {
+        font-weight: bold;
+        padding-right: 8px;
+        text-transform: uppercase;
+        color: $testimonial-name;
+        margin-bottom: 5px;
+        letter-spacing: 0.15em;
+    }
+
+    &__slide-cite-role {
+        line-height: 1.5;
+
+        @include media-query(medium) {
+            line-height: 1;
+        }
+
+        &::before {
+            @include media-query(medium) {
+                width: 10px;
+                content: '|';
+                color: rgba($color--black, 0.2);
+                font-weight: 100;
+                padding-right: 10px;
+            }
+        }
+    }
+}
