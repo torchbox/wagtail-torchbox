@@ -8,6 +8,6 @@ context:
     readtime: '5'
     tags:
       - { title: Digital products, href: /blog/#filter=/digital-products }
-  see-more:
+  see_more:
     text: See more blogs
     href: '/blogs'

@@ -135,9 +135,38 @@
     </div>
 
     <div class="page__showcase">
-        <h2 class="section-title">More of our thinking</h2>
+        <div class="blog-listing-block">
+            <h2 class="section-title">More of our thinking</h2>
 
-        <div class="blogs-module--blockContent--2kjOl"><div class="blogs-module--blockBlogList--1oksl"><a class="blog-link-module--blogLink--2VUTz " href="/blog/alternatives-to-drupal/"><h2 class="blog-link-module--blogLinkTitle--3uBtd">We already dropped Drupal - maybe it’s time for you to do the same.</h2><div class="blog-link-module--blogLinkMeta--1B0dV"><div class="avatar-module--avatar--14wuA blog-link-module--blogLinkImage--24znm"><img class="avatar-module--avatarImage--fqEwv " src="https://media.torchbox.com/images/IMG_3157.2e16d0ba.fill-100x100.jpg" alt="Paul Vetch"></div><div class="blog-link-module--blogLinkAuthor--2ct5c"><span class="blog-link-module--blogLinkAuthorName--2k7u9">Paul Vetch</span><span class="blog-link-module--blogLinkAuthorRole--1Mn85">Strategy Director</span></div></div></a><a class="blog-link-module--blogLink--2VUTz " href="/blog/wagtail-public-sector/"><h2 class="blog-link-module--blogLinkTitle--3uBtd">Wagtail for the public sector</h2><div class="blog-link-module--blogLinkMeta--1B0dV"><div class="avatar-module--avatar--14wuA blog-link-module--blogLinkImage--24znm"><img class="avatar-module--avatarImage--fqEwv " src="https://media.torchbox.com/images/tbx_team-will.2e16d0ba.fill-100x100.jpg" alt="Will Heinemann"></div><div class="blog-link-module--blogLinkAuthor--2ct5c"><span class="blog-link-module--blogLinkAuthorName--2k7u9">Will Heinemann</span><span class="blog-link-module--blogLinkAuthorRole--1Mn85">New Business Director</span></div></div></a></div><div class="blogs-module--seeMore--1yiyv"><a href="/blog/">See more blogs</a></div></div>
+            <div class="blog-listing-block__content">
+                <div class="blog-listing-block__list">
+                    <a class="blog-link-module--blogLink--2VUTz " href="/blog/alternatives-to-drupal/">
+                        <h2 class="blog-link-module--blogLinkTitle--3uBtd">We already dropped Drupal - maybe it’s time for you to do the same.</h2>
+                        <div class="blog-link-module--blogLinkMeta--1B0dV">
+                            <div class="avatar-module--avatar--14wuA blog-link-module--blogLinkImage--24znm">
+                                <img class="avatar-module--avatarImage--fqEwv " src="https://media.torchbox.com/images/IMG_3157.2e16d0ba.fill-100x100.jpg" alt="Paul Vetch">
+                            </div>
+                            <div class="blog-link-module--blogLinkAuthor--2ct5c">
+                                <span class="blog-link-module--blogLinkAuthorName--2k7u9">Paul Vetch</span>
+                                <span class="blog-link-module--blogLinkAuthorRole--1Mn85">Strategy Director</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="blog-link-module--blogLink--2VUTz " href="/blog/wagtail-public-sector/">
+                        <h2 class="blog-link-module--blogLinkTitle--3uBtd">Wagtail for the public sector</h2>
+                        <div class="blog-link-module--blogLinkMeta--1B0dV">
+                            <div class="avatar-module--avatar--14wuA blog-link-module--blogLinkImage--24znm">
+                                <img class="avatar-module--avatarImage--fqEwv " src="https://media.torchbox.com/images/tbx_team-will.2e16d0ba.fill-100x100.jpg" alt="Will Heinemann">
+                            </div><div class="blog-link-module--blogLinkAuthor--2ct5c">
+                                <span class="blog-link-module--blogLinkAuthorName--2k7u9">Will Heinemann</span>
+                                <span class="blog-link-module--blogLinkAuthorRole--1Mn85">New Business Director</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
+            </div>
+        </div>
     </div>
 
 {% endblock %}
