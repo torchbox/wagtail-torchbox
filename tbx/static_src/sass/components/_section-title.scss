@@ -1,0 +1,35 @@
+// Theme overrides:
+$page-section-title-color: var(--page-section-title-color, $color--accent);
+
+.section-title {
+    position: absolute;
+    top: 45px;
+    left: 8.33vw;
+    color: $page-section-title-color;
+    font-weight: bold;
+
+    @include media-query(medium) {
+        max-width: 140px;
+    }
+
+    @include media-query(large) {
+        max-width: 150px;
+    }
+
+    @media (min-width: 1300px) {
+        max-width: 200px;
+    }
+
+    @media (min-width: 1600px) {
+        max-width: 300px;
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 2px;
+        top: -15px;
+        background: $page-section-title-color;
+    }
+}

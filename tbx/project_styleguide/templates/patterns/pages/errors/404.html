@@ -1,0 +1,12 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailsettings_tags %}
+
+{% block title %}{{ settings.utils.SystemMessagesSettings.title_404 }}{% endblock %}
+
+{% block body_class %}template-404{% endblock %}
+
+{% block content %}
+    <h1>{{ settings.utils.SystemMessagesSettings.title_404 }}</h1>
+
+    {{ settings.utils.SystemMessagesSettings.body_404|richtext }}
+{% endblock %}

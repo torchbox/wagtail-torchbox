@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="286px" height="307px" viewBox="0 0 286 307" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>bird</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g fill-rule="nonzero">
+            <path d="M252.4,32.8 C270.5,43.7 276.4,67.2 265.5,85.3 L227.5,148.6 L162,109.2 L200,45.9 C210.8,27.8 234.3,22 252.4,32.8 Z" fill="#FFFFFF"></path>
+            <circle fill="#231749" transform="translate(240.905017, 67.868866) rotate(-59.011000) translate(-240.905017, -67.868866) " cx="240.905017" cy="67.8688658" r="7.5"></circle>
+            <polygon fill="#3BECCD" points="264.7 86.3 252.3 107 285.5 98.7"></polygon>
+            <path d="M213.7,109.3 C201.8,102.1 188.2,98.1 174.3,97.7 L202.1,51.4 C212.7,34 235.3,28.5 252.7,39.1 C264.2,46.1 271,58.9 270.3,72.3 C278.8,42.2 261.2,10.9 231.1,2.5 C206.4,-4.4 180.1,6.1 167,28.3 L94,149.8 L0.1,306.1 L185.4,259.9 C229.9,252.3 259.8,210.1 252.2,165.6 C248.1,142.1 234.1,121.5 213.7,109.3 Z" fill="#3BECCD"></path>
+        </g>
+    </g>
+</svg>

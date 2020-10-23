@@ -1,0 +1,75 @@
+$header-icon-color: var(--header-icon-color, $color--primary);
+
+.menu-button {
+    position: absolute;
+    top: 0;
+    right: -25px;
+    width: 80px;
+    height: 100%;
+    display: block;
+    border: none;
+    text-align: center;
+    z-index: 999;
+    cursor: pointer;
+
+    @include media-query(large) {
+        display: none;
+    }
+
+    span {
+        &:nth-child(1) {
+            transition: all 0.2s ease-in;
+            position: absolute;
+            width: 20px;
+            background-color: $header-icon-color;
+            height: 3px;
+            left: 37%;
+            top: 40px;
+            transform: translateX(0);
+        }
+        &:nth-child(2) {
+            transition: all 0.2s ease-in;
+            background-color: $header-icon-color;
+            position: absolute;
+            width: 16px;
+            height: 3px;
+            left: 45%;
+            top: 48px;
+        }
+        &:nth-child(3) {
+            transition: all 0.2s ease-in;
+            background-color: $header-icon-color;
+            position: absolute;
+            width: 12px;
+            height: 3px;
+            left: 41%;
+            top: 55px;
+        }
+    }
+
+    &.twist {
+        span {
+            &:nth-child(1) {
+                opacity: 0;
+            }
+
+            &:nth-child(2) {
+                background-color: $color--white;
+                transform: rotate(-45deg) scale(2);
+                top: 50px;
+                left: 40%;
+                height: 2px;
+                width: 12px;
+            }
+
+            &:nth-child(3) {
+                background-color: $color--white;
+                transform: rotate(45deg) scale(2);
+                top: 50px;
+                left: 40%;
+                height: 2px;
+                width: 12px;
+            }
+        }
+    }
+}

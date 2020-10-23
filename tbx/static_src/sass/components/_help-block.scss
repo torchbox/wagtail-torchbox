@@ -1,0 +1,152 @@
+.help-block {
+    $root: &;
+
+    &__container {
+        position: relative;
+        width: 100vw;
+        background: $color--white;
+        padding-top: 10px;
+        padding-bottom: 80px;
+    }
+
+    &__content {
+        @include container();
+        padding-top: ($gutter * 4.5);
+
+        @include media-query(medium) {
+            padding-top: $gutter;
+        }
+    }
+
+    &__title {
+        font-size: 35px;
+        line-height: 45px;
+        font-weight: 100;
+
+        @include media-query(medium) {
+            padding-left: 17vw;
+            font-size: 36px;
+            line-height: 50px;
+        }
+
+        * {
+            color: $color--primary;
+        }
+    }
+
+    &__links-container {
+        margin-top: 30px;
+
+        @include media-query(medium) {
+            padding-left: 17vw;
+        }
+    }
+
+    &__links-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__links-item {
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+
+        a {
+            display: inline;
+            position: relative;
+            color: $color--primary;
+            text-decoration: none;
+            font-size: 20px;
+            line-height: 30px;
+            font-weight: 400;
+            margin: 0 0 5px 30px;
+            padding: 15px 0 0;
+            border-bottom: 2px solid $color--white;
+
+            @include media-query(medium) {
+                padding: 15px 0 0;
+                margin: 0 0 5px 60px;
+                line-height: 40px;
+                font-size: 24px;
+            }
+
+            &:hover {
+                @include media-query(medium) {
+                    color: $color--light-blue;
+                    border-bottom: 2px solid $color--accent;
+                    font-weight: 800;
+                }
+            }
+
+            &::after {
+                content: '';
+                display: inline;
+                width: 12px;
+                height: 20px; // changed from 30px to fix ie edge issue
+                position: absolute;
+                margin-left: 15px;
+                margin-top: 5px;
+                background: url('../images/cssBackgrounds/chevron.svg')
+                    no-repeat center;
+
+                @include media-query(medium) {
+                    margin-top: 10px;
+                }
+
+                @supports (mask: url('')) {
+                    background-image: none;
+                    background-color: $color--accent;
+                    mask: url('../images/cssBackgrounds/chevron.svg') no-repeat
+                        center;
+                    mask-size: contain;
+                }
+            }
+        }
+
+        span {
+            line-height: 30px;
+            font-weight: 400;
+            margin: 0 0 5px 30px;
+            padding: 15px 0 0;
+
+            @include media-query(medium) {
+                padding: 15px 0 0;
+                margin: 0 0 5px 60px;
+                line-height: 40px;
+                font-size: 24px;
+            }
+        }
+    }
+
+    &__links-item-icon {
+        transform: rotate(30deg);
+        width: 22px;
+        height: 22px;
+        margin-top: 20px;
+        fill: var(--icon-color, $color--accent);
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        @include media-query(medium) {
+            width: 22px;
+            height: 22px;
+        }
+    }
+
+    &__contact {
+        @include media-query(medium) {
+            margin-top: 15px;
+            padding-left: 13vw;
+        }
+    }
+
+    .collapsed-block-container & {
+        #{$root}__links-container {
+            animation: fadeOut 0.2s forwards;
+            pointer-events: none;
+        }
+    }
+}

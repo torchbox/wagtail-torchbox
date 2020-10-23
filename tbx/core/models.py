@@ -17,8 +17,6 @@ from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
-from headlesspreview.models import HeadlessPreviewMixin
-
 from .blocks import StoryBlock
 from .fields import ColorField
 
@@ -228,7 +226,7 @@ class HomePageClient(Orderable, RelatedLink):
     ]
 
 
-class HomePage(HeadlessPreviewMixin, Page):
+class HomePage(Page):
     hero_intro_primary = models.TextField(blank=True)
     hero_intro_secondary = models.TextField(blank=True)
     intro_body = RichTextField(blank=True)
@@ -271,7 +269,7 @@ class HomePage(HeadlessPreviewMixin, Page):
 
 # Standard page
 
-class StandardPage(HeadlessPreviewMixin, Page):
+class StandardPage(Page):
     body = StreamField(StoryBlock())
 
     content_panels = Page.content_panels + [
@@ -318,7 +316,7 @@ class AboutPageContentBlock(Orderable):
     ]
 
 
-class AboutPage(HeadlessPreviewMixin, Page):
+class AboutPage(Page):
     main_image = models.ForeignKey(
         'torchbox.TorchboxImage',
         null=True,
@@ -438,7 +436,7 @@ class JobIndexPageJob(Orderable):
     ]
 
 
-class JobIndexPage(HeadlessPreviewMixin, Page):
+class JobIndexPage(Page):
     strapline = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     jobs_xml_feed = models.URLField(blank=True)
@@ -512,7 +510,7 @@ class GoogleAdGrantsAccreditations(Orderable):
     ]
 
 
-class GoogleAdGrantsPage(HeadlessPreviewMixin, Page):
+class GoogleAdGrantsPage(Page):
     intro = RichTextField()
     form_title = models.CharField(max_length=255)
     form_subtitle = models.CharField(max_length=255)

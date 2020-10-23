@@ -82,7 +82,7 @@ const options = {
                 // sync font files referenced by the css to the fonts directory
                 // the publicPath matches the path from the compiled css to the font file
                 // only looks in the fonts folder so pngs in the images folder won't get put in the fonts folder
-                test: /\.(woff|woff2)$/,
+                test: /\.(woff|woff2|ttf|eot)$/,
                 include: /fonts/,
                 use: {
                     loader: 'file-loader',

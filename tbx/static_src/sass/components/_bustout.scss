@@ -1,0 +1,80 @@
+.bustout {
+    $root: &;
+    position: relative;
+    display: flex;
+    background: $color--blue;
+    flex-direction: column;
+
+    @include media-query(large) {
+        flex-direction: row;
+    }
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    &--right-aligned {
+        flex-direction: column-reverse;
+
+        @include media-query(large) {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &--full {
+        flex-direction: column;
+
+        #{$root}__image {
+            width: 100%;
+        }
+
+        #{$root}__caption {
+            width: 100%;
+        }
+    }
+
+    &__container {
+        margin: ($gutter * 3) 0 ($gutter * 4);
+    }
+
+    &__image {
+        min-height: 300px;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+
+        @include media-query(large) {
+            float: left;
+            width: 50%;
+        }
+    }
+
+    &__caption {
+        width: 100%;
+        background: $color--light-blue;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: $color--white;
+            margin-top: 0;
+        }
+
+        p {
+            color: $color--white-translucent;
+        }
+
+        @include media-query(large) {
+            float: left;
+            width: 50%;
+        }
+    }
+
+    &__caption-inner {
+        padding: 8.33vw;
+    }
+}

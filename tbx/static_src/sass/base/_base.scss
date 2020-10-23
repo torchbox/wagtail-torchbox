@@ -1,3 +1,6 @@
+// Theme overrides:
+$page-section-title-color: var(--page-section-title-color, $color--accent);
+
 // Box Sizing
 *,
 *::before,
@@ -5,17 +8,9 @@
     box-sizing: border-box;
 }
 
-// Prevent text size change on orientation change.
-html {
-    font-family: $font--primary;
-    text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 body {
     overflow-x: hidden;
-    background-color: $color--tertiary;
+    background-color: $color--white;
     scroll-behavior: smooth;
 
     @media (prefers-reduced-motion: reduce) {
@@ -47,12 +42,12 @@ textarea {
 }
 
 a {
-    color: $color--primary;
+    color: $color--link-color;
     text-decoration: none;
     transition: color $transition;
 
     &:hover {
-        color: darken($color--primary, 20%);
+        color: $color--link-hover-color;
         cursor: pointer;
     }
 }

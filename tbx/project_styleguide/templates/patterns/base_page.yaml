@@ -1,0 +1,13 @@
+tags:
+  primarynav:
+    '':
+      template_name: 'patterns/molecules/navigation/primarynav.html'
+  secondarynav:
+    '':
+      template_name: 'patterns/molecules/navigation/secondarynav.html'
+  footernav:
+    '':
+      template_name: 'patterns/molecules/navigation/footernav.html'
+  footerlinks:
+    '':
+      template_name: 'patterns/molecules/navigation/footerlinks.html'

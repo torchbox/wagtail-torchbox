@@ -1,56 +1,94 @@
 // --------------------------------- Colors -------------------------------------
-$color--primary: #444;
-$color--secondary: #fff;
-$color--tertiary: #f9f9f9;
 
-$color--white: #fff;
-$color--black: #000;
-$color--off-black: #141414;
-$color--red: #f00;
-$color--border: rgba($color--off-black, 0.2);
+:root {
+    --color--coral: #fd5765;
+    --color--coral-dark: #eb0316;
+    --color--green: #3beccd;
+    --color--light-blue: #2f128d;
+    --color--blue: #251657;
+    --color--light-grey: #f4f3f6;
+    --color--light-grey-accessible: #757575;
+    --color--grey: #444;
+    --color--white: #fff;
+    --color--white-translucent: rgba(255, 255, 255, 0.8);
+    --color--black: #000;
+}
 
-$color--default: $color--off-black;
+$color--coral: var(--color--coral);
+$color--coral-dark: var(--color--coral-dark);
+$color--light-blue: var(--color--light-blue);
+$color--blue: var(--color--blue);
+$color--light-grey: var(--color--light-grey);
+$color--light-grey-accessible: var(--color--light-grey-accessible);
+$color--grey: var(--color--grey);
+$color--green: var(--color--green);
+$color--white: var(--color--white);
+$color--white-translucent: var(--color--white-translucent);
+$color--black: var(--color--black);
 
-// Button colours
-$button-colours: (
-    primary: (
-        bg: $color--primary,
-        color: #fff,
-    ),
-    secondary: (
-        bg: $color--secondary,
-        color: #000,
-    ),
-    tertiary: (
-        bg: $color--tertiary,
-        color: #000,
-    ),
-);
+// Theme Vars (defined in themes.scss)
+$color--primary: var(--color-primary);
+$color--accent: var(--color-accent);
+$color--accent-small-text: var(--color-accent-small);
+$color--link-color: var(--color-link);
+$color--link-hover-color: var(--color-link-hover);
+
+// Text colour
+$color--default: var(--color--grey);
 
 // --------------------------------- Fonts --------------------------------------
 
-$font--primary: Sans-Serif;
-$font--secondary: Sans-Serif;
+$font--primary: 'Apercu Pro', arial, helvetica, sans-serif;
 
 // Font weights
+$weight--heavy: 800;
 $weight--bold: 700;
 $weight--semibold: 600;
 $weight--medium: 500;
 $weight--normal: 400;
-$weight--light: 200;
+$weight--light: 100;
 
 // Font sizes
-$base-font-size: 16px;
-$base-line-height: 25px;
-$font-sizes: (
-    default: $base-font-size,
-    xxl: 36px,
+$base-font-size: 18px;
+
+$large-font-sizes: (
+    xxxxl: 90px,
+    xxxl: 76px,
+    xxl: 64px,
+    xl: 46px,
+    l: 32px,
+    m: 30px,
+    s: 24px,
+    xs: 18px,
+    xxs: 14px,
+    xxxs: 12px,
+);
+
+$medium-font-sizes: (
+    xxxxl: 78px,
+    xxxl: 68px,
+    xxl: 52px,
+    xl: 38px,
+    l: 28px,
+    m: 26px,
+    s: 20px,
+    xs: 16px,
+    xxs: 14px,
+    xxxs: 12px,
+);
+
+$small-font-sizes: (
+    xxxxl: 44px,
+    xxxl: 38px,
+    xxl: 32px,
     xl: 28px,
-    l: 21px,
-    m: 18px,
-    s: 15px,
+    l: 24px,
+    m: 22px,
+    s: 18px,
     xs: 14px,
-    xxs: 12px,
+    xxs: 14px,
+    // no value in styleguide
+    xxxs: 12px,
 );
 
 // --------------------------------- Breakpoints --------------------------------------
@@ -64,6 +102,7 @@ $wrapper--small: 790px;
 
 // Grid setup
 $grid: 20px;
+$gutter: $grid;
 
 // --------------------------------- Transitions --------------------------------------
 

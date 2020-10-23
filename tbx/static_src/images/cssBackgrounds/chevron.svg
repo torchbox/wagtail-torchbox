@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg fill="#3BECCD" viewBox="0 0 104 152" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>chevron</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1">
+        <g id="chevron" fill-rule="nonzero">
+            <g id="Group" transform="translate(51.800000, 75.850000) scale(-1, 1) rotate(-180.000000) translate(-51.800000, -75.850000) translate(0.000000, -0.000000)">
+                <path d="M20.4,136.7 C10.6,128.4 2.1,121.1 1.6,120.4 C1,119.4 5.8,113 18.4,98 C28.1,86.4 36,76.7 36,76.3 C36,75.9 27.9,66 18,54.2 C8.1,42.5 0,32.4 0,31.9 C0,30.6 36,0.5 38,0.1 C38.9,-0.1 47.6,9.5 62,26.8 C74.4,41.7 88.8,58.9 94,65.1 L103.6,76.2 L72,113.9 C54.7,134.6 40,151.6 39.4,151.7 C38.9,151.7 30.3,144.9 20.4,136.7 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

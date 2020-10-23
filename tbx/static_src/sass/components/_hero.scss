@@ -1,0 +1,149 @@
+// Component theme overrides:
+$hero-background: var(--hero-background, $color--white);
+$hero-title-color: var(--hero-title-color, $color--primary);
+$hero-link-color: var(--hero-link-color, $color--link-color);
+
+.hero {
+    $root: &;
+
+    &__image {
+        margin-top: -25px;
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        background: $hero-background;
+        padding-top: 70px;
+
+        @include media-query(medium) {
+            padding-top: 120px;
+        }
+
+        @include media-query(large) {
+            padding-left: 14.66vw;
+        }
+
+        &::after {
+            position: absolute;
+            content: ' ';
+            display: block;
+            height: 80px;
+            width: 100%;
+            background-color: $color--white;
+            top: calc(100% - 50px);
+            left: 0;
+        }
+    }
+
+    &__content {
+        position: relative;
+        margin: 50px 8.33vw 0;
+        padding-top: 60px;
+        padding-bottom: 20px;
+        z-index: 2;
+
+        @include media-query(medium) {
+            margin-left: 10.33vw;
+        }
+    }
+
+    &__title {
+        color: $hero-title-color;
+        font-weight: 800;
+        font-size: 50px;
+        line-height: 55px;
+        margin-bottom: 20px;
+
+        @include media-query(medium) {
+            font-size: 70px;
+            line-height: 80px;
+        }
+
+        span {
+            color: var(--hero-title-accent-color, $color--accent);
+        }
+    }
+
+    &__desc {
+        color: $hero-title-color;
+        margin-bottom: ($gutter * 2);
+        line-height: 36px;
+        font-size: 22px;
+
+        @include media-query(medium) {
+            line-height: 42px;
+            font-size: 24px;
+            margin-right: 8.33vw;
+        }
+
+        p {
+            color: $hero-title-color;
+        }
+    }
+
+    &__links-container {
+        width: 100%;
+    }
+
+    &__links-list {
+        list-style: none;
+        display: flex;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        @include media-query(medium) {
+            padding-top: 0;
+            margin: 0;
+        }
+    }
+
+    &__links-item {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding-right: 20px;
+        padding-bottom: 25px;
+
+        @include media-query(medium) {
+            padding-bottom: 0;
+            padding-right: 50px;
+        }
+
+        a {
+            transition: all 0.2s ease;
+            color: $hero-link-color;
+            font-size: 13px;
+            text-decoration: none;
+            border-bottom: 2px solid $hero-background;
+
+            &:hover {
+                border-bottom: 2px solid
+                    var(--hero-link-underscore-color, $color--accent);
+            }
+
+            @include media-query(medium) {
+                padding: 0;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .collapsed-hero-container & {
+        #{$root}__links-container {
+            @include media-query(medium) {
+                animation: fadeOut 0.2s forwards;
+                pointer-events: none;
+            }
+        }
+    }
+
+    .dark-theme & {
+        margin-bottom: 50px;
+
+        @include media-query(medium) {
+            min-height: calc(100vh - 180px);
+        }
+    }
+}

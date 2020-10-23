@@ -1,0 +1,47 @@
+.process-image {
+    &__block {
+        background-color: $color--white;
+        padding: 90px 0 40px;
+    }
+
+    &__container {
+        @include container();
+    }
+
+    &__title {
+        font-size: 45px;
+        line-height: 50px;
+        color: $color--primary;
+        font-weight: 800;
+    }
+
+    &__image-container {
+        padding: $gutter 0;
+
+        @include media-query(medium) {
+            padding: ($gutter * 3) ($gutter * 3) 0;
+        }
+    }
+
+    &__desktop-image {
+        width: 100%;
+        display: none;
+
+        @include media-query(medium) {
+            display: block;
+        }
+    }
+
+    &__mobile-image {
+        width: 100%;
+
+        @include media-query(medium) {
+            display: none;
+        }
+    }
+
+    .page__section-title & {
+        left: 0;
+        top: -45px;
+    }
+}

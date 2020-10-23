@@ -8,10 +8,8 @@ from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from headlesspreview.models import HeadlessPreviewMixin
 
-
-class BaseServicePage(HeadlessPreviewMixin, Page):
+class BaseServicePage(Page):
     theme = models.CharField(max_length=255, choices=(
         ('light', 'Light'),
         ('coral', 'Coral'),
