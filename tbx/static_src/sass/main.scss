@@ -14,8 +14,8 @@
 
 // Components
 @import 'components/animated-character';
-@import 'components/author-block';
-@import 'components/avatar';
+@import 'components/avatar'; // needs to be before author
+@import 'components/author';
 @import 'components/blog-link';
 @import 'components/blog-listing-block';
 @import 'components/bustout';
@@ -28,7 +28,7 @@
 @import 'components/help-block';
 @import 'components/hero';
 @import 'components/job-listing-block';
-@import 'components/nav-link';
+@import 'components/nav-item';
 @import 'components/nested-nav';
 @import 'components/logo';
 @import 'components/menu-button';
@@ -39,7 +39,10 @@
 @import 'components/process';
 @import 'components/process-image';
 @import 'components/quote';
+@import 'components/section-title';
+@import 'components/see-more';
 @import 'components/services-block';
+@import 'components/skip-link';
 @import 'components/streamfield';
 @import 'components/tag';
 @import 'components/team-listing';

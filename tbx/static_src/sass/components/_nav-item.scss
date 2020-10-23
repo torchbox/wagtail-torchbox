@@ -6,49 +6,46 @@ $header-link-underscore-color: var(
 );
 $badge-background-color: var(--badge-background-color, $color--accent);
 
-.nav-link {
-    @include link-underscore(0);
-    display: block;
-    position: relative;
-    line-height: 20px;
-    text-decoration: none;
-    color: $color--white;
-    margin-right: 0;
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: none;
+.nav-item {
+    $root: &;
 
-    @include media-query(medium) {
-        height: 40px;
-        color: $header-link-color;
-        border-top: none;
-        border-bottom: none;
-        margin-right: 39px; // max we can go without nav label wrapping
-        margin-bottom: 0;
-        padding: 0;
-        transition: all 0.2s ease;
+    &--active {
+        #{$root}__link {
+            @include media-query(large) {
+                @include link-underscore(4);
+            }
+        }
     }
 
-    @include media-query(large) {
-        margin-right: 70px;
-    }
-
-    .parent:hover & {
+    &__link {
+        @include link-underscore(0);
+        display: block;
+        position: relative;
+        line-height: 20px;
+        text-decoration: none;
         color: $color--white;
+        margin-right: 0;
+        padding: 20px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 0;
 
-        @include media-query(large) {
-            @include link-underscore(4);
+        @include media-query(medium) {
+            height: 40px;
             color: $header-link-color;
+            border-top: 0;
+            border-bottom: 0;
+            margin-right: 39px; // max we can go without nav label wrapping
+            margin-bottom: 0;
+            padding: 0;
+            transition: all 0.2s ease;
         }
-    }
 
-    &.active {
         @include media-query(large) {
-            @include link-underscore(4);
+            margin-right: 70px;
         }
     }
 
-    .title {
+    &__title {
         display: flex;
         position: relative;
         transition: all 0.2s ease;
@@ -64,7 +61,7 @@ $badge-background-color: var(--badge-background-color, $color--accent);
         }
     }
 
-    .badge {
+    &__badge {
         position: relative;
         top: -10px;
         right: -15px;

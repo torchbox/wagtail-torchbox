@@ -1,4 +1,4 @@
-.author-block {
+.author {
     &__container {
         @include container();
         display: flex;
@@ -8,7 +8,8 @@
     &__image {
         width: 55px;
         height: 55px;
-        margin-right: 20px;
+        margin-right: $gutter;
+        border-radius: 100%;
 
         @include media-query(large) {
             width: 80px;
@@ -66,5 +67,13 @@
 
     &__tags {
         margin: 10px 0 0;
+    }
+
+    .page & {
+        padding-bottom: ($gutter * 2);
+
+        @include media-query(medium) {
+            margin: 0 0 0 16.66vw;
+        }
     }
 }
