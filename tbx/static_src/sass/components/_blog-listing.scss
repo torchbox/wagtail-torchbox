@@ -1,4 +1,4 @@
-.blog-listing-block {
+.blog-listing {
     position: relative;
     background-color: $color--white;
     padding: ($gutter * 5) 0 $gutter;
@@ -40,7 +40,7 @@
         }
     }
 
-    &__blog-list {
+    &__list {
         display: grid;
         grid-template-columns: 1fr;
         padding-bottom: 50px;

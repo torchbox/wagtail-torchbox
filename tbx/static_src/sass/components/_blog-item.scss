@@ -1,7 +1,7 @@
 // Theme overrides:
 $blog-author: var(--testimonial-name);
 
-.blog-link {
+.blog-item {
     $root: &;
     display: block;
     padding: 0 0 ($gutter * 2.5) 0;

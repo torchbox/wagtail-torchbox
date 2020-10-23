@@ -8,6 +8,28 @@ context:
     readtime: '5'
     tags:
       - { title: Digital products, href: /blog/#filter=/digital-products }
+    blogs:
+      - {
+          title: We already dropped Drupal - maybe it’s time for you to do the same.,
+          author_name: Paul Vetch,
+          author_role: Strategy Director,
+        }
+      - {
+          title: Wagtail for Public Sector,
+          author_name: Will Heinemann,
+          author_role: New Business Director,
+        }
+    teasers:
+      - {
+          title: Digital products,
+          desc: For our digital products and services.,
+          href: '/digital-products/',
+        }
+      - {
+          title: Wagtail,
+          desc: For web builds with the Wagtail open source CMS.,
+          href: '/wagtail-cms/',
+        }
   see_more:
     text: See more blogs
     href: '/blogs'

@@ -6,7 +6,9 @@ $page-section-title-color: var(--page-section-title-color, $color--accent);
     top: 45px;
     left: 8.33vw;
     color: $page-section-title-color;
-    font-weight: bold;
+    font-weight: $weight--bold;
+    font-size: 20px;
+    margin: 0;
 
     @include media-query(medium) {
         max-width: 140px;

@@ -134,39 +134,94 @@
         {% include "patterns/molecules/author/author.html" with item=page %}
     </div>
 
+    {% if page.blogs %}
     <div class="page__showcase">
-        <div class="blog-listing-block">
+        <div class="blog-listing">
             <h2 class="section-title">More of our thinking</h2>
-
-            <div class="blog-listing-block__content">
-                <div class="blog-listing-block__list">
-                    <a class="blog-link-module--blogLink--2VUTz " href="/blog/alternatives-to-drupal/">
-                        <h2 class="blog-link-module--blogLinkTitle--3uBtd">We already dropped Drupal - maybe it’s time for you to do the same.</h2>
-                        <div class="blog-link-module--blogLinkMeta--1B0dV">
-                            <div class="avatar-module--avatar--14wuA blog-link-module--blogLinkImage--24znm">
-                                <img class="avatar-module--avatarImage--fqEwv " src="https://media.torchbox.com/images/IMG_3157.2e16d0ba.fill-100x100.jpg" alt="Paul Vetch">
-                            </div>
-                            <div class="blog-link-module--blogLinkAuthor--2ct5c">
-                                <span class="blog-link-module--blogLinkAuthorName--2k7u9">Paul Vetch</span>
-                                <span class="blog-link-module--blogLinkAuthorRole--1Mn85">Strategy Director</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="blog-link-module--blogLink--2VUTz " href="/blog/wagtail-public-sector/">
-                        <h2 class="blog-link-module--blogLinkTitle--3uBtd">Wagtail for the public sector</h2>
-                        <div class="blog-link-module--blogLinkMeta--1B0dV">
-                            <div class="avatar-module--avatar--14wuA blog-link-module--blogLinkImage--24znm">
-                                <img class="avatar-module--avatarImage--fqEwv " src="https://media.torchbox.com/images/tbx_team-will.2e16d0ba.fill-100x100.jpg" alt="Will Heinemann">
-                            </div><div class="blog-link-module--blogLinkAuthor--2ct5c">
-                                <span class="blog-link-module--blogLinkAuthorName--2k7u9">Will Heinemann</span>
-                                <span class="blog-link-module--blogLinkAuthorRole--1Mn85">New Business Director</span>
-                            </div>
-                        </div>
-                    </a>
+            <div class="blog-listing__content">
+                <div class="blog-listing__list">
+                    {% for blog in page.blogs %}
+                        {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                    {% endfor %}
                 </div>
                 {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
             </div>
         </div>
     </div>
+    {% endif %}
+
+    <div class="page__contact">
+
+        <div class="reason-list">
+            <div class="reason-list__container">
+                <h1 class="reason-list__title">Get in touch to talk about your project</h1>
+                <ul class="reason-list__content">
+                    <li class="reason">
+                        <div class="reason__container">
+                            <div class="reason__number">
+                                <span>1</span>
+                            </div>
+                            <div class="reason__content">
+                                <h2 class="reason__title">Chemistry?</h2>
+                                <p class="reason__description">We like to meet. Early on. It’s the best way to work out whether we are a fit.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="reason">
+                        <div class="reason__container">
+                            <div class="reason__number">
+                                <span>2</span>
+                            </div>
+                            <div class="reason__content">
+                                <h2 class="reason__title">De-risk your project</h2>
+                                <p class="reason__description">We can remove the barriers to getting your project going. Ask us how we do this.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="reason">
+                        <div class="reason__container">
+                            <div class="reason__number">
+                                <span>3</span>
+                            </div>
+                            <div class="reason__content">
+                                <h2 class="reason__title">Your brief</h2>
+                                <p class="reason__description">If you’ve got a brief, we’d love to see it. If you haven’t, talk to us before you write it, we can help.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <section class="contact-block">
+                <div class="contact-block__details">
+                    <div class="contact-block__image avatar">
+                        <img class="avatar__image" src="https://media.torchbox.com/images/tbx_team-will.2e16d0ba.fill-100x100.jpg" alt="">
+                    </div>
+                    <div class="contact-block__meta">
+                        <div>
+                            <a href="mailto:willh@torchbox.com" class="contact-block__email">willh@torchbox.com</a>
+                        </div>
+                        <div>
+                            <a href="tel://+447545468483" class="contact-block__number">+447545468483</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+    </div>
+
+    {% if page.teasers %}
+    <div class="teaser-list">
+        <div class="teaser-list__container">
+            <h3 class="teaser-list__title">More from Torchbox...</h3>
+            <div class="teaser-list__content">
+                {% for teaser in page.teasers %}
+                    {% include "patterns/molecules/teaser/teaser.html" with item=teaser %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
 {% endblock %}
