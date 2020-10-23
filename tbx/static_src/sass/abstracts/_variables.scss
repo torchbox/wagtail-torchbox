@@ -1,0 +1,84 @@
+// --------------------------------- Colors -------------------------------------
+$color--primary: #444;
+$color--secondary: #fff;
+$color--tertiary: #f9f9f9;
+
+$color--white: #fff;
+$color--black: #000;
+$color--off-black: #141414;
+$color--red: #f00;
+$color--border: rgba($color--off-black, 0.2);
+
+$color--default: $color--off-black;
+
+// Button colours
+$button-colours: (
+    primary: (
+        bg: $color--primary,
+        color: #fff,
+    ),
+    secondary: (
+        bg: $color--secondary,
+        color: #000,
+    ),
+    tertiary: (
+        bg: $color--tertiary,
+        color: #000,
+    ),
+);
+
+// --------------------------------- Fonts --------------------------------------
+
+$font--primary: Sans-Serif;
+$font--secondary: Sans-Serif;
+
+// Font weights
+$weight--bold: 700;
+$weight--semibold: 600;
+$weight--medium: 500;
+$weight--normal: 400;
+$weight--light: 200;
+
+// Font sizes
+$base-font-size: 16px;
+$base-line-height: 25px;
+$font-sizes: (
+    default: $base-font-size,
+    xxl: 36px,
+    xl: 28px,
+    l: 21px,
+    m: 18px,
+    s: 15px,
+    xs: 14px,
+    xxs: 12px,
+);
+
+// --------------------------------- Breakpoints --------------------------------------
+$breakpoints: ('medium' '(min-width: 599px)', 'large' '(min-width: 1023px)');
+
+// --------------------------------- Grid Dimensions --------------------------------------
+
+// Wrappers
+$site-width: 1280px;
+$wrapper--small: 790px;
+
+// Grid setup
+$grid: 20px;
+
+// --------------------------------- Transitions --------------------------------------
+
+$transition: 0.25s ease-out;
+
+// --------------------------------- Z-indices --------------------------------------
+
+$z-index: (
+    under: -1,
+    base: 10,
+    overlap: 20,
+    header: 30,
+    footer: 40,
+    nav: 50,
+    cookie-message: 100,
+    modal: 110,
+    modal-controls: 120,
+);

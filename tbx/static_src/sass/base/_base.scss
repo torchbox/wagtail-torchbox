@@ -1,0 +1,65 @@
+// Box Sizing
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// Prevent text size change on orientation change.
+html {
+    font-family: $font--primary;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: $color--tertiary;
+    scroll-behavior: smooth;
+
+    @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+    }
+
+    &.no-scroll {
+        overflow-y: hidden;
+    }
+}
+
+// Prevent empty space below images appearing
+img,
+svg {
+    vertical-align: top;
+}
+
+// Responsive images
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+a {
+    color: $color--primary;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+        color: darken($color--primary, 20%);
+        cursor: pointer;
+    }
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
