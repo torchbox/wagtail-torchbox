@@ -1,5 +1,8 @@
 <div class="title-block">
     <div class="title-block__container">
+        {% if item.client %}
+        <p class="title-block__client">{{ item.client }}</p>
+        {% endif %}
         <h1 class="title-block__heading">{{ item.title }}</h1>
         {% if tags %}
         <div class="title-block__tags">
