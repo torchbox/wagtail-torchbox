@@ -45,6 +45,7 @@ a {
     color: var(--color--link-color);
     text-decoration: none;
     transition: color $transition;
+    border-bottom: 2px solid var(--color--underline, var(--color--accent));
 
     &:hover {
         color: var(--color--link-hover);

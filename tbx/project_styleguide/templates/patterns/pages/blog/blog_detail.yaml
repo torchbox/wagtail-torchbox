@@ -33,3 +33,8 @@ context:
   see_more:
     text: See more blogs
     href: '/blogs'
+
+tags:
+  include_block:
+    page.body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example.html'

@@ -63,6 +63,8 @@ $blog-author: var(--testimonial-name);
     &__image {
         width: 55px;
         height: 55px;
+        min-height: 55px;
+        min-width: 55px;
         margin-right: ($gutter * 0.75);
     }
 

@@ -81,6 +81,7 @@ h2,
     @include font-size(l);
     font-weight: $weight--heavy;
     margin: ($gutter * 3) 0 $gutter;
+    color: var(--color--primary);
 }
 
 h3,
