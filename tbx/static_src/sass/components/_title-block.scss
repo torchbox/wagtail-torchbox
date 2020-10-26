@@ -21,19 +21,16 @@
         }
     }
 
-    &__heading-inner {
-        font-size: 45px;
-        line-height: 50px;
-
-        @include media-query(medium) {
-            font-size: 70px;
-            line-height: 80px;
+    &__tags {
+        @include media-query(large) {
+            margin: 0 8.33vw 20px 16.66vw;
         }
     }
 
     /* Template specific */
 
-    .template__blog-listing & {
+    .template__blog-listing &,
+    .template__work-listing & {
         #{$root}__heading {
             font-weight: $weight--heavy;
         }

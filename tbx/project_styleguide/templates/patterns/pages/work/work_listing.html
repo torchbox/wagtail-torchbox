@@ -7,12 +7,16 @@
 
     {% include "patterns/molecules/title-block/title-block.html" with item=page tags=page.tags %}
     
-    <div class="blog-listing blog-listing--centre">
-        <div class="blog-listing__content">
+    <div class="casestudies">
+        <div class="casestudies__content">
 
-            <div class="blog-listing__list">
-                {% for blog in page.blogs %}
-                    {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+            <div class="casestudies__tags">
+                
+            </div>
+
+            <div class="casestudies__list">
+                {% for casestudy in page.casestudies %}
+                    {% include "patterns/molecules/casestudy-item/casestudy-item.html" with item=casestudy %}
                 {% endfor %}
             </div>
             

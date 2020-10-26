@@ -1,64 +1,54 @@
-.case-study-block {
+.casestudy-item {
     $root: &;
     position: relative;
-    background: $color--white;
-    padding-top: ($gutter * 5);
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: none;
+    line-height: 0;
 
-    &__list {
-        padding-top: ($gutter * 2);
+    &:hover {
+        #{$root}__meta-title {
+            color: $color--indigo;
+        }
     }
 
-    &__case-study {
-        position: relative;
-        display: flex;
-        flex-direction: column-reverse;
-        border-bottom: none;
-        line-height: 0;
+    @include media-query(large) {
+        flex-direction: row;
+        background-size: cover;
+    }
 
-        &:hover {
-            #{$root}__meta-title {
-                color: $color--indigo;
-            }
-        }
-
+    &:nth-child(even) {
         @include media-query(large) {
-            flex-direction: row;
-            background-size: cover;
-        }
+            flex-direction: row-reverse;
 
-        &:nth-child(even) {
-            @include media-query(large) {
-                flex-direction: row-reverse;
+            #{$root}__meta-container {
+                padding: ($gutter * 2) ($gutter * 1.5) 0 0;
+            }
 
-                #{$root}__meta-container {
-                    padding: ($gutter * 2) ($gutter * 1.5) 0 0;
-                }
-
-                #{$root}__image-inner {
-                    /* stylelint-disable-next-line max-nesting-depth */
-                    &::before {
-                        left: auto;
-                        right: 0;
-                        border-width: 0 0 60vw 25vw;
-                        /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-                        border-color: transparent transparent $color--white;
-                        bottom: auto;
-                        top: 0;
-                    }
-                }
-
-                #{$root}__cluster-icon {
-                    display: none;
+            #{$root}__image-inner {
+                /* stylelint-disable-next-line max-nesting-depth */
+                &::before {
+                    left: auto;
+                    right: 0;
+                    border-width: 0 0 60vw 25vw;
+                    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+                    border-color: transparent transparent $color--white;
+                    bottom: auto;
+                    top: 0;
                 }
             }
-        }
 
-        &:nth-child(3) {
-            @include media-query(large) {
-                #{$root}__cluster-icon {
-                    transform: rotate(180deg);
-                    left: 190px;
-                }
+            #{$root}__cluster-icon {
+                display: none;
+            }
+        }
+    }
+
+    &:nth-child(3) {
+        @include media-query(large) {
+            #{$root}__cluster-icon {
+                transform: rotate(180deg);
+                left: 190px;
             }
         }
     }
@@ -74,19 +64,19 @@
             padding: 40px 0 40px;
             width: 50%;
         }
+    }
 
-        #{$root}__container {
-            @include media-query(medium) {
-                padding: 40px ($gutter * 1.5) 0 8.33vw;
-            }
+    &__meta-container {
+        @include media-query(medium) {
+            padding: 40px ($gutter * 1.5) 0 8.33vw;
+        }
 
-            @include media-query(large) {
-                padding: 4.33vw ($gutter * 1.5) 0 8.33vw;
-            }
+        @include media-query(large) {
+            padding: 4.33vw ($gutter * 1.5) 0 8.33vw;
         }
     }
 
-    &__meta-client {
+    &__client {
         display: block;
         color: var(--color--accent);
         font-size: 12px;
@@ -97,7 +87,7 @@
         letter-spacing: 0.15em;
     }
 
-    &__meta-title {
+    &__title {
         font-size: 32px;
         line-height: 44px;
         margin: 0 0 10px;
@@ -109,7 +99,7 @@
         }
     }
 
-    &__meta-desc {
+    &__desc {
         color: $color--grey;
         line-height: 1.5;
     }
