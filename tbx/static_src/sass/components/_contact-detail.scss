@@ -2,7 +2,7 @@
 $get-in-touch-number-color: var(--get-in-touch-number-color);
 
 .contact-detail {
-    background-color: $color--primary;
+    background-color: var(--color--primary);
     padding: ($gutter * 4) 0;
     color: $color--white;
 
@@ -78,7 +78,7 @@ $get-in-touch-number-color: var(--get-in-touch-number-color);
             width: 25px;
             height: 40px;
             content: '';
-            background: $color--accent;
+            background: var(--color--accent);
             position: absolute;
             z-index: 0;
             transform: rotate(30deg);
@@ -157,7 +157,7 @@ $get-in-touch-number-color: var(--get-in-touch-number-color);
     &__details-number {
         font-size: 24px;
         text-decoration: none;
-        color: $color--accent;
+        color: var(--color--accent);
         margin: 10px 15px 0 0;
         border-bottom: none;
 

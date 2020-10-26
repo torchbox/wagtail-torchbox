@@ -1,6 +1,15 @@
 .theme {
     &--primary {
-        --color--primary: var(--color--coral);
-        --color--secondary: var(--var(--color--accent));
+        --color--primary: var(--color--blue);
+        --color--accent: var(--color--coral);
+        --color--link: var(--color--coral);
+        --color--hover: var(--color--coral-dark);
+    }
+
+    &--secondary {
+        --color--primary: var(--color--blue);
+        --color--accent: var(--color--black);
+        --color--link: var(--color--coral);
+        --color--hover: var(--color--coral-dark);
     }
 }

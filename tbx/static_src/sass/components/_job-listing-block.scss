@@ -37,7 +37,7 @@
             height: 8px;
             left: 0;
             top: 0;
-            background: $color--accent;
+            background: var(--color--accent);
         }
     }
 
@@ -51,14 +51,14 @@
     }
 
     &__intro-title {
-        color: $color--accent;
+        color: var(--color--accent);
         padding: 0;
     }
 
     &__intro-text {
         line-height: 30px;
         margin: 0 0 ($gutter * 2);
-        color: $color--primary;
+        color: var(--color--primary);
 
         @include media-query(medium) {
             line-height: 42px;
@@ -78,7 +78,7 @@
         line-height: ($gutter * 2);
         margin: 0 0 15px;
         padding: 0;
-        color: $color--primary;
+        color: var(--color--primary);
 
         &:hover {
             color: $color--blue;
@@ -91,7 +91,7 @@
     }
 
     &__job-link-level {
-        color: $color--primary;
+        color: var(--color--primary);
         font-size: 20px;
         margin-bottom: 0;
         line-height: 30px;
@@ -100,7 +100,7 @@
     &__job-link-location {
         margin: 0 0 2px;
         line-height: 1.4;
-        color: $color--accent-small-text;
+        color: var(--color--accent);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;

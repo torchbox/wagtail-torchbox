@@ -1,4 +1,4 @@
-$header-icon-color: var(--header-icon-color, $color--primary);
+$header-icon-color: var(--header-icon-color, var(--color--primary));
 
 .menu-button {
     position: absolute;

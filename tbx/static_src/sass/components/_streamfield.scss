@@ -8,10 +8,10 @@
         font-size: 22px;
         line-height: 36px;
         margin: 0 0 40px;
-        color: $color--primary;
+        color: var(--color--primary);
 
         p {
-            color: $color--primary;
+            color: var(--color--primary);
         }
 
         @include media-query(medium) {
@@ -164,11 +164,11 @@
     a {
         cursor: pointer;
         font-weight: bold;
-        color: $color--link-color;
+        color: var(--color--link);
 
         &:hover {
             border-bottom: 2px solid $color--green;
-            color: $color--link-color;
+            color: var(--color--link);
         }
     }
 
@@ -201,7 +201,7 @@
 
             @supports (mask: url('')) {
                 background-image: none;
-                background-color: $color--accent;
+                background-color: var(--color--accent);
                 mask: url('../images/cssBackgrounds/chevron.svg') no-repeat
                     center;
                 mask-size: contain;

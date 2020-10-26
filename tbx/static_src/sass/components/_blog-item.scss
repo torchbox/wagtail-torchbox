@@ -57,7 +57,7 @@ $blog-author: var(--testimonial-name);
         font-weight: bold;
         line-height: 40px;
         margin: 0 0 $gutter;
-        color: $color--primary;
+        color: var(--color--primary);
     }
 
     &__image {
@@ -72,7 +72,7 @@ $blog-author: var(--testimonial-name);
     }
 
     &__author-name {
-        color: $color--primary;
+        color: var(--color--primary);
         font-size: 20px;
     }
 

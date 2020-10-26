@@ -38,7 +38,7 @@
         line-height: 1;
         font-size: 18px;
         font-weight: 800;
-        color: $color--primary;
+        color: var(--color--primary);
 
         @include media-query(medium) {
             font-size: 22px;
@@ -51,7 +51,7 @@
 
     &__person-role {
         line-height: 1.4;
-        color: $color--accent;
+        color: var(--color--accent);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: $weight--bold;

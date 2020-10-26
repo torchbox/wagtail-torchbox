@@ -9,7 +9,7 @@ $testimonial-name: var(--testimonial-name);
     }
 
     &__icon {
-        fill: var(--icon-color, $color--accent);
+        fill: var(--icon-color, var(--color--accent));
         width: 20vw;
         max-width: 100px;
         grid-column: 1;
@@ -65,7 +65,7 @@ $testimonial-name: var(--testimonial-name);
         &--active {
             width: 14px;
             height: 20px;
-            background: var(--icon-color, $color--accent);
+            background: var(--icon-color, var(--color--accent));
         }
     }
 
@@ -93,7 +93,7 @@ $testimonial-name: var(--testimonial-name);
         font-style: normal;
         margin: 0 0 20px;
         padding: 0 0 0;
-        color: $color--primary;
+        color: var(--color--primary);
         font-size: 22px;
         line-height: 38px;
 

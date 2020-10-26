@@ -63,7 +63,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
 
     &__title {
         width: 100%;
-        color: $color--primary;
+        color: var(--color--primary);
         font-size: 26px;
         line-height: 30px;
         margin: 0 0 ($gutter / 4);

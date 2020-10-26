@@ -14,7 +14,7 @@
     height: 26px;
 
     &:hover {
-        border: 2px solid $color--accent;
-        color: $color--accent-small-text;
+        border: 2px solid var(--color--accent);
+        color: var(--color--accent);
     }
 }

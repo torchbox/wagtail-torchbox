@@ -18,7 +18,7 @@
             height: 8px;
             left: 0;
             top: 0;
-            background: $color--accent;
+            background: var(--color--accent);
         }
 
         @include media-query(large) {
@@ -27,13 +27,13 @@
     }
 
     &__intro-title {
-        color: $color--accent;
+        color: var(--color--accent);
     }
 
     &__intro-text {
         line-height: 30px;
         margin: 0 0 ($gutter * 2);
-        color: $color--primary;
+        color: var(--color--primary);
 
         @include media-query(large) {
             line-height: 42px;

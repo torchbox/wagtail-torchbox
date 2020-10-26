@@ -1,7 +1,7 @@
 // Component theme overrides:
 $hero-background: var(--hero-background, $color--white);
-$hero-title-color: var(--hero-title-color, $color--primary);
-$hero-link-color: var(--hero-link-color, $color--link-color);
+$hero-title-color: var(--hero-title-color, --color--primary);
+$hero-link-color: var(--hero-link-color, --color--link-color);
 
 .hero {
     $root: &;
@@ -63,7 +63,7 @@ $hero-link-color: var(--hero-link-color, $color--link-color);
         }
 
         span {
-            color: var(--hero-title-accent-color, $color--accent);
+            color: var(--hero-title-accent-color, var(--color--accent));
         }
     }
 
@@ -120,7 +120,7 @@ $hero-link-color: var(--hero-link-color, $color--link-color);
 
             &:hover {
                 border-bottom: 2px solid
-                    var(--hero-link-underscore-color, $color--accent);
+                    var(--hero-link-underscore-color, var(--color--accent));
             }
 
             @include media-query(medium) {

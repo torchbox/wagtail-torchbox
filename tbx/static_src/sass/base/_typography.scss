@@ -69,6 +69,7 @@ h1,
     @include font-size(xl);
     font-weight: $weight--bold;
     margin: 0 0 ($gutter / 2);
+    color: var(--color--primary);
 
     @include media-query(medium) {
         margin-right: 8.33vw;

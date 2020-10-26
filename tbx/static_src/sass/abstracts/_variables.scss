@@ -12,6 +12,11 @@
     --color--white: #fff;
     --color--white-translucent: rgba(255, 255, 255, 0.8);
     --color--black: #000;
+    // Theme base - defined in theme.scss
+    --color--primary: var(--color--coral);
+    --color--accent: var(--color--blue);
+    --color--link: var(--color--coral);
+    --color--hover: var(--color--coral-dark);
 }
 
 $color--coral: var(--color--coral);
@@ -25,13 +30,6 @@ $color--green: var(--color--green);
 $color--white: var(--color--white);
 $color--white-translucent: var(--color--white-translucent);
 $color--black: var(--color--black);
-
-// Theme Vars (defined in themes.scss)
-$color--primary: var(--color-primary);
-$color--accent: var(--color-accent);
-$color--accent-small-text: var(--color-accent-small);
-$color--link-color: var(--color-link);
-$color--link-hover-color: var(--color-link-hover);
 
 // Text colour
 $color--default: var(--color--grey);

@@ -1,5 +1,5 @@
 // Theme overrides:
-$page-section-title-color: var(--page-section-title-color, $color--accent);
+$page-section-title-color: var(--page-section-title-color, --color--accent);
 
 // Box Sizing
 *,
@@ -42,12 +42,12 @@ textarea {
 }
 
 a {
-    color: $color--link-color;
+    color: var(--color--link-color);
     text-decoration: none;
     transition: color $transition;
 
     &:hover {
-        color: $color--link-hover-color;
+        color: var(--color--link-hover);
         cursor: pointer;
     }
 }

@@ -42,7 +42,7 @@ $get-in-touch-number-color: var(--get-in-touch-number-color);
             width: 25px;
             height: 40px;
             content: '';
-            background: $color--accent;
+            background: var(--color--accent);
             position: absolute;
             z-index: 0;
             transform: rotate(30deg);
