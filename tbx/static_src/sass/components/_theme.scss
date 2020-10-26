@@ -1,0 +1,6 @@
+.theme {
+    &--primary {
+        --color--primary: var(--color--coral);
+        --color--secondary: var(--var(--color--accent));
+    }
+}

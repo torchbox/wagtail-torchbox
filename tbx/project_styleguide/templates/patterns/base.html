@@ -26,7 +26,7 @@
         {% block extra_css %}{% endblock %}
     </head>
 
-    <body class="{% block body_class %}template-{{ page.get_verbose_name|slugify }}{% endblock %}">
+    <body class="{% block body_class %}template-{{ page.get_verbose_name|slugify }}{% endblock %} {% block theme_class %}theme-{{ theme_class }}{% endblock %}">
         {% block body_top %}{% endblock %}
 
         {% include "patterns/atoms/sprites/sprites.html" %}

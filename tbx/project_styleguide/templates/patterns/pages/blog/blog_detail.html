@@ -1,6 +1,8 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
+{% block theme_class %}theme--primary{% endblock %}
+
 {% block content %}
 
     {% include "patterns/molecules/title-block/title-block.html" with item=page %}
@@ -208,7 +210,7 @@
                 </div>
             </section>
         </div>
-        
+
     </div>
 
     {% if page.teasers %}
