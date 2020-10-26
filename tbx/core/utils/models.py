@@ -2,12 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.decorators import method_decorator
 
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    MultiFieldPanel,
-    PageChooserPanel,
-    StreamFieldPanel,
-)
+from wagtail.admin.edit_handlers import (FieldPanel, MultiFieldPanel, PageChooserPanel, StreamFieldPanel)
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
