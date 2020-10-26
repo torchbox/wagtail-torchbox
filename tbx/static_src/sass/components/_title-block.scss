@@ -1,6 +1,10 @@
 .title-block {
-    @include container();
+    $root: &;
     background: $color--white;
+
+    &__container {
+        @include container();
+    }
 
     &__heading {
         font-size: 50px;
@@ -24,6 +28,14 @@
         @include media-query(medium) {
             font-size: 70px;
             line-height: 80px;
+        }
+    }
+
+    /* Template specific */
+
+    .template__blog-listing & {
+        #{$root}__heading {
+            font-weight: $weight--heavy;
         }
     }
 }

@@ -1,7 +1,24 @@
 .blog-listing {
+    $root: &;
     position: relative;
     background-color: $color--white;
-    padding: ($gutter * 5) 0 $gutter;
+    padding: $gutter 0;
+
+    &--top-space {
+        padding-top: ($gutter * 5);
+    }
+
+    &--centre {
+        #{$root}__content {
+            @include media-query(medium) {
+                padding: 0 16.66vw;
+            }
+        }
+
+        #{$root}__list {
+            margin-top: 70px;
+        }
+    }
 
     &__content {
         @include container();
@@ -41,18 +58,20 @@
     }
 
     &__list {
-        display: grid;
-        grid-template-columns: 1fr;
-        padding-bottom: 50px;
+        &--horizontal {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding-bottom: 50px;
 
-        @include media-query(large) {
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 8.33vw;
-        }
+            @include media-query(large) {
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 8.33vw;
+            }
 
-        @include target-ie() {
-            display: flex;
-            flex-direction: column;
+            @include target-ie() {
+                display: flex;
+                flex-direction: column;
+            }
         }
     }
 }

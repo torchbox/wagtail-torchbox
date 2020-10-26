@@ -13,8 +13,24 @@
     transition: all 0.2s ease;
     height: 26px;
 
+    &--active {
+        border-color: var(--color--primary);
+        color: var(--color--primary);
+        cursor: default;
+        pointer-events: none;
+    }
+
     &:hover {
         border: 2px solid var(--color--accent);
         color: var(--color--accent);
+    }
+
+    /* Template specific */
+    .template__blog-listing & {
+        font-size: 14px;
+        padding: 2px 8px;
+        margin-right: 10px;
+        font-weight: $weight--medium;
+        box-sizing: content-box;
     }
 }

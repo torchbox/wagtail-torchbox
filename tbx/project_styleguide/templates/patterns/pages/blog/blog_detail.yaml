@@ -1,6 +1,7 @@
 context:
   page:
     title: The stages (and jargon) of digital product innovation
+    get_verbose_name: blog-detail
     author: Nick Lee
     authorLink: /team/nick-lee
     role: Designer
@@ -18,17 +19,6 @@ context:
           title: Wagtail for Public Sector,
           author_name: Will Heinemann,
           author_role: New Business Director,
-        }
-    teasers:
-      - {
-          title: Digital products,
-          desc: For our digital products and services.,
-          href: '/digital-products/',
-        }
-      - {
-          title: Wagtail,
-          desc: For web builds with the Wagtail open source CMS.,
-          href: '/wagtail-cms/',
         }
   see_more:
     text: See more blogs

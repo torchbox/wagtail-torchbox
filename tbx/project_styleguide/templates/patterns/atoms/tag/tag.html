@@ -1,1 +1,1 @@
-<a class="tag" href="{{ item.href }}">{{ item.title }}</a>
+<a class="tag {% if item.active %}tag--active{% endif %}" href="{{ item.href }}" {% if item.active %}aria-current="page"{% endif %}>{{ item.title }}</a>
