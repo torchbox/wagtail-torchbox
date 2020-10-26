@@ -59,7 +59,7 @@
     &__item-title {
         font-size: 34px;
         line-height: 40px;
-        color: $color--light-blue;
+        color: $color--indigo;
         font-weight: 800;
         background: $color--white;
         padding: ($gutter / 2) 0 0;
@@ -80,12 +80,12 @@
         font-weight: 700;
         line-height: 26px;
         text-decoration: none;
-        color: $color--light-blue;
+        color: $color--indigo;
 
         &:hover,
         &:focus {
-            color: $color--light-blue;
-            border-bottom-color: $color--light-blue;
+            color: $color--indigo;
+            border-bottom-color: $color--indigo;
         }
     }
 }

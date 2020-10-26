@@ -2,10 +2,11 @@
 
 :root {
     --color--coral: #fd5765;
+    // Coral replacement for text smaller than 18px on white
     --color--coral-dark: #eb0316;
-    --color--green: #3beccd;
-    --color--light-blue: #2f128d;
-    --color--blue: #251657;
+    --color--lagoon: #3beccd;
+    --color--indigo: #2f128d;
+    --color--dark-indigo: #251657;
     --color--light-grey: #f4f3f6;
     --color--light-grey-accessible: #757575;
     --color--grey: #444;
@@ -14,7 +15,7 @@
     --color--black: #000;
     // Theme base - defined in theme.scss
     --color--primary: var(--color--coral);
-    --color--accent: var(--color--blue);
+    --color--accent: var(--color--dark-indigo);
     --color--link: var(--color--coral);
     --color--underline: var(--color--coral);
     --color--hover: var(--color--coral-dark);
@@ -22,12 +23,12 @@
 
 $color--coral: var(--color--coral);
 $color--coral-dark: var(--color--coral-dark);
-$color--light-blue: var(--color--light-blue);
-$color--blue: var(--color--blue);
+$color--indigo: var(--color--indigo);
+$color--dark-indigo: var(--color--dark-indigo);
 $color--light-grey: var(--color--light-grey);
 $color--light-grey-accessible: var(--color--light-grey-accessible);
 $color--grey: var(--color--grey);
-$color--green: var(--color--green);
+$color--lagoon: var(--color--lagoon);
 $color--white: var(--color--white);
 $color--white-translucent: var(--color--white-translucent);
 $color--black: var(--color--black);

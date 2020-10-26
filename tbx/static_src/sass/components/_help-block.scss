@@ -75,7 +75,7 @@
 
             &:hover {
                 @include media-query(medium) {
-                    color: $color--light-blue;
+                    color: $color--indigo;
                     border-bottom: 2px solid var(--color--accent);
                     font-weight: 800;
                 }

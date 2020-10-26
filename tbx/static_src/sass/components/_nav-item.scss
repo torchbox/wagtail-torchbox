@@ -68,7 +68,7 @@ $badge-background-color: var(--badge-background-color, var(--color--accent));
         font-size: 14px;
         font-weight: 700;
         line-height: 25px;
-        color: var(--badge-text-color, $color--light-blue);
+        color: var(--badge-text-color, $color--indigo);
         z-index: 5;
 
         @include media-query(medium) {

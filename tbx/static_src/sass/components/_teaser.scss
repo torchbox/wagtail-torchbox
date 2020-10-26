@@ -12,7 +12,7 @@
         background-color: rgba($color--white, 0.5);
 
         #{$root}__title {
-            color: $color--blue;
+            color: $color--dark-indigo;
         }
     }
 
@@ -27,7 +27,7 @@
     }
 
     &__title {
-        color: $color--light-blue;
+        color: $color--indigo;
         font-weight: 800;
         font-size: 35px;
         line-height: 40px;
@@ -44,7 +44,7 @@
         height: 30px;
         margin-top: 3px;
         margin-left: 10px;
-        fill: $color--green;
+        fill: $color--lagoon;
 
         @include media-query(medium) {
             margin-top: 8px;
