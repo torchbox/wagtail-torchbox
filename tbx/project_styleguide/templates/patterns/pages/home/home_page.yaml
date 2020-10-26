@@ -1,9 +1,9 @@
 context:
   page:
+    blog_title: Thinking
+    clients_title: Clients
+    hero_intro_primary: This is the hero intro primary
+    hero_intro_secondary: This is the hero intro secondary
+    intro_body: '<p>This is the intro body</p>'
     title: Homepage
-    strapline: This is a home page
-    call_to_action:
-      title: Stub content
-      summary: Check out our awesome stub content
-      get_link_text: Click here
-      get_link_url: '#'
+    work_title: Works

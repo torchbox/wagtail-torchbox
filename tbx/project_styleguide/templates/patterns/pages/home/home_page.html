@@ -1,11 +1,33 @@
 {% extends "patterns/base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
+
+    {# Page title #}
     <h1>{{ page.title }}</h1>
 
-    {{ page.strapline }}
+    {# Introduction / Hero #}
+    <section>
+        <h2>
+            {{ page.hero_intro_primary }}
+            {{ page.hero_intro_secondary }}
+        </h2>
+        {{ page.intro_body|richtext }}
+    </section>
 
-    {% include "patterns/molecules/cta/call_to_action.html" with call_to_action=page.call_to_action %}
+    {# Clients #}
+    <section>
+        <h2>{{ page.clients_title }}</h2>
+    </section>
+
+    {# Works #}
+    <section>
+        <h2>{{ page.works_title }}</h2>
+    </section>
+
+    {# Blog #}
+    <section>
+        <h2>{{ page.blog_title }}</h2>
+    </section>
 
 {% endblock %}
