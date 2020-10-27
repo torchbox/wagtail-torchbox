@@ -26,7 +26,6 @@
             }
 
             #{$root}__image-inner {
-                /* stylelint-disable-next-line max-nesting-depth */
                 &::before {
                     left: auto;
                     right: 0;

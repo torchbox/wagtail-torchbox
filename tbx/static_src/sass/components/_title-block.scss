@@ -20,6 +20,10 @@
         @include media-query(large) {
             margin: 0 8.33vw 20px 16.66vw;
         }
+
+        span {
+            color: var(--color--accent);
+        }
     }
 
     &__tags,

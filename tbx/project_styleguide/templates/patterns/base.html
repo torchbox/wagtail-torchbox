@@ -39,8 +39,9 @@
             {% block content %}
                 {{ pattern_library_rendered_pattern }}
             {% endblock %}
-
+            {% if not pattern_library_rendered_pattern %}
             {% include "patterns/organisms/page-contact/page-contact.html" %}
+            {% endif %}
         </main>
 
         {% block footer %}{% endblock %}
