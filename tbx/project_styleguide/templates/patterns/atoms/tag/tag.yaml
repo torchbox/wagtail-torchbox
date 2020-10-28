@@ -1,4 +1,5 @@
 context:
   item:
-    title: tag
-    href: '#'
+    name: tag
+    slug: 'tag'
+  tag_link_base: ''

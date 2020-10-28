@@ -1,1 +1,7 @@
-<a class="tag {% if small %}tag--small{% endif %} {% if item.active %}tag--active{% endif %}" href="{{ item.href }}" {% if item.active %}aria-current="page"{% endif %}>{{ item.title }}</a>
+<a
+    class="tag{% if small %} tag--small{% endif %}{% if item.active %} tag--active{% endif %}"
+    href="{{ tag_link_base }}?filter={{ item.slug }}"
+    {% if active %}aria-current="page"{% endif %}
+>
+    {{ item.name }}
+</a>
