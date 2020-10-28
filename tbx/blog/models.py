@@ -128,6 +128,8 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
+    template = 'patterns/pages/blog/blog_detail.html'
+
     date = models.DateField("Post date")
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
