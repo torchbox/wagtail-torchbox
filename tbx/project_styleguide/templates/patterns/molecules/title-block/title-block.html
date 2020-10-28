@@ -1,3 +1,20 @@
 <div class="title-block">
-    <h1 class="title-block__heading">{{ item.title }}</h1>  
+    <div class="title-block__container">
+        {% if item.client %}
+        <p class="title-block__client">{{ item.client }}</p>
+        {% endif %}
+        <h1 class="title-block__heading">{{ item.title }}</h1>
+        {% if meta %}
+        <div class="title-block__meta">
+            {{ meta }}
+        </div>
+        {% endif %}
+        {% if tags %}
+        <div class="title-block__tags">
+            {% for tag in tags %}
+                {% include "patterns/atoms/tag/tag.html" with item=tag %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>  
 </div>  

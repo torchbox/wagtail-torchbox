@@ -1,0 +1,9 @@
+.casestudies {
+    position: relative;
+    background: $color--white;
+    padding-top: ($gutter * 5);
+
+    &__list {
+        padding-top: ($gutter * 2);
+    }
+}

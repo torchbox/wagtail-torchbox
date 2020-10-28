@@ -21,4 +21,9 @@
     &__showcase {
         margin-top: ($gutter * 5);
     }
+
+    /* Template specific */
+    .template__service & {
+        padding: 0;
+    }
 }

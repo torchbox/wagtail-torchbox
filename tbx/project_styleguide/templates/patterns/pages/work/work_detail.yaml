@@ -1,0 +1,32 @@
+context:
+  page:
+    title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+    client: Oxfam
+    get_verbose_name: work-detail
+    author: Nick Lee
+    authorLink: /team/nick-lee
+    role: Designer
+    date: 07 Aug ’20
+    readtime: '5'
+    tags:
+      - { title: Digital products, href: '#' }
+      - { title: Wagtail, href: '#' }
+    casestudies:
+      - {
+          title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
+          client: Oxfam,
+          desc: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
+        }
+      - {
+          title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
+          client: Oxfam,
+          desc: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
+        }
+  see_more:
+    text: See more casestudies
+    href: '/work'
+
+tags:
+  include_block:
+    page.body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example-work.html'

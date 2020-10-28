@@ -26,7 +26,7 @@
         {% block extra_css %}{% endblock %}
     </head>
 
-    <body class="{% block body_class %}template-{{ page.get_verbose_name|slugify }}{% endblock %}">
+    <body class="{% block body_class %}template__{{ page.get_verbose_name|slugify }}{% endblock %} {% block theme_class %}theme-{{ theme_class }}{% endblock %}">
         {% block body_top %}{% endblock %}
 
         {% include "patterns/atoms/sprites/sprites.html" %}
@@ -39,6 +39,9 @@
             {% block content %}
                 {{ pattern_library_rendered_pattern }}
             {% endblock %}
+            {% if not pattern_library_rendered_pattern %}
+            {% include "patterns/organisms/page-contact/page-contact.html" %}
+            {% endif %}
         </main>
 
         {% block footer %}{% endblock %}

@@ -2,7 +2,6 @@ from invoke import run as local
 from invoke.exceptions import Exit
 from invoke.tasks import task
 
-
 PRODUCTION_APP_INSTANCE = 'cms-torchbox-com'
 
 
