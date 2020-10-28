@@ -1,0 +1,8 @@
+context:
+  page:
+    hero:
+      title: The digital product agency <span>for tomorrow’s nonprofits</span>.
+      in_page_nav:
+        - { title: Services, href: services }
+        - { title: Clients, href: clients }
+        - { title: Thinking, href: thinking }

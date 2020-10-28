@@ -80,7 +80,7 @@
     @if $size == small {
         margin: 0 24.99vw;
     } @else if $size == medium {
-        margin: 0 16.66vw;
+        margin: 0 16.66vw 0 24.99vw;
     } @else {
         margin: 0 8.33vw;
     }

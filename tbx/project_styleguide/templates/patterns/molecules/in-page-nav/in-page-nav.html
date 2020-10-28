@@ -1,0 +1,5 @@
+<ul class="in-page-nav">
+    {% for navitem in item.in_page_nav %}
+        <a class="in-page-nav__item" href="#{{ navitem.href }}">{{ navitem.title }}</a>
+    {% endfor %}
+</ul>

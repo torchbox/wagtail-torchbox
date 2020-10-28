@@ -11,8 +11,10 @@ Link used for:
 - Links
 Underline used for:
 - Link underlines
-Hover users for:
+Hover useds for:
 - Link hovers
+Background used for:
+- Large background colour blocks
 
 */
 
@@ -24,6 +26,7 @@ Hover users for:
         --color--link: var(--color--coral);
         --color--underline: var(--color--coral);
         --color--hover: var(--color--coral-dark);
+        --color--background: var(--color--indigo);
     }
 
     &--secondary {
@@ -32,5 +35,6 @@ Hover users for:
         --color--link: var(--color--coral);
         --color--underline: var(--color--coral);
         --color--hover: var(--color--coral-dark);
+        --color--background: var(--color--indigo);
     }
 }

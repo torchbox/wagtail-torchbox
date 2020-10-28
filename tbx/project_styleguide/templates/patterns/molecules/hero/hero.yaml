@@ -1,0 +1,8 @@
+context:
+  item:
+    title: Example <span>title</span>
+    desc: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+    in_page_nav:
+      - { title: title, href: navitem1 }
+      - { title: title, href: navitem2 }
+      - { title: title, href: navitem3 }
