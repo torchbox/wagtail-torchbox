@@ -7,5 +7,18 @@
 
     {% include "patterns/molecules/hero/hero.html" with item=page.hero %}
     {% include "patterns/molecules/help-block/help-block.html" %}
+    {% include "patterns/molecules/client-block/client-block.html" with clients=page.clients %}
+
+    <div class="casestudies">
+        <div class="casestudies__content">
+            {% include "patterns/atoms/section-title/section-title.html" with title="Work" %}
+            <div class="casestudies__list">
+                {% for casestudy in page.casestudies %}
+                    {% include "patterns/molecules/casestudy-item/casestudy-item.html" with item=casestudy %}
+                {% endfor %}
+            </div>
+            {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
+        </div>
+    </div>
 
 {% endblock %}

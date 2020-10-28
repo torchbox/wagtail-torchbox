@@ -1,0 +1,10 @@
+context:
+  item:
+    title: Samaritans
+
+tags:
+  image:
+    item.client_logo with-400 as image:
+      target_var: image
+      raw:
+        url: '//placekitten.com/400/266'

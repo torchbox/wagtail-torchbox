@@ -1,0 +1,30 @@
+.client-block {
+    position: relative;
+    background-color: $color--white;
+    padding-bottom: ($gutter * 5);
+
+    &__container {
+        @include container();
+        padding: 90px 0 0;
+    }
+
+    &__block {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-column-gap: 50px;
+    }
+
+    &__icon-list {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        &--spaced {
+            margin-bottom: 100px;
+
+            @include media-query(medium) {
+                margin-bottom: 200px;
+            }
+        }
+    }
+}
