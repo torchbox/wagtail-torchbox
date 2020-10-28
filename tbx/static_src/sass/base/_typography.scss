@@ -91,6 +91,7 @@ h4,
     @include font-size(m);
     font-weight: $weight--bold;
     margin: ($gutter * 3) 0 ($gutter / 2);
+    color: var(--color--primary);
 }
 
 h5,

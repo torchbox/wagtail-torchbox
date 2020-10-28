@@ -1,12 +1,7 @@
-// Theme overrides:
-$testimonial-name: var(--testimonial-name);
-
-.quote {
-    &__slider-block {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
-    }
+.quote-slider {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
 
     &__icon {
         fill: var(--icon-color, var(--color--accent));
@@ -113,6 +108,7 @@ $testimonial-name: var(--testimonial-name);
         color: $color--grey;
         font-size: 12px;
         margin: 0 0 15px;
+        font-style: normal;
         line-height: 1;
         display: flex;
         flex-direction: column;
@@ -126,7 +122,7 @@ $testimonial-name: var(--testimonial-name);
         font-weight: bold;
         padding-right: 8px;
         text-transform: uppercase;
-        color: $testimonial-name;
+        color: var(--color--accent-dark);
         margin-bottom: 5px;
         letter-spacing: 0.15em;
     }

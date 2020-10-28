@@ -14,6 +14,7 @@ def social_text(page, site):
     except AttributeError:
         return SocialMediaSettings.for_site(site).default_sharing_text
 
+
 # Get widget type of a field
 @register.filter(name="widget_type")
 def widget_type(bound_field):

@@ -10,7 +10,16 @@
         </div>
         <div class="blog-item__author">
             <span class="blog-item__author-name">{{ item.author_name }}</span>
-            <span class="blog-item__author-role">{{ item.author_role }}</span>
+            {% if item.date %}
+            <span class="blog-item__author-details">
+            {% endif %}
+                <span class="blog-item__author-role">{{ item.author_role }}</span>
+                {% if item.date %}
+                    <span class="blog-item__author-date">{{ item.date }}</span>
+                {% endif %}
+            {% if item.date %}
+            </span>
+            {% endif %}
         </div>
     </div>
 </a>

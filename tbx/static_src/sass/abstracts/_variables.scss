@@ -5,11 +5,14 @@
     // Coral replacement for text smaller than 18px on white
     --color--coral-dark: #eb0316;
     --color--lagoon: #3beccd;
+    // Persion indigo in torchbox guidelines
     --color--indigo: #2f128d;
+    // Deep indigo in torchbox guidelines
     --color--dark-indigo: #251657;
     --color--light-grey: #f4f3f6;
     --color--light-grey-accessible: #757575;
     --color--grey: #444;
+    --color--grey-dark: #333;
     --color--white: #fff;
     --color--white-translucent: rgba(255, 255, 255, 0.8);
     --color--black: #000;
@@ -19,6 +22,7 @@
     --color--link: var(--color--coral);
     --color--underline: var(--color--coral);
     --color--hover: var(--color--coral-dark);
+    --color--background: var(--color--indigo);
 }
 
 $color--coral: var(--color--coral);
@@ -28,6 +32,7 @@ $color--dark-indigo: var(--color--dark-indigo);
 $color--light-grey: var(--color--light-grey);
 $color--light-grey-accessible: var(--color--light-grey-accessible);
 $color--grey: var(--color--grey);
+$color--grey-dark: var(--color--grey-dark);
 $color--lagoon: var(--color--lagoon);
 $color--white: var(--color--white);
 $color--white-translucent: var(--color--white-translucent);
@@ -57,9 +62,9 @@ $large-font-sizes: (
     xxl: 64px,
     xl: 46px,
     l: 32px,
-    m: 30px,
-    s: 24px,
-    xs: 18px,
+    m: 24px,
+    s: 18px,
+    xs: 16px,
     xxs: 14px,
     xxxs: 12px,
 );
@@ -87,7 +92,6 @@ $small-font-sizes: (
     s: 18px,
     xs: 14px,
     xxs: 14px,
-    // no value in styleguide
     xxxs: 12px,
 );
 

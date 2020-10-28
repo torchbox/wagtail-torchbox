@@ -1,0 +1,13 @@
+context:
+  page:
+    teasers:
+      - {
+          title: Digital products,
+          desc: For our digital products and services.,
+          href: '/digital-products/',
+        }
+      - {
+          title: Wagtail,
+          desc: For web builds with the Wagtail open source CMS.,
+          href: '/wagtail-cms/',
+        }

@@ -1,16 +1,40 @@
+/*
+ 
+Primary used for:
+ - Headings
+Accent used for:
+- heading spans
+Accent-dark used for:
+- Author roles
+- Client name
+Link used for:
+- Links
+Underline used for:
+- Link underlines
+Hover useds for:
+- Link hovers
+Background used for:
+- Large background colour blocks
+
+*/
+
 .theme {
     &--primary {
         --color--primary: var(--color--dark-indigo);
         --color--accent: var(--color--coral);
+        --color--accent-dark: var(--color--coral-dark);
         --color--link: var(--color--coral);
         --color--underline: var(--color--coral);
         --color--hover: var(--color--coral-dark);
+        --color--background: var(--color--white);
     }
 
     &--secondary {
         --color--primary: var(--color--dark-indigo);
         --color--accent: var(--color--black);
         --color--link: var(--color--coral);
+        --color--underline: var(--color--coral);
         --color--hover: var(--color--coral-dark);
+        --color--background: var(--color--indigo);
     }
 }
