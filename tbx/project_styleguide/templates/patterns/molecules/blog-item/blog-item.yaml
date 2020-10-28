@@ -1,12 +1,18 @@
 context:
   item:
+    link_page:
+      specific:
+        authors:
+          first:
+            author:
+              name: Paul Vetch
+              role: Strategy Director
     title: We already dropped Drupal - maybe it’s time for you to do the same.
-    author_name: Paul Vetch
-    author_role: Strategy Director
 
 tags:
   image:
-    item.author_image fill-100x100 as image:
-      target_var: image
-      raw:
-        url: '//placekitten.com/100/100'
+    author.image fill-100x100 class="avatar__image":
+      raw: '<img src="https://placekitten.com/100/100" class="avatar__image">'
+  pageurl:
+    item.link_page.specific:
+      raw: '#'
