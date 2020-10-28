@@ -1,3 +1,4 @@
+import math
 import string
 
 from django import forms
@@ -167,6 +168,10 @@ class BlogPage(Page):
     @property
     def has_authors(self):
         return self.authors.exists()
+
+    @property
+    def read_time(self):
+        return math.ceil(self.body_word_count / 275)
 
     content_panels = [
         FieldPanel('title', classname="full title"),
