@@ -1,3 +1,15 @@
 context:
   page:
-    title: Nick Lee
+    title: Colin Knowles <span>is awesome</span>
+    get_verbose_name: team-detail
+    role: Head of Awesome
+
+tags:
+  image:
+    page.person_image width-1280 as image:
+      target_var: image
+      raw:
+        url: '//placekitten.com/1280/1706'
+  include_block:
+    page.body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example-team.html'

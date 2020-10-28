@@ -75,9 +75,15 @@
     Grid container
 */
 
-@mixin container() {
+@mixin container($size: null) {
     position: relative;
-    margin: 0 8.33vw;
+    @if $size == small {
+        margin: 0 24.99vw;
+    } @else if $size == medium {
+        margin: 0 16.66vw;
+    } @else {
+        margin: 0 8.33vw;
+    }
 }
 
 /* ============================================

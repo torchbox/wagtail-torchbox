@@ -27,13 +27,15 @@
     }
 
     &__tags,
-    &__client {
+    &__client,
+    &__meta {
         @include media-query(large) {
             margin: 0 8.33vw 20px 16.66vw;
         }
     }
 
-    &__client {
+    &__client,
+    &__meta {
         @include font-size(xxs);
         display: block;
         text-transform: uppercase;
@@ -42,5 +44,10 @@
         font-weight: $weight--bold;
         margin-bottom: ($gutter * 0.75);
         max-width: 50vw;
+    }
+
+    &__meta {
+        @include font-size(xs);
+        margin-bottom: ($gutter * 1.5);
     }
 }

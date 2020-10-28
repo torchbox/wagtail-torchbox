@@ -4,6 +4,11 @@
         <p class="title-block__client">{{ item.client }}</p>
         {% endif %}
         <h1 class="title-block__heading">{{ item.title }}</h1>
+        {% if meta %}
+        <div class="title-block__meta">
+            {{ meta }}
+        </div>
+        {% endif %}
         {% if tags %}
         <div class="title-block__tags">
             {% for tag in tags %}

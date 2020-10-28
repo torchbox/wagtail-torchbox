@@ -9,6 +9,17 @@
         width: 25%;
     }
 
+    &--full {
+        width: 100%;
+    }
+
+    // Only used on team detail template
+    &__container {
+        @include media-query(large) {
+            @include container(small);
+        }
+    }
+
     &__link {
         display: block;
         padding-bottom: ($gutter * 2.5);
@@ -50,5 +61,31 @@
         @include media-query(medium) {
             font-size: 11px;
         }
+    }
+
+    &__shard {
+        position: absolute;
+        z-index: 2;
+        right: 0px;
+        top: -40px;
+        width: 80px;
+
+        @include media-query(medium) {
+            right: 20px;
+            top: -40px;
+            width: 120px;
+        }
+
+        @include media-query(large) {
+            right: -25px;
+            top: -40px;
+            width: 180px;
+        }
+    }
+
+    &__bio {
+        @include font-size(s);
+        margin-bottom: ($gutter * 3);
+        color: var(--color--grey-dark);
     }
 }
