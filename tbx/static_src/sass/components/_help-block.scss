@@ -48,7 +48,7 @@
         flex-direction: column;
     }
 
-    &__links-item {
+    &__link-item {
         padding-bottom: 15px;
         display: flex;
         flex-direction: row;
@@ -121,7 +121,7 @@
         }
     }
 
-    &__links-item-icon {
+    &__link-item-icon {
         transform: rotate(30deg);
         width: 22px;
         height: 22px;
@@ -141,6 +141,24 @@
             margin-top: 15px;
             padding-left: 13vw;
         }
+    }
+
+    &__contact-container {
+        @include container();
+        display: flex;
+        flex-direction: column;
+
+        @include media-query(large) {
+            flex-direction: row;
+        }
+    }
+
+    &__contact-details {
+        display: flex;
+    }
+
+    &__contact-title {
+        margin: 0;
     }
 
     .collapsed-block-container & {

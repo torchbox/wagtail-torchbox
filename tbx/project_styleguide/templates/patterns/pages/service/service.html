@@ -1,0 +1,11 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block theme_class %}theme--primary{% endblock %}
+
+{% block content %}
+
+    {% include "patterns/molecules/hero/hero.html" with item=page.hero %}
+    {% include "patterns/molecules/help-block/help-block.html" %}
+
+{% endblock %}
