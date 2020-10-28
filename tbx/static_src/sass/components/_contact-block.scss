@@ -3,15 +3,40 @@ $contact-phone-number-color: var(--contact-phone-number-color);
 $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
 
 .contact-block {
-    background-color: $color--white;
-    padding-top: $gutter;
-    padding-bottom: $gutter;
+    background-color: var(--color--primary);
+    padding: ($gutter * 4) 0;
+
+    &__container {
+        @include container();
+    }
+
+    &__title {
+        color: $color--white;
+        font-weight: 800;
+        font-size: 34px;
+        line-height: 44px;
+
+        @include media-query(large) {
+            font-size: 45px;
+            line-height: 50px;
+        }
+    }
 
     &__content {
-        @include container();
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        @include media-query(medium) {
+            align-items: flex-start;
+        }
+    }
+
+    &__reasons {
+        display: flex;
+        justify-content: space-between;
+        margin: 35px 0 0;
+        flex-direction: column;
 
         @include media-query(medium) {
             flex-direction: row;
@@ -29,36 +54,38 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
 
     &__details {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
+        padding-top: 40px;
 
         @include media-query(medium) {
-            justify-content: auto;
-        }
-
-        @include media-query(large) {
-            padding-left: 20px;
+            flex-wrap: nowrap;
+            flex-direction: row;
         }
     }
 
-    &__title {
+    &__meta {
         width: 100%;
-        color: $color--primary;
-        font-size: 26px;
-        line-height: 30px;
-        margin: 0 0 ($gutter / 4);
-        font-weight: $weight--heavy;
-        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
 
         @include media-query(medium) {
-            text-align: left;
+            flex-direction: row;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+
+        div {
+            margin: 5px 0;
         }
     }
 
     &__email {
-        color: $color--light-blue;
+        color: $color--white;
         font-size: 20px;
         line-height: 24px;
         text-decoration: none;
@@ -71,7 +98,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
 
         &:hover,
         &:focus {
-            color: $color--blue;
+            color: var(--color--hover, $color--white);
         }
     }
 
@@ -81,7 +108,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         text-decoration: none;
         font-size: 20px;
         font-weight: bold;
-        color: $contact-phone-number-color;
+        color: var(--color--link, $color--white);
         margin: 10px 15px 0 0;
         border-bottom: none;
 
@@ -90,7 +117,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         }
 
         &:hover {
-            color: $contact-phone-number-hover-color;
+            color: var(--color--hover, $color--white);
         }
     }
 }

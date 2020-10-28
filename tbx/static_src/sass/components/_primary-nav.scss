@@ -1,17 +1,15 @@
 .primary-nav {
-    &__container {
-        width: 100%;
-        padding-top: ($gutter * 0.75);
-        display: none;
+    width: 100%;
+    padding-top: ($gutter * 0.75);
+    display: none;
 
-        @include media-query(medium) {
-            display: block;
-            padding-top: $gutter;
-        }
+    @include media-query(medium) {
+        display: block;
+        padding-top: $gutter;
+    }
 
-        @include media-query(large) {
-            padding-top: ($gutter / 2);
-        }
+    @include media-query(large) {
+        padding-top: ($gutter / 2);
     }
 
     &__list {

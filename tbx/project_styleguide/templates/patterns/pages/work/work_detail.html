@@ -1,0 +1,31 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block theme_class %}theme--primary{% endblock %}
+
+{% block content %}
+
+    {% include "patterns/molecules/title-block/title-block.html" with item=page %}
+    {% include "patterns/molecules/author/author.html" with item=page %}
+    
+    {% include_block page.body %}
+
+    <div class="page__author">
+        {% include "patterns/molecules/author/author.html" with item=page %}
+    </div>
+
+    {% if page.casestudies %}
+    <div class="page__showcase">
+        <div class="casestudies">
+            <h2 class="section-title">More of our thinking</h2>
+            <div class="casestudies__list">
+                {% for casestudy in page.casestudies %}
+                    {% include "patterns/molecules/casestudy-item/casestudy-item.html" with item=casestudy %}
+                {% endfor %}
+                {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

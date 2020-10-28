@@ -15,7 +15,7 @@
             </p>
             <div class="author__tags">
                 {% for tag in item.tags %}
-                    {% include "patterns/atoms/tag/tag.html" with item=tag %}
+                    {% include "patterns/atoms/tag/tag.html" with item=tag small=True %}
                 {% endfor %}
             </div>
         </div>

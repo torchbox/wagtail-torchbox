@@ -22,7 +22,7 @@
     &__address-title {
         font-size: 20px;
         font-weight: bold;
-        color: $color--primary;
+        color: var(--color--primary);
         margin: 0 0 ($gutter / 2);
         line-height: 1;
 
@@ -62,11 +62,11 @@
         font-size: 14px;
         height: 23px;
         font-weight: $weight--bold;
-        border-bottom: 2px solid $color--green;
-        color: $color--blue;
+        border-bottom: 2px solid $color--lagoon;
+        color: $color--dark-indigo;
 
         &:hover {
-            color: $color--blue;
+            color: $color--dark-indigo;
         }
     }
 

@@ -1,0 +1,16 @@
+<div class="hero">
+    <div class="hero__container"> 
+        <div class="hero__content">
+            <h1 class="hero__title">{{ item.title }}</h1>
+            <p class="hero__description">{{ item.desc }}</p>
+        </div>
+        <div class="hero__animated-character">
+            {% include "patterns/atoms/animated-character/animated-character.html" %}
+        </div>
+        {% if item.in_page_nav %}
+        <nav class="hero__in-page-nav" aria-label="In page navigation">
+            {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=item.in_page_nav %}
+        </nav>
+        {% endif %}
+    </div>  
+</div>  

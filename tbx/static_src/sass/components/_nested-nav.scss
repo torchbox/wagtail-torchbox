@@ -1,11 +1,11 @@
-$header-nested-link-color: var(--header-nested-link-color, $color--light-blue);
+$header-nested-link-color: var(--header-nested-link-color, $color--indigo);
 $header-nested-link-hover-color: var(
     --header-nested-link-hover-color,
-    $color--accent
+    var(--color--accent)
 );
 $header-link-underscore-color: var(
     --header-link-underscore-color,
-    $color--primary
+    var(--color--primary)
 );
 
 .nested-nav {

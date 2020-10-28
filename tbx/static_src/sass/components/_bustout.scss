@@ -2,7 +2,7 @@
     $root: &;
     position: relative;
     display: flex;
-    background: $color--blue;
+    background: $color--dark-indigo;
     flex-direction: column;
 
     @include media-query(large) {
@@ -53,7 +53,7 @@
 
     &__caption {
         width: 100%;
-        background: $color--light-blue;
+        background: $color--indigo;
 
         h1,
         h2,

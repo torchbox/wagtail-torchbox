@@ -1,15 +1,10 @@
-// Theme overrides:
-$testimonial-name: var(--testimonial-name);
-
-.quote {
-    &__slider-block {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
-    }
+.quote-slider {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
 
     &__icon {
-        fill: var(--icon-color, $color--accent);
+        fill: var(--icon-color, var(--color--accent));
         width: 20vw;
         max-width: 100px;
         grid-column: 1;
@@ -65,7 +60,7 @@ $testimonial-name: var(--testimonial-name);
         &--active {
             width: 14px;
             height: 20px;
-            background: var(--icon-color, $color--accent);
+            background: var(--icon-color, var(--color--accent));
         }
     }
 
@@ -93,7 +88,7 @@ $testimonial-name: var(--testimonial-name);
         font-style: normal;
         margin: 0 0 20px;
         padding: 0 0 0;
-        color: $color--primary;
+        color: var(--color--primary);
         font-size: 22px;
         line-height: 38px;
 
@@ -113,6 +108,7 @@ $testimonial-name: var(--testimonial-name);
         color: $color--grey;
         font-size: 12px;
         margin: 0 0 15px;
+        font-style: normal;
         line-height: 1;
         display: flex;
         flex-direction: column;
@@ -126,7 +122,7 @@ $testimonial-name: var(--testimonial-name);
         font-weight: bold;
         padding-right: 8px;
         text-transform: uppercase;
-        color: $testimonial-name;
+        color: var(--color--accent-dark);
         margin-bottom: 5px;
         letter-spacing: 0.15em;
     }

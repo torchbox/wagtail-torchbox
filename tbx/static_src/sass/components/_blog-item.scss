@@ -1,7 +1,7 @@
 // Theme overrides:
 $blog-author: var(--testimonial-name);
 
-.blog-link {
+.blog-item {
     $root: &;
     display: block;
     padding: 0 0 ($gutter * 2.5) 0;
@@ -11,7 +11,7 @@ $blog-author: var(--testimonial-name);
 
     &:hover {
         #{$root}__title {
-            color: $color--light-blue;
+            color: $color--indigo;
         }
     }
 
@@ -57,12 +57,14 @@ $blog-author: var(--testimonial-name);
         font-weight: bold;
         line-height: 40px;
         margin: 0 0 $gutter;
-        color: $color--primary;
+        color: var(--color--primary);
     }
 
     &__image {
         width: 55px;
         height: 55px;
+        min-height: 55px;
+        min-width: 55px;
         margin-right: ($gutter * 0.75);
     }
 
@@ -72,14 +74,14 @@ $blog-author: var(--testimonial-name);
     }
 
     &__author-name {
-        color: $color--primary;
+        color: var(--color--primary);
         font-size: 20px;
     }
 
     &__author-role {
         margin: 0 0 2px;
         line-height: 1.4;
-        color: $blog-author;
+        color: var(--color--accent-dark);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;

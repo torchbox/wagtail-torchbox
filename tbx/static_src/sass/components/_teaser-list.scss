@@ -1,0 +1,26 @@
+.teaser-list {
+    background-color: $color--light-grey;
+    padding: ($gutter * 1.5) 0 0;
+
+    @include media-query(large) {
+        padding: ($gutter * 4) 0 0;
+    }
+
+    &__container {
+        @include container();
+    }
+
+    &__title {
+        margin: 0 0 30px;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+    }
+}

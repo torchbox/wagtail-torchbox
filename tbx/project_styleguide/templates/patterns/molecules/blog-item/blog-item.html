@@ -1,0 +1,25 @@
+{% load wagtailimages_tags %}
+
+{% image item.author_image fill-100x100 as image %}
+
+<a class="blog-item" href="/blog/alternatives-to-drupal/">
+    <h3 class="blog-item__title">{{ item.title }}</h3>
+    <div class="blog-item__meta">
+        <div class="avatar blog-item__image">
+            <img class="avatar__image" src="{{ image.url }}" alt="{{ image.alt }}">
+        </div>
+        <div class="blog-item__author">
+            <span class="blog-item__author-name">{{ item.author_name }}</span>
+            {% if item.date %}
+            <span class="blog-item__author-details">
+            {% endif %}
+                <span class="blog-item__author-role">{{ item.author_role }}</span>
+                {% if item.date %}
+                    <span class="blog-item__author-date">{{ item.date }}</span>
+                {% endif %}
+            {% if item.date %}
+            </span>
+            {% endif %}
+        </div>
+    </div>
+</a>
