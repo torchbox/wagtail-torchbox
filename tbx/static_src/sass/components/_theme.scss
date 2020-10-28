@@ -3,7 +3,7 @@
 Primary used for:
  - Headings
 Accent used for:
-- ??
+- heading spans
 Accent-dark used for:
 - Author roles
 - Client name
@@ -26,7 +26,7 @@ Background used for:
         --color--link: var(--color--coral);
         --color--underline: var(--color--coral);
         --color--hover: var(--color--coral-dark);
-        --color--background: var(--color--indigo);
+        --color--background: var(--color--white);
     }
 
     &--secondary {

@@ -36,8 +36,8 @@
     &__content {
         position: relative;
         margin: 50px 8.33vw 0;
-        padding-top: 60px;
-        padding-bottom: 20px;
+        padding-top: ($gutter * 3);
+        padding-bottom: $gutter;
         z-index: 2;
 
         @include media-query(medium) {
