@@ -1,13 +1,16 @@
 .quote-slide {
-    display: flex;
-    flex-direction: column;
-    grid-column: 1;
-    grid-row: 1;
     opacity: 0;
     transition: opacity 0.2s ease-in;
 
-    &--active {
+    &.glide__slide--active {
         opacity: 1;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        grid-column: 1;
+        grid-row: 1;
     }
 
     &__quote {

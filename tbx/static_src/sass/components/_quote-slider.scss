@@ -55,9 +55,11 @@
         transform: rotate(30deg);
         margin-right: 20px;
         cursor: pointer;
+        padding: 0;
+        border: 0;
         transition: 0.2s all ease;
 
-        &--active {
+        &.glide__bullet--active {
             width: 14px;
             height: 20px;
             background: var(--icon-color, var(--color--accent));
@@ -65,9 +67,10 @@
     }
 
     &__slides {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
         margin-bottom: $gutter;
+    }
+
+    &__controls-group {
+        @include hidden();
     }
 }
