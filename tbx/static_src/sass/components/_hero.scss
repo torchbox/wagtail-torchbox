@@ -87,12 +87,4 @@
             }
         }
     }
-
-    .dark-theme & {
-        margin-bottom: 50px;
-
-        @include media-query(medium) {
-            min-height: calc(100vh - 180px);
-        }
-    }
 }

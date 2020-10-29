@@ -2,6 +2,10 @@
     $root: &;
     position: relative;
 
+    @include media-query(large) {
+        padding-left: 14.66vw;
+    }
+
     &--align-right {
         position: relative;
         left: 100%;

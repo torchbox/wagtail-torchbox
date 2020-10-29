@@ -2,6 +2,7 @@ import '@babel/polyfill';
 
 import CookieWarning from './components/cookie-message';
 import './components/sticky-point';
+import './components/in-page-nav';
 
 import '../sass/main.scss';
 
