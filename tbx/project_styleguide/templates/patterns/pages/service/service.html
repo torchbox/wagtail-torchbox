@@ -15,7 +15,9 @@
 
     <div class="casestudies">
         <div class="casestudies__content">
-            {% include "patterns/atoms/section-title/section-title.html" with title="Work" %}
+            <div class="casestudies__title">
+                {% include "patterns/atoms/section-title/section-title.html" with title="Work" %}
+            </div>
             <div class="casestudies__list">
                 {% for casestudy in page.casestudies %}
                     {% include "patterns/molecules/casestudy-item/casestudy-item.html" with item=casestudy %}
