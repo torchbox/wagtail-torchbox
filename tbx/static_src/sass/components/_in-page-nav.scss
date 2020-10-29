@@ -16,9 +16,8 @@
             }
         }
 
-        #{$root}__back-to-top {
+        #{$root}__link {
             @include font-size(xxs);
-            border: 0;
         }
 
         #{$root}__header {
