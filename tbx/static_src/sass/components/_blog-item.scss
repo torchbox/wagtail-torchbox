@@ -98,4 +98,16 @@ $blog-author: var(--testimonial-name);
         padding-left: 5px;
         border-left: 1px solid rgba(0, 0, 0, 0.1);
     }
+
+    .blog-listing__feature & {
+        #{$root}__title {
+            @include font-size(xxl);
+            font-weight: $weight--heavy;
+            line-height: 1.2;
+
+            @include media-query(large) {
+                max-width: 58.33vw;
+            }
+        }
+    }
 }
