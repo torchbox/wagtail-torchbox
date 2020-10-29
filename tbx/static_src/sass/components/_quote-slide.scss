@@ -1,0 +1,73 @@
+.quote-slide {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    grid-row: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+
+    &--active {
+        opacity: 1;
+    }
+
+    &__quote {
+        font-style: normal;
+        margin: 0 0 $gutter;
+        padding: 0 0 0;
+        color: var(--color--primary);
+        font-size: 22px;
+        line-height: 38px;
+
+        @include media-query(large) {
+            font-size: 26px;
+            line-height: 46px;
+            padding-right: 8.33vw;
+        }
+
+        &::after {
+            content: '”';
+            font-style: italic;
+        }
+    }
+
+    &__cite {
+        color: $color--grey;
+        font-size: 12px;
+        margin: 0 0 15px;
+        font-style: normal;
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+    }
+
+    &__name {
+        font-weight: bold;
+        padding-right: 8px;
+        text-transform: uppercase;
+        color: var(--color--accent-dark);
+        margin-bottom: 5px;
+        letter-spacing: 0.15em;
+    }
+
+    &__role {
+        line-height: 1.5;
+
+        @include media-query(medium) {
+            line-height: 1;
+        }
+
+        &::before {
+            @include media-query(medium) {
+                width: 10px;
+                content: '|';
+                color: rgba($color--black, 0.2);
+                font-weight: 100;
+                padding-right: 10px;
+            }
+        }
+    }
+}

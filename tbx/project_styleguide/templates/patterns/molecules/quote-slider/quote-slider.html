@@ -1,0 +1,17 @@
+<div class="quote-slider">
+    <svg class="quote-slider__icon" viewBox="0 0 222.5 170.6" aria-hidden="true">
+        <path class="quote_svg__st0" d="M92.182 143.122L174.782.058l47.717 27.55-82.6 143.064zM.03 132.42l55.4-95.953 38.363 22.15-55.4 95.953z"></path>
+    </svg>
+    <div class="quote-slider__slider">
+        <div class="quote-slider__slides">
+            {% for slide in items %}
+                {% include "patterns/atoms/quote-slide/quote-slide.html" with item=slide %}
+            {% endfor %}
+        </div>
+    </div>
+    <ul class="quote-slider__bullets">
+        {% for slide in items %}
+            <li class="quote-slider__bullet {% if forloop.first %}quote-slider__bullet--active{% endif %}"></li>
+        {% endfor %}
+    </ul>
+</div>
