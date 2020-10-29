@@ -2,7 +2,7 @@
     $root: &;
     position: relative;
     display: flex;
-    background: $color--dark-indigo;
+    background: var(--color--dark-indigo);
     flex-direction: column;
 
     @include media-query(large) {
@@ -53,19 +53,19 @@
 
     &__caption {
         width: 100%;
-        background: $color--indigo;
+        background: var(--color--indigo);
 
         h1,
         h2,
         h3,
         h4,
         h5 {
-            color: $color--white;
+            color: var(--color--white);
             margin-top: 0;
         }
 
         p {
-            color: $color--white-translucent;
+            color: var(--color--white-translucent);
         }
 
         @include media-query(large) {

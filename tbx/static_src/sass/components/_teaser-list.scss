@@ -1,5 +1,5 @@
 .teaser-list {
-    background-color: $color--light-grey;
+    background-color: var(--color--light-grey);
     padding: ($gutter * 1.5) 0 0;
 
     @include media-query(large) {

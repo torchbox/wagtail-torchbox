@@ -8,7 +8,7 @@
 
     &:hover {
         #{$root}__meta-title {
-            color: $color--indigo;
+            color: var(--color--indigo);
         }
     }
 
@@ -30,8 +30,7 @@
                     left: auto;
                     right: 0;
                     border-width: 0 0 60vw 25vw;
-                    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-                    border-color: transparent transparent $color--white;
+                    border-color: transparent transparent var(--color--white);
                     bottom: auto;
                     top: 0;
                 }
@@ -55,7 +54,7 @@
     &__meta {
         @include container();
         margin: ($gutter * 1.5);
-        background-color: $color--white-translucent;
+        background-color: var(--color--white-translucent);
 
         @include media-query(medium) {
             min-height: 400px;
@@ -99,7 +98,7 @@
     }
 
     &__desc {
-        color: $color--grey;
+        color: var(--color--grey);
         line-height: 1.5;
     }
 
@@ -132,7 +131,9 @@
             height: 0;
             border-style: solid;
             border-width: 60vw 25vw 0 0;
-            border-color: $color--white transparent transparent transparent;
+            /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+            border-color: var(--color--white) transparent transparent
+                transparent;
             z-index: 2;
 
             @include media-query(medium) {

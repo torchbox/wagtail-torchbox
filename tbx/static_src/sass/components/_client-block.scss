@@ -1,6 +1,6 @@
 .client-block {
     position: relative;
-    background-color: $color--white;
+    background-color: var(--color--white);
     padding-bottom: ($gutter * 5);
 
     &__container {

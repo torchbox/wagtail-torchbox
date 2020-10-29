@@ -27,7 +27,7 @@
             display: block;
             height: 80px;
             width: 100%;
-            background-color: $color--white;
+            background-color: var(--color--white);
             top: calc(100% - 50px);
             left: 0;
         }

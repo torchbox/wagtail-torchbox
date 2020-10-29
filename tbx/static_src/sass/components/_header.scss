@@ -1,5 +1,5 @@
 // Component theme overrides:
-$header-background: var(--header-background, $color--white);
+$header-background: var(--header-background, var(--color--white));
 $header-link-color: var(--header-link-color, var(--color--primary));
 $header-link-underscore-color: var(
     --header-link-underscore-color,

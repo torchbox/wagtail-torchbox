@@ -1,6 +1,6 @@
 .team {
     position: relative;
-    background-color: $color--white;
+    background-color: var(--color--white);
     padding: $gutter 0;
 
     @include media-query(medium) {

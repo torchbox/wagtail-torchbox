@@ -1,6 +1,6 @@
 .job-listing {
     position: relative;
-    background-color: $color--white;
+    background-color: var(--color--white);
     padding: ($gutter * 2) 0 $gutter;
 
     &__image {

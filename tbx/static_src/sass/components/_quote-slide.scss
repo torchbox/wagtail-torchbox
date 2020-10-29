@@ -31,7 +31,7 @@
     }
 
     &__cite {
-        color: $color--grey;
+        color: var(--color--grey);
         font-size: 12px;
         margin: 0 0 15px;
         font-style: normal;
@@ -64,7 +64,7 @@
             @include media-query(medium) {
                 width: 10px;
                 content: '|';
-                color: rgba($color--black, 0.2);
+                color: rgba(var(--color--black), 0.2);
                 font-weight: 100;
                 padding-right: 10px;
             }

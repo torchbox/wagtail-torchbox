@@ -1,5 +1,5 @@
 .services-block {
-    background-color: $color--white;
+    background-color: var(--color--white);
     padding: 95px 0 $gutter;
 
     &__image {
@@ -45,7 +45,7 @@
         font-weight: 800;
         line-height: 40px;
         margin: 0 0 ($gutter / 2);
-        color: $color--dark-indigo;
+        color: var(--color--dark-indigo);
     }
 
     &__service-desc {

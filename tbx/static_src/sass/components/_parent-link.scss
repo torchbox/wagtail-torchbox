@@ -1,5 +1,5 @@
 // Component theme overrides:
-$hero-background: var(--hero-background, $color--white);
+$hero-background: var(--hero-background, var(--color--white));
 $hero-title-color: var(--hero-title-color, var(--color--primary));
 $hero-parent-page-color: var(--hero-parent-page-color);
 $hero-parent-page-slash-color: var(--hero-parent-page-slash-color);

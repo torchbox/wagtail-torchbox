@@ -1,6 +1,6 @@
 .title-block {
     $root: &;
-    background: $color--white;
+    background: var(--color--white);
 
     &__container {
         @include container();

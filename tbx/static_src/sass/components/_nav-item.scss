@@ -1,5 +1,5 @@
 $header-link-color: var(--header-link-color, var(--color--primary));
-$header-nested-link-color: var(--header-nested-link-color, $color--white);
+$header-nested-link-color: var(--header-nested-link-color, var(--color--white));
 $header-link-underscore-color: var(
     --header-link-underscore-color,
     var(--color--accent)
@@ -23,7 +23,7 @@ $badge-background-color: var(--badge-background-color, var(--color--accent));
         position: relative;
         line-height: 20px;
         text-decoration: none;
-        color: $color--white;
+        color: var(--color--white);
         margin-right: 0;
         padding: 20px 0;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -68,7 +68,7 @@ $badge-background-color: var(--badge-background-color, var(--color--accent));
         font-size: 14px;
         font-weight: 700;
         line-height: 25px;
-        color: var(--badge-text-color, $color--indigo);
+        color: var(--badge-text-color, var(--color--indigo));
         z-index: 5;
 
         @include media-query(medium) {

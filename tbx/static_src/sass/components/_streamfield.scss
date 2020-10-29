@@ -1,6 +1,6 @@
 .streamfield {
     @include container();
-    background-color: $color--white;
+    background-color: var(--color--white);
     padding-top: ($gutter * 2);
 
     &__intro {
@@ -167,7 +167,7 @@
         color: var(--color--link);
 
         &:hover {
-            border-bottom: 2px solid $color--lagoon;
+            border-bottom: 2px solid var(--color--lagoon);
             color: var(--color--link);
         }
     }
@@ -179,7 +179,7 @@
 
     li {
         position: relative;
-        color: $color--grey;
+        color: var(--color--grey);
         padding: 0 0 25px calc(8.33vw + 20px);
         line-height: 1.7;
 

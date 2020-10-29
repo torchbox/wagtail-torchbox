@@ -62,7 +62,7 @@ $get-in-touch-number-color: var(--get-in-touch-number-color);
     }
 
     &__title {
-        color: $color--white;
+        color: var(--color--white);
         margin: 0 0 5px;
         font-size: 26px;
         font-weight: bold;

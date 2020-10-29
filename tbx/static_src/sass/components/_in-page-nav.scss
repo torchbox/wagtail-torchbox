@@ -16,8 +16,9 @@
             }
         }
 
-        #{$root}__link {
+        #{$root}__back-to-top {
             @include font-size(xxs);
+            border: 0;
         }
 
         #{$root}__header {
@@ -55,10 +56,6 @@
         @include font-size(xs);
         color: var(--color--primary);
         font-weight: $weight--bold;
-    }
-
-    &__link {
-        border: 0;
     }
 
     &__logo {

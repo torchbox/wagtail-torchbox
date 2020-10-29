@@ -1,7 +1,7 @@
 .blog-listing {
     $root: &;
     position: relative;
-    background-color: $color--white;
+    background-color: var(--color--white);
     padding: $gutter 0;
 
     &--top-space {
