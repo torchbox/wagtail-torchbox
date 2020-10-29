@@ -35,7 +35,7 @@
 
         {% block header %}{% endblock %}
 
-        <main class="page" id="main-content">
+        <main {% if not pattern_library_rendered_pattern %}class="page"{% endif %} id="main-content">
             {% block content %}
                 {{ pattern_library_rendered_pattern }}
             {% endblock %}

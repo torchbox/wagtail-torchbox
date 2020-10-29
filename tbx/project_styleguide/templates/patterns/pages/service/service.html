@@ -4,7 +4,45 @@
 {% block theme_class %}theme--primary{% endblock %}
 
 {% block content %}
+    {% if page.hero %}
+        {% include "patterns/molecules/hero/hero.html" with item=page.hero %}
+    {% endif %}
+    {% include "patterns/molecules/help-block/help-block.html" %}
 
-    {% include "patterns/molecules/hero/hero.html" with item=page.hero %}
+    {% if page.clients %}
+        {% include "patterns/organisms/client-block/client-block.html" with clients=page.clients quotes=page.quotes %}
+    {% endif %}
+
+    <div class="casestudies">
+        <div class="casestudies__content">
+            <div class="casestudies__title">
+                {% include "patterns/atoms/section-title/section-title.html" with title="Work" %}
+            </div>
+            <div class="casestudies__list">
+                {% for casestudy in page.casestudies %}
+                    {% include "patterns/molecules/casestudy-item/casestudy-item.html" with item=casestudy %}
+                {% endfor %}
+            </div>
+            {% include "patterns/atoms/see-more/see-more.html" with item=see_more_casestudies %}
+        </div>
+    </div>
+
+    <div class="blog-listing">
+        <div class="blog-listing__content">
+            {% include "patterns/atoms/section-title/section-title.html" with title="Thinking" %}
+            <div class="blog-listing__list blog-listing__list--horizontal">
+                {% for blog in page.blogs %}
+                    {% if forloop.first %}
+                        <div class="blog-listing__feature">
+                            {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                        </div>
+                    {% else %}
+                        {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% include "patterns/atoms/see-more/see-more.html" with item=see_more_blogs %}
+        </div>
+    </div>
 
 {% endblock %}

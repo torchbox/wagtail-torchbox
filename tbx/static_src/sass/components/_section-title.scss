@@ -1,14 +1,8 @@
-// Theme overrides:
-$page-section-title-color: var(
-    --page-section-title-color,
-    var(--color--accent)
-);
-
 .section-title {
     position: absolute;
     top: 45px;
     left: 8.33vw;
-    color: $page-section-title-color;
+    color: var(--color--accent);
     font-weight: $weight--bold;
     font-size: 20px;
     margin: 0;
@@ -35,6 +29,10 @@ $page-section-title-color: var(
         width: 100%;
         height: 2px;
         top: -15px;
-        background: $page-section-title-color;
+        background: var(--color--accent);
+    }
+
+    .help-block & {
+        left: 0;
     }
 }

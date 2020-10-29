@@ -17,7 +17,7 @@
     {% if page.blogs %}
     <div class="page__showcase">
         <div class="blog-listing blog-listing--top-space">
-            <h2 class="section-title">More of our thinking</h2>
+            {% include "patterns/atoms/section-title/section-title.html" with title="More of our thinking" %}
             <div class="blog-listing__content">
                 <div class="blog-listing__list blog-listing__list--horizontal">
                     {% for blog in page.blogs %}

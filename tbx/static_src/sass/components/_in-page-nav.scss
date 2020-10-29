@@ -1,21 +1,16 @@
 .in-page-nav {
-    &__links-container {
-        width: 100%;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    margin-top: $gutter;
+    flex-wrap: wrap;
+
+    @include media-query(medium) {
+        padding-top: 0;
+        margin: 0;
     }
 
-    &__links-list {
-        list-style: none;
-        display: flex;
-        margin-top: 20px;
-        flex-wrap: wrap;
-
-        @include media-query(medium) {
-            padding-top: 0;
-            margin: 0;
-        }
-    }
-
-    &__link {
+    &__item {
         display: flex;
         align-items: center;
         position: relative;
@@ -28,7 +23,7 @@
         }
     }
 
-    a {
+    &__link {
         transition: all 0.2s ease;
         color: var(--color--link);
         font-size: 13px;

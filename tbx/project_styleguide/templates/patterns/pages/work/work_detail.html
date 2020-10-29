@@ -17,7 +17,7 @@
     {% if page.casestudies %}
     <div class="page__showcase">
         <div class="casestudies">
-            <h2 class="section-title">More of our thinking</h2>
+            {% include "patterns/atoms/section-title/section-title.html" with title="More of our thinking" %}
             <div class="casestudies__list">
                 {% for casestudy in page.casestudies %}
                     {% include "patterns/molecules/casestudy-item/casestudy-item.html" with item=casestudy %}

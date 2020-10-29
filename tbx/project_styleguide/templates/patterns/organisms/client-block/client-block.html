@@ -1,0 +1,20 @@
+<div class="client-block">
+    {% include "patterns/atoms/section-title/section-title.html" with title="Clients" %}
+    <div class="client-block__container">
+        {% if clients %}
+            <div class="client-block__section">
+                <ul class="client-block__icon-list client-block__icon-list--spaced">
+                    {% for client in clients %}
+                        {% include "patterns/molecules/client-item/client-item.html" with item=client %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if quotes %}
+            <div class="client-block__section">
+                {% include "patterns/molecules/quote-slider/quote-slider.html" with items=quotes %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
