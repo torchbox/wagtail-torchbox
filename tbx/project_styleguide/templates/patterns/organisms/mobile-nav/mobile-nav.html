@@ -1,0 +1,30 @@
+<div class="mobile-nav">
+    <div class="mobile-nav__container">
+        <nav class="mobile-nav__modal" aria-label="Mobile navigation">
+            <ul class="mobile-nav__list">
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-item__link" href="/digital-products/">
+                        <div class="mobile-nav-item__title">Design + build products</div>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-item__link" href="/wagtail-cms/">
+                        <div class="mobile-nav-item__title">Wagtail CMS services</div>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-item__link" href="/digital-marketing/">
+                        <div class="mobile-nav-item__title">Digital marketing</div>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a class="mobile-nav-item__link" href="/culture-and-jobs/">
+                        <div class="mobile-nav-item__title">Culture + jobs
+                            {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

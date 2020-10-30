@@ -78,13 +78,4 @@
             color: var(--color--primary);
         }
     }
-
-    .collapsed-hero-container & {
-        #{$root}__links-container {
-            @include media-query(medium) {
-                animation: fadeOut 0.2s forwards;
-                pointer-events: none;
-            }
-        }
-    }
 }

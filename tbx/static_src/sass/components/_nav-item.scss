@@ -60,46 +60,4 @@ $badge-background-color: var(--badge-background-color, var(--color--accent));
             font-size: 18px;
         }
     }
-
-    &__badge {
-        position: relative;
-        top: -10px;
-        right: -15px;
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 25px;
-        color: var(--badge-text-color, var(--color--indigo));
-        z-index: 5;
-
-        @include media-query(medium) {
-            position: absolute;
-            right: 10px;
-        }
-
-        @include media-query(large) {
-            right: -25px;
-        }
-
-        &::before {
-            width: 18px;
-            height: 22px;
-            content: '';
-            background: var(--color--accent);
-            position: absolute;
-            z-index: -1;
-            transform: rotate(30deg);
-            left: -5px;
-            top: 0;
-
-            @include media-query(medium) {
-                background: $badge-background-color;
-            }
-        }
-    }
-
-    .collapsed__nav-link & {
-        height: 0;
-        opacity: 0;
-        border-bottom: none;
-    }
 }

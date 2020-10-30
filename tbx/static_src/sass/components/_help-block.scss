@@ -160,11 +160,4 @@
     &__contact-title {
         margin: 0;
     }
-
-    .collapsed-block-container & {
-        #{$root}__links-container {
-            animation: fadeOut 0.2s forwards;
-            pointer-events: none;
-        }
-    }
 }

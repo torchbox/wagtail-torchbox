@@ -1,4 +1,6 @@
 .mobile-nav {
+    $root: &;
+
     &__container {
         display: block;
 
@@ -8,6 +10,7 @@
     }
 
     &__modal {
+        @include z-index(modal);
         position: absolute;
         top: 0;
         bottom: 0;
@@ -20,6 +23,7 @@
         transition: all 0.4s ease-in;
 
         &::before {
+            @include z-index(modal-controls);
             content: '';
             position: absolute;
             top: 0;
@@ -31,12 +35,7 @@
             /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
             border-color: var(--color--dark-indigo) transparent transparent
                 transparent;
-            z-index: 2;
         }
-    }
-
-    &__modal-open {
-        transform: translateX(0);
     }
 
     &__list {
@@ -52,6 +51,13 @@
                     border-bottom: 0;
                 }
             }
+        }
+    }
+
+    // Applied by js
+    .menu-active & {
+        #{$root}__modal {
+            transform: translateX(0);
         }
     }
 }

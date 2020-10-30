@@ -13,7 +13,7 @@
         height: 40px;
         position: relative;
         display: inline-block;
-        fill: $header-logo-color;
+        fill: var(--color--primary);
 
         @include media-query(medium) {
             width: 130px;
