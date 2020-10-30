@@ -2,7 +2,6 @@
     $root: &;
     @include z-index(header);
     width: 100%;
-    background-color: var(--color--white);
     position: absolute;
     top: 0;
 

@@ -72,7 +72,7 @@ h1,
     color: var(--color--primary);
 
     @include media-query(medium) {
-        margin-right: 8.33vw;
+        margin-right: $variable-gutter--small;
     }
 }
 

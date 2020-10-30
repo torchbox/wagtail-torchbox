@@ -1,0 +1,55 @@
+.error-hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    background-image: url('../images/cssBackgrounds/404.jpg');
+    background-size: cover;
+    background-position: center;
+    padding-top: 180px;
+    padding-bottom: 45vh;
+
+    @include media-query(medium) {
+        padding-bottom: 30vh;
+    }
+
+    &::after {
+        @include z-index(base);
+        content: '';
+        background: linear-gradient(
+            to bottom,
+            white 1%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        width: 100%;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &__content {
+        position: absolute;
+        margin: 0 $variable-gutter--small $gutter;
+
+        @include media-query(medium) {
+            margin: 0 $variable-gutter--small $gutter $variable-gutter--large;
+        }
+    }
+
+    &__title {
+        @include font-size(xxxl);
+        line-height: 50px;
+        font-weight: 800;
+
+        @include media-query(medium) {
+            line-height: 70px;
+        }
+    }
+
+    &__link {
+        @include font-size(m);
+        font-weight: 700;
+    }
+}

@@ -8,13 +8,13 @@
     &--stuck {
         #{$root}__container {
             margin-top: 0;
-            padding: ($gutter * 0.75) 8.33vw;
+            padding: ($gutter * 0.75) $variable-gutter--small;
             background-color: var(--color--white);
             border-bottom: 1px solid var(--color--light-grey);
 
             @include media-query(large) {
                 padding: ($gutter * 0.75) ($gutter * 0.75) ($gutter * 0.75)
-                    24.99vw;
+                    $variable-gutter--large;
             }
         }
 
@@ -41,7 +41,7 @@
         display: flex;
         margin-top: $gutter;
         flex-wrap: wrap;
-        padding-left: 8.33vw;
+        padding-left: $variable-gutter--small;
 
         @include media-query(medium) {
             padding-top: 0;
@@ -49,7 +49,7 @@
         }
 
         @include media-query(large) {
-            padding-left: 24.99vw;
+            padding-left: $variable-gutter--large;
         }
     }
 

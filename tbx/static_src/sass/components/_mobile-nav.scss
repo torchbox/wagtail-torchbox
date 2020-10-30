@@ -41,7 +41,7 @@
     &__list {
         display: flex;
         flex-direction: column;
-        padding: 90px 8.33vw 0 8.33vw;
+        padding: 90px $variable-gutter--small 0 $variable-gutter--small;
 
         li {
             margin-left: 0;

@@ -13,7 +13,7 @@
 
         @include media-query(medium) {
             max-width: 120px;
-            width: 8.33vw;
+            width: $variable-gutter--small;
             margin-top: -50px;
             margin-left: 4.33vw;
         }

@@ -73,7 +73,7 @@
         padding-bottom: ($gutter * 2);
 
         @include media-query(medium) {
-            margin: 0 0 0 16.66vw;
+            margin: 0 0 0 $variable-gutter--medium;
         }
     }
 }

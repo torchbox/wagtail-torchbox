@@ -16,7 +16,7 @@
     // Only used on team detail template
     &__container {
         @include media-query(large) {
-            @include container(small);
+            @include container(large);
         }
     }
 

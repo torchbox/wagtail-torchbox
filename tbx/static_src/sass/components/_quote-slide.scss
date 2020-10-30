@@ -24,7 +24,7 @@
         @include media-query(large) {
             font-size: 26px;
             line-height: 46px;
-            padding-right: 8.33vw;
+            padding-right: $variable-gutter--small;
         }
 
         &::after {

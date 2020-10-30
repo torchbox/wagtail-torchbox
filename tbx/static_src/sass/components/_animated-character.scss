@@ -52,7 +52,7 @@
             @include media-query(large) {
                 width: 28vw;
                 height: 18.8vw;
-                left: -16.66vw;
+                left: -$variable-gutter--medium;
                 top: 0;
             }
 

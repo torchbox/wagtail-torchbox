@@ -18,7 +18,7 @@
         }
 
         @include media-query(large) {
-            margin: 0 8.33vw 20px 16.66vw;
+            margin: 0 $variable-gutter--small 20px $variable-gutter--medium;
         }
 
         span {
@@ -30,7 +30,7 @@
     &__client,
     &__meta {
         @include media-query(large) {
-            margin: 0 8.33vw 20px 16.66vw;
+            margin: 0 $variable-gutter--small 20px $variable-gutter--medium;
         }
     }
 

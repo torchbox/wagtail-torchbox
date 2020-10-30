@@ -184,7 +184,7 @@
         line-height: 1.7;
 
         @include media-query(large) {
-            padding: 0 0 25px 8.33vw;
+            padding: 0 0 25px $variable-gutter--small;
         }
 
         &::before {

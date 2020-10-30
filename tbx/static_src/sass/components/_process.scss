@@ -40,7 +40,7 @@
         padding-top: calc((66vw * 0.6) + 60px);
 
         @include media-query(medium) {
-            margin: 60px 0 80px 16.66vw;
+            margin: 60px 0 80px $variable-gutter--medium;
             padding-top: 50px;
         }
     }

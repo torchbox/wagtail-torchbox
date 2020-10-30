@@ -1,7 +1,7 @@
 .section-title {
     position: absolute;
     top: 45px;
-    left: 8.33vw;
+    left: $variable-gutter--small;
     color: var(--color--accent);
     font-weight: $weight--bold;
     font-size: 20px;

@@ -92,6 +92,11 @@ $wrapper--small: 790px;
 $grid: 20px;
 $gutter: $grid;
 
+// Gutters based on view width
+$variable-gutter--small: 8.33vw;
+$variable-gutter--medium: ($variable-gutter--small * 2);
+$variable-gutter--large: ($variable-gutter--small * 3);
+
 // --------------------------------- Transitions --------------------------------------
 
 $transition: 0.25s ease-out;

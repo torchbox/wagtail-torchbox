@@ -11,7 +11,7 @@
     &--centre {
         #{$root}__content {
             @include media-query(medium) {
-                padding: 0 16.66vw;
+                padding: 0 $variable-gutter--medium;
             }
         }
 
@@ -65,7 +65,7 @@
 
             @include media-query(large) {
                 grid-template-columns: 1fr 1fr;
-                grid-column-gap: 8.33vw;
+                grid-column-gap: $variable-gutter--small;
             }
 
             @include target-ie() {

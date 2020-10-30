@@ -23,7 +23,8 @@
     }
 
     /* Template specific */
-    .template__service & {
+    .template__service &,
+    .template__error & {
         padding: 0;
     }
 }

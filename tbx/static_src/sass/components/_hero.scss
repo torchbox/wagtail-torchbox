@@ -35,7 +35,7 @@
 
     &__content {
         position: relative;
-        margin: 50px 8.33vw 0;
+        margin: 50px $variable-gutter--small 0;
         padding-top: ($gutter * 3);
         padding-bottom: $gutter;
         z-index: 2;
@@ -71,7 +71,7 @@
         @include media-query(medium) {
             line-height: 42px;
             font-size: 24px;
-            margin-right: 8.33vw;
+            margin-right: $variable-gutter--small;
         }
 
         p {
