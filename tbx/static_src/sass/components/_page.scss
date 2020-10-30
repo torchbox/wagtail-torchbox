@@ -22,6 +22,10 @@
         margin-top: ($gutter * 5);
     }
 
+    &__author {
+        padding-top: ($gutter * 2);
+    }
+
     /* Template specific */
     .template__service &,
     .template__error & {

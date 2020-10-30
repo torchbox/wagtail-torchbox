@@ -8,8 +8,8 @@
 
     &__heading {
         font-weight: $weight--heavy;
-        font-size: 50px;
-        line-height: 55px;
+        font-size: 45px;
+        line-height: 50px;
         margin: 0 0 20px 0;
 
         @include media-query(medium) {

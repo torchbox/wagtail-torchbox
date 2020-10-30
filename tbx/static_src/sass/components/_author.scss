@@ -38,7 +38,7 @@
     &__role {
         margin: 0 0 2px;
         line-height: 1.4;
-        color: var(--color--accent);
+        color: var(--color--accent-dark);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;
@@ -72,7 +72,7 @@
     .page & {
         padding-bottom: ($gutter * 2);
 
-        @include media-query(medium) {
+        @include media-query(large) {
             margin: 0 0 0 $variable-gutter--medium;
         }
     }
