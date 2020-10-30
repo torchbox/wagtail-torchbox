@@ -7,6 +7,10 @@
         color: var(--color--white);
         padding: $gutter 0;
         border: 0;
+
+        &:hover {
+            color: var(--color--white);
+        }
     }
 
     &__title {

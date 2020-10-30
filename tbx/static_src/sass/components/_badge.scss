@@ -28,4 +28,10 @@
         left: -5px;
         top: 0;
     }
+
+    .mobile-nav & {
+        &::before {
+            top: -4px;
+        }
+    }
 }

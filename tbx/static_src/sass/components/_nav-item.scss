@@ -1,21 +1,5 @@
-$header-link-color: var(--header-link-color, var(--color--primary));
-$header-nested-link-color: var(--header-nested-link-color, var(--color--white));
-$header-link-underscore-color: var(
-    --header-link-underscore-color,
-    var(--color--accent)
-);
-$badge-background-color: var(--badge-background-color, var(--color--accent));
-
 .nav-item {
     $root: &;
-
-    &--active {
-        #{$root}__link {
-            @include media-query(large) {
-                @include link-underscore(4);
-            }
-        }
-    }
 
     &__link {
         @include link-underscore(0);
@@ -23,41 +7,33 @@ $badge-background-color: var(--badge-background-color, var(--color--accent));
         position: relative;
         line-height: 20px;
         text-decoration: none;
-        color: var(--color--white);
-        margin-right: 0;
-        padding: 20px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        height: 40px;
+        color: var(--color--primary);
+        border-top: 0;
         border-bottom: 0;
-
-        @include media-query(medium) {
-            height: 40px;
-            color: $header-link-color;
-            border-top: 0;
-            border-bottom: 0;
-            margin-right: 39px; // max we can go without nav label wrapping
-            margin-bottom: 0;
-            padding: 0;
-            transition: all 0.2s ease;
-        }
+        margin-right: 39px; // max we can go without nav label wrapping
+        margin-bottom: 0;
+        padding: 0;
+        transition: all 0.2s ease;
 
         @include media-query(large) {
             margin-right: 70px;
         }
+
+        &:hover,
+        &:focus,
+        #{#root}--active & {
+            @include link-underscore(4);
+            color: var(--color--primary);
+        }
     }
 
     &__title {
+        @include font-size(s);
         display: flex;
         position: relative;
-        transition: all 0.2s ease;
-        font-size: 18px;
+        font-size: 17px;
         line-height: 35px;
-
-        @include media-query(medium) {
-            font-size: 17px;
-        }
-
-        @include media-query(large) {
-            font-size: 18px;
-        }
+        transition: all 0.2s ease;
     }
 }
