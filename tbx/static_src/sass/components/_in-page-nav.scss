@@ -7,12 +7,14 @@
 
     &--stuck {
         #{$root}__container {
-            padding: ($gutter * 0.75);
+            margin-top: 0;
+            padding: ($gutter * 0.75) 8.33vw;
             background-color: var(--color--white);
             border-bottom: 1px solid var(--color--light-grey);
 
             @include media-query(large) {
-                padding-left: 24.99vw;
+                padding: ($gutter * 0.75) ($gutter * 0.75) ($gutter * 0.75)
+                    24.99vw;
             }
         }
 
@@ -20,10 +22,16 @@
             @include font-size(xxs);
         }
 
+        #{$root}__item {
+            padding-bottom: 0;
+        }
+
         #{$root}__header {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            @include media-query(medium) {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
         }
     }
 
@@ -33,6 +41,7 @@
         display: flex;
         margin-top: $gutter;
         flex-wrap: wrap;
+        padding-left: 8.33vw;
 
         @include media-query(medium) {
             padding-top: 0;
