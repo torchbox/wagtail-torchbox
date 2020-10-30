@@ -1,0 +1,19 @@
+.mobile-nav-item {
+    border-top: 1px solid hsla(0, 0, 100%, 0.2);
+
+    &__link {
+        @include font-size(s);
+        display: block;
+        color: var(--color--white);
+        padding: $gutter 0;
+        border: 0;
+
+        &:hover {
+            color: var(--color--white);
+        }
+    }
+
+    &__title {
+        font-weight: $weight--bold;
+    }
+}

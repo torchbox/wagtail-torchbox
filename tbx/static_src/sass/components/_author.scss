@@ -49,20 +49,20 @@
         font-size: 12px;
         text-transform: none;
         letter-spacing: 0;
-        color: $color--default;
+        color: var(--color--grey);
         margin-left: 5px;
         padding-left: 5px;
-        border-left: 1px solid rgba($color--black, 0.1);
+        border-left: 1px solid rgba(var(--color--black), 0.1);
     }
 
     &__readtime {
         font-size: 12px;
         text-transform: none;
         letter-spacing: 0;
-        color: $color--default;
+        color: var(--color--grey);
         margin-left: 5px;
         padding-left: 5px;
-        border-left: 1px solid rgba($color--black, 0.1);
+        border-left: 1px solid rgba(var(--color--black), 0.1);
     }
 
     &__tags {
@@ -73,7 +73,7 @@
         padding-bottom: ($gutter * 2);
 
         @include media-query(medium) {
-            margin: 0 0 0 16.66vw;
+            margin: 0 0 0 $variable-gutter--medium;
         }
     }
 }

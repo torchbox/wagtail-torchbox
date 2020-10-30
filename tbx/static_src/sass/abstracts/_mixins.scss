@@ -77,12 +77,12 @@
 
 @mixin container($size: null) {
     position: relative;
-    @if $size == small {
-        margin: 0 24.99vw;
+    @if $size == large {
+        margin: 0 $variable-gutter--large;
     } @else if $size == medium {
-        margin: 0 16.66vw 0 24.99vw;
+        margin: 0 $variable-gutter--medium 0 $variable-gutter--large;
     } @else {
-        margin: 0 8.33vw;
+        margin: 0 $variable-gutter--small;
     }
 }
 
@@ -93,7 +93,7 @@
 @mixin streamblock-padding() {
     @include media-query(large) {
         max-width: 50vw;
-        margin-left: 16.66vw;
+        margin-left: $variable-gutter--medium;
     }
 }
 
@@ -143,7 +143,7 @@
         height: #{$height}px;
         bottom: -5px;
         left: 0;
-        background: $header-link-underscore-color;
+        background: var(--color--underline);
         transition: all 0.2s ease;
     }
 }

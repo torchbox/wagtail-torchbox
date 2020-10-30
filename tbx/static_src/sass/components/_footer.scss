@@ -1,6 +1,6 @@
 .footer {
     position: relative;
-    background-color: $color--light-grey;
+    background-color: var(--color--light-grey);
     padding: ($gutter * 5) 0 ($gutter * 1.5);
 
     &__content {
@@ -13,7 +13,7 @@
 
         p {
             line-height: 22px;
-            color: $color--grey;
+            color: var(--color--grey);
             font-size: 14px;
             max-width: 300px;
         }
@@ -47,7 +47,7 @@
 
     &__copyright {
         font-size: 0.7em;
-        color: $color--grey;
+        color: var(--color--grey);
         margin-right: ($gutter / 2);
     }
 
@@ -62,11 +62,11 @@
         font-size: 14px;
         height: 23px;
         font-weight: $weight--bold;
-        border-bottom: 2px solid $color--lagoon;
-        color: $color--dark-indigo;
+        border-bottom: 2px solid var(--color--lagoon);
+        color: var(--color--dark-indigo);
 
         &:hover {
-            color: $color--dark-indigo;
+            color: var(--color--dark-indigo);
         }
     }
 

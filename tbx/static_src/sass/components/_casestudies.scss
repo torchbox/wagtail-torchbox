@@ -1,6 +1,6 @@
 .casestudies {
     position: relative;
-    background: $color--white;
+    background: var(--color--white);
     padding-top: ($gutter * 5);
 
     &__list {

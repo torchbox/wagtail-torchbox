@@ -11,8 +11,8 @@
         margin-right: 10px;
 
         &--active {
-            border: 2px solid $color--coral;
-            color: $color--coral;
+            border: 2px solid var(--color--coral);
+            color: var(--color--coral);
         }
     }
 }

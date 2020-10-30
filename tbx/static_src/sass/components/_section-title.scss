@@ -1,7 +1,7 @@
 .section-title {
     position: absolute;
     top: 45px;
-    left: 8.33vw;
+    left: $variable-gutter--small;
     color: var(--color--accent);
     font-weight: $weight--bold;
     font-size: 20px;
@@ -32,7 +32,9 @@
         background: var(--color--accent);
     }
 
-    .help-block & {
+    /* The title is inside a container already */
+    .help-block &,
+    .blog-listing & {
         left: 0;
     }
 }

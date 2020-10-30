@@ -25,22 +25,6 @@
     --color--background: var(--color--indigo);
 }
 
-$color--coral: var(--color--coral);
-$color--coral-dark: var(--color--coral-dark);
-$color--indigo: var(--color--indigo);
-$color--dark-indigo: var(--color--dark-indigo);
-$color--light-grey: var(--color--light-grey);
-$color--light-grey-accessible: var(--color--light-grey-accessible);
-$color--grey: var(--color--grey);
-$color--grey-dark: var(--color--grey-dark);
-$color--lagoon: var(--color--lagoon);
-$color--white: var(--color--white);
-$color--white-translucent: var(--color--white-translucent);
-$color--black: var(--color--black);
-
-// Text colour
-$color--default: var(--color--grey);
-
 // --------------------------------- Fonts --------------------------------------
 
 $font--primary: 'Apercu Pro', arial, helvetica, sans-serif;
@@ -107,6 +91,11 @@ $wrapper--small: 790px;
 // Grid setup
 $grid: 20px;
 $gutter: $grid;
+
+// Gutters based on view width
+$variable-gutter--small: 8.33vw;
+$variable-gutter--medium: ($variable-gutter--small * 2);
+$variable-gutter--large: ($variable-gutter--small * 3);
 
 // --------------------------------- Transitions --------------------------------------
 

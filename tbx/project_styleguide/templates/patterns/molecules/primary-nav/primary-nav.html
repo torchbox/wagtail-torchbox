@@ -1,0 +1,25 @@
+<nav class="primary-nav">
+    <ul class="primary-nav__list">
+        <li class="nav-item">
+            <a class="nav-item__link" href="/digital-products">
+                <span class="nav-item__title">Design + build products</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-item__link" href="/wagtail-cms">
+                <span class="nav-item__title">Wagtail CMS services</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-item__link" href="/digital-marketting">
+                <span class="nav-item__title">Digital marketing</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-item__link" href="/culture-and-jobs">
+                <span class="nav-item__title">Culture + jobs</span>
+                {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+            </a>
+        </li>
+    </ul>
+</nav>

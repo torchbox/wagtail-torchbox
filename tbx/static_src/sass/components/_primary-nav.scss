@@ -4,11 +4,11 @@
     display: none;
 
     @include media-query(medium) {
-        display: block;
         padding-top: $gutter;
     }
 
     @include media-query(large) {
+        display: block;
         padding-top: ($gutter / 2);
     }
 

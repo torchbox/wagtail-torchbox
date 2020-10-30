@@ -27,7 +27,7 @@
             display: block;
             height: 80px;
             width: 100%;
-            background-color: $color--white;
+            background-color: var(--color--white);
             top: calc(100% - 50px);
             left: 0;
         }
@@ -35,7 +35,7 @@
 
     &__content {
         position: relative;
-        margin: 50px 8.33vw 0;
+        margin: 50px $variable-gutter--small 0;
         padding-top: ($gutter * 3);
         padding-bottom: $gutter;
         z-index: 2;
@@ -71,28 +71,11 @@
         @include media-query(medium) {
             line-height: 42px;
             font-size: 24px;
-            margin-right: 8.33vw;
+            margin-right: $variable-gutter--small;
         }
 
         p {
             color: var(--color--primary);
-        }
-    }
-
-    .collapsed-hero-container & {
-        #{$root}__links-container {
-            @include media-query(medium) {
-                animation: fadeOut 0.2s forwards;
-                pointer-events: none;
-            }
-        }
-    }
-
-    .dark-theme & {
-        margin-bottom: 50px;
-
-        @include media-query(medium) {
-            min-height: calc(100vh - 180px);
         }
     }
 }

@@ -1,11 +1,9 @@
-$header-icon-color: var(--header-icon-color, var(--color--primary));
-
 .menu-button {
     position: absolute;
     top: 0;
-    right: -25px;
-    width: 80px;
-    height: 100%;
+    right: $gutter;
+    width: 46px;
+    height: 70px;
     display: block;
     border: none;
     text-align: center;
@@ -21,7 +19,7 @@ $header-icon-color: var(--header-icon-color, var(--color--primary));
             transition: all 0.2s ease-in;
             position: absolute;
             width: 20px;
-            background-color: $header-icon-color;
+            background-color: var(--color--primary);
             height: 3px;
             left: 37%;
             top: 40px;
@@ -29,7 +27,7 @@ $header-icon-color: var(--header-icon-color, var(--color--primary));
         }
         &:nth-child(2) {
             transition: all 0.2s ease-in;
-            background-color: $header-icon-color;
+            background-color: var(--color--primary);
             position: absolute;
             width: 16px;
             height: 3px;
@@ -38,7 +36,7 @@ $header-icon-color: var(--header-icon-color, var(--color--primary));
         }
         &:nth-child(3) {
             transition: all 0.2s ease-in;
-            background-color: $header-icon-color;
+            background-color: var(--color--primary);
             position: absolute;
             width: 12px;
             height: 3px;
@@ -47,14 +45,15 @@ $header-icon-color: var(--header-icon-color, var(--color--primary));
         }
     }
 
-    &.twist {
+    // Applied by js
+    .menu-active & {
         span {
             &:nth-child(1) {
                 opacity: 0;
             }
 
             &:nth-child(2) {
-                background-color: $color--white;
+                background-color: var(--color--white);
                 transform: rotate(-45deg) scale(2);
                 top: 50px;
                 left: 40%;
@@ -63,7 +62,7 @@ $header-icon-color: var(--header-icon-color, var(--color--primary));
             }
 
             &:nth-child(3) {
-                background-color: $color--white;
+                background-color: var(--color--white);
                 transform: rotate(45deg) scale(2);
                 top: 50px;
                 left: 40%;

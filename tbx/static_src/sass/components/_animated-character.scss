@@ -2,16 +2,26 @@
     $root: &;
     position: relative;
 
+    @include media-query(large) {
+        padding-left: 14.66vw;
+    }
+
     &--align-right {
         position: relative;
         left: 100%;
     }
 
     // Applied by js when image comes into viewport
-    &--active {
+    .sticky & {
         #{$root}__image {
             transform: translate3d(0, 0, 0);
         }
+    }
+
+    &__sticky-point {
+        position: absolute;
+        top: -100vh;
+        height: 100vh;
     }
 
     &__image {
@@ -42,7 +52,7 @@
             @include media-query(large) {
                 width: 28vw;
                 height: 18.8vw;
-                left: -16.66vw;
+                left: -$variable-gutter--medium;
                 top: 0;
             }
 
@@ -61,7 +71,7 @@
                 }
             }
 
-            #{$root}--active & {
+            .sticky & {
                 // animate the hand and post it note
                 > path {
                     /* stylelint-disable-next-line max-nesting-depth */
@@ -114,7 +124,7 @@
                 left: 0;
             }
 
-            #{$root}--active & {
+            .sticky & {
                 transform: translate3d(-100%, 0, 0);
 
                 // animate the wagtail bird
@@ -174,7 +184,7 @@
                 top: 0;
             }
 
-            #{$root}--active & {
+            .sticky & {
                 > path {
                     /* stylelint-disable-next-line max-nesting-depth */
                     &:nth-child(14),

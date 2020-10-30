@@ -1,5 +1,5 @@
 .services-block {
-    background-color: $color--white;
+    background-color: var(--color--white);
     padding: 95px 0 $gutter;
 
     &__image {
@@ -20,7 +20,7 @@
         padding: calc(0.7 * 40vw + 60px) 0 ($gutter * 4) ($gutter * 2);
 
         @include media-query(medium) {
-            padding: 55px 0 ($gutter * 4) 16.66vw;
+            padding: 55px 0 ($gutter * 4) $variable-gutter--medium;
         }
     }
 
@@ -30,7 +30,7 @@
 
         @include media-query(medium) {
             grid-template-columns: 1fr 1fr;
-            grid-column-gap: 8.33vw;
+            grid-column-gap: $variable-gutter--small;
         }
     }
 
@@ -45,7 +45,7 @@
         font-weight: 800;
         line-height: 40px;
         margin: 0 0 ($gutter / 2);
-        color: $color--dark-indigo;
+        color: var(--color--dark-indigo);
     }
 
     &__service-desc {

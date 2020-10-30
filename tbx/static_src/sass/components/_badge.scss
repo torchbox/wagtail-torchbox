@@ -1,0 +1,37 @@
+.badge {
+    position: relative;
+    top: -10px;
+    right: -15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 25px;
+    color: var(--color--indigo);
+    z-index: 5;
+
+    @include media-query(medium) {
+        position: absolute;
+        right: 10px;
+    }
+
+    @include media-query(large) {
+        right: -25px;
+    }
+
+    &::before {
+        width: 18px;
+        height: 22px;
+        content: '';
+        background: var(--color--accent);
+        position: absolute;
+        z-index: -1;
+        transform: rotate(30deg);
+        left: -5px;
+        top: 0;
+    }
+
+    .mobile-nav & {
+        &::before {
+            top: -4px;
+        }
+    }
+}

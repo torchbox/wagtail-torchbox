@@ -4,7 +4,7 @@
 html {
     font-family: $font--primary;
     line-height: 1.4;
-    color: $color--default;
+    color: var(--color--grey);
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -72,7 +72,7 @@ h1,
     color: var(--color--primary);
 
     @include media-query(medium) {
-        margin-right: 8.33vw;
+        margin-right: $variable-gutter--small;
     }
 }
 
@@ -107,7 +107,7 @@ small {
 
 p {
     margin: 0 0 ($gutter * 1.5);
-    color: $color--default;
+    color: var(--color--grey);
 }
 
 b,
@@ -129,6 +129,6 @@ pre {
     font-family: monospace;
     word-break: break-all;
     white-space: pre-wrap;
-    background: $color--light-grey;
+    background: var(--color--light-grey);
     border-radius: 5px;
 }

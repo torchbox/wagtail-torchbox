@@ -1,4 +1,6 @@
 .mobile-nav {
+    $root: &;
+
     &__container {
         display: block;
 
@@ -8,6 +10,7 @@
     }
 
     &__modal {
+        @include z-index(modal);
         position: absolute;
         top: 0;
         bottom: 0;
@@ -20,6 +23,7 @@
         transition: all 0.4s ease-in;
 
         &::before {
+            @include z-index(modal-controls);
             content: '';
             position: absolute;
             top: 0;
@@ -29,20 +33,15 @@
             border-style: solid;
             border-width: 100vh 50vh 0 0;
             /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-            border-color: $color--dark-indigo transparent transparent
+            border-color: var(--color--dark-indigo) transparent transparent
                 transparent;
-            z-index: 2;
         }
-    }
-
-    &__modal-open {
-        transform: translateX(0);
     }
 
     &__list {
         display: flex;
         flex-direction: column;
-        padding: 90px 8.33vw 0 8.33vw;
+        padding: 90px $variable-gutter--small 0 $variable-gutter--small;
 
         li {
             margin-left: 0;
@@ -52,6 +51,13 @@
                     border-bottom: 0;
                 }
             }
+        }
+    }
+
+    // Applied by js
+    .menu-active & {
+        #{$root}__modal {
+            transform: translateX(0);
         }
     }
 }

@@ -11,7 +11,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
     }
 
     &__title {
-        color: $color--white;
+        color: var(--color--white);
         font-weight: 800;
         font-size: 34px;
         line-height: 44px;
@@ -85,7 +85,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
     }
 
     &__email {
-        color: $color--white;
+        color: var(--color--white);
         font-size: 20px;
         line-height: 24px;
         text-decoration: none;
@@ -98,7 +98,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
 
         &:hover,
         &:focus {
-            color: var(--color--hover, $color--white);
+            color: var(--color--hover, var(--color--white));
         }
     }
 
@@ -108,7 +108,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         text-decoration: none;
         font-size: 20px;
         font-weight: bold;
-        color: var(--color--link, $color--white);
+        color: var(--color--link, var(--color--white));
         margin: 10px 15px 0 0;
         border-bottom: none;
 
@@ -117,7 +117,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         }
 
         &:hover {
-            color: var(--color--hover, $color--white);
+            color: var(--color--hover, var(--color--white));
         }
     }
 }

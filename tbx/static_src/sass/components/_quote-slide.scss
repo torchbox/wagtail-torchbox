@@ -1,13 +1,16 @@
 .quote-slide {
-    display: flex;
-    flex-direction: column;
-    grid-column: 1;
-    grid-row: 1;
     opacity: 0;
     transition: opacity 0.2s ease-in;
 
-    &--active {
+    &.glide__slide--active {
         opacity: 1;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        grid-column: 1;
+        grid-row: 1;
     }
 
     &__quote {
@@ -21,7 +24,7 @@
         @include media-query(large) {
             font-size: 26px;
             line-height: 46px;
-            padding-right: 8.33vw;
+            padding-right: $variable-gutter--small;
         }
 
         &::after {
@@ -31,7 +34,7 @@
     }
 
     &__cite {
-        color: $color--grey;
+        color: var(--color--grey);
         font-size: 12px;
         margin: 0 0 15px;
         font-style: normal;
@@ -64,7 +67,7 @@
             @include media-query(medium) {
                 width: 10px;
                 content: '|';
-                color: rgba($color--black, 0.2);
+                color: rgba(var(--color--black), 0.2);
                 font-weight: 100;
                 padding-right: 10px;
             }

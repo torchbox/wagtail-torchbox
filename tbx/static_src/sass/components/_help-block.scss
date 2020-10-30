@@ -4,7 +4,7 @@
     &__container {
         position: relative;
         width: 100vw;
-        background: $color--white;
+        background: var(--color--white);
         padding-top: 10px;
         padding-bottom: 80px;
     }
@@ -64,7 +64,7 @@
             font-weight: 400;
             margin: 0 0 5px 30px;
             padding: 15px 0 0;
-            border-bottom: 2px solid $color--white;
+            border-bottom: 2px solid var(--color--white);
 
             @include media-query(medium) {
                 padding: 15px 0 0;
@@ -75,7 +75,7 @@
 
             &:hover {
                 @include media-query(medium) {
-                    color: $color--indigo;
+                    color: var(--color--indigo);
                     border-bottom: 2px solid var(--color--accent);
                     font-weight: 800;
                 }
@@ -159,12 +159,5 @@
 
     &__contact-title {
         margin: 0;
-    }
-
-    .collapsed-block-container & {
-        #{$root}__links-container {
-            animation: fadeOut 0.2s forwards;
-            pointer-events: none;
-        }
     }
 }

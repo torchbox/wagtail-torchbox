@@ -2,17 +2,17 @@
     $root: &;
     flex: 1;
     text-decoration: none;
-    background-color: $color--white;
+    background-color: var(--color--white);
     margin-bottom: 4px;
     border-radius: 3px;
     border-bottom: 0;
     padding: ($gutter * 2) ($gutter * 1.5);
 
     &:hover {
-        background-color: rgba($color--white, 0.5);
+        background-color: rgba(var(--color--white), 0.5);
 
         #{$root}__title {
-            color: $color--dark-indigo;
+            color: var(--color--dark-indigo);
         }
     }
 
@@ -27,7 +27,7 @@
     }
 
     &__title {
-        color: $color--indigo;
+        color: var(--color--indigo);
         font-weight: 800;
         font-size: 35px;
         line-height: 40px;
@@ -44,7 +44,7 @@
         height: 30px;
         margin-top: 3px;
         margin-left: 10px;
-        fill: $color--lagoon;
+        fill: var(--color--lagoon);
 
         @include media-query(medium) {
             margin-top: 8px;
@@ -55,7 +55,7 @@
         display: block;
         font-size: 20px;
         line-height: 30px;
-        color: $color--grey;
+        color: var(--color--grey);
         margin: 10px 0;
     }
 }

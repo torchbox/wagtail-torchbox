@@ -5,7 +5,7 @@
 
     &__block {
         position: relative;
-        background-color: $color--white;
+        background-color: var(--color--white);
         padding: 90px 0 120px;
         padding-bottom: 0;
     }
@@ -24,7 +24,7 @@
         }
 
         .toolkit-svg-accented {
-            fill: $color--coral-dark;
+            fill: var(--color--coral-dark);
         }
     }
 
@@ -40,7 +40,7 @@
         padding-top: calc((66vw * 0.6) + 60px);
 
         @include media-query(medium) {
-            margin: 60px 0 80px 16.66vw;
+            margin: 60px 0 80px $variable-gutter--medium;
             padding-top: 50px;
         }
     }
@@ -59,9 +59,9 @@
     &__item-title {
         font-size: 34px;
         line-height: 40px;
-        color: $color--indigo;
+        color: var(--color--indigo);
         font-weight: 800;
-        background: $color--white;
+        background: var(--color--white);
         padding: ($gutter / 2) 0 0;
         margin: 0 0 0;
     }
@@ -80,12 +80,12 @@
         font-weight: 700;
         line-height: 26px;
         text-decoration: none;
-        color: $color--indigo;
+        color: var(--color--indigo);
 
         &:hover,
         &:focus {
-            color: $color--indigo;
-            border-bottom-color: $color--indigo;
+            color: var(--color--indigo);
+            border-bottom-color: var(--color--indigo);
         }
     }
 }
