@@ -58,7 +58,7 @@ EXPOSE 8000
 
 # Install poetry using the installer (keeps Poetry's dependencies isolated from the app's)
 RUN wget https://raw.githubusercontent.com/python-poetry/poetry/${POETRY_VERSION}/get-poetry.py && \
-    echo "474997ed1c52d243d3dda6e745ffbf04ddfa68db get-poetry.py" | sha1sum -c - && \
+    echo "eedf0fe5a31e5bb899efa581cbe4df59af02ea5f get-poetry.py" | sha1sum -c - && \
     python get-poetry.py && \
     rm get-poetry.py && \
     poetry config virtualenvs.create false
