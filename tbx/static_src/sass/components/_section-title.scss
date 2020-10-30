@@ -32,7 +32,9 @@
         background: var(--color--accent);
     }
 
-    .help-block & {
+    /* The title is inside a container already */
+    .help-block &,
+    .blog-listing & {
         left: 0;
     }
 }

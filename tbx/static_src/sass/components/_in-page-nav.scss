@@ -51,6 +51,14 @@
         left: 4.17vw;
     }
 
+    &__back-to-top {
+        border: 0;
+
+        &:hover {
+            border-bottom: 2px solid var(--color--underline);
+        }
+    }
+
     &__title {
         @include font-size(xs);
         color: var(--color--primary);
