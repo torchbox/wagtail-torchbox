@@ -5,20 +5,21 @@
 
 {% block content %}
 
+{% include "patterns/molecules/title-block/title-block.html" with item=self tags=self.related_services %}
 
-    {% include "patterns/molecules/title-block/title-block.html" with item=page tags=page.tags %}
+<div class="blog-listing blog-listing--centre">
 
-    <div class="blog-listing blog-listing--centre">
-        <div class="blog-listing__content">
+    <div class="blog-listing__content">
 
-            <div class="blog-listing__list">
-                {% for blog in blog_posts %}
-                    {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
-                {% endfor %}
-            </div>
-
-            {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
+        <div class="blog-listing__list">
+            {% for blog in blog_posts %}
+                {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+            {% endfor %}
         </div>
+
+        {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
     </div>
+
+</div>
 
 {% endblock %}
