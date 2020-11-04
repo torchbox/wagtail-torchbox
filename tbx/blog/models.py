@@ -21,6 +21,7 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.taxonomy.models import Service
 
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
@@ -47,6 +48,11 @@ class BlogIndexPage(Page):
         return [Tag.objects.get(id=tag['tag']) for tag in popular_tags[:10]]
 
     @property
+    def related_services(self):
+        services = Service.objects.all()
+        return services
+
+    @property
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
         blog_posts = BlogPage.objects.live().in_menu().descendant_of(self)
@@ -60,10 +66,10 @@ class BlogIndexPage(Page):
         # Get blog_posts
         blog_posts = self.blog_posts
 
-        # Filter by tag
-        tag = request.GET.get('tag')
-        if tag:
-            blog_posts = blog_posts.filter(tags__tag__slug=tag)
+        # Filter by related_service
+        service = request.GET.get('related_service')
+        if service:
+            blog_posts = blog_posts.filter(related_services__exact=service)
 
         # Pagination
         per_page = 12
