@@ -29,6 +29,8 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 
 @method_decorator(get_default_cache_control_decorator(), name='serve')
 class BlogIndexPage(Page):
+    template = 'patterns/pages/blog/blog_listing.html'
+
     intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + [
