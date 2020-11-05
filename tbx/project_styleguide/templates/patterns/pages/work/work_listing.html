@@ -11,8 +11,8 @@
         <div class="casestudies__content">
 
             <div class="casestudies__list">
-                {% for casestudy in page.casestudies %}
-                    {% include "patterns/molecules/work-item/work-item.html" with item=casestudy %}
+                {% for work in works %}
+                    {% include "patterns/molecules/work-item/work-item.html" with item=work %}
                 {% endfor %}
             </div>
 
