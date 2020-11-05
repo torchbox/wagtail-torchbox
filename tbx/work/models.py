@@ -27,6 +27,9 @@ from tbx.core.utils.cache import get_default_cache_control_decorator
 
 
 # Currently hidden. These were used in the past and may be used again in the future
+from tbx.taxonomy.models import Service
+
+
 class WorkPageTagSelect(Orderable):
     page = ParentalKey("work.WorkPage", related_name="tags")
     tag = models.ForeignKey(
@@ -148,6 +151,11 @@ class WorkIndexPage(Page):
         # Return first 10 popular tags as tag objects
         # Getting them individually to preserve the order
         return [Tag.objects.get(id=tag["tag"]) for tag in popular_tags[:10]]
+
+    @property
+    def related_services(self):
+        services = Service.objects.all()
+        return services
 
     @property
     def works(self):
