@@ -62,6 +62,8 @@ class WorkPageAuthor(Orderable):
 
 
 class WorkPage(Page):
+    template = 'patterns/pages/work/work_detail.html'
+
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
