@@ -4,9 +4,9 @@
 {% block theme_class %}theme--primary{% endblock %}
 
 {% block content %}
-
+{% with author=page.authors.first.author %}
     {% include "patterns/molecules/title-block/title-block.html" with item=page %}
-    {% include "patterns/molecules/author/author.html" with item=page %}
+    {% include "patterns/molecules/author/author.html" with item=page author=author %}
 
     {% include_block page.body %}
 
@@ -27,5 +27,5 @@
         </div>
     </div>
     {% endif %}
-
+{% endwith %}
 {% endblock %}
