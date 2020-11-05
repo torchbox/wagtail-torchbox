@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/title-block/title-block.html" with item=page tags=page.tags %}
+    {% include "patterns/molecules/title-block/title-block.html" with item=self tags=self.related_services %}
 
     <div class="casestudies">
         <div class="casestudies__content">
