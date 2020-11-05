@@ -166,10 +166,10 @@ class WorkIndexPage(Page):
         # Get work pages
         works = self.works
 
-        # Filter by tag
-        tag = request.GET.get("tag")
-        if tag:
-            works = works.filter(tags__tag__slug=tag)
+        # Filter by related_service
+        service = request.GET.get('related_service')
+        if service:
+            works = works.filter(related_services__exact=service)
 
         # Pagination
         page = request.GET.get("page")
