@@ -24,12 +24,10 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
-
-
-# Currently hidden. These were used in the past and may be used again in the future
 from tbx.taxonomy.models import Service
 
 
+# Currently hidden. These were used in the past and may be used again in the future
 class WorkPageTagSelect(Orderable):
     page = ParentalKey("work.WorkPage", related_name="tags")
     tag = models.ForeignKey(
