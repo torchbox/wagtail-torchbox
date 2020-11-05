@@ -180,18 +180,14 @@
     li {
         position: relative;
         color: var(--color--grey);
-        padding: 0 0 25px calc(8.33vw + 20px);
+        padding: 0 0 25px ($gutter * 1.5);
         line-height: 1.7;
-
-        @include media-query(large) {
-            padding: 0 0 25px $variable-gutter--small;
-        }
 
         &::before {
             content: '';
             display: block;
             position: absolute;
-            left: 6vw;
+            left: 0;
             top: 5px;
             width: 12px;
             height: 20px;
@@ -207,5 +203,9 @@
                 mask-size: contain;
             }
         }
+    }
+
+    .template__standard & {
+        margin-bottom: ($gutter * 5);
     }
 }

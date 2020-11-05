@@ -18,6 +18,10 @@
     }
 
     &:nth-child(even) {
+        &::before {
+            border-width: 0 0 60vw 25vw;
+        }
+
         @include media-query(large) {
             flex-direction: row-reverse;
 
@@ -29,7 +33,7 @@
                 &::before {
                     left: auto;
                     right: 0;
-                    border-width: 0 0 60vw 25vw;
+                    border-width: 0 0 50vw 25vw;
                     border-color: transparent transparent var(--color--white);
                     bottom: auto;
                     top: 0;
@@ -76,7 +80,7 @@
 
     &__client {
         display: block;
-        color: var(--color--accent);
+        color: var(--color--accent-dark);
         font-size: 12px;
         line-height: 34px;
         margin-bottom: 20px;
