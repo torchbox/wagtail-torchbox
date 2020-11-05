@@ -97,10 +97,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # Must be placed above anything that can generate a response
-    'corsheaders.middleware.CorsMiddleware',
-
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
