@@ -134,7 +134,7 @@ class WorkPage(Page):
 # Work index page
 @method_decorator(get_default_cache_control_decorator(), name="serve")
 class WorkIndexPage(Page):
-    template='patterns/pages/work/work_listing.html'
+    template = 'patterns/pages/work/work_listing.html'
     intro = RichTextField(blank=True)
 
     hide_popular_tags = models.BooleanField(default=False)
