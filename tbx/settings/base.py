@@ -4,7 +4,6 @@
 import os
 
 import dj_database_url
-from corsheaders.defaults import default_headers
 
 # Configuration from environment variables
 env = os.environ.copy()
@@ -73,7 +72,6 @@ INSTALLED_APPS = [
     # Temporarily disable as this is breaking page creation. See ticket #229
     # 'wagtail_review',
     'phonenumber_field',
-    'corsheaders',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -460,12 +458,5 @@ PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(
 # Google Tag Manager ID from env
 GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID")
 
-
-# CORS settings
-CORS_URLS_REGEX = r'^(\/review\/api\/.*)$'
-CORS_ORIGIN_WHITELIST = ['https://torchbox.com']
-CORS_ALLOW_HEADERS = default_headers + (
-    'x-review-token',
-)
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
