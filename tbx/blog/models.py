@@ -94,17 +94,17 @@ class BlogIndexPage(Page):
             blog_posts = paginator.page(paginator.num_pages)
 
         if request.is_ajax():
-            return render(
-                request,
-                "blog/includes/blog_listing.html",
-                {"self": self, "blog_posts": blog_posts, "per_page": per_page},
-            )
+            return render(request, "blog/includes/blog_listing.html", {
+                'page': self,
+                'blog_posts': blog_posts,
+                'per_page': per_page,
+            })
         else:
-            return render(
-                request,
-                self.template,
-                {"self": self, "blog_posts": blog_posts, "per_page": per_page},
-            )
+            return render(request, self.template, {
+                'page': self,
+                'blog_posts': blog_posts,
+                'per_page': per_page,
+            })
 
     content_panels = [
         FieldPanel("title", classname="full title"),
