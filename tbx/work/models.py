@@ -133,6 +133,7 @@ class WorkPage(Page):
 @method_decorator(get_default_cache_control_decorator(), name="serve")
 class WorkIndexPage(Page):
     template = 'patterns/pages/work/work_listing.html'
+
     intro = RichTextField(blank=True)
 
     hide_popular_tags = models.BooleanField(default=False)
@@ -164,10 +165,10 @@ class WorkIndexPage(Page):
         # Get work pages
         works = self.works
 
-        # Filter by related_service
-        service = request.GET.get('related_service')
-        if service:
-            works = works.filter(related_services__exact=service)
+        # Filter by related_service slug
+        slug_filter = request.GET.get('filter')
+        if slug_filter:
+            works = works.filter(related_services__slug=slug_filter)
 
         # Pagination
         page = request.GET.get("page")
