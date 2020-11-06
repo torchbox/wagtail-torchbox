@@ -23,3 +23,48 @@
 </div>
 
 {% endblock %}
+
+
+{% block extra_js %}
+<script>
+    let xmlhttp;
+    const url= new URL('{{request.build_absolute_uri}}');
+    let page = parseInt('{{request.GET.page}}') || 1;
+    let filter = '{{request.GET.filter}}';
+
+    // add event listener
+    let seeMoreBtn=document.getElementsByClassName("see-more__link")[0];
+    seeMoreBtn.onclick=loadMoreBlogs;
+
+    // ajax call
+    function loadMoreBlogs() {
+    // next page
+    page+=1;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = callback;
+
+    // parameterize
+    let params = new URLSearchParams();
+    params.set('filter', filter);
+    params.set('page', page);
+    url.search = params.toString();
+
+
+    xhttp.open("GET", url, true);
+    xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhttp.send();
+    }
+
+    // xhttp on state change
+    function callback(){
+      if (this.readyState == 4 && this.status == 200) {
+      // if success
+        console.log(this.responseText);
+        }else if(this.readyState == 4){
+        // if error
+        page-=1;
+        }
+    }
+
+</script>
+{% endblock %}
