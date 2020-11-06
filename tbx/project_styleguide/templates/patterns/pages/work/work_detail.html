@@ -11,16 +11,16 @@
     {% include_block page.body %}
 
     <div class="page__author">
-        {% include "patterns/molecules/author/author.html" with item=page %}
+        {% include "patterns/molecules/author/author.html" with item=page author=author%}
     </div>
 
-    {% if page.casestudies %}
+    {% if page.related_works %}
     <div class="page__showcase">
         <div class="casestudies">
             {% include "patterns/atoms/section-title/section-title.html" with title="More of our work" %}
             <div class="casestudies__list">
-                {% for casestudy in page.casestudies %}
-                    {% include "patterns/molecules/work-item/work-item.html" with item=casestudy %}
+                {% for work in page.related_works %}
+                    {% include "patterns/molecules/work-item/work-item.html" with item=work %}
                 {% endfor %}
                 {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
             </div>

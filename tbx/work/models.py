@@ -113,6 +113,14 @@ class WorkPage(Page):
     def has_authors(self):
         return self.authors.exists()
 
+    @property
+    def related_works(self):
+        services = self.related_services.all()
+        # get 4 pages with same services and exclude self page
+        works = WorkPage.objects.filter(related_services__in=services).live().distinct().order_by('-id').exclude(
+            pk=self.pk)[:4]
+        return works
+
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("client", classname="client"),

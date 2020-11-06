@@ -8,10 +8,10 @@ context:
     role: Designer
     date: 07 Aug ’20
     readtime: '5'
-    tags:
+    related_services:
       - { title: Digital products, href: '#' }
       - { title: Wagtail, href: '#' }
-    casestudies:
+    related_works:
       - {
           title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
           client: Oxfam,
