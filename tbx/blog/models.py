@@ -77,10 +77,10 @@ class BlogIndexPage(Page):
         # Get blog_posts
         blog_posts = self.blog_posts
 
-        # Filter by related_service
-        service = request.GET.get('related_service')
-        if service:
-            blog_posts = blog_posts.filter(related_services__exact=service)
+        # Filter by related_service slug
+        slug_filter = request.GET.get('filter')
+        if slug_filter:
+            blog_posts = blog_posts.filter(related_services__slug=slug_filter)
 
         # Pagination
         per_page = 12
