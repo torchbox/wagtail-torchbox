@@ -84,13 +84,13 @@ class BlogIndexPage(Page):
 
         if request.is_ajax():
             return render(request, "blog/includes/blog_listing.html", {
-                'self': self,
+                'page': self,
                 'blog_posts': blog_posts,
                 'per_page': per_page,
             })
         else:
             return render(request, self.template, {
-                'self': self,
+                'page': self,
                 'blog_posts': blog_posts,
                 'per_page': per_page,
             })
