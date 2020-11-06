@@ -23,6 +23,10 @@ scout-apm = "~2.10"
 django-basic-auth-ip-whitelist = "~0.3.3"
 wagtail-accessibility = "~0.2"
 wagtail-storages = "~0.0.4"
+wagtail-markdown = "^0.6"
+wagtailfontawesome = "^1.2.1"
+django-phonenumber-field = "^5.0.0"
+phonenumbers = "^8.12.12"
 
 [tool.poetry.extras]
 gunicorn = ["gunicorn"]
@@ -43,8 +47,6 @@ seed-isort-config = "1.9.4"
 
 # Documentation
 mkdocs = "~1.0"
-mkdocs-material = "~4.6"
-pymdown-extensions = "~6.2"
 
 [build-system]
 requires = ["poetry>=1,<2"]
