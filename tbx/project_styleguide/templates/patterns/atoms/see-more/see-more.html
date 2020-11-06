@@ -1,3 +1,6 @@
-<div class="see-more">
-    <a class="see-more__link" href="{{ item.href }}">{{ item.text }}</a>
-</div>
+{% load wagtailcore_tags %}
+{% if link and text %}
+    <div class="see-more">
+        <a class="see-more__link" href="{{ link }}">{{ text }}</a>
+    </div>
+{% endif %}
