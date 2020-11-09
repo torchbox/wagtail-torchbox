@@ -5,8 +5,6 @@ class SeeMorePosts {
 
     constructor(node) {
         this.seeMoreButton = document.querySelector('[data-fetch-target]');
-        this.destinationNode = document.querySelector(node.dataset.fetchTarget);
-
         this.url= new URL(window.location);
         this.params=new URLSearchParams(this.url.search);
         this.page=parseInt(this.params.get('page')) || 1;
@@ -21,12 +19,15 @@ class SeeMorePosts {
         this.xmlhttp = new XMLHttpRequest();
         this.xmlhttp.onreadystatechange = this.loadMorePostsAjaxCallBack;
 
+        //set parameters
         this.params = new URLSearchParams();
         this.params.set('filter', this.filter);
         this.params.set('page', this.page);
-        this.url.search = params.toString();
+        this.url.search = this.params.toString();
 
-        this.xmlhttp.open("GET", url, true);
+
+        this.xmlhttp.open("GET", this.url, true);
+        // set header to make it AjaxRequest
         this.xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         this.xmlhttp.send();
     }
