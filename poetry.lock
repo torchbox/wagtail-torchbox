@@ -1099,7 +1099,7 @@ testing = ["pytest (>=4.0.0,<6)", "coverage (>=4.5.1,<6)", "pytest-mock (>=2.0.0
 
 [[package]]
 name = "wagtail"
-version = "2.8.1"
+version = "2.10.2"
 description = "A Django content management system."
 category = "main"
 optional = false
@@ -1887,8 +1887,8 @@ virtualenv = [
     {file = "virtualenv-20.0.17.tar.gz", hash = "sha256:c8364ec469084046c779c9a11ae6340094e8a0bf1d844330fc55c1cefe67c172"},
 ]
 wagtail = [
-    {file = "wagtail-2.8.1-py3-none-any.whl", hash = "sha256:d1daa6ba920a93c082333c053430a491b32d1b807ae253bc0d307966e849e0b2"},
-    {file = "wagtail-2.8.1.tar.gz", hash = "sha256:7159841cad23defb5bc1fee8267c3116da1a7806bb27133cca6bba7760379774"},
+    {file = "wagtail-2.10.2-py3-none-any.whl", hash = "sha256:d6937bf1b64b970315867eac08f786e206059bd882f793e2a4bffca81cfe71d9"},
+    {file = "wagtail-2.10.2.tar.gz", hash = "sha256:fb3c76685abad023a2e8430e55ec24671ec6b0730759f29aaae5042e581bed92"},
 ]
 wagtail-accessibility = [
     {file = "wagtail-accessibility-0.2.1.tar.gz", hash = "sha256:70a246bfa3bc85751317633353491c2f2432bd4ed54968f89ad1406d9e4d0190"},
