@@ -4,7 +4,7 @@ class SeeMorePosts {
     }
 
     constructor(node) {
-        this.seeMoreButton = document.querySelector('[data-fetch-target]');
+        this.seeMoreButton = document.querySelector('[data-posts-fetch-target]');
         this.url= new URL(window.location);
         this.params=new URLSearchParams(this.url.search);
         this.page=parseInt(this.params.get('page')) || 1;
