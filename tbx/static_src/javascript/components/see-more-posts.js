@@ -21,7 +21,9 @@ class SeeMorePosts {
 
         //set parameters
         this.params = new URLSearchParams();
-        this.params.set('filter', this.filter);
+        if (this.filter !=null){
+            this.params.set('filter', this.filter);
+        }
         this.params.set('page', this.page);
         this.url.search = this.params.toString();
 
