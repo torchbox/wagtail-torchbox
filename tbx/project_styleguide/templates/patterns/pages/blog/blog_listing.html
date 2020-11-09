@@ -16,6 +16,11 @@
                 {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
             {% endfor %}
         </div>
+        <div class="blog-listing__list" data-posts-destination="blog-pages">
+            {% for blog in blog_posts %}
+                {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+            {% endfor %}
+        </div>
 
         {% include "patterns/atoms/see-more/see-more.html" with link="#" text="See more blogs" %}
     </div>
