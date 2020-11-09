@@ -4,42 +4,41 @@ class SeeMorePosts {
     }
 
     constructor(node) {
-        this.seeMoreButton = document.querySelector('[data-posts-see-more]');
-        this.url= new URL('{{request.build_absolute_uri}}');
-        this.page = parseInt('{{request.GET.page}}') || 1;
-        this. filter = '{{request.GET.filter}}';
-        console.log(this.url);
-        this.messageContainer = node;
+        this.seeMoreButton = document.querySelector('[data-fetch-target]');
+        this.destinationNode = document.querySelector(node.dataset.fetchTarget);
 
-        this.checkCookie();
+        this.url= new URL(window.location);
+        this.params=new URLSearchParams(this.url.search);
+        this.page=parseInt(this.params.get('page')) || 1;
+        this.filter=this.params.get('filter');
+        this.xmlhttp=null;
+
         this.bindEvents();
     }
 
-    checkCookie() {
-        if (!this.messageContainer) {
-            return;
-        }
-
-        // If cookie doesn't exists
-        if (!Cookies.get(this.cookieName)) {
-            this.messageContainer.classList.add(this.activeClass);
-        }
-    }
-
-    applyCookie(event) {
-        // prevent default link action
-        event.preventDefault();
-        // Add classes
-        this.messageContainer.classList.remove(this.activeClass);
-        this.messageContainer.classList.add(this.inactiveClass);
-        // Set cookie
-        Cookies.set(this.cookieName, this.cookieValue, {
-            expires: this.cookieDuration,
-        });
-    }
-
     loadMorePostsAjax(){
+        this.page+=1;
+        this.xmlhttp = new XMLHttpRequest();
+        this.xmlhttp.onreadystatechange = this.loadMorePostsAjaxCallBack;
 
+        this.params = new URLSearchParams();
+        this.params.set('filter', this.filter);
+        this.params.set('page', this.page);
+        this.url.search = params.toString();
+
+        this.xmlhttp.open("GET", url, true);
+        this.xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        this.xmlhttp.send();
+    }
+
+    loadMorePostsAjaxCallBack(){
+      if (this.readyState == 4 && this.status == 200) {
+      // if success
+        console.log(this.responseText);
+        }else if(this.readyState == 4){
+        // if error
+        this.page-=1;
+        }
     }
 
     bindEvents() {

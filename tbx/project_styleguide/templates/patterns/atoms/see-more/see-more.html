@@ -1,5 +1,5 @@
 {% if link and text %}
     <div class="see-more">
-        <a class="see-more__link" href="{{ link }}" data-posts-see-more="{{request}}">{{ text }}</a>
+      <a class="see-more__link"{% if link %} href="{{ link }}"{% elif fetch_target %} data-posts-target="{{ fetch_data }}"{% endif %}>{{ text }}</a>
     </div>
 {% endif %}
