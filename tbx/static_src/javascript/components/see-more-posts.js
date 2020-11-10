@@ -25,10 +25,17 @@ class SeeMorePosts {
     let pageCtr = this.page;
     ++pageCtr;
 
+    //set parameters
+    this.params = new URLSearchParams();
+    if (this.filter !=null){
+        this.params.set('filter', this.filter);
+    }
+    this.params.set('page', pageCtr);
+    this.url.search = this.params.toString();
+
     // build request object
     const request = new Request(this.url, {
       method: "GET",
-      data: { filter: this.filter, page: pageCtr },
       headers: new Headers({
         "X-Requested-With": "XMLHttpRequest",
       }),
@@ -41,7 +48,8 @@ class SeeMorePosts {
       })
       .then(function (html) {
         // Here you get the data to modify as you please
-        console.log(html);
+        targetNode.lastElementChild.insertAdjacentHTML('afterend', html);
+
       })
       .catch(function (error) {
         // If there is any error you will catch them here

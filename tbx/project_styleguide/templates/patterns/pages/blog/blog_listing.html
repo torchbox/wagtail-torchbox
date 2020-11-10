@@ -11,16 +11,13 @@
 
     <div class="blog-listing__content">
 
-        <div class="blog-listing__list">
+        <div class="blog-listing__list" data-posts-destination="blog-pages">
             {% for blog in blog_posts %}
                 {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
             {% endfor %}
         </div>
-        <div class="blog-listing__list" data-posts-destination="blog-pages">
-          {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" fetch_data="blog-pages" link="#" %}
-        </div>
 
-        {% include "patterns/atoms/see-more/see-more.html" with link="#" text="See more blogs" %}
+         {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" fetch_data="blog-pages" link="#" %}
     </div>
 
 </div>
