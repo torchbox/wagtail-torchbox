@@ -1,15 +1,12 @@
-class SeeMorePosts
-{
-	static selector()
-	{
+class SeeMorePosts {
+	static selector() {
 		return "[data-posts-destination]";
 	}
 
-	constructor(node)
-	{
+	constructor(node) {
 		this.node = node;
-		this.seeMoreButton = document.querySelector("[data-posts-fetch-target]");
 		this.target = this.node.dataset.postsDestination;
+		this.seeMoreButton = document.querySelector(`[data-posts-fetch-target="${this.target}"]`);
 		this.targetNode = document.querySelector(
 			`[data-posts-destination="${this.target}"]`
 		);
@@ -22,62 +19,49 @@ class SeeMorePosts
 		this.bindEvents();
 	}
 
-	loadMorePostsAjax()
-	{
+	loadMorePostsAjax() {
 		//set parameters
 		this.params = new URLSearchParams();
-		if (this.filter != null)
-		{
+		if (this.filter != null) {
 			this.params.set('filter', this.filter);
 		}
 		this.params.set('page', this.nextPage);
 		this.url.search = this.params.toString();
 
 		// build request object
-		const request = new Request(this.url,
-		{
+		const request = new Request(this.url, {
 			method: "GET",
-			headers: new Headers(
-			{
+			headers: new Headers({
 				"X-Requested-With": "XMLHttpRequest",
 			}),
 		});
 
 		fetch(request)
-			.then(function (response)
-			{
-				if (response.ok)
-				{
+			.then(function (response) {
+				if (response.ok) {
 					// parse to html
 					return response.text();
 				}
 				throw new Error(response.status + ": " + response.statusText);
 			})
-			.then(function (html)
-			{
-				if (html.trim().length > 0)
-				{
+			.then(function (html) {
+				if (html.trim().length > 0) {
 					this.targetNode.lastElementChild.insertAdjacentHTML('afterend', html);
 					this.nextPage += 1;
-				}
-				else
-				{
+				} else {
 					// handle empty response
-					console.log("empty response")
+					this.seeMoreButton.parentNode.removeChild(this.seeMoreButton);
 				}
 			}.bind(this))
-			.catch(function (error)
-			{
+			.catch(function (error) {
 				// If there is any error you will catch them here
 				console.log(error);
 			});
 
 	}
 
-	bindEvents()
-	{
-		if (!this.seeMoreButton)
-		{
+	bindEvents() {
+		if (!this.seeMoreButton) {
 			return;
 		}
 
@@ -88,3 +72,4 @@ class SeeMorePosts
 }
 
 export default SeeMorePosts;
+
