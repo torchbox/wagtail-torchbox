@@ -73,22 +73,30 @@ class BlogIndexPage(Page):
 
         # Pagination
         per_page = 10
-        page = request.GET.get('page')
         paginator = Paginator(blog_posts, per_page)  # Show 10 blog_posts per page
-        try:
-            blog_posts = paginator.page(page)
-        except PageNotAnInteger:
-            blog_posts = paginator.page(1)
-        except EmptyPage:
-            blog_posts = paginator.page(paginator.num_pages)
 
         if request.is_ajax():
+            # use page to filter
+            page = request.GET.get('page')
+            try:
+                blog_posts = paginator.page(page)
+            except PageNotAnInteger:
+                blog_posts = paginator.page(1)
+            except EmptyPage:
+                blog_posts = None
+
             return render(request, 'patterns/pages/blog/includes/blog_listing.html', {
                 'page': self,
                 'blog_posts': blog_posts,
                 'per_page': per_page,
             })
         else:
+            # return first page contents
+            try:
+                blog_posts = paginator.page(1)
+            except EmptyPage:
+                blog_posts = None
+
             return render(request, self.template, {
                 'page': self,
                 'blog_posts': blog_posts,
