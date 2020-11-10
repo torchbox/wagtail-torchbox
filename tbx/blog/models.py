@@ -83,8 +83,8 @@ class BlogIndexPage(Page):
             blog_posts = blog_posts.filter(related_services__slug=slug_filter)
 
         # Pagination
-        per_page = 12
-        page = request.GET.get("page")
+        per_page = 10
+        page = request.GET.get('page')
         paginator = Paginator(blog_posts, per_page)  # Show 10 blog_posts per page
         try:
             blog_posts = paginator.page(page)
@@ -94,7 +94,7 @@ class BlogIndexPage(Page):
             blog_posts = paginator.page(paginator.num_pages)
 
         if request.is_ajax():
-            return render(request, "blog/includes/blog_listing.html", {
+            return render(request, 'patterns/pages/blog/includes/blog_listing.html', {
                 'page': self,
                 'blog_posts': blog_posts,
                 'per_page': per_page,
