@@ -1,7 +1,11 @@
 {% load wagtailcore_tags %}
 
 {% if link and text %}
-    <div class="see-more">
-      <a class="see-more__link"{% if link %} href="{{ link }}"{% elif fetch_target %} data-posts-fetch-target="{{ fetch_data }}"{% endif %}>{{ text }}</a>
-    </div>
+<div class="see-more">
+    {% if fetch_data %}
+    <a class="see-more__link" href="{{ link }}" data-posts-fetch-target="{{ fetch_data }}">{{ text }}</a>
+    {% else %}
+    <a class="see-more__link" href="{{ link }}">{{ text }}</a>
+    {% endif %}
+</div>
 {% endif %}
