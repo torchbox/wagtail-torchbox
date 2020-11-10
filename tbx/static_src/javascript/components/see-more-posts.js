@@ -10,7 +10,7 @@ class SeeMorePosts {
     this.targetNode = document.querySelector(
       `[data-posts-destination="${this.target}"]`
     );
-    console.log(this.targetNode);
+
     this.url = new URL(this.node.baseURI);
     this.params = new URLSearchParams(this.url.search);
     this.page = parseInt(this.params.get("page")) || 1;
@@ -27,8 +27,8 @@ class SeeMorePosts {
 
     //set parameters
     this.params = new URLSearchParams();
-    if (this.filter !=null){
-        this.params.set('filter', this.filter);
+    if (this.filter != null) {
+      this.params.set('filter', this.filter);
     }
     this.params.set('page', pageCtr);
     this.url.search = this.params.toString();
@@ -42,16 +42,21 @@ class SeeMorePosts {
     });
 
     fetch(request)
-      .then(function (response) {
+      .then(function(response) {
         // parse to html
-        return response.text();
+        if (response.ok) {
+          return response.text();
+        } else {
+          throw new Error(response.status + ": " + response.statusText);
+        }
+
       })
-      .then(function (html) {
+      .then(function(html) {
         // Here you get the data to modify as you please
         targetNode.lastElementChild.insertAdjacentHTML('afterend', html);
 
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // If there is any error you will catch them here
         console.log(error);
         --pageCtr;
@@ -61,6 +66,7 @@ class SeeMorePosts {
     if (pageCtr != this.page) {
       this.page = pageCtr;
     }
+
   }
 
   bindEvents() {
