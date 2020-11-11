@@ -4,28 +4,29 @@
 {% block theme_class %}theme--primary{% endblock %}
 
 {% block content %}
-{% with author=page.authors.first.author %}
-    {% include "patterns/molecules/title-block/title-block.html" with item=page %}
-    {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
+    {% with author=page.authors.first.author %}
 
-    {% include_block page.body %}
-
-    <div class="page__author">
+        {% include "patterns/molecules/title-block/title-block.html" with item=page %}
         {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
-    </div>
 
-    {% if page.related_works %}
-    <div class="page__showcase">
-        <div class="casestudies">
-            {% include "patterns/atoms/section-title/section-title.html" with title="More of our work" %}
-            <div class="casestudies__list">
-                {% for work in page.related_works %}
-                    {% include "patterns/molecules/work-item/work-item.html" with item=work %}
-                {% endfor %}
-                {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
+        {% include_block page.body %}
+
+        <div class="page__author">
+            {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
+        </div>
+
+        {% if page.related_works %}
+        <div class="page__showcase">
+            <div class="casestudies">
+                {% include "patterns/atoms/section-title/section-title.html" with title="More of our thinking" %}
+                <div class="casestudies__list">
+                    {% for work in page.related_works %}
+                        {% include "patterns/molecules/work-item/work-item.html" with item=work %}
+                    {% endfor %}
+                    {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
+                </div>
             </div>
         </div>
-    </div>
-    {% endif %}
-{% endwith %}
+        {% endif %}
+    {% endwith %}
 {% endblock %}
