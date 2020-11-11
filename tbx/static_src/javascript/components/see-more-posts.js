@@ -46,7 +46,7 @@ class SeeMorePosts {
                 this.targetNode.lastElementChild.insertAdjacentHTML('afterend', html);
                 this.nextPage += 1;
                 if (this.nextPage > this.MAX_PAGES) {
-                    this.seeMoreButton.classList.add("see-more__display__none");
+                    this.seeMoreButton.classList.add("see-more--hidden");
                 }
             })
     }
