@@ -11,11 +11,13 @@
 
     <div class="blog-listing__content">
 
-        <div class="blog-listing__list" data-fetch-destination="blog-pages">
+        <div class="blog-listing__list" data-fetch-destination="blog-pages" data-fetch-max-pages="{{blog_posts.paginator.num_pages}}">
             {% include "patterns/pages/blog/includes/blog_listing.html" with blog_posts=blog_posts %}
         </div>
 
-        {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" fetch_data="blog-pages" %}
+        {% if blog_posts.has_next %}
+            {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" fetch_data="blog-pages" %}
+        {% endif %}
     </div>
 
 </div>
