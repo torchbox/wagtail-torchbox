@@ -12,9 +12,7 @@
     <div class="blog-listing__content">
 
         <div class="blog-listing__list" data-posts-destination="blog-pages">
-            {% for blog in blog_posts %}
-                {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
-            {% endfor %}
+            {% include "patterns/pages/blog/includes/blog_listing.html" with blog_posts=blog_posts %}
         </div>
 
          {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" fetch_data="blog-pages" link="javascript:;" %}
