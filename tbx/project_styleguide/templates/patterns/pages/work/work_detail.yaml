@@ -3,14 +3,19 @@ context:
     title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
     client: Oxfam
     get_verbose_name: work-detail
-    author: Nick Lee
-    authorLink: /team/nick-lee
-    role: Designer
     date: 07 Aug ’20
-    readtime: '5'
+    read_time: '5'
+    authors:
+      first:
+        author:
+          name: Nick Lee
+          role: Designer
     related_services:
-      - { title: Digital products, href: '#' }
-      - { title: Wagtail, href: '#' }
+      all:
+        - name: Digital products
+          slug: digital-products
+        - name: Wagtail
+          slug: wagtail
     related_works:
       - {
           title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
