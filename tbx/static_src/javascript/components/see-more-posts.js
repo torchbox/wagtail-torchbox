@@ -12,21 +12,21 @@ class SeeMorePosts {
     );
 
     this.url = new URL(this.node.baseURI);
-    this.params = new URLSearchParams(this.url.search);
+    let params = new URLSearchParams(this.url.search);
     this.nextPage = 2;
-    this.filter = this.params.get("filter");
+    this.filter = params.get("filter");
 
     this.bindEvents();
   }
 
   loadMorePostsAjax() {
     //set parameters
-    this.params = new URLSearchParams();
+    let params = new URLSearchParams();
     if (this.filter != null) {
-      this.params.set('filter', this.filter);
+      params.set('filter', this.filter);
     }
-    this.params.set('page', this.nextPage);
-    this.url.search = this.params.toString();
+    params.set('page', this.nextPage);
+    this.url.search = params.toString();
 
     // build request object
     const request = new Request(this.url, {
