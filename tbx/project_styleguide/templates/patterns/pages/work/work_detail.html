@@ -6,12 +6,12 @@
 {% block content %}
 {% with author=page.authors.first.author %}
     {% include "patterns/molecules/title-block/title-block.html" with item=page %}
-    {% include "patterns/molecules/author/author.html" with item=page author=author %}
+    {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
 
     {% include_block page.body %}
 
     <div class="page__author">
-        {% include "patterns/molecules/author/author.html" with item=page author=author%}
+        {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
     </div>
 
     {% if page.related_works %}
