@@ -4,15 +4,13 @@ class SeeMorePosts {
     }
 
     constructor(node) {
-        this.node = node;
         this.nextPage = 2;
-        this.target = this.node.dataset.fetchTarget;
-        this.seeMoreButton = document.querySelector(`[data-fetch-target="${this.target}"]`);
+        this.seeMoreButton = document.querySelector(`[data-fetch-target="${node.dataset.fetchTarget}"]`);
         this.targetNode = document.querySelector(
-            `[data-fetch-destination="${this.target}"]`
+            `[data-fetch-destination="${node.dataset.fetchTarget}"]`
         );
         this.MAX_PAGES = parseInt(this.targetNode.getAttribute('data-fetch-max-pages'));
-        this.url = new URL(this.node.baseURI);
+        this.url = new URL(node.baseURI);
         this.filter = new URLSearchParams(this.url.search).get("filter");
 
         this.bindEvents();
