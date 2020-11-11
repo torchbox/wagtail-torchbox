@@ -11,7 +11,7 @@
 
     <div class="blog-listing__content">
 
-        <div class="blog-listing__list" data-fetch-destination="blog-pages" data-fetch-max-pages="{{blog_posts.paginator.num_pages}}">
+        <div class="blog-listing__list" data-fetch-destination="blog-pages" data-fetch-max-pages="{{ blog_posts.paginator.num_pages }}">
             {% include "patterns/pages/blog/includes/blog_listing.html" with blog_posts=blog_posts %}
         </div>
 

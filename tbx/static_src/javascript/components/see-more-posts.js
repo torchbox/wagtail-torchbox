@@ -5,7 +5,7 @@ class SeeMorePosts {
 
     constructor(node) {
         this.nextPage = 2;
-        this.seeMoreButton = document.querySelector(`[data-fetch-target="${node.dataset.fetchTarget}"]`);
+        this.seeMoreButton = node;
         this.targetNode = document.querySelector(
             `[data-fetch-destination="${node.dataset.fetchTarget}"]`
         );
