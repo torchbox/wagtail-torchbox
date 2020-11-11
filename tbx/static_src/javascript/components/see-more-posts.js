@@ -1,14 +1,14 @@
 class SeeMorePosts {
 	static selector() {
-		return "[data-posts-destination]";
+		return "[data-fetch-destination]";
 	}
 
 	constructor(node) {
 		this.node = node;
-		this.target = this.node.dataset.postsDestination;
-		this.seeMoreButton = document.querySelector(`[data-posts-fetch-target="${this.target}"]`);
+		this.target = this.node.dataset.fetchDestination;
+		this.seeMoreButton = document.querySelector(`[data-fetch-target="${this.target}"]`);
 		this.targetNode = document.querySelector(
-			`[data-posts-destination="${this.target}"]`
+			`[data-fetch-destination="${this.target}"]`
 		);
 
 		this.url = new URL(this.node.baseURI);
