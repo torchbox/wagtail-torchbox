@@ -3,13 +3,14 @@ context:
     title: Blog
     get_verbose_name: blog-listing
     related_services:
-      - { title: All, href: /blog/, active: True }
-      - { title: Digital products, href: /blog/#filter=/digital-products }
-      - { title: Digital products, href: /blog/#filter=/digital-products }
-      - { title: Digital products, href: /blog/#filter=/digital-products }
-      - { title: Digital products, href: /blog/#filter=/digital-products }
-      - { title: Digital products, href: /blog/#filter=/digital-products }
-
+      - name: Digital products
+        slug: digital-products
+      - name: Digital products
+        slug: digital-products
+      - name: Digital products
+        slug: digital-products
+      - name: Digital products
+        slug: digital-products
   blog_posts:
     - {
       title: We already dropped Drupal - maybe it’s time for you to do the same.,
