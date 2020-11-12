@@ -5,9 +5,7 @@
 
 {% block content %}
 
-    {% if page.hero %}
-        {% include "patterns/molecules/hero/hero.html" with item=page.hero %}
-    {% endif %}
+    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro %}
 
     {% if page.in_page_nav %}
         {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page.in_page_nav title="Design + build products" %}

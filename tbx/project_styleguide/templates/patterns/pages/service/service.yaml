@@ -1,7 +1,7 @@
 context:
   page:
     title: Service
-    get_verbose_name: service
+    get_verbose_name: service-page
     hero:
       title: The digital product agency <span>for tomorrow’s nonprofits</span>.
     in_page_nav:
