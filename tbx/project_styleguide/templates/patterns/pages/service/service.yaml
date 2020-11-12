@@ -2,7 +2,18 @@ context:
   page:
     blogs_section_title: Thinking
     case_studies_section_title: Work
+    contact:
+      email_address: willh@torchbox.com
+      phone_number: +447545468483
+    heading_for_key_points: '<p><b>We help you create digital products and services, fast</b>. And, you can transform your organisation along the way.</p>'
     key_points_section_title: Services
+    key_points:
+      all:
+        - text: UX Research and Design
+        - text: Design Sprints
+        - text: Software Engineering
+        - text: Wagtail CMS services
+        - text: Digital marketing
     strapline: The digital product agency <span>for tomorrow’s nonprofits</span>.
     testimonials_section_title: Clients
     title: Service
