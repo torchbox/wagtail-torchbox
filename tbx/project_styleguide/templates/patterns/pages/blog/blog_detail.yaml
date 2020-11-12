@@ -5,7 +5,8 @@ context:
         - author:
             name: Nick Lee
             role: Designer
-    blog_index: True
+    blog_index:
+      url: '#'
     title: The stages (and jargon) of digital product innovation
     date: 07 Aug ’20
     get_verbose_name: Blog detail
