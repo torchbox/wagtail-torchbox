@@ -249,6 +249,8 @@ class HomePage(Page):
 
 
 class StandardPage(Page):
+    template = 'patterns/pages/standard/standard_page.html'
+
     body = StreamField(StoryBlock())
 
     content_panels = Page.content_panels + [
