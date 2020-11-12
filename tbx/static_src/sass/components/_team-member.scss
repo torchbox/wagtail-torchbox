@@ -15,6 +15,7 @@
 
     // Only used on team detail template
     &__container {
+        position: relative;
         @include media-query(large) {
             @include container(large);
         }
@@ -83,9 +84,17 @@
         }
     }
 
-    &__bio {
+    &__bio-container {
         @include font-size(s);
-        margin-bottom: ($gutter * 3);
+        line-height: 1.7;
+        margin: ($gutter * 2) 8.33vw ($gutter * 3);
         color: var(--color--grey-dark);
+    }
+
+    &__bio {
+        @include media-query(large) {
+            margin-left: 16.66vw;
+            max-width: 50vw;
+        }
     }
 }
