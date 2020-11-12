@@ -40,6 +40,3 @@ context:
         client: Oxfam,
         listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
       }
-  see_more:
-    text: See more casestudies
-    href: '/work'
