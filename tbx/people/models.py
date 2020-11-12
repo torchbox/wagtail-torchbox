@@ -91,6 +91,7 @@ class PersonPage(Page, ContactFields):
 # Person index
 class PersonIndexPage(Page):
     strapline = models.CharField(max_length=255)
+    template = 'patterns/pages/team/team_listing.html'
 
     @cached_property
     def people(self):
