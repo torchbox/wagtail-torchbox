@@ -193,7 +193,7 @@ class WorkIndexPage(Page):
             return render(request, self.template, {
                 'page': self,
                 'works': works,
-                'related_services':related_services
+                'related_services': related_services
             })
 
     content_panels = [
