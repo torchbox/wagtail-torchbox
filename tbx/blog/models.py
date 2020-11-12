@@ -59,11 +59,6 @@ class BlogIndexPage(Page):
         return [Tag.objects.get(id=tag["tag"]) for tag in popular_tags[:10]]
 
     @property
-    def related_services(self):
-        services = Service.objects.all()
-        return services
-
-    @property
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
         blog_posts = BlogPage.objects.live().in_menu().descendant_of(self)
@@ -83,8 +78,7 @@ class BlogIndexPage(Page):
             blog_posts = blog_posts.filter(related_services__slug=slug_filter)
 
         # Pagination
-        per_page = 10
-        paginator = Paginator(blog_posts, per_page)  # Show 10 blog_posts per page
+        paginator = Paginator(blog_posts, 10)  # Show 10 blog_posts per page
 
         if request.is_ajax():
             # use page to filter
@@ -96,10 +90,9 @@ class BlogIndexPage(Page):
             except EmptyPage:
                 blog_posts = None
 
-            return render(request, 'patterns/pages/blog/includes/blog_listing.html', {
+            return render(request, 'patterns/organisms/blog-listing/blog-listing.html', {
                 'page': self,
                 'blog_posts': blog_posts,
-                'per_page': per_page,
             })
         else:
             # return first page contents
@@ -108,10 +101,12 @@ class BlogIndexPage(Page):
             except EmptyPage:
                 blog_posts = None
 
+            related_services = Service.objects.all()
+
             return render(request, self.template, {
                 'page': self,
                 'blog_posts': blog_posts,
-                'per_page': per_page,
+                'related_services': related_services,
             })
 
     content_panels = [

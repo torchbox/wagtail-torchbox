@@ -1,20 +1,4 @@
 context:
-  page:
-    title: Blog
-    get_verbose_name: blog-listing
-  related_services:
-    - name: Digital products
-      slug: digital-products
-
-    - name: Digital products
-      slug: digital-products
-
-    - name: Digital products
-      slug: digital-products
-
-    - name: Digital products
-      slug: digital-products
-
   blog_posts:
     - title: We already dropped Drupal - maybe it’s time for you to do the same.
       date: 20 Oct '20
@@ -45,5 +29,4 @@ context:
       date: 20 Oct '20
       author_name: Will Heinemann
       author_role: New Business Director
-
 

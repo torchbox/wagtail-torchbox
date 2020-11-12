@@ -9,7 +9,7 @@ class SeeMorePosts {
         this.targetNode = document.querySelector(
             `[data-fetch-destination="${node.dataset.fetchTarget}"]`
         );
-        this.MAX_PAGES = parseInt(this.targetNode.getAttribute('data-fetch-max-pages'),10);
+        this.MAX_PAGES = parseInt(this.targetNode.getAttribute('data-fetch-max-pages'), 10);
         this.url = new URL(node.baseURI);
         this.filter = new URLSearchParams(this.url.search).get("filter");
 
