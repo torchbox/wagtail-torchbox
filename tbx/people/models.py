@@ -26,6 +26,8 @@ from tbx.core.blocks import StoryBlock
 
 
 class PersonPage(Page):
+    template = "patterns/pages/team/team_detail.html"
+
     role = models.CharField(max_length=255, blank=True)
     is_senior = models.BooleanField(default=False)
     intro = RichTextField(blank=True)
