@@ -182,7 +182,7 @@ class WorkIndexPage(Page):
             except EmptyPage:
                 works = None
 
-            return render(request, 'patterns/pages/work/includes/work_listing.html', {
+            return render(request, 'patterns/organisms/work-listing/work-listing.html', {
                 'page': self,
                 'works': works,
             })
