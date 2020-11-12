@@ -95,11 +95,7 @@ class PersonIndexPage(Page):
 
     @cached_property
     def people(self):
-        return PersonPage.objects.exclude(is_senior=True).live().public()
-
-    @cached_property
-    def senior_management(self):
-        return PersonPage.objects.exclude(is_senior=False).live().public()
+        return PersonPage.objects.order_by('-is_senior', 'title').live().public()
 
     content_panels = Page.content_panels + [
         FieldPanel("strapline", classname="full"),
