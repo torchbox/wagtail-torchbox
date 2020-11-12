@@ -94,7 +94,7 @@ class PersonIndexPage(Page):
     template = 'patterns/pages/team/team_listing.html'
 
     @cached_property
-    def people(self):
+    def team(self):
         return PersonPage.objects.order_by('-is_senior', 'title').live().public()
 
     content_panels = Page.content_panels + [
