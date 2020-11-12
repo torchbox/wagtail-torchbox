@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (
@@ -11,6 +12,8 @@ from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
+
+from tbx.work.models import WorkIndexPage
 
 
 class BaseServicePage(Page):
@@ -129,6 +132,14 @@ class BaseServicePage(Page):
 
     class Meta:
         abstract = True
+
+    def serve(self, request):
+        work_index_page = WorkIndexPage.objects.first()
+
+        return render(request, self.template, {
+            'page': self,
+            'work_index_page': work_index_page,
+        })
 
 
 class BaseServicePageKeyPoint(models.Model):
