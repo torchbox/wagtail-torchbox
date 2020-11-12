@@ -9,7 +9,7 @@ class SeeMorePosts {
         this.targetNode = document.querySelector(
             `[data-fetch-destination="${node.dataset.fetchTarget}"]`
         );
-        this.MAX_PAGES = parseInt(this.targetNode.getAttribute('data-fetch-max-pages'));
+        this.MAX_PAGES = parseInt(this.targetNode.getAttribute('data-fetch-max-pages'),10);
         this.url = new URL(node.baseURI);
         this.filter = new URLSearchParams(this.url.search).get("filter");
 
@@ -17,8 +17,8 @@ class SeeMorePosts {
     }
 
     loadMorePostsAjax() {
-        //set parameters
-        let params = new URLSearchParams();
+        // set parameters
+        const params = new URLSearchParams();
         if (this.filter != null) {
             params.set('filter', this.filter);
         }
@@ -39,7 +39,7 @@ class SeeMorePosts {
                     // parse to html
                     return response.text();
                 }
-                throw new Error(response.status + ": " + response.statusText);
+                throw new Error(`${response.status}: ${response.statusText}`);
             })
             .then((html) => {
                 // update list
