@@ -7,7 +7,11 @@ context:
 
 tags:
   image:
-    item.profile_image fill-400x400 as image:
+    item.image fill-400x400 as image:
       target_var: image
       raw:
         url: '//placekitten.com/400/400'
+
+  pageurl:
+    item:
+      raw: "#"
