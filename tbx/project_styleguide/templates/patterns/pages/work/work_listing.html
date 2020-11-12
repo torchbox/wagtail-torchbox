@@ -11,9 +11,7 @@
     <div class="casestudies__content">
 
         <div class="casestudies__list" data-fetch-destination="work-pages" data-fetch-max-pages="{{ works.paginator.num_pages }}">
-            {% for work in works %}
-                {% include "patterns/molecules/work-item/work-item.html" with item=work %}
-            {% endfor %}
+            {% include "patterns/pages/work/includes/work_listing.html" with item=works %}
         </div>
 
         {% if works.has_next %}
