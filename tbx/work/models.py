@@ -171,16 +171,32 @@ class WorkIndexPage(Page):
             works = works.filter(related_services__slug=slug_filter)
 
         # Pagination
-        page = request.GET.get('page')
         paginator = Paginator(works, 10)  # Show 10 works per page
-        try:
-            works = paginator.page(page)
-        except PageNotAnInteger:
-            works = paginator.page(1)
-        except EmptyPage:
-            works = paginator.page(paginator.num_pages)
 
-        return render(request, self.template, {"self": self, "works": works})
+        if request.is_ajax():
+            page = request.GET.get('page')
+            try:
+                works = paginator.page(page)
+            except PageNotAnInteger:
+                works = paginator.page(1)
+            except EmptyPage:
+                works = None
+
+            return render(request, 'patterns/pages/work/includes/work_listing.html', {
+                'page': self,
+                'works': works,
+            })
+        else:
+            # return first page contents
+            try:
+                works = paginator.page(1)
+            except EmptyPage:
+                works = None
+
+            return render(request, self.template, {
+                'self': self,
+                'works': works,
+            })
 
     content_panels = [
         FieldPanel("title", classname="full title"),
