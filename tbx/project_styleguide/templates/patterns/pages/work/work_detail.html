@@ -20,7 +20,7 @@
             <div class="casestudies">
                 {% include "patterns/atoms/section-title/section-title.html" with title="More of our Work" %}
                 <div class="casestudies__list">
-                    {% include "patterns/pages/work/includes/work_listing.html" with works=page.related_works %}
+                    {% include "patterns/organisms/work-listing/work-listing.html" with works=page.related_works %}
                     {% include "patterns/atoms/see-more/see-more.html" with link=page.work_index.url text="See more case studies" %}
                 </div>
             </div>
