@@ -171,8 +171,8 @@ class WorkIndexPage(Page):
             works = works.filter(related_services__slug=slug_filter)
 
         # Pagination
-        page = request.GET.get("page")
-        paginator = Paginator(works, 12)  # Show 10 works per page
+        page = request.GET.get('page')
+        paginator = Paginator(works, 10)  # Show 10 works per page
         try:
             works = paginator.page(page)
         except PageNotAnInteger:
