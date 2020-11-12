@@ -152,11 +152,6 @@ class WorkIndexPage(Page):
         return [Tag.objects.get(id=tag["tag"]) for tag in popular_tags[:10]]
 
     @property
-    def related_services(self):
-        services = Service.objects.all()
-        return services
-
-    @property
     def works(self):
         # Get list of work pages that are descendants of this page
         return WorkPage.objects.descendant_of(self).live()
@@ -193,9 +188,12 @@ class WorkIndexPage(Page):
             except EmptyPage:
                 works = None
 
+            related_services = Service.objects.all()
+
             return render(request, self.template, {
-                'self': self,
+                'page': self,
                 'works': works,
+                'related_services':related_services
             })
 
     content_panels = [
