@@ -2,6 +2,15 @@ context:
   page:
     blogs_section_title: Thinking
     case_studies_section_title: Work
+    client_logos:
+      all:
+        - True
+        - True
+        - True
+        - True
+        - True
+        - True
+        - True
     contact:
       email_address: willh@torchbox.com
       phone_number: +447545468483
@@ -16,33 +25,28 @@ context:
         - text: Digital marketing
     strapline: The digital product agency <span>for tomorrow’s nonprofits</span>.
     testimonials_section_title: Clients
+    testimonials:
+      all:
+        - {
+            quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+            name: Sarah Toms,
+            role: Executive Director,
+            Wharton Interactive at The Wharton School,
+          }
+        - {
+            quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+            name: Sarah Toms,
+            role: Executive Director,
+            Wharton Interactive at The Wharton School,
+          }
+        - {
+            quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+            name: Sarah Toms,
+            role: Executive Director,
+            Wharton Interactive at The Wharton School,
+          }
     title: Service
     get_verbose_name: service-page
-    clients:
-      - { title: Samaritans }
-      - { title: Samaritans }
-      - { title: Samaritans }
-      - { title: Samaritans }
-      - { title: Samaritans }
-    quotes:
-      - {
-          quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
-          name: Sarah Toms,
-          role: Executive Director,
-          Wharton Interactive at The Wharton School,
-        }
-      - {
-          quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
-          name: Sarah Toms,
-          role: Executive Director,
-          Wharton Interactive at The Wharton School,
-        }
-      - {
-          quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
-          name: Sarah Toms,
-          role: Executive Director,
-          Wharton Interactive at The Wharton School,
-        }
     casestudies:
       - {
           title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
