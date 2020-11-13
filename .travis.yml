@@ -6,7 +6,7 @@ cache:
     - node_modules
 
 # Use container-based infrastructure
-dist: trusty
+dist: focal
 sudo: false
 
 # Services
