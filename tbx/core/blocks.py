@@ -98,7 +98,10 @@ class StoryBlock(StreamBlock):
         label="Aligned image",
         template="patterns/molecules/streamfield/blocks/aligned_image_block.html",
     )
-    wide_image = WideImage(label="Wide image")
+    wide_image = WideImage(
+        label="Wide image",
+        template="patterns/molecules/streamfield/blocks/wide_image_block.html",
+    )
     bustout = BustoutBlock()
     pullquote = PullQuoteBlock()
     raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
