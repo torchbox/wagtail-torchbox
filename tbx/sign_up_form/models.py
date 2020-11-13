@@ -125,7 +125,7 @@ class SignUpFormPage(Page):
 
     content_panels = [
         MultiFieldPanel(
-            [FieldPanel("title", classname="title"), FieldPanel("formatted_title"),],
+            [FieldPanel("title", classname="title"), FieldPanel("formatted_title")],
             "Title",
         ),
         FieldPanel("intro", classname="full"),

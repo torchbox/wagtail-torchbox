@@ -172,7 +172,7 @@ class WorkIndexPage(Page):
         except EmptyPage:
             works = paginator.page(paginator.num_pages)
 
-        return render(request, self.template, {"self": self, "works": works,})
+        return render(request, self.template, {"self": self, "works": works})
 
     content_panels = [
         FieldPanel("title", classname="full title"),

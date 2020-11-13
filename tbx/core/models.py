@@ -244,7 +244,7 @@ class HomePage(Page):
     content_panels = [
         FieldPanel("title", classname="full title"),
         MultiFieldPanel(
-            [FieldPanel("hero_intro_primary"), FieldPanel("hero_intro_secondary"),],
+            [FieldPanel("hero_intro_primary"), FieldPanel("hero_intro_secondary")],
             heading="Hero intro",
         ),
         InlinePanel("hero", label="Hero"),

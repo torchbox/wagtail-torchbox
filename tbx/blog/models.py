@@ -89,13 +89,13 @@ class BlogIndexPage(Page):
             return render(
                 request,
                 "blog/includes/blog_listing.html",
-                {"self": self, "blog_posts": blog_posts, "per_page": per_page,},
+                {"self": self, "blog_posts": blog_posts, "per_page": per_page},
             )
         else:
             return render(
                 request,
                 self.template,
-                {"self": self, "blog_posts": blog_posts, "per_page": per_page,},
+                {"self": self, "blog_posts": blog_posts, "per_page": per_page},
             )
 
     content_panels = [

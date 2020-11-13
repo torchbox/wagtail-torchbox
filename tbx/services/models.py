@@ -85,7 +85,7 @@ class BaseServicePage(Page):
             classname="collapsible",
         ),
         MultiFieldPanel(
-            [SnippetChooserPanel("contact"), SnippetChooserPanel("contact_reasons"),],
+            [SnippetChooserPanel("contact"), SnippetChooserPanel("contact_reasons")],
             heading="Contact",
             classname="collapsible",
         ),

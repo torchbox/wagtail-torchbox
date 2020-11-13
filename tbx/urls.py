@@ -22,7 +22,7 @@ from tbx.core.views import robots
 private_urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
-] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls)),], never_cache)
+] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
     path("sitemap.xml", sitemap),

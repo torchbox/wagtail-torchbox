@@ -200,7 +200,7 @@ class Author(index.Indexed, models.Model):
     panels = [
         PageChooserPanel("person_page"),
         MultiFieldPanel(
-            [FieldPanel("name"), FieldPanel("role"), ImageChooserPanel("image"),],
+            [FieldPanel("name"), FieldPanel("role"), ImageChooserPanel("image")],
             "Manual fields",
         ),
     ]
@@ -276,5 +276,5 @@ class ContactReasonsList(ClusterableModel):
                 qs = qs.exclude(pk=self.pk)
             if qs.exists():
                 raise ValidationError(
-                    {"is_default": ["There already is another default snippet.",],}
+                    {"is_default": ["There already is another default snippet."]}
                 )
