@@ -1,0 +1,9 @@
+image:
+  file: .gitpod.dockerfile
+
+ports:
+  - port: 8080
+
+tasks:
+  - command: |
+      manage.py runserver 0.0.0.0:8080
