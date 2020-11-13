@@ -24,6 +24,7 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.taxonomy.models import Service
 
 
 # Currently hidden. These were used in the past and may be used again in the future
@@ -131,6 +132,8 @@ class WorkPage(Page):
 # Work index page
 @method_decorator(get_default_cache_control_decorator(), name="serve")
 class WorkIndexPage(Page):
+    template = "patterns/pages/work/work_listing.html"
+
     intro = RichTextField(blank=True)
 
     hide_popular_tags = models.BooleanField(default=False)
@@ -157,22 +160,42 @@ class WorkIndexPage(Page):
         # Get work pages
         works = self.works
 
-        # Filter by tag
-        tag = request.GET.get("tag")
-        if tag:
-            works = works.filter(tags__tag__slug=tag)
+        # Filter by related_service slug
+        slug_filter = request.GET.get("filter")
+        if slug_filter:
+            works = works.filter(related_services__slug=slug_filter)
 
         # Pagination
-        page = request.GET.get("page")
-        paginator = Paginator(works, 12)  # Show 10 works per page
-        try:
-            works = paginator.page(page)
-        except PageNotAnInteger:
-            works = paginator.page(1)
-        except EmptyPage:
-            works = paginator.page(paginator.num_pages)
+        paginator = Paginator(works, 10)  # Show 10 works per page
 
-        return render(request, self.template, {"self": self, "works": works})
+        if request.is_ajax():
+            page = request.GET.get("page")
+            try:
+                works = paginator.page(page)
+            except PageNotAnInteger:
+                works = paginator.page(1)
+            except EmptyPage:
+                works = None
+
+            return render(
+                request,
+                "patterns/organisms/work-listing/work-listing.html",
+                {"page": self, "works": works},
+            )
+        else:
+            # return first page contents
+            try:
+                works = paginator.page(1)
+            except EmptyPage:
+                works = None
+
+            related_services = Service.objects.all()
+
+            return render(
+                request,
+                self.template,
+                {"page": self, "works": works, "related_services": related_services},
+            )
 
     content_panels = [
         FieldPanel("title", classname="full title"),
