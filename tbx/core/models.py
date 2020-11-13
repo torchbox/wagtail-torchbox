@@ -416,6 +416,8 @@ class JobIndexPageJob(Orderable):
 
 
 class JobIndexPage(Page):
+    template = "patterns/pages/job/job_listing.html"
+
     strapline = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     jobs_xml_feed = models.URLField(blank=True)
