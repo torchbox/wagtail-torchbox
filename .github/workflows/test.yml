@@ -10,7 +10,7 @@ jobs:
 
     env:
       DJANGO_SETTINGS_MODULE: tbx.settings.production
-      DATABASE_URL: postgres://postgres@localhost/postgres
+      DATABASE_URL: postgres://postgres:postgres@localhost/postgres
       CFG_SECRET_KEY: iamnotsosecret
       CFG_ALLOWED_HOSTS: localhost
 
