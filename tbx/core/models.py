@@ -73,29 +73,6 @@ class LinkFields(models.Model):
         abstract = True
 
 
-class ContactFields(models.Model):
-    telephone = models.CharField(max_length=20, blank=True)
-    email = models.EmailField(blank=True)
-    address_1 = models.CharField(max_length=255, blank=True)
-    address_2 = models.CharField(max_length=255, blank=True)
-    city = models.CharField(max_length=255, blank=True)
-    country = models.CharField(max_length=255, blank=True)
-    post_code = models.CharField(max_length=10, blank=True)
-
-    panels = [
-        FieldPanel("telephone"),
-        FieldPanel("email"),
-        FieldPanel("address_1"),
-        FieldPanel("address_2"),
-        FieldPanel("city"),
-        FieldPanel("country"),
-        FieldPanel("post_code"),
-    ]
-
-    class Meta:
-        abstract = True
-
-
 # Carousel items
 class CarouselItem(LinkFields):
     image = models.ForeignKey(

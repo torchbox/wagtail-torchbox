@@ -23,35 +23,16 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from tbx.core.blocks import StoryBlock
-from tbx.core.models import ContactFields, RelatedLink
 
 
-class PersonPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey("people.PersonPage", related_name="related_links")
+class PersonPage(Page):
+    template = "patterns/pages/team/team_detail.html"
 
-
-class PersonPage(Page, ContactFields):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
     role = models.CharField(max_length=255, blank=True)
     is_senior = models.BooleanField(default=False)
-    short_intro = models.TextField(blank=True, null=True)
-    alt_short_intro = models.TextField(blank=True, null=True)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
-    short_biography = models.CharField(
-        max_length=255,
-        blank=True,
-        help_text="A shorter summary biography for including in other pages",
-    )
     image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-    feed_image = models.ForeignKey(
         "torchbox.TorchboxImage",
         null=True,
         blank=True,
@@ -60,31 +41,21 @@ class PersonPage(Page, ContactFields):
     )
 
     search_fields = Page.search_fields + [
-        index.SearchField("first_name"),
-        index.SearchField("last_name"),
         index.SearchField("intro"),
         index.SearchField("biography"),
     ]
 
     content_panels = [
         FieldPanel("title", classname="full title"),
-        FieldPanel("first_name"),
-        FieldPanel("last_name"),
         FieldPanel("role"),
         FieldPanel("is_senior"),
-        FieldPanel("short_intro", classname="full"),
-        FieldPanel("alt_short_intro", classname="full"),
         FieldPanel("intro", classname="full"),
         FieldPanel("biography", classname="full"),
-        FieldPanel("short_biography", classname="full"),
         ImageChooserPanel("image"),
-        MultiFieldPanel(ContactFields.panels, "Contact"),
-        InlinePanel("related_links", label="Related links"),
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel("feed_image"),
     ]
 
 
