@@ -21,6 +21,7 @@ from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
+from .api import PeopleHRFeed
 from .blocks import StoryBlock
 from .fields import ColorField
 
@@ -424,6 +425,22 @@ class JobIndexPage(Page):
         FieldPanel("intro"),
         FieldPanel("jobs_xml_feed"),
     ]
+
+    def serve(self, request):
+        try:
+            feed = PeopleHRFeed()
+            jobs = feed.get_jobs(url=self.jobs_xml_feed)
+            feed_success = True
+        except Exception as e:
+            jobs = None
+            feed_success = False
+            raise e
+
+        return render(
+            request,
+            self.template,
+            {"page": self, "jobs": jobs, "feed_success": feed_success},
+        )
 
 
 class GoogleAdGrantApplication(models.Model):

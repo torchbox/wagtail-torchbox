@@ -1,5 +1,8 @@
+{% load wagtailcore_tags %}
 <div class="introduction">
     <div class="introduction__container">
-        <p class="introduction__text">{{ item.introduction }}</p>
+        <div class="introduction__text">
+            {{ introduction|richtext }}
+        </div>
     </div>
 </div>
