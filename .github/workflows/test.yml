@@ -36,7 +36,8 @@ jobs:
           poetry-version: 1.1.1
       - name: Install dependencies
         run: |
-          poetry install --extras flake8 isort
+          poetry config virtualenvs.create false &&
+          poetry install
       - name: Flake8
         run: flake8 tbx
       - name: isort
