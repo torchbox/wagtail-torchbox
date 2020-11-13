@@ -138,11 +138,15 @@ class BaseServicePage(Page):
         blog_index_page = BlogIndexPage.objects.live().first()
         work_index_page = WorkIndexPage.objects.live().first()
 
-        return render(request, self.template, {
-            'page': self,
-            'blog_index_page': blog_index_page,
-            'work_index_page': work_index_page,
-        })
+        return render(
+            request,
+            self.template,
+            {
+                "page": self,
+                "blog_index_page": blog_index_page,
+                "work_index_page": work_index_page,
+            },
+        )
 
 
 class BaseServicePageKeyPoint(models.Model):
