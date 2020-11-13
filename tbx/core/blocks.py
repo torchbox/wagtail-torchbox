@@ -71,7 +71,11 @@ class StatsBlock(StructBlock):
 
 
 class StoryBlock(StreamBlock):
-    h2 = CharBlock(icon="title", classname="title")
+    h2 = CharBlock(
+        classname="title",
+        icon="title",
+        template="patterns/molecules/streamfield/blocks/heading2_block.html",
+    )
     h3 = CharBlock(
         classname="title",
         icon="title",
@@ -82,8 +86,14 @@ class StoryBlock(StreamBlock):
         icon="title",
         template="patterns/molecules/streamfield/blocks/heading4_block.html",
     )
-    intro = RichTextBlock(icon="pilcrow")
-    paragraph = RichTextBlock(icon="pilcrow")
+    intro = RichTextBlock(
+        icon="pilcrow",
+        template="patterns/molecules/streamfield/blocks/intro_block.html",
+    )
+    paragraph = RichTextBlock(
+        icon="pilcrow",
+        template="patterns/molecules/streamfield/blocks/paragraph_block.html",
+    )
     aligned_image = ImageBlock(label="Aligned image")
     wide_image = WideImage(label="Wide image")
     bustout = BustoutBlock()
@@ -91,3 +101,6 @@ class StoryBlock(StreamBlock):
     raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
     embed = EmbedBlock(icon="code")
     markdown = MarkdownBlock(icon="code")
+
+    class Meta:
+        template = "patterns/molecules/streamfield/stream_block.html"
