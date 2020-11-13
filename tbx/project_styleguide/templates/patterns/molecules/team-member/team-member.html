@@ -1,8 +1,8 @@
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
-{% image item.profile_image fill-400x400 as image %}
+{% image item.image fill-400x400 as image %}
 <div class="team-member">
-    <a class="team-member__link" href="{{ item.href }}">
+    <a class="team-member__link" href="{% pageurl item %}">
         <img class="team-member__image" src="{{ image.url }}" alt="{{ image.alt }}">
         <h2 class="team-member__title">{{ item.title }}</h2>
         <h3 class="team-member__role">{{ item.role }}</h3>

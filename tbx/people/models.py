@@ -62,14 +62,11 @@ class PersonPage(Page):
 # Person index
 class PersonIndexPage(Page):
     strapline = models.CharField(max_length=255)
+    template = "patterns/pages/team/team_listing.html"
 
     @cached_property
-    def people(self):
-        return PersonPage.objects.exclude(is_senior=True).live().public()
-
-    @cached_property
-    def senior_management(self):
-        return PersonPage.objects.exclude(is_senior=False).live().public()
+    def team(self):
+        return PersonPage.objects.order_by("-is_senior", "title").live().public()
 
     content_panels = Page.content_panels + [
         FieldPanel("strapline", classname="full"),
