@@ -132,7 +132,7 @@ class WorkPage(Page):
 # Work index page
 @method_decorator(get_default_cache_control_decorator(), name="serve")
 class WorkIndexPage(Page):
-    template = 'patterns/pages/work/work_listing.html'
+    template = "patterns/pages/work/work_listing.html"
 
     intro = RichTextField(blank=True)
 
@@ -161,7 +161,7 @@ class WorkIndexPage(Page):
         works = self.works
 
         # Filter by related_service slug
-        slug_filter = request.GET.get('filter')
+        slug_filter = request.GET.get("filter")
         if slug_filter:
             works = works.filter(related_services__slug=slug_filter)
 
@@ -169,7 +169,7 @@ class WorkIndexPage(Page):
         paginator = Paginator(works, 10)  # Show 10 works per page
 
         if request.is_ajax():
-            page = request.GET.get('page')
+            page = request.GET.get("page")
             try:
                 works = paginator.page(page)
             except PageNotAnInteger:
@@ -177,10 +177,11 @@ class WorkIndexPage(Page):
             except EmptyPage:
                 works = None
 
-            return render(request, 'patterns/organisms/work-listing/work-listing.html', {
-                'page': self,
-                'works': works,
-            })
+            return render(
+                request,
+                "patterns/organisms/work-listing/work-listing.html",
+                {"page": self, "works": works},
+            )
         else:
             # return first page contents
             try:
@@ -190,11 +191,11 @@ class WorkIndexPage(Page):
 
             related_services = Service.objects.all()
 
-            return render(request, self.template, {
-                'page': self,
-                'works': works,
-                'related_services': related_services
-            })
+            return render(
+                request,
+                self.template,
+                {"page": self, "works": works, "related_services": related_services},
+            )
 
     content_panels = [
         FieldPanel("title", classname="full title"),
