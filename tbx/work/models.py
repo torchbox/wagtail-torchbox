@@ -63,7 +63,7 @@ class WorkPageAuthor(Orderable):
 
 
 class WorkPage(Page):
-    template = 'patterns/pages/work/work_detail.html'
+    template = "patterns/pages/work/work_detail.html"
 
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
@@ -118,8 +118,13 @@ class WorkPage(Page):
     def related_works(self):
         services = self.related_services.all()
         # get 4 pages with same services and exclude self page
-        works = WorkPage.objects.filter(related_services__in=services).live().distinct().order_by('-id').exclude(
-            pk=self.pk)[:4]
+        works = (
+            WorkPage.objects.filter(related_services__in=services)
+            .live()
+            .distinct()
+            .order_by("-id")
+            .exclude(pk=self.pk)[:4]
+        )
         return works
 
     @property
