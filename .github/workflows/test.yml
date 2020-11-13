@@ -13,6 +13,9 @@ jobs:
       DATABASE_URL: postgres://postgres@localhost/postgres
       CFG_SECRET_KEY: iamnotsosecret
       CFG_ALLOWED_HOSTS: localhost
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
 
     services:
       postgres:
