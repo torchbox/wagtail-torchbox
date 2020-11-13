@@ -13,13 +13,14 @@ jobs:
       DATABASE_URL: postgres://postgres@localhost/postgres
       CFG_SECRET_KEY: iamnotsosecret
       CFG_ALLOWED_HOSTS: localhost
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
 
     services:
       postgres:
         image: postgres:9.6
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
