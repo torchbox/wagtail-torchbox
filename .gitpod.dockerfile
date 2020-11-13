@@ -1,8 +1,10 @@
 FROM gitpod/workspace-postgres
 
+WORKDIR /app
+
 # Install front-end dependencies.
 COPY package.json package-lock.json .babelrc.js webpack.config.js ./
-RUN npm ci --no-optional --no-audit --progress=false
+RUN npm i --no-optional --no-audit --progress=false
 
 # Compile static files
 COPY ./tbx/static_src/ ./tbx/static_src/
@@ -10,8 +12,6 @@ RUN npm run build:prod
 
 ARG POETRY_HOME=/opt/poetry
 ARG POETRY_VERSION=1.1.1
-
-WORKDIR /app
 
 ENV PATH=$PATH:${POETRY_HOME}/bin \
     PYTHONUNBUFFERED=1 \
