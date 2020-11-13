@@ -1,4 +1,5 @@
+{% load wagtailimages_tags %}
 <div>
-    {{value.image}}
+    {% image value.image original %}
     {{value.text}}
 </div>

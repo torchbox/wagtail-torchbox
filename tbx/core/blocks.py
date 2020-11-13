@@ -10,10 +10,10 @@ from wagtailmarkdown.blocks import MarkdownBlock
 
 class ImageFormatChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
-        ('wrap-left', 'Wrap left'),
-        ('wrap-right', 'Wrap right'),
-        ('half-width', 'Half width'),
-        ('full-width', 'Full width'),
+        ('left', 'Wrap left'),
+        ('right', 'Wrap right'),
+        ('half', 'Half width'),
+        ('full', 'Full width'),
     ))
 
 
