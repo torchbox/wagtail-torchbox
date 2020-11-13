@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      DJANGO_SETTINGS_MODULE: tbx.settings.production
+      DATABASE_URL: postgres://postgres@localhost/postgres
+      CFG_SECRET_KEY: iamnotsosecret
+      CFG_ALLOWED_HOSTS: localhost
+
+    services:
+      postgres:
+        image: postgres:9.6
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: Gr1n/setup-poetry@v4
+        with:
+          poetry-version: 1.1.1
+      - name: Install dependencies
+        run: |
+          poetry install
+      - name: Flake8
+        run: flake8 tbx
+      - name: isort
+        run: isort --check-only --diff --recursive tbx
+      - name: System checks
+        run: python manage.py check
+      - name: Missing migrations
+        run: python manage.py makemigrations --check
+      - name: Test
+        run: python manage.py test
