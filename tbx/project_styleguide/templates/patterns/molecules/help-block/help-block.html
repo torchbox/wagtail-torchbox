@@ -1,71 +1,52 @@
+{% load wagtailcore_tags wagtailimages_tags %}
 <div class="help-block">
     <div class="help-block__container">
         <section class="help-block__content">
             <div class="help-block__section-title">
-                {% include "patterns/atoms/section-title/section-title.html" with title="Services" %}
+                {% include "patterns/atoms/section-title/section-title.html" with title=title %}
             </div>
             <h1 class="help-block__title">
-                <div class="rich-text">
-                    <p>
-                        <strong class="strong-black">We help you create digital products and services, fast</strong>. And, you can transform your organisation along the way.
-                    </p>
-                </div>
+                {{ intro|richtext }}
             </h1>
             <div class="help-block__links-container">
                 <ul class="help-block__link-list">
-                    <li class="help-block__link-item">
-                        <svg fill="#fd5765" viewBox="0 0 298 298" aria-hidden="true" class="help-block__link-item-icon">
-                            <path d="M0 149v149h298V175c0-68.8-.4-123-.9-123-.4 0-29.1 49-63.7 109-34.6 59.9-63.2 109-63.6 109-.9 0-135.8-77.7-137.2-79-.4-.4 7.2-14.6 16.9-31.4L67.2 129l2.6 1.4c1.5.8 16.6 9.5 33.7 19.4 17.1 9.9 31.3 17.7 31.8 17.3C136.5 165.9 231 1.9 231 .9c0-.5-44.2-.9-115.5-.9H0v149z" fill-rule="evenodd"></path>
-                        </svg>
-                        <a href="/digital-products/ux-research-and-design/">UX Research and Design</a>
-                    </li>
-                    <li class="help-block__link-item">
-                        <svg fill="#fd5765" viewBox="0 0 298 298" aria-hidden="true" class="help-block__link-item-icon">
-                            <path d="M0 149v149h298V175c0-68.8-.4-123-.9-123-.4 0-29.1 49-63.7 109-34.6 59.9-63.2 109-63.6 109-.9 0-135.8-77.7-137.2-79-.4-.4 7.2-14.6 16.9-31.4L67.2 129l2.6 1.4c1.5.8 16.6 9.5 33.7 19.4 17.1 9.9 31.3 17.7 31.8 17.3C136.5 165.9 231 1.9 231 .9c0-.5-44.2-.9-115.5-.9H0v149z" fill-rule="evenodd"></path>
-                        </svg>
-                        <a href="/digital-products/design-sprint/">Design Sprints</a>
-                    </li>
-                    <li class="help-block__link-item">
-                        <svg fill="#fd5765" viewBox="0 0 298 298" aria-hidden="true" class="help-block__link-item-icon">
-                            <path d="M0 149v149h298V175c0-68.8-.4-123-.9-123-.4 0-29.1 49-63.7 109-34.6 59.9-63.2 109-63.6 109-.9 0-135.8-77.7-137.2-79-.4-.4 7.2-14.6 16.9-31.4L67.2 129l2.6 1.4c1.5.8 16.6 9.5 33.7 19.4 17.1 9.9 31.3 17.7 31.8 17.3C136.5 165.9 231 1.9 231 .9c0-.5-44.2-.9-115.5-.9H0v149z" fill-rule="evenodd"></path>
-                        </svg>
-                        <a href="/digital-products/software-engineering/">Software Engineering</a>
-                    </li>
-                    <li class="help-block__link-item">
-                        <svg fill="#fd5765" viewBox="0 0 298 298" aria-hidden="true" class="help-block__link-item-icon">
-                            <path d="M0 149v149h298V175c0-68.8-.4-123-.9-123-.4 0-29.1 49-63.7 109-34.6 59.9-63.2 109-63.6 109-.9 0-135.8-77.7-137.2-79-.4-.4 7.2-14.6 16.9-31.4L67.2 129l2.6 1.4c1.5.8 16.6 9.5 33.7 19.4 17.1 9.9 31.3 17.7 31.8 17.3C136.5 165.9 231 1.9 231 .9c0-.5-44.2-.9-115.5-.9H0v149z" fill-rule="evenodd"></path>
-                        </svg>
-                        <a href="/wagtail-cms/">Wagtail CMS services</a>
-                    </li>
-                    <li class="help-block__link-item">
-                        <svg fill="#fd5765" viewBox="0 0 298 298" aria-hidden="true" class="help-block__link-item-icon">
-                            <path d="M0 149v149h298V175c0-68.8-.4-123-.9-123-.4 0-29.1 49-63.7 109-34.6 59.9-63.2 109-63.6 109-.9 0-135.8-77.7-137.2-79-.4-.4 7.2-14.6 16.9-31.4L67.2 129l2.6 1.4c1.5.8 16.6 9.5 33.7 19.4 17.1 9.9 31.3 17.7 31.8 17.3C136.5 165.9 231 1.9 231 .9c0-.5-44.2-.9-115.5-.9H0v149z" fill-rule="evenodd"></path>
-                        </svg>
-                        <a href="/digital-marketing/">Digital marketing</a>
-                    </li>
+                    {% for item in items %}
+                        <li class="help-block__link-item">
+                            <svg fill="#fd5765" viewBox="0 0 298 298" aria-hidden="true" class="help-block__link-item-icon">
+                                <path d="M0 149v149h298V175c0-68.8-.4-123-.9-123-.4 0-29.1 49-63.7 109-34.6 59.9-63.2 109-63.6 109-.9 0-135.8-77.7-137.2-79-.4-.4 7.2-14.6 16.9-31.4L67.2 129l2.6 1.4c1.5.8 16.6 9.5 33.7 19.4 17.1 9.9 31.3 17.7 31.8 17.3C136.5 165.9 231 1.9 231 .9c0-.5-44.2-.9-115.5-.9H0v149z" fill-rule="evenodd"></path>
+                            </svg>
+                            <a href="{% pageurl item.linked_page %}">{{ item.text }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </section>
-        
-        <div class="help-block__link-item__contact">
-            <div class="help-block__contact-container">
-                <div class="help-block__avatar avatar">
-                    <img class="avatar__image" src="https://media.torchbox.com/images/tbx_team-will.2e16d0ba.fill-100x100.jpg" alt="">
-                </div>
-                <div class="help-block__contact-details">
-                    <h2 class="help-block__contact-title">Get in touch about your project</h2>
-                    <div class="help-block__contact-meta">
-                        <div>
-                            <a href="mailto:willh@torchbox.com" class="help-block__email">willh@torchbox.com</a>
-                        </div>
-                        <div>
-                            <a href="tel://+447545468483" class="help-block__number">+447545468483</a>
+
+        {% if contact %}
+            <div class="help-block__link-item__contact">
+                <div class="help-block__contact-container">
+                    <div class="help-block__avatar avatar">
+                        {% image contact.image fill-100x100 class="avatar__image" %}
+                    </div>
+                    <div class="help-block__contact-details">
+                        <h2 class="help-block__contact-title">
+                            Get in touch about your project
+                        </h2>
+                        <div class="help-block__contact-meta">
+                            <div>
+                                <a href="mailto:{{ contact.email_address }}" class="help-block__email">
+                                    {{ contact.email_address }}
+                                </a>
+                            </div>
+                            <div>
+                                <a href="tel:{{ contact.phone_number }}" class="help-block__number">
+                                    {{ contact.phone_number }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endif %}
     </div>
  </div>
- 
- 

@@ -1,6 +1,15 @@
 .help-block {
     $root: &;
 
+    &__avatar {
+        margin-bottom: $gutter;
+
+        @include media-query(medium) {
+            margin-bottom: 0;
+            margin-right: $gutter;
+        }
+    }
+
     &__container {
         position: relative;
         width: 100vw;
@@ -15,6 +24,12 @@
 
         @include media-query(medium) {
             padding-top: $gutter;
+        }
+    }
+
+    &__email {
+        @include media-query(medium) {
+            margin-right: $gutter;
         }
     }
 
@@ -145,16 +160,31 @@
 
     &__contact-container {
         @include container();
+        align-items: center;
         display: flex;
         flex-direction: column;
 
-        @include media-query(large) {
+        @include media-query(medium) {
             flex-direction: row;
         }
     }
 
     &__contact-details {
+        align-items: center;
         display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        @include media-query(medium) {
+            align-items: flex-start;
+            text-align: left;
+        }
+    }
+
+    &__contact-meta {
+        @include media-query(medium) {
+            display: flex;
+        }
     }
 
     &__contact-title {

@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (
@@ -11,6 +12,9 @@ from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
+
+from tbx.blog.models import BlogIndexPage
+from tbx.work.models import WorkIndexPage
 
 
 class BaseServicePage(Page):
@@ -130,6 +134,20 @@ class BaseServicePage(Page):
     class Meta:
         abstract = True
 
+    def serve(self, request):
+        blog_index_page = BlogIndexPage.objects.live().first()
+        work_index_page = WorkIndexPage.objects.live().first()
+
+        return render(
+            request,
+            self.template,
+            {
+                "page": self,
+                "blog_index_page": blog_index_page,
+                "work_index_page": work_index_page,
+            },
+        )
+
 
 class BaseServicePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
@@ -226,6 +244,8 @@ class BaseServicePageProcess(models.Model):
 
 
 class ServicePage(BaseServicePage):
+    template = "patterns/pages/service/service.html"
+
     service = models.OneToOneField(
         "taxonomy.Service",
         on_delete=models.SET_NULL,

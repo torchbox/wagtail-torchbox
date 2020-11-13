@@ -1,0 +1,20 @@
+context:
+  contact:
+    email_address: willh@torchbox.com
+    phone_number: +447545468483
+  intro: '<p><b>We help you create digital products and services, fast</b>. And, you can transform your organisation along the way.</p>'
+  items:
+    - text: UX Research and Design
+    - text: Design Sprints
+    - text: Software Engineering
+    - text: Wagtail CMS services
+    - text: Digital marketing
+  title: Services
+
+tags:
+  image:
+    contact.image fill-100x100 class="avatar__image":
+      raw: '<img src="https://placekitten.com/100/100" class="avatar__image">'
+  pageurl:
+    item.linked_page:
+      raw: '#'

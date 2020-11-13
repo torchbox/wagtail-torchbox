@@ -1,11 +1,16 @@
+{% load wagtailimages_tags %}
 <div class="client-block">
-    {% include "patterns/atoms/section-title/section-title.html" with title="Clients" %}
+    {% include "patterns/atoms/section-title/section-title.html" with title=title %}
     <div class="client-block__container">
         {% if clients %}
             <div class="client-block__section">
                 <ul class="client-block__icon-list client-block__icon-list--spaced">
                     {% for client in clients %}
-                        {% include "patterns/molecules/client-item/client-item.html" with item=client %}
+                        <li class="client-item">
+                            <div class="client-item__container">
+                                {% image client.image width-400 class="client-item__image" %}
+                            </div>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
