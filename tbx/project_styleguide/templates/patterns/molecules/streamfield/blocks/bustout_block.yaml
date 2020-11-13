@@ -1,6 +1,6 @@
 context:
   value:
-    text: sample bustout block text
+    text: <p>sample bustout block text</p>
 
 tags:
   image:

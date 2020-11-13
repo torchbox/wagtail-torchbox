@@ -1,5 +1,5 @@
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 <div>
     {% image value.image original %}
-    {{value.text}}
+    {{ value.text|richtext }}
 </div>
