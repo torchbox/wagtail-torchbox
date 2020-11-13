@@ -91,11 +91,11 @@ class PersonPage(Page, ContactFields):
 # Person index
 class PersonIndexPage(Page):
     strapline = models.CharField(max_length=255)
-    template = 'patterns/pages/team/team_listing.html'
+    template = "patterns/pages/team/team_listing.html"
 
     @cached_property
     def team(self):
-        return PersonPage.objects.order_by('-is_senior', 'title').live().public()
+        return PersonPage.objects.order_by("-is_senior", "title").live().public()
 
     content_panels = Page.content_panels + [
         FieldPanel("strapline", classname="full"),
