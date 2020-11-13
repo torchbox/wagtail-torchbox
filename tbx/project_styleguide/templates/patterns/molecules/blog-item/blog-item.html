@@ -1,25 +1,26 @@
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
-{% image item.author_image fill-100x100 as image %}
-
-<a class="blog-item" href="/blog/alternatives-to-drupal/">
+<a class="blog-item" href="{% pageurl item %}">
     <h3 class="blog-item__title">{{ item.title }}</h3>
-    <div class="blog-item__meta">
-        <div class="avatar blog-item__image">
-            <img class="avatar__image" src="{{ image.url }}" alt="{{ image.alt }}">
-        </div>
-        <div class="blog-item__author">
-            <span class="blog-item__author-name">{{ item.author_name }}</span>
-            {% if item.date %}
-            <span class="blog-item__author-details">
-            {% endif %}
-                <span class="blog-item__author-role">{{ item.author_role }}</span>
+
+    {% with author=item.authors.first.author %}
+        {% if author %}
+            <div class="blog-item__meta">
+                <div class="avatar blog-item__image">
+                    {% image author.image fill-100x100 class="avatar__image" %}
+                </div>
+                <div class="blog-item__author">
+                    <span class="blog-item__author-name">{{ author.name }}</span>
                 {% if item.date %}
-                    <span class="blog-item__author-date">{{ item.date }}</span>
+                    <span class="blog-item__author-details">
                 {% endif %}
-            {% if item.date %}
-            </span>
-            {% endif %}
-        </div>
-    </div>
+                        <span class="blog-item__author-role">{{ author.role }}</span>
+                {% if item.date %}
+                        <span class="blog-item__author-date">{{ item.date }}</span>
+                    </span>
+                {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
 </a>

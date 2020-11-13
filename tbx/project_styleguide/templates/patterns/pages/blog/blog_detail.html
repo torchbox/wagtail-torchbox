@@ -5,29 +5,33 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/title-block/title-block.html" with item=page tags=false %}
-    {% include "patterns/molecules/author/author.html" with item=page %}
+    {% include "patterns/molecules/title-block/title-block.html" with item=page tags=False %}
+    {% for page_author in page.authors.all %}
+        {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=page.blog_index.url %}
+    {% endfor %}
 
     {% include_block page.body %}
 
     <div class="page__author">
-        {% include "patterns/molecules/author/author.html" with item=page %}
+        {% for page_author in page.authors.all %}
+            {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=page.blog_index.url %}
+        {% endfor %}
     </div>
 
-    {% if page.blogs %}
-    <div class="page__showcase">
-        <div class="blog-listing blog-listing--top-space">
-            {% include "patterns/atoms/section-title/section-title.html" with title="More of our thinking" %}
-            <div class="blog-listing__content">
-                <div class="blog-listing__list blog-listing__list--horizontal">
-                    {% for blog in page.blogs %}
-                        {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
-                    {% endfor %}
+    {% if page.related_blogs.exists %}
+        <div class="page__showcase">
+            <div class="blog-listing blog-listing--top-space">
+                {% include "patterns/atoms/section-title/section-title.html" with title="More of our thinking" %}
+                <div class="blog-listing__content">
+                    <div class="blog-listing__list blog-listing__list--horizontal">
+                        {% for blog in page.related_blogs.all %}
+                            {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                        {% endfor %}
+                    </div>
+                    {% include "patterns/atoms/see-more/see-more.html" with link=page.blog_index.url text="See more blogs" %}
                 </div>
-                {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
             </div>
         </div>
-    </div>
     {% endif %}
 
 {% endblock %}

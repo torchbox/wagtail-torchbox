@@ -1,0 +1,15 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="streamfield__aligned-image
+    {% if value.alignment == 'full' %}streamfield__aligned-image--full-width
+    {% elif value.alignment == 'half' %}streamfield__aligned-image--half-width
+    {% elif value.alignment == 'left' %}streamfield__aligned-image--wrap-left
+    {% elif value.alignment == 'right' %}streamfield__aligned-image--wrap-right
+    {% endif %}"
+>
+    {% image value.image original %}
+    {% if value.caption %}
+        <div class="streamfield__aligned-image-caption">
+            <span>{{ value.caption }}</span>
+        </div>
+    {% endif %}
+</div>

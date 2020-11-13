@@ -1,0 +1,11 @@
+context:
+  value:
+    alignment: full
+    caption: Some caption
+    attribution: Some attribution
+
+tags:
+  image:
+    value.image original:
+      raw: |
+        <img src="http://via.placeholder.com/1000x300" alt="Some alt">

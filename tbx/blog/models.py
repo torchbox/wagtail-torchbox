@@ -1,3 +1,4 @@
+import math
 import string
 
 from django import forms
@@ -127,6 +128,8 @@ class BlogPageAuthor(Orderable):
 
 
 class BlogPage(Page):
+    template = 'patterns/pages/blog/blog_detail.html'
+
     date = models.DateField("Post date")
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
@@ -154,6 +157,17 @@ class BlogPage(Page):
         self.body_word_count = len(body_words)
 
     @property
+    def related_blogs(self):
+        services = self.related_services.all()
+        return (
+            BlogPage.objects.filter(related_services__in=services)
+            .live()
+            .distinct()
+            .order_by("-first_published_at")
+            .exclude(pk=self.pk)[:2]
+        )
+
+    @property
     def blog_index(self):
         ancestor = BlogIndexPage.objects.ancestor_of(self).order_by('-depth').first()
 
@@ -167,6 +181,10 @@ class BlogPage(Page):
     @property
     def has_authors(self):
         return self.authors.exists()
+
+    @property
+    def read_time(self):
+        return math.ceil(self.body_word_count / 275)
 
     content_panels = [
         FieldPanel('title', classname="full title"),
