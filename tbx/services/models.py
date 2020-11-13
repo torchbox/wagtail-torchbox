@@ -240,6 +240,8 @@ class BaseServicePageProcess(models.Model):
 
 
 class ServicePage(BaseServicePage):
+    template = "patterns/pages/service/service.html"
+
     service = models.OneToOneField(
         "taxonomy.Service",
         on_delete=models.SET_NULL,
