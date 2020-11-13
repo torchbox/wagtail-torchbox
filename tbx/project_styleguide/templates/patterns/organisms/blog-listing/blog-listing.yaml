@@ -39,6 +39,7 @@ context:
           author:
             name: Paul Vetch
             role: Strategy Director
+
     - title: Wagtail for Public Sector
       date: 20 Oct '20
       authors:
