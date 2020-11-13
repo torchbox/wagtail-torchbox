@@ -11,23 +11,19 @@ context:
     date: 07 Aug ’20
     get_verbose_name: Blog detail
     read_time: 5
-    related_links:
+    related_blogs:
       all:
-        - link_page:
-            specific:
-              authors:
-                first:
-                  author:
-                    name: Paul Vetch
-                    role: Strategy Director
+        - authors:
+            first:
+              author:
+                name: Paul Vetch
+                role: Strategy Director
           title: We already dropped Drupal - maybe it’s time for you to do the same.
-        - link_page:
-            specific:
-              authors:
-                first:
-                  author:
-                    name: Will Heinemann
-                    role: New Business Director
+        - authors:
+            first:
+              author:
+                name: Will Heinemann
+                role: New Business Director
           title: Wagtail for Public Sector
       exists: True
     related_services:
