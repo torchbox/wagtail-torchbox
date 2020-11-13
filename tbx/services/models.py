@@ -13,6 +13,7 @@ from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+from tbx.blog.models import BlogIndexPage
 from tbx.work.models import WorkIndexPage
 
 
@@ -134,10 +135,12 @@ class BaseServicePage(Page):
         abstract = True
 
     def serve(self, request):
+        blog_index_page = BlogIndexPage.objects.first()
         work_index_page = WorkIndexPage.objects.first()
 
         return render(request, self.template, {
             'page': self,
+            'blog_index_page': blog_index_page,
             'work_index_page': work_index_page,
         })
 
