@@ -26,6 +26,7 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.taxonomy.models import Service
 
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
@@ -34,6 +35,8 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 
 @method_decorator(get_default_cache_control_decorator(), name="serve")
 class BlogIndexPage(Page):
+    template = "patterns/pages/blog/blog_listing.html"
+
     intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + [
@@ -58,7 +61,7 @@ class BlogIndexPage(Page):
     @property
     def blog_posts(self):
         # Get list of blog pages that are descendants of this page
-        blog_posts = BlogPage.objects.live().in_menu().descendant_of(self)
+        blog_posts = BlogPage.objects.live().descendant_of(self)
 
         # Order by most recent date first
         blog_posts = blog_posts.order_by("-date", "pk")
@@ -69,33 +72,46 @@ class BlogIndexPage(Page):
         # Get blog_posts
         blog_posts = self.blog_posts
 
-        # Filter by tag
-        tag = request.GET.get("tag")
-        if tag:
-            blog_posts = blog_posts.filter(tags__tag__slug=tag)
+        # Filter by related_service slug
+        slug_filter = request.GET.get("filter")
+        if slug_filter:
+            blog_posts = blog_posts.filter(related_services__slug=slug_filter)
 
         # Pagination
-        per_page = 12
-        page = request.GET.get("page")
-        paginator = Paginator(blog_posts, per_page)  # Show 10 blog_posts per page
-        try:
-            blog_posts = paginator.page(page)
-        except PageNotAnInteger:
-            blog_posts = paginator.page(1)
-        except EmptyPage:
-            blog_posts = paginator.page(paginator.num_pages)
+        paginator = Paginator(blog_posts, 10)  # Show 10 blog_posts per page
 
         if request.is_ajax():
+            # use page to filter
+            page = request.GET.get("page")
+            try:
+                blog_posts = paginator.page(page)
+            except PageNotAnInteger:
+                blog_posts = paginator.page(1)
+            except EmptyPage:
+                blog_posts = None
+
             return render(
                 request,
-                "blog/includes/blog_listing.html",
-                {"self": self, "blog_posts": blog_posts, "per_page": per_page},
+                "patterns/organisms/blog-listing/blog-listing.html",
+                {"page": self, "blog_posts": blog_posts},
             )
         else:
+            # return first page contents
+            try:
+                blog_posts = paginator.page(1)
+            except EmptyPage:
+                blog_posts = None
+
+            related_services = Service.objects.all()
+
             return render(
                 request,
                 self.template,
-                {"self": self, "blog_posts": blog_posts, "per_page": per_page},
+                {
+                    "page": self,
+                    "blog_posts": blog_posts,
+                    "related_services": related_services,
+                },
             )
 
     content_panels = [

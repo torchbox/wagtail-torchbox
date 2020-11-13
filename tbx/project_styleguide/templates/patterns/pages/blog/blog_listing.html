@@ -5,19 +5,21 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/title-block/title-block.html" with item=page tags=page.tags %}
-    
-    <div class="blog-listing blog-listing--centre">
-        <div class="blog-listing__content">
+{% include "patterns/molecules/title-block/title-block.html" with item=page tags=related_services %}
 
-            <div class="blog-listing__list">
-                {% for blog in page.blogs %}
-                    {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
-                {% endfor %}
-            </div>
-            
-            {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
+<div class="blog-listing blog-listing--centre">
+
+    <div class="blog-listing__content">
+
+        <div class="blog-listing__list" data-fetch-destination="blog-pages" data-fetch-max-pages="{{ blog_posts.paginator.num_pages }}">
+            {% include "patterns/organisms/blog-listing/blog-listing.html" with blog_posts=blog_posts %}
         </div>
+
+        {% if blog_posts.has_next %}
+            {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" fetch_data="blog-pages" %}
+        {% endif %}
     </div>
+
+</div>
 
 {% endblock %}
