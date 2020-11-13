@@ -42,6 +42,8 @@ jobs:
         run: flake8 tbx
       - name: isort
         run: isort --check-only --diff --recursive tbx
+      - name: black
+        run: black --check tbx
       - name: System checks
         run: python manage.py check
       - name: Missing migrations
