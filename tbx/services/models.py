@@ -135,8 +135,8 @@ class BaseServicePage(Page):
         abstract = True
 
     def serve(self, request):
-        blog_index_page = BlogIndexPage.objects.first()
-        work_index_page = WorkIndexPage.objects.first()
+        blog_index_page = BlogIndexPage.objects.live().first()
+        work_index_page = WorkIndexPage.objects.live().first()
 
         return render(request, self.template, {
             'page': self,
