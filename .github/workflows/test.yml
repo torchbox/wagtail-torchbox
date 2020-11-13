@@ -34,10 +34,12 @@ jobs:
       - uses: Gr1n/setup-poetry@v4
         with:
           poetry-version: 1.1.1
-      - name: Install dependencies
+      - name: Install python dependencies
         run: |
           poetry config virtualenvs.create false &&
           poetry install
+      - name: Install npm dependencies
+        run: npm run build:prod
       - name: Flake8
         run: flake8 tbx
       - name: isort
@@ -50,3 +52,9 @@ jobs:
         run: python manage.py makemigrations --check
       - name: Test
         run: python manage.py test
+      - name: Lint CSS
+        run: npm run lint:css
+      - name: Lint JS
+        run: npm run lint:js
+      - name: Lint Format
+        run: npm run lint:format
