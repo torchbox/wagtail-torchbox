@@ -1,3 +1,4 @@
+import math
 import string
 
 from django import forms
@@ -62,6 +63,8 @@ class WorkPageAuthor(Orderable):
 
 
 class WorkPage(Page):
+    template = "patterns/pages/work/work_detail.html"
+
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
@@ -110,6 +113,23 @@ class WorkPage(Page):
     @property
     def has_authors(self):
         return self.authors.exists()
+
+    @property
+    def related_works(self):
+        services = self.related_services.all()
+        # get 4 pages with same services and exclude self page
+        works = (
+            WorkPage.objects.filter(related_services__in=services)
+            .live()
+            .distinct()
+            .order_by("-id")
+            .exclude(pk=self.pk)[:4]
+        )
+        return works
+
+    @property
+    def read_time(self):
+        return math.ceil(self.body_word_count / 275)
 
     content_panels = [
         FieldPanel("title", classname="full title"),
