@@ -39,7 +39,9 @@ jobs:
           poetry config virtualenvs.create false &&
           poetry install
       - name: Install npm dependencies
-        run: npm run build:prod
+        run: |
+          npm install npm-run-all
+          npm run build:prod
       - name: Flake8
         run: flake8 tbx
       - name: isort
