@@ -35,7 +35,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 
 @method_decorator(get_default_cache_control_decorator(), name="serve")
 class BlogIndexPage(Page):
-    template = 'patterns/pages/blog/blog_listing.html'
+    template = "patterns/pages/blog/blog_listing.html"
 
     intro = models.TextField(blank=True)
 
@@ -73,7 +73,7 @@ class BlogIndexPage(Page):
         blog_posts = self.blog_posts
 
         # Filter by related_service slug
-        slug_filter = request.GET.get('filter')
+        slug_filter = request.GET.get("filter")
         if slug_filter:
             blog_posts = blog_posts.filter(related_services__slug=slug_filter)
 
@@ -82,7 +82,7 @@ class BlogIndexPage(Page):
 
         if request.is_ajax():
             # use page to filter
-            page = request.GET.get('page')
+            page = request.GET.get("page")
             try:
                 blog_posts = paginator.page(page)
             except PageNotAnInteger:
@@ -90,10 +90,11 @@ class BlogIndexPage(Page):
             except EmptyPage:
                 blog_posts = None
 
-            return render(request, 'patterns/organisms/blog-listing/blog-listing.html', {
-                'page': self,
-                'blog_posts': blog_posts,
-            })
+            return render(
+                request,
+                "patterns/organisms/blog-listing/blog-listing.html",
+                {"page": self, "blog_posts": blog_posts},
+            )
         else:
             # return first page contents
             try:
@@ -103,11 +104,15 @@ class BlogIndexPage(Page):
 
             related_services = Service.objects.all()
 
-            return render(request, self.template, {
-                'page': self,
-                'blog_posts': blog_posts,
-                'related_services': related_services,
-            })
+            return render(
+                request,
+                self.template,
+                {
+                    "page": self,
+                    "blog_posts": blog_posts,
+                    "related_services": related_services,
+                },
+            )
 
     content_panels = [
         FieldPanel("title", classname="full title"),

@@ -1,17 +1,20 @@
 class SeeMorePosts {
     static selector() {
-        return "[data-fetch-target]";
+        return '[data-fetch-target]';
     }
 
     constructor(node) {
         this.nextPage = 2;
         this.seeMoreButton = node;
         this.targetNode = document.querySelector(
-            `[data-fetch-destination="${node.dataset.fetchTarget}"]`
+            `[data-fetch-destination="${node.dataset.fetchTarget}"]`,
         );
-        this.MAX_PAGES = parseInt(this.targetNode.getAttribute('data-fetch-max-pages'), 10);
+        this.MAX_PAGES = parseInt(
+            this.targetNode.getAttribute('data-fetch-max-pages'),
+            10,
+        );
         this.url = new URL(node.baseURI);
-        this.filter = new URLSearchParams(this.url.search).get("filter");
+        this.filter = new URLSearchParams(this.url.search).get('filter');
 
         this.bindEvents();
     }
@@ -27,9 +30,9 @@ class SeeMorePosts {
 
         // build request object
         const request = new Request(this.url, {
-            method: "GET",
+            method: 'GET',
             headers: new Headers({
-                "X-Requested-With": "XMLHttpRequest",
+                'X-Requested-With': 'XMLHttpRequest',
             }),
         });
 
@@ -43,17 +46,20 @@ class SeeMorePosts {
             })
             .then((html) => {
                 // update list
-                this.targetNode.lastElementChild.insertAdjacentHTML('afterend', html);
+                this.targetNode.lastElementChild.insertAdjacentHTML(
+                    'afterend',
+                    html,
+                );
                 this.nextPage += 1;
                 if (this.nextPage > this.MAX_PAGES) {
-                    this.seeMoreButton.classList.add("see-more--hidden");
+                    this.seeMoreButton.classList.add('see-more--hidden');
                 }
-            })
+            });
     }
 
     bindEvents() {
-        this.seeMoreButton.addEventListener("click", (event) =>
-            this.loadMorePostsAjax(event)
+        this.seeMoreButton.addEventListener('click', (event) =>
+            this.loadMorePostsAjax(event),
         );
     }
 }
