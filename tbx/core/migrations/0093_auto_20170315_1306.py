@@ -17,104 +17,575 @@ import wagtailmarkdown.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0032_add_bulk_delete_page_permission'),
-        ('torchbox', '0092_servicepage_add_logos'),
+        ("wagtailcore", "0032_add_bulk_delete_page_permission"),
+        ("torchbox", "0092_servicepage_add_logos"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ExpertiseTag',
+            name="ExpertiseTag",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content_object', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.Page')),
-                ('tag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='torchbox.BlogPageTagList')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "content_object",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                (
+                    "tag",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="torchbox.BlogPageTagList",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False,},
         ),
         migrations.CreateModel(
-            name='SectorTag',
+            name="SectorTag",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content_object', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.Page')),
-                ('tag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='torchbox.BlogPageTagList')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "content_object",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                (
+                    "tag",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="torchbox.BlogPageTagList",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False,},
         ),
-        migrations.RemoveField(
-            model_name='workpageauthor',
-            name='author',
-        ),
-        migrations.RemoveField(
-            model_name='workpageauthor',
-            name='page',
-        ),
-        migrations.RemoveField(
-            model_name='workpagetagselect',
-            name='page',
-        ),
-        migrations.RemoveField(
-            model_name='workpagetagselect',
-            name='tag',
-        ),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='author_left',
-        ),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='body',
-        ),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='intro',
-        ),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='summary',
+        migrations.RemoveField(model_name="workpageauthor", name="author",),
+        migrations.RemoveField(model_name="workpageauthor", name="page",),
+        migrations.RemoveField(model_name="workpagetagselect", name="page",),
+        migrations.RemoveField(model_name="workpagetagselect", name="tag",),
+        migrations.RemoveField(model_name="workpage", name="author_left",),
+        migrations.RemoveField(model_name="workpage", name="body",),
+        migrations.RemoveField(model_name="workpage", name="intro",),
+        migrations.RemoveField(model_name="workpage", name="summary",),
+        migrations.AlterField(
+            model_name="blogpage",
+            name="streamfield",
+            field=wagtail.core.fields.StreamField(
+                (
+                    (
+                        "h2",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    ("intro", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    ("paragraph", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (
+                        "aligned_image",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("alignment", tbx.core.blocks.ImageFormatChoiceBlock()),
+                                ("caption", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "attribution",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                            ),
+                            label="Aligned image",
+                        ),
+                    ),
+                    (
+                        "wide_image",
+                        wagtail.core.blocks.StructBlock(
+                            (("image", wagtail.images.blocks.ImageChooserBlock()),),
+                            label="Wide image",
+                        ),
+                    ),
+                    (
+                        "bustout",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("text", wagtail.core.blocks.RichTextBlock()),
+                            )
+                        ),
+                    ),
+                    (
+                        "pullquote",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                (
+                                    "quote",
+                                    wagtail.core.blocks.CharBlock(
+                                        classname="quote title"
+                                    ),
+                                ),
+                                ("attribution", wagtail.core.blocks.CharBlock()),
+                            )
+                        ),
+                    ),
+                    (
+                        "raw_html",
+                        wagtail.core.blocks.RawHTMLBlock(icon="code", label="Raw HTML"),
+                    ),
+                    ("embed", wagtail.embeds.blocks.EmbedBlock(icon="code")),
+                    ("markdown", wagtailmarkdown.blocks.MarkdownBlock(icon="code")),
+                )
+            ),
         ),
         migrations.AlterField(
-            model_name='blogpage',
-            name='streamfield',
-            field=wagtail.core.fields.StreamField((('h2', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h3', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h4', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('intro', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('aligned_image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('alignment', tbx.core.blocks.ImageFormatChoiceBlock()), ('caption', wagtail.core.blocks.CharBlock()), ('attribution', wagtail.core.blocks.CharBlock(required=False))), label='Aligned image')), ('wide_image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()),), label='Wide image')), ('bustout', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('text', wagtail.core.blocks.RichTextBlock())))), ('pullquote', wagtail.core.blocks.StructBlock((('quote', wagtail.core.blocks.CharBlock(classname='quote title')), ('attribution', wagtail.core.blocks.CharBlock())))), ('raw_html', wagtail.core.blocks.RawHTMLBlock(icon='code', label='Raw HTML')), ('embed', wagtail.embeds.blocks.EmbedBlock(icon='code')), ('markdown', wagtailmarkdown.blocks.MarkdownBlock(icon='code')))),
+            model_name="mainmenu",
+            name="menu",
+            field=wagtail.core.fields.StreamField(
+                (
+                    (
+                        "items",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("page", wagtail.core.blocks.PageChooserBlock()),
+                                (
+                                    "subitems",
+                                    wagtail.core.blocks.StreamBlock(
+                                        (
+                                            (
+                                                "subitem",
+                                                wagtail.core.blocks.PageChooserBlock(),
+                                            ),
+                                        )
+                                    ),
+                                ),
+                            )
+                        ),
+                    ),
+                ),
+                blank=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='mainmenu',
-            name='menu',
-            field=wagtail.core.fields.StreamField((('items', wagtail.core.blocks.StructBlock((('page', wagtail.core.blocks.PageChooserBlock()), ('subitems', wagtail.core.blocks.StreamBlock((('subitem', wagtail.core.blocks.PageChooserBlock()),)))))),), blank=True),
+            model_name="servicepage",
+            name="streamfield",
+            field=wagtail.core.fields.StreamField(
+                (
+                    (
+                        "case_studies",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("title", wagtail.core.blocks.CharBlock(required=True)),
+                                ("intro", wagtail.core.blocks.TextBlock(required=True)),
+                                (
+                                    "case_studies",
+                                    wagtail.core.blocks.ListBlock(
+                                        wagtail.core.blocks.StructBlock(
+                                            (
+                                                (
+                                                    "page",
+                                                    wagtail.core.blocks.PageChooserBlock(
+                                                        "torchbox.WorkPage"
+                                                    ),
+                                                ),
+                                                (
+                                                    "title",
+                                                    wagtail.core.blocks.CharBlock(
+                                                        required=False
+                                                    ),
+                                                ),
+                                                (
+                                                    "descriptive_title",
+                                                    wagtail.core.blocks.CharBlock(
+                                                        required=False
+                                                    ),
+                                                ),
+                                                (
+                                                    "image",
+                                                    wagtail.images.blocks.ImageChooserBlock(
+                                                        required=False
+                                                    ),
+                                                ),
+                                            )
+                                        )
+                                    ),
+                                ),
+                            )
+                        ),
+                    ),
+                    (
+                        "highlights",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("title", wagtail.core.blocks.CharBlock(required=True)),
+                                (
+                                    "intro",
+                                    wagtail.core.blocks.TextBlock(required=False),
+                                ),
+                                (
+                                    "highlights",
+                                    wagtail.core.blocks.ListBlock(
+                                        wagtail.core.blocks.TextBlock()
+                                    ),
+                                ),
+                            )
+                        ),
+                    ),
+                    (
+                        "pull_quote",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                (
+                                    "quote",
+                                    wagtail.core.blocks.CharBlock(
+                                        classname="quote title"
+                                    ),
+                                ),
+                                ("attribution", wagtail.core.blocks.CharBlock()),
+                            ),
+                            template="blocks/pull_quote_block.html",
+                        ),
+                    ),
+                    (
+                        "process",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("title", wagtail.core.blocks.CharBlock(required=True)),
+                                (
+                                    "intro",
+                                    wagtail.core.blocks.TextBlock(required=False),
+                                ),
+                                (
+                                    "steps",
+                                    wagtail.core.blocks.ListBlock(
+                                        wagtail.core.blocks.StructBlock(
+                                            (
+                                                (
+                                                    "subtitle",
+                                                    wagtail.core.blocks.CharBlock(
+                                                        required=False
+                                                    ),
+                                                ),
+                                                (
+                                                    "title",
+                                                    wagtail.core.blocks.CharBlock(
+                                                        required=True
+                                                    ),
+                                                ),
+                                                (
+                                                    "icon",
+                                                    wagtail.core.blocks.CharBlock(
+                                                        help_text="Paste SVG code here",
+                                                        max_length=9000,
+                                                        required=True,
+                                                    ),
+                                                ),
+                                                (
+                                                    "description",
+                                                    wagtail.core.blocks.TextBlock(
+                                                        required=True
+                                                    ),
+                                                ),
+                                            )
+                                        )
+                                    ),
+                                ),
+                            )
+                        ),
+                    ),
+                    (
+                        "people",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("title", wagtail.core.blocks.CharBlock(required=True)),
+                                ("intro", wagtail.core.blocks.TextBlock(required=True)),
+                                (
+                                    "people",
+                                    wagtail.core.blocks.ListBlock(
+                                        wagtail.core.blocks.PageChooserBlock()
+                                    ),
+                                ),
+                            )
+                        ),
+                    ),
+                    (
+                        "featured_pages",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "pages",
+                                    wagtail.core.blocks.ListBlock(
+                                        wagtail.core.blocks.StructBlock(
+                                            (
+                                                (
+                                                    "page",
+                                                    wagtail.core.blocks.PageChooserBlock(),
+                                                ),
+                                                (
+                                                    "image",
+                                                    wagtail.images.blocks.ImageChooserBlock(),
+                                                ),
+                                                (
+                                                    "text",
+                                                    wagtail.core.blocks.TextBlock(),
+                                                ),
+                                                (
+                                                    "sub_text",
+                                                    wagtail.core.blocks.CharBlock(
+                                                        max_length=100
+                                                    ),
+                                                ),
+                                            )
+                                        )
+                                    ),
+                                ),
+                            )
+                        ),
+                    ),
+                    (
+                        "sign_up_form_page",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                (
+                                    "page",
+                                    wagtail.core.blocks.PageChooserBlock(
+                                        "torchbox.SignUpFormPage"
+                                    ),
+                                ),
+                            )
+                        ),
+                    ),
+                    (
+                        "logos",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("intro", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "logos",
+                                    wagtail.core.blocks.ListBlock(
+                                        wagtail.core.blocks.StructBlock(
+                                            (
+                                                (
+                                                    "image",
+                                                    wagtail.images.blocks.ImageChooserBlock(),
+                                                ),
+                                                (
+                                                    "link_page",
+                                                    wagtail.core.blocks.PageChooserBlock(
+                                                        required=False
+                                                    ),
+                                                ),
+                                                (
+                                                    "link_external",
+                                                    wagtail.core.blocks.URLBlock(
+                                                        required=False
+                                                    ),
+                                                ),
+                                            )
+                                        )
+                                    ),
+                                ),
+                            )
+                        ),
+                    ),
+                )
+            ),
         ),
         migrations.AlterField(
-            model_name='servicepage',
-            name='streamfield',
-            field=wagtail.core.fields.StreamField((('case_studies', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock(required=True)), ('intro', wagtail.core.blocks.TextBlock(required=True)), ('case_studies', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('page', wagtail.core.blocks.PageChooserBlock('torchbox.WorkPage')), ('title', wagtail.core.blocks.CharBlock(required=False)), ('descriptive_title', wagtail.core.blocks.CharBlock(required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(required=False))))))))), ('highlights', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock(required=True)), ('intro', wagtail.core.blocks.TextBlock(required=False)), ('highlights', wagtail.core.blocks.ListBlock(wagtail.core.blocks.TextBlock()))))), ('pull_quote', wagtail.core.blocks.StructBlock((('quote', wagtail.core.blocks.CharBlock(classname='quote title')), ('attribution', wagtail.core.blocks.CharBlock())), template='blocks/pull_quote_block.html')), ('process', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock(required=True)), ('intro', wagtail.core.blocks.TextBlock(required=False)), ('steps', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('subtitle', wagtail.core.blocks.CharBlock(required=False)), ('title', wagtail.core.blocks.CharBlock(required=True)), ('icon', wagtail.core.blocks.CharBlock(help_text='Paste SVG code here', max_length=9000, required=True)), ('description', wagtail.core.blocks.TextBlock(required=True))))))))), ('people', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock(required=True)), ('intro', wagtail.core.blocks.TextBlock(required=True)), ('people', wagtail.core.blocks.ListBlock(wagtail.core.blocks.PageChooserBlock()))))), ('featured_pages', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock()), ('pages', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('page', wagtail.core.blocks.PageChooserBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('text', wagtail.core.blocks.TextBlock()), ('sub_text', wagtail.core.blocks.CharBlock(max_length=100))))))))), ('sign_up_form_page', wagtail.core.blocks.StructBlock((('page', wagtail.core.blocks.PageChooserBlock('torchbox.SignUpFormPage')),))), ('logos', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock()), ('intro', wagtail.core.blocks.CharBlock()), ('logos', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('link_page', wagtail.core.blocks.PageChooserBlock(required=False)), ('link_external', wagtail.core.blocks.URLBlock(required=False))))))))))),
+            model_name="standardpage",
+            name="streamfield",
+            field=wagtail.core.fields.StreamField(
+                (
+                    (
+                        "h2",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    ("intro", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    ("paragraph", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (
+                        "aligned_image",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("alignment", tbx.core.blocks.ImageFormatChoiceBlock()),
+                                ("caption", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "attribution",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                            ),
+                            label="Aligned image",
+                        ),
+                    ),
+                    (
+                        "wide_image",
+                        wagtail.core.blocks.StructBlock(
+                            (("image", wagtail.images.blocks.ImageChooserBlock()),),
+                            label="Wide image",
+                        ),
+                    ),
+                    (
+                        "bustout",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("text", wagtail.core.blocks.RichTextBlock()),
+                            )
+                        ),
+                    ),
+                    (
+                        "pullquote",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                (
+                                    "quote",
+                                    wagtail.core.blocks.CharBlock(
+                                        classname="quote title"
+                                    ),
+                                ),
+                                ("attribution", wagtail.core.blocks.CharBlock()),
+                            )
+                        ),
+                    ),
+                    (
+                        "raw_html",
+                        wagtail.core.blocks.RawHTMLBlock(icon="code", label="Raw HTML"),
+                    ),
+                    ("embed", wagtail.embeds.blocks.EmbedBlock(icon="code")),
+                    ("markdown", wagtailmarkdown.blocks.MarkdownBlock(icon="code")),
+                )
+            ),
         ),
         migrations.AlterField(
-            model_name='standardpage',
-            name='streamfield',
-            field=wagtail.core.fields.StreamField((('h2', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h3', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h4', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('intro', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('aligned_image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('alignment', tbx.core.blocks.ImageFormatChoiceBlock()), ('caption', wagtail.core.blocks.CharBlock()), ('attribution', wagtail.core.blocks.CharBlock(required=False))), label='Aligned image')), ('wide_image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()),), label='Wide image')), ('bustout', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('text', wagtail.core.blocks.RichTextBlock())))), ('pullquote', wagtail.core.blocks.StructBlock((('quote', wagtail.core.blocks.CharBlock(classname='quote title')), ('attribution', wagtail.core.blocks.CharBlock())))), ('raw_html', wagtail.core.blocks.RawHTMLBlock(icon='code', label='Raw HTML')), ('embed', wagtail.embeds.blocks.EmbedBlock(icon='code')), ('markdown', wagtailmarkdown.blocks.MarkdownBlock(icon='code')))),
+            model_name="workpage",
+            name="streamfield",
+            field=wagtail.core.fields.StreamField(
+                (
+                    (
+                        "h2",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    ("intro", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    ("paragraph", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (
+                        "aligned_image",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("alignment", tbx.core.blocks.ImageFormatChoiceBlock()),
+                                ("caption", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "attribution",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                            ),
+                            label="Aligned image",
+                        ),
+                    ),
+                    (
+                        "wide_image",
+                        wagtail.core.blocks.StructBlock(
+                            (("image", wagtail.images.blocks.ImageChooserBlock()),),
+                            label="Wide image",
+                        ),
+                    ),
+                    (
+                        "bustout",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("text", wagtail.core.blocks.RichTextBlock()),
+                            )
+                        ),
+                    ),
+                    (
+                        "pullquote",
+                        wagtail.core.blocks.StructBlock(
+                            (
+                                (
+                                    "quote",
+                                    wagtail.core.blocks.CharBlock(
+                                        classname="quote title"
+                                    ),
+                                ),
+                                ("attribution", wagtail.core.blocks.CharBlock()),
+                            )
+                        ),
+                    ),
+                    (
+                        "raw_html",
+                        wagtail.core.blocks.RawHTMLBlock(icon="code", label="Raw HTML"),
+                    ),
+                    ("embed", wagtail.embeds.blocks.EmbedBlock(icon="code")),
+                    ("markdown", wagtailmarkdown.blocks.MarkdownBlock(icon="code")),
+                )
+            ),
         ),
-        migrations.AlterField(
-            model_name='workpage',
-            name='streamfield',
-            field=wagtail.core.fields.StreamField((('h2', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h3', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h4', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('intro', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('aligned_image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('alignment', tbx.core.blocks.ImageFormatChoiceBlock()), ('caption', wagtail.core.blocks.CharBlock()), ('attribution', wagtail.core.blocks.CharBlock(required=False))), label='Aligned image')), ('wide_image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()),), label='Wide image')), ('bustout', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('text', wagtail.core.blocks.RichTextBlock())))), ('pullquote', wagtail.core.blocks.StructBlock((('quote', wagtail.core.blocks.CharBlock(classname='quote title')), ('attribution', wagtail.core.blocks.CharBlock())))), ('raw_html', wagtail.core.blocks.RawHTMLBlock(icon='code', label='Raw HTML')), ('embed', wagtail.embeds.blocks.EmbedBlock(icon='code')), ('markdown', wagtailmarkdown.blocks.MarkdownBlock(icon='code')))),
-        ),
-        migrations.DeleteModel(
-            name='WorkPageAuthor',
-        ),
-        migrations.DeleteModel(
-            name='WorkPageTagSelect',
+        migrations.DeleteModel(name="WorkPageAuthor",),
+        migrations.DeleteModel(name="WorkPageTagSelect",),
+        migrations.AddField(
+            model_name="workpage",
+            name="expertises",
+            field=taggit.managers.TaggableManager(
+                blank=True,
+                help_text="A comma-separated list of tags.",
+                through="torchbox.ExpertiseTag",
+                to="torchbox.BlogPageTagList",
+                verbose_name="expertises",
+            ),
         ),
         migrations.AddField(
-            model_name='workpage',
-            name='expertises',
-            field=taggit.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='torchbox.ExpertiseTag', to='torchbox.BlogPageTagList', verbose_name='expertises'),
-        ),
-        migrations.AddField(
-            model_name='workpage',
-            name='sectors',
-            field=taggit.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='torchbox.SectorTag', to='torchbox.BlogPageTagList', verbose_name='sectors'),
+            model_name="workpage",
+            name="sectors",
+            field=taggit.managers.TaggableManager(
+                blank=True,
+                help_text="A comma-separated list of tags.",
+                through="torchbox.SectorTag",
+                to="torchbox.BlogPageTagList",
+                verbose_name="sectors",
+            ),
         ),
     ]

@@ -1,20 +1,28 @@
 from django import forms
 
-from wagtail.core.blocks import (CharBlock, FieldBlock, ListBlock,
-                                 RawHTMLBlock, RichTextBlock, StreamBlock,
-                                 StructBlock)
+from wagtail.core.blocks import (
+    CharBlock,
+    FieldBlock,
+    ListBlock,
+    RawHTMLBlock,
+    RichTextBlock,
+    StreamBlock,
+    StructBlock,
+)
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailmarkdown.blocks import MarkdownBlock
 
 
 class ImageFormatChoiceBlock(FieldBlock):
-    field = forms.ChoiceField(choices=(
-        ('left', 'Wrap left'),
-        ('right', 'Wrap right'),
-        ('half', 'Half width'),
-        ('full', 'Full width'),
-    ))
+    field = forms.ChoiceField(
+        choices=(
+            ("left", "Wrap left"),
+            ("right", "Wrap right"),
+            ("half", "Half width"),
+            ("full", "Full width"),
+        )
+    )
 
 
 class ImageBlock(StructBlock):
@@ -91,7 +99,7 @@ class StoryBlock(StreamBlock):
     wide_image = WideImage(label="Wide image")
     bustout = BustoutBlock()
     pullquote = PullQuoteBlock()
-    raw_html = RawHTMLBlock(label='Raw HTML', icon="code")
+    raw_html = RawHTMLBlock(label="Raw HTML", icon="code")
     embed = EmbedBlock(icon="code")
     markdown = MarkdownBlock(icon="code")
 

@@ -8,13 +8,11 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0043_auto_20160707_1648'),
+        ("torchbox", "0043_auto_20160707_1648"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='aboutpage',
-            name='heading',
-            field=models.TextField(blank=True),
+            model_name="aboutpage", name="heading", field=models.TextField(blank=True),
         ),
     ]

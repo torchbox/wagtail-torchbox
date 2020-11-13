@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0052_merge'),
+        ("torchbox", "0052_merge"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='jobindexpage',
-            name='reasons_intro',
+            model_name="jobindexpage",
+            name="reasons_intro",
             field=models.TextField(blank=True),
         ),
     ]

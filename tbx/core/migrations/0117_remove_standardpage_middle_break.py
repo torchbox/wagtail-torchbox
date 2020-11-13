@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0116_delete_marketing_landing_page'),
+        ("torchbox", "0116_delete_marketing_landing_page"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='standardpage',
-            name='middle_break',
-        ),
+        migrations.RemoveField(model_name="standardpage", name="middle_break",),
     ]

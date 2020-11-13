@@ -7,28 +7,52 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0014_remove_blogpage_intro'),
+        ("blog", "0014_remove_blogpage_intro"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogindexpagerelatedlink',
-            name='link_document',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtaildocs.Document'),
+            model_name="blogindexpagerelatedlink",
+            name="link_document",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtaildocs.Document",
+            ),
         ),
         migrations.AlterField(
-            model_name='blogindexpagerelatedlink',
-            name='link_page',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Page'),
+            model_name="blogindexpagerelatedlink",
+            name="link_page",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailcore.Page",
+            ),
         ),
         migrations.AlterField(
-            model_name='blogpagerelatedlink',
-            name='link_document',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtaildocs.Document'),
+            model_name="blogpagerelatedlink",
+            name="link_document",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtaildocs.Document",
+            ),
         ),
         migrations.AlterField(
-            model_name='blogpagerelatedlink',
-            name='link_page',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Page'),
+            model_name="blogpagerelatedlink",
+            name="link_page",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailcore.Page",
+            ),
         ),
     ]

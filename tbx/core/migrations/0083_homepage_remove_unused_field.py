@@ -8,24 +8,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0082_auto_20170112_1611'),
+        ("torchbox", "0082_auto_20170112_1611"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='homepage',
-            name='hero_intro',
-        ),
-        migrations.RemoveField(
-            model_name='homepage',
-            name='hero_video_id',
-        ),
-        migrations.RemoveField(
-            model_name='homepage',
-            name='hero_video_poster_image',
-        ),
-        migrations.RemoveField(
-            model_name='homepage',
-            name='intro_title',
-        ),
+        migrations.RemoveField(model_name="homepage", name="hero_intro",),
+        migrations.RemoveField(model_name="homepage", name="hero_video_id",),
+        migrations.RemoveField(model_name="homepage", name="hero_video_poster_image",),
+        migrations.RemoveField(model_name="homepage", name="intro_title",),
     ]

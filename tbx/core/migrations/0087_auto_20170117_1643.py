@@ -8,17 +8,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0086_fill_filter_spec_field'),
+        ("torchbox", "0086_fill_filter_spec_field"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='torchboxrendition',
-            name='filter_spec',
+            model_name="torchboxrendition",
+            name="filter_spec",
             field=models.CharField(db_index=True, max_length=255),
         ),
         migrations.AlterUniqueTogether(
-            name='torchboxrendition',
-            unique_together=set([('image', 'filter_spec', 'focal_point_key')]),
+            name="torchboxrendition",
+            unique_together=set([("image", "filter_spec", "focal_point_key")]),
         ),
     ]

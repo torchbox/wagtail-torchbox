@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0113_move_people_into_new_app_2'),
+        ("torchbox", "0113_move_people_into_new_app_2"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='standardpage',
-            name='show_in_play_menu',
-        ),
+        migrations.RemoveField(model_name="standardpage", name="show_in_play_menu",),
     ]

@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0016_rename_summary_to_listing_summary'),
+        ("work", "0016_rename_summary_to_listing_summary"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='workpage',
-            name='listing_summary',
+            model_name="workpage",
+            name="listing_summary",
             field=models.CharField(blank=True, max_length=255),
         ),
     ]

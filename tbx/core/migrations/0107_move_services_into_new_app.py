@@ -8,58 +8,35 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailsearchpromotions', '0002_capitalizeverbose'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('wagtailredirects', '0006_redirect_increase_max_length'),
-        ('wagtailcore', '0040_page_draft_title'),
-        ('torchbox', '0105_torchboximage_file_hash'),
+        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("wagtailredirects", "0006_redirect_increase_max_length"),
+        ("wagtailcore", "0040_page_draft_title"),
+        ("torchbox", "0105_torchboximage_file_hash"),
     ]
 
     database_operations = [
-        migrations.AlterModelTable('ServicePage', 'services_servicepage'),
-        migrations.AlterModelTable('ServicesPage', 'services_serviceindexpage'),
-        migrations.AlterModelTable('ServicesPageService', 'services_serviceindexpageservice'),
+        migrations.AlterModelTable("ServicePage", "services_servicepage"),
+        migrations.AlterModelTable("ServicesPage", "services_serviceindexpage"),
+        migrations.AlterModelTable(
+            "ServicesPageService", "services_serviceindexpageservice"
+        ),
     ]
 
     state_operations = [
-        migrations.RemoveField(
-            model_name='servicepage',
-            name='page_ptr',
-        ),
-        migrations.RemoveField(
-            model_name='servicepage',
-            name='particle',
-        ),
-        migrations.RemoveField(
-            model_name='servicespage',
-            name='main_image',
-        ),
-        migrations.RemoveField(
-            model_name='servicespage',
-            name='page_ptr',
-        ),
-        migrations.RemoveField(
-            model_name='servicespageservice',
-            name='link',
-        ),
-        migrations.RemoveField(
-            model_name='servicespageservice',
-            name='page',
-        ),
-        migrations.DeleteModel(
-            name='ServicePage',
-        ),
-        migrations.DeleteModel(
-            name='ServicesPage',
-        ),
-        migrations.DeleteModel(
-            name='ServicesPageService',
-        ),
+        migrations.RemoveField(model_name="servicepage", name="page_ptr",),
+        migrations.RemoveField(model_name="servicepage", name="particle",),
+        migrations.RemoveField(model_name="servicespage", name="main_image",),
+        migrations.RemoveField(model_name="servicespage", name="page_ptr",),
+        migrations.RemoveField(model_name="servicespageservice", name="link",),
+        migrations.RemoveField(model_name="servicespageservice", name="page",),
+        migrations.DeleteModel(name="ServicePage",),
+        migrations.DeleteModel(name="ServicesPage",),
+        migrations.DeleteModel(name="ServicesPageService",),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            database_operations=database_operations,
-            state_operations=state_operations,
+            database_operations=database_operations, state_operations=state_operations,
         )
     ]

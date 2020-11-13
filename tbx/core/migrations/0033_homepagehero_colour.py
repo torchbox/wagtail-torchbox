@@ -8,14 +8,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0032_jobindexpagejob_job_intro'),
+        ("torchbox", "0032_jobindexpagejob_job_intro"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='homepagehero',
-            name='colour',
-            field=models.CharField(default='', help_text='Colour of link and background gradient, defaults to blue', max_length=255),
+            model_name="homepagehero",
+            name="colour",
+            field=models.CharField(
+                default="",
+                help_text="Colour of link and background gradient, defaults to blue",
+                max_length=255,
+            ),
             preserve_default=False,
         ),
     ]

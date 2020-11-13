@@ -9,20 +9,25 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Service',
+            name="Service",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('slug', models.CharField(max_length=255, unique=True)),
-                ('sort_order', models.IntegerField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("slug", models.CharField(max_length=255, unique=True)),
+                ("sort_order", models.IntegerField()),
             ],
-            options={
-                'ordering': ['sort_order'],
-            },
+            options={"ordering": ["sort_order"],},
         ),
     ]

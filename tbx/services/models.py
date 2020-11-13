@@ -1,8 +1,12 @@
 from django.db import models
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                         MultiFieldPanel, PageChooserPanel)
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    PageChooserPanel,
+)
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -10,24 +14,46 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 
 class BaseServicePage(Page):
-    theme = models.CharField(max_length=255, choices=(
-        ('light', 'Light'),
-        ('coral', 'Coral'),
-        ('dark', 'Dark'),
-        ('dark--transparent', 'Dark with transparent header'),
-    ), default='light')
+    theme = models.CharField(
+        max_length=255,
+        choices=(
+            ("light", "Light"),
+            ("coral", "Coral"),
+            ("dark", "Dark"),
+            ("dark--transparent", "Dark with transparent header"),
+        ),
+        default="light",
+    )
 
     strapline = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
-    greeting_image_type = models.CharField(max_length=255, choices=(
-        ('woman-left', 'Woman (Left Aligned)'),
-        ('man-left', 'Man (Left aligned)'),
-        ('wagtail', 'Wagtail (Right aligned)'),
-    ), default='woman-left', blank=True, null=True)
+    greeting_image_type = models.CharField(
+        max_length=255,
+        choices=(
+            ("woman-left", "Woman (Left Aligned)"),
+            ("man-left", "Man (Left aligned)"),
+            ("wagtail", "Wagtail (Right aligned)"),
+        ),
+        default="woman-left",
+        blank=True,
+        null=True,
+    )
 
     heading_for_key_points = RichTextField(blank=True)
-    contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
-    contact_reasons = models.ForeignKey('people.ContactReasonsList', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    contact = models.ForeignKey(
+        "people.Contact",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+    )
+    contact_reasons = models.ForeignKey(
+        "people.ContactReasonsList",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+    )
     use_process_block_image = models.BooleanField(default=False)
     heading_for_processes = models.TextField(blank=True, null=True)
 
@@ -39,68 +65,65 @@ class BaseServicePage(Page):
     process_section_title = models.TextField(blank=True, default="Process")
 
     content_panels = Page.content_panels + [
-        FieldPanel('theme'),
+        FieldPanel("theme"),
         MultiFieldPanel(
             [
-                FieldPanel('strapline', classname="full title"),
-                FieldPanel('intro', classname="full"),
-                FieldPanel('greeting_image_type', classname="full")
+                FieldPanel("strapline", classname="full title"),
+                FieldPanel("intro", classname="full"),
+                FieldPanel("greeting_image_type", classname="full"),
             ],
             heading="Hero",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
             [
-                FieldPanel('key_points_section_title', classname="full"),
-                FieldPanel('heading_for_key_points', classname="full"),
-                InlinePanel('key_points', label="Key points"),
+                FieldPanel("key_points_section_title", classname="full"),
+                FieldPanel("heading_for_key_points", classname="full"),
+                InlinePanel("key_points", label="Key points"),
             ],
             heading="Key Points",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
-            [
-                SnippetChooserPanel('contact'),
-                SnippetChooserPanel('contact_reasons'),
-            ],
+            [SnippetChooserPanel("contact"), SnippetChooserPanel("contact_reasons"),],
             heading="Contact",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
             [
-                FieldPanel('testimonials_section_title', classname="full"),
-                InlinePanel('client_logos', label="Client logos"),
-                InlinePanel('usa_client_logos', label="Client logos (for USA users)"),
-                InlinePanel('testimonials', label="Testimonials"),
+                FieldPanel("testimonials_section_title", classname="full"),
+                InlinePanel("client_logos", label="Client logos"),
+                InlinePanel("usa_client_logos", label="Client logos (for USA users)"),
+                InlinePanel("testimonials", label="Testimonials"),
             ],
             heading="Testimonials",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
             [
-                FieldPanel('process_section_title', classname="full"),
-                FieldPanel('heading_for_processes', classname="full"),
-                FieldPanel('use_process_block_image', classname="full"),
-                InlinePanel('processes', label="Processes")
+                FieldPanel("process_section_title", classname="full"),
+                FieldPanel("heading_for_processes", classname="full"),
+                FieldPanel("use_process_block_image", classname="full"),
+                InlinePanel("processes", label="Processes"),
             ],
             heading="Processes",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
             [
-                FieldPanel('case_studies_section_title', classname="full"),
-                InlinePanel('featured_case_studies', label="Featured case studies"),
+                FieldPanel("case_studies_section_title", classname="full"),
+                InlinePanel("featured_case_studies", label="Featured case studies"),
             ],
             heading="Work",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
             [
-                FieldPanel('blogs_section_title', classname="full"),
-                InlinePanel('featured_blog_posts', label="Featured blog posts"),
+                FieldPanel("blogs_section_title", classname="full"),
+                InlinePanel("featured_blog_posts", label="Featured blog posts"),
             ],
             heading="Blogs",
-            classname="collapsible"
+            classname="collapsible",
         ),
     ]
 
@@ -111,16 +134,16 @@ class BaseServicePage(Page):
 class BaseServicePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
     linked_page = models.ForeignKey(
-        'wagtailcore.Page',
+        "wagtailcore.Page",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+',
+        related_name="+",
     )
 
     panels = [
-        FieldPanel('text'),
-        PageChooserPanel('linked_page'),
+        FieldPanel("text"),
+        PageChooserPanel("linked_page"),
     ]
 
     class Meta:
@@ -128,13 +151,10 @@ class BaseServicePageKeyPoint(models.Model):
 
 
 class BaseServicePageClientLogo(models.Model):
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        on_delete=models.CASCADE,
-    )
+    image = models.ForeignKey("torchbox.TorchboxImage", on_delete=models.CASCADE,)
 
     panels = [
-        ImageChooserPanel('image'),
+        ImageChooserPanel("image"),
     ]
 
     class Meta:
@@ -142,13 +162,10 @@ class BaseServicePageClientLogo(models.Model):
 
 
 class BaseServicePageUSAClientLogo(models.Model):
-    image = models.ForeignKey(
-        'torchbox.TorchboxImage',
-        on_delete=models.CASCADE,
-    )
+    image = models.ForeignKey("torchbox.TorchboxImage", on_delete=models.CASCADE,)
 
     panels = [
-        ImageChooserPanel('image'),
+        ImageChooserPanel("image"),
     ]
 
     class Meta:
@@ -165,10 +182,10 @@ class BaseServicePageTestimonial(models.Model):
 
 
 class BaseServicePageFeaturedCaseStudy(models.Model):
-    case_study = models.ForeignKey('work.WorkPage', on_delete=models.CASCADE)
+    case_study = models.ForeignKey("work.WorkPage", on_delete=models.CASCADE)
 
     panels = [
-        PageChooserPanel('case_study'),
+        PageChooserPanel("case_study"),
     ]
 
     class Meta:
@@ -176,10 +193,10 @@ class BaseServicePageFeaturedCaseStudy(models.Model):
 
 
 class BaseServicePageFeaturedBlogPost(models.Model):
-    blog_post = models.ForeignKey('blog.BlogPage', on_delete=models.CASCADE)
+    blog_post = models.ForeignKey("blog.BlogPage", on_delete=models.CASCADE)
 
     panels = [
-        PageChooserPanel('blog_post'),
+        PageChooserPanel("blog_post"),
     ]
 
     class Meta:
@@ -189,14 +206,16 @@ class BaseServicePageFeaturedBlogPost(models.Model):
 class BaseServicePageProcess(models.Model):
     title = models.TextField()
     description = models.TextField()
-    page_link = models.ForeignKey('wagtailcore.Page', on_delete=models.CASCADE, blank=True, null=True)
+    page_link = models.ForeignKey(
+        "wagtailcore.Page", on_delete=models.CASCADE, blank=True, null=True
+    )
     page_link_label = models.TextField(blank=True, null=True)
 
     panels = [
-        FieldPanel('title', classname="title"),
-        FieldPanel('description', classname="title"),
-        PageChooserPanel('page_link'),
-        FieldPanel('page_link_label'),
+        FieldPanel("title", classname="title"),
+        FieldPanel("description", classname="title"),
+        PageChooserPanel("page_link"),
+        FieldPanel("page_link_label"),
     ]
 
     class Meta:
@@ -207,40 +226,46 @@ class BaseServicePageProcess(models.Model):
 
 
 class ServicePage(BaseServicePage):
-    service = models.OneToOneField('taxonomy.Service', on_delete=models.SET_NULL, null=True, blank=True, help_text="Link to this service in taxonomy")
+    service = models.OneToOneField(
+        "taxonomy.Service",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        help_text="Link to this service in taxonomy",
+    )
 
     content_panels = BaseServicePage.content_panels.copy()
-    content_panels.insert(1, FieldPanel('service'))
+    content_panels.insert(1, FieldPanel("service"))
 
-    subpage_types = ['SubServicePage']
+    subpage_types = ["SubServicePage"]
 
 
 class ServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):
-    page = ParentalKey(ServicePage, related_name='key_points')
+    page = ParentalKey(ServicePage, related_name="key_points")
 
 
 class ServicePageClientLogo(Orderable, BaseServicePageClientLogo):
-    page = ParentalKey(ServicePage, related_name='client_logos')
+    page = ParentalKey(ServicePage, related_name="client_logos")
 
 
 class ServicePageUSAClientLogo(Orderable, BaseServicePageUSAClientLogo):
-    page = ParentalKey(ServicePage, related_name='usa_client_logos')
+    page = ParentalKey(ServicePage, related_name="usa_client_logos")
 
 
 class ServicePageTestimonial(Orderable, BaseServicePageTestimonial):
-    page = ParentalKey(ServicePage, related_name='testimonials')
+    page = ParentalKey(ServicePage, related_name="testimonials")
 
 
 class ServicePageFeaturedCaseStudy(Orderable, BaseServicePageFeaturedCaseStudy):
-    page = ParentalKey(ServicePage, related_name='featured_case_studies')
+    page = ParentalKey(ServicePage, related_name="featured_case_studies")
 
 
 class ServicePageFeaturedBlogPost(Orderable, BaseServicePageFeaturedBlogPost):
-    page = ParentalKey(ServicePage, related_name='featured_blog_posts')
+    page = ParentalKey(ServicePage, related_name="featured_blog_posts")
 
 
 class ServicePageProcess(Orderable, BaseServicePageProcess):
-    page = ParentalKey(ServicePage, related_name='processes')
+    page = ParentalKey(ServicePage, related_name="processes")
 
 
 # Sub-service page
@@ -249,16 +274,16 @@ class ServicePageProcess(Orderable, BaseServicePageProcess):
 class SubServicePage(BaseServicePage):
     show_automatic_blog_listing = models.BooleanField(default=False)
     show_automatic_case_studies_listing = models.BooleanField(default=False)
-    parent_page_types = ['ServicePage']
+    parent_page_types = ["ServicePage"]
 
     content_panels = BaseServicePage.content_panels + [
         MultiFieldPanel(
             [
-                FieldPanel('show_automatic_blog_listing'),
-                FieldPanel('show_automatic_case_studies_listing'),
+                FieldPanel("show_automatic_blog_listing"),
+                FieldPanel("show_automatic_case_studies_listing"),
             ],
             heading="Listings settings",
-            classname="collapsible"
+            classname="collapsible",
         ),
     ]
 
@@ -271,28 +296,28 @@ class SubServicePage(BaseServicePage):
 
 
 class SubServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):
-    page = ParentalKey(SubServicePage, related_name='key_points')
+    page = ParentalKey(SubServicePage, related_name="key_points")
 
 
 class SubServicePageClientLogo(Orderable, BaseServicePageClientLogo):
-    page = ParentalKey(SubServicePage, related_name='client_logos')
+    page = ParentalKey(SubServicePage, related_name="client_logos")
 
 
 class SubServicePageUSAClientLogo(Orderable, BaseServicePageUSAClientLogo):
-    page = ParentalKey(SubServicePage, related_name='usa_client_logos')
+    page = ParentalKey(SubServicePage, related_name="usa_client_logos")
 
 
 class SubServicePageTestimonial(Orderable, BaseServicePageTestimonial):
-    page = ParentalKey(SubServicePage, related_name='testimonials')
+    page = ParentalKey(SubServicePage, related_name="testimonials")
 
 
 class SubServicePageFeaturedCaseStudy(Orderable, BaseServicePageFeaturedCaseStudy):
-    page = ParentalKey(SubServicePage, related_name='featured_case_studies')
+    page = ParentalKey(SubServicePage, related_name="featured_case_studies")
 
 
 class SubServicePageFeaturedBlogPost(Orderable, BaseServicePageFeaturedBlogPost):
-    page = ParentalKey(SubServicePage, related_name='featured_blog_posts')
+    page = ParentalKey(SubServicePage, related_name="featured_blog_posts")
 
 
 class SubServicePageProcess(Orderable, BaseServicePageProcess):
-    page = ParentalKey(SubServicePage, related_name='processes')
+    page = ParentalKey(SubServicePage, related_name="processes")

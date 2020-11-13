@@ -12,26 +12,215 @@ import wagtail.images.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0012_auto_20150703_1543'),
+        ("torchbox", "0012_auto_20150703_1543"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpage',
-            name='streamfield',
-            field=wagtail.core.fields.StreamField([(b'h2', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'h3', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'h4', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'intro', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), (b'paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), (b'aligned_image', wagtail.core.blocks.StructBlock([(b'image', wagtail.images.blocks.ImageChooserBlock()), (b'alignment', tbx.core.blocks.ImageFormatChoiceBlock()), (b'caption', wagtail.core.blocks.CharBlock()), (b'attribution', wagtail.core.blocks.CharBlock(required=False))], label='Aligned image')), (b'bustout', wagtail.core.blocks.StructBlock([(b'image', wagtail.images.blocks.ImageChooserBlock()), (b'text', wagtail.core.blocks.RichTextBlock())])), (b'pullquote', wagtail.core.blocks.StructBlock([(b'quote', wagtail.core.blocks.CharBlock(classname='quote title')), (b'attribution', wagtail.core.blocks.CharBlock())])), (b'raw_html', wagtail.core.blocks.RawHTMLBlock(icon='code', label='Raw HTML')), (b'embed', wagtail.embeds.blocks.EmbedBlock(icon='code'))]),
+            model_name="blogpage",
+            name="streamfield",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        b"h2",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        b"h3",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        b"h4",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (b"intro", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (b"paragraph", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (
+                        b"aligned_image",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (b"image", wagtail.images.blocks.ImageChooserBlock()),
+                                (
+                                    b"alignment",
+                                    tbx.core.blocks.ImageFormatChoiceBlock(),
+                                ),
+                                (b"caption", wagtail.core.blocks.CharBlock()),
+                                (
+                                    b"attribution",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                            ],
+                            label="Aligned image",
+                        ),
+                    ),
+                    (
+                        b"bustout",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (b"image", wagtail.images.blocks.ImageChooserBlock()),
+                                (b"text", wagtail.core.blocks.RichTextBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        b"pullquote",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    b"quote",
+                                    wagtail.core.blocks.CharBlock(
+                                        classname="quote title"
+                                    ),
+                                ),
+                                (b"attribution", wagtail.core.blocks.CharBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        b"raw_html",
+                        wagtail.core.blocks.RawHTMLBlock(icon="code", label="Raw HTML"),
+                    ),
+                    (b"embed", wagtail.embeds.blocks.EmbedBlock(icon="code")),
+                ]
+            ),
             preserve_default=True,
         ),
         migrations.AlterField(
-            model_name='standardpage',
-            name='streamfield',
-            field=wagtail.core.fields.StreamField([(b'h2', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'h3', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'h4', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'intro', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), (b'paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), (b'aligned_image', wagtail.core.blocks.StructBlock([(b'image', wagtail.images.blocks.ImageChooserBlock()), (b'alignment', tbx.core.blocks.ImageFormatChoiceBlock()), (b'caption', wagtail.core.blocks.CharBlock()), (b'attribution', wagtail.core.blocks.CharBlock(required=False))], label='Aligned image')), (b'bustout', wagtail.core.blocks.StructBlock([(b'image', wagtail.images.blocks.ImageChooserBlock()), (b'text', wagtail.core.blocks.RichTextBlock())])), (b'pullquote', wagtail.core.blocks.StructBlock([(b'quote', wagtail.core.blocks.CharBlock(classname='quote title')), (b'attribution', wagtail.core.blocks.CharBlock())])), (b'raw_html', wagtail.core.blocks.RawHTMLBlock(icon='code', label='Raw HTML')), (b'embed', wagtail.embeds.blocks.EmbedBlock(icon='code'))]),
+            model_name="standardpage",
+            name="streamfield",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        b"h2",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        b"h3",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        b"h4",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (b"intro", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (b"paragraph", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (
+                        b"aligned_image",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (b"image", wagtail.images.blocks.ImageChooserBlock()),
+                                (
+                                    b"alignment",
+                                    tbx.core.blocks.ImageFormatChoiceBlock(),
+                                ),
+                                (b"caption", wagtail.core.blocks.CharBlock()),
+                                (
+                                    b"attribution",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                            ],
+                            label="Aligned image",
+                        ),
+                    ),
+                    (
+                        b"bustout",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (b"image", wagtail.images.blocks.ImageChooserBlock()),
+                                (b"text", wagtail.core.blocks.RichTextBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        b"pullquote",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    b"quote",
+                                    wagtail.core.blocks.CharBlock(
+                                        classname="quote title"
+                                    ),
+                                ),
+                                (b"attribution", wagtail.core.blocks.CharBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        b"raw_html",
+                        wagtail.core.blocks.RawHTMLBlock(icon="code", label="Raw HTML"),
+                    ),
+                    (b"embed", wagtail.embeds.blocks.EmbedBlock(icon="code")),
+                ]
+            ),
             preserve_default=True,
         ),
         migrations.AlterField(
-            model_name='workpage',
-            name='streamfield',
-            field=wagtail.core.fields.StreamField([(b'h2', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'h3', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'h4', wagtail.core.blocks.CharBlock(classname='title', icon='title')), (b'intro', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), (b'paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), (b'aligned_image', wagtail.core.blocks.StructBlock([(b'image', wagtail.images.blocks.ImageChooserBlock()), (b'alignment', tbx.core.blocks.ImageFormatChoiceBlock()), (b'caption', wagtail.core.blocks.CharBlock()), (b'attribution', wagtail.core.blocks.CharBlock(required=False))], label='Aligned image')), (b'bustout', wagtail.core.blocks.StructBlock([(b'image', wagtail.images.blocks.ImageChooserBlock()), (b'text', wagtail.core.blocks.RichTextBlock())])), (b'pullquote', wagtail.core.blocks.StructBlock([(b'quote', wagtail.core.blocks.CharBlock(classname='quote title')), (b'attribution', wagtail.core.blocks.CharBlock())])), (b'raw_html', wagtail.core.blocks.RawHTMLBlock(icon='code', label='Raw HTML')), (b'embed', wagtail.embeds.blocks.EmbedBlock(icon='code'))]),
+            model_name="workpage",
+            name="streamfield",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        b"h2",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        b"h3",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        b"h4",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (b"intro", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (b"paragraph", wagtail.core.blocks.RichTextBlock(icon="pilcrow")),
+                    (
+                        b"aligned_image",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (b"image", wagtail.images.blocks.ImageChooserBlock()),
+                                (
+                                    b"alignment",
+                                    tbx.core.blocks.ImageFormatChoiceBlock(),
+                                ),
+                                (b"caption", wagtail.core.blocks.CharBlock()),
+                                (
+                                    b"attribution",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                            ],
+                            label="Aligned image",
+                        ),
+                    ),
+                    (
+                        b"bustout",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (b"image", wagtail.images.blocks.ImageChooserBlock()),
+                                (b"text", wagtail.core.blocks.RichTextBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        b"pullquote",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    b"quote",
+                                    wagtail.core.blocks.CharBlock(
+                                        classname="quote title"
+                                    ),
+                                ),
+                                (b"attribution", wagtail.core.blocks.CharBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        b"raw_html",
+                        wagtail.core.blocks.RawHTMLBlock(icon="code", label="Raw HTML"),
+                    ),
+                    (b"embed", wagtail.embeds.blocks.EmbedBlock(icon="code")),
+                ]
+            ),
             preserve_default=True,
         ),
     ]

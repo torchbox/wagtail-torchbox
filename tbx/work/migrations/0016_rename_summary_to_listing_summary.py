@@ -8,13 +8,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0015_workpage_body_word_count'),
+        ("work", "0015_workpage_body_word_count"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='workpage',
-            old_name='summary',
-            new_name='listing_summary',
+            model_name="workpage", old_name="summary", new_name="listing_summary",
         ),
     ]

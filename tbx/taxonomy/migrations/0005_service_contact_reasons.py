@@ -7,14 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0012_auto_20190316_1641'),
-        ('taxonomy', '0004_service_preferred_contact'),
+        ("people", "0012_auto_20190316_1641"),
+        ("taxonomy", "0004_service_preferred_contact"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='service',
-            name='contact_reasons',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='people.ContactReasonsList'),
+            model_name="service",
+            name="contact_reasons",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="people.ContactReasonsList",
+            ),
         ),
     ]

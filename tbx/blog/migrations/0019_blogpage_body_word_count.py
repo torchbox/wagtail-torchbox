@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0018_remove_blogpage_colour'),
+        ("blog", "0018_remove_blogpage_colour"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='blogpage',
-            name='body_word_count',
+            model_name="blogpage",
+            name="body_word_count",
             field=models.PositiveIntegerField(editable=False, null=True),
         ),
     ]

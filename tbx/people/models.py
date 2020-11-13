@@ -7,9 +7,13 @@ from django.utils.functional import cached_property
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from phonenumber_field.modelfields import PhoneNumberField
-from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                         MultiFieldPanel, PageChooserPanel,
-                                         StreamFieldPanel)
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    PageChooserPanel,
+    StreamFieldPanel,
+)
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
@@ -23,7 +27,7 @@ from tbx.core.models import ContactFields, RelatedLink
 
 
 class PersonPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('people.PersonPage', related_name='related_links')
+    page = ParentalKey("people.PersonPage", related_name="related_links")
 
 
 class PersonPage(Page, ContactFields):
@@ -36,50 +40,51 @@ class PersonPage(Page, ContactFields):
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     short_biography = models.CharField(
-        max_length=255, blank=True,
-        help_text='A shorter summary biography for including in other pages'
+        max_length=255,
+        blank=True,
+        help_text="A shorter summary biography for including in other pages",
     )
     image = models.ForeignKey(
-        'torchbox.TorchboxImage',
+        "torchbox.TorchboxImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
     feed_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
+        "torchbox.TorchboxImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
 
     search_fields = Page.search_fields + [
-        index.SearchField('first_name'),
-        index.SearchField('last_name'),
-        index.SearchField('intro'),
-        index.SearchField('biography'),
+        index.SearchField("first_name"),
+        index.SearchField("last_name"),
+        index.SearchField("intro"),
+        index.SearchField("biography"),
     ]
 
     content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('first_name'),
-        FieldPanel('last_name'),
-        FieldPanel('role'),
-        FieldPanel('is_senior'),
-        FieldPanel('short_intro', classname="full"),
-        FieldPanel('alt_short_intro', classname="full"),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('biography', classname="full"),
-        FieldPanel('short_biography', classname="full"),
-        ImageChooserPanel('image'),
+        FieldPanel("title", classname="full title"),
+        FieldPanel("first_name"),
+        FieldPanel("last_name"),
+        FieldPanel("role"),
+        FieldPanel("is_senior"),
+        FieldPanel("short_intro", classname="full"),
+        FieldPanel("alt_short_intro", classname="full"),
+        FieldPanel("intro", classname="full"),
+        FieldPanel("biography", classname="full"),
+        FieldPanel("short_biography", classname="full"),
+        ImageChooserPanel("image"),
         MultiFieldPanel(ContactFields.panels, "Contact"),
-        InlinePanel('related_links', label="Related links"),
+        InlinePanel("related_links", label="Related links"),
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
+        ImageChooserPanel("feed_image"),
     ]
 
 
@@ -96,49 +101,56 @@ class PersonIndexPage(Page):
         return PersonPage.objects.exclude(is_senior=False).live().public()
 
     content_panels = Page.content_panels + [
-        FieldPanel('strapline', classname="full"),
+        FieldPanel("strapline", classname="full"),
     ]
 
 
 class CulturePageLink(Orderable):
-    page = ParentalKey('people.CulturePage', related_name='links')
+    page = ParentalKey("people.CulturePage", related_name="links")
     title = models.TextField()
     description = models.TextField()
-    link = models.ForeignKey('wagtailcore.Page', on_delete=models.CASCADE, blank=True, null=True)
+    link = models.ForeignKey(
+        "wagtailcore.Page", on_delete=models.CASCADE, blank=True, null=True
+    )
 
     panels = [
-        FieldPanel('title', classname="full"),
-        FieldPanel('description', classname="full"),
-        PageChooserPanel('link')
+        FieldPanel("title", classname="full"),
+        FieldPanel("description", classname="full"),
+        PageChooserPanel("link"),
     ]
 
 
 class CulturePage(Page):
     strapline = models.TextField()
     strapline_visible = models.BooleanField(
-        help_text='Hide strapline visually but leave it readable by screen '
-                  'readers.'
+        help_text="Hide strapline visually but leave it readable by screen " "readers."
     )
     hero_image = models.ForeignKey(
-        'torchbox.TorchboxImage',
+        "torchbox.TorchboxImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
     intro = RichTextField(blank=True)
     body = StreamField(StoryBlock())
-    contact = models.ForeignKey('people.Contact', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    contact = models.ForeignKey(
+        "people.Contact",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+    )
 
     content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('strapline', classname="full"),
-        FieldPanel('strapline_visible'),
-        ImageChooserPanel('hero_image'),
-        FieldPanel('intro', classname="full"),
-        InlinePanel('links', label='Link'),
-        StreamFieldPanel('body'),
-        SnippetChooserPanel('contact'),
+        FieldPanel("title", classname="full title"),
+        FieldPanel("strapline", classname="full"),
+        FieldPanel("strapline_visible"),
+        ImageChooserPanel("hero_image"),
+        FieldPanel("intro", classname="full"),
+        InlinePanel("links", label="Link"),
+        StreamFieldPanel("body"),
+        SnippetChooserPanel("contact"),
     ]
 
 
@@ -146,16 +158,22 @@ class CulturePage(Page):
 # Could also be used for external authors
 @register_snippet
 class Author(index.Indexed, models.Model):
-    person_page = models.OneToOneField('people.PersonPage', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    person_page = models.OneToOneField(
+        "people.PersonPage",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+    )
 
     name = models.CharField(max_length=255, blank=True)
     role = models.CharField(max_length=255, blank=True)
     image = models.ForeignKey(
-        'torchbox.TorchboxImage',
+        "torchbox.TorchboxImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
 
     def update_manual_fields(self, person_page):
@@ -165,7 +183,9 @@ class Author(index.Indexed, models.Model):
 
     def clean(self):
         if not self.person_page and not self.name:
-            raise ValidationError({'person_page': "You must set either 'Person page' or 'Name'"})
+            raise ValidationError(
+                {"person_page": "You must set either 'Person page' or 'Name'"}
+            )
 
         if self.person_page:
             self.update_manual_fields(self.person_page)
@@ -174,16 +194,15 @@ class Author(index.Indexed, models.Model):
         return self.name
 
     search_fields = [
-        index.SearchField('name'),
+        index.SearchField("name"),
     ]
 
     panels = [
-        PageChooserPanel('person_page'),
-        MultiFieldPanel([
-            FieldPanel('name'),
-            FieldPanel('role'),
-            ImageChooserPanel('image'),
-        ], "Manual fields"),
+        PageChooserPanel("person_page"),
+        MultiFieldPanel(
+            [FieldPanel("name"), FieldPanel("role"), ImageChooserPanel("image"),],
+            "Manual fields",
+        ),
     ]
 
 
@@ -199,35 +218,37 @@ class Contact(index.Indexed, models.Model):
     name = models.CharField(max_length=255, blank=True)
     role = models.CharField(max_length=255, blank=True)
     image = models.ForeignKey(
-        'torchbox.TorchboxImage',
+        "torchbox.TorchboxImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
     email_address = models.EmailField()
     phone_number = PhoneNumberField()
-    default_contact = models.BooleanField(default=False, blank=True, null=True, unique=True)
+    default_contact = models.BooleanField(
+        default=False, blank=True, null=True, unique=True
+    )
 
     def __str__(self):
         return self.name
 
     search_fields = [
-        index.SearchField('name'),
+        index.SearchField("name"),
     ]
 
     panels = [
-        FieldPanel('name'),
-        FieldPanel('role'),
-        FieldPanel('default_contact', widget=forms.CheckboxInput),
-        ImageChooserPanel('image'),
-        FieldPanel('email_address'),
-        FieldPanel('phone_number'),
+        FieldPanel("name"),
+        FieldPanel("role"),
+        FieldPanel("default_contact", widget=forms.CheckboxInput),
+        ImageChooserPanel("image"),
+        FieldPanel("email_address"),
+        FieldPanel("phone_number"),
     ]
 
 
 class ContactReason(Orderable):
-    page = ParentalKey('people.ContactReasonsList', related_name='reasons')
+    page = ParentalKey("people.ContactReasonsList", related_name="reasons")
     title = models.CharField(max_length=255, blank=False)
     description = models.TextField(blank=False)
 
@@ -242,10 +263,10 @@ class ContactReasonsList(ClusterableModel):
         return self.name
 
     panels = [
-        FieldPanel('name'),
-        FieldPanel('heading'),
-        FieldPanel('is_default', widget=forms.CheckboxInput),
-        InlinePanel('reasons', label='Reasons', max_num=3)
+        FieldPanel("name"),
+        FieldPanel("heading"),
+        FieldPanel("is_default", widget=forms.CheckboxInput),
+        InlinePanel("reasons", label="Reasons", max_num=3),
     ]
 
     def clean(self):
@@ -254,8 +275,6 @@ class ContactReasonsList(ClusterableModel):
             if self.pk:
                 qs = qs.exclude(pk=self.pk)
             if qs.exists():
-                raise ValidationError({
-                    'is_default': [
-                        'There already is another default snippet.',
-                    ],
-                })
+                raise ValidationError(
+                    {"is_default": ["There already is another default snippet.",],}
+                )

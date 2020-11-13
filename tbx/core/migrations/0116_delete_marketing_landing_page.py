@@ -8,83 +8,57 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailredirects', '0006_redirect_increase_max_length'),
-        ('wagtailcore', '0040_page_draft_title'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('wagtailsearchpromotions', '0002_capitalizeverbose'),
-        ('torchbox', '0115_delete_tshirt_page'),
+        ("wagtailredirects", "0006_redirect_increase_max_length"),
+        ("wagtailcore", "0040_page_draft_title"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
+        ("torchbox", "0115_delete_tshirt_page"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='marketinglandingpage',
-            name='hero_video_poster_image',
+            model_name="marketinglandingpage", name="hero_video_poster_image",
+        ),
+        migrations.RemoveField(model_name="marketinglandingpage", name="page_ptr",),
+        migrations.RemoveField(
+            model_name="marketinglandingpagefeatureditem", name="page",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpage',
-            name='page_ptr',
+            model_name="marketinglandingpagefeatureditem", name="related_page",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpagefeatureditem',
-            name='page',
+            model_name="marketinglandingpageheaderrelatedlink", name="link_document",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpagefeatureditem',
-            name='related_page',
+            model_name="marketinglandingpageheaderrelatedlink", name="link_page",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpageheaderrelatedlink',
-            name='link_document',
+            model_name="marketinglandingpageheaderrelatedlink", name="page",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpageheaderrelatedlink',
-            name='link_page',
+            model_name="marketinglandingpageintrorelatedlink", name="link_document",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpageheaderrelatedlink',
-            name='page',
+            model_name="marketinglandingpageintrorelatedlink", name="link_page",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpageintrorelatedlink',
-            name='link_document',
+            model_name="marketinglandingpageintrorelatedlink", name="page",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpageintrorelatedlink',
-            name='link_page',
+            model_name="marketinglandingpagepageclients", name="image",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpageintrorelatedlink',
-            name='page',
+            model_name="marketinglandingpagepageclients", name="link_document",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpagepageclients',
-            name='image',
+            model_name="marketinglandingpagepageclients", name="link_page",
         ),
         migrations.RemoveField(
-            model_name='marketinglandingpagepageclients',
-            name='link_document',
+            model_name="marketinglandingpagepageclients", name="page",
         ),
-        migrations.RemoveField(
-            model_name='marketinglandingpagepageclients',
-            name='link_page',
-        ),
-        migrations.RemoveField(
-            model_name='marketinglandingpagepageclients',
-            name='page',
-        ),
-        migrations.DeleteModel(
-            name='MarketingLandingPage',
-        ),
-        migrations.DeleteModel(
-            name='MarketingLandingPageFeaturedItem',
-        ),
-        migrations.DeleteModel(
-            name='MarketingLandingPageHeaderRelatedLink',
-        ),
-        migrations.DeleteModel(
-            name='MarketingLandingPageIntroRelatedLink',
-        ),
-        migrations.DeleteModel(
-            name='MarketingLandingPagePageClients',
-        ),
+        migrations.DeleteModel(name="MarketingLandingPage",),
+        migrations.DeleteModel(name="MarketingLandingPageFeaturedItem",),
+        migrations.DeleteModel(name="MarketingLandingPageHeaderRelatedLink",),
+        migrations.DeleteModel(name="MarketingLandingPageIntroRelatedLink",),
+        migrations.DeleteModel(name="MarketingLandingPagePageClients",),
     ]

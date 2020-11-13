@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0047_homepagehero_text'),
+        ("torchbox", "0047_homepagehero_text"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='personpage',
-            name='is_senior',
+            model_name="personpage",
+            name="is_senior",
             field=models.BooleanField(default=False),
         ),
     ]

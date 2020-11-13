@@ -8,14 +8,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0031_blogpage_homepage_color'),
+        ("torchbox", "0031_blogpage_homepage_color"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='jobindexpagejob',
-            name='job_intro',
-            field=models.CharField(default='', max_length=255),
+            model_name="jobindexpagejob",
+            name="job_intro",
+            field=models.CharField(default="", max_length=255),
             preserve_default=False,
         ),
     ]

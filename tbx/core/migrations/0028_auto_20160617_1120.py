@@ -8,38 +8,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0027_homepageclients'),
+        ("torchbox", "0027_homepageclients"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='homepage',
-            old_name='intro',
-            new_name='hero_intro',
+            model_name="homepage", old_name="intro", new_name="hero_intro",
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='blog_title',
+            model_name="homepage",
+            name="blog_title",
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='clients_title',
+            model_name="homepage",
+            name="clients_title",
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='intro_body',
+            model_name="homepage",
+            name="intro_body",
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='intro_title',
+            model_name="homepage",
+            name="intro_title",
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='work_title',
+            model_name="homepage",
+            name="work_title",
             field=models.TextField(blank=True),
         ),
     ]

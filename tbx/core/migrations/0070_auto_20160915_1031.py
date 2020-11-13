@@ -8,18 +8,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0069_auto_20160915_1023'),
+        ("torchbox", "0069_auto_20160915_1023"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contact',
-            name='to_address',
-            field=models.CharField(blank=True, help_text='Optional - form submissions will be emailed to these addresses. Separate multiple addresses by comma.', max_length=255, verbose_name='to address'),
+            model_name="contact",
+            name="to_address",
+            field=models.CharField(
+                blank=True,
+                help_text="Optional - form submissions will be emailed to these addresses. Separate multiple addresses by comma.",
+                max_length=255,
+                verbose_name="to address",
+            ),
         ),
         migrations.AlterField(
-            model_name='contactformfield',
-            name='choices',
-            field=models.TextField(blank=True, help_text='Comma separated list of choices. Only applicable in checkboxes, radio and dropdown.', verbose_name='choices'),
+            model_name="contactformfield",
+            name="choices",
+            field=models.TextField(
+                blank=True,
+                help_text="Comma separated list of choices. Only applicable in checkboxes, radio and dropdown.",
+                verbose_name="choices",
+            ),
         ),
     ]

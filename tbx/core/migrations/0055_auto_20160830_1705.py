@@ -10,24 +10,39 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0054_auto_20160826_1657'),
+        ("torchbox", "0054_auto_20160826_1657"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='mainmenuitem',
-            name='main_menu',
-        ),
-        migrations.RemoveField(
-            model_name='mainmenuitem',
-            name='page',
-        ),
+        migrations.RemoveField(model_name="mainmenuitem", name="main_menu",),
+        migrations.RemoveField(model_name="mainmenuitem", name="page",),
         migrations.AddField(
-            model_name='mainmenu',
-            name='menu',
-            field=wagtail.core.fields.StreamField([(b'items', wagtail.core.blocks.StructBlock([(b'page', wagtail.core.blocks.PageChooserBlock()), (b'subitems', wagtail.core.blocks.StreamBlock([(b'subitem', wagtail.core.blocks.PageChooserBlock())]))]))], blank=True),
+            model_name="mainmenu",
+            name="menu",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        b"items",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (b"page", wagtail.core.blocks.PageChooserBlock()),
+                                (
+                                    b"subitems",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                b"subitem",
+                                                wagtail.core.blocks.PageChooserBlock(),
+                                            )
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    )
+                ],
+                blank=True,
+            ),
         ),
-        migrations.DeleteModel(
-            name='MainMenuItem',
-        ),
+        migrations.DeleteModel(name="MainMenuItem",),
     ]

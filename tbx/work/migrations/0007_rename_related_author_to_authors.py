@@ -10,13 +10,17 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0006_remove_workpage_author_left'),
+        ("work", "0006_remove_workpage_author_left"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='workpageauthor',
-            name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='authors', to='work.WorkPage'),
+            model_name="workpageauthor",
+            name="page",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="authors",
+                to="work.WorkPage",
+            ),
         ),
     ]

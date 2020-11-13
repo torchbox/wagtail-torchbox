@@ -12,13 +12,97 @@ import wagtailmarkdown.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0130_socialmediasettings'),
+        ("torchbox", "0130_socialmediasettings"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='standardpage',
-            name='body',
-            field=wagtail.core.fields.StreamField([('h2', wagtail.core.blocks.CharBlock(classname='title', icon='title', template='patterns/molecules/streamfield/blocks/heading2_block.html')), ('h3', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h4', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('intro', wagtail.core.blocks.RichTextBlock(icon='pilcrow', template='patterns/molecules/streamfield/blocks/intro_block.html')), ('paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow', template='patterns/molecules/streamfield/blocks/paragraph_block.html')), ('aligned_image', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('alignment', tbx.core.blocks.ImageFormatChoiceBlock()), ('caption', wagtail.core.blocks.CharBlock()), ('attribution', wagtail.core.blocks.CharBlock(required=False))], label='Aligned image')), ('wide_image', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock())], label='Wide image')), ('bustout', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('text', wagtail.core.blocks.RichTextBlock())])), ('pullquote', wagtail.core.blocks.StructBlock([('quote', wagtail.core.blocks.CharBlock(classname='quote title')), ('attribution', wagtail.core.blocks.CharBlock())])), ('raw_html', wagtail.core.blocks.RawHTMLBlock(icon='code', label='Raw HTML')), ('embed', wagtail.embeds.blocks.EmbedBlock(icon='code')), ('markdown', wagtailmarkdown.blocks.MarkdownBlock(icon='code'))]),
+            model_name="standardpage",
+            name="body",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "h2",
+                        wagtail.core.blocks.CharBlock(
+                            classname="title",
+                            icon="title",
+                            template="patterns/molecules/streamfield/blocks/heading2_block.html",
+                        ),
+                    ),
+                    (
+                        "h3",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.core.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "intro",
+                        wagtail.core.blocks.RichTextBlock(
+                            icon="pilcrow",
+                            template="patterns/molecules/streamfield/blocks/intro_block.html",
+                        ),
+                    ),
+                    (
+                        "paragraph",
+                        wagtail.core.blocks.RichTextBlock(
+                            icon="pilcrow",
+                            template="patterns/molecules/streamfield/blocks/paragraph_block.html",
+                        ),
+                    ),
+                    (
+                        "aligned_image",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("alignment", tbx.core.blocks.ImageFormatChoiceBlock()),
+                                ("caption", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "attribution",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                            ],
+                            label="Aligned image",
+                        ),
+                    ),
+                    (
+                        "wide_image",
+                        wagtail.core.blocks.StructBlock(
+                            [("image", wagtail.images.blocks.ImageChooserBlock())],
+                            label="Wide image",
+                        ),
+                    ),
+                    (
+                        "bustout",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("text", wagtail.core.blocks.RichTextBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        "pullquote",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    "quote",
+                                    wagtail.core.blocks.CharBlock(
+                                        classname="quote title"
+                                    ),
+                                ),
+                                ("attribution", wagtail.core.blocks.CharBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        "raw_html",
+                        wagtail.core.blocks.RawHTMLBlock(icon="code", label="Raw HTML"),
+                    ),
+                    ("embed", wagtail.embeds.blocks.EmbedBlock(icon="code")),
+                    ("markdown", wagtailmarkdown.blocks.MarkdownBlock(icon="code")),
+                ]
+            ),
         ),
     ]

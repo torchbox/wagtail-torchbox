@@ -9,24 +9,25 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0053_jobindexpage_reasons_intro'),
+        ("torchbox", "0053_jobindexpage_reasons_intro"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='jobindexpage',
-            name='listing_intro',
-            field=models.TextField(blank=True, help_text='Shown instead of the intro when job listings are included on other pages'),
+            model_name="jobindexpage",
+            name="listing_intro",
+            field=models.TextField(
+                blank=True,
+                help_text="Shown instead of the intro when job listings are included on other pages",
+            ),
         ),
         migrations.AlterField(
-            model_name='jobindexpage',
-            name='intro',
-            field=models.TextField(blank=True),
+            model_name="jobindexpage", name="intro", field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='jobindexpage',
-            name='no_jobs_that_fit',
-            field=wagtail.core.fields.RichTextField(blank=True, default=''),
+            model_name="jobindexpage",
+            name="no_jobs_that_fit",
+            field=wagtail.core.fields.RichTextField(blank=True, default=""),
             preserve_default=False,
         ),
     ]

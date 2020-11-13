@@ -8,14 +8,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0046_auto_20160718_1554'),
+        ("torchbox", "0046_auto_20160718_1554"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='homepagehero',
-            name='text',
-            field=models.CharField(default='', max_length=255),
+            model_name="homepagehero",
+            name="text",
+            field=models.CharField(default="", max_length=255),
             preserve_default=False,
         ),
     ]

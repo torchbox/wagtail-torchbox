@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0125_auto_20190216_1713'),
+        ("torchbox", "0125_auto_20190216_1713"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='jobindexpage',
-            name='jobs_xml_feed',
+            model_name="jobindexpage",
+            name="jobs_xml_feed",
             field=models.URLField(blank=True),
         ),
     ]

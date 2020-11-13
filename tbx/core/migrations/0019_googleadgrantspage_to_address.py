@@ -8,13 +8,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0018_auto_20160222_1029'),
+        ("torchbox", "0018_auto_20160222_1029"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='googleadgrantspage',
-            name='to_address',
-            field=models.EmailField(blank=True, help_text='Optional - form submissions will be emailed to this address', max_length=254, verbose_name='to address'),
+            model_name="googleadgrantspage",
+            name="to_address",
+            field=models.EmailField(
+                blank=True,
+                help_text="Optional - form submissions will be emailed to this address",
+                max_length=254,
+                verbose_name="to address",
+            ),
         ),
     ]

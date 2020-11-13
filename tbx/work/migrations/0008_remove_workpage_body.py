@@ -11,51 +11,65 @@ from wagtail.core.blocks import StreamValue
 from wagtail.core.rich_text import RichText
 
 
-UUID_NAMESPACE = UUID('eac1f6e4-1d92-468f-8896-37086343ae0d')
+UUID_NAMESPACE = UUID("eac1f6e4-1d92-468f-8896-37086343ae0d")
 
 
 def migrate_work_body_to_streamfield(apps, schema_editor):
-    WorkPage = apps.get_model('work.WorkPage')
-    stream_block = WorkPage._meta.get_field('streamfield').stream_block
+    WorkPage = apps.get_model("work.WorkPage")
+    stream_block = WorkPage._meta.get_field("streamfield").stream_block
 
     # Update model
-    for work_page in WorkPage.objects.exclude(body='').exclude(body='<p></p>').exclude(body='<p><br/></p>'):
+    for work_page in (
+        WorkPage.objects.exclude(body="")
+        .exclude(body="<p></p>")
+        .exclude(body="<p><br/></p>")
+    ):
         # Add body as first block so it appears in the same place on the template
         work_page.streamfield = StreamValue(
             stream_block,
             [
-                ('paragraph', RichText(work_page.body), str(uuid3(UUID_NAMESPACE, work_page.body))),
-            ] + [
+                (
+                    "paragraph",
+                    RichText(work_page.body),
+                    str(uuid3(UUID_NAMESPACE, work_page.body)),
+                ),
+            ]
+            + [
                 (child.block_type, child.value, child.id)
                 for child in work_page.streamfield
-            ]
+            ],
         )
 
         work_page.save()
 
     # Update revisions
-    PageRevision = apps.get_model('wagtailcore.PageRevision')
-    ContentType = apps.get_model('contenttypes.ContentType')
-    work_page_content_type = ContentType.objects.get(app_label='work', model='workpage')
+    PageRevision = apps.get_model("wagtailcore.PageRevision")
+    ContentType = apps.get_model("contenttypes.ContentType")
+    work_page_content_type = ContentType.objects.get(app_label="work", model="workpage")
 
-    for revision in PageRevision.objects.filter(page__content_type=work_page_content_type):
+    for revision in PageRevision.objects.filter(
+        page__content_type=work_page_content_type
+    ):
         content = json.loads(revision.content_json)
 
-        if content['body'] and content['body'] not in ['<p></p>', '<p><br/></p>']:
-            streamfield_json = content.get('streamfield', '')
+        if content["body"] and content["body"] not in ["<p></p>", "<p><br/></p>"]:
+            streamfield_json = content.get("streamfield", "")
 
             if streamfield_json:
                 streamfield = json.loads(streamfield_json)
             else:
                 streamfield = []
 
-            streamfield.insert(0, {
-                "type": "paragraph",
-                "value": content['body'],
-                "id": str(uuid3(UUID_NAMESPACE, content['body'])),
-            })
+            streamfield.insert(
+                0,
+                {
+                    "type": "paragraph",
+                    "value": content["body"],
+                    "id": str(uuid3(UUID_NAMESPACE, content["body"])),
+                },
+            )
 
-            content['streamfield'] = json.dumps(streamfield)
+            content["streamfield"] = json.dumps(streamfield)
 
             revision.content_json = json.dumps(content)
             revision.save()
@@ -68,13 +82,10 @@ def nooperation(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0007_rename_related_author_to_authors'),
+        ("work", "0007_rename_related_author_to_authors"),
     ]
 
     operations = [
         migrations.RunPython(migrate_work_body_to_streamfield, nooperation),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='body',
-        ),
+        migrations.RemoveField(model_name="workpage", name="body",),
     ]

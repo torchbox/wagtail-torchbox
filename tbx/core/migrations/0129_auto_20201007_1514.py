@@ -7,28 +7,36 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0128_auto_20201007_1415'),
+        ("torchbox", "0128_auto_20201007_1415"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='globalsettings',
-            name='cambridge_address',
-            field=wagtail.core.fields.RichTextField(blank=True, help_text='Full address'),
+            model_name="globalsettings",
+            name="cambridge_address",
+            field=wagtail.core.fields.RichTextField(
+                blank=True, help_text="Full address"
+            ),
         ),
         migrations.AddField(
-            model_name='globalsettings',
-            name='cambridge_address_link',
-            field=models.URLField(blank=True, help_text='Link to google maps', max_length=255),
+            model_name="globalsettings",
+            name="cambridge_address_link",
+            field=models.URLField(
+                blank=True, help_text="Link to google maps", max_length=255
+            ),
         ),
         migrations.AddField(
-            model_name='globalsettings',
-            name='cambridge_address_svg',
-            field=models.CharField(blank=True, help_text='Paste SVG code here', max_length=9000),
+            model_name="globalsettings",
+            name="cambridge_address_svg",
+            field=models.CharField(
+                blank=True, help_text="Paste SVG code here", max_length=9000
+            ),
         ),
         migrations.AddField(
-            model_name='globalsettings',
-            name='cambridge_address_title',
-            field=models.CharField(blank=True, help_text='Full address', max_length=255),
+            model_name="globalsettings",
+            name="cambridge_address_title",
+            field=models.CharField(
+                blank=True, help_text="Full address", max_length=255
+            ),
         ),
     ]

@@ -1,1 +1,1 @@
-default_app_config = 'tbx.core.apps.TorchboxCoreAppConfig'
+default_app_config = "tbx.core.apps.TorchboxCoreAppConfig"

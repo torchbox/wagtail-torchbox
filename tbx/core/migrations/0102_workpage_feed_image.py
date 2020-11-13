@@ -9,13 +9,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0101_auto_20180912_1622'),
+        ("torchbox", "0101_auto_20180912_1622"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='workpage',
-            name='feed_image',
-            field=models.ForeignKey(blank=True, help_text='Image used on listings and social media.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage'),
+            model_name="workpage",
+            name="feed_image",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="Image used on listings and social media.",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="torchbox.TorchboxImage",
+            ),
         ),
     ]
