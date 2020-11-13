@@ -1,0 +1,5 @@
+context:
+  page:
+    title: Culture Page
+    get_verbose_name: culture
+
