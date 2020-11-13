@@ -1,6 +1,3 @@
-context:
-  value:
-
 tags:
   image:
     page.author_image fill-100x100 as image:

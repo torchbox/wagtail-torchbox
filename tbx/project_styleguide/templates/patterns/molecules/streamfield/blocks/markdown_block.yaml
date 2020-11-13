@@ -1,9 +1,6 @@
 context:
   value:
-
-tags:
-  image:
-    page.author_image fill-100x100 as image:
-      target_var: image
-      raw:
-        url: '//placekitten.com/100/100'
+    '# Delivering a next generation student experience for UPenn
+    ## The underbelly
+    Far away from the shiny world of public-facing institutional websites lies the gnarly, neglected underbelly of administrative, faculty and student facing web applications.
+'

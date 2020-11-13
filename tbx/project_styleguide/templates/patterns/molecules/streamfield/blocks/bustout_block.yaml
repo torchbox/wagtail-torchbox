@@ -1,5 +1,6 @@
 context:
   value:
+    text: sample bustout block
 
 tags:
   image:
