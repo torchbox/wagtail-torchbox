@@ -157,6 +157,17 @@ class BlogPage(Page):
         self.body_word_count = len(body_words)
 
     @property
+    def related_blogs(self):
+        services = self.related_services.all()
+        return (
+            BlogPage.objects.filter(related_services__in=services)
+            .live()
+            .distinct()
+            .order_by("-first_published_at")
+            .exclude(pk=self.pk)[:2]
+        )
+
+    @property
     def blog_index(self):
         ancestor = BlogIndexPage.objects.ancestor_of(self).order_by('-depth').first()
 

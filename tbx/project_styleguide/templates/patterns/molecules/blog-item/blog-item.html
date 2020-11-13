@@ -1,15 +1,9 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% if item.link_page %}
-<a class="blog-item" href="{% pageurl item.link_page.specific %}">
-{% elif item.link_document %}
-<a class="blog-item" href="{{ item.link_document.url }}">
-{% else %}
-<a class="blog-item" href="{{ item.link_external }}">
-{% endif %}
+<a class="blog-item" href="{% pageurl item %}">
     <h3 class="blog-item__title">{{ item.title }}</h3>
 
-    {% with author=item.link_page.specific.authors.first.author %}
+    {% with author=item.authors.first.author %}
         {% if author %}
             <div class="blog-item__meta">
                 <div class="avatar blog-item__image">
