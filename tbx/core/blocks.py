@@ -10,10 +10,10 @@ from wagtailmarkdown.blocks import MarkdownBlock
 
 class ImageFormatChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
-        ('left', 'Wrap left'),
-        ('right', 'Wrap right'),
-        ('half', 'Half width'),
-        ('full', 'Full width'),
+        ('wrap-left', 'Wrap left'),
+        ('wrap-right', 'Wrap right'),
+        ('half-width', 'Half width'),
+        ('full-width', 'Full width'),
     ))
 
 
@@ -94,7 +94,10 @@ class StoryBlock(StreamBlock):
         icon="pilcrow",
         template="patterns/molecules/streamfield/blocks/paragraph_block.html",
     )
-    aligned_image = ImageBlock(label="Aligned image")
+    aligned_image = ImageBlock(
+        label="Aligned image",
+        template="patterns/molecules/streamfield/blocks/aligned_image_block.html",
+    )
     wide_image = WideImage(label="Wide image")
     bustout = BustoutBlock()
     pullquote = PullQuoteBlock()
