@@ -1,4 +1,25 @@
 {% extends "patterns/base_page.html" %}
-{% block content %}
 
+{% load wagtailcore_tags wagtailimages_tags  %}
+
+{% block content %}
+<div>
+    strapline: {{ page.strapline }}
+    strapline_visible: {{ page.strapline_visible }}
+    page.hero_image: {% image page.hero_image original %}
+    page.intro: {{ page.intro|richtext }}
+    page.body: {% include_block page.body %}
+    {% for link in page.links.all %}
+        {% with link.link as link_page %}
+            <div>
+                link.title: {{ link.title}}
+                link.description: {{ link.description}}
+                link_page: {{ link_page }}
+                link_page.title: {{ link_page.title }}
+                pageurl link_page: {% pageurl link_page %}
+            </div>
+        {% endwith %}
+    {% endfor %}
+    {{ page.contact }}
+</div>
 {% endblock %}
