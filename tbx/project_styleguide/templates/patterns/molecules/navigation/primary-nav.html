@@ -1,0 +1,19 @@
+{% load wagtailcore_tags %}
+<nav class="primary-nav">
+    <ul class="primary-nav__list">
+        {% for item in primarynav %}
+            {% with link=item.value %}
+                <li class="nav-item">
+                    <a class="nav-item__link" href="{% pageurl link.page %}">
+                        <span class="nav-item__title">
+                            {% firstof link.title link.page.title %}
+                        </span>
+                        {% if forloop.last and job_count > 0 %}
+                            {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                        {% endif %}
+                    </a>
+                </li>
+            {% endwith %}
+        {% endfor %}
+    </ul>
+</nav>
