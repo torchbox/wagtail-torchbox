@@ -15,12 +15,14 @@ from wagtailmarkdown.blocks import MarkdownBlock
 
 
 class ImageFormatChoiceBlock(FieldBlock):
-    field = forms.ChoiceField(choices=(
-        ('left', 'Wrap left'),
-        ('right', 'Wrap right'),
-        ('half', 'Half width'),
-        ('full', 'Full width'),
-    ))
+    field = forms.ChoiceField(
+        choices=(
+            ("left", "Wrap left"),
+            ("right", "Wrap right"),
+            ("half", "Half width"),
+            ("full", "Full width"),
+        )
+    )
 
 
 class ImageBlock(StructBlock):
