@@ -1,8 +1,14 @@
 from django import forms
 
-from wagtail.core.blocks import (CharBlock, FieldBlock, ListBlock,
-                                 RawHTMLBlock, RichTextBlock, StreamBlock,
-                                 StructBlock)
+from wagtail.core.blocks import (
+    CharBlock,
+    FieldBlock,
+    ListBlock,
+    RawHTMLBlock,
+    RichTextBlock,
+    StreamBlock,
+    StructBlock,
+)
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailmarkdown.blocks import MarkdownBlock
