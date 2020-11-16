@@ -4,28 +4,29 @@
 
 {% block content %}
 <div>
-    page.hero_image: {% image page.hero_image original %}
-    strapline: {{ page.strapline }}
-    strapline_visible: {{ page.strapline_visible }}
+    <!-- sample page https://torchbox.com/culture-and-jobs/ -->
+    <div>page.hero_image: {% image page.hero_image original %}</div>
+    <div>strapline: {{ page.strapline }}</div>
+    <div>strapline_visible: {{ page.strapline_visible }}</div>
 
-    page.intro: {{ page.intro|richtext }}
+    <div>page.intro: {{ page.intro|richtext }}</div>
     {% for link in page.links.all %}
         <div>
-            link.title: {{ link.title}}
-            link.description: {{ link.description}}
-            pageurl link_page: {% pageurl link.link %}
+            <div>link.title: {{ link.title}}</div>
+            <div>link.description: {{ link.description}}</div>
+            <div>pageurl link.link: {% pageurl link.link %}</div>
         </div>
     {% endfor %}
 
-    page.body: {% include_block page.body %}
+    <div>page.body: {% include_block page.body %}</div>
     {% for link in page.links.all %}
         <div>
-            link.title: {{ link.title}}
-            link.description: {{ link.description}}
-            pageurl link_page: {% pageurl link.link %}
+            <div>link.title: {{ link.title}}</div>
+            <div>link.description: {{ link.description}}</div>
+            <div>pageurl link.link: {% pageurl link.link %}</div>
         </div>
     {% endfor %}
 
-    {{ page.contact }}
+    <div>{{ page.contact }}</div>
 </div>
 {% endblock %}

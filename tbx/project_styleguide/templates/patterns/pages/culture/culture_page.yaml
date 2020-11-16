@@ -2,4 +2,27 @@ context:
   page:
     title: Culture Page
     get_verbose_name: culture
+    strapline_visible: True
+    strapline: Strapline
+    intro: '<p><strong>On Friday 28th June 2019 - on #EODay - Torchbox became the first digital agency in the UK to become a 100% Employee Owned Trust</strong>. We’ve always been mission driven, using digital to help organisations making the world a better place, now we have enshrined our values in our company structure making all our employees equal owners. Read our <a>blog post about this</a> then check our <a>our job openings</a>!</p>'
+    links:
+      all:
+        - title: Meet the team
+          description: Get to know the people you’ll be working with
+        - title: Join the team
+          description: Come and help us make wicked digital stuff!
+    contact:
+      - email_address: willh@torchbox.com
+      - phone_number: +447545468483
+
+tags:
+  image:
+    page.hero_image original:
+      raw: <img src="http://via.placeholder.com/1000x300" alt="Some alt">
+  pageurl:
+    link.link:
+      raw: '#'
+  include_block:
+    page.body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example-blog.html'
 
