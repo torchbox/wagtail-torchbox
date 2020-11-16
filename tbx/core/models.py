@@ -527,9 +527,7 @@ class GoogleAdGrantsPage(Page):
                         ]
                     )
                     send_mail(
-                        subject,
-                        content,
-                        [self.to_address],
+                        subject, content, [self.to_address],
                     )
                 return render(
                     request,

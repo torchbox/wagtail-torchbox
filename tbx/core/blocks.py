@@ -122,8 +122,7 @@ class StoryBlock(StreamBlock):
         template="patterns/molecules/streamfield/blocks/raw_html_block.html",
     )
     embed = EmbedBlock(
-        icon="code",
-        template="patterns/molecules/streamfield/blocks/embed_block.html",
+        icon="code", template="patterns/molecules/streamfield/blocks/embed_block.html",
     )
     markdown = MarkdownBlock(
         icon="code",
