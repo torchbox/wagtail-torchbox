@@ -33,7 +33,6 @@ class ImageBlock(StructBlock):
 
     class Meta:
         icon = "image"
-        template = "patterns/molecules/streamfield/blocks/aligned_image_block.html"
 
 
 class PhotoGridBlock(StructBlock):
@@ -85,8 +84,16 @@ class StoryBlock(StreamBlock):
         icon="title",
         template="patterns/molecules/streamfield/blocks/heading2_block.html",
     )
-    h3 = CharBlock(icon="title", classname="title")
-    h4 = CharBlock(icon="title", classname="title")
+    h3 = CharBlock(
+        classname="title",
+        icon="title",
+        template="patterns/molecules/streamfield/blocks/heading3_block.html",
+    )
+    h4 = CharBlock(
+        classname="title",
+        icon="title",
+        template="patterns/molecules/streamfield/blocks/heading4_block.html",
+    )
     intro = RichTextBlock(
         icon="pilcrow",
         template="patterns/molecules/streamfield/blocks/intro_block.html",
@@ -95,13 +102,32 @@ class StoryBlock(StreamBlock):
         icon="pilcrow",
         template="patterns/molecules/streamfield/blocks/paragraph_block.html",
     )
-    aligned_image = ImageBlock(label="Aligned image")
-    wide_image = WideImage(label="Wide image")
-    bustout = BustoutBlock()
-    pullquote = PullQuoteBlock()
-    raw_html = RawHTMLBlock(label="Raw HTML", icon="code")
-    embed = EmbedBlock(icon="code")
-    markdown = MarkdownBlock(icon="code")
+    aligned_image = ImageBlock(
+        label="Aligned image",
+        template="patterns/molecules/streamfield/blocks/aligned_image_block.html",
+    )
+    wide_image = WideImage(
+        label="Wide image",
+        template="patterns/molecules/streamfield/blocks/wide_image_block.html",
+    )
+    bustout = BustoutBlock(
+        template="patterns/molecules/streamfield/blocks/bustout_block.html"
+    )
+    pullquote = PullQuoteBlock(
+        template="patterns/molecules/streamfield/blocks/pullquote_block.html"
+    )
+    raw_html = RawHTMLBlock(
+        label="Raw HTML",
+        icon="code",
+        template="patterns/molecules/streamfield/blocks/raw_html_block.html",
+    )
+    embed = EmbedBlock(
+        icon="code", template="patterns/molecules/streamfield/blocks/embed_block.html",
+    )
+    markdown = MarkdownBlock(
+        icon="code",
+        template="patterns/molecules/streamfield/blocks/markdown_block.html",
+    )
 
     class Meta:
         template = "patterns/molecules/streamfield/stream_block.html"

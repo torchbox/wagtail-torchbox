@@ -1,0 +1,8 @@
+context:
+  value:
+    text: <p>sample bustout block text</p>
+
+tags:
+  image:
+    value.image original:
+      raw: <img src="http://via.placeholder.com/1000x300" alt="Some alt">
