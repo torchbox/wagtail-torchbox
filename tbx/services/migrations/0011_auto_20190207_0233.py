@@ -6,28 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0010_auto_20190207_0216'),
+        ("services", "0010_auto_20190207_0216"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='servicepage',
-            name='blogs_section_title',
-            field=models.TextField(blank=True, default='Thinking'),
+            model_name="servicepage",
+            name="blogs_section_title",
+            field=models.TextField(blank=True, default="Thinking"),
         ),
         migrations.AlterField(
-            model_name='servicepage',
-            name='case_studies_section_title',
-            field=models.TextField(blank=True, default='Work'),
+            model_name="servicepage",
+            name="case_studies_section_title",
+            field=models.TextField(blank=True, default="Work"),
         ),
         migrations.AlterField(
-            model_name='servicepage',
-            name='key_points_section_title',
-            field=models.TextField(blank=True, default='Services'),
+            model_name="servicepage",
+            name="key_points_section_title",
+            field=models.TextField(blank=True, default="Services"),
         ),
         migrations.AlterField(
-            model_name='servicepage',
-            name='testimonials_section_title',
-            field=models.TextField(blank=True, default='Clients'),
+            model_name="servicepage",
+            name="testimonials_section_title",
+            field=models.TextField(blank=True, default="Clients"),
         ),
     ]

@@ -7,43 +7,44 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0127_jobindexpage_intro'),
+        ("torchbox", "0127_jobindexpage_intro"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='globalsettings',
-            old_name='phili_address_link',
-            new_name='us_address_link',
+            model_name="globalsettings",
+            old_name="phili_address_link",
+            new_name="us_address_link",
         ),
         migrations.RenameField(
-            model_name='globalsettings',
-            old_name='phili_address_svg',
-            new_name='us_address_svg',
+            model_name="globalsettings",
+            old_name="phili_address_svg",
+            new_name="us_address_svg",
         ),
         migrations.RenameField(
-            model_name='globalsettings',
-            old_name='phili_address',
-            new_name='us_address_title',
+            model_name="globalsettings",
+            old_name="phili_address",
+            new_name="us_address_title",
         ),
         migrations.RemoveField(
-            model_name='globalsettings',
-            name='phili_address_title',
+            model_name="globalsettings", name="phili_address_title",
         ),
         migrations.AddField(
-            model_name='globalsettings',
-            name='us_address',
-            field=wagtail.core.fields.RichTextField(default='', help_text='Full address'),
+            model_name="globalsettings",
+            name="us_address",
+            field=wagtail.core.fields.RichTextField(
+                default="", help_text="Full address"
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='globalsettings',
-            name='bristol_address',
-            field=wagtail.core.fields.RichTextField(help_text='Full address'),
+            model_name="globalsettings",
+            name="bristol_address",
+            field=wagtail.core.fields.RichTextField(help_text="Full address"),
         ),
         migrations.AlterField(
-            model_name='globalsettings',
-            name='oxford_address',
-            field=wagtail.core.fields.RichTextField(help_text='Full address'),
+            model_name="globalsettings",
+            name="oxford_address",
+            field=wagtail.core.fields.RichTextField(help_text="Full address"),
         ),
     ]

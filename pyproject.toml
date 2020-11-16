@@ -5,7 +5,7 @@ description = "Torchbox.com"
 authors = ["Torchbox Ltd"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.8"
 django = "~2.2"
 wagtail = "~2.10"
 psycopg2 = "~2.8"

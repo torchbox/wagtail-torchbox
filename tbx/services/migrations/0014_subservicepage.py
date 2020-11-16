@@ -7,18 +7,26 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0013_auto_20190207_0252'),
+        ("services", "0013_auto_20190207_0252"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SubServicePage',
+            name="SubServicePage",
             fields=[
-                ('servicepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='services.ServicePage')),
+                (
+                    "servicepage_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="services.ServicePage",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
-            bases=('services.servicepage',),
+            options={"abstract": False,},
+            bases=("services.servicepage",),
         ),
     ]

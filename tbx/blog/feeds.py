@@ -16,7 +16,7 @@ class BlogFeed(Feed):
     description = "The latest news and views from Torchbox on the work we do, the web and the wider world"
 
     def items(self):
-        return BlogPage.objects.live().order_by('-date')[:10]
+        return BlogPage.objects.live().order_by("-date")[:10]
 
     def item_title(self, item):
         return item.title
@@ -40,7 +40,7 @@ class BlogFeed(Feed):
     def item_enclosure_mime_type(self, item):
         if item.feed_image:
             image_format = imghdr.what(item.feed_image.file)
-            return 'image/{}'.format(image_format)
+            return "image/{}".format(image_format)
 
     def item_enclosure_length(self, item):
         if item.feed_image:

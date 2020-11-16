@@ -20,15 +20,13 @@ from tbx.core.views import robots
 
 
 private_urlpatterns = [
-    path('django-admin/', admin.site.urls),
-    path('admin/', include(wagtailadmin_urls)),
-] + decorate_urlpatterns([
-    path('documents/', include(wagtaildocs_urls)),
-], never_cache)
+    path("django-admin/", admin.site.urls),
+    path("admin/", include(wagtailadmin_urls)),
+] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
-    path('sitemap.xml', sitemap),
-    path('robots.txt', robots),
+    path("sitemap.xml", sitemap),
+    path("robots.txt", robots),
 ]
 
 
@@ -57,7 +55,7 @@ if settings.DEBUG:
 
 urlpatterns += [
     # path('review/', include(wagtailreview_urls)),
-    path('', include(torchbox_urls)),
+    path("", include(torchbox_urls)),
 ]
 
 # Style guide
@@ -81,15 +79,17 @@ urlpatterns = decorate_urlpatterns(urlpatterns, get_default_cache_control_decora
 urlpatterns = decorate_urlpatterns(
     urlpatterns,
     vary_on_headers(
-        'Cookie', 'X-Requested-With', 'X-Forwarded-Proto', 'Accept-Encoding'
-    )
+        "Cookie", "X-Requested-With", "X-Forwarded-Proto", "Accept-Encoding"
+    ),
 )
 
 Page.serve = get_default_cache_control_decorator()(Page.serve)
 
 # Join private and public URLs.
 urlpatterns = (
-    private_urlpatterns + urlpatterns + [
+    private_urlpatterns
+    + urlpatterns
+    + [
         # Add Wagtail URLs at the end.
         # Wagtail cache-control is set on the page models's serve methods.
         path("", include(wagtail_urls))

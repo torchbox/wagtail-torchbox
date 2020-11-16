@@ -9,18 +9,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0004_populate_blogpageauthor_author'),
+        ("blog", "0004_populate_blogpageauthor_author"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='blogpageauthor',
-            name='author_person_page',
-        ),
+        migrations.RemoveField(model_name="blogpageauthor", name="author_person_page",),
         migrations.AlterField(
-            model_name='blogpageauthor',
-            name='author',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='people.Author'),
+            model_name="blogpageauthor",
+            name="author",
+            field=models.ForeignKey(
+                default=0,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="+",
+                to="people.Author",
+            ),
             preserve_default=False,
         ),
     ]

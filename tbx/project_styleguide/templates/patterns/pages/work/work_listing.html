@@ -5,19 +5,19 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/title-block/title-block.html" with item=page tags=page.tags %}
-    
-    <div class="casestudies">
-        <div class="casestudies__content">
+{% include "patterns/molecules/title-block/title-block.html" with item=page tags=related_services %}
 
-            <div class="casestudies__list">
-                {% for casestudy in page.casestudies %}
-                    {% include "patterns/molecules/casestudy-item/casestudy-item.html" with item=casestudy %}
-                {% endfor %}
-            </div>
-            
-            {% include "patterns/atoms/see-more/see-more.html" with item=see_more %}
+<div class="casestudies">
+    <div class="casestudies__content">
+
+        <div class="casestudies__list" data-fetch-destination="work-pages" data-fetch-max-pages="{{ works.paginator.num_pages }}">
+            {% include "patterns/organisms/work-listing/work-listing.html" with works=works %}
         </div>
+
+        {% if works.has_next %}
+            {% include "patterns/atoms/see-more/see-more.html" with text="See more case studies" fetch_data="work-pages" %}
+        {% endif %}
     </div>
+</div>
 
 {% endblock %}

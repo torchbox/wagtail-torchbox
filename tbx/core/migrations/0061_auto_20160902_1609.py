@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0060_auto_20160901_1658'),
+        ("torchbox", "0060_auto_20160901_1658"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='workpage',
-            name='visit_the_site',
+            model_name="workpage",
+            name="visit_the_site",
             field=models.URLField(blank=True),
         ),
     ]

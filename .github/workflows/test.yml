@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      DJANGO_SETTINGS_MODULE: tbx.settings.production
+      DATABASE_URL: postgres://postgres:postgres@localhost/postgres
+      CFG_SECRET_KEY: iamnotsosecret
+      CFG_ALLOWED_HOSTS: localhost
+
+    services:
+      postgres:
+        image: postgres:9.6
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: Gr1n/setup-poetry@v4
+        with:
+          poetry-version: 1.1.1
+      - name: Install python dependencies
+        run: |
+          poetry config virtualenvs.create false &&
+          poetry install
+      - name: Install npm dependencies
+        run: |
+          npm install npm-run-all
+          npm run build:prod
+      - name: Flake8
+        run: flake8 tbx
+      - name: isort
+        run: isort --check-only --diff --recursive tbx
+      - name: black
+        run: black --check tbx
+      - name: System checks
+        run: python manage.py check
+      - name: Missing migrations
+        run: python manage.py makemigrations --check
+      - name: Test
+        run: python manage.py test
+      - name: Lint CSS
+        run: npm run lint:css
+      - name: Lint JS
+        run: npm run lint:js
+      - name: Lint Format
+        run: npm run lint:format

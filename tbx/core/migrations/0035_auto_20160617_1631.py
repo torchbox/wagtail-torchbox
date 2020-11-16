@@ -9,28 +9,53 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
-        ('torchbox', '0034_auto_20160617_1609'),
+        ("wagtailcore", "0023_alter_page_revision_on_delete_behaviour"),
+        ("torchbox", "0034_auto_20160617_1609"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='GlobalSettings',
+            name="GlobalSettings",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('OxfordAddressTitle', models.URLField()),
-                ('OxfordAddress', models.CharField(help_text='Full address', max_length=255)),
-                ('OxfordAddressLink', models.URLField(help_text='Link to google maps', max_length=255)),
-                ('OxfordAddressSVG', models.CharField(help_text='Paste SVG code here', max_length=9000)),
-                ('site', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.Site')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("OxfordAddressTitle", models.URLField()),
+                (
+                    "OxfordAddress",
+                    models.CharField(help_text="Full address", max_length=255),
+                ),
+                (
+                    "OxfordAddressLink",
+                    models.URLField(help_text="Link to google maps", max_length=255),
+                ),
+                (
+                    "OxfordAddressSVG",
+                    models.CharField(help_text="Paste SVG code here", max_length=9000),
+                ),
+                (
+                    "site",
+                    models.OneToOneField(
+                        editable=False,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="wagtailcore.Site",
+                    ),
+                ),
             ],
-            options={
-                'verbose_name': 'Global Settings',
-            },
+            options={"verbose_name": "Global Settings",},
         ),
         migrations.AlterField(
-            model_name='homepagehero',
-            name='colour',
-            field=models.CharField(help_text='Hex ref colour of link and background gradient, use #23b0b0 for default blue', max_length=255),
+            model_name="homepagehero",
+            name="colour",
+            field=models.CharField(
+                help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue",
+                max_length=255,
+            ),
         ),
     ]

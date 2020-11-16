@@ -5,7 +5,7 @@
 
 {% block content %}
 
-{% image page.person_image width-1280 as image %}
+{% image page.image width-1280 as image %}
 
     {% include "patterns/molecules/title-block/title-block.html" with item=page meta=page.role %}
 
@@ -18,7 +18,13 @@
         <div class="team-member__bio">
             {% include_block page.body %}
         </div>
-    
+        <div class="team-member__bio-container">
+            <div class="team-member__bio">
+                {{ page.intro|richtext }}
+                {{ page.biography|richtext }}
+            </div>
+        </div>
+
     </div>
 
 {% endblock %}

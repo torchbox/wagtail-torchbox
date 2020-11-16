@@ -6,13 +6,11 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0017_listing_summary_not_required'),
+        ("work", "0017_listing_summary_not_required"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='workpage',
-            name='client',
-            field=models.TextField(blank=True),
+            model_name="workpage", name="client", field=models.TextField(blank=True),
         ),
     ]

@@ -9,18 +9,22 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0029_homepagehero'),
+        ("torchbox", "0029_homepagehero"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='homepagehero',
-            old_name='image',
-            new_name='background',
+            model_name="homepagehero", old_name="image", new_name="background",
         ),
         migrations.AddField(
-            model_name='homepagehero',
-            name='logo',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage'),
+            model_name="homepagehero",
+            name="logo",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="torchbox.TorchboxImage",
+            ),
         ),
     ]

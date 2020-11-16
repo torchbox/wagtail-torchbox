@@ -8,9 +8,8 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0094_auto_20170908_1245'),
-        ('torchbox', '0096_revert_pr97'),
+        ("torchbox", "0094_auto_20170908_1245"),
+        ("torchbox", "0096_revert_pr97"),
     ]
 
-    operations = [
-    ]
+    operations = []

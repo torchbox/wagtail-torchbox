@@ -8,16 +8,10 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0048_personpage_is_senior'),
+        ("torchbox", "0048_personpage_is_senior"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='personindexpage',
-            name='intro',
-        ),
-        migrations.RemoveField(
-            model_name='personindexpage',
-            name='show_in_play_menu',
-        ),
+        migrations.RemoveField(model_name="personindexpage", name="intro",),
+        migrations.RemoveField(model_name="personindexpage", name="show_in_play_menu",),
     ]

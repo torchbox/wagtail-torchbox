@@ -7,16 +7,14 @@ from django.utils.text import slugify
 
 
 def insert_initial_services(apps, schema_editor):
-    Service = apps.get_model('taxonomy.Service')
+    Service = apps.get_model("taxonomy.Service")
 
     def add_service(order, name, slug=None):
         if slug is None:
             slug = slugify(name)
 
         Service.objects.create(
-            name=name,
-            slug=slug,
-            sort_order=order,
+            name=name, slug=slug, sort_order=order,
         )
 
     add_service(100, "Digital products")
@@ -36,7 +34,7 @@ def nooperation(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('taxonomy', '0001_initial'),
+        ("taxonomy", "0001_initial"),
     ]
 
     operations = [

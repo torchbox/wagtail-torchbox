@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0011_helptext'),
+        ("blog", "0011_helptext"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='blogpage',
-            name='marketing_only',
-        ),
+        migrations.RemoveField(model_name="blogpage", name="marketing_only",),
     ]

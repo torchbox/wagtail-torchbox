@@ -7,18 +7,23 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0015_auto_20190207_1625'),
+        ("services", "0015_auto_20190207_1625"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='servicepageprocess',
-            name='link_label',
+            model_name="servicepageprocess",
+            name="link_label",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='servicepageprocess',
-            name='link_page',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.Page'),
+            model_name="servicepageprocess",
+            name="link_page",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="wagtailcore.Page",
+            ),
         ),
     ]

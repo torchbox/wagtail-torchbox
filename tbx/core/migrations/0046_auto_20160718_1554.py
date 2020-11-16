@@ -10,90 +10,76 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('wagtailsearchpromotions', '0002_capitalizeverbose'),
-        ('wagtailredirects', '0005_capitalizeverbose'),
-        ('torchbox', '0045_auto_20160708_1127'),
+        ("wagtailcore", "0023_alter_page_revision_on_delete_behaviour"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
+        ("wagtailredirects", "0005_capitalizeverbose"),
+        ("torchbox", "0045_auto_20160708_1127"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ServicesPageService',
+            name="ServicesPageService",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('title', models.TextField()),
-                ('svg', models.TextField(null=True)),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("title", models.TextField()),
+                ("svg", models.TextField(null=True)),
+                ("description", models.TextField()),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False,},
         ),
+        migrations.RemoveField(model_name="servicesitem", name="page_ptr",),
+        migrations.RemoveField(model_name="servicespagecontentblock", name="page",),
         migrations.RemoveField(
-            model_name='servicesitem',
-            name='page_ptr',
+            model_name="servicespagerelatedlink", name="link_document",
         ),
-        migrations.RemoveField(
-            model_name='servicespagecontentblock',
-            name='page',
-        ),
-        migrations.RemoveField(
-            model_name='servicespagerelatedlink',
-            name='link_document',
-        ),
-        migrations.RemoveField(
-            model_name='servicespagerelatedlink',
-            name='link_page',
-        ),
-        migrations.RemoveField(
-            model_name='servicespagerelatedlink',
-            name='page',
-        ),
-        migrations.AlterModelOptions(
-            name='aboutpageservice',
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name='servicespage',
-            options={},
-        ),
-        migrations.RemoveField(
-            model_name='servicespage',
-            name='body',
-        ),
-        migrations.RemoveField(
-            model_name='servicespage',
-            name='feed_image',
-        ),
+        migrations.RemoveField(model_name="servicespagerelatedlink", name="link_page",),
+        migrations.RemoveField(model_name="servicespagerelatedlink", name="page",),
+        migrations.AlterModelOptions(name="aboutpageservice", options={},),
+        migrations.AlterModelOptions(name="servicespage", options={},),
+        migrations.RemoveField(model_name="servicespage", name="body",),
+        migrations.RemoveField(model_name="servicespage", name="feed_image",),
         migrations.AddField(
-            model_name='servicespage',
-            name='heading',
+            model_name="servicespage",
+            name="heading",
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='servicespage',
-            name='main_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage'),
+            model_name="servicespage",
+            name="main_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="torchbox.TorchboxImage",
+            ),
         ),
         migrations.AlterField(
-            model_name='servicespage',
-            name='intro',
-            field=models.TextField(blank=True),
+            model_name="servicespage", name="intro", field=models.TextField(blank=True),
         ),
-        migrations.DeleteModel(
-            name='ServicesItem',
-        ),
-        migrations.DeleteModel(
-            name='ServicesPageContentBlock',
-        ),
-        migrations.DeleteModel(
-            name='ServicesPageRelatedLink',
-        ),
+        migrations.DeleteModel(name="ServicesItem",),
+        migrations.DeleteModel(name="ServicesPageContentBlock",),
+        migrations.DeleteModel(name="ServicesPageRelatedLink",),
         migrations.AddField(
-            model_name='servicespageservice',
-            name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='services', to='torchbox.ServicesPage'),
+            model_name="servicespageservice",
+            name="page",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="services",
+                to="torchbox.ServicesPage",
+            ),
         ),
     ]

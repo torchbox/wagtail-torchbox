@@ -10,61 +10,114 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
-        ('wagtaildocs', '0004_capitalizeverbose'),
-        ('torchbox', '0065_auto_20160906_1449'),
+        ("wagtailcore", "0023_alter_page_revision_on_delete_behaviour"),
+        ("wagtaildocs", "0004_capitalizeverbose"),
+        ("torchbox", "0065_auto_20160906_1449"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ContactLandingPageRelatedLinkButton',
+            name="ContactLandingPageRelatedLinkButton",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('link_external', models.URLField(blank=True, verbose_name='External link')),
-                ('title', models.CharField(help_text='Link title', max_length=255)),
-                ('link_document', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtaildocs.Document')),
-                ('link_page', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.Page')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                (
+                    "link_external",
+                    models.URLField(blank=True, verbose_name="External link"),
+                ),
+                ("title", models.CharField(help_text="Link title", max_length=255)),
+                (
+                    "link_document",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="wagtaildocs.Document",
+                    ),
+                ),
+                (
+                    "link_page",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="wagtailcore.Page",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.AddField(
-            model_name='contact',
-            name='landing_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage'),
+            model_name="contact",
+            name="landing_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="torchbox.TorchboxImage",
+            ),
         ),
         migrations.AddField(
-            model_name='contact',
-            name='landing_page_button_link',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Page'),
+            model_name="contact",
+            name="landing_page_button_link",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailcore.Page",
+            ),
         ),
         migrations.AddField(
-            model_name='contact',
-            name='landing_page_button_title',
+            model_name="contact",
+            name="landing_page_button_title",
             field=models.CharField(blank=True, max_length=255),
         ),
         migrations.AddField(
-            model_name='contact',
-            name='main_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage'),
+            model_name="contact",
+            name="main_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="torchbox.TorchboxImage",
+            ),
         ),
         migrations.AddField(
-            model_name='contact',
-            name='thank_you_follow_up',
-            field=models.CharField(default='', help_text="e.g. We'll be in touch", max_length=255),
+            model_name="contact",
+            name="thank_you_follow_up",
+            field=models.CharField(
+                default="", help_text="e.g. We'll be in touch", max_length=255
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='contact',
-            name='thank_you_text',
-            field=models.CharField(help_text='e.g. Thanks!', max_length=255),
+            model_name="contact",
+            name="thank_you_text",
+            field=models.CharField(help_text="e.g. Thanks!", max_length=255),
         ),
         migrations.AddField(
-            model_name='contactlandingpagerelatedlinkbutton',
-            name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_link_buttons', to='torchbox.Contact'),
+            model_name="contactlandingpagerelatedlinkbutton",
+            name="page",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="related_link_buttons",
+                to="torchbox.Contact",
+            ),
         ),
     ]

@@ -6,10 +6,40 @@
         </a>
     </div>
     <ul class="in-page-nav__container">
-        {% for navitem in item %}
-            <li class="in-page-nav__item">
-                <a class="in-page-nav__link" href="#{{ navitem.href }}">{{ navitem.title }}</a>
-            </li>
-        {% endfor %}
+        {% if item.key_points_section_title %}
+        <li class="in-page-nav__item">
+            <a class="in-page-nav__link" href="#{{ item.key_points_section_title|slugify }}">
+                {{ item.key_points_section_title }}
+            </a>
+        </li>
+        {% endif %}
+        {% if item.testimonials_section_title %}
+        <li class="in-page-nav__item">
+            <a class="in-page-nav__link" href="#{{ item.testimonials_section_title|slugify }}">
+                {{ item.testimonials_section_title }}
+            </a>
+        </li>
+        {% endif %}
+        {% if item.case_studies_section_title %}
+        <li class="in-page-nav__item">
+            <a class="in-page-nav__link" href="#{{ item.case_studies_section_title|slugify }}">
+                {{ item.case_studies_section_title }}
+            </a>
+        </li>
+        {% endif %}
+        {% if item.blogs_section_title %}
+        <li class="in-page-nav__item">
+            <a class="in-page-nav__link" href="#{{ item.blogs_section_title|slugify }}">
+                {{ item.blogs_section_title }}
+            </a>
+        </li>
+        {% endif %}
+        {% if item.process_section_title %}
+        <li class="in-page-nav__item">
+            <a class="in-page-nav__link" href="#{{ item.process_section_title|slugify }}">
+                {{ item.process_section_title }}
+            </a>
+        </li>
+        {% endif %}
     </ul>
 </nav>

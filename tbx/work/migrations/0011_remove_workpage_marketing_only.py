@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0010_rename_streamfield_to_body'),
+        ("work", "0010_rename_streamfield_to_body"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='workpage',
-            name='marketing_only',
-        ),
+        migrations.RemoveField(model_name="workpage", name="marketing_only",),
     ]

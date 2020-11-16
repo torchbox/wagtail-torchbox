@@ -7,14 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0008_personpage_short_intro'),
-        ('taxonomy', '0003_service_description'),
+        ("people", "0008_personpage_short_intro"),
+        ("taxonomy", "0003_service_description"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='service',
-            name='preferred_contact',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='people.Contact'),
+            model_name="service",
+            name="preferred_contact",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="people.Contact",
+            ),
         ),
     ]

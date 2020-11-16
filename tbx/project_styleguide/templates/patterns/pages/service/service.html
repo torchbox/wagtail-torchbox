@@ -5,58 +5,54 @@
 
 {% block content %}
 
-    {% if page.hero %}
-        {% include "patterns/molecules/hero/hero.html" with item=page.hero %}
-    {% endif %}
+    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro %}
 
-    {% if page.in_page_nav %}
-        {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page.in_page_nav title="Design + build products" %}
-    {% endif %}
+    {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page title=page.title %}
 
     {% include "patterns/atoms/animated-character/animated-character.html" %}
 
     <div id="services">
-        {% include "patterns/molecules/help-block/help-block.html" %}
+        {% include "patterns/molecules/help-block/help-block.html" with title=page.key_points_section_title intro=page.heading_for_key_points items=page.key_points.all contact=page.contact %}
     </div>
 
-    {% if page.clients %}
+    {% if page.testimonials_section_title %}
         <div id="clients">
-            {% include "patterns/organisms/client-block/client-block.html" with clients=page.clients quotes=page.quotes %}
+            {% include "patterns/organisms/client-block/client-block.html" with title=page.testimonials_section_title clients=page.client_logos.all quotes=page.testimonials.all %}
         </div>
     {% endif %}
 
-    {% if page.casestudies %}
+    {% if page.case_studies_section_title %}
         <div class="casestudies" id="work">
             <div class="casestudies__content">
                 <div class="casestudies__title">
-                    {% include "patterns/atoms/section-title/section-title.html" with title="Work" %}
+                    {% include "patterns/atoms/section-title/section-title.html" with title=page.case_studies_section_title %}
                 </div>
                 <div class="casestudies__list">
-                    {% for casestudy in page.casestudies %}
-                        {% include "patterns/molecules/casestudy-item/casestudy-item.html" with item=casestudy %}
+                    {% for casestudy in page.featured_case_studies.all %}
+                        {% include "patterns/molecules/work-item/work-item.html" with item=casestudy.case_study %}
                     {% endfor %}
                 </div>
-                {% include "patterns/atoms/see-more/see-more.html" with item=see_more_casestudies %}
+                {% include "patterns/atoms/see-more/see-more.html" with text="See more case studies" link=work_index_page.url %}
             </div>
         </div>
     {% endif %}
 
-    {% if page.blogs %}
+    {% if page.blogs_section_title %}
         <div class="blog-listing" id="thinking">
             <div class="blog-listing__content">
-                {% include "patterns/atoms/section-title/section-title.html" with title="Thinking" %}
+                {% include "patterns/atoms/section-title/section-title.html" with title=page.case_studies_section_title %}
                 <div class="blog-listing__list blog-listing__list--horizontal">
-                    {% for blog in page.blogs %}
+                    {% for blog in page.featured_blog_posts.all %}
                         {% if forloop.first %}
                             <div class="blog-listing__feature">
-                                {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                                {% include "patterns/molecules/blog-item/blog-item.html" with item=blog.blog_post %}
                             </div>
                         {% else %}
-                            {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                            {% include "patterns/molecules/blog-item/blog-item.html" with item=blog.blog_post %}
                         {% endif %}
                     {% endfor %}
                 </div>
-                {% include "patterns/atoms/see-more/see-more.html" with item=see_more_blogs %}
+                {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" link=blog_index_page.url %}
             </div>
         </div>
     {% endif %}

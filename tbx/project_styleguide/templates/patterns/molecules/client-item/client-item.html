@@ -1,8 +1,0 @@
-{% load wagtailimages_tags %}
-
-{% image item.client_logo with-400 as image %}
-<li class="client-item">
-    <div class="client-item__container">
-        <img class="client-item__image" src="{{ image.url }}" alt="{{ item.title }}">
-    </div>
-</li>

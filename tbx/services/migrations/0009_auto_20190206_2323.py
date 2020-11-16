@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0008_servicepage_is_darktheme'),
+        ("services", "0008_servicepage_is_darktheme"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='servicepage',
-            name='is_darktheme',
+            model_name="servicepage",
+            name="is_darktheme",
             field=models.BooleanField(default=False),
         ),
     ]

@@ -8,13 +8,36 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0123_auto_20190216_1655'),
+        ("torchbox", "0123_auto_20190216_1655"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='mainmenu',
-            name='menu',
-            field=wagtail.core.fields.StreamField([('items', wagtail.core.blocks.StructBlock([('page', wagtail.core.blocks.PageChooserBlock()), ('subitems', wagtail.core.blocks.StreamBlock([('related_listing_page', wagtail.core.blocks.PageChooserBlock())]))]))], blank=True),
+            model_name="mainmenu",
+            name="menu",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "items",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("page", wagtail.core.blocks.PageChooserBlock()),
+                                (
+                                    "subitems",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "related_listing_page",
+                                                wagtail.core.blocks.PageChooserBlock(),
+                                            )
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    )
+                ],
+                blank=True,
+            ),
         ),
     ]

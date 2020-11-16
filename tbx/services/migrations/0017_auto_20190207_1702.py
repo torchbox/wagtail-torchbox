@@ -6,18 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0016_auto_20190207_1630'),
+        ("services", "0016_auto_20190207_1630"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='servicepageprocess',
-            old_name='link_page',
-            new_name='page_link',
+            model_name="servicepageprocess", old_name="link_page", new_name="page_link",
         ),
         migrations.RenameField(
-            model_name='servicepageprocess',
-            old_name='link_label',
-            new_name='page_link_label',
+            model_name="servicepageprocess",
+            old_name="link_label",
+            new_name="page_link_label",
         ),
     ]

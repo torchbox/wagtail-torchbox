@@ -11,97 +11,118 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0095_set_blogpages_show_in_menus_true'),
+        ("torchbox", "0095_set_blogpages_show_in_menus_true"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='WorkPageAuthor',
+            name="WorkPageAuthor",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('author', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='torchbox.PersonPage')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="torchbox.PersonPage",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
-            name='WorkPageTagSelect',
+            name="WorkPageTagSelect",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
-        migrations.RemoveField(
-            model_name='expertisetag',
-            name='content_object',
-        ),
-        migrations.RemoveField(
-            model_name='expertisetag',
-            name='tag',
-        ),
-        migrations.RemoveField(
-            model_name='sectortag',
-            name='content_object',
-        ),
-        migrations.RemoveField(
-            model_name='sectortag',
-            name='tag',
-        ),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='expertises',
-        ),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='sectors',
+        migrations.RemoveField(model_name="expertisetag", name="content_object",),
+        migrations.RemoveField(model_name="expertisetag", name="tag",),
+        migrations.RemoveField(model_name="sectortag", name="content_object",),
+        migrations.RemoveField(model_name="sectortag", name="tag",),
+        migrations.RemoveField(model_name="workpage", name="expertises",),
+        migrations.RemoveField(model_name="workpage", name="sectors",),
+        migrations.AddField(
+            model_name="workpage",
+            name="author_left",
+            field=models.CharField(
+                blank=True, help_text="author who has left Torchbox", max_length=255
+            ),
         ),
         migrations.AddField(
-            model_name='workpage',
-            name='author_left',
-            field=models.CharField(blank=True, help_text='author who has left Torchbox', max_length=255),
+            model_name="workpage",
+            name="body",
+            field=wagtail.core.fields.RichTextField(
+                blank=True, verbose_name="Body (deprecated. Use streamfield instead)"
+            ),
         ),
         migrations.AddField(
-            model_name='workpage',
-            name='body',
-            field=wagtail.core.fields.RichTextField(blank=True, verbose_name='Body (deprecated. Use streamfield instead)'),
+            model_name="workpage",
+            name="intro",
+            field=wagtail.core.fields.RichTextField(
+                blank=True, verbose_name="Intro (deprecated. Use streamfield instead)"
+            ),
         ),
         migrations.AddField(
-            model_name='workpage',
-            name='intro',
-            field=wagtail.core.fields.RichTextField(blank=True, verbose_name='Intro (deprecated. Use streamfield instead)'),
-        ),
-        migrations.AddField(
-            model_name='workpage',
-            name='summary',
-            field=models.CharField(default='', max_length=255),
+            model_name="workpage",
+            name="summary",
+            field=models.CharField(default="", max_length=255),
             preserve_default=False,
         ),
-        migrations.DeleteModel(
-            name='ExpertiseTag',
-        ),
-        migrations.DeleteModel(
-            name='SectorTag',
+        migrations.DeleteModel(name="ExpertiseTag",),
+        migrations.DeleteModel(name="SectorTag",),
+        migrations.AddField(
+            model_name="workpagetagselect",
+            name="page",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="tags",
+                to="torchbox.WorkPage",
+            ),
         ),
         migrations.AddField(
-            model_name='workpagetagselect',
-            name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='tags', to='torchbox.WorkPage'),
+            model_name="workpagetagselect",
+            name="tag",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="work_page_tag_select",
+                to="torchbox.BlogPageTagList",
+            ),
         ),
         migrations.AddField(
-            model_name='workpagetagselect',
-            name='tag',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='work_page_tag_select', to='torchbox.BlogPageTagList'),
-        ),
-        migrations.AddField(
-            model_name='workpageauthor',
-            name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_author', to='torchbox.WorkPage'),
+            model_name="workpageauthor",
+            name="page",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="related_author",
+                to="torchbox.WorkPage",
+            ),
         ),
     ]

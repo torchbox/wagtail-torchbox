@@ -8,17 +8,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0056_workpage_visit_the_site'),
+        ("torchbox", "0056_workpage_visit_the_site"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='blogpage',
-            name='homepage_color',
-        ),
+        migrations.RemoveField(model_name="blogpage", name="homepage_color",),
         migrations.AddField(
-            model_name='blogpage',
-            name='colour',
-            field=models.TextField(blank=True, verbose_name='Listing card colour (orange, blue, white) if left blank will display image'),
+            model_name="blogpage",
+            name="colour",
+            field=models.TextField(
+                blank=True,
+                verbose_name="Listing card colour (orange, blue, white) if left blank will display image",
+            ),
         ),
     ]

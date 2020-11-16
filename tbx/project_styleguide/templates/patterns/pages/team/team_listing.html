@@ -6,21 +6,16 @@
 {% block content %}
 
     {% include "patterns/molecules/title-block/title-block.html" with item=page %}
-    
+
     <div class="team">
         <div class="team__container">
-
-            <div class="team__list">
-                {% for member in page.senior_team %}
-                    {% include "patterns/molecules/team-member/team-member.html" with item=member %}
-                {% endfor %}
-            </div>
 
             <div class="team__list">
                 {% for member in page.team %}
                     {% include "patterns/molecules/team-member/team-member.html" with item=member %}
                 {% endfor %}
             </div>
+
         </div>
     </div>
 

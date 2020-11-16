@@ -7,13 +7,13 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0126_jobindexpage_jobs_xml_feed'),
+        ("torchbox", "0126_jobindexpage_jobs_xml_feed"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='jobindexpage',
-            name='intro',
+            model_name="jobindexpage",
+            name="intro",
             field=wagtail.core.fields.RichTextField(blank=True),
         ),
     ]

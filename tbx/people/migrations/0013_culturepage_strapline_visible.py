@@ -6,14 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0012_auto_20190316_1641'),
+        ("people", "0012_auto_20190316_1641"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='culturepage',
-            name='strapline_visible',
-            field=models.BooleanField(default=False, help_text='Hide strapline visually but leave it readable by screen readers.'),
+            model_name="culturepage",
+            name="strapline_visible",
+            field=models.BooleanField(
+                default=False,
+                help_text="Hide strapline visually but leave it readable by screen readers.",
+            ),
             preserve_default=False,
         ),
     ]

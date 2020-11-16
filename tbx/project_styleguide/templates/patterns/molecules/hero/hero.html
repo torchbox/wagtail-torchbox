@@ -1,8 +1,11 @@
+{% load wagtailcore_tags %}
 <div class="hero">
-    <div class="hero__container"> 
+    <div class="hero__container">
         <div class="hero__content">
-            <h1 class="hero__title">{{ item.title }}</h1>
-            <p class="hero__description">{{ item.desc }}</p>
+            <h1 class="hero__title">{{ title|richtext }}</h1>
+            {% if desc %}
+                <p class="hero__description">{{ desc|richtext }}</p>
+            {% endif %}
         </div>
-    </div>  
-</div>  
+    </div>
+</div>

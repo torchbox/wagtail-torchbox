@@ -19,7 +19,7 @@
         content: '';
         background: linear-gradient(
             to bottom,
-            white 1%,
+            var(--color--white) 1%,
             rgba(255, 255, 255, 0) 100%
         );
         width: 100%;
