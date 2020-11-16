@@ -126,7 +126,7 @@ class BaseServicePage(Page):
                 FieldPanel("blogs_section_title", classname="full"),
                 InlinePanel("featured_blog_posts", label="Featured blog posts"),
             ],
-            heading="Blogs",
+            heading="Thinking",
             classname="collapsible",
         ),
     ]

@@ -183,7 +183,7 @@ class BlogPage(Page):
         self.body_word_count = len(body_words)
 
     @property
-    def related_blogs(self):
+    def related_blog_posts(self):
         services = self.related_services.all()
         return (
             BlogPage.objects.filter(related_services__in=services)
