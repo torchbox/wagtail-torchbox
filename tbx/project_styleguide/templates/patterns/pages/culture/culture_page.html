@@ -4,29 +4,51 @@
 
 {% block content %}
 <div>
-    <!-- sample page https://torchbox.com/culture-and-jobs/ -->
-    <div>page.hero_image: {% image page.hero_image original %}</div>
-    <div>strapline: {{ page.strapline }}</div>
-    <div>strapline_visible: {{ page.strapline_visible }}</div>
+    <h2>page.hero_image</h2>
+    {% if page.hero_image %}
+        {% image page.hero_image original %}
+    {% endif %}
 
-    <div>page.intro: {{ page.intro|richtext }}</div>
+    <h2>page.strapline</h2>
+    <div {% if not page.strapline_visible %} class="u-sr-only" {% endif %}>{{ page.strapline }}</div>
+
+    <h2>page.intro</h2>
+    {% if page.intro %}
+        <div>page.intro: {{ page.intro|richtext }}</div>
+    {% endif %}
+
+    <h2>page.links</h2>
     {% for link in page.links.all %}
-        <div>
-            <div>link.title: {{ link.title}}</div>
-            <div>link.description: {{ link.description}}</div>
-            <div>pageurl link.link: {% pageurl link.link %}</div>
-        </div>
+    <ul>
+        <li>link.title: {{ link.title}}</li>
+        <li>link.description: {{ link.description}}</li>
+        <li>link.link: {% pageurl link.link %}</li>
+    </ul>
     {% endfor %}
 
-    <div>page.body: {% include_block page.body %}</div>
+    <h2>page.body</h2>
+    {% if page.body %}
+        {% include_block page.body %}
+    {% endif %}
+
+    <h2>page.links</h2>
     {% for link in page.links.all %}
-        <div>
-            <div>link.title: {{ link.title}}</div>
-            <div>link.description: {{ link.description}}</div>
-            <div>pageurl link.link: {% pageurl link.link %}</div>
-        </div>
+    <ul>
+        <li>link.title: {{ link.title}}</li>
+        <li>link.description: {{ link.description}}</li>
+        <li>link.link: {% pageurl link.link %}</li>
+    </ul>
     {% endfor %}
 
-    <div>{{ page.contact }}</div>
+    <h2>page.contact</h2>
+    <ul>
+    {% if page.contact %}
+        <li>page.contact.name: {{ page.contact.name }}</li>
+        <li>page.contact.role: {{ page.contact.role }}</li>
+        <li>page.contact.email_address: {{ page.contact.email_address }}</li>
+        <li>page.contact.phone_number: {{ page.contact.phone_number }}</li>
+        <li>page.contact.image: {% image page.contact.image original %}</li>
+    {% endif %}
+    </ul>
 </div>
 {% endblock %}

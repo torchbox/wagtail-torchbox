@@ -1,8 +1,10 @@
 context:
   page:
     title: Culture Page
-    get_verbose_name: culture
+    get_verbose_name: culture-page
     strapline_visible: true
+    hero_image: true
+    body: true
     strapline: Strapline
     intro: >-
       <p><strong>On Friday 28th June 2019 - on #EODay - Torchbox became the
@@ -19,11 +21,15 @@ context:
         - title: Join the team
           description: Come and help us make wicked digital stuff!
     contact:
-      - email_address: willh@torchbox.com
-      - phone_number: 447545468483
+      name: John Doe
+      role: Delivery Manager
+      email_address: john.doe@torchbox.com
+      phone_number: 3213123123
 tags:
   image:
     page.hero_image original:
+      raw: '<img src="http://via.placeholder.com/1000x300" alt="Some alt">'
+    page.contact.image original:
       raw: '<img src="http://via.placeholder.com/1000x300" alt="Some alt">'
   pageurl:
     link.link:
