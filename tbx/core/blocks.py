@@ -102,10 +102,14 @@ class StoryBlock(StreamBlock):
         label="Wide image",
         template="patterns/molecules/streamfield/blocks/wide_image_block.html",
     )
-    bustout = BustoutBlock(template="patterns/molecules/streamfield/blocks/bustout_block.html")
-    pullquote = PullQuoteBlock(template="patterns/molecules/streamfield/blocks/pullquote_block.html")
+    bustout = BustoutBlock(
+        template="patterns/molecules/streamfield/blocks/bustout_block.html"
+    )
+    pullquote = PullQuoteBlock(
+        template="patterns/molecules/streamfield/blocks/pullquote_block.html"
+    )
     raw_html = RawHTMLBlock(
-        label='Raw HTML',
+        label="Raw HTML",
         icon="code",
         template="patterns/molecules/streamfield/blocks/raw_html_block.html",
     )

@@ -249,7 +249,7 @@ class HomePage(Page):
 
 
 class StandardPage(Page):
-    template = 'patterns/pages/standard/standard_page.html'
+    template = "patterns/pages/standard/standard_page.html"
 
     body = StreamField(StoryBlock())
 
@@ -527,7 +527,9 @@ class GoogleAdGrantsPage(Page):
                         ]
                     )
                     send_mail(
-                        subject, content, [self.to_address],
+                        subject,
+                        content,
+                        [self.to_address],
                     )
                 return render(
                     request,
@@ -576,7 +578,6 @@ class GoogleAdGrantsPage(Page):
 
 @register_setting
 class GlobalSettings(BaseSetting):
-
     contact_telephone = models.CharField(max_length=255, help_text="Telephone")
     contact_email = models.EmailField(max_length=255, help_text="Email address")
     contact_twitter = models.CharField(max_length=255, help_text="Twitter")
