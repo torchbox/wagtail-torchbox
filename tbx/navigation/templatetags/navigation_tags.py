@@ -5,7 +5,7 @@ register = template.Library()
 
 # Primary nav snippets
 @register.inclusion_tag(
-    "patterns/molecules/navigation/primarynav.html", takes_context=True
+    "patterns/molecules/navigation/primary-nav.html", takes_context=True
 )
 def primarynav(context):
     request = context["request"]
@@ -13,13 +13,14 @@ def primarynav(context):
         "primarynav": context["settings"]["navigation"][
             "NavigationSettings"
         ].primary_navigation,
+        "job_count": 0,
         "request": request,
     }
 
 
 # Secondary nav snippets
 @register.inclusion_tag(
-    "patterns/molecules/navigation/secondarynav.html", takes_context=True
+    "patterns/molecules/navigation/secondary-nav.html", takes_context=True
 )
 def secondarynav(context):
     request = context["request"]
@@ -33,7 +34,7 @@ def secondarynav(context):
 
 # Footer nav snippets
 @register.inclusion_tag(
-    "patterns/molecules/navigation/footernav.html", takes_context=True
+    "patterns/molecules/navigation/footer-nav.html", takes_context=True
 )
 def footernav(context):
     request = context["request"]
