@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
         ('wagtailforms', '0004_add_verbose_name_plural'),
         ('wagtailcore', '0052_pagelogentry'),
         ('services', '0029_subservice_listingsettings'),
-        ('torchbox', '0133_remove_aboutpage'),
+        ('torchbox', '0133_remove_aboutpage_and_related_models'),
     ]
 
     operations = [

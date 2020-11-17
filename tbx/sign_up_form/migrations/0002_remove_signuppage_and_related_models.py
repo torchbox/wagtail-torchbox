@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
         ('wagtailredirects', '0006_redirect_increase_max_length'),
         ('people', '0017_update_streamblock_templates'),
         ('wagtailcore', '0052_pagelogentry'),
-        ('torchbox', '0134_remove_googleadgrantspage'),
+        ('torchbox', '0134_remove_googleadgrantspage_and_related_models'),
         ('sign_up_form', '0001_initial'),
     ]
 
