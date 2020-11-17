@@ -6,16 +6,14 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0029_subservice_listingsettings'),
+        ("services", "0029_subservice_listingsettings"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='subservicepage',
-            name='show_automatic_blog_listing',
+            model_name="subservicepage", name="show_automatic_blog_listing",
         ),
         migrations.RemoveField(
-            model_name='subservicepage',
-            name='show_automatic_case_studies_listing',
+            model_name="subservicepage", name="show_automatic_case_studies_listing",
         ),
     ]
