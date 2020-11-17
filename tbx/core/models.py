@@ -1,6 +1,4 @@
-from django import forms
 from django.db import models
-from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (
@@ -10,7 +8,6 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
-from wagtail.admin.mail import send_mail
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.blocks import PageChooserBlock, StreamBlock, StructBlock
 from wagtail.core.fields import RichTextField, StreamField
@@ -18,7 +15,6 @@ from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
-from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from .blocks import StoryBlock
