@@ -14,17 +14,6 @@ from wagtail.documents.models import document_served
 
 from tbx.sign_up_form.models import SignUpFormPageResponse
 
-from .models import GoogleAdGrantApplication
-
-
-class GoogleAdGrantApplicationModelAdmin(ModelAdmin):
-    model = GoogleAdGrantApplication
-    menu_label = "Ad Grant Applications"
-    menu_icon = "date"
-    menu_order = 600
-    add_to_settings_menu = False
-    list_display = ("date", "name", "email")
-
 
 class SignUpFormPageResponseModelAdmin(ModelAdmin):
     model = SignUpFormPageResponse
@@ -39,7 +28,7 @@ class SubmissionsModelAdminGroup(ModelAdminGroup):
     menu_label = "Form Submissions"
     menu_icon = "folder-open-inverse"  # change as required
     menu_order = 600
-    items = (SignUpFormPageResponseModelAdmin, GoogleAdGrantApplicationModelAdmin)
+    items = (SignUpFormPageResponseModelAdmin,)
 
 
 modeladmin_register(SubmissionsModelAdminGroup)
