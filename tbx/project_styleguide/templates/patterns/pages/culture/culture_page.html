@@ -4,51 +4,44 @@
 
 {% block content %}
 <div>
-    <h2>page.hero_image</h2>
     {% if page.hero_image %}
         {% image page.hero_image original %}
     {% endif %}
 
-    <h2>page.strapline</h2>
     <div {% if not page.strapline_visible %} class="u-sr-only" {% endif %}>{{ page.strapline }}</div>
 
-    <h2>page.intro</h2>
     {% if page.intro %}
-        <div>page.intro: {{ page.intro|richtext }}</div>
+        <div>{{ page.intro|richtext }}</div>
     {% endif %}
 
-    <h2>page.links</h2>
     {% for link in page.links.all %}
-    <ul>
-        <li>link.title: {{ link.title}}</li>
-        <li>link.description: {{ link.description}}</li>
-        <li>link.link: {% pageurl link.link %}</li>
-    </ul>
+        <ul>
+            <li>{{ link.title}}</li>
+            <li>{{ link.description}}</li>
+            <li>{% pageurl link.link %}</li>
+        </ul>
     {% endfor %}
 
-    <h2>page.body</h2>
     {% if page.body %}
         {% include_block page.body %}
     {% endif %}
 
-    <h2>page.links</h2>
     {% for link in page.links.all %}
-    <ul>
-        <li>link.title: {{ link.title}}</li>
-        <li>link.description: {{ link.description}}</li>
-        <li>link.link: {% pageurl link.link %}</li>
-    </ul>
+        <ul>
+            <li>{{ link.title}}</li>
+            <li>{{ link.description}}</li>
+            <li>{% pageurl link.link %}</li>
+        </ul>
     {% endfor %}
 
-    <h2>page.contact</h2>
     <ul>
-    {% if page.contact %}
-        <li>page.contact.name: {{ page.contact.name }}</li>
-        <li>page.contact.role: {{ page.contact.role }}</li>
-        <li>page.contact.email_address: {{ page.contact.email_address }}</li>
-        <li>page.contact.phone_number: {{ page.contact.phone_number }}</li>
-        <li>page.contact.image: {% image page.contact.image original %}</li>
-    {% endif %}
+        {% if page.contact %}
+            <li>{{ page.contact.name }}</li>
+            <li>{{ page.contact.role }}</li>
+            <li>{{ page.contact.email_address }}</li>
+            <li>{{ page.contact.phone_number }}</li>
+            <li>{% image page.contact.image original %}</li>
+        {% endif %}
     </ul>
 </div>
 {% endblock %}
