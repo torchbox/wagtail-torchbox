@@ -258,65 +258,6 @@ class StandardPage(Page):
     ]
 
 
-# About page
-class AboutPageRelatedLinkButton(Orderable, RelatedLink):
-    page = ParentalKey("torchbox.AboutPage", related_name="related_link_buttons")
-
-
-class AboutPageOffice(Orderable):
-    page = ParentalKey("torchbox.AboutPage", related_name="offices")
-    title = models.TextField()
-    svg = models.TextField(null=True)
-    description = models.TextField()
-
-    panels = [FieldPanel("title"), FieldPanel("description"), FieldPanel("svg")]
-
-
-class AboutPageContentBlock(Orderable):
-    page = ParentalKey("torchbox.AboutPage", related_name="content_blocks")
-    year = models.IntegerField()
-    title = models.TextField()
-    description = models.TextField()
-    image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
-    panels = [
-        FieldPanel("year"),
-        FieldPanel("title"),
-        FieldPanel("description"),
-        ImageChooserPanel("image"),
-    ]
-
-
-class AboutPage(Page):
-    main_image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-    heading = models.TextField(blank=True)
-    intro = models.TextField(blank=True)
-    involvement_title = models.TextField(blank=True)
-
-    content_panels = [
-        FieldPanel("title", classname="full title"),
-        ImageChooserPanel("main_image"),
-        FieldPanel("heading", classname="full"),
-        FieldPanel("intro", classname="full"),
-        InlinePanel("related_link_buttons", label="Header buttons"),
-        InlinePanel("content_blocks", label="Content blocks"),
-        InlinePanel("offices", label="Offices"),
-        FieldPanel("involvement_title"),
-    ]
-
-
 @register_snippet
 class ParticleSnippet(models.Model):
     """
