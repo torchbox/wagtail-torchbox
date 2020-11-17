@@ -37,6 +37,8 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 class BlogIndexPage(Page):
     template = "patterns/pages/blog/blog_listing.html"
 
+    subpage_types = ["BlogPage"]
+
     intro = models.TextField(blank=True)
 
     search_fields = Page.search_fields + [
@@ -151,6 +153,8 @@ class BlogPageAuthor(Orderable):
 
 class BlogPage(Page):
     template = "patterns/pages/blog/blog_detail.html"
+
+    parent_page_types = ["BlogIndexPage"]
 
     date = models.DateField("Post date")
     body = StreamField(StoryBlock())
