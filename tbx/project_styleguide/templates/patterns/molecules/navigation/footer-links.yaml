@@ -1,0 +1,18 @@
+context:
+  footerlinks:
+    - value:
+        title: Blog
+    - value:
+        title: Work
+    - value:
+        title: Team
+    - value:
+        title: Privacy
+    - value:
+        title: Privacy & Cookies
+      title: Cookies
+
+tags:
+  pageurl:
+    link.page:
+      raw: '#'
