@@ -59,7 +59,7 @@ def sidebar(context):
 
 # Footer nav snippets
 @register.inclusion_tag(
-    "patterns/molecules/navigation/footerlinks.html", takes_context=True
+    "patterns/molecules/navigation/footer-links.html", takes_context=True
 )
 def footerlinks(context):
     request = context["request"]
