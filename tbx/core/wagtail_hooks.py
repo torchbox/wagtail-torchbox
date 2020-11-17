@@ -7,6 +7,7 @@ from wagtail.core import hooks
 from wagtail.documents import get_document_model
 from wagtail.documents.models import document_served
 
+
 @hooks.register("before_serve_document", order=100)
 def serve_document_from_s3(document, request):
     # Skip this hook if not using django-storages boto3 backend.

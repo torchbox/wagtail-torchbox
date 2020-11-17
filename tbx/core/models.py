@@ -368,6 +368,7 @@ class JobIndexPage(Page):
         FieldPanel("jobs_xml_feed"),
     ]
 
+
 @register_setting
 class GlobalSettings(BaseSetting):
     contact_telephone = models.CharField(max_length=255, help_text="Telephone")
