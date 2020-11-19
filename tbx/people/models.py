@@ -89,6 +89,8 @@ class CulturePageLink(Orderable):
 
 
 class CulturePage(Page):
+    template = "patterns/pages/culture/culture_page.html"
+
     strapline = models.TextField()
     strapline_visible = models.BooleanField(
         help_text="Hide strapline visually but leave it readable by screen " "readers."
