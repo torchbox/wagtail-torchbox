@@ -28,6 +28,8 @@ from tbx.core.blocks import StoryBlock
 class PersonPage(Page):
     template = "patterns/pages/team/team_detail.html"
 
+    parent_page_types = ["PersonIndexPage"]
+
     role = models.CharField(max_length=255, blank=True)
     is_senior = models.BooleanField(default=False)
     intro = RichTextField(blank=True)
@@ -63,6 +65,8 @@ class PersonPage(Page):
 class PersonIndexPage(Page):
     strapline = models.CharField(max_length=255)
     template = "patterns/pages/team/team_listing.html"
+
+    subpage_types = ["PersonPage"]
 
     @cached_property
     def team(self):

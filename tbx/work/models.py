@@ -65,6 +65,8 @@ class WorkPageAuthor(Orderable):
 class WorkPage(Page):
     template = "patterns/pages/work/work_detail.html"
 
+    parent_page_types = ["WorkIndexPage"]
+
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
@@ -153,6 +155,8 @@ class WorkPage(Page):
 @method_decorator(get_default_cache_control_decorator(), name="serve")
 class WorkIndexPage(Page):
     template = "patterns/pages/work/work_listing.html"
+
+    subpage_types = ["WorkPage"]
 
     intro = RichTextField(blank=True)
 
