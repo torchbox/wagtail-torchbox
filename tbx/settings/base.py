@@ -480,3 +480,31 @@ if 'PREVIEW_URL' in env:
 
 # Overrides the URL that wagtail_review sends in emails to reviewers
 # WAGTAILREVIEW_REVIEW_URL_BUILDER = 'tbx.settings.reviews.review_url_builder'
+
+
+# Temporary workaoround for YouTube requiring https. Fixed in Wagtail 2.11.x
+WAGTAILEMBEDS_FINDERS = [
+    {
+        'class': 'wagtail.embeds.finders.oembed',
+        'providers': [
+            {
+                "endpoint": "https://www.youtube.com/oembed",
+                "urls": [
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/watch.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/v/.+$',
+                    r'^https?://youtu\.be/.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/user/.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/[^#?/]+#[^#?/]+/.+$',
+                    r'^https?://m\.youtube\.com/index.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/profile.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/view_play_list.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/playlist.+$',
+                ],
+            }
+        ],
+        'options': {'scheme': 'https'}
+    },
+    {
+        'class': 'wagtail.embeds.finders.oembed',
+    }
+]
