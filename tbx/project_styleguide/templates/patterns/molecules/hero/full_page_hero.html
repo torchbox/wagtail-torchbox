@@ -1,2 +1,3 @@
-<div class="hero__full_page_hero" style="background-image:url({{ background_url }})">
+<div class="hero__full_page_hero"
+     style="{% if background_url %} background-image:url({{ background_url }});{%elif background_color %} background:{{background_color}}; {% endif %}">
 </div>
