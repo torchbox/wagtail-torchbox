@@ -79,16 +79,14 @@
         }
     }
 
-    &__full_page_hero{
+    &__full-screen{
         height: 100vh;
         position: absolute;
         top:0;
         width: 100%;
-        background-size: cover !important;
-        background-repeat: no-repeat !important;
+        background-size: cover;
+        background-repeat: no-repeat;
         background-position: top;
         padding-bottom: 0;
-
-
     }
 }
