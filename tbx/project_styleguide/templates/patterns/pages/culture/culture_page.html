@@ -9,12 +9,8 @@
 {% image page.hero_image original as hero_image %}
 {% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url %}
 
-<div style="padding-top: 75vh;">
+<div class="culture__container">
 
-    {% if page.hero_image %}
-    {% image page.hero_image original %}
-    {% endif %}
-    {{hero_image.url}}
     <div {% if not page.strapline_visible %} class="u-sr-only" {% endif %}>{{ page.strapline }}</div>
 
     {% if page.intro %}
