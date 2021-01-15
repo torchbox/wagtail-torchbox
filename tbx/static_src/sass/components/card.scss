@@ -1,0 +1,31 @@
+.card {
+    background-color: var(--color--light-grey);
+    width: 100%;
+
+    &__title {
+        font-size: 36px;
+        font-weight: bold;
+        margin: 0;
+        color: var(--color--indigo);
+    }
+
+    &__text {
+        font-size: 20px;
+        line-height: 30px;
+        display: block;
+    }
+
+    &__body {
+        padding: 50px;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+    }
+}
+
+.card:hover {
+    background-color: var(--color--lagoon);
+}
