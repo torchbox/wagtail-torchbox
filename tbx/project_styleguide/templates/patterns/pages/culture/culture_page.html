@@ -11,10 +11,10 @@
 
 <div class="culture__container">
 
-    <div {% if not page.strapline_visible %} class="u-sr-only" {% endif %}>{{ page.strapline }}</div>
 
     {% if page.intro %}
-    <div>{{ page.intro|richtext }}</div>
+    <div class="culture__rich-text">
+        {{ page.intro|richtext }}</div>
     {% endif %}
 
     {% for link in page.links.all %}

@@ -1,5 +1,33 @@
 .culture {
+    $root: &;
+
     &__container {
-        padding-top: 80vh;
+        padding-top: 75vh;
+        margin: 0 10%;
+
+        @include media-query(medium) {
+            margin: 0 20%;
+            padding-top: 80vh;
+        }
+    }
+
+    &__rich-text {
+        p {
+            color: var(--color--dark-indigo);
+            font-size: xx-large;
+            b strong {
+                font-weight: $weight--heavy;
+            }
+
+            a {
+                color: var(--color--dark-indigo);
+                border-bottom-color: var(--color--lagoon);
+            }
+
+            a:hover {
+                color: var(--color--lagoon);
+            }
+        }
+
     }
 }
