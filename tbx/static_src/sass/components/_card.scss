@@ -1,12 +1,12 @@
 .card {
     background-color: var(--color--light-grey);
     width: 100%;
-    
+
     &__title {
         font-size: 36px;
         font-weight: bold;
         margin: 0;
-        color: var(--color-light-blue)
+        color: var(--color-light-blue);
     }
 
     &__text {
