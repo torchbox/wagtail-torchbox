@@ -1,6 +1,6 @@
 {% extends "patterns/base_page.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block theme_class %}theme--primary{% endblock %}
 
@@ -10,32 +10,16 @@
 {% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url %}
 
 <div class="culture__container">
-
-
     {% if page.intro %}
     <div class="culture__rich-text">
         {{ page.intro|richtext }}</div>
     {% endif %}
 
-    {% for link in page.links.all %}
-    <ul>
-        <li>{{ link.title}}</li>
-        <li>{{ link.description}}</li>
-        <li>{% pageurl link.link %}</li>
-    </ul>
-    {% endfor %}
+    {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
 
     {% if page.body %}
     {% include_block page.body %}
     {% endif %}
-
-    {% for link in page.links.all %}
-    <ul>
-        <li>{{ link.title}}</li>
-        <li>{{ link.description}}</li>
-        <li>{% pageurl link.link %}</li>
-    </ul>
-    {% endfor %}
 
     <ul>
         {% if page.contact %}
