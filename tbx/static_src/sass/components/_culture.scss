@@ -15,7 +15,12 @@
         p {
             color: var(--color--dark-indigo);
             font-size: xx-large;
-            b strong {
+
+            b {
+                font-weight: $weight--heavy;
+            }
+
+            strong {
                 font-weight: $weight--heavy;
             }
 
