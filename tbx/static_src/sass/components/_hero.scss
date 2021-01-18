@@ -88,5 +88,12 @@
         background-repeat: no-repeat;
         background-position: top;
         padding-bottom: 0;
+
+        &--filter{
+            height: 25vh;
+            background: linear-gradient(#2f128d, white);
+            opacity: 0.6;
+            mix-blend-mode: multiply;
+        }
     }
 }
