@@ -12,25 +12,19 @@
 <div class="culture__container">
     {% if page.intro %}
     <div class="culture__rich-text">
-        {{ page.intro|richtext }}</div>
+        {{ page.intro|richtext }}
+    </div>
     {% endif %}
 
     {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
+</div>
 
-    {% if page.body %}
+{% if page.body %}
     {% include_block page.body %}
-    {% endif %}
+{% endif %}
 
-    <ul>
-        {% if page.contact %}
-        <li>{{ page.contact.name }}</li>
-        <li>{{ page.contact.role }}</li>
-        <li>{{ page.contact.email_address }}</li>
-        <li>{{ page.contact.phone_number }}</li>
-        <li>{% image page.contact.image original %}</li>
-        {% endif %}
-    </ul>
-
+<div class="culture__container culture__container--p2">
+    {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
 </div>
 
 {% endblock %}

@@ -7,7 +7,11 @@
 
         @include media-query(medium) {
             margin: 0 20%;
-            padding-top: 90vh;
+            padding-top: 85vh;
+        }
+
+        &--p2{
+            padding: 2% 0;
         }
     }
 
