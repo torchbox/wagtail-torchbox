@@ -15,14 +15,14 @@
             {% pageurl item as index %}
             {% if request.GET.filter == '' %}
                 {% include "patterns/atoms/tag/tag.html" with tag_link_base=index is_all_filter=True item=None is_active=True %}
-            {%else%}
+            {% else %}
                 {% include "patterns/atoms/tag/tag.html" with tag_link_base=index is_all_filter=True item=None %}
             {% endif %}
 
             {% for tag in tags %}
                 {% if request.GET.filter == tag.slug%}
                     {% include "patterns/atoms/tag/tag.html" with item=tag is_active=True %}
-                {%else%}
+                {% else %}
                     {% include "patterns/atoms/tag/tag.html" with item=tag %}
                 {% endif %}
             {% endfor %}
