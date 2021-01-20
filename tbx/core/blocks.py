@@ -43,7 +43,8 @@ class PhotoGridBlock(StructBlock):
 
 
 class PullQuoteBlock(StructBlock):
-    quote = CharBlock(classname="quote title")
+    quote = CharBlock(classname="quote title", required=True)
+    reference = CharBlock(required=True)
     attribution = CharBlock()
 
     class Meta:
