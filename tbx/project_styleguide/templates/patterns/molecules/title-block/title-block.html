@@ -20,7 +20,7 @@
             {% endif %}
 
             {% for tag in tags %}
-                {% if request.GET.filter == tag.slug%}
+                {% if request.GET.filter == tag.slug %}
                     {% include "patterns/atoms/tag/tag.html" with item=tag is_active=True %}
                 {% else %}
                     {% include "patterns/atoms/tag/tag.html" with item=tag %}
