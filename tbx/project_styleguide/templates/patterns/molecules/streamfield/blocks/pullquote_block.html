@@ -7,7 +7,7 @@
         <blockquote class="streamfield__quote-container__blockquote">
             <p class="streamfield__quote-container__blockquote__quote">{{ value.quote }}</p>
             <cite class="streamfield__quote-container__blockquote__cite">
-                <span class="streamfield__quote-container__blockquote__reference">{{ value.reference }}</span>
+                <span class="streamfield__quote-container__blockquote__reference">{{ value.name }}{% if value.position %}, {{value.position}} {% endif %}</span>
             </cite>
         </blockquote>
     </div>
