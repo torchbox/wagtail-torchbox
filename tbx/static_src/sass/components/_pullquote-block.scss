@@ -5,21 +5,21 @@
         display: grid;
         grid-template-columns: auto 1fr;
         grid-template-rows: auto auto;
+    }
 
-        &__icon {
-            fill: var(--icon-color, var(--color--accent));
-            width: 20vw;
-            max-width: 100px;
-            grid-column: 1;
-            grid-row: 1;
-            margin-right: 50px;
+    &__icon {
+        fill: var(--icon-color, var(--color--accent));
+        width: 20vw;
+        max-width: 100px;
+        grid-column: 1;
+        grid-row: 1;
+        margin-right: 50px;
 
-            @include media-query(medium) {
-                max-width: 120px;
-                width: $variable-gutter--small;
-                margin-top: -50px;
-                margin-left: 4.33vw;
-            }
+        @include media-query(medium) {
+            max-width: 120px;
+            width: $variable-gutter--small;
+            margin-top: -50px;
+            margin-left: 4.33vw;
         }
     }
 
@@ -36,54 +36,54 @@
         }
     }
 
-    &__blockquote {
+    &__blockquote-container {
         display: flex;
         flex-direction: column;
         grid-column: 1;
         grid-row: 1;
         margin-left: 0;
+    }
 
-        &__quote {
-            font-style: normal;
-            margin: 0 0 $gutter;
-            padding: 0 0 0;
-            color: var(--color--primary);
-            font-size: 22px;
-            line-height: 38px;
+    &__cite {
+        color: var(--color--grey);
+        font-size: 12px;
+        margin: 0 0 15px;
+        font-style: normal;
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
 
-            @include media-query(large) {
-                font-size: 26px;
-                line-height: 46px;
-                padding-right: $variable-gutter--small;
-            }
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+    }
 
-            &::after {
-                content: '”';
-                font-style: italic;
-            }
+    &__reference {
+        font-weight: bold;
+        padding-right: 8px;
+        text-transform: uppercase;
+        color: var(--color--accent-dark);
+        margin-bottom: 5px;
+        letter-spacing: 0.15em;
+    }
+
+    &__quote {
+        font-style: normal;
+        margin: 0 0 $gutter;
+        padding: 0 0 0;
+        color: var(--color--primary);
+        font-size: 22px;
+        line-height: 38px;
+
+        @include media-query(large) {
+            font-size: 26px;
+            line-height: 46px;
+            padding-right: $variable-gutter--small;
         }
 
-        &__cite {
-            color: var(--color--grey);
-            font-size: 12px;
-            margin: 0 0 15px;
-            font-style: normal;
-            line-height: 1;
-            display: flex;
-            flex-direction: column;
-
-            @include media-query(medium) {
-                flex-direction: row;
-            }
-        }
-
-        &__reference {
-            font-weight: bold;
-            padding-right: 8px;
-            text-transform: uppercase;
-            color: var(--color--accent-dark);
-            margin-bottom: 5px;
-            letter-spacing: 0.15em;
+        &::after {
+            content: '”';
+            font-style: italic;
         }
     }
 }
