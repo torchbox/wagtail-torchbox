@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0017_update_streamblock_templates'),
+        ("people", "0017_update_streamblock_templates"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contact',
-            name='default_contact',
+            model_name="contact",
+            name="default_contact",
             field=models.BooleanField(blank=True, default=False, null=True),
         ),
     ]

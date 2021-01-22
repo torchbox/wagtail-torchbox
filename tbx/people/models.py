@@ -202,9 +202,7 @@ class Contact(index.Indexed, models.Model):
     )
     email_address = models.EmailField()
     phone_number = PhoneNumberField()
-    default_contact = models.BooleanField(
-        default=False, blank=True, null=True
-    )
+    default_contact = models.BooleanField(default=False, blank=True, null=True)
     base_form_class = ContactForm
 
     def __str__(self):
