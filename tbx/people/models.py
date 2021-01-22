@@ -23,6 +23,7 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from tbx.core.blocks import StoryBlock
+from tbx.people.validators import DefaultContactValidator
 
 
 class PersonPage(Page):
@@ -201,7 +202,7 @@ class Contact(index.Indexed, models.Model):
     email_address = models.EmailField()
     phone_number = PhoneNumberField()
     default_contact = models.BooleanField(
-        default=False, blank=True, null=True, unique=True
+        default=False, blank=True, null=True, validators=[DefaultContactValidator]
     )
 
     def __str__(self):
