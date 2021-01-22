@@ -22,6 +22,7 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from tbx.blog.models import BlogPage
 from tbx.core.blocks import StoryBlock
 
 
@@ -59,6 +60,11 @@ class PersonPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
+
+    @cached_property
+    def blogs(self):
+        author_snippet = Author.objects.get(person_page__pk=self.pk)
+        return BlogPage.objects.filter(authors__author=author_snippet).order_by('-date')
 
 
 # Person index
