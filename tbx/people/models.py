@@ -63,6 +63,7 @@ class PersonPage(Page):
 
     @cached_property
     def blogs(self):
+        # return 3 blogs writen by this member
         author_snippet = Author.objects.get(person_page__pk=self.pk)
         return BlogPage.objects.filter(authors__author=author_snippet).order_by('-date')
 
