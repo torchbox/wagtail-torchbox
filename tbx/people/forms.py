@@ -1,5 +1,6 @@
-from tbx.people import models
 from wagtail.admin.forms import WagtailAdminPageForm
+
+from tbx.people import models
 
 
 class ContactForm(WagtailAdminPageForm):
