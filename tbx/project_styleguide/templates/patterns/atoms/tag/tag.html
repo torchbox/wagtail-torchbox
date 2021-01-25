@@ -2,5 +2,5 @@
     class="tag{% if small %} tag--small{% endif %}{% if is_active %} tag--active{% endif %}"
     href="{{ tag_link_base }}?filter={{ item.slug }}"
     {% if active %}aria-current="page" {% endif %}
->{% if is_all_filter %}All{% else %}{{ item.name }}{% endif %}
+>{% if has_all_filter %}All{% else %}{{ item.name }}{% endif %}
 </a>

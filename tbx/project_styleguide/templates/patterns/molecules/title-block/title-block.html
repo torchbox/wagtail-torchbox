@@ -13,10 +13,10 @@
         {% if tags %}
         <div class="title-block__tags">
             {% pageurl item as index %}
-            {% if request.GET.filter == '' %}
-                {% include "patterns/atoms/tag/tag.html" with tag_link_base=index is_all_filter=True item=None is_active=True %}
+            {% if request.GET.filter == '' or not request.GET.filter %}
+                {% include "patterns/atoms/tag/tag.html" with tag_link_base=index has_all_filter=True item=None is_active=True %}
             {% else %}
-                {% include "patterns/atoms/tag/tag.html" with tag_link_base=index is_all_filter=True item=None %}
+                {% include "patterns/atoms/tag/tag.html" with tag_link_base=index has_all_filter=True item=None %}
             {% endif %}
 
             {% for tag in tags %}
