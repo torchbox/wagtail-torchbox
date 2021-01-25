@@ -4,11 +4,7 @@
         {% if item.client %}
         <p class="title-block__client">{{ item.client }}</p>
         {% endif %}
-        {% if item.strapline %}
-        <h1 class="title-block__heading">{{ item.strapline|richtext }}</h1>
-        {% else %}
-        <h1 class="title-block__heading">{{ item.title }}</h1>
-        {% endif %}
+        <h1 class="title-block__heading">{% if item.strapline %}{{ item.strapline|richtext }}{% else %}{{ item.title }}{% endif %}</h1>
         {% if meta %}
         <div class="title-block__meta">
             {{ meta }}
