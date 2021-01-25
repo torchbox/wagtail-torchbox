@@ -1,4 +1,17 @@
-{{section_title}}
-{% for process in processes %}
-    {% include "patterns/molecules/process-item/process-item.html" with item=process %}
-{% endfor %}
+<div class="process__block">
+    {% include "patterns/atoms/section-title/section-title.html" with title=section_title %}
+    <div class="process__container">
+
+        {% if has_process_block_image %}
+            <div class="process__image">
+                {% include "patterns/atoms/process-block-image/process-block-image.html"%}
+            </div>
+        {% endif %}
+
+        <div class="process__list">
+            {% for process in processes %}
+            {% include "patterns/molecules/process-item/process-item.html" with item=process %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

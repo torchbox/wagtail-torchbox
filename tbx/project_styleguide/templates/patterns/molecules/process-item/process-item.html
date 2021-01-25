@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
-{{ item.title }}
-{{ item.description }}
-{% pageurl item.page %}
-{{item.page_link_label}}
+<div class="process__item">
+    <h2 class="process__item-title">{{ item.title }}</h2>
+    <div class="process__item-desc">{{ item.description | richtext }}</div>
+</div>

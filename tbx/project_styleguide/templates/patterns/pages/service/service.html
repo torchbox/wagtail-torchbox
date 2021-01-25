@@ -14,7 +14,7 @@
     </div>
 
     <div id="process">
-        {% include "patterns/organisms/process-block/process-block.html" with processes=page.processes.all section_title=page.process_section_title %}
+        {% include "patterns/organisms/process-block/process-block.html" with processes=page.processes.all section_title=page.process_section_title has_process_block_image=page.use_process_block_image %}
     </div>
 
     {% if page.testimonials_section_title %}
