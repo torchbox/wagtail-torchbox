@@ -1,9 +1,14 @@
+{% load wagtailcore_tags %}
 <div class="title-block">
     <div class="title-block__container">
         {% if item.client %}
         <p class="title-block__client">{{ item.client }}</p>
         {% endif %}
+        {% if item.strapline %}
+        <h1 class="title-block__heading">{{ item.strapline|richtext }}</h1>
+        {% else %}
         <h1 class="title-block__heading">{{ item.title }}</h1>
+        {% endif %}
         {% if meta %}
         <div class="title-block__meta">
             {{ meta }}
@@ -16,5 +21,5 @@
             {% endfor %}
         </div>
         {% endif %}
-    </div>  
-</div>  
+    </div>
+</div>
