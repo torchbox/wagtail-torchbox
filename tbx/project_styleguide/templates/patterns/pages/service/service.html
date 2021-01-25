@@ -13,6 +13,10 @@
         {% include "patterns/molecules/help-block/help-block.html" with title=page.key_points_section_title intro=page.heading_for_key_points items=page.key_points.all contact=page.contact %}
     </div>
 
+    <div id="process">
+        {% include "patterns/organisms/process-block/process-block.html" with processes=page.processes.all section_title=page.process_section_title %}
+    </div>
+
     {% if page.testimonials_section_title %}
         <div id="clients">
             {% include "patterns/organisms/client-block/client-block.html" with title=page.testimonials_section_title clients=page.client_logos.all quotes=page.testimonials.all %}

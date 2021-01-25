@@ -1,3 +1,4 @@
-{% for process in page.processes %}
+{{section_title}}
+{% for process in processes %}
     {% include "patterns/molecules/process-item/process-item.html" with item=process %}
 {% endfor %}
