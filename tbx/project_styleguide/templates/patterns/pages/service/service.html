@@ -5,11 +5,13 @@
 
     {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro %}
 
-    <div id="services">
-        {% include "patterns/molecules/help-block/help-block.html" with title=page.key_points_section_title intro=page.heading_for_key_points items=page.key_points.all contact=page.contact %}
-    </div>
+    {% if page.key_points_section_title %}
+        <div id="key_points">
+            {% include "patterns/molecules/help-block/help-block.html" with title=page.key_points_section_title intro=page.heading_for_key_points items=page.key_points.all contact=page.contact %}
+        </div>
+    {% endif %}
 
-    {% if page.processes.all.exists %}
+    {% if page.process_section_title %}
         <div id="process">
             {% include "patterns/organisms/process-block/process-block.html" with processes=page.processes.all section_title=page.process_section_title has_process_block_image=page.use_process_block_image %}
         </div>
