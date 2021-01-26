@@ -5,17 +5,6 @@
 
     {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro %}
 
-    {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page title=page.title %}
-
-    {% if page.greeting_image_type == 'woman-left' %}
-        {% include "patterns/atoms/animated-characters/women.html" %}
-    {% elif page.greeting_image_type == 'man-left' %}
-        {% include "patterns/atoms/animated-characters/man.html" %}
-    {% elif page.greeting_image_type == 'wagtail' %}
-        {% include "patterns/atoms/animated-characters/wagtail.html" %}
-    {% endif %}
-
-
     <div id="services">
         {% include "patterns/molecules/help-block/help-block.html" with title=page.key_points_section_title intro=page.heading_for_key_points items=page.key_points.all contact=page.contact %}
     </div>

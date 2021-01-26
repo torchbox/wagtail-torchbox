@@ -49,7 +49,7 @@
         }
 
         @include media-query(large) {
-            padding-left: $variable-gutter--large;
+            padding-left: 0;
         }
     }
 
