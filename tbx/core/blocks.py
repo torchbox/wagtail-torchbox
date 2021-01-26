@@ -45,8 +45,7 @@ class PhotoGridBlock(StructBlock):
 class PullQuoteBlock(StructBlock):
     quote = CharBlock(classname="quote title", required=True)
     name = CharBlock(required=True)
-    position = CharBlock(required=False)
-    attribution = CharBlock(required=False)
+    role = CharBlock(required=False)
 
     class Meta:
         icon = "openquote"
