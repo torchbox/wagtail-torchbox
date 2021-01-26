@@ -1,6 +1,16 @@
-content:
-  item:
-    title: Digital Marketing Account Manager
-    desc: Plan and implement multi-channel digital marketing campaigns, while growing our relationships with some of the very biggest charities and NGO’s.
-    level: Digital Marketing
-    location: Bristol, Charlbury and remote
+context:
+  has_process_block_image: True
+  section_title: Process
+  processes:
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
