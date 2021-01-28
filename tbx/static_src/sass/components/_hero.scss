@@ -91,7 +91,10 @@
 
         &--filter {
             height: 25vh;
-            background: linear-gradient(#2f128d, #fff);
+            background: linear-gradient(
+                var(--color--dark-indigo),
+                var(--color--white)
+            );
             opacity: 0.6;
             mix-blend-mode: multiply;
         }
