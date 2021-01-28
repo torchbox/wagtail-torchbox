@@ -1,47 +1,32 @@
 {% extends "patterns/base_page.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags  %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block theme_class %}theme--primary{% endblock %}
 
 {% block content %}
-<div>
-    {% if page.hero_image %}
-        {% image page.hero_image original %}
-    {% endif %}
+{% image page.hero_image width-1920 as hero_image %}
+{% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url %}
 
-    <div {% if not page.strapline_visible %} class="u-sr-only" {% endif %}>{{ page.strapline }}</div>
+<div class="culture">
+    <div class="culture__container culture__container--top">
+        {% if page.intro %}
+            <div class="culture__rich-text">
+                {{ page.intro|richtext }}
+            </div>
+        {% endif %}
 
-    {% if page.intro %}
-        <div>{{ page.intro|richtext }}</div>
-    {% endif %}
-
-    {% for link in page.links.all %}
-        <ul>
-            <li>{{ link.title}}</li>
-            <li>{{ link.description}}</li>
-            <li>{% pageurl link.link %}</li>
-        </ul>
-    {% endfor %}
+        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
+    </div>
 
     {% if page.body %}
         {% include_block page.body %}
     {% endif %}
 
-    {% for link in page.links.all %}
-        <ul>
-            <li>{{ link.title}}</li>
-            <li>{{ link.description}}</li>
-            <li>{% pageurl link.link %}</li>
-        </ul>
-    {% endfor %}
-
-    <ul>
-        {% if page.contact %}
-            <li>{{ page.contact.name }}</li>
-            <li>{{ page.contact.role }}</li>
-            <li>{{ page.contact.email_address }}</li>
-            <li>{{ page.contact.phone_number }}</li>
-            <li>{% image page.contact.image original %}</li>
-        {% endif %}
-    </ul>
+    <div class="culture__container culture__container--bottom">
+        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
+    </div>
 </div>
+
+
 {% endblock %}

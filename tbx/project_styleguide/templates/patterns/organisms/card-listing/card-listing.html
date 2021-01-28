@@ -1,0 +1,5 @@
+<div class="card-listing {% if classes %}{{ classes }}{% endif %}">
+    {% for card_item in card_items %}
+        {% include "patterns/molecules/card/card.html" with item=card_item %}
+    {% endfor %}
+</div>

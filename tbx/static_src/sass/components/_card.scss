@@ -1,0 +1,52 @@
+.card {
+    $root: &;
+    background-color: var(--color--light-grey);
+    width: 100%;
+
+    &:focus,
+    &:hover {
+        background-color: var(--color--lagoon);
+
+        #{$root}__icon {
+            fill: var(--color--dark-indigo);
+        }
+
+        #{$root}__title {
+            color: var(--color--dark-indigo);
+        }
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 800;
+        margin: 0;
+        color: var(--color-light-blue);
+        margin-right: 10px;
+
+        @include media-query(large) {
+            font-size: 36px;
+        }
+    }
+
+    &__text {
+        font-size: 18px;
+        line-height: 22px;
+        color: var(--color--grey);
+    }
+
+    &__body {
+        margin: 30px;
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        fill: var(--color--lagoon);
+        width: 20px;
+        height: 30px;
+    }
+}

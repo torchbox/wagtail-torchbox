@@ -78,4 +78,25 @@
             color: var(--color--primary);
         }
     }
+
+    &__full-screen {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        padding-bottom: 0;
+
+        &--filter {
+            height: 25vh;
+            background: linear-gradient(
+                var(--color--dark-indigo),
+                var(--color--white)
+            );
+            opacity: 0.6;
+            mix-blend-mode: multiply;
+        }
+    }
 }
