@@ -4,9 +4,8 @@
 
 {% block theme_class %}theme--primary{% endblock %}
 
-
 {% block content %}
-{% image page.hero_image original as hero_image %}
+{% image page.hero_image width-1920 as hero_image %}
 {% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url %}
 
 <div class="culture__container">
