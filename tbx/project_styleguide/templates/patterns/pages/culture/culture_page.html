@@ -8,22 +8,25 @@
 {% image page.hero_image width-1920 as hero_image %}
 {% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url %}
 
-<div class="culture__container">
-    {% if page.intro %}
-    <div class="culture__rich-text">
-        {{ page.intro|richtext }}
+<div class="culture">
+    <div class="culture__container culture__container--top">
+        {% if page.intro %}
+            <div class="culture__rich-text">
+                {{ page.intro|richtext }}
+            </div>
+        {% endif %}
+
+        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
     </div>
+
+    {% if page.body %}
+        {% include_block page.body %}
     {% endif %}
 
-    {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
+    <div class="culture__container culture__container--bottom">
+        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
+    </div>
 </div>
 
-{% if page.body %}
-    {% include_block page.body %}
-{% endif %}
-
-<div class="culture__container culture__container--pb-100 culture__container--pt-0">
-    {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
-</div>
 
 {% endblock %}

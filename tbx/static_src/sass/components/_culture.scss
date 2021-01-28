@@ -2,32 +2,46 @@
     $root: &;
 
     &__container {
-        padding-top: 75vh;
-        margin: 0 10%;
+        @include container();
 
-        @include media-query(medium) {
-            margin: 0 20%;
-            padding-top: 85vh;
+        @include media-query(large) {
+            @include container(medium);
         }
 
-        &--pb-100 {
-            padding-bottom: 100px;
+        &--top {
+            padding-top: 87vh;
+
+            @include media-query(large) {
+                padding-top: 90vh;
+            }
         }
 
-        &--pt-0 {
-            padding-top: 0;
+        &--bottom {
+            margin-bottom: ($gutter * 2);
+
+            @include media-query(large) {
+                margin-bottom: ($gutter * 5);
+            }
         }
     }
 
     &__rich-text {
+        @include font-size(l);
+        margin-bottom: ($gutter * 2);
+
+        @include media-query(large) {
+            font-size: 36px;
+            margin-bottom: ($gutter * 5);
+        }
+
         p {
             color: var(--color--dark-indigo);
-            font-size: 24px;
 
-            b {
-                font-weight: $weight--heavy;
+            &:last-child {
+                margin-bottom: 0;
             }
 
+            b,
             strong {
                 font-weight: $weight--heavy;
             }
@@ -35,10 +49,10 @@
             a {
                 color: var(--color--dark-indigo);
                 border-bottom-color: var(--color--lagoon);
-            }
 
-            a:hover {
-                color: var(--color--lagoon);
+                &:hover {
+                    color: var(--color--lagoon);
+                }
             }
         }
     }
