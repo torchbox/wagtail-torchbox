@@ -1,9 +1,14 @@
 {% load wagtailcore_tags %}
-<div class="card">
+<div class="card  {% if classes %}{{ classes }}{% endif %}">
     <a href="{% pageurl item.link %}" class="btn btn-primary">
         <div class="card__body">
-            <h5 class="card__title">{{ item.title }}</h5>
-            <span class="card__text">{{ item.description}}</span>
+            <div class="card__top">
+                <h5 class="card__title">{{ item.title }}</h5>
+                <svg class="card__icon" width="20" height="30">
+                    <use xlink:href="#chevron" />
+                </svg>
+            </div>
+            <p class="card__text">{{ item.description}}</p>
         </div>
     </a>
 </div>
