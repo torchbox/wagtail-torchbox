@@ -1,6 +1,4 @@
 // Theme overrides:
-$get-in-touch-number-color: var(--get-in-touch-number-color);
-
 .reason {
     display: block;
     margin: 20px 10px;
@@ -28,7 +26,7 @@ $get-in-touch-number-color: var(--get-in-touch-number-color);
         top: 0;
         left: 10px;
         font-size: 22px;
-        color: $get-in-touch-number-color;
+        color: var(--color--get-in-touch-numbers);
 
         span {
             z-index: 1;
