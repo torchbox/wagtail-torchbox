@@ -1,13 +1,11 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
-{% block theme_class %}theme--primary{% endblock %}
-
 {% block content %}
 
     {% include "patterns/molecules/title-block/title-block.html" with item=page tags=page.tags %}
     {% include "patterns/atoms/introduction/introduction.html" with item=page %}
-    
+
     <div class="job-listing">
         <div class="job-listing__container">
 
@@ -20,7 +18,7 @@
                     {% include "patterns/molecules/job-item/job-item.html" with item=job %}
                 {% endfor %}
             </div>
-            
+
         </div>
     </div>
 

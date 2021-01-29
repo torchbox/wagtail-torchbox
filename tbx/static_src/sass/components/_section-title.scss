@@ -2,7 +2,7 @@
     position: absolute;
     top: 45px;
     left: $variable-gutter--small;
-    color: var(--color--accent);
+    color: var(--color--section-title);
     font-weight: $weight--bold;
     font-size: 20px;
     margin: 0;
@@ -29,7 +29,7 @@
         width: 100%;
         height: 2px;
         top: -15px;
-        background: var(--color--accent);
+        background-color: var(--color--section-title);
     }
 
     /* The title is inside a container already */

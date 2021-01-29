@@ -1,9 +1,7 @@
 // Theme overrides:
-$contact-phone-number-color: var(--contact-phone-number-color);
-$contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
 
 .contact-block {
-    background-color: var(--color--primary);
+    background-color: var(--color--dark-indigo);
     padding: ($gutter * 4) 0;
 
     &__container {
@@ -108,7 +106,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         text-decoration: none;
         font-size: 20px;
         font-weight: bold;
-        color: var(--color--link, var(--color--white));
+        color: var(--color--accent, var(--color--white));
         margin: 10px 15px 0 0;
         border-bottom: none;
 
