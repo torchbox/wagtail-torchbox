@@ -4,7 +4,7 @@
     margin: 20px 10px;
     position: relative;
 
-    @include media-query(medium) {
+    @include media-query(large) {
         margin: 0;
         flex-basis: 33.33%;
         flex-grow: 0;
@@ -15,7 +15,7 @@
         display: block;
         padding: 60px 30px;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             padding: 0;
             margin: 20px 40px 0;
         }
@@ -54,7 +54,7 @@
         top: 0;
         left: 50px;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             position: static;
         }
     }
