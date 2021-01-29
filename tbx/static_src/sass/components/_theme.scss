@@ -1,10 +1,9 @@
 /*
- 
+
 Primary used for:
  - Headings
 Accent used for:
 - heading spans
-- section titles
 Accent-dark used for:
 - Author roles
 - Client name
@@ -17,11 +16,15 @@ Hover useds for:
 Background used for:
 - Large background colour blocks
 - Sticky header bar
+Section title used for
+- Section title
+Header icon used for:
+- Header icon
 
 */
 
 .theme {
-    &--primary {
+    &--light {
         --color--primary: var(--color--dark-indigo);
         --color--accent: var(--color--coral);
         --color--accent-dark: var(--color--coral-dark);
@@ -29,14 +32,42 @@ Background used for:
         --color--underline: var(--color--coral);
         --color--hover: var(--color--indigo);
         --color--background: var(--color--white);
+        --color--section-title: var(--color--coral);
+        --color--header-icon-color: var(--color--coral);
     }
 
-    &--secondary {
-        --color--primary: var(--color--dark-indigo);
-        --color--accent: var(--color--black);
-        --color--link: var(--color--coral);
-        --color--underline: var(--color--coral);
-        --color--hover: var(--color--coral-dark);
-        --color--background: var(--color--indigo);
+    &--coral {
+        --color--primary: var(--color--white);
+        --color--accent: var(--color--dark-indigo);
+        --color--link: var(--color--dark-indigo);
+        --color--underline: var(--color--dark-indigo);
+        --color--hover: var(--color--dark-indigo);
+        --color--background: var(--color--coral);
+        --color--section-title: var(--color--coral);
+        --color--header-icon-color: var(--color--dark-indigo);
     }
+
+    &--dark {
+        --color--primary: var(--color--white);
+        --color--accent: var(--color--lagoon);
+        --color--link: var(--color--white);
+        --color--underline: var(--color--lagoon);
+        --color--hover: var(--color--white);
+        --color--background: var(--color--dark-indigo);
+        --color--section-title: var(--color-coral);
+        --color--header-icon-color: var(--color--lagoon);
+    }
+
+    /* stylelint-disable selector-class-pattern  */
+    &--dark--transparent {
+        --color--primary: var(--color--white);
+        --color--accent: var(--color--lagoon);
+        --color--link: var(--color--white);
+        --color--underline: var(--color--lagoon);
+        --color--hover: var(--color--white);
+        --color--background: transparent;
+        --color--section-title: var(--color-coral);
+        --color--header-icon-color: var(--color--lagoon);
+    }
+    /* stylelint-enable */
 }
