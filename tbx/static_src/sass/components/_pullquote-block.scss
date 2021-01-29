@@ -1,11 +1,8 @@
 .pullquote-block {
     $root: &;
-
-    &__container {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
-    }
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
 
     &__icon {
         fill: var(--icon-color, var(--color--accent));
