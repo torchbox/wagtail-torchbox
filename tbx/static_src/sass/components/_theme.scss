@@ -1,5 +1,7 @@
 /*
 
+Light theme is used by default
+
 Primary used for:
  - Headings
 Accent used for:
@@ -20,6 +22,8 @@ Section title used for
 - Section title
 Header icon used for:
 - Header icon
+Get in touch numbers:
+- Steps in the contact block
 
 */
 
@@ -34,17 +38,19 @@ Header icon used for:
         --color--background: var(--color--white);
         --color--section-title: var(--color--coral);
         --color--header-icon-color: var(--color--coral);
+        --color--get-in-touch-numbers: var(--color-white);
     }
 
     &--coral {
         --color--primary: var(--color--white);
-        --color--accent: var(--color--dark-indigo);
+        --color--accent: var(--color--coral);
         --color--link: var(--color--dark-indigo);
         --color--underline: var(--color--dark-indigo);
-        --color--hover: var(--color--dark-indigo);
+        --color--hover: var(--color--white);
         --color--background: var(--color--coral);
         --color--section-title: var(--color--coral);
         --color--header-icon-color: var(--color--dark-indigo);
+        --color--get-in-touch-numbers: var(--color--white);
     }
 
     &--dark {
@@ -56,6 +62,7 @@ Header icon used for:
         --color--background: var(--color--dark-indigo);
         --color--section-title: var(--color-coral);
         --color--header-icon-color: var(--color--lagoon);
+        --color--get-in-touch-numbers: var(--color--dark-indigo);
     }
 
     /* stylelint-disable selector-class-pattern  */
@@ -68,6 +75,7 @@ Header icon used for:
         --color--background: transparent;
         --color--section-title: var(--color-coral);
         --color--header-icon-color: var(--color--lagoon);
+        --color--get-in-touch-numbers: var(--color--dark-indigo);
     }
     /* stylelint-enable */
 }

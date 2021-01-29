@@ -1,12 +1,10 @@
 // Theme overrides:
-$get-in-touch-number-color: var(--get-in-touch-number-color);
-
 .reason {
     display: block;
     margin: 20px 10px;
     position: relative;
 
-    @include media-query(medium) {
+    @include media-query(large) {
         margin: 0;
         flex-basis: 33.33%;
         flex-grow: 0;
@@ -17,7 +15,7 @@ $get-in-touch-number-color: var(--get-in-touch-number-color);
         display: block;
         padding: 60px 30px;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             padding: 0;
             margin: 20px 40px 0;
         }
@@ -28,7 +26,7 @@ $get-in-touch-number-color: var(--get-in-touch-number-color);
         top: 0;
         left: 10px;
         font-size: 22px;
-        color: $get-in-touch-number-color;
+        color: var(--color--get-in-touch-numbers);
 
         span {
             z-index: 1;
@@ -56,7 +54,7 @@ $get-in-touch-number-color: var(--get-in-touch-number-color);
         top: 0;
         left: 50px;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             position: static;
         }
     }

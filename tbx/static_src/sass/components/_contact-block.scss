@@ -25,7 +25,7 @@
         flex-direction: column;
         align-items: center;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             align-items: flex-start;
         }
     }
@@ -35,8 +35,9 @@
         justify-content: space-between;
         margin: 35px 0 0;
         flex-direction: column;
+        width: 100%;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             flex-direction: row;
             align-items: center;
         }
@@ -45,7 +46,7 @@
     &__image {
         margin-bottom: $gutter;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             margin-bottom: 0;
         }
     }
@@ -58,7 +59,7 @@
         flex-wrap: wrap;
         padding-top: 40px;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             flex-wrap: nowrap;
             flex-direction: row;
         }
@@ -71,7 +72,7 @@
         justify-content: center;
         flex-wrap: wrap;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             flex-direction: row;
             justify-content: flex-start;
             padding-left: 20px;
@@ -90,7 +91,7 @@
         margin: ($gutter / 2) ($gutter * 0.75) 0 0;
         font-weight: bold;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             margin: 0 ($gutter * 0.75) 0 0;
         }
 
@@ -110,7 +111,7 @@
         margin: 10px 15px 0 0;
         border-bottom: none;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             margin: 0 ($gutter * 0.75) 0 0;
         }
 
