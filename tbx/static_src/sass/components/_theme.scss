@@ -58,6 +58,7 @@ Header icon used for:
         --color--header-icon-color: var(--color--lagoon);
     }
 
+    /* stylelint-disable selector-class-pattern  */
     &--dark--transparent {
         --color--primary: var(--color--white);
         --color--accent: var(--color--lagoon);
@@ -68,4 +69,5 @@ Header icon used for:
         --color--section-title: var(--color-coral);
         --color--header-icon-color: var(--color--lagoon);
     }
+    /* stylelint-enable */
 }
