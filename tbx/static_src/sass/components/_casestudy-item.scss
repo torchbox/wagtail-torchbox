@@ -6,8 +6,9 @@
     border-bottom: none;
     line-height: 0;
 
+    &:focus,
     &:hover {
-        #{$root}__meta-title {
+        #{$root}__title {
             color: var(--color--indigo);
         }
     }
@@ -93,7 +94,7 @@
         font-size: 32px;
         line-height: 44px;
         margin: 0 0 10px;
-        color: var(--color--primary);
+        color: var(--color--dark-indigo);
         font-weight: 800;
 
         @include media-query(medium) {
@@ -161,10 +162,10 @@
             z-index: 100;
             transform: rotate(0deg);
             top: -70px;
-            left: 220px;
+            left: 205px;
 
             * {
-                fill: var(--icon-color, var(--color--accent));
+                fill: var(--color--accent, var(--icon--color));
             }
         }
     }

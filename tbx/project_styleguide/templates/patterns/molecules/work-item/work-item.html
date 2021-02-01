@@ -5,15 +5,20 @@
 <a class="casestudy-item" href="{% pageurl item %}">
     <div class="casestudy-item__meta">
         <div class="casestudy-item__meta-container">
-            <span class="casestudy-item__client">{{ item.client }}</span>
+            {% if item.client %}
+                <span class="casestudy-item__client">{{ item.client }}</span>
+            {% endif %}
+
             <h2 class="casestudy-item__title">{{ item.title }}</h2>
-            <p class="casestudy-item__desc">{{ item.listing_summary }}</p>
+
+            {% if item.listing_summary %}
+                <p class="casestudy-item__desc">{{ item.listing_summary }}</p>
+            {% endif %}
         </div>
     </div>
     <div class="casestudy-item__image">
-        <svg viewBox="0 0 384.7 638.6" aria-hidden="true" class="casestudy-item__cluster-icon">
-            <style>.frag-cluster1_svg__st0{fill:#fd5765}</style>
-            <path class="frag-cluster1_svg__st0" d="M221.342-.013l127.735 73.75-221.3 383.291L.042 383.278zM305.556 395.25l79.066 45.65-114.15 197.709-79.066-45.65z"></path>
+        <svg class="casestudy-item__cluster-icon" aria-hidden="true">
+            <use xlink:href="#cluster" />
         </svg>
         <div class="casestudy-item__image-inner" style="background-image: url(&quot;{{ image.url }}&quot;);"></div>
     </div>

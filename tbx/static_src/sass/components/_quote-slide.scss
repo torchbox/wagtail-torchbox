@@ -16,15 +16,15 @@
     &__quote {
         font-style: normal;
         margin: 0 0 $gutter;
-        padding: 0 0 0;
-        color: var(--color--primary);
+        padding: 0;
+        color: var(--color--dark-indigo);
         font-size: 22px;
         line-height: 38px;
 
         @include media-query(large) {
             font-size: 26px;
             line-height: 46px;
-            padding-right: $variable-gutter--small;
+            padding-right: $variable-gutter--medium;
         }
 
         &::after {
