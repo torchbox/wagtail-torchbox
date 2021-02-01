@@ -139,7 +139,6 @@
             /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
             border-color: var(--color--white) transparent transparent
                 transparent;
-            z-index: 2;
 
             @include media-query(medium) {
                 display: block;
@@ -159,10 +158,10 @@
             position: absolute;
             width: 80px;
             height: 133px;
-            z-index: 100;
+            z-index: 1;
             transform: rotate(0deg);
             top: -70px;
-            left: 205px;
+            left: 190px;
 
             * {
                 fill: var(--color--accent, var(--icon--color));

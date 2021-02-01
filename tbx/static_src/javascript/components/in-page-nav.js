@@ -1,15 +1,81 @@
-// get the sticky element
-const stickyElm = document.querySelector('[data-in-page-nav]');
+class InPageNav {
+    static selector() {
+        return '[data-in-page-nav]';
+    }
 
-const observer = new IntersectionObserver(
-    ([e]) =>
-        e.target.classList.toggle(
-            'in-page-nav--stuck',
-            e.intersectionRatio < 1,
-        ),
-    { threshold: [1] },
-);
+    constructor(node) {
+        this.node = node;
 
-if (document.body.contains(document.querySelector('[data-in-page-nav]'))) {
-    observer.observe(stickyElm);
+        this.allSections = document.querySelectorAll('[data-service-section]');
+        this.allMenuLinks = this.node.querySelectorAll('[data-in-page-nav] a');
+
+        this.initObserving();
+        this.bindEvents();
+    }
+
+    initObserving() {
+        const config = {
+            // A string with values in the same format as for a CSS margin or padding value.
+            // This will fire when the section is at the top of the viewport.
+            rootMargin: '0px 0px -90%',
+        };
+
+        // setup IO and add a callback if the section enters
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    this.handleEntry(entry.target);
+                }
+            });
+        }, config);
+
+        // Observe all the sections
+        this.allSections.forEach((section) => {
+            observer.observe(section);
+        });
+    }
+
+    bindEvents() {
+        this.handleStickyNav();
+
+        this.allMenuLinks.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                this.resetMenuLinks();
+                e.target.classList.add('is-active');
+            });
+        });
+    }
+
+    handleEntry(sectionInView) {
+        this.resetMenuLinks();
+
+        // get the id of the section that is active
+        const sectionId = sectionInView.id;
+
+        // use to find the releavnt menu item
+        const menuItem = this.node.querySelector(`a[href="#${sectionId}"]`);
+
+        // activate it
+        menuItem.classList.add('is-active');
+    }
+
+    resetMenuLinks() {
+        this.allMenuLinks.forEach((menuLink) => {
+            menuLink.classList.remove('is-active');
+        });
+    }
+
+    handleStickyNav() {
+        const stickyObserver = new IntersectionObserver(
+            ([e]) =>
+                e.target.classList.toggle(
+                    'in-page-nav--stuck',
+                    e.intersectionRatio < 1,
+                ),
+            { threshold: [1] },
+        );
+        stickyObserver.observe(this.node);
+    }
 }
+
+export default InPageNav;
