@@ -20,7 +20,9 @@
                 <li class="mobile-nav-item">
                     <a class="mobile-nav-item__link" href="/culture-and-jobs/">
                         <div class="mobile-nav-item__title">Culture + jobs
-                            {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                            {% if job_count %}
+                                {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                            {% endif %}
                         </div>
                     </a>
                 </li>

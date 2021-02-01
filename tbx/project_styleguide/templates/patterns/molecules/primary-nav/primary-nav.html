@@ -18,7 +18,9 @@
         <li class="nav-item">
             <a class="nav-item__link" href="/culture-and-jobs">
                 <span class="nav-item__title">Culture + jobs</span>
-                {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                {% if job_count %}
+                    {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                {% endif %}
             </a>
         </li>
     </ul>
