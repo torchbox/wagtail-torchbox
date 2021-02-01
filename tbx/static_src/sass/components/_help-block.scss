@@ -28,9 +28,19 @@
     }
 
     &__email {
+        font-size: 20px;
+        font-weight: $weight--bold;
+
         @include media-query(medium) {
             margin-right: $gutter;
         }
+    }
+
+    &__phone {
+        font-size: 20px;
+        font-weight: $weight--bold;
+        border-bottom: 0;
+        color: var(--color--accent);
     }
 
     &__title {
@@ -46,6 +56,10 @@
 
         * {
             color: var(--color--primary);
+        }
+
+        b {
+            font-weight: $weight--heavy;
         }
     }
 
@@ -151,6 +165,14 @@
         }
     }
 
+    &__contact-wrap {
+        margin-top: 35px;
+
+        @include media-query(medium) {
+            padding-left: 12vw;
+        }
+    }
+
     &__contact {
         @include media-query(medium) {
             margin-top: 15px;
@@ -158,7 +180,7 @@
         }
     }
 
-    &__contact-container {
+    &__contact-inner {
         @include container();
         align-items: center;
         display: flex;
@@ -182,6 +204,8 @@
     }
 
     &__contact-meta {
+        margin-top: 5px;
+
         @include media-query(medium) {
             display: flex;
         }
