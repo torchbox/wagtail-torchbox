@@ -1,32 +1,39 @@
 .in-page-nav {
     $root: &;
     @include z-index(header);
-    position: sticky;
-    top: -1px;
-    padding-top: 1px;
 
     &--stuck {
+        #{$root}__inner {
+            background-color: var(--color--background);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: ($gutter * 0.75) $variable-gutter--small 0;
+            border-bottom: 1px solid var(--color--light-grey);
+        }
+
         #{$root}__container {
             margin-top: 0;
-            padding: ($gutter * 0.75) $variable-gutter--small;
-            background-color: var(--color--background);
-            border-bottom: 1px solid var(--color--light-grey);
-
-            @include media-query(large) {
-                padding: ($gutter * 0.75) ($gutter * 0.75) ($gutter * 0.75)
-                    $variable-gutter--large;
-            }
         }
 
         #{$root}__link {
             @include font-size(xxs);
+            font-weight: $weight--semibold;
+            padding-bottom: 5px;
         }
 
         #{$root}__item {
             padding-bottom: 0;
+            padding-right: 20px;
         }
 
         #{$root}__header {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-bottom: 5px;
+
             @include media-query(medium) {
                 display: flex;
                 flex-direction: row;
@@ -64,12 +71,12 @@
         border: 0;
 
         &:hover {
-            border-bottom: 2px solid var(--color--underline);
+            border-bottom: 0;
         }
     }
 
     &__title {
-        @include font-size(xs);
+        @include font-size(s);
         color: var(--color--primary);
         font-weight: $weight--bold;
     }
