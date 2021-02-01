@@ -14,6 +14,13 @@
                     </a>
                 </li>
             {% endif %}
+            {% if item.process_section_title %}
+                <li class="in-page-nav__item">
+                    <a class="in-page-nav__link" href="#{{ item.process_section_title|slugify }}">
+                        {{ item.process_section_title }}
+                    </a>
+                </li>
+            {% endif %}
             {% if item.testimonials_section_title %}
                 <li class="in-page-nav__item">
                     <a class="in-page-nav__link" href="#{{ item.testimonials_section_title|slugify }}">
@@ -32,13 +39,6 @@
                 <li class="in-page-nav__item">
                     <a class="in-page-nav__link" href="#{{ item.blogs_section_title|slugify }}">
                         {{ item.blogs_section_title }}
-                    </a>
-                </li>
-            {% endif %}
-            {% if item.process_section_title %}
-                <li class="in-page-nav__item">
-                    <a class="in-page-nav__link" href="#{{ item.process_section_title|slugify }}">
-                        {{ item.process_section_title }}
                     </a>
                 </li>
             {% endif %}
