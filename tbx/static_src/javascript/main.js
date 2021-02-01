@@ -5,7 +5,7 @@ import SeeMorePosts from './components/see-more-posts';
 import Carousel from './components/carousel';
 import MobileMenuToggle from './components/mobile-menu-toggle';
 import './components/sticky-point';
-import './components/in-page-nav';
+import InPageNav from './components/in-page-nav';
 
 import '../sass/main.scss';
 
@@ -26,5 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         MobileMenuToggle.selector(),
     )) {
         new MobileMenuToggle(mobilemenutoggle);
+    }
+
+    for (const inpagenav of document.querySelectorAll(InPageNav.selector())) {
+        new InPageNav(inpagenav);
     }
 });
