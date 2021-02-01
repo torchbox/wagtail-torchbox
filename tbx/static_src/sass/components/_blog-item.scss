@@ -9,6 +9,7 @@ $blog-author: var(--testimonial-name);
     text-decoration: none;
     border-bottom: none;
 
+    &:focus,
     &:hover {
         #{$root}__title {
             color: var(--color--indigo);
@@ -57,7 +58,7 @@ $blog-author: var(--testimonial-name);
         font-weight: bold;
         line-height: 40px;
         margin: 0 0 $gutter;
-        color: var(--color--primary);
+        color: var(--color--dark-indigo);
     }
 
     &__image {
@@ -74,14 +75,14 @@ $blog-author: var(--testimonial-name);
     }
 
     &__author-name {
-        color: var(--color--primary);
+        color: var(--color--dark-indigo);
         font-size: 20px;
     }
 
     &__author-role {
         margin: 0 0 2px;
         line-height: 1.4;
-        color: var(--color--accent-dark);
+        color: var(--color--indigo);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;

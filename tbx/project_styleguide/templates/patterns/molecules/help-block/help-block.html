@@ -27,8 +27,8 @@
         </section>
 
         {% if contact %}
-            <div class="help-block__link-item__contact">
-                <div class="help-block__contact-container">
+            <div class="help-block__contact-wrap">
+                <div class="help-block__contact-inner">
                     <div class="help-block__avatar avatar">
                         {% image contact.image fill-100x100 class="avatar__image" %}
                     </div>
@@ -37,16 +37,12 @@
                             Get in touch about your project
                         </h2>
                         <div class="help-block__contact-meta">
-                            <div>
-                                <a href="mailto:{{ contact.email_address }}" class="help-block__email">
-                                    {{ contact.email_address }}
-                                </a>
-                            </div>
-                            <div>
-                                <a href="tel:{{ contact.phone_number }}" class="help-block__number">
-                                    {{ contact.phone_number }}
-                                </a>
-                            </div>
+                            <a href="mailto:{{ contact.email_address }}" class="help-block__contact help-block__contact--email">
+                                {{ contact.email_address }}
+                            </a>
+                            <a href="tel:{{ contact.phone_number }}" class="help-block__contact help-block__contact--phone">
+                                {{ contact.phone_number }}
+                            </a>
                         </div>
                     </div>
                 </div>

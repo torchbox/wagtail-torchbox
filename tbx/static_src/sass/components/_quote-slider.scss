@@ -11,7 +11,7 @@
         grid-row: 1;
         margin-right: 50px;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             max-width: 120px;
             width: $variable-gutter--small;
             margin-top: -50px;
@@ -25,7 +25,7 @@
         margin-top: 20px;
         grid-row: 2;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             margin-top: 0;
             grid-column-start: 2;
             grid-row: 1;
@@ -42,7 +42,7 @@
         min-height: 20px;
         transition: 0.2s all ease;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             grid-row: 2;
         }
     }

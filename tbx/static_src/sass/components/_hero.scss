@@ -1,6 +1,10 @@
 .hero {
     $root: &;
 
+    @include media-query(medium) {
+        padding-bottom: 5vh;
+    }
+
     &__image {
         margin-top: -25px;
     }
