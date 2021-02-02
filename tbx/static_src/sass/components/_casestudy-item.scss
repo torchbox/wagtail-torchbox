@@ -61,7 +61,7 @@
         margin: ($gutter * 1.5);
         background-color: var(--color--white-translucent);
 
-        @include media-query(medium) {
+        @include media-query(large) {
             min-height: 400px;
             margin: 0;
             padding: 40px 0 40px;
@@ -70,10 +70,6 @@
     }
 
     &__meta-container {
-        @include media-query(medium) {
-            padding: 40px ($gutter * 1.5) 0 $variable-gutter--small;
-        }
-
         @include media-query(large) {
             padding: 4.33vw ($gutter * 1.5) 0 $variable-gutter--small;
         }
@@ -111,7 +107,7 @@
         width: 100%;
         min-height: 400px;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             position: relative;
             width: 50%;
         }
@@ -125,6 +121,7 @@
         min-height: 400px;
         background-size: cover;
         background-color: var(--color--primary);
+        background-position: center;
 
         &::before {
             display: none;
@@ -140,11 +137,8 @@
             border-color: var(--color--white) transparent transparent
                 transparent;
 
-            @include media-query(medium) {
-                display: block;
-            }
-
             @include media-query(large) {
+                display: block;
                 border-width: 50vw 25vw 0 0;
             }
         }
