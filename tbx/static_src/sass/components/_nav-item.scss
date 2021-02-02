@@ -8,7 +8,7 @@
         line-height: 20px;
         text-decoration: none;
         height: 40px;
-        color: var(--color--primary);
+        color: var(--color--header-links);
         border-top: 0;
         border-bottom: 0;
         margin-right: 39px; // max we can go without nav label wrapping
@@ -24,7 +24,7 @@
         &:focus,
         #{#root}--active & {
             @include link-underscore(4);
-            color: var(--color--primary);
+            color: var(--color--header-links);
         }
     }
 
@@ -32,8 +32,8 @@
         @include font-size(s);
         display: flex;
         position: relative;
-        font-size: 17px;
         line-height: 35px;
         transition: all 0.2s ease;
+        font-weight: $weight--semibold;
     }
 }
