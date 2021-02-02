@@ -69,7 +69,7 @@ h1,
     @include font-size(xl);
     font-weight: $weight--bold;
     margin: 0 0 ($gutter / 2);
-    color: var(--color--primary);
+    color: var(--color--dark-indigo);
 
     @include media-query(medium) {
         margin-right: $variable-gutter--small;
@@ -81,7 +81,7 @@ h2,
     @include font-size(l);
     font-weight: $weight--heavy;
     margin: ($gutter * 3) 0 $gutter;
-    color: var(--color--primary);
+    color: var(--color--dark-indigo);
 }
 
 h3,
@@ -91,7 +91,7 @@ h4,
     @include font-size(m);
     font-weight: $weight--bold;
     margin: ($gutter * 3) 0 ($gutter / 2);
-    color: var(--color--primary);
+    color: var(--color--dark-indigo);
 }
 
 h5,
