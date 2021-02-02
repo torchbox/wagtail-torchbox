@@ -163,7 +163,7 @@
 
     a {
         cursor: pointer;
-        font-weight: bold;
+        font-weight: $weight--heavy;
         color: var(--color--link);
 
         &:hover {
