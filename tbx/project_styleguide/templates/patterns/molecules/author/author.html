@@ -18,9 +18,17 @@
             {% endif %}
 
             <p class="author__meta">
-                <span class="author__role">{{ author.role }}</span>
-                <span class="author__date">{{ item.date }}</span>
-                <span class="author__readtime">{{ item.read_time }} min read</span>
+                {% if author.role %}
+                    <span class="author__role">{{ author.role }}</span>
+                {% endif %}
+
+                {% if item.date %}
+                    <span class="author__date">{{ item.date }}</span>
+                {% endif %}
+
+                {% if item.read_time %}
+                    <span class="author__readtime">{{ item.read_time }} min read</span>
+                {% endif %}
             </p>
             <div class="author__tags">
                 {% for tag in item.related_services.all %}

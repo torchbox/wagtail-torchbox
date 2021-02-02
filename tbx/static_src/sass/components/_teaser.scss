@@ -8,8 +8,10 @@
     border-bottom: 0;
     padding: ($gutter * 2) ($gutter * 1.5);
 
+    &:focus,
     &:hover {
-        background-color: rgba(var(--color--white), 0.5);
+        /* stylelint-disable-next-line color-named */
+        background-color: rgba(white, 0.5);
 
         #{$root}__title {
             color: var(--color--dark-indigo);
