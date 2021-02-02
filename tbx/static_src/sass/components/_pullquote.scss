@@ -1,0 +1,96 @@
+.pullquote {
+    $root: &;
+    position: relative;
+    margin: $gutter 0;
+
+    @include media-query(large) {
+        @include streamblock-padding();
+        margin-top: 70px;
+    }
+
+    &--slider {
+        margin: 0;
+        min-width: 100%;
+
+        #{$root}__icon {
+            display: none;
+        }
+
+        #{$root}__text {
+            @include media-query(large) {
+                padding-right: $variable-gutter--medium;
+            }
+        }
+    }
+
+    &__text {
+        font-style: normal;
+        margin: 0 0 $gutter;
+        padding: 0;
+        color: var(--color--dark-indigo);
+        font-size: 22px;
+        line-height: 38px;
+
+        @include media-query(large) {
+            font-size: 26px;
+            line-height: 46px;
+        }
+
+        &::after {
+            content: '”';
+            font-style: italic;
+        }
+    }
+
+    &__cite {
+        color: var(--color--grey);
+        font-size: 12px;
+        margin: 0 0 15px;
+        font-style: normal;
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+    }
+
+    &__attribution,
+    &__name {
+        font-weight: bold;
+        padding-right: 8px;
+        text-transform: uppercase;
+        color: var(--color--accent-dark);
+        margin-bottom: 5px;
+        letter-spacing: 0.15em;
+    }
+
+    &__role {
+        line-height: 1.5;
+
+        @include media-query(medium) {
+            line-height: 1;
+        }
+
+        &::before {
+            @include media-query(medium) {
+                width: 10px;
+                content: '|';
+                color: rgba(var(--color--black), 0.2);
+                font-weight: 100;
+                padding-right: 10px;
+            }
+        }
+    }
+
+    &__icon {
+        fill: var(--color--accent);
+
+        @include media-query(large) {
+            position: absolute;
+            transform: translateX(calc(-20px + -100%));
+            top: -50px;
+        }
+    }
+}
