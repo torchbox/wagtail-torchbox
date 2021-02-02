@@ -39,6 +39,7 @@ Get in touch numbers:
         --color--section-title: var(--color--coral);
         --color--header-icon-color: var(--color--coral);
         --color--get-in-touch-numbers: var(--color-white);
+        --color--header-links: var(--color--dark-indigo);
     }
 
     &--coral {
@@ -51,6 +52,7 @@ Get in touch numbers:
         --color--section-title: var(--color--coral);
         --color--header-icon-color: var(--color--dark-indigo);
         --color--get-in-touch-numbers: var(--color--white);
+        --color--header-links: var(--color--dark-indigo);
     }
 
     &--dark {
@@ -64,6 +66,7 @@ Get in touch numbers:
         --color--section-title: var(--color-coral);
         --color--header-icon-color: var(--color--lagoon);
         --color--get-in-touch-numbers: var(--color--dark-indigo);
+        --color--header-links: var(--color--white);
     }
 
     /* stylelint-disable selector-class-pattern  */
@@ -77,6 +80,7 @@ Get in touch numbers:
         --color--section-title: var(--color-coral);
         --color--header-icon-color: var(--color--lagoon);
         --color--get-in-touch-numbers: var(--color--dark-indigo);
+        --color--header-links: var(--color--white);
     }
     /* stylelint-enable */
 }
