@@ -59,11 +59,14 @@
 
     &__list {
         &--horizontal {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
             padding-bottom: 50px;
 
+
             @include media-query(large) {
+                display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-column-gap: $variable-gutter--small;
             }
