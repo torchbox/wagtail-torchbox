@@ -64,7 +64,6 @@
             margin-top: 40px;
             padding-bottom: 50px;
 
-
             @include media-query(large) {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
