@@ -8,6 +8,8 @@ class InPageNav {
 
         this.allSections = document.querySelectorAll('[data-service-section]');
         this.allMenuLinks = this.node.querySelectorAll('[data-in-page-nav] a');
+        this.sentinelEl = document.getElementById('sentinel');
+        this.stickyClass = 'in-page-nav--stuck';
 
         this.initObserving();
         this.bindEvents();
@@ -66,15 +68,17 @@ class InPageNav {
     }
 
     handleStickyNav() {
-        const stickyObserver = new IntersectionObserver(
-            ([e]) =>
-                e.target.classList.toggle(
-                    'in-page-nav--stuck',
-                    e.intersectionRatio < 1,
-                ),
-            { threshold: [1] },
-        );
-        stickyObserver.observe(this.node);
+        const handler = ([entries]) => {
+            if (entries.isIntersecting) {
+                this.node.classList.toggle(this.stickyClass);
+            }
+        };
+
+        const observer = new window.IntersectionObserver(handler, {
+            rootMargin: '0px 0px -90%',
+        });
+
+        observer.observe(this.sentinelEl);
     }
 }
 
