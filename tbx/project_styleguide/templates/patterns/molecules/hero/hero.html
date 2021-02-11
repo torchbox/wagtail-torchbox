@@ -4,8 +4,18 @@
         <div class="hero__content">
             <h1 class="hero__title">{{ title|richtext }}</h1>
             {% if desc %}
-                <p class="hero__description">{{ desc|richtext }}</p>
+                <div class="hero__description">{{ desc|richtext }}</div>
             {% endif %}
+            {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page title=page.service %}
         </div>
+
+        {% if page.greeting_image_type == 'woman-left' %}
+            {% include "patterns/atoms/animated-characters/women.html" %}
+        {% elif page.greeting_image_type == 'man-left' %}
+            {% include "patterns/atoms/animated-characters/man.html" %}
+        {% elif page.greeting_image_type == 'wagtail' %}
+            {% include "patterns/atoms/animated-characters/wagtail.html" %}
+        {% endif %}
+
     </div>
 </div>

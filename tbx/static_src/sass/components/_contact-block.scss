@@ -1,9 +1,7 @@
 // Theme overrides:
-$contact-phone-number-color: var(--contact-phone-number-color);
-$contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
 
 .contact-block {
-    background-color: var(--color--primary);
+    background-color: var(--color--dark-indigo);
     padding: ($gutter * 4) 0;
 
     &__container {
@@ -27,7 +25,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         flex-direction: column;
         align-items: center;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             align-items: flex-start;
         }
     }
@@ -37,8 +35,9 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         justify-content: space-between;
         margin: 35px 0 0;
         flex-direction: column;
+        width: 100%;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             flex-direction: row;
             align-items: center;
         }
@@ -47,7 +46,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
     &__image {
         margin-bottom: $gutter;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             margin-bottom: 0;
         }
     }
@@ -60,7 +59,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         flex-wrap: wrap;
         padding-top: 40px;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             flex-wrap: nowrap;
             flex-direction: row;
         }
@@ -73,7 +72,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         justify-content: center;
         flex-wrap: wrap;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             flex-direction: row;
             justify-content: flex-start;
             padding-left: 20px;
@@ -92,7 +91,7 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         margin: ($gutter / 2) ($gutter * 0.75) 0 0;
         font-weight: bold;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             margin: 0 ($gutter * 0.75) 0 0;
         }
 
@@ -108,11 +107,11 @@ $contact-phone-number-hover-color: var(--contact-phone-number-hover-color);
         text-decoration: none;
         font-size: 20px;
         font-weight: bold;
-        color: var(--color--link, var(--color--white));
+        color: var(--color--accent, var(--color--white));
         margin: 10px 15px 0 0;
         border-bottom: none;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             margin: 0 ($gutter * 0.75) 0 0;
         }
 

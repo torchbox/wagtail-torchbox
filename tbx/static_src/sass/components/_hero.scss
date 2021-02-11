@@ -1,6 +1,10 @@
 .hero {
     $root: &;
 
+    @include media-query(medium) {
+        padding-bottom: 5vh;
+    }
+
     &__image {
         margin-top: -25px;
     }
@@ -9,8 +13,7 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        width: 100vw;
-        background: var(--color--background);
+        background-color: var(--color--background);
         padding-top: 70px;
 
         @include media-query(medium) {
@@ -27,7 +30,7 @@
             display: block;
             height: 80px;
             width: 100%;
-            background-color: var(--color--white);
+            background-color: var(--color--background);
             top: calc(100% - 50px);
             left: 0;
         }
@@ -58,11 +61,11 @@
         }
 
         span {
-            color: var(--color--accent);
+            color: var(--color--header-icon-color);
         }
     }
 
-    &__desc {
+    &__description {
         color: var(--color--primary);
         margin-bottom: ($gutter * 2);
         line-height: 36px;
@@ -76,6 +79,27 @@
 
         p {
             color: var(--color--primary);
+        }
+    }
+
+    &__full-screen {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        padding-bottom: 0;
+
+        &--filter {
+            height: 25vh;
+            background: linear-gradient(
+                var(--color--dark-indigo),
+                var(--color--white)
+            );
+            opacity: 0.6;
+            mix-blend-mode: multiply;
         }
     }
 }

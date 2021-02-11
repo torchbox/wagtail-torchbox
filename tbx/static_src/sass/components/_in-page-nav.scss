@@ -1,36 +1,65 @@
 .in-page-nav {
     $root: &;
     @include z-index(header);
-    position: sticky;
-    top: -1px;
-    padding-top: 1px;
 
     &--stuck {
-        #{$root}__container {
-            margin-top: 0;
-            padding: ($gutter * 0.75) $variable-gutter--small;
+        #{$root}__inner {
             background-color: var(--color--background);
-            border-bottom: 1px solid var(--color--light-grey);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: ($gutter * 0.75) $variable-gutter--small 0;
+            border-bottom: 1px solid var(--color--black-translucent);
 
             @include media-query(large) {
-                padding: ($gutter * 0.75) ($gutter * 0.75) ($gutter * 0.75)
-                    $variable-gutter--large;
+                display: flex;
+                align-items: center;
+                padding: $gutter $variable-gutter--small 0;
             }
+        }
+
+        #{$root}__container {
+            margin-top: 0;
+            padding-left: 0;
         }
 
         #{$root}__link {
             @include font-size(xxs);
+            font-weight: $weight--semibold;
+            padding-bottom: 5px;
+
+            &.is-active {
+                border-bottom: 2px solid var(--color--underline);
+            }
+
+            @include media-query(large) {
+                font-size: 15px;
+                padding-bottom: 15px;
+            }
         }
 
         #{$root}__item {
             padding-bottom: 0;
+            padding-right: 20px;
         }
 
         #{$root}__header {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-bottom: 5px;
+
             @include media-query(medium) {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+            }
+
+            @include media-query(large) {
+                flex-shrink: 0;
+                margin-right: 55px;
+                margin-bottom: 14px;
             }
         }
     }
@@ -49,7 +78,7 @@
         }
 
         @include media-query(large) {
-            padding-left: $variable-gutter--large;
+            padding-left: 0;
         }
     }
 
@@ -64,12 +93,12 @@
         border: 0;
 
         &:hover {
-            border-bottom: 2px solid var(--color--underline);
+            border-bottom: 0;
         }
     }
 
     &__title {
-        @include font-size(xs);
+        @include font-size(s);
         color: var(--color--primary);
         font-weight: $weight--bold;
     }
@@ -102,6 +131,7 @@
         text-decoration: none;
         border-bottom: 2px solid var(--color--background);
 
+        &:focus,
         &:hover {
             border-bottom: 2px solid var(--color--underline);
         }

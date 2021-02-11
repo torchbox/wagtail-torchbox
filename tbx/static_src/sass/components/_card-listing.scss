@@ -1,0 +1,10 @@
+.card-listing {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+    @include media-query(medium) {
+        grid-template-columns: 1fr 1fr;
+    }
+}

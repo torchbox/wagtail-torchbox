@@ -28,6 +28,8 @@ from tbx.core.blocks import StoryBlock
 class PersonPage(Page):
     template = "patterns/pages/team/team_detail.html"
 
+    parent_page_types = ["PersonIndexPage"]
+
     role = models.CharField(max_length=255, blank=True)
     is_senior = models.BooleanField(default=False)
     intro = RichTextField(blank=True)
@@ -64,6 +66,8 @@ class PersonIndexPage(Page):
     strapline = models.CharField(max_length=255)
     template = "patterns/pages/team/team_listing.html"
 
+    subpage_types = ["PersonPage"]
+
     @cached_property
     def team(self):
         return PersonPage.objects.order_by("-is_senior", "title").live().public()
@@ -89,6 +93,8 @@ class CulturePageLink(Orderable):
 
 
 class CulturePage(Page):
+    template = "patterns/pages/culture/culture_page.html"
+
     strapline = models.TextField()
     strapline_visible = models.BooleanField(
         help_text="Hide strapline visually but leave it readable by screen " "readers."

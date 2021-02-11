@@ -15,6 +15,7 @@
     --color--grey-dark: #333;
     --color--white: #fff;
     --color--white-translucent: rgba(255, 255, 255, 0.8);
+    --color--black-translucent: rgba(0, 0, 0, 0.05);
     --color--black: #000;
     // Theme base - defined in theme.scss
     --color--primary: var(--color--coral);
@@ -23,6 +24,11 @@
     --color--underline: var(--color--coral);
     --color--hover: var(--color--coral-dark);
     --color--background: var(--color--indigo);
+    --color--section-title: var(--color--dark-indigo);
+    --color--header-icon-color: var(--color--coral);
+    --color--get-in-touch-numbers: var(--color--white);
+    --color--accent-dark: var(--color--coral-dark);
+    --color-header-links: var(--color--dark-indigo);
 }
 
 // --------------------------------- Fonts --------------------------------------
@@ -111,6 +117,7 @@ $z-index: (
     footer: 40,
     nav: 50,
     cookie-message: 100,
+    skip-link: 105,
     modal: 110,
     modal-controls: 120,
 );

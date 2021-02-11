@@ -11,7 +11,7 @@ context:
     date: 07 Aug ’20
     get_verbose_name: Blog detail
     read_time: 5
-    related_blogs:
+    related_blog_posts:
       all:
         - authors:
             first:

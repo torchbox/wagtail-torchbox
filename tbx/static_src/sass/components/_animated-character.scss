@@ -1,9 +1,10 @@
 .animated-character {
     $root: &;
     position: relative;
+    background-color: var(--color--background);
 
     @include media-query(large) {
-        padding-left: 14.66vw;
+        padding-left: 0;
     }
 
     &--align-right {

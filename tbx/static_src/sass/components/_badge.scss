@@ -5,7 +5,7 @@
     font-size: 14px;
     font-weight: 700;
     line-height: 25px;
-    color: var(--color--indigo);
+    color: var(--color--get-in-touch-numbers);
     z-index: 5;
 
     @include media-query(medium) {
@@ -21,7 +21,7 @@
         width: 18px;
         height: 22px;
         content: '';
-        background: var(--color--accent);
+        background: var(--color--header-icon-color);
         position: absolute;
         z-index: -1;
         transform: rotate(30deg);

@@ -1,0 +1,97 @@
+version: '3.7'
+services:
+  web:
+    build:
+      context: .
+      args:
+        BUILD_ENV: dev
+    init: true
+    environment:
+      ALLOWED_HOSTS: 127.0.0.1,0.0.0.0,localhost
+      DATABASE_URL: postgres://tbx:tbx@db:5432/tbx # pragma: allowlist secret
+      DJANGO_SETTINGS_MODULE: tbx.settings.dev
+      MEDIA_DIR: /app/media/
+      RECAPTCHA_PRIVATE_KEY: UPDATE_THIS # pragma: allowlist secret
+      RECAPTCHA_PUBLIC_KEY: UPDATE_THIS
+      REDIS_URL: redis://redis
+      SECRET_KEY: local_dev_secret_key
+      SECURE_SSL_REDIRECT: 'false'
+      STATIC_DIR: /app/static/
+      STATIC_URL: /static/
+    command: tail -f /dev/null # do nothing forever - exec commands elsewhere
+    ports:
+      - 8000:8000 # runserver
+      - 8001:8001 # mkdocs serve
+    volumes:
+      - ./README.md:/app/README.md:delegated,ro
+      - ./docs:/app/docs:delegated,ro
+      - ./manage.py:/app/manage.py:delegated,ro
+      - ./tbx:/app/tbx:delegated,rw
+      - ./media:/app/media:delegated,rw
+      - ./mkdocs.yml:/app/mkdocs.yml:delegated,ro
+      - ./poetry.lock:/app/poetry.lock:rw
+      - ./public:/app/public:delegated,ro
+      - ./pyproject.toml:/app/pyproject.toml:rw
+      - ./setup.cfg:/app/setup.cfg:delegated,ro
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.frontend
+    init: true
+    environment:
+      NODE_ENV: development
+      PROXY_HOST: web
+      PROXY_PORT: 8000
+    volumes:
+      # Config files
+      - ./.babelrc.js:/home/node/.babelrc.js:delegated,ro
+      - ./.editorconfig:/home/node/.editorconfig:delegated,ro
+      - ./.eslintignore:/home/node/.eslintignore:delegated,ro
+      - ./.eslintrc.js:/home/node/.eslintrc.js:delegated,ro
+      - ./.prettierignore:/home/node/.prettierignore:delegated,ro
+      - ./.prettierrc.toml:/home/node/.prettierrc.toml:delegated,ro
+      - ./.stylelintignore:/home/node/.stylelintignore:delegated,ro
+      - ./.stylelintrc.js:/home/node/.stylelintrc.js:delegated,ro
+      - ./browsersync.config.js:/home/node/browsersync.config.js:delegated,ro
+      - ./package-lock.json:/home/node/package-lock.json:delegated,rw
+      - ./package.json:/home/node/package.json:delegated,rw
+      - ./webpack.config.js:/home/node/webpack.config.js:delegated,ro
+      # Source files
+      - ./tbx/static_src:/home/node/tbx/static_src:delegated,ro
+    command: tail -f /dev/null # do nothing forever - exec commands elsewhere
+    ports:
+      - 3000:3000
+      - 3001:3001
+
+  utils:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.utils
+    volumes:
+      - ./media:/app/media:delegated
+
+  db:
+    image: postgres:12.3
+    expose:
+      - 5432
+    environment:
+      POSTGRES_DB: tbx
+      POSTGRES_USER: tbx
+      POSTGRES_PASSWORD: tbx # pragma: allowlist secret
+      PGDATABASE: tbx
+      PGUSER: tbx
+      PGPASSWORD: tbx # pragma: allowlist secret
+      POSTGRES_HOST_AUTH_METHOD: trust
+    logging:
+      driver: none
+
+  redis:
+    image: redis:3.0
+    expose:
+      - 6379
+    logging:
+      driver: none

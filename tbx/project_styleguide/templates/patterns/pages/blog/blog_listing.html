@@ -1,8 +1,6 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
-{% block theme_class %}theme--primary{% endblock %}
-
 {% block content %}
 
 {% include "patterns/molecules/title-block/title-block.html" with item=page tags=related_services %}
@@ -16,7 +14,7 @@
         </div>
 
         {% if blog_posts.has_next %}
-            {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" fetch_data="blog-pages" %}
+            {% include "patterns/atoms/see-more/see-more.html" with text="See more posts" fetch_data="blog-pages" %}
         {% endif %}
     </div>
 

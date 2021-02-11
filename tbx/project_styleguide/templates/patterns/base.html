@@ -1,7 +1,7 @@
 {% load static wagtailuserbar wagtailcore_tags wagtailimages_tags navigation_tags util_tags wagtailaccessibility_tags %}
 {% tota11y %}
 <!doctype html>
-<html lang="en-GB">
+<html class="{% block body_class %}template__{{ page.get_verbose_name|slugify }}{% endblock %}" lang="en-GB">
     <head>
         {# TODO fallbacks if page is not defined e.g. for 404 page #}
         <meta charset="utf-8" />
@@ -26,7 +26,7 @@
         {% block extra_css %}{% endblock %}
     </head>
 
-    <body class="{% block body_class %}template__{{ page.get_verbose_name|slugify }}{% endblock %} {% block theme_class %}theme-{{ theme_class }}{% endblock %}">
+    <body class="{% block theme_class %}{% if page.theme %}theme--{{ page.theme }}{% else %}theme--light{% endif %}{% endblock %}">
         {% block body_top %}{% endblock %}
 
         {% include "patterns/atoms/sprites/sprites.html" %}

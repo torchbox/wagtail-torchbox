@@ -22,7 +22,7 @@
     &__address-title {
         font-size: 20px;
         font-weight: bold;
-        color: var(--color--primary);
+        color: var(--color--dark-indigo);
         margin: 0 0 ($gutter / 2);
         line-height: 1;
 
@@ -53,18 +53,18 @@
 
     &__link {
         display: inline-block;
-        height: 30px;
+        height: 23px;
         font-size: 14px;
         margin-right: ($gutter / 2);
-    }
-
-    a {
-        font-size: 14px;
-        height: 23px;
         font-weight: $weight--bold;
         border-bottom: 2px solid var(--color--lagoon);
         color: var(--color--dark-indigo);
 
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:focus,
         &:hover {
             color: var(--color--dark-indigo);
         }
@@ -80,6 +80,13 @@
 
         @include media-query(medium) {
             display: block;
+        }
+    }
+
+    &__bottom {
+        @include media-query(large) {
+            display: flex;
+            align-items: center;
         }
     }
 }

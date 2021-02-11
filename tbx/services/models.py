@@ -126,7 +126,7 @@ class BaseServicePage(Page):
                 FieldPanel("blogs_section_title", classname="full"),
                 InlinePanel("featured_blog_posts", label="Featured blog posts"),
             ],
-            heading="Blogs",
+            heading="Thinking",
             classname="collapsible",
         ),
     ]
@@ -292,20 +292,9 @@ class ServicePageProcess(Orderable, BaseServicePageProcess):
 
 
 class SubServicePage(BaseServicePage):
-    show_automatic_blog_listing = models.BooleanField(default=False)
-    show_automatic_case_studies_listing = models.BooleanField(default=False)
-    parent_page_types = ["ServicePage"]
+    template = "patterns/pages/service/service.html"
 
-    content_panels = BaseServicePage.content_panels + [
-        MultiFieldPanel(
-            [
-                FieldPanel("show_automatic_blog_listing"),
-                FieldPanel("show_automatic_case_studies_listing"),
-            ],
-            heading="Listings settings",
-            classname="collapsible",
-        ),
-    ]
+    parent_page_types = ["ServicePage"]
 
     @property
     def service(self):

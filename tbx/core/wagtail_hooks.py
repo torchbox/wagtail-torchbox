@@ -3,46 +3,9 @@ from django.shortcuts import redirect
 from django.utils.cache import add_never_cache_headers
 
 from storages.backends.s3boto3 import S3Boto3Storage
-from wagtail.contrib.modeladmin.options import (
-    ModelAdmin,
-    ModelAdminGroup,
-    modeladmin_register,
-)
 from wagtail.core import hooks
 from wagtail.documents import get_document_model
 from wagtail.documents.models import document_served
-
-from tbx.sign_up_form.models import SignUpFormPageResponse
-
-from .models import GoogleAdGrantApplication
-
-
-class GoogleAdGrantApplicationModelAdmin(ModelAdmin):
-    model = GoogleAdGrantApplication
-    menu_label = "Ad Grant Applications"
-    menu_icon = "date"
-    menu_order = 600
-    add_to_settings_menu = False
-    list_display = ("date", "name", "email")
-
-
-class SignUpFormPageResponseModelAdmin(ModelAdmin):
-    model = SignUpFormPageResponse
-    menu_label = "Sign-Up Form Page Submissions"
-    menu_icon = "date"
-    menu_order = 600
-    add_to_settings_menu = False
-    list_display = ("date", "email")
-
-
-class SubmissionsModelAdminGroup(ModelAdminGroup):
-    menu_label = "Form Submissions"
-    menu_icon = "folder-open-inverse"  # change as required
-    menu_order = 600
-    items = (SignUpFormPageResponseModelAdmin, GoogleAdGrantApplicationModelAdmin)
-
-
-modeladmin_register(SubmissionsModelAdminGroup)
 
 
 @hooks.register("before_serve_document", order=100)

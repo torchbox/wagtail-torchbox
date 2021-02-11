@@ -1,4 +1,3 @@
-from django import forms
 from django.db import models
 from django.shortcuts import render
 
@@ -10,7 +9,6 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
-from wagtail.admin.mail import send_mail
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.blocks import PageChooserBlock, StreamBlock, StructBlock
 from wagtail.core.fields import RichTextField, StreamField
@@ -18,7 +16,6 @@ from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
-from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from .api import PeopleHRFeed
@@ -250,69 +247,12 @@ class HomePage(Page):
 
 
 class StandardPage(Page):
+    template = "patterns/pages/standard/standard_page.html"
+
     body = StreamField(StoryBlock())
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),
-    ]
-
-
-# About page
-class AboutPageRelatedLinkButton(Orderable, RelatedLink):
-    page = ParentalKey("torchbox.AboutPage", related_name="related_link_buttons")
-
-
-class AboutPageOffice(Orderable):
-    page = ParentalKey("torchbox.AboutPage", related_name="offices")
-    title = models.TextField()
-    svg = models.TextField(null=True)
-    description = models.TextField()
-
-    panels = [FieldPanel("title"), FieldPanel("description"), FieldPanel("svg")]
-
-
-class AboutPageContentBlock(Orderable):
-    page = ParentalKey("torchbox.AboutPage", related_name="content_blocks")
-    year = models.IntegerField()
-    title = models.TextField()
-    description = models.TextField()
-    image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
-    panels = [
-        FieldPanel("year"),
-        FieldPanel("title"),
-        FieldPanel("description"),
-        ImageChooserPanel("image"),
-    ]
-
-
-class AboutPage(Page):
-    main_image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-    heading = models.TextField(blank=True)
-    intro = models.TextField(blank=True)
-    involvement_title = models.TextField(blank=True)
-
-    content_panels = [
-        FieldPanel("title", classname="full title"),
-        ImageChooserPanel("main_image"),
-        FieldPanel("heading", classname="full"),
-        FieldPanel("intro", classname="full"),
-        InlinePanel("related_link_buttons", label="Header buttons"),
-        InlinePanel("content_blocks", label="Content blocks"),
-        InlinePanel("offices", label="Offices"),
-        FieldPanel("involvement_title"),
     ]
 
 
@@ -443,155 +383,8 @@ class JobIndexPage(Page):
         )
 
 
-class GoogleAdGrantApplication(models.Model):
-    date = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-
-    class Meta:
-        ordering = ["-date"]
-
-
-class GoogleAdGrantApplicationForm(forms.ModelForm):
-    class Meta:
-        model = GoogleAdGrantApplication
-        fields = ["name", "email"]
-        widgets = {
-            "name": forms.TextInput(attrs={"placeholder": "Your charity's name"}),
-            "email": forms.TextInput(attrs={"placeholder": "Your email address"}),
-        }
-
-
-class GoogleAdGrantsPageGrantsManaged(models.Model):
-    page = ParentalKey("torchbox.GoogleAdGrantsPage", related_name="grants_managed")
-    image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
-    panels = [ImageChooserPanel("image")]
-
-
-class GoogleAdGrantsPageQuote(Orderable):
-    page = ParentalKey("torchbox.GoogleAdGrantsPage", related_name="quotes")
-    text = models.TextField()
-    person_name = models.CharField(max_length=255)
-    organisation_name = models.CharField(max_length=255)
-
-    panels = [
-        FieldPanel("text"),
-        FieldPanel("person_name"),
-        FieldPanel("organisation_name"),
-    ]
-
-
-class GoogleAdGrantsAccreditations(Orderable):
-    page = ParentalKey("torchbox.GoogleAdGrantsPage", related_name="accreditations")
-    image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
-    panels = [ImageChooserPanel("image")]
-
-
-class GoogleAdGrantsPage(Page):
-    intro = RichTextField()
-    form_title = models.CharField(max_length=255)
-    form_subtitle = models.CharField(max_length=255)
-    form_button_text = models.CharField(max_length=255)
-    to_address = models.EmailField(
-        verbose_name="to address",
-        blank=True,
-        help_text="Optional - form submissions will be emailed to this address",
-    )
-    body = RichTextField()
-    grants_managed_title = models.CharField(max_length=255)
-    call_to_action_title = models.CharField(max_length=255, blank=True)
-    call_to_action_embed_url = models.URLField(blank=True)
-
-    search_fields = Page.search_fields + [
-        index.SearchField("intro"),
-        index.SearchField("body"),
-    ]
-
-    def get_context(self, request, *args, **kwargs):
-        form = GoogleAdGrantApplicationForm()
-        context = super(GoogleAdGrantsPage, self).get_context(request, *args, **kwargs)
-        context["form"] = form
-        return context
-
-    def serve(self, request, *args, **kwargs):
-        if request.is_ajax() and request.method == "POST":
-            form = GoogleAdGrantApplicationForm(request.POST)
-            if form.is_valid():
-                form.save()
-
-                if self.to_address:
-                    subject = "{} form submission".format(self.title)
-                    content = "\n".join(
-                        [
-                            x[1].label + ": " + str(form.data.get(x[0]))
-                            for x in form.fields.items()
-                        ]
-                    )
-                    send_mail(
-                        subject, content, [self.to_address],
-                    )
-                return render(
-                    request,
-                    "torchbox/includes/ad_grant_application_landing.html",
-                    {"self": self, "form": form},
-                )
-            else:
-                return render(
-                    request,
-                    "torchbox/includes/ad_grant_application_form.html",
-                    {"self": self, "form": form},
-                )
-        else:
-            return super(GoogleAdGrantsPage, self).serve(request)
-
-    content_panels = Page.content_panels + [
-        FieldPanel("intro", classname="full"),
-        FieldPanel("body", classname="full"),
-        MultiFieldPanel(
-            [
-                FieldPanel("form_title"),
-                FieldPanel("form_subtitle"),
-                FieldPanel("form_button_text"),
-                FieldPanel("to_address"),
-            ],
-            "Application Form",
-        ),
-        MultiFieldPanel(
-            [
-                FieldPanel("grants_managed_title"),
-                InlinePanel("grants_managed", label="Grants Managed"),
-            ],
-            "Grants Managed Section",
-        ),
-        InlinePanel("quotes", label="Quotes"),
-        MultiFieldPanel(
-            [
-                FieldPanel("call_to_action_title"),
-                FieldPanel("call_to_action_embed_url"),
-                InlinePanel("accreditations", label="Accreditations"),
-            ],
-            "Call To Action",
-        ),
-    ]
-
-
 @register_setting
 class GlobalSettings(BaseSetting):
-
     contact_telephone = models.CharField(max_length=255, help_text="Telephone")
     contact_email = models.EmailField(max_length=255, help_text="Email address")
     contact_twitter = models.CharField(max_length=255, help_text="Twitter")
