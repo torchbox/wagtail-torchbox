@@ -10,7 +10,7 @@ class PeopleHRFeed(object):
 
     def get_jobs(self, *args, url=None, **kwargs):
         if not url:
-            return None
+            return []
 
         resp = requests.get(url)
         resp.raise_for_status()
