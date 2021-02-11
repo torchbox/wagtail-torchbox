@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (
@@ -17,6 +18,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.snippets.models import register_snippet
 
+from .api import PeopleHRFeed
 from .blocks import StoryBlock
 from .fields import ColorField
 
@@ -354,6 +356,8 @@ class JobIndexPageJob(Orderable):
 
 
 class JobIndexPage(Page):
+    template = "patterns/pages/job/job_listing.html"
+
     strapline = models.CharField(max_length=255)
     intro = RichTextField(blank=True)
     jobs_xml_feed = models.URLField(blank=True)
@@ -363,6 +367,20 @@ class JobIndexPage(Page):
         FieldPanel("intro"),
         FieldPanel("jobs_xml_feed"),
     ]
+
+    def serve(self, request):
+        try:
+            feed = PeopleHRFeed()
+            jobs = feed.get_jobs(url=self.jobs_xml_feed)
+        except Exception as e:
+            jobs = []
+            raise e
+
+        return render(
+            request,
+            self.template,
+            {"page": self, "jobs": jobs, "feed_success": len(jobs) > 0},
+        )
 
 
 @register_setting
