@@ -432,16 +432,14 @@ class JobIndexPage(Page):
         try:
             feed = PeopleHRFeed()
             jobs = feed.get_jobs(url=self.jobs_xml_feed)
-            feed_success = True
         except Exception as e:
-            jobs = None
-            feed_success = False
+            jobs = []
             raise e
 
         return render(
             request,
             self.template,
-            {"page": self, "jobs": jobs, "feed_success": feed_success},
+            {"page": self, "jobs": jobs, "feed_success": len(jobs) > 0},
         )
 
 
