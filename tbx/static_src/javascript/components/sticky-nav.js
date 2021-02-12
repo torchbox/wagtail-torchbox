@@ -9,7 +9,7 @@ function scrollamaInit() {
     scroller
         .setup({
             step: '[data-sticky-nav]',
-            offset: 0,
+            offset: '20px',
         })
         .onStepEnter((response) => {
             if (response.direction === 'down') {
