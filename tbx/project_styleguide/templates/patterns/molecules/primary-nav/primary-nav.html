@@ -15,13 +15,16 @@
                 <span class="nav-item__title">Digital marketing</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-item--with-badge">
             <a class="nav-item__link {% if page.slug == 'culture-and-jobs' %}nav-item__link--active{% endif %}" href="/culture-and-jobs">
                 <span class="nav-item__title">Culture + jobs</span>
-                {% if job_count %}
-                    {% include "patterns/atoms/badge/badge.html" with total=job_count %}
-                {% endif %}
             </a>
+
+            {% if job_count %}
+                <a class="nav-item__badge-link" href="/jobs">
+                    {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                </a>
+            {% endif %}
         </li>
     </ul>
 </nav>
