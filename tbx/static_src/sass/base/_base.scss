@@ -16,6 +16,7 @@ body {
     overflow-x: hidden;
     background-color: var(--color--white);
     scroll-behavior: smooth;
+    font-variant-ligatures: none;
 
     @media (prefers-reduced-motion: reduce) {
         scroll-behavior: auto;
