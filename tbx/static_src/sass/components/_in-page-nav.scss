@@ -1,8 +1,11 @@
 .in-page-nav {
     $root: &;
     @include z-index(header);
+    position: sticky;
+    top: 0;
+    margin-left: 10.33vw;
 
-    &--stuck {
+    .nav-stuck & {
         #{$root}__inner {
             background-color: var(--color--background);
             position: fixed;

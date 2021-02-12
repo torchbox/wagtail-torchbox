@@ -38,8 +38,6 @@ class InPageNav {
     }
 
     bindEvents() {
-        this.handleStickyNav();
-
         this.allMenuLinks.forEach((link) => {
             link.addEventListener('click', (e) => {
                 this.resetMenuLinks();
@@ -65,20 +63,6 @@ class InPageNav {
         this.allMenuLinks.forEach((menuLink) => {
             menuLink.classList.remove('is-active');
         });
-    }
-
-    handleStickyNav() {
-        const handler = ([entries]) => {
-            if (entries.isIntersecting) {
-                this.node.classList.toggle(this.stickyClass);
-            }
-        };
-
-        const observer = new window.IntersectionObserver(handler, {
-            rootMargin: '0px 0px -90%',
-        });
-
-        observer.observe(this.sentinelEl);
     }
 }
 

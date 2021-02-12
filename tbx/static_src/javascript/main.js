@@ -5,6 +5,7 @@ import SeeMorePosts from './components/see-more-posts';
 import Carousel from './components/carousel';
 import MobileMenuToggle from './components/mobile-menu-toggle';
 import './components/sticky-point';
+import './components/sticky-nav';
 import InPageNav from './components/in-page-nav';
 
 import '../sass/main.scss';
