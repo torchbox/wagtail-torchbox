@@ -22,7 +22,26 @@
                 {{ page.biography|richtext }}
             </div>
         </div>
-
     </div>
+
+    {% if page.author_blogs %}
+        <div class="blog-listing" id="thinking">
+            <div class="blog-listing__content">
+                {% include "patterns/atoms/section-title/section-title.html" with title="More of "|add:page.title.split.0|add:"'s thinking" %}
+                <div class="blog-listing__list blog-listing__list--horizontal">
+                    {% for blog in page.author_blogs %}
+                        {% if forloop.first %}
+                            <div class="blog-listing__feature">
+                                {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                            </div>
+                        {% else %}
+                            {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
 
 {% endblock %}
