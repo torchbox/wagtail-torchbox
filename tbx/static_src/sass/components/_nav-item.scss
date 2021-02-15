@@ -28,7 +28,7 @@
         }
     }
 
-    &--active{
+    &--active {
         @include link-underscore(4);
         color: var(--color--header-links);
     }
