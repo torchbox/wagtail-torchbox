@@ -22,7 +22,7 @@
 
         &:hover,
         &:focus,
-        #{#root}--active & {
+        #{$root}--active & {
             @include link-underscore(4);
             color: var(--color--header-links);
         }
