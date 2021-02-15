@@ -22,8 +22,8 @@ def migrate_service_pages(apps, schema_editor):
     ServicePage = apps.get_model("torchbox.ServicePage")
 
     for service_page in ServicePage.objects.all():
-        service_page.streamfield.stream_data = migrate_streamfield_json(
-            service_page.streamfield.stream_data
+        service_page.streamfield.raw_data = migrate_streamfield_json(
+            service_page.streamfield.raw_data
         )
         service_page.save(update_fields=["streamfield"])
 

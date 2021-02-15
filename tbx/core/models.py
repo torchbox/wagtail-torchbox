@@ -206,6 +206,7 @@ class HomePageClient(Orderable, RelatedLink):
 
 
 class HomePage(Page):
+    template = "patterns/pages/home/home_page.html"
     hero_intro_primary = models.TextField(blank=True)
     hero_intro_secondary = models.TextField(blank=True)
     intro_body = RichTextField(blank=True)
