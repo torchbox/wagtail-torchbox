@@ -1,6 +1,26 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
+{% block meta_tags %}
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'author-title' : '{{ page.authors.all.0.author.role }}',
+            'author-name' : '{{ page.authors.all.0.author.name }}',
+            'published' : '{{ page.date|date:"Ymd" }}',
+            'tags' : [{% for tag in page.related_services.all %}'{{tag.name}}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+            'read-time' : '{{ page.read_time }}',
+            'id': '{{ page.id }}',
+            'page-h1' : '{{ page.title }}',
+            'page-title' : '{{ page.title }} | Torchbox'
+            'page-path': '{{ page.slug }}'
+            'event': 'pageview'
+        });
+    </script>
+    {{ block.super }}
+
+{% endblock %}
+
 {% block content %}
     {% with author=page.authors.first.author %}
 
