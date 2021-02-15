@@ -25,11 +25,14 @@
         #{$root}__container {
             margin-top: 0;
             padding-left: 0;
+
+            @include media-query(large) {
+                margin-left: 6.66vw;
+            }
         }
 
         #{$root}__link {
             @include font-size(xxs);
-            font-weight: $weight--semibold;
             padding-bottom: 5px;
 
             &.is-active {
@@ -45,6 +48,10 @@
         #{$root}__item {
             padding-bottom: 0;
             padding-right: 20px;
+
+            @include media-query(large) {
+                padding-right: 50px;
+            }
         }
 
         #{$root}__header {
