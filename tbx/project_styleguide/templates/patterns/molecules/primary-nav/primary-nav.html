@@ -15,8 +15,8 @@
                 <span class="nav-item__title">Digital marketing</span>
             </a>
         </li>
-        <li class="nav-item {% if page.slug == 'culture-and-jobs' %}nav-item--active{% endif %}">
-            <a class="nav-item__link" href="/culture-and-jobs">
+        <li class="nav-item">
+            <a class="nav-item__link {% if page.slug == 'culture-and-jobs' %}nav-item--active{% endif %}" href="/culture-and-jobs">
                 <span class="nav-item__title">Culture + jobs</span>
                 {% if job_count %}
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
