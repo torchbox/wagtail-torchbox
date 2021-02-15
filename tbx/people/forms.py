@@ -22,7 +22,7 @@ class ContactForm(WagtailAdminPageForm):
                     default_contact=True, pk=contact.pk
                 ).exists():
                     self.add_error(
-                        "default_contact", "There is an existed default contact."
+                        "default_contact", "There is an existing default contact."
                     )
 
         return cleaned_data
