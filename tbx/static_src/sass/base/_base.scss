@@ -6,6 +6,12 @@
 }
 
 html {
+    scroll-behavior: smooth;
+
+    @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+    }
+
     &.template__service-page {
         scroll-padding-top: 65px;
     }
@@ -15,12 +21,7 @@ body {
     @include font-size(s);
     overflow-x: hidden;
     background-color: var(--color--white);
-    scroll-behavior: smooth;
     font-variant-ligatures: none;
-
-    @media (prefers-reduced-motion: reduce) {
-        scroll-behavior: auto;
-    }
 
     &.no-scroll {
         overflow-y: hidden;
