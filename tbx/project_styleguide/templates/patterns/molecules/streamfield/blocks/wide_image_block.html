@@ -1,5 +1,6 @@
 {% load wagtailimages_tags %}
 
 <div class="streamfield__wide-image">
-    {% image value.image original %}
+    {% image value.image fill-1600x900 as wide_image %}
+    <img src="{{ wide_image.url }}" alt="{{ wide_image.alt }}" height="{{ wide_image.height }}" width="{{ wide_image.width }}" loading="lazy" />
 </div>

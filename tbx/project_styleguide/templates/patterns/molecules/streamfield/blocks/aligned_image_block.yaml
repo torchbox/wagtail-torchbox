@@ -6,6 +6,6 @@ context:
 
 tags:
   image:
-    value.image original:
+    value.image fill-730x490 as aligned_image:
       raw: |
-        <img src="http://via.placeholder.com/1000x300" alt="Some alt">
+        <img src="http://via.placeholder.com/730x490" alt="Some alt">

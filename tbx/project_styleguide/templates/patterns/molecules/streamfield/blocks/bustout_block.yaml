@@ -4,5 +4,7 @@ context:
 
 tags:
   image:
-    value.image original:
-      raw: <img src="http://via.placeholder.com/1000x300" alt="Some alt">
+    value.image fill-1500x1200 as bustout_image:
+      target_var: bustout_image
+      raw:
+        url: '//placekitten.com/1500/1200'
