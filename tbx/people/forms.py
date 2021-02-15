@@ -4,25 +4,13 @@ from tbx.people import models
 
 
 class ContactForm(WagtailAdminPageForm):
-    def clean(self):
-        cleaned_data = super().clean()
 
-        # Make sure only one contact enabled the default contact option
-        default_contact_enabled_count = models.Contact.objects.filter(
-            default_contact=True
-        ).count()
+    def clean_default_contact(self):
+        default_contact = self.cleaned_data['default_contact']
 
         # If user wants to enable the default contact option
-        if cleaned_data["default_contact"]:
-            # If the default contact existed
-            if default_contact_enabled_count == 1:
-                contact = self.save(commit=False)
-                # Only save if user is modifying the default contact
-                if not models.Contact.objects.filter(
-                    default_contact=True, pk=contact.pk
-                ).exists():
-                    self.add_error(
-                        "default_contact", "There is an existing default contact."
-                    )
+        if default_contact:
+            # Make sure only one default contact existing
+            models.Contact.objects.filter(default_contact=True).update(default_contact=False)
 
-        return cleaned_data
+        return default_contact
