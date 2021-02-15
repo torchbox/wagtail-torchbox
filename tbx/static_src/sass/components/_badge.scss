@@ -9,12 +9,8 @@
     z-index: 5;
     transition: color $transition;
 
-    @include media-query(medium) {
-        position: absolute;
-        right: 10px;
-    }
-
     @include media-query(large) {
+        position: absolute;
         right: -25px;
     }
 
