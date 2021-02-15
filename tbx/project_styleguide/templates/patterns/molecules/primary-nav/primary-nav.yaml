@@ -1,2 +1,4 @@
 context:
+  page:
+    slug: 'wagtail-cms'
   job_count: 6
