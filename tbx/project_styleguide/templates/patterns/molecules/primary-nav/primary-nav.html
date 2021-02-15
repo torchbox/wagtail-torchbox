@@ -1,21 +1,21 @@
 <nav class="primary-nav">
     <ul class="primary-nav__list">
-        <li class="nav-item">
+        <li class="nav-item {% if page.slug == 'digital-products' %}nav-item--active{% endif %}">
             <a class="nav-item__link" href="/digital-products">
                 <span class="nav-item__title">Design + build products</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if page.slug == 'wagtail-cms' %}nav-item--active{% endif %}">
             <a class="nav-item__link" href="/wagtail-cms">
                 <span class="nav-item__title">Wagtail CMS services</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if page.slug == 'digital-marketing' %}nav-item--active{% endif %}">
             <a class="nav-item__link" href="/digital-marketing">
                 <span class="nav-item__title">Digital marketing</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if page.slug == 'culture-and-jobs' %}nav-item--active{% endif %}">
             <a class="nav-item__link" href="/culture-and-jobs">
                 <span class="nav-item__title">Culture + jobs</span>
                 {% if job_count %}
