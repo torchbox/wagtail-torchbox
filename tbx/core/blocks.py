@@ -43,7 +43,7 @@ class PhotoGridBlock(StructBlock):
 
 
 class PullQuoteBlock(StructBlock):
-    quote = CharBlock(classname="quote title")
+    quote = CharBlock(form_classname="quote title")
     attribution = CharBlock()
 
     class Meta:
@@ -80,17 +80,17 @@ class StatsBlock(StructBlock):
 
 class StoryBlock(StreamBlock):
     h2 = CharBlock(
-        classname="title",
+        form_classname="title",
         icon="title",
         template="patterns/molecules/streamfield/blocks/heading2_block.html",
     )
     h3 = CharBlock(
-        classname="title",
+        form_classname="title",
         icon="title",
         template="patterns/molecules/streamfield/blocks/heading3_block.html",
     )
     h4 = CharBlock(
-        classname="title",
+        form_classname="title",
         icon="title",
         template="patterns/molecules/streamfield/blocks/heading4_block.html",
     )
