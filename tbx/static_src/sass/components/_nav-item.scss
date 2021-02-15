@@ -1,6 +1,18 @@
 .nav-item {
     $root: &;
 
+    &:last-child {
+        #{$root}__link {
+            @include media-query(large) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &--with-badge {
+        position: relative;
+    }
+
     &__link {
         @include link-underscore(0);
         display: block;
@@ -34,5 +46,11 @@
         position: relative;
         line-height: 35px;
         transition: all 0.2s ease;
+    }
+
+    &__badge-link {
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }

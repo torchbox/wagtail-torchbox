@@ -1,6 +1,9 @@
+import logging
 from xml.etree import ElementTree
 
 import requests
+
+logger = logging.getLogger(__name__)
 
 
 class PeopleHRFeed(object):
@@ -30,3 +33,23 @@ class PeopleHRFeed(object):
             jobs.append(job)
 
         return jobs
+
+    def get_job_count(self, url=None):
+        """
+        Get the number of jobs listed on the current XML feed
+        """
+        if not url:
+            return None
+
+        resp = requests.get(url)
+
+        try:
+            resp.raise_for_status()
+            xml_root = ElementTree.fromstring(resp.content)
+            return len(xml_root.findall("channel/item"))
+        except requests.exceptions.RequestException:
+            logger.exception(f"Could not get People HR jobs feed from {url}")
+            return None
+        except ElementTree.ParseError:
+            logger.exception(f"Could not parse People HR jobs feed from {url}")
+            return None
