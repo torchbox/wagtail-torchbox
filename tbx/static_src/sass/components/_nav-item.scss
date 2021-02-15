@@ -22,7 +22,7 @@
 
         &:hover,
         &:focus,
-        #{#root}--active & {
+        #{$root}--active & {
             @include link-underscore(4);
             color: var(--color--header-links);
         }
@@ -34,6 +34,5 @@
         position: relative;
         line-height: 35px;
         transition: all 0.2s ease;
-        font-weight: $weight--semibold;
     }
 }
