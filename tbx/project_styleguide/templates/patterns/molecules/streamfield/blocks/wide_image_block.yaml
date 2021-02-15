@@ -1,4 +1,6 @@
 tags:
   image:
-    value.image original:
-      raw: <img src="http://via.placeholder.com/1000x300" alt="Some alt">
+    value.image fill-1600x900 as wide_image:
+      target_var: wide_image
+      raw:
+        url: '//placekitten.com/1600/900'

@@ -27,9 +27,7 @@ context:
       phone_number: 3213123123
 tags:
   image:
-    page.hero_image original:
-      raw: '<img src="http://via.placeholder.com/1000x300" alt="Some alt">'
-    page.contact.image original:
+    page.hero_image width-1920 as hero_image:
       raw: '<img src="http://via.placeholder.com/1000x300" alt="Some alt">'
   pageurl:
     link.link:
