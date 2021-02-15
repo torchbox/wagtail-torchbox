@@ -49,12 +49,14 @@
         }
     }
 
+    &__btn,
     &__link {
-        color: var(--color--primary);
+        color: var(--color--indigo);
         pointer-events: auto;
 
+        &:focus,
         &:hover {
-            color: var(--color--black);
+            color: var(--color--indigo-dark);
         }
     }
 }
