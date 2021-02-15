@@ -393,8 +393,7 @@ elif "FRONTEND_CACHE_CLOUDFLARE_TOKEN" in env:
     WAGTAILFRONTENDCACHE = {
         "default": {
             "BACKEND": "wagtail.contrib.frontend_cache.backends.CloudflareBackend",
-            "EMAIL": env["FRONTEND_CACHE_CLOUDFLARE_EMAIL"],
-            "TOKEN": env["FRONTEND_CACHE_CLOUDFLARE_TOKEN"],
+            "BEARER_TOKEN": env["FRONTEND_CACHE_CLOUDFLARE_TOKEN"],
             "ZONEID": env["FRONTEND_CACHE_CLOUDFLARE_ZONEID"],
         },
     }
