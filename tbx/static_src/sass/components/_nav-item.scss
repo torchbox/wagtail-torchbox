@@ -28,6 +28,11 @@
         }
     }
 
+    &--active{
+        @include link-underscore(4);
+        color: var(--color--header-links);
+    }
+
     &__title {
         @include font-size(s);
         display: flex;
