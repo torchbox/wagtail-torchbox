@@ -1,27 +1,27 @@
 <nav class="primary-nav">
     <ul class="primary-nav__list">
         <li class="nav-item">
-            <a class="nav-item__link {% if page.slug == 'digital-products' %}nav-item__link--active{% endif %}" href="/digital-products">
+            <a class="nav-item__link {% if page.slug == 'digital-products' %}nav-item__link--active{% endif %}" href="/digital-products/">
                 <span class="nav-item__title">Design + build products</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-item__link {% if page.slug == 'wagtail-cms' %}nav-item__link--active{% endif %}" href="/wagtail-cms">
+            <a class="nav-item__link {% if page.slug == 'wagtail-cms' %}nav-item__link--active{% endif %}" href="/wagtail-cms/">
                 <span class="nav-item__title">Wagtail CMS services</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-item__link {% if page.slug == 'digital-marketing' %}nav-item__link--active{% endif %}" href="/digital-marketing">
+            <a class="nav-item__link {% if page.slug == 'digital-marketing' %}nav-item__link--active{% endif %}" href="/digital-marketing/">
                 <span class="nav-item__title">Digital marketing</span>
             </a>
         </li>
         <li class="nav-item nav-item--with-badge">
-            <a class="nav-item__link {% if page.slug == 'culture-and-jobs' %}nav-item__link--active{% endif %}" href="/culture-and-jobs">
+            <a class="nav-item__link {% if page.slug == 'culture-and-jobs' %}nav-item__link--active{% endif %}" href="/culture-and-jobs/">
                 <span class="nav-item__title">Culture + jobs</span>
             </a>
 
             {% if job_count %}
-                <a class="nav-item__badge-link" href="/jobs">
+                <a class="nav-item__badge-link" href="/jobs/">
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                 </a>
             {% endif %}
