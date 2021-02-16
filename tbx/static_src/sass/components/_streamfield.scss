@@ -157,6 +157,10 @@
         }
     }
 
+    &__bustout-block {
+        @include streamblock-padding();
+    }
+
     p {
         line-height: 1.7;
     }
