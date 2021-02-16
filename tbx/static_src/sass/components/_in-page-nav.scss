@@ -40,7 +40,7 @@
             }
 
             @include media-query(large) {
-                font-size: 15px;
+                @include font-size(xs);
                 padding-bottom: 15px;
             }
         }
