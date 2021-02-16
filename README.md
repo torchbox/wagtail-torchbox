@@ -100,4 +100,3 @@ poetry install wagtail-guide
 ### Deployments
 
 Merges to `master` and `staging` will automatically trigger a deployment to the production and staging sites, respectively.
-
