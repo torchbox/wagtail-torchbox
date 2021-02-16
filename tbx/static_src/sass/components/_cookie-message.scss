@@ -49,14 +49,27 @@
         }
     }
 
-    &__btn,
     &__link {
         color: var(--color--indigo);
         pointer-events: auto;
 
         &:focus,
         &:hover {
-            color: var(--color--indigo-dark);
+            color: var(--color--dark-indigo);
+        }
+    }
+
+    &__btn {
+        background-color: var(--color--dark-indigo);
+        padding: 9px 10px;
+        color: var(--color--white);
+        border-bottom: 0;
+        transition: background-color 0.2s ease;
+        margin-right: 10px;
+
+        &:focus,
+        &:hover {
+            background-color: var(--color--coral);
         }
     }
 }
