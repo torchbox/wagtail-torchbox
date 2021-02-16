@@ -1,0 +1,40 @@
+.introduction {
+    padding-bottom: ($gutter * 2);
+
+    @include media-query(medium) {
+        padding-bottom: ($gutter * 3);
+    }
+
+    &--opinion {
+        position: relative;
+        padding-top: $gutter;
+
+        @include media-query(medium) {
+            width: 60%;
+        }
+    }
+
+    &__container {
+        @include container();
+
+        @include media-query(large) {
+            @include container(medium);
+        }
+    }
+
+    &__title {
+        color: var(--color--accent);
+        padding: 0;
+    }
+
+    &__text {
+        @include font-size(m);
+        line-height: 30px;
+        margin: 0 0 ($gutter * 2);
+        color: var(--color--primary);
+
+        @include media-query(medium) {
+            line-height: 42px;
+        }
+    }
+}

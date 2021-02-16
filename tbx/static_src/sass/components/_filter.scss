@@ -1,0 +1,18 @@
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    &__tag {
+        box-sizing: content-box;
+        font-size: 14px;
+        padding: 2px 8px;
+        margin-right: 10px;
+
+        &--active {
+            border: 2px solid var(--color--coral);
+            color: var(--color--coral);
+        }
+    }
+}

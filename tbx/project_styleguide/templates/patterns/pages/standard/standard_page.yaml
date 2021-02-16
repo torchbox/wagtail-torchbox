@@ -1,0 +1,9 @@
+context:
+  page:
+    title: Your Data, Privacy & Cookies
+    get_verbose_name: standard
+
+tags:
+  include_block:
+    page.body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example-standard.html'

@@ -1,0 +1,19 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailsettings_tags %}
+
+{% block title %}Page not found{% endblock %}
+
+{% block body_class %}template__error{% endblock %}
+
+{% block content %}
+    <div class="error-hero">
+        <div class="error-hero__content">
+            <h1 class="error-hero__title">
+                {{ settings.utils.SystemMessagesSettings.title_404|default:"Err..." }}
+            </h1>
+            <a class="error-hero__link" href="/">
+                {{ settings.utils.SystemMessagesSettings.body_404|richtext|default:"Take me home" }}
+            </a>
+        </div>
+    </div>
+{% endblock %}

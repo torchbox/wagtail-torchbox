@@ -8,9 +8,8 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0071_auto_rename_global_settings_fields'),
-        ('torchbox', '0071_merge'),
+        ("torchbox", "0071_auto_rename_global_settings_fields"),
+        ("torchbox", "0071_merge"),
     ]
 
-    operations = [
-    ]
+    operations = []

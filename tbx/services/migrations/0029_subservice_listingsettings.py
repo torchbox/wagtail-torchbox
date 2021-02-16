@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0028_services_orderable_fix'),
+        ("services", "0028_services_orderable_fix"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='subservicepage',
-            name='show_automatic_blog_listing',
+            model_name="subservicepage",
+            name="show_automatic_blog_listing",
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='subservicepage',
-            name='show_automatic_case_studies_listing',
+            model_name="subservicepage",
+            name="show_automatic_case_studies_listing",
             field=models.BooleanField(default=False),
         ),
     ]

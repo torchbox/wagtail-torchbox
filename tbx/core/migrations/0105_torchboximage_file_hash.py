@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0104_merge_20180928_1009'),
+        ("torchbox", "0104_merge_20180928_1009"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='torchboximage',
-            name='file_hash',
+            model_name="torchboximage",
+            name="file_hash",
             field=models.CharField(blank=True, editable=False, max_length=40),
         ),
     ]

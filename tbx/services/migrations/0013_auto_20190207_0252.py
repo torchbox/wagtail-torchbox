@@ -6,15 +6,10 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0012_servicepageherolink'),
+        ("services", "0012_servicepageherolink"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='servicepageherolink',
-            name='page',
-        ),
-        migrations.DeleteModel(
-            name='ServicePageHeroLink',
-        ),
+        migrations.RemoveField(model_name="servicepageherolink", name="page",),
+        migrations.DeleteModel(name="ServicePageHeroLink",),
     ]

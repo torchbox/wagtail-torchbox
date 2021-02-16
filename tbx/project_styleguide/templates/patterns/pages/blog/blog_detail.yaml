@@ -1,0 +1,37 @@
+context:
+  page:
+    authors:
+      all:
+        - author:
+            name: Nick Lee
+            role: Designer
+    blog_index:
+      url: '#'
+    title: The stages (and jargon) of digital product innovation
+    date: 07 Aug ’20
+    get_verbose_name: Blog detail
+    read_time: 5
+    related_blog_posts:
+      all:
+        - authors:
+            first:
+              author:
+                name: Paul Vetch
+                role: Strategy Director
+          title: We already dropped Drupal - maybe it’s time for you to do the same.
+        - authors:
+            first:
+              author:
+                name: Will Heinemann
+                role: New Business Director
+          title: Wagtail for Public Sector
+      exists: True
+    related_services:
+      all:
+        - name: Digital products
+          slug: digital-products
+
+tags:
+  include_block:
+    page.body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example-blog.html'

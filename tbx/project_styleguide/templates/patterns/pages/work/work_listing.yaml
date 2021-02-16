@@ -1,0 +1,42 @@
+context:
+  page:
+    title: Work
+    get_verbose_name: work-listing
+  works:
+    - {
+        title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
+        client: Oxfam,
+        listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
+      }
+    - {
+        title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
+        client: Oxfam,
+        listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
+      }
+    - {
+        title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
+        client: Oxfam,
+        listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
+      }
+    - {
+        title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
+        client: Oxfam,
+        listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
+      }
+    - {
+        title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
+        client: Oxfam,
+        listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
+      }
+    - {
+        title: We’ve launched a supporter-centred Wagtail website for Oxfam GB,
+        client: Oxfam,
+        listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.,
+      }
+  related_services:
+    - { name: All }
+    - { name: Digital products, slug: digital-products }
+    - { name: Digital products, slug: digital-products }
+    - { name: Digital products, slug: digital-products }
+    - { name: Digital products, slug: digital-products }
+    - { name: Digital products, slug: digital-products }

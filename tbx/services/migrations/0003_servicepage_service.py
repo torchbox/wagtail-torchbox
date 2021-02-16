@@ -7,14 +7,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('taxonomy', '0001_initial'),
-        ('services', '0002_auto_20190123_1133'),
+        ("taxonomy", "0001_initial"),
+        ("services", "0002_auto_20190123_1133"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='servicepage',
-            name='service',
-            field=models.OneToOneField(blank=True, help_text='Link to this service in taxonomy', null=True, on_delete=django.db.models.deletion.SET_NULL, to='taxonomy.Service'),
+            model_name="servicepage",
+            name="service",
+            field=models.OneToOneField(
+                blank=True,
+                help_text="Link to this service in taxonomy",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="taxonomy.Service",
+            ),
         ),
     ]

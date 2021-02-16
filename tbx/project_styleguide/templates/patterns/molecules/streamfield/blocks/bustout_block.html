@@ -1,0 +1,6 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div>
+    {% image value.image fill-1500x1200 as bustout_image %}
+    <img src="{{ bustout_image.url }}" alt="{{ bustout_image.alt }}" height="{{ bustout_image.height }}" width="{{ bustout_image.width }}" loading="lazy" />
+    {{ value.text|richtext }}
+</div>

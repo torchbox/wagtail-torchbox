@@ -1,0 +1,10 @@
+context:
+  value:
+    text: <p>sample bustout block text</p>
+
+tags:
+  image:
+    value.image fill-1500x1200 as bustout_image:
+      target_var: bustout_image
+      raw:
+        url: '//placekitten.com/1500/1200'

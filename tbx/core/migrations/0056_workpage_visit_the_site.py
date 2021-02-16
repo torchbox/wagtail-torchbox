@@ -8,14 +8,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0055_auto_20160830_1705'),
+        ("torchbox", "0055_auto_20160830_1705"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='workpage',
-            name='visit_the_site',
-            field=models.URLField(default=''),
+            model_name="workpage",
+            name="visit_the_site",
+            field=models.URLField(default=""),
             preserve_default=False,
         ),
     ]

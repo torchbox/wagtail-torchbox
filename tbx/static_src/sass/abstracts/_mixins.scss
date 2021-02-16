@@ -1,0 +1,149 @@
+/* ============================================
+    Media queries
+*/
+@mixin media-query($queries...) {
+    @each $query in $queries {
+        @each $breakpoint in $breakpoints {
+            $name: nth($breakpoint, 1);
+            $declaration: nth($breakpoint, 2);
+
+            @if $query == $name and $declaration {
+                @media only screen and #{$declaration} {
+                    @content;
+                }
+            }
+        }
+    }
+}
+
+/* ============================================
+    z-index
+*/
+
+@mixin z-index($key) {
+    z-index: z-index($key);
+}
+
+/* ============================================
+  Hide text
+*/
+@mixin hidden() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ============================================
+  iOS Native vertical scroll
+*/
+@mixin native-vertical-scroll() {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ============================================
+    Font sizes
+*/
+
+@mixin font-size($size) {
+    @if $size == null {
+        @warn 'Font size ‘#{$keyword}’ does not exist';
+    } @else {
+        $small-size: map-get($small-font-sizes, $size);
+        font-size: $small-size;
+
+        @include media-query(medium) {
+            $medium-size: map-get($medium-font-sizes, $size);
+            font-size: $medium-size;
+        }
+
+        @include media-query(large) {
+            $large-size: map-get($large-font-sizes, $size);
+            font-size: $large-size;
+        }
+    }
+}
+
+/* ============================================
+    Grid container
+*/
+
+@mixin container($size: null) {
+    position: relative;
+    @if $size == large {
+        margin: 0 $variable-gutter--large;
+    } @else if $size == medium {
+        margin: 0 $variable-gutter--medium 0 $variable-gutter--large;
+    } @else {
+        margin: 0 $variable-gutter--small;
+    }
+}
+
+/* ============================================
+    Streamfield spacing
+*/
+
+@mixin streamblock-padding() {
+    @include media-query(large) {
+        max-width: 50vw;
+        margin-left: $variable-gutter--medium;
+    }
+}
+
+/* ============================================
+    Animations
+*/
+
+@mixin menu-animation($time: 350ms) {
+    transition: all $time cubic-bezier(0.705, 0, 1, 1.13);
+    transition-timing-function: cubic-bezier(0.705, 0, 1, 1.13);
+}
+
+@mixin animation() {
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+            display: block;
+        }
+
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+}
+
+/* ============================================
+    IE11 target
+*/
+
+// All credits go to: https://gist.github.com/tcrammond/99fd936007685dba97b7
+@mixin target-ie {
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        @content;
+    }
+}
+
+/* ============================================
+    Link underscore
+*/
+
+@mixin link-underscore($height) {
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: #{$height}px;
+        bottom: -5px;
+        left: 0;
+        background: var(--color--underline);
+        transition: all 0.2s ease;
+    }
+}

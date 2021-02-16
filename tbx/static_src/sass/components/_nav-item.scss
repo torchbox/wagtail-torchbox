@@ -1,0 +1,56 @@
+.nav-item {
+    $root: &;
+
+    &:last-child {
+        #{$root}__link {
+            @include media-query(large) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &--with-badge {
+        position: relative;
+    }
+
+    &__link {
+        @include link-underscore(0);
+        display: block;
+        position: relative;
+        line-height: 20px;
+        text-decoration: none;
+        height: 40px;
+        color: var(--color--header-links);
+        border-top: 0;
+        border-bottom: 0;
+        margin-right: 39px; // max we can go without nav label wrapping
+        margin-bottom: 0;
+        padding: 0;
+        transition: all 0.2s ease;
+
+        @include media-query(large) {
+            margin-right: 70px;
+        }
+
+        &:hover,
+        &:focus,
+        &--active {
+            @include link-underscore(4);
+            color: var(--color--header-links);
+        }
+    }
+
+    &__title {
+        @include font-size(s);
+        display: flex;
+        position: relative;
+        line-height: 35px;
+        transition: all 0.2s ease;
+    }
+
+    &__badge-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

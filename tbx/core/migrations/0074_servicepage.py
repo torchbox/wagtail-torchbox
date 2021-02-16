@@ -11,26 +11,175 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0029_unicode_slugfield_dj19'),
-        ('torchbox', '0073_auto_20161026_1023'),
+        ("wagtailcore", "0029_unicode_slugfield_dj19"),
+        ("torchbox", "0073_auto_20161026_1023"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ServicePage',
+            name="ServicePage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('description', models.TextField()),
-                ('streamfield', wagtail.core.fields.StreamField([(b'case_studies', wagtail.core.blocks.StructBlock([(b'title', wagtail.core.blocks.CharBlock(required=True)), (b'intro', wagtail.core.blocks.TextBlock(required=True)), (b'case_studies', wagtail.core.blocks.ListBlock(wagtail.core.blocks.PageChooserBlock(['torchbox.WorkPage'])))])), (b'highlights', wagtail.core.blocks.StructBlock([(b'intro', wagtail.core.blocks.TextBlock(required=True)), (b'highlights', wagtail.core.blocks.ListBlock(wagtail.core.blocks.TextBlock()))])), (b'pull_quote', wagtail.core.blocks.StructBlock([(b'quote', wagtail.core.blocks.CharBlock(classname='quote title')), (b'attribution', wagtail.core.blocks.CharBlock())], template='blocks/pull_quote_block.html')), (b'process', wagtail.core.blocks.StructBlock([(b'title', wagtail.core.blocks.CharBlock(required=True)), (b'steps', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(required=True)), ('icon', wagtail.core.blocks.CharBlock(help_text='Paste SVG code here', max_length=9000, required=True)), ('description', wagtail.core.blocks.TextBlock(required=True))])))])), (b'people', wagtail.core.blocks.StructBlock([(b'title', wagtail.core.blocks.CharBlock(required=True)), (b'intro', wagtail.core.blocks.TextBlock(required=True)), (b'people', wagtail.core.blocks.ListBlock(wagtail.core.blocks.PageChooserBlock()))]))])),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                ("description", models.TextField()),
+                (
+                    "streamfield",
+                    wagtail.core.fields.StreamField(
+                        [
+                            (
+                                b"case_studies",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            b"title",
+                                            wagtail.core.blocks.CharBlock(
+                                                required=True
+                                            ),
+                                        ),
+                                        (
+                                            b"intro",
+                                            wagtail.core.blocks.TextBlock(
+                                                required=True
+                                            ),
+                                        ),
+                                        (
+                                            b"case_studies",
+                                            wagtail.core.blocks.ListBlock(
+                                                wagtail.core.blocks.PageChooserBlock(
+                                                    ["torchbox.WorkPage"]
+                                                )
+                                            ),
+                                        ),
+                                    ]
+                                ),
+                            ),
+                            (
+                                b"highlights",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            b"intro",
+                                            wagtail.core.blocks.TextBlock(
+                                                required=True
+                                            ),
+                                        ),
+                                        (
+                                            b"highlights",
+                                            wagtail.core.blocks.ListBlock(
+                                                wagtail.core.blocks.TextBlock()
+                                            ),
+                                        ),
+                                    ]
+                                ),
+                            ),
+                            (
+                                b"pull_quote",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            b"quote",
+                                            wagtail.core.blocks.CharBlock(
+                                                classname="quote title"
+                                            ),
+                                        ),
+                                        (
+                                            b"attribution",
+                                            wagtail.core.blocks.CharBlock(),
+                                        ),
+                                    ],
+                                    template="blocks/pull_quote_block.html",
+                                ),
+                            ),
+                            (
+                                b"process",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            b"title",
+                                            wagtail.core.blocks.CharBlock(
+                                                required=True
+                                            ),
+                                        ),
+                                        (
+                                            b"steps",
+                                            wagtail.core.blocks.ListBlock(
+                                                wagtail.core.blocks.StructBlock(
+                                                    [
+                                                        (
+                                                            "title",
+                                                            wagtail.core.blocks.CharBlock(
+                                                                required=True
+                                                            ),
+                                                        ),
+                                                        (
+                                                            "icon",
+                                                            wagtail.core.blocks.CharBlock(
+                                                                help_text="Paste SVG code here",
+                                                                max_length=9000,
+                                                                required=True,
+                                                            ),
+                                                        ),
+                                                        (
+                                                            "description",
+                                                            wagtail.core.blocks.TextBlock(
+                                                                required=True
+                                                            ),
+                                                        ),
+                                                    ]
+                                                )
+                                            ),
+                                        ),
+                                    ]
+                                ),
+                            ),
+                            (
+                                b"people",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            b"title",
+                                            wagtail.core.blocks.CharBlock(
+                                                required=True
+                                            ),
+                                        ),
+                                        (
+                                            b"intro",
+                                            wagtail.core.blocks.TextBlock(
+                                                required=True
+                                            ),
+                                        ),
+                                        (
+                                            b"people",
+                                            wagtail.core.blocks.ListBlock(
+                                                wagtail.core.blocks.PageChooserBlock()
+                                            ),
+                                        ),
+                                    ]
+                                ),
+                            ),
+                        ]
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
+            options={"abstract": False,},
+            bases=("wagtailcore.page",),
         ),
         migrations.AddField(
-            model_name='personpage',
-            name='short_biography',
-            field=models.CharField(blank=True, help_text='A shorter summary biography for including in other pages', max_length=255),
+            model_name="personpage",
+            name="short_biography",
+            field=models.CharField(
+                blank=True,
+                help_text="A shorter summary biography for including in other pages",
+                max_length=255,
+            ),
         ),
     ]

@@ -1,0 +1,34 @@
+context:
+  clients:
+    - True
+    - True
+    - True
+    - True
+    - True
+    - True
+    - True
+  quotes:
+    - {
+        quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+        name: Sarah Toms,
+        role: Executive Director,
+        Wharton Interactive at The Wharton School,
+      }
+    - {
+        quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+        name: Sarah Toms,
+        role: Executive Director,
+        Wharton Interactive at The Wharton School,
+      }
+    - {
+        quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+        name: Sarah Toms,
+        role: Executive Director,
+        Wharton Interactive at The Wharton School,
+      }
+  title: Clients
+
+tags:
+  image:
+    client.image width-400 class="client-item__image":
+      raw: '<img src="https://placekitten.com/400/300" class="client-item__image">'

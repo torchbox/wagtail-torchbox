@@ -8,13 +8,40 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0122_remove_unused_jobindexpage_fields'),
+        ("torchbox", "0122_remove_unused_jobindexpage_fields"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='mainmenu',
-            name='menu',
-            field=wagtail.core.fields.StreamField([('items', wagtail.core.blocks.StructBlock([('page', wagtail.core.blocks.PageChooserBlock()), ('subitems', wagtail.core.blocks.StreamBlock([('subitem', wagtail.core.blocks.PageChooserBlock()), ('related_listing_page', wagtail.core.blocks.PageChooserBlock())]))]))], blank=True),
+            model_name="mainmenu",
+            name="menu",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "items",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("page", wagtail.core.blocks.PageChooserBlock()),
+                                (
+                                    "subitems",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "subitem",
+                                                wagtail.core.blocks.PageChooserBlock(),
+                                            ),
+                                            (
+                                                "related_listing_page",
+                                                wagtail.core.blocks.PageChooserBlock(),
+                                            ),
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    )
+                ],
+                blank=True,
+            ),
         ),
     ]

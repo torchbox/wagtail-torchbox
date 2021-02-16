@@ -1,0 +1,50 @@
+.section-title {
+    position: absolute;
+    top: 45px;
+    left: $variable-gutter--small;
+    color: var(--color--section-title);
+    font-weight: $weight--bold;
+    font-size: 20px;
+    margin: 0;
+
+    @include media-query(medium) {
+        max-width: 140px;
+    }
+
+    @include media-query(large) {
+        max-width: 150px;
+    }
+
+    @media (min-width: 1300px) {
+        max-width: 200px;
+    }
+
+    @media (min-width: 1600px) {
+        max-width: 300px;
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 2px;
+        top: -15px;
+        background-color: var(--color--section-title);
+    }
+
+    /* The title is inside a container already */
+    .help-block &,
+    .blog-listing & {
+        left: 0;
+    }
+
+    .blog-listing & {
+        position: relative;
+        display: inline-block;
+        margin-bottom: $gutter * 2;
+
+        @include media-query(large) {
+            margin-bottom: $gutter * 4;
+        }
+    }
+}

@@ -1,0 +1,205 @@
+.animated-character {
+    $root: &;
+    position: relative;
+    background-color: var(--color--background);
+
+    @include media-query(large) {
+        padding-left: 0;
+    }
+
+    &--align-right {
+        position: relative;
+        left: 100%;
+    }
+
+    // Applied by js when image comes into viewport
+    .sticky & {
+        #{$root}__image {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    &__sticky-point {
+        position: absolute;
+        top: -100vh;
+        height: 100vh;
+    }
+
+    &__image {
+        &--woman {
+            position: relative;
+            width: 66vw;
+            max-width: 380px;
+            top: 40px;
+            z-index: 2;
+            // animation
+            transition: all 0.5s ease;
+            transform: translate3d(-100%, 0, 0);
+
+            // animate the hand and post it note
+            > path {
+                &:nth-child(7),
+                &:nth-child(8) {
+                    transition: transform 1s ease;
+                    transition-delay: 0.3s;
+                    transform: translate3d(-40px, 60px, 0);
+                }
+            }
+
+            @include media-query(medium) {
+                width: 40vw;
+            }
+
+            @include media-query(large) {
+                width: 28vw;
+                height: 18.8vw;
+                left: -$variable-gutter--medium;
+                top: 0;
+            }
+
+            &#{$root}--align-right & {
+                margin-left: auto;
+                margin-top: 20px;
+                left: 0;
+                top: 0;
+
+                @include media-query(medium) {
+                    top: 60px;
+                }
+
+                @include media-query(large) {
+                    top: 140px;
+                }
+            }
+
+            .sticky & {
+                // animate the hand and post it note
+                > path {
+                    /* stylelint-disable-next-line max-nesting-depth */
+                    &:nth-child(7),
+                    &:nth-child(8) {
+                        transform: translate3d(0, 0, 0);
+                    }
+                }
+            }
+        }
+
+        &--wagtail {
+            // animation
+            transition: all 0.8s ease;
+            transform: translate3d(100%, 0, 0);
+            position: relative;
+            width: 66vw;
+            z-index: 2;
+
+            margin-left: auto;
+            margin-top: 20px;
+            right: 14vw;
+            left: 0;
+
+            // animate the wagtail bird
+            > path {
+                &:nth-child(11),
+                &:nth-child(12),
+                &:nth-child(13),
+                &:last-child {
+                    transition: transform 1s ease;
+                    transition-delay: 0.4s;
+                    transform: translate3d(0, 200px, 0) rotate(60deg);
+                }
+            }
+
+            ellipse {
+                transition: transform 1s ease;
+                transition-delay: 0.4s;
+                transform: translate3d(0, 200px, 0) rotate(60deg);
+            }
+
+            @include media-query(medium) {
+                width: 40vw;
+            }
+
+            @include media-query(large) {
+                width: 24vw;
+                height: calc(24vw * 0.6667);
+                left: 0;
+            }
+
+            .sticky & {
+                transform: translate3d(-100%, 0, 0);
+
+                // animate the wagtail bird
+                > path {
+                    /* stylelint-disable-next-line max-nesting-depth */
+                    &:nth-child(11),
+                    &:nth-child(12),
+                    &:nth-child(13),
+                    &:last-child {
+                        transform: translate3d(0, 0, 0) rotate(-5deg);
+                    }
+                }
+
+                ellipse {
+                    transform: translate3d(0, 0, 0) rotate(-5deg);
+                }
+            }
+        }
+
+        &--man {
+            // animation
+            position: relative;
+            transition: all 0.5s ease;
+            transform: translate3d(-100%, 0, 0);
+            width: 66vw;
+            max-width: 380px;
+            top: 40px;
+            z-index: 2;
+
+            > path {
+                &:nth-child(14),
+                &:nth-child(15),
+                &:nth-child(16),
+                &:nth-child(18) {
+                    transition: transform 1s ease;
+                    transition-delay: 0.2s;
+                    transform: translate3d(-40px, 60px, 0);
+                    transform: rotate(8deg);
+                }
+            }
+
+            circle:last-of-type {
+                transition: transform 1s ease;
+                transition-delay: 0.2s;
+                transform: translate3d(-40px, 60px, 0);
+                transform: rotate(8deg);
+            }
+
+            @include media-query(medium) {
+                width: 40vw;
+            }
+
+            @include media-query(large) {
+                width: 28vw;
+                height: 18.8vw;
+                left: -14.66vw;
+                top: 0;
+            }
+
+            .sticky & {
+                > path {
+                    /* stylelint-disable-next-line max-nesting-depth */
+                    &:nth-child(14),
+                    &:nth-child(15),
+                    &:nth-child(16),
+                    &:nth-child(18) {
+                        transform: rotate(-10deg);
+                    }
+                }
+
+                circle:last-of-type {
+                    transform: rotate(-10deg);
+                }
+            }
+        }
+    }
+}

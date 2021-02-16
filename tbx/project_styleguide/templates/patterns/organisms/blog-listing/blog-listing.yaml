@@ -1,0 +1,49 @@
+context:
+  blog_posts:
+    - title: We already dropped Drupal - maybe it’s time for you to do the same.
+      date: 20 Oct '20
+      authors:
+        first:
+          author:
+            name: Paul Vetch
+            role: Strategy Director
+
+    - title: Wagtail for Public Sector
+      date: 20 Oct '20
+      authors:
+        first:
+          author:
+            name: Will Heinemann
+            role: New Business Director
+
+    - title: We already dropped Drupal - maybe it’s time for you to do the same.
+      date: 20 Oct '20
+      authors:
+        first:
+          author:
+            name: Paul Vetch
+            role: Strategy Director
+
+    - title: Wagtail for Public Sector
+      date: 20 Oct '20
+      authors:
+        first:
+          author:
+            name: Will Heinemann
+            role: New Business Director
+
+    - title: We already dropped Drupal - maybe it’s time for you to do the same.
+      date: 20 Oct '20
+      authors:
+        first:
+          author:
+            name: Paul Vetch
+            role: Strategy Director
+
+    - title: Wagtail for Public Sector
+      date: 20 Oct '20
+      authors:
+        first:
+          author:
+            name: Will Heinemann
+            role: New Business Director

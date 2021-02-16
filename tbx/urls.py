@@ -1,13 +1,10 @@
+from django.apps import apps
 from django.conf import settings
 from django.contrib import admin
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseNotFound
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.vary import vary_on_headers
 
-from graphene_django.views import GraphQLView
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
@@ -23,15 +20,13 @@ from tbx.core.views import robots
 
 
 private_urlpatterns = [
-    path('django-admin/', admin.site.urls),
-    path('admin/', include(wagtailadmin_urls)),
-] + decorate_urlpatterns([
-    path('documents/', include(wagtaildocs_urls)),
-], never_cache)
+    path("django-admin/", admin.site.urls),
+    path("admin/", include(wagtailadmin_urls)),
+] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
-    path('sitemap.xml', sitemap),
-    path('robots.txt', robots),
+    path("sitemap.xml", sitemap),
+    path("robots.txt", robots),
 ]
 
 
@@ -46,38 +41,57 @@ if settings.DEBUG:
 
     # Add views for testing 404 and 500 templates
     urlpatterns += [
-        path('test404/', TemplateView.as_view(template_name='404.html')),
-        path('test500/', TemplateView.as_view(template_name='500.html')),
+        # Add views for testing 404 and 500 templates
+        path(
+            "test404/",
+            TemplateView.as_view(template_name="patterns/pages/errors/404.html"),
+        ),
+        path(
+            "test500/",
+            TemplateView.as_view(template_name="patterns/pages/errors/500.html"),
+        ),
     ]
 
 
 urlpatterns += [
     # path('review/', include(wagtailreview_urls)),
-    path('', include(torchbox_urls)),
-    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    path('', lambda request: HttpResponseNotFound(), name='home'),
+    path("", include(torchbox_urls)),
 ]
+
+# Style guide
+if getattr(settings, "PATTERN_LIBRARY_ENABLED", False) and apps.is_installed(
+    "pattern_library"
+):
+    from tbx.project_styleguide.views import example_form
+
+    private_urlpatterns += [
+        path("pattern-library/example-form/", example_form),
+        path("pattern-library/", include("pattern_library.urls")),
+    ]
 
 
 # Set public URLs to use public cache.
-urlpatterns = decorate_urlpatterns(urlpatterns,
-                                   get_default_cache_control_decorator())
+urlpatterns = decorate_urlpatterns(urlpatterns, get_default_cache_control_decorator())
 
 # Set vary header to instruct cache to serve different version on different
 # cookies, different request method (e.g. AJAX) and different protocol
 # (http vs https).
 urlpatterns = decorate_urlpatterns(
     urlpatterns,
-    vary_on_headers('Cookie', 'X-Requested-With', 'X-Forwarded-Proto',
-                    'Accept-Encoding')
+    vary_on_headers(
+        "Cookie", "X-Requested-With", "X-Forwarded-Proto", "Accept-Encoding"
+    ),
 )
 
 Page.serve = get_default_cache_control_decorator()(Page.serve)
 
 # Join private and public URLs.
-urlpatterns = private_urlpatterns + urlpatterns + decorate_urlpatterns([
-    # Wagtail paths have to be enabled for the administration interface to work
-    # properly. This allows them to be visited only by the logged-in users to
-    # avoid the public accessing it.
-    path('wagtail/', include(wagtail_urls))
-], login_required)
+urlpatterns = (
+    private_urlpatterns
+    + urlpatterns
+    + [
+        # Add Wagtail URLs at the end.
+        # Wagtail cache-control is set on the page models's serve methods.
+        path("", include(wagtail_urls))
+    ]
+)

@@ -1,0 +1,100 @@
+.team-member {
+    width: 50%;
+
+    @include media-query(medium) {
+        width: 33.333%;
+    }
+
+    @include media-query(large) {
+        width: 25%;
+    }
+
+    &--full {
+        width: 100%;
+    }
+
+    // Only used on team detail template
+    &__container {
+        position: relative;
+        @include media-query(large) {
+            @include container(large);
+        }
+    }
+
+    &__link {
+        display: block;
+        padding-bottom: ($gutter * 2.5);
+        text-decoration: none;
+        border-bottom: none;
+        cursor: pointer;
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__title {
+        display: block;
+        margin: 15px 0 5px;
+        line-height: 1;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--color--primary);
+
+        @include media-query(medium) {
+            font-size: 22px;
+        }
+
+        &:hover {
+            color: var(--color--indigo);
+        }
+    }
+
+    &__role {
+        line-height: 1.4;
+        color: var(--color--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: $weight--bold;
+        font-size: 9px;
+        margin: 0;
+
+        @include media-query(medium) {
+            font-size: 11px;
+        }
+    }
+
+    &__shard {
+        position: absolute;
+        z-index: 2;
+        right: 0;
+        top: -40px;
+        width: 80px;
+
+        @include media-query(medium) {
+            right: 20px;
+            top: -40px;
+            width: 120px;
+        }
+
+        @include media-query(large) {
+            right: -25px;
+            top: -40px;
+            width: 180px;
+        }
+    }
+
+    &__bio-container {
+        @include font-size(s);
+        line-height: 1.7;
+        margin: ($gutter * 2) 8.33vw ($gutter * 3);
+        color: var(--color--grey-dark);
+    }
+
+    &__bio {
+        @include media-query(large) {
+            margin-left: 16.66vw;
+            max-width: 50vw;
+        }
+    }
+}

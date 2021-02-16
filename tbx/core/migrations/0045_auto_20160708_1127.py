@@ -8,35 +8,24 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0044_aboutpage_heading'),
+        ("torchbox", "0044_aboutpage_heading"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='aboutpageinvolvement',
-            name='image',
-        ),
-        migrations.RemoveField(
-            model_name='aboutpageoffice',
-            name='image',
-        ),
-        migrations.RemoveField(
-            model_name='aboutpageservice',
-            name='image',
-        ),
+        migrations.RemoveField(model_name="aboutpageinvolvement", name="image",),
+        migrations.RemoveField(model_name="aboutpageoffice", name="image",),
+        migrations.RemoveField(model_name="aboutpageservice", name="image",),
         migrations.AddField(
-            model_name='aboutpageinvolvement',
-            name='svg',
+            model_name="aboutpageinvolvement",
+            name="svg",
             field=models.TextField(null=True),
         ),
         migrations.AddField(
-            model_name='aboutpageoffice',
-            name='svg',
-            field=models.TextField(null=True),
+            model_name="aboutpageoffice", name="svg", field=models.TextField(null=True),
         ),
         migrations.AddField(
-            model_name='aboutpageservice',
-            name='svg',
+            model_name="aboutpageservice",
+            name="svg",
             field=models.TextField(null=True),
         ),
     ]

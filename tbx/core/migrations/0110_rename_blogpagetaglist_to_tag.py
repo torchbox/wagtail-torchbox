@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0109_move_blog_into_new_app'),
+        ("torchbox", "0109_move_blog_into_new_app"),
     ]
 
     operations = [
-        migrations.RenameModel(
-            old_name='BlogPageTagList',
-            new_name='Tag',
-        ),
+        migrations.RenameModel(old_name="BlogPageTagList", new_name="Tag",),
     ]

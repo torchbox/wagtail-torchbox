@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0008_remove_blogpage_body'),
+        ("blog", "0008_remove_blogpage_body"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='blogindexpage',
-            name='show_in_play_menu',
-        ),
+        migrations.RemoveField(model_name="blogindexpage", name="show_in_play_menu",),
     ]

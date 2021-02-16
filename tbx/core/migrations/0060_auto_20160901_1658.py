@@ -10,61 +10,58 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0059_auto_20160831_1243'),
+        ("torchbox", "0059_auto_20160831_1243"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='AboutPageContentBlock',
+            name="AboutPageContentBlock",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('year', models.IntegerField()),
-                ('title', models.TextField()),
-                ('description', models.TextField()),
-                ('image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='content_blocks', to='torchbox.AboutPage')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("year", models.IntegerField()),
+                ("title", models.TextField()),
+                ("description", models.TextField()),
+                (
+                    "image",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="torchbox.TorchboxImage",
+                    ),
+                ),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="content_blocks",
+                        to="torchbox.AboutPage",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
-        migrations.RenameModel(
-            old_name='AboutPageValues',
-            new_name='AboutPageValue',
-        ),
-        migrations.RemoveField(
-            model_name='aboutpageclients',
-            name='image',
-        ),
-        migrations.RemoveField(
-            model_name='aboutpageclients',
-            name='link_document',
-        ),
-        migrations.RemoveField(
-            model_name='aboutpageclients',
-            name='link_page',
-        ),
-        migrations.RemoveField(
-            model_name='aboutpageclients',
-            name='page',
-        ),
-        migrations.RemoveField(
-            model_name='aboutpageinvolvement',
-            name='page',
-        ),
-        migrations.RemoveField(
-            model_name='aboutpageservice',
-            name='page',
-        ),
-        migrations.DeleteModel(
-            name='AboutPageClients',
-        ),
-        migrations.DeleteModel(
-            name='AboutPageInvolvement',
-        ),
-        migrations.DeleteModel(
-            name='AboutPageService',
-        ),
+        migrations.RenameModel(old_name="AboutPageValues", new_name="AboutPageValue",),
+        migrations.RemoveField(model_name="aboutpageclients", name="image",),
+        migrations.RemoveField(model_name="aboutpageclients", name="link_document",),
+        migrations.RemoveField(model_name="aboutpageclients", name="link_page",),
+        migrations.RemoveField(model_name="aboutpageclients", name="page",),
+        migrations.RemoveField(model_name="aboutpageinvolvement", name="page",),
+        migrations.RemoveField(model_name="aboutpageservice", name="page",),
+        migrations.DeleteModel(name="AboutPageClients",),
+        migrations.DeleteModel(name="AboutPageInvolvement",),
+        migrations.DeleteModel(name="AboutPageService",),
     ]

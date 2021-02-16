@@ -9,35 +9,50 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0023_alter_page_revision_on_delete_behaviour'),
-        ('torchbox', '0036_auto_20160617_1650'),
+        ("wagtailcore", "0023_alter_page_revision_on_delete_behaviour"),
+        ("torchbox", "0036_auto_20160617_1650"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', models.TextField(blank=True)),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                ("intro", models.TextField(blank=True)),
             ],
-            options={
-                'verbose_name': 'Contact Index Page',
-            },
-            bases=('wagtailcore.page',),
+            options={"verbose_name": "Contact Index Page",},
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='ServicesItem',
+            name="ServicesItem",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', models.TextField(blank=True)),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                ("intro", models.TextField(blank=True)),
             ],
-            options={
-                'verbose_name': 'Service',
-            },
-            bases=('wagtailcore.page',),
+            options={"verbose_name": "Service",},
+            bases=("wagtailcore.page",),
         ),
         migrations.AlterModelOptions(
-            name='servicespage',
-            options={'verbose_name': 'Services Index Page'},
+            name="servicespage", options={"verbose_name": "Services Index Page"},
         ),
     ]

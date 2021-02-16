@@ -6,17 +6,17 @@ from django.db import migrations
 
 
 def populate_authors(apps, schema_editor):
-    PersonPage = apps.get_model('people.PersonPage')
-    Author = apps.get_model('people.Author')
+    PersonPage = apps.get_model("people.PersonPage")
+    Author = apps.get_model("people.Author")
 
     for person_page in PersonPage.objects.all():
         Author.objects.get_or_create(
             person_page=person_page,
             defaults={
-                'name': person_page.title,
-                'role': person_page.role,
-                'image': person_page.image,
-            }
+                "name": person_page.title,
+                "role": person_page.role,
+                "image": person_page.image,
+            },
         )
 
 
@@ -27,7 +27,7 @@ def nooperation(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0002_author'),
+        ("people", "0002_author"),
     ]
 
     operations = [

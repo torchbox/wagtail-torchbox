@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0072_auto_20161026_0959'),
+        ("torchbox", "0072_auto_20161026_0959"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='globalsettings',
-            name='contact_email',
-            field=models.EmailField(help_text='Email address', max_length=255),
+            model_name="globalsettings",
+            name="contact_email",
+            field=models.EmailField(help_text="Email address", max_length=255),
         ),
     ]

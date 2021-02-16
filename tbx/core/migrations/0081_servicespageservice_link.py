@@ -9,13 +9,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0080_auto_20161129_1640'),
+        ("torchbox", "0080_auto_20161129_1640"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='servicespageservice',
-            name='link',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='torchbox.ServicePage'),
+            model_name="servicespageservice",
+            name="link",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="+",
+                to="torchbox.ServicePage",
+            ),
         ),
     ]

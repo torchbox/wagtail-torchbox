@@ -9,67 +9,49 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailsearchpromotions', '0002_capitalizeverbose'),
-        ('wagtailredirects', '0006_redirect_increase_max_length'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('wagtailcore', '0040_page_draft_title'),
-        ('torchbox', '0111_move_sign_up_form_into_new_app'),
+        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
+        ("wagtailredirects", "0006_redirect_increase_max_length"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("wagtailcore", "0040_page_draft_title"),
+        ("torchbox", "0111_move_sign_up_form_into_new_app"),
     ]
 
     database_operations = [
-        migrations.AlterModelTable('PersonIndexPage', 'people_personindexpage'),
-        migrations.AlterModelTable('PersonPage', 'people_personpage'),
-        migrations.AlterModelTable('PersonPageRelatedLink', 'people_personpagerelatedlink'),
+        migrations.AlterModelTable("PersonIndexPage", "people_personindexpage"),
+        migrations.AlterModelTable("PersonPage", "people_personpage"),
+        migrations.AlterModelTable(
+            "PersonPageRelatedLink", "people_personpagerelatedlink"
+        ),
     ]
 
     state_operations = [
+        migrations.RemoveField(model_name="personindexpage", name="page_ptr",),
+        migrations.RemoveField(model_name="personpage", name="feed_image",),
+        migrations.RemoveField(model_name="personpage", name="image",),
+        migrations.RemoveField(model_name="personpage", name="page_ptr",),
         migrations.RemoveField(
-            model_name='personindexpage',
-            name='page_ptr',
+            model_name="personpagerelatedlink", name="link_document",
         ),
-        migrations.RemoveField(
-            model_name='personpage',
-            name='feed_image',
-        ),
-        migrations.RemoveField(
-            model_name='personpage',
-            name='image',
-        ),
-        migrations.RemoveField(
-            model_name='personpage',
-            name='page_ptr',
-        ),
-        migrations.RemoveField(
-            model_name='personpagerelatedlink',
-            name='link_document',
-        ),
-        migrations.RemoveField(
-            model_name='personpagerelatedlink',
-            name='link_page',
-        ),
-        migrations.RemoveField(
-            model_name='personpagerelatedlink',
-            name='page',
-        ),
+        migrations.RemoveField(model_name="personpagerelatedlink", name="link_page",),
+        migrations.RemoveField(model_name="personpagerelatedlink", name="page",),
         migrations.AlterField(
-            model_name='globalsettings',
-            name='contact_person',
-            field=models.ForeignKey(help_text='Ensure this person has telephone and email fields set', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='people.PersonPage'),
+            model_name="globalsettings",
+            name="contact_person",
+            field=models.ForeignKey(
+                help_text="Ensure this person has telephone and email fields set",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="people.PersonPage",
+            ),
         ),
-        migrations.DeleteModel(
-            name='PersonIndexPage',
-        ),
-        migrations.DeleteModel(
-            name='PersonPage',
-        ),
-        migrations.DeleteModel(
-            name='PersonPageRelatedLink',
-        ),
+        migrations.DeleteModel(name="PersonIndexPage",),
+        migrations.DeleteModel(name="PersonPage",),
+        migrations.DeleteModel(name="PersonPageRelatedLink",),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            database_operations=database_operations,
-            state_operations=[],
+            database_operations=database_operations, state_operations=[],
         )
     ]

@@ -9,13 +9,16 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0026_merge'),
+        ("torchbox", "0026_merge"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpage',
-            name='intro',
-            field=wagtail.core.fields.RichTextField(blank=True, verbose_name='Intro (used for blog index and Planet Drupal listings)'),
+            model_name="blogpage",
+            name="intro",
+            field=wagtail.core.fields.RichTextField(
+                blank=True,
+                verbose_name="Intro (used for blog index and Planet Drupal listings)",
+            ),
         ),
     ]

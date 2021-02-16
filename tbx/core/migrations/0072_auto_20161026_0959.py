@@ -9,31 +9,37 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0071_auto_rename_global_settings_fields'),
+        ("torchbox", "0071_auto_rename_global_settings_fields"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='globalsettings',
-            name='contact_person',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.PersonPage', help_text="Ensure this person has telephone and email fields set")
+            model_name="globalsettings",
+            name="contact_person",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="torchbox.PersonPage",
+                help_text="Ensure this person has telephone and email fields set",
+            ),
         ),
         migrations.AddField(
-            model_name='globalsettings',
-            name='contact_widget_button_text',
-            field=models.TextField(default=''),
+            model_name="globalsettings",
+            name="contact_widget_button_text",
+            field=models.TextField(default=""),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='globalsettings',
-            name='contact_widget_call_to_action',
-            field=models.TextField(default=''),
+            model_name="globalsettings",
+            name="contact_widget_call_to_action",
+            field=models.TextField(default=""),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='globalsettings',
-            name='contact_widget_intro',
-            field=models.TextField(default=''),
+            model_name="globalsettings",
+            name="contact_widget_intro",
+            field=models.TextField(default=""),
             preserve_default=False,
         ),
     ]

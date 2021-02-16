@@ -1,0 +1,35 @@
+.page {
+    background-color: var(--color--white);
+    padding: 230px 0 0;
+
+    &--contact {
+        margin-top: ($gutter * 6.5);
+    }
+
+    &__title {
+        margin-bottom: $gutter;
+
+        @include media-query(medium) {
+            margin-bottom: ($gutter * 1.5);
+        }
+
+        h1 {
+            font-weight: $weight--heavy;
+        }
+    }
+
+    &__showcase {
+        margin-top: ($gutter * 5);
+    }
+
+    &__author {
+        padding-top: ($gutter * 2);
+    }
+
+    /* Template specific */
+    .template__sub-service-page &,
+    .template__service-page &,
+    .template__error & {
+        padding: 0;
+    }
+}

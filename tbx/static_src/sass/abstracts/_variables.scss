@@ -1,0 +1,123 @@
+// --------------------------------- Colors -------------------------------------
+
+:root {
+    --color--coral: #fd5765;
+    // Coral replacement for text smaller than 18px on white
+    --color--coral-dark: #eb0316;
+    --color--lagoon: #3beccd;
+    // Persion indigo in torchbox guidelines
+    --color--indigo: #2f128d;
+    // Deep indigo in torchbox guidelines
+    --color--dark-indigo: #251657;
+    --color--light-grey: #f4f3f6;
+    --color--light-grey-accessible: #757575;
+    --color--grey: #444;
+    --color--grey-dark: #333;
+    --color--white: #fff;
+    --color--white-translucent: rgba(255, 255, 255, 0.8);
+    --color--black-translucent: rgba(0, 0, 0, 0.05);
+    --color--black: #000;
+    // Theme base - defined in theme.scss
+    --color--primary: var(--color--coral);
+    --color--accent: var(--color--dark-indigo);
+    --color--link: var(--color--coral);
+    --color--underline: var(--color--coral);
+    --color--hover: var(--color--coral-dark);
+    --color--background: var(--color--indigo);
+    --color--section-title: var(--color--dark-indigo);
+    --color--header-icon-color: var(--color--coral);
+    --color--get-in-touch-numbers: var(--color--white);
+    --color--accent-dark: var(--color--coral-dark);
+    --color-header-links: var(--color--dark-indigo);
+}
+
+// --------------------------------- Fonts --------------------------------------
+
+$font--primary: 'Apercu Pro', arial, helvetica, sans-serif;
+
+// Font weights
+$weight--heavy: 800;
+$weight--bold: 700;
+$weight--semibold: 600;
+$weight--medium: 500;
+$weight--normal: 400;
+$weight--light: 100;
+
+// Font sizes
+$base-font-size: 18px;
+
+$large-font-sizes: (
+    xxxxl: 90px,
+    xxxl: 76px,
+    xxl: 64px,
+    xl: 46px,
+    l: 32px,
+    m: 24px,
+    s: 18px,
+    xs: 16px,
+    xxs: 14px,
+    xxxs: 12px,
+);
+
+$medium-font-sizes: (
+    xxxxl: 78px,
+    xxxl: 68px,
+    xxl: 52px,
+    xl: 38px,
+    l: 28px,
+    m: 26px,
+    s: 20px,
+    xs: 16px,
+    xxs: 14px,
+    xxxs: 12px,
+);
+
+$small-font-sizes: (
+    xxxxl: 44px,
+    xxxl: 38px,
+    xxl: 32px,
+    xl: 28px,
+    l: 26px,
+    m: 22px,
+    s: 18px,
+    xs: 14px,
+    xxs: 14px,
+    xxxs: 12px,
+);
+
+// --------------------------------- Breakpoints --------------------------------------
+$breakpoints: ('medium' '(min-width: 599px)', 'large' '(min-width: 1023px)');
+
+// --------------------------------- Grid Dimensions --------------------------------------
+
+// Wrappers
+$site-width: 1280px;
+$wrapper--small: 790px;
+
+// Grid setup
+$grid: 20px;
+$gutter: $grid;
+
+// Gutters based on view width
+$variable-gutter--small: 8.33vw;
+$variable-gutter--medium: ($variable-gutter--small * 2);
+$variable-gutter--large: ($variable-gutter--small * 3);
+
+// --------------------------------- Transitions --------------------------------------
+
+$transition: 0.25s ease-out;
+
+// --------------------------------- Z-indices --------------------------------------
+
+$z-index: (
+    under: -1,
+    base: 10,
+    overlap: 20,
+    header: 30,
+    footer: 40,
+    nav: 50,
+    cookie-message: 100,
+    skip-link: 105,
+    modal: 110,
+    modal-controls: 120,
+);

@@ -8,13 +8,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0057_auto_20160831_1135'),
+        ("torchbox", "0057_auto_20160831_1135"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpage',
-            name='colour',
-            field=models.TextField(blank=True, choices=[('orange', 'Orange'), ('blue', 'Blue'), ('white', 'White')], verbose_name='Listing card colour if left blank will display image'),
+            model_name="blogpage",
+            name="colour",
+            field=models.TextField(
+                blank=True,
+                choices=[("orange", "Orange"), ("blue", "Blue"), ("white", "White")],
+                verbose_name="Listing card colour if left blank will display image",
+            ),
         ),
     ]

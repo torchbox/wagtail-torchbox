@@ -8,20 +8,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0083_homepage_remove_unused_field'),
+        ("torchbox", "0083_homepage_remove_unused_field"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='homepage',
-            name='hero_intro_primary',
-            field=models.TextField(blank=True, default='We do digital'),
-            preserve_default=False
+            model_name="homepage",
+            name="hero_intro_primary",
+            field=models.TextField(blank=True, default="We do digital"),
+            preserve_default=False,
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='hero_intro_secondary',
-            field=models.TextField(blank=True, default='for the good guys.'),
-            preserve_default=False
+            model_name="homepage",
+            name="hero_intro_secondary",
+            field=models.TextField(blank=True, default="for the good guys."),
+            preserve_default=False,
         ),
     ]

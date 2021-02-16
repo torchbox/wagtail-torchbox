@@ -1,0 +1,25 @@
+.job-listing {
+    position: relative;
+    background-color: var(--color--white);
+    padding: ($gutter * 2) 0 $gutter;
+
+    &__image {
+        position: absolute;
+        top: 40px;
+        width: 28vw;
+        max-width: 380px;
+
+        @include media-query(medium) {
+            width: 20vw;
+        }
+    }
+
+    &__list {
+        @include container();
+        padding: calc(0.75 * 28vw + 40px) 0 0 0;
+
+        @include media-query(medium) {
+            padding: 0 $variable-gutter--medium;
+        }
+    }
+}

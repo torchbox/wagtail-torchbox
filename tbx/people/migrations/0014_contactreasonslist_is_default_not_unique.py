@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0013_culturepage_strapline_visible'),
+        ("people", "0013_culturepage_strapline_visible"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contactreasonslist',
-            name='is_default',
+            model_name="contactreasonslist",
+            name="is_default",
             field=models.BooleanField(blank=True, default=False, null=True),
         ),
     ]

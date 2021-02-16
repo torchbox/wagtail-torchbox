@@ -14,40 +14,196 @@ import wagtailmarkdown.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0041_group_collection_permissions_verbose_name_plural'),
-        ('torchbox', '0122_remove_unused_jobindexpage_fields'),
-        ('people', '0006_person_index_page_strapline'),
+        ("wagtailcore", "0041_group_collection_permissions_verbose_name_plural"),
+        ("torchbox", "0122_remove_unused_jobindexpage_fields"),
+        ("people", "0006_person_index_page_strapline"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CulturePage',
+            name="CulturePage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('strapline', models.TextField()),
-                ('intro', wagtail.core.fields.RichTextField(blank=True)),
-                ('body', wagtail.core.fields.StreamField([('h2', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h3', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('h4', wagtail.core.blocks.CharBlock(classname='title', icon='title')), ('intro', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('aligned_image', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('alignment', tbx.core.blocks.ImageFormatChoiceBlock()), ('caption', wagtail.core.blocks.CharBlock()), ('attribution', wagtail.core.blocks.CharBlock(required=False))], label='Aligned image')), ('wide_image', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock())], label='Wide image')), ('bustout', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('text', wagtail.core.blocks.RichTextBlock())])), ('pullquote', wagtail.core.blocks.StructBlock([('quote', wagtail.core.blocks.CharBlock(classname='quote title')), ('attribution', wagtail.core.blocks.CharBlock())])), ('raw_html', wagtail.core.blocks.RawHTMLBlock(icon='code', label='Raw HTML')), ('embed', wagtail.embeds.blocks.EmbedBlock(icon='code')), ('markdown', wagtailmarkdown.blocks.MarkdownBlock(icon='code'))])),
-                ('contact', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='people.Contact')),
-                ('hero_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                ("strapline", models.TextField()),
+                ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                (
+                    "body",
+                    wagtail.core.fields.StreamField(
+                        [
+                            (
+                                "h2",
+                                wagtail.core.blocks.CharBlock(
+                                    classname="title", icon="title"
+                                ),
+                            ),
+                            (
+                                "h3",
+                                wagtail.core.blocks.CharBlock(
+                                    classname="title", icon="title"
+                                ),
+                            ),
+                            (
+                                "h4",
+                                wagtail.core.blocks.CharBlock(
+                                    classname="title", icon="title"
+                                ),
+                            ),
+                            (
+                                "intro",
+                                wagtail.core.blocks.RichTextBlock(icon="pilcrow"),
+                            ),
+                            (
+                                "paragraph",
+                                wagtail.core.blocks.RichTextBlock(icon="pilcrow"),
+                            ),
+                            (
+                                "aligned_image",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "image",
+                                            wagtail.images.blocks.ImageChooserBlock(),
+                                        ),
+                                        (
+                                            "alignment",
+                                            tbx.core.blocks.ImageFormatChoiceBlock(),
+                                        ),
+                                        ("caption", wagtail.core.blocks.CharBlock()),
+                                        (
+                                            "attribution",
+                                            wagtail.core.blocks.CharBlock(
+                                                required=False
+                                            ),
+                                        ),
+                                    ],
+                                    label="Aligned image",
+                                ),
+                            ),
+                            (
+                                "wide_image",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "image",
+                                            wagtail.images.blocks.ImageChooserBlock(),
+                                        )
+                                    ],
+                                    label="Wide image",
+                                ),
+                            ),
+                            (
+                                "bustout",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "image",
+                                            wagtail.images.blocks.ImageChooserBlock(),
+                                        ),
+                                        ("text", wagtail.core.blocks.RichTextBlock()),
+                                    ]
+                                ),
+                            ),
+                            (
+                                "pullquote",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "quote",
+                                            wagtail.core.blocks.CharBlock(
+                                                classname="quote title"
+                                            ),
+                                        ),
+                                        (
+                                            "attribution",
+                                            wagtail.core.blocks.CharBlock(),
+                                        ),
+                                    ]
+                                ),
+                            ),
+                            (
+                                "raw_html",
+                                wagtail.core.blocks.RawHTMLBlock(
+                                    icon="code", label="Raw HTML"
+                                ),
+                            ),
+                            ("embed", wagtail.embeds.blocks.EmbedBlock(icon="code")),
+                            (
+                                "markdown",
+                                wagtailmarkdown.blocks.MarkdownBlock(icon="code"),
+                            ),
+                        ]
+                    ),
+                ),
+                (
+                    "contact",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="people.Contact",
+                    ),
+                ),
+                (
+                    "hero_image",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="torchbox.TorchboxImage",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
+            options={"abstract": False,},
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='CulturePageLink',
+            name="CulturePageLink",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('title', models.TextField()),
-                ('description', models.TextField()),
-                ('link', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.Page')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='links', to='people.CulturePage')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("title", models.TextField()),
+                ("description", models.TextField()),
+                (
+                    "link",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="links",
+                        to="people.CulturePage",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
     ]

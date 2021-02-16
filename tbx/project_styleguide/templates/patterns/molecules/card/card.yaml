@@ -1,0 +1,8 @@
+context:
+  item:
+    title: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut finibus massa. Vivamus consequat est ut elit interdum condimentum.
+tags:
+  pageurl:
+    item.link:
+      raw: '#'

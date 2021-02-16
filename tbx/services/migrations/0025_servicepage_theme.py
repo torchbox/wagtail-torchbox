@@ -6,17 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0024_auto_20190316_1641'),
+        ("services", "0024_auto_20190316_1641"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='servicepage',
-            name='theme',
-            field=models.CharField(choices=[('light', 'Light'), ('coral', 'Coral'), ('dark', 'Dark'), ('dark--transparent', 'Dark with transparent header')], default='light', max_length=255),
+            model_name="servicepage",
+            name="theme",
+            field=models.CharField(
+                choices=[
+                    ("light", "Light"),
+                    ("coral", "Coral"),
+                    ("dark", "Dark"),
+                    ("dark--transparent", "Dark with transparent header"),
+                ],
+                default="light",
+                max_length=255,
+            ),
         ),
-        migrations.RemoveField(
-            model_name='servicepage',
-            name='is_darktheme',
-        ),
+        migrations.RemoveField(model_name="servicepage", name="is_darktheme",),
     ]

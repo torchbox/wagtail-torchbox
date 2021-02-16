@@ -8,26 +8,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0066_auto_20160906_1624'),
+        ("torchbox", "0066_auto_20160906_1624"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='personindexpage',
-            name='intro',
-            field=models.TextField(default=''),
+            model_name="personindexpage",
+            name="intro",
+            field=models.TextField(default=""),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='personindexpage',
-            name='senior_management_intro',
-            field=models.TextField(default=''),
+            model_name="personindexpage",
+            name="senior_management_intro",
+            field=models.TextField(default=""),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='personindexpage',
-            name='team_intro',
-            field=models.TextField(default=''),
+            model_name="personindexpage",
+            name="team_intro",
+            field=models.TextField(default=""),
             preserve_default=False,
         ),
     ]

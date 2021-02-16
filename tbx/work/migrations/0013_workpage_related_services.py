@@ -9,14 +9,16 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('taxonomy', '0001_initial'),
-        ('work', '0012_remove_workpage_intro'),
+        ("taxonomy", "0001_initial"),
+        ("work", "0012_remove_workpage_intro"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='workpage',
-            name='related_services',
-            field=modelcluster.fields.ParentalManyToManyField(related_name='case_studies', to='taxonomy.Service'),
+            model_name="workpage",
+            name="related_services",
+            field=modelcluster.fields.ParentalManyToManyField(
+                related_name="case_studies", to="taxonomy.Service"
+            ),
         ),
     ]

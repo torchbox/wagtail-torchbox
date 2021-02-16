@@ -2,13 +2,12 @@
 set -xe
 
 PROJECT_NAME=$1
-
 PROJECT_DIR=/vagrant
 VIRTUALENV_DIR=/home/vagrant/.virtualenvs/$PROJECT_NAME
-
 PYTHON=$VIRTUALENV_DIR/bin/python
 PIP=$VIRTUALENV_DIR/bin/pip
 
+apt-get -qq update -y
 
 # Create database
 set +e

@@ -6,16 +6,14 @@ from django.db import migrations
 
 
 def set_blogpages_show_in_menus_true(apps, schema_editor):
-    BlogPage = apps.get_model('torchbox', 'BlogPage')
+    BlogPage = apps.get_model("torchbox", "BlogPage")
     BlogPage.objects.all().update(show_in_menus=True)
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0094_merge'),
+        ("torchbox", "0094_merge"),
     ]
 
-    operations = [
-        migrations.RunPython(set_blogpages_show_in_menus_true)
-    ]
+    operations = [migrations.RunPython(set_blogpages_show_in_menus_true)]

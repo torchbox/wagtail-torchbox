@@ -1,0 +1,13 @@
+.skip-link {
+    @include z-index(skip-link);
+    position: absolute;
+    top: -200px;
+    left: 0;
+    color: var(--color--black);
+    background-color: var(--color--white);
+    padding: $grid;
+
+    &:focus {
+        top: 0;
+    }
+}

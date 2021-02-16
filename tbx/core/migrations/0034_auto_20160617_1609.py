@@ -8,19 +8,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0033_homepagehero_colour'),
+        ("torchbox", "0033_homepagehero_colour"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='workpage',
-            name='descriptive_title',
-            field=models.CharField(default='', max_length=255),
+            model_name="workpage",
+            name="descriptive_title",
+            field=models.CharField(default="", max_length=255),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='homepagehero',
-            name='colour',
-            field=models.CharField(blank=True, help_text='Hex ref colour of link and background gradient, defaults to blue, for example #ffffff', max_length=255),
+            model_name="homepagehero",
+            name="colour",
+            field=models.CharField(
+                blank=True,
+                help_text="Hex ref colour of link and background gradient, defaults to blue, for example #ffffff",
+                max_length=255,
+            ),
         ),
     ]

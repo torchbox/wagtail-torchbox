@@ -8,69 +8,42 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0121_remove_unused_standardpage_fields'),
+        ("torchbox", "0121_remove_unused_standardpage_fields"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='reasontojoin',
-            name='image',
-        ),
-        migrations.RemoveField(
-            model_name='reasontojoin',
-            name='page',
-        ),
+        migrations.RemoveField(model_name="reasontojoin", name="image",),
+        migrations.RemoveField(model_name="reasontojoin", name="page",),
         migrations.RenameField(
-            model_name='jobindexpagejob',
-            old_name='job_title',
-            new_name='title',
+            model_name="jobindexpagejob", old_name="job_title", new_name="title",
         ),
-        migrations.RemoveField(
-            model_name='jobindexpage',
-            name='intro',
-        ),
-        migrations.RemoveField(
-            model_name='jobindexpage',
-            name='listing_intro',
-        ),
-        migrations.RemoveField(
-            model_name='jobindexpage',
-            name='no_jobs_that_fit',
-        ),
-        migrations.RemoveField(
-            model_name='jobindexpage',
-            name='reasons_intro',
-        ),
-        migrations.RemoveField(
-            model_name='jobindexpage',
-            name='refer_a_friend',
-        ),
-        migrations.RemoveField(
-            model_name='jobindexpage',
-            name='terms_and_conditions',
-        ),
-        migrations.RemoveField(
-            model_name='jobindexpagejob',
-            name='job_intro',
-        ),
+        migrations.RemoveField(model_name="jobindexpage", name="intro",),
+        migrations.RemoveField(model_name="jobindexpage", name="listing_intro",),
+        migrations.RemoveField(model_name="jobindexpage", name="no_jobs_that_fit",),
+        migrations.RemoveField(model_name="jobindexpage", name="reasons_intro",),
+        migrations.RemoveField(model_name="jobindexpage", name="refer_a_friend",),
+        migrations.RemoveField(model_name="jobindexpage", name="terms_and_conditions",),
+        migrations.RemoveField(model_name="jobindexpagejob", name="job_intro",),
         migrations.AddField(
-            model_name='jobindexpage',
-            name='strapline',
-            field=models.CharField(default='', max_length=255),
+            model_name="jobindexpage",
+            name="strapline",
+            field=models.CharField(default="", max_length=255),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='jobindexpagejob',
-            name='level',
-            field=models.CharField(default='', max_length=255),
+            model_name="jobindexpagejob",
+            name="level",
+            field=models.CharField(default="", max_length=255),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='jobindexpagejob',
-            name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='jobs', to='torchbox.JobIndexPage'),
+            model_name="jobindexpagejob",
+            name="page",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="jobs",
+                to="torchbox.JobIndexPage",
+            ),
         ),
-        migrations.DeleteModel(
-            name='ReasonToJoin',
-        ),
+        migrations.DeleteModel(name="ReasonToJoin",),
     ]

@@ -11,33 +11,45 @@ from tbx.core.utils.migrations import for_each_page_revision
 
 
 def update_contenttypes(apps, schema_editor):
-    Page = apps.get_model('wagtailcore.Page')
-    ContentType = apps.get_model('contenttypes.ContentType')
+    Page = apps.get_model("wagtailcore.Page")
+    ContentType = apps.get_model("contenttypes.ContentType")
 
-    sign_up_form_prev, created = ContentType.objects.get_or_create(app_label='torchbox', model='signupformpage')
-    sign_up_form_next, created = ContentType.objects.get_or_create(app_label='sign_up_form', model='signupformpage')
+    sign_up_form_prev, created = ContentType.objects.get_or_create(
+        app_label="torchbox", model="signupformpage"
+    )
+    sign_up_form_next, created = ContentType.objects.get_or_create(
+        app_label="sign_up_form", model="signupformpage"
+    )
 
-    Page.objects.filter(content_type=sign_up_form_prev).update(content_type=sign_up_form_next)
+    Page.objects.filter(content_type=sign_up_form_prev).update(
+        content_type=sign_up_form_next
+    )
 
     sign_up_form_prev.delete()
 
 
 def reverse_update_contenttypes(apps, schema_editor):
-    Page = apps.get_model('wagtailcore.Page')
-    ContentType = apps.get_model('contenttypes.ContentType')
+    Page = apps.get_model("wagtailcore.Page")
+    ContentType = apps.get_model("contenttypes.ContentType")
 
-    sign_up_form_prev, created = ContentType.objects.get_or_create(app_label='torchbox', model='signupformpage')
-    sign_up_form_next, created = ContentType.objects.get_or_create(app_label='sign_up_form', model='signupformpage')
+    sign_up_form_prev, created = ContentType.objects.get_or_create(
+        app_label="torchbox", model="signupformpage"
+    )
+    sign_up_form_next, created = ContentType.objects.get_or_create(
+        app_label="sign_up_form", model="signupformpage"
+    )
 
-    Page.objects.filter(content_type=sign_up_form_next).update(content_type=sign_up_form_prev)
+    Page.objects.filter(content_type=sign_up_form_next).update(
+        content_type=sign_up_form_prev
+    )
 
     sign_up_form_next.delete()
 
 
 # Update the content types in revisions or django-modelcluster will crash when trying to deserialise
-@for_each_page_revision('sign_up_form.SignUpFormPage')
+@for_each_page_revision("sign_up_form.SignUpFormPage")
 def update_content_type_in_revisions(page, revision_content):
-    revision_content['content_type'] = page.content_type_id
+    revision_content["content_type"] = page.content_type_id
     return revision_content
 
 
@@ -50,92 +62,216 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtaildocs', '0008_document_file_size'),
-        ('torchbox', '0111_move_sign_up_form_into_new_app'),
-        ('wagtailcore', '0040_page_draft_title'),
+        ("wagtaildocs", "0008_document_file_size"),
+        ("torchbox", "0111_move_sign_up_form_into_new_app"),
+        ("wagtailcore", "0040_page_draft_title"),
     ]
 
     state_operations = [
         migrations.CreateModel(
-            name='SignUpFormPage',
+            name="SignUpFormPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('formatted_title', models.CharField(blank=True, help_text='This is the title displayed on the page, not the document title tag. HTML is permitted. Be careful.', max_length=255)),
-                ('intro', wagtail.core.fields.RichTextField()),
-                ('call_to_action_text', models.CharField(help_text='Displayed above the email submission form.', max_length=255)),
-                ('form_button_text', models.CharField(max_length=255)),
-                ('thank_you_text', models.CharField(help_text='Displayed on successful form submission.', max_length=255)),
-                ('email_subject', models.CharField(max_length=100, verbose_name='subject')),
-                ('email_body', models.TextField(verbose_name='body')),
-                ('email_from_address', models.EmailField(help_text='Anything ending in @torchbox.com is good.', max_length=254, verbose_name='from address')),
-                ('call_to_action_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage')),
-                ('email_attachment', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtaildocs.Document', verbose_name='attachment')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                (
+                    "formatted_title",
+                    models.CharField(
+                        blank=True,
+                        help_text="This is the title displayed on the page, not the document title tag. HTML is permitted. Be careful.",
+                        max_length=255,
+                    ),
+                ),
+                ("intro", wagtail.core.fields.RichTextField()),
+                (
+                    "call_to_action_text",
+                    models.CharField(
+                        help_text="Displayed above the email submission form.",
+                        max_length=255,
+                    ),
+                ),
+                ("form_button_text", models.CharField(max_length=255)),
+                (
+                    "thank_you_text",
+                    models.CharField(
+                        help_text="Displayed on successful form submission.",
+                        max_length=255,
+                    ),
+                ),
+                (
+                    "email_subject",
+                    models.CharField(max_length=100, verbose_name="subject"),
+                ),
+                ("email_body", models.TextField(verbose_name="body")),
+                (
+                    "email_from_address",
+                    models.EmailField(
+                        help_text="Anything ending in @torchbox.com is good.",
+                        max_length=254,
+                        verbose_name="from address",
+                    ),
+                ),
+                (
+                    "call_to_action_image",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="torchbox.TorchboxImage",
+                    ),
+                ),
+                (
+                    "email_attachment",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtaildocs.Document",
+                        verbose_name="attachment",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
+            options={"abstract": False,},
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='SignUpFormPageBullet',
+            name="SignUpFormPageBullet",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('icon', models.CharField(choices=[('torchbox/includes/svg/bulb-svg.html', 'Light bulb'), ('torchbox/includes/svg/pro-svg.html', 'Chart'), ('torchbox/includes/svg/tick-svg.html', 'Tick')], max_length=100)),
-                ('title', models.CharField(max_length=100)),
-                ('body', models.TextField()),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='bullet_points', to='sign_up_form.SignUpFormPage')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                (
+                    "icon",
+                    models.CharField(
+                        choices=[
+                            ("torchbox/includes/svg/bulb-svg.html", "Light bulb"),
+                            ("torchbox/includes/svg/pro-svg.html", "Chart"),
+                            ("torchbox/includes/svg/tick-svg.html", "Tick"),
+                        ],
+                        max_length=100,
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("body", models.TextField()),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="bullet_points",
+                        to="sign_up_form.SignUpFormPage",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
-            name='SignUpFormPageLogo',
+            name="SignUpFormPageLogo",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('logo', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='logos', to='sign_up_form.SignUpFormPage')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                (
+                    "logo",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="torchbox.TorchboxImage",
+                    ),
+                ),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="logos",
+                        to="sign_up_form.SignUpFormPage",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
-            name='SignUpFormPageQuote',
+            name="SignUpFormPageQuote",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('quote', models.TextField()),
-                ('author', models.CharField(max_length=100)),
-                ('organisation', models.CharField(max_length=100)),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='quotes', to='sign_up_form.SignUpFormPage')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("quote", models.TextField()),
+                ("author", models.CharField(max_length=100)),
+                ("organisation", models.CharField(max_length=100)),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="quotes",
+                        to="sign_up_form.SignUpFormPage",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
-            name='SignUpFormPageResponse',
+            name="SignUpFormPageResponse",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateTimeField(auto_now_add=True)),
-                ('email', models.EmailField(max_length=254)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateTimeField(auto_now_add=True)),
+                ("email", models.EmailField(max_length=254)),
             ],
-            options={
-                'ordering': ['-date'],
-            },
+            options={"ordering": ["-date"],},
         ),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            state_operations=state_operations,
-            database_operations=[],
+            state_operations=state_operations, database_operations=[],
         ),
         migrations.SeparateDatabaseAndState(
             state_operations=[],
@@ -144,5 +280,5 @@ class Migration(migrations.Migration):
                 migrations.RunPython(update_contenttypes, reverse_update_contenttypes),
                 migrations.RunPython(update_content_type_in_revisions, nooperation),
             ],
-        )
+        ),
     ]
