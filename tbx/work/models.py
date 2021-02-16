@@ -178,7 +178,12 @@ class WorkIndexPage(Page):
     @property
     def works(self):
         # Get list of work pages that are descendants of this page
-        return WorkPage.objects.descendant_of(self).live()
+        work_pages = WorkPage.objects.descendant_of(self).live()
+
+        # Order by most recent date first
+        work_pages = work_pages.order_by("-first_published_at", "pk")
+
+        return work_pages
 
     def serve(self, request):
         # Get work pages
