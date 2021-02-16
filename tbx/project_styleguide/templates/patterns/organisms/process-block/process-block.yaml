@@ -1,0 +1,16 @@
+context:
+  has_process_block_image: True
+  section_title: Process
+  processes:
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
+    - title: Lorem ipsum dolor sit amet.
+      description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.

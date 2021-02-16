@@ -1,0 +1,9 @@
+FROM node:14
+
+WORKDIR /home/node
+USER node
+
+# Create mount points here to ensure they're owned by node
+RUN mkdir -p /home/node/tbx/static_src
+
+ENV PATH="$PATH:/home/node/node_modules/.bin"

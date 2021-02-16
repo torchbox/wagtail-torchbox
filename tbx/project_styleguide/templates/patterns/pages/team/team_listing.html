@@ -1,0 +1,20 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    {% include "patterns/molecules/title-block/title-block.html" with title=page.strapline %}
+
+    <div class="team">
+        <div class="team__container">
+
+            <div class="team__list">
+                {% for member in page.team %}
+                    {% include "patterns/molecules/team-member/team-member.html" with item=member %}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

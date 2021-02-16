@@ -7,18 +7,30 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0003_populate_authors'),
+        ("people", "0003_populate_authors"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='personpagerelatedlink',
-            name='link_document',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtaildocs.Document'),
+            model_name="personpagerelatedlink",
+            name="link_document",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtaildocs.Document",
+            ),
         ),
         migrations.AlterField(
-            model_name='personpagerelatedlink',
-            name='link_page',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Page'),
+            model_name="personpagerelatedlink",
+            name="link_page",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailcore.Page",
+            ),
         ),
     ]

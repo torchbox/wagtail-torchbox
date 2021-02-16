@@ -1,0 +1,26 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<a class="blog-item" href="{% pageurl item %}">
+    <h3 class="blog-item__title">{{ item.title }}</h3>
+
+    {% with author=item.authors.first.author %}
+        {% if author %}
+            <div class="blog-item__meta">
+                <div class="avatar blog-item__image">
+                    {% image author.image fill-100x100 class="avatar__image" %}
+                </div>
+                <div class="blog-item__author">
+                    <span class="blog-item__author-name">{{ author.name }}</span>
+                {% if item.date %}
+                    <span class="blog-item__author-details">
+                {% endif %}
+                        <span class="blog-item__author-role">{{ author.role }}</span>
+                {% if item.date %}
+                        <span class="blog-item__author-date">{{ item.date }}</span>
+                    </span>
+                {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+</a>

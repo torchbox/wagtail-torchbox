@@ -10,14 +10,20 @@ import wagtail.core.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0028_merge'),
-        ('torchbox', '0067_auto_20160906_1651'),
+        ("wagtailcore", "0028_merge"),
+        ("torchbox", "0067_auto_20160906_1651"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='torchboximage',
-            name='collection',
-            field=models.ForeignKey(default=wagtail.core.models.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.Collection', verbose_name='collection'),
+            model_name="torchboximage",
+            name="collection",
+            field=models.ForeignKey(
+                default=wagtail.core.models.get_root_collection_id,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="+",
+                to="wagtailcore.Collection",
+                verbose_name="collection",
+            ),
         ),
     ]

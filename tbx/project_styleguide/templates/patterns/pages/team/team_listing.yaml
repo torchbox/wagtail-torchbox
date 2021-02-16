@@ -1,0 +1,17 @@
+context:
+  page:
+    title: This is us, <span>the people that make Torchbox</span>.
+    get_verbose_name: team-listing
+    team:
+      - { title: Tom Dyson, role: Techical Director }
+      - { title: James Leavesley, role: Managing Director }
+      - { title: Paul Vetch, role: Strategy Director }
+      - { title: Olly Willans, role: Creative Director }
+      - { title: Tom Dyson, role: Techical Director }
+      - { title: James Leavesley, role: Managing Director }
+      - { title: Paul Vetch, role: Strategy Director }
+      - { title: Olly Willans, role: Creative Director }
+      - { title: Tom Dyson, role: Techical Director }
+      - { title: James Leavesley, role: Managing Director }
+      - { title: Paul Vetch, role: Strategy Director }
+      - { title: Olly Willans, role: Creative Director }

@@ -8,50 +8,23 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0040_page_draft_title'),
-        ('wagtailsearchpromotions', '0002_capitalizeverbose'),
-        ('wagtailredirects', '0006_redirect_increase_max_length'),
-        ('torchbox', '0120_remove_contactpage'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('services', '0004_delete_all_services'),
+        ("wagtailcore", "0040_page_draft_title"),
+        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
+        ("wagtailredirects", "0006_redirect_increase_max_length"),
+        ("torchbox", "0120_remove_contactpage"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("services", "0004_delete_all_services"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='serviceindexpage',
-            name='main_image',
-        ),
-        migrations.RemoveField(
-            model_name='serviceindexpage',
-            name='page_ptr',
-        ),
-        migrations.RemoveField(
-            model_name='serviceindexpageservice',
-            name='link',
-        ),
-        migrations.RemoveField(
-            model_name='serviceindexpageservice',
-            name='page',
-        ),
-        migrations.RemoveField(
-            model_name='servicepage',
-            name='page_ptr',
-        ),
-        migrations.RemoveField(
-            model_name='servicepage',
-            name='particle',
-        ),
-        migrations.RemoveField(
-            model_name='servicepage',
-            name='service',
-        ),
-        migrations.DeleteModel(
-            name='ServiceIndexPage',
-        ),
-        migrations.DeleteModel(
-            name='ServiceIndexPageService',
-        ),
-        migrations.DeleteModel(
-            name='ServicePage',
-        ),
+        migrations.RemoveField(model_name="serviceindexpage", name="main_image",),
+        migrations.RemoveField(model_name="serviceindexpage", name="page_ptr",),
+        migrations.RemoveField(model_name="serviceindexpageservice", name="link",),
+        migrations.RemoveField(model_name="serviceindexpageservice", name="page",),
+        migrations.RemoveField(model_name="servicepage", name="page_ptr",),
+        migrations.RemoveField(model_name="servicepage", name="particle",),
+        migrations.RemoveField(model_name="servicepage", name="service",),
+        migrations.DeleteModel(name="ServiceIndexPage",),
+        migrations.DeleteModel(name="ServiceIndexPageService",),
+        migrations.DeleteModel(name="ServicePage",),
     ]

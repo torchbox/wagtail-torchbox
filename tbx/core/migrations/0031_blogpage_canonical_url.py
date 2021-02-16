@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0030_merge'),
+        ("torchbox", "0030_merge"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='blogpage',
-            name='canonical_url',
+            model_name="blogpage",
+            name="canonical_url",
             field=models.URLField(blank=True, max_length=255),
         ),
     ]

@@ -1,0 +1,134 @@
+/* ============================================
+    Base font
+*/
+html {
+    font-family: $font--primary;
+    line-height: 1.4;
+    color: var(--color--grey);
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: (map-get($small-font-sizes, xs) / 16px) * 100%;
+
+    @include media-query(medium) {
+        font-size: (map-get($medium-font-sizes, xs) / 16px) * 100%;
+    }
+
+    @include media-query(large) {
+        font-size: (map-get($large-font-sizes, xs) / 16px) * 100%;
+    }
+}
+
+/* ============================================
+    Families – one mixin per typeface
+    :: For each font mixin defined here, make sure each property is negated (set
+    :: to its default value, usually `inherit`) in all other font mixins.
+*/
+@mixin heading-text() {
+    font-family: $font--primary;
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+@mixin body-text() {
+    font-family: $font--primary;
+    font-style: inherit;
+    font-weight: inherit;
+    text-transform: inherit;
+}
+
+@mixin quote-text() {
+    font-family: $font--primary;
+    font-style: italic;
+    font-weight: inherit;
+    text-transform: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading {
+    @include heading-text();
+}
+
+html,
+.body-text {
+    @include body-text();
+}
+
+blockquote {
+    @include quote-text();
+}
+
+// Default sizes
+h1,
+.heading--1 {
+    @include font-size(xl);
+    font-weight: $weight--bold;
+    margin: 0 0 ($gutter / 2);
+    color: var(--color--dark-indigo);
+
+    @include media-query(medium) {
+        margin-right: $variable-gutter--small;
+    }
+}
+
+h2,
+.heading--2 {
+    @include font-size(l);
+    font-weight: $weight--heavy;
+    margin: ($gutter * 3) 0 $gutter;
+    color: var(--color--dark-indigo);
+}
+
+h3,
+h4,
+.heading--3,
+.heading--4 {
+    @include font-size(m);
+    font-weight: $weight--bold;
+    margin: ($gutter * 3) 0 ($gutter / 2);
+    color: var(--color--dark-indigo);
+}
+
+h5,
+h6,
+.heading--5,
+.heading--6 {
+    @include font-size(m);
+}
+
+small {
+    @include font-size(xxs);
+}
+
+p {
+    margin: 0 0 ($gutter * 1.5);
+    color: var(--color--grey);
+}
+
+b,
+strong {
+    font-weight: $weight--bold;
+}
+
+.strong-black {
+    font-weight: $weight--heavy;
+}
+
+i {
+    font-style: italic;
+}
+
+pre {
+    margin: 0 0 ($gutter * 1.5) 0;
+    padding: ($gutter / 2);
+    font-family: monospace;
+    word-break: break-all;
+    white-space: pre-wrap;
+    background: var(--color--light-grey);
+    border-radius: 5px;
+}

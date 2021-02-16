@@ -1,0 +1,14 @@
+context:
+  page:
+    biography: '<p>Colin has had an illustrious career in international logistics. His favourite colours are black and grey but, Colin is a colourful person and loves exploring culture, the wilderness and dark nightclubs.</p>'
+    get_verbose_name: person-page
+    intro: '<p>Colin is a Red Hat Certified Engineer and uses his expert knowledge to implement and maintain technical infrastructure.</p>'
+    role: Head of Awesome
+    title: Colin Knowles
+
+tags:
+  image:
+    page.image width-1280 as image:
+      target_var: image
+      raw:
+        url: '//placekitten.com/1280/1706'

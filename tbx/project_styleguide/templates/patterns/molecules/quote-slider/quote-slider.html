@@ -1,0 +1,30 @@
+<div class="quote-slider glide" data-carousel data-slidetotal="{{ items|length }}">
+    <svg class="quote-slider__icon" viewBox="0 0 222.5 170.6" aria-hidden="true">
+        <path class="quote_svg__st0" d="M92.182 143.122L174.782.058l47.717 27.55-82.6 143.064zM.03 132.42l55.4-95.953 38.363 22.15-55.4 95.953z"></path>
+    </svg>
+    <div class="quote-slider__slider glide__track" data-glide-el="track">
+        <ul class="quote-slider__slides glide__slides" aria-live="polite">
+            {% for slide in items %}
+                {% include "patterns/atoms/quote-slide/quote-slide.html" with item=slide %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="quote-slider__bullets" data-glide-el="controls[nav]">
+        {% for slide in items %}
+            <button class="quote-slider__bullet" data-glide-dir="={{ forloop.counter0 }}"  aria-label="Slide {{ forloop.counter }}"></button>
+        {% endfor %}
+    </div>
+    <div class="quote-slider__controls-group" data-glide-el="controls">
+        <button class="quote-slider__button quote-slider__button--prev button" aria-label="Previous image" data-glide-dir="<">
+            <svg class="quote-slider__button-icon" width="46" height="46">
+                <use xlink:href="#arrow-left" />
+            </svg>
+        </button>
+        <button class="quote-slider__button quote-slider__button--next button" aria-label="Next image" data-glide-dir=">">
+            <svg class="quote-slider__button-icon" width="46" height="46">
+                <use xlink:href="#arrow-right" />
+            </svg>
+        </button>
+    </div>
+
+</div>

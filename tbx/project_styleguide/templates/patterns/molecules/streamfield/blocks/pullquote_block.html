@@ -1,0 +1,20 @@
+
+<blockquote class="pullquote {% if classes %}{{ classes }}{% endif %}">
+    <svg class="pullquote__icon" width="120" height="90" aria-hidden="true">
+        <use xlink:href="#quote-icon" />
+    </svg>
+    <p class="pullquote__text">{{ value.quote }}</p>
+    <cite class="pullquote__cite">
+        {% if value.attribution %}
+            <span class="pullquote__attribution">{{ value.attribution }}</span>
+        {% endif %}
+
+        {% if value.name %}
+            <span class="pullquote__name">{{ value.name }}</span>
+        {% endif %}
+
+        {% if value.role %}
+            <span class="pullquote__role">{{ value.role }}</span>
+        {% endif %}
+    </cite>
+</blockquote>

@@ -1,0 +1,114 @@
+// Theme overrides:
+$blog-author: var(--testimonial-name);
+
+.blog-item {
+    $root: &;
+    display: block;
+    padding: 0 0 ($gutter * 2.5) 0;
+    margin: ($gutter * 2) 0 0;
+    text-decoration: none;
+    border-bottom: none;
+
+    &:focus,
+    &:hover {
+        #{$root}__title {
+            color: var(--color--indigo);
+        }
+    }
+
+    &--featured {
+        border-top: none;
+        padding-top: 0;
+        padding-bottom: ($gutter * 2.5);
+
+        @include media-query(large) {
+            width: 58.33vw;
+        }
+
+        #{$root}__title {
+            font-size: 45px;
+            line-height: 50px;
+            font-weight: 800;
+
+            @include media-query(large) {
+                font-size: 65px;
+                line-height: 80px;
+            }
+        }
+
+        #{$root}__desc {
+            margin: 0 0 ($gutter * 1.5);
+            color: var(--color--grey);
+
+            @include media-query(large) {
+                line-height: 34px;
+                font-size: 20px;
+            }
+        }
+    }
+
+    &__meta {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 40px;
+        margin: 0 0 $gutter;
+        color: var(--color--dark-indigo);
+    }
+
+    &__image {
+        width: 55px;
+        height: 55px;
+        min-height: 55px;
+        min-width: 55px;
+        margin-right: ($gutter * 0.75);
+    }
+
+    &__author {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__author-name {
+        color: var(--color--dark-indigo);
+        font-size: 20px;
+    }
+
+    &__author-role {
+        margin: 0 0 2px;
+        line-height: 1.4;
+        color: var(--color--coral-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    &__author-date {
+        font-size: 12px;
+        font-weight: normal;
+        text-transform: none;
+        letter-spacing: 0;
+        color: var(--color--grey);
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-listing__feature & {
+        #{$root}__title {
+            @include font-size(xxl);
+            font-weight: $weight--heavy;
+            line-height: 1.2;
+
+            @include media-query(large) {
+                max-width: 58.33vw;
+            }
+        }
+    }
+}

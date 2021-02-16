@@ -8,42 +8,42 @@ from django.db import migrations
 
 
 def migrate_author_left_into_author_snippet(apps, schema_editor):
-    WorkPage = apps.get_model('work.WorkPage')
-    WorkPageAuthor = apps.get_model('work.WorkPageAuthor')
-    Author = apps.get_model('people.Author')
+    WorkPage = apps.get_model("work.WorkPage")
+    WorkPageAuthor = apps.get_model("work.WorkPageAuthor")
+    Author = apps.get_model("people.Author")
 
     # Update model
-    for work_page in WorkPage.objects.exclude(author_left=''):
+    for work_page in WorkPage.objects.exclude(author_left=""):
         author, created = Author.objects.get_or_create(name=work_page.author_left)
         work_page.related_author.add(WorkPageAuthor(author=author))
         work_page.related_author.commit()
 
     # Update revisions
-    PageRevision = apps.get_model('wagtailcore.PageRevision')
-    ContentType = apps.get_model('contenttypes.ContentType')
-    work_page_content_type = ContentType.objects.get(app_label='work', model='workpage')
+    PageRevision = apps.get_model("wagtailcore.PageRevision")
+    ContentType = apps.get_model("contenttypes.ContentType")
+    work_page_content_type = ContentType.objects.get(app_label="work", model="workpage")
 
-    for revision in PageRevision.objects.filter(page__content_type=work_page_content_type):
+    for revision in PageRevision.objects.filter(
+        page__content_type=work_page_content_type
+    ):
         content = json.loads(revision.content_json)
-        author_left = content.get('author_left', '')
+        author_left = content.get("author_left", "")
 
         if author_left:
             author, created = Author.objects.get_or_create(name=author_left)
 
-            if not 'related_author' in content:
-                content['related_author'] = []
+            if not "related_author" in content:
+                content["related_author"] = []
 
             # Make sure this author isn't already attached to this work post
-            if content['related_author']:
-                current_author_ids = set(a['author'] for a in content['related_author'])
+            if content["related_author"]:
+                current_author_ids = set(a["author"] for a in content["related_author"])
                 if author.id in current_author_ids:
                     continue
 
-            content['related_author'].append({
-                'pk': None,
-                'page': revision.page_id,
-                'author': author.id
-            })
+            content["related_author"].append(
+                {"pk": None, "page": revision.page_id, "author": author.id}
+            )
 
             revision.content_json = json.dumps(content)
             revision.save()
@@ -56,13 +56,10 @@ def nooperation(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0005_remove_workpageauthor_author_person_page'),
+        ("work", "0005_remove_workpageauthor_author_person_page"),
     ]
 
     operations = [
         migrations.RunPython(migrate_author_left_into_author_snippet, nooperation),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='author_left',
-        ),
+        migrations.RemoveField(model_name="workpage", name="author_left",),
     ]

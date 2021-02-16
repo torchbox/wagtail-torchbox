@@ -1,0 +1,6 @@
+context:
+  settings:
+    utils:
+      SystemMessagesSettings:
+        title_404: Err...
+        body_404: Take me home

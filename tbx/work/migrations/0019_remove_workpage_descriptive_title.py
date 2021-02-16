@@ -6,12 +6,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0018_workpage_client'),
+        ("work", "0018_workpage_client"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='workpage',
-            name='descriptive_title',
-        ),
+        migrations.RemoveField(model_name="workpage", name="descriptive_title",),
     ]

@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0021_auto_20190211_0705'),
+        ("services", "0021_auto_20190211_0705"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='servicepage',
-            name='heading_for_processes',
+            model_name="servicepage",
+            name="heading_for_processes",
             field=models.TextField(blank=True, null=True),
         ),
     ]

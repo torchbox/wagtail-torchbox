@@ -1,0 +1,74 @@
+// Theme overrides:
+.reason {
+    display: block;
+    margin: 20px 10px;
+    position: relative;
+
+    @include media-query(large) {
+        margin: 0;
+        flex-basis: 33.33%;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    &__container {
+        display: block;
+        padding: 60px 30px;
+
+        @include media-query(large) {
+            padding: 0;
+            margin: 20px 40px 0;
+        }
+    }
+
+    &__number {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        font-size: 22px;
+        color: var(--color--get-in-touch-numbers);
+
+        span {
+            z-index: 1;
+            position: relative;
+            top: 3px;
+            left: 1px;
+            font-weight: bold;
+        }
+
+        &::before {
+            width: 25px;
+            height: 40px;
+            content: '';
+            background: var(--color--accent);
+            position: absolute;
+            z-index: 0;
+            transform: rotate(30deg);
+            left: -6px;
+            top: -4px;
+        }
+    }
+
+    &__content {
+        position: absolute;
+        top: 0;
+        left: 50px;
+
+        @include media-query(large) {
+            position: static;
+        }
+    }
+
+    &__title {
+        color: var(--color--white);
+        margin: 0 0 5px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    &__description {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.4;
+    }
+}

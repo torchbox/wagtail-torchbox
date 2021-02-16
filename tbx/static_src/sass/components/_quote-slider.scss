@@ -1,0 +1,76 @@
+.quote-slider {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+
+    &__icon {
+        fill: var(--icon-color, var(--color--accent));
+        width: 20vw;
+        max-width: 100px;
+        grid-column: 1;
+        grid-row: 1;
+        margin-right: 50px;
+
+        @include media-query(large) {
+            max-width: 120px;
+            width: $variable-gutter--small;
+            margin-top: -50px;
+            margin-left: 4.33vw;
+        }
+    }
+
+    &__slider {
+        position: relative;
+        grid-column: 1 / span 2;
+        margin-top: 20px;
+        grid-row: 2;
+
+        @include media-query(large) {
+            margin-top: 0;
+            grid-column-start: 2;
+            grid-row: 1;
+        }
+    }
+
+    &__bullets {
+        grid-column: span 2;
+        grid-row: 3;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 20px;
+        transition: 0.2s all ease;
+
+        @include media-query(large) {
+            grid-row: 2;
+        }
+    }
+
+    &__bullet {
+        width: 9px;
+        height: 15px;
+        content: '';
+        background: rgba(0, 0, 0, 0.1);
+        transform: rotate(30deg);
+        margin-right: 20px;
+        cursor: pointer;
+        padding: 0;
+        border: 0;
+        transition: 0.2s all ease;
+
+        &.glide__bullet--active {
+            width: 14px;
+            height: 20px;
+            background: var(--icon-color, var(--color--accent));
+        }
+    }
+
+    &__slides {
+        margin-bottom: $gutter;
+    }
+
+    &__controls-group {
+        @include hidden();
+    }
+}

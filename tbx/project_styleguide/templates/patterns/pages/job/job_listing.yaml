@@ -1,0 +1,32 @@
+context:
+  page:
+    get_verbose_name: job-index-page
+    intro: '<p>This is a great time to join Torchbox. We’ve become the UKs first 100% employee owned digital agency and business is booming in the UK, US and around the world. We’re doing great work with many incredible mission-driven organisations including the NHS, NASA, Oxfam, the Department for International Trade, the University of Pennsylvania and many more.</p>'
+    strapline: Work at Torchbox <span>on projects you can feel good about</span>.
+    title: Jobs
+  feed_success: True
+  jobs:
+    - {
+        title: Digital Marketing Account Manager,
+        description: 'Plan and implement multi-channel digital marketing campaigns, while growing our relationships with some of the very biggest charities and NGO’s.',
+        department: Digital Marketing,
+        location: 'Bristol, Charlbury and remote',
+      }
+    - {
+        title: Digital Marketing Account Manager,
+        description: 'Plan and implement multi-channel digital marketing campaigns, while growing our relationships with some of the very biggest charities and NGO’s.',
+        department: Digital Marketing,
+        location: 'Bristol, Charlbury and remote',
+      }
+    - {
+        title: Digital Marketing Account Manager,
+        description: 'Plan and implement multi-channel digital marketing campaigns, while growing our relationships with some of the very biggest charities and NGO’s.',
+        department: Digital Marketing,
+        location: 'Bristol, Charlbury and remote',
+      }
+    - {
+        title: Digital Marketing Account Manager,
+        description: 'Plan and implement multi-channel digital marketing campaigns, while growing our relationships with some of the very biggest charities and NGO’s.',
+        department: Digital Marketing,
+        location: 'Bristol, Charlbury and remote',
+      }

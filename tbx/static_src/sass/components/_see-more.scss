@@ -1,0 +1,26 @@
+.see-more {
+    margin: ($gutter * 2) 0 ($gutter * 4);
+    text-align: center;
+
+    &__link {
+        transition: all 0.2s ease;
+        color: var(--color--indigo);
+        text-decoration: none;
+        font-weight: bold;
+        padding: 15px;
+        border-bottom: 2px solid var(--color--accent);
+        cursor: pointer;
+
+        &:hover {
+            background: var(--color--accent);
+            border-radius: 4px;
+            border-color: var(--color--accent);
+            color: var(--color--white);
+            padding: 15px 30px;
+        }
+    }
+
+    &--hidden {
+        display: none;
+    }
+}

@@ -8,13 +8,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0092_servicepage_add_logos'),
+        ("torchbox", "0092_servicepage_add_logos"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='torchboxrendition',
-            name='focal_point_key',
-            field=models.CharField(blank=True, default='', editable=False, max_length=16),
+            model_name="torchboxrendition",
+            name="focal_point_key",
+            field=models.CharField(
+                blank=True, default="", editable=False, max_length=16
+            ),
         ),
     ]

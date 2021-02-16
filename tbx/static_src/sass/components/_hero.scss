@@ -1,0 +1,105 @@
+.hero {
+    $root: &;
+
+    @include media-query(medium) {
+        padding-bottom: 5vh;
+    }
+
+    &__image {
+        margin-top: -25px;
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color--background);
+        padding-top: 70px;
+
+        @include media-query(medium) {
+            padding-top: 120px;
+        }
+
+        @include media-query(large) {
+            padding-left: 14.66vw;
+        }
+
+        &::after {
+            position: absolute;
+            content: ' ';
+            display: block;
+            height: 80px;
+            width: 100%;
+            background-color: var(--color--background);
+            top: calc(100% - 50px);
+            left: 0;
+        }
+    }
+
+    &__content {
+        position: relative;
+        margin: 50px $variable-gutter--small 0;
+        padding-top: ($gutter * 3);
+        padding-bottom: $gutter;
+        z-index: 2;
+
+        @include media-query(medium) {
+            margin-left: 10.33vw;
+        }
+    }
+
+    &__title {
+        color: var(--color--primary);
+        font-weight: 800;
+        font-size: 50px;
+        line-height: 55px;
+        margin-bottom: 20px;
+
+        @include media-query(medium) {
+            font-size: 70px;
+            line-height: 80px;
+        }
+
+        span {
+            color: var(--color--header-icon-color);
+        }
+    }
+
+    &__description {
+        color: var(--color--primary);
+        margin-bottom: ($gutter * 2);
+        line-height: 36px;
+        font-size: 22px;
+
+        @include media-query(medium) {
+            line-height: 42px;
+            font-size: 24px;
+            margin-right: $variable-gutter--small;
+        }
+
+        p {
+            color: var(--color--primary);
+        }
+    }
+
+    &__full-screen {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        padding-bottom: 0;
+
+        &--filter {
+            height: 25vh;
+            background: linear-gradient(
+                var(--color--dark-indigo),
+                var(--color--white)
+            );
+            opacity: 0.6;
+            mix-blend-mode: multiply;
+        }
+    }
+}

@@ -8,13 +8,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0026_merge'),
+        ("torchbox", "0026_merge"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='marketinglandingpagerelatedlink',
-            name='email_link',
-            field=models.EmailField(blank=True, help_text="Enter email address only, without 'mailto:'", max_length=254),
+            model_name="marketinglandingpagerelatedlink",
+            name="email_link",
+            field=models.EmailField(
+                blank=True,
+                help_text="Enter email address only, without 'mailto:'",
+                max_length=254,
+            ),
         ),
     ]

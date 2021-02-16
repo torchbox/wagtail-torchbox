@@ -1,0 +1,20 @@
+.header {
+    $root: &;
+    @include z-index(header);
+    width: 100%;
+    position: absolute;
+    top: 0;
+
+    &__inner {
+        @include container();
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: $gutter 0;
+
+        @include media-query(large) {
+            flex-direction: row;
+            padding: ($gutter * 2) 0 0;
+        }
+    }
+}

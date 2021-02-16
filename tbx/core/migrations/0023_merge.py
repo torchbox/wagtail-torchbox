@@ -8,9 +8,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0021_merge'),
-        ('torchbox', '0022_signupformpage_signupformpagebullet_signupformpagelogo_signupformpagequote_signupformpageresponse'),
+        ("torchbox", "0021_merge"),
+        (
+            "torchbox",
+            "0022_signupformpage_signupformpagebullet_signupformpagelogo_signupformpagequote_signupformpageresponse",
+        ),
     ]
 
-    operations = [
-    ]
+    operations = []

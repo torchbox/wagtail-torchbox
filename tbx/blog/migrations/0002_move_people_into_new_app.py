@@ -9,19 +9,25 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0001_initial'),
-        ('people', '0001_initial'),
-        ('torchbox', '0112_move_people_into_new_app'),
+        ("blog", "0001_initial"),
+        ("people", "0001_initial"),
+        ("torchbox", "0112_move_people_into_new_app"),
     ]
 
     run_before = [
-        ('torchbox', '0113_move_people_into_new_app_2'),
+        ("torchbox", "0113_move_people_into_new_app_2"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpageauthor',
-            name='author',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='people.PersonPage'),
+            model_name="blogpageauthor",
+            name="author",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="+",
+                to="people.PersonPage",
+            ),
         ),
     ]

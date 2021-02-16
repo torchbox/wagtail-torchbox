@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0023_merge'),
+        ("torchbox", "0023_merge"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='reasontojoin',
-            name='subtitle',
-        ),
+        migrations.RemoveField(model_name="reasontojoin", name="subtitle",),
     ]

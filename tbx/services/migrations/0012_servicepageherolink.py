@@ -8,22 +8,50 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0011_auto_20190207_0233'),
+        ("services", "0011_auto_20190207_0233"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ServicePageHeroLink',
+            name="ServicePageHeroLink",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('label', models.TextField()),
-                ('linked_section', models.CharField(choices=[('key_points', 'Key Points'), ('contact', 'Contact'), ('testimonials', 'Testimonials'), ('work', 'Work / Case-Studies'), ('blogs', 'Blogs')], default='key_points', max_length=6)),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='hero_links', to='services.ServicePage')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("label", models.TextField()),
+                (
+                    "linked_section",
+                    models.CharField(
+                        choices=[
+                            ("key_points", "Key Points"),
+                            ("contact", "Contact"),
+                            ("testimonials", "Testimonials"),
+                            ("work", "Work / Case-Studies"),
+                            ("blogs", "Blogs"),
+                        ],
+                        default="key_points",
+                        max_length=6,
+                    ),
+                ),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="hero_links",
+                        to="services.ServicePage",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['sort_order'],
-                'abstract': False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
     ]

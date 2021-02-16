@@ -8,13 +8,17 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0017_auto_20190207_1702'),
+        ("services", "0017_auto_20190207_1702"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='servicepageprocess',
-            name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='processes', to='services.ServicePage'),
+            model_name="servicepageprocess",
+            name="page",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="processes",
+                to="services.ServicePage",
+            ),
         ),
     ]

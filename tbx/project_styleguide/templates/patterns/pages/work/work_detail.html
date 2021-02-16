@@ -1,0 +1,48 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block meta_tags %}
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'author-title' : '{{ page.authors.all.0.author.role }}',
+            'author-name' : '{{ page.authors.all.0.author.name }}',
+            'published' : '{{ page.date|date:"Ymd" }}',
+            'tags' : [{% for tag in page.related_services.all %}'{{tag.name}}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+            'read-time' : '{{ page.read_time }}',
+            'id': '{{ page.id }}',
+            'page-h1' : '{{ page.title }}',
+            'page-title' : '{{ page.title }} | Torchbox',
+            'page-path': '{{ page.slug }}',
+            'event': 'page-information'
+        });
+    </script>
+    {{ block.super }}
+
+{% endblock %}
+
+{% block content %}
+    {% with author=page.authors.first.author %}
+
+        {% include "patterns/molecules/title-block/title-block.html" with item=page %}
+        {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
+
+        {% include_block page.body %}
+
+        <div class="page__author">
+            {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
+        </div>
+
+        {% if page.related_works %}
+        <div class="page__showcase">
+            <div class="casestudies">
+                {% include "patterns/atoms/section-title/section-title.html" with title="More of our work" %}
+                <div class="casestudies__list">
+                    {% include "patterns/organisms/work-listing/work-listing.html" with works=page.related_works %}
+                    {% include "patterns/atoms/see-more/see-more.html" with link=page.work_index.url text="See more case studies" %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endwith %}
+{% endblock %}

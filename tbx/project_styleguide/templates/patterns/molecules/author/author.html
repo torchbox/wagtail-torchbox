@@ -1,0 +1,40 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% image author.image fill-100x100 as image %}
+<div class="author">
+    <div class="author__container">
+        <div class="author__avatar">
+            <img class="author__image" src="{{ image.url }}" alt="{{ image.alt }}" loading="lazy">
+        </div>
+        <div class="author__details">
+            {% if author.person_page %}
+                <a class="author__name" href="{% pageurl author.person_page %}">
+                    {{ author.name }}
+                </a>
+            {% else %}
+                <span class="author__name">
+                    {{ author.name }}
+                </span>
+            {% endif %}
+
+            <p class="author__meta">
+                {% if author.role %}
+                    <span class="author__role">{{ author.role }}</span>
+                {% endif %}
+
+                {% if item.date %}
+                    <span class="author__date">{{ item.date }}</span>
+                {% endif %}
+
+                {% if item.read_time %}
+                    <span class="author__readtime">{{ item.read_time }} min read</span>
+                {% endif %}
+            </p>
+            <div class="author__tags">
+                {% for tag in item.related_services.all %}
+                    {% include "patterns/atoms/tag/tag.html" with item=tag small=True tag_link_base=tag_link_base %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

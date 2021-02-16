@@ -1,0 +1,26 @@
+<svg id="Layer_1" data-name="Layer 1" viewBox="0 0 740 494.38">
+  <title>Greeting</title>
+  <defs>
+    <style>
+      .cls-1{fill:#fd5765}.cls-2{fill:#251657}.cls-3{fill:#e6e6e6}.cls-4{fill:#2f128d}
+    </style>
+  </defs>
+  <path class="cls-4" d="M-1.08 492.79a137.78 137.78 0 0 0 137.87-137.68A137.77 137.77 0 0 0-.89 217.23z"/>
+  <circle class="cls-2" cx="124.57" cy="101.34" r="29.76"/>
+  <circle class="cls-2" cx="261.42" cy="147.52" r="27.12"/>
+  <rect class="cls-3" x="100.51" y="55.39" width="145.14" height="220.11" rx="58.75" transform="rotate(30 173.09 165.44)"/>
+  <rect class="cls-3" x="68.18" y="118.36" width="72.12" height="186.61" rx="36.06" transform="rotate(30 104.237 211.67)"/>
+  <path class="cls-3" d="M132.33 104.41a30.2 30.2 0 0 0-30.2 52.31z"/>
+  <circle class="cls-2" cx="167.1" cy="140.21" r="8.34"/>
+  <circle class="cls-2" cx="219.79" cy="170.63" r="8.34"/>
+  <path class="cls-1" d="M185.98 212.53l-20.3-11.72 18.48-32.01 1.82 43.73z"/>
+  <circle class="cls-2" cx="255.05" cy="106.11" r="39.11"/>
+  <circle class="cls-2" cx="129.62" cy="71.43" r="29.76"/>
+  <circle class="cls-2" cx="199.93" cy="58.55" r="54.45"/>
+  <path class="cls-2 megaphone" d="M321.71 306.46h31.67v96.16h-31.67z"/>
+  <path class="cls-4 megaphone" d="M261.88 271.7a36 36 0 0 1 0 71.93z"/>
+  <path class="cls-4 megaphone" d="M263.1 305.89v3.75l224.1 75.96V229.94l-224.1 75.95z"/>
+  <circle class="cls-2 megaphone" cx="504.43" cy="307.77" r="79.57"/>
+  <path class="cls-3 megaphone" d="M321.13 378.77h51a51.32 51.32 0 0 1-51 51.36h-.34a37.2 37.2 0 0 1 .29-74.4z"/>
+  <path d="M140.58 211.7A21.58 21.58 0 1 0 178 233.28z" fill="#fff"/>
+</svg>

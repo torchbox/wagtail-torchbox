@@ -9,13 +9,17 @@ import wagtail.images.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0068_torchboximage_collection'),
+        ("torchbox", "0068_torchboximage_collection"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='torchboxrendition',
-            name='file',
-            field=models.ImageField(height_field='height', upload_to=wagtail.images.models.get_rendition_upload_to, width_field='width'),
+            model_name="torchboxrendition",
+            name="file",
+            field=models.ImageField(
+                height_field="height",
+                upload_to=wagtail.images.models.get_rendition_upload_to,
+                width_field="width",
+            ),
         ),
     ]

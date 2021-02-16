@@ -6,11 +6,13 @@ from django.db import migrations
 
 
 def delete_all_services(apps, schema_editor):
-    Page = apps.get_model('wagtailcore.Page')
-    ContentType = apps.get_model('contenttypes.ContentType')
+    Page = apps.get_model("wagtailcore.Page")
+    ContentType = apps.get_model("contenttypes.ContentType")
 
-    service_index_ct = ContentType.objects.get(app_label='services', model='serviceindexpage')
-    service_page_ct = ContentType.objects.get(app_label='services', model='servicepage')
+    service_index_ct = ContentType.objects.get(
+        app_label="services", model="serviceindexpage"
+    )
+    service_page_ct = ContentType.objects.get(app_label="services", model="servicepage")
 
     # Dangerously delete existing service pages
     Page.objects.filter(content_type__in=[service_index_ct, service_page_ct]).delete()
@@ -23,7 +25,7 @@ def nooperation(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0003_servicepage_service'),
+        ("services", "0003_servicepage_service"),
     ]
 
     operations = [

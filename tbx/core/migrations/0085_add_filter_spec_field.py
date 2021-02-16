@@ -9,13 +9,15 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0084_homepage_add_editable_strapline'),
+        ("torchbox", "0084_homepage_add_editable_strapline"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='torchboxrendition',
-            name='filter_spec',
-            field=models.CharField(blank=True, db_index=True, default='', max_length=255),
+            model_name="torchboxrendition",
+            name="filter_spec",
+            field=models.CharField(
+                blank=True, db_index=True, default="", max_length=255
+            ),
         ),
     ]

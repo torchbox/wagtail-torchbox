@@ -1,0 +1,217 @@
+.help-block {
+    $root: &;
+
+    &__avatar {
+        margin-bottom: $gutter;
+
+        @include media-query(medium) {
+            margin-bottom: 0;
+            margin-right: $gutter;
+        }
+    }
+
+    &__container {
+        position: relative;
+        width: 100vw;
+        background: var(--color--white);
+        padding-top: 10px;
+        padding-bottom: 80px;
+    }
+
+    &__content {
+        @include container();
+        padding-top: ($gutter * 4.5);
+
+        @include media-query(medium) {
+            padding-top: $gutter;
+        }
+    }
+
+    &__contact {
+        font-size: 20px;
+        font-weight: $weight--bold;
+        color: var(--color--indigo);
+
+        &:focus,
+        &:hover {
+            color: var(--color--dark-indigo);
+        }
+
+        &--email {
+            @include media-query(medium) {
+                margin-right: $gutter;
+            }
+        }
+
+        &--phone {
+            border-bottom: 0;
+            color: var(--color--accent);
+        }
+    }
+
+    &__title {
+        font-size: 35px;
+        line-height: 45px;
+        font-weight: 100;
+
+        @include media-query(medium) {
+            padding-left: 17vw;
+            font-size: 36px;
+            line-height: 50px;
+        }
+
+        * {
+            color: var(--color--dark-indigo);
+        }
+
+        b {
+            font-weight: $weight--heavy;
+        }
+    }
+
+    &__links-container {
+        margin-top: 30px;
+
+        @include media-query(medium) {
+            padding-left: 17vw;
+        }
+    }
+
+    &__links-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__link-item {
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+
+        a {
+            display: inline;
+            position: relative;
+            color: var(--color--dark-indigo);
+            text-decoration: none;
+            font-size: 20px;
+            line-height: 30px;
+            font-weight: 400;
+            margin: 0 0 5px 30px;
+            padding: 15px 0 0;
+            border-bottom: 2px solid var(--color--white);
+
+            @include media-query(medium) {
+                padding: 15px 0 0;
+                margin: 0 0 5px 60px;
+                line-height: 40px;
+                font-size: 24px;
+            }
+
+            &:hover {
+                @include media-query(medium) {
+                    color: var(--color--indigo);
+                    border-bottom: 2px solid var(--color--accent);
+                    font-weight: 800;
+                }
+            }
+
+            &::after {
+                content: '';
+                display: inline;
+                width: 12px;
+                height: 20px; // changed from 30px to fix ie edge issue
+                position: absolute;
+                margin-left: 15px;
+                margin-top: 5px;
+                background: url('../images/cssBackgrounds/chevron.svg')
+                    no-repeat center;
+
+                @include media-query(medium) {
+                    margin-top: 10px;
+                }
+
+                @supports (mask: url('')) {
+                    background-image: none;
+                    background-color: var(--color--accent);
+                    mask: url('../images/cssBackgrounds/chevron.svg') no-repeat
+                        center;
+                    mask-size: contain;
+                }
+            }
+        }
+
+        span {
+            line-height: 30px;
+            font-weight: 400;
+            margin: 0 0 5px 30px;
+            padding: 15px 0 0;
+
+            @include media-query(medium) {
+                padding: 15px 0 0;
+                margin: 0 0 5px 60px;
+                line-height: 40px;
+                font-size: 24px;
+            }
+        }
+    }
+
+    &__link-item-icon {
+        transform: rotate(30deg);
+        width: 22px;
+        height: 22px;
+        margin-top: 20px;
+        fill: var(--icon-color, var(--color--accent));
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        @include media-query(medium) {
+            width: 22px;
+            height: 22px;
+        }
+    }
+
+    &__contact-wrap {
+        margin-top: 35px;
+
+        @include media-query(medium) {
+            padding-left: 12vw;
+        }
+    }
+
+    &__contact-inner {
+        @include container();
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+    }
+
+    &__contact-details {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        @include media-query(medium) {
+            align-items: flex-start;
+            text-align: left;
+        }
+    }
+
+    &__contact-meta {
+        margin-top: 5px;
+
+        @include media-query(medium) {
+            display: flex;
+        }
+    }
+
+    &__contact-title {
+        margin: 0;
+        color: var(--color--dark-indigo);
+    }
+}

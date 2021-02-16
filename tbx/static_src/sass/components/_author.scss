@@ -1,0 +1,83 @@
+.author {
+    &__container {
+        @include container();
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &__image {
+        width: 55px;
+        height: 55px;
+        margin-right: $gutter;
+        border-radius: 100%;
+
+        @include media-query(large) {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__name {
+        color: var(--color--primary);
+        font-size: 20px;
+        margin-bottom: 2px;
+        border-bottom: none;
+    }
+
+    &__meta {
+        font-size: 12px;
+        line-height: 1.4;
+        margin: 0 0 0;
+    }
+
+    &__role {
+        margin: 0 0 2px;
+        line-height: 1.4;
+        color: var(--color--accent-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    &__date {
+        font-size: 12px;
+        text-transform: none;
+        letter-spacing: 0;
+        color: var(--color--grey);
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 1px solid rgba(var(--color--black), 0.1);
+    }
+
+    &__readtime {
+        font-size: 12px;
+        text-transform: none;
+        letter-spacing: 0;
+        color: var(--color--grey);
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 1px solid rgba(var(--color--black), 0.1);
+
+        .page__author & {
+            display: none;
+        }
+    }
+
+    &__tags {
+        margin: 10px 0 0;
+    }
+
+    .page & {
+        padding-bottom: ($gutter * 2);
+
+        @include media-query(large) {
+            margin: 0 0 0 $variable-gutter--medium;
+        }
+    }
+}

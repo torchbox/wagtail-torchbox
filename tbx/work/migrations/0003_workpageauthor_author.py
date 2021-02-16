@@ -9,19 +9,24 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0003_populate_authors'),
-        ('work', '0002_move_people_into_new_app'),
+        ("people", "0003_populate_authors"),
+        ("work", "0002_move_people_into_new_app"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='workpageauthor',
-            old_name='author',
-            new_name='author_person_page'
+            model_name="workpageauthor",
+            old_name="author",
+            new_name="author_person_page",
         ),
         migrations.AddField(
-            model_name='workpageauthor',
-            name='author',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='people.Author'),
+            model_name="workpageauthor",
+            name="author",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="+",
+                to="people.Author",
+            ),
         ),
     ]

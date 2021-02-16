@@ -1,0 +1,111 @@
+{
+  "name": "Torchbox",
+  "version": "0.0.0",
+  "author": "Torchbox Ltd",
+  "private": true,
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "browserslist": [
+    "> 1% and last 2 versions",
+    "Firefox ESR",
+    "ios_saf 12",
+    "safari 12",
+    "ie 11",
+    "not ie_mob 11",
+    "not android 4.4.3-4.4.4",
+    "not OperaMini all"
+  ],
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/static_compiled/",
+      "/venv/"
+    ],
+    "collectCoverageFrom": [
+      "**/tbx/static_src/javascript/**/*.js"
+    ]
+  },
+  "config": {
+    "src_css": "./tbx/static_src/sass",
+    "dest_js": "./tbx/static_compiled/js",
+    "dest_css": "./tbx/static_compiled/css",
+    "dist": "./tbx/static_compiled"
+  },
+  "scripts": {
+    "//[ Utility ]//": "",
+    "serve": "browser-sync start --config browsersync.config.js",
+    "reload": "browser-sync reload",
+    "clean": "rm -rf $npm_package_config_dist/*",
+    "//[ Webpack build ]//": "",
+    "compile:prod": "webpack --mode production",
+    "compile:dev": "webpack --mode development --progress",
+    "compile:watch": "npm run compile:dev -- --watch",
+    "//[ Linting & formatting ]//": "",
+    "lint:css": "stylelint $npm_package_config_src_css'/**/**' && stylelint --report-needless-disables $npm_package_config_src_css'/**/**'",
+    "lint:js": "eslint --report-unused-disable-directives .",
+    "lint:format": "prettier --check '**/?(.)*.{md,css,scss,js,json,yaml,yml}'",
+    "lint": "npm-run-all -p lint:format lint:js lint:css",
+    "format": "prettier --write '**/?(.)*.{md,css,scss,js,json,yaml,yml}'",
+    "//[ Tests ]//": "",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "//[ Watches ]//": "",
+    "watch:js": "onchange $npm_package_config_dest_js'/**/**' -- npm-run-all -p reload lint:js",
+    "watch:css": "onchange $npm_package_config_dest_css -- npm-run-all -p reload lint:css",
+    "watch": "npm-run-all -p watch:*",
+    "//[ Tasks ]//": "",
+    "build": "npm-run-all clean compile:dev",
+    "build:prod": "npm-run-all clean compile:prod",
+    "start": "npm-run-all clean compile:dev -p compile:watch watch serve --silent"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "autoprefixer": "^9.7.3",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^26.0.1",
+    "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.7",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-config-torchbox": "^0.3.2",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "file-loader": "^5.0.2",
+    "jest": "^26.0.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^6.0.0",
+    "postcss-custom-properties": "^9.0.1",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^2.0.5",
+    "sass": "^1.24.4",
+    "sass-loader": "^8.0.2",
+    "stylelint": "^10.1.0",
+    "stylelint-config-torchbox": "^0.5.0",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.4",
+    "@glidejs/glide": "^3.4.1",
+    "js-cookie": "^2.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "intersection-observer": "^0.7.0",
+    "scrollama": "^2.1.4"
+  }
+}

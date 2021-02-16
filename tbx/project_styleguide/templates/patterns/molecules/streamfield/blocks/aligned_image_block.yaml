@@ -1,0 +1,11 @@
+context:
+  value:
+    alignment: full
+    caption: Some caption
+    attribution: Some attribution
+
+tags:
+  image:
+    value.image fill-730x490 as aligned_image:
+      raw: |
+        <img src="http://via.placeholder.com/730x490" alt="Some alt">

@@ -1,0 +1,23 @@
+.team {
+    position: relative;
+    background-color: var(--color--white);
+    padding: $gutter 0;
+
+    @include media-query(medium) {
+        padding-top: ($gutter * 4.5);
+    }
+
+    @include media-query(large) {
+        padding-top: ($gutter * 6.5);
+    }
+
+    &__container {
+        @include container();
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: ($gutter * 2);
+    }
+}

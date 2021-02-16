@@ -8,16 +8,10 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0008_remove_workpage_body'),
+        ("work", "0008_remove_workpage_body"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='workindexpage',
-            name='show_in_play_menu',
-        ),
-        migrations.RemoveField(
-            model_name='workpage',
-            name='show_in_play_menu',
-        ),
+        migrations.RemoveField(model_name="workindexpage", name="show_in_play_menu",),
+        migrations.RemoveField(model_name="workpage", name="show_in_play_menu",),
     ]

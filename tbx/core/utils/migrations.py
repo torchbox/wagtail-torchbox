@@ -17,16 +17,22 @@ def for_each_page_revision(*model_names):
         revision_content['foo'] = 'bar'
         return revision_content
     """
+
     def wrapper(fn):
         @wraps(fn)
         def wrapper(apps, schema_editor):
-            ContentType = apps.get_model('contenttypes.ContentType')
-            PageRevision = apps.get_model('wagtailcore.PageRevision')
+            ContentType = apps.get_model("contenttypes.ContentType")
+            PageRevision = apps.get_model("wagtailcore.PageRevision")
 
-            content_types = [ContentType.objects.get_for_model(apps.get_model(model_name)) for model_name in model_names]
-            revisions = PageRevision.objects.filter(page__content_type__in=content_types)
+            content_types = [
+                ContentType.objects.get_for_model(apps.get_model(model_name))
+                for model_name in model_names
+            ]
+            revisions = PageRevision.objects.filter(
+                page__content_type__in=content_types
+            )
 
-            for revision in revisions.select_related('page'):
+            for revision in revisions.select_related("page"):
                 content = json.loads(revision.content_json)
                 new_content = fn(revision.page, content)
                 if new_content is not None:

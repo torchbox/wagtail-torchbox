@@ -10,29 +10,23 @@ class Service(models.Model):
     description = models.TextField(blank=True)
     sort_order = models.IntegerField()
     preferred_contact = models.ForeignKey(
-        'people.Contact',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL
+        "people.Contact", null=True, blank=True, on_delete=models.SET_NULL
     )
     contact_reasons = models.ForeignKey(
-        'people.ContactReasonsList',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL
+        "people.ContactReasonsList", null=True, blank=True, on_delete=models.SET_NULL
     )
 
     def __str__(self):
         return self.name
 
     class Meta:
-        ordering = ['sort_order']
+        ordering = ["sort_order"]
 
     panels = [
-        FieldPanel('name'),
-        FieldPanel('slug'),
-        FieldPanel('description'),
-        FieldPanel('sort_order'),
-        SnippetChooserPanel('preferred_contact'),
-        SnippetChooserPanel('contact_reasons')
+        FieldPanel("name"),
+        FieldPanel("slug"),
+        FieldPanel("description"),
+        FieldPanel("sort_order"),
+        SnippetChooserPanel("preferred_contact"),
+        SnippetChooserPanel("contact_reasons"),
     ]

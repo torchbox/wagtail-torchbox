@@ -1,0 +1,122 @@
+// Theme overrides:
+
+.contact-block {
+    background-color: var(--color--dark-indigo);
+    padding: ($gutter * 4) 0;
+
+    &__container {
+        @include container();
+    }
+
+    &__title {
+        color: var(--color--white);
+        font-weight: 800;
+        font-size: 34px;
+        line-height: 44px;
+
+        @include media-query(large) {
+            font-size: 45px;
+            line-height: 50px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include media-query(large) {
+            align-items: flex-start;
+        }
+    }
+
+    &__reasons {
+        display: flex;
+        justify-content: space-between;
+        margin: 35px 0 0;
+        flex-direction: column;
+        width: 100%;
+
+        @include media-query(large) {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__image {
+        margin-bottom: $gutter;
+
+        @include media-query(large) {
+            margin-bottom: 0;
+        }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-top: 40px;
+
+        @include media-query(large) {
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+    }
+
+    &__meta {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        @include media-query(large) {
+            flex-direction: row;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+
+        div {
+            margin: 5px 0;
+        }
+    }
+
+    &__email {
+        color: var(--color--white);
+        font-size: 20px;
+        line-height: 24px;
+        text-decoration: none;
+        margin: ($gutter / 2) ($gutter * 0.75) 0 0;
+        font-weight: bold;
+
+        @include media-query(large) {
+            margin: 0 ($gutter * 0.75) 0 0;
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--color--hover, var(--color--white));
+        }
+    }
+
+    &__number {
+        height: 24px;
+        line-height: 24px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--color--accent, var(--color--white));
+        margin: 10px 15px 0 0;
+        border-bottom: none;
+
+        @include media-query(large) {
+            margin: 0 ($gutter * 0.75) 0 0;
+        }
+
+        &:hover {
+            color: var(--color--hover, var(--color--white));
+        }
+    }
+}

@@ -1,0 +1,21 @@
+context:
+  author:
+    name: Nick Lee
+    role: Designer
+  item:
+    date: 07 Aug ’20
+    read_time: 5
+    related_services:
+      all:
+        - { name: Digital products, slug: digital-products }
+
+tags:
+  image:
+    author.image fill-100x100 as image:
+      target_var: image
+      raw:
+        alt: 'Alt'
+        url: 'https://placekitten.com/100/100'
+  pageurl:
+    author.person_page:
+      raw: '#'

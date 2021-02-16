@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0009_personpage_alt_short_intro'),
+        ("people", "0009_personpage_alt_short_intro"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='contact',
-            name='default_contact',
+            model_name="contact",
+            name="default_contact",
             field=models.BooleanField(blank=True, null=True, unique=True),
         ),
     ]

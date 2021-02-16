@@ -9,13 +9,13 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0049_auto_20160819_1421'),
+        ("torchbox", "0049_auto_20160819_1421"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='homepage',
-            name='intro_body',
+            model_name="homepage",
+            name="intro_body",
             field=wagtail.core.fields.RichTextField(blank=True),
         ),
     ]

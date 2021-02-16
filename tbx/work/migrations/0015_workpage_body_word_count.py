@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('work', '0014_map_tags_to_related_services'),
+        ("work", "0014_map_tags_to_related_services"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='workpage',
-            name='body_word_count',
+            model_name="workpage",
+            name="body_word_count",
             field=models.PositiveIntegerField(editable=False, null=True),
         ),
     ]

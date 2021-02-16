@@ -1,0 +1,35 @@
+.tag {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid rgba(35, 23, 73, 0.05);
+    border-radius: 5px;
+    color: var(--color--light-grey-accessible);
+    font-size: 14px;
+    padding: 2px 8px;
+    box-sizing: content-box;
+    margin: 5px 5px 5px 0;
+    font-weight: $weight--medium;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 26px;
+
+    &--active {
+        border-color: var(--color--primary);
+        color: var(--color--primary);
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &--small {
+        font-size: 12px;
+        padding: 0 5px;
+        box-sizing: border-box;
+    }
+
+    &:focus,
+    &:hover {
+        border: 2px solid var(--color--coral-dark);
+        color: var(--color--coral-dark);
+    }
+}

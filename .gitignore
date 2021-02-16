@@ -3,6 +3,7 @@
 *.swp
 /venv/
 /static/
+static_compiled/
 /media/
 /media.old/
 /tmp/
@@ -13,4 +14,3 @@
 node_modules*
 /None
 *.log
-/tbx/core/static_compiled/

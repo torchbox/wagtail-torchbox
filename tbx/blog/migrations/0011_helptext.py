@@ -9,18 +9,25 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0010_rename_streamfield_to_body'),
+        ("blog", "0010_rename_streamfield_to_body"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpage',
-            name='colour',
-            field=models.CharField(blank=True, choices=[('orange', 'Orange'), ('blue', 'Blue'), ('white', 'White')], help_text='Listing card colour if left blank will display image', max_length=255),
+            model_name="blogpage",
+            name="colour",
+            field=models.CharField(
+                blank=True,
+                choices=[("orange", "Orange"), ("blue", "Blue"), ("white", "White")],
+                help_text="Listing card colour if left blank will display image",
+                max_length=255,
+            ),
         ),
         migrations.AlterField(
-            model_name='blogpage',
-            name='intro',
-            field=wagtail.core.fields.RichTextField(blank=True, help_text='Used for blog index and Planet Drupal listings'),
+            model_name="blogpage",
+            name="intro",
+            field=wagtail.core.fields.RichTextField(
+                blank=True, help_text="Used for blog index and Planet Drupal listings"
+            ),
         ),
     ]
