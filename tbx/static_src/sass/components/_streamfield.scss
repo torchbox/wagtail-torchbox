@@ -147,7 +147,7 @@
         margin-top: 5px;
 
         * {
-            font-size: 14px;
+            @include font-size(xxs);
             color: rgba(51, 51, 51, 0.7);
             margin-bottom: 0;
         }
