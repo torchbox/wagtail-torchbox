@@ -22,8 +22,8 @@
                     <span class="author__role">{{ author.role }}</span>
                 {% endif %}
 
-                {% if item.date %}
-                    <span class="author__date">{{ item.date }}</span>
+                {% if item.date or item.first_published_at %}
+                    <span class="author__date">{% firstof item.date item.first_published_at|date:"M d, Y" %}</span>
                 {% endif %}
 
                 {% if item.read_time %}
