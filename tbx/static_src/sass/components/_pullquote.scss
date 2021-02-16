@@ -43,8 +43,8 @@
     }
 
     &__cite {
+        @include font-size(xxxs);
         color: var(--color--grey);
-        font-size: 12px;
         margin: 0 0 15px;
         font-style: normal;
         line-height: 1;

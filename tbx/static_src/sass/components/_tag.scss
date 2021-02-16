@@ -22,7 +22,7 @@
     }
 
     &--small {
-        font-size: 12px;
+        @include font-size(xxxs);
         padding: 0 5px;
         box-sizing: border-box;
     }
