@@ -67,7 +67,7 @@ class WorkPage(Page):
 
     parent_page_types = ["WorkIndexPage"]
 
-    date = models.DateField("Post date",null=True)
+    date = models.DateField("Post date", null=True)
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
