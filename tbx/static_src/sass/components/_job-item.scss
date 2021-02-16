@@ -41,12 +41,12 @@
     }
 
     &__location {
+        @include font-size(xxxs);
         margin: 0 0 2px;
         line-height: 1.4;
         color: var(--color--accent);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;
-        font-size: 12px;
     }
 }
