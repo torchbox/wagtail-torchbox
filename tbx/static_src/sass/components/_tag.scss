@@ -11,7 +11,7 @@
     margin: 5px 5px 5px 0;
     font-weight: $weight--medium;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all $transition-quick;
     height: 26px;
 
     &--active {
