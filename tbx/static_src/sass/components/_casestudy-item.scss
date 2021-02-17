@@ -9,7 +9,11 @@
     &:focus,
     &:hover {
         #{$root}__title {
-            color: var(--color--indigo);
+            color: var(--color--coral);
+        }
+
+        #{$root}__client {
+            color: var(--color--dark-indigo);
         }
     }
 
@@ -84,6 +88,7 @@
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: 0.15em;
+        transition: color $transition-quick;
     }
 
     &__title {
