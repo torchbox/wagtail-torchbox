@@ -17,8 +17,10 @@
             {% include_block page.body %}
         </div>
         <div class="team-member__bio-container">
-            <div class="team-member__bio">
+            <div class="team-member__intro">
                 {{ page.intro|richtext }}
+            </div>
+            <div class="team-member__bio">
                 {{ page.biography|richtext }}
             </div>
         </div>
