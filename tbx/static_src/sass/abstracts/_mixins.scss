@@ -144,6 +144,6 @@
         bottom: 0;
         left: 0;
         background-color: var(--color--underline);
-        transition: height 0.2s ease;
+        transition: height $transition-quick;
     }
 }

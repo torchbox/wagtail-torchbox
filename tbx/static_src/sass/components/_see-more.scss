@@ -3,7 +3,7 @@
     text-align: center;
 
     &__link {
-        transition: all 0.2s ease;
+        transition: all $transition-quick;
         color: var(--color--indigo);
         text-decoration: none;
         font-weight: bold;

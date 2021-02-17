@@ -135,7 +135,7 @@
     }
 
     &__link {
-        transition: all 0.2s ease;
+        transition: all $transition-quick;
         color: var(--color--link);
         font-size: 13px;
         text-decoration: none;

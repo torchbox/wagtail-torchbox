@@ -92,6 +92,7 @@
         margin: 0 0 10px;
         color: var(--color--dark-indigo);
         font-weight: 800;
+        transition: color $transition-quick;
 
         @include media-query(medium) {
             font-size: 38px;

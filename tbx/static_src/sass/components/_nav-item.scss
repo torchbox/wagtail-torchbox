@@ -26,7 +26,7 @@
         margin-right: 39px; // max we can go without nav label wrapping
         margin-bottom: 0;
         padding: 0;
-        transition: all 0.2s ease;
+        transition: all $transition-quick;
 
         @include media-query(large) {
             margin-right: 70px;
@@ -46,7 +46,7 @@
         display: flex;
         position: relative;
         line-height: 35px;
-        transition: all 0.2s ease;
+        transition: all $transition-quick;
     }
 
     &__badge-link {
