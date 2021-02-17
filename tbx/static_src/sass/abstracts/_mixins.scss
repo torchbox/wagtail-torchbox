@@ -141,9 +141,9 @@
         position: absolute;
         width: 100%;
         height: #{$height}px;
-        bottom: -5px;
+        bottom: 0;
         left: 0;
-        background: var(--color--underline);
-        transition: all 0.2s ease;
+        background-color: var(--color--underline);
+        transition: height $transition-quick;
     }
 }

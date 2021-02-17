@@ -1,22 +1,31 @@
 .job-item {
+    $root: &;
+
     &__link {
         display: block;
         padding: ($gutter * 2) 0 ($gutter * 2.5) 0;
         text-decoration: none;
         border-bottom: none;
+
+        &:focus,
+        &:hover {
+            #{$root}__title {
+                @include link-underscore(4);
+            }
+        }
     }
 
     &__title {
+        @include link-underscore(0);
+        position: relative;
         font-size: 30px;
         font-weight: bold;
         line-height: ($gutter * 2);
         margin: 0 0 15px;
         padding: 0;
         color: var(--color--primary);
-
-        &:hover {
-            color: var(--color--dark-indigo);
-        }
+        display: inline-block;
+        overflow: hidden;
     }
 
     &__description {

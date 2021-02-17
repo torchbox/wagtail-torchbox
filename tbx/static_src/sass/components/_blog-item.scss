@@ -12,7 +12,7 @@ $blog-author: var(--testimonial-name);
     &:focus,
     &:hover {
         #{$root}__title {
-            color: var(--color--indigo);
+            color: var(--color--coral);
         }
     }
 
@@ -59,6 +59,7 @@ $blog-author: var(--testimonial-name);
         line-height: 40px;
         margin: 0 0 $gutter;
         color: var(--color--dark-indigo);
+        transition: color $transition-quick;
     }
 
     &__image {

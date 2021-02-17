@@ -9,7 +9,11 @@
     &:focus,
     &:hover {
         #{$root}__title {
-            color: var(--color--indigo);
+            color: var(--color--coral);
+        }
+
+        #{$root}__client {
+            color: var(--color--dark-indigo);
         }
     }
 
@@ -84,6 +88,7 @@
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: 0.15em;
+        transition: color $transition-quick;
     }
 
     &__title {
@@ -92,6 +97,7 @@
         margin: 0 0 10px;
         color: var(--color--dark-indigo);
         font-weight: 800;
+        transition: color $transition-quick;
 
         @include media-query(medium) {
             font-size: 38px;

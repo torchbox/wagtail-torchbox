@@ -64,7 +64,7 @@
         padding: 9px 10px;
         color: var(--color--white);
         border-bottom: 0;
-        transition: background-color 0.2s ease;
+        transition: background-color $transition-quick;
         margin-right: 10px;
 
         &:focus,
