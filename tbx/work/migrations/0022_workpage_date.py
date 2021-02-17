@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="workpage",
             name="date",
-            field=models.DateField(null=True, verbose_name="Post date"),
+            field=models.DateField(verbose_name="Post date"),
         ),
     ]
