@@ -7,7 +7,7 @@
         window.dataLayer.push({
             'author-title' : '{{ page.authors.all.0.author.role }}',
             'author-name' : '{{ page.authors.all.0.author.name }}',
-            'published' : '{{ page.date|date:"Ymd" }}',
+            'published' : '{{ page.first_published_at|date:"Ymd" }}',
             'tags' : [{% for tag in page.related_services.all %}'{{tag.name}}'{% if not forloop.last %}, {% endif %}{% endfor %}],
             'read-time' : '{{ page.read_time }}',
             'id': '{{ page.id }}',
