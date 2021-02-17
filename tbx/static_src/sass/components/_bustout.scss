@@ -1,49 +1,48 @@
 .bustout {
     $root: &;
-    position: relative;
-    display: flex;
-    background: var(--color--dark-indigo);
-    flex-direction: column;
+    margin: ($gutter * 3) 0 ($gutter * 4);
 
-    @include media-query(large) {
-        flex-direction: row;
-    }
-
-    &::after {
-        content: '';
-        display: table;
-        clear: both;
-    }
-
-    &--right-aligned {
-        flex-direction: column-reverse;
-
-        @include media-query(large) {
-            flex-direction: row-reverse;
-        }
-    }
-
-    &--full {
+    &__inner {
+        position: relative;
+        display: flex;
+        background: var(--color--dark-indigo);
         flex-direction: column;
 
-        #{$root}__image {
-            width: 100%;
+        @include media-query(large) {
+            flex-direction: row;
         }
 
-        #{$root}__caption {
-            width: 100%;
+        &::after {
+            content: '';
+            display: table;
+            clear: both;
         }
-    }
 
-    &__container {
-        margin: ($gutter * 3) 0 ($gutter * 4);
+        &--right-aligned {
+            flex-direction: column-reverse;
+
+            @include media-query(large) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        &--full {
+            flex-direction: column;
+
+            #{$root}__image {
+                width: 100%;
+            }
+
+            #{$root}__caption {
+                width: 100%;
+            }
+        }
     }
 
     &__image {
         min-height: 300px;
         width: 100%;
-        background-size: cover;
-        background-position: center;
+        object-fit: cover;
 
         @include media-query(large) {
             float: left;

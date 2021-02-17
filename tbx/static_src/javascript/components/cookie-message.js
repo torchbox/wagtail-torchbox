@@ -6,10 +6,14 @@ class CookieWarning {
     }
 
     constructor(node) {
-        this.dismissButton = document.querySelector('[data-cookie-dismiss]');
         this.messageContainer = node;
+        this.optInButton = this.messageContainer.querySelector(
+            '[data-cookie-opt-in]',
+        );
+        this.optOutButton = this.messageContainer.querySelector(
+            '[data-cookie-opt-out]',
+        );
         this.cookieName = 'torchbox-cookie';
-        this.cookieValue = 'agree to cookies';
         this.cookieDuration = 365;
         this.activeClass = 'active';
         this.inactiveClass = 'inactive';
@@ -29,25 +33,29 @@ class CookieWarning {
         }
     }
 
-    applyCookie(event) {
+    applyCookie(event, cookieValue) {
         // prevent default link action
         event.preventDefault();
         // Add classes
         this.messageContainer.classList.remove(this.activeClass);
         this.messageContainer.classList.add(this.inactiveClass);
         // Set cookie
-        Cookies.set(this.cookieName, this.cookieValue, {
+        Cookies.set(this.cookieName, cookieValue, {
             expires: this.cookieDuration,
         });
     }
 
     bindEvents() {
-        if (!this.dismissButton) {
+        if (!this.optInButton) {
             return;
         }
 
-        this.dismissButton.addEventListener('click', (event) =>
-            this.applyCookie(event),
+        this.optInButton.addEventListener('click', (event) => {
+            this.applyCookie(event, true);
+        });
+
+        this.optOutButton.addEventListener('click', (event) =>
+            this.applyCookie(event, false),
         );
     }
 }
