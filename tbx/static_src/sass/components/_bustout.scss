@@ -42,8 +42,7 @@
     &__image {
         min-height: 300px;
         width: 100%;
-        background-size: cover;
-        background-position: center;
+        object-fit: cover;
 
         @include media-query(large) {
             float: left;
