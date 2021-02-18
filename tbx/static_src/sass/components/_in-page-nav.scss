@@ -40,7 +40,7 @@
             }
 
             @include media-query(large) {
-                font-size: 15px;
+                @include font-size(xs);
                 padding-bottom: 15px;
             }
         }
@@ -135,9 +135,9 @@
     }
 
     &__link {
+        @include font-size(xxs);
         transition: all $transition-quick;
         color: var(--color--link);
-        font-size: 13px;
         text-decoration: none;
         border-bottom: 2px solid var(--color--background);
 
@@ -147,8 +147,8 @@
         }
 
         @include media-query(medium) {
+            @include font-size(s);
             padding: 0;
-            font-size: 18px;
         }
     }
 }

@@ -23,30 +23,30 @@
     }
 
     &__name {
+        @include font-size(s);
         color: var(--color--primary);
-        font-size: 20px;
         margin-bottom: 2px;
         border-bottom: none;
     }
 
     &__meta {
-        font-size: 12px;
+        @include font-size(xxxs);
         line-height: 1.4;
         margin: 0 0 0;
     }
 
     &__role {
+        @include font-size(xxxs);
         margin: 0 0 2px;
         line-height: 1.4;
         color: var(--color--accent-dark);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;
-        font-size: 12px;
     }
 
     &__date {
-        font-size: 12px;
+        @include font-size(xxxs);
         text-transform: none;
         letter-spacing: 0;
         color: var(--color--grey);
@@ -56,7 +56,7 @@
     }
 
     &__readtime {
-        font-size: 12px;
+        @include font-size(xxxs);
         text-transform: none;
         letter-spacing: 0;
         color: var(--color--grey);

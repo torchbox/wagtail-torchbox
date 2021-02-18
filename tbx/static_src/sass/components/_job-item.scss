@@ -17,36 +17,40 @@
 
     &__title {
         @include link-underscore(0);
+        @include font-size(m);
         position: relative;
-        font-size: 30px;
         font-weight: bold;
         line-height: ($gutter * 2);
-        margin: 0 0 15px;
+        margin: 0 0 10px;
         padding: 0;
         color: var(--color--primary);
         display: inline-block;
         overflow: hidden;
+
+        @include media-query(medium) {
+            margin: 0 0 15px;
+        }
     }
 
     &__description {
+        @include font-size(s);
         display: block;
-        font-size: 18px;
     }
 
     &__level {
+        @include font-size(s);
         color: var(--color--primary);
-        font-size: 20px;
         margin-bottom: 0;
         line-height: 30px;
     }
 
     &__location {
+        @include font-size(xxxs);
         margin: 0 0 2px;
         line-height: 1.4;
         color: var(--color--accent);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;
-        font-size: 12px;
     }
 }

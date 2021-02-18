@@ -7,13 +7,13 @@
     }
 
     &__heading {
+        @include font-size(xxxl);
         font-weight: $weight--heavy;
-        font-size: 45px;
         line-height: 50px;
         margin: 0 0 20px 0;
 
         @include media-query(medium) {
-            font-size: 70px;
+            @include font-size(xxxxl);
             line-height: 80px;
         }
 

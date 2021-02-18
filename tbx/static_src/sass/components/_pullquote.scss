@@ -24,11 +24,11 @@
     }
 
     &__text {
+        @include font-size(m);
         font-style: normal;
         margin: 0 0 $gutter;
         padding: 0;
         color: var(--color--dark-indigo);
-        font-size: 22px;
         line-height: 38px;
 
         @include media-query(large) {
@@ -43,8 +43,8 @@
     }
 
     &__cite {
+        @include font-size(xxxs);
         color: var(--color--grey);
-        font-size: 12px;
         margin: 0 0 15px;
         font-style: normal;
         line-height: 1;

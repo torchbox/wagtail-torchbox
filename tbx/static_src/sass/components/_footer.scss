@@ -12,15 +12,15 @@
         padding: 0 ($gutter * 5) $gutter 0;
 
         p {
+            @include font-size(xxs);
             line-height: 22px;
             color: var(--color--grey);
-            font-size: 14px;
             max-width: 300px;
         }
     }
 
     &__address-title {
-        font-size: 20px;
+        @include font-size(s);
         font-weight: bold;
         color: var(--color--dark-indigo);
         margin: 0 0 ($gutter / 2);
@@ -52,9 +52,9 @@
     }
 
     &__link {
+        @include font-size(xxs);
         display: inline-block;
         height: 23px;
-        font-size: 14px;
         margin-right: ($gutter / 2);
         font-weight: $weight--bold;
         border-bottom: 2px solid var(--color--lagoon);
