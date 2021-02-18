@@ -97,4 +97,25 @@
             max-width: 50vw;
         }
     }
+
+    &__intro {
+        font-size: 22px;
+        line-height: 36px;
+        margin: 0 0 40px;
+        color: var(--color--primary);
+
+        p {
+            color: var(--color--primary);
+        }
+
+        @include media-query(medium) {
+            font-size: 24px;
+            line-height: 42px;
+        }
+
+        @include media-query(large) {
+            margin-left: 16.66vw;
+            max-width: 50vw;
+        }
+    }
 }
