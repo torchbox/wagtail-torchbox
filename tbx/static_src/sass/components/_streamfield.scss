@@ -26,9 +26,9 @@
 
     &__embed {
         @include streamblock-padding();
+        @include z-index(zero);
         width: 100%;
         position: relative;
-        z-index: 0;
         height: 0;
         overflow: hidden;
         padding-bottom: 56%;

@@ -112,6 +112,10 @@ $transition-quick: 0.2s ease;
 
 $z-index: (
     under: -1,
+    zero: 0,
+    one: 1,
+    two: 2,
+    badge: 5,
     base: 10,
     overlap: 20,
     header: 30,
@@ -121,4 +125,5 @@ $z-index: (
     skip-link: 105,
     modal: 110,
     modal-controls: 120,
+    menu-button: 130,
 );

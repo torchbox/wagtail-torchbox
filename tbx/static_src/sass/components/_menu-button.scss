@@ -1,4 +1,5 @@
 .menu-button {
+    @include z-index(menu-button);
     position: absolute;
     top: 0;
     right: $gutter;
@@ -7,7 +8,6 @@
     display: block;
     border: none;
     text-align: center;
-    z-index: 999;
     cursor: pointer;
 
     @include media-query(large) {
@@ -25,6 +25,7 @@
             top: 40px;
             transform: translateX(0);
         }
+
         &:nth-child(2) {
             transition: all 0.2s ease-in;
             background-color: var(--color--header-icon-color);
@@ -34,6 +35,7 @@
             left: 45%;
             top: 48px;
         }
+
         &:nth-child(3) {
             transition: all 0.2s ease-in;
             background-color: var(--color--header-icon-color);

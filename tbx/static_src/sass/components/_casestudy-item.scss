@@ -154,11 +154,11 @@
         display: none;
 
         @include media-query(large) {
+            @include z-index(one);
             display: block;
             position: absolute;
             width: 80px;
             height: 133px;
-            z-index: 1;
             transform: rotate(0deg);
             top: -70px;
             left: 190px;

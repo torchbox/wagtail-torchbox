@@ -6,17 +6,17 @@ $hero-parent-page-slash-color: var(--hero-parent-page-slash-color);
 $hero-parent-page-hover-color: var(--hero-parent-page-hover-color);
 
 .parent-link {
+    @include z-index(zero);
     position: relative;
-    z-index: 0;
     display: block;
     font-size: 18px;
     color: var(--color--accent);
     margin: 0 0 16px;
 
     a {
+        @include z-index(two);
         border: none;
         color: $hero-parent-page-color;
-        z-index: 2;
         background-color: $hero-background;
 
         &:hover {

@@ -29,7 +29,7 @@
         color: var(--color--get-in-touch-numbers);
 
         span {
-            z-index: 1;
+            @include z-index(one);
             position: relative;
             top: 3px;
             left: 1px;
@@ -37,12 +37,12 @@
         }
 
         &::before {
+            @include z-index(zero);
             width: 25px;
             height: 40px;
             content: '';
             background: var(--color--accent);
             position: absolute;
-            z-index: 0;
             transform: rotate(30deg);
             left: -6px;
             top: -4px;
