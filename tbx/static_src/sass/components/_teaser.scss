@@ -29,6 +29,7 @@
     }
 
     &__title {
+        @include font-size(xxl);
         color: var(--color--indigo);
         font-weight: 800;
         font-size: 35px;
@@ -36,7 +37,7 @@
         margin: 0;
 
         @include media-query(medium) {
-            font-size: 45px;
+            @include font-size(xl);
             line-height: 50px;
         }
     }
