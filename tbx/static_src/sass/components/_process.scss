@@ -74,18 +74,4 @@
         width: calc(100% - 20px);
         padding-bottom: $gutter;
     }
-
-    &__item-link {
-        font-size: 17px;
-        font-weight: 700;
-        line-height: 26px;
-        text-decoration: none;
-        color: var(--color--indigo);
-
-        &:hover,
-        &:focus {
-            color: var(--color--indigo);
-            border-bottom-color: var(--color--indigo);
-        }
-    }
 }
