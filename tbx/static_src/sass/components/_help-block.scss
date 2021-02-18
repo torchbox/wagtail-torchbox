@@ -50,14 +50,18 @@
     }
 
     &__title {
-        font-size: 35px;
+        @include font-size(xxl);
         line-height: 45px;
         font-weight: 100;
 
         @include media-query(medium) {
+            @include font-size(xl);
             padding-left: 17vw;
-            font-size: 36px;
             line-height: 50px;
+        }
+
+        @include media-query(large) {
+            @include font-size(l);
         }
 
         * {

@@ -30,7 +30,6 @@
         margin-bottom: ($gutter * 2);
 
         @include media-query(large) {
-            font-size: 36px;
             margin-bottom: ($gutter * 5);
         }
 

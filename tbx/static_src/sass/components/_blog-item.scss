@@ -23,7 +23,7 @@ $blog-author: var(--testimonial-name);
     }
 
     &__title {
-        font-size: 30px;
+        @include font-size(l);
         font-weight: bold;
         line-height: 40px;
         margin: 0 0 $gutter;
