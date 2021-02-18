@@ -25,7 +25,7 @@
     }
 
     &__text {
-        font-size: 18px;
+        @include font-size(s);
         line-height: 22px;
         color: var(--color--grey);
     }

@@ -33,8 +33,8 @@
     }
 
     &__description {
+        @include font-size(s);
         display: block;
-        font-size: 18px;
     }
 
     &__level {
