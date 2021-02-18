@@ -37,11 +37,11 @@
     }
 
     &__content {
+        @include z-index(two);
         position: relative;
         margin: 50px $variable-gutter--small 0;
         padding-top: ($gutter * 3);
         padding-bottom: $gutter;
-        z-index: 2;
 
         @include media-query(medium) {
             margin-left: 10.33vw;
