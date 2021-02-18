@@ -67,7 +67,7 @@
     }
 
     &__item-desc {
-        font-size: 17px;
+        @include font-size(s);
         line-height: 26px;
         margin: 10px 0 0;
         color: rgba(51, 51, 51, 0.9);
