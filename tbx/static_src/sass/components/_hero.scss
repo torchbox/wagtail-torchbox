@@ -65,15 +65,18 @@
     }
 
     &__description {
+        @include font-size(m);
         color: var(--color--primary);
         margin-bottom: ($gutter * 2);
         line-height: 36px;
-        font-size: 22px;
 
         @include media-query(medium) {
             line-height: 42px;
-            font-size: 24px;
             margin-right: $variable-gutter--small;
+        }
+
+        @include media-query(large) {
+            font-size: 24px;
         }
 
         p {

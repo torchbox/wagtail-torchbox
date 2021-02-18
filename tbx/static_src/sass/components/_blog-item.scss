@@ -45,8 +45,8 @@ $blog-author: var(--testimonial-name);
     }
 
     &__author-name {
+        @include font-size(s);
         color: var(--color--dark-indigo);
-        font-size: 20px;
     }
 
     &__author-role {

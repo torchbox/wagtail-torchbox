@@ -22,10 +22,10 @@
     }
 
     &__number {
+        @include font-size(s);
         position: absolute;
         top: 0;
         left: 10px;
-        font-size: 22px;
         color: var(--color--get-in-touch-numbers);
 
         span {
@@ -60,10 +60,14 @@
     }
 
     &__title {
+        @include font-size(m);
         color: var(--color--white);
         margin: 0 0 5px;
-        font-size: 26px;
         font-weight: bold;
+
+        @include media-query(large) {
+            font-size: 26px;
+        }
     }
 
     &__description {

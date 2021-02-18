@@ -34,10 +34,10 @@
     }
 
     &__title {
+        @include font-size(m);
         display: block;
         margin: 15px 0 5px;
         line-height: 1;
-        font-size: 18px;
         font-weight: 800;
         color: var(--color--primary);
 
@@ -99,7 +99,7 @@
     }
 
     &__intro {
-        font-size: 22px;
+        @include font-size(m);
         line-height: 36px;
         margin: 0 0 40px;
         color: var(--color--primary);
@@ -109,11 +109,11 @@
         }
 
         @include media-query(medium) {
-            font-size: 24px;
             line-height: 42px;
         }
 
         @include media-query(large) {
+            font-size: 24px;
             margin-left: 16.66vw;
             max-width: 50vw;
         }

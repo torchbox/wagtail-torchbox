@@ -20,7 +20,7 @@
     }
 
     &__address-title {
-        font-size: 20px;
+        @include font-size(s);
         font-weight: bold;
         color: var(--color--dark-indigo);
         margin: 0 0 ($gutter / 2);

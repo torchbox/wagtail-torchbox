@@ -38,8 +38,8 @@
     }
 
     &__level {
+        @include font-size(s);
         color: var(--color--primary);
-        font-size: 20px;
         margin-bottom: 0;
         line-height: 30px;
     }

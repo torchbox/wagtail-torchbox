@@ -54,8 +54,8 @@
     }
 
     &__desc {
+        @include font-size(s);
         display: block;
-        font-size: 20px;
         line-height: 30px;
         color: var(--color--grey);
         margin: 10px 0;
