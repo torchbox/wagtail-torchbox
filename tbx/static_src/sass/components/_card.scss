@@ -17,15 +17,11 @@
     }
 
     &__title {
-        font-size: 24px;
+        @include font-size(l);
         font-weight: 800;
         margin: 0;
         color: var(--color--dark-indigo);
         margin-right: 10px;
-
-        @include media-query(large) {
-            font-size: 36px;
-        }
     }
 
     &__text {

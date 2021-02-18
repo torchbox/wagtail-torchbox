@@ -57,7 +57,7 @@
     }
 
     &__item-title {
-        font-size: 34px;
+        @include font-size(l);
         line-height: 40px;
         color: var(--color--indigo);
         font-weight: 800;
