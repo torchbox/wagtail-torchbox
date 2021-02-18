@@ -55,13 +55,13 @@
         font-weight: 100;
 
         @include media-query(medium) {
-            @include font-size(xl);
+            font-size: map-get($medium-font-sizes, xl);
             padding-left: 17vw;
             line-height: 50px;
         }
 
         @include media-query(large) {
-            @include font-size(l);
+            font-size: map-get($large-font-sizes, l);
         }
 
         * {
