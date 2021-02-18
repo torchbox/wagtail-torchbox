@@ -16,37 +16,6 @@ $blog-author: var(--testimonial-name);
         }
     }
 
-    &--featured {
-        border-top: none;
-        padding-top: 0;
-        padding-bottom: ($gutter * 2.5);
-
-        @include media-query(large) {
-            width: 58.33vw;
-        }
-
-        #{$root}__title {
-            font-size: 45px;
-            line-height: 50px;
-            font-weight: 800;
-
-            @include media-query(large) {
-                font-size: 65px;
-                line-height: 80px;
-            }
-        }
-
-        #{$root}__desc {
-            margin: 0 0 ($gutter * 1.5);
-            color: var(--color--grey);
-
-            @include media-query(large) {
-                line-height: 34px;
-                font-size: 20px;
-            }
-        }
-    }
-
     &__meta {
         display: flex;
         flex-direction: row;
