@@ -183,7 +183,7 @@ class WorkIndexPage(Page):
         work_pages = WorkPage.objects.descendant_of(self).live()
 
         # Order by most recent date first
-        work_pages = work_pages.order_by("-date")
+        work_pages = work_pages.order_by("-date", "-pk")
 
         return work_pages
 
