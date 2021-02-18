@@ -82,8 +82,8 @@
     }
 
     &__email {
+        @include font-size(s);
         color: var(--color--white);
-        font-size: 20px;
         line-height: 24px;
         text-decoration: none;
         margin: ($gutter / 2) ($gutter * 0.75) 0 0;
@@ -100,10 +100,10 @@
     }
 
     &__number {
+        @include font-size(s);
         height: 24px;
         line-height: 24px;
         text-decoration: none;
-        font-size: 20px;
         font-weight: bold;
         color: var(--color--accent, var(--color--white));
         margin: 10px 15px 0 0;
