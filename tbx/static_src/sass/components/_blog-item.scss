@@ -29,6 +29,10 @@ $blog-author: var(--testimonial-name);
         margin: 0 0 $gutter;
         color: var(--color--dark-indigo);
         transition: color $transition-quick;
+
+        @include media-query(large) {
+            font-size: map-get($large-font-sizes, m);
+        }
     }
 
     &__image {
