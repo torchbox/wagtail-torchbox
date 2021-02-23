@@ -27,11 +27,11 @@
 
     &__image {
         &--woman {
+            @include z-index(two);
             position: relative;
             width: 66vw;
             max-width: 380px;
             top: 40px;
-            z-index: 2;
             // animation
             transition: all 0.5s ease;
             transform: translate3d(-100%, 0, 0);
@@ -86,11 +86,11 @@
 
         &--wagtail {
             // animation
+            @include z-index(two);
             transition: all 0.8s ease;
             transform: translate3d(100%, 0, 0);
             position: relative;
             width: 66vw;
-            z-index: 2;
 
             margin-left: auto;
             margin-top: 20px;
@@ -147,13 +147,13 @@
 
         &--man {
             // animation
+            @include z-index(two);
             position: relative;
             transition: all 0.5s ease;
             transform: translate3d(-100%, 0, 0);
             width: 66vw;
             max-width: 380px;
             top: 40px;
-            z-index: 2;
 
             > path {
                 &:nth-child(14),
