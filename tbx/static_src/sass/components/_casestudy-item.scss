@@ -92,7 +92,7 @@
     }
 
     &__title {
-        @include font-size(xxl);
+        font-size: map-get($small-font-sizes, xxl);
         line-height: 44px;
         margin: 0 0 10px;
         color: var(--color--dark-indigo);
@@ -100,11 +100,11 @@
         transition: color $transition-quick;
 
         @include media-query(medium) {
-            @include font-size(xl);
+            font-size: map-get($medium-font-sizes, xl);
         }
 
         @include media-query(large) {
-            @include font-size(l);
+            font-size: map-get($large-font-sizes, l);
         }
     }
 
