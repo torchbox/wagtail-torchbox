@@ -7,14 +7,18 @@
     }
 
     &__title {
-        @include font-size(xxl);
+        font-size: map-get($small-font-sizes, xxl);
         color: var(--color--white);
         font-weight: 800;
         line-height: 44px;
 
         @include media-query(medium) {
-            @include font-size(xl);
+            font-size: map-get($medium-font-sizes, xl);
             line-height: 50px;
+        }
+
+        @include media-query(large) {
+            font-size: map-get($large-font-sizes, xl);
         }
     }
 

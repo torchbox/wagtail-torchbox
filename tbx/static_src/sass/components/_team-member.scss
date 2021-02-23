@@ -60,7 +60,11 @@
         margin: 0;
 
         @include media-query(medium) {
-            @include font-size(xxxs);
+            font-size: map-get($medium-font-sizes, xxxs);
+        }
+
+        @include media-query(large) {
+            font-size: map-get($large-font-sizes, xxxs);
         }
     }
 
