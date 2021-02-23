@@ -29,15 +29,19 @@
     }
 
     &__title {
+        font-size: map-get($small-font-sizes, xxl);
         color: var(--color--indigo);
         font-weight: 800;
-        font-size: 35px;
         line-height: 40px;
         margin: 0;
 
         @include media-query(medium) {
-            font-size: 45px;
+            font-size: map-get($medium-font-sizes, xl);
             line-height: 50px;
+        }
+
+        @include media-query(large) {
+            font-size: map-get($large-font-sizes, xl);
         }
     }
 
@@ -54,8 +58,8 @@
     }
 
     &__desc {
+        @include font-size(s);
         display: block;
-        font-size: 20px;
         line-height: 30px;
         color: var(--color--grey);
         margin: 10px 0;

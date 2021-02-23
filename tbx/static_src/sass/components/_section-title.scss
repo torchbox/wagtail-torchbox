@@ -1,10 +1,10 @@
 .section-title {
+    @include font-size(s);
     position: absolute;
     top: 45px;
     left: $variable-gutter--small;
     color: var(--color--section-title);
     font-weight: $weight--bold;
-    font-size: 20px;
     margin: 0;
 
     @include media-query(medium) {

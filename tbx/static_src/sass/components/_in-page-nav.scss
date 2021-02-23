@@ -40,7 +40,7 @@
             }
 
             @include media-query(large) {
-                font-size: 15px;
+                @include font-size(xs);
                 padding-bottom: 15px;
             }
         }
@@ -80,9 +80,9 @@
         display: flex;
         margin-top: $gutter;
         flex-wrap: wrap;
-        padding-left: $variable-gutter--small;
 
         @include media-query(medium) {
+            padding-left: $variable-gutter--small;
             padding-top: 0;
             margin: 0;
         }
@@ -135,9 +135,9 @@
     }
 
     &__link {
+        font-size: map-get($small-font-sizes, xxs);
         transition: all $transition-quick;
         color: var(--color--link);
-        font-size: 13px;
         text-decoration: none;
         border-bottom: 2px solid var(--color--background);
 
@@ -147,8 +147,12 @@
         }
 
         @include media-query(medium) {
+            font-size: map-get($medium-font-sizes, s);
             padding: 0;
-            font-size: 18px;
+        }
+
+        @include media-query(large) {
+            font-size: map-get($large-font-sizes, s);
         }
     }
 }

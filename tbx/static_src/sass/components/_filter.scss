@@ -5,8 +5,8 @@
     flex-wrap: wrap;
 
     &__tag {
+        @include font-size(xxs);
         box-sizing: content-box;
-        font-size: 14px;
         padding: 2px 8px;
         margin-right: 10px;
 

@@ -7,17 +7,18 @@
     }
 
     &__heading {
+        font-size: map-get($small-font-sizes, xxxl);
         font-weight: $weight--heavy;
-        font-size: 45px;
         line-height: 50px;
         margin: 0 0 20px 0;
 
         @include media-query(medium) {
-            font-size: 70px;
+            font-size: map-get($medium-font-sizes, xxxxl);
             line-height: 80px;
         }
 
         @include media-query(large) {
+            font-size: map-get($large-font-sizes, xxxxl);
             margin: 0 $variable-gutter--small 20px $variable-gutter--medium;
         }
 
