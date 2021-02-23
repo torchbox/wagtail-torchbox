@@ -80,9 +80,9 @@
         display: flex;
         margin-top: $gutter;
         flex-wrap: wrap;
-        padding-left: $variable-gutter--small;
 
         @include media-query(medium) {
+            padding-left: $variable-gutter--small;
             padding-top: 0;
             margin: 0;
         }
