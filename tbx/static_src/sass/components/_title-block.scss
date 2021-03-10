@@ -4,6 +4,14 @@
 
     &--transparent {
         background: transparent;
+
+        #{$root}__heading {
+            color: var(--color--white);
+        }
+
+        #{$root}__span {
+            color: var(--color--coral);
+        }
     }
 
     &__container {
