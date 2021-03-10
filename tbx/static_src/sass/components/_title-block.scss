@@ -2,6 +2,10 @@
     $root: &;
     background: var(--color--white);
 
+    &--transparent {
+        background: transparent;
+    }
+
     &__container {
         @include container();
     }

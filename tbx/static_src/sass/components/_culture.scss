@@ -9,11 +9,7 @@
         }
 
         &--top {
-            padding-top: 87vh;
-
-            @include media-query(large) {
-                padding-top: 90vh;
-            }
+            padding-top: $gutter;
         }
 
         &--bottom {
@@ -54,5 +50,16 @@
                 }
             }
         }
+    }
+
+    &__hero {
+        height: 70vh;
+        min-height: 700px;
+        position: relative;
+    }
+
+    &__hero-title {
+        position: absolute;
+        bottom: 0;
     }
 }

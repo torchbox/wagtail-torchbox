@@ -103,5 +103,10 @@
             opacity: 0.6;
             mix-blend-mode: multiply;
         }
+
+        &--short {
+            height: 70vh;
+            min-height: 700px;
+        }
     }
 }

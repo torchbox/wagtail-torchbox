@@ -7,13 +7,7 @@ context:
     body: true
     strapline: Strapline
     intro: >-
-      <p><strong>On Friday 28th June 2019 - on #EODay - Torchbox became the
-      first digital agency in the UK to become a 100% Employee Owned
-      Trust</strong>. We’ve always been mission driven, using digital to help
-      organisations making the world a better place, now we have enshrined our
-      values in our company structure making all our employees equal owners.
-      Read our <a>blog post about this</a> then check our <a>our job
-      openings</a>!</p>
+      <p>We're 100% <br> <span> employee owned</span></p>
     links:
       all:
         - title: Meet the team
