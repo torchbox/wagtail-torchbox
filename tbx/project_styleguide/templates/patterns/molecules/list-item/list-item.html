@@ -1,0 +1,12 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<li class="list-item {% if classes %}{{ classes }}{% endif %}">
+    <svg fill="#fd5765" viewBox="0 0 298 298" aria-hidden="true" class="list-item__link-item-icon">
+        <path d="M0 149v149h298V175c0-68.8-.4-123-.9-123-.4 0-29.1 49-63.7 109-34.6 59.9-63.2 109-63.6 109-.9 0-135.8-77.7-137.2-79-.4-.4 7.2-14.6 16.9-31.4L67.2 129l2.6 1.4c1.5.8 16.6 9.5 33.7 19.4 17.1 9.9 31.3 17.7 31.8 17.3C136.5 165.9 231 1.9 231 .9c0-.5-44.2-.9-115.5-.9H0v149z" fill-rule="evenodd"></path>
+    </svg>
+    {% if item.linked_page %}
+        <a href="{% pageurl item.linked_page %}">{{ item.text }}</a>
+    {% else %}
+        <span class="list-item__text">{{ item.text }}</span>
+    {% endif %}
+</li>

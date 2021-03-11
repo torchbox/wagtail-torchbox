@@ -116,6 +116,12 @@ class CulturePage(Page):
     )
     intro = RichTextField(blank=True)
     body = StreamField(StoryBlock())
+
+    heading_for_key_points = RichTextField(blank=True)
+    key_points_section_title = models.TextField(blank=True, default="Benefits")
+
+
+
     contact = models.ForeignKey(
         "people.Contact",
         on_delete=models.SET_NULL,
@@ -133,7 +139,40 @@ class CulturePage(Page):
         InlinePanel("links", label="Link"),
         StreamFieldPanel("body"),
         SnippetChooserPanel("contact"),
+        MultiFieldPanel(
+            [
+                FieldPanel("key_points_section_title", classname="full"),
+                FieldPanel("heading_for_key_points", classname="full"),
+                InlinePanel("key_points", label="Key points"),
+                
+            ],
+            heading="Key Points",
+            classname="collapsible",
+        )
     ]
+
+
+class BaseCulturePageKeyPoint(models.Model):
+    text = models.CharField(max_length=255)
+    linked_page = models.ForeignKey(
+        "wagtailcore.Page",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    panels = [
+        FieldPanel("text"),
+        PageChooserPanel("linked_page"),
+    ]
+
+    class Meta:
+        abstract = True
+
+class CulturePageKeyPoint(Orderable, BaseCulturePageKeyPoint):
+    page = ParentalKey(CulturePage, related_name="key_points")
+
 
 
 # An author snippet which keeps a copy of a person's details in case they leave and their page is unpublished

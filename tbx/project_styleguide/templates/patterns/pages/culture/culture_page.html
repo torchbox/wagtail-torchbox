@@ -26,6 +26,17 @@
     {% if page.body %}
         {% include_block page.body %}
     {% endif %}
+    
+    {% if page.key_points_section_title %}
+    <div class="culture__container culture__container--middle">
+         <h1 class="culture__title">{{ page.key_points_section_title }}</h1>
+            <div class="culture__benefits-list">
+                {% for item in page.key_points.all %}
+                    {% include "patterns/molecules/list-item/list-item.html" %}
+                {% endfor %}
+            </div>
+    </div>
+    {% endif %}
 
     
      <div class=" culture__container culture__link">
