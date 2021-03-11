@@ -4,7 +4,6 @@ import string
 from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
@@ -18,7 +17,6 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Orderable, Page
-from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
@@ -177,6 +175,10 @@ class BlogPage(Page):
         index.SearchField("body"),
     ]
 
+    def save(self, *args, **kwargs):
+        self.set_body_word_count()
+        return super().save(*args, **kwargs)
+
     def set_body_word_count(self):
         body_basic_html = self.body.stream_block.render_basic(self.body)
         body_text = BeautifulSoup(body_basic_html, "html.parser").get_text()
@@ -231,9 +233,3 @@ class BlogPage(Page):
         FieldPanel("canonical_url"),
         FieldPanel("related_services", widget=forms.CheckboxSelectMultiple),
     ]
-
-
-@receiver(page_published, sender=BlogPage)
-def update_body_word_count_on_page_publish(instance, **kwargs):
-    instance.set_body_word_count()
-    instance.save(update_fields=["body_word_count"])

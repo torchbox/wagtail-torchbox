@@ -4,7 +4,6 @@ import string
 from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
@@ -18,7 +17,6 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
-from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
@@ -92,6 +90,10 @@ class WorkPage(Page):
         "taxonomy.Service", related_name="case_studies"
     )
     client = models.TextField(blank=True)
+
+    def save(self, *args, **kwargs):
+        self.set_body_word_count()
+        return super().save(*args, **kwargs)
 
     def set_body_word_count(self):
         body_basic_html = self.body.stream_block.render_basic(self.body)
@@ -237,9 +239,3 @@ class WorkIndexPage(Page):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
-
-
-@receiver(page_published, sender=WorkPage)
-def update_body_word_count_on_page_publish(instance, **kwargs):
-    instance.set_body_word_count()
-    instance.save(update_fields=["body_word_count"])
