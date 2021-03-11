@@ -142,7 +142,7 @@ class CulturePage(Page):
                 FieldPanel("key_points_section_title", classname="full"),
                 FieldPanel("heading_for_key_points", classname="full"),
                 InlinePanel("key_points", label="Key points"),
-                
+
             ],
             heading="Key Points",
             classname="collapsible",
@@ -166,6 +166,7 @@ class BaseCulturePageKeyPoint(models.Model):
 
     class Meta:
         abstract = True
+
 
 class CulturePageKeyPoint(Orderable, BaseCulturePageKeyPoint):
     page = ParentalKey(CulturePage, related_name="key_points")
