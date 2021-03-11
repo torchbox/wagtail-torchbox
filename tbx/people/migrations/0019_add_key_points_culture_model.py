@@ -7,18 +7,18 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0018_update_contact'),
+        ("people", "0018_update_contact"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='culturepage',
-            name='heading_for_key_points',
+            model_name="culturepage",
+            name="heading_for_key_points",
             field=wagtail.core.fields.RichTextField(blank=True),
         ),
         migrations.AddField(
-            model_name='culturepage',
-            name='key_points_section_title',
-            field=models.TextField(blank=True, default='Benefits'),
+            model_name="culturepage",
+            name="key_points_section_title",
+            field=models.TextField(blank=True, default="Benefits"),
         ),
     ]
