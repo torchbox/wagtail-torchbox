@@ -12,6 +12,12 @@
         #{$root}__span {
             color: var(--color--coral);
         }
+
+        #{$root}__second-span {
+            color: var(--color--white);
+        }
+
+
     }
 
     &__container {
