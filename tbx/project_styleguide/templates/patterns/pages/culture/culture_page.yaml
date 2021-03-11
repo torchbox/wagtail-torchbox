@@ -5,9 +5,9 @@ context:
     strapline_visible: true
     hero_image: true
     body: true
-    strapline: Strapline
+    strapline: We're 100% <br><span class="title-block__span">employee owned <span><span class="title-block__second-span">.</span>
     intro: >-
-      We're 100% <br><span class="title-block__span">employee owned <span><span class="title-block__second-span">.</span>
+      This is an example intro
     links:
       all:
         - title: Meet the team
