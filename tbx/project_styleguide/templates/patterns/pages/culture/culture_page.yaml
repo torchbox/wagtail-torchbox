@@ -7,7 +7,7 @@ context:
     body: true
     strapline: Strapline
     intro: >-
-      <p>We're 100% <br> <span> employee owned</span></p>
+      We're 100% <br><span class="title-block__span">employee owned <span><span class="title-block__second-span">.</span>
     links:
       all:
         - title: Meet the team
