@@ -2,10 +2,16 @@
     $root: &;
 
     &__container {
-        @include container();
+        margin: 0 auto;
+        max-width: 65vh;
+        padding: 0 $gutter;
+
+        @include media-query(medium) {
+            padding: 0 ($gutter * 2);
+        }
 
         @include media-query(large) {
-            @include container(medium);
+            padding: 0;
         }
 
         &--top {
@@ -22,11 +28,11 @@
     }
 
     &__rich-text {
-        @include font-size(l);
+        font-size: map-get($small-font-sizes, l);
         margin-bottom: ($gutter * 2);
 
         @include media-query(large) {
-            margin-bottom: ($gutter * 5);
+            margin-bottom: ($gutter * 4);
         }
 
         p {
