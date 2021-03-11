@@ -120,8 +120,6 @@ class CulturePage(Page):
     heading_for_key_points = RichTextField(blank=True)
     key_points_section_title = models.TextField(blank=True, default="Benefits")
 
-
-
     contact = models.ForeignKey(
         "people.Contact",
         on_delete=models.SET_NULL,
@@ -161,7 +159,6 @@ class BaseCulturePageKeyPoint(models.Model):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-
     panels = [
         FieldPanel("text"),
         PageChooserPanel("linked_page"),
@@ -172,7 +169,6 @@ class BaseCulturePageKeyPoint(models.Model):
 
 class CulturePageKeyPoint(Orderable, BaseCulturePageKeyPoint):
     page = ParentalKey(CulturePage, related_name="key_points")
-
 
 
 # An author snippet which keeps a copy of a person's details in case they leave and their page is unpublished
