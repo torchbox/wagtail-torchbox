@@ -142,11 +142,10 @@ class CulturePage(Page):
                 FieldPanel("key_points_section_title", classname="full"),
                 FieldPanel("heading_for_key_points", classname="full"),
                 InlinePanel("key_points", label="Key points"),
-
             ],
             heading="Key Points",
             classname="collapsible",
-        )
+        ),
     ]
 
 
