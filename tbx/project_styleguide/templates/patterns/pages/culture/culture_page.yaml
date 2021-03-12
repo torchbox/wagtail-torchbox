@@ -6,7 +6,7 @@ context:
     body: true
     strapline: We're 100% <br><span class="title-block__span">employee owned <span><span class="title-block__second-span">.</span>
     intro: >-
-      This is an example intro
+      <p>We've always been mission driven. Now we have enshrined our values in our company structure, making all our employees equal owners. <b>Work for a company that works for you and have a real stake in our future.</b></p>
     links:
       all:
         - title: Meet the team

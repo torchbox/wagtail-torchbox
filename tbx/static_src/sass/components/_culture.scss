@@ -2,14 +2,20 @@
     $root: &;
 
     &__container {
-        @include container();
-
-        @include media-query(large) {
-            @include container(medium);
-        }
+        margin: 0 auto;
+        max-width: 68vh;
 
         &--top {
-            padding-top: $gutter;
+            padding: ($gutter * 2) $variable-gutter--small 0;
+
+            @include media-query(medium) {
+                padding: ($gutter * 4) $variable-gutter--small 0;
+            }
+
+            @include media-query(large) {
+                padding: ($gutter * 4) 0 0;
+                margin: 0 $variable-gutter--small 20px $variable-gutter--large;
+            }
         }
 
         &--bottom {
@@ -22,11 +28,15 @@
     }
 
     &__rich-text {
-        @include font-size(l);
+        font-size: map-get($small-font-sizes, m);
         margin-bottom: ($gutter * 2);
 
+        @include media-query(medium) {
+            font-size: map-get($small-font-sizes, l);
+        }
+
         @include media-query(large) {
-            margin-bottom: ($gutter * 5);
+            margin-bottom: ($gutter * 4);
         }
 
         p {

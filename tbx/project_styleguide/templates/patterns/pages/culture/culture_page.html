@@ -1,8 +1,7 @@
 {% extends "patterns/base_page.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
-
-{% block theme_class %}theme--dark--transparent{% endblock %} 
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block theme_class %}theme--dark--transparent{% endblock %}
 
 {% block content %}
 {% image page.hero_image width-1920 as hero_image %}
@@ -21,7 +20,7 @@
             </div>
         {% endif %}
 
-        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
+        <img src="{% static 'images/sunday-times-100-best-companies.jpg' %}" alt="Employees at the annual Torchfest event" loading="lazy">
     </div>
 
     {% if page.body %}
