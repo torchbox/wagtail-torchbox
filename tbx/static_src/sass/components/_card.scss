@@ -14,10 +14,7 @@
         #{$root}__title {
             color: var(--color--dark-indigo);
         }
-
     }
-
-    
 
     &__title {
         @include font-size(l);
