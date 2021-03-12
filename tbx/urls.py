@@ -95,3 +95,7 @@ urlpatterns = (
         path("", include(wagtail_urls))
     ]
 )
+
+# Error handlers
+handler404 = "tbx.core.utils.views.page_not_found"
+handler500 = "tbx.core.utils.views.server_error"
