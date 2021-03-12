@@ -11,7 +11,7 @@
             <div class="help-block__links-container">
                 <ul class="help-block__link-list">
                     {% for item in items %}
-                        {% include "patterns/molecules/list-item/list-item.html" %}
+                        {% include "patterns/molecules/list-item/list-item.html" with item=item %}
                     {% endfor %}
                 </ul>
             </div>
