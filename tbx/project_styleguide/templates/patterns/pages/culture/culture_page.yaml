@@ -3,17 +3,10 @@ context:
     title: Culture Page
     get_verbose_name: culture-page
     strapline_visible: true
-    hero_image: true
     body: true
-    strapline: Strapline
+    strapline: We're 100% <br><span class="title-block__span">employee owned <span><span class="title-block__second-span">.</span>
     intro: >-
-      <p><strong>On Friday 28th June 2019 - on #EODay - Torchbox became the
-      first digital agency in the UK to become a 100% Employee Owned
-      Trust</strong>. We’ve always been mission driven, using digital to help
-      organisations making the world a better place, now we have enshrined our
-      values in our company structure making all our employees equal owners.
-      Read our <a>blog post about this</a> then check our <a>our job
-      openings</a>!</p>
+      <p>We've always been mission driven. Now we have enshrined our values in our company structure, making all our employees equal owners. <b>Work for a company that works for you and have a real stake in our future.</b></p>
     links:
       all:
         - title: Meet the team
@@ -28,7 +21,9 @@ context:
 tags:
   image:
     page.hero_image width-1920 as hero_image:
-      raw: '<img src="http://via.placeholder.com/1000x300" alt="Some alt">'
+      target_var: hero_image
+      raw:
+        url: 'http://via.placeholder.com/1920x900'
   pageurl:
     link.link:
       raw: '#'

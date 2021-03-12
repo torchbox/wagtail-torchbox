@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
-<div class="title-block">
+<div class="title-block {% if classes%} {{ classes }} {% endif %}">
     <div class="title-block__container">
         {% if item.client %}
         <p class="title-block__client">{{ item.client }}</p>

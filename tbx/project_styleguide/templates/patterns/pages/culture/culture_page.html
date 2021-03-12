@@ -1,13 +1,18 @@
 {% extends "patterns/base_page.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags static %}
 {% block theme_class %}theme--dark--transparent{% endblock %}
 
 {% block content %}
 {% image page.hero_image width-1920 as hero_image %}
-{% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url %}
 
 <div class="culture">
+    <div class="culture__hero">
+        {% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url classes="hero__full-screen--short" %}
+        {% include "patterns/molecules/title-block/title-block.html" with title=page.strapline classes="title-block--transparent culture__hero-title" %}
+    </div>
+
+
     <div class="culture__container culture__container--top">
         {% if page.intro %}
             <div class="culture__rich-text">
@@ -15,7 +20,7 @@
             </div>
         {% endif %}
 
-        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all %}
+        <img src="{% static 'images/sunday-times-100-best-companies.jpg' %}" alt="Employees at the annual Torchfest event" loading="lazy">
     </div>
 
     {% if page.body %}
