@@ -7,4 +7,16 @@
     @include media-query(medium) {
         grid-template-columns: 1fr 1fr;
     }
+
+    &--single {
+        width: 140vh;
+
+        .card__title {
+            color: var(--color--indigo);
+        }
+
+        .card__text {
+            line-height: 4.5vh;
+        }
+    }
 }

@@ -27,6 +27,11 @@
         }
     }
 
+    &__link {
+        display: flex;
+        justify-content: center;
+    }
+
     &__rich-text {
         font-size: map-get($small-font-sizes, m);
         margin-bottom: ($gutter * 2);
