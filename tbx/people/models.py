@@ -137,6 +137,7 @@ class CulturePage(Page):
         InlinePanel("links", label="Link"),
         StreamFieldPanel("body"),
         SnippetChooserPanel("contact"),
+
         MultiFieldPanel(
             [
                 FieldPanel("benefits_section_title", classname="full"),
