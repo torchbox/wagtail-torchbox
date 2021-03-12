@@ -117,8 +117,8 @@ class CulturePage(Page):
     intro = RichTextField(blank=True)
     body = StreamField(StoryBlock())
 
-    heading_for_key_points = RichTextField(blank=True)
-    key_points_section_title = models.TextField(blank=True, default="Benefits")
+    benefits_heading = RichTextField(blank=True)
+    benefits_section_title = models.TextField(blank=True, default="Benefits")
 
     contact = models.ForeignKey(
         "people.Contact",
@@ -139,11 +139,11 @@ class CulturePage(Page):
         SnippetChooserPanel("contact"),
         MultiFieldPanel(
             [
-                FieldPanel("key_points_section_title", classname="full"),
-                FieldPanel("heading_for_key_points", classname="full"),
-                InlinePanel("key_points", label="Key points", max_num=10),
+                FieldPanel("benefits_section_title", classname="full"),
+                FieldPanel("benefits_heading", classname="full"),
+                InlinePanel("key_benefits", label="Key benefits", max_num=10),
             ],
-            heading="Key Points",
+            heading="Key Benefits",
             classname="collapsible",
         ),
     ]
@@ -168,7 +168,7 @@ class BaseCulturePageKeyPoint(models.Model):
 
 
 class CulturePageKeyPoint(Orderable, BaseCulturePageKeyPoint):
-    page = ParentalKey(CulturePage, related_name="key_points")
+    page = ParentalKey(CulturePage, related_name="key_benefits")
 
 
 # An author snippet which keeps a copy of a person's details in case they leave and their page is unpublished
