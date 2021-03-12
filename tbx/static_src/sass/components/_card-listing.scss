@@ -5,18 +5,10 @@
     grid-row-gap: 10px;
 
     @include media-query(medium) {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 
     &--single {
-        width: 120vh;
-
-        .card__title {
-            color: var(--color--indigo);
-        }
-
-        .card__text {
-            line-height: 4.5vh;
-        }
+        width: 120%;
     }
 }

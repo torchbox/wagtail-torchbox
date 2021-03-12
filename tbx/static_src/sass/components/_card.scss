@@ -14,7 +14,10 @@
         #{$root}__title {
             color: var(--color--dark-indigo);
         }
+
     }
+
+    
 
     &__title {
         @include font-size(l);
@@ -44,5 +47,15 @@
         fill: var(--color--lagoon);
         width: 20px;
         height: 30px;
+    }
+
+    &-listing--single {
+        .card__title {
+            color: var(--color--indigo);
+        }
+
+        .card__text {
+            line-height: 1.4;
+        }
     }
 }
