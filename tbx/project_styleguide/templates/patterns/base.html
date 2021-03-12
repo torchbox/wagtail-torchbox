@@ -40,7 +40,9 @@
                 {{ pattern_library_rendered_pattern }}
             {% endblock %}
             {% if not pattern_library_rendered_pattern %}
-            {% include "patterns/organisms/page-contact/page-contact.html" %}
+                {% block contact %}
+                    {% include "patterns/organisms/page-contact/page-contact.html" %}
+                {% endblock %}
             {% endif %}
         </main>
 
