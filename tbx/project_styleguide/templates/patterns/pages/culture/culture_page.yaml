@@ -18,6 +18,18 @@ context:
       role: Delivery Manager
       email_address: john.doe@torchbox.com
       phone_number: 3213123123
+    key_points:
+      all:
+        - text: Competitive salary
+        - text: Performance and employee ownership bonuses
+        - text: Unlimited personal development budget
+        - text: Flexibility in working hours and locations
+        - text: Ethical pension scheme, with a 5% Torchbox contribution
+        - text: 25 days annual leave (plus public holidays)
+        - text: Employee voice groups for wellbeing, civic engagement and the environment
+        - text: Socials, including our famous biennial long-weekend trip
+        - text: The chance to be a partner, not just an employee
+
 tags:
   image:
     page.hero_image width-1920 as hero_image:
