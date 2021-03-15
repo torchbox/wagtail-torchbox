@@ -2,8 +2,8 @@
     $root: &;
 
     &__container {
-        margin: 0 auto;
         max-width: 68vh;
+        margin: 0 $variable-gutter--small 20px $variable-gutter--large;
 
         &--top {
             padding: ($gutter * 2) $variable-gutter--small 0;

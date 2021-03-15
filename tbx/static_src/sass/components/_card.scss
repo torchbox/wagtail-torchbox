@@ -45,4 +45,14 @@
         width: 20px;
         height: 30px;
     }
+
+    &-listing--single {
+        .card__title {
+            color: var(--color--indigo);
+        }
+
+        .card__text {
+            line-height: 1.4;
+        }
+    }
 }
