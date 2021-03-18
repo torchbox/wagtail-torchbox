@@ -1,0 +1,27 @@
+.values {
+    @include container();
+}
+
+.value {
+    @include streamblock-padding();
+
+    &__title {
+        @include font-size(l);
+        font-weight: $weight--heavy;
+        margin: $gutter 0 0;
+
+        @include media-query(large) {
+            margin-top: ($gutter * 2);
+        }
+    }
+
+    &__description {
+        font-size: map-get($small-font-sizes, s);
+        margin-bottom: ($gutter * 3);
+
+        @include media-query(large) {
+            font-size: map-get($medium-font-sizes, s);
+            margin-bottom: ($gutter * 5);
+        }
+    }
+}
