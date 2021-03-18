@@ -6,11 +6,13 @@
     {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro %}
 
     {# Values #}
-    <div class="values">
-        {% for value in page.values %}
-            {% include "patterns/molecules/value/value.html" with item=value %}
-        {% endfor %}
-    </div>
+    {% if page.values %}
+        <div class="values">
+            {% for value in page.values %}
+                {% include "patterns/molecules/value/value.html" with item=value %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {# Case studies #}
     {% if page.featured_case_studies %}
