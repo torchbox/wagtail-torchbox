@@ -134,7 +134,10 @@ class WorkPage(Page):
 
     @property
     def read_time(self):
-        return math.ceil(self.body_word_count / 275)
+        if self.body_word_count:
+            return math.ceil(self.body_word_count / 275)
+        else:
+            return "x"
 
     content_panels = [
         FieldPanel("title", classname="full title"),
