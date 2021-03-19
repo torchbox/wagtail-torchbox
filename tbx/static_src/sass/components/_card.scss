@@ -46,7 +46,7 @@
         height: 30px;
     }
 
-    .card-listing--single {
+    .card-listing--single & {
         &__title {
             color: var(--color--indigo);
         }
