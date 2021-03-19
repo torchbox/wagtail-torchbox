@@ -2,20 +2,16 @@
     $root: &;
 
     &__container {
-        max-width: 68vh;
-        margin: 0 $variable-gutter--small 20px $variable-gutter--large;
+        max-width: 840px;
+        margin: 0 auto;
+        padding: ($gutter * 2) $variable-gutter--small 0;
 
-        &--top {
-            padding: ($gutter * 2) $variable-gutter--small 0;
+        @include media-query(medium) {
+            padding: ($gutter * 4) $variable-gutter--small 0;
+        }
 
-            @include media-query(medium) {
-                padding: ($gutter * 4) $variable-gutter--small 0;
-            }
-
-            @include media-query(large) {
-                padding: ($gutter * 4) 0 0;
-                margin: 0 $variable-gutter--small 20px $variable-gutter--large;
-            }
+        @include media-query(large) {
+            padding: ($gutter * 4) 0 0;
         }
 
         &--bottom {
@@ -70,10 +66,5 @@
         height: 70vh;
         min-height: 700px;
         position: relative;
-    }
-
-    &__hero-title {
-        position: absolute;
-        bottom: 0;
     }
 }

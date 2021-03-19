@@ -46,12 +46,12 @@
         height: 30px;
     }
 
-    &-listing--single {
-        .card__title {
+    .card-listing--single & {
+        &__title {
             color: var(--color--indigo);
         }
 
-        .card__text {
+        &__text {
             line-height: 1.4;
         }
     }
