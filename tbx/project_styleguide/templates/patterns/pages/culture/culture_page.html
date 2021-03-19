@@ -29,11 +29,11 @@
     {% if page.benefits_section_title %}
         <div class="culture__container culture__container--middle">
             <h2 class="culture__title">{{ page.benefits_section_title }}</h2>
-                <div class="culture__benefits-list">
-                    {% for item in page.key_benefits.all %}
-                        {% include "patterns/molecules/list-item/list-item.html" with item=item %}
-                    {% endfor %}
-                </div>
+            <ul class="culture__benefits-list">
+                {% for item in page.key_benefits.all %}
+                    {% include "patterns/molecules/list-item/list-item.html" with item=item %}
+                {% endfor %}
+            </ul>
         </div>
     {% endif %}
 
