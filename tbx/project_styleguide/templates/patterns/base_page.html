@@ -39,7 +39,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@{{ settings.utils.SocialMediaSettings.twitter_handle }}" />
     <meta name="twitter:title" content="{{ page.title }}" />
-    <meta name="twitter:description" content="{{ page|social_text:current_site }}">
+    <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% elif page.listing_summary %}{{ page.listing_summary }}{% else %}{{ page|social_text:current_site }}{% endif %}">
     {% if page.social_image  %}
         {% image page.social_image width-1000 as social_img %}
         {# This will give a full path to the image when on staging or production because S3 storage is used. If testing locally, make sure you use the default localhost:8000 url. Testing via :3000 will give peculiar results. #}
@@ -73,7 +73,7 @@
         <meta name="twitter:image" content="{{ current_site.root_url }}{% static 'images/social-image.png' %}">
         {% endcomment %}
     {% endif %}
-    <meta property="og:description" content="{{ page|social_text:current_site }}" />
+    <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% elif page.listing_summary %}{{ page.listing_summary }}{% else %}{{ page|social_text:current_site }}{% endif %}" />
     <meta property="og:site_name" content="{{ settings.utils.SocialMediaSettings.site_name }}" />
 {% endblock meta_tags %}
 
