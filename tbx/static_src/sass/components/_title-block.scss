@@ -18,6 +18,18 @@
         }
     }
 
+    &--careers {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        #{$root}__heading {
+            max-width: 840px;
+            margin: 0 auto $gutter;
+        }
+    }
+
     &__container {
         @include container();
     }
