@@ -1,0 +1,44 @@
+context:
+  page:
+    featured_blog_posts:
+      all:
+        - blog_post:
+            authors:
+              first:
+                author:
+                  name: Paul Vetch
+                  role: Strategy Director
+            title: We already dropped Drupal - maybe it’s time for you to do the same.
+            date: "20 Oct '20"
+        - blog_post:
+            authors:
+              first:
+                author:
+                  name: Paul Vetch
+                  role: Strategy Director
+            title: We already dropped Drupal - maybe it’s time for you to do the same.
+            date: "20 Oct '20"
+        - blog_post:
+            authors:
+              first:
+                author:
+                  name: Paul Vetch
+                  role: Strategy Director
+            title: We already dropped Drupal - maybe it’s time for you to do the same.
+            date: "20 Oct '20"
+        - blog_post:
+            authors:
+              first:
+                author:
+                  name: Paul Vetch
+                  role: Strategy Director
+            title: We already dropped Drupal - maybe it’s time for you to do the same.
+            date: "20 Oct '20"
+        - blog_post:
+            authors:
+              first:
+                author:
+                  name: Paul Vetch
+                  role: Strategy Director
+            title: We already dropped Drupal - maybe it’s time for you to do the same.
+            date: "20 Oct '20"
