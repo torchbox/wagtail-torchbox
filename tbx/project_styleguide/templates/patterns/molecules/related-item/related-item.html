@@ -1,0 +1,25 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% image item.homepage_image width-1280 as image %}
+
+<a class="related-item" href="{% pageurl item %}">
+    <div class="related-item__meta">
+        <div class="related-item__meta-container">
+            {% if item.client %}
+                <span class="related-item__client">{{ item.client }}</span>
+            {% endif %}
+
+            <h2 class="related-item__title">{{ item.title }}</h2>
+
+            {% if item.listing_summary %}
+                <p class="related-item__desc">{{ item.listing_summary }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="related-item__image">
+        <svg class="related-item__cluster-icon" aria-hidden="true">
+            <use xlink:href="#cluster" />
+        </svg>
+        <div class="related-item__image-inner" style="background-image: url(&quot;{{ image.url }}&quot;);"></div>
+    </div>
+</a>

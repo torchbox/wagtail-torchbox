@@ -1,0 +1,13 @@
+<div class="related-content {% if classes %}{{ classes }}{% endif %}" {% if id %}id="{{ id|slugify }}"{% endif %} {% if data_attrs %}data-service-section{% endif %}>
+    {% if title %}
+        {% include "patterns/atoms/section-title/section-title.html" with title=title %}
+    {% endif %}
+    <div class="related-content__list">
+        {% for casestudy in items %}
+            {% include "patterns/molecules/related-item/related-item.html" with item=casestudy.case_study %}
+        {% endfor %}
+    </div>
+    {% if see_more_link %}
+        {% include "patterns/atoms/see-more/see-more.html" with text=see_more_link_text|default:"See more" link=work_index_page.url %}
+    {% endif %}
+</div>
