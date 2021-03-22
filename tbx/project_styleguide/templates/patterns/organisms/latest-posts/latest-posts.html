@@ -1,4 +1,4 @@
-<div class="blog-listing {% if classes %}{{ classes }}{% endif %}" {% if page.blogs_section_title %}id="{{ page.blogs_section_title|slugify }}"{% endif %}>
+<div class="blog-listing {% if classes %}{{ classes }}{% endif %}" {% if page.blogs_section_title %}id="{{ page.blogs_section_title|slugify }}"{% endif %} {% if data_attrs %}{{ data_attrs }}{% endif %}>
     <div class="blog-listing__content">
         {% include "patterns/atoms/section-title/section-title.html" with title=page.blogs_section_title %}
 
