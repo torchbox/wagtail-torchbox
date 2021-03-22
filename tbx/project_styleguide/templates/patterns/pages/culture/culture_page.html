@@ -40,5 +40,9 @@
     <div class="culture__container culture__container--bottom">
         {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all classes="card-listing--single" %}
     </div>
+
+    {% if page.blogs_section_title %}
+        {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="blog-listing--careers" blogs_section_heading=True %}
+    {% endif %}
 </div>
 {% endblock %}
