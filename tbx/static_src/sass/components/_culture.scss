@@ -18,7 +18,7 @@
             margin-bottom: ($gutter * 2);
 
             @include media-query(large) {
-                margin-bottom: ($gutter * 5);
+                margin-bottom: ($gutter * 2.5);
             }
         }
     }
