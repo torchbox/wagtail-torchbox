@@ -219,9 +219,16 @@
             margin-right: auto;
         }
 
+        &__intro,
         &__paragraph {
             max-width: $wrapper--small;
             margin: 0 auto;
+        }
+
+        &__intro {
+            p {
+                color: var(--color--dark-indigo);
+            }
         }
     }
 }
