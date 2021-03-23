@@ -1,4 +1,4 @@
-# import datetime
+import datetime
 import os
 import subprocess
 from shlex import quote, split
@@ -20,9 +20,9 @@ FRONTEND = os.getenv("FRONTEND", "docker")
 
 PROJECT_DIR = "/app"
 
-PRODUCTION_APP_INSTANCE = "tbx-production"
-STAGING_APP_INSTANCE = "tbx-staging"
-DEVELOPMENT_APP_INSTANCE = "tbx-dev"
+PRODUCTION_APP_INSTANCE = "cms-torchbox-com"
+STAGING_APP_INSTANCE = "torchbox-staging"
+DEVELOPMENT_APP_INSTANCE = ""
 
 LOCAL_MEDIA_FOLDER = "media"
 LOCAL_IMAGES_FOLDER = "media/original_images"
@@ -59,9 +59,9 @@ def build(c):
     local("chown -R $USER:{} media database_dumps".format(group))
     local("chmod -R 775 media database_dumps")
     if FRONTEND == "local":
-        local("docker-compose up -d --build web")
+        local("docker-compose up -d --build web utils")
     else:
-        local("docker-compose up -d --build web frontend")
+        local("docker-compose up -d --build web utils frontend")
         dexec("npm ci", service="frontend")
     local("docker-compose stop")
     print("Project built: now run 'fab start'")
@@ -73,9 +73,9 @@ def start(c):
     Start the development environment
     """
     if FRONTEND == "local":
-        local(f"docker-compose up -d web")
+        local("docker-compose up -d web utils")
     else:
-        local("docker-compose up -d web frontend")
+        local("docker-compose up -d web utils frontend")
 
     print(
         "Use `fab sh` to enter the web container and run `./manage.py runserver 0:8000`"
@@ -224,10 +224,10 @@ def pull_production_images(c):
     pull_images_from_s3_heroku(c, PRODUCTION_APP_INSTANCE)
 
 
-# @task
-# def pull_production_data(c):
-#     """Pull database from production Heroku Postgres"""
-#     pull_database_from_heroku(c, PRODUCTION_APP_INSTANCE)
+@task
+def pull_production_data(c):
+    """Pull database from production Heroku Postgres"""
+    pull_database_from_heroku(c, PRODUCTION_APP_INSTANCE)
 
 
 @task
@@ -259,10 +259,10 @@ def pull_staging_images(c):
     pull_images_from_s3_heroku(c, STAGING_APP_INSTANCE)
 
 
-# @task
-# def pull_staging_data(c):
-#     """Pull database from staging Heroku Postgres"""
-#     pull_database_from_heroku(c, STAGING_APP_INSTANCE)
+@task
+def pull_staging_data(c):
+    """Pull database from staging Heroku Postgres"""
+    pull_database_from_heroku(c, STAGING_APP_INSTANCE)
 
 
 @task
@@ -437,11 +437,11 @@ def heroku_login(c):
     """
     Log into the Heroku app for accessing config vars, database backups etc.
     """
-    subprocess.call(["docker-compose", "exec", "utils", "heroku", "login", "-i"])
+    subprocess.call(["docker-compose", "exec", "utils", "heroku", "login"])
 
 
 def check_if_logged_in_to_heroku(c):
-    if not dexec("heroku auth:whoami", warn=True, service="utils"):
+    if not dexec("heroku auth:whoami", service="utils"):
         raise Exit(
             'Log-in with the "fab heroku-login" command before running this ' "command."
         )
@@ -482,26 +482,24 @@ def pull_media_from_s3_heroku(c, app_instance):
     )
 
 
-# def pull_database_from_heroku(c, app_instance):
-#     check_if_heroku_app_access_granted(c, app_instance)
+def pull_database_from_heroku(c, app_instance):
+    check_if_heroku_app_access_granted(c, app_instance)
 
-#     datestamp = datetime.datetime.now().isoformat(timespec="seconds")
+    datestamp = datetime.datetime.now().isoformat(timespec="seconds")
 
-#     dexec(
-#         "heroku pg:backups:download --output={dump_folder}/{datestamp}.dump --app {app}".format(
-#             app=app_instance, dump_folder=LOCAL_DUMP_FOLDER, datestamp=datestamp
-#         ),
-#         service="utils",
-#     )
+    dexec(
+        "heroku pg:backups:download --output=/database_dumps/{datestamp}.dump --app {app}".format(
+            app=app_instance, datestamp=datestamp
+        ),
+        service="utils",
+    )
 
-#     import_data(c, f"{LOCAL_DUMP_FOLDER}/{datestamp}.dump")
+    import_data(c, f"/database_dumps/{datestamp}.dump")
 
-#     dexec(
-#         "rm {dump_folder}/{datestamp}.dump".format(
-#             dump_folder=LOCAL_DUMP_FOLDER, datestamp=datestamp,
-#         ),
-#         service="utils",
-#     )
+    dexec(
+        "rm /database_dumps/{datestamp}.dump".format(datestamp=datestamp,),
+        service="utils",
+    )
 
 
 def open_heroku_shell(c, app_instance, shell_command="bash"):
