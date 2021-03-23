@@ -211,4 +211,17 @@
     .template__standard & {
         margin-bottom: ($gutter * 5);
     }
+
+    .template__careers-page & {
+        &__heading {
+            max-width: $wrapper--small;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &__paragraph {
+            max-width: $wrapper--small;
+            margin: 0 auto;
+        }
+    }
 }
