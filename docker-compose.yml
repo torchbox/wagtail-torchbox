@@ -94,7 +94,6 @@ services:
     volumes:
       - ./database_dumps:/database_dumps:delegated,rw
 
-
   redis:
     image: redis:3.0
     expose:
