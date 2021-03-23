@@ -25,7 +25,7 @@
         right: 0;
 
         #{$root}__heading {
-            max-width: 840px;
+            max-width: $wrapper--small;
             margin: 0 auto $gutter;
         }
     }
