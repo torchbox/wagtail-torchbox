@@ -182,10 +182,7 @@ class BaseServicePageKeyPoint(models.Model):
 
 
 class BaseServicePageClientLogo(models.Model):
-    image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        on_delete=models.CASCADE,
-    )
+    image = models.ForeignKey("torchbox.TorchboxImage", on_delete=models.CASCADE,)
 
     panels = [
         ImageChooserPanel("image"),
@@ -196,10 +193,7 @@ class BaseServicePageClientLogo(models.Model):
 
 
 class BaseServicePageUSAClientLogo(models.Model):
-    image = models.ForeignKey(
-        "torchbox.TorchboxImage",
-        on_delete=models.CASCADE,
-    )
+    image = models.ForeignKey("torchbox.TorchboxImage", on_delete=models.CASCADE,)
 
     panels = [
         ImageChooserPanel("image"),
