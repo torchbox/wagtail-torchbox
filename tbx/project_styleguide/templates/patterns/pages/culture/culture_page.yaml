@@ -28,24 +28,24 @@ context:
         - text: Employee voice groups for wellbeing, civic engagement and the environment
         - text: Socials, including our famous biennial long-weekend trip
         - text: The chance to be a partner, not just an employee
-    featured_case_studies:
-      all:
-        - case_study:
-            title: 100% Employee owned and run
-            client: EOT
-            listing_summary: This section links to a page about what EOT is. dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-        - case_study:
-            title: We’re an award winning agency
-            client: Our Awards
-            listing_summary: To infinity and beyond! Torchbox is named as one of the UK’s Best Small Companies to Work For. We’re especially proud of this award, as it’s voted for by our employees.
-        - case_study:
-            title: The values we work by
-            client: Our Values
-            listing_summary: This section links to a page showing our values. dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.
-        - case_study:
-            title: How we’re working
-            client: Our Locations
-            listing_summary: This section talks about how we’re currently remote working as well as the 3 offices.
+
+  standout_items:
+      - title: 100% Employee owned and run
+        subtitle: EOT
+        description: This section links to a page about what EOT is. dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+        url: ''
+      - title: We’re an award winning agency
+        subtitle: Our Awards
+        description: To infinity and beyond! Torchbox is named as one of the UK’s Best Small Companies to Work For. We’re especially proud of this award, as it’s voted for by our employees.
+        url: '#'
+      - title: The values we work by
+        subtitle: Our Values
+        description: This section links to a page showing our values. dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.
+        url: '#'
+      - title: How we’re working
+        subtitle: Our Locations
+        description: This section talks about how we’re currently remote working as well as the 3 offices.
+        url: '#'
 
 tags:
   image:

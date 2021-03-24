@@ -24,7 +24,7 @@
     {% endif %}
 
     {% if page.case_studies_section_title %}
-        {% include "patterns/organisms/related-content/related-content.html" with id=page.case_studies_section_title title=page.case_studies_section_title items=page.featured_case_studies.all see_more_link=True data_attrs="data-service-section" classes="service-section" see_more_link_text="See more case studies" %}
+        {% include "patterns/organisms/related-content/related-content.html" with id=page.case_studies_section_title title=page.case_studies_section_title items=page.get_featured_case_studies see_more_link=True data_attrs="data-service-section" classes="service-section" see_more_link_text="See more case studies" %}
     {% endif %}
 
     {% if page.blogs_section_title %}

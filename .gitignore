@@ -2,6 +2,7 @@
 .DS_Store
 *.swp
 /venv/
+/.venv/
 /static/
 static_compiled/
 /media/
@@ -15,3 +16,4 @@ node_modules*
 /None
 *.log
 /database_dumps/
+/.vscode/
