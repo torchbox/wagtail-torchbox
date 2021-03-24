@@ -148,6 +148,19 @@ class BaseServicePage(Page):
             },
         )
 
+    def get_featured_case_studies(self):
+        return [
+            {
+                "title": x.case_study.title,
+                "subtitle": x.case_study.client,
+                "description": x.case_study.listing_summary,
+                "url": x.case_study.url,
+                "image": x.case_study.homepage_image,
+            }
+            for x in self.featured_case_studies.all()
+            if x.case_study
+        ]
+
 
 class BaseServicePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
@@ -169,7 +182,10 @@ class BaseServicePageKeyPoint(models.Model):
 
 
 class BaseServicePageClientLogo(models.Model):
-    image = models.ForeignKey("torchbox.TorchboxImage", on_delete=models.CASCADE,)
+    image = models.ForeignKey(
+        "torchbox.TorchboxImage",
+        on_delete=models.CASCADE,
+    )
 
     panels = [
         ImageChooserPanel("image"),
@@ -180,7 +196,10 @@ class BaseServicePageClientLogo(models.Model):
 
 
 class BaseServicePageUSAClientLogo(models.Model):
-    image = models.ForeignKey("torchbox.TorchboxImage", on_delete=models.CASCADE,)
+    image = models.ForeignKey(
+        "torchbox.TorchboxImage",
+        on_delete=models.CASCADE,
+    )
 
     panels = [
         ImageChooserPanel("image"),

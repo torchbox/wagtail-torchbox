@@ -14,9 +14,11 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
+from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
@@ -128,6 +130,35 @@ class CulturePage(Page):
         related_name="+",
     )
 
+    standout_items = StreamField(
+        [
+            (
+                "item",
+                blocks.StructBlock(
+                    [
+                        ("subtitle", blocks.CharBlock()),
+                        ("title", blocks.CharBlock()),
+                        ("description", blocks.TextBlock()),
+                        ("image", ImageChooserBlock()),
+                        (
+                            "link",
+                            blocks.StreamBlock(
+                                [
+                                    ("internal", blocks.PageChooserBlock()),
+                                    ("external", blocks.URLBlock()),
+                                ],
+                                required=False,
+                                max_num=1,
+                            ),
+                        ),
+                    ],
+                    icon="pick",
+                ),
+            )
+        ],
+        blank=True,
+    )
+
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
@@ -146,7 +177,40 @@ class CulturePage(Page):
             heading="Key Benefits",
             classname="collapsible",
         ),
+        StreamFieldPanel("standout_items"),
     ]
+
+    class Meta:
+        verbose_name = "Careers Page"
+
+    def get_standout_items(self):
+        def get_link(link_value):
+            try:
+                link = link_value[0]
+            except IndexError:
+                return ""
+            else:
+                return (
+                    link.value.url
+                    if link.block_type == "internal" and link.value
+                    else link.value
+                )
+
+        return [
+            {
+                "title": x.value["title"],
+                "subtitle": x.value["subtitle"],
+                "description": x.value["description"],
+                "url": get_link(x.value["link"]),
+                "image": x.value["image"],
+            }
+            for x in self.standout_items
+        ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["standout_items"] = self.get_standout_items()
+        return context
 
 
 class BaseCulturePageKeyPoint(models.Model):
