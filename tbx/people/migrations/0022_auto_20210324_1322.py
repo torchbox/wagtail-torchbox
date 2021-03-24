@@ -9,17 +9,49 @@ import wagtail.images.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0021_rename_benefits_on_culturepage_model_'),
+        ("people", "0021_rename_benefits_on_culturepage_model_"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='culturepage',
-            options={'verbose_name': 'Careers Page'},
+            name="culturepage", options={"verbose_name": "Careers Page"},
         ),
         migrations.AddField(
-            model_name='culturepage',
-            name='standout_items',
-            field=wagtail.core.fields.StreamField([('item', wagtail.core.blocks.StructBlock([('subtitle', wagtail.core.blocks.CharBlock()), ('title', wagtail.core.blocks.CharBlock()), ('description', wagtail.core.blocks.TextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('link', wagtail.core.blocks.StreamBlock([('internal', wagtail.core.blocks.PageChooserBlock()), ('external', wagtail.core.blocks.URLBlock())], max_num=1, required=False))], icon='pick'))], blank=True),
+            model_name="culturepage",
+            name="standout_items",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "item",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("subtitle", wagtail.core.blocks.CharBlock()),
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("description", wagtail.core.blocks.TextBlock()),
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                (
+                                    "link",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "internal",
+                                                wagtail.core.blocks.PageChooserBlock(),
+                                            ),
+                                            (
+                                                "external",
+                                                wagtail.core.blocks.URLBlock(),
+                                            ),
+                                        ],
+                                        max_num=1,
+                                        required=False,
+                                    ),
+                                ),
+                            ],
+                            icon="pick",
+                        ),
+                    )
+                ],
+                blank=True,
+            ),
         ),
     ]
