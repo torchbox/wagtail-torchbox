@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     "pattern_library",
     "tbx.project_styleguide.apps.ProjectStyleguideConfig",
     "wagtailaccessibility",
+    "wagtail_purge",
 ]
 
 MIDDLEWARE = [

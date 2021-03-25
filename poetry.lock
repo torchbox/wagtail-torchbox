@@ -1169,6 +1169,17 @@ Wagtail = ">=2.0"
 testing = ["dj-database-url (0.4.2)"]
 
 [[package]]
+name = "wagtail-purge"
+version = "0.1"
+description = "Purge individual URLs from the Wagtail admin"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+wagtail = ">=2"
+
+[[package]]
 name = "wagtail-storages"
 version = "0.0.6"
 description = "Use AWS S3 with private documents in Wagtail."
@@ -1257,7 +1268,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "faea575e7ecd315ea9ed32b8d0ae1ae1a98362040e8b2c5c04cf84ae97e92049"
+content-hash = "07e1dd69b89761d5bcb214fca90403792e3243e93b9a42286be012e620c02ade"
 
 [metadata.files]
 anyascii = [
@@ -1985,6 +1996,9 @@ wagtail-django-recaptcha = [
 wagtail-markdown = [
     {file = "wagtail-markdown-0.6.tar.gz", hash = "sha256:cb914b900d6ae5d769367977b0e68d8b23c25bfa9505dcd6e1038838686b4739"},
     {file = "wagtail_markdown-0.6-py2.py3-none-any.whl", hash = "sha256:91700b68138019d482c1954f1a7aec9c13db5933be6b63b84c8bccdebce451ac"},
+]
+wagtail-purge = [
+    {file = "wagtail-purge-0.1.tar.gz", hash = "sha256:7a178c9137d765b03f2e1a4701a7e4ad18660b8ae41b0aef4de27b7bc11ae902"},
 ]
 wagtail-storages = [
     {file = "wagtail-storages-0.0.6.tar.gz", hash = "sha256:e9204d148713357c997713dd6cdd3a3f7891c8009daaaee5e988cb2c12a3a46d"},
