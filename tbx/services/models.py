@@ -134,19 +134,27 @@ class BaseServicePage(Page):
     class Meta:
         abstract = True
 
-    def serve(self, request):
-        blog_index_page = BlogIndexPage.objects.live().first()
-        work_index_page = WorkIndexPage.objects.live().first()
+    def get_featured_blog_posts(self):
+        """Format the featured blog posts for the template."""
 
-        return render(
-            request,
-            self.template,
+        return [
             {
-                "page": self,
-                "blog_index_page": blog_index_page,
-                "work_index_page": work_index_page,
-            },
+                "title": x.blog_post.title,
+                "url": x.blog_post.url,
+                "author": x.blog_post.first_author,
+                "date": x.blog_post.date,
+            }
+            for x in self.featured_blog_posts.filter(blog_post__live=True)
+        ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context.update(
+            featured_blog_posts=self.get_featured_blog_posts(),
+            blog_index_page=BlogIndexPage.objects.live().first(),
+            work_index_page=WorkIndexPage.objects.live().first(),
         )
+        return context
 
 
 class BaseServicePageKeyPoint(models.Model):
@@ -169,7 +177,10 @@ class BaseServicePageKeyPoint(models.Model):
 
 
 class BaseServicePageClientLogo(models.Model):
-    image = models.ForeignKey("torchbox.TorchboxImage", on_delete=models.CASCADE,)
+    image = models.ForeignKey(
+        "torchbox.TorchboxImage",
+        on_delete=models.CASCADE,
+    )
 
     panels = [
         ImageChooserPanel("image"),
@@ -180,7 +191,10 @@ class BaseServicePageClientLogo(models.Model):
 
 
 class BaseServicePageUSAClientLogo(models.Model):
-    image = models.ForeignKey("torchbox.TorchboxImage", on_delete=models.CASCADE,)
+    image = models.ForeignKey(
+        "torchbox.TorchboxImage",
+        on_delete=models.CASCADE,
+    )
 
     panels = [
         ImageChooserPanel("image"),

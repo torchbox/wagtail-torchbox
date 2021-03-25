@@ -14,6 +14,7 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
+from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
@@ -22,7 +23,7 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from tbx.blog.models import BlogPage
+from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.blocks import StoryBlock
 from tbx.people.forms import ContactForm
 
@@ -128,6 +129,19 @@ class CulturePage(Page):
         related_name="+",
     )
 
+    blogs_section_title = models.CharField(
+        blank=True,
+        max_length=100,
+        verbose_name="Title",
+    )
+    featured_blog_posts = StreamField(
+        [
+            ("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage")),
+        ],
+        blank=True,
+        verbose_name="Blog posts",
+    )
+
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
@@ -146,7 +160,37 @@ class CulturePage(Page):
             heading="Key Benefits",
             classname="collapsible",
         ),
+        MultiFieldPanel(
+            [
+                FieldPanel("blogs_section_title"),
+                StreamFieldPanel("featured_blog_posts"),
+            ],
+            heading="Featured Blog Posts",
+            classname="collapsible",
+        ),
     ]
+
+    def get_featured_blog_posts(self):
+        """Format the featured blog posts for the template."""
+
+        return [
+            {
+                "title": x.value.title,
+                "url": x.value.url,
+                "author": x.value.first_author,
+                "date": x.value.date,
+            }
+            for x in self.featured_blog_posts
+            if x.value.live
+        ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context.update(
+            featured_blog_posts=self.get_featured_blog_posts(),
+            blog_index_page=BlogIndexPage.objects.live().first(),
+        )
+        return context
 
 
 class BaseCulturePageKeyPoint(models.Model):
