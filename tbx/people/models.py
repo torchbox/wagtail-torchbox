@@ -184,7 +184,10 @@ class CulturePage(Page):
         verbose_name = "Careers Page"
 
     def get_standout_items(self):
+        """Format the standout items data for the template."""
+
         def get_link(link_value):
+            """The link could be internal or external."""
             try:
                 link = link_value[0]
             except IndexError:
