@@ -16,65 +16,24 @@ context:
     contact:
       email_address: willh@torchbox.com
       phone_number: +447545468483
-    featured_blog_posts:
+    featured_case_studies:
       all:
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
-    get_featured_case_studies:
-      - title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-        subtitle: Oxfam
-        description: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
-        url: '#'
-      - title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-        subtitle: Oxfam
-        description: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
-        url: ''
-      - title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-        subtitle: Oxfam
-        description: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
-        url: '#'
-      - title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-        subtitle: Oxfam
-        description: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
-        url: ''
+        - case_study:
+            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+            client: Oxfam
+            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+        - case_study:
+            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+            client: Oxfam
+            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+        - case_study:
+            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+            client: Oxfam
+            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+        - case_study:
+            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+            client: Oxfam
+            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
     heading_for_key_points: '<p><b>We help you create digital products and services, fast</b>. And, you can transform your organisation along the way.</p>'
     key_points_section_title: Services
     key_points:
