@@ -1,5 +1,4 @@
 from django.db import models
-from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (
