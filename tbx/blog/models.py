@@ -213,6 +213,14 @@ class BlogPage(Page):
         return self.authors.exists()
 
     @property
+    def first_author(self):
+        """Safely return the first author if one exists."""
+        try:
+            return self.authors.first().author
+        except Exception:
+            return None
+
+    @property
     def read_time(self):
         return math.ceil(self.body_word_count / 275)
 
