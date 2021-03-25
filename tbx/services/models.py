@@ -149,6 +149,7 @@ class BaseServicePage(Page):
         )
 
     def get_featured_case_studies(self):
+        """Format the featured case studies data for the template."""
         return [
             {
                 "title": x.case_study.title,
