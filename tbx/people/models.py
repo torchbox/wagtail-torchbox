@@ -171,13 +171,13 @@ class CulturePage(Page):
 
         return [
             {
-                "title": x.value.title,
-                "url": x.value.url,
-                "author": x.value.first_author,
-                "date": x.value.date,
+                "title": blog_post.value.title,
+                "url": blog_post.value.url,
+                "author": blog_post.value.first_author,
+                "date": blog_post.value.date,
             }
-            for x in self.featured_blog_posts
-            if x.value.live
+            for blog_post in self.featured_blog_posts
+            if blog_post.value.live
         ]
 
     def get_context(self, request):
