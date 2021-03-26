@@ -14,11 +14,9 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
-from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
-from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
@@ -26,6 +24,7 @@ from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogPage
 from tbx.core.blocks import StoryBlock
+from tbx.people.blocks import StandoutItemsBlock
 from tbx.people.forms import ContactForm
 
 
@@ -130,34 +129,7 @@ class CulturePage(Page):
         related_name="+",
     )
 
-    standout_items = StreamField(
-        [
-            (
-                "item",
-                blocks.StructBlock(
-                    [
-                        ("subtitle", blocks.CharBlock()),
-                        ("title", blocks.CharBlock()),
-                        ("description", blocks.TextBlock()),
-                        ("image", ImageChooserBlock()),
-                        (
-                            "link",
-                            blocks.StreamBlock(
-                                [
-                                    ("internal", blocks.PageChooserBlock()),
-                                    ("external", blocks.URLBlock()),
-                                ],
-                                required=False,
-                                max_num=1,
-                            ),
-                        ),
-                    ],
-                    icon="pick",
-                ),
-            )
-        ],
-        blank=True,
-    )
+    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
 
     content_panels = [
         FieldPanel("title", classname="full title"),
@@ -185,29 +157,15 @@ class CulturePage(Page):
 
     def get_standout_items(self):
         """Format the standout items data for the template."""
-
-        def get_link(link_value):
-            """The link could be internal or external."""
-            try:
-                link = link_value[0]
-            except IndexError:
-                return ""
-            else:
-                return (
-                    link.value.url
-                    if link.block_type == "internal" and link.value
-                    else link.value
-                )
-
         return [
             {
-                "title": x.value["title"],
-                "subtitle": x.value["subtitle"],
-                "description": x.value["description"],
-                "url": get_link(x.value["link"]),
-                "image": x.value["image"],
+                "title": standout_item.value["title"],
+                "subtitle": standout_item.value["subtitle"],
+                "description": standout_item.value["description"],
+                "url": standout_item.block.get_link(standout_item.value["link"],),
+                "image": standout_item.value["image"],
             }
-            for x in self.standout_items
+            for standout_item in self.standout_items
         ]
 
     def get_context(self, request):
