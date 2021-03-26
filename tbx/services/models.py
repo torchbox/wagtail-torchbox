@@ -138,12 +138,12 @@ class BaseServicePage(Page):
 
         return [
             {
-                "title": x.blog_post.title,
-                "url": x.blog_post.url,
-                "author": x.blog_post.first_author,
-                "date": x.blog_post.date,
+                "title": featured.blog_post.title,
+                "url": featured.blog_post.url,
+                "author": featured.blog_post.first_author,
+                "date": featured.blog_post.date,
             }
-            for x in self.featured_blog_posts.filter(blog_post__live=True)
+            for featured in self.featured_blog_posts.filter(blog_post__live=True)
         ]
 
     def get_context(self, request):
