@@ -215,10 +215,10 @@ class BlogPage(Page):
     @property
     def first_author(self):
         """Safely return the first author if one exists."""
-        try:
-            return self.authors.first().author
-        except Exception:
-            return None
+        author = self.authors.first()
+        if author:
+            return author.author
+        return None
 
     @property
     def read_time(self):
