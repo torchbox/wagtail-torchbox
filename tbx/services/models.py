@@ -152,14 +152,14 @@ class BaseServicePage(Page):
         """Format the featured case studies data for the template."""
         return [
             {
-                "title": x.case_study.title,
-                "subtitle": x.case_study.client,
-                "description": x.case_study.listing_summary,
-                "url": x.case_study.url,
-                "image": x.case_study.homepage_image,
+                "title": f.case_study.title,
+                "subtitle": f.case_study.client,
+                "description": f.case_study.listing_summary,
+                "url": f.case_study.url,
+                "image": f.case_study.homepage_image,
             }
-            for x in self.featured_case_studies.all()
-            if x.case_study
+            for f in self.featured_case_studies.all()
+            if f.case_study
         ]
 
 
