@@ -137,7 +137,7 @@ class CulturePage(Page):
         blank=True, max_length=100, verbose_name="Title",
     )
     featured_blog_posts = StreamField(
-        [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage")), ],
+        [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage")),],
         blank=True,
         verbose_name="Blog posts",
     )
