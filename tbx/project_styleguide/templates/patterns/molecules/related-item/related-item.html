@@ -2,7 +2,11 @@
 
 {% image item.image width-1280 as image %}
 
-{% if item.url %}<a class="related-item" href="{{ item.url }}">{% endif %}
+{% if item.url %}
+    <a class="related-item" href="{{ item.url }}">
+{% else %}
+    <div class="related-item">
+{% endif %}
     <div class="related-item__meta">
         <div class="related-item__meta-container">
             {% if item.subtitle %}
@@ -22,4 +26,8 @@
         </svg>
         <div class="related-item__image-inner" style="background-image: url(&quot;{{ image.url }}&quot;);"></div>
     </div>
-{% if item.url %}</a>{% endif %}
+{% if item.url %}
+    </a>
+{% else %}
+    </div>
+{% endif %}
