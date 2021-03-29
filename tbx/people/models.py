@@ -208,7 +208,6 @@ class CulturePage(Page):
         context.update(
             featured_blog_posts=self.get_featured_blog_posts(),
             blog_index_page=BlogIndexPage.objects.live().first(),
-            work_index_page=WorkIndexPage.objects.live().first(),
         )
         return context
 
