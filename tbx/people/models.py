@@ -24,6 +24,7 @@ from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogPage
 from tbx.core.blocks import StoryBlock
+from tbx.people.blocks import StandoutItemsBlock
 from tbx.people.forms import ContactForm
 
 
@@ -128,6 +129,8 @@ class CulturePage(Page):
         related_name="+",
     )
 
+    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
+
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
@@ -146,7 +149,29 @@ class CulturePage(Page):
             heading="Key Benefits",
             classname="collapsible",
         ),
+        StreamFieldPanel("standout_items"),
     ]
+
+    class Meta:
+        verbose_name = "Careers Page"
+
+    def get_standout_items(self):
+        """Format the standout items data for the template."""
+        return [
+            {
+                "title": standout_item.value["title"],
+                "subtitle": standout_item.value["subtitle"],
+                "description": standout_item.value["description"],
+                "url": standout_item.block.get_link(standout_item.value["link"],),
+                "image": standout_item.value["image"],
+            }
+            for standout_item in self.standout_items
+        ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["standout_items"] = self.get_standout_items()
+        return context
 
 
 class BaseCulturePageKeyPoint(models.Model):

@@ -24,19 +24,7 @@
     {% endif %}
 
     {% if page.case_studies_section_title %}
-        <div class="service-section casestudies" id="{{ page.case_studies_section_title|slugify }}" data-service-section>
-            <div class="casestudies__content">
-                <div class="casestudies__title">
-                    {% include "patterns/atoms/section-title/section-title.html" with title=page.case_studies_section_title %}
-                </div>
-                <div class="casestudies__list">
-                    {% for casestudy in page.featured_case_studies.all %}
-                        {% include "patterns/molecules/work-item/work-item.html" with item=casestudy.case_study %}
-                    {% endfor %}
-                </div>
-                {% include "patterns/atoms/see-more/see-more.html" with text="See more case studies" link=work_index_page.url %}
-            </div>
-        </div>
+        {% include "patterns/organisms/related-content/related-content.html" with id=page.case_studies_section_title title=page.case_studies_section_title items=page.get_featured_case_studies see_more_link=True data_attrs="data-service-section" classes="service-section" see_more_link_text="See more case studies" %}
     {% endif %}
 
     {% if page.blogs_section_title %}

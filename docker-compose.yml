@@ -22,6 +22,7 @@ services:
     ports:
       - 8000:8000 # runserver
       - 8001:8001 # mkdocs serve
+      - 6900:6900 # pudb
     volumes:
       - ./README.md:/app/README.md:delegated,ro
       - ./docs:/app/docs:delegated,ro
