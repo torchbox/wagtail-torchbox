@@ -2,7 +2,7 @@
     $root: &;
 
     &__container {
-        max-width: 840px;
+        max-width: $wrapper--small;
         margin: 0 auto;
         padding: ($gutter * 2) $variable-gutter--small 0;
 
