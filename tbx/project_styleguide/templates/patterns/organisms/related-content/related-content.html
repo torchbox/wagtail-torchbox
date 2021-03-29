@@ -3,8 +3,8 @@
         {% include "patterns/atoms/section-title/section-title.html" with title=title %}
     {% endif %}
     <div class="related-content__list">
-        {% for casestudy in items %}
-            {% include "patterns/molecules/related-item/related-item.html" with item=casestudy.case_study %}
+        {% for item in items %}
+            {% include "patterns/molecules/related-item/related-item.html" with item=item %}
         {% endfor %}
     </div>
     {% if see_more_link %}

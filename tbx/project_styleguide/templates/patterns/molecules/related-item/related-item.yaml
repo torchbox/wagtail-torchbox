@@ -1,16 +1,13 @@
 context:
   item:
     title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-    client: Oxfam
-    listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+    subtitle: Oxfam
+    description: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+    url: '#'
 
 tags:
   image:
-    item.homepage_image width-1280 as image:
+    item.image width-1280 as image:
       target_var: image
       raw:
         url: '//placekitten.com/1280/800'
-
-  pageurl:
-    item:
-      raw: '#'

@@ -1,18 +1,18 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% image item.homepage_image width-1280 as image %}
+{% image item.image width-1280 as image %}
 
-<a class="related-item" href="{% pageurl item %}">
+{% if item.url %}<a class="related-item" href="{{ item.url }}">{% endif %}
     <div class="related-item__meta">
         <div class="related-item__meta-container">
-            {% if item.client %}
-                <span class="related-item__client">{{ item.client }}</span>
+            {% if item.subtitle %}
+                <span class="related-item__client">{{ item.subtitle }}</span>
             {% endif %}
 
             <h2 class="related-item__title">{{ item.title }}</h2>
 
-            {% if item.listing_summary %}
-                <p class="related-item__desc">{{ item.listing_summary }}</p>
+            {% if item.description %}
+                <p class="related-item__desc">{{ item.description }}</p>
             {% endif %}
         </div>
     </div>
@@ -22,4 +22,4 @@
         </svg>
         <div class="related-item__image-inner" style="background-image: url(&quot;{{ image.url }}&quot;);"></div>
     </div>
-</a>
+{% if item.url %}</a>{% endif %}

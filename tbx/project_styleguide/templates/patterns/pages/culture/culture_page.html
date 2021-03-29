@@ -47,8 +47,8 @@
     </div>
 
     {# Standout list #}
-    {% if page.featured_case_studies %}
-        {% include "patterns/organisms/related-content/related-content.html" with items=page.featured_case_studies.all %}
+    {% if standout_items %}
+        {% include "patterns/organisms/related-content/related-content.html" with items=standout_items %}
     {% endif %}
 </div>
 {% endblock %}
