@@ -66,11 +66,10 @@
     <meta property="og:title" content="{{ page.title }}" />
     {% if page.social_image or page.feed_image %}
         {% if page.social_image %}
-            {% image page.social_image width-1200 height-630 as social_img %}
+            {% image page.social_image fill-1200x630 as social_img %}
         {% elif page.feed_image %}
-            {% image page.feed_image width-1200 height-630 as social_img %}
+            {% image page.feed_image fill-1200x630 as social_img %}
         {% endif %}
-
         {# This will give a full path to the image when on staging or production because S3 storage is used. If testing locally, make sure you use the default localhost:8000 url. Testing via :3000 will give peculiar results. #}
         <meta property="og:image" content="{{ social_img.url }}" />
         <meta property="og:image:width" content="{{ social_img.width }}" />
