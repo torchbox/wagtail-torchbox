@@ -132,7 +132,6 @@ class CulturePage(Page):
 
     standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
 
-
     blogs_section_title = models.CharField(
         blank=True, max_length=100, verbose_name="Title",
     )
@@ -186,7 +185,6 @@ class CulturePage(Page):
             }
             for standout_item in self.standout_items
         ]
-
 
     def get_featured_blog_posts(self):
         """Format the featured blog posts for the template."""
