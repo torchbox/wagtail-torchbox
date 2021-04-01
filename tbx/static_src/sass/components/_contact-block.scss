@@ -11,6 +11,7 @@
         color: var(--color--white);
         font-weight: 800;
         line-height: 44px;
+        margin: 0 0 ($gutter / 2);
 
         @include media-query(medium) {
             font-size: map-get($medium-font-sizes, xl);
