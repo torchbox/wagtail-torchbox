@@ -102,8 +102,9 @@ class CulturePageLink(Orderable):
     ]
 
 
+# Was previously the culture page until it was re-purposed to be the careers page
 class CulturePage(Page):
-    template = "patterns/pages/culture/culture_page.html"
+    template = "patterns/pages/careers/careers_page.html"
 
     strapline = models.TextField()
     strapline_visible = models.BooleanField(

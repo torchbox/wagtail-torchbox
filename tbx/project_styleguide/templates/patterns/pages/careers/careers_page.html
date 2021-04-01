@@ -1,22 +1,22 @@
 {% extends "patterns/base_page.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags static %}
-{% block theme_class %}theme--dark--transparent template__careers-page{% endblock %}
+{% block theme_class %}theme--dark--transparent{% endblock %}
 
 {% block content %}
 {% image page.hero_image width-1920 as hero_image %}
 
-<div class="culture">
+<div class="careers">
     {# Hero #}
-    <div class="culture__hero">
+    <div class="careers__hero">
         {% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url classes="hero__full-screen--short" %}
         {% include "patterns/molecules/title-block/title-block.html" with title=page.strapline classes="title-block--transparent title-block--careers" %}
     </div>
 
-    <div class="culture__container culture__container--top">
+    <div class="careers__container careers__container--top">
         {# Intro #}
         {% if page.intro %}
-            <div class="culture__rich-text">
+            <div class="careers__rich-text">
                 {{ page.intro|richtext }}
             </div>
         {% endif %}
@@ -31,9 +31,9 @@
 
     {# Benefits list #}
     {% if page.benefits_section_title %}
-        <div class="culture__container culture__container--middle">
-            <h2 class="culture__title">{{ page.benefits_section_title }}</h2>
-            <ul class="culture__benefits-list">
+        <div class="careers__container careers__container--middle">
+            <h2 class="careers__title">{{ page.benefits_section_title }}</h2>
+            <ul class="careers__benefits-list">
                 {% for item in page.key_benefits.all %}
                     {% include "patterns/molecules/list-item/list-item.html" with item=item %}
                 {% endfor %}
@@ -42,7 +42,7 @@
     {% endif %}
 
     {# Card links #}
-    <div class="culture__container culture__container--bottom">
+    <div class="careers__container careers__container--bottom">
         {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all classes="card-listing--single" %}
     </div>
 
