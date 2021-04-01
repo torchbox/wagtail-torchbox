@@ -41,7 +41,7 @@ class PeopleHRFeed(object):
         if not url:
             return None
 
-        resp = requests.get(url)
+        resp = requests.get(url, timeout=3)
 
         try:
             resp.raise_for_status()
@@ -49,6 +49,9 @@ class PeopleHRFeed(object):
             return len(xml_root.findall("channel/item"))
         except requests.exceptions.RequestException:
             logger.exception(f"Could not get People HR jobs feed from {url}")
+            return None
+        except requests.exceptions.Timeout:
+            logger.exception(f"Timed out getting People HR jobs feed from {url}")
             return None
         except ElementTree.ParseError:
             logger.exception(f"Could not parse People HR jobs feed from {url}")
