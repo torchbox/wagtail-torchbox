@@ -1,7 +1,7 @@
 context:
   page:
-    title: Culture Page
-    get_verbose_name: culture-page
+    title: Careers
+    get_verbose_name: careers-page
     strapline_visible: true
     strapline: We're 100% <br><span class="title-block__span">employee owned <span><span class="title-block__second-span">.</span>
     intro: >-
