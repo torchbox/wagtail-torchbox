@@ -10,11 +10,13 @@ import InPageNav from './components/in-page-nav';
 
 import '../sass/main.scss';
 
-navigator.serviceWorker.getRegistrations().then(function (registrations) {
-    registrations.forEach(function (registration) {
-        registration.unregister();
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) {
+            registration.unregister();
+        });
     });
-});
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     /* eslint-disable no-new, no-restricted-syntax */
