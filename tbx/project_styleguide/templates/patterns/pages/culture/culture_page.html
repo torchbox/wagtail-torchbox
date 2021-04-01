@@ -50,6 +50,10 @@
     {% if standout_items %}
         {% include "patterns/organisms/related-content/related-content.html" with items=standout_items %}
     {% endif %}
+
+    {% if page.blogs_section_title %}
+        {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="blog-listing--careers" blogs_section_heading=True %}
+    {% endif %}
 </div>
 
 {% block contact %}{% endblock %}

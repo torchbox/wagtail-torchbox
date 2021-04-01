@@ -79,6 +79,17 @@ class BlogIndexPage(Page):
         if slug_filter:
             blog_posts = blog_posts.filter(related_services__slug=slug_filter)
 
+        # format for template
+        blog_posts = [
+            {
+                "title": blog_post.title,
+                "url": blog_post.url,
+                "author": blog_post.first_author,
+                "date": blog_post.date,
+            }
+            for blog_post in blog_posts
+        ]
+
         # Pagination
         paginator = Paginator(blog_posts, 10)  # Show 10 blog_posts per page
 
@@ -211,6 +222,14 @@ class BlogPage(Page):
     @property
     def has_authors(self):
         return self.authors.exists()
+
+    @property
+    def first_author(self):
+        """Safely return the first author if one exists."""
+        author = self.authors.first()
+        if author:
+            return author.author
+        return None
 
     @property
     def read_time(self):

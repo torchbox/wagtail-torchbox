@@ -45,6 +45,7 @@ context:
       subtitle: Our Locations
       description: This section talks about how we’re currently remote working as well as the 3 offices.
       url: '#'
+  blogs_section_title: Thinking
 
 tags:
   image:
@@ -52,6 +53,3 @@ tags:
       target_var: hero_image
       raw:
         url: 'http://via.placeholder.com/1920x900'
-  pageurl:
-    link.link:
-      raw: '#'

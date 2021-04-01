@@ -1,0 +1,21 @@
+<div class="blog-listing {% if classes %}{{ classes }}{% endif %}" {% if page.blogs_section_title %}id="{{ page.blogs_section_title|slugify }}"{% endif %} {% if data_attrs %}{{ data_attrs }}{% endif %}>
+    <div class="blog-listing__content">
+        {% include "patterns/atoms/section-title/section-title.html" with title=page.blogs_section_title %}
+
+        {% if blogs_section_heading %}
+            <h2 class="blog-listing__heading">What our team says</h2>
+        {% endif %}
+        <div class="blog-listing__list blog-listing__list--horizontal">
+            {% for item in featured_blog_posts %}
+                {% if feature_first and forloop.first %}
+                    <div class="blog-listing__feature">
+                        {% include "patterns/molecules/blog-item/blog-item.html" with item=item %}
+                    </div>
+                {% else %}
+                    {% include "patterns/molecules/blog-item/blog-item.html" with item=item %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% include "patterns/atoms/see-more/see-more.html" with text="See more posts" link=blog_index_page.url %}
+    </div>
+</div>

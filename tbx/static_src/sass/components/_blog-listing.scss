@@ -80,4 +80,13 @@
     &__feature {
         grid-column: span 2;
     }
+
+    &__heading {
+        @include font-size(xxxxl);
+        margin-top: $gutter * 2;
+
+        @include media-query(large) {
+            margin-top: 0;
+        }
+    }
 }
