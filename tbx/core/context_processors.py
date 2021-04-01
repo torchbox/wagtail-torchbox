@@ -16,7 +16,7 @@ def peoplehr_jobs_count(request):
     Add the number of open jobs to the context
     """
     CACHE_KEY = "job_count"
-    CACHE_TIMEOUT = 21600
+    CACHE_TIMEOUT = 60 * 60 * 6
 
     job_count = cache.get(CACHE_KEY)
 
