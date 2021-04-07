@@ -20,13 +20,11 @@ context:
     featured_case_studies:
       all:
         - case_study:
-            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-            client: Oxfam
-            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+            title: Meet the team
+            listing_summary: Meet the team
         - case_study:
-            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-            client: Oxfam
-            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+            title: Careers at Torchbox
+            listing_summary: On Friday 28th June 2019 - on EODay - Torchbox became the first digital agency in the UK to become a 100% Employee Owned Trust. We’re commited to using digital to help organisations making the world a better place.
     blogs_section_title: Thinking
 
     featured_blog_posts:
