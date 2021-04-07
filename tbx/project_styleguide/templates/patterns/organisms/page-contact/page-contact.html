@@ -1,5 +1,4 @@
 <div class="page__contact">
-
     <div class="contact-block">
         <div class="contact-block__container">
             <h1 class="contact-block__title">Get in touch to talk about your project</h1>
@@ -55,18 +54,4 @@
             </div>
         </div>
     </div>
-
 </div>
-
-{% if page.teasers %}
-<div class="teaser-list">
-    <div class="teaser-list__container">
-        <h3 class="teaser-list__title">More from Torchbox...</h3>
-        <div class="teaser-list__content">
-            {% for teaser in page.teasers %}
-                {% include "patterns/molecules/teaser/teaser.html" with item=teaser %}
-            {% endfor %}
-        </div>
-    </div>
-</div>
-{% endif %}

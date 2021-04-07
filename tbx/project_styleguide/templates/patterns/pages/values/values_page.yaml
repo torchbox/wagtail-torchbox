@@ -64,6 +64,18 @@ context:
             title: We already dropped Drupal - maybe it’s time for you to do the same.
             date: "20 Oct '20"
 
+    teasers:
+      - {
+          title: Digital products,
+          desc: For our digital products and services.,
+          href: '/digital-products/',
+        }
+      - {
+          title: Wagtail,
+          desc: For web builds with the Wagtail open source CMS.,
+          href: '/wagtail-cms/',
+        }
+
 tags:
   include_block:
     page.body:

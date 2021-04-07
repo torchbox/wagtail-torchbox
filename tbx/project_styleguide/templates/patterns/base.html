@@ -43,6 +43,10 @@
                 {% block contact %}
                     {% include "patterns/organisms/page-contact/page-contact.html" %}
                 {% endblock %}
+
+                {% if page.teasers %}
+                    {% include "patterns/organisms/page-teasers/page-teasers.html" %}
+                {% endif %}
             {% endif %}
         </main>
 
