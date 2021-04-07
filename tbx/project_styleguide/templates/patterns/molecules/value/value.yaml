@@ -5,5 +5,5 @@ context:
 
 tags:
   image:
-    item.image fill-840x555 class="value__image":
-      raw: '<img src="https://placekitten.com/840/555" class="value__image">'
+    item.image fill-840x400 class="value__image":
+      raw: '<img src="https://placekitten.com/840/400" class="value__image">'
