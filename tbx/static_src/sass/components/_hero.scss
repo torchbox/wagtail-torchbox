@@ -5,6 +5,24 @@
         padding-bottom: 5vh;
     }
 
+    &--restricted {
+        #{$root}__container {
+            max-width: $wrapper--small;
+            margin: 0 auto;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        #{$root}__content,
+        #{$root}__description {
+            margin: 0;
+        }
+
+        #{$root}__title {
+            margin: 0 0 $gutter;
+        }
+    }
+
     &__image {
         margin-top: -25px;
     }

@@ -1,10 +1,9 @@
 .values {
-    @include container();
+    max-width: $wrapper--small;
+    margin: 0 auto;
 }
 
 .value {
-    @include streamblock-padding();
-
     &__title {
         @include font-size(l);
         font-weight: $weight--heavy;
