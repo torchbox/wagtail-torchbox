@@ -136,6 +136,16 @@ class CulturePage(Page):
     ]
 
 
+class ValuesPage(Page):
+    template = "patterns/pages/values/values_page.html"
+
+    strapline = models.TextField()
+    intro = RichTextField(blank=True)
+
+    content_panels = [
+        FieldPanel("title", classname="full title"),
+        FieldPanel("strapline", classname="full"),
+        FieldPanel("intro", classname="full"),
 # An author snippet which keeps a copy of a person's details in case they leave and their page is unpublished
 # Could also be used for external authors
 @register_snippet
