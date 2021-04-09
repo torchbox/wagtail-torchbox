@@ -105,8 +105,12 @@
         }
 
         &--short {
-            height: 70vh;
-            min-height: 700px;
+            height: 400px;
+
+            @include media-query(medium) {
+                height: 70vh;
+                min-height: 700px;
+            }
         }
     }
 }

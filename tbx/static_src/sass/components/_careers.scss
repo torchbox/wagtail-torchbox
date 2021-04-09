@@ -63,8 +63,12 @@
     }
 
     &__hero {
-        height: 70vh;
-        min-height: 700px;
+        height: 400px;
         position: relative;
+
+        @include media-query(medium) {
+            height: 70vh;
+            min-height: 700px;
+        }
     }
 }
