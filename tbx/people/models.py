@@ -21,6 +21,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
+from wagtail.images.blocks import ImageChooserBlock
 
 from tbx.blog.models import BlogPage
 from tbx.core.blocks import StoryBlock
@@ -146,6 +147,39 @@ class ValuesPage(Page):
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
         FieldPanel("intro", classname="full"),
+        MultiFieldPanel(
+            [
+                InlinePanel("values", label="Values"),
+            ],
+            heading="Values",
+        ),
+    ]
+
+
+class BaseValuesPageValue(models.Model):
+    value_image = models.ForeignKey(
+        "torchbox.TorchboxImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    text = RichTextField(blank=True)
+    heading = models.CharField(max_length=255)
+    panels = [
+        ImageChooserPanel("value_image"),
+        FieldPanel("heading"),
+        FieldPanel("text"),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class ValuesPageValue(Orderable, BaseValuesPageValue):
+    page = ParentalKey(ValuesPage, related_name="values")
+
+
 # An author snippet which keeps a copy of a person's details in case they leave and their page is unpublished
 # Could also be used for external authors
 @register_snippet

@@ -8,7 +8,7 @@
     {# Values #}
     {% if page.values %}
         <div class="values">
-            {% for value in page.values %}
+            {% for value in page.values.all %}
                 {% include "patterns/molecules/value/value.html" with item=value %}
             {% endfor %}
         </div>
