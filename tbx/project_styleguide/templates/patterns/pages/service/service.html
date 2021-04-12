@@ -40,23 +40,7 @@
     {% endif %}
 
     {% if page.blogs_section_title %}
-        <div class="service-section blog-listing" id="{{ page.blogs_section_title|slugify }}" data-service-section>
-            <div class="blog-listing__content">
-                {% include "patterns/atoms/section-title/section-title.html" with title=page.blogs_section_title %}
-                <div class="blog-listing__list blog-listing__list--horizontal">
-                    {% for blog in page.featured_blog_posts.all %}
-                        {% if forloop.first %}
-                            <div class="blog-listing__feature">
-                                {% include "patterns/molecules/blog-item/blog-item.html" with item=blog.blog_post %}
-                            </div>
-                        {% else %}
-                            {% include "patterns/molecules/blog-item/blog-item.html" with item=blog.blog_post %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% include "patterns/atoms/see-more/see-more.html" with text="See more posts" link=blog_index_page.url %}
-            </div>
-        </div>
+        {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="service-section" feature_first=True data_attrs="data-service-section" %}
     {% endif %}
 
 {% endblock %}
