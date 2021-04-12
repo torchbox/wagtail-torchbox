@@ -14,6 +14,7 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
+from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
@@ -22,7 +23,7 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from tbx.blog.models import BlogPage
+from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.blocks import StoryBlock
 from tbx.people.blocks import StandoutItemsBlock
 from tbx.people.forms import ContactForm
@@ -143,6 +144,14 @@ class ValuesPage(Page):
     strapline = models.TextField()
     intro = RichTextField(blank=True)
     standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
+    blogs_section_title = models.CharField(
+        blank=True, max_length=100, verbose_name="Title",
+    )
+    featured_blog_posts = StreamField(
+        [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
+        blank=True,
+        verbose_name="Blog posts",
+    )
 
     content_panels = [
         FieldPanel("title", classname="full title"),
@@ -150,6 +159,14 @@ class ValuesPage(Page):
         FieldPanel("intro", classname="full"),
         MultiFieldPanel([InlinePanel("values", label="Values")], heading="Values"),
         StreamFieldPanel("standout_items"),
+        MultiFieldPanel(
+            [
+                FieldPanel("blogs_section_title"),
+                StreamFieldPanel("featured_blog_posts"),
+            ],
+            heading="Featured Blog Posts",
+            classname="collapsible",
+        ),
     ]
 
     class Meta:
@@ -168,9 +185,26 @@ class ValuesPage(Page):
             for standout_item in self.standout_items
         ]
 
+    def get_featured_blog_posts(self):
+        """Format the featured blog posts for the template."""
+        return [
+            {
+                "title": blog_post.value.title,
+                "url": blog_post.value.url,
+                "author": blog_post.value.first_author,
+                "date": blog_post.value.date,
+            }
+            for blog_post in self.featured_blog_posts
+            if blog_post.value.live
+        ]
+
     def get_context(self, request):
         context = super().get_context(request)
         context["standout_items"] = self.get_standout_items()
+        context.update(
+            featured_blog_posts=self.get_featured_blog_posts(),
+            blog_index_page=BlogIndexPage.objects.live().first(),
+        )
         return context
 
 
