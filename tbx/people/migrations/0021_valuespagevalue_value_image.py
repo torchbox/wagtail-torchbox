@@ -7,14 +7,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0134_remove_googleadgrantspage_and_related_models'),
-        ('people', '0020_valuespagevalue'),
+        ("torchbox", "0134_remove_googleadgrantspage_and_related_models"),
+        ("people", "0020_valuespagevalue"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='valuespagevalue',
-            name='value_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='torchbox.TorchboxImage'),
+            model_name="valuespagevalue",
+            name="value_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="torchbox.TorchboxImage",
+            ),
         ),
     ]

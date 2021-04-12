@@ -146,12 +146,7 @@ class ValuesPage(Page):
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
         FieldPanel("intro", classname="full"),
-        MultiFieldPanel(
-            [
-                InlinePanel("values", label="Values"),
-            ],
-            heading="Values",
-        ),
+        MultiFieldPanel([InlinePanel("values", label="Values"),], heading="Values",),
     ]
 
 
