@@ -8,18 +8,29 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0023_auto_20210412_1147'),
+        ("people", "0023_auto_20210412_1147"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='valuespage',
-            name='blogs_section_title',
-            field=models.CharField(blank=True, max_length=100, verbose_name='Title'),
+            model_name="valuespage",
+            name="blogs_section_title",
+            field=models.CharField(blank=True, max_length=100, verbose_name="Title"),
         ),
         migrations.AddField(
-            model_name='valuespage',
-            name='featured_blog_posts',
-            field=wagtail.core.fields.StreamField([('blog_post', wagtail.core.blocks.PageChooserBlock(page_type=['blog.BlogPage']))], blank=True, verbose_name='Blog posts'),
+            model_name="valuespage",
+            name="featured_blog_posts",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "blog_post",
+                        wagtail.core.blocks.PageChooserBlock(
+                            page_type=["blog.BlogPage"]
+                        ),
+                    )
+                ],
+                blank=True,
+                verbose_name="Blog posts",
+            ),
         ),
     ]
