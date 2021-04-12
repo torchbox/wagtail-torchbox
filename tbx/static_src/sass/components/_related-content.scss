@@ -1,0 +1,17 @@
+.related-content {
+    position: relative;
+    background: var(--color--white);
+    padding-top: ($gutter * 5);
+
+    &__list {
+        padding-top: ($gutter * 2);
+    }
+
+    &--bottom-margin {
+        margin-bottom: ($gutter * 2);
+
+        @include media-query(medium) {
+            margin-bottom: ($gutter * 4);
+        }
+    }
+}

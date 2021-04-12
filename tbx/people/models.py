@@ -25,6 +25,7 @@ from wagtail.snippets.models import register_snippet
 from tbx.blog.models import BlogPage
 from tbx.core.blocks import StoryBlock
 from tbx.people.forms import ContactForm
+from tbx.people.blocks import StandoutItemsBlock
 
 
 class PersonPage(Page):
@@ -141,13 +142,36 @@ class ValuesPage(Page):
 
     strapline = models.TextField()
     intro = RichTextField(blank=True)
+    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
 
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
         FieldPanel("intro", classname="full"),
         MultiFieldPanel([InlinePanel("values", label="Values")], heading="Values"),
+        StreamFieldPanel("standout_items"),
     ]
+
+    class Meta:
+        verbose_name = "Values Page"
+
+    def get_standout_items(self):
+        """Format the standout items data for the template."""
+        return [
+            {
+                "title": standout_item.value["title"],
+                "subtitle": standout_item.value["subtitle"],
+                "description": standout_item.value["description"],
+                "url": standout_item.block.get_link(standout_item.value["link"],),
+                "image": standout_item.value["image"],
+            }
+            for standout_item in self.standout_items
+        ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["standout_items"] = self.get_standout_items()
+        return context
 
 
 class BaseValuesPageValue(models.Model):
