@@ -68,7 +68,17 @@ class PersonPage(Page):
     def author_blogs(self):
         # return the blogs writen by this member
         author_snippet = Author.objects.get(person_page__pk=self.pk)
-        return BlogPage.objects.filter(authors__author=author_snippet).order_by("-date")
+
+        # format for template
+        return [
+            {
+                "title": blog_post.title,
+                "url": blog_post.url,
+                "author": blog_post.first_author,
+                "date": blog_post.date,
+            }
+            for blog_post in BlogPage.objects.filter(authors__author=author_snippet).order_by("-date")
+        ]
 
 
 # Person index
