@@ -7,18 +7,18 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0021_valuespagevalue_value_image'),
+        ("people", "0021_valuespagevalue_value_image"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='valuespagevalue',
-            name='heading',
+            model_name="valuespagevalue",
+            name="heading",
             field=models.CharField(max_length=255),
         ),
         migrations.AlterField(
-            model_name='valuespagevalue',
-            name='text',
+            model_name="valuespagevalue",
+            name="text",
             field=wagtail.core.fields.RichTextField(blank=True),
         ),
     ]
