@@ -28,6 +28,7 @@ LOCAL_MEDIA_FOLDER = "{0}/media".format(PROJECT_DIR)
 LOCAL_IMAGES_FOLDER = "{0}/media/original_images".format(PROJECT_DIR)
 LOCAL_DATABASE_NAME = PROJECT_NAME = "tbx"
 LOCAL_DATABASE_USERNAME = "tbx"
+LOCAL_DATABASE_DUMPS_FOLDER = "{0}/database_dumps".format(PROJECT_DIR)
 
 
 ############
@@ -488,16 +489,16 @@ def pull_database_from_heroku(c, app_instance):
     datestamp = datetime.datetime.now().isoformat(timespec="seconds")
 
     dexec(
-        "heroku pg:backups:download --output=/database_dumps/{datestamp}.dump --app {app}".format(
-            app=app_instance, datestamp=datestamp
+        "heroku pg:backups:download --output={database_dumps}/{datestamp}.dump --app {app}".format(
+            database_dumps=LOCAL_DATABASE_DUMPS_FOLDER, app=app_instance, datestamp=datestamp
         ),
         service="utils",
     )
 
-    import_data(c, f"/database_dumps/{datestamp}.dump")
+    import_data(c, f"{LOCAL_DATABASE_DUMPS_FOLDER}/{datestamp}.dump")
 
     dexec(
-        "rm /database_dumps/{datestamp}.dump".format(datestamp=datestamp,),
+        "rm {database_dumps}/{datestamp}.dump".format(database_dumps=LOCAL_DATABASE_DUMPS_FOLDER, datestamp=datestamp),
         service="utils",
     )
 
