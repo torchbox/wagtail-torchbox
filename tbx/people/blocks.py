@@ -33,3 +33,12 @@ class StandoutItemsBlock(blocks.StructBlock):
                 if link.block_type == "internal" and link.value
                 else link.value
             )
+
+
+class InstagramPostBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+    post_url = blocks.URLBlock()
+
+
+class InstagramPostGalleryBlock(blocks.StreamBlock):
+    post = InstagramPostBlock()
