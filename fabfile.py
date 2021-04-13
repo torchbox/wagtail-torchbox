@@ -24,8 +24,8 @@ PRODUCTION_APP_INSTANCE = "cms-torchbox-com"
 STAGING_APP_INSTANCE = "torchbox-staging"
 DEVELOPMENT_APP_INSTANCE = ""
 
-LOCAL_MEDIA_FOLDER = "media"
-LOCAL_IMAGES_FOLDER = "media/original_images"
+LOCAL_MEDIA_FOLDER = "{0}/media".format(PROJECT_DIR)
+LOCAL_IMAGES_FOLDER = "{0}/media/original_images".format(PROJECT_DIR)
 LOCAL_DATABASE_NAME = PROJECT_NAME = "tbx"
 LOCAL_DATABASE_USERNAME = "tbx"
 
