@@ -77,7 +77,9 @@ class PersonPage(Page):
                 "author": blog_post.first_author,
                 "date": blog_post.date,
             }
-            for blog_post in BlogPage.objects.filter(authors__author=author_snippet).order_by("-date")
+            for blog_post in BlogPage.objects.filter(
+                authors__author=author_snippet
+            ).order_by("-date")
         ]
 
 
