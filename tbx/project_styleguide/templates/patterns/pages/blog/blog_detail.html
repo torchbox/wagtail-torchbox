@@ -35,7 +35,7 @@
         {% endfor %}
     </div>
 
-    {% if page.related_blog_posts.exists %}
+    {% if page.related_blog_posts %}
         <div class="page__showcase">
             <div class="blog-listing blog-listing--top-space">
                 <div class="blog-listing__content">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="blog-listing__content">
                     <div class="blog-listing__list blog-listing__list--horizontal">
-                        {% for blog in page.related_blog_posts.all %}
+                        {% for blog in page.related_blog_posts %}
                             {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
                         {% endfor %}
                     </div>
