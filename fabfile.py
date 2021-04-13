@@ -140,20 +140,23 @@ def npm(c, command, daemonise=False):
 
 
 @task
-def psql(c):
+def psql(c, command=None):
     """
     Connect to the local postgres DB using psql
     """
-    subprocess.run(
-        [
-            "docker-compose",
-            "exec",
-            "db",
-            "psql",
-            f"-d{LOCAL_DATABASE_NAME}",
-            f"-U{LOCAL_DATABASE_USERNAME}",
-        ]
-    )
+    cmd_list = [
+        "docker-compose",
+        "exec",
+        "db",
+        "psql",
+        *["-d", LOCAL_DATABASE_NAME],
+        *["-U", LOCAL_DATABASE_USERNAME],
+    ]
+
+    if command:
+        cmd_list.extend(["-c", command])
+
+    subprocess.run(cmd_list)
 
 
 # TODO check the rest of these work correctly from here down
@@ -197,15 +200,7 @@ def import_data(c, database_filename):
 
 
 def delete_local_renditions(c, local_database_name=LOCAL_DATABASE_NAME):
-    try:
-        psql(c, "DELETE FROM images_rendition;")
-    except Exception:
-        pass
-
-    try:
-        psql(c, "DELETE FROM wagtailimages_rendition;")
-    except Exception:
-        pass
+    psql(c, "DELETE FROM images_rendition;")
 
 
 #########
