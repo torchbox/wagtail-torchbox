@@ -200,7 +200,7 @@ def import_data(c, database_filename):
 
 
 def delete_local_renditions(c, local_database_name=LOCAL_DATABASE_NAME):
-    psql(c, "DELETE FROM images_rendition;")
+    psql(c, "DELETE FROM torchbox_torchboxrendition;")
 
 
 #########
