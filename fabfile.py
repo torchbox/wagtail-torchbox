@@ -24,10 +24,11 @@ PRODUCTION_APP_INSTANCE = "cms-torchbox-com"
 STAGING_APP_INSTANCE = "torchbox-staging"
 DEVELOPMENT_APP_INSTANCE = ""
 
-LOCAL_MEDIA_FOLDER = "media"
-LOCAL_IMAGES_FOLDER = "media/original_images"
+LOCAL_MEDIA_FOLDER = "{0}/media".format(PROJECT_DIR)
+LOCAL_IMAGES_FOLDER = "{0}/media/original_images".format(PROJECT_DIR)
 LOCAL_DATABASE_NAME = PROJECT_NAME = "tbx"
 LOCAL_DATABASE_USERNAME = "tbx"
+LOCAL_DATABASE_DUMPS_FOLDER = "{0}/database_dumps".format(PROJECT_DIR)
 
 
 ############
@@ -139,20 +140,23 @@ def npm(c, command, daemonise=False):
 
 
 @task
-def psql(c):
+def psql(c, command=None):
     """
     Connect to the local postgres DB using psql
     """
-    subprocess.run(
-        [
-            "docker-compose",
-            "exec",
-            "db",
-            "psql",
-            f"-d{LOCAL_DATABASE_NAME}",
-            f"-U{LOCAL_DATABASE_USERNAME}",
-        ]
-    )
+    cmd_list = [
+        "docker-compose",
+        "exec",
+        "db",
+        "psql",
+        *["-d", LOCAL_DATABASE_NAME],
+        *["-U", LOCAL_DATABASE_USERNAME],
+    ]
+
+    if command:
+        cmd_list.extend(["-c", command])
+
+    subprocess.run(cmd_list)
 
 
 # TODO check the rest of these work correctly from here down
@@ -196,15 +200,7 @@ def import_data(c, database_filename):
 
 
 def delete_local_renditions(c, local_database_name=LOCAL_DATABASE_NAME):
-    try:
-        psql(c, "DELETE FROM images_rendition;")
-    except Exception:
-        pass
-
-    try:
-        psql(c, "DELETE FROM wagtailimages_rendition;")
-    except Exception:
-        pass
+    psql(c, "DELETE FROM images_rendition;")
 
 
 #########
@@ -488,16 +484,16 @@ def pull_database_from_heroku(c, app_instance):
     datestamp = datetime.datetime.now().isoformat(timespec="seconds")
 
     dexec(
-        "heroku pg:backups:download --output=/database_dumps/{datestamp}.dump --app {app}".format(
-            app=app_instance, datestamp=datestamp
+        "heroku pg:backups:download --output={database_dumps}/{datestamp}.dump --app {app}".format(
+            database_dumps=LOCAL_DATABASE_DUMPS_FOLDER, app=app_instance, datestamp=datestamp
         ),
         service="utils",
     )
 
-    import_data(c, f"/database_dumps/{datestamp}.dump")
+    import_data(c, f"{LOCAL_DATABASE_DUMPS_FOLDER}/{datestamp}.dump")
 
     dexec(
-        "rm /database_dumps/{datestamp}.dump".format(datestamp=datestamp,),
+        "rm {database_dumps}/{datestamp}.dump".format(database_dumps=LOCAL_DATABASE_DUMPS_FOLDER, datestamp=datestamp),
         service="utils",
     )
 
