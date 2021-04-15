@@ -8,41 +8,20 @@
     {# Values #}
     {% if page.values %}
         <div class="values">
-            {% for value in page.values %}
+            {% for value in page.values.all %}
                 {% include "patterns/molecules/value/value.html" with item=value %}
             {% endfor %}
         </div>
     {% endif %}
 
-    {# Case studies #}
-    {% if page.featured_case_studies %}
-        <div class="casestudies casestudies--bottom-margin" id="{{ page.case_studies_section_title|slugify }}">
-            <div class="casestudies__content">
-                <div class="casestudies__title">
-                    {% include "patterns/atoms/section-title/section-title.html" with title=page.case_studies_section_title %}
-                </div>
-                <div class="casestudies__list">
-                    {% for casestudy in page.featured_case_studies.all %}
-                        {% include "patterns/molecules/work-item/work-item.html" with item=casestudy.case_study %}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+    {# Standout list #}
+    {% if standout_items %}
+        {% include "patterns/organisms/related-content/related-content.html" with items=standout_items classes="related-content--bottom-margin" %}
     {% endif %}
 
     {# Blogs #}
-    {% if page.featured_blog_posts %}
-        <div class="blog-listing" id="{{ page.blogs_section_title|slugify }}">
-            <div class="blog-listing__content">
-                {% include "patterns/atoms/section-title/section-title.html" with title=page.blogs_section_title %}
-                <div class="blog-listing__list blog-listing__list--horizontal">
-                    {% for blog in page.featured_blog_posts.all %}
-                        {% include "patterns/molecules/blog-item/blog-item.html" with item=blog.blog_post %}
-                    {% endfor %}
-                </div>
-                {% include "patterns/atoms/see-more/see-more.html" with text="See more blogs" link=blog_index_page.url %}
-            </div>
-        </div>
+    {% if page.blogs_section_title %}
+        {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="blog-listing--careers" %}
     {% endif %}
 
     {% block contact %}{% endblock %}
