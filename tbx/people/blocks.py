@@ -41,6 +41,7 @@ class InstagramPostBlock(blocks.StructBlock):
 
     class Meta:
         template = "patterns/atoms/instagram-post/instagram-post.html"
+        icon = "image"
 
 
 class InstagramPostGalleryBlock(blocks.StreamBlock):
@@ -48,3 +49,5 @@ class InstagramPostGalleryBlock(blocks.StreamBlock):
 
     class Meta:
         template = "patterns/molecules/instagram-gallery/instagram-gallery.html"
+        min_num = 8
+        max_num = 8
