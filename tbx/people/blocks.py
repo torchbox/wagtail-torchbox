@@ -39,6 +39,9 @@ class InstagramPostBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     post_url = blocks.URLBlock()
 
+    class Meta:
+        template = "patterns/atoms/instagram-post/instagram-post.html"
+
 
 class InstagramPostGalleryBlock(blocks.StreamBlock):
     post = InstagramPostBlock()
