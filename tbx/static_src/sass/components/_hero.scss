@@ -112,5 +112,18 @@
                 min-height: 700px;
             }
         }
+
+        &--image-overlay {
+            &::after {
+                content: '';
+                background-color: var(--color--black);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0.3;
+            }
+        }
     }
 }
