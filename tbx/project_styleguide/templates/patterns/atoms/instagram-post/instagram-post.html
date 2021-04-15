@@ -1,0 +1,8 @@
+{% load wagtailimages_tags %}
+<div>
+    {{ test }}
+    {% image value.image fill-360x360 as image %}
+    <img src="{{ image.url }}" />
+</div>
+
+
