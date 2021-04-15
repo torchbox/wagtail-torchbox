@@ -1,26 +1,26 @@
 .teaser {
     $root: &;
-    flex: 1;
+    display: block;
     text-decoration: none;
     background-color: var(--color--white);
     margin-bottom: 4px;
     border-radius: 3px;
     border-bottom: 0;
     padding: ($gutter * 2) ($gutter * 1.5);
-
-    &:focus,
-    &:hover {
-        /* stylelint-disable-next-line color-named */
-        background-color: rgba(white, 0.5);
-
-        #{$root}__title {
-            color: var(--color--dark-indigo);
-        }
-    }
+    transition: background-color $transition-quick;
 
     @include media-query(medium) {
         margin-right: 4px;
         padding: 50px 50px;
+    }
+
+    &:focus,
+    &:hover {
+        background-color: var(--color--white-translucent);
+
+        #{$root}__title {
+            color: var(--color--dark-indigo);
+        }
     }
 
     &:last-of-type {
@@ -61,7 +61,7 @@
         @include font-size(s);
         display: block;
         line-height: 30px;
-        color: var(--color--grey);
+        color: var(--color--grey-dark);
         margin: 10px 0;
     }
 }
