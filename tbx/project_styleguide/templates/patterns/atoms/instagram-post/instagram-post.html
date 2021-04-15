@@ -2,7 +2,7 @@
 {% with value as post %}
 <div>
     <a href="{{ post.post_url }}">{{ post.post_url }}</a>
-    {% image post.image fill-360x360 as image %}
+    {% image post.image fill-500x500 as image %}
     <img src="{{ image.url }}" />
 </div>
 {% endwith %}

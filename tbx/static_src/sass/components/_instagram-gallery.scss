@@ -1,4 +1,6 @@
 .instagram-gallery {
     display: grid;
     grid-template-columns: repeat(4, 25%);
+    gap: 3px 3px;
+    place-items: center;
 }
