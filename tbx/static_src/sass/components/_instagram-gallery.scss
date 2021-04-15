@@ -1,7 +1,24 @@
 .instagram-gallery {
     margin-bottom: 80px;
     display: grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(4, 1fr);
     gap: 3px 3px;
     place-items: center;
+}
+
+.instagram-post {
+    position: relative;
+}
+
+.instagram-post__image {
+    width: 100%;
+    height: auto;
+}
+
+.instagram-post__icon {
+    position: absolute;
+    bottom: 13px;
+    right: 10px;
+    width: 30px;
+    height: auto;
 }
