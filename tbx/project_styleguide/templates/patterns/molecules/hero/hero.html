@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
-<div class="hero">
+<div class="hero {% if classes %}{{ classes }}{% endif %}">
     <div class="hero__container">
         <div class="hero__content">
             <h1 class="hero__title">{{ title|richtext }}</h1>

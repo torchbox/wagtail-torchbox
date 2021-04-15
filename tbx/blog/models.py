@@ -200,13 +200,21 @@ class BlogPage(Page):
     @property
     def related_blog_posts(self):
         services = self.related_services.all()
-        return (
-            BlogPage.objects.filter(related_services__in=services)
+
+        # format for template
+        return [
+            {
+                "title": blog_post.title,
+                "url": blog_post.url,
+                "author": blog_post.first_author,
+                "date": blog_post.date,
+            }
+            for blog_post in BlogPage.objects.filter(related_services__in=services)
             .live()
             .distinct()
             .order_by("-first_published_at")
             .exclude(pk=self.pk)[:2]
-        )
+        ]
 
     @property
     def blog_index(self):

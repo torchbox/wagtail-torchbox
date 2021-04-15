@@ -68,7 +68,19 @@ class PersonPage(Page):
     def author_blogs(self):
         # return the blogs writen by this member
         author_snippet = Author.objects.get(person_page__pk=self.pk)
-        return BlogPage.objects.filter(authors__author=author_snippet).order_by("-date")
+
+        # format for template
+        return [
+            {
+                "title": blog_post.title,
+                "url": blog_post.url,
+                "author": blog_post.first_author,
+                "date": blog_post.date,
+            }
+            for blog_post in BlogPage.objects.filter(
+                authors__author=author_snippet
+            ).order_by("-date")
+        ]
 
 
 # Person index
@@ -230,6 +242,100 @@ class BaseCulturePageKeyPoint(models.Model):
 
 class CulturePageKeyPoint(Orderable, BaseCulturePageKeyPoint):
     page = ParentalKey(CulturePage, related_name="key_benefits")
+
+
+class ValuesPage(Page):
+    template = "patterns/pages/values/values_page.html"
+
+    strapline = models.TextField()
+    intro = RichTextField(blank=True)
+    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
+    blogs_section_title = models.CharField(
+        blank=True, max_length=100, verbose_name="Title",
+    )
+    featured_blog_posts = StreamField(
+        [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
+        blank=True,
+        verbose_name="Blog posts",
+    )
+
+    content_panels = [
+        FieldPanel("title", classname="full title"),
+        FieldPanel("strapline", classname="full"),
+        FieldPanel("intro", classname="full"),
+        InlinePanel("values", heading="Values", label="Values"),
+        StreamFieldPanel("standout_items"),
+        MultiFieldPanel(
+            [
+                FieldPanel("blogs_section_title"),
+                StreamFieldPanel("featured_blog_posts"),
+            ],
+            heading="Featured Blog Posts",
+            classname="collapsible",
+        ),
+    ]
+
+    class Meta:
+        verbose_name = "Values Page"
+
+    def get_standout_items(self):
+        """Format the standout items data for the template."""
+        return [
+            {
+                "title": standout_item.value["title"],
+                "subtitle": standout_item.value["subtitle"],
+                "description": standout_item.value["description"],
+                "url": standout_item.block.get_link(standout_item.value["link"],),
+                "image": standout_item.value["image"],
+            }
+            for standout_item in self.standout_items
+        ]
+
+    def get_featured_blog_posts(self):
+        """Format the featured blog posts for the template."""
+        return [
+            {
+                "title": blog_post.value.title,
+                "url": blog_post.value.url,
+                "author": blog_post.value.first_author,
+                "date": blog_post.value.date,
+            }
+            for blog_post in self.featured_blog_posts
+            if blog_post.value.live
+        ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["standout_items"] = self.get_standout_items()
+        context.update(
+            featured_blog_posts=self.get_featured_blog_posts(),
+            blog_index_page=BlogIndexPage.objects.live().first(),
+        )
+        return context
+
+
+class BaseValuesPageValue(models.Model):
+    value_image = models.ForeignKey(
+        "torchbox.TorchboxImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    text = RichTextField(blank=True)
+    heading = models.CharField(max_length=255)
+    panels = [
+        ImageChooserPanel("value_image"),
+        FieldPanel("heading"),
+        FieldPanel("text"),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class ValuesPageValue(Orderable, BaseValuesPageValue):
+    page = ParentalKey(ValuesPage, related_name="values")
 
 
 # An author snippet which keeps a copy of a person's details in case they leave and their page is unpublished

@@ -1,9 +1,9 @@
 context:
   item:
-    title: Enjoy it
-    description: Half our waking hours are at work, so we make the most of them. We are positive, supportive, and honest.
+    heading: Enjoy it
+    text: Half our waking hours are at work, so we make the most of them. We are positive, supportive, and honest.
 
 tags:
   image:
-    item.image fill-840x555 class="value__image":
-      raw: '<img src="https://placekitten.com/840/555" class="value__image">'
+    item.value_image fill-840x400 class="value__image":
+      raw: '<img src="https://placekitten.com/840/400" class="value__image">'

@@ -1,10 +1,18 @@
 .values {
-    @include container();
+    max-width: $wrapper--small;
+    margin: 0 auto;
+    padding: 0 $variable-gutter--small 0;
+
+    @include media-query(medium) {
+        padding: 0 $variable-gutter--small 0;
+    }
+
+    @include media-query(large) {
+        padding: 0;
+    }
 }
 
 .value {
-    @include streamblock-padding();
-
     &__title {
         @include font-size(l);
         font-weight: $weight--heavy;

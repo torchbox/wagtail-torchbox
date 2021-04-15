@@ -6,63 +6,49 @@ context:
     get_verbose_name: values-page
 
     values:
-      - title: Enjoy it
-        description: Half our waking hours are at work, so we make the most of them. We are positive, supportive, and honest.
-      - title: Own it!
-        description: We care for each other, our environment and the success of our business. We act like the business owners we are.
-      - title: Make the world better
-        description: This is a big part of who we are. It’s in the clients we choose to work with, the open source software we build, and our footprint as a company.
-      - title: Care like you're the client
-        description: We strive to create lasting value and impact with our clients. We work openly, as partners, always asking ourselves how we can make things better.
-      - title: Always learning
-        description: We continually grow our ability to make an impact, through innovation, learning, and improving our processes. We give, receive and act on feedback enthusiastically.
-
-    featured_case_studies:
       all:
-        - case_study:
-            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-            client: Oxfam
-            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
-        - case_study:
-            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
-            client: Oxfam
-            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+        - heading: Enjoy it
+          text: Half our waking hours are at work, so we make the most of them. We are positive, supportive, and honest.
+        - heading: Own it!
+          text: We care for each other, our environment and the success of our business. We act like the business owners we are.
+        - heading: Make the world better
+          text: This is a big part of who we are. It’s in the clients we choose to work with, the open source software we build, and our footprint as a company.
+        - heading: Care like you're the client
+          text: We strive to create lasting value and impact with our clients. We work openly, as partners, always asking ourselves how we can make things better.
+        - heading: Always learning
+          text: We continually grow our ability to make an impact, through innovation, learning, and improving our processes. We give, receive and act on feedback enthusiastically.
+
     blogs_section_title: Thinking
 
-    featured_blog_posts:
-      all:
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
-        - blog_post:
-            authors:
-              first:
-                author:
-                  name: Paul Vetch
-                  role: Strategy Director
-            title: We already dropped Drupal - maybe it’s time for you to do the same.
-            date: "20 Oct '20"
+    teasers:
+      - {
+          title: Digital products,
+          desc: For our digital products and services.,
+          href: '/digital-products/',
+        }
+      - {
+          title: Wagtail,
+          desc: For web builds with the Wagtail open source CMS.,
+          href: '/wagtail-cms/',
+        }
+
+  standout_items:
+    - title: 100% Employee owned and run
+      subtitle: EOT
+      description: This section links to a page about what EOT is. dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+      url: ''
+    - title: We’re an award winning agency
+      subtitle: Our Awards
+      description: To infinity and beyond! Torchbox is named as one of the UK’s Best Small Companies to Work For. We’re especially proud of this award, as it’s voted for by our employees.
+      url: '#'
+    - title: The values we work by
+      subtitle: Our Values
+      description: This section links to a page showing our values. dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.
+      url: '#'
+    - title: How we’re working
+      subtitle: Our Locations
+      description: This section talks about how we’re currently remote working as well as the 3 offices.
+      url: '#'
 
 tags:
   include_block:
