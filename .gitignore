@@ -17,3 +17,4 @@ node_modules*
 /None
 *.log
 /.vscode/
+.env
