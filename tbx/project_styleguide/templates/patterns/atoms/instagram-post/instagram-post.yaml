@@ -1,9 +1,11 @@
 context:
-  test: The content
+  post:
+    post_url: https://example.com
+
 
 tags:
   image:
-    value.image fill-360x360 as image:
+    post.image fill-360x360 as image:
       target_var: image
       raw:
         url: https://placekitten.com/360/360

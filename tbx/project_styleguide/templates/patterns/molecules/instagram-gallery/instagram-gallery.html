@@ -1,0 +1,7 @@
+{% load wagtailcore_tags %}
+<div>
+    <p>INSTRAM GALLERY</p>
+    {% for post in value %}
+        {% include_block post %}
+    {% endfor %}
+</div>

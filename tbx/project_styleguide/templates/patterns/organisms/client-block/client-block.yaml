@@ -30,5 +30,5 @@ context:
 
 tags:
   image:
-    client.image width-400 class="client-item__image":
+    client.image width-400 class="client-item__image" loading="lazy":
       raw: '<img src="https://placekitten.com/400/300" class="client-item__image">'

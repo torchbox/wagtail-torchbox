@@ -45,3 +45,6 @@ class InstagramPostBlock(blocks.StructBlock):
 
 class InstagramPostGalleryBlock(blocks.StreamBlock):
     post = InstagramPostBlock()
+
+    class Meta:
+        template = "patterns/molecules/instagram-gallery/instagram-gallery.html"

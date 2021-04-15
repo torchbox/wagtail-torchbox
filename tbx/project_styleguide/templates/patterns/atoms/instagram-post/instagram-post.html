@@ -1,7 +1,9 @@
 {% load wagtailimages_tags %}
-POST TEMPLATE
+{% with value as post %}
 <div>
-    {{ test }}
-    {% image value.image fill-360x360 as image %}
+    <p>POST TEMPLATE</p>
+    {{ post.post_url }}
+    {% image post.image fill-360x360 as image %}
     <img src="{{ image.url }}" />
 </div>
+{% endwith %}

@@ -1,0 +1,11 @@
+context:
+  value:
+    -
+    -
+    -
+    -
+
+tags:
+  include_block:
+    "post":
+      template_name: patterns/atoms/instagram-post/instagram-post.html
