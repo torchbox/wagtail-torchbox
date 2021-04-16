@@ -5,6 +5,42 @@
         padding-bottom: 5vh;
     }
 
+    &--restricted {
+        #{$root}__container {
+            max-width: $wrapper--small;
+            margin: 0 auto;
+            padding: ($gutter * 2) $variable-gutter--small 0;
+
+            @include media-query(medium) {
+                padding: ($gutter * 4) $variable-gutter--small 0;
+            }
+
+            @include media-query(large) {
+                padding: 120px 0 0;
+            }
+        }
+
+        #{$root}__content,
+        #{$root}__description {
+            margin: 0;
+        }
+
+        #{$root}__title {
+            margin: 0 0 $gutter;
+            font-size: map-get($small-font-sizes, xxl);
+            line-height: 40px;
+
+            @include media-query(medium) {
+                line-height: 80px;
+                font-size: map-get($medium-font-sizes, xxxxl);
+            }
+
+            @include media-query(large) {
+                font-size: map-get($large-font-sizes, xxxxl);
+            }
+        }
+    }
+
     &__image {
         margin-top: -25px;
     }

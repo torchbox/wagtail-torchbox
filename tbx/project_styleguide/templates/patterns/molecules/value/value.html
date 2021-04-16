@@ -1,0 +1,7 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+
+<div class="value">
+    {% image item.value_image fill-840x400 class="value__image" %}
+    <h3 class="value__title">{{ item.heading }}</h3>
+    <div class="value__description">{{ item.text|richtext }}</div>
+</div>

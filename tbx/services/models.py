@@ -1,5 +1,4 @@
 from django.db import models
-from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (
@@ -14,7 +13,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from tbx.blog.models import BlogIndexPage
-from tbx.work.models import WorkIndexPage
 
 
 class BaseServicePage(Page):
@@ -134,19 +132,25 @@ class BaseServicePage(Page):
     class Meta:
         abstract = True
 
-    def serve(self, request):
-        blog_index_page = BlogIndexPage.objects.live().first()
-        work_index_page = WorkIndexPage.objects.live().first()
-
-        return render(
-            request,
-            self.template,
+    def get_featured_blog_posts(self):
+        """Format the featured blog posts for the template."""
+        return [
             {
-                "page": self,
-                "blog_index_page": blog_index_page,
-                "work_index_page": work_index_page,
-            },
+                "title": featured.blog_post.title,
+                "url": featured.blog_post.url,
+                "author": featured.blog_post.first_author,
+                "date": featured.blog_post.date,
+            }
+            for featured in self.featured_blog_posts.filter(blog_post__live=True)
+        ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context.update(
+            featured_blog_posts=self.get_featured_blog_posts(),
+            blog_index_page=BlogIndexPage.objects.live().first(),
         )
+        return context
 
 
 class BaseServicePageKeyPoint(models.Model):

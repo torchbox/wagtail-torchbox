@@ -1,0 +1,28 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro classes="hero--restricted" %}
+
+    {# Values #}
+    {% if page.values %}
+        <div class="values">
+            {% for value in page.values.all %}
+                {% include "patterns/molecules/value/value.html" with item=value %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {# Standout list #}
+    {% if standout_items %}
+        {% include "patterns/organisms/related-content/related-content.html" with items=standout_items classes="related-content--bottom-margin" %}
+    {% endif %}
+
+    {# Blogs #}
+    {% if page.blogs_section_title %}
+        {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="blog-listing--careers" %}
+    {% endif %}
+
+    {% block contact %}{% endblock %}
+{% endblock %}
