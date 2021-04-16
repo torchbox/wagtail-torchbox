@@ -86,7 +86,11 @@ $small-font-sizes: (
 );
 
 // --------------------------------- Breakpoints --------------------------------------
-$breakpoints: ('medium' '(min-width: 599px)', 'large' '(min-width: 1023px)');
+$breakpoints: (
+    'medium' '(min-width: 599px)',
+    'large' '(min-width: 1023px)',
+    'x-large' '(min-width: 1919px)',
+);
 
 // --------------------------------- Grid Dimensions --------------------------------------
 
