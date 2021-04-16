@@ -11,5 +11,5 @@ context:
 
 tags:
   include_block:
-    "post":
+    'post':
       template_name: patterns/atoms/instagram-post/instagram-post.html

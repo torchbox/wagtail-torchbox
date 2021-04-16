@@ -2,7 +2,6 @@ context:
   value:
     post_url: https://example.com
 
-
 tags:
   image:
     post.image fill-500x500 as image:
