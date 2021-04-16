@@ -15,6 +15,7 @@
         }
 
         &--bottom {
+            padding-top: ($gutter * 2);
             margin-bottom: ($gutter * 2);
 
             @include media-query(large) {
