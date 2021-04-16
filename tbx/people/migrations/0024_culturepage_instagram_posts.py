@@ -9,13 +9,26 @@ import wagtail.images.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0023_merge_20210330_1437'),
+        ("people", "0023_merge_20210330_1437"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='culturepage',
-            name='instagram_posts',
-            field=wagtail.core.fields.StreamField([('post', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('post_url', wagtail.core.blocks.URLBlock())]))], blank=True),
+            model_name="culturepage",
+            name="instagram_posts",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "post",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                ("post_url", wagtail.core.blocks.URLBlock()),
+                            ]
+                        ),
+                    )
+                ],
+                blank=True,
+            ),
         ),
     ]
