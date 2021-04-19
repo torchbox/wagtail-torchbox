@@ -119,9 +119,6 @@ class CulturePage(Page):
     template = "patterns/pages/careers/careers_page.html"
 
     strapline = models.TextField()
-    strapline_visible = models.BooleanField(
-        help_text="Hide strapline visually but leave it readable by screen " "readers."
-    )
     hero_image = models.ForeignKey(
         "torchbox.TorchboxImage",
         null=True,
@@ -130,19 +127,8 @@ class CulturePage(Page):
         related_name="+",
     )
     intro = RichTextField(blank=True)
-    body = StreamField(StoryBlock())
-
     benefits_heading = RichTextField(blank=True)
     benefits_section_title = models.TextField(blank=True, default="Benefits")
-
-    contact = models.ForeignKey(
-        "people.Contact",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="+",
-    )
-
     standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
 
     blogs_section_title = models.CharField(
@@ -157,12 +143,9 @@ class CulturePage(Page):
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
-        FieldPanel("strapline_visible"),
         ImageChooserPanel("hero_image"),
         FieldPanel("intro", classname="full"),
         InlinePanel("links", label="Link"),
-        StreamFieldPanel("body"),
-        SnippetChooserPanel("contact"),
         MultiFieldPanel(
             [
                 FieldPanel("benefits_section_title", classname="full"),
