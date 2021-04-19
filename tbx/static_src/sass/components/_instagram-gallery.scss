@@ -17,17 +17,19 @@
 .instagram-post {
     position: relative;
     width: 100%;
+
+    &__image {
+        width: 100%;
+        height: auto;
+    }
+
+    &__icon {
+        position: absolute;
+        bottom: 13px;
+        right: 10px;
+        width: 30px;
+        height: auto;
+    }
 }
 
-.instagram-post__image {
-    width: 100%;
-    height: auto;
-}
 
-.instagram-post__icon {
-    position: absolute;
-    bottom: 13px;
-    right: 10px;
-    width: 30px;
-    height: auto;
-}
