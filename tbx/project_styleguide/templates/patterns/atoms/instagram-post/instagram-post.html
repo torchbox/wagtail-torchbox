@@ -1,7 +1,7 @@
 {% load wagtailimages_tags %}
 {% with value as post %}
 <div class="instagram-post">
-    <a href="{{ post.post_url }}">
+    <a href="{{ post.post_url }}" aria-label="Instagram post">
         {% image post.image fill-500x500 as image %}
         <img class="instagram-post__image" src="{{ image.url }}" loading="lazy" />
         <svg class="instagram-post__icon" viewBox="0 0 100 100">
