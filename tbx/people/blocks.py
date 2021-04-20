@@ -1,4 +1,5 @@
 from wagtail.core import blocks
+from wagtail.embeds import blocks as embed_blocks
 from wagtail.images.blocks import ImageChooserBlock
 
 
@@ -35,19 +36,14 @@ class StandoutItemsBlock(blocks.StructBlock):
             )
 
 
-class InstagramPostBlock(blocks.StructBlock):
-    image = ImageChooserBlock()
-    post_url = blocks.URLBlock()
-
-    class Meta:
-        template = "patterns/atoms/instagram-post/instagram-post.html"
-        icon = "image"
-
-
 class InstagramPostGalleryBlock(blocks.StreamBlock):
-    post = InstagramPostBlock()
+    posts = blocks.StreamBlock(
+        required=False,
+        local_blocks=[('post', embed_blocks.EmbedBlock())],
+        min_num=8,
+        max_num=8,
+        template = "patterns/molecules/instagram-gallery/instagram-gallery.html"
+    )
 
     class Meta:
-        template = "patterns/molecules/instagram-gallery/instagram-gallery.html"
-        min_num = 8
-        max_num = 8
+        max_num = 1
