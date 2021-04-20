@@ -1,10 +1,5 @@
 context:
-  value:
-    post_url: https://example.com
-
-tags:
-  image:
-    post.image fill-500x500 as image:
-      target_var: image
-      raw:
-        url: https://placekitten.com/500/500
+  post:
+    url: https://example.com
+    author_name: torchboxltd
+    thumbnail_url: https://placekitten.com/480/360
