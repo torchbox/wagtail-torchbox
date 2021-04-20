@@ -9,13 +9,27 @@ import wagtail.embeds.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0023_merge_20210330_1437'),
+        ("people", "0023_merge_20210330_1437"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='culturepage',
-            name='instagram_posts',
-            field=wagtail.core.fields.StreamField([('posts', wagtail.core.blocks.StreamBlock([('post', wagtail.embeds.blocks.EmbedBlock())], max_num=8, min_num=8, required=False))], blank=True, null=True),
+            model_name="culturepage",
+            name="instagram_posts",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "posts",
+                        wagtail.core.blocks.StreamBlock(
+                            [("post", wagtail.embeds.blocks.EmbedBlock())],
+                            max_num=8,
+                            min_num=8,
+                            required=False,
+                        ),
+                    )
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]

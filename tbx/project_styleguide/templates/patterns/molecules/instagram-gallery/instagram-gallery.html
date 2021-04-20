@@ -1,6 +1,7 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags people_tags %}
 <div class="instagram-gallery">
     {% for post in value %}
-        {% include_block post %}
+        {# {% include_block post %} #}
+        {% include_instagram_post post %}
     {% endfor %}
 </div>

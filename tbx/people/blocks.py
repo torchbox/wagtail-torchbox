@@ -39,10 +39,10 @@ class StandoutItemsBlock(blocks.StructBlock):
 class InstagramPostGalleryBlock(blocks.StreamBlock):
     posts = blocks.StreamBlock(
         required=False,
-        local_blocks=[('post', embed_blocks.EmbedBlock())],
+        local_blocks=[("post", embed_blocks.EmbedBlock())],
         min_num=8,
         max_num=8,
-        template = "patterns/molecules/instagram-gallery/instagram-gallery.html"
+        template="patterns/molecules/instagram-gallery/instagram-gallery.html",
     )
 
     class Meta:

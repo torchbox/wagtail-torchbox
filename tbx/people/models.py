@@ -139,11 +139,7 @@ class CulturePage(Page):
         verbose_name="Blog posts",
     )
 
-    instagram_posts = StreamField(
-        InstagramPostGalleryBlock,
-        blank=True,
-        null=True,
-    )
+    instagram_posts = StreamField(InstagramPostGalleryBlock, blank=True, null=True)
 
     content_panels = [
         FieldPanel("title", classname="full title"),
