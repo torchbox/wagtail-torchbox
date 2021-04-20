@@ -1,7 +1,7 @@
 {% load wagtailimages_tags %}
 <div class="instagram-post">
-    <a href="{{ post.url }}" aria-label="Instagram post">
-        <img class="instagram-post__image" src="{{ post.thumbnail_url }}" loading="lazy" />
+    <a href="{{ post.url }}" aria-label="Instagram post by {{ post.author_name }}">
+        <img class="instagram-post__image" src="{{ post.thumbnail_url }}" alt="Instagram post by {{ post.author_name }}" loading="lazy" />
         <svg class="instagram-post__icon" viewBox="0 0 100 100">
             <use xlink:href="#instagram" href="#instagram" />
         </svg>
