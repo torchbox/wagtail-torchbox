@@ -10,6 +10,6 @@ context:
     - 8
 
 tags:
-  include_block:
+  instagrampost:
     'post':
       template_name: patterns/atoms/instagram-post/instagram-post.html
