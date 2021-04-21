@@ -17,6 +17,7 @@
 .instagram-post {
     position: relative;
     width: 100%;
+    overflow: hidden;
 
     &::before {
         content: "";
@@ -26,9 +27,13 @@
 
     &__image {
         position: absolute;
-        top: 0;
-        max-width: none;
         height: 100%;
+        width: auto;
+        max-width: none;
+        // Center image in container.
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     &__icon {
