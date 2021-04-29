@@ -3,6 +3,8 @@
 *.swp
 /venv/
 /.venv/
+.env
+.python-version
 /static/
 static_compiled/
 /media/
