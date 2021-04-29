@@ -1043,6 +1043,17 @@ xlsx = ["openpyxl (>=2.6.0)"]
 yaml = ["pyyaml"]
 
 [[package]]
+name = "telepath"
+version = "0.1.1"
+description = "A library for exchanging data between Python and JavaScript"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+docs = ["mkdocs (>=1.1,<1.2)", "mkdocs-material (>=6.2,<6.3)"]
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -1099,7 +1110,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 
 [[package]]
 name = "wagtail"
-version = "2.12"
+version = "2.13rc2"
 description = "A Django content management system."
 category = "main"
 optional = false
@@ -1107,12 +1118,12 @@ python-versions = ">=3.6"
 
 [package.dependencies]
 anyascii = ">=0.1.5"
-beautifulsoup4 = ">=4.8,<4.9"
-Django = ">=2.2,<3.2"
+beautifulsoup4 = ">=4.8,<4.10"
+Django = ">=2.2,<3.3"
 django-filter = ">=2.2,<3.0"
 django-modelcluster = ">=5.1,<6.0"
 django-taggit = ">=1.0,<2.0"
-django-treebeard = ">=4.2.0,<5.0"
+django-treebeard = ">=4.2.0,<4.5 || >4.5,<5.0"
 djangorestframework = ">=3.11.1,<4.0"
 draftjs-exporter = ">=2.1.5,<3.0"
 html5lib = ">=0.999,<2"
@@ -1120,12 +1131,13 @@ l18n = ">=2018.5"
 Pillow = ">=4.0.0,<9.0.0"
 requests = ">=2.11.1,<3.0"
 tablib = {version = ">=0.14.0", extras = ["xls", "xlsx"]}
+telepath = ">=0.1.1,<1"
 Willow = ">=1.4,<1.5"
 xlsxwriter = ">=1.2.8,<2.0"
 
 [package.extras]
-docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-rtd-theme (>=0.1.9)"]
-testing = ["python-dateutil (>=2.2)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=2.8,<3.0)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "Unidecode (>=0.04.14,<2.0)", "coverage (>=3.7.0)", "flake8 (>=3.6.0)", "isort (5.6.4)", "flake8-blind-except (0.1.1)", "flake8-print (2.0.2)", "doc8 (0.8.1)", "jinjalint (>=0.5)", "docutils (0.15)", "django-taggit (>=1.3.0,<2.0)"]
+docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (5.0.3)", "recommonmark (>=0.7.1)"]
+testing = ["python-dateutil (>=2.2)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=2.11,<3.0)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "Unidecode (>=0.04.14,<2.0)", "coverage (>=3.7.0)", "flake8 (>=3.6.0)", "isort (5.6.4)", "flake8-blind-except (0.1.1)", "flake8-print (2.0.2)", "doc8 (0.8.1)", "jinjalint (>=0.5)", "docutils (0.15)", "django-taggit (>=1.3.0,<2.0)"]
 
 [[package]]
 name = "wagtail-accessibility"
@@ -1268,7 +1280,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "07e1dd69b89761d5bcb214fca90403792e3243e93b9a42286be012e620c02ade"
+content-hash = "f99066d64721bc11c0fc8c4fb9d782506ae06ee5a474087cdfd362f36b914183"
 
 [metadata.files]
 anyascii = [
@@ -1895,6 +1907,9 @@ tablib = [
     {file = "tablib-3.0.0-py3-none-any.whl", hash = "sha256:41aa40981cddd7ec4d1fabeae7c38d271601b306386bd05b5c3bcae13e5aeb20"},
     {file = "tablib-3.0.0.tar.gz", hash = "sha256:f83cac08454f225a34a305daa20e2110d5e6335135d505f93bc66583a5f9c10d"},
 ]
+telepath = [
+    {file = "telepath-0.1.1.tar.gz", hash = "sha256:543b49b7c144ef622d02d5717dac1e8b857a3eb5493218aae9a82db4d79e26f6"},
+]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
     {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
@@ -1983,8 +1998,8 @@ virtualenv = [
     {file = "virtualenv-20.1.0.tar.gz", hash = "sha256:b8d6110f493af256a40d65e29846c69340a947669eec8ce784fcf3dd3af28380"},
 ]
 wagtail = [
-    {file = "wagtail-2.12-py3-none-any.whl", hash = "sha256:aeafcc8350110c7e2a7dec930bff1e89a102f4e008198b4a7e030d8f1969e6e0"},
-    {file = "wagtail-2.12.tar.gz", hash = "sha256:1b3623fa62ce331804a738c9e6a66f20870a16bf6661177242c0a882a7a3e7d3"},
+    {file = "wagtail-2.13rc2-py3-none-any.whl", hash = "sha256:bf83e70c1d02a0f59bb86f34f4572f0669b53fddc7e6de5080672df089e74bbe"},
+    {file = "wagtail-2.13rc2.tar.gz", hash = "sha256:a080e4154a646feab86a328752a257c1e299bf81279802db6c3323824e673f52"},
 ]
 wagtail-accessibility = [
     {file = "wagtail-accessibility-0.2.1.tar.gz", hash = "sha256:70a246bfa3bc85751317633353491c2f2432bd4ed54968f89ad1406d9e4d0190"},
