@@ -1187,7 +1187,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 
 [[package]]
 name = "wagtail"
-version = "2.13rc2"
+version = "2.13rc3"
 description = "A Django content management system."
 category = "main"
 optional = false
@@ -1378,7 +1378,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "f99066d64721bc11c0fc8c4fb9d782506ae06ee5a474087cdfd362f36b914183"
+content-hash = "1a64ce08c7d4300aa7dda54e077cd586e1faebed59d9fedff6706a16b46c4133"
 
 [metadata.files]
 anyascii = [
@@ -2155,8 +2155,8 @@ virtualenv = [
     {file = "virtualenv-20.4.3.tar.gz", hash = "sha256:49ec4eb4c224c6f7dd81bb6d0a28a09ecae5894f4e593c89b0db0885f565a107"},
 ]
 wagtail = [
-    {file = "wagtail-2.13rc2-py3-none-any.whl", hash = "sha256:bf83e70c1d02a0f59bb86f34f4572f0669b53fddc7e6de5080672df089e74bbe"},
-    {file = "wagtail-2.13rc2.tar.gz", hash = "sha256:a080e4154a646feab86a328752a257c1e299bf81279802db6c3323824e673f52"},
+    {file = "wagtail-2.13rc3-py3-none-any.whl", hash = "sha256:3e927f9b2391f7e3a173e3bc3053e108135daf6e6521bd95b6f6099c63d1359f"},
+    {file = "wagtail-2.13rc3.tar.gz", hash = "sha256:bab890bc299b0c729d795df4d5f49550cf043f215e49d74f94ace805d9c47c01"},
 ]
 wagtail-accessibility = [
     {file = "wagtail-accessibility-0.2.1.tar.gz", hash = "sha256:70a246bfa3bc85751317633353491c2f2432bd4ed54968f89ad1406d9e4d0190"},
