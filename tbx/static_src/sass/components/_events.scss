@@ -1,0 +1,11 @@
+.events {
+    @include container();
+
+    &__container {
+        @include media-query(large) {
+            margin: ($grid * 6) $variable-gutter--small 20px
+                $variable-gutter--medium;
+            max-width: 700px;
+        }
+    }
+}
