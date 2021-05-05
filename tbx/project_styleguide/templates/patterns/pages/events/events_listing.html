@@ -1,0 +1,20 @@
+{% extends "patterns/base_page.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+    {# Title and Filters #}
+    {% include "patterns/molecules/title-block/title-block.html" with item=page tags=related_services %}
+
+    {# Events #}
+    <div class="events">
+        <div class="events__container">
+            {% for event in events %}
+                {% include "patterns/molecules/blog-item/blog-item.html" with item=event classes="blog-item--standout" %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block contact %}{% endblock %}

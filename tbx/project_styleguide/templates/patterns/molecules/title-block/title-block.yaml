@@ -1,3 +1,28 @@
 context:
   item:
     title: Example title
+
+  tags:
+    - name: Culture
+      slug: culture
+    - name: Digital products
+      slug: digital-products
+    - name: Wagtail
+      slug: wagtail
+    - name: Digital Marketing
+      slug: digital-marketing
+    - name: PPC
+      slug: ppc
+    - name: SEO
+      slug: seo
+    - name: Social media
+      slug: social-media
+    - name: Data
+      slug: data
+    - name: Google Ad Grants
+      slug: google-ad-grants
+
+tags:
+  pageurl:
+    item as index:
+      raw: '#'
