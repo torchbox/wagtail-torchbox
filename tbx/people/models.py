@@ -20,11 +20,9 @@ from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.core.blocks import StoryBlock
 from tbx.people.blocks import StandoutItemsBlock
 from tbx.people.forms import ContactForm
 
