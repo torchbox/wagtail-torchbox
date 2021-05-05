@@ -1,5 +1,7 @@
+from django.utils.functional import cached_property
+
 from wagtail.core import blocks
-from wagtail.embeds import blocks as embed_blocks
+from wagtail.embeds import blocks as embed_blocks, embeds
 from wagtail.images.blocks import ImageChooserBlock
 
 
@@ -36,10 +38,28 @@ class StandoutItemsBlock(blocks.StructBlock):
             )
 
 
+class InstagramEmbedValue(embed_blocks.EmbedValue):
+    def embed(self):
+        return embeds.get_embed(self.url)
+
+
+class InstagramEmbedBlock(embed_blocks.EmbedBlock):
+    class Meta:
+        icon = "fa-instagram"
+        template = "patterns/atoms/instagram-post/instagram-post.html"
+
+    def to_python(self, value):
+        """Override to replace the EmbedValue with the custom class."""
+        if not value:
+            return None
+        else:
+            return InstagramEmbedValue(value)
+
+
 class InstagramPostGalleryBlock(blocks.StreamBlock):
     posts = blocks.StreamBlock(
         required=False,
-        local_blocks=[("post", embed_blocks.EmbedBlock())],
+        local_blocks=[("post", InstagramEmbedBlock())],
         min_num=8,
         max_num=8,
         template="patterns/molecules/instagram-gallery/instagram-gallery.html",

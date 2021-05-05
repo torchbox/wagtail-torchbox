@@ -1,9 +1,10 @@
-{% load wagtailimages_tags %}
+{% with value.embed as embed %}
 <div class="instagram-post">
-    <a href="{{ post.url }}" aria-label="Instagram post by {{ post.author_name }}" target="_blank" nofollow noreferrer>
-        <img class="instagram-post__image" src="{{ post.thumbnail_url }}" alt="Instagram post by {{ post.author_name }}" loading="lazy" crossorigin="anonymous" />
+    <a href="{{ embed.url }}" aria-label="Instagram post by {{ embed.author_name }}" target="_blank" nofollow noreferrer>
+        <img class="instagram-post__image" src="{{ embed.thumbnail_url }}" alt="Instagram post by {{ embed.author_name }}" loading="lazy" crossorigin="anonymous" />
         <svg class="instagram-post__icon" viewBox="0 0 100 100">
             <use xlink:href="#instagram" href="#instagram" />
         </svg>
     </a>
 </div>
+{% endwith %}
