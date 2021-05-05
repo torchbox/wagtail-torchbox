@@ -9,7 +9,7 @@
 <div class="careers">
     {# Hero #}
     <div class="careers__hero">
-        {% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url classes="hero__full-screen--short" %}
+        {% include "patterns/molecules/hero/full_page_hero.html" with background_url=hero_image.url classes="hero__full-screen--short hero__full-screen--image-overlay" %}
         {% include "patterns/molecules/title-block/title-block.html" with title=page.strapline classes="title-block--transparent title-block--careers" %}
     </div>
 
@@ -20,6 +20,9 @@
                 {{ page.intro|richtext }}
             </div>
         {% endif %}
+
+        {# Card links #}
+        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all classes="card-listing--single" %}
 
         {# Sunday Times top 100 image #}
         <img src="{% static 'images/sunday-times-100-best-companies.jpg' %}" alt="Employees at the annual Torchfest event" loading="lazy">
@@ -41,11 +44,6 @@
         </div>
     {% endif %}
 
-    {# Card links #}
-    <div class="careers__container careers__container--bottom">
-        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all classes="card-listing--single" %}
-    </div>
-
     {# Standout list #}
     {% if standout_items %}
         {% include "patterns/organisms/related-content/related-content.html" with items=standout_items %}
@@ -54,6 +52,11 @@
     {% if page.blogs_section_title %}
         {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="blog-listing--careers" blogs_section_heading=True %}
     {% endif %}
+
+    {# Card links #}
+    <div class="careers__container careers__container--bottom">
+        {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all classes="card-listing--single" %}
+    </div>
 </div>
 
 {% block contact %}{% endblock %}

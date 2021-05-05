@@ -3,12 +3,9 @@
     grid-template-columns: 1fr;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    margin-bottom: ($gutter * 4);
 
     @include media-query(medium) {
         grid-template-columns: 1fr;
-    }
-
-    &--single {
-        width: 100%;
     }
 }
