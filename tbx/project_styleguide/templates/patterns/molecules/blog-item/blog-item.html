@@ -3,8 +3,8 @@
 <a class="blog-item {% if classes %}{{ classes }}{% endif %}" href="{{ item.url }}">
     <h3 class="blog-item__title">{{ item.title }}</h3>
 
-    {% if item.intro %}
-        <p class="blog-item__intro">{{item.intro}}</p>
+    {% if item.description %}
+        <p class="blog-item__intro">{{ item.description }}</p>
     {% endif %}
 
     {% if item.author %}

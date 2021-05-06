@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "tbx.sign_up_form",
     "tbx.taxonomy",
     "tbx.work",
+    "tbx.events",
     "wagtail.contrib.search_promotions",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
