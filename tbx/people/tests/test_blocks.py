@@ -29,18 +29,22 @@ class TestInstagramEmbedBlock(test.TestCase):
         error = cm.exception
         self.assertIn("Instagram", error.message)
 
-    def test_clean_validation_error_instagram_non_post_url(self):
-        """This makes sure the override is still using the embed block validation."""
-        block = InstagramEmbedBlock()
-        value = InstagramEmbedValue("https://www.instagram.com/about")
+    # The following tests need to reach out the actual emebd endpoint.
+    # I am commenting them out for use in CI. You can uncomment them when working
+    # on the custom block locally.
 
-        with self.assertRaises(exceptions.ValidationError):
-            block.clean(value=value)
+    # def test_clean_validation_error_instagram_non_post_url(self):
+    #     """This makes sure the override is still using the embed block validation."""
+    #     block = InstagramEmbedBlock()
+    #     value = InstagramEmbedValue("https://www.instagram.com/about")
 
-    def test_clean_returns_value_object_instagram_post_url(self):
-        block = InstagramEmbedBlock()
-        value = InstagramEmbedValue("https://www.instagram.com/p/COSlPitLfU3/")
+    #     with self.assertRaises(exceptions.ValidationError):
+    #         block.clean(value=value)
 
-        result = block.clean(value=value)
+    # def test_clean_returns_value_object_instagram_post_url(self):
+    #     block = InstagramEmbedBlock()
+    #     value = InstagramEmbedValue("https://www.instagram.com/p/COSlPitLfU3/")
 
-        self.assertEqual(value.url, result.url)
+    #     result = block.clean(value=value)
+
+    #     self.assertEqual(value.url, result.url)
