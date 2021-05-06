@@ -1,4 +1,4 @@
-from django.utils.functional import cached_property
+from django.core import exceptions
 
 from wagtail.core import blocks
 from wagtail.embeds import blocks as embed_blocks, embeds
@@ -39,6 +39,8 @@ class StandoutItemsBlock(blocks.StructBlock):
 
 
 class InstagramEmbedValue(embed_blocks.EmbedValue):
+    """Custom Embed value that allow access to represented embed object."""
+
     def embed(self):
         return embeds.get_embed(self.url)
 
@@ -48,12 +50,29 @@ class InstagramEmbedBlock(embed_blocks.EmbedBlock):
         icon = "fa-instagram"
         template = "patterns/atoms/instagram-post/instagram-post.html"
 
-    def to_python(self, value):
+    def value_from_form(self, value):
         """Override to replace the EmbedValue with the custom class."""
         if not value:
             return None
         else:
             return InstagramEmbedValue(value)
+
+    def to_python(self, value):
+        """
+        Override to replace the EmbedValue with the custom class.
+
+        This makes use of the fact that in the original EmbedBlock, the
+        `value_from_form` and `to_python` functions are identical.
+
+        """
+        return self.value_from_form(value)
+
+    def clean(self, value):
+        if isinstance(value, InstagramEmbedValue) and not value.url.startswith(
+            "https://www.instagram.com/"
+        ):
+            raise exceptions.ValidationError("Please specify an Instagram URL.")
+        return super().clean(value)
 
 
 class InstagramPostGalleryBlock(blocks.StreamBlock):
