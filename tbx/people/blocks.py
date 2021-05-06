@@ -1,7 +1,8 @@
 from django.core import exceptions
 
 from wagtail.core import blocks
-from wagtail.embeds import blocks as embed_blocks, embeds
+from wagtail.embeds import blocks as embed_blocks
+from wagtail.embeds import embeds
 from wagtail.images.blocks import ImageChooserBlock
 
 
