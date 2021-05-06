@@ -23,7 +23,6 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.people.blocks import StandoutItemsBlock
 from tbx.people.blocks import InstagramPostGalleryBlock, StandoutItemsBlock
 from tbx.people.forms import ContactForm
 
