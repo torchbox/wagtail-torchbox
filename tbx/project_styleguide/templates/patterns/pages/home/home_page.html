@@ -1,9 +1,10 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
+{% block theme_class %}theme--dark--transparent{% endblock %}
+
 {% block content %}
     <h1>{{ page.title }}</h1>
-
 
     {% block contact %}{% endblock %}
 {% endblock %}

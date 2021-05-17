@@ -34,4 +34,8 @@
     .template__error & {
         padding: 0;
     }
+
+    .template__homepage & {
+        background-color: var(--color--dark-indigo);
+    }
 }
