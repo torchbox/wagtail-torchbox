@@ -52,6 +52,13 @@
                 top: -15px;
             }
         }
+
+        &__title {
+            display: flex;
+            position: relative;
+            line-height: 35px;
+            transition: all $transition-quick;
+        }
     }
 
     // Mobile menu
@@ -81,6 +88,97 @@
             position: relative;
             top: -10px;
             right: -15px;
+        }
+    }
+
+    &__button {
+        position: relative;
+        background-color: transparent;
+        border: 0;
+        color: var(--color--header-links);
+        display: flex;
+        align-items: center;
+        line-height: 1;
+
+        &:focus,
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__dots {
+        position: relative;
+        width: 6px;
+        height: 6px;
+        border-radius: 5px;
+        background-color: var(--color--header-links);
+        color: var(--color--header-links);
+        display: inline-block;
+        margin-left: 20px;
+
+        &::after,
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+
+        &::before {
+            left: -10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: var(--color--header-links);
+            color: var(--color--header-links);
+        }
+
+        &::after {
+            left: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: var(--color--header-links);
+            color: var(--color--header-links);
+        }
+    }
+
+    // Home page mods
+    .primary-nav--home & {
+        &__title {
+            font-weight: $weight--heavy;
+            font-size: map-get($medium-font-sizes, l);
+            text-shadow: 0 0, 0 3px var(--color--link), 4px 0 var(--color--link),
+                0 0;
+        }
+
+        &__link {
+            &::before {
+                content: '';
+                position: absolute;
+                width: 25%;
+                height: 6px;
+                bottom: 3px;
+                left: 0;
+                background-color: var(--color--underline);
+                transition: width $transition-quick;
+            }
+
+            &::after {
+                display: none;
+            }
+
+            &:hover,
+            &:focus,
+            &--active {
+                &::before {
+                    width: 100%;
+                }
+            }
+        }
+
+        &__button {
+            font-weight: $weight--heavy;
         }
     }
 }
