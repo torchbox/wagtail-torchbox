@@ -3,8 +3,26 @@
 
 {% block theme_class %}theme--dark--transparent{% endblock %}
 
+{% block header %}{% endblock %}
+
 {% block content %}
-    <h1>{{ page.title }}</h1>
+    <div class="home">
+
+        {# Heading #}
+        <h1 class="home__heading"><span>Digital</span> for good.</h1>
+
+        {# Shards SVG window + video #}
+        <div class="shards">
+            <svg class="shards__window" aria-hidden="true">
+                <use xlink:href="#shards-window"/>
+            </svg>
+
+            <video width="1024" height="576" class="shards__video" loop autoplay muted>
+                <source src="{% static 'images/dinner.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
 
     {% block contact %}{% endblock %}
 {% endblock %}

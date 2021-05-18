@@ -1,0 +1,22 @@
+.shards {
+    width: 100%;
+    height: 576px;
+    position: relative;
+    overflow: hidden;
+
+    &__window {
+        fill: var(--color--dark-indigo);
+        position: absolute;
+        z-index: 1;
+        width: 1024px;
+        height: 646px;
+        right: -60px;
+        top: -60px;
+    }
+
+    &__video {
+        position: absolute;
+        right: -60px;
+        top: 0;
+    }
+}

@@ -1,0 +1,18 @@
+.home {
+    display: grid;
+    grid-template-columns: 1fr 1024px;
+    align-items: flex-end;
+
+    &__heading {
+        color: var(--color--white);
+        font-size: 97px;
+        line-height: 97px;
+        margin-right: 0;
+        font-weight: $weight--heavy;
+
+        span {
+            display: block;
+            color: var(--color--coral);
+        }
+    }
+}
