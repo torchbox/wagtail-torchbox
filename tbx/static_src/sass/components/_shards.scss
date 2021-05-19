@@ -8,6 +8,7 @@
     &__window {
         fill: var(--color--dark-indigo);
         z-index: 1;
+        background-color: var(--color--white); // temp whilst there is no video
     }
 
     &__video {
