@@ -1,0 +1,43 @@
+.subnav {
+    background-color: var(--color--white);
+    padding: 20px;
+    border-radius: 12px;
+    position: absolute;
+    min-width: 180px;
+    left: 10px;
+    top: 50px;
+
+    &__item {
+        margin-bottom: 5px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &--with-badge {
+            position: relative;
+        }
+    }
+
+    &__link {
+        font-weight: $weight--bold;
+        @include link-underscore(0);
+        position: relative;
+        border-bottom: 0;
+        transition: all $transition-quick;
+        color: var(--color--link);
+        overflow: hidden;
+        display: inline-block;
+
+        &:hover,
+        &:focus,
+        &--active {
+            color: var(--color--link);
+            @include link-underscore(2);
+        }
+    }
+
+    &__badge-link {
+        position: relative;
+    }
+}

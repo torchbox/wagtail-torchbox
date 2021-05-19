@@ -1,5 +1,6 @@
 .nav-item {
     $root: &;
+    margin-right: 3.5vw;
 
     // Desktop menu
     .desktop-nav & {
@@ -16,6 +17,22 @@
 
             @include media-query(menu-break) {
                 margin-right: 70px;
+            }
+        }
+
+        &--with-children {
+            position: relative;
+            padding-left: 3.5vw;
+            margin-right: 0;
+
+            &::before {
+                content: '';
+                height: 70px;
+                width: 1px;
+                background-color: var(--color--white);
+                position: absolute;
+                left: 0;
+                bottom: -25px;
             }
         }
 
@@ -99,6 +116,7 @@
         display: flex;
         align-items: center;
         line-height: 1;
+        padding: 0;
 
         &:focus,
         &:hover {
@@ -153,6 +171,8 @@
         }
 
         &__link {
+            overflow: visible;
+
             &::before {
                 content: '';
                 position: absolute;

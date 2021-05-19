@@ -12,6 +12,14 @@
         padding-top: ($gutter / 2);
     }
 
+    &--home {
+        margin-left: 3.5vw;
+
+        @include media-query(large) {
+            margin-top: ($gutter * 3);
+        }
+    }
+
     &__list {
         display: flex;
         list-style: none;

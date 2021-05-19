@@ -16,20 +16,31 @@
             </a>
         </li>
 
-        <li class="nav-item nav-item--button">
-            <button class="nav-item__button">
+        {# Subnav #}
+        <li class="nav-item nav-item--with-children" x-data="{ isOpen: true }">
+            <button class="nav-item__button" @click="isOpen = !isOpen">
                 More
                 <span class="nav-item__dots"></span>
             </button>
-            <ul style="display: none">
-                <li class="nav-item nav-item--with-badge">
-                    <a class="nav-item__link {% if page.slug == 'culture-and-jobs' %}nav-item__link--active{% endif %}" href="/culture-and-jobs/">
-                        <span class="nav-item__title">Culture + jobs</span>
-                    </a>
 
+            <ul class="subnav" x-show.transition="isOpen">
+                <li class="subnav__item">
+                    <a class="subnav__link {% if page.slug == 'blog' %}subnav__link--active{% endif %}" href="/blog/">
+                        <span class="subnav__title">Blog</span>
+                    </a>
+                </li>
+                <li class="subnav__item">
+                    <a class="subnav__link {% if page.slug == 'work' %}subnav__link--active{% endif %}" href="/work/">
+                        <span class="subnav__title">Work</span>
+                        </a>
+                    </li>
+                    <li class="subnav__item subnav__item--with-badge">
+                        <a class="subnav__link {% if page.slug == 'culture-and-jobs' %}subnav__link--active{% endif %}" href="/culture-and-jobs/">
+                        <span class="subnav__title">Culture + jobs</span>
+                    </a>
                     {% if job_count %}
-                        <a class="nav-item__badge-link" href="/jobs/">
-                            {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                        <a class="subnav__badge-link" href="/jobs/">
+                            {% include "patterns/atoms/badge/badge.html" with total=job_count classes="badge--desktop" %}
                         </a>
                     {% endif %}
                 </li>

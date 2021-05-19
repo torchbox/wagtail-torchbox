@@ -1,4 +1,5 @@
 import '@babel/polyfill';
+import 'alpinejs';
 
 import CookieWarning from './components/cookie-message';
 import SeeMorePosts from './components/see-more-posts';

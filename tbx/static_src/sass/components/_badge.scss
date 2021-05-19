@@ -28,6 +28,11 @@
         }
     }
 
+    &--desktop {
+        right: -20px;
+        top: -20px;
+    }
+
     .mobile-nav & {
         &::before {
             top: 3px;

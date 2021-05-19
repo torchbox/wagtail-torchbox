@@ -14,7 +14,7 @@
         margin-left: ($gutter * 2);
 
         @include media-query(large) {
-            margin-left: ($gutter * 4);
+            margin-left: 3.5vw;
             margin-top: ($gutter * 8);
         }
 
