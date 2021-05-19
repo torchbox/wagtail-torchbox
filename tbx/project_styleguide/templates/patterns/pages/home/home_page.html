@@ -13,14 +13,15 @@
 
         {# Shards SVG window + video #}
         <div class="shards">
-            <svg class="shards__window" aria-hidden="true">
-                <use xlink:href="#shards-window"/>
-            </svg>
-
-            <video width="1024" height="576" class="shards__video" loop autoplay muted>
-                <source src="{% static 'images/dinner.mp4' %}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <div class="responsive-object" style="padding-bottom: 56.25%">
+                <svg class="shards__window" aria-hidden="true">
+                    <use xlink:href="#shards-window"/>
+                </svg>
+                <video width="1024" height="576" class="shards__video" loop autoplay muted>
+                    <source src="{% static 'images/dinner.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
     </div>
 

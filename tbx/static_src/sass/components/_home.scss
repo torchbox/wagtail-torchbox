@@ -1,7 +1,9 @@
 .home {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    align-items: flex-end;
+    @include media-query(large) {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+    }
 
     &__heading {
         color: var(--color--white);
@@ -9,6 +11,12 @@
         line-height: 97px;
         margin-right: 0;
         font-weight: $weight--heavy;
+        margin-left: ($gutter * 2);
+
+        @include media-query(large) {
+            margin-left: ($gutter * 4);
+            margin-top: ($gutter * 8);
+        }
 
         span {
             display: block;

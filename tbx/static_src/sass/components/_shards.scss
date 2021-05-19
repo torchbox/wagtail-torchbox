@@ -1,23 +1,20 @@
 .shards {
     width: 100%;
-    max-width: 1024px;
-    height: 576px;
-    position: relative;
+    min-height: 576px;
     overflow: hidden;
+    max-width: 1024px;
+    position: relative;
 
     &__window {
         fill: var(--color--dark-indigo);
-        position: absolute;
         z-index: 1;
-        width: 1024px;
-        height: 646px;
-        right: -60px;
-        top: -60px;
     }
 
     &__video {
         position: absolute;
         right: -60px;
         top: 0;
+        max-width: 1024px;
+        max-height: 576px;
     }
 }
