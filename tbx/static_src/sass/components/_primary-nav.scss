@@ -17,6 +17,7 @@
 
         @include media-query(large) {
             margin-top: ($gutter * 3);
+            padding-bottom: ($gutter * 3);
         }
     }
 
