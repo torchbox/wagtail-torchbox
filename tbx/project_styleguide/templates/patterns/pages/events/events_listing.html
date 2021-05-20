@@ -10,7 +10,7 @@
     {# Events #}
     <div class="events">
         <div class="events__container">
-            {% for event in events %}
+            {% for event in page.events.all %}
                 {% include "patterns/molecules/blog-item/blog-item.html" with item=event classes="blog-item--standout" %}
             {% endfor %}
         </div>

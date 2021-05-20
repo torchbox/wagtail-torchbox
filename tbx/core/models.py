@@ -496,3 +496,30 @@ class MainMenu(BaseSetting):
     panels = [
         StreamFieldPanel("menu"),
     ]
+
+
+class EventIndexPage(Page):
+    template = "patterns/pages/events/events_listing.html"
+
+    content_panels = [
+        FieldPanel("title", classname="full title"),
+        InlinePanel("events", label="events"),
+    ]
+
+
+class EventIndexPageEvents(Orderable):
+    page = ParentalKey("torchbox.EventIndexPage", related_name="events")
+
+    title = models.TextField()
+    description = RichTextField(blank=True)
+    link_external = models.URLField("External link")
+    date = models.DateField("Event date")
+    event_type = models.TextField(blank=True)
+
+    panels = [
+        FieldPanel("title"),
+        FieldPanel("description"),
+        FieldPanel("link_external"),
+        FieldPanel("date"),
+        FieldPanel("event_type"),
+    ]

@@ -1,10 +1,14 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<a class="blog-item {% if classes %}{{ classes }}{% endif %}" href="{{ item.url }}">
+<a class="blog-item {% if classes %}{{ classes }}{% endif %}" href="{% firstof item.url item.link_external %}">
     <h3 class="blog-item__title">{{ item.title }}</h3>
 
     {% if item.intro %}
-        <p class="blog-item__intro">{{item.intro}}</p>
+        <p class="blog-item__intro">{{ item.intro }}</p>
+    {% endif %}
+
+    {% if item.description %}
+        <p class="blog-item__intro">{{ item.description|richtext }}</p>
     {% endif %}
 
     {% if item.author %}
@@ -18,8 +22,8 @@
                 <span class="blog-item__author-details">
             {% endif %}
                     <span class="blog-item__author-role">{{ item.author.role }}</span>
-                    {% if item.type %}
-                        <span class="blog-item__author-date">{{ item.type }}</span>
+                    {% if item.event_type %}
+                        <span class="blog-item__author-date">{{ item.event_type }}</span>
                     {% endif %}
             {% if item.date %}
                     <span class="blog-item__author-date">{{ item.date }}</span>
