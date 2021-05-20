@@ -143,7 +143,8 @@ class BaseServicePage(Page):
                 "author": featured.blog_post.first_author,
                 "date": featured.blog_post.date,
             }
-            for featured in self.featured_blog_posts.filter(blog_post__live=True)
+            for featured in self.featured_blog_posts.all()
+            if featured.blog_post.live
         ]
 
     def get_context(self, request):
