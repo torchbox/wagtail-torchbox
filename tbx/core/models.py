@@ -17,6 +17,7 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from .api import PeopleHRFeed
 from .blocks import StoryBlock
@@ -515,10 +516,18 @@ class EventIndexPageEvents(Orderable):
     link_external = models.URLField("External link")
     date = models.DateField("Event date")
     event_type = models.TextField(blank=True)
+    author = models.ForeignKey(
+        "people.Author",
+        on_delete=models.CASCADE,
+        related_name="+",
+        null=True,
+        verbose_name="Host",
+    )
 
     panels = [
         FieldPanel("title"),
         FieldPanel("description"),
+        SnippetChooserPanel("author"),
         FieldPanel("link_external"),
         FieldPanel("date"),
         FieldPanel("event_type"),
