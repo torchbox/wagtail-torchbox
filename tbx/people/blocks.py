@@ -1,7 +1,10 @@
 from django.core import exceptions
+from django.utils import functional as utils_functional
+from django.template import loader as template_loader
 
 from wagtail.core import blocks
 from wagtail.embeds import blocks as embed_blocks
+from wagtail.embeds import exceptions as embed_exceptions
 from wagtail.embeds import embeds
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -42,14 +45,24 @@ class StandoutItemsBlock(blocks.StructBlock):
 class InstagramEmbedValue(embed_blocks.EmbedValue):
     """Custom Embed value that allow access to represented embed object."""
 
-    def embed(self):
-        return embeds.get_embed(self.url)
+    @utils_functional.cached_property
+    def html(self):
+        try:
+            embed = embeds.get_embed(self.url)
+        except embed_exceptions.EmbedException:
+            return ""
+
+        return template_loader.render_to_string(
+            template_name="patterns/atoms/instagram-post/instagram-post.html",
+            context={
+                "embed": embed,
+            }
+        )
 
 
 class InstagramEmbedBlock(embed_blocks.EmbedBlock):
     class Meta:
         icon = "fa-instagram"
-        template = "patterns/atoms/instagram-post/instagram-post.html"
 
     def value_from_form(self, value):
         """Override to replace the EmbedValue with the custom class."""

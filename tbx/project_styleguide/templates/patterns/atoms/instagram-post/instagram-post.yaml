@@ -1,6 +1,5 @@
 context:
-  value:
-    embed:
-      url: https://example.com
-      author_name: torchboxltd
-      thumbnail_url: https://placekitten.com/480/360
+  embed:
+    url: https://example.com
+    author_name: torchboxltd
+    thumbnail_url: https://placekitten.com/480/360

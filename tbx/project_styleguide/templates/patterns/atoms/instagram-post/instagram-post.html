@@ -1,8 +1,6 @@
-{% with value.embed as embed %}
 <a class="instagram-post" href="{{ embed.url }}" aria-label="Instagram post by {{ embed.author_name }}" target="_blank" nofollow noreferrer>
     <img class="instagram-post__image" src="{{ embed.thumbnail_url }}" alt="Instagram post by {{ embed.author_name }}" loading="lazy" crossorigin="anonymous" />
     <svg class="instagram-post__icon" viewBox="0 0 100 100" aria-hidden="true">
         <use xlink:href="#instagram" href="#instagram" />
     </svg>
 </a>
-{% endwith %}
