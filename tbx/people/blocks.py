@@ -1,11 +1,11 @@
 from django.core import exceptions
-from django.utils import functional as utils_functional
 from django.template import loader as template_loader
+from django.utils import functional as utils_functional
 
 from wagtail.core import blocks
 from wagtail.embeds import blocks as embed_blocks
-from wagtail.embeds import exceptions as embed_exceptions
 from wagtail.embeds import embeds
+from wagtail.embeds import exceptions as embed_exceptions
 from wagtail.images.blocks import ImageChooserBlock
 
 
