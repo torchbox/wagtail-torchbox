@@ -54,9 +54,7 @@ class InstagramEmbedValue(embed_blocks.EmbedValue):
 
         return template_loader.render_to_string(
             template_name="patterns/atoms/instagram-post/instagram-post.html",
-            context={
-                "embed": embed,
-            }
+            context={"embed": embed,},
         )
 
 
@@ -96,7 +94,7 @@ class InstagramPostGalleryBlock(blocks.StreamBlock):
         min_num=8,
         max_num=8,
         template="patterns/molecules/instagram-gallery/instagram-gallery.html",
-        icon="fa-instagram"
+        icon="fa-instagram",
     )
 
     class Meta:
