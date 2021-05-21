@@ -96,6 +96,7 @@ class InstagramPostGalleryBlock(blocks.StreamBlock):
         min_num=8,
         max_num=8,
         template="patterns/molecules/instagram-gallery/instagram-gallery.html",
+        icon="fa-instagram"
     )
 
     class Meta:
