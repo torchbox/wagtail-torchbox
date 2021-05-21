@@ -54,7 +54,7 @@ class InstagramEmbedValue(embed_blocks.EmbedValue):
 
         return template_loader.render_to_string(
             template_name="patterns/atoms/instagram-post/instagram-post.html",
-            context={"embed": embed,},
+            context={"embed": embed},
         )
 
 
