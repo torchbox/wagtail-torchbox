@@ -1,0 +1,68 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<div class="cta-block">
+    <svg class="cta-block__cluster-icon" aria-hidden="true">
+        <use xlink:href="#cluster" />
+    </svg>
+    <div class="cta-block__inner">
+        <div class="cta-block__intro">
+            <div class="cta-block__intro-container">
+                <h2 class="cta-block__title">{{ cta.title }}</h2>
+
+                {% if cta.description %}
+                    <p class="cta-block__desc">{{ cta.description }}</p>
+                {% endif %}
+
+                {% image cta.image width-1280 %}
+            </div>
+        </div>
+        {# TODO: Replace with real wagtail form - linked to Zoom #}
+        <form method="post" class="form cta-block__form">
+            <div class="form__container cta-block__form-container">
+                <div class="field">
+                    <label for="{{ field.id_for_label }}" class="field__label">
+                        First Name
+                        <span class="field__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="text" />
+                </div>
+                <div class="field">
+                    <label for="{{ field.id_for_label }}" class="field__label">
+                        Last Name
+                        <span class="field__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="text" />
+                </div>
+                <div class="field">
+                    <label for="{{ field.id_for_label }}" class="field__label">
+                        Phone
+                    </label>
+                    <input type="text" />
+                </div>
+                <div class="field">
+                    <label for="{{ field.id_for_label }}" class="field__label">
+                        Email
+                        <span class="field__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="text" />
+                </div>
+                <div class="field">
+                    <label for="{{ field.id_for_label }}" class="field__label">
+                        Organisation
+                        <span class="field__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="text" />
+                </div>
+                <div class="field">
+                    <label for="{{ field.id_for_label }}" class="field__label">
+                        Job Title
+                        <span class="field__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="text" />
+                </div>
+
+            </div>
+            <button class="button form__submit" type="submit">Sign up</button>
+        </form>
+    </div>
+</div>

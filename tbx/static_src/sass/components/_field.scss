@@ -1,0 +1,87 @@
+.field {
+    $root: &;
+    margin-bottom: 20px;
+
+    &--errors {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px dotted var(--color--coral-dark);
+    }
+
+    /* stylelint-disable selector-class-pattern  */
+    &--radio-select,
+    &--checkbox-input,
+    &--checkbox-select-multiple {
+        #{$root}__radio-checkbox {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        #{$root}__label {
+            margin: 0 0 0 10px;
+            font-weight: $weight--medium;
+        }
+
+        #{$root}__label--multiple {
+            margin: 0 0 5px;
+            font-weight: $weight--bold;
+        }
+    }
+
+    &--hidden_input {
+        display: none;
+    }
+    /* stylelint-enable */
+
+    &__required {
+        color: var(--color--coral-dark);
+    }
+
+    &__label,
+    &__label--multiple {
+        @include font-size(xxxs);
+        margin: 0 0 2px;
+        line-height: 1.4;
+        color: var(--color--accent-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: bold;
+    }
+
+    &__errors {
+        @include font-size(s);
+        margin-bottom: 10px;
+        font-weight: $weight--bold;
+        color: var(--color--coral-dark);
+    }
+
+    &__help {
+        @include font-size(s);
+        margin-top: 5px;
+        color: rgba(var(--color--primary), 0.6);
+    }
+
+    &__fieldset {
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    // stylelint-disable-next-line selector-max-specificity
+    input:not([type='checkbox']):not([type='radio']):not([type='submit']),
+    textarea,
+    select {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: 2px solid var(--color--black-translucent);
+        border-radius: 5px;
+
+        &:focus {
+            outline: 0;
+            border-color: var(--color--dark-indigo);
+        }
+    }
+}

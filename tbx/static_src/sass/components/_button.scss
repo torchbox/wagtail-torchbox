@@ -1,0 +1,18 @@
+.button {
+    background: var(--color--coral);
+    border: 0;
+    border-radius: 4px;
+    color: var(--color--white);
+    font-weight: $weight--bold;
+    display: block;
+    padding: 10px 30px;
+    transition: all $transition-quick;
+
+    &:hover {
+        background: var(--color--lagoon);
+        border-color: var(--color--lagoon);
+        color: var(--color--dark-indigo);
+        padding: 10px 60px;
+        cursor: pointer;
+    }
+}

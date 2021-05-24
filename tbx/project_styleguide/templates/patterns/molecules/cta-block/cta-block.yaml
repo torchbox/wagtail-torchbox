@@ -1,0 +1,14 @@
+context:
+  cta:
+    title: Sign-up for our next What's New in Wagtail webinar
+    description: |
+      Hear about all the exciting features in the latest release. Register your place here
+
+tags:
+  image:
+    cta.image width-1280:
+      raw: '<img src="https://placekitten.com/1280/680">'
+
+  pageurl:
+    item:
+      raw: '#'
