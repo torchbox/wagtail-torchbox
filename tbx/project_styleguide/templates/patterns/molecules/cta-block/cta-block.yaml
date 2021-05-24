@@ -6,8 +6,8 @@ context:
 
 tags:
   image:
-    cta.image width-1280:
-      raw: '<img src="https://placekitten.com/1280/680">'
+    cta.image width-1280 class="cta-block__image":
+      raw: '<img src="https://placekitten.com/1280/680" class="cta-block__image">'
 
   pageurl:
     item:
