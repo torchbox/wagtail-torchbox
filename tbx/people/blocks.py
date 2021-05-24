@@ -1,6 +1,6 @@
 from django.core import exceptions
-from django.template import loader as template_loader
-from django.utils import functional as utils_functional
+from django.template.loader import render_to_string
+from django.utils.functional import cached_property
 
 from wagtail.core import blocks
 from wagtail.embeds import blocks as embed_blocks
@@ -45,14 +45,14 @@ class StandoutItemsBlock(blocks.StructBlock):
 class InstagramEmbedValue(embed_blocks.EmbedValue):
     """Custom Embed value that allow access to represented embed object."""
 
-    @utils_functional.cached_property
+    @cached_property
     def html(self):
         try:
             embed = embeds.get_embed(self.url)
         except embed_exceptions.EmbedException:
             return ""
 
-        return template_loader.render_to_string(
+        return render_to_string(
             template_name="patterns/atoms/instagram-post/instagram-post.html",
             context={"embed": embed},
         )
