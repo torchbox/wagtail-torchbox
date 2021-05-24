@@ -22,7 +22,6 @@ services:
     ports:
       - 8000:8000 # runserver
       - 8001:8001 # mkdocs serve
-      - 6900:6900 # pudb
     volumes:
       - ./README.md:/app/README.md:delegated,ro
       - ./docs:/app/docs:delegated,ro
@@ -72,8 +71,11 @@ services:
     build:
       context: .
       dockerfile: ./dockerfiles/Dockerfile.utils
+    tty: true
     volumes:
-      - ./media:/app/media:delegated
+      - ./media:/app/media:delegated,rw
+      - ./database_dumps:/app/database_dumps:delegated,rw
+    command: tail -f /dev/null
 
   db:
     image: postgres:12.3
@@ -89,6 +91,8 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
     logging:
       driver: none
+    volumes:
+      - ./database_dumps:/app/database_dumps:delegated,rw
 
   redis:
     image: redis:3.0

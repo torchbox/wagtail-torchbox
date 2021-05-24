@@ -57,6 +57,12 @@
     <div class="careers__container careers__container--bottom">
         {% include "patterns/organisms/card-listing/card-listing.html" with card_items=page.links.all classes="card-listing--single" %}
     </div>
+
+    {# Instagram gallery #}
+    {% if page.instagram_posts %}
+        {% include_block page.instagram_posts %}
+    {% endif %}
+
 </div>
 
 {% block contact %}{% endblock %}

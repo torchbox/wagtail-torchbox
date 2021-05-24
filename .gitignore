@@ -3,6 +3,7 @@
 *.swp
 /venv/
 /.venv/
+.python-version
 /static/
 static_compiled/
 /media/
@@ -16,3 +17,4 @@ node_modules*
 /None
 *.log
 /.vscode/
+.env

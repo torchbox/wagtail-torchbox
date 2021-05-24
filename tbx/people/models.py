@@ -23,7 +23,7 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.people.blocks import StandoutItemsBlock
+from tbx.people.blocks import InstagramPostGalleryBlock, StandoutItemsBlock
 from tbx.people.forms import ContactForm
 
 
@@ -138,6 +138,8 @@ class CulturePage(Page):
         verbose_name="Blog posts",
     )
 
+    instagram_posts = StreamField(InstagramPostGalleryBlock, blank=True, null=True)
+
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
@@ -162,6 +164,7 @@ class CulturePage(Page):
             heading="Featured Blog Posts",
             classname="collapsible",
         ),
+        StreamFieldPanel("instagram_posts"),
     ]
 
     class Meta:
