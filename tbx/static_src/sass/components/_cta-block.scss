@@ -80,7 +80,10 @@
             @supports (display: grid) {
                 display: grid;
                 grid-gap: 10px;
-                grid-template-columns: repeat(auto-fit, minmax(calc(50% - 20px), 1fr));
+                grid-template-columns: repeat(
+                    auto-fit,
+                    minmax(calc(50% - 20px), 1fr)
+                );
             }
         }
 
@@ -98,7 +101,10 @@
 
         @include media-query(xl) {
             @supports (display: grid) {
-                grid-template-columns: repeat(auto-fit, minmax(calc(50% - 20px), 1fr));
+                grid-template-columns: repeat(
+                    auto-fit,
+                    minmax(calc(50% - 20px), 1fr)
+                );
             }
 
             .field {
