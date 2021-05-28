@@ -13,6 +13,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from tbx.blog.models import BlogIndexPage
+from tbx.work.models import WorkIndexPage
 
 
 class BaseServicePage(Page):
@@ -150,6 +151,7 @@ class BaseServicePage(Page):
         context.update(
             featured_blog_posts=self.get_featured_blog_posts(),
             blog_index_page=BlogIndexPage.objects.live().first(),
+            work_index_page=WorkIndexPage.objects.live().first(),
         )
         return context
 
