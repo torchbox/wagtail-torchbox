@@ -7,7 +7,7 @@ authors = ["Torchbox Ltd"]
 [tool.poetry.dependencies]
 python = "^3.8"
 django = "~2.2"
-wagtail = "~2.12"
+wagtail = "2.13.rc2"
 psycopg2 = "~2.8"
 gunicorn = {version = "~20.0", optional = true}
 wagtail-django-recaptcha = "1.0"
@@ -27,6 +27,7 @@ wagtail-markdown = "^0.6"
 wagtailfontawesome = "^1.2.1"
 django-phonenumber-field = "^5.0.0"
 phonenumbers = "^8.12.12"
+wagtail-purge = "^0.1"
 
 [tool.poetry.extras]
 gunicorn = ["gunicorn"]

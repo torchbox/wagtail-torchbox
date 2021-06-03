@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
-<div class="hero">
+<div class="hero {% if classes %}{{ classes }}{% endif %}">
     <div class="hero__container">
         <div class="hero__content">
             <h1 class="hero__title">{{ title|richtext }}</h1>
@@ -8,7 +8,9 @@
             {% endif %}
         </div>
 
-        {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page title=page.service %}
+        {% if in_page_nav %}
+            {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page title=page.service %}
+        {% endif %}
 
         {% if page.greeting_image_type == 'woman-left' %}
             {% include "patterns/atoms/animated-characters/women.html" %}

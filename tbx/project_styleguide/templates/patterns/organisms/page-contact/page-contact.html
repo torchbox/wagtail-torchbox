@@ -1,8 +1,7 @@
 <div class="page__contact">
-
     <div class="contact-block">
         <div class="contact-block__container">
-            <h1 class="contact-block__title">Get in touch to talk about your project</h1>
+            <h2 class="contact-block__title">Get in touch to talk about your project</h2>
             <div class="contact-block__content">
                 <ul class="contact-block__reasons">
                     <li class="reason">
@@ -11,7 +10,7 @@
                                 <span>1</span>
                             </div>
                             <div class="reason__content">
-                                <h2 class="reason__title">Chemistry?</h2>
+                                <h3 class="reason__title">Chemistry?</h3>
                                 <p class="reason__description">We like to meet. Early on. It’s the best way to work out whether we are a fit.</p>
                             </div>
                         </div>
@@ -22,7 +21,7 @@
                                 <span>2</span>
                             </div>
                             <div class="reason__content">
-                                <h2 class="reason__title">De-risk your project</h2>
+                                <h3 class="reason__title">De-risk your project</h3>
                                 <p class="reason__description">We can remove the barriers to getting your project going. Ask us how we do this.</p>
                             </div>
                         </div>
@@ -33,7 +32,7 @@
                                 <span>3</span>
                             </div>
                             <div class="reason__content">
-                                <h2 class="reason__title">Your brief</h2>
+                                <h3 class="reason__title">Your brief</h3>
                                 <p class="reason__description">If you’ve got a brief, we’d love to see it. If you haven’t, talk to us before you write it, we can help.</p>
                             </div>
                         </div>
@@ -55,18 +54,4 @@
             </div>
         </div>
     </div>
-
 </div>
-
-{% if page.teasers %}
-<div class="teaser-list">
-    <div class="teaser-list__container">
-        <h3 class="teaser-list__title">More from Torchbox...</h3>
-        <div class="teaser-list__content">
-            {% for teaser in page.teasers %}
-                {% include "patterns/molecules/teaser/teaser.html" with item=teaser %}
-            {% endfor %}
-        </div>
-    </div>
-</div>
-{% endif %}

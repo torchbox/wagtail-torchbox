@@ -18,8 +18,8 @@ class StandoutItemsBlock(blocks.StructBlock):
             required = False
             max_num = 1
 
-    title = blocks.CharBlock()
     subtitle = blocks.CharBlock()
+    title = blocks.CharBlock()
     description = blocks.TextBlock()
     image = ImageChooserBlock()
     link = LinkBlock()

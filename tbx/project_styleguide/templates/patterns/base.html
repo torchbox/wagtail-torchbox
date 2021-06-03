@@ -15,7 +15,7 @@
             domain to prevent search engines crawling admin domains.
             This ignores ports for simplicity.
         {% endcomment %}
-        {% if SEO_NOINDEX or request.get_host != current_site.hostname %}
+        {% if SEO_NOINDEX or request.get_host != current_site.hostname or page.slug == 'incident' %}
             <meta name="robots" content="noindex">
         {% endif %}
 
@@ -43,6 +43,10 @@
                 {% block contact %}
                     {% include "patterns/organisms/page-contact/page-contact.html" %}
                 {% endblock %}
+
+                {% if page.teasers %}
+                    {% include "patterns/organisms/page-teasers/page-teasers.html" %}
+                {% endif %}
             {% endif %}
         </main>
 

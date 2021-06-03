@@ -3,6 +3,7 @@
 *.swp
 /venv/
 /.venv/
+.env
 .python-version
 /static/
 static_compiled/
@@ -18,3 +19,4 @@ node_modules*
 *.log
 /.vscode/
 .env
+/database_dumps/

@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     "pattern_library",
     "tbx.project_styleguide.apps.ProjectStyleguideConfig",
     "wagtailaccessibility",
+    "wagtail_purge",
 ]
 
 MIDDLEWARE = [
@@ -168,6 +169,8 @@ STATIC_ROOT = env.get("STATIC_DIR", os.path.join(BASE_DIR, "static"))
 STATIC_URL = env.get("STATIC_URL", "/static/")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+# Place static files that need a specific URL (such as robots.txt and favicon.ico) in the "public" folder
+WHITENOISE_ROOT = os.path.join(BASE_DIR, "public")
 
 # Media files
 
