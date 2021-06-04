@@ -6,9 +6,8 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0026_culturepage_instagram_posts'),
-        ('people', '0024_auto_20210412_1428'),
+        ("people", "0026_culturepage_instagram_posts"),
+        ("people", "0024_auto_20210412_1428"),
     ]
 
-    operations = [
-    ]
+    operations = []
