@@ -16,7 +16,6 @@ from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from .api import PeopleHRFeed
@@ -496,39 +495,4 @@ class MainMenu(BaseSetting):
 
     panels = [
         StreamFieldPanel("menu"),
-    ]
-
-
-class EventIndexPage(Page):
-    template = "patterns/pages/events/events_listing.html"
-
-    content_panels = [
-        FieldPanel("title", classname="full title"),
-        InlinePanel("events", label="events"),
-    ]
-
-
-class EventIndexPageEvents(Orderable):
-    page = ParentalKey("torchbox.EventIndexPage", related_name="events")
-
-    title = models.TextField()
-    description = RichTextField(blank=True)
-    link_external = models.URLField("External link")
-    date = models.DateField("Event date")
-    event_type = models.TextField(blank=True)
-    author = models.ForeignKey(
-        "people.Author",
-        on_delete=models.CASCADE,
-        related_name="+",
-        null=True,
-        verbose_name="Host",
-    )
-
-    panels = [
-        FieldPanel("title"),
-        FieldPanel("description"),
-        SnippetChooserPanel("author"),
-        FieldPanel("link_external"),
-        FieldPanel("date"),
-        FieldPanel("event_type"),
     ]
