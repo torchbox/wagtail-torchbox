@@ -4,7 +4,6 @@ from django import forms
 from django.db import models
 
 from modelcluster.models import ClusterableModel
-
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.core.models import (
     Orderable,
