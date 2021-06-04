@@ -8,13 +8,17 @@
         #{$root}__heading {
             color: var(--color--white);
         }
+    }
 
-        #{$root}__span {
-            color: var(--color--coral);
-        }
+    &--careers {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
-        #{$root}__second-span {
-            color: var(--color--white);
+        #{$root}__heading {
+            max-width: $wrapper--small;
+            margin: 0 auto $gutter;
         }
     }
 

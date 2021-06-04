@@ -17,5 +17,7 @@ static_compiled/
 node_modules*
 /None
 *.log
+/.vscode/
+.env
 /database_dumps/
 /.vscode/

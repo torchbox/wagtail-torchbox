@@ -1,4 +1,4 @@
-.culture {
+.careers {
     $root: &;
 
     &__container {
@@ -15,6 +15,7 @@
         }
 
         &--bottom {
+            padding-top: ($gutter * 2);
             margin-bottom: ($gutter * 2);
 
             @include media-query(large) {
@@ -63,8 +64,12 @@
     }
 
     &__hero {
-        height: 70vh;
-        min-height: 700px;
+        height: 400px;
         position: relative;
+
+        @include media-query(medium) {
+            height: 70vh;
+            min-height: 700px;
+        }
     }
 }

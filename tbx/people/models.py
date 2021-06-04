@@ -20,12 +20,10 @@ from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.core.blocks import StoryBlock
-from tbx.people.blocks import StandoutItemsBlock
+from tbx.people.blocks import InstagramPostGalleryBlock, StandoutItemsBlock
 from tbx.people.forms import ContactForm
 
 
@@ -114,13 +112,11 @@ class CulturePageLink(Orderable):
     ]
 
 
+# Was previously the culture page until it was re-purposed to be the careers page
 class CulturePage(Page):
-    template = "patterns/pages/culture/culture_page.html"
+    template = "patterns/pages/careers/careers_page.html"
 
     strapline = models.TextField()
-    strapline_visible = models.BooleanField(
-        help_text="Hide strapline visually but leave it readable by screen " "readers."
-    )
     hero_image = models.ForeignKey(
         "torchbox.TorchboxImage",
         null=True,
@@ -129,19 +125,8 @@ class CulturePage(Page):
         related_name="+",
     )
     intro = RichTextField(blank=True)
-    body = StreamField(StoryBlock())
-
     benefits_heading = RichTextField(blank=True)
     benefits_section_title = models.TextField(blank=True, default="Benefits")
-
-    contact = models.ForeignKey(
-        "people.Contact",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="+",
-    )
-
     standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
 
     blogs_section_title = models.CharField(
@@ -153,15 +138,14 @@ class CulturePage(Page):
         verbose_name="Blog posts",
     )
 
+    instagram_posts = StreamField(InstagramPostGalleryBlock, blank=True, null=True)
+
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
-        FieldPanel("strapline_visible"),
         ImageChooserPanel("hero_image"),
         FieldPanel("intro", classname="full"),
         InlinePanel("links", label="Link"),
-        StreamFieldPanel("body"),
-        SnippetChooserPanel("contact"),
         MultiFieldPanel(
             [
                 FieldPanel("benefits_section_title", classname="full"),
@@ -180,6 +164,7 @@ class CulturePage(Page):
             heading="Featured Blog Posts",
             classname="collapsible",
         ),
+        StreamFieldPanel("instagram_posts"),
     ]
 
     class Meta:
