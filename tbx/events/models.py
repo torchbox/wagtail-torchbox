@@ -1,15 +1,18 @@
 import datetime
 
-from django.db import models
 from django import forms
+from django.db import models
 
 from modelcluster.models import ClusterableModel
-
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
-from wagtail.core.models import Orderable, Page, ParentalKey, ParentalManyToManyField
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
-
 from tbx.taxonomy.models import Service
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.core.models import (
+    Orderable,
+    Page,
+    ParentalKey,
+    ParentalManyToManyField,
+)
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 
 class EventIndexPage(Page):
