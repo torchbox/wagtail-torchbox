@@ -1,0 +1,22 @@
+{% extends "patterns/base_page.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+    {# Title and Filters #}
+    {% include "patterns/molecules/title-block/title-block.html" with item=page tags=related_services %}
+
+    {# Events #}
+    <div class="events">
+        <div class="events__container {% if not events %}events__container--empty{% endif %}">
+            {% for event in events %}
+                {% include "patterns/molecules/event-item/event-item.html" with item=event classes="blog-item--standout" %}
+            {% empty %}
+                <p class="events__empty">There are no upcoming events. <br>Check back soon as we add them regularly!</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block contact %}{% endblock %}

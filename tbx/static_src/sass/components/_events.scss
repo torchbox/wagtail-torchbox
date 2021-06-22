@@ -1,0 +1,26 @@
+.events {
+    @include container();
+
+    &__container {
+        margin: 0 0 ($grid * 4);
+
+        @include media-query(large) {
+            margin: ($grid * 6) $variable-gutter--small ($grid * 4)
+                $variable-gutter--medium;
+            max-width: 700px;
+        }
+
+        &--empty {
+            margin: ($grid * 2) 0 ($grid * 4);
+
+            @include media-query(large) {
+                margin: ($grid * 3) $variable-gutter--small ($grid * 6)
+                    $variable-gutter--medium;
+            }
+        }
+    }
+
+    &__empty {
+        @include font-size(m);
+    }
+}
