@@ -11,7 +11,7 @@
     <div class="events">
         <div class="events__container {% if not events %}events__container--empty{% endif %}">
             {% for event in events %}
-                {% include "patterns/molecules/blog-item/blog-item.html" with item=event classes="blog-item--standout" %}
+                {% include "patterns/molecules/event-item/event-item.html" with item=event classes="blog-item--standout" %}
             {% empty %}
                 <p class="events__empty">There are no upcoming events. <br>Check back soon as we add them regularly!</p>
             {% endfor %}

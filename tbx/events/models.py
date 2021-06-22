@@ -43,7 +43,7 @@ class EventIndexPage(Page):
         return context
 
 
-class Event(ClusterableModel, Orderable):
+class Event(Orderable):
     page = ParentalKey(EventIndexPage, related_name="events")
     title = models.CharField(max_length=255)
     intro = models.TextField(verbose_name="Description")
