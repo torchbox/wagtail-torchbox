@@ -3,6 +3,7 @@ import datetime
 from django import forms
 from django.db import models
 
+from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.core.models import (
     Orderable,
@@ -42,7 +43,7 @@ class EventIndexPage(Page):
         return context
 
 
-class Event(Orderable):
+class Event(ClusterableModel, Orderable):
     page = ParentalKey(EventIndexPage, related_name="events")
     title = models.CharField(max_length=255)
     intro = models.TextField(verbose_name="Description")
