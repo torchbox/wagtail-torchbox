@@ -1,3 +1,4 @@
+{% load wagtailcore_tags %}
 <div class="process__block">
     {% include "patterns/atoms/section-title/section-title.html" with title=section_title %}
     <div class="process__container">
@@ -13,5 +14,11 @@
                 {% include "patterns/molecules/process-item/process-item.html" with item=process %}
             {% endfor %}
         </div>
+
+        {% if section_cta %}
+            <div class="process__cta">
+                {{ section_cta|richtext }}
+            </div>
+        {% endif %}
     </div>
 </div>
