@@ -1,6 +1,7 @@
 context:
   has_process_block_image: True
   section_title: Process
+  section_cta: <h2>Find out more…</h2><p>Email us at <a href="mailto:test@example.com">test@example.com</a></p>
   processes:
     - title: Lorem ipsum dolor sit amet.
       description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.

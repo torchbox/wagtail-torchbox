@@ -59,6 +59,11 @@ class BaseServicePage(Page):
     )
     use_process_block_image = models.BooleanField(default=False)
     heading_for_processes = models.TextField(blank=True, null=True)
+    process_section_cta = RichTextField(
+        verbose_name="Process section CTA",
+        blank=True,
+        help_text="An opportunity to use a more flexible call to action, if the main “Contact” fields aren’t suitable",
+    )
 
     # Section titles
     key_points_section_title = models.TextField(blank=True, default="Services")
@@ -108,6 +113,7 @@ class BaseServicePage(Page):
                 FieldPanel("heading_for_processes", classname="full"),
                 FieldPanel("use_process_block_image", classname="full"),
                 InlinePanel("processes", label="Processes"),
+                FieldPanel("process_section_cta", classname="full"),
             ],
             heading="Processes",
             classname="collapsible",

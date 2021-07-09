@@ -13,7 +13,7 @@
 
     {% if page.process_section_title %}
         <div class="service-section process" id="{{ page.process_section_title|slugify }}" data-service-section>
-            {% include "patterns/organisms/process-block/process-block.html" with processes=page.processes.all section_title=page.process_section_title has_process_block_image=page.use_process_block_image %}
+            {% include "patterns/organisms/process-block/process-block.html" with processes=page.processes.all section_title=page.process_section_title section_cta=page.process_section_cta has_process_block_image=page.use_process_block_image %}
         </div>
     {% endif %}
 
