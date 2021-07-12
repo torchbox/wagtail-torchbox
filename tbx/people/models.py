@@ -65,7 +65,7 @@ class PersonPage(Page):
     ]
 
     @cached_property
-    def author_blogs(self):
+    def author_posts(self):
         # return the blogs writen by this member
         author_snippet = Author.objects.get(person_page__pk=self.pk)
 
@@ -77,9 +77,9 @@ class PersonPage(Page):
                 "author": blog_post.first_author,
                 "date": blog_post.date,
             }
-            for blog_post in BlogPage.objects.filter(
-                authors__author=author_snippet
-            ).order_by("-date")
+            for blog_post in BlogPage.objects.live()
+            .filter(authors__author=author_snippet)
+            .order_by("-date")
         ]
 
 
@@ -157,7 +157,7 @@ class ValuesPage(Page):
     intro = RichTextField(blank=True)
     standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
     blogs_section_title = models.CharField(
-        blank=True, max_length=100, verbose_name="Title",
+        blank=True, max_length=100, verbose_name="Title"
     )
     featured_blog_posts = StreamField(
         [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
@@ -191,7 +191,7 @@ class ValuesPage(Page):
                 "title": standout_item.value["title"],
                 "subtitle": standout_item.value["subtitle"],
                 "description": standout_item.value["description"],
-                "url": standout_item.block.get_link(standout_item.value["link"],),
+                "url": standout_item.block.get_link(standout_item.value["link"]),
                 "image": standout_item.value["image"],
             }
             for standout_item in self.standout_items
