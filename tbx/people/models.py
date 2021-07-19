@@ -24,6 +24,7 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
+from tbx.work.models import WorkPage
 from tbx.core.blocks import StoryBlock
 from tbx.people.blocks import StandoutItemsBlock
 from tbx.people.forms import ContactForm
@@ -81,6 +82,20 @@ class PersonPage(Page):
             .filter(authors__author=author_snippet)
             .order_by("-date")
         ]
+
+    @property
+    def related_works(self):
+        # Get author
+        author_snippet = Author.objects.get(person_page__pk=self.pk)
+
+        # Get 2 work pages by this author
+        works = (
+            WorkPage.objects.filter(authors__author=author_snippet)
+            .live()
+            .distinct()
+            .order_by("-date")[:2]
+        )
+        return works
 
 
 # Person index

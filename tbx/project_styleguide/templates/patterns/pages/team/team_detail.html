@@ -30,7 +30,7 @@
         <div class="blog-listing" id="thinking">
             <div class="blog-listing__content">
                 {% include "patterns/atoms/section-title/section-title.html" with title="More of "|add:page.title.split.0|add:"'s thinking" %}
-                <div class="blog-listing__list blog-listing__list--horizontal">
+                <div class="blog-listing__list blog-listing__list--horizontal {% if page.related_works %} u--pb-0 {% endif %}">
                     {% for post in page.author_posts %}
                         {% if forloop.first %}
                             <div class="blog-listing__feature">
@@ -40,6 +40,18 @@
                             {% include "patterns/molecules/blog-item/blog-item.html" with item=post %}
                         {% endif %}
                     {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.related_works %}
+        <div class="page__showcase">
+            <div class="casestudies">
+                {% include "patterns/atoms/section-title/section-title.html" with title="More of our work" %}
+                <div class="casestudies__list">
+                    {% include "patterns/organisms/work-listing/work-listing.html" with works=page.related_works %}
+                    {% include "patterns/atoms/see-more/see-more.html" with link=page.work_index.url text="See more case studies" %}
                 </div>
             </div>
         </div>
