@@ -1,9 +1,11 @@
 .nav-item {
     $root: &;
 
-    &:last-child {
-        #{$root}__link {
-            @include media-query(large) {
+    @include media-query(menu-break) {
+        margin-right: 70px;
+
+        &:last-child {
+            @include media-query(menu-break) {
                 margin-right: 0;
             }
         }
@@ -23,15 +25,9 @@
         color: var(--color--header-links);
         border-top: 0;
         border-bottom: 0;
-        margin-right: 39px; // max we can go without nav label wrapping
         margin-bottom: 0;
         padding: 0;
         transition: all $transition-quick;
-
-        @include media-query(large) {
-            margin-right: 70px;
-            overflow: hidden;
-        }
 
         &:hover,
         &:focus,

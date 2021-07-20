@@ -1,5 +1,6 @@
 .hero {
     $root: &;
+    overflow: hidden;
 
     @include media-query(medium) {
         padding-bottom: 5vh;
