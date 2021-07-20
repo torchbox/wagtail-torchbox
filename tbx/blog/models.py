@@ -221,7 +221,7 @@ class BlogPage(Page):
     def related_works(self):
         services = self.related_services.all()
 
-        # Get 2 work pages with the same service
+        # Get the latest 2 work pages with the same service
         works = (
             WorkPage.objects.filter(related_services__in=services)
             .live()

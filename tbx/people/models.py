@@ -24,10 +24,10 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.work.models import WorkPage
 from tbx.core.blocks import StoryBlock
 from tbx.people.blocks import StandoutItemsBlock
 from tbx.people.forms import ContactForm
+from tbx.work.models import WorkPage
 
 
 class PersonPage(Page):
@@ -88,7 +88,7 @@ class PersonPage(Page):
         # Get author
         author_snippet = Author.objects.get(person_page__pk=self.pk)
 
-        # Get 2 work pages by this author
+        # Get the latest 2 work pages by this author
         works = (
             WorkPage.objects.filter(authors__author=author_snippet)
             .live()
