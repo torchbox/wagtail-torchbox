@@ -248,7 +248,7 @@ class BlogPage(Page):
 
     content_panels = [
         FieldPanel("title", classname="full title"),
-        InlinePanel("authors", label="Author"),
+        InlinePanel("authors", label="Author", min_num=1),
         FieldPanel("date"),
         StreamFieldPanel("body"),
         InlinePanel("related_links", label="Related links"),
