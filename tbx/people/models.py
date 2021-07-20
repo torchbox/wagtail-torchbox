@@ -25,6 +25,7 @@ from wagtail.snippets.models import register_snippet
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.people.blocks import InstagramPostGalleryBlock, StandoutItemsBlock
 from tbx.people.forms import ContactForm
+from tbx.work.models import WorkPage
 
 
 class PersonPage(Page):
@@ -79,6 +80,17 @@ class PersonPage(Page):
             .filter(authors__author=author_snippet)
             .order_by("-date")
         ]
+
+    @cached_property
+    def related_works(self):
+        # Get the latest 2 work pages by this author
+        works = (
+            WorkPage.objects.filter(authors__author__person_page=self.pk)
+            .live()
+            .distinct()
+            .order_by("-date")[:2]
+        )
+        return works
 
 
 # Person index

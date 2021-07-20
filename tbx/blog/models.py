@@ -7,6 +7,7 @@ from django.db import models
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
+from django.utils.functional import cached_property
 
 from bs4 import BeautifulSoup
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
@@ -27,6 +28,7 @@ from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.taxonomy.models import Service
+from tbx.work.models import WorkPage
 
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
@@ -215,6 +217,19 @@ class BlogPage(Page):
             .order_by("-first_published_at")
             .exclude(pk=self.pk)[:2]
         ]
+
+    @cached_property
+    def related_works(self):
+        services = self.related_services.all()
+
+        # Get the latest 2 work pages with the same service
+        works = (
+            WorkPage.objects.filter(related_services__in=services)
+            .live()
+            .distinct()
+            .order_by("-date")[:2]
+        )
+        return works
 
     @property
     def blog_index(self):
