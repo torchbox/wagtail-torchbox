@@ -7,6 +7,7 @@ from django.db import models
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
+from django.utils.functional import cached_property
 
 from bs4 import BeautifulSoup
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
@@ -217,7 +218,7 @@ class BlogPage(Page):
             .exclude(pk=self.pk)[:2]
         ]
 
-    @property
+    @cached_property
     def related_works(self):
         services = self.related_services.all()
 
