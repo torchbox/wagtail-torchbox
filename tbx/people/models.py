@@ -83,14 +83,11 @@ class PersonPage(Page):
             .order_by("-date")
         ]
 
-    @property
+    @cached_property
     def related_works(self):
-        # Get author
-        author_snippet = Author.objects.get(person_page__pk=self.pk)
-
         # Get the latest 2 work pages by this author
         works = (
-            WorkPage.objects.filter(authors__author=author_snippet)
+            WorkPage.objects.filter(authors__author=self.pk)
             .live()
             .distinct()
             .order_by("-date")[:2]
