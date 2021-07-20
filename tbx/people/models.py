@@ -87,7 +87,7 @@ class PersonPage(Page):
     def related_works(self):
         # Get the latest 2 work pages by this author
         works = (
-            WorkPage.objects.filter(authors__author=self.pk)
+            WorkPage.objects.filter(authors__author__person_page=self.pk)
             .live()
             .distinct()
             .order_by("-date")[:2]
