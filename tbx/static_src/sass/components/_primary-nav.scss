@@ -7,7 +7,7 @@
         padding-top: $gutter;
     }
 
-    @include media-query(xlarge) {
+    @include media-query(menu-break) {
         display: block;
         padding-top: ($gutter / 2);
     }

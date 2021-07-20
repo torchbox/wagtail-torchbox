@@ -10,7 +10,7 @@
     text-align: center;
     cursor: pointer;
 
-    @include media-query(xlarge) {
+    @include media-query(menu-break) {
         display: none;
     }
 

@@ -1,11 +1,11 @@
 .nav-item {
     $root: &;
 
-    @include media-query(xlarge) {
+    @include media-query(menu-break) {
         margin-right: 70px;
 
         &:last-child {
-            @include media-query(xlarge) {
+            @include media-query(menu-break) {
                 margin-right: 0;
             }
         }

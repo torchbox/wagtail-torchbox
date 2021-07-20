@@ -9,7 +9,7 @@
     color: var(--color--get-in-touch-numbers);
     transition: color $transition;
 
-    @include media-query(xlarge) {
+    @include media-query(menu-break) {
         position: absolute;
         right: -25px;
     }
