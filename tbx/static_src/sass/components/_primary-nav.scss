@@ -7,22 +7,21 @@
         padding-top: $gutter;
     }
 
-    @include media-query(large) {
+    @include media-query(xlarge) {
         display: block;
         padding-top: ($gutter / 2);
     }
 
     &__list {
         display: flex;
-        flex-wrap: wrap;
         list-style: none;
         padding: 0;
-        margin: 0 0 -$grid;
+        margin: 0;
 
         li {
             float: left;
             width: auto;
-            padding: 0 0 $grid 0;
+            padding: 0;
             white-space: nowrap;
         }
     }
