@@ -433,7 +433,7 @@ def heroku_login(c):
     """
     Log into the Heroku app for accessing config vars, database backups etc.
     """
-    subprocess.call(["docker-compose", "exec", "utils", "heroku", "login"])
+    subprocess.call(["docker-compose", "exec", "utils", "heroku", "login", "-i"])
 
 
 def check_if_logged_in_to_heroku(c):

@@ -68,3 +68,17 @@ def footerlinks(context):
         ].footer_links,
         "request": request,
     }
+
+
+# Footer teaser snippets
+@register.inclusion_tag(
+    "patterns/molecules/navigation/teaser-list.html", takes_context=True
+)
+def footerteasers(context):
+    request = context["request"]
+    return {
+        "footerteasers": context["settings"]["navigation"][
+            "NavigationSettings"
+        ].footer_teasers,
+        "request": request,
+    }
