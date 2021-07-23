@@ -1,5 +1,6 @@
-<a class="instagram-post" href="{{ embed.url }}" aria-label="Instagram post by {{ embed.author_name }}" target="_blank" nofollow noreferrer>
-    <img class="instagram-post__image" src="{{ embed.thumbnail_url }}" alt="Instagram post by {{ embed.author_name }}" loading="lazy" crossorigin="anonymous" />
+{% load wagtailimages_tags %}
+<a class="instagram-post" href="{% if post.value.link %}{{ post.value.link }}{% else %}https://www.instagram.com/torchboxltd/{% endif %}" aria-label="" target="_blank" nofollow noreferrer>
+    {% image post.value.image fill-500x500 class="instagram-post__image" loading="lazy" %}
     <svg class="instagram-post__icon" viewBox="0 0 100 100" aria-hidden="true">
         <use xlink:href="#instagram" href="#instagram" />
     </svg>
