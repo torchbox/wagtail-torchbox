@@ -138,7 +138,9 @@ class CulturePage(Page):
         verbose_name="Blog posts",
     )
 
-    instagram_posts = StreamField([("post", InstagramPostsBlock())], blank=True, null=True, min_num=8, max_num=8)
+    instagram_posts = StreamField(
+        [("post", InstagramPostsBlock())], blank=True, null=True, min_num=8, max_num=8
+    )
 
     content_panels = [
         FieldPanel("title", classname="full title"),
