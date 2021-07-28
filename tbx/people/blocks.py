@@ -35,7 +35,7 @@ class StandoutItemsBlock(blocks.StructBlock):
             )
 
 
-class InstagramPostsBlock(blocks.StructBlock):
+class InstagramEmbedBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     link = blocks.URLBlock(
         required=False,
