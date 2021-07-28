@@ -404,10 +404,11 @@ class GlobalSettings(BaseSetting):
         null=True,
         on_delete=models.SET_NULL,
         help_text="Ensure this person has telephone and email fields set",
+        blank=True,
     )
-    contact_widget_intro = models.TextField()
-    contact_widget_call_to_action = models.TextField()
-    contact_widget_button_text = models.TextField()
+    contact_widget_intro = models.TextField(blank=True)
+    contact_widget_call_to_action = models.TextField(blank=True)
+    contact_widget_button_text = models.TextField(blank=True)
 
     class Meta:
         verbose_name = "Global Settings"
