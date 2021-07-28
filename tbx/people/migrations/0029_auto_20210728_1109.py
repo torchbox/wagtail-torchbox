@@ -9,13 +9,33 @@ import wagtail.images.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0028_auto_20210604_1234'),
+        ("people", "0028_auto_20210604_1234"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='culturepage',
-            name='instagram_posts',
-            field=wagtail.core.fields.StreamField([('post', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('link', wagtail.core.blocks.URLBlock(help_text='Link to a specific post here or leave blank for it to link to https://www.instagram.com/torchboxltd/', required=False))]))], blank=True, null=True),
+            model_name="culturepage",
+            name="instagram_posts",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "post",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("image", wagtail.images.blocks.ImageChooserBlock()),
+                                (
+                                    "link",
+                                    wagtail.core.blocks.URLBlock(
+                                        help_text="Link to a specific post here or leave blank for it to link to https://www.instagram.com/torchboxltd/",
+                                        required=False,
+                                    ),
+                                ),
+                            ]
+                        ),
+                    )
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]
