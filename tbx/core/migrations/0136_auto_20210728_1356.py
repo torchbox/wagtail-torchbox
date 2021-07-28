@@ -7,28 +7,35 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('torchbox', '0135_auto_20210728_1218'),
+        ("torchbox", "0135_auto_20210728_1218"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='globalsettings',
-            name='contact_person',
-            field=models.ForeignKey(blank=True, help_text='Ensure this person has telephone and email fields set', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='people.PersonPage'),
+            model_name="globalsettings",
+            name="contact_person",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="Ensure this person has telephone and email fields set",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="people.PersonPage",
+            ),
         ),
         migrations.AlterField(
-            model_name='globalsettings',
-            name='contact_widget_button_text',
+            model_name="globalsettings",
+            name="contact_widget_button_text",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='globalsettings',
-            name='contact_widget_call_to_action',
+            model_name="globalsettings",
+            name="contact_widget_call_to_action",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='globalsettings',
-            name='contact_widget_intro',
+            model_name="globalsettings",
+            name="contact_widget_intro",
             field=models.TextField(blank=True),
         ),
     ]
