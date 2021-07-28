@@ -60,7 +60,11 @@
 
     {# Instagram gallery #}
     {% if page.instagram_posts %}
-        {% include_block page.instagram_posts %}
+        <div class="instagram-gallery">
+            {% for post in page.instagram_posts %}
+                {% include "patterns/atoms/instagram-post/instagram-post.html" %}
+            {% endfor %}
+        </div>
     {% endif %}
 
 </div>
