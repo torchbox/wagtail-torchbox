@@ -386,11 +386,17 @@ class JobIndexPage(Page):
 
 @register_setting
 class GlobalSettings(BaseSetting):
-    oxford_address_title = models.CharField(max_length=255, help_text="Full address", blank=True)
+    oxford_address_title = models.CharField(
+        max_length=255, help_text="Full address", blank=True
+    )
     oxford_address = RichTextField(help_text="Full address", blank=True)
-    bristol_address_title = models.CharField(max_length=255, help_text="Full address", blank=True)
+    bristol_address_title = models.CharField(
+        max_length=255, help_text="Full address", blank=True
+    )
     bristol_address = RichTextField(help_text="Full address", blank=True)
-    us_address_title = models.CharField(max_length=255, help_text="Full address", blank=True)
+    us_address_title = models.CharField(
+        max_length=255, help_text="Full address", blank=True
+    )
     us_address = RichTextField(help_text="Full address", blank=True)
     cambridge_address = RichTextField(help_text="Full address", blank=True)
     cambridge_address_title = models.CharField(
