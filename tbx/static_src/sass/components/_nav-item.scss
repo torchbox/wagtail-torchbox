@@ -30,7 +30,6 @@
             margin-bottom: 0;
             padding: 0;
             transition: all $transition-quick;
-            line-height: 35px;
 
             @include media-query(large) {
                 margin-right: 70px;
