@@ -1,19 +1,15 @@
 {% load wagtailcore_tags %}
-<nav class="primary-nav">
-    <ul class="primary-nav__list">
-        {% for item in primarynav %}
-            {% with link=item.value %}
-                <li class="nav-item {% if forloop.last and job_count > 0 %}nav-item--with-badge{% endif %}">
-                    <a class="nav-item__link" href="{% pageurl link.page %}">
-                        {% firstof link.title link.page.title %}
-                    </a>
-                    {% if forloop.last and job_count > 0 %}
-                        <a class="nav-item__badge-link" href="/jobs/">
-                            {% include "patterns/atoms/badge/badge.html" with total=job_count %}
-                        </a>
-                    {% endif %}
-                </li>
-            {% endwith %}
-        {% endfor %}
-    </ul>
-</nav>
+{% for item in primarynav %}
+    {% with link=item.value %}
+        <li class="nav-item {% if forloop.last and job_count > 0 %}nav-item--with-badge{% endif %}">
+            <a class="nav-item__link" href="{% pageurl link.page %}">
+                {% firstof link.title link.page.title %}
+            </a>
+            {% if forloop.last and job_count > 0 %}
+                <a class="nav-item__badge-link" href="/jobs/">
+                    {% include "patterns/atoms/badge/badge.html" with total=job_count %}
+                </a>
+            {% endif %}
+        </li>
+    {% endwith %}
+{% endfor %}
