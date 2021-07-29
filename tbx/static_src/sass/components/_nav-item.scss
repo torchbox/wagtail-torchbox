@@ -1,51 +1,77 @@
 .nav-item {
     $root: &;
 
-    &:last-child {
-        #{$root}__link {
-            @include media-query(large) {
-                margin-right: 0;
+    // Desktop menu
+    .desktop-nav & {
+        &:last-child {
+            #{$root}__link {
+                @include media-query(large) {
+                    margin-right: 0;
+                }
             }
         }
-    }
 
-    &--with-badge {
-        position: relative;
-    }
-
-    &__link {
-        @include font-size(s);
-        @include link-underscore(0);
-        display: block;
-        position: relative;
-        line-height: 20px;
-        text-decoration: none;
-        height: 40px;
-        color: var(--color--header-links);
-        border-top: 0;
-        border-bottom: 0;
-        margin-right: 39px; // max we can go without nav label wrapping
-        margin-bottom: 0;
-        padding: 0;
-        transition: all $transition-quick;
-        line-height: 35px;
-
-        @include media-query(large) {
-            margin-right: 70px;
-            overflow: hidden;
+        &--with-badge {
+            position: relative;
         }
 
-        &:hover,
-        &:focus,
-        &--active {
-            @include link-underscore(4);
+        &__link {
+            @include font-size(s);
+            @include link-underscore(0);
+            display: block;
+            position: relative;
+            line-height: 20px;
+            text-decoration: none;
+            height: 40px;
             color: var(--color--header-links);
+            border-top: 0;
+            border-bottom: 0;
+            margin-right: 39px; // max we can go without nav label wrapping
+            margin-bottom: 0;
+            padding: 0;
+            transition: all $transition-quick;
+            line-height: 35px;
+
+            @include media-query(large) {
+                margin-right: 70px;
+                overflow: hidden;
+            }
+
+            &:hover,
+            &:focus,
+            &--active {
+                @include link-underscore(4);
+                color: var(--color--header-links);
+            }
+        }
+
+        &__badge-link {
+            position: absolute;
+            top: 0;
+            right: 0;
         }
     }
 
-    &__badge-link {
-        position: absolute;
-        top: 0;
-        right: 0;
+    // Mobile menu
+    .mobile-nav & {
+        border-top: 1px solid hsla(0, 0, 100%, 0.2);
+
+        &--with-badge {
+            display: flex;
+            align-items: center;
+        }
+
+        &__link {
+            @include font-size(s);
+            display: block;
+            color: var(--color--white);
+            padding: $gutter 0;
+            border: 0;
+            font-weight: $weight--bold;
+
+            &:hover {
+                color: var(--color--white);
+            }
+        }
     }
 }
