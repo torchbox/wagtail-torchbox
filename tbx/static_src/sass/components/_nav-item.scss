@@ -14,6 +14,7 @@
     }
 
     &__link {
+        @include font-size(s);
         @include link-underscore(0);
         display: block;
         position: relative;
@@ -27,6 +28,7 @@
         margin-bottom: 0;
         padding: 0;
         transition: all $transition-quick;
+        line-height: 35px;
 
         @include media-query(large) {
             margin-right: 70px;
@@ -39,14 +41,6 @@
             @include link-underscore(4);
             color: var(--color--header-links);
         }
-    }
-
-    &__title {
-        @include font-size(s);
-        display: flex;
-        position: relative;
-        line-height: 35px;
-        transition: all $transition-quick;
     }
 
     &__badge-link {
