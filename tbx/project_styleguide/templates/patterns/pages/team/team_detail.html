@@ -26,18 +26,18 @@
         </div>
     </div>
 
-    {% if page.author_blogs %}
+    {% if page.author_posts %}
         <div class="blog-listing" id="thinking">
             <div class="blog-listing__content">
                 {% include "patterns/atoms/section-title/section-title.html" with title="More of "|add:page.title.split.0|add:"'s thinking" %}
                 <div class="blog-listing__list blog-listing__list--horizontal">
-                    {% for blog in page.author_blogs %}
+                    {% for post in page.author_posts %}
                         {% if forloop.first %}
                             <div class="blog-listing__feature">
-                                {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                                {% include "patterns/molecules/blog-item/blog-item.html" with item=post %}
                             </div>
                         {% else %}
-                            {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
+                            {% include "patterns/molecules/blog-item/blog-item.html" with item=post %}
                         {% endif %}
                     {% endfor %}
                 </div>
