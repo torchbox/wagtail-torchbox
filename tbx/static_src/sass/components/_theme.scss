@@ -72,13 +72,14 @@ Get in touch numbers:
     /* stylelint-disable selector-class-pattern  */
     &--dark--transparent {
         --color--primary: var(--color--white);
-        --color--accent: var(--color--lagoon);
+        --color--accent: var(--color--coral);
         --color--link: var(--color--dark-indigo);
-        --color--underline: var(--color--lagoon);
+        --color--underline: var(--color--coral);
         --color--hover: var(--color--white);
         --color--background: transparent;
-        --color--section-title: var(--color-coral);
-        --color--header-icon-color: var(--color--lagoon);
+        --color--section-title: var(--color--coral);
+        --color--header-icon-color: var(--color--coral);
+        --icon-color: var(--color--coral);
         --color--get-in-touch-numbers: var(--color--dark-indigo);
         --color--header-links: var(--color--white);
     }
