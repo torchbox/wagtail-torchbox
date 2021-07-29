@@ -6,7 +6,11 @@
     {% elif value.alignment == 'right' %}streamfield__aligned-image--wrap-right
     {% endif %}"
 >
-    {% image value.image max-730x490 as aligned_image %}
+    {% if value.alignment == 'full' %}
+        {% image value.image max-1280x860 as aligned_image %}
+    {% else %}
+        {% image value.image max-730x490 as aligned_image %}
+    {% endif %}
     <img src="{{ aligned_image.url }}" alt="{{ aligned_image.alt }}" height="{{ aligned_image.height }}" width="{{ aligned_image.width }}" loading="lazy" />
     {% if value.caption %}
         <div class="streamfield__aligned-image-caption">
