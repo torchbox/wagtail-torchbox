@@ -24,6 +24,9 @@ Header icon used for:
 - Header icon
 Get in touch numbers:
 - Steps in the contact block
+Icon colour used for:
+- Tick list icon
+- Quote icon
 
 */
 
@@ -40,6 +43,7 @@ Get in touch numbers:
         --color--header-icon-color: var(--color--coral);
         --color--get-in-touch-numbers: var(--color-white);
         --color--header-links: var(--color--dark-indigo);
+        --color--icon: var(--color--coral);
     }
 
     &--coral {
@@ -53,6 +57,7 @@ Get in touch numbers:
         --color--header-icon-color: var(--color--dark-indigo);
         --color--get-in-touch-numbers: var(--color--white);
         --color--header-links: var(--color--dark-indigo);
+        --color--icon: var(--color--coral);
     }
 
     &--dark {
@@ -67,6 +72,7 @@ Get in touch numbers:
         --color--header-icon-color: var(--color--lagoon);
         --color--get-in-touch-numbers: var(--color--dark-indigo);
         --color--header-links: var(--color--white);
+        --color--icon: var(--color--lagoon);
     }
 
     /* stylelint-disable selector-class-pattern  */
@@ -79,7 +85,7 @@ Get in touch numbers:
         --color--background: transparent;
         --color--section-title: var(--color--coral);
         --color--header-icon-color: var(--color--coral);
-        --icon-color: var(--color--coral);
+        --color--icon: var(--color--coral);
         --color--get-in-touch-numbers: var(--color--dark-indigo);
         --color--header-links: var(--color--white);
     }
