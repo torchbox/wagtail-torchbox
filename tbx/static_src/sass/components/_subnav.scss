@@ -20,8 +20,8 @@
     }
 
     &__link {
-        font-weight: $weight--bold;
         @include link-underscore(0);
+        font-weight: $weight--bold;
         position: relative;
         border-bottom: 0;
         transition: all $transition-quick;
@@ -32,8 +32,8 @@
         &:hover,
         &:focus,
         &--active {
-            color: var(--color--link);
             @include link-underscore(2);
+            color: var(--color--link);
         }
     }
 
