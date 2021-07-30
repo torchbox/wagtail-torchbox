@@ -2,7 +2,7 @@
 {% for item in primarynav %}
     {% with link=item.value %}
         <li class="nav-item {% if link.page.slug == 'careers' and job_count > 0 %}nav-item--with-badge{% endif %}">
-            <a class="nav-item__link" href="">
+            <a class="nav-item__link" href="{% pageurl link.page %}">
                 {% firstof link.title link.page.title %}
             </a>
             {% if link.page.slug == 'careers' and job_count > 0 %}
