@@ -4,7 +4,7 @@
     &__container {
         display: block;
 
-        @include media-query(large) {
+        @include media-query(menu-break) {
             display: none;
         }
     }
