@@ -1,12 +1,12 @@
 {% load wagtailcore_tags %}
 {% for item in primarynav %}
     {% with link=item.value %}
-        <li class="nav-item {% if link.page.careers_link and job_count > 0 %}nav-item--with-badge{% endif %}">
-            <a class="nav-item__link" href="{% pageurl link.page %}">
+        <li class="nav-item {% if link.page.slug == 'careers' and job_count > 0 %}nav-item--with-badge{% endif %}">
+            <a class="nav-item__link" href="">
                 {% firstof link.title link.page.title %}
             </a>
-            {% if link.page.careers_link and job_count > 0 %}
-                <a class="nav-item__badge-link" href="{% pageurl link.page.careers_page %}">
+            {% if link.page.slug == 'careers' and job_count > 0 %}
+                <a class="nav-item__badge-link" href="/jobs/">
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                 </a>
             {% endif %}
