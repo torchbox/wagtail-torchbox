@@ -4,7 +4,7 @@
     grid-template-rows: auto auto;
 
     &__icon {
-        fill: var(--icon-color, var(--color--accent));
+        fill: var(--color--icon, var(--color--accent));
         width: 20vw;
         max-width: 100px;
         grid-column: 1;
@@ -62,7 +62,7 @@
         &.glide__bullet--active {
             width: 14px;
             height: 20px;
-            background: var(--icon-color, var(--color--accent));
+            background: var(--color--icon, var(--color--accent));
         }
     }
 
