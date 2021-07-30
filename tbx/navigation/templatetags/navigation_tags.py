@@ -13,7 +13,7 @@ def primarynav(context):
         "primarynav": context["settings"]["navigation"][
             "NavigationSettings"
         ].primary_navigation,
-        "job_count": 4,
+        "job_count": context["job_count"],
         "request": request,
     }
 
