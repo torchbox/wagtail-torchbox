@@ -7,7 +7,7 @@
         padding-top: $gutter;
     }
 
-    @include media-query(large) {
+    @include media-query(menu-break) {
         display: block;
         padding-top: ($gutter / 2);
     }
@@ -21,7 +21,7 @@
         li {
             float: left;
             width: auto;
-            padding: 0 0 0 0;
+            padding: 0;
             white-space: nowrap;
         }
     }
