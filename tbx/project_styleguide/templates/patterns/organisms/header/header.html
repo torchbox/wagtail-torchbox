@@ -1,6 +1,11 @@
+{% load navigation_tags %}
 <header class="header">
     <div class="header__inner">
         {% include "patterns/atoms/logo/logo.html" %}
-        {% include "patterns/molecules/primary-nav/primary-nav.html" %}
+        <nav class="primary-nav desktop-nav">
+            <ul class="primary-nav__list">
+                {% primarynav %}
+            </ul>
+        </nav>
     </div>
 </header>

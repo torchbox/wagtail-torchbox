@@ -386,40 +386,19 @@ class JobIndexPage(Page):
 
 @register_setting
 class GlobalSettings(BaseSetting):
-    contact_telephone = models.CharField(max_length=255, help_text="Telephone")
-    contact_email = models.EmailField(max_length=255, help_text="Email address")
-    contact_twitter = models.CharField(max_length=255, help_text="Twitter")
-    email_newsletter_teaser = models.CharField(
-        max_length=255, help_text="Text that sits above the email newsletter"
+    oxford_address_title = models.CharField(
+        max_length=255, help_text="Full address", blank=True
     )
-    oxford_address_title = models.CharField(max_length=255, help_text="Full address")
-    oxford_address = RichTextField(help_text="Full address")
-    oxford_address_link = models.URLField(
-        max_length=255, help_text="Link to google maps"
+    oxford_address = RichTextField(help_text="Full address", blank=True)
+    bristol_address_title = models.CharField(
+        max_length=255, help_text="Full address", blank=True
     )
-    oxford_address_svg = models.CharField(
-        max_length=9000, help_text="Paste SVG code here"
+    bristol_address = RichTextField(help_text="Full address", blank=True)
+    us_address_title = models.CharField(
+        max_length=255, help_text="Full address", blank=True
     )
-    bristol_address_title = models.CharField(max_length=255, help_text="Full address")
-    bristol_address = RichTextField(help_text="Full address")
-    bristol_address_link = models.URLField(
-        max_length=255, help_text="Link to google maps"
-    )
-    bristol_address_svg = models.CharField(
-        max_length=9000, help_text="Paste SVG code here"
-    )
-    us_address_title = models.CharField(max_length=255, help_text="Full address")
-    us_address = RichTextField(help_text="Full address")
-    us_address_link = models.URLField(max_length=255, help_text="Link to google maps")
-    us_address_svg = models.CharField(max_length=9000, help_text="Paste SVG code here")
-    us_address_title = models.CharField(max_length=255, help_text="Full address")
+    us_address = RichTextField(help_text="Full address", blank=True)
     cambridge_address = RichTextField(help_text="Full address", blank=True)
-    cambridge_address_link = models.URLField(
-        max_length=255, help_text="Link to google maps", blank=True
-    )
-    cambridge_address_svg = models.CharField(
-        max_length=9000, help_text="Paste SVG code here", blank=True
-    )
     cambridge_address_title = models.CharField(
         max_length=255, help_text="Full address", blank=True
     )
@@ -431,35 +410,24 @@ class GlobalSettings(BaseSetting):
         null=True,
         on_delete=models.SET_NULL,
         help_text="Ensure this person has telephone and email fields set",
+        blank=True,
     )
-    contact_widget_intro = models.TextField()
-    contact_widget_call_to_action = models.TextField()
-    contact_widget_button_text = models.TextField()
+    contact_widget_intro = models.TextField(blank=True)
+    contact_widget_call_to_action = models.TextField(blank=True)
+    contact_widget_button_text = models.TextField(blank=True)
 
     class Meta:
         verbose_name = "Global Settings"
 
     panels = [
-        FieldPanel("contact_telephone"),
-        FieldPanel("contact_email"),
-        FieldPanel("contact_twitter"),
-        FieldPanel("email_newsletter_teaser"),
         FieldPanel("oxford_address_title"),
         FieldPanel("oxford_address"),
-        FieldPanel("oxford_address_link"),
-        FieldPanel("oxford_address_svg"),
         FieldPanel("bristol_address_title"),
         FieldPanel("bristol_address"),
-        FieldPanel("bristol_address_link"),
-        FieldPanel("bristol_address_svg"),
         FieldPanel("us_address_title"),
         FieldPanel("us_address"),
-        FieldPanel("us_address_link"),
-        FieldPanel("us_address_svg"),
         FieldPanel("cambridge_address_title"),
         FieldPanel("cambridge_address"),
-        FieldPanel("cambridge_address_link"),
-        FieldPanel("cambridge_address_svg"),
         MultiFieldPanel(
             [
                 PageChooserPanel("contact_person"),

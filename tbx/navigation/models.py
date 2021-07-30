@@ -61,11 +61,17 @@ class NavigationSettings(BaseSetting, ClusterableModel):
         blank=True,
         help_text="Row of links that use prominent styles to standout.",
     )
+    footer_top_links = StreamField(
+        [("link", LinkBlock())],
+        blank=True,
+        help_text="Single list of links that appear between the teasers and the addresses.",
+    )
 
     panels = [
         StreamFieldPanel("primary_navigation"),
         StreamFieldPanel("secondary_navigation"),
         StreamFieldPanel("footer_navigation"),
-        StreamFieldPanel("footer_links"),
         StreamFieldPanel("footer_teasers"),
+        StreamFieldPanel("footer_top_links"),
+        StreamFieldPanel("footer_links"),
     ]

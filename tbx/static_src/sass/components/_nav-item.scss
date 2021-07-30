@@ -1,53 +1,79 @@
 .nav-item {
     $root: &;
 
-    @include media-query(menu-break) {
-        margin-right: 70px;
+    // Desktop menu
+    .desktop-nav & {
+        @include media-query(menu-break) {
+            margin-right: 70px;
 
-        &:last-child {
-            @include media-query(menu-break) {
+            &:last-child {
                 margin-right: 0;
             }
         }
-    }
 
-    &--with-badge {
-        position: relative;
-    }
+        &--with-badge {
+            position: relative;
 
-    &__link {
-        @include link-underscore(0);
-        display: block;
-        position: relative;
-        line-height: 20px;
-        text-decoration: none;
-        height: 40px;
-        color: var(--color--header-links);
-        border-top: 0;
-        border-bottom: 0;
-        margin-bottom: 0;
-        padding: 0;
-        transition: all $transition-quick;
+            @include media-query(menu-break) {
+                margin-right: 70px;
+            }
+        }
 
-        &:hover,
-        &:focus,
-        &--active {
-            @include link-underscore(4);
+        &__link {
+            @include font-size(s);
+            @include link-underscore(0);
+            display: block;
+            position: relative;
+            line-height: 20px;
+            text-decoration: none;
+            height: 40px;
             color: var(--color--header-links);
+            border-top: 0;
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding: 0;
+            transition: all $transition-quick;
+
+            &:hover,
+            &:focus,
+            &--active {
+                @include link-underscore(4);
+                color: var(--color--header-links);
+            }
+        }
+
+        &__badge-link {
+            @include link-underscore(0);
+            position: absolute;
+            top: 0;
+            right: 0;
         }
     }
 
-    &__title {
-        @include font-size(s);
-        display: flex;
-        position: relative;
-        line-height: 35px;
-        transition: all $transition-quick;
-    }
+    // Mobile menu
+    .mobile-nav & {
+        border-top: 1px solid hsla(0, 0, 100%, 0.2);
 
-    &__badge-link {
-        position: absolute;
-        top: 0;
-        right: 0;
+        &--with-badge {
+            display: flex;
+            align-items: center;
+        }
+
+        &__link {
+            @include font-size(s);
+            display: block;
+            color: var(--color--white);
+            padding: $gutter 0;
+            border: 0;
+            font-weight: $weight--bold;
+
+            &:hover {
+                color: var(--color--white);
+            }
+        }
+
+        &__badge-link {
+            border-bottom: 0;
+        }
     }
 }

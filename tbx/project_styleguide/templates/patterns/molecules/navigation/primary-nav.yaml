@@ -1,0 +1,24 @@
+context:
+  job_count: 3
+  primarynav:
+    - value:
+        page:
+          title: Design + build products
+    - value:
+        page:
+          title: Wagtail CMS
+        title: Wagtail CMS services
+    - value:
+        page:
+          title: Digital marketing
+    - value:
+        page:
+          careers_link: True
+          title: Careers
+
+tags:
+  pageurl:
+    link.page:
+      raw: '#'
+    link.page.careers_page:
+      raw: '#'
