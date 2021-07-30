@@ -13,6 +13,16 @@
 
         &--with-badge {
             position: relative;
+
+            @include media-query(large) {
+                margin-right: 70px;
+            }
+
+            #{$root}__link {
+                @include media-query(large) {
+                    margin-right: 0;
+                }
+            }
         }
 
         &__link {
@@ -45,6 +55,7 @@
         }
 
         &__badge-link {
+            @include link-underscore(0);
             position: absolute;
             top: 0;
             right: 0;
@@ -71,6 +82,10 @@
             &:hover {
                 color: var(--color--white);
             }
+        }
+
+        &__badge-link {
+            border-bottom: 0;
         }
     }
 }
