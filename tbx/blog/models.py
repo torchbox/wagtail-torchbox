@@ -226,6 +226,7 @@ class BlogPage(Page):
         works = (
             WorkPage.objects.filter(related_services__in=services)
             .live()
+            .public()
             .distinct()
             .order_by("-date")[:2]
         )
