@@ -29,6 +29,8 @@
 
     &:focus,
     &:hover {
+        color: var(--color--accent);
+
         &::before {
             background: var(--color--primary);
         }
