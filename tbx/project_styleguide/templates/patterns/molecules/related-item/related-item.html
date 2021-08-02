@@ -1,6 +1,12 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% image item.image width-1280 as image %}
+{% if item.image %}
+    {% image item.image width-1280 as related_item_image %}
+{% elif item.homepage_image %}
+    {% image item.homepage_image width-1280 as related_item_image %}
+{% elif item.feed_image %}
+    {% image item.feed_image width-1280 as related_item_image %}
+{% endif %}
 
 {% if item.url %}
     <a class="related-item" href="{{ item.url }}">
@@ -9,14 +15,14 @@
 {% endif %}
     <div class="related-item__meta">
         <div class="related-item__meta-container">
-            {% if item.subtitle %}
-                <span class="related-item__client">{{ item.subtitle }}</span>
+            {% if item.subtitle or item.client %}
+                <span class="related-item__client">{% firstof item.subtitle item.client %}</span>
             {% endif %}
 
             <h2 class="related-item__title">{{ item.title }}</h2>
 
-            {% if item.description %}
-                <p class="related-item__desc">{{ item.description }}</p>
+            {% if item.description or item.listing_summary %}
+                <p class="related-item__desc">{% firstof item.description item.listing_summary %}</p>
             {% endif %}
         </div>
     </div>
@@ -24,7 +30,7 @@
         <svg class="related-item__cluster-icon" aria-hidden="true">
             <use xlink:href="#cluster" />
         </svg>
-        <div class="related-item__image-inner" style="background-image: url(&quot;{{ image.url }}&quot;);"></div>
+        <div class="related-item__image-inner" style="background-image: url(&quot;{{ related_item_image.url }}&quot;);"></div>
     </div>
 {% if item.url %}
     </a>

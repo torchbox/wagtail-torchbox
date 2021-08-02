@@ -87,6 +87,7 @@ class PersonPage(Page):
         works = (
             WorkPage.objects.filter(authors__author__person_page=self.pk)
             .live()
+            .public()
             .distinct()
             .order_by("-date")[:2]
         )
