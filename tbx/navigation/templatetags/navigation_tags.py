@@ -18,34 +18,6 @@ def primarynav(context):
     }
 
 
-# Secondary nav snippets
-@register.inclusion_tag(
-    "patterns/molecules/navigation/secondary-nav.html", takes_context=True
-)
-def secondarynav(context):
-    request = context["request"]
-    return {
-        "secondarynav": context["settings"]["navigation"][
-            "NavigationSettings"
-        ].secondary_navigation,
-        "request": request,
-    }
-
-
-# Footer nav snippets
-@register.inclusion_tag(
-    "patterns/molecules/navigation/footer-nav.html", takes_context=True
-)
-def footernav(context):
-    request = context["request"]
-    return {
-        "footernav": context["settings"]["navigation"][
-            "NavigationSettings"
-        ].footer_navigation,
-        "request": request,
-    }
-
-
 # Footer nav snippets
 @register.inclusion_tag(
     "patterns/molecules/navigation/sidebar.html", takes_context=True
