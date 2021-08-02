@@ -140,7 +140,7 @@ class WorkPage(Page):
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("client", classname="client"),
-        InlinePanel("authors", label="Author"),
+        InlinePanel("authors", label="Author", min_num=1),
         FieldPanel("date"),
         StreamFieldPanel("body"),
         ImageChooserPanel("homepage_image"),
