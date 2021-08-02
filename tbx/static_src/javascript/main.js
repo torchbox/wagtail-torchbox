@@ -7,6 +7,7 @@ import MobileMenuToggle from './components/mobile-menu-toggle';
 import './components/sticky-point';
 import './components/sticky-nav';
 import InPageNav from './components/in-page-nav';
+import ActiveNavItem from './components/active-nav-item';
 
 import '../sass/main.scss';
 
@@ -39,5 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (const inpagenav of document.querySelectorAll(InPageNav.selector())) {
         new InPageNav(inpagenav);
+    }
+
+    for (const activenavitem of document.querySelectorAll(
+        ActiveNavItem.selector(),
+    )) {
+        new ActiveNavItem(activenavitem);
     }
 });
