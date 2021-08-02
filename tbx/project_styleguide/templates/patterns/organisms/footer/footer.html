@@ -5,53 +5,22 @@
 
     {% footertoplinks %}
 
+
     <div class="footer__content">
-        <ul class="footer__address-list">
-
-            {% if global_settings.oxford_address_title %}
-                <li class="footer__address">
-                    <h2 class="footer__address-title">
-                        {{ global_settings.oxford_address_title }}
-                    </h2>
-                    <div class="footer__address-detail">
-                        {{ global_settings.oxford_address|richtext }}
-                    </div>
-                </li>
-            {% endif %}
-
-            {% if global_settings.bristol_address_title %}
-                <li class="footer__address">
-                    <h2 class="footer__address-title">
-                        {{ global_settings.bristol_address_title }}
-                    </h2>
-                    <div class="footer__address-detail">
-                        {{ global_settings.bristol_address|richtext }}
-                    </div>
-                </li>
-            {% endif %}
-
-            {% if global_settings.cambridge_address_title %}
-                <li class="footer__address">
-                    <h2 class="footer__address-title">
-                        {{ global_settings.cambridge_address_title }}
-                    </h2>
-                    <div class="footer__address-detail">
-                        {{ global_settings.cambridge_address|richtext }}
-                    </div>
-                </li>
-            {% endif %}
-
-            {% if global_settings.us_address_title %}
-                <li class="footer__address">
-                    <h2 class="footer__address-title">
-                        {{ global_settings.us_address_title }}
-                    </h2>
-                    <div class="footer__address-detail">
-                        {{ global_settings.us_address|richtext }}
-                    </div>
-                </li>
-            {% endif %}
-        </ul>
+        {% if global_settings.addresses %}
+            <ul class="footer__address-list">
+                {% for office in global_settings.addresses %}
+                    <li class="footer__address">
+                        <h2 class="footer__address-title">
+                            {{ office.value.title }}
+                        </h2>
+                        <div class="footer__address-detail">
+                            {{ office.value.address|richtext }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
         <div class="footer__bottom">
             <div class="footer__copyright">

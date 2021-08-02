@@ -17,6 +17,7 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.snippets.models import register_snippet
+from wagtail.core import blocks
 
 from .api import PeopleHRFeed
 from .blocks import StoryBlock
@@ -384,60 +385,21 @@ class JobIndexPage(Page):
         )
 
 
+class BaseAddress(blocks.StructBlock):
+    title = blocks.CharBlock(blank=True)
+    address = blocks.RichTextBlock(blank=True)
+
+
 @register_setting
 class GlobalSettings(BaseSetting):
-    oxford_address_title = models.CharField(
-        max_length=255, help_text="Full address", blank=True
-    )
-    oxford_address = RichTextField(help_text="Full address", blank=True)
-    bristol_address_title = models.CharField(
-        max_length=255, help_text="Full address", blank=True
-    )
-    bristol_address = RichTextField(help_text="Full address", blank=True)
-    us_address_title = models.CharField(
-        max_length=255, help_text="Full address", blank=True
-    )
-    us_address = RichTextField(help_text="Full address", blank=True)
-    cambridge_address = RichTextField(help_text="Full address", blank=True)
-    cambridge_address_title = models.CharField(
-        max_length=255, help_text="Full address", blank=True
-    )
+    addresses = StreamField([("address", BaseAddress())], blank=True)
 
-    # Contact widget
-    contact_person = models.ForeignKey(
-        "people.PersonPage",
-        related_name="+",
-        null=True,
-        on_delete=models.SET_NULL,
-        help_text="Ensure this person has telephone and email fields set",
-        blank=True,
-    )
-    contact_widget_intro = models.TextField(blank=True)
-    contact_widget_call_to_action = models.TextField(blank=True)
-    contact_widget_button_text = models.TextField(blank=True)
+    panels = [
+        StreamFieldPanel("addresses"),
+    ]
 
     class Meta:
         verbose_name = "Global Settings"
-
-    panels = [
-        FieldPanel("oxford_address_title"),
-        FieldPanel("oxford_address"),
-        FieldPanel("bristol_address_title"),
-        FieldPanel("bristol_address"),
-        FieldPanel("us_address_title"),
-        FieldPanel("us_address"),
-        FieldPanel("cambridge_address_title"),
-        FieldPanel("cambridge_address"),
-        MultiFieldPanel(
-            [
-                PageChooserPanel("contact_person"),
-                FieldPanel("contact_widget_intro"),
-                FieldPanel("contact_widget_call_to_action"),
-                FieldPanel("contact_widget_button_text"),
-            ],
-            "Contact widget",
-        ),
-    ]
 
 
 class SubMenuItemBlock(StreamBlock):
