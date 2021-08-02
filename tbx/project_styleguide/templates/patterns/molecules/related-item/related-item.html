@@ -15,14 +15,14 @@
 {% endif %}
     <div class="related-item__meta">
         <div class="related-item__meta-container">
-            {% if item.subtitle %}
-                <span class="related-item__client">{{ item.subtitle }}</span>
+            {% if item.subtitle or item.client %}
+                <span class="related-item__client">{% firstof item.subtitle item.client %}</span>
             {% endif %}
 
             <h2 class="related-item__title">{{ item.title }}</h2>
 
-            {% if item.description %}
-                <p class="related-item__desc">{{ item.description }}</p>
+            {% if item.description or item.listing_summary %}
+                <p class="related-item__desc">{% firstof item.description item.listing_summary %}</p>
             {% endif %}
         </div>
     </div>
