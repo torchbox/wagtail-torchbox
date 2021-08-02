@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "scout_apm.django",
     "tbx.blog",
     "tbx.core.apps.TorchboxCoreAppConfig",
+    "tbx.events",
     "tbx.navigation",
     "tbx.people",
     "tbx.services",
@@ -416,9 +417,24 @@ CACHE_CONTROL_STALE_WHILE_REVALIDATE = int(
     env.get("CACHE_CONTROL_STALE_WHILE_REVALIDATE", 30)
 )
 
+# Embeds
+WAGTAILEMBEDS_FINDERS = [
+    # Handles all other oEmbed providers the default way
+    {"class": "wagtail.embeds.finders.oembed"}
+]
+INSTAGRAM_OEMBED_APP_ID = env.get("INSTAGRAM_OEMBED_APP_ID")
+INSTAGRAM_OEMBED_APP_SECRET = env.get("INSTAGRAM_OEMBED_APP_SECRET")
+if INSTAGRAM_OEMBED_APP_ID and INSTAGRAM_OEMBED_APP_SECRET:
+    WAGTAILEMBEDS_FINDERS.insert(
+        0,
+        {
+            "class": "wagtail.embeds.finders.instagram",
+            "app_id": INSTAGRAM_OEMBED_APP_ID,
+            "app_secret": INSTAGRAM_OEMBED_APP_SECRET,
+        },
+    )
 
 # Embledly
-
 if "EMBEDLY_KEY" in env:
     EMBEDLY_KEY = env["EMBEDLY_KEY"]
 

@@ -1,0 +1,75 @@
+.careers {
+    $root: &;
+
+    &__container {
+        max-width: $wrapper--small;
+        margin: 0 auto;
+        padding: ($gutter * 2) $variable-gutter--small 0;
+
+        @include media-query(medium) {
+            padding: ($gutter * 4) $variable-gutter--small 0;
+        }
+
+        @include media-query(large) {
+            padding: ($gutter * 4) 0 0;
+        }
+
+        &--bottom {
+            padding-top: ($gutter * 2);
+            margin-bottom: ($gutter * 2);
+
+            @include media-query(large) {
+                margin-bottom: ($gutter * 2.5);
+            }
+        }
+    }
+
+    &__title {
+        font-weight: $weight--heavy;
+    }
+
+    &__rich-text {
+        font-size: map-get($small-font-sizes, m);
+        margin-bottom: ($gutter * 2);
+
+        @include media-query(medium) {
+            font-size: map-get($small-font-sizes, l);
+        }
+
+        @include media-query(large) {
+            margin-bottom: ($gutter * 4);
+        }
+
+        p {
+            color: var(--color--dark-indigo);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            b,
+            strong {
+                font-weight: $weight--heavy;
+            }
+
+            a {
+                color: var(--color--dark-indigo);
+                border-bottom-color: var(--color--lagoon);
+
+                &:hover {
+                    color: var(--color--lagoon);
+                }
+            }
+        }
+    }
+
+    &__hero {
+        height: 400px;
+        position: relative;
+
+        @include media-query(medium) {
+            height: 70vh;
+            min-height: 700px;
+        }
+    }
+}

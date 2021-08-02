@@ -199,6 +199,18 @@ class WorkIndexPage(Page):
         if slug_filter:
             works = works.filter(related_services__slug=slug_filter)
 
+        # format for template
+        works = [
+            {
+                "title": work.title,
+                "subtitle": work.client,
+                "description": work.listing_summary,
+                "url": work.url,
+                "image": work.homepage_image,
+            }
+            for work in works
+        ]
+
         # Pagination
         paginator = Paginator(works, 10)  # Show 10 works per page
 

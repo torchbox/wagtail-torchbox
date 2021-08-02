@@ -1,5 +1,5 @@
 .section-title {
-    @include font-size(s);
+    font-size: map-get($small-font-sizes, s);
     position: absolute;
     top: 45px;
     left: $variable-gutter--small;
@@ -8,6 +8,7 @@
     margin: 0;
 
     @include media-query(medium) {
+        font-size: map-get($medium-font-sizes, m);
         max-width: 140px;
     }
 
@@ -41,5 +42,10 @@
     .blog-listing & {
         position: relative;
         display: inline-block;
+        margin-bottom: $gutter * 2;
+
+        @include media-query(large) {
+            margin-bottom: $gutter * 4;
+        }
     }
 }

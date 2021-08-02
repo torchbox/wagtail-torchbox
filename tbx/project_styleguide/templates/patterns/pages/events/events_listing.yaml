@@ -1,0 +1,61 @@
+context:
+  page:
+    strapline: Events
+    title: Events
+    get_verbose_name: events-listing
+  events:
+    - title: The Challenge of Website Proliferation in Higher Education
+      intro: Wagtail has a strict three month release cycle, with a mix of exciting new features and improvements, some of which we will be demo’ing at our next What’s New in Wagtail webinar.
+      url: '#'
+      type: Webinar
+      date: 20 Oct '20
+      author:
+        name: Lisa Ballam
+        role: Marketing Manager
+
+    - title: How to perfect remote user research
+      intro: Wagtail has a strict three month release cycle, with a mix of exciting new features and improvements, some of which we will be demo’ing at our next What’s New in Wagtail webinar.
+      url: '#'
+      type: Webinar
+      date: 20 Oct '20
+      author:
+        name: Lisa Ballam
+        role: Marketing Manager
+
+    - title: Facebook Ads - 10 Top Tips for Nonprofits
+      intro: Wagtail has a strict three month release cycle, with a mix of exciting new features and improvements, some of which we will be demo’ing at our next What’s New in Wagtail webinar.
+      url: '#'
+      type: Webinar
+      date: 20 Oct '20
+      author:
+        name: Lisa Ballam
+        role: Marketing Manager
+
+    - title: How Nonprofits Can Take Analytics to the Next Level
+      intro: Wagtail has a strict three month release cycle, with a mix of exciting new features and improvements, some of which we will be demo’ing at our next What’s New in Wagtail webinar.
+      url: '#'
+      type: Webinar
+      date: 20 Oct '20
+      author:
+        name: Lisa Ballam
+        role: Marketing Manager
+
+  related_services:
+    - name: Culture
+      slug: culture
+    - name: Digital products
+      slug: digital-products
+    - name: Wagtail
+      slug: wagtail
+    - name: Digital Marketing
+      slug: digital-marketing
+    - name: PPC
+      slug: ppc
+    - name: SEO
+      slug: seo
+    - name: Social media
+      slug: social-media
+    - name: Data
+      slug: data
+    - name: Google Ad Grants
+      slug: google-ad-grants

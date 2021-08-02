@@ -1,0 +1,8 @@
+{% load wagtailimages_tags %}
+<a class="instagram-post" href="{% if post.value.link %}{{ post.value.link }}{% else %}https://www.instagram.com/torchboxltd/{% endif %}" target="_blank" nofollow noreferrer>
+    {% image post.value.image fill-500x500 as post_img %}
+    <img src="{{ post_img.url }}" class="instagram-post__image" width="500" height="500" loading="lazy" alt="View {% if post.value.link %}the post{% else %}more posts{% endif %} on Torchbox's Instagram page"  />
+    <svg class="instagram-post__icon" viewBox="0 0 100 100" aria-hidden="true">
+        <use xlink:href="#instagram" href="#instagram" />
+    </svg>
+</a>

@@ -141,6 +141,7 @@ class BaseServicePage(Page):
 
     def get_featured_blog_posts(self):
         """Format the featured blog posts for the template."""
+
         return [
             {
                 "title": featured.blog_post.title,
@@ -160,6 +161,20 @@ class BaseServicePage(Page):
             work_index_page=WorkIndexPage.objects.live().first(),
         )
         return context
+
+    def get_featured_case_studies(self):
+        """Format the featured case studies data for the template."""
+        return [
+            {
+                "title": f.case_study.title,
+                "subtitle": f.case_study.client,
+                "description": f.case_study.listing_summary,
+                "url": f.case_study.url,
+                "image": f.case_study.homepage_image,
+            }
+            for f in self.featured_case_studies.all()
+            if f.case_study
+        ]
 
 
 class BaseServicePageKeyPoint(models.Model):

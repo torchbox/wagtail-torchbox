@@ -3,6 +3,35 @@
     background-color: var(--color--light-grey);
     padding: ($gutter * 5) 0 ($gutter * 1.5);
 
+    &__top {
+        @include container();
+        margin-bottom: ($gutter * 2);
+    }
+
+    &__top-link {
+        font-size: map-get($small-font-sizes, m);
+        display: inline-block;
+        margin-right: $gutter;
+        font-weight: $weight--heavy;
+        color: var(--color--dark-indigo);
+        transition: all $transition-quick;
+        border-bottom: 2px solid var(--color--light-grey);
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:focus,
+        &:hover {
+            color: var(--color--dark-indigo);
+            border-bottom: 2px solid var(--color--underline);
+        }
+
+        @include media-query(medium) {
+            font-size: map-get($medium-font-sizes, m);
+        }
+    }
+
     &__content {
         @include container();
     }

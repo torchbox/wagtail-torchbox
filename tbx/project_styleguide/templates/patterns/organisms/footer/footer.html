@@ -1,4 +1,13 @@
+{% load wagtailcore_tags navigation_tags %}
+
 <footer class="footer">
+    {% footerteasers %}
+
+    <div class="footer__top">
+        <a class="footer__top-link" href="/blog/">Blog</a>
+        <a class="footer__top-link" href="/work/">Work</a>
+        <a class="footer__top-link" href="/team/">Team</a>
+    </div>
     <div class="footer__content">
         <ul class="footer__address-list">
             <li class="footer__address">
@@ -23,9 +32,6 @@
                 &copy; Torchbox {% now "Y" %}
             </div>
             <div class="footer__links">
-                <a class="footer__link" href="/blog/">Blog</a>
-                <a class="footer__link" href="/work/">Work</a>
-                <a class="footer__link" href="/team/">Team</a>
                 <a class="footer__link" href="/privacy/">Privacy</a>
                 <a class="footer__link" href="/cookies/">Cookies</a>
             </div>

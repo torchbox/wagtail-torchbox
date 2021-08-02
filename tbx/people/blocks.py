@@ -33,3 +33,14 @@ class StandoutItemsBlock(blocks.StructBlock):
                 if link.block_type == "internal" and link.value
                 else link.value
             )
+
+
+class InstagramEmbedBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+    link = blocks.URLBlock(
+        required=False,
+        help_text="Link to a specific post here or leave blank for it to link to https://www.instagram.com/torchboxltd/",
+    )
+
+    class Meta:
+        icon = "fa-instagram"

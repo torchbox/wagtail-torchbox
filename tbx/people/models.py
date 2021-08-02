@@ -20,12 +20,10 @@ from wagtail.core.models import Orderable, Page
 from wagtail.core.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.core.blocks import StoryBlock
-from tbx.people.blocks import StandoutItemsBlock
+from tbx.people.blocks import InstagramEmbedBlock, StandoutItemsBlock
 from tbx.people.forms import ContactForm
 from tbx.work.models import WorkPage
 
@@ -127,13 +125,11 @@ class CulturePageLink(Orderable):
     ]
 
 
+# Was previously the culture page until it was re-purposed to be the careers page
 class CulturePage(Page):
-    template = "patterns/pages/culture/culture_page.html"
+    template = "patterns/pages/careers/careers_page.html"
 
     strapline = models.TextField()
-    strapline_visible = models.BooleanField(
-        help_text="Hide strapline visually but leave it readable by screen " "readers."
-    )
     hero_image = models.ForeignKey(
         "torchbox.TorchboxImage",
         null=True,
@@ -142,25 +138,110 @@ class CulturePage(Page):
         related_name="+",
     )
     intro = RichTextField(blank=True)
-    body = StreamField(StoryBlock())
-    contact = models.ForeignKey(
-        "people.Contact",
-        on_delete=models.SET_NULL,
-        null=True,
+    benefits_heading = RichTextField(blank=True)
+    benefits_section_title = models.TextField(blank=True, default="Benefits")
+    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
+
+    blogs_section_title = models.CharField(
+        blank=True, max_length=100, verbose_name="Title",
+    )
+    featured_blog_posts = StreamField(
+        [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
         blank=True,
-        related_name="+",
+        verbose_name="Blog posts",
+    )
+
+    instagram_posts = StreamField(
+        [("post", InstagramEmbedBlock())], blank=True, null=True, min_num=8, max_num=8
     )
 
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
-        FieldPanel("strapline_visible"),
         ImageChooserPanel("hero_image"),
         FieldPanel("intro", classname="full"),
         InlinePanel("links", label="Link"),
-        StreamFieldPanel("body"),
-        SnippetChooserPanel("contact"),
+        MultiFieldPanel(
+            [
+                FieldPanel("benefits_section_title", classname="full"),
+                FieldPanel("benefits_heading", classname="full"),
+                InlinePanel("key_benefits", label="Key benefits", max_num=10),
+            ],
+            heading="Key Benefits",
+            classname="collapsible",
+        ),
+        StreamFieldPanel("standout_items"),
+        MultiFieldPanel(
+            [
+                FieldPanel("blogs_section_title"),
+                StreamFieldPanel("featured_blog_posts"),
+            ],
+            heading="Featured Blog Posts",
+            classname="collapsible",
+        ),
+        StreamFieldPanel("instagram_posts"),
     ]
+
+    class Meta:
+        verbose_name = "Careers Page"
+
+    def get_standout_items(self):
+        """Format the standout items data for the template."""
+        return [
+            {
+                "title": standout_item.value["title"],
+                "subtitle": standout_item.value["subtitle"],
+                "description": standout_item.value["description"],
+                "url": standout_item.block.get_link(standout_item.value["link"],),
+                "image": standout_item.value["image"],
+            }
+            for standout_item in self.standout_items
+        ]
+
+    def get_featured_blog_posts(self):
+        """Format the featured blog posts for the template."""
+
+        return [
+            {
+                "title": blog_post.value.title,
+                "url": blog_post.value.url,
+                "author": blog_post.value.first_author,
+                "date": blog_post.value.date,
+            }
+            for blog_post in self.featured_blog_posts
+            if blog_post.value.live
+        ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["standout_items"] = self.get_standout_items()
+        context.update(
+            featured_blog_posts=self.get_featured_blog_posts(),
+            blog_index_page=BlogIndexPage.objects.live().first(),
+        )
+        return context
+
+
+class BaseCulturePageKeyPoint(models.Model):
+    text = models.CharField(max_length=255)
+    linked_page = models.ForeignKey(
+        "wagtailcore.Page",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    panels = [
+        FieldPanel("text"),
+        PageChooserPanel("linked_page"),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class CulturePageKeyPoint(Orderable, BaseCulturePageKeyPoint):
+    page = ParentalKey(CulturePage, related_name="key_benefits")
 
 
 class ValuesPage(Page):
