@@ -29,6 +29,6 @@ def serve_document_from_s3(document, request):
     return response
 
 
-@hooks.register('construct_settings_menu')
+@hooks.register("construct_settings_menu")
 def hide_main_menu_menu_item(request, menu_items):
-    menu_items[:] = [item for item in menu_items if item.name != 'main-menu']
+    menu_items[:] = [item for item in menu_items if item.name != "main-menu"]
