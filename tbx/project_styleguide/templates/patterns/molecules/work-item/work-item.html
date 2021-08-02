@@ -1,6 +1,10 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% image item.homepage_image width-1280 as image %}
+{% if item.homepage_image %}
+    {% image item.homepage_image width-1280 as image %}
+{% elif item.feed_image %}
+    {% image item.feed_image width-1280 as image %}
+{% endif %}
 
 <a class="casestudy-item" href="{% pageurl item %}">
     <div class="casestudy-item__meta">
