@@ -42,12 +42,24 @@
                     {% include "patterns/atoms/section-title/section-title.html" with title="More of our thinking"%}
                 </div>
                 <div class="blog-listing__content">
-                    <div class="blog-listing__list blog-listing__list--horizontal">
+                    <div class="blog-listing__list blog-listing__list--horizontal {% if page.related_works %} u--pb-0 {% endif %}">
                         {% for blog in page.related_blog_posts %}
                             {% include "patterns/molecules/blog-item/blog-item.html" with item=blog %}
                         {% endfor %}
                     </div>
                     {% include "patterns/atoms/see-more/see-more.html" with link=page.blog_index.url text="See more posts" %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.related_works %}
+        <div class="page__showcase">
+            <div class="related-content">
+                {% include "patterns/atoms/section-title/section-title.html" with title="More of our work" %}
+                <div class="related-content__list">
+                    {% include "patterns/organisms/work-listing/work-listing.html" with works=page.related_works %}
+                    {% include "patterns/atoms/see-more/see-more.html" with link=page.work_index.url text="See more case studies" %}
                 </div>
             </div>
         </div>
