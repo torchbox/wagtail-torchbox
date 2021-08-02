@@ -1,11 +1,12 @@
 .pullquote {
     $root: &;
     position: relative;
-    margin: $gutter 0;
+    margin: ($gutter * 2) 0;
 
     @include media-query(large) {
         @include streamblock-padding();
         margin-top: 70px;
+        margin-bottom: 70px;
     }
 
     &--slider {
