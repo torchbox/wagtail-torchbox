@@ -1,6 +1,12 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% image item.image width-1280 as image %}
+{% if item.image %}
+    {% image item.image width-1280 as image %}
+{% elif item.homepage_image %}
+    {% image item.homepage_image width-1280 as image %}
+{% elif item.feed_image %}
+    {% image item.feed_image width-1280 as image %}
+{% endif %}
 
 {% if item.url %}
     <a class="related-item" href="{{ item.url }}">
