@@ -45,9 +45,6 @@
         &__badge-link {
             @include link-underscore(0);
             border-bottom: 0;
-            position: relative;
-            top: -10px;
-            right: -15px;
 
             @include media-query(menu-break) {
                 position: absolute;
@@ -81,6 +78,9 @@
 
         &__badge-link {
             border-bottom: 0;
+            position: relative;
+            top: -10px;
+            right: -15px;
         }
     }
 }
