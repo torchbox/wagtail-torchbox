@@ -1,57 +1,86 @@
 .nav-item {
     $root: &;
 
-    &:last-child {
-        #{$root}__link {
-            @include media-query(large) {
+    // Desktop menu
+    .desktop-nav & {
+        @include media-query(menu-break) {
+            margin-right: 70px;
+
+            &:last-child {
                 margin-right: 0;
+            }
+        }
+
+        &--with-badge {
+            position: relative;
+
+            @include media-query(menu-break) {
+                margin-right: 70px;
+            }
+        }
+
+        &__link {
+            @include font-size(s);
+            @include link-underscore(0);
+            display: block;
+            position: relative;
+            line-height: 20px;
+            text-decoration: none;
+            height: 40px;
+            color: var(--color--header-links);
+            border-top: 0;
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding: 0;
+            transition: all $transition-quick;
+
+            &:hover,
+            &:focus,
+            &--active {
+                @include link-underscore(4);
+                color: var(--color--header-links);
+            }
+        }
+
+        &__badge-link {
+            @include link-underscore(0);
+            border-bottom: 0;
+            position: relative;
+            top: -10px;
+            right: -15px;
+
+            @include media-query(menu-break) {
+                position: absolute;
+                right: -25px;
+                top: -15px;
             }
         }
     }
 
-    &--with-badge {
-        position: relative;
-    }
+    // Mobile menu
+    .mobile-nav & {
+        border-top: 1px solid hsla(0, 0, 100%, 0.2);
 
-    &__link {
-        @include link-underscore(0);
-        display: block;
-        position: relative;
-        line-height: 20px;
-        text-decoration: none;
-        height: 40px;
-        color: var(--color--header-links);
-        border-top: 0;
-        border-bottom: 0;
-        margin-right: 39px; // max we can go without nav label wrapping
-        margin-bottom: 0;
-        padding: 0;
-        transition: all $transition-quick;
-
-        @include media-query(large) {
-            margin-right: 70px;
-            overflow: hidden;
+        &--with-badge {
+            display: flex;
+            align-items: center;
         }
 
-        &:hover,
-        &:focus,
-        &--active {
-            @include link-underscore(4);
-            color: var(--color--header-links);
+        &__link {
+            @include font-size(s);
+            display: block;
+            color: var(--color--white);
+            padding: $gutter 0;
+            border: 0;
+            font-weight: $weight--bold;
+
+            &:hover {
+                color: var(--color--white);
+            }
         }
-    }
 
-    &__title {
-        @include font-size(s);
-        display: flex;
-        position: relative;
-        line-height: 35px;
-        transition: all $transition-quick;
-    }
-
-    &__badge-link {
-        position: absolute;
-        top: 0;
-        right: 0;
+        &__badge-link {
+            border-bottom: 0;
+        }
     }
 }

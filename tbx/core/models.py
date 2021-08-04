@@ -10,6 +10,7 @@ from wagtail.admin.edit_handlers import (
     StreamFieldPanel,
 )
 from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.core import blocks
 from wagtail.core.blocks import PageChooserBlock, StreamBlock, StructBlock
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
@@ -384,92 +385,21 @@ class JobIndexPage(Page):
         )
 
 
+class BaseAddress(blocks.StructBlock):
+    title = blocks.CharBlock(blank=True)
+    address = blocks.RichTextBlock(blank=True)
+
+
 @register_setting
 class GlobalSettings(BaseSetting):
-    contact_telephone = models.CharField(max_length=255, help_text="Telephone")
-    contact_email = models.EmailField(max_length=255, help_text="Email address")
-    contact_twitter = models.CharField(max_length=255, help_text="Twitter")
-    email_newsletter_teaser = models.CharField(
-        max_length=255, help_text="Text that sits above the email newsletter"
-    )
-    oxford_address_title = models.CharField(max_length=255, help_text="Full address")
-    oxford_address = RichTextField(help_text="Full address")
-    oxford_address_link = models.URLField(
-        max_length=255, help_text="Link to google maps"
-    )
-    oxford_address_svg = models.CharField(
-        max_length=9000, help_text="Paste SVG code here"
-    )
-    bristol_address_title = models.CharField(max_length=255, help_text="Full address")
-    bristol_address = RichTextField(help_text="Full address")
-    bristol_address_link = models.URLField(
-        max_length=255, help_text="Link to google maps"
-    )
-    bristol_address_svg = models.CharField(
-        max_length=9000, help_text="Paste SVG code here"
-    )
-    us_address_title = models.CharField(max_length=255, help_text="Full address")
-    us_address = RichTextField(help_text="Full address")
-    us_address_link = models.URLField(max_length=255, help_text="Link to google maps")
-    us_address_svg = models.CharField(max_length=9000, help_text="Paste SVG code here")
-    us_address_title = models.CharField(max_length=255, help_text="Full address")
-    cambridge_address = RichTextField(help_text="Full address", blank=True)
-    cambridge_address_link = models.URLField(
-        max_length=255, help_text="Link to google maps", blank=True
-    )
-    cambridge_address_svg = models.CharField(
-        max_length=9000, help_text="Paste SVG code here", blank=True
-    )
-    cambridge_address_title = models.CharField(
-        max_length=255, help_text="Full address", blank=True
-    )
+    addresses = StreamField([("address", BaseAddress())], blank=True)
 
-    # Contact widget
-    contact_person = models.ForeignKey(
-        "people.PersonPage",
-        related_name="+",
-        null=True,
-        on_delete=models.SET_NULL,
-        help_text="Ensure this person has telephone and email fields set",
-    )
-    contact_widget_intro = models.TextField()
-    contact_widget_call_to_action = models.TextField()
-    contact_widget_button_text = models.TextField()
+    panels = [
+        StreamFieldPanel("addresses"),
+    ]
 
     class Meta:
         verbose_name = "Global Settings"
-
-    panels = [
-        FieldPanel("contact_telephone"),
-        FieldPanel("contact_email"),
-        FieldPanel("contact_twitter"),
-        FieldPanel("email_newsletter_teaser"),
-        FieldPanel("oxford_address_title"),
-        FieldPanel("oxford_address"),
-        FieldPanel("oxford_address_link"),
-        FieldPanel("oxford_address_svg"),
-        FieldPanel("bristol_address_title"),
-        FieldPanel("bristol_address"),
-        FieldPanel("bristol_address_link"),
-        FieldPanel("bristol_address_svg"),
-        FieldPanel("us_address_title"),
-        FieldPanel("us_address"),
-        FieldPanel("us_address_link"),
-        FieldPanel("us_address_svg"),
-        FieldPanel("cambridge_address_title"),
-        FieldPanel("cambridge_address"),
-        FieldPanel("cambridge_address_link"),
-        FieldPanel("cambridge_address_svg"),
-        MultiFieldPanel(
-            [
-                PageChooserPanel("contact_person"),
-                FieldPanel("contact_widget_intro"),
-                FieldPanel("contact_widget_call_to_action"),
-                FieldPanel("contact_widget_button_text"),
-            ],
-            "Contact widget",
-        ),
-    ]
 
 
 class SubMenuItemBlock(StreamBlock):

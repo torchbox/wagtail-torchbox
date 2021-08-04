@@ -27,3 +27,8 @@ def serve_document_from_s3(document, request):
     del response["Cache-control"]
     add_never_cache_headers(response)
     return response
+
+
+@hooks.register("construct_settings_menu")
+def hide_main_menu_menu_item(request, menu_items):
+    menu_items[:] = [item for item in menu_items if item.name != "main-menu"]

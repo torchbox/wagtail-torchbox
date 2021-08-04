@@ -5,7 +5,7 @@ register = template.Library()
 
 # Primary nav snippets
 @register.inclusion_tag(
-    "patterns/molecules/navigation/primarynav.html", takes_context=True
+    "patterns/molecules/navigation/primary-nav.html", takes_context=True
 )
 def primarynav(context):
     request = context["request"]
@@ -13,34 +13,7 @@ def primarynav(context):
         "primarynav": context["settings"]["navigation"][
             "NavigationSettings"
         ].primary_navigation,
-        "request": request,
-    }
-
-
-# Secondary nav snippets
-@register.inclusion_tag(
-    "patterns/molecules/navigation/secondarynav.html", takes_context=True
-)
-def secondarynav(context):
-    request = context["request"]
-    return {
-        "secondarynav": context["settings"]["navigation"][
-            "NavigationSettings"
-        ].secondary_navigation,
-        "request": request,
-    }
-
-
-# Footer nav snippets
-@register.inclusion_tag(
-    "patterns/molecules/navigation/footernav.html", takes_context=True
-)
-def footernav(context):
-    request = context["request"]
-    return {
-        "footernav": context["settings"]["navigation"][
-            "NavigationSettings"
-        ].footer_navigation,
+        "job_count": context["job_count"],
         "request": request,
     }
 
@@ -58,7 +31,7 @@ def sidebar(context):
 
 # Footer nav snippets
 @register.inclusion_tag(
-    "patterns/molecules/navigation/footerlinks.html", takes_context=True
+    "patterns/molecules/navigation/footer-links.html", takes_context=True
 )
 def footerlinks(context):
     request = context["request"]
@@ -80,5 +53,19 @@ def footerteasers(context):
         "footerteasers": context["settings"]["navigation"][
             "NavigationSettings"
         ].footer_teasers,
+        "request": request,
+    }
+
+
+# Footer nav snippets
+@register.inclusion_tag(
+    "patterns/molecules/navigation/footer-top-links.html", takes_context=True
+)
+def footertoplinks(context):
+    request = context["request"]
+    return {
+        "footertoplinks": context["settings"]["navigation"][
+            "NavigationSettings"
+        ].footer_top_links,
         "request": request,
     }
