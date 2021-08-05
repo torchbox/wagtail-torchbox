@@ -18,6 +18,10 @@
 
     &__content-align {
         margin: 0 3.5vw;
+
+        @include media-query(large) {
+            margin: 0 0 0 3.5vw;
+        }
     }
 
     &__heading {
