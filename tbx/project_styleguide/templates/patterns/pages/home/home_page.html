@@ -8,8 +8,13 @@
 {% block content %}
     <div class="home">
         <div class="home__hero home__contents">
-            {# Heading #}
-            <h1 class="home__heading"><span>Digital</span> for good.</h1>
+            <div class="home__content-align">
+                {# Logo #}
+                {% include "patterns/atoms/logo/logo.html" with classes="logo--home" %}
+
+                {# Heading #}
+                <h1 class="home__heading"><span>Digital</span> for good.</h1>
+            </div>
 
             {# Shards SVG window + video #}
             <div class="shards">

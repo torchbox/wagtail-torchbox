@@ -3,7 +3,7 @@
         @include media-query(large) {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
         }
     }
 
@@ -12,16 +12,18 @@
         margin: 0 auto;
     }
 
+    &__content-align {
+        margin-left: 3.5vw;
+    }
+
     &__heading {
         color: var(--color--white);
         font-size: 97px;
         line-height: 97px;
         margin-right: 0;
         font-weight: $weight--heavy;
-        margin-left: ($gutter * 2);
 
         @include media-query(large) {
-            margin-left: 3.5vw;
             margin-top: ($gutter * 8);
         }
 

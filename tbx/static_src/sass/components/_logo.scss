@@ -8,6 +8,12 @@
         margin-top: -10px;
     }
 
+    &--home {
+        @include media-query(large) {
+            margin: 40px 0 0;
+        }
+    }
+
     &__image {
         width: 110px;
         height: 40px;
