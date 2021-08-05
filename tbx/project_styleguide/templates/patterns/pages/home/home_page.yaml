@@ -8,3 +8,13 @@ context:
       summary: Check out our awesome stub content
       get_link_text: Click here
       get_link_url: '#'
+  featured_posts:
+    - title: Our multi-award-winning campaign with Islamic Relief UK
+      author: Lisa Ballam
+      type: Case Study
+    - title: NASA’s Jet Propulsion Laboratory launches on Wagtail CMS
+      author: Will Heinemann
+      type: Case Study
+    - title: Join us for our next ‘What’s New in Wagtail’ webinar
+      author: Lisa Ballam
+      type: Blog

@@ -1,19 +1,23 @@
 .home {
     &__hero {
-        @include media-query(large) {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
+        background-color: var(--color--dark-indigo);
     }
 
     &__contents {
         max-width: 1440px;
         margin: 0 auto;
+
+        &--top {
+            @include media-query(large) {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+        }
     }
 
     &__content-align {
-        margin-left: 3.5vw;
+        margin: 0 3.5vw;
     }
 
     &__heading {

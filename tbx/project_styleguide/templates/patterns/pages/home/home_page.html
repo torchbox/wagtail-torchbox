@@ -7,36 +7,55 @@
 
 {% block content %}
     <div class="home">
-        <div class="home__hero home__contents">
-            <div class="home__content-align">
-                {# Logo #}
-                {% include "patterns/atoms/logo/logo.html" with classes="logo--home" %}
+        {# Hero #}
+        <div class="home__hero">
+            <div class="home__contents home__contents--top">
+                <div class="home__content-align">
+                    {# Logo #}
+                    {% include "patterns/atoms/logo/logo.html" with classes="logo--home" %}
 
-                {# Heading #}
-                <h1 class="home__heading"><span>Digital</span> for good.</h1>
+                    {# Heading #}
+                    <h1 class="home__heading"><span>Digital</span> for good.</h1>
+                </div>
+
+                {# Shards SVG window + video #}
+                <div class="shards">
+                    <div class="responsive-object" style="padding-bottom: 56.25%">
+                        <svg class="shards__window shards__window--desktop" aria-hidden="true">
+                            <use xlink:href="#shards-window"/>
+                        </svg>
+                        <video width="1024" height="576" class="shards__video" loop autoplay muted>
+                            {# TODO - add video #}
+                            <source src="#" type="video/mp4">
+                            <source src="#" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
             </div>
 
-            {# Shards SVG window + video #}
-            <div class="shards">
-                <div class="responsive-object" style="padding-bottom: 56.25%">
-                    <svg class="shards__window shards__window--desktop" aria-hidden="true">
-                        <use xlink:href="#shards-window"/>
-                    </svg>
-                    <video width="1024" height="576" class="shards__video" loop autoplay muted>
-                        {# TODO - add video #}
-                        <source src="#" type="video/mp4">
-                        <source src="#" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+            <div class="home__contents">
+                {% include "patterns/molecules/primary-nav/primary-nav.html" with classes="primary-nav--home" %}
             </div>
         </div>
 
-    <div class="home__contents">
-        {% include "patterns/molecules/primary-nav/primary-nav.html" with classes="primary-nav--home" %}
+        {# 3 posts/case studies #}
+        <div class="home__contents">
+            <div class="home__content-align">
+                <ul class="posts-grid">
+                    {% for post in featured_posts %}
+                        <li class="post">
+                            <h2 class="post__title">
+                                <a class="post__link" href="">{{ post.title }}</a>
+                            </h2>
+                            <p class="post__author">{{ post.author }}</p>
+                            <p class="post__meta">{{ post.type }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
-
 
     {% block contact %}{% endblock %}
 {% endblock %}
