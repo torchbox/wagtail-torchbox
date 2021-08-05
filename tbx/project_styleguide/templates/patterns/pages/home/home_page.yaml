@@ -1,5 +1,6 @@
 context:
   page:
+    get_verbose_name: homepage
     title: Homepage
     strapline: This is a home page
     call_to_action:

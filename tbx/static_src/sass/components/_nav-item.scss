@@ -20,22 +20,6 @@
             }
         }
 
-        &--with-children {
-            position: relative;
-            padding-left: 3.5vw;
-            margin-right: 0;
-
-            &::before {
-                content: '';
-                height: 70px;
-                width: 1px;
-                background-color: var(--color--white);
-                position: absolute;
-                left: 0;
-                bottom: -25px;
-            }
-        }
-
         &__link {
             @include font-size(s);
             @include link-underscore(0);
@@ -68,13 +52,6 @@
                 right: -25px;
                 top: -15px;
             }
-        }
-
-        &__title {
-            display: flex;
-            position: relative;
-            line-height: 35px;
-            transition: all $transition-quick;
         }
     }
 
@@ -163,22 +140,43 @@
 
     // Home page mods
     .primary-nav--home & {
+        &--with-children {
+            position: relative;
+            padding-left: 3.5vw;
+            margin-right: 0;
+
+            &::before {
+                content: '';
+                height: 70px;
+                width: 1px;
+                background-color: var(--color--white);
+                position: absolute;
+                left: 0;
+                bottom: -25px;
+            }
+        }
+
         &__title {
             font-weight: $weight--heavy;
             font-size: map-get($medium-font-sizes, l);
             text-shadow: 0 0, 0 3px var(--color--link), 4px 0 var(--color--link),
                 0 0;
+            z-index: 2;
+            position: relative;
         }
 
         &__link {
+            border-bottom: 0;
             overflow: visible;
+            color: var(--color--white);
+            position: relative;
 
             &::before {
                 content: '';
                 position: absolute;
                 width: 25%;
                 height: 6px;
-                bottom: 3px;
+                bottom: -7px;
                 left: 0;
                 background-color: var(--color--underline);
                 transition: width $transition-quick;

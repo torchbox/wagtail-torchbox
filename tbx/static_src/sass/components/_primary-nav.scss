@@ -1,4 +1,6 @@
 .primary-nav {
+    $root: &;
+
     width: 100%;
     padding-top: ($gutter * 0.75);
     display: none;
@@ -27,11 +29,5 @@
         padding: 0;
         margin: 0;
         align-items: center;
-
-        li {
-            width: auto;
-            padding: 0;
-            white-space: nowrap;
-        }
     }
 }

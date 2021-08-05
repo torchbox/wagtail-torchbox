@@ -2,13 +2,21 @@
     width: 100%;
     min-height: 576px;
     overflow: hidden;
-    max-width: 1024px;
+    max-width: 910px;
     position: relative;
 
     &__window {
         fill: var(--color--dark-indigo);
         z-index: 1;
         background-color: var(--color--white); // temp whilst there is no video
+
+        &--desktop {
+            display: none;
+
+            @include media-query(large) {
+                display: block;
+            }
+        }
     }
 
     &__video {

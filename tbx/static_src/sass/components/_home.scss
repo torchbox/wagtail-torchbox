@@ -1,8 +1,15 @@
 .home {
-    @include media-query(large) {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        align-items: center;
+    &__hero {
+        @include media-query(large) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__contents {
+        max-width: 1440px;
+        margin: 0 auto;
     }
 
     &__heading {

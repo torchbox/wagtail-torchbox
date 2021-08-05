@@ -7,29 +7,31 @@
 
 {% block content %}
     <div class="home">
+        <div class="home__hero home__contents">
+            {# Heading #}
+            <h1 class="home__heading"><span>Digital</span> for good.</h1>
 
-        {# Heading #}
-        <h1 class="home__heading"><span>Digital</span> for good.</h1>
-
-        {# Shards SVG window + video #}
-        <div class="shards">
-            <div class="responsive-object" style="padding-bottom: 56.25%">
-                <svg class="shards__window" aria-hidden="true">
-                    <use xlink:href="#shards-window"/>
-                </svg>
-                <video width="1024" height="576" class="shards__video" loop autoplay muted>
-                    {# TODO - add video #}
-                    <source src="#" type="video/mp4">
-                    <source src="#" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
+            {# Shards SVG window + video #}
+            <div class="shards">
+                <div class="responsive-object" style="padding-bottom: 56.25%">
+                    <svg class="shards__window shards__window--desktop" aria-hidden="true">
+                        <use xlink:href="#shards-window"/>
+                    </svg>
+                    <video width="1024" height="576" class="shards__video" loop autoplay muted>
+                        {# TODO - add video #}
+                        <source src="#" type="video/mp4">
+                        <source src="#" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+    <div class="home__contents">
         {% include "patterns/molecules/primary-nav/primary-nav.html" with classes="primary-nav--home" %}
     </div>
+</div>
+
 
     {% block contact %}{% endblock %}
 {% endblock %}
