@@ -143,9 +143,9 @@
         margin-right: 0;
         margin-bottom: 45px;
 
-        @include media-query(large) {
+        @include media-query(menu-break) {
             margin-bottom: 0;
-            margin-right: 7vw;
+            margin-right: 6vw;
         }
 
         &--with-children {
@@ -154,7 +154,7 @@
             margin-right: 0;
             display: none;
 
-            @include media-query(large) {
+            @include media-query(menu-break) {
                 display: block;
             }
 
