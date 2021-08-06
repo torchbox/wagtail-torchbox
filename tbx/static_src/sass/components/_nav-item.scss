@@ -140,6 +140,10 @@
 
     // Home page mods
     .primary-nav--home & {
+        @include media-query(large) {
+            margin-right: 7vw;
+        }
+
         &--with-children {
             position: relative;
             padding-left: 3.5vw;
