@@ -140,7 +140,11 @@
 
     // Home page mods
     .primary-nav--home & {
+        margin-right: 0;
+        margin-bottom: 45px;
+
         @include media-query(large) {
+            margin-bottom: 0;
             margin-right: 7vw;
         }
 
@@ -148,6 +152,11 @@
             position: relative;
             padding-left: 3.5vw;
             margin-right: 0;
+            display: none;
+
+            @include media-query(large) {
+                display: block;
+            }
 
             &::before {
                 content: '';

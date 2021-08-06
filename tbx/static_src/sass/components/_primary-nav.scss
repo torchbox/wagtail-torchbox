@@ -16,10 +16,21 @@
 
     &--home {
         margin-left: 3.5vw;
+        display: block;
 
         @include media-query(large) {
             margin-top: ($gutter * 3);
             padding-bottom: ($gutter * 3);
+        }
+
+        #{$root}__list {
+            flex-direction: column;
+            align-items: flex-start;
+
+            @include media-query(large) {
+                flex-direction: row;
+                align-items: center;
+            }
         }
     }
 

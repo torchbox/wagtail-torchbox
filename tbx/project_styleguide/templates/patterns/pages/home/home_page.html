@@ -3,7 +3,10 @@
 
 {% block theme_class %}theme--dark--transparent{% endblock %}
 
-{% block header %}{% endblock %}
+{% block header %}
+    {% include "patterns/atoms/menu-button/menu-button.html" %}
+    {% include "patterns/molecules/navigation/mobile-nav.html" %}
+{% endblock %}
 
 {% block content %}
     <div class="home">
@@ -14,8 +17,8 @@
                     {# Logo #}
                     {% include "patterns/atoms/logo/logo.html" with classes="logo--home" %}
 
-                    {# Heading #}
-                    <h1 class="home__heading"><span>Digital</span> for good.</h1>
+                    {# Heading desktop #}
+                    <h1 class="home__heading home__heading--desktop"><span>Digital</span> for good.</h1>
                 </div>
 
                 {# Shards SVG window + video #}
@@ -31,6 +34,11 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
+                </div>
+
+                {# Heading tablet + mobile #}
+                <div class="home__content-align">
+                    <h1 class="home__heading home__heading--mobile"><span>Digital</span><br> for good.</h1>
                 </div>
             </div>
 
