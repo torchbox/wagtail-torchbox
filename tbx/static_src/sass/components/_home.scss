@@ -26,12 +26,19 @@
 
     &__heading {
         color: var(--color--white);
-        font-size: 97px;
-        line-height: 97px;
         margin-right: 0;
         font-weight: $weight--heavy;
+        font-size: 66px;
+        line-height: 64px;
+
+        @include media-query(medium) {
+            font-size: 80px;
+            line-height: 80px;
+        }
 
         @include media-query(large) {
+            font-size: 97px;
+            line-height: 97px;
             margin-top: ($gutter * 8);
         }
 
