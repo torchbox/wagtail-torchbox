@@ -1,5 +1,6 @@
 {% load wagtailcore_tags %}
 
+{# Home page #}
 {% if is_home %}
     {# First 3 items are shown #}
     {% for item in primarynav|slice:":3" %}
@@ -32,7 +33,7 @@
                             {% firstof link.title link.page.title %}
                         </a>
                         {% if link.page.slug == 'careers' and job_count > 0 %}
-                            <a class="subnav__item__badge-link" href="/jobs/">
+                            <a class="subnav__badge-link" href="/jobs/">
                                 {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                             </a>
                         {% endif %}
@@ -42,6 +43,7 @@
         </ul>
     </li>
 {% else %}
+{# All other pages #}
     {% for item in primarynav %}
         {% with link=item.value %}
             <li class="nav-item {% if link.page.slug == 'careers' and job_count > 0 %}nav-item--with-badge{% endif %}">

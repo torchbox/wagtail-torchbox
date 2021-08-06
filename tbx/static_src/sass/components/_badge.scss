@@ -45,4 +45,20 @@
             color: var(--color--dark-indigo);
         }
     }
+
+    .template__homepage & {
+        position: relative;
+
+        &:focus,
+        &:hover {
+            &::before {
+                background: var(--color--dark-indigo);
+            }
+        }
+
+        &::before {
+            left: -6px;
+            top: -4px;
+        }
+    }
 }
