@@ -6,7 +6,7 @@
     padding: 40px 0;
     position: relative;
 
-    @include media-query(large) {
+    @include media-query(medium) {
         flex-wrap: nowrap;
         flex-direction: row;
     }
@@ -26,7 +26,7 @@
         margin-bottom: $gutter;
         z-index: 1;
 
-        @include media-query(large) {
+        @include media-query(medium) {
             margin-bottom: 0;
         }
     }
@@ -36,23 +36,24 @@
     }
 
     &__content {
-        padding-left: 20px;
+        text-align: center;
         background-color: var(--color--white);
         z-index: 1;
+
+        @include media-query(medium) {
+            text-align: left;
+            padding-left: 20px;
+        }
     }
 
     &__meta {
         width: 100%;
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
 
-        @include media-query(large) {
+        @include media-query(medium) {
+            flex-direction: row;
             justify-content: flex-start;
-        }
-
-        div {
-            margin: 5px 0;
         }
     }
 
@@ -61,11 +62,12 @@
         color: var(--color--dark-indigo);
         line-height: 24px;
         text-decoration: none;
-        margin: ($gutter / 2) ($gutter * 0.75) 0 0;
         font-weight: bold;
+        margin-bottom: 10px;
 
-        @include media-query(large) {
-            margin: 0 ($gutter * 0.75) 0 0;
+        @include media-query(medium) {
+            margin: ($gutter / 2) ($gutter * 0.75) 0 0;
+            margin: 0 ($gutter * 0.75) 10px 0;
         }
 
         &:hover,
@@ -81,10 +83,10 @@
         text-decoration: none;
         font-weight: bold;
         color: var(--color--coral);
-        margin: 10px 15px 0 0;
         border-bottom: none;
 
-        @include media-query(large) {
+        @include media-query(medium) {
+            margin: 10px 15px 0 0;
             margin: 0 ($gutter * 0.75) 0 0;
         }
 

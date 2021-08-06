@@ -1,8 +1,8 @@
 .posts-grid {
-    padding: 60px 0;
+    padding: 60px 0 0;
 
     @include media-query(medium) {
-        padding: 100px 0;
+        padding: 100px 0 0;
     }
 
     @include media-query(large) {
