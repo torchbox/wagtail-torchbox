@@ -1,7 +1,21 @@
 .footer {
+    $root: &;
     position: relative;
     background-color: var(--color--light-grey);
     padding: ($gutter * 5) 0 ($gutter * 1.5);
+
+    &--home {
+        background-color: var(--color-white);
+        padding: 0 0 30px;
+
+        @include media-query(large) {
+            padding: 60px 0 30px;
+        }
+
+        #{$root}__copyright {
+            margin-right: 0;
+        }
+    }
 
     &__top {
         @include container();
