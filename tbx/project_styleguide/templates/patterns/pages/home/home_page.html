@@ -1,5 +1,5 @@
 {% extends "patterns/base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags navigation_tags static %}
 
 {% block theme_class %}theme--dark--transparent{% endblock %}
 
@@ -35,7 +35,11 @@
             </div>
 
             <div class="home__contents">
-                {% include "patterns/molecules/primary-nav/primary-nav.html" with classes="primary-nav--home" %}
+                <nav class="primary-nav primary-nav--home">
+                    <ul class="primary-nav__list">
+                        {% primarynav is_home=True %}
+                    </ul>
+                </nav>
             </div>
         </div>
 
