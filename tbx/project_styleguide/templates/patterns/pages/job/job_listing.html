@@ -15,7 +15,7 @@
 
             <div class="job-listing__list">
                 {% if feed_success %}
-                    {% for job in jobs %}
+                    {% for job in jobs|dictsort:"title" %}
                         {% include "patterns/molecules/job-item/job-item.html" with item=job %}
                     {% endfor %}
                 {% else %}
