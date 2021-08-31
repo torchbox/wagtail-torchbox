@@ -218,7 +218,7 @@ class HomePageFeaturedPost(Orderable):
         related_name="+",
     )
 
-    content_panels = [
+    panels = [
         PageChooserPanel("feature_post", ["blog.BlogPage", "work.WorkPage"]),
     ]
 
