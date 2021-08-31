@@ -145,6 +145,10 @@ class WorkPage(Page):
         else:
             return "x"
 
+    @property
+    def type(self):
+        return "CASE STUDY"
+
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("client", classname="client"),

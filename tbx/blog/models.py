@@ -262,6 +262,10 @@ class BlogPage(Page):
         else:
             return "x"
 
+    @property
+    def type(self):
+        return "BLOG"
+
     content_panels = [
         FieldPanel("title", classname="full title"),
         InlinePanel("authors", label="Author", min_num=1),
