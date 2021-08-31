@@ -206,7 +206,7 @@ class HomePageClient(Orderable, RelatedLink):
     panels = RelatedLink.panels + [ImageChooserPanel("image")]
 
 
-class HomePageFeaturedPost(Orderable, RelatedLink):
+class HomePageFeaturedPost(Orderable):
     page = ParentalKey(
         "torchbox.HomePage", on_delete=models.CASCADE, related_name="featured_posts"
     )
@@ -218,7 +218,7 @@ class HomePageFeaturedPost(Orderable, RelatedLink):
         related_name="+",
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = [
         PageChooserPanel("feature_post", ["blog.BlogPage", "work.WorkPage"]),
     ]
 
@@ -247,7 +247,7 @@ class HomePage(Page):
         FieldPanel("blog_title"),
         FieldPanel("clients_title"),
         InlinePanel("clients", label="Clients"),
-        InlinePanel("featured_posts", label="Featured Links", max_num=3),
+        InlinePanel("featured_posts", label="Featured Posts", max_num=3),
     ]
 
     @property
