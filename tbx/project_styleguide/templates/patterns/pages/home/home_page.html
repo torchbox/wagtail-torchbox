@@ -55,14 +55,18 @@
         <div class="home__contents">
             <div class="home__content-align">
                 <ul class="posts-grid">
-                    {% for post in featured_posts %}
-                        <li class="post">
-                            <h2 class="post__title">
-                                <a class="post__link" href="">{{ post.title }}</a>
-                            </h2>
-                            <p class="post__author">{{ post.author }}</p>
-                            <p class="post__meta">{{ post.type }}</p>
-                        </li>
+                    {% for featured_post in page.featured_posts.all %}
+                        {% with post=featured_post.featured_post.specific %}
+                            <li class="post">
+                                <h2 class="post__title">
+                                    <a class="post__link" href="">{{ post.title }}</a>
+                                </h2>
+                                {% if post.has_authors %}
+                                    <p class="post__author">{{ post.first_author }}</p>
+                                {% endif %}
+                                <p class="post__meta">{{ post.type }}</p>
+                            </li>
+                        {% endwith %}
                     {% endfor %}
                 </ul>
             </div>
