@@ -210,7 +210,7 @@ class HomePageFeaturedPost(Orderable, RelatedLink):
     page = ParentalKey(
         "torchbox.HomePage", on_delete=models.CASCADE, related_name="featured_posts"
     )
-    feature_post = models.ForeignKey(
+    featured_post = models.ForeignKey(
         "wagtailcore.Page",
         null=True,
         blank=True,
