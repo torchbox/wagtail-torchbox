@@ -244,10 +244,6 @@ class BlogPage(Page):
             return BlogIndexPage.objects.first()
 
     @property
-    def has_authors(self):
-        return self.authors.exists()
-
-    @property
     def first_author(self):
         """Safely return the first author if one exists."""
         author = self.authors.first()

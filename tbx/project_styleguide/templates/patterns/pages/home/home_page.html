@@ -61,9 +61,7 @@
                                 <h2 class="post__title">
                                     <a class="post__link" href="">{{ post.title }}</a>
                                 </h2>
-                                {% if post.has_authors %}
-                                    <p class="post__author">{{ post.first_author }}</p>
-                                {% endif %}
+                                <p class="post__author">{{ post.first_author }}</p>
                                 <p class="post__meta">{{ post.type }}</p>
                             </li>
                         {% endwith %}
