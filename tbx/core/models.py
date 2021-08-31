@@ -219,7 +219,7 @@ class HomePageFeaturedPost(Orderable):
     )
 
     panels = [
-        PageChooserPanel("feature_post", ["blog.BlogPage", "work.WorkPage"]),
+        PageChooserPanel("featured_post", ["blog.BlogPage", "work.WorkPage"]),
     ]
 
 
