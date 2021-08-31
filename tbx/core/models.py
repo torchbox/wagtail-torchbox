@@ -206,6 +206,23 @@ class HomePageClient(Orderable, RelatedLink):
     panels = RelatedLink.panels + [ImageChooserPanel("image")]
 
 
+class HomePageFeaturedPost(Orderable, RelatedLink):
+    page = ParentalKey(
+        "torchbox.HomePage", on_delete=models.CASCADE, related_name="featured_posts"
+    )
+    feature_post = models.ForeignKey(
+        "wagtailcore.Page",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    content_panels = Page.content_panels + [
+        PageChooserPanel("feature_post", ["blog.BlogPage", "work.WorkPage"]),
+    ]
+
+
 class HomePage(Page):
     template = "patterns/pages/home/home_page.html"
     hero_intro_primary = models.TextField(blank=True)
@@ -230,6 +247,7 @@ class HomePage(Page):
         FieldPanel("blog_title"),
         FieldPanel("clients_title"),
         InlinePanel("clients", label="Clients"),
+        InlinePanel("featured_posts", label="Featured Links", max_num=3),
     ]
 
     @property
