@@ -118,6 +118,14 @@ class WorkPage(Page):
         return self.authors.exists()
 
     @property
+    def first_author(self):
+        """Safely return the first author if one exists."""
+        author = self.authors.first()
+        if author:
+            return author.author
+        return None
+
+    @property
     def related_works(self):
         services = self.related_services.all()
         # get 4 pages with same services and exclude self page
