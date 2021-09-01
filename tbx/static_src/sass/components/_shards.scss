@@ -13,6 +13,14 @@
     &__window {
         fill: var(--color--dark-indigo);
         z-index: 1;
+
+        &--desktop {
+            display: none;
+
+            @include media-query(large) {
+                display: initial;
+            }
+        }
     }
 
     &__video {
