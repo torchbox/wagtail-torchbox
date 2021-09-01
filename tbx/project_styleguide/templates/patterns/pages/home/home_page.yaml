@@ -26,3 +26,7 @@ context:
               title: Join us for our next ‘What’s New in Wagtail’ webinar
               first_author: Lisa Ballam
               type: Blog
+tags:
+  pageurl:
+    post:
+      raw: '#'
