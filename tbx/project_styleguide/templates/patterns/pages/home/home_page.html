@@ -60,7 +60,7 @@
                         {% with post=featured_post.featured_post.specific %}
                             <li class="post">
                                 <h2 class="post__title">
-                                    <a class="post__link" href="">{{ post.title }}</a>
+                                    <a class="post__link" href="{% pageurl post %}">{{ post.title }}</a>
                                 </h2>
                                 <p class="post__author">{{ post.first_author }}</p>
                                 <p class="post__meta">{{ post.type }}</p>
