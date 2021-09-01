@@ -231,7 +231,7 @@ class HomePage(Page):
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
-    mobile_hero_image=models.ForeignKey(
+    mobile_hero_image = models.ForeignKey(
         "torchbox.TorchboxImage",
         null=True,
         blank=False,
@@ -245,17 +245,20 @@ class HomePage(Page):
     content_panels = [
         FieldPanel("title", classname="full title"),
         MultiFieldPanel(
-            [FieldPanel("hero_intro_primary"), FieldPanel("hero_intro_secondary")],
+            [
+                FieldPanel("hero_intro_primary"),
+                FieldPanel("hero_intro_secondary"),
+                ImageChooserPanel("mobile_hero_image"),
+            ],
             heading="Hero intro",
         ),
         InlinePanel("hero", label="Hero"),
-        ImageChooserPanel("mobile_hero_image"),
+        InlinePanel("featured_posts", label="Featured Posts", max_num=3),
         FieldPanel("intro_body"),
         FieldPanel("work_title"),
         FieldPanel("blog_title"),
         FieldPanel("clients_title"),
         InlinePanel("clients", label="Clients"),
-        InlinePanel("featured_posts", label="Featured Posts", max_num=3),
     ]
 
     @property
