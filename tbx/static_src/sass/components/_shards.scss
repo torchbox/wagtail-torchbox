@@ -21,5 +21,10 @@
         top: 0;
         max-width: 1024px;
         max-height: 576px;
+        display: none;
+
+        @include media-query(large) {
+            display: initial;
+        }
     }
 }
