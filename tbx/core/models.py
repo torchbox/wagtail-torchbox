@@ -231,6 +231,13 @@ class HomePage(Page):
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
+    mobile_hero_image=models.ForeignKey(
+        "torchbox.TorchboxImage",
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
     class Meta:
         verbose_name = "Homepage"
@@ -242,6 +249,7 @@ class HomePage(Page):
             heading="Hero intro",
         ),
         InlinePanel("hero", label="Hero"),
+        ImageChooserPanel("mobile_hero_image"),
         FieldPanel("intro_body"),
         FieldPanel("work_title"),
         FieldPanel("blog_title"),
