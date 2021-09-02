@@ -231,7 +231,7 @@ class HomePage(Page):
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
-    mobile_hero_image = models.ForeignKey(
+    hero_image = models.ForeignKey(
         "torchbox.TorchboxImage",
         null=True,
         blank=False,
@@ -248,7 +248,7 @@ class HomePage(Page):
             [
                 FieldPanel("hero_intro_primary"),
                 FieldPanel("hero_intro_secondary"),
-                ImageChooserPanel("mobile_hero_image"),
+                ImageChooserPanel("hero_image"),
             ],
             heading="Hero intro",
         ),
