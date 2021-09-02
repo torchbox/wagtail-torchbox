@@ -12,4 +12,14 @@
         width: 100%;
         height: 100%;
     }
+
+    &__hero {
+        padding-bottom: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @include media-query(large) {
+            padding-bottom: 56.255%;
+        }
+    }
 }
