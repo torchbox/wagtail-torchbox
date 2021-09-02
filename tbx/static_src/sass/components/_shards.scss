@@ -13,6 +13,22 @@
     &__window {
         fill: var(--color--dark-indigo);
         z-index: 1;
+
+        &--desktop {
+            display: none;
+
+            @include media-query(large) {
+                display: initial;
+            }
+        }
+
+        &--mobile {
+            display: initial;
+
+            @include media-query(large) {
+                display: none;
+            }
+        }
     }
 
     &__video {
@@ -21,5 +37,10 @@
         top: 0;
         max-width: 1024px;
         max-height: 576px;
+        display: none;
+
+        @include media-query(large) {
+            display: initial;
+        }
     }
 }

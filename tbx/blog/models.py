@@ -244,10 +244,6 @@ class BlogPage(Page):
             return BlogIndexPage.objects.first()
 
     @property
-    def has_authors(self):
-        return self.authors.exists()
-
-    @property
     def first_author(self):
         """Safely return the first author if one exists."""
         author = self.authors.first()
@@ -261,6 +257,10 @@ class BlogPage(Page):
             return math.ceil(self.body_word_count / 275)
         else:
             return "x"
+
+    @property
+    def type(self):
+        return "BLOG"
 
     content_panels = [
         FieldPanel("title", classname="full title"),
