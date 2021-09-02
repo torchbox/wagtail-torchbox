@@ -233,6 +233,7 @@ class HomePage(Page):
     clients_title = models.TextField(blank=True)
     hero_image = models.ForeignKey(
         "torchbox.TorchboxImage",
+        help_text="Image used on mobile hero.",
         null=True,
         blank=False,
         on_delete=models.SET_NULL,
