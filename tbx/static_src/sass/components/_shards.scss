@@ -21,6 +21,14 @@
                 display: initial;
             }
         }
+
+        &--mobile {
+            display: initial;
+
+            @include media-query(large) {
+                display: none;
+            }
+        }
     }
 
     &__video {
