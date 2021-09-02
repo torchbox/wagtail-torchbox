@@ -25,7 +25,7 @@
                 <div class="shards">
                     {% image page.mobile_hero_image max-1000x500 as mobile_hero %}
                     <div class="responsive-object" style="padding-bottom: 56.255%; background-image: url({{ mobile_hero.url }}); background-repeat: no-repeat;">
-                        <svg class="shards__window" aria-hidden="true" onclick="shardOnclick()">
+                        <svg class="shards__window" aria-hidden="true">
                             <use class="shards__window--desktop" xlink:href="#shards-window-desktop"/>
                             <use xlink:href="#shards-window-mobile"/>
                         </svg>
@@ -94,12 +94,13 @@
 
 {% block extra_js %}
     <script>
-        function shardOnclick() {
-            const shardDesktopWindow = document.getElementsByClassName("shards__window--desktop")[0]
-            if (window.getComputedStyle(shardDesktopWindow).display !== "none") {
+        const shardWindow = document.getElementsByClassName("shards__window")[0]
+        shardWindow.addEventListener("click", function(event){
+            const shardDesktopSVG = document.getElementsByClassName("shards__window--desktop")[0]
+            if (window.getComputedStyle(shardDesktopSVG).display !== "none") {
                 let video = document.getElementsByClassName("shards__video")[0]
                 video.paused ? video.play() : video.pause()
             }
-        }
+        });
     </script>
 {% endblock %}
