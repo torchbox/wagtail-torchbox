@@ -1,0 +1,66 @@
+.shards {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 40px;
+
+    @include media-query(large) {
+        max-width: 820px;
+        min-height: 576px;
+        margin-bottom: 0;
+    }
+
+    @include media-query(x-large) {
+        max-width: 910px;
+    }
+
+    &__window {
+        fill: var(--color--dark-indigo);
+        z-index: 1;
+
+        &--desktop {
+            display: none;
+
+            @include media-query(large) {
+                display: initial;
+            }
+        }
+
+        &--mobile {
+            display: initial;
+
+            @include media-query(large) {
+                display: none;
+            }
+        }
+    }
+
+    &__video {
+        position: absolute;
+        right: -60px;
+        top: 0;
+        max-width: 1024px;
+        max-height: 576px;
+        display: none;
+
+        @include media-query(large) {
+            display: initial;
+        }
+    }
+
+    &__button {
+        pointer-events: none;
+
+        @include media-query(large) {
+            pointer-events: all;
+            display: block;
+            margin: 0;
+            border: 0;
+            padding: 0;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

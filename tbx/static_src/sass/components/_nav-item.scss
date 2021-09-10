@@ -1,5 +1,6 @@
 .nav-item {
     $root: &;
+    margin-right: 3.5vw;
 
     // Desktop menu
     .desktop-nav & {
@@ -81,6 +82,142 @@
             position: relative;
             top: -10px;
             right: -15px;
+        }
+    }
+
+    &__button {
+        position: relative;
+        background-color: transparent;
+        border: 0;
+        color: var(--color--header-links);
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        padding: 0;
+
+        &:focus,
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__dots {
+        position: relative;
+        width: 6px;
+        height: 6px;
+        border-radius: 5px;
+        background-color: var(--color--header-links);
+        color: var(--color--header-links);
+        display: inline-block;
+        margin-left: 20px;
+
+        &::after,
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+
+        &::before {
+            left: -10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: var(--color--header-links);
+            color: var(--color--header-links);
+        }
+
+        &::after {
+            left: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: var(--color--header-links);
+            color: var(--color--header-links);
+        }
+    }
+
+    // Home page mods
+    .primary-nav--home & {
+        margin-right: 0;
+        margin-bottom: 35px;
+
+        @include media-query(medium) {
+            margin-bottom: 45px;
+        }
+
+        @include media-query(menu-break) {
+            margin-bottom: 0;
+            margin-right: 6vw;
+        }
+
+        &--with-children {
+            position: relative;
+            padding-left: 3.5vw;
+            margin-right: 0;
+            display: none;
+
+            @include media-query(menu-break) {
+                display: block;
+            }
+
+            &::before {
+                content: '';
+                height: 70px;
+                width: 1px;
+                background-color: var(--color--white);
+                position: absolute;
+                left: 0;
+                bottom: -25px;
+            }
+        }
+
+        &__title {
+            font-weight: $weight--heavy;
+            font-size: map-get($medium-font-sizes, s);
+            text-shadow: 0 0, 0 3px var(--color--link), 4px 0 var(--color--link),
+                0 0;
+            z-index: 2;
+            position: relative;
+
+            @include media-query(medium) {
+                font-size: map-get($medium-font-sizes, l);
+            }
+        }
+
+        &__link {
+            border-bottom: 0;
+            overflow: visible;
+            color: var(--color--white);
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 25%;
+                height: 6px;
+                bottom: -7px;
+                left: 0;
+                background-color: var(--color--underline);
+                transition: width $transition-quick;
+            }
+
+            &::after {
+                display: none;
+            }
+
+            &:hover,
+            &:focus,
+            &--active {
+                &::before {
+                    width: 100%;
+                }
+            }
+        }
+
+        &__button {
+            font-weight: $weight--heavy;
         }
     }
 }

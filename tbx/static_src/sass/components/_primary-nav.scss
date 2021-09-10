@@ -1,4 +1,6 @@
 .primary-nav {
+    $root: &;
+
     width: 100%;
     padding-top: ($gutter * 0.75);
     display: none;
@@ -12,17 +14,32 @@
         padding-top: ($gutter / 2);
     }
 
+    &--home {
+        margin-left: 3.5vw;
+        display: block;
+        width: auto;
+
+        @include media-query(menu-break) {
+            margin-top: ($gutter * 3);
+            padding-bottom: ($gutter * 3);
+        }
+
+        #{$root}__list {
+            flex-direction: column;
+            align-items: flex-start;
+
+            @include media-query(menu-break) {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    }
+
     &__list {
         display: flex;
         list-style: none;
         padding: 0;
         margin: 0;
-
-        li {
-            float: left;
-            width: auto;
-            padding: 0;
-            white-space: nowrap;
-        }
+        align-items: center;
     }
 }

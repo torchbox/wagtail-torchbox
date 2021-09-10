@@ -7,7 +7,7 @@ register = template.Library()
 @register.inclusion_tag(
     "patterns/molecules/navigation/primary-nav.html", takes_context=True
 )
-def primarynav(context):
+def primarynav(context, is_home):
     request = context["request"]
     return {
         "primarynav": context["settings"]["navigation"][
@@ -15,6 +15,7 @@ def primarynav(context):
         ].primary_navigation,
         "job_count": context["job_count"],
         "request": request,
+        "is_home": is_home,
     }
 
 

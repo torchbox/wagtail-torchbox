@@ -8,6 +8,18 @@
         margin-top: -10px;
     }
 
+    &--home {
+        position: absolute;
+        top: 20px;
+        z-index: 20;
+
+        @include media-query(large) {
+            position: relative;
+            top: auto;
+            margin: 40px 0 0;
+        }
+    }
+
     &__image {
         width: 110px;
         height: 40px;

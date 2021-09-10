@@ -1,14 +1,16 @@
 .menu-button {
     @include z-index(menu-button);
     position: absolute;
-    top: 0;
+    top: $gutter;
     right: $gutter;
-    width: 46px;
-    height: 70px;
+    width: 45px;
+    height: 45px;
     display: block;
     border: none;
     text-align: center;
     cursor: pointer;
+    background: var(--color--white);
+    border-radius: 50%;
 
     @include media-query(menu-break) {
         display: none;
@@ -21,8 +23,8 @@
             width: 20px;
             background-color: var(--color--header-icon-color);
             height: 3px;
-            left: 37%;
-            top: 40px;
+            left: 13px;
+            top: 15px;
             transform: translateX(0);
         }
 
@@ -32,8 +34,8 @@
             position: absolute;
             width: 16px;
             height: 3px;
-            left: 45%;
-            top: 48px;
+            left: 17px;
+            top: 22px;
         }
 
         &:nth-child(3) {
@@ -42,8 +44,8 @@
             position: absolute;
             width: 12px;
             height: 3px;
-            left: 41%;
-            top: 55px;
+            left: 14px;
+            top: 29px;
         }
     }
 
@@ -55,19 +57,19 @@
             }
 
             &:nth-child(2) {
-                background-color: var(--color--white);
+                background-color: var(--color--coral);
                 transform: rotate(-45deg) scale(2);
-                top: 50px;
-                left: 40%;
+                left: 17px;
+                top: 22px;
                 height: 2px;
                 width: 12px;
             }
 
             &:nth-child(3) {
-                background-color: var(--color--white);
+                background-color: var(--color--coral);
                 transform: rotate(45deg) scale(2);
-                top: 50px;
-                left: 40%;
+                left: 17px;
+                top: 22px;
                 height: 2px;
                 width: 12px;
             }

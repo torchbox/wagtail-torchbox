@@ -1,5 +1,7 @@
 context:
   page:
+    body_class: homepage
+    get_verbose_name: homepage
     title: Homepage
     strapline: This is a home page
     call_to_action:
@@ -7,3 +9,24 @@ context:
       summary: Check out our awesome stub content
       get_link_text: Click here
       get_link_url: '#'
+    featured_posts:
+      all:
+        - featured_post:
+            specific:
+              title: Our multi-award-winning campaign with Islamic Relief UK
+              first_author: Lisa Ballam
+              type: Case Study
+        - featured_post:
+            specific:
+              title: NASA’s Jet Propulsion Laboratory launches on Wagtail CMS
+              first_author: Will Heinemann
+              type: Case Study
+        - featured_post:
+            specific:
+              title: Join us for our next ‘What’s New in Wagtail’ webinar
+              first_author: Lisa Ballam
+              type: Blog
+tags:
+  pageurl:
+    post:
+      raw: '#'
