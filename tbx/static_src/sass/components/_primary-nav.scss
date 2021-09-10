@@ -17,6 +17,7 @@
     &--home {
         margin-left: 3.5vw;
         display: block;
+        width: auto;
 
         @include media-query(menu-break) {
             margin-top: ($gutter * 3);
