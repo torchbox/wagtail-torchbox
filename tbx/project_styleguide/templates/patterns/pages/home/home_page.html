@@ -18,7 +18,9 @@
                     {% include "patterns/atoms/logo/logo.html" with classes="logo--home" %}
 
                     {# Heading desktop #}
-                    <h1 class="home__heading home__heading--desktop"><span>Digital</span> for good.</h1>
+                    {% if page.hero_intro_primary or page.hero_intro_secondary %}
+                        <h1 class="home__heading home__heading--desktop"><span>{{ page.hero_intro_primary }}</span> {{ page.hero_intro_secondary }}</h1>
+                    {% endif %}
                 </div>
 
                 {# Shards SVG window + video #}
@@ -40,9 +42,11 @@
             </div>
 
             {# Heading tablet + mobile #}
-            <div class="home__content-align">
-                <h1 class="home__heading home__heading--mobile"><span>Digital</span> for good.</h1>
-            </div>
+            {% if page.hero_intro_primary or page.hero_intro_secondary %}
+                <div class="home__content-align">
+                    <h1 class="home__heading home__heading--mobile"><span>{{ page.hero_intro_primary }}</span> {{ page.hero_intro_secondary }}</h1>
+                </div>
+            {% endif %}
 
             <div class="home__contents">
                 <nav class="primary-nav primary-nav--home">
