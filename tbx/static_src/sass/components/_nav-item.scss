@@ -152,6 +152,10 @@
             margin-right: 6vw;
         }
 
+        @include media-query(x-large) {
+            margin-right: 5.5vw;
+        }
+
         &--with-children {
             position: relative;
             padding-left: 3.5vw;
