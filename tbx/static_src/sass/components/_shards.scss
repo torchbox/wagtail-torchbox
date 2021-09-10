@@ -43,4 +43,20 @@
             display: initial;
         }
     }
+
+    &__button {
+        pointer-events: none;
+
+        @include media-query(large) {
+            pointer-events: all;
+            display: block;
+            margin: 0;
+            border: 0;
+            padding: 0;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
 }
