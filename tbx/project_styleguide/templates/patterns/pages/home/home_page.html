@@ -32,9 +32,7 @@
                             </svg>
                         </button>
                         <video width="1024" height="576" class="shards__video" loop autoplay muted data-shards-video>
-                            {# TODO - add video #}
-                            <source src="{% static 'images/showreel.mp4' %}" type="video/mp4">
-                            <source src="#" type="video/webm">
+                            <source data-src="{% static 'images/showreel.mp4' %}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>

@@ -7,7 +7,17 @@ class ShardsVideo {
         this.node = node;
         this.button = this.node.querySelector('[data-shards-video-button]');
         this.video = this.node.querySelector('[data-shards-video]');
+        this.videoSource = this.video.querySelector('source');
+        this.shouldLoadVideo();
         this.bindEvents();
+    }
+
+    shouldLoadVideo() {
+        // only load the video above the large breakpoint
+        if (window.matchMedia('(min-width: 1023px)').matches) {
+            this.videoSource.src = this.videoSource.getAttribute('data-src');
+            this.video.load();
+        }
     }
 
     bindEvents() {
