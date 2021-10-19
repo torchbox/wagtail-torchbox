@@ -77,8 +77,11 @@
                 </div>
             {% endif %}
 
-            <div class="home__content-align">
+            <div class="home__content-align home__content-align--contact">
                 {% include "patterns/molecules/contact-slim/contact-slim.html" %}
+                <p class="home__copyright">
+                    &copy; Torchbox {% now "Y" %}
+                </p>
             </div>
         </div>
     </div>
@@ -86,14 +89,4 @@
     {% block contact %}{% endblock %}
 {% endblock %}
 
-{% block footer %}
-    <footer class="footer footer--home home">
-        <div class="home__contents">
-            <div class="home__content-align">
-                <div class="footer__copyright">
-                    &copy; Torchbox {% now "Y" %}
-                </div>
-            </div>
-        </div>
-    </footer>
-{% endblock %}
+{% block footer %}{% endblock %}
