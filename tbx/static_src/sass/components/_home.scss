@@ -23,6 +23,10 @@
         @include media-query(large) {
             margin: 0 0 0 3.5vw;
         }
+
+        &--contact {
+            position: relative;
+        }
     }
 
     &__heading {
@@ -63,6 +67,24 @@
             @include media-query(large) {
                 display: none;
             }
+        }
+    }
+
+    &__copyright {
+        transform: translateY(calc(5px - -50%));
+        font-size: 0.7em;
+        color: var(--color--grey);
+        margin-bottom: ($gutter * 2);
+        text-align: center;
+
+        @include media-query(medium) {
+            text-align: left;
+        }
+
+        @include media-query(large) {
+            position: absolute;
+            right: 5%;
+            top: 50%;
         }
     }
 }
