@@ -12,6 +12,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
+                position: relative;
             }
         }
     }
@@ -39,7 +40,7 @@
         @include media-query(large) {
             font-size: 97px;
             line-height: 97px;
-            margin-top: ($gutter * 8);
+            margin-top: ($gutter * 10);
         }
 
         span {
@@ -51,7 +52,10 @@
             display: none;
 
             @include media-query(large) {
+                @include z-index(two);
                 display: block;
+                position: absolute;
+                left: 3.5vw;
             }
         }
 
