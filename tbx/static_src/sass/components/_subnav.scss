@@ -1,11 +1,12 @@
 .subnav {
+    @include z-index(two);
     background-color: var(--color--white);
     padding: 20px;
     border-radius: 12px;
     position: absolute;
     min-width: 180px;
     left: 10px;
-    top: 50px;
+    bottom: 40px;
 
     &__item {
         margin-bottom: 5px;
