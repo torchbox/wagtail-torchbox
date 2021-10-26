@@ -253,13 +253,7 @@ class HomePage(Page):
             ],
             heading="Hero intro",
         ),
-        InlinePanel("hero", label="Hero"),
         InlinePanel("featured_posts", label="Featured Posts", max_num=3),
-        FieldPanel("intro_body"),
-        FieldPanel("work_title"),
-        FieldPanel("blog_title"),
-        FieldPanel("clients_title"),
-        InlinePanel("clients", label="Clients"),
     ]
 
     @property
