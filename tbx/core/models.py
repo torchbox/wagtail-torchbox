@@ -206,6 +206,23 @@ class HomePageClient(Orderable, RelatedLink):
     panels = RelatedLink.panels + [ImageChooserPanel("image")]
 
 
+class HomePageFeaturedPost(Orderable):
+    page = ParentalKey(
+        "torchbox.HomePage", on_delete=models.CASCADE, related_name="featured_posts"
+    )
+    featured_post = models.ForeignKey(
+        "wagtailcore.Page",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    panels = [
+        PageChooserPanel("featured_post", ["blog.BlogPage", "work.WorkPage"]),
+    ]
+
+
 class HomePage(Page):
     template = "patterns/pages/home/home_page.html"
     hero_intro_primary = models.TextField(blank=True)
@@ -214,6 +231,14 @@ class HomePage(Page):
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
+    hero_image = models.ForeignKey(
+        "torchbox.TorchboxImage",
+        help_text="Image used on mobile hero.",
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
     class Meta:
         verbose_name = "Homepage"
@@ -221,15 +246,14 @@ class HomePage(Page):
     content_panels = [
         FieldPanel("title", classname="full title"),
         MultiFieldPanel(
-            [FieldPanel("hero_intro_primary"), FieldPanel("hero_intro_secondary")],
+            [
+                FieldPanel("hero_intro_primary"),
+                FieldPanel("hero_intro_secondary"),
+                ImageChooserPanel("hero_image"),
+            ],
             heading="Hero intro",
         ),
-        InlinePanel("hero", label="Hero"),
-        FieldPanel("intro_body"),
-        FieldPanel("work_title"),
-        FieldPanel("blog_title"),
-        FieldPanel("clients_title"),
-        InlinePanel("clients", label="Clients"),
+        InlinePanel("featured_posts", label="Featured Posts", max_num=3),
     ]
 
     @property

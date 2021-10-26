@@ -1,0 +1,14 @@
+.posts-grid {
+    padding: 60px 0 0;
+
+    @include media-query(medium) {
+        padding: 100px 0 0;
+    }
+
+    @include media-query(large) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 100px 0;
+        grid-gap: 20px;
+    }
+}

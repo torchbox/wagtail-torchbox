@@ -1,4 +1,5 @@
 .footer {
+    $root: &;
     position: relative;
     background-color: var(--color--light-grey);
     padding: ($gutter * 5) 0 ($gutter * 1.5);

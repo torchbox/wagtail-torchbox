@@ -1,0 +1,42 @@
+.post {
+    margin-bottom: 40px;
+
+    @include media-query(medium) {
+        margin-bottom: 50px;
+    }
+
+    @include media-query(large) {
+        margin-bottom: 0;
+        max-width: 295px;
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: $weight--bold;
+        margin: 0 0 25px;
+    }
+
+    &__link {
+        border-bottom: 0;
+
+        &:focus,
+        &:hover {
+            color: var(--color--coral);
+        }
+    }
+
+    &__author {
+        font-size: 16px;
+        color: var(--color--dark-indigo);
+        margin: 0;
+    }
+
+    &__meta {
+        @include font-size(xxxs);
+        color: var(--color--coral);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: $weight--bold;
+        margin: 0;
+    }
+}

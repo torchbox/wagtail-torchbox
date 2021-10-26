@@ -28,6 +28,11 @@
         }
     }
 
+    &--desktop {
+        right: -20px;
+        top: -20px;
+    }
+
     .mobile-nav & {
         &::before {
             top: 3px;
@@ -38,6 +43,22 @@
         &:focus,
         &:hover {
             color: var(--color--dark-indigo);
+        }
+    }
+
+    .template__homepage & {
+        position: relative;
+
+        &:focus,
+        &:hover {
+            &::before {
+                background: var(--color--dark-indigo);
+            }
+        }
+
+        &::before {
+            left: -6px;
+            top: -4px;
         }
     }
 }

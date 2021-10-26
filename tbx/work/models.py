@@ -114,8 +114,12 @@ class WorkPage(Page):
             return WorkIndexPage.objects.first()
 
     @property
-    def has_authors(self):
-        return self.authors.exists()
+    def first_author(self):
+        """Safely return the first author if one exists."""
+        author = self.authors.first()
+        if author:
+            return author.author
+        return None
 
     @property
     def related_works(self):
@@ -136,6 +140,10 @@ class WorkPage(Page):
             return math.ceil(self.body_word_count / 275)
         else:
             return "x"
+
+    @property
+    def type(self):
+        return "CASE STUDY"
 
     content_panels = [
         FieldPanel("title", classname="full title"),

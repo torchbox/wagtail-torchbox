@@ -1,0 +1,47 @@
+.subnav {
+    @include z-index(two);
+    background-color: var(--color--white);
+    padding: 20px;
+    border-radius: 12px;
+    position: absolute;
+    min-width: 180px;
+    left: 10px;
+    bottom: 40px;
+
+    &__item {
+        margin-bottom: 5px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &--with-badge {
+            position: relative;
+        }
+    }
+
+    &__link {
+        @include link-underscore(0);
+        font-weight: $weight--bold;
+        position: relative;
+        border-bottom: 0;
+        transition: all $transition-quick;
+        color: var(--color--link);
+        overflow: hidden;
+        display: inline-block;
+
+        &:hover,
+        &:focus,
+        &--active {
+            @include link-underscore(2);
+            color: var(--color--link);
+        }
+    }
+
+    &__badge-link {
+        position: relative;
+        left: 10px;
+        bottom: 10px;
+        border-bottom: 0;
+    }
+}
