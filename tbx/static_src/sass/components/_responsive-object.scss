@@ -20,6 +20,7 @@
 
         @include media-query(large) {
             padding-bottom: 56.255%;
+            background-position: -1px center;
         }
     }
 }
