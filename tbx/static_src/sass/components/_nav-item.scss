@@ -117,22 +117,19 @@
             display: inline-block;
             position: absolute;
             top: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
         }
 
         &::before {
             left: -10px;
-            width: 6px;
-            height: 6px;
-            border-radius: 5px;
             background-color: var(--color--header-links);
             color: var(--color--header-links);
         }
 
         &::after {
             left: 10px;
-            width: 6px;
-            height: 6px;
-            border-radius: 5px;
             background-color: var(--color--header-links);
             color: var(--color--header-links);
         }
