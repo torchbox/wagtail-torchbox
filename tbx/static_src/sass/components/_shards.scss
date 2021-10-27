@@ -19,6 +19,7 @@
 
             @include media-query(large) {
                 display: initial;
+                transform: scale(1.01);
             }
         }
 
