@@ -260,7 +260,7 @@ class BlogPage(Page):
 
     @property
     def type(self):
-        return "BLOG"
+        return "BLOG POST"
 
     content_panels = [
         FieldPanel("title", classname="full title"),
