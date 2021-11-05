@@ -4,7 +4,7 @@
         {% if item.client %}
         <p class="title-block__client">{{ item.client }}</p>
         {% endif %}
-        <h1 class="title-block__heading">{% firstof title|richtext item.title %}{% if page.title_extra %}<span> {{ page.title_extra }}</span>{% endif %}</h1>
+        <h1 class="title-block__heading">{% firstof title|richtext item.title %}{% if item.title_extra %}<span> {{ item.title_extra }}</span>{% endif %}</h1>
         {% if meta %}
         <div class="title-block__meta">
             {{ meta }}
