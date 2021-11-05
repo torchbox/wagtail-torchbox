@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('people', '0029_auto_20210728_1109'),
+        ("people", "0029_auto_20210728_1109"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='personpage',
-            name='title_extra',
-            field=models.CharField(blank=True, help_text='Text that displays straight after the team members name', max_length=255),
+            model_name="personpage",
+            name="title_extra",
+            field=models.CharField(
+                blank=True,
+                help_text="Text that displays straight after the team members name",
+                max_length=255,
+            ),
         ),
     ]

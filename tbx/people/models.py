@@ -32,7 +32,11 @@ class PersonPage(Page):
     template = "patterns/pages/team/team_detail.html"
 
     parent_page_types = ["PersonIndexPage"]
-    title_extra = models.CharField(max_length=255, blank=True, help_text="Text that displays straight after the team members name")
+    title_extra = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Text that displays straight after the team members name",
+    )
     role = models.CharField(max_length=255, blank=True)
     is_senior = models.BooleanField(default=False)
     intro = RichTextField(blank=True)
