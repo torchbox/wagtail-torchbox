@@ -39,20 +39,20 @@ If you are using Docker Desktop, ensure the Resources:File Sharing settings allo
 Starting a local build can be done by running:
 
 ```bash
-git clone [URL TO GIT REMOTE]
+git clone https://github.com/torchbox/wagtail-torchbox.git
 cd tbx
 fab build
-fab start
-fab sh
+fab up
+fab ssh
 ```
 
 Then within the SSH session:
 
 ```bash
-./manage.py migrate
-./manage.py createcachetable
-./manage.py createsuperuser
-./manage.py runserver 0:8000
+dj migrate
+dj createcachetable
+dj createsuperuser
+dj runserver 0:8000
 
 ```
 
