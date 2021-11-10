@@ -269,7 +269,10 @@ optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
+<<<<<<< HEAD
 asgiref = ">=3.3.2,<4"
+=======
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 pytz = "*"
 sqlparse = ">=0.2.2"
 
@@ -351,9 +354,17 @@ optional = false
 python-versions = ">=3.6,<4.0"
 
 [package.dependencies]
+<<<<<<< HEAD
 Django = ">=2.2,<4.0"
 Markdown = ">=3.1,<4.0"
 PyYAML = ">=5.1,<6.0"
+=======
+Django = ">=1.11"
+PyYAML = ">=5.1"
+
+[package.extras]
+dev = ["beautifulsoup4", "coverage", "flake8 (3.7.7)", "isort (4.3.15)"]
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 
 [[package]]
 name = "django-phonenumber-field"
@@ -664,15 +675,22 @@ tornado = {version = "*", markers = "python_version > \"2.7\""}
 
 [[package]]
 name = "markdown"
+<<<<<<< HEAD
 version = "3.3.6"
+=======
+version = "3.3.4"
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 description = "Python implementation of Markdown."
 category = "main"
 optional = false
 python-versions = ">=3.6"
 
+<<<<<<< HEAD
 [package.dependencies]
 importlib-metadata = {version = ">=4.4", markers = "python_version < \"3.10\""}
 
+=======
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 [package.extras]
 testing = ["coverage", "pyyaml"]
 
@@ -867,6 +885,7 @@ docs = ["sphinx (>=1.6.5)", "sphinx-rtd-theme"]
 tests = ["pytest (>=3.2.1,<3.3.0 || >3.3.0)", "hypothesis (>=3.27.0)"]
 
 [[package]]
+<<<<<<< HEAD
 name = "pyopenssl"
 version = "20.0.1"
 description = "Python wrapper module around the OpenSSL library"
@@ -883,6 +902,8 @@ docs = ["sphinx", "sphinx-rtd-theme"]
 test = ["flaky", "pretend", "pytest (>=3.0.1)"]
 
 [[package]]
+=======
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 name = "pyparsing"
 version = "2.4.7"
 description = "Python parsing module"
@@ -999,7 +1020,11 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
 [package.dependencies]
 asgiref = {version = "*", markers = "python_version >= \"3.5\""}
 psutil = ">=5,<6"
+<<<<<<< HEAD
 urllib3 = {version = "<2", extras = ["secure"], markers = "python_version >= \"3.5\""}
+=======
+requests = ">=2,<3"
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 wrapt = ">=1.10,<2.0"
 
 [[package]]
@@ -1210,9 +1235,15 @@ python-versions = ">=3.6"
 [package.dependencies]
 anyascii = ">=0.1.5"
 beautifulsoup4 = ">=4.8,<4.10"
+<<<<<<< HEAD
 Django = ">=3.0,<3.3"
 django-filter = ">=2.2,<22"
 django-modelcluster = ">=5.2,<6.0"
+=======
+Django = ">=2.2,<3.3"
+django-filter = ">=2.2,<3.0"
+django-modelcluster = ">=5.1,<6.0"
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 django-taggit = ">=1.0,<2.0"
 django-treebeard = ">=4.2.0,<4.5 || >4.5,<5.0"
 djangorestframework = ">=3.11.1,<4.0"
@@ -1224,11 +1255,19 @@ requests = ">=2.11.1,<3.0"
 tablib = {version = ">=0.14.0", extras = ["xls", "xlsx"]}
 telepath = ">=0.1.1,<1"
 Willow = ">=1.4,<1.5"
+<<<<<<< HEAD
 xlsxwriter = ">=1.2.8,<4.0"
 
 [package.extras]
 docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (5.0.4)", "recommonmark (>=0.7.1)"]
 testing = ["python-dateutil (>=2.7)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=2.11,<3.0)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "Unidecode (>=0.04.14,<2.0)", "coverage (>=3.7.0)", "flake8 (>=3.6.0)", "isort (5.6.4)", "flake8-blind-except (0.1.1)", "flake8-print (2.0.2)", "doc8 (0.8.1)", "jinjalint (>=0.5)", "docutils (0.15)", "django-taggit (>=1.3.0,<2.0)", "polib (>=1.1,<2.0)"]
+=======
+xlsxwriter = ">=1.2.8,<2.0"
+
+[package.extras]
+docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (5.0.3)", "recommonmark (>=0.7.1)"]
+testing = ["python-dateutil (>=2.2)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=2.11,<3.0)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "Unidecode (>=0.04.14,<2.0)", "coverage (>=3.7.0)", "flake8 (>=3.6.0)", "isort (5.6.4)", "flake8-blind-except (0.1.1)", "flake8-print (2.0.2)", "doc8 (0.8.1)", "jinjalint (>=0.5)", "docutils (0.15)", "django-taggit (>=1.3.0,<2.0)"]
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 
 [[package]]
 name = "wagtail-accessibility"
@@ -1290,9 +1329,31 @@ python-versions = ">=3.5"
 [package.dependencies]
 django-storages = {version = "<2", extras = ["boto3"]}
 Wagtail = ">=2,<3"
+<<<<<<< HEAD
 
 [package.extras]
 testing = ["coverage (5.0.3)", "factory-boy (2.12.0)", "moto (1.3.14)", "black (19.10b0)", "isort", "flake8"]
+=======
+
+[package.extras]
+testing = ["coverage (5.0.3)", "factory-boy (2.12.0)", "moto (1.3.14)", "black (19.10b0)", "isort", "flake8"]
+
+[[package]]
+name = "wagtail-webstories"
+version = "0.0.4"
+description = "AMP web story support for Wagtail"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+beautifulsoup4 = ">=4.6,<5"
+requests = ">=2.24.0,<3"
+webstories = ">=0.0.1,<0.1"
+
+[package.extras]
+testing = ["responses (>=0.12,<1)", "Pillow (>=4.0.0,<9.0.0)", "wagtailmedia (>=0.6,<0.8)"]
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 
 [[package]]
 name = "wagtailfontawesome"
@@ -1313,6 +1374,18 @@ description = "Character encoding aliases for legacy web content"
 category = "main"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "webstories"
+version = "0.0.2"
+description = "Parser for AMP web stories"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+beautifulsoup4 = ">=4.6,<5"
+bleach = ">=3.2,<4"
 
 [[package]]
 name = "werkzeug"
@@ -1362,6 +1435,7 @@ category = "main"
 optional = false
 python-versions = "*"
 
+<<<<<<< HEAD
 [[package]]
 name = "zipp"
 version = "3.6.0"
@@ -1374,13 +1448,19 @@ python-versions = ">=3.6"
 docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
 testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
 
+=======
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 [extras]
 gunicorn = ["gunicorn"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
+<<<<<<< HEAD
 content-hash = "b6a5d2f62111f20b62a7a335febe33353e3bcf1710e892770b263af1356e3c13"
+=======
+content-hash = "8baff5d8ba9f16a1f9d5e72642eeaf2543d70534c892c5751333ceaccced246e"
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 
 [metadata.files]
 anyascii = [
@@ -1661,8 +1741,13 @@ livereload = [
     {file = "livereload-2.6.3.tar.gz", hash = "sha256:776f2f865e59fde56490a56bcc6773b6917366bce0c267c60ee8aaf1a0959869"},
 ]
 markdown = [
+<<<<<<< HEAD
     {file = "Markdown-3.3.6-py3-none-any.whl", hash = "sha256:9923332318f843411e9932237530df53162e29dc7a4e2b91e35764583c46c9a3"},
     {file = "Markdown-3.3.6.tar.gz", hash = "sha256:76df8ae32294ec39dcf89340382882dfa12975f87f45c3ed1ecdb1e8cefc7006"},
+=======
+    {file = "Markdown-3.3.4-py3-none-any.whl", hash = "sha256:96c3ba1261de2f7547b46a00ea8463832c921d3f9d6aba3f255a6f71386db20c"},
+    {file = "Markdown-3.3.4.tar.gz", hash = "sha256:31b5b491868dcc87d6c24b7e3d19a0d730d59d3e46f4eea6430a321bed387a49"},
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 ]
 markupsafe = [
     {file = "MarkupSafe-1.1.1-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:09027a7803a62ca78792ad89403b1b7a73a01c8cb65909cd876f7fcebd79b161"},
@@ -1849,10 +1934,13 @@ pynacl = [
     {file = "PyNaCl-1.4.0-cp38-cp38-win_amd64.whl", hash = "sha256:7c6092102219f59ff29788860ccb021e80fffd953920c4a8653889c029b2d420"},
     {file = "PyNaCl-1.4.0.tar.gz", hash = "sha256:54e9a2c849c742006516ad56a88f5c74bf2ce92c9f67435187c3c5953b346505"},
 ]
+<<<<<<< HEAD
 pyopenssl = [
     {file = "pyOpenSSL-20.0.1-py2.py3-none-any.whl", hash = "sha256:818ae18e06922c066f777a33f1fca45786d85edfe71cd043de6379337a7f274b"},
     {file = "pyOpenSSL-20.0.1.tar.gz", hash = "sha256:4c231c759543ba02560fcd2480c48dcec4dae34c9da7d3747c508227e0624b51"},
 ]
+=======
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
     {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
@@ -2156,6 +2244,9 @@ wagtail-storages = [
     {file = "wagtail-storages-0.0.6.tar.gz", hash = "sha256:e9204d148713357c997713dd6cdd3a3f7891c8009daaaee5e988cb2c12a3a46d"},
     {file = "wagtail_storages-0.0.6-py3-none-any.whl", hash = "sha256:867f040b058320906a5de1d576d37660dedeb977910362cce3fa9f5d2258de3a"},
 ]
+wagtail-webstories = [
+    {file = "wagtail-webstories-0.0.4.tar.gz", hash = "sha256:4f1e8305d2c84d1dc71261060023bf679ba167e1bcf70679974d95022952905f"},
+]
 wagtailfontawesome = [
     {file = "wagtailfontawesome-1.2.1-py2.py3-none-any.whl", hash = "sha256:76b1c64c4f1042d468a83e4352f74b57bda4a4aa09cdfeeb8663dead5ed632be"},
     {file = "wagtailfontawesome-1.2.1.tar.gz", hash = "sha256:6c1bd2d6061880848de6374ceb75d38a8c9b0debb1d4aef8a2fdc9d565a8f417"},
@@ -2163,6 +2254,9 @@ wagtailfontawesome = [
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
     {file = "webencodings-0.5.1.tar.gz", hash = "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"},
+]
+webstories = [
+    {file = "webstories-0.0.2.tar.gz", hash = "sha256:0c46440f09d73cb43a7e1e9ebbe8b79d16bb02fb1f2d1d63f49cddf55886ddf0"},
 ]
 werkzeug = [
     {file = "Werkzeug-0.16.1-py2.py3-none-any.whl", hash = "sha256:1e0dedc2acb1f46827daa2e399c1485c8fa17c0d8e70b6b875b4e7f54bf408d2"},
@@ -2183,7 +2277,10 @@ xlsxwriter = [
     {file = "XlsxWriter-1.3.7-py2.py3-none-any.whl", hash = "sha256:b807c2d3e379bf6a925f472955beef3e07495c1bac708640696876e68675b49b"},
     {file = "XlsxWriter-1.3.7.tar.gz", hash = "sha256:9b1ade2d1ba5d9b40a6d1de1d55ded4394ab8002718092ae80a08532c2add2e6"},
 ]
+<<<<<<< HEAD
 zipp = [
     {file = "zipp-3.6.0-py3-none-any.whl", hash = "sha256:9fe5ea21568a0a70e50f273397638d39b03353731e6cbbb3fd8502a33fec40bc"},
     {file = "zipp-3.6.0.tar.gz", hash = "sha256:71c644c5369f4a6e07636f0aa966270449561fcea2e3d6747b8d23efaa9d7832"},
 ]
+=======
+>>>>>>> Update wagtail-markdown and add wagtail-webstories
