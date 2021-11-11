@@ -11,6 +11,7 @@ from wagtail.core.blocks import (
 )
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail_webstories.blocks import ExternalStoryEmbedBlock
 from wagtailmarkdown.blocks import MarkdownBlock
 
 
@@ -128,6 +129,8 @@ class StoryBlock(StreamBlock):
         icon="code",
         template="patterns/molecules/streamfield/blocks/markdown_block.html",
     )
+
+    story_embed = ExternalStoryEmbedBlock()
 
     class Meta:
         template = "patterns/molecules/streamfield/stream_block.html"
