@@ -75,7 +75,7 @@ class LinkFields(models.Model):
 # Carousel items
 class CarouselItem(LinkFields):
     image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -170,14 +170,14 @@ class HomePageHero(Orderable, RelatedLink):
         help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue",
     )
     background = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
     )
     logo = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -196,7 +196,7 @@ class HomePageHero(Orderable, RelatedLink):
 class HomePageClient(Orderable, RelatedLink):
     page = ParentalKey("torchbox.HomePage", related_name="clients")
     image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -232,7 +232,7 @@ class HomePage(Page):
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
     hero_image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         help_text="Image used on mobile hero.",
         null=True,
         blank=False,
