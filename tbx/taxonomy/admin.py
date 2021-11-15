@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.contrib.admin.utils import quote
 from django.core.exceptions import PermissionDenied
 from django.utils.functional import cached_property
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 from wagtail.contrib.modeladmin.helpers import ButtonHelper
 from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup
