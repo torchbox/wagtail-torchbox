@@ -114,15 +114,16 @@ d = ["aiohttp (>=3.3.2)", "aiohttp-cors"]
 
 [[package]]
 name = "bleach"
-version = "2.1.4"
+version = "3.3.1"
 description = "An easy safelist-based HTML-sanitizing tool."
 category = "main"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.dependencies]
-html5lib = ">=0.99999999pre,<1.0b1 || >1.0b1,<1.0b2 || >1.0b2,<1.0b3 || >1.0b3,<1.0b4 || >1.0b4,<1.0b5 || >1.0b5,<1.0b6 || >1.0b6,<1.0b7 || >1.0b7,<1.0b8 || >1.0b8"
-six = "*"
+packaging = "*"
+six = ">=1.9.0"
+webencodings = "*"
 
 [[package]]
 name = "boto3"
@@ -343,18 +344,16 @@ taggit = ["django-taggit (>=0.20)"]
 
 [[package]]
 name = "django-pattern-library"
-version = "0.2.4"
+version = "0.5.0"
 description = "A module for Django that allows to build pattern libraries for your projects."
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.6,<4.0"
 
 [package.dependencies]
-Django = ">=1.11"
-PyYAML = ">=5.1"
-
-[package.extras]
-dev = ["beautifulsoup4", "coverage", "flake8 (3.7.7)", "isort (4.3.15)"]
+Django = ">=2.2,<4.0"
+Markdown = ">=3.1,<4.0"
+PyYAML = ">=5.1,<6.0"
 
 [[package]]
 name = "django-phonenumber-field"
@@ -649,11 +648,14 @@ tornado = {version = "*", markers = "python_version > \"2.7\""}
 
 [[package]]
 name = "markdown"
-version = "2.6.11"
+version = "3.3.4"
 description = "Python implementation of Markdown."
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.6"
+
+[package.extras]
+testing = ["coverage", "pyyaml"]
 
 [[package]]
 name = "markupsafe"
@@ -694,6 +696,17 @@ description = "Node.js virtual environment builder"
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "packaging"
+version = "21.2"
+description = "Core utilities for Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+pyparsing = ">=2.0.2,<3"
 
 [[package]]
 name = "paramiko"
@@ -833,6 +846,14 @@ six = "*"
 [package.extras]
 docs = ["sphinx (>=1.6.5)", "sphinx-rtd-theme"]
 tests = ["pytest (>=3.2.1,<3.3.0 || >3.3.0)", "hypothesis (>=3.27.0)"]
+
+[[package]]
+name = "pyparsing"
+version = "2.4.7"
+description = "Python parsing module"
+category = "main"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "python-dateutil"
@@ -1195,19 +1216,16 @@ testing = ["tox (>=2.3.1,<2.4)", "coverage (>=4.1.0,<4.2)", "flake8 (>=3.2.0,<3.
 
 [[package]]
 name = "wagtail-markdown"
-version = "0.6"
+version = "0.7.0"
 description = "Markdown support for Wagtail"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-bleach = ">=1.4.2,<2.2"
-Markdown = ">=2.6,<2.7"
+bleach = ">=3.3.0,<4"
+Markdown = ">=3,<4"
 Wagtail = ">=2.0"
-
-[package.extras]
-testing = ["dj-database-url (0.4.2)"]
 
 [[package]]
 name = "wagtail-purge"
@@ -1309,7 +1327,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "4b9ab3ae0de2980bb72767a45e890f9ec06e50784dc96cd710478e3898be8c01"
+content-hash = "c62c4d1f5d50bcbceec9e57f3bbc930ef299e7c8e028158e607d00985c4b6243"
 
 [metadata.files]
 anyascii = [
@@ -1355,8 +1373,8 @@ black = [
     {file = "black-19.10b0.tar.gz", hash = "sha256:c2edb73a08e9e0e6f65a0e6af18b059b8b1cdd5bef997d7a0b181df93dc81539"},
 ]
 bleach = [
-    {file = "bleach-2.1.4-py2.py3-none-any.whl", hash = "sha256:24754b9a7d530bf30ce7cbc805bc6cce785660b4a10ff3a43633728438c105ab"},
-    {file = "bleach-2.1.4.tar.gz", hash = "sha256:0ee95f6167129859c5dce9b1ca291ebdb5d8cd7e382ca0e237dfd0dad63f63d8"},
+    {file = "bleach-3.3.1-py2.py3-none-any.whl", hash = "sha256:ae976d7174bba988c0b632def82fdc94235756edfb14e6558a9c5be555c9fb78"},
+    {file = "bleach-3.3.1.tar.gz", hash = "sha256:306483a5a9795474160ad57fce3ddd1b50551e981eed8e15a582d34cef28aafa"},
 ]
 boto3 = [
     {file = "boto3-1.16.13-py2.py3-none-any.whl", hash = "sha256:23d2575b7bd01c4e7153f283c1d1c12d329dabf78a6279d4192f2e752bb67b1a"},
@@ -1489,8 +1507,8 @@ django-modelcluster = [
     {file = "django_modelcluster-5.1-py2.py3-none-any.whl", hash = "sha256:d4a0f90e85ae1a193f417e149b6b01d0b2a867dcf97f7fae1d34a4363a9d7baa"},
 ]
 django-pattern-library = [
-    {file = "django-pattern-library-0.2.4.tar.gz", hash = "sha256:0260b71ec1c12124f251dbeff055237b15e2a2e4e3a4b9f529dcb0b29ca030d4"},
-    {file = "django_pattern_library-0.2.4-py3-none-any.whl", hash = "sha256:679c4137b863d4331911a33305a64d9efa3f56e4d9ce47a75555457a6facfe77"},
+    {file = "django-pattern-library-0.5.0.tar.gz", hash = "sha256:25210194de8fe4c0c2a969e7ffbcea81efad19a7ac843bd67d28d39e26568545"},
+    {file = "django_pattern_library-0.5.0-py3-none-any.whl", hash = "sha256:bd387f104652c26ce05e7d3cd884d134819c7757c0caa1107a3be3a05eda552d"},
 ]
 django-phonenumber-field = [
     {file = "django-phonenumber-field-5.0.0.tar.gz", hash = "sha256:1eb7af3a108744665f7c3939d38aa15b3728c57d13d45d656b0a2aa11e8cdc3c"},
@@ -1586,8 +1604,8 @@ livereload = [
     {file = "livereload-2.6.3.tar.gz", hash = "sha256:776f2f865e59fde56490a56bcc6773b6917366bce0c267c60ee8aaf1a0959869"},
 ]
 markdown = [
-    {file = "Markdown-2.6.11-py2.py3-none-any.whl", hash = "sha256:9ba587db9daee7ec761cfc656272be6aabe2ed300fece21208e4aab2e457bc8f"},
-    {file = "Markdown-2.6.11.tar.gz", hash = "sha256:a856869c7ff079ad84a3e19cd87a64998350c2b94e9e08e44270faef33400f81"},
+    {file = "Markdown-3.3.4-py3-none-any.whl", hash = "sha256:96c3ba1261de2f7547b46a00ea8463832c921d3f9d6aba3f255a6f71386db20c"},
+    {file = "Markdown-3.3.4.tar.gz", hash = "sha256:31b5b491868dcc87d6c24b7e3d19a0d730d59d3e46f4eea6430a321bed387a49"},
 ]
 markupsafe = [
     {file = "MarkupSafe-1.1.1-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:09027a7803a62ca78792ad89403b1b7a73a01c8cb65909cd876f7fcebd79b161"},
@@ -1654,6 +1672,10 @@ mkdocs = [
 nodeenv = [
     {file = "nodeenv-1.5.0-py2.py3-none-any.whl", hash = "sha256:5304d424c529c997bc888453aeaa6362d242b6b4631e90f3d4bf1b290f1c84a9"},
     {file = "nodeenv-1.5.0.tar.gz", hash = "sha256:ab45090ae383b716c4ef89e690c41ff8c2b257b85b309f01f3654df3d084bd7c"},
+]
+packaging = [
+    {file = "packaging-21.2-py3-none-any.whl", hash = "sha256:14317396d1e8cdb122989b916fa2c7e9ca8e2be9e8060a6eff75b6b7b4d8a7e0"},
+    {file = "packaging-21.2.tar.gz", hash = "sha256:096d689d78ca690e4cd8a89568ba06d07ca097e3306a4381635073ca91479966"},
 ]
 paramiko = [
     {file = "paramiko-2.7.2-py2.py3-none-any.whl", hash = "sha256:4f3e316fef2ac628b05097a637af35685183111d4bc1b5979bd397c2ab7b5898"},
@@ -1769,6 +1791,10 @@ pynacl = [
     {file = "PyNaCl-1.4.0-cp38-cp38-win32.whl", hash = "sha256:9c4a7ea4fb81536c1b1f5cc44d54a296f96ae78c1ebd2311bd0b60be45a48d96"},
     {file = "PyNaCl-1.4.0-cp38-cp38-win_amd64.whl", hash = "sha256:7c6092102219f59ff29788860ccb021e80fffd953920c4a8653889c029b2d420"},
     {file = "PyNaCl-1.4.0.tar.gz", hash = "sha256:54e9a2c849c742006516ad56a88f5c74bf2ce92c9f67435187c3c5953b346505"},
+]
+pyparsing = [
+    {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
+    {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
 ]
 python-dateutil = [
     {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
@@ -2049,8 +2075,8 @@ wagtail-django-recaptcha = [
     {file = "wagtail-django-recaptcha-1.0.tar.gz", hash = "sha256:fc177e75da966e9db1dfd9a566c40d30567518d9280b5db4fec4d50a8c853154"},
 ]
 wagtail-markdown = [
-    {file = "wagtail-markdown-0.6.tar.gz", hash = "sha256:cb914b900d6ae5d769367977b0e68d8b23c25bfa9505dcd6e1038838686b4739"},
-    {file = "wagtail_markdown-0.6-py2.py3-none-any.whl", hash = "sha256:91700b68138019d482c1954f1a7aec9c13db5933be6b63b84c8bccdebce451ac"},
+    {file = "wagtail-markdown-0.7.0.tar.gz", hash = "sha256:ea6aaea5ee84a66d25cb66854720fe8d4306730f4edce19afbe57655c5ba9621"},
+    {file = "wagtail_markdown-0.7.0-py2.py3-none-any.whl", hash = "sha256:e1002dfc14514c89002c475789ae4cf4e7fd88439eef47ba60328f49cd69ebe1"},
 ]
 wagtail-purge = [
     {file = "wagtail-purge-0.1.tar.gz", hash = "sha256:7a178c9137d765b03f2e1a4701a7e4ad18660b8ae41b0aef4de27b7bc11ae902"},
