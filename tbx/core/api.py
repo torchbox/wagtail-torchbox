@@ -41,9 +41,9 @@ class PeopleHRFeed(object):
         if not url:
             return None
 
-        resp = requests.get(url, timeout=3)
-
         try:
+            resp = requests.get(url, timeout=3)
+
             resp.raise_for_status()
             xml_root = ElementTree.fromstring(resp.content)
             return len(xml_root.findall("channel/item"))
