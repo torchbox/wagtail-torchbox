@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib.admin.utils import quote
 from django.core.exceptions import PermissionDenied
 from django.utils.functional import cached_property
@@ -131,7 +131,7 @@ class TaxonomyModelAdmin(ModelAdmin):
         urls = super(TaxonomyModelAdmin, self).get_admin_urls_for_registration()
 
         urls += (
-            url(
+            re_path(
                 self.url_helper.get_action_url_pattern("usage"),
                 self.usage_view,
                 name=self.url_helper.get_action_url_name("usage"),
