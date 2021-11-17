@@ -24,7 +24,6 @@ django-basic-auth-ip-whitelist = "~0.3.3"
 wagtail-accessibility = "~0.2"
 wagtail-storages = "~0.0.4"
 wagtail-markdown = "^0.7"
-markdown = "3.3.4"  # There is an issue with 3.3.5 which would be the latest version poetry resolves to: https://github.com/python-poetry/poetry/issues/4777. Once the issue is resolved and poetry correctly resolves `markdown` it does not need to be listed here anymore.
 wagtailfontawesome = "^1.2.1"
 django-phonenumber-field = "^5.0.0"
 phonenumbers = "^8.12.12"
