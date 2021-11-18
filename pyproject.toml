@@ -19,7 +19,7 @@ django-redis = "~4.11"
 django-storages = { version ="~1.9", extras = ["boto3"] }
 django-referrer-policy = "~1.0"
 django-csp = "~3.6"
-scout-apm = "~2.10"
+scout-apm = "~2.19"
 django-basic-auth-ip-whitelist = "~0.3.3"
 wagtail-accessibility = "~0.2"
 wagtail-storages = "~0.0.4"
