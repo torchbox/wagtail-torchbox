@@ -330,7 +330,7 @@ Django = ">=2.2"
 
 [[package]]
 name = "django-modelcluster"
-version = "5.1"
+version = "5.2"
 description = "Django extension to allow working with 'clusters' of models as a single unit, independently of the database"
 category = "main"
 optional = false
@@ -1201,7 +1201,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 
 [[package]]
 name = "wagtail"
-version = "2.13.1"
+version = "2.14.2"
 description = "A Django content management system."
 category = "main"
 optional = false
@@ -1210,9 +1210,9 @@ python-versions = ">=3.6"
 [package.dependencies]
 anyascii = ">=0.1.5"
 beautifulsoup4 = ">=4.8,<4.10"
-Django = ">=2.2,<3.3"
+Django = ">=3.0,<3.3"
 django-filter = ">=2.2,<3.0"
-django-modelcluster = ">=5.1,<6.0"
+django-modelcluster = ">=5.2,<6.0"
 django-taggit = ">=1.0,<2.0"
 django-treebeard = ">=4.2.0,<4.5 || >4.5,<5.0"
 djangorestframework = ">=3.11.1,<4.0"
@@ -1227,8 +1227,8 @@ Willow = ">=1.4,<1.5"
 xlsxwriter = ">=1.2.8,<2.0"
 
 [package.extras]
-docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (5.0.3)", "recommonmark (>=0.7.1)"]
-testing = ["python-dateutil (>=2.2)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=2.11,<3.0)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "Unidecode (>=0.04.14,<2.0)", "coverage (>=3.7.0)", "flake8 (>=3.6.0)", "isort (5.6.4)", "flake8-blind-except (0.1.1)", "flake8-print (2.0.2)", "doc8 (0.8.1)", "jinjalint (>=0.5)", "docutils (0.15)", "django-taggit (>=1.3.0,<2.0)"]
+docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (5.0.4)", "recommonmark (>=0.7.1)"]
+testing = ["python-dateutil (>=2.7)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=2.11,<3.0)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "Unidecode (>=0.04.14,<2.0)", "coverage (>=3.7.0)", "flake8 (>=3.6.0)", "isort (5.6.4)", "flake8-blind-except (0.1.1)", "flake8-print (2.0.2)", "doc8 (0.8.1)", "jinjalint (>=0.5)", "docutils (0.15)", "django-taggit (>=1.3.0,<2.0)"]
 
 [[package]]
 name = "wagtail-accessibility"
@@ -1380,7 +1380,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "be8fde15c39f23995fc345449cd7e01a92fdc6793598b93f0edaa60cb6c3b24f"
+content-hash = "f73fce2aad328993d995cc9f78e019a73ca1062300b842e2b86a0c1d7caa1ceb"
 
 [metadata.files]
 anyascii = [
@@ -1556,8 +1556,8 @@ django-filter = [
     {file = "django_filter-2.4.0-py3-none-any.whl", hash = "sha256:e00d32cebdb3d54273c48f4f878f898dced8d5dfaad009438fe61ebdf535ace1"},
 ]
 django-modelcluster = [
-    {file = "django-modelcluster-5.1.tar.gz", hash = "sha256:783d177f7bf5c8f30fe365c347b9a032920de371fe1c63d955d7b283684d4c08"},
-    {file = "django_modelcluster-5.1-py2.py3-none-any.whl", hash = "sha256:d4a0f90e85ae1a193f417e149b6b01d0b2a867dcf97f7fae1d34a4363a9d7baa"},
+    {file = "django-modelcluster-5.2.tar.gz", hash = "sha256:e541a46a0a899ef4778a4708be22e71cac3efacc09a6ff44bc065c5c9194c054"},
+    {file = "django_modelcluster-5.2-py2.py3-none-any.whl", hash = "sha256:767084078b9e172540b271454ecc73cb320927131ca4b2c5f276daf771f9542f"},
 ]
 django-pattern-library = [
     {file = "django-pattern-library-0.5.0.tar.gz", hash = "sha256:25210194de8fe4c0c2a969e7ffbcea81efad19a7ac843bd67d28d39e26568545"},
@@ -2135,8 +2135,8 @@ virtualenv = [
     {file = "virtualenv-20.1.0.tar.gz", hash = "sha256:b8d6110f493af256a40d65e29846c69340a947669eec8ce784fcf3dd3af28380"},
 ]
 wagtail = [
-    {file = "wagtail-2.13.1-py3-none-any.whl", hash = "sha256:8ecac8cc175b02c446f37fe5f649bd5002953c0e3a6774c27ed468407950d720"},
-    {file = "wagtail-2.13.1.tar.gz", hash = "sha256:588a613566e51b9e75a5ee4f3d73a5e3b2b684e25251d701883415ceb9b49e42"},
+    {file = "wagtail-2.14.2-py3-none-any.whl", hash = "sha256:c13283dd19dc4fc6c46867bff21bf1813ccd42a8faa322db4ac711715bc3af44"},
+    {file = "wagtail-2.14.2.tar.gz", hash = "sha256:fe6632e6e232977ea59d5c2ac5197691596095d9771ff35b5294a481126fe901"},
 ]
 wagtail-accessibility = [
     {file = "wagtail-accessibility-0.2.1.tar.gz", hash = "sha256:70a246bfa3bc85751317633353491c2f2432bd4ed54968f89ad1406d9e4d0190"},
