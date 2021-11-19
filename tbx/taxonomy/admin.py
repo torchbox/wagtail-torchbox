@@ -1,8 +1,8 @@
-from django.conf.urls import url
 from django.contrib.admin.utils import quote
 from django.core.exceptions import PermissionDenied
+from django.urls import re_path
 from django.utils.functional import cached_property
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 from wagtail.contrib.modeladmin.helpers import ButtonHelper
 from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup
@@ -131,7 +131,7 @@ class TaxonomyModelAdmin(ModelAdmin):
         urls = super(TaxonomyModelAdmin, self).get_admin_urls_for_registration()
 
         urls += (
-            url(
+            re_path(
                 self.url_helper.get_action_url_pattern("usage"),
                 self.usage_view,
                 name=self.url_helper.get_action_url_name("usage"),

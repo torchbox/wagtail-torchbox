@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     "wagtail.core",
     "wagtail.contrib.modeladmin",
     "wagtailmarkdown",
-    "wagtail.contrib.postgres_search",
     "modelcluster",
     "taggit",
     "raven.contrib.django.raven_compat",
@@ -120,6 +119,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "tbx.wsgi.application"
+
+# As of Django 3.2, the type of the primary key auto field needs to be defined
+# either gloablly or in each AppConfig.
+# See also: https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Database
 # https://docs.djangoproject.com/en/stable/ref/settings/#databases
@@ -201,7 +205,7 @@ else:
 # https://docs.wagtail.io/en/latest/topics/search/backends.html
 
 WAGTAILSEARCH_BACKENDS = {
-    "default": {"BACKEND": "wagtail.contrib.postgres_search.backend"},
+    "default": {"BACKEND": "wagtail.search.backends.database"},
 }
 
 
