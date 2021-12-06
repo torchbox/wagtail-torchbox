@@ -30,12 +30,12 @@ class PeopleHRFeed(object):
 
             # Not all postings include all location fields: ensure any provided are used
             location = []
-            for location_key in ['city', 'country']:
+            for location_key in ["city", "country"]:
                 try:
                     location.append(node.find(location_key).text)
                 except AttributeError:
                     pass
-            job["location"] = ', '.join(location)
+            job["location"] = ", ".join(location)
 
             jobs.append(job)
 
