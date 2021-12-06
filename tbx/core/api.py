@@ -23,12 +23,19 @@ class PeopleHRFeed(object):
 
         for node in xml_root.iter("item"):
             job = {}
-
             job["title"] = node.find("vacancyname").text
             job["description"] = node.find("vacancydescription").text
             job["department"] = node.find("department").text
-            job["location"] = node.find("city").text
             job["link"] = node.find("link").text
+
+            # Not all postings include all location fields: ensure any provided are used
+            location = []
+            for location_key in ['city', 'country']:
+                try:
+                    location.append(node.find(location_key).text)
+                except AttributeError:
+                    pass
+            job["location"] = ', '.join(location)
 
             jobs.append(job)
 
