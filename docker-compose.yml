@@ -32,7 +32,6 @@ services:
       - ./poetry.lock:/app/poetry.lock:rw
       - ./public:/app/public:delegated,ro
       - ./pyproject.toml:/app/pyproject.toml:rw
-      - ./setup.cfg:/app/setup.cfg:delegated,ro
     depends_on:
       - db
       - redis
