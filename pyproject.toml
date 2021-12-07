@@ -47,7 +47,7 @@ pre-commit = "~2.0"
 seed-isort-config = "1.9.4"
 
 # Documentation
-mkdocs = "~1.0"
+mkdocs = "~1.2"
 pudb = "^2020.1"
 
 [build-system]
