@@ -53,7 +53,6 @@ services:
       - ./.eslintrc.js:/home/node/.eslintrc.js:delegated,ro
       - ./.prettierignore:/home/node/.prettierignore:delegated,ro
       - ./.prettierrc.toml:/home/node/.prettierrc.toml:delegated,ro
-      - ./.stylelintignore:/home/node/.stylelintignore:delegated,ro
       - ./.stylelintrc.js:/home/node/.stylelintrc.js:delegated,ro
       - ./browsersync.config.js:/home/node/browsersync.config.js:delegated,ro
       - ./package-lock.json:/home/node/package-lock.json:delegated,rw
@@ -94,7 +93,7 @@ services:
       - ./database_dumps:/app/database_dumps:delegated,rw
 
   redis:
-    image: redis:3.0
+    image: redis:6
     expose:
       - 6379
     logging:

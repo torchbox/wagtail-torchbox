@@ -11,7 +11,7 @@
         color: var(--color--white);
         font-weight: 800;
         line-height: 44px;
-        margin: 0 0 ($gutter / 2);
+        margin: 0 0 calc($gutter / 2);
 
         @include media-query(medium) {
             font-size: map-get($medium-font-sizes, xl);
@@ -91,7 +91,7 @@
         color: var(--color--white);
         line-height: 24px;
         text-decoration: none;
-        margin: ($gutter / 2) ($gutter * 0.75) 0 0;
+        margin: calc($gutter / 2) ($gutter * 0.75) 0 0;
         font-weight: bold;
 
         @include media-query(large) {

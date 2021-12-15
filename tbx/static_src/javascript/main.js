@@ -14,11 +14,13 @@ import ShardsVideo from './components/shards-video';
 import '../sass/main.scss';
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        registrations.forEach(function (registration) {
-            registration.unregister();
+    navigator.serviceWorker
+        .getRegistrations()
+        .then(function performRegistrations(registrations) {
+            registrations.forEach(function unregister(registration) {
+                registration.unregister();
+            });
         });
-    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
