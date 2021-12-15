@@ -89,7 +89,7 @@
     "onchange": "^6.0.0",
     "postcss-custom-properties": "^9.0.1",
     "postcss-loader": "^3.0.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.5.1",
     "sass": "^1.24.4",
     "sass-loader": "^8.0.2",
     "stylelint": "^10.1.0",
@@ -107,6 +107,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "scrollama": "^2.1.4"
+    "scrollama": "^2.1.4",
+    "strip-indent": "^4.0.0",
+    "trim-newlines": "^4.0.2"
   }
 }
