@@ -19,16 +19,20 @@ const options = {
         filename: 'js/[name].js', // based on entry name, e.g. main.js
     },
     plugins: [
-        new CopyPlugin([
-            {
-                // Copy images to be referenced directly by Django to the "images" subfolder in static files.
-                // Ignore CSS background images as these are handled separately below
-                from: 'images',
-                context: path.resolve(`./${projectRoot}/static_src/`),
-                to: path.resolve(`./${projectRoot}/static_compiled/images`),
-                ignore: ['cssBackgrounds/*'],
-            },
-        ]),
+        new CopyPlugin({
+            patterns: [
+                {
+                    // Copy images to be referenced directly by Django to the "images" subfolder in static files.
+                    // Ignore CSS background images as these are handled separately below
+                    from: 'images',
+                    context: path.resolve(`./${projectRoot}/static_src/`),
+                    to: path.resolve(`./${projectRoot}/static_compiled/images`),
+                    globOptions: {
+                        ignore: ['cssBackgrounds/*'],
+                    },
+                },
+            ],
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
         }),
@@ -57,13 +61,15 @@ const options = {
                         loader: 'postcss-loader',
                         options: {
                             sourceMap: true,
-                            plugins: () => [
-                                autoprefixer(),
-                                postcssCustomProperties(),
-                                cssnano({
-                                    preset: 'default',
-                                }),
-                            ],
+                            postcssOptions: {
+                                plugins: () => [
+                                    autoprefixer(),
+                                    postcssCustomProperties(),
+                                    cssnano({
+                                        preset: 'default',
+                                    }),
+                                ],
+                            },
                         },
                     },
                     {
@@ -83,6 +89,7 @@ const options = {
                 // the publicPath matches the path from the compiled css to the font file
                 // only looks in the fonts folder so pngs in the images folder won't get put in the fonts folder
                 test: /\.(woff|woff2|ttf|eot)$/,
+                type: 'javascript/auto',
                 include: /fonts/,
                 use: {
                     loader: 'file-loader',
