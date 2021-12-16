@@ -8,15 +8,10 @@ html {
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: (map-get($small-font-sizes, xs) / 16px) * 100%;
 
-    @include media-query(medium) {
-        font-size: (map-get($medium-font-sizes, xs) / 16px) * 100%;
-    }
-
-    @include media-query(large) {
-        font-size: (map-get($large-font-sizes, xs) / 16px) * 100%;
-    }
+    // Make this equivalent to $base-font-size in typography.scss
+    // I'm using 16px as this seems to be the standard base font size across browsers.
+    font-size: 16px;
 }
 
 /* ============================================
