@@ -85,20 +85,8 @@ const options = {
                 ],
             },
             {
-                // sync font files referenced by the css to the fonts directory
-                // the publicPath matches the path from the compiled css to the font file
-                // only looks in the fonts folder so pngs in the images folder won't get put in the fonts folder
-                test: /\.(woff|woff2|ttf|eot)$/,
-                type: 'javascript/auto',
-                include: /fonts/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/',
-                        publicPath: '../fonts',
-                    },
-                },
+                test: /\.(ttf|eot|woff|woff2)$/,
+                type: 'asset/resource',
             },
             {
                 // Handles CSS background images in the cssBackgrounds folder
