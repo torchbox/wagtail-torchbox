@@ -1,5 +1,5 @@
 // Strip the unit from the given value and return the value
-@use "sass:math";
+@use 'sass:math';
 
 @function strip-unit($value) {
     @return math.div($value, $value * 0 + 1);
