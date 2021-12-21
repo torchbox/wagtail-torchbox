@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /* ============================================
     Base font
 */
@@ -8,14 +10,15 @@ html {
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: (map-get($small-font-sizes, xs) / 16px) * 100%;
+
+    font-size: math.div(map-get($small-font-sizes, xs), 16px) * 100%;
 
     @include media-query(medium) {
-        font-size: (map-get($medium-font-sizes, xs) / 16px) * 100%;
+        font-size: math.div(map-get($medium-font-sizes, xs), 16px) * 100%;
     }
 
     @include media-query(large) {
-        font-size: (map-get($large-font-sizes, xs) / 16px) * 100%;
+        font-size: math.div(map-get($large-font-sizes, xs), 16px) * 100%;
     }
 }
 
@@ -68,7 +71,7 @@ h1,
 .heading--1 {
     @include font-size(xl);
     font-weight: $weight--bold;
-    margin: 0 0 ($gutter / 2);
+    margin: 0 0 ($gutter * 0.5);
     color: var(--color--dark-indigo);
 
     @include media-query(medium) {
@@ -90,7 +93,7 @@ h4,
 .heading--4 {
     @include font-size(m);
     font-weight: $weight--bold;
-    margin: ($gutter * 3) 0 ($gutter / 2);
+    margin: ($gutter * 3) 0 ($gutter * 0.5);
     color: var(--color--dark-indigo);
 }
 
@@ -125,7 +128,7 @@ i {
 
 pre {
     margin: 0 0 ($gutter * 1.5) 0;
-    padding: ($gutter / 2);
+    padding: ($gutter * 0.5);
     font-family: monospace;
     word-break: break-all;
     white-space: pre-wrap;
