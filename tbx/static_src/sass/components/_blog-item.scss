@@ -67,7 +67,7 @@ $blog-author: var(--testimonial-name);
     }
 
     &__hidden-comma {
-        position: absolute !important;
+        position: absolute;
         pointer-events: none;
         opacity: 0;
     }
