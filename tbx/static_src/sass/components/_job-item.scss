@@ -53,4 +53,8 @@
         letter-spacing: 0.15em;
         font-weight: bold;
     }
+
+    &__sr-only {
+        @include hidden();
+    }
 }
