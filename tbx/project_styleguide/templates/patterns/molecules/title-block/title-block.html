@@ -12,6 +12,7 @@
         {% endif %}
         {% if tags %}
         <div class="title-block__tags" aria-label="Filter blog posts by category">
+            <p class="title-block__screen-reader-filter-description">Filter blog posts by category</p>
             {% pageurl item as index %}
             {% if request.GET.filter == '' or not request.GET.filter %}
                 {% include "patterns/atoms/tag/tag.html" with tag_link_base=index has_all_filter=True item=None is_active=True %}
