@@ -47,14 +47,14 @@ class Carousel {
         )) {
             const inactiveSlideAnchors = slide.querySelectorAll('a');
             slide.setAttribute('aria-hidden', 'true');
-            inactiveSlideAnchors.forEach(function inactiveAnchor(el) {
+            inactiveSlideAnchors.forEach((el) => {
                 el.setAttribute('tabindex', -1);
             });
         }
         const activeSlide = this.node.querySelector('.glide__slide--active');
         const activeSlideAnchors = activeSlide.querySelectorAll('a');
         activeSlide.removeAttribute('aria-hidden');
-        activeSlideAnchors.forEach(function activeAnchor(el) {
+        activeSlideAnchors.forEach((el) => {
             el.removeAttribute('tabindex');
         });
     }
