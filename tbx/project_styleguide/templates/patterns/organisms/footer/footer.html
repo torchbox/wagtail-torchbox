@@ -11,9 +11,9 @@
             <ul class="footer__address-list">
                 {% for office in global_settings.addresses %}
                     <li class="footer__address">
-                        <h2 class="footer__address-title">
+                        <span class="footer__address-title">
                             {{ office.value.title }}
-                        </h2>
+                        </span>
                         <div class="footer__address-detail">
                             {{ office.value.address|richtext }}
                         </div>
