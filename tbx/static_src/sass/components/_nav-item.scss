@@ -2,8 +2,54 @@
     $root: &;
     margin-right: 3.5vw;
 
+    &__background-overlay {
+        @include z-index(one);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgb(0, 0, 0, 0.15);
+    }
+
     // Desktop menu
     .desktop-nav & {
+        &--with-children {
+            position: relative;
+            padding-left: 3.5vw;
+            margin-right: 0;
+            display: none;
+            font-weight: bold;
+
+            //Aligns the more button with the rest of the nav items.
+            margin-bottom: 20px;
+
+            @include media-query(menu-break) {
+                display: block;
+            }
+
+            &::before {
+                content: '';
+                height: 40px;
+                width: 1px;
+                background-color: var(--color--header-links);
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                opacity: 0.15;
+            }
+        }
+
+        &__title {
+            font-weight: bold;
+        }
+
+        &__button {
+            //Make the button easier to click
+            //The 20px to the right covers the triple dots
+            padding: 10px 20px 10px 10px;
+        }
+
         @include media-query(menu-break) {
             margin-right: 70px;
 
@@ -41,6 +87,11 @@
                 @include link-underscore(4);
                 color: var(--color--header-links);
             }
+
+            &:focus {
+                //This only displays for windows high contrast mode
+                outline: 3px solid var(--color--header-links) transparent;
+            }
         }
 
         &__badge-link {
@@ -51,6 +102,14 @@
                 position: absolute;
                 right: -25px;
                 top: -15px;
+            }
+
+            &--more-button {
+                @include media-query(menu-break) {
+                    position: absolute;
+                    right: -14px;
+                    top: -10px;
+                }
             }
         }
     }
@@ -167,7 +226,7 @@
                 content: '';
                 height: 70px;
                 width: 1px;
-                background-color: var(--color--white);
+                background-color: var(--color--header-links);
                 position: absolute;
                 left: 0;
                 bottom: -25px;
@@ -216,10 +275,21 @@
                     width: 100%;
                 }
             }
+
+            &:focus {
+                outline: 4px solid var(--color--header-links) transparent;
+            }
         }
 
         &__button {
             font-weight: $weight--heavy;
+            padding: 5px 15px 5px 5px;
+            border-radius: 5px;
+            border: 2px solid var(--color--header-links) transparent;
+
+            &:focus {
+                outline: 4px solid var(--color--header-links) transparent;
+            }
         }
     }
 }

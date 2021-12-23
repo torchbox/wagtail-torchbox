@@ -1,12 +1,18 @@
 .subnav {
     @include z-index(two);
-    background-color: var(--color--white);
     padding: 20px;
     border-radius: 12px;
     position: absolute;
     min-width: 180px;
     left: 10px;
-    bottom: 40px;
+    top: 55px;
+    background-color: var(--color--white);
+    outline: 5px solid var(--color--coral) transparent;
+
+    &--home {
+        bottom: 40px;
+        top: initial;
+    }
 
     &__item {
         margin-bottom: 5px;
@@ -26,7 +32,7 @@
         position: relative;
         border-bottom: 0;
         transition: all $transition-quick;
-        color: var(--color--link);
+        color: var(--color--dark-indigo);
         overflow: hidden;
         display: inline-block;
 
@@ -34,7 +40,7 @@
         &:focus,
         &--active {
             @include link-underscore(2);
-            color: var(--color--link);
+            color: var(--color--dark-indigo);
         }
     }
 
