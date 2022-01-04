@@ -107,6 +107,8 @@
             &--more-button {
                 @include media-query(menu-break) {
                     position: absolute;
+                    width: 14px; // gives room to center the number of jobs, displaying neatly for single and double digits
+                    text-align: center;
                     right: -14px;
                     top: -10px;
                 }
@@ -137,6 +139,8 @@
         }
 
         &__badge-link {
+            width: 14px;
+            text-align: center;
             border-bottom: 0;
             position: relative;
             top: -10px;
