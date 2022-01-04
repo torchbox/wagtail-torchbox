@@ -4,14 +4,15 @@
         {% if item.client %}
         <p class="title-block__client">{{ item.client }}</p>
         {% endif %}
-        <h1 class="title-block__heading">{% firstof title|richtext item.title %}</h1>
+        <h1 class="title-block__heading">{% firstof title|richtext item.title %}{% if item.title_extra %}<span> {{ item.title_extra }}</span>{% endif %}</h1>
         {% if meta %}
         <div class="title-block__meta">
             {{ meta }}
         </div>
         {% endif %}
         {% if tags %}
-        <div class="title-block__tags">
+        <div class="title-block__tags" aria-label="Filter blog posts by category">
+            <p class="title-block__screen-reader-filter-description">Filter blog posts by category</p>
             {% pageurl item as index %}
             {% if request.GET.filter == '' or not request.GET.filter %}
                 {% include "patterns/atoms/tag/tag.html" with tag_link_base=index has_all_filter=True item=None is_active=True %}

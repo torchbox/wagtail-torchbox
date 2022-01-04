@@ -8,10 +8,13 @@
         text-decoration: none;
         font-weight: bold;
         padding: 15px;
+        border: none;
         border-bottom: 2px solid var(--color--accent);
         cursor: pointer;
+        background: none;
 
-        &:hover {
+        &:hover,
+        &:focus {
             background: var(--color--accent);
             border-radius: 4px;
             border-color: var(--color--accent);

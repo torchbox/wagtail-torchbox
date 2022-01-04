@@ -8,4 +8,8 @@
     @include media-query(medium) {
         grid-template-columns: 1fr;
     }
+
+    &--single {
+        width: 100%;
+    }
 }

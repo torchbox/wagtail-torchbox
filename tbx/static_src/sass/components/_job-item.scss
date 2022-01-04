@@ -48,9 +48,13 @@
         @include font-size(xxxs);
         margin: 0 0 2px;
         line-height: 1.4;
-        color: var(--color--accent);
+        color: var(--color--accent-dark);
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;
+    }
+
+    &__sr-only {
+        @include hidden();
     }
 }

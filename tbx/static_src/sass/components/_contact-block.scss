@@ -100,7 +100,7 @@
 
         &:hover,
         &:focus {
-            color: var(--color--hover, var(--color--white));
+            color: var(--color--accent);
         }
     }
 
@@ -118,8 +118,9 @@
             margin: 0 ($gutter * 0.75) 0 0;
         }
 
-        &:hover {
-            color: var(--color--hover, var(--color--white));
+        &:hover,
+        &:focus {
+            color: var(--color--white);
         }
     }
 }

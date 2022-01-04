@@ -1,29 +1,36 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <a class="blog-item {% if classes %}{{ classes }}{% endif %}" href="{% firstof item.url item.link_external %}">
-    <h3 class="blog-item__title">{{ item.title }}</h3>
+    <h2 class="blog-item__title">{{ item.title }}</h2>
+    <span class="blog-item__hidden-comma">,</span>
 
     {% if item.intro %}
         <p class="blog-item__intro">{{ item.intro }}</p>
+        <span class="blog-item__hidden-comma">,</span>
     {% endif %}
 
     {% if item.description %}
         <p class="blog-item__intro">{{ item.description|richtext }}</p>
+        <span class="blog-item__hidden-comma">,</span>
     {% endif %}
 
     {% if item.author %}
         <div class="blog-item__meta">
-            <div class="avatar blog-item__image">
+            <div class="avatar blog-item__image" aria-hidden="true">
                 {% image item.author.image fill-100x100 class="avatar__image" %}
+                <span class="blog-item__hidden-comma">,</span>
             </div>
             <div class="blog-item__author">
                 <span class="blog-item__author-name">{{ item.author.name }}</span>
+                <span class="blog-item__hidden-comma">,</span>
             {% if item.date %}
                 <span class="blog-item__author-details">
             {% endif %}
                     <span class="blog-item__author-role">{{ item.author.role }}</span>
+                    <span class="blog-item__hidden-comma">,</span>
                     {% if item.event_type %}
                         <span class="blog-item__author-date">{{ item.event_type }}</span>
+                        <span class="blog-item__hidden-comma">,</span>
                     {% endif %}
             {% if item.date %}
                     <span class="blog-item__author-date">{{ item.date }}</span>

@@ -17,6 +17,12 @@
         }
     }
 
+    &:focus {
+        #{$root}__title {
+            outline: 5px solid var(--color--coral);
+        }
+    }
+
     @include media-query(large) {
         flex-direction: row;
         background-size: cover;
@@ -25,6 +31,13 @@
     &:nth-child(even) {
         &::before {
             border-width: 0 0 60vw 25vw;
+        }
+
+        &:focus {
+            #{$root}__title {
+                //Ensures that the outline isn't covered by the image cutout
+                margin-left: 5px;
+            }
         }
 
         @include media-query(large) {

@@ -20,3 +20,4 @@ node_modules*
 /.vscode/
 .env
 /database_dumps/
+/.vscode/
