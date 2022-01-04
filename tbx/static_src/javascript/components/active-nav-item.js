@@ -7,12 +7,17 @@ class ActiveNavItem {
         this.node = node;
         this.pathname = window.location.pathname;
         this.pageUrl = this.node.getAttribute('href');
+        this.isSubnav = this.node.hasAttribute('subnav-menu-item');
         this.addCurrentClass();
     }
 
     addCurrentClass() {
         if (this.pathname.includes(this.pageUrl)) {
-            this.node.classList.add('nav-item__link--active');
+            if (this.isSubnav) {
+                this.node.classList.add('subnav__link--active');
+            } else {
+                this.node.classList.add('nav-item__link--active');
+            }
         }
     }
 }
