@@ -1,5 +1,5 @@
 import '@babel/polyfill';
-import 'alpinejs';
+import Alpine from 'alpinejs';
 
 import CookieWarning from './components/cookie-message';
 import SeeMorePosts from './components/see-more-posts';
@@ -13,9 +13,12 @@ import ShardsVideo from './components/shards-video';
 
 import '../sass/main.scss';
 
+window.Alpine = Alpine;
+Alpine.start();
+
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        registrations.forEach(function (registration) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+        registrations.forEach((registration) => {
             registration.unregister();
         });
     });

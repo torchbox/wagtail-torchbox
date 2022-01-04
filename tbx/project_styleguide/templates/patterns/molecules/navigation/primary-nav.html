@@ -24,7 +24,7 @@
             <span class="nav-item__dots"></span>
         </button>
 
-        <ul class="subnav" id="dropdown-nav-menu" x-show.transition="isOpen" :hidden="!isOpen">
+        <ul class="subnav" id="dropdown-nav-menu" x-show="isOpen" x-transition :hidden="!isOpen">
             {# Other menu items are hidden #}
             {% for item in primarynav|slice:"3:" %}
                 {% with link=item.value %}
