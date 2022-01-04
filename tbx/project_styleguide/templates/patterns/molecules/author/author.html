@@ -2,37 +2,46 @@
 
 {% image author.image fill-100x100 as image %}
 <div class="author">
+    <span class="author__sr-only">,</span>
     <div class="author__container">
         <div class="author__avatar">
-            <img class="author__image" src="{{ image.url }}" alt="{{ image.alt }}" loading="lazy">
+            <img class="author__image" src="{{ image.url }}" alt="{{ image.alt }}" loading="lazy" aria-hidden="true">
         </div>
         <div class="author__details">
+            <span class="author__sr-only">Author information:</span>
             {% if author.person_page %}
                 <a class="author__name" href="{% pageurl author.person_page %}">
                     {{ author.name }}
+                    <span class="author__sr-only">,</span>
                 </a>
             {% else %}
                 <span class="author__name">
                     {{ author.name }}
+                    <span class="author__sr-only">,</span>
                 </span>
             {% endif %}
 
-            <p class="author__meta">
+            <span class="author__meta">
                 {% if author.role %}
                     <span class="author__role">{{ author.role }}</span>
+                    <span class="author__sr-only">,</span>
                 {% endif %}
-
+                <span class="author__sr-only">Post information:</span>
                 {% if item.date %}
                     <span class="author__date">{{ item.date }}</span>
+                    <span class="author__sr-only">,</span>
                 {% endif %}
 
                 {% if item.read_time %}
                     <span class="author__readtime">{{ item.read_time }} min read</span>
+                    <span class="author__sr-only">,</span>
                 {% endif %}
-            </p>
+            </span>
             <div class="author__tags">
+                <span class="author__sr-only">Related post categories:</span>
                 {% for tag in item.related_services.all %}
                     {% include "patterns/atoms/tag/tag.html" with item=tag small=True tag_link_base=tag_link_base %}
+                    <span class="author__sr-only">,</span>
                 {% endfor %}
             </div>
         </div>

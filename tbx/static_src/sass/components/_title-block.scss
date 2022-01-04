@@ -71,4 +71,8 @@
         @include font-size(xs);
         margin-bottom: ($gutter * 1.5);
     }
+
+    &__screen-reader-filter-description {
+        @include hidden();
+    }
 }

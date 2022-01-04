@@ -6,6 +6,9 @@ class SeeMorePosts {
     constructor(node) {
         this.nextPage = 2;
         this.seeMoreButton = node;
+        this.itemList = node.parentElement.previousElementSibling;
+        this.lastItem = this.itemList.lastElementChild;
+
         this.targetNode = document.querySelector(
             `[data-fetch-destination="${node.dataset.fetchTarget}"]`,
         );
@@ -19,7 +22,7 @@ class SeeMorePosts {
         this.bindEvents();
     }
 
-    loadMorePostsAjax() {
+    loadMorePostsAjax(updateTabFocus) {
         // set parameters
         const params = new URLSearchParams();
         if (this.filter != null) {
@@ -54,13 +57,24 @@ class SeeMorePosts {
                 if (this.nextPage > this.MAX_PAGES) {
                     this.seeMoreButton.classList.add('see-more--hidden');
                 }
+
+                if (updateTabFocus) {
+                    this.lastItem.nextElementSibling.focus();
+                }
             });
     }
 
     bindEvents() {
-        this.seeMoreButton.addEventListener('click', (event) =>
-            this.loadMorePostsAjax(event),
+        this.seeMoreButton.addEventListener('click', () =>
+            this.loadMorePostsAjax(false),
         );
+        this.seeMoreButton.addEventListener('keydown', (event) => {
+            if (event.code === 'Enter') {
+                this.loadMorePostsAjax(true);
+                // Do not set this at the end of the fetch request, it won't work as expected.
+                this.lastItem = this.itemList.lastElementChild;
+            }
+        });
     }
 }
 

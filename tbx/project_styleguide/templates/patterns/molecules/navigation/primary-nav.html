@@ -18,13 +18,13 @@
         {% endwith %}
     {% endfor %}
 
-    <li class="nav-item nav-item--with-children" x-data="{ isOpen: false }">
-        <button class="nav-item__button" @click="isOpen = !isOpen">
+    <li class="nav-item nav-item--with-children" x-data="{ isOpen: false }" :aria-expanded="isOpen">
+        <button class="nav-item__button" @click="isOpen = !isOpen" :aria-expanded="isOpen" aria-controls="dropdown-nav-menu">
             More
             <span class="nav-item__dots"></span>
         </button>
 
-        <ul class="subnav" x-show="isOpen" x-transition>
+        <ul class="subnav" id="dropdown-nav-menu" x-show="isOpen" x-transition :hidden="!isOpen">
             {# Other menu items are hidden #}
             {% for item in primarynav|slice:"3:" %}
                 {% with link=item.value %}

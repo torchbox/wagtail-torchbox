@@ -80,4 +80,8 @@
             margin: 0 0 0 $variable-gutter--medium;
         }
     }
+
+    &__sr-only {
+        @include hidden();
+    }
 }
