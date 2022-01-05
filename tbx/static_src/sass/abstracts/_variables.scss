@@ -123,6 +123,8 @@ $z-index: (
     badge: 5,
     base: 10,
     overlap: 20,
+    in-page-nav: 25,
+    // The in-page-nav shouldn't be in front of the subnav's background, a part of the header
     header: 30,
     footer: 40,
     nav: 50,

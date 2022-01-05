@@ -17,7 +17,7 @@
 {% endfor %}
 
 {% if is_desktop %}
-<li class="nav-item nav-item--with-children" x-data="{ isOpen: false }" {% if is_home == False %} data-primary-nav {% endif %} >
+<li class="nav-item nav-item--with-children" x-data="{ isOpen: false }" {% if is_home == False %} data-primary-nav @tab-close="isOpen=false" {% endif %} >
     <button class="nav-item__button" @click="isOpen = !isOpen">
         More
         <span class="nav-item__dots"></span>
