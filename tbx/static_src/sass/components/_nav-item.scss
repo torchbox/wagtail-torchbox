@@ -3,7 +3,6 @@
     margin-right: 3.5vw;
 
     &__background-overlay {
-        @include z-index(one);
         position: fixed;
         top: 0;
         bottom: 0;
