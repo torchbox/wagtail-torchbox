@@ -1,21 +1,20 @@
 .subnav {
     @include z-index(two);
-    padding: 20px;
     border-radius: 12px;
     position: absolute;
-    min-width: 180px;
+    // Style values taken from new careers site design
+    // https://www.figma.com/file/nTKNovsb1TY48FmDfZueov/Careers-section---Contentful?node-id=725%3A57908
+    padding: 31px 20px;
+    min-width: 186px;
     left: 10px;
     top: 55px;
     background-color: var(--color--white);
     outline: 5px solid var(--color--coral) transparent;
 
-    &--home {
-        bottom: 40px;
-        top: initial;
-    }
-
     &__item {
-        margin-bottom: 5px;
+        margin-bottom: 22px;
+        line-height: 1;
+        font-size: 16px;
 
         &:last-child {
             margin-bottom: 0;
@@ -23,6 +22,7 @@
 
         &--with-badge {
             position: relative;
+            height: 20px;
         }
     }
 
@@ -46,8 +46,38 @@
 
     &__badge-link {
         position: relative;
-        left: 10px;
+        left: 14px;
         bottom: 10px;
         border-bottom: 0;
+    }
+
+    // Don't style homepage nav with new rules, follow old design
+    .template__homepage & {
+        padding: 20px;
+        bottom: 40px;
+        min-width: 180px;
+        top: initial;
+
+        &__item {
+            margin-bottom: 5px;
+            line-height: unset;
+            font-size: 18px;
+
+            &:last-child {
+                margin-bottom: initial;
+            }
+
+            &--with-badge {
+                position: relative;
+                height: initial;
+            }
+        }
+
+        &__badge-link {
+            position: relative;
+            left: 20px;
+            bottom: 10px;
+            border-bottom: 0;
+        }
     }
 }

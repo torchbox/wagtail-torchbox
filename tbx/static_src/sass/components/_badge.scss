@@ -50,16 +50,15 @@
     .template__homepage & {
         position: relative;
 
+        @include media-query(menu-break) {
+            left: -10px;
+        }
+
         &:focus,
         &:hover {
             &::before {
                 background: var(--color--dark-indigo);
             }
-        }
-
-        &::before {
-            left: -6px;
-            top: -4px;
         }
     }
 }

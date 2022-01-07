@@ -27,7 +27,7 @@
         </div>
         {% endif %}
     </button>
-    <ul class="subnav {% if is_home %}subnav--home{% endif %}" x-cloak x-show="isOpen" x-transition>
+    <ul class="subnav" x-cloak x-show="isOpen" x-transition>
         {# Other menu items are hidden #}
         {% for item in primarynav|slice:"3:" %}
             {% with link=item.value %}
