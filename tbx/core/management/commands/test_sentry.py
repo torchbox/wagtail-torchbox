@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+
 from sentry_sdk import capture_exception, capture_message
 
 
