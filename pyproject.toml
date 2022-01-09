@@ -14,7 +14,7 @@ wagtail-django-recaptcha = "1.0"
 django-pattern-library = "~0.5"
 whitenoise = "~5.0"
 dj-database-url = "~0.5"
-raven = "~6.10"
+sentry-sdk = "^1.5.1"
 django-redis = "~4.11"
 django-storages = { version ="~1.9", extras = ["boto3"] }
 django-referrer-policy = "~1.0"

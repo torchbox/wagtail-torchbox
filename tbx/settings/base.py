@@ -2,6 +2,7 @@
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 
 import dj_database_url
 
@@ -62,7 +63,6 @@ INSTALLED_APPS = [
     "wagtailmarkdown",
     "modelcluster",
     "taggit",
-    "raven.contrib.django.raven_compat",
     "captcha",
     "wagtailcaptcha",
     "wagtailfontawesome",
@@ -255,11 +255,6 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "verbose",
         },
-        # Send logs with level of at least ERROR to Sentry.
-        "sentry": {
-            "level": "ERROR",
-            "class": "raven.contrib.django.raven_compat.handlers.SentryHandler",
-        },
     },
     "formatters": {
         "verbose": {
@@ -267,23 +262,23 @@ LOGGING = {
         }
     },
     "loggers": {
-        "tbx": {
-            "handlers": ["console", "sentry"],
+        "selfhelp": {
+            "handlers": ["console"],
             "level": "INFO",
             "propagate": False,
         },
         "wagtail": {
-            "handlers": ["console", "sentry"],
+            "handlers": ["console"],
             "level": "INFO",
             "propagate": False,
         },
         "django.request": {
-            "handlers": ["console", "sentry"],
+            "handlers": ["console"],
             "level": "WARNING",
             "propagate": False,
         },
         "django.security": {
-            "handlers": ["console", "sentry"],
+            "handlers": ["console"],
             "level": "WARNING",
             "propagate": False,
         },
@@ -318,6 +313,50 @@ if "EMAIL_SUBJECT_PREFIX" in env:
 
 if "SERVER_EMAIL" in env:
     SERVER_EMAIL = DEFAULT_FROM_EMAIL = env["SERVER_EMAIL"]
+
+
+# Sentry configuration.
+# See instructions on the intranet:
+# https://intranet.torchbox.com/delivering-projects/tech/starting-new-project/#sentry
+is_in_shell = len(sys.argv) > 1 and sys.argv[1] in ["shell", "shell_plus"]
+
+if "SENTRY_DSN" in env and not is_in_shell:
+
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+    from sentry_sdk.utils import get_default_release
+
+    SENTRY_CONFIG = {
+        "dsn": env["SENTRY_DSN"],
+        "integrations": [DjangoIntegration()],
+    }
+
+    # There's a chooser to toggle between environments at the top right corner on sentry.io
+    # Values are typically 'staging' or 'production' but can be set to anything else if needed.
+    # dokku config:set gosh SENTRY_ENVIRONMENT=staging
+    # heroku config:set SENTRY_ENVIRONMENT=production
+    if "SENTRY_ENVIRONMENT" in env:
+        SENTRY_CONFIG.update({"environment": env["SENTRY_ENVIRONMENT"]})
+
+    release = get_default_release()
+    if release is None:
+        try:
+            # But if it's not, we assume that the commit hash is available in
+            # the GIT_REV environment variable. It's a default environment
+            # variable used on Dokku:
+            # http://dokku.viewdocs.io/dokku/deployment/methods/git/#configuring-the-git_rev-environment-variable
+            release = env["GIT_REV"]
+        except KeyError:
+            try:
+                # Assume this is a Heroku-hosted app with the "runtime-dyno-metadata" lab enabled
+                release = env["HEROKU_RELEASE_VERSION"]
+            except KeyError:
+                # If there's no commit hash, we do not set a specific release.
+                release = None
+
+    SENTRY_CONFIG.update({"release": release})
+    sentry_sdk.init(**SENTRY_CONFIG)
+    sentry_sdk.set_tag("lang", "python")
 
 
 # Security configuration
