@@ -262,7 +262,7 @@ LOGGING = {
         }
     },
     "loggers": {
-        "selfhelp": {"handlers": ["console"], "level": "INFO", "propagate": False},
+        "tbx": {"handlers": ["console"], "level": "INFO", "propagate": False},
         "wagtail": {"handlers": ["console"], "level": "INFO", "propagate": False},
         "django.request": {
             "handlers": ["console"],
