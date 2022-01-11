@@ -21,11 +21,6 @@
     <button class="nav-item__button" data-subnav-button @click="isOpen = !isOpen">
         More
         <span class="nav-item__dots"></span>
-        {% if job_count > 0 and is_home == False %}
-        <div class="nav-item__badge-link nav-item__badge-link--more-button" aria-label="{{ job_count }} jobs available">
-            {% include "patterns/atoms/badge/badge.html" with total=job_count %}
-        </div>
-        {% endif %}
     </button>
     <ul class="subnav" x-cloak x-show="isOpen" x-transition>
         {# Other menu items are hidden #}
