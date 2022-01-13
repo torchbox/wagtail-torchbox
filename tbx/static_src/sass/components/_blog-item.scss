@@ -66,12 +66,6 @@ $blog-author: var(--testimonial-name);
         flex-direction: column;
     }
 
-    &__hidden-comma {
-        position: absolute;
-        pointer-events: none;
-        opacity: 0;
-    }
-
     &__author-name {
         @include font-size(s);
         color: var(--color--dark-indigo);
