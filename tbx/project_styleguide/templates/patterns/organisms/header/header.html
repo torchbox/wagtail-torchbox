@@ -2,9 +2,9 @@
 <header class="header">
     <div class="header__inner">
         {% include "patterns/atoms/logo/logo.html" %}
-        <nav class="primary-nav desktop-nav">
+        <nav class="primary-nav desktop-nav" role="navigation" aria-label="Main navigation">
             <ul class="primary-nav__list">
-                {% primarynav is_home=False %}
+                {% primarynav is_home=False is_desktop=True %}
             </ul>
         </nav>
     </div>

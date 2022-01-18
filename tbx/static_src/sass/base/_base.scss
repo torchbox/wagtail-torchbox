@@ -65,3 +65,10 @@ ol {
     margin: 0;
     list-style: none;
 }
+
+//Used to prevent any subnav / overlay flicker on load.
+//https://alpinejs.dev/directives/cloak
+[x-cloak] {
+    /* stylelint-disable-next-line declaration-no-important */
+    display: none !important;
+}

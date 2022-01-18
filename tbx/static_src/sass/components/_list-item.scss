@@ -38,24 +38,25 @@
         &::after {
             content: '';
             display: inline;
-            width: 12px;
-            height: 20px; // changed from 30px to fix ie edge issue
+            width: 20px;
+            height: 18px;
             position: absolute;
             margin-left: 15px;
             margin-top: 5px;
-            background: url('../images/cssBackgrounds/chevron.svg') no-repeat
-                center;
+
+            background-color: var(--color--accent);
+
+            clip-path: polygon(
+                42% 0%,
+                80% 50%,
+                42% 100%,
+                20% 75%,
+                42% 50%,
+                20% 25%
+            );
 
             @include media-query(medium) {
                 margin-top: 10px;
-            }
-
-            @supports (mask: url('')) {
-                background-image: none;
-                background-color: var(--color--accent);
-                mask: url('../images/cssBackgrounds/chevron.svg') no-repeat
-                    center;
-                mask-size: contain;
             }
         }
     }

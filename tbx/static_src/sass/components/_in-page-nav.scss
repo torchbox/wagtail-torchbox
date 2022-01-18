@@ -1,6 +1,6 @@
 .in-page-nav {
     $root: &;
-    @include z-index(header);
+    @include z-index(in-page-nav);
     position: sticky;
     top: 0;
     margin-left: 10.33vw;
