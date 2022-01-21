@@ -39,7 +39,7 @@ class WorkPageTagSelect(Orderable):
 class WorkPageScreenshot(Orderable):
     page = ParentalKey("work.WorkPage", related_name="screenshots")
     image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -71,7 +71,7 @@ class WorkPage(Page):
     body = StreamField(StoryBlock())
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -80,7 +80,7 @@ class WorkPage(Page):
     visit_the_site = models.URLField(blank=True)
 
     feed_image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         help_text="Image used on listings and social media.",
         null=True,
         blank=True,
