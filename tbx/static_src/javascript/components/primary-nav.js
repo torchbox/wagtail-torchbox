@@ -8,10 +8,10 @@ class PrimaryNav {
     constructor(node) {
         this.node = node;
         this.open = false;
-        this.button = node.querySelector('.nav-item__button');
-        this.overlay = node.querySelector('.nav-item__background-overlay');
-        this.navLinks = node.querySelectorAll('.subnav__link');
-        this.badgeLinks = node.querySelectorAll('.subnav__badge-link');
+        this.button = node.querySelector('[data-subnav-button]');
+        this.overlay = node.querySelector('[data-subnav-background-overlay]');
+        this.navLinks = node.querySelectorAll('[data-subnav-link]');
+        this.badgeLinks = node.querySelectorAll('[data-subnav-badge-link]');
         this.lastNavLink = this.navLinks[this.navLinks.length - 1];
         this.navLinkKeyEvents = [];
 

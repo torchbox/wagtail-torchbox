@@ -18,25 +18,20 @@
 
 {% if is_desktop %}
 <li class="nav-item nav-item--with-children" x-data="{ isOpen: false }" {% if is_home == False %} data-primary-nav @tab-close="isOpen=false" {% endif %} >
-    <button class="nav-item__button" @click="isOpen = !isOpen">
+    <button class="nav-item__button" data-subnav-button @click="isOpen = !isOpen">
         More
         <span class="nav-item__dots"></span>
-        {% if job_count > 0 and is_home == False %}
-        <div class="nav-item__badge-link nav-item__badge-link--more-button" aria-label="{{ job_count }} jobs available">
-            {% include "patterns/atoms/badge/badge.html" with total=job_count %}
-        </div>
-        {% endif %}
     </button>
-    <ul class="subnav {% if is_home %}subnav--home{% endif %}" x-cloak x-show="isOpen" x-transition>
+    <ul class="subnav" x-cloak x-show="isOpen" x-transition>
         {# Other menu items are hidden #}
         {% for item in primarynav|slice:"3:" %}
             {% with link=item.value %}
                 <li class="subnav__item {% if link.page.slug == 'careers' and job_count > 0 %}subnav__item--with-badge{% endif %}">
-                    <a class="subnav__link" href="{% pageurl link.page %}" data-menu-item subnav-menu-item>
+                    <a class="subnav__link" data-subnav-link href="{% pageurl link.page %}" data-menu-item subnav-menu-item>
                         {% firstof link.title link.page.title %}
                     </a>
                     {% if link.page.slug == 'careers' and job_count > 0 %}
-                        <a class="subnav__badge-link" href="/jobs/" aria-label="{{ job_count }} jobs available">
+                        <a class="subnav__badge-link" data-subnav-badge-link href="/jobs/" aria-label="{{ job_count }} jobs available">
                             {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                         </a>
                     {% endif %}
@@ -45,7 +40,7 @@
         {% endfor %}
     </ul>
     {% if is_home == False %}
-    <div class="nav-item__background-overlay" x-cloak @click="isOpen = !isOpen" x-show.transition="isOpen"></div>
+    <div class="nav-item__background-overlay" data-subnav-background-overlay x-cloak @click="isOpen = !isOpen" x-show="isOpen" x-transition></div>
     {% endif %}
 </li>
 {% else %}
