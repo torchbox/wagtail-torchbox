@@ -16,7 +16,6 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.images.models import AbstractImage, AbstractRendition, Image
 from wagtail.snippets.models import register_snippet
 
 from .api import PeopleHRFeed
@@ -140,29 +139,7 @@ class Advert(models.Model):
 register_snippet(Advert)
 
 
-# Custom image
-class TorchboxImage(AbstractImage):
-    credit = models.CharField(max_length=255, blank=True)
-
-    admin_form_fields = Image.admin_form_fields + ("credit",)
-
-    @property
-    def credit_text(self):
-        return self.credit
-
-
-class TorchboxRendition(AbstractRendition):
-    image = models.ForeignKey(
-        "TorchboxImage", on_delete=models.CASCADE, related_name="renditions"
-    )
-
-    class Meta:
-        unique_together = (("image", "filter_spec", "focal_point_key"),)
-
-
 # Home Page
-
-
 class HomePageHero(Orderable, RelatedLink):
     page = ParentalKey("torchbox.HomePage", related_name="hero")
     colour = models.CharField(
