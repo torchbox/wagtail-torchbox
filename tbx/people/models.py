@@ -42,7 +42,7 @@ class PersonPage(Page):
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -136,7 +136,7 @@ class CulturePage(Page):
 
     strapline = models.TextField()
     hero_image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -321,7 +321,7 @@ class ValuesPage(Page):
 
 class BaseValuesPageValue(models.Model):
     value_image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -358,7 +358,7 @@ class Author(index.Indexed, models.Model):
     name = models.CharField(max_length=255, blank=True)
     role = models.CharField(max_length=255, blank=True)
     image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -407,7 +407,7 @@ class Contact(index.Indexed, models.Model):
     name = models.CharField(max_length=255, blank=True)
     role = models.CharField(max_length=255, blank=True)
     image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

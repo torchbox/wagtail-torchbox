@@ -174,7 +174,7 @@ class BlogPage(Page):
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
 
     feed_image = models.ForeignKey(
-        "torchbox.TorchboxImage",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

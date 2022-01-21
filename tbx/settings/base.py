@@ -362,7 +362,7 @@ if "PRIMARY_HOST" in env:
 
 
 # Override the Image class used by wagtailimages with a custom one
-WAGTAILIMAGES_IMAGE_MODEL = "torchbox.TorchboxImage"
+WAGTAILIMAGES_IMAGE_MODEL = "images.CustomImage"
 
 # Facebook JSSDK app Id
 FB_APP_ID = ""
