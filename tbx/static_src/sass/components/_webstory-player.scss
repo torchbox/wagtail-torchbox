@@ -1,0 +1,6 @@
+amp-story-player {
+    @include streamblock-padding();
+    display: block;
+    min-width: 300px;
+    height: 622px;
+}
