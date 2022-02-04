@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
+    "wagtail_webstories",
     "wagtail.core",
     "wagtail.contrib.modeladmin",
     "wagtailmarkdown",
