@@ -33,7 +33,9 @@ class PeopleHRFeed(object):
             try:
                 job["description"] = node.find("vacancydescription").text
             except AttributeError:
-                job["description"] = "This role is currently being considered and will be announced shortly."
+                job[
+                    "description"
+                ] = "This role is currently being considered and will be announced shortly."
 
             try:
                 job["link"] = node.find("link").text
