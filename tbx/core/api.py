@@ -23,10 +23,27 @@ class PeopleHRFeed(object):
 
         for node in xml_root.iter("item"):
             job = {}
-            job["title"] = node.find("vacancyname").text
-            job["description"] = node.find("vacancydescription").text
-            job["department"] = node.find("department").text
-            job["link"] = node.find("link").text
+
+            # Provide a generic fallback content if the job creator forgets to include it
+            try:
+                job["title"] = node.find("vacancyname").text
+            except AttributeError:
+                job["title"] = "Role to be Announced"
+
+            try:
+                job["description"] = node.find("vacancydescription").text
+            except AttributeError:
+                job["description"] = "This role is currently being considered and will be announced shortly."
+
+            try:
+                job["link"] = node.find("link").text
+            except AttributeError:
+                job["link"] = "mailto://recruitment@torchbox.com"
+
+            try:
+                job["department"] = node.find("department").text
+            except AttributeError:
+                job["department"] = "TBC"
 
             # Not all postings include all location fields: ensure any provided are used
             location = []
