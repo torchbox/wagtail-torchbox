@@ -7,11 +7,11 @@ authors = ["Torchbox Ltd"]
 [tool.poetry.dependencies]
 python = "^3.8"
 django = "~3.2"
-wagtail = "~2.15"
+wagtail = "~2.16"
 psycopg2 = "~2.8"
 gunicorn = {version = "~20.0", optional = true}
 wagtail-django-recaptcha = "1.0"
-django-pattern-library = "~0.5"
+django-pattern-library = "^0.7.0"
 whitenoise = "~5.0"
 dj-database-url = "~0.5"
 raven = "~6.10"
@@ -34,7 +34,7 @@ wagtail-markdown = "^0.7.0"
 gunicorn = ["gunicorn"]
 
 [tool.poetry.dev-dependencies]
-Werkzeug = "~0.16"
+Werkzeug = "^2.0.3"
 django-extensions = "~2.2"
 fabric = "~2.5"
 stellar = "~0.4"
