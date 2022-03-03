@@ -25,7 +25,14 @@ class PeopleHRFeed(object):
             job = {}
 
             try:
-                job["title"] = node.find("vacancyname").text
+                try:
+                    job["title"] = node.find("vacancyname").text
+                except AttributeError:
+                    logger.exception(
+                        f"A job added to PeopleHR is missing a title, it will not show on the live site."
+                    )
+                    continue
+
                 job["description"] = node.find("vacancydescription").text
                 job["link"] = node.find("link").text
                 job["department"] = node.find("department").text
@@ -41,7 +48,7 @@ class PeopleHRFeed(object):
                 jobs.append(job)
             except AttributeError:
                 logger.exception(
-                    f"A job added to PeopleHR is missing field data, it will not show on the live site: {node}"
+                    f"A job added to PeopleHR is missing field data, it will not show on the live site: {job['title']}"
                 )
 
         return jobs
