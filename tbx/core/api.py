@@ -24,39 +24,25 @@ class PeopleHRFeed(object):
         for node in xml_root.iter("item"):
             job = {}
 
-            # Provide a generic fallback content if the job creator forgets to include it
             try:
                 job["title"] = node.find("vacancyname").text
-            except AttributeError:
-                job["title"] = "Role to be Announced"
-
-            try:
                 job["description"] = node.find("vacancydescription").text
-            except AttributeError:
-                job[
-                    "description"
-                ] = "This role is currently being considered and will be announced shortly."
-
-            try:
                 job["link"] = node.find("link").text
-            except AttributeError:
-                job["link"] = "mailto://recruitment@torchbox.com"
-
-            try:
                 job["department"] = node.find("department").text
+
+                location = []
+                for location_key in ["city", "country"]:
+                    try:
+                        location.append(node.find(location_key).text)
+                    except AttributeError:
+                        pass
+                job["location"] = ", ".join(location)
+
+                jobs.append(job)
             except AttributeError:
-                job["department"] = "TBC"
-
-            # Not all postings include all location fields: ensure any provided are used
-            location = []
-            for location_key in ["city", "country"]:
-                try:
-                    location.append(node.find(location_key).text)
-                except AttributeError:
-                    pass
-            job["location"] = ", ".join(location)
-
-            jobs.append(job)
+                logger.exception(
+                    f"A job added to PeopleHR is missing field data, it will not show on the live site: {node}"
+                )
 
         return jobs
 
