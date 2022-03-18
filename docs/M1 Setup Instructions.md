@@ -5,10 +5,9 @@
 Update your redis version from 3 to 6 in `docker-compose.yml`
 
 ```yaml
-...
+---
 redis:
   image: redis:6
-...
 ```
 
 In `Dockerfile.utils`, replace the Heroku installation command beneath `# Install Heroku CLI` with
@@ -19,7 +18,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && apt-get install
 RUN curl -s https://cli-assets.heroku.com/install.sh | sed 's/arm\*/aarch\*/g' | sh
 ```
 
-## Preliminary Setup 
+## Preliminary Setup
 
 Ask in the Heroku channel for appropriate permissions:
 `heroku access:add <your email address> --app torchbox-staging`
@@ -29,7 +28,8 @@ Make sure you've updated Heroku to the latest version (with `heroku update`) or 
 ## Docker Setup
 
 ### Resolving Older Issues
-If you have issues related to working on the project previously, consider running 
+
+If you have issues related to working on the project previously, consider running
 `fab destory`
 to get rid of all old containers and databases, starting the build afresh.
 
@@ -56,6 +56,7 @@ Within the shell, run
 The site should now be accessible at [http://localhost:8000/](http://localhost:8000).
 
 ### Local Frontend Development
+
 To automatically have CSS, JS and other changes compile and refresh in the browser during local development, you'll have to run the frontend build tools.
 
 Open a new terminal window while keeping the server running in the background, and run the following commands.

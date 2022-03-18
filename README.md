@@ -9,6 +9,8 @@ This is the main Torchbox.com website.
 This repository includes `docker-compose` configuration for running the project in local Docker containers,
 and a fabfile for provisioning and managing this.
 
+If you are an M1 mac user, you may have to make changes to the docker configuration: see the M1 Setup Instructions in the docs.
+
 ## Dependencies
 
 The following are required to run the local environment. The minimum versions specified are confirmed to be working:
