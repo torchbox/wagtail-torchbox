@@ -54,17 +54,21 @@ fab build
 ```
 
 Then, to pull staging data from Heroku,
+
 ```bash
 fab heroku-login
-``` 
+```
+
 Use your Heroku API key as your password. You can find this in your heroku account details page.
 
 ```bash
 fab pull-staging-data
 ```
+
 You can also pull images from the site with `fab pull-staging-images`, note this is a lot of data.
 
 Now run
+
 ```bash
 fab start
 fab sh
@@ -86,8 +90,6 @@ The site should be available at: [http://localhost:8000/](http://localhost:8000)
 To automatically have CSS, JS and other file changes compile and refresh in the browser during local development, you'll have to run the frontend build tools.
 
 There are 2 ways to run the frontend tooling:
-
-
 
 ### Locally
 
