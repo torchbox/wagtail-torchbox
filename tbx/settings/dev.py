@@ -19,6 +19,8 @@ PREVIEW_URL = "http://localhost:8001/preview"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+ALLOWED_HOSTS = ["*"]
+
 AUTH_PASSWORD_VALIDATORS = []
 
 # Enable Wagtail's style guide in Wagtail's settings menu.

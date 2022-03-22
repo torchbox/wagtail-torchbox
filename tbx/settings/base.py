@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "tbx.sign_up_form",
     "tbx.taxonomy",
     "tbx.work",
+    "tbx.images",
     "wagtail.contrib.search_promotions",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
+    "wagtail_webstories",
     "wagtail.core",
     "wagtail.contrib.modeladmin",
     "wagtailmarkdown",
@@ -361,7 +363,7 @@ if "PRIMARY_HOST" in env:
 
 
 # Override the Image class used by wagtailimages with a custom one
-WAGTAILIMAGES_IMAGE_MODEL = "torchbox.TorchboxImage"
+WAGTAILIMAGES_IMAGE_MODEL = "images.CustomImage"
 
 # Facebook JSSDK app Id
 FB_APP_ID = ""

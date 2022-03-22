@@ -10,6 +10,7 @@ import './components/sticky-nav';
 import InPageNav from './components/in-page-nav';
 import ActiveNavItem from './components/active-nav-item';
 import ShardsVideo from './components/shards-video';
+import PrimaryNav from './components/primary-nav';
 
 import '../sass/main.scss';
 
@@ -45,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (const inpagenav of document.querySelectorAll(InPageNav.selector())) {
         new InPageNav(inpagenav);
+    }
+
+    for (const primarynav of document.querySelectorAll(PrimaryNav.selector())) {
+        new PrimaryNav(primarynav);
     }
 
     for (const activenavitem of document.querySelectorAll(

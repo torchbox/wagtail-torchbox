@@ -11,6 +11,9 @@ from wagtail.core.blocks import (
 )
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail_webstories.blocks import (
+    ExternalStoryEmbedBlock as WebstoryExternalStoryEmbedBlock,
+)
 from wagtailmarkdown.blocks import MarkdownBlock
 
 
@@ -78,6 +81,17 @@ class StatsBlock(StructBlock):
         icon = "order"
 
 
+class ExternalStoryEmbedBlock(WebstoryExternalStoryEmbedBlock):
+    # Work around due to Attribute Error https://github.com/torchbox/wagtail-webstories/pull/12
+    def get_prep_value(self, value):
+        if value is None:
+            return ""
+        elif isinstance(value, str):
+            return value
+        else:
+            return value.url
+
+
 class StoryBlock(StreamBlock):
     h2 = CharBlock(
         form_classname="title",
@@ -127,6 +141,10 @@ class StoryBlock(StreamBlock):
     markdown = MarkdownBlock(
         icon="code",
         template="patterns/molecules/streamfield/blocks/markdown_block.html",
+    )
+    story_embed = ExternalStoryEmbedBlock(
+        icon="code",
+        template="patterns/molecules/streamfield/blocks/external_story_block.html",
     )
 
     class Meta:
