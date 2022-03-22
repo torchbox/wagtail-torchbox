@@ -3,7 +3,7 @@
 {% image item.image fill-550x550 as image %}
 <div class="team-member">
     <a class="team-member__link" href="{% pageurl item %}">
-        <img class="team-member__image" src="{{ image.url }}" aria-hidden="true" width="{{ image.width }}" height="{{ image.height }}" loading="lazy">
+        <img class="team-member__image" src="{{ image.url }}" aria-hidden="true" width="{{ image.width }}" height="{{ image.height }}" loading="lazy" alt="">
         <h2 class="team-member__title">{{ item.title }}</h2>
         <h3 class="team-member__role">{{ item.role }}</h3>
     </a>
