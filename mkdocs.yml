@@ -1,0 +1,18 @@
+site_name: Torchbox
+repo_url: https://github.com/torchbox/wagtail-torchbox
+site_url:
+edit_uri: 'edit/master/docs/'
+
+repo_name: Github
+dev_addr: 0.0.0.0:8001
+markdown_extensions:
+  - codehilite
+  - admonition
+  - sane_lists
+  - toc:
+      permalink: true
+
+nav:
+  - 'Home': 'index.md'
+  - 'Support runbook': 'support-runbook.md'
+  - 'Upgrading guidelines': 'upgrading.md'
