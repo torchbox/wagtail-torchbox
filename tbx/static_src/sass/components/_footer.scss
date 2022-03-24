@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .footer {
     $root: &;
     background-color: var(--color--light-grey);
@@ -22,7 +24,7 @@
     &__secondary-content {
         display: flex;
         flex-direction: column-reverse;
-        margin-top: ($grid / 2);
+        margin-top: math.div($grid, 2);
 
         @include media-query(menu-break) {
             margin-top: 0;
@@ -84,7 +86,7 @@
     &__copy {
         @include font-size(xxs);
         color: var(--color--grey);
-        margin: ($grid * 2) 0 ($grid / 2) 0;
+        margin: ($grid * 2) 0 math.div($grid, 2) 0;
 
         @include media-query(menu-break) {
             margin: 6px $grid 0 0;
