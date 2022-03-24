@@ -17,6 +17,7 @@
         @include media-query(large) {
             display: grid;
             grid-template-columns: 1fr 130px 1fr;
+            margin-bottom: ($grid * 3);
         }
     }
 
