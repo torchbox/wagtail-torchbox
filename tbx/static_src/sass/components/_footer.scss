@@ -1,8 +1,11 @@
 .footer {
     $root: &;
-    position: relative;
     background-color: var(--color--light-grey);
-    padding: ($grid * 3) 3.5vw;
+    padding: ($grid * 2) 3.5vw;
+
+    @include media-query(menu-break) {
+        padding: ($grid * 3) 3.5vw;
+    }
 
     &__inner {
         margin: 0 auto;
@@ -17,7 +20,12 @@
     }
 
     &__secondary-content {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: ($grid / 2);
+
         @include media-query(menu-break) {
+            margin-top: 0;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
         }
@@ -60,6 +68,7 @@
     &__appendix {
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         @include media-query(large) {
             margin-top: -$grid * 0.5;
@@ -75,7 +84,7 @@
     &__copy {
         @include font-size(xxs);
         color: var(--color--grey);
-        margin: $grid 0 0 $grid;
+        margin: ($grid * 2) 0 ($grid / 2) 0;
 
         @include media-query(menu-break) {
             margin: 6px $grid 0 0;
@@ -83,8 +92,6 @@
     }
 
     &__links {
-        margin-bottom: $grid;
-
         @include media-query(large) {
             margin-bottom: $grid * 1.5;
         }

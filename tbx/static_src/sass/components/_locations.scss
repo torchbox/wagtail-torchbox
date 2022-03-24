@@ -1,6 +1,9 @@
 .locations {
     &--footer {
+        margin-top: 40px;
+
         @include media-query(large) {
+            margin-top: 0;
             padding-left: 50px;
         }
     }

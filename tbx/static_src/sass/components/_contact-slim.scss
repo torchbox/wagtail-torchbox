@@ -1,6 +1,5 @@
 .contact-slim {
     display: flex;
-    flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
     position: relative;
@@ -12,16 +11,21 @@
 
     &__image {
         margin-bottom: $gutter;
+        height: 70px;
+        width: 70px;
+        min-width: initial;
 
         @include media-query(medium) {
+            height: 100px;
+            width: 100px;
             margin-bottom: 0;
         }
     }
 
     &__content {
-        text-align: center;
         display: flex;
         flex-direction: column;
+        padding-left: 10px;
 
         @include media-query(medium) {
             text-align: left;
