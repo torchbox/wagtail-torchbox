@@ -49,8 +49,8 @@
 
         &:hover,
         &:focus {
-            color: var(--color--coral);
-            border-bottom: 2px solid var(--color--coral);
+            color: var(--color--coral-dark);
+            border-bottom: 2px solid var(--color--coral-dark);
         }
     }
 
@@ -60,7 +60,7 @@
         line-height: 24px;
         text-decoration: none;
         font-weight: bold;
-        color: var(--color--coral);
+        color: var(--color--coral-dark);
         border-bottom: none;
 
         @include media-query(medium) {
