@@ -49,7 +49,7 @@ Starting a local build can be done by running:
 
 ```bash
 git clone https://github.com/torchbox/wagtail-torchbox.git
-cd tbx
+cd wagtail-torchbox
 fab build
 ```
 
@@ -80,10 +80,10 @@ Then within the SSH session:
 ./manage.py migrate
 ./manage.py createcachetable
 ./manage.py createsuperuser
-./manage.py runserver 0.0.0.0:8000
+./manage.py runserver 0:8000
 ```
 
-The site should be available at: [http://localhost:8000/](http://localhost:8000).
+The site should be available on the host machine at: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## Frontend Development
 
@@ -136,6 +136,8 @@ Merges to `master` and `staging` will automatically trigger a deployment to the 
 
 ## How To Reset the Docker Containers
 
+### MacOS
+
 If you have issues related to working on the project previously, consider running
 `fab destroy`
 to get rid of all old containers and databases, starting the build afresh.
@@ -143,6 +145,16 @@ to get rid of all old containers and databases, starting the build afresh.
 `fab stop` will switch off the containers without harming their data, ready for future reuse.
 
 Restart docker desktop if old docker instances don't want to quit.
+
+### Linux
+
+As the above commands won't run on Linux, identify the running Docker processes with
+
+```bash
+docker ps
+```
+
+Then run `docker container stop <container_id>` to stop a container, or `docker container kill <container_id>` to get rid of the container and its database.
 
 ## Other Fab Commands
 
