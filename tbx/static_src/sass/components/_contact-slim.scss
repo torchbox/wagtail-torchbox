@@ -1,9 +1,7 @@
 .contact-slim {
     display: flex;
-    flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    padding: 40px 0;
     position: relative;
 
     @include media-query(medium) {
@@ -11,34 +9,23 @@
         flex-direction: row;
     }
 
-    &::after {
-        @include media-query(large) {
-            content: '';
-            width: 95%;
-            position: absolute;
-            background-color: var(--color--black);
-            opacity: 0.1;
-            height: 1px;
-        }
-    }
-
     &__image {
         margin-bottom: $gutter;
-        z-index: 1;
+        height: 70px;
+        width: 70px;
+        min-width: initial;
 
         @include media-query(medium) {
+            height: 100px;
+            width: 100px;
             margin-bottom: 0;
         }
     }
 
-    &__heading {
-        margin: 0;
-    }
-
     &__content {
-        text-align: center;
-        background-color: var(--color--white);
-        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
 
         @include media-query(medium) {
             text-align: left;
@@ -46,24 +33,15 @@
         }
     }
 
-    &__meta {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-
-        @include media-query(medium) {
-            flex-direction: row;
-            justify-content: flex-start;
-        }
-    }
-
     &__email {
         @include font-size(s);
+        border-bottom: 2px solid var(--color--dark-indigo);
         color: var(--color--dark-indigo);
-        line-height: 24px;
         text-decoration: none;
         font-weight: bold;
         margin-bottom: 10px;
+        line-height: 1;
+        transition: border $transition-quick, color $transition-quick;
 
         @include media-query(medium) {
             margin: 0 ($gutter * 0.75) 10px 0;
@@ -72,6 +50,7 @@
         &:hover,
         &:focus {
             color: var(--color--coral-dark);
+            border-bottom: 2px solid var(--color--coral-dark);
         }
     }
 
@@ -88,8 +67,12 @@
             margin: 0 ($gutter * 0.75) 0 0;
         }
 
+        &:focus,
         &:hover {
-            color: var(--dark-indigo);
+            color: var(--color--coral-dark);
+            text-decoration: underline;
+            text-underline-position: under;
+            text-decoration-thickness: 2px;
         }
     }
 }

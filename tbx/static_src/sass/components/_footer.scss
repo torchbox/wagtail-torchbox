@@ -1,122 +1,165 @@
+@use 'sass:math';
+
 .footer {
     $root: &;
-    position: relative;
     background-color: var(--color--light-grey);
-    padding: ($gutter * 5) 0 ($gutter * 1.5);
+    padding: ($grid * 2) 0;
 
-    &__top {
-        @include container();
-        margin-bottom: ($gutter * 2);
+    @include media-query(menu-break) {
+        padding: ($grid * 3) 0;
     }
 
-    &__top-link {
-        font-size: map-get($small-font-sizes, m);
-        display: inline-block;
-        margin-right: $gutter;
-        font-weight: $weight--heavy;
-        color: var(--color--dark-indigo);
-        transition: all $transition-quick;
-        border-bottom: 2px solid var(--color--light-grey);
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        &:focus,
-        &:hover {
-            color: var(--color--dark-indigo);
-            border-bottom: 2px solid var(--color--underline);
-        }
-
-        @include media-query(medium) {
-            font-size: map-get($medium-font-sizes, m);
-        }
-    }
-
-    &__content {
+    &__inner {
         @include container();
     }
 
-    &__address {
-        position: relative;
-        padding: 0 ($gutter * 5) $gutter 0;
-
-        p {
-            @include font-size(xxs);
-            line-height: 22px;
-            color: var(--color--grey);
-            max-width: 300px;
+    &__primary-content {
+        @include media-query(large) {
+            display: grid;
+            grid-template-columns: 1fr 130px 1fr;
+            margin-bottom: ($grid * 3);
         }
     }
 
-    &__address-title {
-        @include font-size(s);
-        font-weight: bold;
-        color: var(--color--dark-indigo);
-        margin: 0 0 ($gutter * 0.5);
-        line-height: 1;
-
-        &::after {
-            position: absolute;
-            top: -6px;
-            margin-left: 10px;
-            content: '';
-            width: 20px;
-            height: 30px;
-            background: url('../images/cssBackgrounds/diamond.svg');
-            transform: rotate(30deg);
-        }
-    }
-
-    &__address-list {
+    &__secondary-content {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin: 0 0 ($gutter * 3);
+        flex-direction: column-reverse;
+        margin-top: math.div($grid, 2);
+
+        @include media-query(menu-break) {
+            margin-top: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
     }
 
-    &__copyright {
-        font-size: 0.7em;
+    &__heading {
+        @include font-size(ml);
+        font-weight: $weight--heavy;
+        margin-top: 0;
+    }
+
+    &__divider {
+        display: none;
+        position: relative;
+
+        @include media-query(large) {
+            display: block;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            width: 2px;
+            height: 262px;
+            background-color: var(--color--dark-indigo);
+            transform: rotate(30deg);
+            left: 60px;
+        }
+    }
+
+    &__contact-desc {
+        @include font-size(s);
+
+        @include media-query(large) {
+            max-width: 474px;
+        }
+    }
+
+    &__appendix {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+
+        @include media-query(large) {
+            margin-top: -$grid * 0.5;
+        }
+
+        @include media-query(menu-break) {
+            flex-direction: row;
+            margin: 0;
+        }
+    }
+
+    &__copy {
+        @include font-size(xxs);
         color: var(--color--grey);
-        margin-right: ($gutter * 0.5);
+        margin: ($grid * 2) 0 0 0;
+
+        @include media-query(menu-break) {
+            margin: 6px $grid 0 0;
+        }
+    }
+
+    &__links {
+        @include media-query(large) {
+            margin-bottom: $grid * 1.5;
+        }
+
+        @include media-query(menu-break) {
+            margin-bottom: 0;
+        }
     }
 
     &__link {
         @include font-size(xxs);
         display: inline-block;
-        height: 23px;
-        margin-right: ($gutter * 0.5);
-        font-weight: $weight--bold;
-        border-bottom: 2px solid var(--color--lagoon);
-        color: var(--color--dark-indigo);
+        margin-left: $grid;
+        color: var(--color--indigo);
+        border-bottom: 0;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--color--coral-dark);
+        }
+    }
+
+    &__socials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__social-icon {
+        fill: var(--color--dark-indigo);
+        transition: fill $transition-quick;
+    }
+
+    &__social-item {
+        margin-right: 28px;
 
         &:last-child {
             margin-right: 0;
         }
+    }
+
+    &__social-link {
+        border-bottom: 0;
 
         &:focus,
         &:hover {
-            color: var(--color--dark-indigo);
+            #{$root}__social-icon {
+                fill: var(--color--coral);
+            }
         }
     }
 
-    &__image {
-        @include z-index(overlap);
-        display: none;
-        position: absolute;
-        bottom: 0;
-        right: 20px;
-        width: 25vw;
+    // Template overrides
+    .template__homepage & {
+        padding: ($grid * 2) 3.5vw;
 
-        @include media-query(medium) {
-            display: block;
+        @include media-query(menu-break) {
+            padding: ($grid * 3) 3.5vw;
         }
-    }
 
-    &__bottom {
-        @include media-query(large) {
-            display: flex;
-            align-items: center;
+        &__inner {
+            margin: 0 auto;
+            max-width: $site-width;
         }
     }
 }
