@@ -67,8 +67,12 @@
             margin: 0 ($gutter * 0.75) 0 0;
         }
 
+        &:focus,
         &:hover {
-            color: var(--dark-indigo);
+            color: var(--color--coral-dark);
+            text-decoration: underline;
+            text-underline-position: under;
+            text-decoration-thickness: 2px;
         }
     }
 }
