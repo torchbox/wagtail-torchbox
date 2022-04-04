@@ -93,7 +93,7 @@ services:
       - ./database_dumps:/app/database_dumps:delegated,rw
 
   redis:
-    image: redis:3.0
+    image: redis:6.0
     expose:
       - 6379
     logging:
