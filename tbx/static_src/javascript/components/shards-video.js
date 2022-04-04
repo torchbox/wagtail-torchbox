@@ -17,7 +17,6 @@ class ShardsVideo {
         if (window.matchMedia('(min-width: 1023px)').matches) {
             this.videoSource.src = this.videoSource.getAttribute('data-src');
             this.video.load();
-            this.node.classList.add('video-loaded');
         }
     }
 
