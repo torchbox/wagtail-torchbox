@@ -3,14 +3,15 @@
 .footer {
     $root: &;
     background-color: var(--color--light-grey);
-    padding: ($grid * 2) 0;
+    padding: ($grid * 2) $variable-gutter--small;
 
     @include media-query(menu-break) {
-        padding: ($grid * 3) 0;
+        padding: ($grid * 3) 3.5vw;
     }
 
     &__inner {
-        @include container();
+        margin: 0 auto;
+        max-width: $site-width;
     }
 
     &__primary-content {
@@ -149,17 +150,7 @@
         }
     }
 
-    // Template overrides
     .template__homepage & {
-        padding: ($grid * 2) 3.5vw;
-
-        @include media-query(menu-break) {
-            padding: ($grid * 3) 3.5vw;
-        }
-
-        &__inner {
-            margin: 0 auto;
-            max-width: $site-width;
-        }
+        padding: ($grid * 3) 3.5vw;
     }
 }
