@@ -136,19 +136,13 @@ Merges to `master` and `staging` will automatically trigger a deployment to the 
 
 ## How To Reset the Docker Containers
 
-### MacOS
-
-If you have issues related to working on the project previously, consider running
-`fab destroy`
-to get rid of all old containers and databases, starting the build afresh.
+If you have issues related to working on the project previously, consider running `fab destroy` to get rid of all old containers and databases, starting the build afresh.
 
 `fab stop` will switch off the containers without harming their data, ready for future reuse.
 
-Restart docker desktop if old docker instances don't want to quit.
+On MacOS you can restart docker desktop if old docker instances don't want to quit.
 
-### Linux
-
-As the above commands won't run on Linux, identify the running Docker processes with
+On Linux, you can identify the running Docker processes with
 
 ```bash
 docker ps
