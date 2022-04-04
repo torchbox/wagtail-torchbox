@@ -21,6 +21,12 @@
         @include media-query(large) {
             padding-bottom: 56.255%;
             background-position: -1px center;
+            background-size: 0;
+
+            // Show a fallback image if the video fails to load
+            .video-error & {
+                background-size: cover;
+            }
         }
     }
 }
