@@ -33,6 +33,12 @@
         @include font-size(xxxs);
         line-height: 1.4;
         margin: 0 0 0;
+        display: flex;
+        flex-direction: column;
+
+        @include media-query(medium) {
+            display: block;
+        }
     }
 
     &__role {
@@ -45,25 +51,21 @@
         font-weight: bold;
     }
 
-    &__date {
-        @include font-size(xxxs);
-        text-transform: none;
-        letter-spacing: 0;
-        color: var(--color--grey);
-        margin-left: 5px;
-        padding-left: 5px;
-        border-left: 1px solid rgba(var(--color--black), 0.1);
-    }
-
+    &__date,
     &__readtime {
         @include font-size(xxxs);
         text-transform: none;
         letter-spacing: 0;
         color: var(--color--grey);
-        margin-left: 5px;
-        padding-left: 5px;
         border-left: 1px solid rgba(var(--color--black), 0.1);
 
+        @include media-query(medium) {
+            margin-left: 5px;
+            padding-left: 5px;
+        }
+    }
+
+    &__readtime {
         .page__author & {
             display: none;
         }
@@ -71,6 +73,10 @@
 
     &__tags {
         margin: 10px 0 0;
+    }
+
+    &__avatar {
+        flex-shrink: 0;
     }
 
     .page & {

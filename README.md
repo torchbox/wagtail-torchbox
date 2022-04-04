@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/torchbox/wagtail-torchbox.svg?branch=master)](https://travis-ci.org/torchbox/wagtail-torchbox)
 
-This is the main Torchbox.com website.
+This is the main Torchbox.com website. The careers section of this site can be found at [torchbox/careers](https://github.com/torchbox/careers).
 
-# Setting up a local build
+# Project Setup
 
 This repository includes `docker-compose` configuration for running the project in local Docker containers,
 and a fabfile for provisioning and managing this.
@@ -32,16 +32,44 @@ pip3 install fabric
 
 You can manage different python versions by setting up `pyenv`: https://realpython.com/intro-to-pyenv/
 
-## Running the local build for the first time
+## Required Permissions
+
+Ask in the Heroku channel for staging access permissions:
+`heroku access:add <your email address> --app torchbox-staging`
+
+Make sure you've updated Heroku to the latest version (with `heroku update`) or you will be denied access.
+
+Ask another developer for permissions to clone and make merge requests to the [GitHub repository](https://github.com/torchbox/wagtail-torchbox).
+
+## Running the Local Build for the First Time
 
 If you are using Docker Desktop, ensure the Resources:File Sharing settings allow the cloned directory to be mounted in the web container (avoiding `mounting` OCI runtime failures at the end of the build step).
 
 Starting a local build can be done by running:
 
 ```bash
-git clone [URL TO GIT REMOTE]
-cd tbx
+git clone https://github.com/torchbox/wagtail-torchbox.git
+cd wagtail-torchbox
 fab build
+```
+
+Then, to pull staging data from Heroku,
+
+```bash
+fab heroku-login
+```
+
+Use your Heroku API key as your password. You can find this in your heroku account details page.
+
+```bash
+fab pull-staging-data
+```
+
+You can also pull images from the site with `fab pull-staging-images`, note this is a lot of data.
+
+Now run
+
+```bash
 fab start
 fab sh
 ```
@@ -53,31 +81,36 @@ Then within the SSH session:
 ./manage.py createcachetable
 ./manage.py createsuperuser
 ./manage.py runserver 0:8000
-
 ```
 
-The site should be available on the host machine at: http://127.0.0.1:8000/
+The site should be available on the host machine at: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
-### Frontend tooling
+## Frontend Development
+
+To automatically have CSS, JS and other file changes compile and refresh in the browser during local development, you'll have to run the frontend build tools.
 
 There are 2 ways to run the frontend tooling:
 
-#### With the frontend docker container (default)
+### Locally
 
-After starting the containers as above and running `./manage.py runserver 0:8000`, in a new
-terminal session run `fab npm start`. This will start the frontend container and the site will
-be available on port :3000 using browsersync. E.G `localhost:3000`.
-
-#### Locally
-
-To run the FE tooling locally. Create a `.env` file in the project root (see .env.example) and add `FRONTEND=local`.
-Running `fab start` will now run the frontend container and you can start npm locally instead
-
-There are a number of other commands to help with development using the fabric script. To see them all, run:
+Open a new terminal window while keeping the server running in the background, and run the following commands.
 
 ```bash
-fab -l
+nvm use
+npm install
+npm start
 ```
+
+The site should now be accessible with livereload at [http://localhost:3000](http://localhost:3000).
+
+Note that `fnm` is a faster version of `nvm` which behaves in the same way. [See the repository for installation instructions](https://github.com/Schniz/fnm).
+
+### Within the Frontend Docker Container
+
+After starting the containers as above and running `./manage.py runserver 0:8000`, open a new
+terminal session and run `fab npm start`.
+
+The site should now be accessible with livereload at [http://localhost:3000](http://localhost:3000).
 
 ## Front-end assets
 
@@ -88,7 +121,7 @@ npm install promise
 fab npm install
 ```
 
-## Installing python packages
+## Installing Python Packages
 
 Python packages can be installed using poetry in the web container:
 
@@ -97,6 +130,30 @@ fab sh-root
 poetry install wagtail-guide
 ```
 
-### Deployments
+## Deployments
 
 Merges to `master` and `staging` will automatically trigger a deployment to the production and staging sites, respectively.
+
+## How To Reset the Docker Containers
+
+If you have issues related to working on the project previously, consider running `fab destroy` to get rid of all old containers and databases, starting the build afresh.
+
+`fab stop` will switch off the containers without harming their data, ready for future reuse.
+
+On MacOS you can restart docker desktop if old docker instances don't want to quit.
+
+On Linux, you can identify the running Docker processes with
+
+```bash
+docker ps
+```
+
+Then run `docker container stop <container_id>` to stop a container, or `docker container kill <container_id>` to get rid of the container and its database.
+
+## Other Fab Commands
+
+There are a number of other commands to help with development using the fabric script. To see them all, run:
+
+```bash
+fab -l
+```
