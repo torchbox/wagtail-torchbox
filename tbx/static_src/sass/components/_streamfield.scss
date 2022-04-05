@@ -51,18 +51,6 @@
             width: 100%;
             height: 100%;
         }
-
-        iframe {
-            height: 250px;
-
-            @include media-query(medium) {
-                height: 350px;
-            }
-
-            @include media-query(large) {
-                height: 400px;
-            }
-        }
     }
 
     &__paragraph {
