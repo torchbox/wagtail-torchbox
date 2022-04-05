@@ -28,6 +28,11 @@ class ShardsVideo {
                 this.video.pause();
             }
         });
+
+        // Show a fallback image if the video fails to load
+        this.videoSource.addEventListener('error', () => {
+            this.node.classList.add('video-error');
+        });
     }
 }
 
