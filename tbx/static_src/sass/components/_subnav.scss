@@ -6,7 +6,7 @@
     // https://www.figma.com/file/nTKNovsb1TY48FmDfZueov/Careers-section---Contentful?node-id=725%3A57908
     padding: 31px 20px;
     min-width: 186px;
-    left: 10px;
+    left: 5px;
     top: 55px;
     background-color: var(--color--white);
     outline: 5px solid var(--color--coral) transparent;
@@ -55,7 +55,7 @@
     .template__homepage & {
         padding: 20px;
         bottom: 40px;
-        min-width: 180px;
+        min-width: 190px;
         top: initial;
 
         &__item {
