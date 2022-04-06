@@ -3,12 +3,12 @@
 {# First 3 items are shown #}
 {% for item in primarynav|slice:":3" %}
     {% with link=item.value %}
-        <li class="nav-item {% if link.page.slug == 'careers' and job_count > 0 %}nav-item--with-badge{% endif %}">
+        <li class="nav-item {% if link.page.slug == 'jobs' and job_count > 0 %}nav-item--with-badge{% endif %}">
             <a class="nav-item__link" href="{% pageurl link.page %}" data-menu-item>
                 <span class="nav-item__title">{% firstof link.title link.page.title %}</span>
             </a>
-            {% if link.page.slug == 'careers' and job_count > 0 %}
-                <a class="nav-item__badge-link" href="/jobs/" aria-label="{{ job_count }} jobs available">
+            {% if link.page.slug == 'jobs' and job_count > 0 %}
+                <a class="nav-item__badge-link" href="/careers/jobs/" aria-label="{{ job_count }} jobs available">
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                 </a>
             {% endif %}
@@ -26,12 +26,12 @@
         {# Other menu items are hidden #}
         {% for item in primarynav|slice:"3:" %}
             {% with link=item.value %}
-                <li class="subnav__item {% if link.page.slug == 'careers' and job_count > 0 %}subnav__item--with-badge{% endif %}">
+                <li class="subnav__item {% if link.page.slug == 'jobs' and job_count > 0 %}subnav__item--with-badge{% endif %}">
                     <a class="subnav__link" data-subnav-link href="{% pageurl link.page %}" data-menu-item subnav-menu-item>
                         {% firstof link.title link.page.title %}
                     </a>
-                    {% if link.page.slug == 'careers' and job_count > 0 %}
-                        <a class="subnav__badge-link" data-subnav-badge-link href="/jobs/" aria-label="{{ job_count }} jobs available">
+                    {% if link.page.slug == 'jobs' and job_count > 0 %}
+                        <a class="subnav__badge-link" data-subnav-badge-link href="/careers/jobs/" aria-label="{{ job_count }} jobs available">
                             {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                         </a>
                     {% endif %}
@@ -47,12 +47,12 @@
     {# Add the rest of the menu for the mobile dropdown #}
     {% for item in primarynav|slice:"3:" %}
         {% with link=item.value %}
-        <li class="nav-item {% if link.page.slug == 'careers' and job_count > 0 %}nav-item--with-badge{% endif %}">
+        <li class="nav-item {% if link.page.slug == 'jobs' and job_count > 0 %}nav-item--with-badge{% endif %}">
             <a class="nav-item__link" href="{% pageurl link.page %}" data-menu-item>
                 <span class="nav-item__title">{% firstof link.title link.page.title %}</span>
             </a>
-            {% if link.page.slug == 'careers' and job_count > 0 %}
-                <a class="nav-item__badge-link" href="/jobs/" aria-label="{{ job_count }} jobs available">
+            {% if link.page.slug == 'jobs' and job_count > 0 %}
+                <a class="nav-item__badge-link" href="/careers/jobs/" aria-label="{{ job_count }} jobs available">
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                 </a>
             {% endif %}
