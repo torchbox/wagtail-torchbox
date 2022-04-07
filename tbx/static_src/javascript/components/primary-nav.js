@@ -11,7 +11,6 @@ class PrimaryNav {
         this.button = node.querySelector('[data-subnav-button]');
         this.overlay = node.querySelector('[data-subnav-background-overlay]');
         this.navLinks = node.querySelectorAll('[data-subnav-link]');
-        this.badgeLinks = node.querySelectorAll('[data-subnav-badge-link]');
         this.lastNavLink = this.navLinks[this.navLinks.length - 1];
         this.navLinkKeyEvents = [];
 
@@ -116,14 +115,6 @@ class PrimaryNav {
             // Log keydown all throughout the menu items as at any point in the list the user
             // can press and hold shift and start going back up through menu items
             this.navLinks[i].addEventListener('keydown', navLinkKeyLogger);
-        }
-
-        // As we can tab to badges, we have to listen for keyboard events on them as well
-        // There was a bug of holding shift and tabbing back to the badge, then releasing shift and tabbing forwards
-        // as a result, the menu wouldn't close as it thinks the user is still holding shift
-        for (let i = 0; i < this.badgeLinks.length; i += 1) {
-            this.badgeLinks[i].addEventListener('keyup', navLinkKeyRemover);
-            this.badgeLinks[i].addEventListener('keydown', navLinkKeyLogger);
         }
     }
 }

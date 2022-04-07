@@ -101,7 +101,7 @@
             }
         }
 
-        &__badge-link {
+        &__badge {
             @include link-underscore(0);
             border-bottom: 0;
 
@@ -158,7 +158,7 @@
             }
         }
 
-        &__badge-link {
+        &__badge {
             width: 14px;
             text-align: center;
             border-bottom: 0;

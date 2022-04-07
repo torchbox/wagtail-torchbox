@@ -3,30 +3,21 @@
     @include z-index(badge);
     font-weight: 700;
     line-height: 25px;
-    color: var(--color--get-in-touch-numbers);
-    transition: color $transition;
+    color: var(--color--white);
     position: relative;
+    user-select: none;
 
     &::before {
         @include z-index(under);
         width: 18px;
         height: 22px;
         content: '';
-        background: var(--color--header-icon-color);
+        background: var(--color--coral);
         position: absolute;
         transform: translate(-50%, -25%) rotate(30deg);
         left: 50%;
         top: 0;
         transition: background $transition;
-    }
-
-    &:focus,
-    &:hover {
-        color: var(--color--accent);
-
-        &::before {
-            background: var(--color--primary);
-        }
     }
 
     &--desktop {
@@ -36,14 +27,7 @@
 
     .mobile-nav & {
         &::before {
-            top: 3px;
-        }
-    }
-
-    .theme--coral & {
-        &:focus,
-        &:hover {
-            color: var(--color--dark-indigo);
+            top: 1px;
         }
     }
 
@@ -52,13 +36,6 @@
 
         @include media-query(menu-break) {
             left: -10px;
-        }
-
-        &:focus,
-        &:hover {
-            &::before {
-                background: var(--color--dark-indigo);
-            }
         }
     }
 }
