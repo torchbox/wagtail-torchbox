@@ -1429,6 +1429,18 @@ Django = ">=1.7.1"
 wagtail = ">=1.4.0"
 
 [[package]]
+name = "wand"
+version = "0.6.7"
+description = "Ctypes-based simple MagickWand API binding for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+doc = ["Sphinx (>=2.4.1)"]
+test = ["pytest (>=5.3.5)"]
+
+[[package]]
 name = "webencodings"
 version = "0.5.1"
 description = "Character encoding aliases for legacy web content"
@@ -1533,7 +1545,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "6ca9662baf79782cbcbc9cdf21070d1067c4e1c883cfcc1a0b26abb3eff3dc57"
+content-hash = "3d863a575b86524a3940223e14f10c4ba1f3b5e9bcf9634915b253342da42310"
 
 [metadata.files]
 anyascii = [
@@ -2463,6 +2475,10 @@ wagtail-webstories = [
 wagtailfontawesome = [
     {file = "wagtailfontawesome-1.2.1-py2.py3-none-any.whl", hash = "sha256:76b1c64c4f1042d468a83e4352f74b57bda4a4aa09cdfeeb8663dead5ed632be"},
     {file = "wagtailfontawesome-1.2.1.tar.gz", hash = "sha256:6c1bd2d6061880848de6374ceb75d38a8c9b0debb1d4aef8a2fdc9d565a8f417"},
+]
+wand = [
+    {file = "Wand-0.6.7-py2.py3-none-any.whl", hash = "sha256:5ba497e90741a05ebce4603b04ee843150c566482a753554da54dc57d8503bba"},
+    {file = "Wand-0.6.7.tar.gz", hash = "sha256:ebc01bccc25dba68414ab55b482341f9ad2b197d7f49d5e724f339bbf63fb6db"},
 ]
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
