@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "tbx.taxonomy",
     "tbx.work",
     "tbx.images",
+    "tbx.forms",
     "wagtail.contrib.search_promotions",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",

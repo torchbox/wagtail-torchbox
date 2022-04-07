@@ -1,0 +1,51 @@
+{% load util_tags %}
+{% with widget_type=field|widget_type %}
+<div class="field {% if widget_type %}field--{{ widget_type }}{% endif %} {% if field.errors %}field--errors{% endif %}">
+
+    {% if field.errors %}
+        <div class="field__errors">
+            {{ field.errors }}
+        </div>
+    {% endif %}
+
+    {% if widget_type == 'checkbox-select-multiple' or widget_type == 'radio-select' %}
+        <fieldset class="field__fieldset">
+            <legend class="field__label field__label--multiple">
+                {{ field.label }}
+                {% if field.field.required %}<span class="field__required" aria-hidden="true">*</span>{% endif %}
+            </legend>
+
+            <ul>
+                {% for subfield in field %}
+                    <li class="field__radio-checkbox">
+                        <input id="{{ subfield.id_for_label }}" type="{{ subfield.data.type }}" name="{{ subfield.data.name }}" value="{{ subfield.data.value }}">
+                        <label for="{{ subfield.id_for_label }}" class="field__label">{{ subfield.data.label }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </fieldset>
+
+    {% elif widget_type == 'checkbox-input' %}
+
+        <div class="field__radio-checkbox">
+            {{ field }}
+            <label for="{{ field.id_for_label }}" class="field__label">
+                {{ field.label }}
+                {% if field.field.required %}<span class="field__required" aria-hidden="true">*</span>{% endif %}
+            </label>
+        </div>
+
+    {% else %}
+
+        <label for="{{ field.id_for_label }}" class="field__label">
+            {{ field.label }}
+            {% if field.field.required %}<span class="field__required" aria-hidden="true">*</span>{% endif %}
+        </label>
+        {{ field }}
+
+    {% endif %}
+
+    {% if field.help_text %}<div class="field__help">{{ field.help_text }}</div>{% endif %}
+
+</div>
+{% endwith %}
