@@ -33,7 +33,7 @@
 
     &__meta {
         @include font-size(xxxs);
-        color: var(--color--coral);
+        color: var(--color--coral-dark);
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: $weight--bold;

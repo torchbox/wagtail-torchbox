@@ -12,7 +12,7 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: ($gutter * 0.75) $variable-gutter--small 0;
+            padding: ($gutter * 0.75) $variable-gutter--small;
             border-bottom: 1px solid var(--color--black-translucent);
 
             @include media-query(large) {
@@ -126,7 +126,7 @@
         align-items: center;
         position: relative;
         padding-right: 20px;
-        padding-bottom: 25px;
+        padding-bottom: 20px;
 
         @include media-query(medium) {
             padding-bottom: 0;
@@ -140,6 +140,7 @@
         color: var(--color--link);
         text-decoration: none;
         border-bottom: 2px solid var(--color--background);
+        padding-top: 20px;
 
         &:focus,
         &:hover {

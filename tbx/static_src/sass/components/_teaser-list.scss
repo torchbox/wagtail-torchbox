@@ -11,7 +11,10 @@
     }
 
     &__title {
+        @include font-size(m);
+        font-weight: $weight--bold;
         margin: 0 0 30px;
+        color: var(--color--dark-indigo);
     }
 
     &__content {
