@@ -1,36 +1,50 @@
 {% load navigation_tags wagtailcore_tags %}
-{% with global_settings=settings.torchbox.GlobalSettings %}
+
 <footer class="footer">
-    {% footerteasers %}
-
-    {% footertoplinks %}
-
-
-    <div class="footer__content">
-        {% if global_settings.addresses %}
-            <ul class="footer__address-list">
-                {% for office in global_settings.addresses %}
-                    <li class="footer__address">
-                        <span class="footer__address-title">
-                            {{ office.value.title }}
-                        </span>
-                        <div class="footer__address-detail">
-                            {{ office.value.address|richtext }}
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-
-        <div class="footer__bottom">
-            <div class="footer__copyright">
-                &copy; Torchbox {% now "Y" %}
+    <div class="footer__inner">
+        <div class="footer__primary-content">
+            <div class="footer__contact">
+                <h3 class="footer__heading">Get in touch about your project</h3>
+                <p class="footer__contact-desc">If you&apos;ve got a brief, we&apos;d love to see it. If you haven&apos;t, talk to us before you write it, we can help.</p>
+                {% include "patterns/molecules/contact-slim/contact-slim.html" %}
             </div>
-            {% footerlinks %}
+
+            <div class="footer__divider" aria-hidden="true"></div>
+
+            {% include "patterns/molecules/locations/locations.html" with classes="locations--footer" %}
+        </div>
+
+        <div class="footer__secondary-content">
+            <div class="footer__appendix">
+                <p class="footer__copy">&copy; Torchbox {% now "Y" %}</p>
+                <div class="footer__links">
+                    {% footerlinks %}
+                </div>
+            </div>
+
+            <ul class="footer__socials">
+                <li class="footer__social-item">
+                    <a class="footer__social-link" aria-label="Follow us on Twitter" href="https://twitter.com/torchbox">
+                        <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
+                            <use xlink:href="#twitter" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a class="footer__social-link" aria-label="Connect with us on LinkedIn" href="https://www.linkedin.com/company/torchbox">
+                        <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
+                            <use xlink:href="#linkedin" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a class="footer__social-link" aria-label="Follow us on Instagram" href="https://www.instagram.com/torchboxltd/">
+                        <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
+                            <use xlink:href="#instagram" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-    <img class="footer__image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTcuMiAyMjIiPjxzdHlsZT4uc3Qye2ZpbGw6IzJmMTI4ZH0uc3Qze2ZpbGw6IzI1MTY1N30uc3Q0e2ZpbGw6I2Y0ZjNmNn08L3N0eWxlPjxwYXRoIGQ9Ik0yOTcuMiAyMjJjMC0zOC4xLTMwLjgtNjktNjguOS02OS4xcy02OSAzMC44LTY5LjEgNjguOWwxMzggLjJ6IiBmaWxsPSIjM2JlY2NkIi8+PHBhdGggZD0iTTM1LjcgMTA5LjhoMy45djM4aC0zLjl2LTM4eiIgZmlsbD0iIzIzMTc0OSIvPjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik03My45IDIyMS44bC4zLTQzLjYgMzAuNC4yLS4zIDQzLjYtMzAuNC0uMnoiLz48cGF0aCBjbGFzcz0ic3QyIiBkPSJNMTA0LjUgMjExLjRjLTYuOC0uMS0xMi40LTUuNy0xMi4zLTEyLjUuMS02LjkgNS43LTEyLjQgMTIuNS0xMi4zUzExNyAxOTIuMiAxMTcgMTk5Yy0uMSA2LjktNS43IDEyLjQtMTIuNSAxMi40eiIvPjxwYXRoIGNsYXNzPSJzdDMiIGQ9Ik0zNy43IDEyOC42Yy0xNC42IDAtMjYuNCAxMS44LTI2LjQgMjYuNGg0LjF2OC42Yy04LjggMS45LTE1LjQgOS43LTE1LjQgMTlzNi42IDE3LjEgMTUuNCAxOS4xVjIyMkg2MHYtNjcuMWg0YzAtMTQuNS0xMS44LTI2LjMtMjYuMy0yNi4zem0tMzMuNSA1NGMwLTcgNC43LTEyLjkgMTEuMS0xNC43djI5LjRjLTYuNC0xLjgtMTEuMS03LjctMTEuMS0xNC43eiIvPjxlbGxpcHNlIGNsYXNzPSJzdDMiIGN4PSIzNy43IiBjeT0iMTA2LjUiIHJ4PSI2LjciIHJ5PSI2LjciLz48cGF0aCBjbGFzcz0ic3Q0IiBkPSJNODIuNiAxOTUuNmMwIDE0LjYtMTEuOCAyNi40LTI2LjQgMjYuNHMtMjYuNC0xMS44LTI2LjQtMjYuNGg1Mi44eiIvPjxjaXJjbGUgY2xhc3M9InN0MyIgY3g9IjIzMi42IiBjeT0iNTAuMSIgcj0iMTkuNSIvPjxwYXRoIGNsYXNzPSJzdDMiIGQ9Ik0yMjYuMyA5MC4yYzE0LjIgMCAyNS43LTExLjUgMjUuNy0yNS44aC0yNS43djI1Ljh6Ii8+PHBhdGggY2xhc3M9InN0NCIgZD0iTTIwNS4zIDE0MWgxMi4zYzE0LjQgMCAyNi4xLTExLjcgMjYuMS0yNi4xVjY5LjJjMC0xNC40LTExLjctMjYuMS0yNi4xLTI2LjFoLTEyLjNjLTE0LjQgMC0yNi4xIDExLjctMjYuMSAyNi4xdjQ1LjdjLS4xIDE0LjQgMTEuNiAyNi4xIDI2LjEgMjYuMXoiLz48cGF0aCBjbGFzcz0ic3Q0IiBkPSJNMjI3LjcgMTcyLjVjOC45IDAgMTYtNy4yIDE2LTE2di01MC45YzAtOC45LTcuMi0xNi0xNi0xNi04LjkgMC0xNiA3LjItMTYgMTZ2NTAuOWMtLjEgOC44IDcuMSAxNiAxNiAxNnoiLz48cGF0aCBjbGFzcz0ic3Q0IiBkPSJNMjQwLjcgNzcuNmM3LjQgMCAxMy40IDYgMTMuNCAxMy40cy02IDEzLjQtMTMuNCAxMy40Vjc3LjZ6Ii8+PGNpcmNsZSBjbGFzcz0ic3QzIiBjeD0iMjE5LjMiIGN5PSI4MS45IiByPSIzLjciLz48Y2lyY2xlIGNsYXNzPSJzdDMiIGN4PSIxOTIuMyIgY3k9IjgxLjkiIHI9IjMuNyIvPjxwYXRoIGNsYXNzPSJzdDMiIGQ9Ik0yNDMuNyAxMTguN2MwIDE3LjgtMTQuNSAzMi4zLTMyLjMgMzIuM3MtMzIuMy0xNC41LTMyLjMtMzIuM2g2NC42eiIvPjxwYXRoIGQ9Ik0xOTYgMTA3LjRoMTAuNFY5MC45TDE5NiAxMDcuNHoiIGZpbGw9IiNmZDU3NjUiLz48cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTc5LjIgMTEyaDY0LjZ2OC4yaC02NC42VjExMnptMTEtNDYuNEgyNTJWNDguOWwtNjEuOC0xMnYyOC43eiIvPjxwYXRoIGQ9Ik0yMTEuMSAxMjAuMmMwIDQuNS0zLjcgOC4yLTguMiA4LjJzLTguMi0zLjctOC4yLTguMmgxNi40eiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xNjUuNyA0MGMwIDEzLjYgMTEgMjQuNCAyNC41IDI0LjRWNDBoLTI0LjV6Ii8+PGNpcmNsZSBjbGFzcz0ic3QzIiBjeD0iMTg5LjciIGN5PSI0MC41IiByPSIyNSIvPjwvc3ZnPgo=" alt="" loading="lazy">
-
-    {% include "patterns/molecules/cookie-message/cookie-message.html" %}
 </footer>
-{% endwith %}

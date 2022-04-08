@@ -1,0 +1,22 @@
+{% load wagtailcore_tags %}
+{% with global_settings=settings.torchbox.GlobalSettings %}
+    {% if global_settings.addresses %}
+        <div class="locations {% if classes %}{{ classes }}{% endif %}">
+            <h3 class="footer__heading">Our Locations</h3>
+
+            <ul class="locations__list">
+                {% for office in global_settings.addresses %}
+                    <li class="locations__item">
+                        <svg class="locations__icon" width="32" height="33" aria-hidden="true">
+                            <use xlink:href="#location-pin" />
+                        </svg>
+                        <div class="locations__content">
+                            <p class="locations__title">{{ office.value.title }}</p>
+                                <div class="locations__address">{{ office.value.address|richtext }}</div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endwith %}
