@@ -2,8 +2,6 @@
     @include z-index(two);
     border-radius: 12px;
     position: absolute;
-    // Style values taken from new careers site design
-    // https://www.figma.com/file/nTKNovsb1TY48FmDfZueov/Careers-section---Contentful?node-id=725%3A57908
     padding: 31px 20px;
     min-width: 186px;
     left: 5px;
@@ -27,7 +25,7 @@
     }
 
     &__link {
-        @include link-underscore(0);
+        @include subnav-link-underscore(0);
         font-weight: $weight--bold;
         position: relative;
         border-bottom: 0;
@@ -39,7 +37,7 @@
         &:hover,
         &:focus,
         &--active {
-            @include link-underscore(2);
+            @include subnav-link-underscore(2);
             color: var(--color--dark-indigo);
         }
     }
@@ -75,8 +73,8 @@
 
         &__badge {
             position: relative;
-            left: 10px;
-            bottom: 10px;
+            left: 20px;
+            bottom: 15px;
             border-bottom: 0;
         }
     }

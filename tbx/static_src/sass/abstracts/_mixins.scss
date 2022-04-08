@@ -172,3 +172,16 @@
         }
     }
 }
+
+@mixin subnav-link-underscore($height) {
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: #{$height}px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color--coral);
+        transition: height $transition-quick;
+    }
+}
