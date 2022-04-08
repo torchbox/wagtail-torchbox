@@ -8,7 +8,8 @@
                 <span class="nav-item__title">{% firstof link.title link.page.title %}</span>
             </a>
             {% if link.page.slug == 'jobs' and job_count > 0 %}
-                <a class="nav-item__badge" href="/careers/jobs" tabindex="-1" aria-label="{{ job_count }} jobs available">
+                <a class="nav-item__badge" href="/careers/jobs/" tabindex="-1">
+                    <span class="badge__description">{{ job_count }} jobs available</span>
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                 </a>
             {% endif %}
@@ -39,7 +40,8 @@
                         {% firstof link.title link.page.title %}
                     </a>
                     {% if link.page.slug == 'jobs' and job_count > 0 %}
-                        <a class="subnav__badge" href="/careers/jobs" tabindex="-1" aria-label="{{ job_count }} jobs available" role="img">
+                        <a class="subnav__badge" href="/careers/jobs/" tabindex="-1">
+                            <span class="badge__description">{{ job_count }} jobs available</span>
                             {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                         </a>
                     {% endif %}
@@ -60,7 +62,8 @@
                 <span class="nav-item__title">{% firstof link.title link.page.title %}</span>
             </a>
             {% if link.page.slug == 'jobs' and job_count > 0 %}
-                <a class="nav-item__badge" href="/careers/jobs" tabindex="-1" aria-label="{{ job_count }} jobs available" role="img">
+                <a class="nav-item__badge" href="/careers/jobs/" tabindex="-1">
+                    <span class="badge__description">{{ job_count }} jobs available</span>
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                 </a>
             {% endif %}

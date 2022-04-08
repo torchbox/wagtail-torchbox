@@ -38,4 +38,8 @@
             left: -10px;
         }
     }
+
+    &__description {
+        @include hidden();
+    }
 }
