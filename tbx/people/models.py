@@ -7,16 +7,12 @@ from django.utils.functional import cached_property
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from phonenumber_field.modelfields import PhoneNumberField
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-)
 from wagtail import blocks
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
-from wagtail.signals import page_published
 from wagtail.search import index
+from wagtail.signals import page_published
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
@@ -137,7 +133,9 @@ class CulturePage(Page):
     intro = RichTextField(blank=True)
     benefits_heading = RichTextField(blank=True)
     benefits_section_title = models.TextField(blank=True, default="Benefits")
-    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True, use_json_field=True)
+    standout_items = StreamField(
+        [("item", StandoutItemsBlock())], blank=True, use_json_field=True
+    )
 
     blogs_section_title = models.CharField(
         blank=True, max_length=100, verbose_name="Title",
@@ -146,11 +144,16 @@ class CulturePage(Page):
         [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
         blank=True,
         verbose_name="Blog posts",
-        use_json_field=True
+        use_json_field=True,
     )
 
     instagram_posts = StreamField(
-        [("post", InstagramEmbedBlock())], blank=True, null=True, min_num=8, max_num=8, use_json_field=True
+        [("post", InstagramEmbedBlock())],
+        blank=True,
+        null=True,
+        min_num=8,
+        max_num=8,
+        use_json_field=True,
     )
 
     content_panels = [
@@ -170,10 +173,7 @@ class CulturePage(Page):
         ),
         FieldPanel("standout_items"),
         MultiFieldPanel(
-            [
-                FieldPanel("blogs_section_title"),
-                FieldPanel("featured_blog_posts"),
-            ],
+            [FieldPanel("blogs_section_title"), FieldPanel("featured_blog_posts")],
             heading="Featured Blog Posts",
             classname="collapsible",
         ),
@@ -247,7 +247,9 @@ class ValuesPage(Page):
 
     strapline = models.TextField()
     intro = RichTextField(blank=True)
-    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True, use_json_field=True)
+    standout_items = StreamField(
+        [("item", StandoutItemsBlock())], blank=True, use_json_field=True
+    )
     blogs_section_title = models.CharField(
         blank=True, max_length=100, verbose_name="Title"
     )
@@ -255,7 +257,7 @@ class ValuesPage(Page):
         [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
         blank=True,
         verbose_name="Blog posts",
-        use_json_field=True
+        use_json_field=True,
     )
 
     content_panels = [
@@ -265,10 +267,7 @@ class ValuesPage(Page):
         InlinePanel("values", heading="Values", label="Values"),
         FieldPanel("standout_items"),
         MultiFieldPanel(
-            [
-                FieldPanel("blogs_section_title"),
-                FieldPanel("featured_blog_posts"),
-            ],
+            [FieldPanel("blogs_section_title"), FieldPanel("featured_blog_posts")],
             heading="Featured Blog Posts",
             classname="collapsible",
         ),

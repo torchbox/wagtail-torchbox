@@ -34,10 +34,7 @@ class Migration(migrations.Migration):
                                                 "internal",
                                                 wagtail.blocks.PageChooserBlock(),
                                             ),
-                                            (
-                                                "external",
-                                                wagtail.blocks.URLBlock(),
-                                            ),
+                                            ("external", wagtail.blocks.URLBlock(),),
                                         ]
                                     ),
                                 ),

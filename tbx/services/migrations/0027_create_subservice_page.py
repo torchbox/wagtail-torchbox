@@ -61,10 +61,7 @@ class Migration(migrations.Migration):
                         null=True,
                     ),
                 ),
-                (
-                    "heading_for_key_points",
-                    wagtail.fields.RichTextField(blank=True),
-                ),
+                ("heading_for_key_points", wagtail.fields.RichTextField(blank=True),),
                 ("use_process_block_image", models.BooleanField(default=False)),
                 ("heading_for_processes", models.TextField(blank=True, null=True)),
                 (

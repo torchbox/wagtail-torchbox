@@ -30,15 +30,11 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"h3",
-                        wagtail.blocks.CharBlock(
-                            classname=b"title", icon=b"title"
-                        ),
+                        wagtail.blocks.CharBlock(classname=b"title", icon=b"title"),
                     ),
                     (
                         b"h4",
-                        wagtail.blocks.CharBlock(
-                            classname=b"title", icon=b"title"
-                        ),
+                        wagtail.blocks.CharBlock(classname=b"title", icon=b"title"),
                     ),
                     (b"intro", wagtail.blocks.RichTextBlock(icon=b"pilcrow")),
                     (b"paragraph", wagtail.blocks.RichTextBlock(icon=b"pilcrow")),
@@ -88,9 +84,7 @@ class Migration(migrations.Migration):
                             [
                                 (
                                     b"quote",
-                                    wagtail.blocks.CharBlock(
-                                        classname=b"quote title"
-                                    ),
+                                    wagtail.blocks.CharBlock(classname=b"quote title"),
                                 ),
                                 (b"attribution", wagtail.blocks.CharBlock()),
                             ]
@@ -116,9 +110,7 @@ class Migration(migrations.Migration):
                     (b"stats", wagtail.blocks.StructBlock([])),
                     (
                         b"raw_html",
-                        wagtail.blocks.RawHTMLBlock(
-                            icon=b"code", label=b"Raw HTML"
-                        ),
+                        wagtail.blocks.RawHTMLBlock(icon=b"code", label=b"Raw HTML"),
                     ),
                 ]
             ),

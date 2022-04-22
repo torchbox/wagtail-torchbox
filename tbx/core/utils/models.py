@@ -22,8 +22,7 @@ class SocialFields(models.Model):
 
     promote_panels = [
         MultiFieldPanel(
-            [FieldPanel("social_image"), FieldPanel("social_text")],
-            "Social networks",
+            [FieldPanel("social_image"), FieldPanel("social_text")], "Social networks",
         )
     ]
 

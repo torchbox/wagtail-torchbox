@@ -35,10 +35,7 @@ class Migration(migrations.Migration):
                                 "link",
                                 wagtail.blocks.StructBlock(
                                     (
-                                        (
-                                            "page",
-                                            wagtail.blocks.PageChooserBlock(),
-                                        ),
+                                        ("page", wagtail.blocks.PageChooserBlock(),),
                                         (
                                             "title",
                                             wagtail.blocks.CharBlock(
@@ -62,10 +59,7 @@ class Migration(migrations.Migration):
                                 "link",
                                 wagtail.blocks.StructBlock(
                                     (
-                                        (
-                                            "page",
-                                            wagtail.blocks.PageChooserBlock(),
-                                        ),
+                                        ("page", wagtail.blocks.PageChooserBlock(),),
                                         (
                                             "title",
                                             wagtail.blocks.CharBlock(
@@ -132,10 +126,7 @@ class Migration(migrations.Migration):
                                 "link",
                                 wagtail.blocks.StructBlock(
                                     (
-                                        (
-                                            "page",
-                                            wagtail.blocks.PageChooserBlock(),
-                                        ),
+                                        ("page", wagtail.blocks.PageChooserBlock(),),
                                         (
                                             "title",
                                             wagtail.blocks.CharBlock(

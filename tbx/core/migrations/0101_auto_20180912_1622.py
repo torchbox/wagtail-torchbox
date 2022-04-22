@@ -87,9 +87,7 @@ class Migration(migrations.Migration):
                             [
                                 (
                                     "quote",
-                                    wagtail.blocks.CharBlock(
-                                        classname="quote title"
-                                    ),
+                                    wagtail.blocks.CharBlock(classname="quote title"),
                                 ),
                                 ("attribution", wagtail.blocks.CharBlock()),
                             ],
@@ -101,10 +99,7 @@ class Migration(migrations.Migration):
                         wagtail.blocks.StructBlock(
                             [
                                 ("title", wagtail.blocks.CharBlock(required=True)),
-                                (
-                                    "intro",
-                                    wagtail.blocks.TextBlock(required=False),
-                                ),
+                                ("intro", wagtail.blocks.TextBlock(required=False),),
                                 (
                                     "steps",
                                     wagtail.blocks.ListBlock(
@@ -148,10 +143,7 @@ class Migration(migrations.Migration):
                         wagtail.blocks.StructBlock(
                             [
                                 ("title", wagtail.blocks.CharBlock(required=True)),
-                                (
-                                    "intro",
-                                    wagtail.blocks.RichTextBlock(required=True),
-                                ),
+                                ("intro", wagtail.blocks.RichTextBlock(required=True),),
                                 (
                                     "people",
                                     wagtail.blocks.ListBlock(
@@ -179,10 +171,7 @@ class Migration(migrations.Migration):
                                                     "image",
                                                     wagtail.images.blocks.ImageChooserBlock(),
                                                 ),
-                                                (
-                                                    "text",
-                                                    wagtail.blocks.TextBlock(),
-                                                ),
+                                                ("text", wagtail.blocks.TextBlock(),),
                                                 (
                                                     "sub_text",
                                                     wagtail.blocks.CharBlock(

@@ -2,15 +2,15 @@ from django.db import models
 from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
+from wagtail import blocks
 from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
     PageChooserPanel,
 )
-from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail import blocks
 from wagtail.blocks import PageChooserBlock, StreamBlock, StructBlock
+from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
@@ -390,7 +390,9 @@ class BaseAddress(blocks.StructBlock):
 
 @register_setting
 class GlobalSettings(BaseSetting):
-    addresses = StreamField([("address", BaseAddress())], blank=True, use_json_field=True)
+    addresses = StreamField(
+        [("address", BaseAddress())], blank=True, use_json_field=True
+    )
 
     panels = [
         FieldPanel("addresses"),

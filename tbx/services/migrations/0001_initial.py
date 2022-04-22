@@ -118,15 +118,11 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.CharBlock(required=True),
                                         ),
                                         (
                                             "intro",
-                                            wagtail.blocks.TextBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.TextBlock(required=True),
                                         ),
                                         (
                                             "case_studies",
@@ -170,9 +166,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.CharBlock(required=True),
                                         ),
                                         (
                                             "intro",
@@ -199,10 +193,7 @@ class Migration(migrations.Migration):
                                                 classname="quote title"
                                             ),
                                         ),
-                                        (
-                                            "attribution",
-                                            wagtail.blocks.CharBlock(),
-                                        ),
+                                        ("attribution", wagtail.blocks.CharBlock(),),
                                     ],
                                     template="blocks/services/pull_quote_block.html",
                                 ),
@@ -213,15 +204,11 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.CharBlock(required=True),
                                         ),
                                         (
                                             "intro",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "steps",
@@ -267,15 +254,11 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.CharBlock(required=True),
                                         ),
                                         (
                                             "intro",
-                                            wagtail.blocks.RichTextBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.RichTextBlock(required=True),
                                         ),
                                         (
                                             "people",

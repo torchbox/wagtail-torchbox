@@ -20,18 +20,9 @@ class Migration(migrations.Migration):
             name="streamfield",
             field=wagtail.fields.StreamField(
                 [
-                    (
-                        b"h2",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
-                    (
-                        b"h3",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
-                    (
-                        b"h4",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
+                    (b"h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (b"h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (b"h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
                     (b"intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (b"paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (
@@ -67,9 +58,7 @@ class Migration(migrations.Migration):
                             [
                                 (
                                     b"quote",
-                                    wagtail.blocks.CharBlock(
-                                        classname="quote title"
-                                    ),
+                                    wagtail.blocks.CharBlock(classname="quote title"),
                                 ),
                                 (b"attribution", wagtail.blocks.CharBlock()),
                             ]
@@ -88,18 +77,9 @@ class Migration(migrations.Migration):
             name="streamfield",
             field=wagtail.fields.StreamField(
                 [
-                    (
-                        b"h2",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
-                    (
-                        b"h3",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
-                    (
-                        b"h4",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
+                    (b"h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (b"h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (b"h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
                     (b"intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (b"paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (
@@ -135,9 +115,7 @@ class Migration(migrations.Migration):
                             [
                                 (
                                     b"quote",
-                                    wagtail.blocks.CharBlock(
-                                        classname="quote title"
-                                    ),
+                                    wagtail.blocks.CharBlock(classname="quote title"),
                                 ),
                                 (b"attribution", wagtail.blocks.CharBlock()),
                             ]
@@ -156,18 +134,9 @@ class Migration(migrations.Migration):
             name="streamfield",
             field=wagtail.fields.StreamField(
                 [
-                    (
-                        b"h2",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
-                    (
-                        b"h3",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
-                    (
-                        b"h4",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
+                    (b"h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (b"h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (b"h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
                     (b"intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (b"paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (
@@ -203,9 +172,7 @@ class Migration(migrations.Migration):
                             [
                                 (
                                     b"quote",
-                                    wagtail.blocks.CharBlock(
-                                        classname="quote title"
-                                    ),
+                                    wagtail.blocks.CharBlock(classname="quote title"),
                                 ),
                                 (b"attribution", wagtail.blocks.CharBlock()),
                             ]

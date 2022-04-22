@@ -11,15 +11,11 @@ from django.utils.functional import cached_property
 
 from bs4 import BeautifulSoup
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-)
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
-from wagtail.signals import page_published
 from wagtail.search import index
+from wagtail.signals import page_published
 
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag

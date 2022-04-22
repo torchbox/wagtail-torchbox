@@ -24,9 +24,7 @@ class Migration(migrations.Migration):
                 [
                     (
                         "blog_post",
-                        wagtail.blocks.PageChooserBlock(
-                            page_type=["blog.BlogPage"]
-                        ),
+                        wagtail.blocks.PageChooserBlock(page_type=["blog.BlogPage"]),
                     )
                 ],
                 blank=True,

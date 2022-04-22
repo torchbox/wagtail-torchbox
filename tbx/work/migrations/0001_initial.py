@@ -180,10 +180,7 @@ class Migration(migrations.Migration):
                                     classname="title", icon="title"
                                 ),
                             ),
-                            (
-                                "intro",
-                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
-                            ),
+                            ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow"),),
                             (
                                 "paragraph",
                                 wagtail.blocks.RichTextBlock(icon="pilcrow"),
@@ -203,9 +200,7 @@ class Migration(migrations.Migration):
                                         ("caption", wagtail.blocks.CharBlock()),
                                         (
                                             "attribution",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                     ],
                                     label="Aligned image",
@@ -245,10 +240,7 @@ class Migration(migrations.Migration):
                                                 classname="quote title"
                                             ),
                                         ),
-                                        (
-                                            "attribution",
-                                            wagtail.blocks.CharBlock(),
-                                        ),
+                                        ("attribution", wagtail.blocks.CharBlock(),),
                                     ]
                                 ),
                             ),

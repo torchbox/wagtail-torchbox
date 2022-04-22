@@ -38,9 +38,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="globalsettings",
             name="bristol_address",
-            field=wagtail.fields.RichTextField(
-                blank=True, help_text="Full address"
-            ),
+            field=wagtail.fields.RichTextField(blank=True, help_text="Full address"),
         ),
         migrations.AlterField(
             model_name="globalsettings",
@@ -52,9 +50,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="globalsettings",
             name="oxford_address",
-            field=wagtail.fields.RichTextField(
-                blank=True, help_text="Full address"
-            ),
+            field=wagtail.fields.RichTextField(blank=True, help_text="Full address"),
         ),
         migrations.AlterField(
             model_name="globalsettings",
@@ -66,9 +62,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="globalsettings",
             name="us_address",
-            field=wagtail.fields.RichTextField(
-                blank=True, help_text="Full address"
-            ),
+            field=wagtail.fields.RichTextField(blank=True, help_text="Full address"),
         ),
         migrations.AlterField(
             model_name="globalsettings",

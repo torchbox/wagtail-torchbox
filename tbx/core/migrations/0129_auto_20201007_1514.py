@@ -14,9 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="globalsettings",
             name="cambridge_address",
-            field=wagtail.fields.RichTextField(
-                blank=True, help_text="Full address"
-            ),
+            field=wagtail.fields.RichTextField(blank=True, help_text="Full address"),
         ),
         migrations.AddField(
             model_name="globalsettings",

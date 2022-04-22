@@ -1,7 +1,7 @@
 from modelcluster.models import ClusterableModel
+from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail import blocks
 from wagtail.fields import StreamField
 
 
@@ -41,28 +41,28 @@ class CardLinkBlock(blocks.StructBlock):
 @register_setting(icon="list-ul")
 class NavigationSettings(BaseSetting, ClusterableModel):
     primary_navigation = StreamField(
-        [("link", LinkBlock())], 
-        blank=True, 
+        [("link", LinkBlock())],
+        blank=True,
         help_text="Main site navigation",
-        use_json_field=True
+        use_json_field=True,
     )
     footer_links = StreamField(
         [("link", LinkBlock())],
         blank=True,
         help_text="Single list of elements at the base of the page.",
-        use_json_field=True
+        use_json_field=True,
     )
     footer_teasers = StreamField(
         [("link", CardLinkBlock())],
         blank=True,
         help_text="Row of links that use prominent styles to standout.",
-        use_json_field=True
+        use_json_field=True,
     )
     footer_top_links = StreamField(
         [("link", LinkBlock())],
         blank=True,
         help_text="Single list of links that appear between the teasers and the addresses.",
-        use_json_field=True
+        use_json_field=True,
     )
 
     panels = [

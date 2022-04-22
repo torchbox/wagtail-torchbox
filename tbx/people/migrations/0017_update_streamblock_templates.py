@@ -99,9 +99,7 @@ class Migration(migrations.Migration):
                             [
                                 (
                                     "quote",
-                                    wagtail.blocks.CharBlock(
-                                        classname="quote title"
-                                    ),
+                                    wagtail.blocks.CharBlock(classname="quote title"),
                                 ),
                                 ("attribution", wagtail.blocks.CharBlock()),
                             ],

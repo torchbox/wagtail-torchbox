@@ -32,9 +32,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="globalsettings",
             name="us_address",
-            field=wagtail.fields.RichTextField(
-                default="", help_text="Full address"
-            ),
+            field=wagtail.fields.RichTextField(default="", help_text="Full address"),
             preserve_default=False,
         ),
         migrations.AlterField(
