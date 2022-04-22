@@ -3,7 +3,7 @@
 
 from django.db import models, migrations
 import wagtail.images.models
-import wagtail.core.fields
+import wagtail.fields
 import wagtail.search.index
 import modelcluster.fields
 import django.db.models.deletion
@@ -78,7 +78,7 @@ class Migration(migrations.Migration):
                         to="wagtailcore.Page",
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
                 ("show_in_play_menu", models.BooleanField(default=False)),
             ],
             options={"abstract": False,},
@@ -133,8 +133,8 @@ class Migration(migrations.Migration):
                         to="wagtailcore.Page",
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
-                ("body", wagtail.core.fields.RichTextField()),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
+                ("body", wagtail.fields.RichTextField()),
                 (
                     "author_left",
                     models.CharField(
@@ -296,7 +296,7 @@ class Migration(migrations.Migration):
                         to="wagtailcore.Page",
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
             ],
             options={"abstract": False,},
             bases=("wagtailcore.page",),
@@ -317,7 +317,7 @@ class Migration(migrations.Migration):
                     "sort_order",
                     models.IntegerField(null=True, editable=False, blank=True),
                 ),
-                ("content", wagtail.core.fields.RichTextField()),
+                ("content", wagtail.fields.RichTextField()),
                 (
                     "page",
                     modelcluster.fields.ParentalKey(
@@ -371,7 +371,7 @@ class Migration(migrations.Migration):
                         to="wagtailcore.Page",
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
                 ("show_in_play_menu", models.BooleanField(default=False)),
             ],
             options={"abstract": False,},
@@ -401,8 +401,8 @@ class Migration(migrations.Migration):
                 ("first_name", models.CharField(max_length=255)),
                 ("last_name", models.CharField(max_length=255)),
                 ("role", models.CharField(max_length=255, blank=True)),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
-                ("biography", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
+                ("biography", wagtail.fields.RichTextField(blank=True)),
             ],
             options={"abstract": False,},
             bases=("wagtailcore.page", models.Model),
@@ -456,8 +456,8 @@ class Migration(migrations.Migration):
                         to="wagtailcore.Page",
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
-                ("body", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
+                ("body", wagtail.fields.RichTextField(blank=True)),
             ],
             options={"abstract": False,},
             bases=("wagtailcore.page",),
@@ -478,7 +478,7 @@ class Migration(migrations.Migration):
                     "sort_order",
                     models.IntegerField(null=True, editable=False, blank=True),
                 ),
-                ("content", wagtail.core.fields.RichTextField()),
+                ("content", wagtail.fields.RichTextField()),
                 (
                     "page",
                     modelcluster.fields.ParentalKey(
@@ -539,11 +539,11 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("credit", models.CharField(max_length=255, blank=True)),
-                ("heading", wagtail.core.fields.RichTextField(blank=True)),
+                ("heading", wagtail.fields.RichTextField(blank=True)),
                 ("quote", models.CharField(max_length=255, blank=True)),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
-                ("middle_break", wagtail.core.fields.RichTextField(blank=True)),
-                ("body", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
+                ("middle_break", wagtail.fields.RichTextField(blank=True)),
+                ("body", wagtail.fields.RichTextField(blank=True)),
                 ("email", models.EmailField(max_length=75, blank=True)),
                 ("show_in_play_menu", models.BooleanField(default=False)),
             ],
@@ -591,7 +591,7 @@ class Migration(migrations.Migration):
                     "sort_order",
                     models.IntegerField(null=True, editable=False, blank=True),
                 ),
-                ("content", wagtail.core.fields.RichTextField()),
+                ("content", wagtail.fields.RichTextField()),
                 (
                     "page",
                     modelcluster.fields.ParentalKey(
@@ -777,7 +777,7 @@ class Migration(migrations.Migration):
                         to="wagtailcore.Page",
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
                 ("show_in_play_menu", models.BooleanField(default=False)),
                 ("hide_popular_tags", models.BooleanField(default=False)),
             ],
@@ -799,8 +799,8 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("summary", models.CharField(max_length=255)),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
-                ("body", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
+                ("body", wagtail.fields.RichTextField(blank=True)),
                 (
                     "homepage_image",
                     models.ForeignKey(

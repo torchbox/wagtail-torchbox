@@ -7,8 +7,8 @@ from uuid import UUID, uuid3
 
 from django.db import migrations
 
-from wagtail.core.blocks import StreamValue
-from wagtail.core.rich_text import RichText
+from wagtail.blocks import StreamValue
+from wagtail.rich_text import RichText
 
 
 UUID_NAMESPACE = UUID("eac1f6e4-1d92-468f-8896-37086343ae0d")

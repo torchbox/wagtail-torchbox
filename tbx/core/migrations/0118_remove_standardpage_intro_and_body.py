@@ -8,8 +8,8 @@ from uuid import UUID, uuid3
 
 from django.db import migrations
 
-from wagtail.core.blocks import StreamValue
-from wagtail.core.rich_text import RichText
+from wagtail.blocks import StreamValue
+from wagtail.rich_text import RichText
 
 from tbx.core.utils.migrations import for_each_page_revision
 

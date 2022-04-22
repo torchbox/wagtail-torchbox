@@ -11,15 +11,15 @@ from django.utils.functional import cached_property
 
 from bs4 import BeautifulSoup
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
     StreamFieldPanel,
 )
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable, Page
-from wagtail.core.signals import page_published
+from wagtail.fields import StreamField
+from wagtail.models import Orderable, Page
+from wagtail.signals import page_published
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel

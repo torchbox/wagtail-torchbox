@@ -3,7 +3,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("strapline", models.CharField(max_length=255)),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
                 (
                     "greeting_image_type",
                     models.CharField(
@@ -63,7 +63,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "heading_for_key_points",
-                    wagtail.core.fields.RichTextField(blank=True),
+                    wagtail.fields.RichTextField(blank=True),
                 ),
                 ("use_process_block_image", models.BooleanField(default=False)),
                 ("heading_for_processes", models.TextField(blank=True, null=True)),
@@ -362,6 +362,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="servicepage",
             name="heading_for_key_points",
-            field=wagtail.core.fields.RichTextField(blank=True),
+            field=wagtail.fields.RichTextField(blank=True),
         ),
     ]

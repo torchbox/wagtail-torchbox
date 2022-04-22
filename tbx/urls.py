@@ -7,8 +7,8 @@ from django.views.decorators.vary import vary_on_headers
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
-from wagtail.core import urls as wagtail_urls
-from wagtail.core.models import Page
+from wagtail import urls as wagtail_urls
+from wagtail.models import Page
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.utils.urlpatterns import decorate_urlpatterns
 

@@ -4,8 +4,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -33,28 +33,28 @@ class Migration(migrations.Migration):
                 ("description", models.TextField()),
                 (
                     "streamfield",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 b"case_studies",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             b"title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=True
                                             ),
                                         ),
                                         (
                                             b"intro",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=True
                                             ),
                                         ),
                                         (
                                             b"case_studies",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.PageChooserBlock(
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.PageChooserBlock(
                                                     ["torchbox.WorkPage"]
                                                 )
                                             ),
@@ -64,18 +64,18 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 b"highlights",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             b"intro",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=True
                                             ),
                                         ),
                                         (
                                             b"highlights",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.TextBlock()
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.TextBlock()
                                             ),
                                         ),
                                     ]
@@ -83,17 +83,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 b"pull_quote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             b"quote",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 classname="quote title"
                                             ),
                                         ),
                                         (
                                             b"attribution",
-                                            wagtail.core.blocks.CharBlock(),
+                                            wagtail.blocks.CharBlock(),
                                         ),
                                     ],
                                     template="blocks/pull_quote_block.html",
@@ -101,28 +101,28 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 b"process",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             b"title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=True
                                             ),
                                         ),
                                         (
                                             b"steps",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.StructBlock(
                                                     [
                                                         (
                                                             "title",
-                                                            wagtail.core.blocks.CharBlock(
+                                                            wagtail.blocks.CharBlock(
                                                                 required=True
                                                             ),
                                                         ),
                                                         (
                                                             "icon",
-                                                            wagtail.core.blocks.CharBlock(
+                                                            wagtail.blocks.CharBlock(
                                                                 help_text="Paste SVG code here",
                                                                 max_length=9000,
                                                                 required=True,
@@ -130,7 +130,7 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "description",
-                                                            wagtail.core.blocks.TextBlock(
+                                                            wagtail.blocks.TextBlock(
                                                                 required=True
                                                             ),
                                                         ),
@@ -143,24 +143,24 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 b"people",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             b"title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=True
                                             ),
                                         ),
                                         (
                                             b"intro",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=True
                                             ),
                                         ),
                                         (
                                             b"people",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.PageChooserBlock()
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.PageChooserBlock()
                                             ),
                                         ),
                                     ]

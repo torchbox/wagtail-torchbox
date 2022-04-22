@@ -1,14 +1,14 @@
 from django.db import models
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
     PageChooserPanel,
 )
-from wagtail.core.fields import RichTextField
-from wagtail.core.models import Orderable, Page
+from wagtail.fields import RichTextField
+from wagtail.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 

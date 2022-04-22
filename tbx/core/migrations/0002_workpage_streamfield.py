@@ -2,8 +2,8 @@
 
 
 from django.db import models, migrations
-import wagtail.core.fields
-import wagtail.core.blocks
+import wagtail.fields
+import wagtail.blocks
 import tbx.core.blocks
 import wagtail.images.blocks
 
@@ -18,11 +18,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="workpage",
             name="streamfield",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         b"h2",
-                        wagtail.core.blocks.CharBlock(
+                        wagtail.blocks.CharBlock(
                             classname=b"title",
                             template=b"blocks/h2.html",
                             icon=b"title",
@@ -30,31 +30,31 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"h3",
-                        wagtail.core.blocks.CharBlock(
+                        wagtail.blocks.CharBlock(
                             classname=b"title", icon=b"title"
                         ),
                     ),
                     (
                         b"h4",
-                        wagtail.core.blocks.CharBlock(
+                        wagtail.blocks.CharBlock(
                             classname=b"title", icon=b"title"
                         ),
                     ),
-                    (b"intro", wagtail.core.blocks.RichTextBlock(icon=b"pilcrow")),
-                    (b"paragraph", wagtail.core.blocks.RichTextBlock(icon=b"pilcrow")),
+                    (b"intro", wagtail.blocks.RichTextBlock(icon=b"pilcrow")),
+                    (b"paragraph", wagtail.blocks.RichTextBlock(icon=b"pilcrow")),
                     (
                         b"aligned_image",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (b"image", wagtail.images.blocks.ImageChooserBlock()),
                                 (
                                     b"alignment",
                                     tbx.core.blocks.ImageFormatChoiceBlock(),
                                 ),
-                                (b"caption", wagtail.core.blocks.CharBlock()),
+                                (b"caption", wagtail.blocks.CharBlock()),
                                 (
                                     b"attribution",
-                                    wagtail.core.blocks.CharBlock(required=False),
+                                    wagtail.blocks.CharBlock(required=False),
                                 ),
                             ],
                             label=b"Aligned image",
@@ -62,11 +62,11 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"photogrid",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     b"images",
-                                    wagtail.core.blocks.ListBlock(
+                                    wagtail.blocks.ListBlock(
                                         wagtail.images.blocks.ImageChooserBlock()
                                     ),
                                 )
@@ -75,33 +75,33 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"bustout",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (b"image", wagtail.images.blocks.ImageChooserBlock()),
-                                (b"text", wagtail.core.blocks.CharBlock()),
+                                (b"text", wagtail.blocks.CharBlock()),
                             ]
                         ),
                     ),
                     (
                         b"pullquote",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     b"quote",
-                                    wagtail.core.blocks.CharBlock(
+                                    wagtail.blocks.CharBlock(
                                         classname=b"quote title"
                                     ),
                                 ),
-                                (b"attribution", wagtail.core.blocks.CharBlock()),
+                                (b"attribution", wagtail.blocks.CharBlock()),
                             ]
                         ),
                     ),
                     (
                         b"testimonial",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                (b"quote", wagtail.core.blocks.CharBlock()),
-                                (b"attribution", wagtail.core.blocks.CharBlock()),
+                                (b"quote", wagtail.blocks.CharBlock()),
+                                (b"attribution", wagtail.blocks.CharBlock()),
                                 (
                                     b"image",
                                     wagtail.images.blocks.ImageChooserBlock(
@@ -113,10 +113,10 @@ class Migration(migrations.Migration):
                             label=b"Testimonial",
                         ),
                     ),
-                    (b"stats", wagtail.core.blocks.StructBlock([])),
+                    (b"stats", wagtail.blocks.StructBlock([])),
                     (
                         b"raw_html",
-                        wagtail.core.blocks.RawHTMLBlock(
+                        wagtail.blocks.RawHTMLBlock(
                             icon=b"code", label=b"Raw HTML"
                         ),
                     ),

@@ -1,6 +1,6 @@
 from django import forms
 
-from wagtail.core.blocks import (
+from wagtail.blocks import (
     CharBlock,
     FieldBlock,
     ListBlock,

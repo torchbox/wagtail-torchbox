@@ -4,8 +4,8 @@ from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
 import tbx.core.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.embeds.blocks
 import wagtail.images.blocks
 import wagtailmarkdown.blocks
@@ -35,40 +35,40 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("strapline", models.TextField()),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "h2",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "h3",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "h4",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "intro",
-                                wagtail.core.blocks.RichTextBlock(icon="pilcrow"),
+                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
                             ),
                             (
                                 "paragraph",
-                                wagtail.core.blocks.RichTextBlock(icon="pilcrow"),
+                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
                             ),
                             (
                                 "aligned_image",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "image",
@@ -78,10 +78,10 @@ class Migration(migrations.Migration):
                                             "alignment",
                                             tbx.core.blocks.ImageFormatChoiceBlock(),
                                         ),
-                                        ("caption", wagtail.core.blocks.CharBlock()),
+                                        ("caption", wagtail.blocks.CharBlock()),
                                         (
                                             "attribution",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -91,7 +91,7 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "wide_image",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "image",
@@ -103,36 +103,36 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "bustout",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "image",
                                             wagtail.images.blocks.ImageChooserBlock(),
                                         ),
-                                        ("text", wagtail.core.blocks.RichTextBlock()),
+                                        ("text", wagtail.blocks.RichTextBlock()),
                                     ]
                                 ),
                             ),
                             (
                                 "pullquote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "quote",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 classname="quote title"
                                             ),
                                         ),
                                         (
                                             "attribution",
-                                            wagtail.core.blocks.CharBlock(),
+                                            wagtail.blocks.CharBlock(),
                                         ),
                                     ]
                                 ),
                             ),
                             (
                                 "raw_html",
-                                wagtail.core.blocks.RawHTMLBlock(
+                                wagtail.blocks.RawHTMLBlock(
                                     icon="code", label="Raw HTML"
                                 ),
                             ),

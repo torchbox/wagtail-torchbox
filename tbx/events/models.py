@@ -5,8 +5,8 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
-from wagtail.core.models import Orderable, Page
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.models import Orderable, Page
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from tbx.taxonomy.models import Service
