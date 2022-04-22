@@ -252,7 +252,7 @@ class HomePage(Page):
 class StandardPage(Page):
     template = "patterns/pages/standard/standard_page.html"
 
-    body = StreamField(StoryBlock())
+    body = StreamField(StoryBlock(), use_json_field=True)
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),
@@ -393,7 +393,7 @@ class BaseAddress(blocks.StructBlock):
 
 @register_setting
 class GlobalSettings(BaseSetting):
-    addresses = StreamField([("address", BaseAddress())], blank=True)
+    addresses = StreamField([("address", BaseAddress())], blank=True, use_json_field=True)
 
     panels = [
         StreamFieldPanel("addresses"),
@@ -422,7 +422,7 @@ class MenuBlock(StreamBlock):
 
 @register_setting
 class MainMenu(BaseSetting):
-    menu = StreamField(MenuBlock(), blank=True)
+    menu = StreamField(MenuBlock(), blank=True, use_json_field=True)
 
     panels = [
         StreamFieldPanel("menu"),

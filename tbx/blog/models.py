@@ -170,7 +170,7 @@ class BlogPage(Page):
     parent_page_types = ["BlogIndexPage"]
 
     date = models.DateField("Post date")
-    body = StreamField(StoryBlock())
+    body = StreamField(StoryBlock(), use_json_field=True)
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
 
     feed_image = models.ForeignKey(

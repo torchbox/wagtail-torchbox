@@ -140,7 +140,7 @@ class CulturePage(Page):
     intro = RichTextField(blank=True)
     benefits_heading = RichTextField(blank=True)
     benefits_section_title = models.TextField(blank=True, default="Benefits")
-    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
+    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True, use_json_field=True)
 
     blogs_section_title = models.CharField(
         blank=True, max_length=100, verbose_name="Title",
@@ -149,10 +149,11 @@ class CulturePage(Page):
         [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
         blank=True,
         verbose_name="Blog posts",
+        use_json_field=True
     )
 
     instagram_posts = StreamField(
-        [("post", InstagramEmbedBlock())], blank=True, null=True, min_num=8, max_num=8
+        [("post", InstagramEmbedBlock())], blank=True, null=True, min_num=8, max_num=8, use_json_field=True
     )
 
     content_panels = [
@@ -249,7 +250,7 @@ class ValuesPage(Page):
 
     strapline = models.TextField()
     intro = RichTextField(blank=True)
-    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
+    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True, use_json_field=True)
     blogs_section_title = models.CharField(
         blank=True, max_length=100, verbose_name="Title"
     )
@@ -257,6 +258,7 @@ class ValuesPage(Page):
         [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
         blank=True,
         verbose_name="Blog posts",
+        use_json_field=True
     )
 
     content_panels = [
