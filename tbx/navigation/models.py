@@ -1,5 +1,5 @@
 from modelcluster.models import ClusterableModel
-from wagtail.admin.panels import StreamFieldPanel
+from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail import blocks
 from wagtail.fields import StreamField
@@ -66,8 +66,8 @@ class NavigationSettings(BaseSetting, ClusterableModel):
     )
 
     panels = [
-        StreamFieldPanel("primary_navigation"),
-        StreamFieldPanel("footer_teasers"),
-        StreamFieldPanel("footer_top_links"),
-        StreamFieldPanel("footer_links"),
+        FieldPanel("primary_navigation"),
+        FieldPanel("footer_teasers"),
+        FieldPanel("footer_top_links"),
+        FieldPanel("footer_links"),
     ]

@@ -5,12 +5,9 @@ from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
-    PageChooserPanel,
 )
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from tbx.blog.models import BlogIndexPage
 from tbx.work.models import WorkIndexPage
@@ -93,7 +90,7 @@ class BaseServicePage(Page):
             classname="collapsible",
         ),
         MultiFieldPanel(
-            [SnippetChooserPanel("contact"), SnippetChooserPanel("contact_reasons")],
+            [FieldPanel("contact"), FieldPanel("contact_reasons")],
             heading="Contact",
             classname="collapsible",
         ),
@@ -189,7 +186,7 @@ class BaseServicePageKeyPoint(models.Model):
 
     panels = [
         FieldPanel("text"),
-        PageChooserPanel("linked_page"),
+        FieldPanel("linked_page"),
     ]
 
     class Meta:
@@ -200,7 +197,7 @@ class BaseServicePageClientLogo(models.Model):
     image = models.ForeignKey("images.CustomImage", on_delete=models.CASCADE,)
 
     panels = [
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
     ]
 
     class Meta:
@@ -211,7 +208,7 @@ class BaseServicePageUSAClientLogo(models.Model):
     image = models.ForeignKey("images.CustomImage", on_delete=models.CASCADE,)
 
     panels = [
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
     ]
 
     class Meta:
@@ -231,7 +228,7 @@ class BaseServicePageFeaturedCaseStudy(models.Model):
     case_study = models.ForeignKey("work.WorkPage", on_delete=models.CASCADE)
 
     panels = [
-        PageChooserPanel("case_study"),
+        FieldPanel("case_study"),
     ]
 
     class Meta:
@@ -242,7 +239,7 @@ class BaseServicePageFeaturedBlogPost(models.Model):
     blog_post = models.ForeignKey("blog.BlogPage", on_delete=models.CASCADE)
 
     panels = [
-        PageChooserPanel("blog_post"),
+        FieldPanel("blog_post"),
     ]
 
     class Meta:
@@ -260,7 +257,7 @@ class BaseServicePageProcess(models.Model):
     panels = [
         FieldPanel("title", classname="title"),
         FieldPanel("description", classname="title"),
-        PageChooserPanel("page_link"),
+        FieldPanel("page_link"),
         FieldPanel("page_link_label"),
     ]
 

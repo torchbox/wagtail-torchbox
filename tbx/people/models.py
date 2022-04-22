@@ -11,14 +11,11 @@ from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
-    PageChooserPanel,
-    StreamFieldPanel,
 )
 from wagtail import blocks
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.signals import page_published
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
@@ -56,7 +53,7 @@ class PersonPage(Page):
         FieldPanel("is_senior"),
         FieldPanel("intro", classname="full"),
         FieldPanel("biography", classname="full"),
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
     ]
 
     promote_panels = [
@@ -121,7 +118,7 @@ class CulturePageLink(Orderable):
     panels = [
         FieldPanel("title", classname="full"),
         FieldPanel("description", classname="full"),
-        PageChooserPanel("link"),
+        FieldPanel("link"),
     ]
 
 
@@ -159,7 +156,7 @@ class CulturePage(Page):
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
-        ImageChooserPanel("hero_image"),
+        FieldPanel("hero_image"),
         FieldPanel("intro", classname="full"),
         InlinePanel("links", label="Link"),
         MultiFieldPanel(
@@ -171,16 +168,16 @@ class CulturePage(Page):
             heading="Key Benefits",
             classname="collapsible",
         ),
-        StreamFieldPanel("standout_items"),
+        FieldPanel("standout_items"),
         MultiFieldPanel(
             [
                 FieldPanel("blogs_section_title"),
-                StreamFieldPanel("featured_blog_posts"),
+                FieldPanel("featured_blog_posts"),
             ],
             heading="Featured Blog Posts",
             classname="collapsible",
         ),
-        StreamFieldPanel("instagram_posts"),
+        FieldPanel("instagram_posts"),
     ]
 
     class Meta:
@@ -234,7 +231,7 @@ class BaseCulturePageKeyPoint(models.Model):
     )
     panels = [
         FieldPanel("text"),
-        PageChooserPanel("linked_page"),
+        FieldPanel("linked_page"),
     ]
 
     class Meta:
@@ -266,11 +263,11 @@ class ValuesPage(Page):
         FieldPanel("strapline", classname="full"),
         FieldPanel("intro", classname="full"),
         InlinePanel("values", heading="Values", label="Values"),
-        StreamFieldPanel("standout_items"),
+        FieldPanel("standout_items"),
         MultiFieldPanel(
             [
                 FieldPanel("blogs_section_title"),
-                StreamFieldPanel("featured_blog_posts"),
+                FieldPanel("featured_blog_posts"),
             ],
             heading="Featured Blog Posts",
             classname="collapsible",
@@ -327,7 +324,7 @@ class BaseValuesPageValue(models.Model):
     text = RichTextField(blank=True)
     heading = models.CharField(max_length=255)
     panels = [
-        ImageChooserPanel("value_image"),
+        FieldPanel("value_image"),
         FieldPanel("heading"),
         FieldPanel("text"),
     ]
@@ -384,9 +381,9 @@ class Author(index.Indexed, models.Model):
     ]
 
     panels = [
-        PageChooserPanel("person_page"),
+        FieldPanel("person_page"),
         MultiFieldPanel(
-            [FieldPanel("name"), FieldPanel("role"), ImageChooserPanel("image")],
+            [FieldPanel("name"), FieldPanel("role"), FieldPanel("image")],
             "Manual fields",
         ),
     ]
@@ -426,7 +423,7 @@ class Contact(index.Indexed, models.Model):
         FieldPanel("name"),
         FieldPanel("role"),
         FieldPanel("default_contact", widget=forms.CheckboxInput),
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
         FieldPanel("email_address"),
         FieldPanel("phone_number"),
     ]
