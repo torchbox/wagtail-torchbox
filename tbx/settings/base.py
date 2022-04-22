@@ -359,7 +359,7 @@ if "RECAPTCHA_PUBLIC_KEY" in env and "RECAPTCHA_PRIVATE_KEY" in env:
 WAGTAIL_SITE_NAME = "Torchbox"
 
 if "PRIMARY_HOST" in env:
-    BASE_URL = "https://{}".format(env["PRIMARY_HOST"])
+    WAGTAILADMIN_BASE_URL = "https://{}".format(env["PRIMARY_HOST"])
 
 
 # Override the Image class used by wagtailimages with a custom one
