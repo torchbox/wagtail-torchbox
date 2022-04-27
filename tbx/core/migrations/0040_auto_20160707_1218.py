@@ -5,7 +5,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -108,7 +108,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="contact",
             name="thank_you_text",
-            field=wagtail.core.fields.RichTextField(blank=True),
+            field=wagtail.fields.RichTextField(blank=True),
         ),
         migrations.AddField(
             model_name="contact",
@@ -123,7 +123,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="contact",
             name="intro",
-            field=wagtail.core.fields.RichTextField(blank=True),
+            field=wagtail.fields.RichTextField(blank=True),
         ),
         migrations.AddField(
             model_name="contactformfield",

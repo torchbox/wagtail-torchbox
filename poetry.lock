@@ -364,13 +364,14 @@ Django = ">=2.2"
 
 [[package]]
 name = "django-modelcluster"
-version = "5.2"
+version = "6.0"
 description = "Django extension to allow working with 'clusters' of models as a single unit, independently of the database"
 category = "main"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.7"
 
 [package.dependencies]
+django = ">=2.2"
 pytz = ">=2015.2"
 
 [package.extras]
@@ -388,6 +389,20 @@ python-versions = ">=3.7,<4.0"
 Django = ">=2.2,<4.1"
 Markdown = ">=3.1,<4.0"
 PyYAML = ">=5.1,<7.0"
+
+[[package]]
+name = "django-permissionedforms"
+version = "0.1"
+description = "Django extension for creating forms that vary according to user permissions"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Django = "*"
+
+[package.extras]
+testing = ["django-modelcluster"]
 
 [[package]]
 name = "django-phonenumber-field"
@@ -1204,7 +1219,7 @@ SQLAlchemy-Utils = ">=0.26.11"
 
 [[package]]
 name = "tablib"
-version = "3.2.0"
+version = "3.2.1"
 description = "Format agnostic tabular data library (XLS, JSON, YAML, CSV)"
 category = "main"
 optional = false
@@ -1307,7 +1322,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 
 [[package]]
 name = "wagtail"
-version = "2.16.1"
+version = "3.0rc1"
 description = "A Django content management system."
 category = "main"
 optional = false
@@ -1318,9 +1333,10 @@ anyascii = ">=0.1.5"
 beautifulsoup4 = ">=4.8,<4.10"
 Django = ">=3.2,<4.1"
 django-filter = ">=2.2,<22"
-django-modelcluster = ">=5.2,<6.0"
+django-modelcluster = ">=6.0,<7.0"
+django-permissionedforms = ">=0.1,<1.0"
 django-taggit = ">=2.0,<3.0"
-django-treebeard = ">=4.2.0,<4.5 || >4.5,<5.0"
+django-treebeard = ">=4.5.1,<5.0"
 djangorestframework = ">=3.11.1,<4.0"
 draftjs-exporter = ">=2.1.5,<3.0"
 html5lib = ">=0.999,<2"
@@ -1333,8 +1349,8 @@ Willow = ">=1.4,<1.5"
 xlsxwriter = ">=1.2.8,<4.0"
 
 [package.extras]
-docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==5.0.4)", "recommonmark (>=0.7.1)"]
-testing = ["python-dateutil (>=2.7)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=2.11,<3.0)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "Unidecode (>=0.04.14,<2.0)", "azure-mgmt-cdn (>=5.1,<6.0)", "azure-mgmt-frontdoor (>=0.3,<0.4)", "coverage (>=3.7.0)", "flake8 (>=3.6.0)", "isort (==5.6.4)", "flake8-blind-except (==0.1.1)", "flake8-print (==2.0.2)", "doc8 (==0.8.1)", "jinjalint (>=0.5)", "docutils (==0.15)", "polib (>=1.1,<2.0)"]
+docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==5.1.1)", "myst-parser (==0.17.0)"]
+testing = ["python-dateutil (>=2.7)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=3.0,<3.2)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "azure-mgmt-cdn (>=5.1,<6.0)", "azure-mgmt-frontdoor (>=0.3,<0.4)", "django-pattern-library (>=0.7,<0.8)", "coverage (>=3.7.0)", "black (==22.3.0)", "flake8 (>=3.6.0)", "isort (==5.6.4)", "flake8-blind-except (==0.1.1)", "flake8-comprehensions (==3.8.0)", "flake8-print (==2.0.2)", "doc8 (==0.8.1)", "flake8-assertive (==2.0.0)", "curlylint (==0.13.1)", "djhtml (==1.4.13)", "polib (>=1.1,<2.0)"]
 
 [[package]]
 name = "wagtail-accessibility"
@@ -1384,21 +1400,6 @@ python-versions = "*"
 
 [package.dependencies]
 wagtail = ">=2"
-
-[[package]]
-name = "wagtail-storages"
-version = "0.0.6"
-description = "Use AWS S3 with private documents in Wagtail."
-category = "main"
-optional = false
-python-versions = ">=3.5"
-
-[package.dependencies]
-django-storages = {version = "<2", extras = ["boto3"]}
-Wagtail = ">=2,<3"
-
-[package.extras]
-testing = ["coverage (==5.0.3)", "factory-boy (==2.12.0)", "moto (==1.3.14)", "black (==19.10b0)", "isort", "flake8"]
 
 [[package]]
 name = "wagtail-webstories"
@@ -1545,7 +1546,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3d863a575b86524a3940223e14f10c4ba1f3b5e9bcf9634915b253342da42310"
+content-hash = "ba052bfe380b21fc2d1905a235cbcbe725eb74b6e99c5f0a35304bf7adf491d8"
 
 [metadata.files]
 anyascii = [
@@ -1744,12 +1745,16 @@ django-filter = [
     {file = "django_filter-21.1-py3-none-any.whl", hash = "sha256:f4a6737a30104c98d2e2a5fb93043f36dd7978e0c7ddc92f5998e85433ea5063"},
 ]
 django-modelcluster = [
-    {file = "django-modelcluster-5.2.tar.gz", hash = "sha256:e541a46a0a899ef4778a4708be22e71cac3efacc09a6ff44bc065c5c9194c054"},
-    {file = "django_modelcluster-5.2-py2.py3-none-any.whl", hash = "sha256:767084078b9e172540b271454ecc73cb320927131ca4b2c5f276daf771f9542f"},
+    {file = "django-modelcluster-6.0.tar.gz", hash = "sha256:cdcffef5baf5d3759ee04c5b60ffaf1a0c95fc0f265e762f3ddfadde3394e5db"},
+    {file = "django_modelcluster-6.0-py2.py3-none-any.whl", hash = "sha256:4ae46f86c43702020f24f212222eef0a2588df937bbb523a5447da247b5fb130"},
 ]
 django-pattern-library = [
     {file = "django-pattern-library-0.7.0.tar.gz", hash = "sha256:e9e69da272bfe151d84f32878940858c0b62bca499023c7caf6a2ed38b9e1135"},
     {file = "django_pattern_library-0.7.0-py3-none-any.whl", hash = "sha256:aea6e659c5c8f335b2d1357261fc05c6c0dcef4bc54fb38cb58b621e9ae932e7"},
+]
+django-permissionedforms = [
+    {file = "django-permissionedforms-0.1.tar.gz", hash = "sha256:4340bb20c4477fffb13b4cc5cccf9f1b1010b64f79956c291c72d2ad2ed243f8"},
+    {file = "django_permissionedforms-0.1-py2.py3-none-any.whl", hash = "sha256:d341a961a27cc77fde8cc42141c6ab55cc1f0cb886963cc2d6967b9674fa47d6"},
 ]
 django-phonenumber-field = [
     {file = "django-phonenumber-field-5.2.0.tar.gz", hash = "sha256:52b2e5970133ec5ab701218b802f7ab237229854dc95fd239b7e9e77dc43731d"},
@@ -2355,8 +2360,8 @@ stellar = [
     {file = "stellar-0.4.5.tar.gz", hash = "sha256:8edd4d19900d47d7e17f1f51dedf7a3cf1e1283d2e52c084b3f69b761f3ae5ce"},
 ]
 tablib = [
-    {file = "tablib-3.2.0-py3-none-any.whl", hash = "sha256:1ba12da7b0b17e33f5997fb1bc8ed560aae3535f5892ae5e5c01a056c47d4d78"},
-    {file = "tablib-3.2.0.tar.gz", hash = "sha256:12d8686454c721de88d8ca5adf07e1f419ef6dbcecedf65e8950d4a329daf3a0"},
+    {file = "tablib-3.2.1-py3-none-any.whl", hash = "sha256:870d7e688f738531a14937a055e8bba404fbc388e77d4d500b2c904075d1019c"},
+    {file = "tablib-3.2.1.tar.gz", hash = "sha256:a57f2770b8c225febec1cb1e65012a69cf30dd28be810e0ff98d024768c7d0f1"},
 ]
 telepath = [
     {file = "telepath-0.2-py35-none-any.whl", hash = "sha256:801615094d3d964e178183099bf04020f4ff9c84ec43945d40b096df0a5767ee"},
@@ -2447,8 +2452,8 @@ virtualenv = [
     {file = "virtualenv-20.13.1.tar.gz", hash = "sha256:e0621bcbf4160e4e1030f05065c8834b4e93f4fcc223255db2a823440aca9c14"},
 ]
 wagtail = [
-    {file = "wagtail-2.16.1-py3-none-any.whl", hash = "sha256:129bb91c422e5c2b3603ebc67e9c392541cb564e55a5b864881905ca246a2c4e"},
-    {file = "wagtail-2.16.1.tar.gz", hash = "sha256:53dbd62a93da97c4ef6982652a103ab9be5bfe03f34cf5bc796c5d716b9020e8"},
+    {file = "wagtail-3.0rc1-py3-none-any.whl", hash = "sha256:678a6436af49f33ef59063ff1b22d2ea74c5e7b37e1eba006ef699f05fab80e8"},
+    {file = "wagtail-3.0rc1.tar.gz", hash = "sha256:5bca2c9265e0584045904b8ce48f23119a7d4cba272cc8f9ffca819350f3276e"},
 ]
 wagtail-accessibility = [
     {file = "wagtail-accessibility-0.2.1.tar.gz", hash = "sha256:70a246bfa3bc85751317633353491c2f2432bd4ed54968f89ad1406d9e4d0190"},
@@ -2464,10 +2469,6 @@ wagtail-markdown = [
 wagtail-purge = [
     {file = "wagtail-purge-0.1.1.tar.gz", hash = "sha256:8ba30c031d2062d961b5cf0e0bacfac21738efdd2de699748b30dac140c96fd7"},
     {file = "wagtail_purge-0.1.1-py2.py3-none-any.whl", hash = "sha256:da1f7513268334857a7f9c6779948c4d1e0ddbeb80163e121d20b4a26315403b"},
-]
-wagtail-storages = [
-    {file = "wagtail-storages-0.0.6.tar.gz", hash = "sha256:e9204d148713357c997713dd6cdd3a3f7891c8009daaaee5e988cb2c12a3a46d"},
-    {file = "wagtail_storages-0.0.6-py3-none-any.whl", hash = "sha256:867f040b058320906a5de1d576d37660dedeb977910362cce3fa9f5d2258de3a"},
 ]
 wagtail-webstories = [
     {file = "wagtail-webstories-0.0.4.tar.gz", hash = "sha256:4f1e8305d2c84d1dc71261060023bf679ba167e1bcf70679974d95022952905f"},

@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import Alpine from 'alpinejs';
 
 import CookieWarning from './components/cookie-message';
+import ConsoleMessage from './components/console-message';
 import SeeMorePosts from './components/see-more-posts';
 import Carousel from './components/carousel';
 import MobileMenuToggle from './components/mobile-menu-toggle';
@@ -63,4 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     )) {
         new ShardsVideo(shardsvideo);
     }
+
+    ConsoleMessage();
 });

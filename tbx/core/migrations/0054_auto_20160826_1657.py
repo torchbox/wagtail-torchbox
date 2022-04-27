@@ -3,7 +3,7 @@
 
 
 from django.db import migrations, models
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="jobindexpage",
             name="no_jobs_that_fit",
-            field=wagtail.core.fields.RichTextField(blank=True, default=""),
+            field=wagtail.fields.RichTextField(blank=True, default=""),
             preserve_default=False,
         ),
     ]

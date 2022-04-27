@@ -4,7 +4,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.models
+import wagtail.models
 
 
 class Migration(migrations.Migration):
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             model_name="torchboximage",
             name="collection",
             field=models.ForeignKey(
-                default=wagtail.core.models.get_root_collection_id,
+                default=wagtail.models.get_root_collection_id,
                 on_delete=django.db.models.deletion.CASCADE,
                 related_name="+",
                 to="wagtailcore.Collection",

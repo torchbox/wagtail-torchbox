@@ -3,8 +3,8 @@
 
 
 from django.db import migrations
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -18,40 +18,34 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="servicepage",
             name="streamfield",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         b"case_studies",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                (
-                                    b"title",
-                                    wagtail.core.blocks.CharBlock(required=True),
-                                ),
-                                (
-                                    b"intro",
-                                    wagtail.core.blocks.TextBlock(required=True),
-                                ),
+                                (b"title", wagtail.blocks.CharBlock(required=True),),
+                                (b"intro", wagtail.blocks.TextBlock(required=True),),
                                 (
                                     b"case_studies",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "page",
-                                                    wagtail.core.blocks.PageChooserBlock(
+                                                    wagtail.blocks.PageChooserBlock(
                                                         "torchbox.WorkPage"
                                                     ),
                                                 ),
                                                 (
                                                     "title",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         required=False
                                                     ),
                                                 ),
                                                 (
                                                     "descriptive_title",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         required=False
                                                     ),
                                                 ),
@@ -70,20 +64,14 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"highlights",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                (
-                                    b"title",
-                                    wagtail.core.blocks.CharBlock(required=True),
-                                ),
-                                (
-                                    b"intro",
-                                    wagtail.core.blocks.TextBlock(required=False),
-                                ),
+                                (b"title", wagtail.blocks.CharBlock(required=True),),
+                                (b"intro", wagtail.blocks.TextBlock(required=False),),
                                 (
                                     b"highlights",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.TextBlock()
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.TextBlock()
                                     ),
                                 ),
                             ]
@@ -91,51 +79,43 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"pull_quote",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     b"quote",
-                                    wagtail.core.blocks.CharBlock(
-                                        classname="quote title"
-                                    ),
+                                    wagtail.blocks.CharBlock(classname="quote title"),
                                 ),
-                                (b"attribution", wagtail.core.blocks.CharBlock()),
+                                (b"attribution", wagtail.blocks.CharBlock()),
                             ],
                             template="blocks/pull_quote_block.html",
                         ),
                     ),
                     (
                         b"process",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                (
-                                    b"title",
-                                    wagtail.core.blocks.CharBlock(required=True),
-                                ),
-                                (
-                                    b"intro",
-                                    wagtail.core.blocks.TextBlock(required=False),
-                                ),
+                                (b"title", wagtail.blocks.CharBlock(required=True),),
+                                (b"intro", wagtail.blocks.TextBlock(required=False),),
                                 (
                                     b"steps",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "subtitle",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         required=False
                                                     ),
                                                 ),
                                                 (
                                                     "title",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         required=True
                                                     ),
                                                 ),
                                                 (
                                                     "icon",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         help_text="Paste SVG code here",
                                                         max_length=9000,
                                                         required=True,
@@ -143,7 +123,7 @@ class Migration(migrations.Migration):
                                                 ),
                                                 (
                                                     "description",
-                                                    wagtail.core.blocks.TextBlock(
+                                                    wagtail.blocks.TextBlock(
                                                         required=True
                                                     ),
                                                 ),
@@ -156,20 +136,14 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"people",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                (
-                                    b"title",
-                                    wagtail.core.blocks.CharBlock(required=True),
-                                ),
-                                (
-                                    b"intro",
-                                    wagtail.core.blocks.TextBlock(required=True),
-                                ),
+                                (b"title", wagtail.blocks.CharBlock(required=True),),
+                                (b"intro", wagtail.blocks.TextBlock(required=True),),
                                 (
                                     b"people",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.PageChooserBlock()
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.PageChooserBlock()
                                     ),
                                 ),
                             ]
@@ -177,29 +151,26 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"featured_pages",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                (b"title", wagtail.core.blocks.CharBlock()),
+                                (b"title", wagtail.blocks.CharBlock()),
                                 (
                                     b"pages",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "page",
-                                                    wagtail.core.blocks.PageChooserBlock(),
+                                                    wagtail.blocks.PageChooserBlock(),
                                                 ),
                                                 (
                                                     "image",
                                                     wagtail.images.blocks.ImageChooserBlock(),
                                                 ),
-                                                (
-                                                    "text",
-                                                    wagtail.core.blocks.TextBlock(),
-                                                ),
+                                                ("text", wagtail.blocks.TextBlock(),),
                                                 (
                                                     "sub_text",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         max_length=100
                                                     ),
                                                 ),
@@ -212,11 +183,11 @@ class Migration(migrations.Migration):
                     ),
                     (
                         b"sign_up_form_page",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     b"page",
-                                    wagtail.core.blocks.PageChooserBlock(
+                                    wagtail.blocks.PageChooserBlock(
                                         "torchbox.SignUpFormPage"
                                     ),
                                 )

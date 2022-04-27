@@ -62,6 +62,10 @@
         margin: 0 0 0;
     }
 
+    &__item-link {
+        font-weight: $weight--heavy;
+    }
+
     &__item-title,
     &__cta h2 {
         @include font-size(l);

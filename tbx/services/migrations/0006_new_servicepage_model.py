@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -38,8 +38,8 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("strapline", models.CharField(max_length=255)),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
-                ("heading_for_key_points", wagtail.core.fields.RichTextField()),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
+                ("heading_for_key_points", wagtail.fields.RichTextField()),
                 (
                     "contact",
                     models.ForeignKey(

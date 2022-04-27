@@ -1,5 +1,5 @@
 from modelcluster.fields import ParentalKey
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 # Copied from Wagtail and added support for ParentalManyToMany fields

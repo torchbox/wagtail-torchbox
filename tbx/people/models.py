@@ -7,19 +7,12 @@ from django.utils.functional import cached_property
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from phonenumber_field.modelfields import PhoneNumberField
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-    PageChooserPanel,
-    StreamFieldPanel,
-)
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Orderable, Page
-from wagtail.core.signals import page_published
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail import blocks
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Orderable, Page
 from wagtail.search import index
+from wagtail.signals import page_published
 from wagtail.snippets.models import register_snippet
 
 from tbx.blog.models import BlogIndexPage, BlogPage
@@ -61,7 +54,7 @@ class PersonPage(Page):
         FieldPanel("is_senior"),
         FieldPanel("intro", classname="full"),
         FieldPanel("biography", classname="full"),
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
     ]
 
     promote_panels = [
@@ -126,7 +119,7 @@ class CulturePageLink(Orderable):
     panels = [
         FieldPanel("title", classname="full"),
         FieldPanel("description", classname="full"),
-        PageChooserPanel("link"),
+        FieldPanel("link"),
     ]
 
 
@@ -145,7 +138,9 @@ class CulturePage(Page):
     intro = RichTextField(blank=True)
     benefits_heading = RichTextField(blank=True)
     benefits_section_title = models.TextField(blank=True, default="Benefits")
-    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
+    standout_items = StreamField(
+        [("item", StandoutItemsBlock())], blank=True, use_json_field=True
+    )
 
     blogs_section_title = models.CharField(
         blank=True, max_length=100, verbose_name="Title",
@@ -154,16 +149,22 @@ class CulturePage(Page):
         [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
         blank=True,
         verbose_name="Blog posts",
+        use_json_field=True,
     )
 
     instagram_posts = StreamField(
-        [("post", InstagramEmbedBlock())], blank=True, null=True, min_num=8, max_num=8
+        [("post", InstagramEmbedBlock())],
+        blank=True,
+        null=True,
+        min_num=8,
+        max_num=8,
+        use_json_field=True,
     )
 
     content_panels = [
         FieldPanel("title", classname="full title"),
         FieldPanel("strapline", classname="full"),
-        ImageChooserPanel("hero_image"),
+        FieldPanel("hero_image"),
         FieldPanel("intro", classname="full"),
         InlinePanel("links", label="Link"),
         MultiFieldPanel(
@@ -175,16 +176,13 @@ class CulturePage(Page):
             heading="Key Benefits",
             classname="collapsible",
         ),
-        StreamFieldPanel("standout_items"),
+        FieldPanel("standout_items"),
         MultiFieldPanel(
-            [
-                FieldPanel("blogs_section_title"),
-                StreamFieldPanel("featured_blog_posts"),
-            ],
+            [FieldPanel("blogs_section_title"), FieldPanel("featured_blog_posts")],
             heading="Featured Blog Posts",
             classname="collapsible",
         ),
-        StreamFieldPanel("instagram_posts"),
+        FieldPanel("instagram_posts"),
     ]
 
     class Meta:
@@ -238,7 +236,7 @@ class BaseCulturePageKeyPoint(models.Model):
     )
     panels = [
         FieldPanel("text"),
-        PageChooserPanel("linked_page"),
+        FieldPanel("linked_page"),
     ]
 
     class Meta:
@@ -254,7 +252,9 @@ class ValuesPage(Page):
 
     strapline = models.TextField()
     intro = RichTextField(blank=True)
-    standout_items = StreamField([("item", StandoutItemsBlock())], blank=True)
+    standout_items = StreamField(
+        [("item", StandoutItemsBlock())], blank=True, use_json_field=True
+    )
     blogs_section_title = models.CharField(
         blank=True, max_length=100, verbose_name="Title"
     )
@@ -262,6 +262,7 @@ class ValuesPage(Page):
         [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
         blank=True,
         verbose_name="Blog posts",
+        use_json_field=True,
     )
 
     content_panels = [
@@ -269,12 +270,9 @@ class ValuesPage(Page):
         FieldPanel("strapline", classname="full"),
         FieldPanel("intro", classname="full"),
         InlinePanel("values", heading="Values", label="Values"),
-        StreamFieldPanel("standout_items"),
+        FieldPanel("standout_items"),
         MultiFieldPanel(
-            [
-                FieldPanel("blogs_section_title"),
-                StreamFieldPanel("featured_blog_posts"),
-            ],
+            [FieldPanel("blogs_section_title"), FieldPanel("featured_blog_posts")],
             heading="Featured Blog Posts",
             classname="collapsible",
         ),
@@ -330,7 +328,7 @@ class BaseValuesPageValue(models.Model):
     text = RichTextField(blank=True)
     heading = models.CharField(max_length=255)
     panels = [
-        ImageChooserPanel("value_image"),
+        FieldPanel("value_image"),
         FieldPanel("heading"),
         FieldPanel("text"),
     ]
@@ -387,9 +385,9 @@ class Author(index.Indexed, models.Model):
     ]
 
     panels = [
-        PageChooserPanel("person_page"),
+        FieldPanel("person_page"),
         MultiFieldPanel(
-            [FieldPanel("name"), FieldPanel("role"), ImageChooserPanel("image")],
+            [FieldPanel("name"), FieldPanel("role"), FieldPanel("image")],
             "Manual fields",
         ),
     ]
@@ -429,7 +427,7 @@ class Contact(index.Indexed, models.Model):
         FieldPanel("name"),
         FieldPanel("role"),
         FieldPanel("default_contact", widget=forms.CheckboxInput),
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
         FieldPanel("email_address"),
         FieldPanel("phone_number"),
     ]

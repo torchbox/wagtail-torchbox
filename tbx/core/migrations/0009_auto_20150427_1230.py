@@ -2,7 +2,7 @@
 
 
 from django.db import models, migrations
-import wagtail.core.fields
+import wagtail.fields
 from django.conf import settings
 import django.db.models.deletion
 
@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="blogpage",
             name="intro",
-            field=wagtail.core.fields.RichTextField(
+            field=wagtail.fields.RichTextField(
                 verbose_name="Intro (used only for blog index listing)", blank=True
             ),
             preserve_default=True,

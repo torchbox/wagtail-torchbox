@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 from tbx.core.utils.migrations import for_each_page_revision
 
@@ -90,7 +90,7 @@ class Migration(migrations.Migration):
                         max_length=255,
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField()),
+                ("intro", wagtail.fields.RichTextField()),
                 (
                     "call_to_action_text",
                     models.CharField(

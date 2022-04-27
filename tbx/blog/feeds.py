@@ -35,7 +35,7 @@ class BlogFeed(Feed):
 
     def item_enclosure_url(self, item):
         if item.feed_image:
-            return settings.BASE_URL + item.feed_image.file.url
+            return settings.WAGTAILADMIN_BASE_URL + item.feed_image.file.url
 
     def item_enclosure_mime_type(self, item):
         if item.feed_image:
