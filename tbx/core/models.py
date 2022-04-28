@@ -2,20 +2,17 @@ from django.db import models
 from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import (
+from wagtail import blocks
+from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
     PageChooserPanel,
-    StreamFieldPanel,
 )
+from wagtail.blocks import PageChooserBlock, StreamBlock, StructBlock
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.core import blocks
-from wagtail.core.blocks import PageChooserBlock, StreamBlock, StructBlock
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Orderable, Page
-from wagtail.documents.edit_handlers import DocumentChooserPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
 
 from .api import PeopleHRFeed
@@ -63,8 +60,8 @@ class LinkFields(models.Model):
 
     panels = [
         FieldPanel("link_external"),
-        PageChooserPanel("link_page"),
-        DocumentChooserPanel("link_document"),
+        FieldPanel("link_page"),
+        FieldPanel("link_document"),
     ]
 
     class Meta:
@@ -84,7 +81,7 @@ class CarouselItem(LinkFields):
     caption = models.CharField(max_length=255, blank=True)
 
     panels = [
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
         FieldPanel("embed_url"),
         FieldPanel("caption"),
         MultiFieldPanel(LinkFields.panels, "Link"),
@@ -127,7 +124,7 @@ class Advert(models.Model):
     text = models.CharField(max_length=255)
 
     panels = [
-        PageChooserPanel("page"),
+        FieldPanel("page"),
         FieldPanel("url"),
         FieldPanel("text"),
     ]
@@ -163,8 +160,8 @@ class HomePageHero(Orderable, RelatedLink):
     text = models.CharField(max_length=255)
 
     panels = RelatedLink.panels + [
-        ImageChooserPanel("background"),
-        ImageChooserPanel("logo"),
+        FieldPanel("background"),
+        FieldPanel("logo"),
         FieldPanel("colour"),
         FieldPanel("text"),
     ]
@@ -180,7 +177,7 @@ class HomePageClient(Orderable, RelatedLink):
         related_name="+",
     )
 
-    panels = RelatedLink.panels + [ImageChooserPanel("image")]
+    panels = RelatedLink.panels + [FieldPanel("image")]
 
 
 class HomePageFeaturedPost(Orderable):
@@ -226,7 +223,7 @@ class HomePage(Page):
             [
                 FieldPanel("hero_intro_primary"),
                 FieldPanel("hero_intro_secondary"),
-                ImageChooserPanel("hero_image"),
+                FieldPanel("hero_image"),
             ],
             heading="Hero intro",
         ),
@@ -252,10 +249,10 @@ class HomePage(Page):
 class StandardPage(Page):
     template = "patterns/pages/standard/standard_page.html"
 
-    body = StreamField(StoryBlock())
+    body = StreamField(StoryBlock(), use_json_field=True)
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -393,10 +390,12 @@ class BaseAddress(blocks.StructBlock):
 
 @register_setting
 class GlobalSettings(BaseSetting):
-    addresses = StreamField([("address", BaseAddress())], blank=True)
+    addresses = StreamField(
+        [("address", BaseAddress())], blank=True, use_json_field=True
+    )
 
     panels = [
-        StreamFieldPanel("addresses"),
+        FieldPanel("addresses"),
     ]
 
     class Meta:
@@ -422,8 +421,8 @@ class MenuBlock(StreamBlock):
 
 @register_setting
 class MainMenu(BaseSetting):
-    menu = StreamField(MenuBlock(), blank=True)
+    menu = StreamField(MenuBlock(), blank=True, use_json_field=True)
 
     panels = [
-        StreamFieldPanel("menu"),
+        FieldPanel("menu"),
     ]

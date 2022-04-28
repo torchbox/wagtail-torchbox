@@ -3,8 +3,8 @@
 
 
 from django.db import migrations
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -19,20 +19,20 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="mainmenu",
             name="menu",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         b"items",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                (b"page", wagtail.core.blocks.PageChooserBlock()),
+                                (b"page", wagtail.blocks.PageChooserBlock()),
                                 (
                                     b"subitems",
-                                    wagtail.core.blocks.StreamBlock(
+                                    wagtail.blocks.StreamBlock(
                                         [
                                             (
                                                 b"subitem",
-                                                wagtail.core.blocks.PageChooserBlock(),
+                                                wagtail.blocks.PageChooserBlock(),
                                             )
                                         ]
                                     ),

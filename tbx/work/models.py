@@ -10,17 +10,10 @@ from django.utils.decorators import method_decorator
 
 from bs4 import BeautifulSoup
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-    StreamFieldPanel,
-)
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Orderable, Page
-from wagtail.core.signals import page_published
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Orderable, Page
+from wagtail.signals import page_published
 
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
@@ -47,7 +40,7 @@ class WorkPageScreenshot(Orderable):
     )
 
     panels = [
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
     ]
 
 
@@ -58,7 +51,7 @@ class WorkPageAuthor(Orderable):
     )
 
     panels = [
-        SnippetChooserPanel("author"),
+        FieldPanel("author"),
     ]
 
 
@@ -68,7 +61,7 @@ class WorkPage(Page):
     parent_page_types = ["WorkIndexPage"]
 
     date = models.DateField("Post date", null=True)
-    body = StreamField(StoryBlock())
+    body = StreamField(StoryBlock(), use_json_field=True)
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
         "images.CustomImage",
@@ -150,15 +143,15 @@ class WorkPage(Page):
         FieldPanel("client", classname="client"),
         InlinePanel("authors", label="Author", min_num=1),
         FieldPanel("date"),
-        StreamFieldPanel("body"),
-        ImageChooserPanel("homepage_image"),
+        FieldPanel("body"),
+        FieldPanel("homepage_image"),
         InlinePanel("screenshots", label="Screenshots"),
         FieldPanel("visit_the_site"),
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel("feed_image"),
+        FieldPanel("feed_image"),
         FieldPanel("listing_summary"),
         FieldPanel("related_services", widget=forms.CheckboxSelectMultiple),
     ]

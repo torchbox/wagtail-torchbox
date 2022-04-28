@@ -5,7 +5,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                         max_length=255,
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField()),
+                ("intro", wagtail.fields.RichTextField()),
                 (
                     "call_to_action_text",
                     models.CharField(

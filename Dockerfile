@@ -19,7 +19,7 @@ RUN npm run build:prod
 FROM python:3.8-buster as backend
 
 ARG POETRY_HOME=/opt/poetry
-ARG POETRY_VERSION=1.1.1
+ARG POETRY_VERSION=1.1.13
 
 RUN useradd tbx
 

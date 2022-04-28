@@ -11,18 +11,11 @@ from django.utils.functional import cached_property
 
 from bs4 import BeautifulSoup
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-    StreamFieldPanel,
-)
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable, Page
-from wagtail.core.signals import page_published
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.fields import StreamField
+from wagtail.models import Orderable, Page
 from wagtail.search import index
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.signals import page_published
 
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
@@ -160,7 +153,7 @@ class BlogPageAuthor(Orderable):
     )
 
     panels = [
-        SnippetChooserPanel("author"),
+        FieldPanel("author"),
     ]
 
 
@@ -170,7 +163,7 @@ class BlogPage(Page):
     parent_page_types = ["BlogIndexPage"]
 
     date = models.DateField("Post date")
-    body = StreamField(StoryBlock())
+    body = StreamField(StoryBlock(), use_json_field=True)
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
 
     feed_image = models.ForeignKey(
@@ -266,13 +259,13 @@ class BlogPage(Page):
         FieldPanel("title", classname="full title"),
         InlinePanel("authors", label="Author", min_num=1),
         FieldPanel("date"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
         InlinePanel("related_links", label="Related links"),
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel("feed_image"),
+        FieldPanel("feed_image"),
         FieldPanel("listing_summary"),
         FieldPanel("canonical_url"),
         FieldPanel("related_services", widget=forms.CheckboxSelectMultiple),

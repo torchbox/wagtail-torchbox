@@ -2,7 +2,7 @@ from django.conf import settings
 from django.views.decorators.cache import cache_control
 
 from wagtail.contrib.frontend_cache.utils import purge_url_from_cache
-from wagtail.core.models import Site
+from wagtail.models import Site
 
 
 def purge_cache_on_all_sites(path):

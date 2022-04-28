@@ -2,7 +2,7 @@
 
 
 from django.db import models, migrations
-import wagtail.core.fields
+import wagtail.fields
 import modelcluster.fields
 import django.db.models.deletion
 
@@ -74,11 +74,11 @@ class Migration(migrations.Migration):
                         to="wagtailcore.Page",
                     ),
                 ),
-                ("intro", wagtail.core.fields.RichTextField()),
+                ("intro", wagtail.fields.RichTextField()),
                 ("form_title", models.CharField(max_length=255)),
                 ("form_subtitle", models.CharField(max_length=255)),
                 ("form_button_text", models.CharField(max_length=255)),
-                ("body", wagtail.core.fields.RichTextField()),
+                ("body", wagtail.fields.RichTextField()),
                 ("grants_managed_title", models.CharField(max_length=255)),
                 ("call_to_action_title", models.CharField(max_length=255)),
                 ("call_to_action_embed_url", models.URLField()),

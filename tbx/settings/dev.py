@@ -12,7 +12,7 @@ PATTERN_LIBRARY_ENABLED = True
 
 INTERNAL_IPS = ("127.0.0.1", "10.0.2.2")
 
-BASE_URL = "http://localhost:8000"
+WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 
 # URL to direct preview requests to
 PREVIEW_URL = "http://localhost:8001/preview"
@@ -30,7 +30,7 @@ INSTALLED_APPS += ["wagtail.contrib.styleguide"]  # noqa
 # Set URL for the preview iframe. Should point at Gatsby.
 PREVIEW_URL = "http://localhost:8003/preview/"
 
-MEDIA_PREFIX = BASE_URL
+MEDIA_PREFIX = WAGTAILADMIN_BASE_URL
 
 try:
     from .local import *  # noqa

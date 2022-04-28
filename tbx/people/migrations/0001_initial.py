@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 from tbx.core.utils.migrations import for_each_page_revision
 
@@ -134,8 +134,8 @@ class Migration(migrations.Migration):
                 ("last_name", models.CharField(max_length=255)),
                 ("role", models.CharField(blank=True, max_length=255)),
                 ("is_senior", models.BooleanField(default=False)),
-                ("intro", wagtail.core.fields.RichTextField(blank=True)),
-                ("biography", wagtail.core.fields.RichTextField(blank=True)),
+                ("intro", wagtail.fields.RichTextField(blank=True)),
+                ("biography", wagtail.fields.RichTextField(blank=True)),
                 (
                     "short_biography",
                     models.CharField(

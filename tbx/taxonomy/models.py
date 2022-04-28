@@ -1,7 +1,6 @@
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.admin.panels import FieldPanel
 
 
 class Service(models.Model):
@@ -27,6 +26,6 @@ class Service(models.Model):
         FieldPanel("slug"),
         FieldPanel("description"),
         FieldPanel("sort_order"),
-        SnippetChooserPanel("preferred_contact"),
-        SnippetChooserPanel("contact_reasons"),
+        FieldPanel("preferred_contact"),
+        FieldPanel("contact_reasons"),
     ]

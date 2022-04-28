@@ -3,7 +3,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                     "sort_order",
                     models.IntegerField(blank=True, editable=False, null=True),
                 ),
-                ("heading", wagtail.core.fields.RichTextField(blank=True)),
+                ("heading", wagtail.fields.RichTextField(blank=True)),
                 ("text", models.CharField(max_length=255)),
                 (
                     "page",
