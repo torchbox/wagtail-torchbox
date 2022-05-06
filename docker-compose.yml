@@ -5,7 +5,8 @@ services:
       context: .
       args:
         BUILD_ENV: dev
-    init: true
+        POETRY_INSTALL_ARGS: ''
+      target: dev
     environment:
       ALLOWED_HOSTS: 127.0.0.1,0.0.0.0,localhost
       DATABASE_URL: postgres://tbx:tbx@db:5432/tbx # pragma: allowlist secret
@@ -23,57 +24,39 @@ services:
       - 8000:8000 # runserver
       - 8001:8001 # mkdocs serve
     volumes:
-      - ./README.md:/app/README.md:delegated,ro
-      - ./docs:/app/docs:delegated,ro
-      - ./manage.py:/app/manage.py:delegated,ro
+      - ./.git:/app/.git:rw
+      - ./docs:/app/docs:rw
+      - ./media:/app/media:rw
+      - ./public:/app/public:rw
+      - ./docker:/app/docker:rw
       - ./tbx:/app/tbx:delegated,rw
-      - ./media:/app/media:delegated,rw
-      - ./mkdocs.yml:/app/mkdocs.yml:delegated,ro
-      - ./poetry.lock:/app/poetry.lock:rw
-      - ./public:/app/public:delegated,ro
+      - ./README.md:/app/README.md:rw
+      - ./fabfile.py:/app/fabfile.py:rw
+
+      # Docs config
+      - ./mkdocs.yml:/app/mkdocs.yml:rw
+
+      # Backend config
+      - ./manage.py:/app/manage.py:rw
       - ./pyproject.toml:/app/pyproject.toml:rw
+      - ./poetry.lock:/app/poetry.lock:rw
+
+      # Frontend config
+      - ./.babelrc.js:/app/.babelrc.js:rw
+      - ./.editorconfig:/app/.editorconfig:rw
+      - ./.eslintignore:/app/.eslintignore:rw
+      - ./.eslintrc.js:/app/.eslintrc.js:rw
+      - ./.prettierignore:/app/.prettierignore:rw
+      - ./.prettierrc.toml:/app/.prettierrc.toml:rw
+      - ./.stylelintrc.js:/app/.stylelintrc.js:rw
+      - ./package-lock.json:/app/package-lock.json:rw
+      - ./package.json:/app/package.json:rw
+      - ./webpack.config.js:/app/webpack.config.js:rw
+
+      
     depends_on:
       - db
       - redis
-
-  frontend:
-    build:
-      context: .
-      dockerfile: ./dockerfiles/Dockerfile.frontend
-    init: true
-    environment:
-      NODE_ENV: development
-      PROXY_HOST: web
-      PROXY_PORT: 8000
-    volumes:
-      # Config files
-      - ./.babelrc.js:/home/node/.babelrc.js:delegated,ro
-      - ./.editorconfig:/home/node/.editorconfig:delegated,ro
-      - ./.eslintignore:/home/node/.eslintignore:delegated,ro
-      - ./.eslintrc.js:/home/node/.eslintrc.js:delegated,ro
-      - ./.prettierignore:/home/node/.prettierignore:delegated,ro
-      - ./.prettierrc.toml:/home/node/.prettierrc.toml:delegated,ro
-      - ./.stylelintrc.js:/home/node/.stylelintrc.js:delegated,ro
-      - ./browsersync.config.js:/home/node/browsersync.config.js:delegated,ro
-      - ./package-lock.json:/home/node/package-lock.json:delegated,rw
-      - ./package.json:/home/node/package.json:delegated,rw
-      - ./webpack.config.js:/home/node/webpack.config.js:delegated,ro
-      # Source files
-      - ./tbx/static_src:/home/node/tbx/static_src:delegated,ro
-    command: tail -f /dev/null # do nothing forever - exec commands elsewhere
-    ports:
-      - 3000:3000
-      - 3001:3001
-
-  utils:
-    build:
-      context: .
-      dockerfile: ./dockerfiles/Dockerfile.utils
-    tty: true
-    volumes:
-      - ./media:/app/media:delegated,rw
-      - ./database_dumps:/app/database_dumps:delegated,rw
-    command: tail -f /dev/null
 
   db:
     image: postgres:12.3
@@ -90,7 +73,7 @@ services:
     logging:
       driver: none
     volumes:
-      - ./database_dumps:/app/database_dumps:delegated,rw
+      - .:/app:ro
 
   redis:
     image: redis:6.0
