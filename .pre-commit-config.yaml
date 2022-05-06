@@ -1,0 +1,52 @@
+default_language_version:
+  node: system
+  python: python3.8
+repos:
+  - repo: https://github.com/python/black
+    rev: 22.1.0
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.7.0
+    hooks:
+      - id: isort
+  - repo: https://gitlab.com/pycqa/flake8
+    # flake8 config is in setup.cfg
+    rev: 3.8.3
+    hooks:
+      - id: flake8
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v6.8.0
+    hooks:
+      - id: eslint
+        additional_dependencies:
+          - eslint@8.10.0
+          - eslint-config-torchbox@0.6.0
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.3.2
+    hooks:
+      - id: prettier
+        types_or: [markdown, css, scss, javascript, ts, tsx, json, yaml, vue]
+  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
+    rev: c4c991cd38b0218735858716b09924f8b20e3812
+    hooks:
+      - id: stylelint
+        files: \.(scss|vue)$
+        additional_dependencies:
+          - stylelint@13.13.1
+          - stylelint-config-torchbox@1.0.0
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v0.14.3
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: >
+          (?x)^(
+              .*/tests/.*|
+              package-lock.json|
+              poetry.lock
+          )$
+  - repo: https://github.com/rtts/djhtml
+    rev: v1.4.11
+    hooks:
+      - id: djhtml
