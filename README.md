@@ -50,8 +50,8 @@ If you are using Docker Desktop, ensure the Resources:File Sharing settings allo
 Starting a local build can be done by running:
 
 ```bash
-git clone [URL TO GIT REMOTE]
-cd wagtailkit_repo_name
+git clone git@github.com:torchbox/wagtail-torchbox.git
+cd wagtail-torchbox
 fab build
 fab migrate
 fab start
