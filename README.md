@@ -4,10 +4,16 @@
 
 This is the main Torchbox.com website. The careers section of this site can be found at [torchbox/careers](https://github.com/torchbox/careers).
 
-# Project Setup
+# Setting up a local build
 
 This repository includes `docker-compose` configuration for running the project in local Docker containers,
 and a fabfile for provisioning and managing this.
+
+There are a number of other commands to help with development using the fabric script. To see them all, run:
+
+```bash
+fab -l
+```
 
 ## Dependencies
 
@@ -32,128 +38,76 @@ pip3 install fabric
 
 You can manage different python versions by setting up `pyenv`: https://realpython.com/intro-to-pyenv/
 
-## Required Permissions
+Additionally, for interacting with production / staging environments, you'll need:
 
-Ask in the Heroku channel for staging access permissions:
-`heroku access:add <your email address> --app torchbox-staging`
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
-Make sure you've updated Heroku to the latest version (with `heroku update`) or you will be denied access.
-
-Ask another developer for permissions to clone and make merge requests to the [GitHub repository](https://github.com/torchbox/wagtail-torchbox).
-
-## Running the Local Build for the First Time
+## Running the local build for the first time
 
 If you are using Docker Desktop, ensure the Resources:File Sharing settings allow the cloned directory to be mounted in the web container (avoiding `mounting` OCI runtime failures at the end of the build step).
 
 Starting a local build can be done by running:
 
 ```bash
-git clone https://github.com/torchbox/wagtail-torchbox.git
-cd wagtail-torchbox
+git clone [URL TO GIT REMOTE]
+cd wagtailkit_repo_name
 fab build
-```
-
-Then, to pull staging data from Heroku,
-
-```bash
-fab heroku-login
-```
-
-Use your Heroku API key as your password. You can find this in your heroku account details page.
-
-```bash
-fab pull-staging-data
-```
-
-You can also pull images from the site with `fab pull-staging-images`, note this is a lot of data.
-
-Now run
-
-```bash
+fab migrate
 fab start
-fab sh
 ```
 
-Then within the SSH session:
+This will start the containers in the background, but not Django. To do this, connect to the web container with `fab sh` and run `honcho start` to start both Django and the Webpack dev server in the foreground.
+
+Then, connect to the running container again (`fab sh`) and:
 
 ```bash
-./manage.py migrate
-./manage.py createcachetable
-./manage.py createsuperuser
-./manage.py runserver 0:8000
+dj createcachetable
+dj createsuperuser
 ```
 
-The site should be available on the host machine at: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+The site should be available on the host machine at: http://127.0.0.1:8000/
 
-## Frontend Development
+If you only wish to run the frontend or backend tooling, the commands `honcho` runs are in `docker/Procfile`.
 
-To automatically have CSS, JS and other file changes compile and refresh in the browser during local development, you'll have to run the frontend build tools.
+Upon first starting the container, the static files may not exist, or may be out of date. To resolve this, simply run `npm run build`.
 
-There are 2 ways to run the frontend tooling:
+### Frontend tooling
 
-### Locally
-
-Open a new terminal window while keeping the server running in the background, and run the following commands.
+Here are the common commands:
 
 ```bash
-nvm use
+# Install front-end dependencies.
 npm install
-npm start
+# Start the Webpack build in watch mode, without live-reload.
+npm run start
+# Start the Webpack server build on port 3000 only with live-reload.
+npm run build
+# Do a one-off Webpack production build.
+npm run build:prod
 ```
 
-The site should now be accessible with livereload at [http://localhost:3000](http://localhost:3000).
+There are two ways to run the frontend tooling:
 
-Note that `fnm` is a faster version of `nvm` which behaves in the same way. [See the repository for installation instructions](https://github.com/Schniz/fnm).
+- In Docker. This is the default, most portable and secure, but much slower on macOS.
+- Or run npm commands from a terminal on your local machine. Create a `.env` file in the project root (see `.env.example`) with `FRONTEND=local`. `fab start` will no longer start a `frontend` container. Now, when running `fab start`, Docker won't attempt to bind to the ports needed for the frontend dev server, meaning they can be run locally. All the tooling still remains available in the container.
 
-### Within the Frontend Docker Container
+## Installing python packages
 
-After starting the containers as above and running `./manage.py runserver 0:8000`, open a new
-terminal session and run `fab npm start`.
-
-The site should now be accessible with livereload at [http://localhost:3000](http://localhost:3000).
-
-## Front-end assets
-
-Frontend npm packages can be installed locally with npm, then added to the frontend container with fabric like so:
-
-```bash
-npm install promise
-fab npm install
-```
-
-## Installing Python Packages
-
-Python packages can be installed using poetry in the web container:
+Python packages can be installed using `poetry` in the web container:
 
 ```
-fab sh-root
-poetry install wagtail-guide
+fab sh
+poetry add wagtail-guide
+```
+
+To reset installed dependencies back to how they are in the `poetry.lock` file:
+
+```
+fab sh
+poetry install --no-root
 ```
 
 ## Deployments
 
 Merges to `master` and `staging` will automatically trigger a deployment to the production and staging sites, respectively.
-
-## How To Reset the Docker Containers
-
-If you have issues related to working on the project previously, consider running `fab destroy` to get rid of all old containers and databases, starting the build afresh.
-
-`fab stop` will switch off the containers without harming their data, ready for future reuse.
-
-On MacOS you can restart docker desktop if old docker instances don't want to quit.
-
-On Linux, you can identify the running Docker processes with
-
-```bash
-docker ps
-```
-
-Then run `docker container stop <container_id>` to stop a container, or `docker container kill <container_id>` to get rid of the container and its database.
-
-## Other Fab Commands
-
-There are a number of other commands to help with development using the fabric script. To see them all, run:
-
-```bash
-fab -l
-```
