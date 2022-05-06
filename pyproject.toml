@@ -49,6 +49,7 @@ seed-isort-config = "1.9.4"
 # Documentation
 mkdocs = "~1.0"
 pudb = "^2020.1"
+honcho = "^1.1.0"
 
 [build-system]
 requires = ["poetry>=1,<2"]
