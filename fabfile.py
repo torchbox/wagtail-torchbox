@@ -410,15 +410,6 @@ def dellar_restore(c, filename):
     print("Database restored.")
 
 
-# Coverage is not installed in this app
-# @task
-# def docker_coverage(c):
-#     return dexec(
-#         "coverage erase && coverage run manage.py test \
-#             --settings=tbx.settings.test && coverage report",
-#     )
-
-
 def get_heroku_variable(c, app_instance, variable):
     return local(
         "heroku config:get {var} --app {app}".format(app=app_instance, var=variable)
