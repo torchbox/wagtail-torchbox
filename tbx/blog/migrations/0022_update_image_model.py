@@ -8,6 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("blog", "0021_update_streamblock_templates"),
+        ("images", "0003_alter_customimage_file_hash"),
     ]
 
     operations = [
