@@ -1,12 +1,11 @@
 from django.db import models
 
 from modelcluster.fields import ParentalKey
+from tbx.blog.models import BlogIndexPage
+from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page
-
-from tbx.blog.models import BlogIndexPage
-from tbx.work.models import WorkIndexPage
 
 
 class BaseServicePage(Page):
@@ -190,7 +189,10 @@ class BaseServicePageKeyPoint(models.Model):
 
 
 class BaseServicePageClientLogo(models.Model):
-    image = models.ForeignKey("images.CustomImage", on_delete=models.CASCADE,)
+    image = models.ForeignKey(
+        "images.CustomImage",
+        on_delete=models.CASCADE,
+    )
 
     panels = [
         FieldPanel("image"),
@@ -201,7 +203,10 @@ class BaseServicePageClientLogo(models.Model):
 
 
 class BaseServicePageUSAClientLogo(models.Model):
-    image = models.ForeignKey("images.CustomImage", on_delete=models.CASCADE,)
+    image = models.ForeignKey(
+        "images.CustomImage",
+        on_delete=models.CASCADE,
+    )
 
     panels = [
         FieldPanel("image"),
