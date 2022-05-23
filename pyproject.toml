@@ -54,3 +54,8 @@ honcho = "^1.1.0"
 [build-system]
 requires = ["poetry>=1,<2"]
 build-backend = "poetry.masonry.api"
+
+[tool.black]
+line_length = 88
+target-version = ['py38']
+exclude = '/(migrations|venv)/'
