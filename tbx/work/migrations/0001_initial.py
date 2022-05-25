@@ -268,7 +268,7 @@ class Migration(migrations.Migration):
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name="+",
-                        to="torchbox.TorchboxImage",
+                        to="wagtailimages.Image",
                     ),
                 ),
                 (
@@ -278,7 +278,7 @@ class Migration(migrations.Migration):
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name="+",
-                        to="torchbox.TorchboxImage",
+                        to="wagtailimages.Image",
                     ),
                 ),
             ],
@@ -345,7 +345,7 @@ class Migration(migrations.Migration):
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name="+",
-                        to="torchbox.TorchboxImage",
+                        to="wagtailimages.Image",
                     ),
                 ),
                 (

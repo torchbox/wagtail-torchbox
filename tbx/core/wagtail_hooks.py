@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.utils.cache import add_never_cache_headers
 
 from storages.backends.s3boto3 import S3Boto3Storage
+
 from wagtail import hooks
 from wagtail.documents import get_document_model
 from wagtail.documents.models import document_served

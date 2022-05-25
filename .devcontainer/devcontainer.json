@@ -1,0 +1,13 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.163.1/containers/docker-existing-docker-compose
+{
+  "name": "Existing Docker Compose (Extend)",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "web",
+  "workspaceFolder": "/app",
+  "settings": {
+    "terminal.integrated.shell.linux": "bash",
+    "python.pythonPath": "/usr/local/bin/python"
+  },
+  "extensions": ["ms-python.python", "editorconfig.editorconfig"]
+}

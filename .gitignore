@@ -10,13 +10,11 @@ static_compiled/
 /media/
 /media.old/
 /tmp/
-/.vagrant/
-/Vagrantfile.local
 /docs/_build/
 .idea/
 node_modules*
 /None
 *.log
-/.vscode/
-.env
+/.vscode/*
+!/.vscode/launch.json
 /database_dumps/
