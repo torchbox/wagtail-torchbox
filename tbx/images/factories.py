@@ -1,7 +1,6 @@
-from wagtail.images import get_image_model_string
-
 import factory
 from factory.django import DjangoModelFactory, ImageField
+from wagtail.images import get_image_model_string
 
 
 class ImageFactory(DjangoModelFactory):
