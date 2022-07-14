@@ -16,7 +16,7 @@ from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.taxonomy.models import Service
-from tbx.work.models import WorkPage
+from tbx.work.models import WorkIndexPage, WorkPage
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
@@ -226,6 +226,10 @@ class BlogPage(Page):
             .order_by("-date")[:2]
         )
         return works
+
+    @cached_property
+    def work_index(self):
+        return WorkIndexPage.objects.live().public().first()
 
     @property
     def blog_index(self):
