@@ -10,18 +10,18 @@ from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 
 from bs4 import BeautifulSoup
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.fields import StreamField
-from wagtail.models import Orderable, Page
-from wagtail.search import index
-from wagtail.signals import page_published
 
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkPage
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.fields import StreamField
+from wagtail.models import Orderable, Page
+from wagtail.search import index
+from wagtail.signals import page_published
 
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
@@ -149,7 +149,9 @@ class BlogPageTagSelect(Orderable):
 class BlogPageAuthor(Orderable):
     page = ParentalKey("blog.BlogPage", related_name="authors")
     author = models.ForeignKey(
-        "people.Author", on_delete=models.CASCADE, related_name="+",
+        "people.Author",
+        on_delete=models.CASCADE,
+        related_name="+",
     )
 
     panels = [

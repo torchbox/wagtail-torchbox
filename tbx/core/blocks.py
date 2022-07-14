@@ -1,5 +1,7 @@
 from django import forms
 
+from wagtailmarkdown.blocks import MarkdownBlock
+
 from wagtail.blocks import (
     CharBlock,
     FieldBlock,
@@ -14,7 +16,6 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail_webstories.blocks import (
     ExternalStoryEmbedBlock as WebstoryExternalStoryEmbedBlock,
 )
-from wagtailmarkdown.blocks import MarkdownBlock
 
 
 class ImageFormatChoiceBlock(FieldBlock):
@@ -136,7 +137,8 @@ class StoryBlock(StreamBlock):
         template="patterns/molecules/streamfield/blocks/raw_html_block.html",
     )
     embed = EmbedBlock(
-        icon="code", template="patterns/molecules/streamfield/blocks/embed_block.html",
+        icon="code",
+        template="patterns/molecules/streamfield/blocks/embed_block.html",
     )
     markdown = MarkdownBlock(
         icon="code",

@@ -5,10 +5,9 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.models import ClusterableModel
+from tbx.taxonomy.models import Service
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.models import Orderable, Page
-
-from tbx.taxonomy.models import Service
 
 
 class EventIndexPage(Page):

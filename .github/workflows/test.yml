@@ -10,7 +10,7 @@ jobs:
 
     env:
       DJANGO_SETTINGS_MODULE: tbx.settings.production
-      DATABASE_URL: postgres://postgres:postgres@localhost/postgres
+      DATABASE_URL: postgres://postgres:postgres@localhost/postgres # pragma: allowlist secret
       CFG_SECRET_KEY: iamnotsosecret
       CFG_ALLOWED_HOSTS: localhost
 
@@ -19,7 +19,7 @@ jobs:
         image: postgres:9.6
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: postgress # pragma: allowlist secret
           POSTGRES_DB: postgres
         ports:
           - 5432:5432
@@ -30,7 +30,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
       - uses: Gr1n/setup-poetry@v4
         with:
           poetry-version: 1.1.13
@@ -43,11 +43,11 @@ jobs:
           npm install npm-run-all
           npm run build:prod
       - name: Flake8
-        run: flake8 tbx
+        run: flake8 tbx fabfile.py
       - name: isort
-        run: isort --check-only --diff --recursive tbx
+        run: isort --check-only --diff tbx fabfile.py
       - name: black
-        run: black --check tbx
+        run: black --check tbx fabfile.py
       - name: System checks
         run: python manage.py check
       - name: Missing migrations

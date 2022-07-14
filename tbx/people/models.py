@@ -4,9 +4,14 @@ from django.db import models
 from django.dispatch import receiver
 from django.utils.functional import cached_property
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from phonenumber_field.modelfields import PhoneNumberField
+from tbx.blog.models import BlogIndexPage, BlogPage
+from tbx.people.blocks import InstagramEmbedBlock, StandoutItemsBlock
+from tbx.people.forms import ContactForm
+from tbx.work.models import WorkPage
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
@@ -14,11 +19,6 @@ from wagtail.models import Orderable, Page
 from wagtail.search import index
 from wagtail.signals import page_published
 from wagtail.snippets.models import register_snippet
-
-from tbx.blog.models import BlogIndexPage, BlogPage
-from tbx.people.blocks import InstagramEmbedBlock, StandoutItemsBlock
-from tbx.people.forms import ContactForm
-from tbx.work.models import WorkPage
 
 
 class PersonPage(Page):
@@ -143,7 +143,9 @@ class CulturePage(Page):
     )
 
     blogs_section_title = models.CharField(
-        blank=True, max_length=100, verbose_name="Title",
+        blank=True,
+        max_length=100,
+        verbose_name="Title",
     )
     featured_blog_posts = StreamField(
         [("blog_post", blocks.PageChooserBlock(page_type="blog.BlogPage"))],
@@ -195,7 +197,9 @@ class CulturePage(Page):
                 "title": standout_item.value["title"],
                 "subtitle": standout_item.value["subtitle"],
                 "description": standout_item.value["description"],
-                "url": standout_item.block.get_link(standout_item.value["link"],),
+                "url": standout_item.block.get_link(
+                    standout_item.value["link"],
+                ),
                 "image": standout_item.value["image"],
             }
             for standout_item in self.standout_items

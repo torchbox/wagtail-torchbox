@@ -9,16 +9,16 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
 from bs4 import BeautifulSoup
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.fields import RichTextField, StreamField
-from wagtail.models import Orderable, Page
-from wagtail.signals import page_published
 
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from tbx.core.blocks import StoryBlock
 from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.taxonomy.models import Service
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Orderable, Page
+from wagtail.signals import page_published
 
 
 # Currently hidden. These were used in the past and may be used again in the future
