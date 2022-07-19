@@ -110,12 +110,26 @@ poetry install --no-root
 
 ## Deployments
 
-Merges to `master` will automatically trigger a deployment to the production site.
+To deploy push branch to heroku manually:
 
-To deploy to staging, push branch to heroku manually:
+### Staging
 
 Add remote on your local repo:
 `heroku git:remote -a torchbox-staging`
 
+Rename the remote to avoid confusion with prod
+`git remote rename heroku heroku-staging`
+
 Push branch to heroku:
-`git push heroku staging:main`
+`git push heroku-staging staging:main`
+
+### Production
+
+Add remote on your local repo:
+`heroku git:remote -a cms-torchbox-com`
+
+Rename the remote to avoid confusion with staging
+`git remote rename heroku heroku-prod`
+
+Push branch to heroku:
+`git push heroku-prod master:main`
