@@ -104,7 +104,7 @@ class WorkPage(Page):
         else:
             # No ancestors are work indexes,
             # just return first work index in database
-            return WorkIndexPage.objects.first()
+            return WorkIndexPage.objects.live().public().first()
 
     @property
     def first_author(self):

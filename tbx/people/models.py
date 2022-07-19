@@ -11,7 +11,7 @@ from modelcluster.models import ClusterableModel
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.people.blocks import InstagramEmbedBlock, StandoutItemsBlock
 from tbx.people.forms import ContactForm
-from tbx.work.models import WorkPage
+from tbx.work.models import WorkIndexPage, WorkPage
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
@@ -85,6 +85,10 @@ class PersonPage(Page):
             .order_by("-date")[:2]
         )
         return works
+
+    @cached_property
+    def work_index(self):
+        return WorkIndexPage.objects.live().public().first()
 
 
 # Person index
