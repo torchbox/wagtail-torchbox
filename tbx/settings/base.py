@@ -355,9 +355,14 @@ if "SENTRY_DSN" in env and not is_in_shell:
 
 # Security configuration
 # https://docs.djangoproject.com/en/stable/ref/middleware/#module-django.middleware.security
-if env.get("SECURE_SSL_REDIRECT", "true").strip().lower() == "true":
-    SECURE_SSL_REDIRECT = True
 
+# Force HTTPS redirect (enabled by default!)
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-ssl-redirect
+SECURE_SSL_REDIRECT = True
+
+# This will allow the cache to swallow the fact that the website is behind TLS
+# and inform the Django using "X-Forwarded-Proto" HTTP header.
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-proxy-ssl-header
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 if "SECURE_HSTS_SECONDS" in env:
@@ -366,11 +371,12 @@ if "SECURE_HSTS_SECONDS" in env:
     except ValueError:
         pass
 
-if env.get("SECURE_BROWSER_XSS_FILTER", "true").lower().strip() == "true":
-    SECURE_BROWSER_XSS_FILTER = True
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-browser-xss-filter
+SECURE_BROWSER_XSS_FILTER = True
 
-if env.get("SECURE_CONTENT_TYPE_NOSNIFF", "true").lower().strip() == "true":
-    SECURE_CONTENT_TYPE_NOSNIFF = True
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-content-type-nosniff
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
 
 # Referrer-policy header settings
 # https://django-referrer-policy.readthedocs.io/en/1.0/
