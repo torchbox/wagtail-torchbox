@@ -1,0 +1,34 @@
+.proposition-section {
+    margin: 0 $variable-gutter--small 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: $wrapper--small;
+
+    &__anchor {
+        font-size: map-get($small-font-sizes, s);
+        position: relative;
+        color: var(--color--section-title);
+        font-weight: $weight--bold;
+        margin: 0;
+
+        &::before {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 2px;
+            top: -15px;
+            background-color: var(--color--section-title);
+        }
+    }
+
+    &__title {
+        @include font-size(l);
+        line-height: 1.1;
+    }
+
+    &__intro {
+        @include font-size(s);
+        color: var(--color--grey-dark);
+    }
+}
