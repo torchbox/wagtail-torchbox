@@ -8,9 +8,6 @@
             {% endif %}
         </div>
 
-        {# todo: update names of sections based on back-end work #}
-        {% if in_page_nav %}
-            {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page title=page.service %}
-        {% endif %}
+        {% include "patterns/molecules/in-page-nav/proposition-in-page-nav.html" with title=page.service %}
     </div>
 </div>
