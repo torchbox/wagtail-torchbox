@@ -39,11 +39,6 @@
             {% block content %}
                 {{ pattern_library_rendered_pattern }}
             {% endblock %}
-            {% if not pattern_library_rendered_pattern %}
-                {% if page.teasers %}
-                    {% include "patterns/organisms/page-teasers/page-teasers.html" %}
-                {% endif %}
-            {% endif %}
         </main>
 
         {% block footer %}{% endblock %}

@@ -47,7 +47,9 @@ context:
         - text: Socials, including our famous biennial long-weekend trip
         - text: The chance to be a partner, not just an employee
     blogs_section_title: Thinking
-    instagram_posts: true
+    instagram_posts:
+      - True
+      - True
 
 tags:
   image:
