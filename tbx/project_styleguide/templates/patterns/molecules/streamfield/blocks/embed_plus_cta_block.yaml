@@ -1,0 +1,12 @@
+context:
+  value:
+    title: Work with the best in the business
+    intro: We're all business owners so we're 100% engaged in the quality of our work. Engineers, product people, designers, analysts with deep expertise in the nonprofit world.
+    link: '#'
+    button_text: Meet the team
+    embed: <iframe width="420" height="315" src="https://www.youtube.com/embed/9ZY4QUhOb4Y"></iframe>
+
+tags:
+  pageurl:
+    value.link:
+      raw: '#'
