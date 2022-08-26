@@ -1,0 +1,31 @@
+.key-points {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include media-query('medium') {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: ($grid * 1.5);
+    }
+
+    @include media-query('large') {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &__heading {
+        margin-top: 50px;
+        // override large size
+        @include media-query('large') {
+            font-size: rem(24px);
+        }
+    }
+
+    &__link {
+        @include link-slide-right(4px, -5px);
+    }
+
+    &__intro {
+        @include font-size('s');
+        color: var(--color--grey-dark);
+        letter-spacing: 0.3px;
+    }
+}
