@@ -147,3 +147,28 @@
         transition: height $transition-quick;
     }
 }
+
+@mixin link-slide-right($height: 6px, $bottom: -7px) {
+    border-bottom: 0;
+    overflow: visible;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 25%;
+        height: $height;
+        bottom: $bottom;
+        left: 0;
+        background-color: var(--color--underline);
+        transition: width $transition-quick;
+    }
+
+    &:hover,
+    &:focus,
+    &--active {
+        &::before {
+            width: 100%;
+        }
+    }
+}
