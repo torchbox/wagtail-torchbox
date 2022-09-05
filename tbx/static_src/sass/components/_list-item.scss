@@ -43,17 +43,8 @@
             position: absolute;
             margin-left: 15px;
             margin-top: 5px;
-
             background-color: var(--color--accent);
-
-            clip-path: polygon(
-                42% 0%,
-                80% 50%,
-                42% 100%,
-                20% 75%,
-                42% 50%,
-                20% 25%
-            );
+            clip-path: $arrow-path;
 
             @include media-query(medium) {
                 margin-top: 10px;

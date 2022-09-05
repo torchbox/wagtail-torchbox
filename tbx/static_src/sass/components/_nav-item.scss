@@ -251,32 +251,11 @@
         }
 
         &__link {
-            border-bottom: 0;
-            overflow: visible;
+            @include link-slide-right();
             color: var(--color--white);
-            position: relative;
-
-            &::before {
-                content: '';
-                position: absolute;
-                width: 25%;
-                height: 6px;
-                bottom: -7px;
-                left: 0;
-                background-color: var(--color--underline);
-                transition: width $transition-quick;
-            }
 
             &::after {
                 display: none;
-            }
-
-            &:hover,
-            &:focus,
-            &--active {
-                &::before {
-                    width: 100%;
-                }
             }
 
             &:focus {
