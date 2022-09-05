@@ -94,4 +94,29 @@
             top: -50px;
         }
     }
+
+    &__link {
+        @include font-size('s');
+        font-weight: $weight--bold;
+        display: inline-block;
+        position: relative;
+        border-bottom: 0;
+        margin-top: 40px;
+
+        &:hover {
+            border-bottom: 2px solid var(--color--underline);
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: -30px;
+            top: 3px;
+            width: 20px;
+            height: 18px;
+            background-color: var(--color--accent);
+            clip-path: $arrow-path;
+        }
+    }
 }
