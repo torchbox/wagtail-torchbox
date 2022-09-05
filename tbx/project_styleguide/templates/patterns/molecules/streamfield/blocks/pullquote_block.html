@@ -19,6 +19,6 @@
     </cite>
 
     {% if value.link %}
-        <a href = "{% pageurl value.link %}" class="pullquote__link">{{ value.link_title|default:value.link.title}}</a>
+        <a href="{% pageurl value.link %}" class="pullquote__link">{{ value.link_title|default:value.link.title}}</a>
     {% endif %}
 </blockquote>
