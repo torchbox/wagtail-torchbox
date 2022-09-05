@@ -115,17 +115,8 @@
             top: 3px;
             width: 20px;
             height: 18px;
-
             background-color: var(--color--accent);
-
-            clip-path: polygon(
-                42% 0%,
-                80% 50%,
-                42% 100%,
-                20% 75%,
-                42% 50%,
-                20% 25%
-            );
+            clip-path: $arrow-path;
         }
     }
 }
