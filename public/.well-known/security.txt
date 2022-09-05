@@ -1,0 +1,4 @@
+Contact: mailto:security@torchbox.com
+Preferred-Languages: en
+Canonical: https://torchbox.com/.well-known/security.txt
+Expires: 2024-01-27T19:43:00.000Z
