@@ -17,6 +17,7 @@
         </div>
     {% endif %}
 
+    {# Note that when the service page is removed, the client-block.html and client-block.yaml under 'organisms' can be removed, as this is replaced by the new client-logo-block.html template under 'molecules/streamfield/blocks' #}
     {% if page.testimonials_section_title %}
         <div class="service-section" id="{{ page.testimonials_section_title|slugify }}" data-service-section>
             {% include "patterns/organisms/client-block/client-block.html" with title=page.testimonials_section_title clients=page.client_logos.all quotes=page.testimonials.all %}
