@@ -1,0 +1,25 @@
+context:
+  value:
+    clients:
+      - link_title: Title text
+        link: '#'
+      - link_title: Title text
+        link: '#'
+      - link_title: Title text
+        link: '#'
+      - link_title: Title text
+        link: '#'
+      - link_title: Title text
+        link: '#'
+      - link_title: Title text
+        link: '#'
+      - link_title: Title text
+        link: '#'
+
+tags:
+  image:
+    client.image width-400 class="client-item__image" loading="lazy" alt="":
+      raw: '<img src="https://placekitten.com/400/300" class="client-item__image">'
+  pageurl:
+    client.link:
+      raw: '#'
