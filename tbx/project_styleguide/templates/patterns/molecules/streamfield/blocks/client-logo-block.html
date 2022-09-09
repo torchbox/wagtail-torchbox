@@ -1,7 +1,7 @@
 {% load wagtailimages_tags wagtailcore_tags %}
-<div class="client-block">
-    <div class="client-block__container">
-        {% if value.clients %}
+{% if value.clients %}
+    <div class="client-block">
+        <div class="client-block__container">
             <div class="client-block__section">
                 <ul class="client-block__icon-list client-block__icon-list--spaced">
                     {% for client in value.clients %}
@@ -15,6 +15,6 @@
                     {% endfor %}
                 </ul>
             </div>
-        {% endif %}
+        </div>
     </div>
-</div>
+{% endif %}
