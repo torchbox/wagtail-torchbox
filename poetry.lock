@@ -241,8 +241,8 @@ pyyaml = "*"
 requests = "*"
 
 [package.extras]
-gibberish = ["gibberish-detector"]
 word_list = ["pyahocorasick"]
+gibberish = ["gibberish-detector"]
 
 [[package]]
 name = "distlib"
@@ -289,7 +289,7 @@ python-versions = ">=3.4"
 Django = ">=1.8,<4"
 
 [package.extras]
-lint = ["isort (==4.3.21)", "flake8 (==3.8.3)", "black (==19.10b0)"]
+lint = ["black (==19.10b0)", "flake8 (==3.8.3)", "isort (==4.3.21)"]
 
 [[package]]
 name = "django-csp"
@@ -424,15 +424,15 @@ Django = ">=1.11"
 
 [[package]]
 name = "django-storages"
-version = "1.12.3"
+version = "1.13.1"
 description = "Support for many storage backends in Django"
 category = "main"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.7"
 
 [package.dependencies]
 boto3 = {version = ">=1.4.4", optional = true, markers = "extra == \"boto3\""}
-Django = ">=2.2"
+Django = ">=3.2"
 
 [package.extras]
 azure = ["azure-storage-blob (>=12.0.0)"]
@@ -590,10 +590,10 @@ six = ">=1.9"
 webencodings = "*"
 
 [package.extras]
-all = ["genshi", "chardet (>=2.2)", "lxml"]
-chardet = ["chardet (>=2.2)"]
-genshi = ["genshi"]
 lxml = ["lxml"]
+genshi = ["genshi"]
+chardet = ["chardet (>=2.2)"]
+all = ["lxml", "chardet (>=2.2)", "genshi"]
 
 [[package]]
 name = "humanize"
@@ -1001,18 +1001,6 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
-name = "raven"
-version = "6.10.0"
-description = "Raven is a client for Sentry (https://getsentry.com)"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.extras]
-flask = ["Flask (>=0.8)", "blinker (>=1.1)"]
-tests = ["bottle", "celery (>=2.5)", "coverage (<4)", "exam (>=0.5.2)", "flake8 (==3.5.0)", "logbook", "mock", "nose", "pytz", "pytest (>=3.2.0,<3.3.0)", "pytest-timeout (==1.2.1)", "pytest-xdist (==1.18.2)", "pytest-pythonpath (==0.7.2)", "pytest-cov (==2.5.1)", "pytest-flake8 (==1.0.0)", "requests", "tornado (>=4.1,<5.0)", "tox", "webob", "webtest", "wheel", "anyjson", "zconfig", "Flask (>=0.8)", "blinker (>=1.1)", "Flask-Login (>=0.2.0)", "blinker (>=1.1)", "sanic (>=0.7.0)", "aiohttp"]
-
-[[package]]
 name = "redis"
 version = "4.3.1"
 description = "Python client for Redis database and key-value store"
@@ -1096,6 +1084,38 @@ python-versions = ">=3.6.1"
 
 [package.dependencies]
 "aspy.refactor-imports" = "*"
+
+[[package]]
+name = "sentry-sdk"
+version = "1.9.8"
+description = "Python client for Sentry (https://sentry.io)"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+certifi = "*"
+urllib3 = {version = ">=1.26.11", markers = "python_version >= \"3.6\""}
+
+[package.extras]
+aiohttp = ["aiohttp (>=3.5)"]
+beam = ["apache-beam (>=2.12)"]
+bottle = ["bottle (>=0.12.13)"]
+celery = ["celery (>=3)"]
+chalice = ["chalice (>=1.16.0)"]
+django = ["django (>=1.8)"]
+falcon = ["falcon (>=1.4)"]
+fastapi = ["fastapi (>=0.79.0)"]
+flask = ["flask (>=0.11)", "blinker (>=1.1)"]
+httpx = ["httpx (>=0.16.0)"]
+pure_eval = ["pure-eval", "executing", "asttokens"]
+pyspark = ["pyspark (>=2.4.4)"]
+quart = ["quart (>=0.16.1)", "blinker (>=1.1)"]
+rq = ["rq (>=0.6)"]
+sanic = ["sanic (>=0.8)"]
+sqlalchemy = ["sqlalchemy (>=1.2)"]
+starlette = ["starlette (>=0.19.1)"]
+tornado = ["tornado (>=5)"]
 
 [[package]]
 name = "six"
@@ -1228,7 +1248,7 @@ optional = false
 python-versions = ">=3.5"
 
 [package.extras]
-docs = ["mkdocs (>=1.1,<1.2)", "mkdocs-material (>=6.2,<6.3)"]
+docs = ["mkdocs-material (>=6.2,<6.3)", "mkdocs (>=1.1,<1.2)"]
 
 [[package]]
 name = "toml"
@@ -1264,22 +1284,31 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "urllib3"
-version = "1.26.9"
+version = "1.26.12"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, <4"
 
 [package.dependencies]
 certifi = {version = "*", optional = true, markers = "extra == \"secure\""}
 cryptography = {version = ">=1.3.4", optional = true, markers = "extra == \"secure\""}
 idna = {version = ">=2.0.0", optional = true, markers = "extra == \"secure\""}
 pyOpenSSL = {version = ">=0.14", optional = true, markers = "extra == \"secure\""}
+urllib3-secure-extra = {version = "*", optional = true, markers = "extra == \"secure\""}
 
 [package.extras]
 brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
-secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
+secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "urllib3-secure-extra", "ipaddress"]
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
+
+[[package]]
+name = "urllib3-secure-extra"
+version = "0.1.0"
+description = "Marker library to detect whether urllib3 was installed with the deprecated [secure] extra"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "urwid"
@@ -1336,8 +1365,8 @@ Willow = ">=1.4,<1.5"
 xlsxwriter = ">=1.2.8,<4.0"
 
 [package.extras]
-docs = ["pyenchant (>=3.1.1,<4)", "sphinxcontrib-spelling (>=5.4.0,<6)", "Sphinx (>=1.5.2)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==5.1.1)", "myst-parser (==0.17.0)"]
-testing = ["python-dateutil (>=2.7)", "pytz (>=2014.7)", "elasticsearch (>=5.0,<6.0)", "Jinja2 (>=3.0,<3.2)", "boto3 (>=1.16,<1.17)", "freezegun (>=0.3.8)", "openpyxl (>=2.6.4)", "azure-mgmt-cdn (>=5.1,<6.0)", "azure-mgmt-frontdoor (>=0.3,<0.4)", "django-pattern-library (>=0.7,<0.8)", "coverage (>=3.7.0)", "black (==22.3.0)", "flake8 (>=3.6.0)", "isort (==5.6.4)", "flake8-blind-except (==0.1.1)", "flake8-comprehensions (==3.8.0)", "flake8-print (==2.0.2)", "doc8 (==0.8.1)", "flake8-assertive (==2.0.0)", "curlylint (==0.13.1)", "djhtml (==1.4.13)", "polib (>=1.1,<2.0)"]
+testing = ["polib (>=1.1,<2.0)", "djhtml (==1.4.13)", "curlylint (==0.13.1)", "flake8-assertive (==2.0.0)", "doc8 (==0.8.1)", "flake8-print (==2.0.2)", "flake8-comprehensions (==3.8.0)", "flake8-blind-except (==0.1.1)", "isort (==5.6.4)", "flake8 (>=3.6.0)", "black (==22.3.0)", "coverage (>=3.7.0)", "django-pattern-library (>=0.7,<0.8)", "azure-mgmt-frontdoor (>=0.3,<0.4)", "azure-mgmt-cdn (>=5.1,<6.0)", "openpyxl (>=2.6.4)", "freezegun (>=0.3.8)", "boto3 (>=1.16,<1.17)", "Jinja2 (>=3.0,<3.2)", "elasticsearch (>=5.0,<6.0)", "pytz (>=2014.7)", "python-dateutil (>=2.7)"]
+docs = ["myst-parser (==0.17.0)", "sphinx-wagtail-theme (==5.1.1)", "sphinx-autobuild (>=0.6.0)", "Sphinx (>=1.5.2)", "sphinxcontrib-spelling (>=5.4.0,<6)", "pyenchant (>=3.1.1,<4)"]
 
 [[package]]
 name = "wagtail-accessibility"
@@ -1467,7 +1496,7 @@ optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
 
 [package.extras]
-testing = ["Pillow (>=6.0.0,<10.0.0)", "Wand (>=0.6,<1.0)", "mock (>=3.0,<4.0)"]
+testing = ["mock (>=3.0,<4.0)", "Wand (>=0.6,<1.0)", "Pillow (>=6.0.0,<10.0.0)"]
 
 [[package]]
 name = "wrapt"
@@ -1486,9 +1515,9 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
 [package.extras]
-build = ["wheel", "twine"]
+test = ["pytest-cov", "pytest"]
 docs = ["sphinx"]
-test = ["pytest", "pytest-cov"]
+build = ["twine", "wheel"]
 
 [[package]]
 name = "xlsxwriter"
@@ -1524,7 +1553,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "d7af5c247aa2fa9c9fee6bacd957dfa5ccc5025e264c9e3c0de55798dd47bd91"
+content-hash = "9bc05a74b3c784e27a654b4e38601ea6b1da099f0c4f22ef4581aae02048b789"
 
 [metadata.files]
 anyascii = []
@@ -1611,13 +1640,13 @@ pyparsing = []
 python-dateutil = []
 pytz = []
 pyyaml = []
-raven = []
 redis = []
 requests = []
 s3transfer = []
 schema = []
 scout-apm = []
 seed-isort-config = []
+sentry-sdk = []
 six = []
 soupsieve = []
 sqlalchemy = []
@@ -1631,6 +1660,7 @@ tomli = []
 tornado = []
 typing-extensions = []
 urllib3 = []
+urllib3-secure-extra = []
 urwid = []
 virtualenv = []
 wagtail = []
