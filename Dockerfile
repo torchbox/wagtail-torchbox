@@ -22,7 +22,7 @@ ARG POETRY_HOME=/opt/poetry
 ARG POETRY_INSTALL_ARGS="--no-dev"
 
 # IMPORTANT: Remember to review both of these when upgrading
-ARG POETRY_VERSION=1.1.13
+ARG POETRY_VERSION=1.1.15
 # To get this value locally:
 # $ wget https://raw.githubusercontent.com/python-poetry/poetry/1.1.8/get-poetry.py
 # $ sha1sum get-poetry.py
