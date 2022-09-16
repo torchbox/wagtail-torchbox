@@ -10,7 +10,7 @@ from wagtail.admin.panels import (
     PageChooserPanel,
 )
 from wagtail.blocks import PageChooserBlock, StreamBlock, StructBlock
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
@@ -389,7 +389,7 @@ class BaseAddress(blocks.StructBlock):
 
 
 @register_setting
-class GlobalSettings(BaseSetting):
+class GlobalSettings(BaseSiteSetting):
     addresses = StreamField(
         [("address", BaseAddress())], blank=True, use_json_field=True
     )
@@ -420,7 +420,7 @@ class MenuBlock(StreamBlock):
 
 
 @register_setting
-class MainMenu(BaseSetting):
+class MainMenu(BaseSiteSetting):
     menu = StreamField(MenuBlock(), blank=True, use_json_field=True)
 
     panels = [
