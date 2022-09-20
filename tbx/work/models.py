@@ -139,7 +139,7 @@ class WorkPage(Page):
         return "CASE STUDY"
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
+        FieldPanel("title", classname="title"),
         FieldPanel("client", classname="client"),
         InlinePanel("authors", label="Author", min_num=1),
         FieldPanel("date"),
@@ -298,8 +298,8 @@ class WorkIndexPage(Page):
             )
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
-        FieldPanel("intro", classname="full"),
+        FieldPanel("title", classname="title"),
+        FieldPanel("intro"),
         FieldPanel("hide_popular_tags"),
     ]
 

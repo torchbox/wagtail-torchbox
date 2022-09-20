@@ -180,8 +180,8 @@ class BlogIndexPage(Page):
             )
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
-        FieldPanel("intro", classname="full"),
+        FieldPanel("title", classname="title"),
+        FieldPanel("intro"),
         InlinePanel("related_links", label="Related links"),
     ]
 
@@ -319,7 +319,7 @@ class BlogPage(Page):
         return "BLOG POST"
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
+        FieldPanel("title", classname="title"),
         InlinePanel("authors", label="Author", min_num=1),
         FieldPanel("date"),
         FieldPanel("body"),

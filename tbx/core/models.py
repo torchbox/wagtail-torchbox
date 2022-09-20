@@ -218,7 +218,7 @@ class HomePage(Page):
         verbose_name = "Homepage"
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
+        FieldPanel("title", classname="title"),
         MultiFieldPanel(
             [
                 FieldPanel("hero_intro_primary"),
@@ -363,7 +363,7 @@ class JobIndexPage(Page):
     jobs_xml_feed = models.URLField(blank=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel("strapline", classname="full title"),
+        FieldPanel("strapline", classname="title"),
         FieldPanel("intro"),
         FieldPanel("jobs_xml_feed"),
     ]

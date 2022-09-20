@@ -44,11 +44,11 @@ class PersonPage(Page):
     ]
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
+        FieldPanel("title", classname="title"),
         FieldPanel("role"),
         FieldPanel("is_senior"),
-        FieldPanel("intro", classname="full"),
-        FieldPanel("biography", classname="full"),
+        FieldPanel("intro"),
+        FieldPanel("biography"),
         FieldPanel("image"),
     ]
 
@@ -103,7 +103,7 @@ class PersonIndexPage(Page):
         return PersonPage.objects.order_by("-is_senior", "title").live().public()
 
     content_panels = Page.content_panels + [
-        FieldPanel("strapline", classname="full"),
+        FieldPanel("strapline"),
     ]
 
 
@@ -116,8 +116,8 @@ class CulturePageLink(Orderable):
     )
 
     panels = [
-        FieldPanel("title", classname="full"),
-        FieldPanel("description", classname="full"),
+        FieldPanel("title"),
+        FieldPanel("description"),
         FieldPanel("link"),
     ]
 
@@ -163,15 +163,15 @@ class CulturePage(Page):
     )
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
-        FieldPanel("strapline", classname="full"),
+        FieldPanel("title", classname="title"),
+        FieldPanel("strapline"),
         FieldPanel("hero_image"),
-        FieldPanel("intro", classname="full"),
+        FieldPanel("intro"),
         InlinePanel("links", label="Link"),
         MultiFieldPanel(
             [
-                FieldPanel("benefits_section_title", classname="full"),
-                FieldPanel("benefits_heading", classname="full"),
+                FieldPanel("benefits_section_title"),
+                FieldPanel("benefits_heading"),
                 InlinePanel("key_benefits", label="Key benefits", max_num=10),
             ],
             heading="Key Benefits",
@@ -269,9 +269,9 @@ class ValuesPage(Page):
     )
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
-        FieldPanel("strapline", classname="full"),
-        FieldPanel("intro", classname="full"),
+        FieldPanel("title", classname="title"),
+        FieldPanel("strapline"),
+        FieldPanel("intro"),
         InlinePanel("values", heading="Values", label="Values"),
         FieldPanel("standout_items"),
         MultiFieldPanel(
