@@ -1399,10 +1399,11 @@ wagtail = ">=2.15"
 [[package]]
 name = "wagtail-webstories"
 version = "0.0.4"
-description = "AMP web story support for Wagtail"
+description = ""
 category = "main"
 optional = false
 python-versions = ">=3.6"
+develop = false
 
 [package.dependencies]
 beautifulsoup4 = ">=4.6,<5"
@@ -1410,7 +1411,13 @@ requests = ">=2.24.0,<3"
 webstories = ">=0.0.1,<0.1"
 
 [package.extras]
-testing = ["Pillow (>=4.0.0,<9.0.0)", "responses (>=0.12,<1)", "wagtailmedia (>=0.6,<0.8)"]
+testing = ["Pillow (>=4.0.0,<9.0.0)", "responses (>=0.12,<1)", "wagtailmedia (>=0.6,<0.11)"]
+
+[package.source]
+type = "git"
+url = "https://github.com/nickmoreton/wagtail-webstories"
+reference = "allow-wagtail-4"
+resolved_reference = "ed6d8f502463245d8439c77a581a251e6d6eb3a1"
 
 [[package]]
 name = "wagtailfontawesome"
@@ -1535,7 +1542,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "87abce282885205f2ed6562d200484be742f497dfe87c1e468be92cfa4e37ade"
+content-hash = "268e86b0f0383db26debca93722813c2c1e9a1ad4811673562c5a0be4f6b3920"
 
 [metadata.files]
 anyascii = [
@@ -2433,9 +2440,7 @@ wagtail-markdown = [
 wagtail-purge = [
     {file = "wagtail-purge-0.2.0.tar.gz", hash = "sha256:0b0120c43e7817846bdcf69e66293088dd09e6c85a66c8e3d9319a1ad246650c"},
 ]
-wagtail-webstories = [
-    {file = "wagtail-webstories-0.0.4.tar.gz", hash = "sha256:4f1e8305d2c84d1dc71261060023bf679ba167e1bcf70679974d95022952905f"},
-]
+wagtail-webstories = []
 wagtailfontawesome = [
     {file = "wagtailfontawesome-1.2.1-py2.py3-none-any.whl", hash = "sha256:76b1c64c4f1042d468a83e4352f74b57bda4a4aa09cdfeeb8663dead5ed632be"},
     {file = "wagtailfontawesome-1.2.1.tar.gz", hash = "sha256:6c1bd2d6061880848de6374ceb75d38a8c9b0debb1d4aef8a2fdc9d565a8f417"},
