@@ -22,11 +22,7 @@ ARG POETRY_HOME=/opt/poetry
 ARG POETRY_INSTALL_ARGS="--no-dev"
 
 # IMPORTANT: Remember to review both of these when upgrading
-ARG POETRY_VERSION=1.1.15
-# To get this value locally:
-# $ wget https://raw.githubusercontent.com/python-poetry/poetry/1.1.8/get-poetry.py
-# $ sha1sum get-poetry.py
-ARG POETRY_INSTALLER_SHA=eedf0fe5a31e5bb899efa581cbe4df59af02ea5f
+ARG POETRY_VERSION=1.2.0
 
 # Install dependencies in a virtualenv
 ENV VIRTUAL_ENV=/venv
@@ -72,10 +68,7 @@ EXPOSE 8000
 # chown protects us against cases where files downloaded by poetry have invalid ownership
 # (see https://git.torchbox.com/internal/wagtail-kit/-/merge_requests/682)
 # chmod ensures poetry dependencies are accessible when packages are installed
-RUN wget https://raw.githubusercontent.com/python-poetry/poetry/${POETRY_VERSION}/get-poetry.py && \
-    echo "${POETRY_INSTALLER_SHA} get-poetry.py" | sha1sum -c - && \
-    python get-poetry.py && \
-    rm get-poetry.py && \
+RUN curl -sSL https://install.python-poetry.org | POETRY_VERSION=${POETRY_VERSION} python3 - && \
     chown -R root:root ${POETRY_HOME} && \
     chmod -R 0755 ${POETRY_HOME}
 
