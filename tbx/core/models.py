@@ -382,6 +382,20 @@ class JobIndexPage(Page):
             {"page": self, "jobs": jobs, "feed_success": len(jobs) > 0},
         )
 
+    def serve_preview(self, request, mode_name):
+        try:
+            feed = PeopleHRFeed()
+            jobs = feed.get_jobs(url=self.jobs_xml_feed)
+        except Exception as e:
+            jobs = []
+            raise e
+
+        return render(
+            request,
+            self.template,
+            {"page": self, "jobs": jobs, "feed_success": len(jobs) > 0},
+        )
+
 
 class BaseAddress(blocks.StructBlock):
     title = blocks.CharBlock(blank=True)
