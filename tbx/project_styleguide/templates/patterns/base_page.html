@@ -3,13 +3,13 @@
 {% load static wagtailuserbar wagtailcore_tags wagtailimages_tags navigation_tags util_tags %}
 
 {% block meta_tags %}
-    {% if not request.in_preview_panel %}
+    {% if GOOGLE_TAG_MANAGER_ID and not request.in_preview_panel %}
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-K5HPMR');</script>
+        })(window,document,'script','dataLayer','{{ GOOGLE_TAG_MANAGER_ID|escapejs }}');</script>
         <!-- End Google Tag Manager -->
     {% endif %}
 
@@ -94,7 +94,7 @@
 
 
 {% block body_top %}
-    {% if GOOGLE_TAG_MANAGER_ID %}
+    {% if GOOGLE_TAG_MANAGER_ID and not request.in_preview_panel %}
         {# To enable GTM code you need to specify GOOGLE_TAG_MANAGER_ID in Django settings #}
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ GOOGLE_TAG_MANAGER_ID|urlencode }}"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
