@@ -382,6 +382,9 @@ class JobIndexPage(Page):
             {"page": self, "jobs": jobs, "feed_success": len(jobs) > 0},
         )
 
+    def serve_preview(self, request, mode_name):
+        return self.serve(request)
+
 
 class BaseAddress(blocks.StructBlock):
     title = blocks.CharBlock(blank=True)

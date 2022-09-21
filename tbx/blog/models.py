@@ -122,6 +122,9 @@ class BlogIndexPage(Page):
                 },
             )
 
+    def serve_preview(self, request, mode_name):
+        return self.serve(request)
+
     content_panels = [
         FieldPanel("title", classname="title"),
         FieldPanel("intro"),
