@@ -244,59 +244,6 @@ class WorkIndexPage(Page):
                 {"page": self, "works": works, "related_services": related_services},
             )
 
-    def serve_preview(self, request, mode_name):
-        # Get work pages
-        works = self.works
-
-        # Filter by related_service slug
-        slug_filter = request.GET.get("filter")
-        if slug_filter:
-            works = works.filter(related_services__slug=slug_filter)
-
-        # format for template
-        works = [
-            {
-                "title": work.title,
-                "subtitle": work.client,
-                "description": work.listing_summary,
-                "url": work.url,
-                "image": work.homepage_image,
-            }
-            for work in works
-        ]
-
-        # Pagination
-        paginator = Paginator(works, 10)  # Show 10 works per page
-
-        if request.is_ajax():
-            page = request.GET.get("page")
-            try:
-                works = paginator.page(page)
-            except PageNotAnInteger:
-                works = paginator.page(1)
-            except EmptyPage:
-                works = None
-
-            return render(
-                request,
-                "patterns/organisms/work-listing/work-listing.html",
-                {"page": self, "works": works},
-            )
-        else:
-            # return first page contents
-            try:
-                works = paginator.page(1)
-            except EmptyPage:
-                works = None
-
-            related_services = Service.objects.all()
-
-            return render(
-                request,
-                self.template,
-                {"page": self, "works": works, "related_services": related_services},
-            )
-
     content_panels = [
         FieldPanel("title", classname="title"),
         FieldPanel("intro"),

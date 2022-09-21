@@ -122,63 +122,6 @@ class BlogIndexPage(Page):
                 },
             )
 
-    def serve_preview(self, request, mode_name):
-        # Get blog_posts
-        blog_posts = self.blog_posts
-
-        # Filter by related_service slug
-        slug_filter = request.GET.get("filter")
-        if slug_filter:
-            blog_posts = blog_posts.filter(related_services__slug=slug_filter)
-
-        # format for template
-        blog_posts = [
-            {
-                "title": blog_post.title,
-                "url": blog_post.url,
-                "author": blog_post.first_author,
-                "date": blog_post.date,
-            }
-            for blog_post in blog_posts
-        ]
-
-        # Pagination
-        paginator = Paginator(blog_posts, 10)  # Show 10 blog_posts per page
-
-        if request.is_ajax():
-            # use page to filter
-            page = request.GET.get("page")
-            try:
-                blog_posts = paginator.page(page)
-            except PageNotAnInteger:
-                blog_posts = paginator.page(1)
-            except EmptyPage:
-                blog_posts = None
-
-            return render(
-                request,
-                "patterns/organisms/blog-listing/blog-listing.html",
-                {"page": self, "blog_posts": blog_posts},
-            )
-        else:
-            # return first page contents
-            try:
-                blog_posts = paginator.page(1)
-            except EmptyPage:
-                blog_posts = None
-
-            related_services = Service.objects.all()
-
-            return render(
-                request,
-                self.template,
-                {
-                    "page": self,
-                    "blog_posts": blog_posts,
-                    "related_services": related_services,
-                },
-            )
-
     content_panels = [
         FieldPanel("title", classname="title"),
         FieldPanel("intro"),
