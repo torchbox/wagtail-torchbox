@@ -3,8 +3,11 @@ context:
     quote: We are so pleased with the result - a beautiful website telling Oxfam's story through the voices of the people we work with.
     name: Theo Smart
     role: Head of Digital
-    link: '#'
-    link_title: See Oxfam's case study
+    link:
+      0:
+        value:
+          link: '#'
+          text: See Oxfam's case study
 
 tags:
   pageurl:
