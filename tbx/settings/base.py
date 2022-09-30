@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "tbx.events",
     "tbx.navigation",
     "tbx.people",
+    "tbx.propositions",
     "tbx.services",
     "tbx.sign_up_form",
     "tbx.taxonomy",

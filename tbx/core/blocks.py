@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.functional import cached_property
 
 from wagtailmarkdown.blocks import MarkdownBlock
 
@@ -6,16 +7,67 @@ from wagtail.blocks import (
     CharBlock,
     FieldBlock,
     ListBlock,
+    PageChooserBlock,
     RawHTMLBlock,
     RichTextBlock,
     StreamBlock,
     StructBlock,
+    StructValue,
+    URLBlock,
 )
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail_webstories.blocks import (
     ExternalStoryEmbedBlock as WebstoryExternalStoryEmbedBlock,
 )
+
+
+class LinkStructValue(StructValue):
+    @cached_property
+    def url(self):
+        if page := self.get("page"):
+            return page.get_url()
+        elif link_url := self.get("link_url"):
+            return link_url
+        return None
+
+    @cached_property
+    def text(self):
+        if link_text := self.get("link_text"):
+            return link_text
+        elif page := self.get("page"):
+            return page.title
+        return None
+
+
+class InternalLinkBlock(StructBlock):
+    page = PageChooserBlock()
+    link_text = CharBlock(required=False)
+
+    class Meta:
+        label = "Internal link"
+        icon = "link"
+        value_class = LinkStructValue
+
+
+class ExternalLinkBlock(StructBlock):
+    link_url = URLBlock(label="URL")
+    link_text = CharBlock()
+
+    class Meta:
+        label = "External link"
+        icon = "link"
+        value_class = LinkStructValue
+
+
+class LinkBlock(StreamBlock):
+    internal_link = InternalLinkBlock()
+    external_link = ExternalLinkBlock()
+
+    class Meta:
+        label = "Link"
+        icon = "link"
+        max_num = 1
 
 
 class ImageFormatChoiceBlock(FieldBlock):
@@ -147,6 +199,31 @@ class StoryBlock(StreamBlock):
     story_embed = ExternalStoryEmbedBlock(
         icon="code",
         template="patterns/molecules/streamfield/blocks/external_story_block.html",
+    )
+
+    class Meta:
+        template = "patterns/molecules/streamfield/stream_block.html"
+
+
+class PageSectionStoryBlock(StreamBlock):
+    h2 = CharBlock(
+        form_classname="title",
+        icon="title",
+        template="patterns/molecules/streamfield/blocks/heading2_block.html",
+    )
+    h3 = CharBlock(
+        form_classname="title",
+        icon="title",
+        template="patterns/molecules/streamfield/blocks/heading3_block.html",
+    )
+    h4 = CharBlock(
+        form_classname="title",
+        icon="title",
+        template="patterns/molecules/streamfield/blocks/heading4_block.html",
+    )
+    paragraph = RichTextBlock(
+        icon="pilcrow",
+        template="patterns/molecules/streamfield/blocks/paragraph_block.html",
     )
 
     class Meta:
