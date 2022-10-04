@@ -29,7 +29,6 @@ class LinkStructValue(StructValue):
             return page.get_url()
         elif link_url := self.get("link_url"):
             return link_url
-        return None
 
     @cached_property
     def text(self):
@@ -37,7 +36,6 @@ class LinkStructValue(StructValue):
             return link_text
         elif page := self.get("page"):
             return page.title
-        return None
 
 
 class InternalLinkBlock(StructBlock):
