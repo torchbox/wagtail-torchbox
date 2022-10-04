@@ -1,7 +1,7 @@
 {% load wagtailcore_tags %}
 
 <div class="key-points">
-    {% for key_point in value.key_points %}
+    {% for key_point in value %}
         <div class="key-points__item">
             <h3 class="key-points__heading">
                 <a href="{% pageurl key_point.link %}" class="key-points__link">

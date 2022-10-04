@@ -68,6 +68,15 @@ class LinkBlock(StreamBlock):
         max_num = 1
 
 
+class KeyPoint(StructBlock):
+    title = CharBlock()
+    intro = CharBlock()
+    link = PageChooserBlock()
+
+    class Meta:
+        icon = "form"
+
+
 class ImageFormatChoiceBlock(FieldBlock):
     field = forms.ChoiceField(
         choices=(
@@ -222,6 +231,14 @@ class PageSectionStoryBlock(StreamBlock):
     paragraph = RichTextBlock(
         icon="pilcrow",
         template="patterns/molecules/streamfield/blocks/paragraph_block.html",
+    )
+    key_points_summary = ListBlock(
+        KeyPoint(),
+        icon="list-ul",
+        min_num=4,
+        max_num=6,
+        template="patterns/molecules/streamfield/blocks/key_points_summary.html",
+        help_text="Please add a minumum of 4 and a maximum of 6 key points.",
     )
 
     class Meta:
