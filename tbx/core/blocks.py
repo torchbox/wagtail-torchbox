@@ -170,6 +170,14 @@ class ExternalStoryEmbedBlock(WebstoryExternalStoryEmbedBlock):
             return value.url
 
 
+class EmbedPlusCTABlock(StructBlock):
+    title = CharBlock()
+    intro = CharBlock()
+    link = PageChooserBlock()
+    button_text = CharBlock()
+    embed = EmbedBlock(label="Youtube Embed")
+
+
 class StoryBlock(StreamBlock):
     h2 = CharBlock(
         form_classname="title",
@@ -249,6 +257,11 @@ class PageSectionStoryBlock(StreamBlock):
         icon="site",
         template="patterns/molecules/streamfield/blocks/client-logo-block.html",
         label="Clients logo",
+    )
+    embed_plus_cta = EmbedPlusCTABlock(
+        label="Embed + CTA",
+        icon="code",
+        template="patterns/molecules/streamfield/blocks/embed_plus_cta_block.html",
     )
 
     class Meta:
