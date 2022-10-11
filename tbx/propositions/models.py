@@ -118,7 +118,11 @@ class BasePropositionPage(Page):
 class PropositionPage(BasePropositionPage):
     template = "patterns/pages/proposition/proposition.html"
 
-    subpage_types = ["torchbox.StandardPage", "PropositionSubPage"]
+    subpage_types = [
+        "torchbox.StandardPage",
+        "services.SubServicePage",
+        "PropositionSubPage",
+    ]
 
     service = models.OneToOneField(
         "taxonomy.Service",

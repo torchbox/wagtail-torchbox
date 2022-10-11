@@ -204,21 +204,6 @@ class StoryBlock(StreamBlock):
 
 
 class PageSectionStoryBlock(StreamBlock):
-    h2 = CharBlock(
-        form_classname="title",
-        icon="title",
-        template="patterns/molecules/streamfield/blocks/heading2_block.html",
-    )
-    h3 = CharBlock(
-        form_classname="title",
-        icon="title",
-        template="patterns/molecules/streamfield/blocks/heading3_block.html",
-    )
-    h4 = CharBlock(
-        form_classname="title",
-        icon="title",
-        template="patterns/molecules/streamfield/blocks/heading4_block.html",
-    )
     paragraph = RichTextBlock(
         icon="pilcrow",
         template="patterns/molecules/streamfield/blocks/paragraph_block.html",
