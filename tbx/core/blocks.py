@@ -98,6 +98,14 @@ class ImageBlock(StructBlock):
         icon = "image"
 
 
+class ImageWithLinkBlock(StructBlock):
+    image = ImageChooserBlock()
+    link = LinkBlock()
+
+    class Meta:
+        icon = "site"
+
+
 class PhotoGridBlock(StructBlock):
     images = ListBlock(ImageChooserBlock())
 
@@ -235,6 +243,12 @@ class PageSectionStoryBlock(StreamBlock):
         TestimonialBlock(),
         icon="openquote",
         template="patterns/molecules/streamfield/blocks/testimonial_block.html",
+    )
+    clients = ListBlock(
+        ImageWithLinkBlock(),
+        icon="site",
+        template="patterns/molecules/streamfield/blocks/client-logo-block.html",
+        label="Clients logo",
     )
 
     class Meta:
