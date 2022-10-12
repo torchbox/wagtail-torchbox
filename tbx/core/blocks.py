@@ -119,6 +119,16 @@ class PullQuoteImageBlock(StructBlock):
     image = ImageChooserBlock(required=False)
 
 
+class TestimonialBlock(StructBlock):
+    quote = CharBlock(form_classname="quote title")
+    name = CharBlock()
+    role = CharBlock()
+    link = LinkBlock(required=False)
+
+    class Meta:
+        icon = "openquote"
+
+
 class BustoutBlock(StructBlock):
     image = ImageChooserBlock()
     text = RichTextBlock()
@@ -213,10 +223,6 @@ class StoryBlock(StreamBlock):
 
 
 class PageSectionStoryBlock(StreamBlock):
-    paragraph = RichTextBlock(
-        icon="pilcrow",
-        template="patterns/molecules/streamfield/blocks/paragraph_block.html",
-    )
     key_points_summary = ListBlock(
         KeyPoint(),
         icon="list-ul",
@@ -224,6 +230,11 @@ class PageSectionStoryBlock(StreamBlock):
         max_num=6,
         template="patterns/molecules/streamfield/blocks/key_points_summary.html",
         help_text="Please add a minumum of 4 and a maximum of 6 key points.",
+    )
+    testimonials = ListBlock(
+        TestimonialBlock(),
+        icon="openquote",
+        template="patterns/molecules/streamfield/blocks/testimonial_block.html",
     )
 
     class Meta:
