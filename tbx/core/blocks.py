@@ -177,7 +177,7 @@ class EmbedPlusCTABlock(StructBlock):
     button_text = CharBlock()
     embed = EmbedBlock(label="Youtube Embed")
 
-    
+
 class CTABlock(StructBlock):
     text = CharBlock(
         help_text="Words in  &lt;span&gt; tag will display in a contrasting colour."

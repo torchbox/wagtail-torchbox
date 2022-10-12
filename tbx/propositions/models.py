@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.functional import cached_property
 
 from tbx.core.blocks import PageSectionStoryBlock
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
