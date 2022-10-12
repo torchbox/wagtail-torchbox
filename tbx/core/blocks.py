@@ -213,10 +213,6 @@ class StoryBlock(StreamBlock):
 
 
 class PageSectionStoryBlock(StreamBlock):
-    paragraph = RichTextBlock(
-        icon="pilcrow",
-        template="patterns/molecules/streamfield/blocks/paragraph_block.html",
-    )
     key_points_summary = ListBlock(
         KeyPoint(),
         icon="list-ul",
