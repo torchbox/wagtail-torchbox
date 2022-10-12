@@ -177,6 +177,13 @@ class EmbedPlusCTABlock(StructBlock):
     button_text = CharBlock()
     embed = EmbedBlock(label="Youtube Embed")
 
+    
+class CTABlock(StructBlock):
+    text = CharBlock(
+        help_text="Words in  &lt;span&gt; tag will display in a contrasting colour."
+    )
+    link = LinkBlock()
+
 
 class StoryBlock(StreamBlock):
     h2 = CharBlock(
@@ -262,6 +269,10 @@ class PageSectionStoryBlock(StreamBlock):
         label="Embed + CTA",
         icon="code",
         template="patterns/molecules/streamfield/blocks/embed_plus_cta_block.html",
+    )
+    cta = CTABlock(
+        icon="plus-inverse",
+        template="patterns/molecules/streamfield/blocks/cta.html",
     )
 
     class Meta:
