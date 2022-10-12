@@ -1,15 +1,17 @@
 {% load wagtailimages_tags wagtailcore_tags %}
-{% if value.clients %}
+{% if value %}
     <div class="client-block">
         <div class="client-block__container">
             <div class="client-block__section">
                 <ul class="client-block__icon-list client-block__icon-list--spaced">
-                    {% for client in value.clients %}
+                    {% for client in value %}
                         <li class="client-item">
                             <div class="client-item__container">
-                                <a class="client-item__link" href="{% pageurl client.link %}" title="{{ client.link_title }}">
+                                {% with link=client.link.0.value %}
+                                <a class="client-item__link" href="{{ link.url }}" title="{{ link.text }}">
                                     {% image client.image width-400 class="client-item__image" loading="lazy" alt="" %}
                                 </a>
+                                {% endwith %}
                             </div>
                         </li>
                     {% endfor %}
