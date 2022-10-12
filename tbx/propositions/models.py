@@ -10,9 +10,21 @@ from wagtail.search import index
 INTRO_RICHTEXT_FEATURES = ["bold", "italic", "link", "document-link", "strikethrough"]
 
 
-class BasePropositionPage(Page):
-    class Meta:
-        abstract = True
+class PropositionPage(Page):
+    template = "patterns/pages/proposition/proposition.html"
+
+    subpage_types = [
+        "torchbox.StandardPage",
+        "services.SubServicePage",
+    ]
+
+    service = models.OneToOneField(
+        "taxonomy.Service",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        help_text="Link to this service in taxonomy",
+    )
 
     theme = models.CharField(
         max_length=255,
@@ -61,6 +73,7 @@ class BasePropositionPage(Page):
     )
 
     search_fields = Page.search_fields + [
+        index.SearchField("service"),
         index.SearchField("intro"),
         index.SearchField("strapline"),
         index.SearchField("services_section_title"),
@@ -75,6 +88,7 @@ class BasePropositionPage(Page):
     ]
 
     content_panels = Page.content_panels + [
+        FieldPanel("service"),
         FieldPanel("theme"),
         MultiFieldPanel(
             [
@@ -113,41 +127,3 @@ class BasePropositionPage(Page):
             classname="collapsible",
         ),
     ]
-
-
-class PropositionPage(BasePropositionPage):
-    template = "patterns/pages/proposition/proposition.html"
-
-    subpage_types = [
-        "torchbox.StandardPage",
-        "services.SubServicePage",
-        "PropositionSubPage",
-    ]
-
-    service = models.OneToOneField(
-        "taxonomy.Service",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        help_text="Link to this service in taxonomy",
-    )
-
-    content_panels = BasePropositionPage.content_panels.copy()
-    content_panels.insert(1, FieldPanel("service"))
-
-
-class PropositionSubPage(BasePropositionPage):
-    template = "patterns/pages/proposition/proposition.html"
-
-    subpage_types = ["torchbox.StandardPage", "PropositionSubPage"]
-    parent_page_types = ["PropositionPage", "PropositionSubPage"]
-
-    @cached_property
-    def service(self):
-        parent_proposition = PropositionPage.objects.ancestor_of(self).live().last()
-
-        if parent_proposition:
-            return parent_proposition.service
-
-    class Meta:
-        verbose_name = "Proposition subpage"
