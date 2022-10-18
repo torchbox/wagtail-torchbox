@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.functional import cached_property
 
 from wagtailmarkdown.blocks import MarkdownBlock
 
@@ -6,16 +7,74 @@ from wagtail.blocks import (
     CharBlock,
     FieldBlock,
     ListBlock,
+    PageChooserBlock,
     RawHTMLBlock,
     RichTextBlock,
     StreamBlock,
     StructBlock,
+    StructValue,
+    URLBlock,
 )
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail_webstories.blocks import (
     ExternalStoryEmbedBlock as WebstoryExternalStoryEmbedBlock,
 )
+
+
+class LinkStructValue(StructValue):
+    @cached_property
+    def url(self):
+        if page := self.get("page"):
+            return page.get_url()
+        elif link_url := self.get("link_url"):
+            return link_url
+
+    @cached_property
+    def text(self):
+        if link_text := self.get("link_text"):
+            return link_text
+        elif page := self.get("page"):
+            return page.title
+
+
+class InternalLinkBlock(StructBlock):
+    page = PageChooserBlock()
+    link_text = CharBlock(required=False)
+
+    class Meta:
+        label = "Internal link"
+        icon = "link"
+        value_class = LinkStructValue
+
+
+class ExternalLinkBlock(StructBlock):
+    link_url = URLBlock(label="URL")
+    link_text = CharBlock()
+
+    class Meta:
+        label = "External link"
+        icon = "link"
+        value_class = LinkStructValue
+
+
+class LinkBlock(StreamBlock):
+    internal_link = InternalLinkBlock()
+    external_link = ExternalLinkBlock()
+
+    class Meta:
+        label = "Link"
+        icon = "link"
+        max_num = 1
+
+
+class KeyPoint(StructBlock):
+    title = CharBlock()
+    intro = CharBlock()
+    link = PageChooserBlock()
+
+    class Meta:
+        icon = "form"
 
 
 class ImageFormatChoiceBlock(FieldBlock):
@@ -39,6 +98,14 @@ class ImageBlock(StructBlock):
         icon = "image"
 
 
+class ImageWithLinkBlock(StructBlock):
+    image = ImageChooserBlock()
+    link = LinkBlock()
+
+    class Meta:
+        icon = "site"
+
+
 class PhotoGridBlock(StructBlock):
     images = ListBlock(ImageChooserBlock())
 
@@ -58,6 +125,16 @@ class PullQuoteImageBlock(StructBlock):
     quote = CharBlock()
     attribution = CharBlock()
     image = ImageChooserBlock(required=False)
+
+
+class TestimonialBlock(StructBlock):
+    quote = CharBlock(form_classname="quote title")
+    name = CharBlock()
+    role = CharBlock()
+    link = LinkBlock(required=False)
+
+    class Meta:
+        icon = "openquote"
 
 
 class BustoutBlock(StructBlock):
@@ -91,6 +168,21 @@ class ExternalStoryEmbedBlock(WebstoryExternalStoryEmbedBlock):
             return value
         else:
             return value.url
+
+
+class EmbedPlusCTABlock(StructBlock):
+    title = CharBlock()
+    intro = CharBlock()
+    link = PageChooserBlock()
+    button_text = CharBlock()
+    embed = EmbedBlock(label="Youtube Embed")
+
+
+class CTABlock(StructBlock):
+    text = CharBlock(
+        help_text="Words in  &lt;span&gt; tag will display in a contrasting colour."
+    )
+    link = LinkBlock()
 
 
 class StoryBlock(StreamBlock):
@@ -147,6 +239,40 @@ class StoryBlock(StreamBlock):
     story_embed = ExternalStoryEmbedBlock(
         icon="code",
         template="patterns/molecules/streamfield/blocks/external_story_block.html",
+    )
+
+    class Meta:
+        template = "patterns/molecules/streamfield/stream_block.html"
+
+
+class PageSectionStoryBlock(StreamBlock):
+    key_points_summary = ListBlock(
+        KeyPoint(),
+        icon="list-ul",
+        min_num=4,
+        max_num=6,
+        template="patterns/molecules/streamfield/blocks/key_points_summary.html",
+        help_text="Please add a minumum of 4 and a maximum of 6 key points.",
+    )
+    testimonials = ListBlock(
+        TestimonialBlock(),
+        icon="openquote",
+        template="patterns/molecules/streamfield/blocks/testimonial_block.html",
+    )
+    clients = ListBlock(
+        ImageWithLinkBlock(),
+        icon="site",
+        template="patterns/molecules/streamfield/blocks/client-logo-block.html",
+        label="Clients logo",
+    )
+    embed_plus_cta = EmbedPlusCTABlock(
+        label="Embed + CTA",
+        icon="code",
+        template="patterns/molecules/streamfield/blocks/embed_plus_cta_block.html",
+    )
+    cta = CTABlock(
+        icon="plus-inverse",
+        template="patterns/molecules/streamfield/blocks/cta.html",
     )
 
     class Meta:

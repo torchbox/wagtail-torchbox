@@ -1,0 +1,8 @@
+context:
+  value:
+    text: 'Work with <span>the best</span> in the business'
+    link:
+      0:
+        value:
+          text: Meet the team
+          url: '#'
