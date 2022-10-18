@@ -1,20 +1,50 @@
 context:
   value:
-    clients:
-      - link_title: Title text
-        link: '#'
-      - link_title: Title text
-        link: '#'
-      - link_title: Title text
-        link: '#'
-      - link_title: Title text
-        link: '#'
-      - link_title: Title text
-        link: '#'
-      - link_title: Title text
-        link: '#'
-      - link_title: Title text
-        link: '#'
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Samaritans
+    - link:
+        0:
+          value:
+            link: '#'
+            text: CCA
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Wharton
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Example
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Oxfam GB
+    - link:
+        0:
+          value:
+            link: '#'
+            text: RCA
+    - link:
+        0:
+          value:
+            link: '#'
+            text: RNIB
+    - link:
+        0:
+          value:
+            link: '#'
+            text: NHS
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Nasa
 
 tags:
   image:

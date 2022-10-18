@@ -10,17 +10,19 @@
 
         <h2 class="proposition-section__anchor">Services</h2>
 
-        {% if page.services_section.title %}
+        {% if page.services_section_title %}
             <h3 class="proposition-section__title">
-                {{ page.services_section.title }}
+                {{ page.services_section_title }}
             </h3>
         {% endif %}
 
-        {% if page.services_section.intro %}
+        {% if page.services_section_intro %}
             <p class="proposition-section__intro">
-                {{ page.services_section.intro }}
+                {{ page.services_section_intro|richtext }}
             </p>
         {% endif %}
+
+        {% include_block page.services_section_body %}
     </div>
 
     {# Our clients section #}
@@ -28,17 +30,19 @@
 
         <h2 class="proposition-section__anchor">Our clients</h2>
 
-        {% if page.our_clients_section.title %}
+        {% if page.clients_section_title %}
             <h3 class="proposition-section__title">
-                {{ page.our_clients_section.title }}
+                {{ page.clients_section_title }}
             </h3>
         {% endif %}
 
-        {% if page.our_clients_section.intro %}
+        {% if page.clients_section_intro %}
             <p class="proposition-section__intro">
-                {{ page.our_clients_section.intro }}
+                {{ page.clients_section_intro|richtext }}
             </p>
         {% endif %}
+
+        {% include_block page.clients_section_body %}
     </div>
 
     {# Team section #}
@@ -46,17 +50,19 @@
 
         <h2 class="proposition-section__anchor">Our team</h2>
 
-        {% if page.team_section.title %}
+        {% if page.team_section_title %}
             <h3 class="proposition-section__title">
-                {{ page.team_section.title }}
+                {{ page.team_section_title|richtext }}
             </h3>
         {% endif %}
 
-        {% if page.team_section.intro %}
+        {% if page.team_section_intro %}
             <p class="proposition-section__intro">
-                {{ page.team_section.intro }}
+                {{ page.team_section_intro|richtext }}
             </p>
         {% endif %}
+
+        {% include_block page.team_section_body %}
     </div>
 
 {% endblock %}
