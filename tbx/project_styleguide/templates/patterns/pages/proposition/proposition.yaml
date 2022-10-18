@@ -2,11 +2,17 @@ context:
   page:
     strapline: The digital product agency <span>for tomorrow's nonprofits</span>.
     intro: <p>We help nonprofits like Oxfam, RNIB and Mozilla design and launch world-class digital products, and become more data-driven, connected and efficient organisations along the way.</p>
-    services_section:
-      title: Define, design and develop transformative user experiences
-    our_clients_section:
-      title: Partnering with the forward thinking non-profits
-      intro: We work with the most successful businesses, in the most mature product markets in the world, giving you an unmatched level of expertise and experience to solve your challenge.
-    team_section:
-      title: Work with the best in the business
-      intro: We're all business owners so we're 100% engaged in the quality of our work. Engineers, product people, designers, analysts with deep expertise in the nonprofit world.
+    services_section_title: Define, design and develop transformative user experiences
+    clients_section_title: Partnering with the forward thinking non-profits
+    clients_section_intro: <p>We work with the most successful businesses, in the most mature product markets in the world, giving you an unmatched level of expertise and experience to solve your challenge.</p>
+    team_section_title: Work with the best in the business
+    team_section_intro: <p>We're all business owners so we're 100% engaged in the quality of our work. Engineers, product people, designers, analysts with deep expertise in the nonprofit world.</p>
+
+tags:
+  include_block:
+    page.services_section_body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example-standard.html'
+    page.clients_section_body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example-standard.html'
+    page.team_section_body:
+      template_name: 'patterns/molecules/streamfield/streamfield-example-standard.html'
