@@ -23,6 +23,7 @@
     }
 
     &__button {
+        /* stylelint-disable-next-line declaration-no-important */
         color: var(--color--white) !important; // ovveride streamfield value
     }
 
