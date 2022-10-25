@@ -3,7 +3,9 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/hero/proposition_hero.html" with title=page.strapline desc=page.intro %}
+    {% image page.image width-1920 as hero_image %}
+
+    {% include "patterns/molecules/hero/hero--proposition.html" with title=page.strapline desc=page.intro image=hero_image %}
 
     {# Service section #}
     <div class="proposition-section" id="{{ 'services' }}"data-service-section>
