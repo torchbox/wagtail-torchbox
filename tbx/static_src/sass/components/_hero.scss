@@ -86,8 +86,52 @@
         }
     }
 
+    &--proposition {
+        overflow: visible; // prevent mask being cutoff
+
+        #{$root}__container {
+            padding: 0 8.33vw;
+
+            @include media-query(large) {
+                padding: 0 0 0 8.33vw;
+            }
+        }
+
+        #{$root}__title {
+            margin-right: 0;
+        }
+
+        #{$root}__content {
+            margin: 0;
+            padding-top: 0;
+            padding-right: 0;
+            padding-bottom: 100px;
+
+            @include media-query(large) {
+                padding-right: 45vw;
+                padding-top: ($gutter * 3);
+            }
+        }
+    }
+
     &__image {
         margin-top: -25px;
+    }
+
+    &__image-mask {
+        display: none;
+        position: absolute;
+        top: -60px;
+        right: -50px;
+        width: 45vw;
+        height: auto;
+        // SVG basencoded as loading in static svgs throws an error (hero-mask.svg in static)
+        mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA4MjQgNzAyIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02NDguMDc4IDIxMC4yNTIgMjgzLjkxMSAwIDAgNDkxLjc0OCAzNjQuMTY4IDcwMmwyODMuOTEtNDkxLjc0OFptMTc1LjQyMSAxODYuNjQzTDY2Ny45NCAzMDcuMDgzIDUyMS4zMDUgNTYxLjA2MmwxNTUuNTU5IDg5LjgxMiAxNDYuNjM1LTI1My45NzlaIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=');
+        mask-repeat: no-repeat;
+
+        @include media-query(large) {
+            display: block;
+        }
     }
 
     &__container {

@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
-<div class="hero {% if classes %}{{ classes }}{% endif %}">
+<div class="hero hero--proposition {% if classes %}{{ classes }}{% endif %}">
     <div class="hero__container">
         <div class="hero__content">
             <h1 class="hero__title">{{ title|richtext }}</h1>
@@ -7,7 +7,11 @@
                 <div class="hero__description">{{ desc|richtext }}</div>
             {% endif %}
         </div>
-
+        {% if image %}
+            <div class="hero__image-mask">
+                <img class="hero__image" src="{{ image.url }}" alt="">
+            </div>
+        {% endif %}
         {% include "patterns/molecules/in-page-nav/proposition-in-page-nav.html" with title=page.service %}
     </div>
 </div>
