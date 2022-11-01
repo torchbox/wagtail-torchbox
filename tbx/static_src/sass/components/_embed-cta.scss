@@ -22,6 +22,11 @@
         color: var(--color--grey-dark);
     }
 
+    &__button {
+        /* stylelint-disable-next-line declaration-no-important */
+        color: var(--color--white) !important; // ovveride streamfield value
+    }
+
     &__embed {
         width: 100%;
         position: relative;
