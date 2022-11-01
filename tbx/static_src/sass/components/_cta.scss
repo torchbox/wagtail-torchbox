@@ -1,0 +1,18 @@
+.cta {
+    margin-bottom: 40px;
+
+    @include media-query(large) {
+        margin-bottom: 100px;
+    }
+
+    &__intro {
+        @include font-size(xl);
+        color: var(--color--primary);
+        font-weight: $weight--heavy;
+        max-width: 720px;
+
+        span {
+            color: var(--color--accent);
+        }
+    }
+}
