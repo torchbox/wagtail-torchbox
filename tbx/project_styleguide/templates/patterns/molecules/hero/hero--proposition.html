@@ -9,9 +9,9 @@
         </div>
         {% if image %}
             <div class="hero__image-mask">
-                <img class="hero__image" src="{{ image.url }}" alt="">
+            <img class="hero__image" src="{{ image.url }}" alt="">
             </div>
         {% endif %}
-        {% include "patterns/molecules/in-page-nav/proposition-in-page-nav.html" with title=page.service %}
+        {% include "patterns/molecules/in-page-nav/in-page-nav--proposition.html" with title=page.service %}
     </div>
 </div>

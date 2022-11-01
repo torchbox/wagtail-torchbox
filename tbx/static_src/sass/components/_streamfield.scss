@@ -156,6 +156,7 @@
         cursor: pointer;
         font-weight: $weight--heavy;
         color: var(--color--link);
+        border-bottom: 2px solid transparent; // prevent layout shift
 
         &:hover {
             border-bottom: 2px solid var(--color--lagoon);

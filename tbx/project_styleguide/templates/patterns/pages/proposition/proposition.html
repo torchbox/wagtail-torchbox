@@ -19,9 +19,9 @@
         {% endif %}
 
         {% if page.services_section_intro %}
-            <p class="proposition-section__intro">
+            <div class="proposition-section__intro">
                 {{ page.services_section_intro|richtext }}
-            </p>
+            </div>
         {% endif %}
 
         {% include_block page.services_section_body %}
@@ -39,9 +39,9 @@
         {% endif %}
 
         {% if page.clients_section_intro %}
-            <p class="proposition-section__intro">
+            <div class="proposition-section__intro">
                 {{ page.clients_section_intro|richtext }}
-            </p>
+            </div>
         {% endif %}
 
         {% include_block page.clients_section_body %}
@@ -59,9 +59,9 @@
         {% endif %}
 
         {% if page.team_section_intro %}
-            <p class="proposition-section__intro">
+            <div class="proposition-section__intro">
                 {{ page.team_section_intro|richtext }}
-            </p>
+            </div>
         {% endif %}
 
         {% include_block page.team_section_body %}
