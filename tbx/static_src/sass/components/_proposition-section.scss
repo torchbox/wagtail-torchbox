@@ -9,7 +9,7 @@
         position: relative;
         color: var(--color--section-title);
         font-weight: $weight--bold;
-        margin: 0;
+        margin: 0 0 ($gutter);
 
         &::before {
             position: absolute;
@@ -24,10 +24,12 @@
     &__title {
         @include font-size(l);
         line-height: 1.1;
+        max-width: 728px;
     }
 
     &__intro {
         @include font-size(s);
         color: var(--color--grey-dark);
+        max-width: 760px;
     }
 }

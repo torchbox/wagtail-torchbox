@@ -1,4 +1,5 @@
 .client-block {
+    $root: &;
     position: relative;
     background-color: var(--color--white);
     padding-bottom: ($gutter * 5);
@@ -25,6 +26,17 @@
             @include media-query(medium) {
                 margin-bottom: 200px;
             }
+        }
+    }
+
+    .streamfield & {
+        #{$root}__container {
+            margin: 0;
+            padding-top: 0;
+        }
+
+        #{$root}__icon-list {
+            justify-content: space-between;
         }
     }
 }

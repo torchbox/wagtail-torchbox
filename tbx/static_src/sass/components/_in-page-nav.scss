@@ -5,6 +5,10 @@
     top: 0;
     margin-left: 10.33vw;
 
+    &--proposition {
+        margin-left: 0;
+    }
+
     .nav-stuck & {
         #{$root}__inner {
             background-color: var(--color--background);

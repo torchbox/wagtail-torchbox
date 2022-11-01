@@ -1,20 +1,22 @@
 .key-points {
     display: grid;
     grid-template-columns: 1fr;
+    margin-bottom: ($gutter * 3);
 
-    @include media-query('medium') {
+    @include media-query(medium) {
         grid-template-columns: 1fr 1fr;
         grid-gap: ($grid * 1.5);
     }
 
-    @include media-query('large') {
+    @include media-query(large) {
         grid-template-columns: 1fr 1fr 1fr;
+        margin-bottom: ($gutter * 6);
     }
 
     &__heading {
         margin-top: 50px;
         // override large size
-        @include media-query('large') {
+        @include media-query(large) {
             font-size: rem(24px);
         }
     }

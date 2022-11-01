@@ -45,4 +45,12 @@
             border: 0;
         }
     }
+
+    .streamfield & {
+        margin-bottom: ($gutter * 3);
+
+        @include media-query(large) {
+            margin-bottom: ($gutter * 6);
+        }
+    }
 }
