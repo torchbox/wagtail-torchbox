@@ -2,6 +2,6 @@
 <div class="cta">
     <p class="cta__intro">{{ value.text|richtext }}</p>
     {% with link=value.link.0.value %}
-    <a href="{{ link.url }}" class="button">{{ link.text }}</a>
+    <a href="{{ link.url }}" class="cta__link button">{{ link.text }}</a>
     {% endwith %}
 </div>
