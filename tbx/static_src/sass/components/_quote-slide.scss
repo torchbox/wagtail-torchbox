@@ -5,4 +5,10 @@
     &.glide__slide--active {
         opacity: 1;
     }
+
+    .streamfield & {
+        &::before {
+            content: none; // don't show li arrow
+        }
+    }
 }

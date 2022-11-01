@@ -88,6 +88,11 @@
 
     &--proposition {
         overflow: visible; // prevent mask being cutoff
+        margin-bottom: ($gutter * 3);
+
+        @include media-query(large) {
+            margin-bottom: ($gutter * 6);
+        }
 
         #{$root}__container {
             padding: 0 8.33vw;
@@ -115,10 +120,13 @@
     }
 
     &__image {
+        display: block;
         margin-top: -25px;
+        width: 100%;
     }
 
     &__image-mask {
+        @include z-index(header); // above in page nav to allow for overlap
         display: none;
         position: absolute;
         top: -60px;
