@@ -1215,29 +1215,6 @@ SQLAlchemy = ">=0.9.6"
 SQLAlchemy-Utils = ">=0.26.11"
 
 [[package]]
-name = "tablib"
-version = "3.2.1"
-description = "Format agnostic tabular data library (XLS, JSON, YAML, CSV)"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-openpyxl = {version = ">=2.6.0", optional = true, markers = "extra == \"xlsx\""}
-xlrd = {version = "*", optional = true, markers = "extra == \"xls\""}
-xlwt = {version = "*", optional = true, markers = "extra == \"xls\""}
-
-[package.extras]
-all = ["markuppy", "odfpy", "openpyxl (>=2.6.0)", "pandas", "pyyaml", "tabulate", "xlrd", "xlwt"]
-cli = ["tabulate"]
-html = ["markuppy"]
-ods = ["odfpy"]
-pandas = ["pandas"]
-xls = ["xlrd", "xlwt"]
-xlsx = ["openpyxl (>=2.6.0)"]
-yaml = ["pyyaml"]
-
-[[package]]
 name = "telepath"
 version = "0.3"
 description = "A library for exchanging data between Python and JavaScript"
@@ -1335,7 +1312,7 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 
 [[package]]
 name = "wagtail"
-version = "4.0.2"
+version = "4.1.1"
 description = "A Django content management system."
 category = "main"
 optional = false
@@ -1354,16 +1331,15 @@ djangorestframework = ">=3.11.1,<4.0"
 draftjs-exporter = ">=2.1.5,<3.0"
 html5lib = ">=0.999,<2"
 l18n = ">=2018.5"
+openpyxl = ">=3.0.10,<4.0"
 Pillow = ">=4.0.0,<10.0.0"
 requests = ">=2.11.1,<3.0"
-tablib = {version = ">=0.14.0", extras = ["xls", "xlsx"]}
 telepath = ">=0.1.1,<1"
 Willow = ">=1.4,<1.5"
-xlsxwriter = ">=1.2.8,<4.0"
 
 [package.extras]
-docs = ["Sphinx (>=1.5.2)", "myst-parser (==0.17.0)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==5.3.0)", "sphinxcontrib-spelling (>=5.4.0,<6)"]
-testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=5.1,<6.0)", "azure-mgmt-frontdoor (>=0.3,<0.4)", "black (==22.3.0)", "boto3 (>=1.16,<1.17)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7,<0.8)", "djhtml (==1.4.13)", "doc8 (==0.8.1)", "elasticsearch (>=5.0,<6.0)", "flake8 (>=3.6.0)", "flake8-assertive (==2.0.0)", "flake8-blind-except (==0.1.1)", "flake8-comprehensions (==3.8.0)", "flake8-print (==5.0.0)", "freezegun (>=0.3.8)", "isort (==5.6.4)", "openpyxl (>=2.6.4)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "pytz (>=2014.7)"]
+docs = ["Sphinx (>=1.5.2)", "myst-parser (==0.18.1)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-copybutton (>=0.5,<1.0)", "sphinx-wagtail-theme (==5.3.2)", "sphinxcontrib-spelling (>=5.4.0,<6)"]
+testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=5.1,<6.0)", "azure-mgmt-frontdoor (>=0.3,<0.4)", "black (==22.3.0)", "boto3 (>=1.16,<1.17)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7,<0.8)", "djhtml (==1.4.13)", "doc8 (==0.8.1)", "elasticsearch (>=5.0,<6.0)", "flake8 (>=3.6.0)", "flake8-assertive (==2.0.0)", "flake8-blind-except (==0.1.1)", "flake8-comprehensions (==3.8.0)", "flake8-print (==5.0.0)", "freezegun (>=0.3.8)", "isort (==5.6.4)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "pytz (>=2014.7)"]
 
 [[package]]
 name = "wagtail-accessibility"
@@ -1392,28 +1368,35 @@ testing = ["coverage (>=4.1.0,<4.2)", "flake8 (>=3.2.0,<3.3)", "isort (==4.2.5)"
 
 [[package]]
 name = "wagtail-markdown"
-version = "0.9.0"
+version = "0.10.0"
 description = "Markdown support for Wagtail"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-bleach = ">=3.3.0,<4"
-Markdown = ">=3,<4"
+bleach = ">=3.3,<5"
+Markdown = ">=3.3,<4"
 Wagtail = ">=2.15"
 
 [[package]]
 name = "wagtail-purge"
 version = "0.2.0"
-description = "Purge individual URLs from the Wagtail admin"
+description = ""
 category = "main"
 optional = false
 python-versions = "*"
+develop = false
 
 [package.dependencies]
-django = ">=3.0,<4.0"
+django = ">=3.2,<4.2"
 wagtail = ">=2.15"
+
+[package.source]
+type = "git"
+url = "https://github.com/nickmoreton/wagtail-purge"
+reference = "wagtail-4"
+resolved_reference = "329fbde399e8a78838090a3963cacab0ebe8fa73"
 
 [[package]]
 name = "wagtail-webstories"
@@ -1515,35 +1498,6 @@ optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
 [[package]]
-name = "xlrd"
-version = "2.0.1"
-description = "Library for developers to extract data from Microsoft Excel (tm) .xls spreadsheet files"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
-
-[package.extras]
-build = ["twine", "wheel"]
-docs = ["sphinx"]
-test = ["pytest", "pytest-cov"]
-
-[[package]]
-name = "xlsxwriter"
-version = "3.0.3"
-description = "A Python module for creating Excel XLSX files."
-category = "main"
-optional = false
-python-versions = ">=3.4"
-
-[[package]]
-name = "xlwt"
-version = "1.3.0"
-description = "Library to create spreadsheet files compatible with MS Excel 97/2000/XP/2003 XLS files, on any platform, with Python 2.6, 2.7, 3.3+"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "zipp"
 version = "3.8.1"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -1561,7 +1515,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "5ad5a662f5849aca4478767158d8aef56e7412b6b548310856b2903d543f3ccd"
+content-hash = "6a57e794468f12551f07777ef248a29773307a4c6ef646b8d0ec0b7acccfdb32"
 
 [metadata.files]
 anyascii = [
@@ -2397,10 +2351,6 @@ sqlparse = [
 stellar = [
     {file = "stellar-0.4.5.tar.gz", hash = "sha256:8edd4d19900d47d7e17f1f51dedf7a3cf1e1283d2e52c084b3f69b761f3ae5ce"},
 ]
-tablib = [
-    {file = "tablib-3.2.1-py3-none-any.whl", hash = "sha256:870d7e688f738531a14937a055e8bba404fbc388e77d4d500b2c904075d1019c"},
-    {file = "tablib-3.2.1.tar.gz", hash = "sha256:a57f2770b8c225febec1cb1e65012a69cf30dd28be810e0ff98d024768c7d0f1"},
-]
 telepath = [
     {file = "telepath-0.3-py35-none-any.whl", hash = "sha256:fbdbc6bdd9a4a5c2b230caae242fa6ba4994c9dbcfd780df9be63f2966feb034"},
     {file = "telepath-0.3.tar.gz", hash = "sha256:54f4b57232461bc67c54f63f437cb6d26843c189bae6b7ba8e4457f98d78e515"},
@@ -2446,8 +2396,8 @@ virtualenv = [
     {file = "virtualenv-20.16.5.tar.gz", hash = "sha256:227ea1b9994fdc5ea31977ba3383ef296d7472ea85be9d6732e42a91c04e80da"},
 ]
 wagtail = [
-    {file = "wagtail-4.0.2-py3-none-any.whl", hash = "sha256:2572068dcc6a3406c411eb8e81220471e2cb0578b6d86d401850f27c237942fa"},
-    {file = "wagtail-4.0.2.tar.gz", hash = "sha256:a106ef4d85aeb9858de5670f6501866be3f6c7e241828925eb1f777bdf4a7e64"},
+    {file = "wagtail-4.1.1-py3-none-any.whl", hash = "sha256:fe164fa5bb5f62fa8fa35cb456d523b3f263b6bcc0a5e0b688e2c6c1760bc095"},
+    {file = "wagtail-4.1.1.tar.gz", hash = "sha256:9df6bfe5637ebe5b9e96cd0174cb812d3bb9200913100b6f8007ef31bdc02f70"},
 ]
 wagtail-accessibility = [
     {file = "wagtail-accessibility-0.2.1.tar.gz", hash = "sha256:70a246bfa3bc85751317633353491c2f2432bd4ed54968f89ad1406d9e4d0190"},
@@ -2457,12 +2407,10 @@ wagtail-django-recaptcha = [
     {file = "wagtail-django-recaptcha-1.0.tar.gz", hash = "sha256:fc177e75da966e9db1dfd9a566c40d30567518d9280b5db4fec4d50a8c853154"},
 ]
 wagtail-markdown = [
-    {file = "wagtail-markdown-0.9.0.tar.gz", hash = "sha256:8d42c0d0a82f325ef0311d3014ac3cfc67c2a69208c7c6c9f0989d1c7c4cd2f8"},
-    {file = "wagtail_markdown-0.9.0-py2.py3-none-any.whl", hash = "sha256:68a96e85c8aa5d4567a286bc0a1c507b3638abff8ffb167da63381c2df19d117"},
+    {file = "wagtail-markdown-0.10.0.tar.gz", hash = "sha256:b16be4b6e3518cc6dd15ab335cbc6d6a9122b5d7e3a61fa11c83597e2660044e"},
+    {file = "wagtail_markdown-0.10.0-py2.py3-none-any.whl", hash = "sha256:e4a97eee0211eebaab9c850669e647bc1c8ceb70df38b4db5a2c3d8b02ebaf69"},
 ]
-wagtail-purge = [
-    {file = "wagtail-purge-0.2.0.tar.gz", hash = "sha256:0b0120c43e7817846bdcf69e66293088dd09e6c85a66c8e3d9319a1ad246650c"},
-]
+wagtail-purge = []
 wagtail-webstories = []
 wagtailfontawesome = [
     {file = "wagtailfontawesome-1.2.1-py2.py3-none-any.whl", hash = "sha256:76b1c64c4f1042d468a83e4352f74b57bda4a4aa09cdfeeb8663dead5ed632be"},
@@ -2552,18 +2500,6 @@ wrapt = [
     {file = "wrapt-1.14.1-cp39-cp39-win32.whl", hash = "sha256:dee0ce50c6a2dd9056c20db781e9c1cfd33e77d2d569f5d1d9321c641bb903d5"},
     {file = "wrapt-1.14.1-cp39-cp39-win_amd64.whl", hash = "sha256:dee60e1de1898bde3b238f18340eec6148986da0455d8ba7848d50470a7a32fb"},
     {file = "wrapt-1.14.1.tar.gz", hash = "sha256:380a85cf89e0e69b7cfbe2ea9f765f004ff419f34194018a6827ac0e3edfed4d"},
-]
-xlrd = [
-    {file = "xlrd-2.0.1-py2.py3-none-any.whl", hash = "sha256:6a33ee89877bd9abc1158129f6e94be74e2679636b8a205b43b85206c3f0bbdd"},
-    {file = "xlrd-2.0.1.tar.gz", hash = "sha256:f72f148f54442c6b056bf931dbc34f986fd0c3b0b6b5a58d013c9aef274d0c88"},
-]
-xlsxwriter = [
-    {file = "XlsxWriter-3.0.3-py3-none-any.whl", hash = "sha256:df0aefe5137478d206847eccf9f114715e42aaea077e6a48d0e8a2152e983010"},
-    {file = "XlsxWriter-3.0.3.tar.gz", hash = "sha256:e89f4a1d2fa2c9ea15cde77de95cd3fd8b0345d0efb3964623f395c8c4988b7f"},
-]
-xlwt = [
-    {file = "xlwt-1.3.0-py2.py3-none-any.whl", hash = "sha256:a082260524678ba48a297d922cc385f58278b8aa68741596a87de01a9c628b2e"},
-    {file = "xlwt-1.3.0.tar.gz", hash = "sha256:c59912717a9b28f1a3c2a98fd60741014b06b043936dcecbc113eaaada156c88"},
 ]
 zipp = [
     {file = "zipp-3.8.1-py3-none-any.whl", hash = "sha256:47c40d7fe183a6f21403a199b3e4192cca5774656965b0a4988ad2f8feb5f009"},
