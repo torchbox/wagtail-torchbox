@@ -69,17 +69,17 @@ class BaseServicePage(Page):
         FieldPanel("theme"),
         MultiFieldPanel(
             [
-                FieldPanel("strapline", classname="full title"),
-                FieldPanel("intro", classname="full"),
-                FieldPanel("greeting_image_type", classname="full"),
+                FieldPanel("strapline", classname="title"),
+                FieldPanel("intro"),
+                FieldPanel("greeting_image_type"),
             ],
             heading="Hero",
             classname="collapsible",
         ),
         MultiFieldPanel(
             [
-                FieldPanel("key_points_section_title", classname="full"),
-                FieldPanel("heading_for_key_points", classname="full"),
+                FieldPanel("key_points_section_title"),
+                FieldPanel("heading_for_key_points"),
                 InlinePanel("key_points", label="Key points"),
             ],
             heading="Key Points",
@@ -92,7 +92,7 @@ class BaseServicePage(Page):
         ),
         MultiFieldPanel(
             [
-                FieldPanel("testimonials_section_title", classname="full"),
+                FieldPanel("testimonials_section_title"),
                 InlinePanel("client_logos", label="Client logos"),
                 InlinePanel("usa_client_logos", label="Client logos (for USA users)"),
                 InlinePanel("testimonials", label="Testimonials"),
@@ -102,18 +102,18 @@ class BaseServicePage(Page):
         ),
         MultiFieldPanel(
             [
-                FieldPanel("process_section_title", classname="full"),
-                FieldPanel("heading_for_processes", classname="full"),
-                FieldPanel("use_process_block_image", classname="full"),
+                FieldPanel("process_section_title"),
+                FieldPanel("heading_for_processes"),
+                FieldPanel("use_process_block_image"),
                 InlinePanel("processes", label="Processes"),
-                FieldPanel("process_section_cta", classname="full"),
+                FieldPanel("process_section_cta"),
             ],
             heading="Processes",
             classname="collapsible",
         ),
         MultiFieldPanel(
             [
-                FieldPanel("case_studies_section_title", classname="full"),
+                FieldPanel("case_studies_section_title"),
                 InlinePanel("featured_case_studies", label="Featured case studies"),
             ],
             heading="Work",
@@ -121,7 +121,7 @@ class BaseServicePage(Page):
         ),
         MultiFieldPanel(
             [
-                FieldPanel("blogs_section_title", classname="full"),
+                FieldPanel("blogs_section_title"),
                 InlinePanel("featured_blog_posts", label="Featured blog posts"),
             ],
             heading="Thinking",

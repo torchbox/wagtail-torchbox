@@ -10,7 +10,7 @@ from wagtail.admin.panels import (
     PageChooserPanel,
 )
 from wagtail.blocks import PageChooserBlock, StreamBlock, StructBlock
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
@@ -218,7 +218,7 @@ class HomePage(Page):
         verbose_name = "Homepage"
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
+        FieldPanel("title", classname="title"),
         MultiFieldPanel(
             [
                 FieldPanel("hero_intro_primary"),
@@ -363,7 +363,7 @@ class JobIndexPage(Page):
     jobs_xml_feed = models.URLField(blank=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel("strapline", classname="full title"),
+        FieldPanel("strapline", classname="title"),
         FieldPanel("intro"),
         FieldPanel("jobs_xml_feed"),
     ]
@@ -382,6 +382,9 @@ class JobIndexPage(Page):
             {"page": self, "jobs": jobs, "feed_success": len(jobs) > 0},
         )
 
+    def serve_preview(self, request, mode_name):
+        return self.serve(request)
+
 
 class BaseAddress(blocks.StructBlock):
     title = blocks.CharBlock(blank=True)
@@ -389,7 +392,7 @@ class BaseAddress(blocks.StructBlock):
 
 
 @register_setting
-class GlobalSettings(BaseSetting):
+class GlobalSettings(BaseSiteSetting):
     addresses = StreamField(
         [("address", BaseAddress())], blank=True, use_json_field=True
     )
@@ -420,7 +423,7 @@ class MenuBlock(StreamBlock):
 
 
 @register_setting
-class MainMenu(BaseSetting):
+class MainMenu(BaseSiteSetting):
     menu = StreamField(MenuBlock(), blank=True, use_json_field=True)
 
     panels = [

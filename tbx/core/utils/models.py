@@ -1,7 +1,7 @@
 from django.db import models
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 SEARCH_DESCRIPTION_LABEL = "Meta description"  # NOTE changing this requires migrations
 
@@ -29,7 +29,7 @@ class SocialFields(models.Model):
 
 
 @register_setting
-class SocialMediaSettings(BaseSetting):
+class SocialMediaSettings(BaseSiteSetting):
     twitter_handle = models.CharField(
         max_length=255,
         blank=True,
