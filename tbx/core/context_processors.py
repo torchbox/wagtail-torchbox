@@ -30,3 +30,9 @@ def peoplehr_jobs_count(request):
         cache.set(CACHE_KEY, job_count, CACHE_TIMEOUT)
 
     return {"job_count": job_count}
+
+
+def global_vars(request):
+    return {
+        "GOOGLE_TAG_MANAGER_ID": getattr(settings, "GOOGLE_TAG_MANAGER_ID", None),
+    }

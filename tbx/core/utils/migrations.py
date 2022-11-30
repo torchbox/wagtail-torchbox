@@ -22,7 +22,7 @@ def for_each_page_revision(*model_names):
         @wraps(fn)
         def wrapper(apps, schema_editor):
             ContentType = apps.get_model("contenttypes.ContentType")
-            PageRevision = apps.get_model("wagtailcore.PageRevision")
+            PageRevision = apps.get_model("wagtailcore.Revision")
 
             content_types = [
                 ContentType.objects.get_for_model(apps.get_model(model_name))

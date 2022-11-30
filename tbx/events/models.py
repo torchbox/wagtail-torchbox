@@ -17,7 +17,7 @@ class EventIndexPage(Page):
     subpage_types = []
 
     content_panels = [
-        FieldPanel("title", classname="full title"),
+        FieldPanel("title", classname="title"),
         InlinePanel("events", label="events"),
     ]
 
