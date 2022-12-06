@@ -289,6 +289,17 @@ Django = ">=1.8,<5"
 lint = ["black (==20.8b1)", "flake8 (==3.8.4)", "isort (==5.7.0)"]
 
 [[package]]
+name = "django-birdbath"
+version = "1.0.0"
+description = ""
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Faker = ">=8,<14"
+
+[[package]]
 name = "django-csp"
 version = "3.7"
 description = "Django Content Security Policy support."
@@ -509,6 +520,17 @@ paramiko = ">=2.4"
 [package.extras]
 pytest = ["mock (>=2.0.0,<3.0)", "pytest (>=3.2.5,<4.0)"]
 testing = ["mock (>=2.0.0,<3.0)"]
+
+[[package]]
+name = "Faker"
+version = "13.16.0"
+description = "Faker is a Python package that generates fake data for you."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = ">=2.4"
 
 [[package]]
 name = "filelock"
@@ -1515,7 +1537,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "6a57e794468f12551f07777ef248a29773307a4c6ef646b8d0ec0b7acccfdb32"
+content-hash = "d5b9b25fbc8d145d4e65130180db03586ca80b313a72eebf53b96506056a919f"
 
 [metadata.files]
 anyascii = [
@@ -1731,6 +1753,10 @@ django-basic-auth-ip-whitelist = [
     {file = "django-basic-auth-ip-whitelist-0.5.tar.gz", hash = "sha256:8e859303a802574a121a1787bdf96ca2c16140bb9003da96e28323e7a80d99fc"},
     {file = "django_basic_auth_ip_whitelist-0.5-py3-none-any.whl", hash = "sha256:c64cc3e1bbf736d5e6d6c3468c16003cfc4d01cdfb92cd9e7bbe9fbcd5bdf9be"},
 ]
+django-birdbath = [
+    {file = "django-birdbath-1.0.0.tar.gz", hash = "sha256:cc46a3df6c68666f372424d777d8863aa4cd2e3111294872232356d6e2c99f4c"},
+    {file = "django_birdbath-1.0.0-py3-none-any.whl", hash = "sha256:14d917266acc0fbd68ffc4ad4c7bc4a2d732fd861cd6e8e5cb9a5213bcc75860"},
+]
 django-csp = [
     {file = "django_csp-3.7-py2.py3-none-any.whl", hash = "sha256:01443a07723f9a479d498bd7bb63571aaa771e690f64bde515db6cdb76e8041a"},
     {file = "django_csp-3.7.tar.gz", hash = "sha256:01eda02ad3f10261c74131cdc0b5a6a62b7c7ad4fd017fbefb7a14776e0a9727"},
@@ -1797,6 +1823,10 @@ et-xmlfile = [
 fabric = [
     {file = "fabric-2.5.0-py2.py3-none-any.whl", hash = "sha256:160331934ea60036604928e792fa8e9f813266b098ef5562aa82b88527740389"},
     {file = "fabric-2.5.0.tar.gz", hash = "sha256:24842d7d51556adcabd885ac3cf5e1df73fc622a1708bf3667bf5927576cdfa6"},
+]
+Faker = [
+    {file = "Faker-13.16.0-py3-none-any.whl", hash = "sha256:920f94d5aa865fd922bc29f2cf75c75b4d86b30eec23e7174d7513241b759b05"},
+    {file = "Faker-13.16.0.tar.gz", hash = "sha256:25c5be99bc5fd8676eea8c1490e0de87f6d9734651c7af2cefc99b322b2936f4"},
 ]
 filelock = [
     {file = "filelock-3.8.0-py3-none-any.whl", hash = "sha256:617eb4e5eedc82fc5f47b6d61e4d11cb837c56cb4544e39081099fa17ad109d4"},

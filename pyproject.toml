@@ -28,6 +28,7 @@ phonenumbers = "^8.12.48"
 wagtail-purge = {git = "https://github.com/nickmoreton/wagtail-purge", rev = "wagtail-4"}
 wagtail-webstories = {git = "https://github.com/nickmoreton/wagtail-webstories", rev = "allow-wagtail-4"}
 wagtail-markdown = "^0.10.0"
+django-birdbath = "^1.0.0"
 
 [tool.poetry.extras]
 gunicorn = ["gunicorn"]
