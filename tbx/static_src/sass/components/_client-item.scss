@@ -37,11 +37,8 @@
     }
 
     .streamfield & {
+        width: 100%;
         padding-left: 0;
-        flex-basis: 160px;
-        min-width: 160px;
-        max-width: 160px;
-        margin-right: ($gutter * 1.5);
 
         &::before {
             content: none; // don't show li arrow
@@ -56,7 +53,14 @@
         }
 
         #{$root}__image {
-            height: auto;
+            height: 80px;
+            object-fit: contain;
+            max-width: 140px;
+
+            @include media-query(medium) {
+                height: 110px;
+                max-width: 200px;
+            }
         }
     }
 }
