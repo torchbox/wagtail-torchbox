@@ -29,6 +29,7 @@ wagtail-webstories = {git = "https://github.com/nickmoreton/wagtail-webstories",
 wagtail-markdown = "^0.10.0"
 Wand = "^0.6.10"
 sentry-sdk = "^1.9.8"
+django-birdbath = "^1.0.0"
 
 [tool.poetry.extras]
 gunicorn = ["gunicorn"]

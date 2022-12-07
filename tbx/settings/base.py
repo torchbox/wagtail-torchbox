@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     "tbx.project_styleguide.apps.ProjectStyleguideConfig",
     "wagtailaccessibility",
     "wagtail_purge",
+    "birdbath",
 ]
 
 MIDDLEWARE = [
@@ -495,3 +496,17 @@ PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(
 GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID")
 
 SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
+
+# Birdbath - Database anonymisation
+BIRDBATH_REQUIRED = os.environ.get("BIRDBATH_REQUIRED", "true").lower() == "true"
+BIRDBATH_SKIP_CHECKS = os.environ.get("BIRDBATH_SKIP_CHECKS", "false").lower() == "true"
+BIRDBATH_USER_ANONYMISER_EXCLUDE_EMAIL_RE = r"@(?:torchbox\.com)$"
+BIRDBATH_USER_ANONYMISER_EXCLUDE_SUPERUSERS = True
+# Do not anonymise data on any heroku app containing 'production' in app name
+BIRDBATH_CHECKS = ["birdbath.checks.contrib.heroku.HerokuNotProductionCheck"]
+# Add project specific processors here to anonymise or delete sensitive data.
+# See https://git.torchbox.com/internal/django-birdbath/#processors
+BIRDBATH_PROCESSORS = [
+    "birdbath.processors.users.UserEmailAnonymiser",
+    "birdbath.processors.users.UserPasswordAnonymiser",
+]
