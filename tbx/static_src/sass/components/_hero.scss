@@ -136,8 +136,10 @@
         // SVG basencoded as loading in static svgs throws an error (hero-mask.svg in static)
         mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA4MjQgNzAyIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02NDguMDc4IDIxMC4yNTIgMjgzLjkxMSAwIDAgNDkxLjc0OCAzNjQuMTY4IDcwMmwyODMuOTEtNDkxLjc0OFptMTc1LjQyMSAxODYuNjQzTDY2Ny45NCAzMDcuMDgzIDUyMS4zMDUgNTYxLjA2MmwxNTUuNTU5IDg5LjgxMiAxNDYuNjM1LTI1My45NzlaIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=');
         mask-repeat: no-repeat;
+        /* stylelint-disable property-no-vendor-prefix  */
         -webkit-mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA4MjQgNzAyIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02NDguMDc4IDIxMC4yNTIgMjgzLjkxMSAwIDAgNDkxLjc0OCAzNjQuMTY4IDcwMmwyODMuOTEtNDkxLjc0OFptMTc1LjQyMSAxODYuNjQzTDY2Ny45NCAzMDcuMDgzIDUyMS4zMDUgNTYxLjA2MmwxNTUuNTU5IDg5LjgxMiAxNDYuNjM1LTI1My45NzlaIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=');
         -webkit-mask-repeat: no-repeat;
+        /* stylelint-enable */
 
         @include media-query(large) {
             display: block;
