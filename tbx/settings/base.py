@@ -473,8 +473,9 @@ BIRDBATH_REQUIRED = os.environ.get("BIRDBATH_REQUIRED", "true").lower() == "true
 BIRDBATH_SKIP_CHECKS = os.environ.get("BIRDBATH_SKIP_CHECKS", "false").lower() == "true"
 BIRDBATH_USER_ANONYMISER_EXCLUDE_EMAIL_RE = r"@(?:torchbox\.com)$"
 BIRDBATH_USER_ANONYMISER_EXCLUDE_SUPERUSERS = True
-# Do not anonymise data on any heroku app containing 'production' in app name
-BIRDBATH_CHECKS = ["birdbath.checks.contrib.heroku.HerokuNotProductionCheck"]
+# Only allow birdbath to run on heroku app specified in `ALLOWS_ANONYMISATION` env var
+# to prevent accidentally running it on production
+BIRDBATH_CHECKS = ["birdbath.checks.contrib.heroku.HerokuAnonymisationAllowedCheck"]
 # Add project specific processors here to anonymise or delete sensitive data.
 # See https://git.torchbox.com/internal/django-birdbath/#processors
 BIRDBATH_PROCESSORS = [
