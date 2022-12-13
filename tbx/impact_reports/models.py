@@ -1,9 +1,11 @@
 from django.db import models
+from django.utils.text import slugify
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
+from wagtail.search import index
 
 from .blocks import ImpactReportStoryBlock
 
@@ -44,3 +46,19 @@ class ImpactReportPage(Page):
         ),
         FieldPanel("body"),
     ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField("introduction"),
+        index.SearchField("body"),
+    ]
+
+    @property
+    def headings(self):
+        return [
+            {
+                "short_heading": block.value["short_heading"],
+                "slug": slugify(block.value["short_heading"]),
+            }
+            for block in self.body
+            if block.block_type == "impact_report_heading"
+        ]
