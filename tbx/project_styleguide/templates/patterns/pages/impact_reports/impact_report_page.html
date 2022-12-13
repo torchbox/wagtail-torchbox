@@ -5,6 +5,13 @@
 
     {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro in_page_nav=True %}
 
+    <ul>
+        {% for heading in page.headings %}
+            <li><a href="#{{ heading.slug }}">{{ heading.short_heading }}</a></li>
+        {% endfor %}
+    </ul>
+
+
     <h2>{{ page.introduction_title }}</h2>
 
     {% for page_author in page.authors.all %}
