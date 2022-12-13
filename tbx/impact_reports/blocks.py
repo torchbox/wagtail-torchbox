@@ -1,5 +1,5 @@
-from tbx.core.blocks import CharBlock, RichTextBlock, StoryBlock
-from wagtail.blocks import StructBlock
+from tbx.core.blocks import StoryBlock
+from wagtail.blocks import CharBlock, ChoiceBlock, RichTextBlock, StructBlock
 from wagtail.images.blocks import ImageChooserBlock
 
 
@@ -11,7 +11,7 @@ class ImpactReportHeadingBlock(StructBlock):
     class Meta:
         icon = "title"
         template = (
-            "patterns/molecules/streamfield/blocks/impact_report_heading_block.html",
+            "patterns/molecules/streamfield/blocks/impact_report_heading_block.html"
         )
 
 
@@ -19,6 +19,13 @@ class ParagraphWithQuoteBlock(StructBlock):
     text = RichTextBlock()
     quote = CharBlock()
     attribution = CharBlock(required=False)
+    quote_alignment = ChoiceBlock(
+        choices=[
+            ("left", "Left"),
+            ("right", "Right"),
+        ],
+        default="right",
+    )
 
     class Meta:
         icon = "pilcrow"
@@ -27,14 +34,25 @@ class ParagraphWithQuoteBlock(StructBlock):
         )
 
 
-class TextGridItemBlock(StructBlock):
-    pass
+class ParagraphWithImageBlock(StructBlock):
+    text = RichTextBlock()
+    image = ImageChooserBlock(required=False)
+    image_alignment = ChoiceBlock(
+        choices=[
+            ("left", "Left"),
+            ("right", "Right"),
+        ],
+        default="right",
+    )
 
-
-class TextGridBlock(StructBlock):
-    pass
+    class Meta:
+        icon = "pilcrow"
+        template = (
+            "patterns/molecules/streamfield/blocks/paragraph_with_image_block.html"
+        )
 
 
 class ImpactReportStoryBlock(StoryBlock):
     impact_report_heading = ImpactReportHeadingBlock()
-    paragraph_with_quote_block = ParagraphWithQuoteBlock()
+    paragraph_with_quote = ParagraphWithQuoteBlock()
+    paragraph_with_image = ParagraphWithImageBlock()

@@ -1,0 +1,12 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<p>
+    {{ value.text|richtext }}
+</p>
+
+<div>
+    {% image value.image fill-500x500 %}
+</div>
+<p>
+    <b>Image Alignment:</b> {{ value.image_alignment }}
+</p>
