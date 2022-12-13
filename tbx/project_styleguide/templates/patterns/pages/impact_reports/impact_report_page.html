@@ -12,7 +12,9 @@
     </ul>
 
 
-    <h2>{{ page.introduction_title }}</h2>
+    <div id="{{ page.introduction_title|slugify }}" style="padding-top: 50px;">
+        <h2>{{ page.introduction_title }}</h2>
+    </div>
 
     {% for page_author in page.authors.all %}
         {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=page.blog_index.url %}
