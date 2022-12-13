@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+
+<div>
+    <div>
+        <b id="{{ value.short_heading|slugify }}">{{ value.short_heading }}</b>
+    </div>
+
+    <div>
+        {% image value.image fill-1000x300 %}
+    </div>
+
+    <h2>{{ value.heading }}</h2>
+</div>
