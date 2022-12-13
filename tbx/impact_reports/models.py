@@ -54,11 +54,20 @@ class ImpactReportPage(Page):
 
     @property
     def headings(self):
-        return [
+        headings = [
             {
-                "short_heading": block.value["short_heading"],
-                "slug": slugify(block.value["short_heading"]),
-            }
-            for block in self.body
-            if block.block_type == "impact_report_heading"
+                "short_heading": self.introduction_title,
+                "slug": slugify(self.introduction_title),
+            },
         ]
+
+        for block in self.body:
+            if block.block_type == "impact_report_heading":
+                headings.append(
+                    {
+                        "short_heading": block.value["short_heading"],
+                        "slug": slugify(block.value["short_heading"]),
+                    }
+                )
+
+        return headings

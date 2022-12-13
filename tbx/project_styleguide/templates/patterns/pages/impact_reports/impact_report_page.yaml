@@ -1,5 +1,11 @@
 context:
   page:
+    headings:
+      - Introduction
+      - The impact
+      - The business
+      - Setting new standards
+      - Looking ahead
     title: Impact Report for 2020/2021
     strapline: Impact Report <span>2020/2021</span>
     introduction_title: Introduction
