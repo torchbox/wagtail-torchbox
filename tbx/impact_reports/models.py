@@ -10,7 +10,7 @@ from wagtail.search import index
 from .blocks import ImpactReportStoryBlock
 
 
-class ImpactReportPageAuthor(Orderable):
+class ImpactReportAuthor(Orderable):
     page = ParentalKey("impact_reports.ImpactReportPage", related_name="authors")
     author = models.ForeignKey(
         "people.Author",
