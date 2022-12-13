@@ -52,6 +52,21 @@ class ParagraphWithImageBlock(StructBlock):
         )
 
 
+class ThreeColumnImageGrid(StructBlock):
+    # 3 images with accompanying text
+    pass
+
+
+class DiagonalImageGrid(StructBlock):
+    # 3 diagonally styled images
+    pass
+
+
+class TextGrid(StructBlock):
+    # 2 columns of text with headings and images
+    pass
+
+
 class ImpactReportStoryBlock(StoryBlock):
     impact_report_heading = ImpactReportHeadingBlock()
     paragraph_with_quote = ParagraphWithQuoteBlock()
