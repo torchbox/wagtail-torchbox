@@ -1,11 +1,16 @@
 context:
   page:
     headings:
-      - Introduction
-      - The impact
-      - The business
-      - Setting new standards
-      - Looking ahead
+      - short_heading: Introduction
+        slug: introduction
+      - short_heading: The impact
+        slug: the-impact
+      - short_heading: The business
+        slug: the-business
+      - short_heading: Setting new standards
+        slug: setting-new-standards
+      - short_heading: Looking ahead
+        slug: looking-ahead
     title: Impact Report for 2020/2021
     strapline: Impact Report <span>2020/2021</span>
     introduction_title: Introduction
