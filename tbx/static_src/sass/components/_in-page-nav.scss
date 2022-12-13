@@ -156,4 +156,46 @@
             font-size: map-get($large-font-sizes, s);
         }
     }
+
+    &--report {
+        #{$root}__item {
+            padding-bottom: 0;
+        }
+
+        #{$root}__link {
+            font-size: map-get($small-font-sizes, s);
+            color: var(--color--dark-indigo);
+            border-bottom-color: transparent;
+
+            &:focus,
+            &:hover {
+                border-bottom-color: var(--color--dark-indigo);
+            }
+        }
+
+        #{$root}__container {
+            display: block;
+            margin: 0;
+
+            @include media-query(medium) {
+                display: flex;
+            }
+        }
+
+        .nav-stuck & {
+            #{$root}__container {
+                display: flex;
+            }
+
+            #{$root}__inner {
+                background-color: var(--color--succulent);
+            }
+
+            #{$root}__link {
+                &.is-active {
+                    border-bottom-color: var(--color--dark-indigo);
+                }
+            }
+        }
+    }
 }

@@ -132,6 +132,10 @@
                 margin-left: auto;
             }
         }
+
+        .report-page & {
+            margin: 0;
+        }
     }
 
     &__aligned-image-caption {
@@ -219,5 +223,22 @@
                 color: var(--color--dark-indigo);
             }
         }
+    }
+
+    .report-page & {
+        margin: 0;
+        background: transparent;
+    }
+}
+
+.report-page {
+    .streamfield__heading,
+    .streamfield__paragraph {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .streamfield__heading {
+        font-weight: $weight--heavy;
     }
 }

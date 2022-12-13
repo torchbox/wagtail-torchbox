@@ -9,6 +9,9 @@
     --color--indigo: #2f128d;
     // Deep indigo in torchbox guidelines
     --color--dark-indigo: #251657;
+    --color--stone: #284d74;
+    --color--succulent: #d3e8e1;
+    --color--buttermilk: #fffbf0;
     --color--light-grey: #f4f3f6;
     --color--light-grey-accessible: #757575;
     --color--grey: #444;
@@ -47,6 +50,7 @@ $weight--light: 100;
 $base-font-size: 16px;
 
 $large-font-sizes: (
+    oversized: 97px,
     xxxxl: 70px,
     xxxl: 68px,
     xxl: 64px,
@@ -62,6 +66,7 @@ $large-font-sizes: (
 );
 
 $medium-font-sizes: (
+    oversized: 45px,
     xxxxl: 70px,
     xxxl: 65px,
     xxl: 52px,
@@ -76,6 +81,7 @@ $medium-font-sizes: (
 );
 
 $small-font-sizes: (
+    oversized: 45px,
     xxxxl: 50px,
     xxxl: 45px,
     xxl: 32px,
@@ -92,6 +98,7 @@ $small-font-sizes: (
 // --------------------------------- Breakpoints --------------------------------------
 $breakpoints: (
     'medium' '(min-width: 599px)',
+    'report' '(min-width: 700px)',
     'large' '(min-width: 1023px)',
     'menu-break' '(min-width: 1255px)',
     'x-large' '(min-width: 1919px)'

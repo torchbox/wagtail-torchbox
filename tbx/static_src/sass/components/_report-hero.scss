@@ -1,0 +1,65 @@
+.report-hero {
+    $root: &;
+    overflow: hidden;
+    height: 840px;
+    width: 100%;
+
+    // Temporary, will be managed in Wagtail
+    background-color: var(--color--succulent);
+    background-image: url('../images/cssBackgrounds/report-hero-icons.svg');
+    background-size: 285px 350px;
+    background-position: 90% 100%;
+    background-repeat: no-repeat;
+
+    @include media-query(medium) {
+        padding-bottom: 5vh;
+        background-size: 571px 700px;
+        background-position: 90% 140px;
+        background-repeat: no-repeat;
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding-top: 70px;
+
+        @include media-query(medium) {
+            padding-top: 140px;
+        }
+
+        @include media-query(large) {
+            padding-left: 14.66vw;
+        }
+    }
+
+    &__content {
+        @include z-index(two);
+        position: relative;
+        margin: 50px $variable-gutter--small 0;
+        padding-top: ($gutter * 3);
+        padding-bottom: $gutter;
+
+        @include media-query(medium) {
+            margin-left: 10.33vw;
+        }
+    }
+
+    &__title {
+        @include font-size(oversized);
+        line-height: 45px;
+        color: var(--color--stone);
+        font-weight: $weight--heavy;
+        max-width: 900px;
+        margin-bottom: 30px;
+
+        @include media-query(medium) {
+            line-height: 97px;
+            margin-bottom: 70px;
+        }
+
+        span {
+            color: var(--color--dark-indigo);
+        }
+    }
+}
