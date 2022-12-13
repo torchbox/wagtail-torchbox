@@ -1,0 +1,11 @@
+context:
+  page:
+    title: Impact Report for 2020/2021
+    strapline: Impact Report <span>2020/2021</span>
+    introduction_title: Introduction
+    authors:
+      all:
+        - author:
+            name: Juan dela Cruz
+            role: Director
+    introduction: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
