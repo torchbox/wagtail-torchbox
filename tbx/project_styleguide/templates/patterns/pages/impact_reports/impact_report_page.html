@@ -3,25 +3,41 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro in_page_nav=True %}
+    {# {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro in_page_nav=True %}#}
+    {% include "patterns/molecules/hero/report_hero.html" with title=page.strapline %}
 
-    <ul>
-        {% for heading in page.headings %}
-            <li><a href="#{{ heading.slug }}">{{ heading.short_heading }}</a></li>
+    <div class="report-page">
+        <div class="report-page__container">
+            <div id="{{ page.introduction_title|slugify }}">
+                <h2 class="report-page__heading">{{ page.introduction_title }}</h2>
+            </div>
+
+            {% for page_author in page.authors.all %}
+                {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=page.blog_index.url %}
+            {% endfor %}
+
+            <div class="report-page__introduction">
+                {{ page.introduction|richtext }}
+            </div>
+        </div>
+
+        {% for block in page.body %}
+            {% if block.block_type == 'impact_report_heading' %}
+                <div class="report-page__full-width">
+                    {% include_block block %}
+                </div>
+            {% else %}
+                <div class="report-page__container">
+                    {% include_block block %}
+                </div>
+            {% endif %}
         {% endfor %}
-    </ul>
-
-
-    <div id="{{ page.introduction_title|slugify }}" style="padding-top: 50px;">
-        <h2>{{ page.introduction_title }}</h2>
     </div>
+ {% endblock %}
 
-    {% for page_author in page.authors.all %}
-        {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=page.blog_index.url %}
-    {% endfor %}
 
-    {{ page.introduction|richtext }}
-
-    {% include_block page.body %}
-
+{% block extra_js %}
+    <script type="text/javascript">
+        window.reportPage = true;
+    </script>
 {% endblock %}
