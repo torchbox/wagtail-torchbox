@@ -6,5 +6,5 @@ context:
 
 tags:
   image:
-    value.image fill-1382x460 class="report-section__image":
-      raw: '<img src="https://placekitten.com/1382/460" class="report-section__image">'
+    value.image fill-1792x597 class="report-section__image":
+      raw: '<img src="https://placekitten.com/1792/597" class="report-section__image">'

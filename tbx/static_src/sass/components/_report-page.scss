@@ -1,8 +1,6 @@
 .report-page {
     background-color: var(--color--buttermilk);
-
-    // TODO: remove me
-    padding-bottom: 200px;
+    padding-bottom: 100px;
 
     &__container {
         max-width: 740px;
@@ -40,9 +38,14 @@
         color: var(--color--stone);
         line-height: 80px;
         font-weight: $weight--heavy;
-        padding-top: 180px;
-        margin-top: -80px;
         margin-bottom: 35px;
+        padding-top: 280px;
+        margin-top: -195px;
+
+        @include media-query(medium) {
+            padding-top: 180px;
+            margin-top: -80px;
+        }
     }
 
     &__introduction {

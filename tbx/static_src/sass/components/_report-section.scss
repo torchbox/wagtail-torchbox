@@ -25,10 +25,18 @@
 
     &__heading {
         @include font-size(xxxxl);
-        line-height: 80px;
+        line-height: 55px;
         font-weight: $weight--heavy;
         color: var(--color--dark-indigo);
         margin: 0;
+
+        @include media-query(medium) {
+            line-height: 70px;
+        }
+
+        @include media-query(large) {
+            line-height: 80px;
+        }
 
         span {
             color: var(--color--stone);
