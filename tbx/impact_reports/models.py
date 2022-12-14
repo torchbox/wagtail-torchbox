@@ -54,6 +54,15 @@ class ImpactReportPage(Page):
 
     @property
     def headings(self):
+        """
+        Gets all of the impact report headers' short headings and their slugs,
+        including the Introduction.
+
+        This is used to create a table-of-contents like section at the top of
+        the page where viewers can jump to the top of each impact report heading
+        and Introduction.
+        """
+
         headings = [
             {
                 "short_heading": self.introduction_title,
