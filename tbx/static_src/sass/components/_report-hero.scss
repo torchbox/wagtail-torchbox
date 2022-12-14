@@ -50,7 +50,7 @@
         line-height: 45px;
         color: var(--color--stone);
         font-weight: $weight--heavy;
-        max-width: 900px;
+        max-width: 800px;
         margin-bottom: 30px;
 
         @include media-query(medium) {

@@ -256,4 +256,9 @@
     .streamfield__heading {
         font-weight: $weight--heavy;
     }
+
+    .streamfield__paragraph {
+        font-size: map-get($large-font-sizes, s);
+        line-height: 31px;
+    }
 }
