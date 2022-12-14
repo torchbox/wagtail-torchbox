@@ -1,5 +1,11 @@
 from tbx.core.blocks import StoryBlock
-from wagtail.blocks import CharBlock, ChoiceBlock, RichTextBlock, StructBlock
+from wagtail.blocks import (
+    CharBlock,
+    ChoiceBlock,
+    ListBlock,
+    RichTextBlock,
+    StructBlock,
+)
 from wagtail.images.blocks import ImageChooserBlock
 
 
@@ -30,7 +36,7 @@ class ParagraphWithQuoteBlock(StructBlock):
     class Meta:
         icon = "pilcrow"
         template = (
-            "patterns/molecules/streamfield/blocks/paragraph_with_quote_block.html",
+            "patterns/molecules/streamfield/blocks/paragraph_with_quote_block.html"
         )
 
 
@@ -52,22 +58,54 @@ class ParagraphWithImageBlock(StructBlock):
         )
 
 
-class ThreeColumnImageGrid(StructBlock):
-    # 3 images with accompanying text
-    pass
+class ThreeColumnImageGridItemBlock(StructBlock):
+    image = ImageChooserBlock()
+    text = CharBlock()
+
+    class Meta:
+        icon = "image"
 
 
-class DiagonalImageGrid(StructBlock):
-    # 3 diagonally styled images
-    pass
+class ThreeColumnImageGridBlock(StructBlock):
+    items = ListBlock(ThreeColumnImageGridItemBlock(), min_num=3, max_num=3)
+
+    class Meta:
+        icon = "image"
+        template = (
+            "patterns/molecules/streamfield/blocks/three_column_image_grid_block.html"
+        )
 
 
-class TextGrid(StructBlock):
-    # 2 columns of text with headings and images
-    pass
+class DiagonalImageGridBlock(StructBlock):
+    images = ListBlock(ImageChooserBlock(), min_num=3, max_num=3)
+
+    class Meta:
+        icon = "image"
+        template = (
+            "patterns/molecules/streamfield/blocks/diagonal_image_grid_block.html"
+        )
+
+
+class TwoColumnTextGridItemBlock(StructBlock):
+    image = ImageChooserBlock()
+    heading = CharBlock()
+    text = CharBlock()
+
+
+class TwoColumnTextGridBlock(StructBlock):
+    items = ListBlock(TwoColumnTextGridItemBlock())
+
+    class Meta:
+        icon = "grip"
+        template = (
+            "patterns/molecules/streamfield/blocks/two_column_text_grid_block.html"
+        )
 
 
 class ImpactReportStoryBlock(StoryBlock):
     impact_report_heading = ImpactReportHeadingBlock()
     paragraph_with_quote = ParagraphWithQuoteBlock()
     paragraph_with_image = ParagraphWithImageBlock()
+    three_column_image_grid = ThreeColumnImageGridBlock()
+    diagonal_image_grid = DiagonalImageGridBlock()
+    two_column_text_grid = TwoColumnTextGridBlock()

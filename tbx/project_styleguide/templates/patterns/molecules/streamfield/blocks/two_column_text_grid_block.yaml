@@ -1,0 +1,20 @@
+context:
+  value:
+    items:
+      - image: true
+        heading: This is a heading
+        text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non nisi est sit amet facilisis magna etiam tempor orci.
+      - image: true
+        heading: This is another heading
+        text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non nisi est sit amet facilisis magna etiam tempor orci.
+      - image: true
+        heading: This is yet another heading
+        text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non nisi est sit amet facilisis magna etiam tempor orci.
+      - image: true
+        heading: This, unsurprisingly, is a heading
+        text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non nisi est sit amet facilisis magna etiam tempor orci.
+
+tags:
+  image:
+    item.image fill-50x50:
+      raw: '<img src="https://placekitten.com/50/50">'
