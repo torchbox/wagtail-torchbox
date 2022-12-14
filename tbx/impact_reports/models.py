@@ -28,6 +28,14 @@ class ImpactReportPage(Page):
 
     strapline = models.CharField(max_length=255)
 
+    hero_image = models.ForeignKey(
+        "images.CustomImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
     introduction_title = models.CharField(max_length=255, default="Introduction")
     introduction = RichTextField(blank=True)
 
@@ -36,6 +44,7 @@ class ImpactReportPage(Page):
     content_panels = [
         FieldPanel("title", classname="title"),
         FieldPanel("strapline"),
+        FieldPanel("hero_image"),
         MultiFieldPanel(
             [
                 FieldPanel("introduction_title"),
