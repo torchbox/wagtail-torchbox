@@ -163,6 +163,12 @@
     }
 
     &--report {
+        margin-left: 8.33vw;
+
+        @include media-query(medium) {
+            margin-left: 10.33vw;
+        }
+
         #{$root}__item {
             padding-bottom: 0;
         }
@@ -172,6 +178,14 @@
             color: var(--color--dark-indigo);
             border-bottom-color: transparent;
 
+            @include media-query(medium) {
+                padding-top: 20px;
+            }
+
+            @include media-query(large) {
+                padding-top: 0;
+            }
+
             &:focus,
             &:hover {
                 border-bottom-color: var(--color--dark-indigo);
@@ -180,9 +194,10 @@
 
         #{$root}__container {
             display: block;
+            padding-left: 0;
             margin: 0;
 
-            @include media-query(medium) {
+            @include media-query(large) {
                 display: flex;
             }
         }

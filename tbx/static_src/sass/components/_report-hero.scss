@@ -1,18 +1,24 @@
 .report-hero {
     $root: &;
     overflow: hidden;
-    height: 840px;
+    min-height: 600px;
+    padding-bottom: 20px;
     width: 100%;
 
     // Temporary, will be managed in Wagtail
     background-color: var(--color--succulent);
     background-image: url('../images/cssBackgrounds/report-hero-icons.svg');
-    background-size: 285px 350px;
+    background-size: 190px 233px;
     background-position: 90% 100%;
     background-repeat: no-repeat;
 
     @include media-query(medium) {
-        padding-bottom: 5vh;
+        min-height: 730px;
+        background-size: 285px 350px;
+    }
+
+    @include media-query(large) {
+        min-height: 840px;
         background-size: 571px 700px;
         background-position: 90% 140px;
         background-repeat: no-repeat;
@@ -47,15 +53,19 @@
 
     &__title {
         @include font-size(oversized);
-        line-height: 45px;
         color: var(--color--stone);
         font-weight: $weight--heavy;
-        max-width: 800px;
         margin-bottom: 30px;
+        line-height: 60px;
 
         @include media-query(medium) {
+            line-height: 74px;
+        }
+
+        @include media-query(large) {
             line-height: 97px;
             margin-bottom: 70px;
+            max-width: 800px;
         }
 
         span {
