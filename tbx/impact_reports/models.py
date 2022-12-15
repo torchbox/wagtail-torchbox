@@ -34,6 +34,7 @@ class ImpactReportPage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
+        help_text="This is for the illustration only. Use an image with dimensions of 571x700",
     )
 
     introduction_title = models.CharField(max_length=255, default="Introduction")

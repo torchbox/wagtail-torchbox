@@ -3,6 +3,11 @@
         @include container();
         display: flex;
         align-items: flex-start;
+
+        .report-page & {
+            margin: 0;
+            align-items: center;
+        }
     }
 
     &__image {
@@ -49,6 +54,10 @@
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: bold;
+
+        .report-page & {
+            color: var(--color--stone);
+        }
     }
 
     &__date,
@@ -85,5 +94,9 @@
         @include media-query(large) {
             margin: 0 0 0 $variable-gutter--medium;
         }
+    }
+
+    .report-page & {
+        margin: 0;
     }
 }

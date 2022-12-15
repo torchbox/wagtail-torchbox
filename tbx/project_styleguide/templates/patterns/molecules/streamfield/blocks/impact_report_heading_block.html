@@ -1,13 +1,14 @@
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags static %}
 
-<div id="{{ value.short_heading|slugify }}">
-    <div style="padding-top: 75px;">
-        <b>{{ value.short_heading }}</b>
+<div class="report-section">
+    {% image value.image fill-1792x597 class="report-section__image" %}
+
+    <div class="report-section__container">
+        <div>
+            <p class="report-section__short-heading" id="{{ value.short_heading|slugify }}" data-service-section>
+                {{ value.short_heading }}
+            </p>
+        </div>
+        <h2 class="report-section__heading">{{ value.heading|richtext }}</h2>
     </div>
-
-    <div>
-        {% image value.image fill-1000x300 %}
-    </div>
-
-    <h2>{{ value.heading }}</h2>
 </div>
