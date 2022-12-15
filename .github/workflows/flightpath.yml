@@ -10,15 +10,22 @@ on: [workflow_dispatch]
 concurrency: staging_environment
 jobs:
   run_flightpath:
-    runs-on: ubuntu-latest
     steps:
-      - name: Install curl, jq
-        run: apt-get install -y curl jq
-      - name: Send POST request to FlightPath
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - name: Install dependencies
         run: |
-          export JOB_STATUS=$(curl -f -X POST -m 900
-          -H "Authorization: Token ${{ secrets.FLIGHTPATH_AUTH_KEY }}" -d "source_key=${{ secrets.DEPLOYMENT_KEY }}&destination_key=${{ secrets.DEPLOYMENT_KEY }}&copy_media=1&from_backup=1"
-          "https://${{ secrets.FLIGHTPATH_URL }}/${{ secrets.HEROKU_APP_NAME_PRODUCTION }}/${{ secrets.HEROKU_APP_NAME_STAGING }}/")
-          echo $JOB_STATUS
-          export JOB_ID=$(echo $JOB_STATUS | jq -r '.job_id')
-          echo $JOB_ID
+          python -m pip install --upgrade pip
+          pip install requests
+          pip install argparse
+      - name: Run run_flightpath.py script
+        run: |
+          python tbx/core/utils/run_flightpath.py --destination=${{ secrets.HEROKU_APP_NAME_STAGING }}
+        env:
+          HEROKU_APP_NAME_PRODUCTION: ${{ secrets.HEROKU_APP_NAME_PRODUCTION }}
+          FLIGHTPATH_AUTH_KEY: ${{ secrets.FLIGHTPATH_AUTH_KEY }}
+          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
+          FLIGHTPATH_URL: ${{ secrets.FLIGHTPATH_URL }}
