@@ -1,20 +1,11 @@
 {% extends "patterns/base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
     {% include "patterns/molecules/hero/report_hero.html" with title=page.strapline %}
 
     <div class="report-page">
         <div class="report-page__container">
-
-            {% include "patterns/molecules/hero/hero.html" with title=page.strapline in_page_nav=True %}
-
-            {% comment %}
-            {% if page.hero_image %}
-                <b>Hero image:</b>
-                {% image page.hero_image fill-500x500 %}
-            {% endif %}
-            {% endcomment %}
 
             {# Introduction section #}
             <div id="{{ page.introduction_title|slugify }}" data-service-section>
