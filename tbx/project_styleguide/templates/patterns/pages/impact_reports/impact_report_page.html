@@ -7,6 +7,15 @@
     <div class="report-page">
         <div class="report-page__container">
 
+            {% include "patterns/molecules/hero/hero.html" with title=page.strapline in_page_nav=True %}
+
+            {% comment %}
+            {% if page.hero_image %}
+                <b>Hero image:</b>
+                {% image page.hero_image fill-500x500 %}
+            {% endif %}
+            {% endcomment %}
+
             {# Introduction section #}
             <div id="{{ page.introduction_title|slugify }}" data-service-section>
                 <h2 class="report-page__heading" >{{ page.introduction_title }}</h2>
@@ -14,7 +23,7 @@
 
             {# Authors #}
             {% for page_author in page.authors.all %}
-                {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=page.blog_index.url %}
+                {% include "patterns/molecules/author/author.html" with author=page_author.author item=page %}
             {% endfor %}
 
             {# Introduction copy #}
@@ -38,4 +47,4 @@
             {% endif %}
         {% endfor %}
     </div>
- {% endblock %}
+{% endblock %}

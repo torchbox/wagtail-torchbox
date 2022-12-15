@@ -28,19 +28,33 @@ class ImpactReportPage(Page):
 
     strapline = models.CharField(max_length=255)
 
+    hero_image = models.ForeignKey(
+        "images.CustomImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
     introduction_title = models.CharField(max_length=255, default="Introduction")
     introduction = RichTextField(blank=True)
 
     body = StreamField(ImpactReportStoryBlock(), use_json_field=True)
 
     content_panels = [
-        FieldPanel("title", classname="title"),
-        FieldPanel("strapline"),
+        MultiFieldPanel(
+            [
+                FieldPanel("title", classname="title"),
+                FieldPanel("strapline"),
+                FieldPanel("hero_image"),
+            ],
+            heading="Hero",
+        ),
         MultiFieldPanel(
             [
                 FieldPanel("introduction_title"),
-                InlinePanel("authors", label="Author", min_num=1),
                 FieldPanel("introduction"),
+                InlinePanel("authors", label="Author", min_num=1),
             ],
             heading="Introduction",
         ),
@@ -54,6 +68,15 @@ class ImpactReportPage(Page):
 
     @property
     def headings(self):
+        """
+        Gets all of the impact report headers' short headings and their slugs,
+        including the Introduction.
+
+        This is used to create a table-of-contents like section at the top of
+        the page where viewers can jump to the top of each impact report heading
+        and Introduction.
+        """
+
         headings = [
             {
                 "short_heading": self.introduction_title,
