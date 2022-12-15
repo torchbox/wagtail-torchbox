@@ -163,7 +163,7 @@
     }
 
     &--report {
-        margin-left: 8.33vw;
+        margin-left: $variable-gutter--small;
 
         @include media-query(medium) {
             margin-left: 10.33vw;
