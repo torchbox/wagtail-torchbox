@@ -6,7 +6,7 @@
         max-width: 740px;
         margin: 0 auto;
         overflow: auto;
-        padding: 0 8.33vw;
+        padding: 0 $variable-gutter--small;
 
         @include media-query(large) {
             padding: 0;
@@ -16,7 +16,7 @@
     &__full-width {
         max-width: 740px;
         margin: 0 auto;
-        padding: 0 8.33vw;
+        padding: 0 $variable-gutter--small;
 
         @include media-query(large) {
             max-width: 100%;
