@@ -5,6 +5,11 @@
 
     {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro in_page_nav=True %}
 
+    {% if page.hero_image %}
+        <b>Hero image:</b>
+        {% image page.hero_image fill-500x500 %}
+    {% endif %}
+
     <ul>
         {% for heading in page.headings %}
             <li><a href="#{{ heading.slug }}">{{ heading.short_heading }}</a></li>

@@ -13,6 +13,7 @@ context:
         slug: looking-ahead
     title: Impact Report for 2020/2021
     strapline: Impact Report <span>2020/2021</span>
+    hero_image: true
     introduction_title: Introduction
     authors:
       all:
@@ -20,3 +21,8 @@ context:
             name: Juan dela Cruz
             role: Director
     introduction: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+tags:
+  image:
+    page.hero_image fill-500x500:
+      raw: '<img src="https://placekitten.com/500/500">'
