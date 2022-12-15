@@ -42,14 +42,19 @@ class ImpactReportPage(Page):
     body = StreamField(ImpactReportStoryBlock(), use_json_field=True)
 
     content_panels = [
-        FieldPanel("title", classname="title"),
-        FieldPanel("strapline"),
-        FieldPanel("hero_image"),
+        MultiFieldPanel(
+            [
+                FieldPanel("title", classname="title"),
+                FieldPanel("strapline"),
+                FieldPanel("hero_image"),
+            ],
+            heading="Hero"
+        ),
         MultiFieldPanel(
             [
                 FieldPanel("introduction_title"),
-                InlinePanel("authors", label="Author", min_num=1),
                 FieldPanel("introduction"),
+                InlinePanel("authors", label="Author", min_num=1),
             ],
             heading="Introduction",
         ),

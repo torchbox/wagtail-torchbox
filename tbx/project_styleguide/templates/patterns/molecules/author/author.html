@@ -37,13 +37,15 @@
                     <span class="u-sr-only">,</span>
                 {% endif %}
             </span>
-            <div class="author__tags">
-                <span class="u-sr-only">Related post categories:</span>
-                {% for tag in item.related_services.all %}
-                    {% include "patterns/atoms/tag/tag.html" with item=tag small=True tag_link_base=tag_link_base %}
-                    <span class="u-sr-only">,</span>
-                {% endfor %}
-            </div>
+            {% if tag_link_base %}
+                <div class="author__tags">
+                    <span class="u-sr-only">Related post categories:</span>
+                    {% for tag in item.related_services.all %}
+                        {% include "patterns/atoms/tag/tag.html" with item=tag small=True tag_link_base=tag_link_base %}
+                        <span class="u-sr-only">,</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
