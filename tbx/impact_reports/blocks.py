@@ -11,7 +11,9 @@ from wagtail.images.blocks import ImageChooserBlock
 
 class ImpactReportHeadingBlock(StructBlock):
     image = ImageChooserBlock(required=False)
-    short_heading = CharBlock(required=False, help_text="Used for the Table of Contents")
+    short_heading = CharBlock(
+        required=False, help_text="Used for the Table of Contents"
+    )
     heading = CharBlock(required=False)
 
     class Meta:
