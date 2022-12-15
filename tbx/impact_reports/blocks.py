@@ -11,7 +11,7 @@ from wagtail.images.blocks import ImageChooserBlock
 
 class ImpactReportHeadingBlock(StructBlock):
     image = ImageChooserBlock(required=False)
-    short_heading = CharBlock(required=False)
+    short_heading = CharBlock(required=False, help_text="Used for the Table of Contents")
     heading = CharBlock(required=False)
 
     class Meta:
@@ -23,7 +23,7 @@ class ImpactReportHeadingBlock(StructBlock):
 
 class ParagraphWithQuoteBlock(StructBlock):
     text = RichTextBlock()
-    quote = CharBlock()
+    quote = RichTextBlock(features=["bold", "italic", "link", "document-link"])
     attribution = CharBlock(required=False)
     quote_alignment = ChoiceBlock(
         choices=[
@@ -103,9 +103,9 @@ class TwoColumnTextGridBlock(StructBlock):
 
 
 class ImpactReportStoryBlock(StoryBlock):
-    impact_report_heading = ImpactReportHeadingBlock()
-    paragraph_with_quote = ParagraphWithQuoteBlock()
-    paragraph_with_image = ParagraphWithImageBlock()
-    three_column_image_grid = ThreeColumnImageGridBlock()
-    diagonal_image_grid = DiagonalImageGridBlock()
-    two_column_text_grid = TwoColumnTextGridBlock()
+    impact_report_heading = ImpactReportHeadingBlock(group="Impact Report")
+    paragraph_with_quote = ParagraphWithQuoteBlock(group="Impact Report")
+    paragraph_with_image = ParagraphWithImageBlock(group="Impact Report")
+    three_column_image_grid = ThreeColumnImageGridBlock(group="Impact Report")
+    diagonal_image_grid = DiagonalImageGridBlock(group="Impact Report")
+    two_column_text_grid = TwoColumnTextGridBlock(group="Impact Report")
