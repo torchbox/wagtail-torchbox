@@ -48,7 +48,7 @@ class ImpactReportPage(Page):
                 FieldPanel("strapline"),
                 FieldPanel("hero_image"),
             ],
-            heading="Hero"
+            heading="Hero",
         ),
         MultiFieldPanel(
             [
