@@ -1,0 +1,14 @@
+context:
+  value:
+    items:
+      - image: true
+        text: This is the first policy
+      - image: true
+        text: This is the second policy
+      - image: true
+        text: This is the third policy
+
+tags:
+  image:
+    item.image fill-100x100:
+      raw: '<img src="https://placekitten.com/100/100">'

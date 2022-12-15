@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+
+<b>Two-column text grid block</b>
+{% for item in value.items %}
+    <div>
+        {% image item.image fill-50x50 %}
+        <b>{{ item.heading }}</b>
+        <p>{{ item.text }}</p>
+    </div>
+{% endfor %}

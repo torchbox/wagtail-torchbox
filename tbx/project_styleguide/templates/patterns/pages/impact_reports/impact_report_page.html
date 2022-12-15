@@ -1,0 +1,32 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    {% include "patterns/molecules/hero/hero.html" with title=page.strapline in_page_nav=True %}
+
+    {% if page.hero_image %}
+        <b>Hero image:</b>
+        {% image page.hero_image fill-500x500 %}
+    {% endif %}
+
+    <ul>
+        {% for heading in page.headings %}
+            <li><a href="#{{ heading.slug }}">{{ heading.short_heading }}</a></li>
+        {% endfor %}
+    </ul>
+
+
+    <div id="{{ page.introduction_title|slugify }}" style="padding-top: 50px;">
+        <h2>{{ page.introduction_title }}</h2>
+    </div>
+
+    {% for page_author in page.authors.all %}
+        {% include "patterns/molecules/author/author.html" with author=page_author.author item=page %}
+    {% endfor %}
+
+    {{ page.introduction|richtext }}
+
+    {% include_block page.body %}
+
+{% endblock %}

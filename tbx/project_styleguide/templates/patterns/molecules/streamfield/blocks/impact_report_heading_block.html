@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+
+<div id="{{ value.short_heading|slugify }}">
+    <div style="padding-top: 75px;">
+        <b>{{ value.short_heading }}</b>
+    </div>
+
+    <div>
+        {% image value.image fill-1000x300 %}
+    </div>
+
+    <h2>{{ value.heading }}</h2>
+</div>

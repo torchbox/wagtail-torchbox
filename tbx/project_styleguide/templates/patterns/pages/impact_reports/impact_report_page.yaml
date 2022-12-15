@@ -1,0 +1,28 @@
+context:
+  page:
+    headings:
+      - short_heading: Introduction
+        slug: introduction
+      - short_heading: The impact
+        slug: the-impact
+      - short_heading: The business
+        slug: the-business
+      - short_heading: Setting new standards
+        slug: setting-new-standards
+      - short_heading: Looking ahead
+        slug: looking-ahead
+    title: Impact Report for 2020/2021
+    strapline: Impact Report <span>2020/2021</span>
+    hero_image: true
+    introduction_title: Introduction
+    authors:
+      all:
+        - author:
+            name: Juan dela Cruz
+            role: Director
+    introduction: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+tags:
+  image:
+    page.hero_image fill-500x500:
+      raw: '<img src="https://placekitten.com/500/500">'
