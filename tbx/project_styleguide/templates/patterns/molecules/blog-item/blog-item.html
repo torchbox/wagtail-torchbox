@@ -1,6 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<a class="blog-item {% if classes %}{{ classes }}{% endif %}" href="{% firstof item.url item.link_external %}">
+{% pageurl item as item_url %}
+<a class="blog-item {% if classes %}{{ classes }}{% endif %}" href="{% firstof item_url item.link_external %}">
     <h2 class="blog-item__title">{{ item.title }}</h2>
     <span class="u-sr-only">,</span>
 
