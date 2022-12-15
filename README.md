@@ -115,7 +115,7 @@ To deploy push branch to heroku manually:
 ### Staging
 
 Add remote on your local repo:
-`heroku git:remote -a torchbox-staging`
+`heroku git:remote -a <staging heroku app name>`
 
 Rename the remote to avoid confusion with prod
 `git remote rename heroku heroku-staging`
@@ -126,7 +126,7 @@ Push branch to heroku:
 ### Production
 
 Add remote on your local repo:
-`heroku git:remote -a cms-torchbox-com`
+`heroku git:remote -a <prod heroku app name>`
 
 Rename the remote to avoid confusion with staging
 `git remote rename heroku heroku-prod`
