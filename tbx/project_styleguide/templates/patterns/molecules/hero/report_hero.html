@@ -1,6 +1,9 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags static %}
 
-<div class="report-hero">
+{% if page.hero_image %}
+    {% image page.hero_image fill-571x700 as hero_image %}
+{% endif %}
+<div class="report-hero" {% if page.hero_image %}style="background-image:url({{ hero_image.url }})"{% endif %}>
     <div class="report-hero__container">
         <div class="report-hero__content">
             <h1 class="report-hero__title">{{ title|richtext }}</h1>
