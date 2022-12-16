@@ -21,7 +21,7 @@ def get_flightpath_args_from_env():
 
     except KeyError:
         raise KeyError(
-            "You need the following environment variables to run flightpath: FLIGHTPATH_URL, HEROKU_APP_NAME_PRODUCTION, FLIGHTPATH_AUTH_KEY, DEPLOYMENT_KEY. This should be set on github secrets if running as github actions."
+            "You need the following environment variables to run flightpath: FLIGHTPATH_URL, HEROKU_APP_NAME_PRODUCTION, FLIGHTPATH_AUTH_KEY, DEPLOYMENT_KEY. This should be set on GitHub secrets if running as GitHub Actions."
         )
 
     return args
@@ -54,7 +54,7 @@ def post_to_flightpath(
     return response
 
 
-# If this run_flightpath.py is run as a script on the command line or github action
+# If this run_flightpath.py is run as a script on the command line or GitHub Actions
 if __name__ == "__main__":
     flightpath_args = get_flightpath_args_from_env()
 
@@ -71,14 +71,16 @@ if __name__ == "__main__":
             "Destination cannot be the same as the source. Please specify a valid value for '--destination'."
         )
 
-    # The following github vars may not exist if this is
-    # not called from github action, e.g. from command or shell
+    # The following GitHub vars may not exist if this is
+    # not called from GitHub Actions, e.g. from command or shell
     # https://docs.github.com/en/free-pro-team@latest/actions/reference/environment-variables#default-environment-variables
-    repository = (os.environ.get("GITHUB_REPOSITORY"),)
-    run_id = (os.environ.get("GITHUB_RUN_ID"),)
+    repository = os.environ.get("GITHUB_REPOSITORY")
+    run_id = os.environ.get("GITHUB_RUN_ID")
 
     print("Running flightpath...")
-    print(f"from Github repository: {repository}, run_id: {run_id}.")
+
+    if run_id:
+        print(f"from GitHub repository: {repository}, run_id: {run_id}.")
 
     response = post_to_flightpath(**flightpath_args, destination=args.destination)
     print(response.text)
