@@ -19,8 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
-          pip install argparse
+          python -m pip install requests
       - name: Run run_flightpath.py script
         run: |
           python tbx/core/utils/run_flightpath.py --destination=${{ secrets.HEROKU_APP_NAME_STAGING }}
