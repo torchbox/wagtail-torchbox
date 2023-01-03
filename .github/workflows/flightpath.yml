@@ -1,0 +1,30 @@
+name: copy_prod_to_staging
+# The following secrets are required on GitHub:
+#   - FLIGHTPATH_URL (URL for the flightpath call excluding trailing slash)
+#   - HEROKU_APP_NAME_PRODUCTION (source heroku app name)
+#   - HEROKU_APP_NAME_STAGING (destination heroku app name)
+#   - FLIGHTPATH_AUTH_KEY (from flightpath)
+#   - DEPLOYMENT_KEY (as set on corresponding heroku app env var)
+run-name: Copy ${{ secrets.HEROKU_APP_NAME_PRODUCTION }} to ${{ secrets.HEROKU_APP_NAME_STAGING }} by @${{ github.actor }}
+on: [workflow_dispatch]
+concurrency: staging_environment
+jobs:
+  run_flightpath:
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests
+      - name: Run run_flightpath.py script
+        run: |
+          python tbx/core/utils/scripts/run_flightpath.py --destination=${{ secrets.HEROKU_APP_NAME_STAGING }}
+        env:
+          HEROKU_APP_NAME_PRODUCTION: ${{ secrets.HEROKU_APP_NAME_PRODUCTION }}
+          FLIGHTPATH_AUTH_KEY: ${{ secrets.FLIGHTPATH_AUTH_KEY }}
+          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
+          FLIGHTPATH_URL: ${{ secrets.FLIGHTPATH_URL }}
