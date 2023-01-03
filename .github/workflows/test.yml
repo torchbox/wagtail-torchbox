@@ -9,11 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DJANGO_SETTINGS_MODULE: tbx.settings.production
+      DJANGO_SETTINGS_MODULE: tbx.settings.test
       DATABASE_URL: postgres://postgres:postgres@localhost/postgres # pragma: allowlist secret
       CFG_SECRET_KEY: iamnotsosecret
       CFG_ALLOWED_HOSTS: localhost
-      BIRDBATH_REQUIRED: "false"
 
     services:
       postgres:
