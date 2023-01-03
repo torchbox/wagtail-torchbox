@@ -19,7 +19,7 @@ jobs:
         image: postgres:9.6
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgress # pragma: allowlist secret
+          POSTGRES_PASSWORD: postgres # pragma: allowlist secret
           POSTGRES_DB: postgres
         ports:
           - 5432:5432
