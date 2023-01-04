@@ -3,13 +3,15 @@
 {% load static wagtailuserbar wagtailcore_tags wagtailimages_tags navigation_tags util_tags %}
 
 {% block meta_tags %}
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K5HPMR');</script>
-    <!-- End Google Tag Manager -->
+    {% if GOOGLE_TAG_MANAGER_ID and not request.in_preview_panel %}
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ GOOGLE_TAG_MANAGER_ID|escapejs }}');</script>
+        <!-- End Google Tag Manager -->
+    {% endif %}
 
     {# favicons #}
     {% block branding_favicon %}
@@ -36,8 +38,9 @@
         and https://dev.twitter.com/cards/getting-started
     {% endcomment %}
     {% wagtail_site as current_site %}
+    {% social_media_settings as social_media_settings %}
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@{{ settings.utils.SocialMediaSettings.twitter_handle }}" />
+    <meta name="twitter:site" content="@{{ social_media_settings.twitter_handle }}" />
     <meta name="twitter:title" content="{{ page.title }}" />
     <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% elif page.listing_summary %}{{ page.listing_summary }}{% else %}{{ page|social_text:current_site }}{% endif %}">
     {% if page.social_image or page.feed_image or page.hero_image %}
@@ -62,10 +65,12 @@
     {% endif %}
 
     {# facebook opengraph tags #}
-    <meta property="fb:app_id" content="{{ settings.utils.SocialMediaSettings.facebook_app_id }}" />
+    <meta property="fb:app_id" content="{{ social_media_settings.facebook_app_id }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ site.root_url }}{{ page.url }}" />
-    <meta property="og:title" content="{{ page.title }}" />
+    {% if page %}
+        <meta property="og:url" content="{{ site.root_url }}{% pageurl page %}" />
+        <meta property="og:title" content="{{ page.title }}" />
+    {% endif %}
     {% if page.social_image or page.feed_image or page.hero_image %}
         {% if page.social_image %}
             {% image page.social_image fill-1200x630 as social_img %}
@@ -86,15 +91,15 @@
         {% endcomment %}
     {% endif %}
     <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% elif page.listing_summary %}{{ page.listing_summary }}{% else %}{{ page|social_text:current_site }}{% endif %}" />
-    <meta property="og:site_name" content="{{ settings.utils.SocialMediaSettings.site_name }}" />
+    <meta property="og:site_name" content="{{ social_media_settings.site_name }}" />
 {% endblock meta_tags %}
 
 
 {% block body_top %}
-    {% if GOOGLE_TAG_MANAGER_ID %}
+    {% if GOOGLE_TAG_MANAGER_ID and not request.in_preview_panel %}
         {# To enable GTM code you need to specify GOOGLE_TAG_MANAGER_ID in Django settings #}
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ GOOGLE_TAG_MANAGER_ID|urlencode }}"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {% endif %}
 {% endblock body_top %}
 

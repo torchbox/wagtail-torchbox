@@ -19,3 +19,8 @@ def social_text(page, site):
 @register.filter(name="widget_type")
 def widget_type(bound_field):
     return slugify(camel_case_to_spaces(bound_field.field.widget.__class__.__name__))
+
+
+@register.simple_tag(takes_context=True)
+def social_media_settings(context):
+    return SocialMediaSettings.for_request(request=context["request"])

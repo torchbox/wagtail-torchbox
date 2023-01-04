@@ -188,7 +188,7 @@ def pull_production_images(c):
 @task
 def pull_production_data(c):
     """Pull database from production Heroku Postgres"""
-    pull_database_from_heroku(c, PRODUCTION_APP_INSTANCE)
+    pull_database_from_heroku(c, PRODUCTION_APP_INSTANCE, anonymise=True)
 
 
 @task
@@ -340,7 +340,7 @@ def pull_media_from_s3_heroku(c, app_instance):
     )
 
 
-def pull_database_from_heroku(c, app_instance):
+def pull_database_from_heroku(c, app_instance, anonymise=False):
     datestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 
     local(
@@ -357,6 +357,9 @@ def pull_database_from_heroku(c, app_instance):
             datestamp=datestamp,
         ),
     )
+
+    if anonymise:
+        dexec("./manage.py run_birdbath --skip-checks")
 
 
 def open_heroku_shell(c, app_instance, shell_command="bash"):
@@ -425,6 +428,8 @@ def run_test(c):
         [
             "docker-compose",
             "exec",
+            "--env",
+            "BIRDBATH_REQUIRED=false",
             "web",
             "python",
             "manage.py",
