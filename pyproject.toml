@@ -28,6 +28,7 @@ wagtail-purge = {git = "https://github.com/nickmoreton/wagtail-purge", rev = "wa
 wagtail-webstories = {git = "https://github.com/nickmoreton/wagtail-webstories", rev = "allow-wagtail-4"}
 wagtail-markdown = "^0.10.0"
 django-birdbath = "^1.0.0"
+sentry-sdk = "^1.12.1"
 
 [tool.poetry.extras]
 gunicorn = ["gunicorn"]
