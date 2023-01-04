@@ -5,11 +5,12 @@ name: copy_prod_to_staging
 #   - HEROKU_APP_NAME_STAGING (destination heroku app name)
 #   - FLIGHTPATH_AUTH_KEY (from flightpath)
 #   - DEPLOYMENT_KEY (as set on corresponding heroku app env var)
-run-name: Copy ${{ secrets.HEROKU_APP_NAME_PRODUCTION }} to ${{ secrets.HEROKU_APP_NAME_STAGING }} by @${{ github.actor }}
+run-name: Copy production to staging by @${{ github.actor }}
 on: [workflow_dispatch]
 concurrency: staging_environment
 jobs:
   run_flightpath:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.11
