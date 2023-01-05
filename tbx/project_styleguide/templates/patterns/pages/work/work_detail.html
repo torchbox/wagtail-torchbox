@@ -22,15 +22,16 @@
 {% endblock %}
 
 {% block content %}
+    {% pageurl page.work_index as work_index_url %}
     {% with author=page.authors.first.author %}
 
         {% include "patterns/molecules/title-block/title-block.html" with item=page %}
-        {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
+        {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=work_index_url %}
 
         {% include_block page.body %}
 
         <div class="page__author">
-            {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=page.work_index.url %}
+            {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=work_index_url %}
         </div>
 
         {% if page.related_works %}
@@ -39,7 +40,7 @@
                 {% include "patterns/atoms/section-title/section-title.html" with title="More of our work" %}
                 <div class="related-content__list">
                     {% include "patterns/organisms/work-listing/work-listing.html" with works=page.related_works %}
-                    {% include "patterns/atoms/see-more/see-more.html" with link=page.work_index.url text="See more case studies" %}
+                    {% include "patterns/atoms/see-more/see-more.html" with link=work_index_url text="See more case studies" %}
                 </div>
             </div>
         </div>

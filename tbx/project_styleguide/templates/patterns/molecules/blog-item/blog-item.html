@@ -22,17 +22,17 @@
             </div>
             <div class="blog-item__author">
                 <span class="blog-item__author-name">{{ item.author.name }}<span class="u-sr-only">,</span></span>
-            {% if item.date %}
-                <span class="blog-item__author-details">
-            {% endif %}
-                    <span class="blog-item__author-role">{{ item.author.role }}<span class="u-sr-only">,</span></span>
-                    {% if item.event_type %}
-                        <span class="blog-item__author-date">{{ item.event_type }}<span class="u-sr-only">,</span></span>
-                    {% endif %}
-            {% if item.date %}
+                {% if item.date %}
+                    <span class="blog-item__author-details">
+                {% endif %}
+                <span class="blog-item__author-role">{{ item.author.role }}<span class="u-sr-only">,</span></span>
+                {% if item.event_type %}
+                    <span class="blog-item__author-date">{{ item.event_type }}<span class="u-sr-only">,</span></span>
+                {% endif %}
+                {% if item.date %}
                     <span class="blog-item__author-date">{{ item.date }}</span>
-                </span>
-            {% endif %}
+                    </span>
+                {% endif %}
             </div>
         </div>
     {% endif %}
