@@ -64,9 +64,10 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--destination", help="Destination Heroku app name")
     args = parser.parse_args()
     if not args.destination:
-        raise ValueError("Please specify a destination with '--destination'.")
+        raise ValueError(
+            "To confirm you know what you are doing, please specify the destination Heroku app name with '--destination'."
+        )
     elif args.destination == flightpath_args["source"]:
-        # Don't accidentally run on prod!
         raise ValueError(
             "Destination cannot be the same as the source. Please specify a valid value for '--destination'."
         )
