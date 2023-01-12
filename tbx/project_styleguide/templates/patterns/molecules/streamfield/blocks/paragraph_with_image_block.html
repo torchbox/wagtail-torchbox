@@ -1,12 +1,11 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<p>
-    {{ value.text|richtext }}
-</p>
+<div class="paragraph-with-image paragraph-with-image--image-{{ value.image_alignment }}">
+    <div class="paragraph-with-image__text">
+        {{ value.text|richtext }}
+    </div>
 
-<div>
-    {% image value.image fill-500x500 %}
+    <div class="paragraph-with-image__image-wrapper">
+        {% image value.image fill-500x500 %}
+    </div>
 </div>
-<p>
-    <b>Image Alignment:</b> {{ value.image_alignment }}
-</p>
