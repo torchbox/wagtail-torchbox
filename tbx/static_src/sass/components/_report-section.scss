@@ -8,8 +8,8 @@
         color: var(--color--stone);
         line-height: 25px;
         display: inline-block;
-        padding-top: 120px;
-        margin-top: -110px;
+        padding-top: 125px;
+        margin-top: -105px;
         max-width: 130px;
 
         &::before {
@@ -28,7 +28,7 @@
         line-height: 55px;
         font-weight: $weight--heavy;
         color: var(--color--dark-indigo);
-        margin: 0;
+        margin: 35px 0 0;
 
         @include media-query(medium) {
             line-height: 70px;
@@ -36,6 +36,10 @@
 
         @include media-query(large) {
             line-height: 80px;
+        }
+
+        @include media-query(menu-break) {
+            margin: 0;
         }
 
         span {
