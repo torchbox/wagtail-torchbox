@@ -382,10 +382,7 @@ if "SECURE_HSTS_SECONDS" in env:
     except ValueError:
         pass
 
-# Do not use the `includeSubDomains` directive for HSTS. This needs to be prevented
-# because the apps are running on client domains (or our own for staging), that are
-# being used for other applications as well. We should therefore not impose any
-# restrictions on these unrelated applications.
+# We don't enforce HSTS on subdomains as anything at subdomains is likely outside our control.
 # https://docs.djangoproject.com/en/3.2/ref/settings/#secure-hsts-include-subdomains
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 
@@ -428,14 +425,13 @@ if "CSP_DEFAULT_SRC" in env:
 PERMISSIONS_POLICY = {
     "accelerometer": [],
     "ambient-light-sensor": [],
-    "autoplay": [],
+    "autoplay": ["self"],
     "camera": [],
     "display-capture": [],
     "document-domain": [],
     "encrypted-media": [],
     "geolocation": [],
     "gyroscope": [],
-    "interest-cohort": [],
     "magnetometer": [],
     "microphone": [],
     "midi": [],
