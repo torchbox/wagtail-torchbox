@@ -1,0 +1,23 @@
+.two-col-text {
+    display: grid;
+    gap: 30px;
+
+    @include media-query(medium) {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 30px;
+        column-gap: 50px;
+    }
+
+    &__heading {
+        font-size: map-get($medium-font-sizes, m);
+        line-height: 34px;
+        color: var(--color--stone);
+        margin: 13px 0 10px;
+    }
+
+    &__content {
+        font-size: map-get($large-font-sizes, s);
+        line-height: 31px;
+        margin: 0;
+    }
+}

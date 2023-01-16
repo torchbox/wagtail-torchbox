@@ -1,9 +1,12 @@
 {% load wagtailimages_tags %}
 
-<b>Three-column image grid block</b>
-{% for item in value.items %}
-    <div>
-        {% image item.image fill-100x100 %}
-        {{ item.text }}
-    </div>
-{% endfor %}
+<div class="three-col-image">
+    {% for item in value.items %}
+        <div class="three-col-image__item">
+            <div class="three-col-image__image-wrapper">
+                {% image item.image height-80 %}
+            </div>
+            <p class="three-col-image__text">{{ item.text }}</p>
+        </div>
+    {% endfor %}
+</div>

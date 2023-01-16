@@ -1,0 +1,23 @@
+.three-col-image {
+    display: grid;
+    gap: 30px;
+    margin-top: 30px;
+
+    @include media-query(medium) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__text {
+        @include font-size(s);
+        color: var(--color--stone);
+        line-height: 31px;
+        font-weight: $weight--bold;
+        text-align: center;
+        margin: 25px 0 0;
+    }
+
+    &__image-wrapper {
+        display: grid;
+        place-items: center;
+    }
+}

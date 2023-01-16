@@ -84,6 +84,10 @@
         img {
             width: 100%;
         }
+
+        .template__impact-report-page & {
+            margin: 0;
+        }
     }
 
     &__wide-image-icon {
@@ -245,5 +249,11 @@
     .streamfield__paragraph {
         font-size: map-get($large-font-sizes, s);
         line-height: 31px;
+
+        a {
+            color: var(--color--stone);
+            font-weight: $weight--semibold;
+            border-bottom: 2px solid var(--color--stone);
+        }
     }
 }
