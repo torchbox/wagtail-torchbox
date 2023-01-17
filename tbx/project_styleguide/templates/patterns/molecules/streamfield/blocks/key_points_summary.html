@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+
+<div class="key-points">
+    {% for key_point in value %}
+        <div class="key-points__item">
+            <h3 class="key-points__heading">
+                <a href="{% pageurl key_point.link %}" class="key-points__link">
+                    {{ key_point.title }}
+                </a>
+            </h3>
+            <p class="key_points__intro">{{ key_point.intro }}</p>
+        </div>
+    {% endfor %}
+</div>

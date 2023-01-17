@@ -2,6 +2,7 @@
     $root: &;
     position: relative;
     margin: ($gutter * 2) 0;
+    font-style: normal;
 
     @include media-query(large) {
         @include streamblock-padding();
@@ -92,6 +93,31 @@
             position: absolute;
             transform: translateX(calc(-20px + -100%));
             top: -50px;
+        }
+    }
+
+    &__link {
+        @include font-size('s');
+        font-weight: $weight--bold;
+        display: inline-block;
+        position: relative;
+        border-bottom: 2px solid transparent; // prevent shift on hover
+        margin-top: 40px;
+
+        &:hover {
+            border-bottom: 2px solid var(--color--underline);
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: -30px;
+            top: 3px;
+            width: 20px;
+            height: 18px;
+            background-color: var(--color--accent);
+            clip-path: $arrow-path;
         }
     }
 }

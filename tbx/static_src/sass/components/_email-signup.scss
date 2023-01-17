@@ -1,0 +1,54 @@
+.email-signup {
+    background-color: var(--color--primary);
+    padding: 28px;
+
+    &__container {
+        @include media-query(large) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__heading {
+        @include font-size(m);
+        display: block;
+        color: var(--color--white);
+        font-weight: $weight--heavy;
+        margin-bottom: ($gutter * 0.75);
+
+        @include media-query(large) {
+            margin-bottom: 0;
+        }
+    }
+
+    &__input {
+        @include font-size(s);
+        padding: 8px ($gutter * 0.5);
+        line-height: 1;
+        font-weight: $weight--normal;
+        border: 0;
+        width: 100%;
+        margin-bottom: ($gutter * 0.5);
+
+        @include media-query(large) {
+            margin-right: ($gutter * 0.5);
+            margin-bottom: 0;
+            width: auto;
+        }
+
+        @include media-query(menu-break) {
+            min-width: 335px;
+        }
+    }
+
+    &__button {
+        @include font-size(s);
+        font-weight: $weight--heavy;
+        padding: 8px $gutter;
+        line-height: 1;
+        border-radius: 0;
+        border: 0;
+        cursor: pointer;
+    }
+}

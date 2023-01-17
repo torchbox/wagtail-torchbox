@@ -1,0 +1,55 @@
+context:
+  value:
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Samaritans
+    - link:
+        0:
+          value:
+            link: '#'
+            text: CCA
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Wharton
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Example
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Oxfam GB
+    - link:
+        0:
+          value:
+            link: '#'
+            text: RCA
+    - link:
+        0:
+          value:
+            link: '#'
+            text: RNIB
+    - link:
+        0:
+          value:
+            link: '#'
+            text: NHS
+    - link:
+        0:
+          value:
+            link: '#'
+            text: Nasa
+
+tags:
+  image:
+    client.image width-400 class="client-item__image" loading="lazy" alt="":
+      raw: '<img src="https://placekitten.com/400/300" class="client-item__image">'
+  pageurl:
+    client.link:
+      raw: '#'

@@ -1,4 +1,4 @@
-
+{% load wagtailcore_tags %}
 <blockquote class="pullquote {% if classes %}{{ classes }}{% endif %}">
     <svg class="pullquote__icon" width="120" height="90" aria-hidden="true">
         <use xlink:href="#quote-icon" />
@@ -17,4 +17,10 @@
             <span class="pullquote__role">{{ value.role }}</span>
         {% endif %}
     </cite>
+
+    {% with link=value.link.0.value %}
+    {% if link %}
+        <a href="{{ link.url }}" class="pullquote__link">{{ link.text }}</a>
+    {% endif %}
+    {% endwith %}
 </blockquote>
