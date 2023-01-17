@@ -1,0 +1,8 @@
+{% load wagtailimages_tags %}
+
+<b>Diagonal image grid block</b>
+{% for img in value.images %}
+    <div>
+        {% image img fill-300x300 %}
+    </div>
+{% endfor %}

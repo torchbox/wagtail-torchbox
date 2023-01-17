@@ -52,7 +52,7 @@ class InPageNav {
         // get the id of the section that is active
         const sectionId = sectionInView.id;
 
-        // use to find the releavnt menu item
+        // use to find the relevant menu item
         const menuItem = this.node.querySelector(`a[href="#${sectionId}"]`);
 
         // activate it

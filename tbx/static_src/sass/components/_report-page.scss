@@ -1,0 +1,61 @@
+.report-page {
+    background-color: var(--color--buttermilk);
+    padding-bottom: 100px;
+
+    &__container {
+        max-width: 740px;
+        margin: 0 auto;
+        overflow: auto;
+        padding: 0 $variable-gutter--small;
+
+        @include media-query(large) {
+            padding: 0;
+        }
+    }
+
+    &__full-width {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 0 $variable-gutter--small;
+
+        @include media-query(large) {
+            max-width: 100%;
+            margin: 0 4%;
+        }
+
+        @include media-query(menu-break) {
+            margin: 0 6%;
+            padding: 0;
+        }
+
+        @include media-query(x-large) {
+            margin: 0 15vw;
+        }
+    }
+
+    &__heading {
+        @include font-size(xxxxl);
+        color: var(--color--stone);
+        line-height: 80px;
+        font-weight: $weight--heavy;
+        margin-bottom: 35px;
+        padding-top: 280px;
+        margin-top: -195px;
+
+        @include media-query(medium) {
+            padding-top: 180px;
+            margin-top: -80px;
+        }
+    }
+
+    &__introduction {
+        color: var(--color--grey-dark);
+        font-size: map-get($medium-font-sizes, s);
+        line-height: 32px;
+
+        @include media-query(medium) {
+            font-size: map-get($medium-font-sizes, m);
+            line-height: 36px;
+        }
+    }
+}

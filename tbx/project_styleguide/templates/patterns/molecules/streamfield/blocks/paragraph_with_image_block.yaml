@@ -1,0 +1,10 @@
+context:
+  value:
+    text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non nisi est sit amet facilisis magna etiam tempor orci.
+    image: true
+    image_alignment: right
+
+tags:
+  image:
+    value.image fill-500x500:
+      raw: '<img src="https://placekitten.com/500/500">'
