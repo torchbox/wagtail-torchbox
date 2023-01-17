@@ -30,9 +30,7 @@ def for_each_page_revision(*model_names):
 
             try:
                 PageRevision = apps.get_model("wagtailcore.Revision")
-                revisions = PageRevision.objects.filter(
-                    content_type__in=content_types
-                )
+                revisions = PageRevision.objects.filter(content_type__in=content_types)
             except LookupError:
                 # In previous versions of Wagtail, this model was `PageRevision`
                 PageRevision = apps.get_model("wagtailcore.PageRevision")
