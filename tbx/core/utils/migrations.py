@@ -30,16 +30,18 @@ def for_each_page_revision(*model_names):
 
             try:
                 PageRevision = apps.get_model("wagtailcore.Revision")
-                revisions = PageRevision.objects.filter(content_type__in=content_types)
+                revisions = PageRevision.objects.filter(
+                    content_type__in=content_types
+                ).prefetch_related("content_object")
             except LookupError:
                 # In previous versions of Wagtail, this model was `PageRevision`
                 PageRevision = apps.get_model("wagtailcore.PageRevision")
 
                 revisions = PageRevision.objects.filter(
                     page__content_type__in=content_types
-                )
+                ).select_related("page")
 
-            for revision in revisions.select_related("page"):
+            for revision in revisions:
                 content = json.loads(revision.content_json)
                 new_content = fn(revision.page, content)
                 if new_content is not None:
