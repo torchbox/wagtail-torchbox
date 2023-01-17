@@ -1,0 +1,19 @@
+name: copy_prod_to_staging
+# The following secrets are required on GitHub:
+#   - FLIGHTPATH_URL (URL for the flightpath call excluding trailing slash)
+#   - HEROKU_APP_NAME_PRODUCTION (source heroku app name)
+#   - HEROKU_APP_NAME_STAGING (destination heroku app name)
+#   - FLIGHTPATH_AUTH_KEY (from flightpath)
+#   - DEPLOYMENT_KEY (as set on corresponding heroku app env var)
+run-name: Copy production to staging by @${{ github.actor }}
+on: [workflow_dispatch]
+jobs:
+  # This is a stub to add to master branch so we can try
+  # the dispatch action on the feature branch for development.
+  run_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Say hello
+        run: |
+          echo Hello, world!
