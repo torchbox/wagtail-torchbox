@@ -3,21 +3,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(100% / 2);
-
-    @include media-query(medium) {
-        width: calc(100% / 3);
-    }
-
-    @include media-query(large) {
-        width: calc(100% / 6);
-    }
 
     &__container {
         padding: 15px;
 
         @include media-query(medium) {
             padding: 30px;
+        }
+
+        @include media-query(large) {
+            padding: 15px;
         }
     }
 
