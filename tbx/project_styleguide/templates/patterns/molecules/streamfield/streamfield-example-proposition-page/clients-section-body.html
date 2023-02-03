@@ -1,0 +1,16 @@
+<div class="streamfield">
+
+    {% include "patterns/molecules/streamfield/blocks/client-logo-block.html"  %}
+
+    <div class="streamfield__quote quote-slider">
+        <svg class="quote-slider__icon" width="120" height="90" aria-hidden="true">
+            <use xlink:href="#quote-icon" />
+        </svg>
+        <div class="quote-slider__slider">
+            <div class="quote-slider__slides">
+                {% include "patterns/molecules/streamfield/blocks/pullquote_block.html" with classes="pullquote--slider"  %}
+            </div>
+        </div>
+    </div>
+
+</div>
