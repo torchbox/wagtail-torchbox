@@ -1,0 +1,36 @@
+.cta {
+    $root: &;
+    margin-bottom: 40px;
+
+    @include media-query(large) {
+        margin-bottom: 100px;
+    }
+
+    &__intro {
+        @include font-size(l);
+        color: var(--color--primary);
+        font-weight: $weight--heavy;
+        max-width: 720px;
+
+        span {
+            color: var(--color--accent);
+        }
+    }
+
+    .streamfield & {
+        padding-top: ($gutter * 3);
+        border-top: 1px solid var(--color--grey);
+
+        @include media-query(large) {
+            padding-top: ($gutter * 6);
+        }
+
+        #{$root}__link {
+            color: var(--color--white);
+        }
+
+        #{$root}__intro {
+            line-height: 1.3;
+        }
+    }
+}

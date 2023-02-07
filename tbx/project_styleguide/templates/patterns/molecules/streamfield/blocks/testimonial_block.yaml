@@ -1,0 +1,28 @@
+context:
+  value:
+    - {
+        quote: We're delighted to be partnering with Torchbox for this pivotal change programme. The Torchbox team impressed us throughout and demonstrated a mix of tried and tested service design,
+        product development and software engineering approaches alongside a healthy dose of experimentation and innovative thinking.,
+        name: Jim Sanders,
+        role: RNIB's Senior Programme Lead,
+        Wharton Interactive at The Wharton School,
+        link: '#',
+        link_title: See the RNIB's case study,
+      }
+    - {
+        quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+        name: Sarah Toms,
+        role: Executive Director,
+        Wharton Interactive at The Wharton School,
+      }
+    - {
+        quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+        name: Sarah Toms,
+        role: Executive Director,
+        Wharton Interactive at The Wharton School,
+      }
+
+tags:
+  pageurl:
+    link:
+      raw: '#'

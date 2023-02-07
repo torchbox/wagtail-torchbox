@@ -1,7 +1,9 @@
 from django.db import models
+from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
 from tbx.blog.models import BlogIndexPage
+from tbx.propositions.models import PropositionPage
 from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField
@@ -320,14 +322,28 @@ class ServicePageProcess(Orderable, BaseServicePageProcess):
 class SubServicePage(BaseServicePage):
     template = "patterns/pages/service/service.html"
 
-    parent_page_types = ["ServicePage"]
+    parent_page_types = ["ServicePage", "propositions.PropositionPage"]
 
-    @property
+    @cached_property
     def service(self):
-        service_page = ServicePage.objects.ancestor_of(self).live().last()
-
-        if service_page:
-            return service_page.service
+        try:
+            return (
+                PropositionPage.objects.ancestor_of(self)
+                .defer_streamfields()
+                .select_related("service")
+                .last()
+            ).service
+        except AttributeError:
+            pass
+        try:
+            return (
+                ServicePage.objects.ancestor_of(self)
+                .defer_streamfields()
+                .select_related("service")
+                .last()
+            ).service
+        except AttributeError:
+            pass
 
 
 class SubServicePageKeyPoint(Orderable, BaseServicePageKeyPoint):

@@ -1,0 +1,70 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    {% image page.image width-1920 as hero_image %}
+
+    {% include "patterns/molecules/hero/hero--proposition.html" with title=page.strapline desc=page.intro image=hero_image %}
+
+    {# Service section #}
+    <div class="proposition-section" id="{{ 'services' }}"data-service-section>
+
+        <h2 class="proposition-section__anchor">Services</h2>
+
+        {% if page.services_section_title %}
+            <h3 class="proposition-section__title">
+                {{ page.services_section_title }}
+            </h3>
+        {% endif %}
+
+        {% if page.services_section_intro %}
+            <div class="proposition-section__intro">
+                {{ page.services_section_intro|richtext }}
+            </div>
+        {% endif %}
+
+        {% include_block page.services_section_body %}
+    </div>
+
+    {# Our clients section #}
+    <div class="proposition-section" id="{{ 'our_clients' }}" data-service-section>
+
+        <h2 class="proposition-section__anchor">Our clients</h2>
+
+        {% if page.clients_section_title %}
+            <h3 class="proposition-section__title">
+                {{ page.clients_section_title }}
+            </h3>
+        {% endif %}
+
+        {% if page.clients_section_intro %}
+            <div class="proposition-section__intro">
+                {{ page.clients_section_intro|richtext }}
+            </div>
+        {% endif %}
+
+        {% include_block page.clients_section_body %}
+    </div>
+
+    {# Team section #}
+    <div class="proposition-section" id="{{ 'our_team' }}" data-service-section>
+
+        <h2 class="proposition-section__anchor">Our team</h2>
+
+        {% if page.team_section_title %}
+            <h3 class="proposition-section__title">
+                {{ page.team_section_title|richtext }}
+            </h3>
+        {% endif %}
+
+        {% if page.team_section_intro %}
+            <div class="proposition-section__intro">
+                {{ page.team_section_intro|richtext }}
+            </div>
+        {% endif %}
+
+        {% include_block page.team_section_body %}
+    </div>
+
+{% endblock %}

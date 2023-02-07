@@ -73,4 +73,12 @@
     &__controls-group {
         @include hidden();
     }
+
+    .streamfield & {
+        margin-bottom: ($gutter * 3);
+
+        @include media-query(large) {
+            margin-bottom: ($gutter * 6);
+        }
+    }
 }

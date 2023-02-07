@@ -1,0 +1,35 @@
+.proposition-section {
+    margin: 0 $variable-gutter--small;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__anchor {
+        font-size: map-get($small-font-sizes, s);
+        position: relative;
+        color: var(--color--section-title);
+        font-weight: $weight--bold;
+        margin: 0 0 ($gutter);
+
+        &::before {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 2px;
+            top: -15px;
+            background-color: var(--color--section-title);
+        }
+    }
+
+    &__title {
+        @include font-size(l);
+        line-height: 1.1;
+        max-width: 728px;
+    }
+
+    &__intro {
+        @include font-size(s);
+        color: var(--color--grey-dark);
+        max-width: 760px;
+    }
+}

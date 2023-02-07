@@ -1,0 +1,25 @@
+context:
+  value:
+    - title: Innovate
+      intro: Discover uptapped opportunities to transform your services and take your organisation in new and exciting directions.
+      link: '#'
+    - title: Product Strategy
+      intro: Align your organisation with a bold, ambitious vision, a North Star metric and an impactful product strategy.
+      link: '#'
+    - title: Prototype products at speed
+      intro: Go from idea to tested and validated prototype in one week flat with a Design Sprint, Torchbox style.
+      link: '#'
+    - title: Launch world-class digital products
+      intro: Work with our product, design and internationally-renowned engineering teams  to launch elegant, future-proof digital products and services.
+      link: '#'
+    - title: Unify your digital estate
+      intro: Power your digital future with the best open source CMS around, tightly integrated with your CRM and back-office systems.
+      link: '#'
+    - title: Become customer-centric
+      intro: From embedding a culture of continuous discovery to creating your design manual, can help you become a customer-centric organisation.
+      link: '#'
+
+tags:
+  pageurl:
+    key_point.link:
+      raw: '#'
