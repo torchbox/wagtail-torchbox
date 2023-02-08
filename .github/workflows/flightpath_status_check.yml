@@ -1,15 +1,15 @@
-name: check_copy_prod_to_staging_status
+name: Flightpath status check
 # The following secrets are required on GitHub:
 #   - FLIGHTPATH_URL (URL for the flightpath excluding trailing slash)
 #   - FLIGHTPATH_AUTH_KEY (from flightpath)
-run-name: Check status of production to staging by @${{ github.actor }}
-on: [workflow_dispatch]
-inputs:
-  job_id:
-    description: 'Flightpath job id'
-    required: true
-    type: string
-concurrency: staging_environment
+run-name: Check status of flightpath job ${{inputs.job_id}} by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: 'Please provide the Flightpath job_id. You can find this in the output from run_flightpath.py when running "Copy prod to staging" Github Action.'
+        required: true
+        type: string
 jobs:
   run_flightpath_status_check:
     runs-on: ubuntu-latest

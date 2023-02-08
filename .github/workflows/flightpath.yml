@@ -1,4 +1,4 @@
-name: copy_prod_to_staging
+name: Copy prod to staging
 # The following secrets are required on GitHub:
 #   - FLIGHTPATH_URL (URL for the flightpath excluding trailing slash)
 #   - HEROKU_APP_NAME_PRODUCTION (source heroku app name)
