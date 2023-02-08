@@ -2,7 +2,6 @@
 Called by GitHub Action 'copy prod to staging' button is pressed.
 This calls flightpath to copy prod database and media to staging.
 """
-import argparse
 import os
 
 import requests
@@ -14,6 +13,7 @@ def get_flightpath_args_from_env():
     try:
         args = {
             "source": os.environ["HEROKU_APP_NAME_PRODUCTION"],
+            "destination": os.environ["HEROKU_APP_NAME_STAGING"],
             "flightpath_auth_key": os.environ["FLIGHTPATH_AUTH_KEY"],
             "deployment_key": os.environ["DEPLOYMENT_KEY"],
             "flightpath_url": os.environ["FLIGHTPATH_URL"],
@@ -21,7 +21,7 @@ def get_flightpath_args_from_env():
 
     except KeyError:
         raise KeyError(
-            "You need the following environment variables to run flightpath: FLIGHTPATH_URL, HEROKU_APP_NAME_PRODUCTION, FLIGHTPATH_AUTH_KEY, DEPLOYMENT_KEY. This should be set on GitHub secrets if running as GitHub Actions."
+            "You need the following environment variables to run flightpath: FLIGHTPATH_URL, HEROKU_APP_NAME_PRODUCTION, HEROKU_APP_NAME_STAGING, FLIGHTPATH_AUTH_KEY, DEPLOYMENT_KEY. This should be set on GitHub secrets if running as GitHub Actions."
         )
 
     return args
@@ -36,7 +36,7 @@ def post_to_flightpath(
     """
 
     response = requests.post(
-        f"{flightpath_url}/{source}/{destination}/",
+        f"{flightpath_url}/copy/{source}/{destination}/",
         data={
             "source_key": deployment_key,
             "destination_key": deployment_key,
@@ -58,30 +58,25 @@ def post_to_flightpath(
 if __name__ == "__main__":
     flightpath_args = get_flightpath_args_from_env()
 
-    # To avoid accidentally running this script, a valid destination
-    # has to be manually specified rather than fetched from env var.
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--destination", help="Destination Heroku app name")
-    args = parser.parse_args()
-    if not args.destination:
-        raise ValueError(
-            "To confirm you know what you are doing, please specify the destination Heroku app name with '--destination'."
-        )
-    elif args.destination == flightpath_args["source"]:
-        raise ValueError(
-            "Destination cannot be the same as the source. Please specify a valid value for '--destination'."
-        )
-
     # The following GitHub vars may not exist if this is
     # not called from GitHub Actions, e.g. from command or shell
     # https://docs.github.com/en/free-pro-team@latest/actions/reference/environment-variables#default-environment-variables
     repository = os.environ.get("GITHUB_REPOSITORY")
     run_id = os.environ.get("GITHUB_RUN_ID")
 
-    print("Running flightpath...")
-
+    print(
+        f"Running flightpath... copying from '{flightpath_args['source']}' to '{flightpath_args['destination']}'"
+    )
     if run_id:
         print(f"from GitHub repository: {repository}, run_id: {run_id}.")
 
-    response = post_to_flightpath(**flightpath_args, destination=args.destination)
+    response = post_to_flightpath(**flightpath_args)
+
+    print(
+        f"Request sent to {response.url}. Check status by going to flightpath /status/job_id."
+    )
     print(response.text)
+
+    # Get status and set it as env var for use with /status to check progress
+    job_id = response.json()["job_id"]
+    print(f"Job id: {job_id}")

@@ -1,15 +1,17 @@
-name: copy_prod_to_staging
+name: check_copy_prod_to_staging_status
 # The following secrets are required on GitHub:
 #   - FLIGHTPATH_URL (URL for the flightpath excluding trailing slash)
-#   - HEROKU_APP_NAME_PRODUCTION (source heroku app name)
-#   - HEROKU_APP_NAME_STAGING (destination heroku app name)
 #   - FLIGHTPATH_AUTH_KEY (from flightpath)
-#   - DEPLOYMENT_KEY (as set on corresponding heroku app env var)
-run-name: Copy production to staging by @${{ github.actor }}
+run-name: Check status of production to staging by @${{ github.actor }}
 on: [workflow_dispatch]
+inputs:
+  job_id:
+    description: 'Flightpath job id'
+    required: true
+    type: string
 concurrency: staging_environment
 jobs:
-  run_flightpath:
+  run_flightpath_status_check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,12 +23,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install requests
-      - name: Run run_flightpath.py script
+      - name: Run run_flightpath_status_check.py script
         run: |
-          python tbx/core/utils/scripts/run_flightpath.py
+          python tbx/core/utils/scripts/run_flightpath_status_check.py --job_id=${{ inputs.job_id }}
         env:
-          HEROKU_APP_NAME_PRODUCTION: ${{ secrets.HEROKU_APP_NAME_PRODUCTION }}
-          HEROKU_APP_NAME_STAGING: ${{ secrets.HEROKU_APP_NAME_STAGING }}
           FLIGHTPATH_AUTH_KEY: ${{ secrets.FLIGHTPATH_AUTH_KEY }}
-          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
           FLIGHTPATH_URL: ${{ secrets.FLIGHTPATH_URL }}
