@@ -11,8 +11,8 @@ context:
 tags:
   include_block:
     page.services_section_body:
-      template_name: 'patterns/molecules/streamfield/streamfield-example-standard.html'
+      template_name: 'patterns/molecules/streamfield/streamfield-example-team.html'
     page.clients_section_body:
-      template_name: 'patterns/molecules/streamfield/streamfield-example-standard.html'
+      template_name: 'patterns/molecules/streamfield/streamfield-example-proposition-page/clients-section-body.html'
     page.team_section_body:
-      template_name: 'patterns/molecules/streamfield/streamfield-example-standard.html'
+      template_name: 'patterns/molecules/streamfield/streamfield-example-team.html'
