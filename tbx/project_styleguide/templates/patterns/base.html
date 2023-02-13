@@ -1,5 +1,4 @@
 {% load static wagtailuserbar wagtailcore_tags wagtailimages_tags navigation_tags util_tags wagtailaccessibility_tags %}
-{% tota11y %}
 <!doctype html>
 <html class="{% block body_class %}template__{{ page.get_verbose_name|slugify }}{% endblock %}" lang="en-GB">
     <head>
@@ -47,6 +46,8 @@
         {% block footer %}{% endblock %}
 
         <script src="{% static 'js/main.js' %}"></script>
+
+        {% tota11y %}
 
         {% block extra_js %}{% endblock %}
     </body>
