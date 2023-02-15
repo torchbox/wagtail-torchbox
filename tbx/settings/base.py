@@ -90,12 +90,15 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "django_permissions_policy.PermissionsPolicyMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    # Clickjacking prevention. Default: X_FRAME_OPTIONS = 'DENY'
+    # See https://docs.djangoproject.com/en/dev/ref/clickjacking/#preventing-clickjacking
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
@@ -355,22 +358,87 @@ if "SENTRY_DSN" in env and not is_in_shell:
 
 # Security configuration
 # https://docs.djangoproject.com/en/stable/ref/middleware/#module-django.middleware.security
-if env.get("SECURE_SSL_REDIRECT", "true").strip().lower() == "true":
-    SECURE_SSL_REDIRECT = True
 
+# Force HTTPS redirect (enabled by default!)
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-ssl-redirect
+SECURE_SSL_REDIRECT = True
+
+# This will allow the cache to swallow the fact that the website is behind TLS
+# and inform the Django using "X-Forwarded-Proto" HTTP header.
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-proxy-ssl-header
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
+# This is a setting activating the HSTS header. This will enforce the visitors to use
+# HTTPS for an amount of time specified in the header. Since we are expecting our apps
+# to run via TLS by default, this header is activated by default.
+# The header can be deactivated by setting this setting to 0, as it is done in the
+# dev and testing settings.
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-hsts-seconds
+DEFAULT_HSTS_SECONDS = 30 * 24 * 60 * 60  # 30 days
+SECURE_HSTS_SECONDS = DEFAULT_HSTS_SECONDS
 if "SECURE_HSTS_SECONDS" in env:
     try:
         SECURE_HSTS_SECONDS = int(env["SECURE_HSTS_SECONDS"])
     except ValueError:
         pass
 
-if env.get("SECURE_BROWSER_XSS_FILTER", "true").lower().strip() == "true":
-    SECURE_BROWSER_XSS_FILTER = True
+# We don't enforce HSTS on subdomains as anything at subdomains is likely outside our control.
+# https://docs.djangoproject.com/en/3.2/ref/settings/#secure-hsts-include-subdomains
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 
-if env.get("SECURE_CONTENT_TYPE_NOSNIFF", "true").lower().strip() == "true":
-    SECURE_CONTENT_TYPE_NOSNIFF = True
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-browser-xss-filter
+SECURE_BROWSER_XSS_FILTER = True
+
+# https://docs.djangoproject.com/en/stable/ref/settings/#secure-content-type-nosniff
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
+# Content Security policy settings
+# http://django-csp.readthedocs.io/en/latest/configuration.html
+if "CSP_DEFAULT_SRC" in env:
+    MIDDLEWARE.append("csp.middleware.CSPMiddleware")
+
+    # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval', and 'none' must be quoted!
+    # e.g.: CSP_DEFAULT_SRC = "'self'" Without quotes they will not work as intended.
+
+    CSP_DEFAULT_SRC = env["CSP_DEFAULT_SRC"].split(",")
+    if "CSP_SCRIPT_SRC" in env:
+        CSP_SCRIPT_SRC = env["CSP_SCRIPT_SRC"].split(",")
+    if "CSP_STYLE_SRC" in env:
+        CSP_STYLE_SRC = env["CSP_STYLE_SRC"].split(",")
+    if "CSP_IMG_SRC" in env:
+        CSP_IMG_SRC = env["CSP_IMG_SRC"].split(",")
+    if "CSP_CONNECT_SRC" in env:
+        CSP_CONNECT_SRC = env["CSP_CONNECT_SRC"].split(",")
+    if "CSP_FONT_SRC" in env:
+        CSP_FONT_SRC = env["CSP_FONT_SRC"].split(",")
+    if "CSP_BASE_URI" in env:
+        CSP_BASE_URI = env["CSP_BASE_URI"].split(",")
+    if "CSP_OBJECT_SRC" in env:
+        CSP_OBJECT_SRC = env["CSP_OBJECT_SRC"].split(",")
+
+# Permissions policy settings
+# Uses django-permissions-policy to return the header.
+# https://github.com/adamchainz/django-permissions-policy
+# The list of Chrome-supported features are in:
+# https://github.com/w3c/webappsec-permissions-policy/blob/main/features.md
+PERMISSIONS_POLICY = {
+    "accelerometer": [],
+    "ambient-light-sensor": [],
+    "autoplay": ["self"],
+    "camera": [],
+    "display-capture": [],
+    "document-domain": [],
+    "encrypted-media": [],
+    "geolocation": [],
+    "gyroscope": [],
+    "magnetometer": [],
+    "microphone": [],
+    "midi": [],
+    "payment": [],
+    "picture-in-picture": [],
+    "usb": [],
+}
 
 # Referrer-policy header settings
 # https://django-referrer-policy.readthedocs.io/en/1.0/
