@@ -563,6 +563,9 @@ PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(
 # Google Tag Manager ID from env
 GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID")
 
+# Trial Hotjar tracking for the CMS admin.
+ADMIN_HOTJAR_SITE_ID = env.get("ADMIN_HOTJAR_SITE_ID")
+
 SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
 
 # Birdbath - Database anonymisation
