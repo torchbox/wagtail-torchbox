@@ -252,17 +252,26 @@ class BaseServicePageFeaturedBlogPost(models.Model):
 class BaseServicePageProcess(models.Model):
     title = models.TextField()
     description = models.TextField()
+    external_link = models.URLField("External link", blank=True)
     page_link = models.ForeignKey(
         "wagtailcore.Page", on_delete=models.CASCADE, blank=True, null=True
     )
-    page_link_label = models.TextField(blank=True, null=True)
+    link_label = models.TextField(blank=True, null=True)
 
     panels = [
         FieldPanel("title", classname="title"),
         FieldPanel("description", classname="title"),
         FieldPanel("page_link"),
-        FieldPanel("page_link_label"),
+        FieldPanel("external_link"),
+        FieldPanel("link_label"),
     ]
+
+    @property
+    def link(self):
+        if self.external_link:
+            return self.external_link
+        if self.page_link:
+            return self.page_link.url
 
     class Meta:
         abstract = True

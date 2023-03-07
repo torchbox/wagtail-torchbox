@@ -4,8 +4,8 @@
     <div class="process__item-desc">{{ item.description | richtext }}</div>
     {% if item.page_link %}
         <div class="process__item-link">
-            <a href="{% pageurl item.page_link %}">
-                {% firstof item.page_link_label item.page_link.title %}
+            <a href="{{ item.link }}">
+                {% firstof item.link_label item.page_link.title %}
             </a>
     </div>
     {% endif %}
