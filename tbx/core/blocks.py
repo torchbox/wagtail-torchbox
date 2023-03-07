@@ -1,4 +1,6 @@
 from django import forms
+from django.core.exceptions import ValidationError
+from django.forms.utils import ErrorList
 from django.utils.functional import cached_property
 
 from wagtailmarkdown.blocks import MarkdownBlock
@@ -15,6 +17,7 @@ from wagtail.blocks import (
     StructValue,
     URLBlock,
 )
+from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail_webstories.blocks import (
@@ -175,7 +178,29 @@ class EmbedPlusCTABlock(StructBlock):
     intro = CharBlock()
     link = PageChooserBlock()
     button_text = CharBlock()
-    embed = EmbedBlock(label="Youtube Embed")
+    image = ImageChooserBlock(required=False)
+    embed = EmbedBlock(required=False, label="Youtube Embed")
+
+    def clean(self, value):
+        struct_value = super().clean(value)
+
+        errors = {}
+        image = value.get("image")
+        embed = value.get("embed")
+
+        if image and embed:
+            error = ErrorList(
+                [
+                    ValidationError(
+                        "Either an image or a Youtube embed may be specified, but not both."
+                    )
+                ]
+            )
+            errors["image"] = errors["embed"] = error
+
+        if errors:
+            raise StructBlockValidationError(errors)
+        return struct_value
 
 
 class CTABlock(StructBlock):
