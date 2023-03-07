@@ -15,6 +15,8 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
 
+from tbx.core.blocks import PageSectionStoryBlock
+
 from .api import PeopleHRFeed
 from .blocks import StoryBlock
 from .fields import ColorField
@@ -250,9 +252,13 @@ class StandardPage(Page):
     template = "patterns/pages/standard/standard_page.html"
 
     body = StreamField(StoryBlock(), use_json_field=True)
+    additional_content = StreamField(
+        PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel("body"),
+        FieldPanel("additional_content"),
     ]
 
 

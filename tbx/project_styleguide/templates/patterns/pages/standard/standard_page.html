@@ -6,5 +6,6 @@
     {% include "patterns/molecules/title-block/title-block.html" with item=page tags=false %}
 
     {% include_block page.body %}
+    {% include_block page.additional_content %}
 
 {% endblock %}
