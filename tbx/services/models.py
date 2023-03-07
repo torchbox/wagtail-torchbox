@@ -6,8 +6,11 @@ from tbx.blog.models import BlogIndexPage
 from tbx.propositions.models import PropositionPage
 from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
+from wagtail.search import index
+
+from tbx.core.blocks import PageSectionStoryBlock
 
 
 class BaseServicePage(Page):
@@ -323,6 +326,18 @@ class SubServicePage(BaseServicePage):
     template = "patterns/pages/service/service.html"
 
     parent_page_types = ["ServicePage", "propositions.PropositionPage"]
+
+    content = StreamField(
+        PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
+    )
+
+    search_fields = BaseServicePage.search_fields + [
+        index.SearchField("content"),
+    ]
+
+    content_panels = BaseServicePage.content_panels + [
+        FieldPanel("content", heading="Content"),
+    ]
 
     @cached_property
     def service(self):
