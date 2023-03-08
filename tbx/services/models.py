@@ -271,7 +271,7 @@ class BaseServicePageProcess(models.Model):
         if self.external_link:
             return self.external_link
         if self.page_link:
-            return self.page_link.url
+            return self.page_link.get_url()
 
     class Meta:
         abstract = True
