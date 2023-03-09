@@ -2,11 +2,11 @@
 <div class="process__item">
     <h2 class="process__item-title">{{ item.title }}</h2>
     <div class="process__item-desc">{{ item.description | richtext }}</div>
-    {% if item.page_link %}
+    {% if item.link %}
         <div class="process__item-link">
-            <a href="{% pageurl item.page_link %}">
-                {% firstof item.page_link_label item.page_link.title %}
+            <a href="{{ item.link }}">
+                {% firstof item.link_label item.link %}
             </a>
-    </div>
+        </div>
     {% endif %}
 </div>
