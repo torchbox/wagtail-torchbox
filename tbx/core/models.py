@@ -2,6 +2,7 @@ from django.db import models
 from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
+from tbx.core.blocks import PageSectionStoryBlock
 from wagtail import blocks
 from wagtail.admin.panels import (
     FieldPanel,
@@ -14,8 +15,6 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
-
-from tbx.core.blocks import PageSectionStoryBlock
 
 from .api import PeopleHRFeed
 from .blocks import StoryBlock

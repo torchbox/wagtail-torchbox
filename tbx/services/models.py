@@ -3,14 +3,13 @@ from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
 from tbx.blog.models import BlogIndexPage
+from tbx.core.blocks import PageSectionStoryBlock
 from tbx.propositions.models import PropositionPage
 from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
-
-from tbx.core.blocks import PageSectionStoryBlock
 
 
 class BaseServicePage(Page):
