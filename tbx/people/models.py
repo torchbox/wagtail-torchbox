@@ -415,7 +415,7 @@ class Contact(index.Indexed, models.Model):
         related_name="+",
     )
     email_address = models.EmailField()
-    phone_number = PhoneNumberField()
+    phone_number = PhoneNumberField(blank=True, null=True)
     default_contact = models.BooleanField(default=False, blank=True, null=True)
     base_form_class = ContactForm
 
