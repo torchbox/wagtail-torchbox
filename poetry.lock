@@ -1396,11 +1396,18 @@ description = "Markdown support for Wagtail"
 category = "main"
 optional = false
 python-versions = "*"
+develop = false
 
 [package.dependencies]
 bleach = ">=3.3,<5"
 Markdown = ">=3.3,<4"
-Wagtail = ">=2.15"
+Wagtail = ">=4.1"
+
+[package.source]
+type = "git"
+url = "https://github.com/nickmoreton/wagtail-markdown"
+reference = "support/wagtail42"
+resolved_reference = "81d2cbade257ce50d095ce86e0db0e1eb85bca4c"
 
 [[package]]
 name = "wagtail-purge"
@@ -1443,18 +1450,6 @@ type = "git"
 url = "https://github.com/nickmoreton/wagtail-webstories"
 reference = "support/wagtail42"
 resolved_reference = "8b4a33b08250471d2ca1198f8c95c23b667e7fc6"
-
-[[package]]
-name = "wagtailfontawesome"
-version = "1.2.1"
-description = "Add FontAwesome icons to StreamField."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-Django = ">=1.7.1"
-wagtail = ">=1.4.0"
 
 [[package]]
 name = "webencodings"
@@ -1538,7 +1533,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "17dde6eb04f4fe71de6c0be1784ff6ac18bcf81110a891e578d5bac150446721"
+content-hash = "666e73e88b48e54ded42e6f26565e82214336066a9f386e5f94dff0df88914f6"
 
 [metadata.files]
 anyascii = [
@@ -2517,16 +2512,9 @@ wagtail-accessibility = [
 wagtail-django-recaptcha = [
     {file = "wagtail-django-recaptcha-1.0.tar.gz", hash = "sha256:fc177e75da966e9db1dfd9a566c40d30567518d9280b5db4fec4d50a8c853154"},
 ]
-wagtail-markdown = [
-    {file = "wagtail-markdown-0.10.0.tar.gz", hash = "sha256:b16be4b6e3518cc6dd15ab335cbc6d6a9122b5d7e3a61fa11c83597e2660044e"},
-    {file = "wagtail_markdown-0.10.0-py2.py3-none-any.whl", hash = "sha256:e4a97eee0211eebaab9c850669e647bc1c8ceb70df38b4db5a2c3d8b02ebaf69"},
-]
+wagtail-markdown = []
 wagtail-purge = []
 wagtail-webstories = []
-wagtailfontawesome = [
-    {file = "wagtailfontawesome-1.2.1-py2.py3-none-any.whl", hash = "sha256:76b1c64c4f1042d468a83e4352f74b57bda4a4aa09cdfeeb8663dead5ed632be"},
-    {file = "wagtailfontawesome-1.2.1.tar.gz", hash = "sha256:6c1bd2d6061880848de6374ceb75d38a8c9b0debb1d4aef8a2fdc9d565a8f417"},
-]
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
     {file = "webencodings-0.5.1.tar.gz", hash = "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"},

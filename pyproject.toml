@@ -22,7 +22,6 @@ django-csp = "^3.7"
 scout-apm = "^2.25.1"
 django-basic-auth-ip-whitelist = "^0.5"
 wagtail-accessibility = "^0.2.1"
-wagtailfontawesome = "^1.2.1"
 django-phonenumber-field = "^7.0.2"
 phonenumbers = "^8.12.48"
 wagtail-purge = {git = "https://github.com/nickmoreton/wagtail-purge", rev = "support/wagtail42"}
