@@ -215,5 +215,12 @@
 
     .proposition-section & {
         margin: 0;
+        &:first-of-type{
+            margin-top: ($gutter * 3);
+
+            @include media-query(large) {
+                margin-top: ($gutter * 6);
+            }
+        }
     }
 }

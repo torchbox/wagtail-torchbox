@@ -68,11 +68,21 @@ Icon colour used for:
         --color--underline: var(--color--lagoon);
         --color--hover: var(--color--white);
         --color--background: var(--color--dark-indigo);
-        --color--section-title: var(--color-coral);
+        --color--section-title: var(--color--coral);
         --color--header-icon-color: var(--color--lagoon);
         --color--get-in-touch-numbers: var(--color--dark-indigo);
         --color--header-links: var(--color--white);
         --color--icon: var(--color--lagoon);
+
+        & .proposition-section {
+            --color--link: var(--color--dark-indigo);
+            --color--accent: var(--color--coral);
+            --color--underline: var(--color--coral);
+            --color--icon: var(--color--coral);
+            & .streamfield a:hover {
+                border-bottom: 2px solid var(--color--accent);
+            }
+        }
     }
 
     /* stylelint-disable selector-class-pattern  */

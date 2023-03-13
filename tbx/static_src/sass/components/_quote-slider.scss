@@ -81,4 +81,12 @@
             margin-bottom: ($gutter * 6);
         }
     }
+
+    .proposition-section & {
+        &__icon {
+            @include media-query(large) {
+                margin-left: 0;
+            }
+        }
+    }
 }

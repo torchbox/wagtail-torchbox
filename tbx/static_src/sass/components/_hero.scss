@@ -95,10 +95,11 @@
         }
 
         #{$root}__container {
-            padding: 0 8.33vw;
+            padding: 230px 8.33vw 0;
+            margin-top: -230px;
 
             @include media-query(large) {
-                padding: 0 0 0 8.33vw;
+                padding: 230px 0 0 8.33vw;
             }
         }
 
