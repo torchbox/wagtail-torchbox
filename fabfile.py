@@ -434,7 +434,7 @@ def run_test(c):
             "python",
             "manage.py",
             "test",
-            "--settings=tbx.settings.production",
+            "--settings=tbx.settings.test",
             "--parallel",
         ]
     )
