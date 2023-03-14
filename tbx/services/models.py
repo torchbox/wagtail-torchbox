@@ -176,7 +176,7 @@ class BaseServicePage(Page):
     def case_studies_filter_by(self):
         if self.service:
             return self.service.slug
-        
+
         # If no service defined, don't filter by anything
         return ""
 
@@ -353,12 +353,6 @@ class SubServicePage(BaseServicePage):
     content_panels = BaseServicePage.content_panels + [
         FieldPanel("content", heading="Content"),
     ]
-
-    @property
-    def case_studies_filter_by(self):
-        # Filter with the parent's slug. Example:
-        # `/digital-products/product-strategy/` use filter by `digital-products`
-        return self.url.split("/")[1]
 
     @cached_property
     def service(self):
