@@ -174,8 +174,11 @@ class BaseServicePage(Page):
 
     @property
     def case_studies_filter_by(self):
-        return self.slug
-
+        if self.service:
+            return self.service.slug
+        
+        # If no service defined, don't filter by anything
+        return ""
 
 class BaseServicePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
