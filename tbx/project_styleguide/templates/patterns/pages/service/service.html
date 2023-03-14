@@ -32,4 +32,6 @@
         {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="service-section" feature_first=True data_attrs="data-service-section" %}
     {% endif %}
 
+    {% include_block page.content %}
+
 {% endblock %}

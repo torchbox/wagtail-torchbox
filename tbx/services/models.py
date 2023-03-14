@@ -3,11 +3,13 @@ from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
 from tbx.blog.models import BlogIndexPage
+from tbx.core.blocks import PageSectionStoryBlock
 from tbx.propositions.models import PropositionPage
 from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
+from wagtail.search import index
 
 
 class BaseServicePage(Page):
@@ -252,17 +254,26 @@ class BaseServicePageFeaturedBlogPost(models.Model):
 class BaseServicePageProcess(models.Model):
     title = models.TextField()
     description = models.TextField()
+    external_link = models.URLField("External link", blank=True)
     page_link = models.ForeignKey(
         "wagtailcore.Page", on_delete=models.CASCADE, blank=True, null=True
     )
-    page_link_label = models.TextField(blank=True, null=True)
+    link_label = models.TextField(blank=True, null=True)
 
     panels = [
         FieldPanel("title", classname="title"),
         FieldPanel("description", classname="title"),
         FieldPanel("page_link"),
-        FieldPanel("page_link_label"),
+        FieldPanel("external_link"),
+        FieldPanel("link_label"),
     ]
+
+    @property
+    def link(self):
+        if self.external_link:
+            return self.external_link
+        if self.page_link:
+            return self.page_link.get_url()
 
     class Meta:
         abstract = True
@@ -323,6 +334,18 @@ class SubServicePage(BaseServicePage):
     template = "patterns/pages/service/service.html"
 
     parent_page_types = ["ServicePage", "propositions.PropositionPage"]
+
+    content = StreamField(
+        PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
+    )
+
+    search_fields = BaseServicePage.search_fields + [
+        index.SearchField("content"),
+    ]
+
+    content_panels = BaseServicePage.content_panels + [
+        FieldPanel("content", heading="Content"),
+    ]
 
     @cached_property
     def service(self):
