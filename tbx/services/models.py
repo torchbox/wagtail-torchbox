@@ -180,6 +180,7 @@ class BaseServicePage(Page):
         # If no service defined, don't filter by anything
         return ""
 
+
 class BaseServicePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
     linked_page = models.ForeignKey(
