@@ -96,7 +96,6 @@
 
         #{$root}__container {
             padding: 230px 8.33vw 0;
-            margin-top: -230px;
 
             @include media-query(large) {
                 padding: 230px 0 0 8.33vw;
@@ -117,6 +116,11 @@
                 padding-right: 45vw;
                 padding-top: ($gutter * 3);
             }
+        }
+        #{$root}__image-mask {
+            top: 280px;
+            // right: -400px;
+            // width: 75vw;
         }
     }
 
