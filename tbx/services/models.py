@@ -172,6 +172,10 @@ class BaseServicePage(Page):
             if f.case_study
         ]
 
+    @property
+    def case_studies_filter_by(self):
+        return self.slug
+
 
 class BaseServicePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
@@ -346,6 +350,12 @@ class SubServicePage(BaseServicePage):
     content_panels = BaseServicePage.content_panels + [
         FieldPanel("content", heading="Content"),
     ]
+
+    @property
+    def case_studies_filter_by(self):
+        # Filter with the parent's slug. Example:
+        # `/digital-products/product-strategy/` use filter by `digital-products`
+        return self.url.split("/")[1]
 
     @cached_property
     def service(self):
