@@ -126,7 +126,7 @@
     }
 
     &__image-mask {
-        @include z-index(header); // above in page nav to allow for overlap
+        @include z-index(zero);
         display: none;
         position: absolute;
         top: -60px;
