@@ -173,7 +173,7 @@ class BaseServicePage(Page):
         ]
 
     @property
-    def case_studies_filter_by(self):
+    def filter_by(self):
         if self.service:
             return self.service.slug
 

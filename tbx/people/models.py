@@ -227,6 +227,11 @@ class CulturePage(Page):
         )
         return context
 
+    @property
+    def filter_by(self):
+        return "culture"
+
+
 
 class BaseCulturePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)

@@ -8,6 +8,6 @@
         {% endfor %}
     </div>
     {% if see_more_link %}
-        {% include "patterns/atoms/see-more/see-more.html" with text=see_more_link_text|default:"See more" link=work_index_page.url|add:"?filter="|add:page.case_studies_filter_by %}
+        {% include "patterns/atoms/see-more/see-more.html" with text=see_more_link_text|default:"See more" link=work_index_page.url|add:"?filter="|add:page.filter_by %}
     {% endif %}
 </div>
