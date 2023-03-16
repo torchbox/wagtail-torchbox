@@ -21,10 +21,12 @@
         }
     }
 
-    & &__link {
+    &__link {
         @include link-slide-right(4px, -5px);
-        &:hover {
-            border-bottom: 0;
+        .streamfield & {
+            &:hover {
+                border-bottom: 0;
+            }
         }
     }
 

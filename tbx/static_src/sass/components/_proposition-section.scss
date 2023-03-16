@@ -37,4 +37,15 @@
         color: var(--color--grey-dark);
         max-width: 760px;
     }
+
+    .streamfield {
+        margin: 0;
+        &:first-of-type {
+            margin-top: ($gutter * 3);
+
+            @include media-query(large) {
+                margin-top: ($gutter * 6);
+            }
+        }
+    }
 }
