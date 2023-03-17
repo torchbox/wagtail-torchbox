@@ -60,6 +60,7 @@ class BaseServicePage(Page):
         blank=True,
         help_text="An opportunity to use a more flexible call to action, if the main “Contact” fields aren’t suitable",
     )
+    processes_section_embed_url = models.URLField("Embed URL", blank=True)
 
     # Section titles
     key_points_section_title = models.TextField(blank=True, default="Services")
@@ -108,6 +109,7 @@ class BaseServicePage(Page):
                 FieldPanel("process_section_title"),
                 FieldPanel("heading_for_processes"),
                 FieldPanel("use_process_block_image"),
+                FieldPanel("processes_section_embed_url"),
                 InlinePanel("processes", label="Processes"),
                 FieldPanel("process_section_cta"),
             ],
