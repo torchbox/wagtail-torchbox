@@ -232,7 +232,6 @@ class CulturePage(Page):
         return "culture"
 
 
-
 class BaseCulturePageKeyPoint(models.Model):
     text = models.CharField(max_length=255)
     linked_page = models.ForeignKey(
