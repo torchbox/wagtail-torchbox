@@ -3,7 +3,11 @@
     <div class="embed-cta__left">
         <h2 class="embed-cta__heading">{{ value.title }}</h2>
         <p class="embed-cta__intro">{{ value.intro }}</p>
-        <a class="embed-cta__button button" href="{% pageurl value.link %}">{{ value.button_text }}</a>
+        {% if value.link %}
+            <a class="embed-cta__button button" href="{% pageurl value.link %}">{{ value.button_text }}</a>
+        {% elif value.external_link %}
+            <a class="embed-cta__button button" href="{{ value.external_link }}">{{ value.button_text }}</a>
+        {% endif %}
     </div>
     {% if value.embed or value.image %}
         <div class="embed-cta__right">
