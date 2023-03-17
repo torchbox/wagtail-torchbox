@@ -1,6 +1,8 @@
 {% load wagtailimages_tags %}
 <div class="client-block">
-    {% include "patterns/atoms/section-title/section-title.html" with title=title %}
+    {% if clients %}
+        {% include "patterns/atoms/section-title/section-title.html" with title=title %}
+    {% endif %}
     <div class="client-block__container">
         {% if clients %}
             <div class="client-block__section">
