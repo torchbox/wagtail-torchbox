@@ -64,8 +64,16 @@ class BaseServicePage(Page):
 
     # Section titles
     key_points_section_title = models.TextField(blank=True, default="Services")
-    testimonials_section_title = models.TextField(blank=True, default="Clients", help_text="Leave this field empty to hide the testimonials section.")
-    case_studies_section_title = models.TextField(blank=True, default="Work", help_text="Leave this field empty to hide the case studies section.")
+    testimonials_section_title = models.TextField(
+        blank=True,
+        default="Clients",
+        help_text="Leave this field empty to hide the testimonials section.",
+    )
+    case_studies_section_title = models.TextField(
+        blank=True,
+        default="Work",
+        help_text="Leave this field empty to hide the case studies section.",
+    )
     blogs_section_title = models.TextField(blank=True, default="Thinking")
     process_section_title = models.TextField(blank=True, default="Process")
 
