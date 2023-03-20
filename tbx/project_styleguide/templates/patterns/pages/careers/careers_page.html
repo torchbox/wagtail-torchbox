@@ -50,7 +50,7 @@
     {% endif %}
 
     {% if page.blogs_section_title %}
-        {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="blog-listing--careers" blogs_section_heading=True %}
+        {% include "patterns/organisms/latest-posts/latest-posts.html" with classes="blog-listing--careers" blogs_section_heading=True filter_by=page.filter_by %}
     {% endif %}
 
     {# Card links #}
