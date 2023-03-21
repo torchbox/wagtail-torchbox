@@ -1,4 +1,6 @@
 {% load wagtailcore_tags %}
+{% load wagtailembeds_tags %}
+
 <div class="process__block">
     {% include "patterns/atoms/section-title/section-title.html" with title=section_title %}
     <div class="process__container">
@@ -7,6 +9,12 @@
             <div class="process__image">
                 {% include "patterns/atoms/process-block-image/process-block-image.html"%}
             </div>
+        {% endif %}
+
+        {% if processes_section_embed_url %}
+                <div class="process__embed">
+                    {% embed processes_section_embed_url %}
+                </div>
         {% endif %}
 
         <div class="process__list">

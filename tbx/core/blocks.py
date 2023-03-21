@@ -176,7 +176,8 @@ class ExternalStoryEmbedBlock(WebstoryExternalStoryEmbedBlock):
 class EmbedPlusCTABlock(StructBlock):
     title = CharBlock()
     intro = CharBlock()
-    link = PageChooserBlock()
+    link = PageChooserBlock(required=False)
+    external_link = URLBlock(label="External Link", required=False)
     button_text = CharBlock()
     image = ImageChooserBlock(required=False)
     embed = EmbedBlock(required=False, label="Youtube Embed")
