@@ -3,7 +3,11 @@
     {% if fetch_data %}
         <button class="see-more__link" tabindex="0" data-fetch-target="{{ fetch_data }}">{{ text }}</button>
     {% else %}
-        <a class="see-more__link" tabindex="0" href="{{ link }}">{{ text }}</a>
+        {% if filter_by %}
+            <a class="see-more__link" tabindex="0" href="{{ link|add:'?filter='|add:filter_by }}">{{ text }}</a>
+        {% else %}
+            <a class="see-more__link" tabindex="0" href="{{ link }}">{{ text }}</a>
+        {% endif %}
     {% endif %}
 </div>
 {% endif %}

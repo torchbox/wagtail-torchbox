@@ -18,6 +18,6 @@
             {% endfor %}
         </div>
         {% pageurl blog_index_page as blog_index_url %}
-        {% include "patterns/atoms/see-more/see-more.html" with text="See more posts" link=blog_index_url %}
+        {% include "patterns/atoms/see-more/see-more.html" with text="See more posts"  link=blog_index_url filter_by=filter_by %}
     </div>
 </div>
