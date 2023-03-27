@@ -1,5 +1,5 @@
 {% extends "patterns/base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailembeds_tags wagtailimages_tags static %}
 
 {% block content %}
 
@@ -8,6 +8,12 @@
     {% if page.key_points_section_title %}
         <div class="service-section" id="{{ page.key_points_section_title|slugify }}" data-service-section>
             {% include "patterns/molecules/help-block/help-block.html" with title=page.key_points_section_title intro=page.heading_for_key_points items=page.key_points.all contact=page.contact %}
+        </div>
+    {% endif %}
+
+    {% if page.embed_url %}
+        <div class="streamfield__embed">
+            {% embed page.embed_url %}
         </div>
     {% endif %}
 

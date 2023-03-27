@@ -53,6 +53,7 @@ class BaseServicePage(Page):
         blank=True,
         related_name="+",
     )
+    embed_url = models.URLField("Embed URL", blank=True)
     use_process_block_image = models.BooleanField(default=False)
     heading_for_processes = models.TextField(blank=True, null=True)
     process_section_cta = RichTextField(
@@ -102,6 +103,7 @@ class BaseServicePage(Page):
             heading="Contact",
             classname="collapsible",
         ),
+        FieldPanel("embed_url", heading="Embed URL"),
         MultiFieldPanel(
             [
                 FieldPanel("testimonials_section_title"),
