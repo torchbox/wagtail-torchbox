@@ -125,8 +125,7 @@ class BlogIndexPage(Page):
     def serve_preview(self, request, mode_name):
         return self.serve(request)
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         FieldPanel("intro"),
         InlinePanel("related_links", label="Related links"),
     ]
@@ -264,8 +263,7 @@ class BlogPage(Page):
     def type(self):
         return "BLOG POST"
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         InlinePanel("authors", label="Author", min_num=1),
         FieldPanel("date"),
         FieldPanel("body"),

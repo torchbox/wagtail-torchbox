@@ -16,8 +16,7 @@ class EventIndexPage(Page):
     parent_page_types = ["torchbox.HomePage"]
     subpage_types = []
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         InlinePanel("events", label="events"),
     ]
 

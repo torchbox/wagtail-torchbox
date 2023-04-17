@@ -43,8 +43,7 @@ class PersonPage(Page):
         index.SearchField("biography"),
     ]
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         FieldPanel("role"),
         FieldPanel("is_senior"),
         FieldPanel("intro"),
@@ -162,8 +161,7 @@ class CulturePage(Page):
         use_json_field=True,
     )
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         FieldPanel("strapline"),
         FieldPanel("hero_image"),
         FieldPanel("intro"),
@@ -272,8 +270,7 @@ class ValuesPage(Page):
         use_json_field=True,
     )
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         FieldPanel("strapline"),
         FieldPanel("intro"),
         InlinePanel("values", heading="Values", label="Values"),
