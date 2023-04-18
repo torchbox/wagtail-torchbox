@@ -12,9 +12,11 @@
     {% endif %}
 
     {% if page.embed_url %}
-        <div class="pseudo-streamfield">
-            <div class="streamfield__embed">
-                {% embed page.embed_url %}
+        <div class="service-embed-section">
+            <div class="streamfield">
+                <div class="streamfield__embed">
+                    {% embed page.embed_url %}
+                </div>
             </div>
         </div>
     {% endif %}
