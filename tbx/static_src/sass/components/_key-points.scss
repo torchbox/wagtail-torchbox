@@ -23,6 +23,11 @@
 
     &__link {
         @include link-slide-right(4px, -5px);
+        .streamfield & {
+            &:hover {
+                border-bottom: 0;
+            }
+        }
     }
 
     &__intro {

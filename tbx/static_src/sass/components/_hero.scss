@@ -95,10 +95,10 @@
         }
 
         #{$root}__container {
-            padding: 0 8.33vw;
+            padding: 230px 8.33vw 0;
 
             @include media-query(large) {
-                padding: 0 0 0 8.33vw;
+                padding: 230px 0 0 8.33vw;
             }
         }
 
@@ -116,6 +116,9 @@
                 padding-right: 45vw;
                 padding-top: ($gutter * 3);
             }
+        }
+        #{$root}__image-mask {
+            top: 140px;
         }
     }
 

@@ -1,4 +1,9 @@
 .proposition-section {
+    --color--primary: var(--color--dark-indigo);
+    --color--link: var(--color--dark-indigo);
+    --color--accent: var(--color--coral);
+    --color--underline: var(--color--coral);
+    --color--icon: var(--color--coral);
     margin: 0 $variable-gutter--small;
     display: flex;
     flex-direction: column;
@@ -31,5 +36,16 @@
         @include font-size(s);
         color: var(--color--grey-dark);
         max-width: 760px;
+    }
+
+    .streamfield {
+        margin: 0;
+        &:first-of-type {
+            margin-top: ($gutter * 3);
+
+            @include media-query(large) {
+                margin-top: ($gutter * 6);
+            }
+        }
     }
 }
