@@ -43,4 +43,4 @@ class InstagramEmbedBlock(blocks.StructBlock):
     )
 
     class Meta:
-        icon = "fa-instagram"
+        icon = "group"

@@ -68,7 +68,6 @@ INSTALLED_APPS = [
     "taggit",
     "captcha",
     "wagtailcaptcha",
-    "wagtailfontawesome",
     # Temporarily disable as this is breaking page creation. See ticket #229
     # 'wagtail_review',
     "phonenumber_field",
