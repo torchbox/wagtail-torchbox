@@ -53,6 +53,10 @@
         }
     }
 
+    &__markdown {
+        @include streamblock-padding();
+    }
+
     &__paragraph {
         @include streamblock-padding();
     }
