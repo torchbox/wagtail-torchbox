@@ -1452,6 +1452,18 @@ reference = "support/wagtail42"
 resolved_reference = "8b4a33b08250471d2ca1198f8c95c23b667e7fc6"
 
 [[package]]
+name = "wand"
+version = "0.6.10"
+description = "Ctypes-based simple MagickWand API binding for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+doc = ["Sphinx (>=2.4.1)"]
+test = ["pytest (>=5.3.5)"]
+
+[[package]]
 name = "webencodings"
 version = "0.5.1"
 description = "Character encoding aliases for legacy web content"
@@ -1533,7 +1545,7 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "666e73e88b48e54ded42e6f26565e82214336066a9f386e5f94dff0df88914f6"
+content-hash = "8394fb53f49b31c8b264a82414eb37acb8ec7c8ebbe76cc550a8aaebeaa01c9a"
 
 [metadata.files]
 anyascii = [
@@ -2515,6 +2527,10 @@ wagtail-django-recaptcha = [
 wagtail-markdown = []
 wagtail-purge = []
 wagtail-webstories = []
+wand = [
+    {file = "Wand-0.6.10-py2.py3-none-any.whl", hash = "sha256:ff69eeba36ec243d9a80dec31e738091653dcd01c2668a9c22dc3ff20392596b"},
+    {file = "Wand-0.6.10.tar.gz", hash = "sha256:373f4a7f2866c868c31ce910e1f9b36a92d132640a20068ec17cea3284fedc57"},
+]
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
     {file = "webencodings-0.5.1.tar.gz", hash = "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"},
