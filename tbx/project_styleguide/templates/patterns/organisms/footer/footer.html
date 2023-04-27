@@ -27,17 +27,19 @@
 
     <div class="footer__container">
         <div class="footer__inner">
-            <div class="footer__primary-content">
-                <div class="footer__contact">
-                    <h3 class="footer__heading">Get in touch about your project</h3>
-                    <p class="footer__contact-desc">If you&apos;ve got a brief, we&apos;d love to see it. If you haven&apos;t, talk to us before you write it, we can help.</p>
-                    {% include "patterns/molecules/contact-slim/contact-slim.html" %}
+            {% if not hide_contact_details %}
+                <div class="footer__primary-content">
+                    <div class="footer__contact">
+                        <h3 class="footer__heading">Get in touch about your project</h3>
+                        <p class="footer__contact-desc">If you&apos;ve got a brief, we&apos;d love to see it. If you haven&apos;t, talk to us before you write it, we can help.</p>
+                        {% include "patterns/molecules/contact-slim/contact-slim.html" %}
+                    </div>
+
+                    <div class="footer__divider" aria-hidden="true"></div>
+
+                    {% include "patterns/molecules/locations/locations.html" with classes="locations--footer" %}
                 </div>
-
-                <div class="footer__divider" aria-hidden="true"></div>
-
-                {% include "patterns/molecules/locations/locations.html" with classes="locations--footer" %}
-            </div>
+            {% endif %}
 
             <div class="footer__secondary-content">
                 <div class="footer__appendix">

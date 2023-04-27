@@ -1,0 +1,9 @@
+{% extends "patterns/base_page.html" %}
+
+{% block header %}
+    {% include "patterns/atoms/skip-link/skip-link.html" %}
+{% endblock header %}
+
+{% block footer %}
+    {% include "patterns/organisms/footer/footer.html" with hide_contact_details=True %}
+{% endblock footer %}
