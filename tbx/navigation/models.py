@@ -1,4 +1,5 @@
 from modelcluster.models import ClusterableModel
+from tbx.core.blocks import ImageWithLinkBlock
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
@@ -64,10 +65,18 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         help_text="Single list of links that appear between the teasers and the addresses.",
         use_json_field=True,
     )
+    footer_logos = StreamField(
+        [("logos", ImageWithLinkBlock())],
+        blank=True,
+        help_text="Single list of logos that appear before the footer box",
+        use_json_field=True,
+        max_num=4,
+    )
 
     panels = [
         FieldPanel("primary_navigation"),
         FieldPanel("footer_teasers"),
         FieldPanel("footer_top_links"),
         FieldPanel("footer_links"),
+        FieldPanel("footer_logos"),
     ]

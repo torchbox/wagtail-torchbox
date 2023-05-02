@@ -1,50 +1,75 @@
-{% load navigation_tags wagtailcore_tags %}
+{% load navigation_tags wagtailcore_tags wagtailimages_tags %}
 
-<footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__primary-content">
-            <div class="footer__contact">
-                <h3 class="footer__heading">Get in touch about your project</h3>
-                <p class="footer__contact-desc">If you&apos;ve got a brief, we&apos;d love to see it. If you haven&apos;t, talk to us before you write it, we can help.</p>
-                {% include "patterns/molecules/contact-slim/contact-slim.html" %}
-            </div>
+<footer>
+    <div class="footer-logos">
+        {% with global_settings=settings.navigation.NavigationSettings %}
+            {% if global_settings.footer_logos %}
+                    <ul class="footer-logos__list">
+                        {% for item in global_settings.footer_logos %}
+                            {% with logo=item.value %}
+                                <li class="footer-logos__item">
+                                    <div class="footer-logos__container">
+                                        {% with link=logo.link.0.value %}
+                                            <a class="footer-logos__link" href="{{ link.url }}" title="{{ link.text }}">
+                                                {% image logo.image height-90 class="footer-logos__image" loading="lazy" %}
+                                            </a>
+                                        {% endwith %}
+                                    </div>
+                                </li>
+                            {% endwith %}
+                        {% endfor %}
+                    </ul>
+            {% endif %}
+        {%endwith %}
+    </div>
 
-            <div class="footer__divider" aria-hidden="true"></div>
 
-            {% include "patterns/molecules/locations/locations.html" with classes="locations--footer" %}
-        </div>
-
-        <div class="footer__secondary-content">
-            <div class="footer__appendix">
-                <p class="footer__copy">&copy; Torchbox {% now "Y" %}</p>
-                <div class="footer__links">
-                    {% footerlinks %}
+    <div class="footer">
+        <div class="footer__inner">
+            <div class="footer__primary-content">
+                <div class="footer__contact">
+                    <h3 class="footer__heading">Get in touch about your project</h3>
+                    <p class="footer__contact-desc">If you&apos;ve got a brief, we&apos;d love to see it. If you haven&apos;t, talk to us before you write it, we can help.</p>
+                    {% include "patterns/molecules/contact-slim/contact-slim.html" %}
                 </div>
+
+                <div class="footer__divider" aria-hidden="true"></div>
+
+                {% include "patterns/molecules/locations/locations.html" with classes="locations--footer" %}
             </div>
 
-            <ul class="footer__socials">
-                <li class="footer__social-item">
-                    <a class="footer__social-link" aria-label="Follow us on Twitter" href="https://twitter.com/torchbox">
-                        <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
-                            <use xlink:href="#twitter" />
-                        </svg>
-                    </a>
-                </li>
-                <li class="footer__social-item">
-                    <a class="footer__social-link" aria-label="Connect with us on LinkedIn" href="https://www.linkedin.com/company/torchbox">
-                        <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
-                            <use xlink:href="#linkedin" />
-                        </svg>
-                    </a>
-                </li>
-                <li class="footer__social-item">
-                    <a class="footer__social-link" aria-label="Follow us on Instagram" href="https://www.instagram.com/torchboxltd/">
-                        <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
-                            <use xlink:href="#instagram" />
-                        </svg>
-                    </a>
-                </li>
-            </ul>
+            <div class="footer__secondary-content">
+                <div class="footer__appendix">
+                    <p class="footer__copy">&copy; Torchbox {% now "Y" %}</p>
+                    <div class="footer__links">
+                        {% footerlinks %}
+                    </div>
+                </div>
+
+                <ul class="footer__socials">
+                    <li class="footer__social-item">
+                        <a class="footer__social-link" aria-label="Follow us on Twitter" href="https://twitter.com/torchbox">
+                            <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
+                                <use xlink:href="#twitter" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="footer__social-item">
+                        <a class="footer__social-link" aria-label="Connect with us on LinkedIn" href="https://www.linkedin.com/company/torchbox">
+                            <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
+                                <use xlink:href="#linkedin" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="footer__social-item">
+                        <a class="footer__social-link" aria-label="Follow us on Instagram" href="https://www.instagram.com/torchboxltd/">
+                            <svg class="footer__social-icon" width="24" height="24" aria-hidden="true">
+                                <use xlink:href="#instagram" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
