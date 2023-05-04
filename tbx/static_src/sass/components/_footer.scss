@@ -13,8 +13,6 @@
     }
 
     &__logos {
-        $root: &;
-
         display: flex;
         align-items: center;
         justify-content: center;
@@ -31,6 +29,7 @@
         gap: ($grid * 2);
         margin: 0 auto;
         max-width: $site-width;
+
         @include media-query(medium) {
             grid-template-columns: repeat(2, 1fr);
             gap: ($grid * 2);
@@ -49,8 +48,8 @@
     &__logos-item {
         display: flex;
         justify-content: center;
-        
-       @include media-query(medium) {
+
+        @include media-query(medium) {
             width: 200px;
         }
     }
