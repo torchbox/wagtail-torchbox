@@ -26,15 +26,14 @@
 
     &__logos-list {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         align-items: center;
-
+        gap: ($grid * 2);
         margin: 0 auto;
         max-width: $site-width;
-
         @include media-query(medium) {
             grid-template-columns: repeat(2, 1fr);
-            grid-gap: ($grid * 2);
+            gap: ($grid * 2);
         }
 
         @include media-query(large) {
@@ -47,6 +46,11 @@
         }
     }
 
+    &__logos-item {
+        display: flex;
+        justify-content: center;
+    }
+
     &__logos-image {
         transition: box-shadow $transition-quick;
 
@@ -56,10 +60,8 @@
     }
 
     &__logos-link {
-        display: flex;
         justify-content: center;
         border-bottom: 2px solid transparent; // prevent layout shift
-        width: 200px;
     }
 
     &__inner {

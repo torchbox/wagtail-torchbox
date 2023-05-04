@@ -10,8 +10,8 @@
                                 <li class="footer__logos-item">
                                         {% with link=logo.link.0.value %}
                                             {% if link %}
-                                                <a class="footer__logos-link" href="{{ link.url }}" alt="{{ link.text }}">
-                                                    {% image logo.image height-90 class="footer__logos-image" loading="lazy" title="{{ link.text }}" %}
+                                                <a class="footer__logos-link" href="{{ link.url }}" alt="{{ link.link_text }}">
+                                                    {% image logo.image height-90 class="footer__logos-image" loading="lazy" alt="" %}
                                                 </a>
                                             {% else %}
                                                 {% image logo.image height-90 class="footer__logos-image" loading="lazy" %}
