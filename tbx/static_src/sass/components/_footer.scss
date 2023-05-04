@@ -21,7 +21,7 @@
 
         padding: ($grid * 2) $variable-gutter--large;
         background-color: var(--color--white);
-        border-top: 1px solid  var(--color--light-grey);
+        border-top: 1px solid var(--color--light-grey);
     }
 
     &__logos-list {
@@ -45,7 +45,6 @@
         @include media-query(x-large) {
             column-gap: 130px;
         }
-
     }
 
     &__logos-image {
