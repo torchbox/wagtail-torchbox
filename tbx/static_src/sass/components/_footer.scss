@@ -1,16 +1,30 @@
 @use 'sass:math';
 
-.footer-logos {
+.footer {
     $root: &;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    &__container {
+        background-color: var(--color--light-grey);
+        padding: ($grid * 2) $variable-gutter--small;
 
-    padding: ($grid * 2) $variable-gutter--large;
-    background-color: var(--color--white);
+        @include media-query(menu-break) {
+            padding: ($grid * 3) 3.5vw;
+        }
+    }
 
-    &__list {
+    &__logos {
+        $root: &;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: ($grid * 2) $variable-gutter--large;
+        background-color: var(--color--white);
+        border-top: 1px solid  var(--color--light-grey);
+    }
+
+    &__logos-list {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
@@ -20,6 +34,7 @@
 
         @include media-query(medium) {
             grid-template-columns: repeat(2, 1fr);
+            grid-gap: ($grid * 2);
         }
 
         @include media-query(large) {
@@ -31,16 +46,9 @@
             column-gap: 130px;
         }
 
-        &--spaced {
-            margin-bottom: 100px;
-
-            @include media-query(medium) {
-                margin-bottom: 200px;
-            }
-        }
     }
 
-    &__image {
+    &__logos-image {
         transition: box-shadow $transition-quick;
 
         #{$root}__link:hover & {
@@ -48,21 +56,11 @@
         }
     }
 
-    &__link {
+    &__logos-link {
         display: flex;
         justify-content: center;
         border-bottom: 2px solid transparent; // prevent layout shift
-        width: 194px;
-    }
-}
-
-.footer {
-    $root: &;
-    background-color: var(--color--light-grey);
-    padding: ($grid * 2) $variable-gutter--small;
-
-    @include media-query(menu-break) {
-        padding: ($grid * 3) 3.5vw;
+        width: 200px;
     }
 
     &__inner {
@@ -204,9 +202,5 @@
                 fill: var(--color--coral);
             }
         }
-    }
-
-    .template__homepage & {
-        padding: ($grid * 3) 3.5vw;
     }
 }

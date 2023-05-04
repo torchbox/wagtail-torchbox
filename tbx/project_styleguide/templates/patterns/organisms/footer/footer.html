@@ -1,20 +1,22 @@
 {% load navigation_tags wagtailcore_tags wagtailimages_tags %}
 
-<footer>
-    <div class="footer-logos">
+<footer class="footer">
+    <div class="footer__logos">
         {% with global_settings=settings.navigation.NavigationSettings %}
             {% if global_settings.footer_logos %}
-                    <ul class="footer-logos__list">
+                    <ul class="footer__logos-list">
                         {% for item in global_settings.footer_logos %}
                             {% with logo=item.value %}
-                                <li class="footer-logos__item">
-                                    <div class="footer-logos__container">
+                                <li class="footer__logos-item">
                                         {% with link=logo.link.0.value %}
-                                            <a class="footer-logos__link" href="{{ link.url }}" title="{{ link.text }}">
-                                                {% image logo.image height-90 class="footer-logos__image" loading="lazy" %}
-                                            </a>
+                                            {% if link %}
+                                                <a class="footer__logos-link" href="{{ link.url }}" title="{{ link.text }}">
+                                                    {% image logo.image height-90 class="footer__logos-image" loading="lazy" title="{{ link.text }}" %}
+                                                </a>
+                                            {% else %}
+                                                {% image logo.image height-90 class="footer__logos-image" loading="lazy" title="{{ link.text }}" %}
+                                            {% endif %}
                                         {% endwith %}
-                                    </div>
                                 </li>
                             {% endwith %}
                         {% endfor %}
@@ -23,8 +25,7 @@
         {%endwith %}
     </div>
 
-
-    <div class="footer">
+    <div class="footer__container">
         <div class="footer__inner">
             <div class="footer__primary-content">
                 <div class="footer__contact">
