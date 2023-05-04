@@ -1,4 +1,4 @@
-# TBX Technical Documentation
+# Torchbox.com Technical Documentation
 
 [TOC]
 
@@ -8,13 +8,10 @@ This is the main Torchbox.com website.
 
 To work on this project, see the README.
 
-### External integrations
+## External integrations
 
-List here any external services this project uses. Preferably link to a separate documentation page for each.
+The jobs listing on the site is pulled from PeopleHR.
 
-Include any external credentials in the README.
+TO BE ADDED:
 
-## Adding documentation
-
-- [Support Runbook](support-runbook.md)
-- [Upgrading Guidelines](upgrading.md)
+    More details about job listing.

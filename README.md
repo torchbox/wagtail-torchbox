@@ -110,26 +110,6 @@ poetry install --no-root
 
 ## Deployments
 
-To deploy push branch to heroku manually:
+To deploy, merge your feature branch to `master` or `staging` branch. Once CI pipelines have passed, it will be deployed to the respective Heroku site automatically.
 
-### Staging
-
-Add remote on your local repo:
-`heroku git:remote -a <staging heroku app name>`
-
-Rename the remote to avoid confusion with prod
-`git remote rename heroku heroku-staging`
-
-Push branch to heroku:
-`git push heroku-staging staging:main`
-
-### Production
-
-Add remote on your local repo:
-`heroku git:remote -a <prod heroku app name>`
-
-Rename the remote to avoid confusion with staging
-`git remote rename heroku heroku-prod`
-
-Push branch to heroku:
-`git push heroku-prod master:main`
+This is done via [Heroku Github integration](https://devcenter.heroku.com/articles/github-integration).
