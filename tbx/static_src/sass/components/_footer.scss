@@ -49,6 +49,10 @@
     &__logos-item {
         display: flex;
         justify-content: center;
+        
+       @include media-query(medium) {
+            width: 200px;
+        }
     }
 
     &__logos-image {
