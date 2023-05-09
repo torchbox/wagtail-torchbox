@@ -103,7 +103,7 @@ class ImageBlock(StructBlock):
 
 class ImageWithLinkBlock(StructBlock):
     image = ImageChooserBlock()
-    link = LinkBlock()
+    link = LinkBlock(required=False)
 
     class Meta:
         icon = "site"
