@@ -218,8 +218,7 @@ class HomePage(Page):
     class Meta:
         verbose_name = "Homepage"
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
                 FieldPanel("hero_intro_primary"),

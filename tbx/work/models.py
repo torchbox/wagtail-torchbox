@@ -138,8 +138,7 @@ class WorkPage(Page):
     def type(self):
         return "CASE STUDY"
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         FieldPanel("client", classname="client"),
         InlinePanel("authors", label="Author", min_num=1),
         FieldPanel("date"),
@@ -247,8 +246,7 @@ class WorkIndexPage(Page):
     def serve_preview(self, request, mode_name):
         return self.serve(request)
 
-    content_panels = [
-        FieldPanel("title", classname="title"),
+    content_panels = Page.content_panels + [
         FieldPanel("intro"),
         FieldPanel("hide_popular_tags"),
     ]
