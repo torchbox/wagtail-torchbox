@@ -29,7 +29,7 @@ fab pull-production-media
 
 ## Cache
 
-TO BE ADDED:
+TODO:
 
 What cache backend is used? What is it used for?
 

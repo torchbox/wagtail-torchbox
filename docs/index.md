@@ -12,6 +12,6 @@ To work on this project, see the README.
 
 The jobs listing on the site is pulled from PeopleHR.
 
-TO BE ADDED:
+TODO:
 
     More details about job listing.

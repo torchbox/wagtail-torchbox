@@ -6,7 +6,7 @@ This document describes aspects of the system which should be given particular a
 
 The following areas of functionality are critical paths for the site which don't have full automated tests and should be checked manually.
 
-### 1. TO BE ADDED: [Summary of critical path, e.g. 'Donations']
+### 1. TODO: [Summary of critical path, e.g. 'Donations']
 
 [Description of the overall functionality covered]
 
@@ -19,7 +19,7 @@ The following areas of functionality are critical paths for the site which don't
 
 As well as testing the critical paths, these areas of functionality should be checked:
 
-TO BE ADDED
+TODO
 
 - ...
 - Other places where you know extra maintenance or checks may be necessary
