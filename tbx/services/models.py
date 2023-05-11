@@ -310,9 +310,16 @@ class ServicePage(BaseServicePage):
         blank=True,
         help_text="Link to this service in taxonomy",
     )
+    call_to_action = StreamField(
+        PageSectionStoryBlock(),
+        blank=True,
+        use_json_field=True,
+        collapsed=True,
+    )
 
     content_panels = BaseServicePage.content_panels.copy()
     content_panels.insert(1, FieldPanel("service"))
+    content_panels.append(FieldPanel("call_to_action"))
 
     subpage_types = ["SubServicePage"]
 

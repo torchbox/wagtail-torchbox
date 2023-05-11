@@ -1,7 +1,9 @@
 {% load wagtailcore_tags %}
 
+{% if value %}
 <div class="streamfield">
     {% for block in value %}
         {% include_block block %}
     {% endfor %}
 </div>
+{% endif %}

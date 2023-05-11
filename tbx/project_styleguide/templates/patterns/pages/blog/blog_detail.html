@@ -36,6 +36,8 @@
         {% endfor %}
     </div>
 
+    {% include_block page.call_to_action %}
+
     {% if page.related_blog_posts %}
         <div class="page__showcase">
             <div class="blog-listing blog-listing--top-space">

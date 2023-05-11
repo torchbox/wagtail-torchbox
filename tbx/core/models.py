@@ -251,7 +251,11 @@ class StandardPage(Page):
 
     body = StreamField(StoryBlock(), use_json_field=True)
     additional_content = StreamField(
-        PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
+        PageSectionStoryBlock(),
+        blank=True,
+        use_json_field=True,
+        collapsed=True,
+        verbose_name="Call to action",
     )
 
     content_panels = Page.content_panels + [
