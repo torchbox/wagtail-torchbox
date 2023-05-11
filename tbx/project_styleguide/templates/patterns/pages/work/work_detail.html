@@ -34,6 +34,8 @@
             {% include "patterns/molecules/author/author.html" with item=page author=author tag_link_base=work_index_url %}
         </div>
 
+        {% include_block page.call_to_action %}
+        
         {% if page.related_works %}
         <div class="page__showcase">
             <div class="related-content">

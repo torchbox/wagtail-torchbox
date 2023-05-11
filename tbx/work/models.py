@@ -11,7 +11,7 @@ from django.utils.decorators import method_decorator
 from bs4 import BeautifulSoup
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from tbx.core.blocks import StoryBlock
+from tbx.core.blocks import PageSectionStoryBlock, StoryBlock
 from tbx.core.models import Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.taxonomy.models import Service
@@ -86,6 +86,13 @@ class WorkPage(Page):
     )
     client = models.TextField(blank=True)
 
+    call_to_action = StreamField(
+        PageSectionStoryBlock(),
+        blank=True,
+        use_json_field=True,
+        collapsed=True,
+    )
+
     def set_body_word_count(self):
         body_basic_html = self.body.stream_block.render_basic(self.body)
         body_text = BeautifulSoup(body_basic_html, "html.parser").get_text()
@@ -146,6 +153,7 @@ class WorkPage(Page):
         FieldPanel("homepage_image"),
         InlinePanel("screenshots", label="Screenshots"),
         FieldPanel("visit_the_site"),
+        FieldPanel("call_to_action"),
     ]
 
     promote_panels = [
@@ -166,6 +174,13 @@ class WorkIndexPage(Page):
     intro = RichTextField(blank=True)
 
     hide_popular_tags = models.BooleanField(default=False)
+
+    call_to_action = StreamField(
+        PageSectionStoryBlock(),
+        blank=True,
+        use_json_field=True,
+        collapsed=True,
+    )
 
     def get_popular_tags(self):
         # Get a ValuesQuerySet of tags ordered by most popular
@@ -249,6 +264,7 @@ class WorkIndexPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("intro"),
         FieldPanel("hide_popular_tags"),
+        FieldPanel("call_to_action"),
     ]
 
     promote_panels = [

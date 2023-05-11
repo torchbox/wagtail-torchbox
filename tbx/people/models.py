@@ -9,6 +9,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from tbx.blog.models import BlogIndexPage, BlogPage
+from tbx.core.blocks import PageSectionStoryBlock
 from tbx.people.blocks import InstagramEmbedBlock, StandoutItemsBlock
 from tbx.people.forms import ContactForm
 from tbx.work.models import WorkIndexPage, WorkPage
@@ -37,6 +38,12 @@ class PersonPage(Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
+    call_to_action = StreamField(
+        PageSectionStoryBlock(),
+        blank=True,
+        use_json_field=True,
+        collapsed=True,
+    )
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
@@ -49,6 +56,7 @@ class PersonPage(Page):
         FieldPanel("intro"),
         FieldPanel("biography"),
         FieldPanel("image"),
+        FieldPanel("call_to_action"),
     ]
 
     promote_panels = [
@@ -93,6 +101,13 @@ class PersonPage(Page):
 # Person index
 class PersonIndexPage(Page):
     strapline = models.CharField(max_length=255)
+    call_to_action = StreamField(
+        PageSectionStoryBlock(),
+        blank=True,
+        use_json_field=True,
+        collapsed=True,
+    )
+
     template = "patterns/pages/team/team_listing.html"
 
     subpage_types = ["PersonPage"]
@@ -103,6 +118,7 @@ class PersonIndexPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel("strapline"),
+        FieldPanel("call_to_action"),
     ]
 
 
