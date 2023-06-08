@@ -21,7 +21,7 @@ FROM python:3.9-buster as production
 ARG POETRY_INSTALL_ARGS="--no-dev"
 
 # IMPORTANT: Remember to review both of these when upgrading
-ARG POETRY_VERSION=1.2.0
+ARG POETRY_VERSION=1.5.1
 
 # Install dependencies in a virtualenv
 ENV VIRTUAL_ENV=/venv
