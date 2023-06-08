@@ -18,15 +18,10 @@ RUN npm run build:prod
 # however weight a lot, approx. up to 1.5GiB per built image.
 FROM python:3.9-buster as production
 
-ARG POETRY_HOME=/opt/poetry
 ARG POETRY_INSTALL_ARGS="--no-dev"
 
 # IMPORTANT: Remember to review both of these when upgrading
-ARG POETRY_VERSION=1.2.0
-# To get this value locally:
-# $ curl https://install.python-poetry.org -o get-poetry.py
-# $ sha1sum get-poetry.py
-ARG POETRY_INSTALLER_SHA=8126f697b0c0e0e1a495e7760a623acb1531b420
+ARG POETRY_VERSION=1.5.1
 
 # Install dependencies in a virtualenv
 ENV VIRTUAL_ENV=/venv
@@ -51,7 +46,7 @@ WORKDIR /app
 #    read by Gunicorn.
 #  * GUNICORN_CMD_ARGS - additional arguments to be passed to Gunicorn. This
 #    variable is read by Gunicorn
-ENV PATH=${POETRY_HOME}/bin:$VIRTUAL_ENV/bin:$PATH \
+ENV PATH=$VIRTUAL_ENV/bin:$PATH \
     POETRY_INSTALL_ARGS=${POETRY_INSTALL_ARGS} \
     PYTHONUNBUFFERED=1 \
     DJANGO_SETTINGS_MODULE=tbx.settings.production \
@@ -68,23 +63,15 @@ ENV BUILD_ENV=${BUILD_ENV}
 # server (Gunicorn). This is read by Dokku only. Heroku will ignore this.
 EXPOSE 8000
 
-# Install poetry using the installer (keeps Poetry's dependencies isolated from the app's)
-# chown protects us against cases where files downloaded by poetry have invalid ownership
-# (see https://git.torchbox.com/internal/wagtail-kit/-/merge_requests/682)
-# chmod ensures poetry dependencies are accessible when packages are installed
-RUN curl -sSL https://install.python-poetry.org -o get-poetry.py && \
-    echo "${POETRY_INSTALLER_SHA} get-poetry.py" | sha1sum -c - && \
-    python3 get-poetry.py --version ${POETRY_VERSION} --yes && \
-    rm get-poetry.py && \
-    chown -R root:root ${POETRY_HOME} && \
-    chmod -R 0755 ${POETRY_HOME}
+# Install poetry at the system level
+RUN pip install --no-cache poetry==${POETRY_VERSION}
 
 USER tbx
 
 # Install your app's Python requirements.
 RUN python -m venv $VIRTUAL_ENV
 COPY --chown=tbx pyproject.toml poetry.lock ./
-RUN pip install --upgrade pip && poetry install ${POETRY_INSTALL_ARGS} --no-root --extras gunicorn
+RUN pip install --no-cache --upgrade pip && poetry install ${POETRY_INSTALL_ARGS} --no-root --extras gunicorn && rm -rf $HOME/.cache
 
 COPY --chown=tbx --from=frontend ./tbx/static_compiled ./tbx/static_compiled
 
