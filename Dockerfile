@@ -26,7 +26,7 @@ ARG POETRY_VERSION=1.2.0
 # To get this value locally:
 # $ curl https://install.python-poetry.org -o get-poetry.py
 # $ sha1sum get-poetry.py
-ARG POETRY_INSTALLER_SHA=8126f697b0c0e0e1a495e7760a623acb1531b420
+ARG POETRY_INSTALLER_SHA=83928e644bb08a23a999fd9041b282890430be30
 
 # Install dependencies in a virtualenv
 ENV VIRTUAL_ENV=/venv
