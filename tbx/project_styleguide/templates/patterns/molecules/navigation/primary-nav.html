@@ -16,6 +16,14 @@
     {% endwith %}
 {% endfor %}
 
+{# Temporary card-coding of AI link  until external links are supported #}
+<li class="nav-item nav-item">
+    <a class="nav-item__link" href="https://ai.torchbox.com/" target="__blank">
+        <span class="nav-item__title">AI + Innovation</span>
+        {% include "patterns/atoms/icons/icon.html" with name="external" classname="nav-item__external-link-icon" %}
+    </a>
+</li>
+
 {% if is_desktop %}
 <li class="nav-item nav-item--with-children" x-data="{ isOpen: false }" {% if is_home == False %} data-primary-nav @tab-close="isOpen=false" {% endif %} >
     <button class="nav-item__button" data-subnav-button @click="isOpen = !isOpen">

@@ -50,11 +50,19 @@
         }
 
         @include media-query(menu-break) {
-            margin-right: 70px;
+            margin-right: 30px;
 
             &:last-child {
                 margin-right: 0;
             }
+        }
+
+        @include media-query(menu-break-larger) {
+            margin-right: 50px;
+        }
+
+        @include media-query(x-large) {
+            margin-right: 70px;
         }
 
         &--with-badge {
@@ -113,6 +121,19 @@
                 }
             }
         }
+
+        &__external-link-icon {
+            width: 14px;
+            height: 14px;
+            position: relative;
+            top: -2px;
+            fill: var(--color--indigo);
+            transition: fill $transition-quick;
+        }
+
+        #{$root}__link:hover #{$root}__external-link-icon {
+            fill: var(--color--coral);
+        }
     }
 
     // Mobile menu
@@ -144,6 +165,19 @@
             position: relative;
             top: -10px;
             right: -15px;
+        }
+
+        &__external-link-icon {
+            width: 14px;
+            height: 14px;
+            position: relative;
+            top: -2px;
+            fill: var(--color--white);
+            transition: fill $transition-quick;
+        }
+
+        #{$root}__link:hover #{$root}__external-link-icon {
+            fill: var(--color--coral);
         }
     }
 
@@ -208,11 +242,7 @@
 
         @include media-query(menu-break) {
             margin-bottom: 0;
-            margin-right: 6vw;
-        }
-
-        @include media-query(x-large) {
-            margin-right: 5.5vw;
+            margin-right: 70px;
         }
 
         &--with-children {
@@ -248,6 +278,14 @@
             @include media-query(medium) {
                 font-size: map-get($medium-font-sizes, l);
             }
+
+            @include media-query(menu-break) {
+                font-size: map-get($small-font-sizes, m);
+            }
+
+            @include media-query(menu-break-larger) {
+                font-size: map-get($medium-font-sizes, l);
+            }
         }
 
         &__link {
@@ -272,6 +310,35 @@
             &:focus {
                 outline: 4px solid var(--color--header-links) transparent;
             }
+        }
+
+        &__external-link-icon {
+            width: 15px;
+            height: 15px;
+            fill: var(--color--white);
+            transition: fill $transition-quick;
+            position: relative;
+            top: -2px;
+
+            @include media-query(medium) {
+                width: 20px;
+                height: 20px;
+                top: -2px;
+            }
+
+            @include media-query(menu-break) {
+                width: 18px;
+                height: 18px;
+            }
+
+            @include media-query(menu-break-larger) {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        #{$root}__link:hover #{$root}__external-link-icon {
+            fill: var(--color--coral);
         }
     }
 }

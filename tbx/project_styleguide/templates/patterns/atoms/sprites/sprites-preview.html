@@ -1,0 +1,21 @@
+{% comment %} This file is used to preview icons in the pattern library {% endcomment %}
+{% if is_pattern_library %}
+    <div data-get-symbols>
+        {% include "patterns/atoms/sprites/sprites.html" %}
+    </div>
+    <template data-template>
+        <div class="sprites-preview-icons__item">
+            {% include "patterns/atoms/icons/icon.html" with name="__icon__" classname="sprites-preview-icons__icon" %}
+            <div class="sprites-preview-icons__name">__icon__</div>
+        </div>
+    </template>
+    <script>
+        const template = document.querySelector('[data-template]');
+        const sprite = document.querySelector('[data-get-symbols]');
+        const symbols = [...sprite.querySelectorAll('symbol')];
+        const symbolList = document.createElement('div');
+        symbolList.classList.add('sprites-preview-icons');
+        symbolList.innerHTML = symbols.map(el => `${template.innerHTML.replace(/__icon__/g, el.id)}`).join('');
+        document.body.appendChild(symbolList);
+    </script>
+{% endif %}
