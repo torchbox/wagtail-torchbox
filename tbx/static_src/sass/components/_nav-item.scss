@@ -127,12 +127,12 @@
             height: 14px;
             position: relative;
             top: -2px;
-            fill: var(--color--indigo);
+            fill: var(--color--header-links);
             transition: fill $transition-quick;
         }
 
         #{$root}__link:hover #{$root}__external-link-icon {
-            fill: var(--color--coral);
+            fill: var(--color--underline);
         }
     }
 
