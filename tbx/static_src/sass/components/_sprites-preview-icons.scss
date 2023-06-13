@@ -1,0 +1,34 @@
+.sprites-preview-icons {
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0;
+        margin-bottom: 20px;
+
+        @include media-query(tablet-portrait) {
+            margin-right: 20px;
+        }
+
+        &:last-child {
+            margin-right: 20px;
+        }
+    }
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+        color: var(--color--black);
+        fill: var(--color--black);
+    }
+
+    &__name {
+        font-weight: $weight--bold;
+        padding: $grid;
+    }
+}
