@@ -125,7 +125,13 @@
     &__image {
         display: block;
         margin-top: -25px;
-        width: 100%;
+        max-width: 100%;
+        max-height: 50vh;
+        object-fit: cover;
+
+        @include media-query(xx-large) {
+            max-height: 20vh;
+        }
     }
 
     &__image-mask {
