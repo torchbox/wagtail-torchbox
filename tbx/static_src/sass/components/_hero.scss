@@ -117,17 +117,13 @@
                 padding-top: ($gutter * 3);
             }
         }
-        #{$root}__image-mask {
-            top: 140px;
-        }
     }
 
+    // The following code for image & image-mask is only used on proposition pages currently
     &__image {
         display: block;
         margin-top: -25px;
-        max-width: 100%;
         max-height: 50vh;
-        object-fit: cover;
 
         @include media-query(xx-large) {
             max-height: 20vh;
@@ -138,7 +134,7 @@
         @include z-index(zero);
         display: none;
         position: absolute;
-        top: -60px;
+        top: 140px;
         right: -50px;
         width: 45vw;
         height: auto;
