@@ -1,4 +1,5 @@
 .subnav {
+    $root: &;
     @include z-index(two);
     border-radius: 12px;
     position: absolute;
@@ -51,6 +52,20 @@
         border-bottom: 0;
     }
 
+    &__external-link-icon {
+        width: 12px;
+        height: 12px;
+        fill: var(--color--dark-indigo);
+        transition: fill $transition-quick;
+        position: relative;
+        top: -1px;
+        opacity: 0.8;
+    }
+
+    #{$root}__link:hover #{$root}__external-link-icon {
+        fill: var(--color--accent);
+    }
+
     // Don't style homepage nav with new rules, follow old design
     .template__homepage & {
         padding: 20px;
@@ -78,6 +93,10 @@
             left: 20px;
             bottom: 10px;
             border-bottom: 0;
+        }
+
+        &__external-link-icon {
+            top: 4px;
         }
     }
 }

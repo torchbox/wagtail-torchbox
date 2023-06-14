@@ -30,8 +30,12 @@
         {% for item in primarynav|slice:"4:" %}
             {% with link=item.value %}
                 <li class="subnav__item {% if link.is_page and link.page.slug == 'jobs' and job_count > 0 %}subnav__item--with-badge{% endif %}">
-                    <a class="subnav__link" data-subnav-link href="{{ link.url }}" {% if link.is_page %}data-menu-item{% else %}target="_blank" rel="nofollow noreferrer"{% endif %} subnav-menu-item>
+                    <a class="subnav__link" data-subnav-link href="{{ link.url }}" {% if link.is_page %}data-menu-item{% else %}target="_blank" rel="nofollow noreferrer"{% endif %} data-subnav-menu-item>
                         {{ link.text }}
+                        {# external link icon in dropdown #}
+                        {% if not link.is_page %}
+                            {% include "patterns/atoms/icons/icon.html" with name="external" classname="subnav__external-link-icon" %}
+                        {% endif %}
                     </a>
                     {% if link.is_page and link.page.slug == 'jobs' and job_count > 0 %}
                         <a class="subnav__badge-link" data-subnav-badge-link href="/careers/jobs/" aria-label="{{ job_count }} jobs available">
