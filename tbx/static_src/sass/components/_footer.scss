@@ -88,7 +88,8 @@
         @include media-query(menu-break) {
             margin-top: 0;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
+            align-items: baseline;
         }
     }
 
@@ -129,6 +130,7 @@
     &__appendix {
         display: flex;
         flex-direction: column;
+        align-items: baseline;
         margin-left: 10px;
 
         @include media-query(large) {
@@ -182,6 +184,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @include media-query(menu-break) {
+            justify-content: end;
+        }
     }
 
     &__social-icon {
