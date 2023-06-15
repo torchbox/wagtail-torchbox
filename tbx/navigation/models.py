@@ -1,13 +1,13 @@
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
-
 from modelcluster.models import ClusterableModel
-from tbx.core.blocks import ImageWithLinkBlock
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
+
+from tbx.core.blocks import ImageWithLinkBlock
 
 
 class LinkBlockStructValue(blocks.StructValue):
@@ -106,12 +106,6 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         help_text="Row of links that use prominent styles to standout.",
         use_json_field=True,
     )
-    footer_top_links = StreamField(
-        [("link", LinkBlock())],
-        blank=True,
-        help_text="Single list of links that appear between the teasers and the addresses.",
-        use_json_field=True,
-    )
     footer_logos = StreamField(
         [("logos", ImageWithLinkBlock())],
         blank=True,
@@ -123,7 +117,6 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
     panels = [
         FieldPanel("primary_navigation"),
         FieldPanel("footer_teasers"),
-        FieldPanel("footer_top_links"),
         FieldPanel("footer_links"),
         FieldPanel("footer_logos"),
     ]

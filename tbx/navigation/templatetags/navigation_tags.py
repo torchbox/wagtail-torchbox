@@ -57,17 +57,3 @@ def footerteasers(context):
         ].footer_teasers,
         "request": request,
     }
-
-
-# Footer nav snippets
-@register.inclusion_tag(
-    "patterns/molecules/navigation/footer-top-links.html", takes_context=True
-)
-def footertoplinks(context):
-    request = context["request"]
-    return {
-        "footertoplinks": context["settings"]["navigation"][
-            "NavigationSettings"
-        ].footer_top_links,
-        "request": request,
-    }
