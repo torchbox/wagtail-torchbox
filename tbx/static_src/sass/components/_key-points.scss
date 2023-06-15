@@ -28,6 +28,11 @@
                 border-bottom: 0;
             }
         }
+
+        &:before {
+            //overde underline colour in mixin
+            background-color: var(--color--accent);
+        }
     }
 
     &__intro {

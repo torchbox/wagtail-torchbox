@@ -23,8 +23,20 @@
     }
 
     &__button {
-        /* stylelint-disable-next-line declaration-no-important */
-        color: var(--color--white) !important; // ovveride streamfield value
+        color: var(--color--white);
+
+        .streamfield & {
+            color: var(--color--white);
+        }
+
+        &:hover {
+            border-bottom: 2px solid transparent;
+
+            .streamfield & {
+                border-bottom: 2px solid transparent;
+                color: var(--color--white);
+            }
+        }
     }
 
     &__embed {

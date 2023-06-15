@@ -272,8 +272,8 @@
         &__title {
             font-weight: $weight--heavy;
             font-size: map-get($medium-font-sizes, s);
-            text-shadow: 0 0, 0 3px var(--color--link), 4px 0 var(--color--link),
-                0 0;
+            text-shadow: 0 0, 0 3px var(--color--theme-link),
+                4px 0 var(--color--theme-link), 0 0;
             z-index: 2;
             position: relative;
 

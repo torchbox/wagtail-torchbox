@@ -222,5 +222,16 @@
         p {
             color: var(--color--primary);
         }
+
+        a {
+            color: var(--color--theme-link);
+            font-weight: $weight--heavy;
+            border-bottom: 2px solid transparent; // prevent layout shift
+
+            &:hover {
+                border-bottom: 2px solid var(--color--accent);
+                color: var(--color--theme-hover);
+            }
+        }
     }
 }

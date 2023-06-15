@@ -141,7 +141,7 @@
     &__link {
         font-size: map-get($small-font-sizes, xxs);
         transition: all $transition-quick;
-        color: var(--color--link);
+        color: var(--color--theme-link);
         text-decoration: none;
         border-bottom: 2px solid var(--color--background);
         padding-top: 20px;
@@ -149,6 +149,7 @@
         &:focus,
         &:hover {
             border-bottom: 2px solid var(--color--underline);
+            color: var(--color--theme-hover);
         }
 
         @include media-query(medium) {
