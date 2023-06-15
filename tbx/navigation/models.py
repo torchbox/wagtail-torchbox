@@ -1,13 +1,13 @@
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
+
 from modelcluster.models import ClusterableModel
+from tbx.core.blocks import ImageWithLinkBlock
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
-
-from tbx.core.blocks import ImageWithLinkBlock
 
 
 class LinkBlockStructValue(blocks.StructValue):
