@@ -227,10 +227,15 @@
             color: var(--color--theme-link);
             font-weight: $weight--heavy;
             border-bottom: 2px solid transparent; // prevent layout shift
+            transition: border $transition-quick;
 
             &:hover {
                 border-bottom: 2px solid var(--color--accent);
                 color: var(--color--theme-hover);
+
+                .theme--coral & {
+                    border-bottom: 2px solid var(--color--white);
+                }
             }
         }
     }
