@@ -6,7 +6,9 @@ This runbook is supplementary to the [general 24/7 support runbook](https://intr
 
 See also our [incident process](https://intranet.torchbox.com/propositions/design-and-build-proposition/delivering-projects/application-support/incident-process/) if you're not already following this.
 
-**Note: Remove the above intranet references if this project will be supported by the client's team, or handed to a third party for support. Consider whether to incorporate any scenarios from the general runbook in these cases.**
+!!! note
+
+    **Remove the above intranet references if this project will be supported by the client's team, or handed to a third party for support. Consider whether to incorporate any scenarios from the general runbook in these cases.**
 
 ## Support resources
 
