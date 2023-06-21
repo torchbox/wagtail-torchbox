@@ -2,16 +2,16 @@ name: Docs
 
 on:
   pull_request:
-    branches: ["master"]
+    branches: ['master']
     paths:
-      - "docs/**/*"
-      - "mkdocs.yml"
+      - 'docs/**/*'
+      - 'mkdocs.yml'
 
   push:
-    branches: ["master"]
+    branches: ['master']
     paths:
-      - "docs/**/*"
-      - "mkdocs.yml"
+      - 'docs/**/*'
+      - 'mkdocs.yml'
     # Not yet supported. See <https://github.com/actions/deploy-pages/issues/76>
     # tags:
     #   - "v*"
@@ -21,7 +21,7 @@ on:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
-          cache: "pip" # caching pip dependencies
+          cache: 'pip' # caching pip dependencies
 
       - name: Install dependencies
         run: |
