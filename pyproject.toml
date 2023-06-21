@@ -40,6 +40,8 @@ Werkzeug = "^2.1.2"
 django-extensions = "^3.2.1"
 fabric = "~2.5"
 stellar = "^0.4.5"
+pudb = "^2020.1"
+honcho = "^1.1.0"
 
 # Linters etc.
 black = "^22.3.0"
@@ -50,9 +52,9 @@ pre-commit = "^2.19.0"
 seed-isort-config = "^2.2.0"
 
 # Documentation
-mkdocs = "~1.0"
-pudb = "^2020.1"
-honcho = "^1.1.0"
+mkdocs = "^1.4.3"
+mkdocs-material = "^9.1.16"
+pymdown-extensions = "^10.0.1"
 
 # Testing
 wagtail-factories = "^4.1.0"
