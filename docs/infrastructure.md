@@ -92,7 +92,7 @@ Steps for resetting the `staging` git branch, and deploying it with a clone of t
 
 This site uses flightpath to manage staging reset. This is implemented as [Copy prod to staging](https://github.com/torchbox/wagtail-torchbox/actions/workflows/flightpath.yml) Github Actions.
 
-To run, go the [Github Actions page](https://github.com/torchbox/wagtail-torchbox/actions/workflows/flightpath.yml), click on 'Rub workflow', and select `master`.
+To run, go the [Github Actions page](https://github.com/torchbox/wagtail-torchbox/actions/workflows/flightpath.yml), click on 'Run workflow', and select `master`.
 
 ### Media
 
