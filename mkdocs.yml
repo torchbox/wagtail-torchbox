@@ -5,14 +5,61 @@ edit_uri: 'edit/master/docs/'
 
 repo_name: Github
 dev_addr: 0.0.0.0:8001
+
+theme:
+  name: material
+  font: false
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - content.code.annotate
+    - content.code.copy
+    - navigation.footer
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+
 markdown_extensions:
   - codehilite
   - admonition
   - sane_lists
   - toc:
       permalink: true
+  # pymdown-extensions meant to bring the Markdown implementation closer to GFM.
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
 nav:
   - 'Home': 'index.md'
+  - 'Infrastructure': 'infrastructure.md'
+  - 'Project conventions': 'project_conventions.md'
+  - 'Deployment': 'deployment.md'
+  - 'VSCode Dev container': 'vscode-dev-container.md'
+  - "Front end":
+      - front-end/tooling.md
+      - front-end/placeholder_images.md
+      - front-end/form-overrides.md
+  - 'Continuous integration': 'continuous-integration.md'
+  - 'Anonymised data': 'anonymised_data.md'
+  - 'Data protection': 'data_protection.md'
   - 'Support runbook': 'support-runbook.md'
   - 'Upgrading guidelines': 'upgrading.md'
