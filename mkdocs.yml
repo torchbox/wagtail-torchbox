@@ -11,7 +11,7 @@ theme:
   font: false
   palette:
     # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
+    - media: '(prefers-color-scheme: light)'
       scheme: default
       primary: red
       accent: red
@@ -20,7 +20,7 @@ theme:
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
+    - media: '(prefers-color-scheme: dark)'
       scheme: slate
       primary: red
       accent: red
@@ -54,7 +54,7 @@ nav:
   - 'Project conventions': 'project_conventions.md'
   - 'Deployment': 'deployment.md'
   - 'VSCode Dev container': 'vscode-dev-container.md'
-  - "Front end":
+  - 'Front end':
       - front-end/tooling.md
       - front-end/placeholder_images.md
       - front-end/form-overrides.md
