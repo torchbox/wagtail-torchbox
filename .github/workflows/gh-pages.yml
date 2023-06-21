@@ -12,9 +12,6 @@ on:
     paths:
       - 'docs/**/*'
       - 'mkdocs.yml'
-    # Not yet supported. See <https://github.com/actions/deploy-pages/issues/76>
-    # tags:
-    #   - "v*"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,7 +23,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -40,7 +37,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
-          cache: 'pip' # caching pip dependencies
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
@@ -52,10 +49,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
-  # Deployment job
   deploy:
-    # Add a dependency to the build job
     needs: build
+    if: github.ref == 'refs/heads/master'
 
     # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
     permissions:
@@ -68,8 +64,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    # Specify runner + deployment step
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Deploy Docs to GitHub Pages
         id: deployment
