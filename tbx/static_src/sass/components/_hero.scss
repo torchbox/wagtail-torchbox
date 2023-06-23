@@ -115,6 +115,7 @@
             @include media-query(large) {
                 padding-right: 45vw;
                 padding-top: ($gutter * 3);
+                min-height: 415px; // to ensure image doesn't overlap hero area if text is shorter
             }
         }
     }
@@ -123,17 +124,14 @@
     &__image {
         display: block;
         margin-top: -25px;
-        max-height: 50vh;
-
-        @include media-query(xx-large) {
-            max-height: 20vh;
-        }
+        width: 100%;
     }
 
     &__image-mask {
         @include z-index(zero);
         display: none;
         position: absolute;
+        max-height: 500px;
         top: 140px;
         right: -50px;
         width: 45vw;
