@@ -356,6 +356,15 @@ class ServicePageProcess(Orderable, BaseServicePageProcess):
 
 
 class SubServicePage(BaseServicePage):
+    theme = models.CharField(
+        max_length=255,
+        choices=(
+            ("light", "Light"),
+            ("coral", "Coral"),
+            ("dark", "Dark"),
+        ),
+        default="light",
+    )
     template = "patterns/pages/service/service.html"
 
     parent_page_types = ["ServicePage", "propositions.PropositionPage"]
