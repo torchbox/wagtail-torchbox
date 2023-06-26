@@ -25,14 +25,14 @@
     {% include "patterns/molecules/title-block/title-block.html" with item=page tags=False %}
     {% pageurl page.blog_index as blog_index_url %}
     {% for page_author in page.authors.all %}
-        {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=blog_index_url %}
+        {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=blog_index_url tags=item.related_services.all %}
     {% endfor %}
 
     {% include_block page.body %}
 
     <div class="page__author">
         {% for page_author in page.authors.all %}
-            {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=blog_index_url %}
+            {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=blog_index_url tags=item.related_services.all %}
         {% endfor %}
     </div>
 

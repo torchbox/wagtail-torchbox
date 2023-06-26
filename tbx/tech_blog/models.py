@@ -3,6 +3,9 @@ from django.db import models
 from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 
+from taggit.models import ItemBase, TagBase
+
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from tbx.core.blocks import StoryBlock
 from tbx.core.utils.cache import get_default_cache_control_decorator
@@ -10,6 +13,7 @@ from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
+from wagtail.snippets.models import register_snippet
 
 
 @method_decorator(get_default_cache_control_decorator(), name="serve")
@@ -30,7 +34,14 @@ class TechBlogIndexPage(Page):
         return blog_posts
 
     def get_context(self, request):
-        paginator = Paginator(self.blog_posts, per_page=10)
+        blog_posts = self.blog_posts
+
+        # Filter by related_service slug
+        slug_filter = request.GET.get("filter")
+        if slug_filter:
+            blog_posts = blog_posts.filter(tags__slug=slug_filter)
+
+        paginator = Paginator(blog_posts, per_page=10)
 
         page_num = request.GET.get("page")
 
@@ -43,6 +54,7 @@ class TechBlogIndexPage(Page):
 
         context = super().get_context(request)
         context["blog_posts"] = page
+        context["tags"] = TechBlogTag.objects.all()
         return context
 
 
@@ -59,6 +71,25 @@ class TechBlogPageAuthor(Orderable):
     ]
 
 
+@register_snippet
+class TechBlogTag(TagBase):
+    free_tagging = False
+
+    class Meta:
+        verbose_name = "Tech Blog Tag"
+
+
+class TaggedTechBlogPost(ItemBase):
+    tag = models.ForeignKey(
+        TechBlogTag, related_name="tagged_blog_posts", on_delete=models.CASCADE
+    )
+    content_object = ParentalKey(
+        to="tech_blog.TechBlogPage",
+        on_delete=models.CASCADE,
+        related_name="tagged_items",
+    )
+
+
 class TechBlogPage(Page):
     template = "patterns/pages/tech_blog/tech_blog_post.html"
 
@@ -66,6 +97,7 @@ class TechBlogPage(Page):
 
     date = models.DateField("Post date")
     body = StreamField(StoryBlock(), use_json_field=True)
+    tags = ClusterTaggableManager(through=TaggedTechBlogPost, blank=True)
 
     search_fields = Page.search_fields + [
         index.SearchField("body"),
@@ -89,3 +121,5 @@ class TechBlogPage(Page):
         FieldPanel("date"),
         FieldPanel("body"),
     ]
+
+    promote_panels = Page.promote_panels + [FieldPanel("tags")]
