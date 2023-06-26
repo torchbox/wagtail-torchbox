@@ -1,5 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.dispatch import receiver
 from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 
@@ -9,10 +10,12 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from tbx.core.blocks import StoryBlock
 from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.core.utils.text import get_read_time, get_word_count
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
+from wagtail.signals import page_published
 from wagtail.snippets.models import register_snippet
 
 
@@ -98,6 +101,7 @@ class TechBlogPage(Page):
     date = models.DateField("Post date")
     body = StreamField(StoryBlock(), use_json_field=True)
     tags = ClusterTaggableManager(through=TaggedTechBlogPost, blank=True)
+    body_word_count = models.PositiveIntegerField(null=True, editable=False)
 
     search_fields = Page.search_fields + [
         index.SearchField("body"),
@@ -123,3 +127,17 @@ class TechBlogPage(Page):
     ]
 
     promote_panels = Page.promote_panels + [FieldPanel("tags")]
+
+    def set_body_word_count(self):
+        body_basic_html = self.body.stream_block.render_basic(self.body)
+        self.body_word_count = get_word_count(body_basic_html)
+
+    @property
+    def read_time(self):
+        return get_read_time(self.body_word_count)
+
+
+@receiver(page_published, sender=TechBlogPage)
+def update_body_word_count_on_page_publish(instance, **kwargs):
+    instance.set_body_word_count()
+    instance.save(update_fields=["body_word_count"])

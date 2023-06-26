@@ -1,6 +1,3 @@
-import math
-import string
-
 from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
@@ -9,11 +6,11 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 
-from bs4 import BeautifulSoup
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from tbx.core.blocks import PageSectionStoryBlock, StoryBlock
 from tbx.core.models import RelatedLink, Tag
 from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.core.utils.text import get_read_time, get_word_count
 from tbx.taxonomy.models import Service
 from tbx.work.models import WorkIndexPage, WorkPage
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
@@ -201,12 +198,7 @@ class BlogPage(Page):
 
     def set_body_word_count(self):
         body_basic_html = self.body.stream_block.render_basic(self.body)
-        body_text = BeautifulSoup(body_basic_html, "html.parser").get_text()
-        remove_chars = string.punctuation + "“”’"
-        body_words = body_text.translate(
-            body_text.maketrans(dict.fromkeys(remove_chars))
-        ).split()
-        self.body_word_count = len(body_words)
+        self.body_word_count = get_word_count(body_basic_html)
 
     @property
     def related_blog_posts(self):
@@ -266,10 +258,7 @@ class BlogPage(Page):
 
     @property
     def read_time(self):
-        if self.body_word_count:
-            return math.ceil(self.body_word_count / 275)
-        else:
-            return "x"
+        return get_read_time(self.body_word_count)
 
     @property
     def type(self):
