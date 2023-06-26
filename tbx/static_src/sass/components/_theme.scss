@@ -9,12 +9,17 @@ Accent used for:
 Accent-dark used for:
 - Author roles
 - Client name
-Link used for:
-- Links
+Theme-link used for:
+- Links in nav and hero, but not in the main body of the page
+Link is used for:
+- Links in the main body of the page
+(Theme-link, Link, Theme-hover and Hover distinction is for the dark theme where the link colour needs to be different on the coloured background and in the white main body of the page)
 Underline used for:
 - Link underlines
-Hover useds for:
-- Link hovers
+Theme-Hover useds for:
+- Link hovers in nav and hero, but not in the main body of the page
+Hover used for:
+- Link hovers in the main body of the page
 Background used for:
 - Large background colour blocks
 - Sticky header bar
@@ -35,8 +40,10 @@ Icon colour used for:
         --color--primary: var(--color--dark-indigo);
         --color--accent: var(--color--coral);
         --color--accent-dark: var(--color--coral-dark);
+        --color--theme-link: var(--color--indigo);
         --color--link: var(--color--indigo);
         --color--underline: var(--color--coral);
+        --color--theme-hover: var(--color--indigo);
         --color--hover: var(--color--indigo);
         --color--background: var(--color--white);
         --color--section-title: var(--color--coral);
@@ -49,8 +56,10 @@ Icon colour used for:
     &--coral {
         --color--primary: var(--color--white);
         --color--accent: var(--color--coral);
-        --color--link: var(--color--dark-indigo);
+        --color--theme-link: var(--color--dark-indigo);
+        --color--link: var(--color--indigo);
         --color--underline: var(--color--dark-indigo);
+        --color--theme-hover: var(--color--white);
         --color--hover: var(--color--white);
         --color--background: var(--color--coral);
         --color--section-title: var(--color--coral);
@@ -64,9 +73,11 @@ Icon colour used for:
         --color--primary: var(--color--white);
         --color--accent: var(--color--lagoon);
         --color--accent-dark: var(--color--dark-indigo);
-        --color--link: var(--color--white);
+        --color--theme-link: var(--color--white);
+        --color--link: var(--color--dark-indigo);
         --color--underline: var(--color--lagoon);
-        --color--hover: var(--color--white);
+        --color--theme-hover: var(--color--white);
+        --color--hover: var(--color--dark-indigo);
         --color--background: var(--color--dark-indigo);
         --color--section-title: var(--color--coral);
         --color--header-icon-color: var(--color--lagoon);
@@ -79,9 +90,10 @@ Icon colour used for:
     &--dark--transparent {
         --color--primary: var(--color--white);
         --color--accent: var(--color--coral);
-        --color--link: var(--color--dark-indigo);
+        --color--theme-link: var(--color--dark-indigo);
         --color--underline: var(--color--coral);
         --color--hover: var(--color--white);
+        --color--theme-hover: var(--color--white);
         --color--background: transparent;
         --color--section-title: var(--color--coral);
         --color--header-icon-color: var(--color--coral);

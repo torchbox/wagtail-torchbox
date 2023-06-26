@@ -106,6 +106,10 @@
 
         &:hover {
             border-bottom: 2px solid var(--color--underline);
+
+            .streamfield & {
+                border-bottom: 2px solid var(--color--underline);
+            }
         }
 
         &::after {
