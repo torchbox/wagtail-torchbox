@@ -114,6 +114,7 @@ class TechBlogPage(Page):
     body = StreamField(TechBlogBlock(), use_json_field=True)
     tags = ClusterTaggableManager(through=TaggedTechBlogPost, blank=True)
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
+    listing_summary = models.TextField(blank=True)
 
     search_fields = Page.search_fields + [
         index.SearchField("body"),
@@ -138,7 +139,10 @@ class TechBlogPage(Page):
         FieldPanel("body"),
     ]
 
-    promote_panels = Page.promote_panels + [FieldPanel("tags")]
+    promote_panels = Page.promote_panels + [
+        FieldPanel("tags"),
+        FieldPanel("listing_summary"),
+    ]
 
     def set_body_word_count(self):
         body_basic_html = self.body.stream_block.render_basic(self.body)

@@ -19,6 +19,9 @@ class TechBlogFeed(Feed):
     def item_title(self, item):
         return item.title
 
+    def item_description(self, item):
+        return item.listing_summary
+
     def item_link(self, item):
         return item.get_full_url(request=self.request)
 
