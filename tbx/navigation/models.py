@@ -6,7 +6,10 @@ from tbx.core.blocks import ImageWithLinkBlock
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks.struct_block import StructBlockValidationError
-from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
+from wagtail.contrib.settings.models import (
+    BaseGenericSetting,
+    register_setting,
+)
 from wagtail.fields import StreamField
 
 
@@ -74,7 +77,7 @@ class LinkBlock(blocks.StructBlock):
 
 
 @register_setting(icon="list-ul")
-class NavigationSettings(BaseSiteSetting, ClusterableModel):
+class NavigationSettings(BaseGenericSetting, ClusterableModel):
     primary_navigation = StreamField(
         [("link", LinkBlock())],
         blank=True,
