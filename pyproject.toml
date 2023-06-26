@@ -44,7 +44,7 @@ stellar = "^0.4.5"
 black = "^22.3.0"
 detect-secrets = "^1.2.0"
 flake8 = "^4.0.1"
-isort = "^5.10.1"
+isort = "^5.12.0"
 pre-commit = "^2.19.0"
 seed-isort-config = "^2.2.0"
 
@@ -62,5 +62,5 @@ build-backend = "poetry.masonry.api"
 
 [tool.black]
 line_length = 88
-target-version = ['py38']
-exclude = '/(migrations|venv)/'
+target-version = ['py39']
+exclude = '/(migrations|venv|.venv|node_modules|.git)/'
