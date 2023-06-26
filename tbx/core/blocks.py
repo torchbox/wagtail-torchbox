@@ -4,8 +4,14 @@ from django.forms.utils import ErrorList
 from django.utils.functional import cached_property
 
 from wagtailmarkdown.blocks import MarkdownBlock
+from wagtailmedia.blocks import VideoChooserBlock
+
+from wagtail_webstories.blocks import (
+    ExternalStoryEmbedBlock as WebstoryExternalStoryEmbedBlock,
+)
 
 from wagtail.blocks import (
+    BooleanBlock,
     CharBlock,
     FieldBlock,
     ListBlock,
@@ -20,9 +26,6 @@ from wagtail.blocks import (
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail_webstories.blocks import (
-    ExternalStoryEmbedBlock as WebstoryExternalStoryEmbedBlock,
-)
 
 
 class LinkStructValue(StructValue):
@@ -211,6 +214,26 @@ class CTABlock(StructBlock):
     link = LinkBlock()
 
 
+class VideoBlock(StructBlock):
+    video = VideoChooserBlock()
+    # setting autoplay to True adds 'autoplay', 'loop' & 'muted' attrs to video element
+    autoplay = BooleanBlock(
+        required=False,
+        default=False,
+        help_text="Automatically start and loop the video. Please use sparingly.",
+    )
+    use_original_width = BooleanBlock(
+        required=False,
+        default=False,
+        help_text="Use the original width of the video instead of the default content width. "
+        "Note that videos wider than the content width will be limited to the content width.",
+    )
+
+    class Meta:
+        icon = "media"
+        template = "patterns/molecules/streamfield/blocks/video_block.html"
+
+
 class StoryBlock(StreamBlock):
     h2 = CharBlock(
         form_classname="title",
@@ -254,14 +277,16 @@ class StoryBlock(StreamBlock):
         icon="code",
         template="patterns/molecules/streamfield/blocks/raw_html_block.html",
     )
-    embed = EmbedBlock(
-        icon="code",
-        template="patterns/molecules/streamfield/blocks/embed_block.html",
-    )
     markdown = MarkdownBlock(
         icon="code",
         template="patterns/molecules/streamfield/blocks/markdown_block.html",
     )
+    embed = EmbedBlock(
+        icon="code",
+        template="patterns/molecules/streamfield/blocks/embed_block.html",
+        group="Media",
+    )
+    video_block = VideoBlock(group="Media")
     story_embed = ExternalStoryEmbedBlock(
         icon="code",
         template="patterns/molecules/streamfield/blocks/external_story_block.html",
