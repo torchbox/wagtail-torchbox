@@ -26,6 +26,7 @@ from .feeds import TechBlogFeed
 class TechBlogIndexPage(RoutablePageMixin, Page):
     max_count = 1
     template = "patterns/pages/tech_blog/tech_blog_listing.html"
+    ajax_template = "patterns/organisms/blog-listing/blog-listing.html"
 
     subpage_types = ["TechBlogPage"]
 
