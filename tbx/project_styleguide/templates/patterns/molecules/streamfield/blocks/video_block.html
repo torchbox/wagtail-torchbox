@@ -1,0 +1,7 @@
+<div class="streamfield__video{% if value.use_original_width %} streamfield__video--original{% endif %}">
+    <video {% if value.autoplay %}autoplay loop muted tabindex="0" data-looping-video{% else %}controls{% endif %}>
+        {% for source in value.video.sources %}
+            <source type="{{ source.type }}" src="{{ source.src }}">
+        {% endfor %}
+    </video>
+</div>

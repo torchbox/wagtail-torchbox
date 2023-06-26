@@ -1,0 +1,7 @@
+context:
+  value:
+    autoplay: true
+    video:
+      type: video
+      file_extension: mp4
+      url: https://placehold.co/1024x576.mp4
