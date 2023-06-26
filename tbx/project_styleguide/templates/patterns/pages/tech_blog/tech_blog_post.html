@@ -1,5 +1,5 @@
 {% extends "patterns/tech_blog_base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static wagtailroutablepage_tags %}
 
 {% block meta_tags %}
     <script>
@@ -16,7 +16,7 @@
         });
     </script>
     {{ block.super }}
-
+    <link rel="alternate" type="application/rss+xml" href="{% routablepageurl page.blog_index 'feed' %}" />
 {% endblock %}
 
 {% block content %}

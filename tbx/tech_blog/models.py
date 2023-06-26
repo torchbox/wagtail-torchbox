@@ -11,6 +11,7 @@ from modelcluster.fields import ParentalKey
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.core.utils.text import get_read_time, get_word_count
 from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
@@ -18,10 +19,11 @@ from wagtail.signals import page_published
 from wagtail.snippets.models import register_snippet
 
 from .blocks import TechBlogBlock
+from .feeds import TechBlogFeed
 
 
 @method_decorator(get_default_cache_control_decorator(), name="serve")
-class TechBlogIndexPage(Page):
+class TechBlogIndexPage(RoutablePageMixin, Page):
     max_count = 1
     template = "patterns/pages/tech_blog/tech_blog_listing.html"
 
@@ -60,6 +62,14 @@ class TechBlogIndexPage(Page):
         context["blog_posts"] = page
         context["tags"] = TechBlogTag.objects.all()
         return context
+
+    @route(r"^feed/$")
+    def feed(self, request):
+        return TechBlogFeed(
+            self.blog_posts,
+            self.get_full_url(request),
+            self.title,
+        )(request)
 
 
 class TechBlogPageAuthor(Orderable):
