@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     "wagtailaccessibility",
     "wagtail_purge",
     "birdbath",
+    "wagtailmedia",
 ]
 
 MIDDLEWARE = [

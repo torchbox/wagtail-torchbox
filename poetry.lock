@@ -2357,6 +2357,21 @@ reference = "support/wagtail42"
 resolved_reference = "8b4a33b08250471d2ca1198f8c95c23b667e7fc6"
 
 [[package]]
+name = "wagtailmedia"
+version = "0.14.2"
+description = "A Wagtail module for audio and video files."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "wagtailmedia-0.14.2-py3-none-any.whl", hash = "sha256:402ecc3dcee4024d5c9a11b6cf42010b790560986bd5d0bedaabd105609c8901"},
+    {file = "wagtailmedia-0.14.2.tar.gz", hash = "sha256:5480bbcea839aa3e462acd47323c177f180699467a3196ce3c77d145d4ab9086"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+Wagtail = ">=4.1"
+
+[[package]]
 name = "wand"
 version = "0.6.10"
 description = "Ctypes-based simple MagickWand API binding for Python"
@@ -2546,4 +2561,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "86a3793acfa16d2c4fc0c8db5bf89f5267aa0ab565cfbad320038d5d6fe1bbce"
+content-hash = "cc3093bd082b6196dcafa9497b53b0a36c9f67c38bef6ad75f49e0081abbf8b0"
