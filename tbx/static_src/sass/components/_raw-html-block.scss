@@ -2,12 +2,4 @@
     border: 10px solid var(--color--light-grey);
     max-width: 550px;
     margin: 0 auto;
-
-    /* stylelint-disable selector-max-id */
-    /* stylelint-disable selector-max-specificity */
-    &:has(#mc_embed_signup) {
-        border: none;
-        max-width: 700px;
-    }
-    /* stylelint-enable */
 }

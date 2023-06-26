@@ -2,83 +2,85 @@
 
 /* stylelint-disable selector-max-id */
 /* stylelint-disable selector-max-specificity */
-/* stylelint-disable declaration-no-important */
-#mc_embed_signup {
-    width: min(calc(100vw - 2 * $variable-gutter--small), 700px) !important;
+.mailchimp-form-block {
+    border: none;
+    max-width: 700px;
+    margin: 0 auto;
 
-    #mc_embed_signup_scroll {
-        font-family: $font--primary;
-        font-size: rem(18px);
+    #mc_embed_signup {
+        width: min(calc(100vw - 2 * $variable-gutter--small), 700px);
 
-        .mc-field-group {
-            width: 100%;
-            color: var(--color--dark-indigo);
+        #mc_embed_signup_scroll {
+            font-family: $font--primary;
+            font-size: rem(18px);
 
-            input {
-                border-radius: 0;
+            .mc-field-group {
+                width: 100%;
+                color: var(--color--dark-indigo);
+
+                label {
+                    margin-bottom: 10px;
+                }
+
+                input {
+                    border-radius: 0;
+                }
+
+                input[type='checkbox'] {
+                    margin-right: 10px;
+                }
             }
 
-            input[type="checkbox"] {
-                margin-right: 10px;
-            }
-
-            label {
-                margin-bottom: 10px;
-            }
-
-            &.input-group {
+            .input-group {
                 margin-top: 20px;
 
                 strong {
                     margin-bottom: 10px;
                 }
 
-
                 li::before {
                     content: none;
                 }
             }
-        }
 
-        #mce-responses {
-            padding: 0;
-            margin: 0;
+            #mce-responses {
+                padding: 0;
+                margin: 0;
 
-            .response {
-                width: 100%;
+                .response {
+                    width: 100%;
+                }
+
+                #mce-error-response {
+                    color: var(--color--coral-dark);
+                }
+
+                #mce-success-response {
+                    color: var(--color--dark-indigo);
+                }
             }
 
-            #mce-error-response {
-                color: var(--color--coral-dark);
-            }
+            .button {
+                font-size: rem(18px);
+                font-weight: $weight--bold;
+                background-color: var(--color--dark-indigo);
+                height: auto;
+                padding: 15px 30px;
+                margin-bottom: 30px;
+                border-radius: 0;
 
-            #mce-success-response {
-                color: var(--color--dark-indigo);
-            }
-        }
+                @include media-query('medium') {
+                    font-size: rem(22px);
+                    padding: 18px 36px;
+                }
 
-        .button {
-            font-size: rem(18px);
-            font-weight: $weight--bold;
-            background-color: var(--color--dark-indigo);
-            height: auto;
-            padding: 15px 30px;
-            margin-bottom: 30px;
-            border-radius: 0;
-
-            @include media-query('medium') {
-                font-size: rem(22px);
-                padding: 18px 36px;
-            }
-
-            &:hover,
-            &:focus,
-            &:active {
-                background-color: var(--color--indigo);
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: var(--color--indigo);
+                }
             }
         }
     }
 }
 /* stylelint-enable */
-
-
