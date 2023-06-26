@@ -49,14 +49,16 @@
 
     &__tags,
     &__client,
-    &__meta {
+    &__meta,
+    &__back {
         @include media-query(large) {
             margin: 0 $variable-gutter--small 20px $variable-gutter--medium;
         }
     }
 
     &__client,
-    &__meta {
+    &__meta,
+    &__back {
         @include font-size(xxs);
         display: block;
         text-transform: uppercase;

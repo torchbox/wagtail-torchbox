@@ -1,6 +1,10 @@
 {% load wagtailcore_tags %}
 <div class="title-block {% if classes%} {{ classes }} {% endif %}">
     <div class="title-block__container">
+        {% if back_link %}
+            <p class="title-block__back"><a href="{{ back_link }}">&larr; Back</a></p>
+        {% endif %}
+
         {% if item.client %}
         <p class="title-block__client">{{ item.client }}</p>
         {% endif %}
