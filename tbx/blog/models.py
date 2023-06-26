@@ -10,7 +10,6 @@ from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 
 from bs4 import BeautifulSoup
-
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from tbx.core.blocks import PageSectionStoryBlock, StoryBlock
 from tbx.core.models import RelatedLink, Tag

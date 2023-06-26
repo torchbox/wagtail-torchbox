@@ -1,9 +1,8 @@
+import imghdr
 from datetime import datetime, time
 
 from django.conf import settings
 from django.contrib.syndication.views import Feed
-
-import imghdr
 
 from .models import BlogPage
 
