@@ -27,6 +27,17 @@
         @include streamblock-padding();
     }
 
+    &__code {
+        @include streamblock-padding();
+
+        pre {
+            overflow-x: auto;
+            white-space: pre;
+            word-wrap: normal;
+            padding: 15px;
+        }
+    }
+
     &__embed {
         @include streamblock-padding();
         @include z-index(zero);

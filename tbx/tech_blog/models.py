@@ -8,7 +8,6 @@ from taggit.models import ItemBase, TagBase
 
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
-from tbx.core.blocks import StoryBlock
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.core.utils.text import get_read_time, get_word_count
 from wagtail.admin.panels import FieldPanel, InlinePanel
@@ -17,6 +16,8 @@ from wagtail.models import Orderable, Page
 from wagtail.search import index
 from wagtail.signals import page_published
 from wagtail.snippets.models import register_snippet
+
+from .blocks import TechBlogBlock
 
 
 @method_decorator(get_default_cache_control_decorator(), name="serve")
@@ -99,7 +100,7 @@ class TechBlogPage(Page):
     parent_page_types = ["TechBlogIndexPage"]
 
     date = models.DateField("Post date")
-    body = StreamField(StoryBlock(), use_json_field=True)
+    body = StreamField(TechBlogBlock(), use_json_field=True)
     tags = ClusterTaggableManager(through=TaggedTechBlogPost, blank=True)
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
 
