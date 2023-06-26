@@ -1,29 +1,76 @@
+from django.core.exceptions import ValidationError
+from django.forms.utils import ErrorList
+
 from modelcluster.models import ClusterableModel
 from tbx.core.blocks import ImageWithLinkBlock
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
+from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
 
 
+class LinkBlockStructValue(blocks.StructValue):
+    def url(self):
+        if page := self.get("page"):
+            return page.url
+
+        if external_link := self.get("external_link"):
+            return external_link
+
+        return ""
+
+    def text(self):
+        if self.get("page") and not self.get("title"):
+            return self.get("page").title
+        return self.get("title")
+
+    def is_page(self):
+        return bool(self.get("page"))
+
+
 class LinkBlock(blocks.StructBlock):
-    page = blocks.PageChooserBlock()
+    page = blocks.PageChooserBlock(required=False)
+    external_link = blocks.URLBlock(required=False)
     title = blocks.CharBlock(
         help_text="Leave blank to use the page's own title", required=False
     )
 
     class Meta:
-        template = ("patterns/molecules/navigation/blocks/menu_item.html",)
+        value_class = LinkBlockStructValue
 
+    def clean(self, value):
+        struct_value = super().clean(value)
 
-class LinkColumnWithHeader(blocks.StructBlock):
-    heading = blocks.CharBlock(
-        required=False, help_text="Leave blank if no header required."
-    )
-    links = blocks.ListBlock(LinkBlock())
+        errors = {}
+        page = value.get("page")
+        external_link = value.get("external_link")
 
-    class Meta:
-        template = ("patterns/molecules/navigation/blocks/footer_column.html",)
+        if not page and not external_link:
+            error = ErrorList(
+                [ValidationError("You must specify either a page or an external link")]
+            )
+            errors["page"] = errors["external_link"] = error
+
+        if page and external_link:
+            error = ErrorList(
+                [
+                    ValidationError(
+                        "You must specify either a page or an external link, not both"
+                    )
+                ]
+            )
+            errors["external_link"] = errors["page"] = error
+
+        if not value.get("title") and external_link:
+            error = ErrorList(
+                [ValidationError("You must specify the link title for external links")]
+            )
+            errors["title"] = error
+
+        if errors:
+            raise StructBlockValidationError(errors)
+        return struct_value
 
 
 class CardLinkBlock(blocks.StructBlock):
@@ -59,12 +106,6 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         help_text="Row of links that use prominent styles to standout.",
         use_json_field=True,
     )
-    footer_top_links = StreamField(
-        [("link", LinkBlock())],
-        blank=True,
-        help_text="Single list of links that appear between the teasers and the addresses.",
-        use_json_field=True,
-    )
     footer_logos = StreamField(
         [("logos", ImageWithLinkBlock())],
         blank=True,
@@ -76,7 +117,6 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
     panels = [
         FieldPanel("primary_navigation"),
         FieldPanel("footer_teasers"),
-        FieldPanel("footer_top_links"),
         FieldPanel("footer_links"),
         FieldPanel("footer_logos"),
     ]

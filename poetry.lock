@@ -833,6 +833,24 @@ pytest = ["mock (>=2.0.0,<3.0)", "pytest (>=3.2.5,<4.0)"]
 testing = ["mock (>=2.0.0,<3.0)"]
 
 [[package]]
+name = "factory-boy"
+version = "3.2.1"
+description = "A versatile test fixtures replacement based on thoughtbot's factory_bot for Ruby."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "factory_boy-3.2.1-py2.py3-none-any.whl", hash = "sha256:eb02a7dd1b577ef606b75a253b9818e6f9eaf996d94449c9d5ebb124f90dc795"},
+    {file = "factory_boy-3.2.1.tar.gz", hash = "sha256:a98d277b0c047c75eb6e4ab8508a7f81fb03d2cb21986f627913546ef7a2a55e"},
+]
+
+[package.dependencies]
+Faker = ">=0.7.0"
+
+[package.extras]
+dev = ["Django", "Pillow", "SQLAlchemy", "coverage", "flake8", "isort", "mongoengine", "tox", "wheel (>=0.32.0)", "zest.releaser[recommended]"]
+doc = ["Sphinx", "sphinx-rtd-theme", "sphinxcontrib-spelling"]
+
+[[package]]
 name = "Faker"
 version = "13.16.0"
 description = "Faker is a Python package that generates fake data for you."
@@ -2258,6 +2276,25 @@ django-recaptcha = "*"
 testing = ["coverage (>=4.1.0,<4.2)", "flake8 (>=3.2.0,<3.3)", "isort (==4.2.5)", "tox (>=2.3.1,<2.4)", "wagtail (==2.0)"]
 
 [[package]]
+name = "wagtail-factories"
+version = "4.1.0"
+description = "Factory boy classes for wagtail"
+optional = false
+python-versions = "*"
+files = [
+    {file = "wagtail_factories-4.1.0-py2.py3-none-any.whl", hash = "sha256:6abd435518fdf0cdd3d9920acb2abbd9005936d6fecfdf6fdde3e404834d4b0c"},
+    {file = "wagtail_factories-4.1.0.tar.gz", hash = "sha256:067e3e1a30721a90eaa1514c8214aae7a171490bbedf026eeaa904a2ed9abcd0"},
+]
+
+[package.dependencies]
+factory-boy = ">=3.2"
+wagtail = ">=4.1"
+
+[package.extras]
+docs = ["sphinx (>=1.4.0)"]
+test = ["coverage (==6.0)", "flake8 (==4.0.0)", "flake8-blind-except (==0.1.1)", "flake8-debugger (==4.1.2)", "isort (==5.10.0)", "psycopg2 (>=2.3.1)", "pytest (==6.2.5)", "pytest-cov (==3.0.0)", "pytest-django (==4.5.0)", "pytest-pythonpath (==0.7.3)"]
+
+[[package]]
 name = "wagtail-markdown"
 version = "0.10.0"
 description = "Markdown support for Wagtail"
@@ -2509,4 +2546,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "8394fb53f49b31c8b264a82414eb37acb8ec7c8ebbe76cc550a8aaebeaa01c9a"
+content-hash = "fa60b05e9df2e32833f15170f0e5e933b36983b4a06a2401d65f5f2027153c15"

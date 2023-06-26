@@ -53,6 +53,9 @@ mkdocs = "~1.0"
 pudb = "^2020.1"
 honcho = "^1.1.0"
 
+# Testing
+wagtail-factories = "^4.1.0"
+
 [build-system]
 requires = ["poetry>=1,<2"]
 build-backend = "poetry.masonry.api"

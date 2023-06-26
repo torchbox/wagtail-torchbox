@@ -1,13 +1,16 @@
 {% load wagtailcore_tags %}
 
-{# First 3 items are shown #}
-{% for item in primarynav|slice:":3" %}
+{# First 4 items are shown #}
+{% for item in primarynav|slice:":4" %}
     {% with link=item.value %}
-        <li class="nav-item {% if link.page.slug == 'jobs' and job_count > 0 %}nav-item--with-badge{% endif %}">
-            <a class="nav-item__link" href="{% pageurl link.page %}" data-menu-item>
-                <span class="nav-item__title">{% firstof link.title link.page.title %}</span>
+        <li class="nav-item {% if link.is_page and link.page.slug == 'jobs' and job_count > 0 %}nav-item--with-badge{% endif %}">
+            <a class="nav-item__link" href="{{ link.url }}" {% if link.is_page %}data-menu-item{% else %}target="_blank" rel="nofollow noreferrer"{% endif %}>
+                <span class="nav-item__title">{{ link.text }}</span>
+                {% if not link.is_page %}
+                    {% include "patterns/atoms/icons/icon.html" with name="external" classname="nav-item__external-link-icon" %}
+                {% endif %}
             </a>
-            {% if link.page.slug == 'jobs' and job_count > 0 %}
+            {% if link.is_page and link.page.slug == 'jobs' and job_count > 0 %}
                 <a class="nav-item__badge-link" href="/careers/jobs/" aria-label="{{ job_count }} jobs available">
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                 </a>
@@ -15,14 +18,6 @@
         </li>
     {% endwith %}
 {% endfor %}
-
-{# Temporary card-coding of AI link  until external links are supported #}
-<li class="nav-item nav-item">
-    <a class="nav-item__link" href="https://ai.torchbox.com/" target="__blank">
-        <span class="nav-item__title">AI + Innovation</span>
-        {% include "patterns/atoms/icons/icon.html" with name="external" classname="nav-item__external-link-icon" %}
-    </a>
-</li>
 
 {% if is_desktop %}
 <li class="nav-item nav-item--with-children" x-data="{ isOpen: false }" {% if is_home == False %} data-primary-nav @tab-close="isOpen=false" {% endif %} >
@@ -32,13 +27,17 @@
     </button>
     <ul class="subnav" x-cloak x-show="isOpen" x-transition>
         {# Other menu items are hidden #}
-        {% for item in primarynav|slice:"3:" %}
+        {% for item in primarynav|slice:"4:" %}
             {% with link=item.value %}
-                <li class="subnav__item {% if link.page.slug == 'jobs' and job_count > 0 %}subnav__item--with-badge{% endif %}">
-                    <a class="subnav__link" data-subnav-link href="{% pageurl link.page %}" data-menu-item subnav-menu-item>
-                        {% firstof link.title link.page.title %}
+                <li class="subnav__item {% if link.is_page and link.page.slug == 'jobs' and job_count > 0 %}subnav__item--with-badge{% endif %}">
+                    <a class="subnav__link" data-subnav-link href="{{ link.url }}" {% if link.is_page %}data-menu-item{% else %}target="_blank" rel="nofollow noreferrer"{% endif %} data-subnav-menu-item>
+                        {{ link.text }}
+                        {# external link icon in dropdown #}
+                        {% if not link.is_page %}
+                            {% include "patterns/atoms/icons/icon.html" with name="external" classname="subnav__external-link-icon" %}
+                        {% endif %}
                     </a>
-                    {% if link.page.slug == 'jobs' and job_count > 0 %}
+                    {% if link.is_page and link.page.slug == 'jobs' and job_count > 0 %}
                         <a class="subnav__badge-link" data-subnav-badge-link href="/careers/jobs/" aria-label="{{ job_count }} jobs available">
                             {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                         </a>
@@ -53,13 +52,13 @@
 </li>
 {% else %}
     {# Add the rest of the menu for the mobile dropdown #}
-    {% for item in primarynav|slice:"3:" %}
+    {% for item in primarynav|slice:"4:" %}
         {% with link=item.value %}
-        <li class="nav-item {% if link.page.slug == 'jobs' and job_count > 0 %}nav-item--with-badge{% endif %}">
-            <a class="nav-item__link" href="{% pageurl link.page %}" data-menu-item>
-                <span class="nav-item__title">{% firstof link.title link.page.title %}</span>
+        <li class="nav-item {% if link.is_page and link.page.slug == 'jobs' and job_count > 0 %}nav-item--with-badge{% endif %}">
+            <a class="nav-item__link" href="{{ link.url }}" {% if link.is_page %}data-menu-item{% else %}target="_blank" rel="nofollow noreferrer"{% endif %}>
+                <span class="nav-item__title">{{ link.text }}</span>
             </a>
-            {% if link.page.slug == 'jobs' and job_count > 0 %}
+            {% if link.is_page and link.page.slug == 'jobs' and job_count > 0 %}
                 <a class="nav-item__badge-link" href="/careers/jobs/" aria-label="{{ job_count }} jobs available">
                     {% include "patterns/atoms/badge/badge.html" with total=job_count %}
                 </a>

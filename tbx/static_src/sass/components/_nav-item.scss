@@ -123,12 +123,13 @@
         }
 
         &__external-link-icon {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             position: relative;
-            top: -2px;
+            top: 2px;
             fill: var(--color--header-links);
             transition: fill $transition-quick;
+            opacity: 0.8;
         }
 
         #{$root}__link:hover #{$root}__external-link-icon {
@@ -168,12 +169,13 @@
         }
 
         &__external-link-icon {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             position: relative;
-            top: -2px;
+            top: 6px;
             fill: var(--color--white);
             transition: fill $transition-quick;
+            opacity: 0.8;
         }
 
         #{$root}__link:hover #{$root}__external-link-icon {
@@ -318,22 +320,23 @@
             fill: var(--color--white);
             transition: fill $transition-quick;
             position: relative;
-            top: -2px;
+            top: 4px;
+            opacity: 0.8;
 
             @include media-query(medium) {
-                width: 20px;
-                height: 20px;
-                top: -2px;
+                width: 18px;
+                height: 18px;
+                top: 9px;
             }
 
             @include media-query(menu-break) {
-                width: 18px;
-                height: 18px;
+                top: 2px;
             }
 
             @include media-query(menu-break-larger) {
-                width: 22px;
-                height: 22px;
+                width: 20px;
+                height: 20px;
+                top: 8px;
             }
         }
 

@@ -1,8 +1,0 @@
-{% load wagtailcore_tags %}
-<div class="footer__top">
-    {% for item in footertoplinks %}
-        {% with link=item.value %}
-            <a class="footer__top-link" href="{% pageurl link.page %}">{% firstof link.title link.page.title %}</a>
-        {% endwith %}
-    {% endfor %}
-</div>

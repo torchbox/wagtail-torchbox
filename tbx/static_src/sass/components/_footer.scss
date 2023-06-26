@@ -180,6 +180,20 @@
         }
     }
 
+    &__external-link-icon {
+        width: 10px;
+        height: 10px;
+        fill: var(--color--indigo);
+        transition: fill $transition-quick;
+        position: relative;
+        top: 3px;
+        opacity: 0.8;
+    }
+
+    #{$root}__link:hover #{$root}__external-link-icon {
+        fill: var(--color--coral-dark);
+    }
+
     &__socials {
         display: flex;
         align-items: center;

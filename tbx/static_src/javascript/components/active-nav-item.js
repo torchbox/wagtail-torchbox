@@ -7,7 +7,7 @@ class ActiveNavItem {
         this.node = node;
         this.pathname = window.location.pathname;
         this.pageUrl = this.node.getAttribute('href');
-        this.isSubnav = this.node.hasAttribute('subnav-menu-item');
+        this.isSubnav = this.node.hasAttribute('data-subnav-menu-item');
         this.addCurrentClass();
     }
 

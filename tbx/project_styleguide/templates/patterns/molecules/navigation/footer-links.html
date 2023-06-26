@@ -2,7 +2,13 @@
 <div class="footer__links">
     {% for item in footerlinks %}
         {% with link=item.value %}
-            <a class="footer__link" href="{% pageurl link.page %}">{% firstof link.title link.page.title %}</a>
+            <a class="footer__link" href="{{ link.url }}" {% if not link.is_page %}target="_blank" rel="nofollow noreferrer"{% endif %}>
+                {{ link.text }}
+                {# external link #}
+                {% if not link.is_page %}
+                    {% include "patterns/atoms/icons/icon.html" with name="external" classname="footer__external-link-icon" %}
+                {% endif %}
+            </a>
         {% endwith %}
     {% endfor %}
 </div>
