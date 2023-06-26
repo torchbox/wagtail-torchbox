@@ -115,13 +115,12 @@
             @include media-query(large) {
                 padding-right: 45vw;
                 padding-top: ($gutter * 3);
+                min-height: 415px; // to ensure image doesn't overlap hero area if text is shorter
             }
-        }
-        #{$root}__image-mask {
-            top: 140px;
         }
     }
 
+    // The following code for image & image-mask is only used on proposition pages currently
     &__image {
         display: block;
         margin-top: -25px;
@@ -132,7 +131,8 @@
         @include z-index(zero);
         display: none;
         position: absolute;
-        top: -60px;
+        max-height: 500px;
+        top: 140px;
         right: -50px;
         width: 45vw;
         height: auto;

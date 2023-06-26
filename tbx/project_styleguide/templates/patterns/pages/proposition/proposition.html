@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    {% image page.image width-1920 as hero_image %}
+    {% image page.image fill-746x500 as hero_image %}
 
     {% include "patterns/molecules/hero/hero--proposition.html" with title=page.strapline desc=page.intro image=hero_image %}
 
