@@ -3,13 +3,6 @@ from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
 from django.utils.functional import cached_property
 
-from wagtailmarkdown.blocks import MarkdownBlock
-from wagtailmedia.blocks import VideoChooserBlock
-
-from wagtail_webstories.blocks import (
-    ExternalStoryEmbedBlock as WebstoryExternalStoryEmbedBlock,
-)
-
 from wagtail.blocks import (
     BooleanBlock,
     CharBlock,
@@ -26,6 +19,11 @@ from wagtail.blocks import (
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail_webstories.blocks import (
+    ExternalStoryEmbedBlock as WebstoryExternalStoryEmbedBlock,
+)
+from wagtailmarkdown.blocks import MarkdownBlock
+from wagtailmedia.blocks import VideoChooserBlock
 
 
 class LinkStructValue(StructValue):

@@ -9,7 +9,6 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 
 from bs4 import BeautifulSoup
-
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from tbx.core.blocks import PageSectionStoryBlock, StoryBlock
 from tbx.core.models import Tag
