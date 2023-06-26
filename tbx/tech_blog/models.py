@@ -76,7 +76,7 @@ class TechBlogPage(Page):
         return TechBlogIndexPage.objects.first()
 
     @property
-    def first_author(self):
+    def author(self):
         """Safely return the first author if one exists."""
         author = self.authors.first()
         if author:
