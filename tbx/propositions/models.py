@@ -31,7 +31,6 @@ class PropositionPage(Page):
             ("light", "Light"),
             ("coral", "Coral"),
             ("dark", "Dark"),
-            ("dark--transparent", "Dark with transparent header"),
         ),
         default="light",
     )
