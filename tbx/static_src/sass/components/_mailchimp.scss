@@ -3,12 +3,14 @@
 /* stylelint-disable selector-max-id */
 /* stylelint-disable selector-max-specificity */
 .mailchimp-form-block {
-    border: none;
-    max-width: 700px;
-    margin: 0 auto;
+    @include streamblock-padding();
 
     #mc_embed_signup {
         width: min(calc(100vw - 2 * $variable-gutter--small), 700px);
+
+        form {
+            margin: 0;
+        }
 
         #mc_embed_signup_scroll {
             font-family: $font--primary;
