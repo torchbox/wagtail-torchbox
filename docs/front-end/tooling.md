@@ -6,18 +6,6 @@ This set of tooling should form the basis for any new wagtail projects. It can a
 
 To install node on the host machine we recommend using [`nvm`](https://github.com/creationix/nvm). Once you have `nvm` installed simply run `nvm install` to install and activate the version of node required for the project. Refer to the [`nvm` documentation](https://github.com/creationix/nvm#usage) for more details about available commands.
 
-## Setting up a new project from the wagtail-kit tooling
-
-The wagtail-kit tooling is versioned via `package.json`, and the `package-lock.json` lockfile pins all of the project’s direct and transitive dependencies. If you wish to start the project with up to date dependencies without doing manual upgrades, you can discard the lockfile and re-create it:
-
-```sh
-rm -rf node_modules
-rm package-lock.json
-npm install
-```
-
-Remember to then commit the updated `package-lock.json`.
-
 ## What's included
 
 - [Sass](http://sass-lang.com/) CSS with [auto-prefixing](https://github.com/postcss/autoprefixer).
@@ -59,16 +47,6 @@ To only build assets for either development or production you can use
 
 - `npm run build` To build development assets
 - `npm run build:prod` To build assets with minification and vendor prefixes
-
-## React support
-
-You can test that compilation of react is working by uncommenting the relevant lines in `javascript/main.js` and `javascript/components/TestReact.tsx`. If you don't need react in your project, make sure you don't uncomment these lines or remove them completely. This will help to keep the compiled js file size down.
-
-## Vue support
-
-Vue is supported as a configurable option, and includes support for adding Vue either in a JavaScript file or in a single file component. Single file components can include scss if desired.
-
-Note that while any scss inside single file components will be linted, some extra configuration is needed to lint Vue JavaScript. Documentation on how to support this is included in the eslint-config-torchbox repo.
 
 ## Third party libraries
 
@@ -162,10 +140,3 @@ Useful summary table of the plugins: https://web.dev/use-imagemin-to-compress-im
 - **url-loader** - Used to inline background images that are smaller than 1024 bytes into the CSS
 - **webpack** - Bundler for js files (can do much more too) - https://www.npmjs.com/package/webpack https://webpack.js.org/concepts/
 - **webpack-cli** - The webpack command calls this behind the scenese (as of webpack v 4) https://www.npmjs.com/package/webpack-cli
-
-## Vue specific packages
-
-- **vue** (@ version 3) - Allows us to use vue
-- **vue-loader** - Allows us to use single file components with vue (.vue files)
-- **vue/compiler-sfc** - A dependency for vue-loader
-- **vue-style-loader'** - Compile css and scss style blocks inside vue single file components

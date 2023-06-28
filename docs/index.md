@@ -1,17 +1,13 @@
-# Torchbox.com Technical Documentation
+# Torchbox.com technical documentation
 
 [TOC]
 
 ## Project overview
 
-This is the main Torchbox.com website.
+This is the main website for torchbox.com, primarily built on the [Wagtail CMS](https://wagtail.org/).
 
-To work on this project, see the README.
+To start working on this project, please refer to the README.
 
 ## External integrations
 
-The jobs listing on the site is pulled from PeopleHR.
-
-TODO:
-
-    More details about job listing.
+The jobs listing on the site is pulled from [PeopleHR](https://www.peoplehr.com/).

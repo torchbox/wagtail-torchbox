@@ -1,10 +1,10 @@
-Torchbox.com Infrastructure
+# Torchbox.com — Infrastructure
 
 ## Database
 
-Postgres
+We use [Postgres](https://www.postgresql.org/).
 
-#### Pulling data
+### Pulling data
 
 To populate your local database with the content of staging/production:
 
@@ -29,19 +29,19 @@ fab pull-production-media
 
 ## Cache
 
-TODO:
+### Front end
 
-What cache backend is used? What is it used for?
+We use Cloudflare's front-end caching for the production site, according to request response headers.
 
-What front-end cache is there on production? How is it configured?
+Cache purging is enabled as per <https://docs.wagtail.org/en/stable/reference/contrib/frontendcache.html#cloudflare>, using the limited-access API Token option, and a token with `Zone.Cache Purge` permission.
+
+### Back end
+
+We use [Redis](https://redis.io/) for back-end caching in Django.
 
 ## File storage
 
-This site uses AWS S3 for storage.
-
-## DNS
-
-## TLS/SSL/HTTPS
+This site uses [AWS S3](https://aws.amazon.com/s3/) for storage.
 
 ## Resetting the Staging site
 
@@ -49,7 +49,7 @@ Steps for resetting the `staging` git branch, and deploying it with a clone of t
 
 ### Pre-flight checks
 
-1. Is this okay with the client, and other developers?
+1. Is this okay with the client[^1], and other developers?
 1. Is there any test content on staging that may need to be recreated, or be a reason to delay?
 1. What branches are currently merged to staging?
 
@@ -63,12 +63,17 @@ Steps for resetting the `staging` git branch, and deploying it with a clone of t
 
 1. Are there any user accounts on staging only, which will need to be recreated? Check with the client, and record them.
 1. Take a backup of staging
+
    ```bash
    $ heroku pg:backups:capture -a projectname-staging
    ```
 
 ### Git
 
+1. Use the [Heroku Repo plugin](https://elements.heroku.com/buildpacks/heroku/heroku-repo) to reset the repository on Heroku, otherwise CI will later fail (bear in mind that there may be incompatibilities between the old `staging` database and the new code from `master`; this will be resolved in the Database step below)
+   ```
+   $ heroku repo:reset -a project-name
+   ```
 1. Reset the staging branch
    ```bash
    $ git checkout staging && git fetch && git reset --hard origin/master && git push --force
@@ -81,7 +86,6 @@ Steps for resetting the `staging` git branch, and deploying it with a clone of t
    > ```
    >
    > to avoid accidentally merging in the old version
-1. Force-push to Heroku, otherwise CI will later fail `$ git push --force heroku-staging master` (this will trigger a deployment, bear in mind that there may be incompatibilities between the old staging database and the new code from master; this will be resolved in the Database step below)
 1. Merge in the relevant branches
    ```bash
    $ git merge --no-ff origin/feature/123-extra-spangles
@@ -90,13 +94,13 @@ Steps for resetting the `staging` git branch, and deploying it with a clone of t
 
 ### Database
 
-This site uses flightpath to manage staging reset. This is implemented as [Copy prod to staging](https://github.com/torchbox/wagtail-torchbox/actions/workflows/flightpath.yml) Github Actions.
+This site uses flightpath[^2] to manage staging reset. This is implemented as [Copy prod to staging](https://github.com/torchbox/wagtail-torchbox/actions/workflows/flightpath.yml) Github Actions.
 
 To run, go the [Github Actions page](https://github.com/torchbox/wagtail-torchbox/actions/workflows/flightpath.yml), click on 'Run workflow', and select `master`.
 
 ### Media
 
-This will be copied by Flightpath.
+This will be copied by flightpath.
 
 ### Cleanup
 
@@ -106,7 +110,13 @@ This will be copied by Flightpath.
 
 ### Comms
 
-1. Inform the client of the changes, e.g.
+1. Inform the client[^1] of the changes, e.g.
+
    > All user accounts have been copied across, so your old staging password will no longer work. Log in with your production password (and then change it), or use the 'forgot password' feature.
    > Any test content has been reset. This is probably the biggest inconvenience. Sorry.
    > I have deleted the personally-identifying data from form submissions **and anywhere else relevant**. If there's any more on production (there shouldn't be) then please let me know and I'll remove it from staging.
+
+<!-- Footnotes -->
+
+[^1]: The client in this case is Torchbox!
+[^2]: See [`tbx/core/utils/scripts/run_flightpath.py`](https://github.com/torchbox/wagtail-torchbox/blob/bfccccca76c389a2f539419e745e7ac5f191ce4c/tbx/core/utils/scripts/run_flightpath.py)
