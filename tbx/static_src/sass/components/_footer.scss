@@ -158,7 +158,8 @@
     &__links {
         display: flex;
         flex-wrap: wrap;
-        gap: $grid;
+        column-gap: $grid;
+        row-gap: $grid / 2;
         margin-top: $grid / 5;
         align-items: center;
 
