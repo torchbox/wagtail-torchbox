@@ -73,19 +73,6 @@ class LinkBlock(blocks.StructBlock):
         return struct_value
 
 
-class CardLinkBlock(blocks.StructBlock):
-    page = blocks.PageChooserBlock()
-    title = blocks.CharBlock(
-        help_text="Leave blank to use the page's own title", required=False
-    )
-    description = blocks.CharBlock(
-        help_text="Optional text to appear under the title", required=False
-    )
-
-    class Meta:
-        template = ("patterns/molecules/navigation/blocks/teaser.html",)
-
-
 @register_setting(icon="list-ul")
 class NavigationSettings(BaseSiteSetting, ClusterableModel):
     primary_navigation = StreamField(
@@ -100,12 +87,6 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         help_text="Single list of elements at the base of the page.",
         use_json_field=True,
     )
-    footer_teasers = StreamField(
-        [("link", CardLinkBlock())],
-        blank=True,
-        help_text="Row of links that use prominent styles to standout.",
-        use_json_field=True,
-    )
     footer_logos = StreamField(
         [("logos", ImageWithLinkBlock())],
         blank=True,
@@ -116,7 +97,6 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
 
     panels = [
         FieldPanel("primary_navigation"),
-        FieldPanel("footer_teasers"),
         FieldPanel("footer_links"),
         FieldPanel("footer_logos"),
     ]
