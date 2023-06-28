@@ -36,8 +36,10 @@ theme:
     - toc.follow
 
 markdown_extensions:
-  - codehilite
+  - attr_list
   - admonition
+  - codehilite
+  - footnotes
   - sane_lists
   - toc:
       permalink: true
@@ -51,15 +53,12 @@ markdown_extensions:
 nav:
   - 'Home': 'index.md'
   - 'Infrastructure': 'infrastructure.md'
-  - 'Project conventions': 'project_conventions.md'
+  - 'Project conventions': 'project-conventions.md'
   - 'Deployment': 'deployment.md'
   - 'VSCode Dev container': 'vscode-dev-container.md'
   - 'Front end':
       - front-end/tooling.md
-      - front-end/placeholder_images.md
-      - front-end/form-overrides.md
+      - front-end/placeholder-images.md
   - 'Continuous integration': 'continuous-integration.md'
-  - 'Anonymised data': 'anonymised_data.md'
-  - 'Data protection': 'data_protection.md'
-  - 'Support runbook': 'support-runbook.md'
+  - 'Anonymised data': 'anonymised-data.md'
   - 'Upgrading guidelines': 'upgrading.md'
