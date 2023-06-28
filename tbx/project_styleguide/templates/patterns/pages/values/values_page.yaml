@@ -20,18 +20,6 @@ context:
 
     blogs_section_title: Thinking
 
-    teasers:
-      - {
-          title: Digital products,
-          desc: For our digital products and services.,
-          href: '/digital-products/',
-        }
-      - {
-          title: Wagtail,
-          desc: For web builds with the Wagtail open source CMS.,
-          href: '/wagtail-cms/',
-        }
-
   standout_items:
     - title: 100% Employee owned and run
       subtitle: EOT
