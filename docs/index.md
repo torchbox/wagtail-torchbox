@@ -1,20 +1,13 @@
-# TBX Technical Documentation
+# Torchbox.com technical documentation
 
 [TOC]
 
 ## Project overview
 
-This is the main Torchbox.com website.
+This is the main website for torchbox.com, built on the [Wagtail CMS](https://wagtail.org/).
 
-To work on this project, see the README.
+To start working on this project, please refer to the README.
 
-### External integrations
+## External integrations
 
-List here any external services this project uses. Preferably link to a separate documentation page for each.
-
-Include any external credentials in the README.
-
-## Adding documentation
-
-- [Support Runbook](support-runbook.md)
-- [Upgrading Guidelines](upgrading.md)
+The jobs listing on the site is pulled from [PeopleHR](https://www.peoplehr.com/).

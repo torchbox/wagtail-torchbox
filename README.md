@@ -1,10 +1,27 @@
 # Torchbox.com on Wagtail
 
-[![Build Status](https://travis-ci.org/torchbox/wagtail-torchbox.svg?branch=master)](https://travis-ci.org/torchbox/wagtail-torchbox)
+[![CI](https://github.com/torchbox/wagtail-torchbox/actions/workflows/test.yml/badge.svg)](https://github.com/torchbox/wagtail-torchbox/actions/workflows/test.yml)
 
 This is the main Torchbox.com website. The careers section of this site can be found at [torchbox/careers](https://github.com/torchbox/careers).
 
-# Setting up a local build
+## Technical documentation
+
+This project contains technical documentation written in Markdown in the `/docs` folder. This covers, among others:
+
+- continuous integration
+- deployment
+- git branching
+- project conventions
+
+You can view it using `mkdocs` by running:
+
+```bash
+mkdocs serve
+```
+
+The documentation will be available at: <http://localhost:8001/>
+
+## Setting up a local build
 
 This repository includes `docker-compose` configuration for running the project in local Docker containers,
 and a fabfile for provisioning and managing this.
@@ -110,26 +127,6 @@ poetry install --no-root
 
 ## Deployments
 
-To deploy push branch to heroku manually:
+To deploy, merge your feature branch to `master` or `staging` branch. Once CI pipelines have passed, it will be deployed to the respective Heroku site automatically.
 
-### Staging
-
-Add remote on your local repo:
-`heroku git:remote -a <staging heroku app name>`
-
-Rename the remote to avoid confusion with prod
-`git remote rename heroku heroku-staging`
-
-Push branch to heroku:
-`git push heroku-staging staging:main`
-
-### Production
-
-Add remote on your local repo:
-`heroku git:remote -a <prod heroku app name>`
-
-Rename the remote to avoid confusion with staging
-`git remote rename heroku heroku-prod`
-
-Push branch to heroku:
-`git push heroku-prod master:main`
+This is done via [Heroku Github integration](https://devcenter.heroku.com/articles/github-integration).

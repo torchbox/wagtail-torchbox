@@ -6,16 +6,21 @@ This document describes aspects of the system which should be given particular a
 
 The following areas of functionality are critical paths for the site which don't have full automated tests and should be checked manually.
 
-(If this information is managed in a separate document, a link here will suffice.)
+### 1. Content Management
 
-### 1. [Summary of critical path, e.g. 'Donations']
+- **Creating, editing, and publishing pages**: Test the functionality of creating new pages, editing existing content, and publishing changes.
+- **Content organization and navigation**: Verify that the site's content hierarchy and navigation structure are maintained correctly after the upgrade.
+- **Media management**: Check the uploading, storage, and retrieval of media files, such as images and documents.
 
-[Description of the overall functionality covered]
+### 2. Templates and Styling
 
-- Step-by-step instructions for what to test and what the expected behaviour is
-- Include details for edge cases as well as the general case
-- Break this into separate subsections if there's a lot to cover
-- Don't include anything which is already covered by automated testing, unless it's a prerequisite for a manual test
+- **Front-end templates**: Test the rendering of templates to ensure they display as expected after the upgrade.
+- **Styling and CSS**: Check that the site's stylesheets and design elements are correctly applied and maintained.
+
+### 3. Performance and Caching
+
+- **Page loading speed**: Monitor the site's performance and loading times to ensure the upgrade doesn't introduce any significant slowdowns.
+- **Caching mechanisms**: Verify that caching mechanisms, such as page caching and database caching, are working correctly.
 
 ## Other considerations
 
@@ -23,6 +28,5 @@ As well as testing the critical paths, these areas of functionality should be ch
 
 - Other places where you know extra maintenance or checks may be necessary
 - This could be code which you know should be checked and possibly removed - e.g. because you've patched something until a fix is merged in a subsequent release.
-- Any previous fixes which may need to be updated/reapplied on subsequent upgrades.
+- Any previous fixes which may need to be updated/reapplied on subsequent upgrades
 - Technical debt which could be affected by an upgrade.
-  - Fixed some NPM vulnerabilities by using the `npm audit fix` command, there are 16 vulnerabilities (13 moderate, 3 high) vulnerabilities required `npm audit fix --force` to be fixed.
