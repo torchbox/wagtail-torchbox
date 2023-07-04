@@ -275,6 +275,11 @@ class StoryBlock(StreamBlock):
         icon="code",
         template="patterns/molecules/streamfield/blocks/raw_html_block.html",
     )
+    mailchimp_form = RawHTMLBlock(
+        label="Mailchimp embedded form",
+        icon="code",
+        template="patterns/molecules/streamfield/blocks/mailchimp_form_block.html",
+    )
     markdown = MarkdownBlock(
         icon="code",
         template="patterns/molecules/streamfield/blocks/markdown_block.html",
