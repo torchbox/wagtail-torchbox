@@ -55,10 +55,10 @@
     }
 
     &__logos-image {
-        transition: box-shadow $transition-quick;
+        transition: transform $transition;
 
         #{$root}__logos-link:hover & {
-            box-shadow: 2px 2px 10px var(--color--grey);
+            transform: scale(1.1);
         }
     }
 

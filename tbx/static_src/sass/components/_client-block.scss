@@ -24,12 +24,15 @@
         }
 
         @include media-query(large) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @include media-query(menu-break-larger) {
             grid-template-columns: repeat(6, 1fr);
-            column-gap: 20px;
         }
 
         @include media-query(x-large) {
-            column-gap: 130px;
+            column-gap: 60px;
         }
 
         &--spaced {
