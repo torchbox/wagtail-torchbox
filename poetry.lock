@@ -452,6 +452,17 @@ test-randomorder = ["pytest-randomly"]
 tox = ["tox"]
 
 [[package]]
+name = "defusedxml"
+version = "0.7.1"
+description = "XML bomb protection for Python stdlib modules"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+files = [
+    {file = "defusedxml-0.7.1-py2.py3-none-any.whl", hash = "sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61"},
+    {file = "defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69"},
+]
+
+[[package]]
 name = "detect-secrets"
 version = "1.4.0"
 description = "Tool for detecting secrets in the codebase"
@@ -493,14 +504,14 @@ files = [
 ]
 
 [[package]]
-name = "Django"
-version = "3.2.18"
+name = "django"
+version = "3.2.20"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "Django-3.2.18-py3-none-any.whl", hash = "sha256:4d492d9024c7b3dfababf49f94511ab6a58e2c9c3c7207786f1ba4eb77750706"},
-    {file = "Django-3.2.18.tar.gz", hash = "sha256:08208dfe892eb64fff073ca743b3b952311104f939e7f6dae954fe72dcc533ba"},
+    {file = "Django-3.2.20-py3-none-any.whl", hash = "sha256:a477ab326ae7d8807dc25c186b951ab8c7648a3a23f9497763c37307a2b5ef87"},
+    {file = "Django-3.2.20.tar.gz", hash = "sha256:dec2a116787b8e14962014bf78e120bba454135108e1af9e9b91ade7b2964c40"},
 ]
 
 [package.dependencies]
@@ -893,6 +904,17 @@ files = [
 [package.extras]
 docs = ["furo (>=2022.12.7)", "sphinx (>=5.3)", "sphinx-autodoc-typehints (>=1.19.5)"]
 testing = ["covdefaults (>=2.2.2)", "coverage (>=7.0.1)", "pytest (>=7.2)", "pytest-cov (>=4)", "pytest-timeout (>=2.1)"]
+
+[[package]]
+name = "filetype"
+version = "1.2.0"
+description = "Infer file type and MIME type of any file/buffer. No external dependencies."
+optional = false
+python-versions = "*"
+files = [
+    {file = "filetype-1.2.0-py2.py3-none-any.whl", hash = "sha256:7ce71b6880181241cf7ac8697a2f1eb6a8bd9b429f7ad6d27b8db9ba5f1c2d25"},
+    {file = "filetype-1.2.0.tar.gz", hash = "sha256:66b56cd6474bf41d8c54660347d37afcc3f7d1970648de365c102ef77548aadb"},
+]
 
 [[package]]
 name = "flake8"
@@ -2389,19 +2411,19 @@ test = ["covdefaults (>=2.2.2)", "coverage (>=7.1)", "coverage-enable-subprocess
 
 [[package]]
 name = "wagtail"
-version = "4.2.2"
+version = "5.0.2"
 description = "A Django content management system."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "wagtail-4.2.2-py3-none-any.whl", hash = "sha256:99f6d18ed8ea6a3a825ebd3441899e639f6833abc98f0f1e578f9eacd172035b"},
-    {file = "wagtail-4.2.2.tar.gz", hash = "sha256:b3cf60b371fffc373793a04b6540b800fc83822598f4b7ad580908fa45d04dff"},
+    {file = "wagtail-5.0.2-py3-none-any.whl", hash = "sha256:3a31ecced7b433a93c237a3cb6ca628506fa7ec147671555b9fc56e77dbd05bb"},
+    {file = "wagtail-5.0.2.tar.gz", hash = "sha256:debd21df87a5db3445d65ffde12ef14e306a24f5ad490150bed556f0c8ead2bb"},
 ]
 
 [package.dependencies]
 anyascii = ">=0.1.5"
 beautifulsoup4 = ">=4.8,<4.12"
-Django = ">=3.2,<4.2"
+Django = ">=3.2,<4.3"
 django-filter = ">=2.2,<23"
 django-modelcluster = ">=6.0,<7.0"
 django-permissionedforms = ">=0.1,<1.0"
@@ -2415,11 +2437,11 @@ openpyxl = ">=3.0.10,<4.0"
 Pillow = ">=4.0.0,<10.0.0"
 requests = ">=2.11.1,<3.0"
 telepath = ">=0.1.1,<1"
-Willow = ">=1.4,<1.5"
+Willow = ">=1.5,<1.6"
 
 [package.extras]
 docs = ["Sphinx (>=1.5.2)", "myst-parser (==0.18.1)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-copybutton (>=0.5,<1.0)", "sphinx-wagtail-theme (==6.0.0)", "sphinxcontrib-spelling (>=5.4.0,<6)"]
-testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "black (==22.3.0)", "boto3 (>=1.16,<1.17)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7,<0.8)", "djhtml (==1.4.13)", "doc8 (==0.8.1)", "elasticsearch (>=5.0,<6.0)", "flake8 (>=3.6.0)", "flake8-assertive (==2.0.0)", "flake8-blind-except (==0.1.1)", "flake8-comprehensions (==3.8.0)", "flake8-print (==5.0.0)", "freezegun (>=0.3.8)", "isort (==5.6.4)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "pytz (>=2014.7)", "semgrep (==1.3.0)", "wagtail-factories (>=4.0,<5)"]
+testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "black (==22.3.0)", "boto3 (>=1.16,<1.17)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7,<0.8)", "djhtml (==1.5.2)", "doc8 (==0.8.1)", "elasticsearch (>=5.0,<6.0)", "factory-boy (>=3.2)", "flake8 (>=3.6.0)", "flake8-assertive (==2.0.0)", "flake8-blind-except (==0.1.1)", "flake8-comprehensions (==3.8.0)", "flake8-print (==5.0.0)", "freezegun (>=0.3.8)", "isort (==5.6.4)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "pytz (>=2014.7)", "semgrep (==1.3.0)"]
 
 [[package]]
 name = "wagtail-accessibility"
@@ -2441,15 +2463,20 @@ version = "1.0"
 description = "A simple recaptcha field for Wagtail Form Pages."
 optional = false
 python-versions = "*"
-files = [
-    {file = "wagtail-django-recaptcha-1.0.tar.gz", hash = "sha256:fc177e75da966e9db1dfd9a566c40d30567518d9280b5db4fec4d50a8c853154"},
-]
+files = []
+develop = false
 
 [package.dependencies]
 django-recaptcha = "*"
 
 [package.extras]
-testing = ["coverage (>=4.1.0,<4.2)", "flake8 (>=3.2.0,<3.3)", "isort (==4.2.5)", "tox (>=2.3.1,<2.4)", "wagtail (==2.0)"]
+testing = ["coverage (>=6.5.0,<6.6)", "flake8 (>=5.0.4,<5.1)", "isort (>=5.10.1)", "tox (>=3.26.0,<3.27)", "wagtail (>=4.1)"]
+
+[package.source]
+type = "git"
+url = "https://github.com/torchbox-forks/wagtail-django-recaptcha"
+reference = "support/wagtail-50"
+resolved_reference = "2c0e63e6bcb9a6cf0661781d1c6bc6a2ff2b1014"
 
 [[package]]
 name = "wagtail-factories"
@@ -2487,8 +2514,8 @@ Wagtail = ">=4.1"
 [package.source]
 type = "git"
 url = "https://github.com/nickmoreton/wagtail-markdown"
-reference = "support/wagtail42"
-resolved_reference = "81d2cbade257ce50d095ce86e0db0e1eb85bca4c"
+reference = "upgrade-wagtail-50"
+resolved_reference = "a8801f564888ec597bd42ec5f2941a5b392cfd8f"
 
 [[package]]
 name = "wagtail-purge"
@@ -2502,30 +2529,37 @@ files = [
 ]
 
 [package.dependencies]
-wagtail = ">=4.1,<6.0"
+wagtail = ">=4.1"
+
+[package.source]
+type = "git"
+url = "https://github.com/victoriachan/wagtail-purge"
+reference = "support/wagtail50"
+resolved_reference = "7479c5c998d18a22547c1a79a64174b89a01860c"
 
 [[package]]
 name = "wagtail-webstories"
 version = "0.0.4"
 description = "AMP web story support for Wagtail"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = []
 develop = false
 
 [package.dependencies]
 beautifulsoup4 = ">=4.6,<5"
-requests = ">=2.24.0,<3"
-webstories = ">=0.0.1,<0.1"
+requests = ">=2.24.0"
+wagtail = ">=4.1"
+webstories = ">=0.0.1"
 
 [package.extras]
-testing = ["Pillow (>=4.0.0,<9.0.0)", "responses (>=0.12,<1)", "wagtailmedia (>=0.6,<0.11)"]
+testing = ["Pillow (>=4.0.0,<9.0.0)", "responses (>=0.12,<1)", "wagtailmedia (>=0.6,<0.13)"]
 
 [package.source]
 type = "git"
-url = "https://github.com/nickmoreton/wagtail-webstories"
-reference = "support/wagtail42"
-resolved_reference = "8b4a33b08250471d2ca1198f8c95c23b667e7fc6"
+url = "https://github.com/torchbox-forks/wagtail-webstories"
+reference = "support/wagtail-50"
+resolved_reference = "ef0c4367e4b4b6583c448385d8754426c92c7ca7"
 
 [[package]]
 name = "wagtailmedia"
@@ -2653,18 +2687,22 @@ files = [
 brotli = ["Brotli"]
 
 [[package]]
-name = "Willow"
-version = "1.4.1"
+name = "willow"
+version = "1.5"
 description = "A Python image library that sits on top of Pillow, Wand and OpenCV"
 optional = false
-python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
+python-versions = ">=3.7"
 files = [
-    {file = "Willow-1.4.1-py2.py3-none-any.whl", hash = "sha256:fc4042696d090e75aef922fa1ed26d483c764f005b36cf523cf7c34e69d5dd7a"},
-    {file = "Willow-1.4.1.tar.gz", hash = "sha256:0df8ff528531e00b48d40bf72ed81beac1dc82f2d42e5bbed4aff0218bef8c0d"},
+    {file = "Willow-1.5-py3-none-any.whl", hash = "sha256:8f885ae0e8311ec45a943d5db2af77cc2b44d3c5ba4d6a053012a67e861ca829"},
+    {file = "Willow-1.5.tar.gz", hash = "sha256:3fe42cda9872d8e4f64df301e58a1d8be5b9e66944eb83aadcc50128d3ae658a"},
 ]
 
+[package.dependencies]
+defusedxml = ">=0.7,<1.0"
+filetype = ">=1.0.10,<1.1.0 || >1.1.0"
+
 [package.extras]
-testing = ["Pillow (>=6.0.0,<10.0.0)", "Wand (>=0.6,<1.0)", "mock (>=3.0,<4.0)"]
+testing = ["Pillow (>=9.1.0,<11.0.0)", "Wand (>=0.6,<1.0)", "mock (>=3.0,<4.0)", "pillow-heif (>=0.7.0,<1.0.0)"]
 
 [[package]]
 name = "wrapt"
@@ -2771,4 +2809,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "f19e8cc305be12ad7632f9df2364a502f33c3c788d135f1c715eff5d2ac2ba7d"
+content-hash = "584be01f56cd8d48e1b81fc60dc42164b3ae47625e88f31ae60945af3630e220"
