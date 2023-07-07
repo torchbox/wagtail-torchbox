@@ -4,10 +4,9 @@ from django.dispatch import receiver
 from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 
-from taggit.models import ItemBase, TagBase
-
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
+from taggit.models import ItemBase, TagBase
 from tbx.core.utils.cache import get_default_cache_control_decorator
 from tbx.core.utils.text import get_read_time, get_word_count
 from wagtail.admin.panels import FieldPanel, InlinePanel
