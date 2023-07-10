@@ -41,6 +41,11 @@
                 </div>
             </div>
 
+            {# Hero images: TODO: add frontend to display this instead of video. Use JS to randomise which of the images to use. #}
+            {% for item in page.hero_images.all %}
+                {#% image item.image max-1000x500 as hero_image %#}
+            {% endfor %}
+
             {# Heading tablet + mobile #}
             {% if page.hero_intro_primary or page.hero_intro_secondary %}
                 <div class="home__content-align">
