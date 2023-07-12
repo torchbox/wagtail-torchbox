@@ -179,15 +179,6 @@ class HomePage(Page):
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
-    # TODO: sunset hero_image when the new hero_images field is ready.
-    hero_image = models.ForeignKey(
-        "images.CustomImage",
-        help_text="Image used on mobile hero. NOTE: This will be replaced by Hero Images field.",
-        null=True,
-        blank=False,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
 
     class Meta:
         verbose_name = "Homepage"
@@ -197,7 +188,6 @@ class HomePage(Page):
             [
                 FieldPanel("hero_intro_primary"),
                 FieldPanel("hero_intro_secondary"),
-                FieldPanel("hero_image"),
                 InlinePanel("hero_images", label="Hero Images", max_num=6, min_num=1),
             ],
             heading="Hero intro",
