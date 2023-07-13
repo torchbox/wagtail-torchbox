@@ -59,6 +59,8 @@
 
                 #mce-success-response {
                     color: var(--color--dark-indigo);
+                    @include font-size(l);
+                    font-weight: $weight--heavy;
                 }
             }
 
