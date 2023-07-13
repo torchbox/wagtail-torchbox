@@ -5,8 +5,8 @@ class ShardsImages {
 
     constructor(node) {
         this.node = node;
-        this.imageTotal = this.node.dataset.imagetotal;
-        this.images = node.querySelector('[data-shards-images]').children;
+        this.imageTotal = node.dataset.imagetotal;
+        this.images = node.querySelectorAll('[data-shards-image]');
         this.showRandomImage();
     }
 

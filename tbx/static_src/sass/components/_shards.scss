@@ -50,6 +50,7 @@
         height: 100%;
         background-repeat: no-repeat;
         background-size: cover;
+        // Optimises image loading by ensuring that only the required image is loaded by the browser
         display: none;
 
         @include media-query(large) {

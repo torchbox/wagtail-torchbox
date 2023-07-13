@@ -30,12 +30,11 @@
                             <use class="shards__window--desktop" xlink:href="#shards-window-desktop"/>
                             <use class="shards__window--mobile" xlink:href="#shards-window-mobile"/>
                         </svg>
-                        <div data-shards-images>
-                            {% for hero_image in page.hero_images.all %}
-                                {% image hero_image.image fill-970x576 as hero_image %}
-                                <div class="shards__image" style="background-image:url({{ hero_image.url }})"></div>
-                            {% endfor %}
-                        </div>
+                        {% comment %} The FE implemenetation optimises image loading by ensuring that only the required image is loaded by the browser {% endcomment %}
+                        {% for hero_image in page.hero_images.all %}
+                            {% image hero_image.image fill-1022x576 as hero_image %}
+                            <div data-shards-image class="shards__image" style="background-image:url({{ hero_image.url }})"></div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
