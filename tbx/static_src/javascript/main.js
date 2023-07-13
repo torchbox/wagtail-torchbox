@@ -10,7 +10,7 @@ import './components/sticky-point';
 import './components/sticky-nav';
 import InPageNav from './components/in-page-nav';
 import ActiveNavItem from './components/active-nav-item';
-import ShardsVideo from './components/shards-video';
+import ShardsImages from './components/shards-images';
 import PrimaryNav from './components/primary-nav';
 
 import '../sass/main.scss';
@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         new ActiveNavItem(activenavitem);
     }
 
-    for (const shardsvideo of document.querySelectorAll(
-        ShardsVideo.selector(),
+    for (const shardsimages of document.querySelectorAll(
+        ShardsImages.selector(),
     )) {
-        new ShardsVideo(shardsvideo);
+        new ShardsImages(shardsimages);
     }
 
     ConsoleMessage();
