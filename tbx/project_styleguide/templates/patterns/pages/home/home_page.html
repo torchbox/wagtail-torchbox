@@ -24,14 +24,14 @@
                 </div>
 
                 {# Shards SVG window + images #}
-                <div class="shards" data-shards-hero data-imagetotal="{{ page.hero_images.all|length }}">
+                <div class="shards" data-shards-hero data-imagetotal="{{ hero_images|length }}">
                     <div class="shards__wrapper">
                         <svg class="shards__window" aria-hidden="true">
                             <use class="shards__window--desktop" xlink:href="#shards-window-desktop"/>
                             <use class="shards__window--mobile" xlink:href="#shards-window-mobile"/>
                         </svg>
                         {% comment %} The FE implemenetation optimises image loading by ensuring that only the required image is loaded by the browser {% endcomment %}
-                        {% for hero_image in page.hero_images.all %}
+                        {% for hero_image in hero_images %}
                             {% image hero_image.image fill-1022x576 as hero_image %}
                             <div data-shards-image class="shards__image" style="background-image:url({{ hero_image.url }})"></div>
                         {% endfor %}

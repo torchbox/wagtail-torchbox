@@ -166,7 +166,7 @@ class HomePageHeroImage(Orderable):
         help_text="The hero images will be displayed in a random order.",
         null=True,
         blank=False,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         related_name="+",
     )
 
@@ -194,6 +194,13 @@ class HomePage(Page):
         ),
         InlinePanel("featured_posts", label="Featured Posts", max_num=3),
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context.update(
+            hero_images=self.hero_images.all(),
+        )
+        return context
 
     @property
     def blog_posts(self):
