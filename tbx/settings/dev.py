@@ -32,6 +32,21 @@ PREVIEW_URL = "http://localhost:8003/preview/"
 
 MEDIA_PREFIX = WAGTAILADMIN_BASE_URL
 
+# Adds Django Debug Toolbar
+INSTALLED_APPS.append("debug_toolbar")  # noqa
+MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")  # noqa
+
+# Override in `local.py`
+SHOW_TOOLBAR = True
+
+DEBUG_TOOLBAR_CONFIG = {
+    # The default debug_toolbar_middleware.show_toolbar function checks whether the
+    # request IP is in settings.INTERNAL_IPS. In Docker, the request IP can vary, so
+    # we set it in settings.local instead.
+    "SHOW_TOOLBAR_CALLBACK": lambda x: SHOW_TOOLBAR,
+    "SHOW_COLLAPSED": True,
+}
+
 try:
     from .local import *  # noqa
 except ImportError:
