@@ -11,7 +11,6 @@ class Migration(migrations.Migration):
         ("wagtailredirects", "0006_redirect_increase_max_length"),
         ("wagtailcore", "0040_page_draft_title"),
         ("wagtailforms", "0003_capitalizeverbose"),
-        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
         ("torchbox", "0115_delete_tshirt_page"),
     ]
 

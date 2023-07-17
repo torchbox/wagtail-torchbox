@@ -8,7 +8,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ("services", "0029_subservice_listingsettings"),
         ("wagtailforms", "0004_add_verbose_name_plural"),
-        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
         ("wagtailredirects", "0006_redirect_increase_max_length"),
         ("people", "0017_update_streamblock_templates"),
         ("wagtailcore", "0052_pagelogentry"),
