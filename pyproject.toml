@@ -37,6 +37,7 @@ gunicorn = ["gunicorn"]
 
 [tool.poetry.dev-dependencies]
 Werkzeug = "^2.1.2"
+django-debug-toolbar = "^4.1.0"
 django-extensions = "^3.2.1"
 fabric = "~2.5"
 stellar = "^0.4.5"

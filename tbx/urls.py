@@ -48,6 +48,12 @@ if settings.DEBUG:
         ),
     ]
 
+    # Django Debug Toolbar
+    if apps.is_installed("debug_toolbar"):
+        import debug_toolbar
+
+        urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
+
 
 urlpatterns += [
     path("", include(torchbox_urls)),
