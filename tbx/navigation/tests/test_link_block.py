@@ -1,7 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
-import factory
 import wagtail_factories
 from tbx.core.models import HomePage
 from tbx.images.models import CustomImage
@@ -17,7 +16,6 @@ class CustomImageFactory(wagtail_factories.ImageFactory):
 
 class HomePageFactory(wagtail_factories.PageFactory):
     title = "Home"
-    hero_image = factory.SubFactory(CustomImageFactory)
 
     class Meta:
         model = HomePage

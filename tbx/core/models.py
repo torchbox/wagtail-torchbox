@@ -138,47 +138,6 @@ register_snippet(Advert)
 
 
 # Home Page
-class HomePageHero(Orderable, RelatedLink):
-    page = ParentalKey("torchbox.HomePage", related_name="hero")
-    colour = models.CharField(
-        max_length=255,
-        help_text="Hex ref colour of link and background gradient, use #23b0b0 for default blue",
-    )
-    background = models.ForeignKey(
-        "images.CustomImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-    logo = models.ForeignKey(
-        "images.CustomImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-    text = models.CharField(max_length=255)
-
-    panels = RelatedLink.panels + [
-        FieldPanel("background"),
-        FieldPanel("logo"),
-        FieldPanel("colour"),
-        FieldPanel("text"),
-    ]
-
-
-class HomePageClient(Orderable, RelatedLink):
-    page = ParentalKey("torchbox.HomePage", related_name="clients")
-    image = models.ForeignKey(
-        "images.CustomImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
-    panels = RelatedLink.panels + [FieldPanel("image")]
 
 
 class HomePageFeaturedPost(Orderable):
@@ -198,6 +157,20 @@ class HomePageFeaturedPost(Orderable):
     ]
 
 
+class HomePageHeroImage(Orderable):
+    page = ParentalKey(
+        "torchbox.HomePage", on_delete=models.CASCADE, related_name="hero_images"
+    )
+    image = models.ForeignKey(
+        "images.CustomImage",
+        help_text="The hero images will be displayed in a random order.",
+        null=True,
+        blank=False,
+        on_delete=models.CASCADE,
+        related_name="+",
+    )
+
+
 class HomePage(Page):
     template = "patterns/pages/home/home_page.html"
     hero_intro_primary = models.TextField(blank=True)
@@ -206,14 +179,6 @@ class HomePage(Page):
     work_title = models.TextField(blank=True)
     blog_title = models.TextField(blank=True)
     clients_title = models.TextField(blank=True)
-    hero_image = models.ForeignKey(
-        "images.CustomImage",
-        help_text="Image used on mobile hero.",
-        null=True,
-        blank=False,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
 
     class Meta:
         verbose_name = "Homepage"
@@ -223,12 +188,19 @@ class HomePage(Page):
             [
                 FieldPanel("hero_intro_primary"),
                 FieldPanel("hero_intro_secondary"),
-                FieldPanel("hero_image"),
+                InlinePanel("hero_images", label="Hero Images", max_num=6, min_num=1),
             ],
             heading="Hero intro",
         ),
         InlinePanel("featured_posts", label="Featured Posts", max_num=3),
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context.update(
+            hero_images=self.hero_images.all(),
+        )
+        return context
 
     @property
     def blog_posts(self):
