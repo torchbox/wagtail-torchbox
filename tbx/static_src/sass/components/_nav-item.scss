@@ -349,6 +349,14 @@
                 height: 20px;
                 top: 8px;
             }
+
+            @media (forced-colors: active) {
+                filter: invert(1);
+            }
+
+            @include hcm-dark-mode {
+                filter: invert(0);
+            }
         }
 
         #{$root}__link:hover #{$root}__external-link-icon {
