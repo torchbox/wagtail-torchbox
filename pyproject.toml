@@ -24,7 +24,7 @@ django-basic-auth-ip-whitelist = "^0.5"
 wagtail-accessibility = "^0.2.1"
 django-phonenumber-field = "^7.0.2"
 phonenumbers = "^8.12.48"
-wagtail-purge = {git = "https://github.com/nickmoreton/wagtail-purge", rev = "support/wagtail42"}
+wagtail-purge = "^0.3.0"
 wagtail-webstories = {git = "https://github.com/nickmoreton/wagtail-webstories", rev = "support/wagtail42"}
 wagtail-markdown = {git = "https://github.com/nickmoreton/wagtail-markdown", rev = "support/wagtail42"}
 django-birdbath = "^1.1.0"
