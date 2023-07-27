@@ -43,7 +43,7 @@
             }
         }
 
-        @media (forced-colors: active) {
+        @include hcm {
             fill: var(--color--white);
         }
 

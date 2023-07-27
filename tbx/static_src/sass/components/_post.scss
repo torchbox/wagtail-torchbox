@@ -24,7 +24,7 @@
             color: var(--color--coral);
         }
 
-        @media (forced-colors: active) {
+        @include hcm {
             text-decoration: underline;
 
             &:hover,
