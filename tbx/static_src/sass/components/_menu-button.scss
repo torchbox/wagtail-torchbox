@@ -47,6 +47,10 @@
             left: 14px;
             top: 29px;
         }
+
+        @media (forced-colors: active) {
+            filter: invert(1);
+        }
     }
 
     // Applied by js
