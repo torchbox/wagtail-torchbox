@@ -16,6 +16,10 @@
         display: none;
     }
 
+    @include hcm {
+        filter: invert(1);
+    }
+
     span {
         &:nth-child(1) {
             transition: all 0.2s ease-in;
