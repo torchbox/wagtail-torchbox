@@ -23,6 +23,15 @@
         &:hover {
             color: var(--color--coral);
         }
+
+        @media (forced-colors: active) {
+            text-decoration: underline;
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+            }
+        }
     }
 
     &__author {
