@@ -301,6 +301,17 @@
             &:focus {
                 outline: 4px solid var(--color--header-links) transparent;
             }
+
+            @media (forced-colors: active) {
+                text-decoration: underline;
+
+                &:hover,
+                &:focus {
+                    &::before {
+                        filter: invert(1);
+                    }
+                }
+            }
         }
 
         &__button {
