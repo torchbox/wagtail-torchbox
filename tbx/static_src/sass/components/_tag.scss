@@ -34,7 +34,7 @@
     }
 
     // Use text-decoration for states
-    @media (forced-colors: active) {
+    @include hcm {
         &--active {
             text-decoration: underline;
         }

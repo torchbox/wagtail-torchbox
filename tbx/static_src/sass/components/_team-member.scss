@@ -34,7 +34,7 @@
             #{$root}__title {
                 color: var(--color--coral);
 
-                @media (forced-colors: active) {
+                @include hcm {
                     filter: invert(1);
                 }
             }
@@ -62,7 +62,7 @@
             font-size: 22px;
         }
 
-        @media (forced-colors: active) {
+        @include hcm {
             text-decoration: underline;
         }
     }
