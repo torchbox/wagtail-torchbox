@@ -32,4 +32,16 @@
         border: 2px solid var(--color--coral-dark);
         color: var(--color--coral-dark);
     }
+
+    // Use text-decoration for states
+    @media (forced-colors: active) {
+        &--active {
+            text-decoration: underline;
+        }
+
+        &:focus,
+        &:hover {
+            filter: invert(1);
+        }
+    }
 }
