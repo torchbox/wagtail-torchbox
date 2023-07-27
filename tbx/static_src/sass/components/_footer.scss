@@ -209,7 +209,7 @@
         fill: var(--color--dark-indigo);
         transition: fill $transition-quick;
 
-        @include hcm-dark-mode {
+        @include high-contrast-dark-mode {
             fill: var(--color--white);
         }
     }
