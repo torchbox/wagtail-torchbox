@@ -22,7 +22,8 @@
     }
 
     &__link {
-        @include link-slide-right(4px, -5px);
+        @include link-slide-right(4px, -6px);
+
         .streamfield & {
             &:hover {
                 border-bottom: 0;
