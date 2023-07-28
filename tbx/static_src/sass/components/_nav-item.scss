@@ -140,6 +140,11 @@
     // Mobile menu
     .mobile-nav & {
         border-top: 1px solid hsla(0, 0%, 100%, 0.2);
+        visibility: hidden;
+
+        .menu-active & {
+            visibility: visible;
+        }
 
         &--with-badge {
             display: flex;
