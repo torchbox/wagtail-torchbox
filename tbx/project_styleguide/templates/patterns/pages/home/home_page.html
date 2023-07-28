@@ -4,7 +4,6 @@
 {% block theme_class %}theme--dark--transparent{% endblock %}
 
 {% block header %}
-    {% include "patterns/atoms/menu-button/menu-button.html" %}
     {% include "patterns/molecules/navigation/mobile-nav.html" %}
 {% endblock %}
 
@@ -16,6 +15,9 @@
                 <div class="home__content-align">
                     {# Logo #}
                     {% include "patterns/atoms/logo/logo.html" with classes="logo--home" %}
+
+                    {# Menu toggle #}
+                    {% include "patterns/atoms/menu-button/menu-button.html" %}
 
                     {# Heading desktop #}
                     {% if page.hero_intro_primary or page.hero_intro_secondary %}
