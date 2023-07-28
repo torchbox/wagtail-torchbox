@@ -59,10 +59,27 @@
         border: 0;
         transition: 0.2s all ease;
 
+        &:focus,
+        &:hover {
+            background: var(--color--icon, var(--color--accent));
+
+            @include hcm {
+                filter: invert(1);
+            }
+        }
+
         &.glide__bullet--active {
             width: 14px;
             height: 20px;
             background: var(--color--icon, var(--color--accent));
+
+            @include hcm {
+                filter: invert(1);
+            }
+        }
+
+        @include hcm {
+            border: 2px solid;
         }
     }
 
