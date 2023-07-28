@@ -4,6 +4,10 @@
     align-items: center;
     justify-content: center;
 
+    @include hcm-dark-mode {
+        position: relative;
+    }
+
     &__container {
         padding: 15px;
 
@@ -13,6 +17,19 @@
 
         @include media-query(large) {
             padding: 15px;
+        }
+
+        @include hcm-dark-mode {
+            &::before {
+                content: '';
+                display: block;
+                padding-bottom: 100%;
+                background-color: #fff;
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                filter: invert(1);
+            }
         }
     }
 
@@ -36,6 +53,19 @@
 
         @include media-query(large) {
             grid-template-rows: 2fr 1fr;
+        }
+    }
+
+    &__cta {
+        &::after {
+            // Show chevron on hover in HCM
+            @include hcm {
+                filter: invert(1);
+            }
+
+            @include hcm-dark-mode {
+                filter: invert(0);
+            }
         }
     }
 
