@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
 
-    @include hcm-dark-mode() {
+    @include high-contrast-dark-mode() {
         position: relative;
     }
 
@@ -19,7 +19,7 @@
             padding: 15px;
         }
 
-        @include hcm-dark-mode() {
+        @include high-contrast-dark-mode() {
             &::before {
                 content: '';
                 display: block;
@@ -63,7 +63,7 @@
                 filter: invert(1);
             }
 
-            @include hcm-dark-mode() {
+            @include high-contrast-dark-mode() {
                 filter: invert(0);
             }
         }
