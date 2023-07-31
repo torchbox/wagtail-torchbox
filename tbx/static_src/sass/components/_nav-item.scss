@@ -354,7 +354,7 @@
                 filter: invert(1);
             }
 
-            @include high-contrast-dark-mode {
+            @include high-contrast-dark-mode() {
                 filter: invert(0);
             }
         }

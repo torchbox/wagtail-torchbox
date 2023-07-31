@@ -47,7 +47,7 @@
             fill: var(--color--white);
         }
 
-        @include high-contrast-dark-mode {
+        @include high-contrast-dark-mode() {
             fill: var(--color--black);
         }
     }
