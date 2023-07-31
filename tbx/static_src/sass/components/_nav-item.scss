@@ -231,6 +231,10 @@
             background-color: var(--color--header-links);
             color: var(--color--header-links);
         }
+
+        @include hcm() {
+            filter: invert(1);
+        }
     }
 
     // Home page mods
@@ -298,19 +302,16 @@
                 display: none;
             }
 
-            &:focus {
-                outline: 4px solid var(--color--header-links) transparent;
-            }
-
             @include hcm() {
                 text-decoration: underline;
 
+                &::before {
+                    display: none;
+                }
+
                 &:hover,
                 &:focus {
-                    /* stylelint-disable-next-line max-nesting-depth */
-                    &::before {
-                        filter: invert(1);
-                    }
+                    text-decoration: none;
                 }
             }
         }
@@ -325,6 +326,14 @@
             &:hover,
             &:focus {
                 background-color: var(--color--accent);
+
+                @include hcm() {
+                    text-decoration: none;
+                }
+            }
+
+            @include hcm() {
+                text-decoration: underline;
             }
         }
 
