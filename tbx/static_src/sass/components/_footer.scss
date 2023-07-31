@@ -61,7 +61,7 @@
             transform: scale(1.1);
         }
 
-        @include high-contrast-dark-mode {
+        @include high-contrast-dark-mode() {
             filter: invert(1);
         }
     }
@@ -213,7 +213,7 @@
         fill: var(--color--dark-indigo);
         transition: fill $transition-quick;
 
-        @include high-contrast-dark-mode {
+        @include high-contrast-dark-mode() {
             fill: var(--color--white);
         }
     }

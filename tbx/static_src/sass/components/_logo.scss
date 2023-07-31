@@ -32,11 +32,11 @@
             height: 50px;
         }
 
-        @include hcm {
+        @include hcm() {
             fill: var(--color--black);
         }
 
-        @include high-contrast-dark-mode {
+        @include high-contrast-dark-mode() {
             fill: var(--color--white);
         }
     }
@@ -46,11 +46,11 @@
         height: 25px;
         fill: var(--color--header-icon-color);
 
-        @include hcm {
+        @include hcm() {
             fill: var(--color--black);
         }
 
-        @include high-contrast-dark-mode {
+        @include high-contrast-dark-mode() {
             fill: var(--color--white);
         }
     }

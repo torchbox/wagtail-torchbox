@@ -16,7 +16,7 @@
         display: none;
     }
 
-    @include hcm {
+    @include hcm() {
         filter: invert(1);
     }
 
@@ -52,7 +52,7 @@
             top: 29px;
         }
 
-        @include hcm {
+        @include hcm() {
             filter: invert(1);
         }
     }
