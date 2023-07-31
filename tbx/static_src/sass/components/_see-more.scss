@@ -20,6 +20,10 @@
             border-color: var(--color--accent);
             color: var(--color--white);
             padding: 15px 30px;
+
+            @include hcm() {
+                border-radius: 0;
+            }
         }
     }
 
