@@ -2492,22 +2492,17 @@ resolved_reference = "81d2cbade257ce50d095ce86e0db0e1eb85bca4c"
 
 [[package]]
 name = "wagtail-purge"
-version = "0.2.0"
+version = "0.3.0"
 description = "Purge individual URLs from the Wagtail admin"
 optional = false
 python-versions = "*"
-files = []
-develop = false
+files = [
+    {file = "wagtail-purge-0.3.0.tar.gz", hash = "sha256:c5464ff62a9748e23722572cd2f0f9be643d6c4a8cf02ef800ba72261f6f4c43"},
+    {file = "wagtail_purge-0.3.0-py2.py3-none-any.whl", hash = "sha256:326cbee87c4ff378b8695e05f6c6bbffae1b6acf6e971cd0d09131629416e42c"},
+]
 
 [package.dependencies]
-django = ">=3.2,<4.2"
-wagtail = ">=2.15"
-
-[package.source]
-type = "git"
-url = "https://github.com/nickmoreton/wagtail-purge"
-reference = "support/wagtail42"
-resolved_reference = "59cf2ed16d868cc8d3da11c469ed5c524d74c62b"
+wagtail = ">=4.1,<6.0"
 
 [[package]]
 name = "wagtail-webstories"
@@ -2776,4 +2771,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "f42d7af91a801017404b3711d36d0be0361d9eaadb193d639885d8188e1fad05"
+content-hash = "f19e8cc305be12ad7632f9df2364a502f33c3c788d135f1c715eff5d2ac2ba7d"
