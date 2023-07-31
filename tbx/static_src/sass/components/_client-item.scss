@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
 
-    @include hcm-dark-mode {
+    @include hcm-dark-mode() {
         position: relative;
     }
 
@@ -19,7 +19,7 @@
             padding: 15px;
         }
 
-        @include hcm-dark-mode {
+        @include hcm-dark-mode() {
             &::before {
                 content: '';
                 display: block;
@@ -59,11 +59,11 @@
     &__cta {
         &::after {
             // Show chevron on hover in HCM
-            @include hcm {
+            @include hcm() {
                 filter: invert(1);
             }
 
-            @include hcm-dark-mode {
+            @include hcm-dark-mode() {
                 filter: invert(0);
             }
         }

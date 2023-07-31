@@ -63,7 +63,7 @@
         &:hover {
             background: var(--color--icon, var(--color--accent));
 
-            @include hcm {
+            @include hcm() {
                 filter: invert(1);
             }
         }
@@ -73,12 +73,12 @@
             height: 20px;
             background: var(--color--icon, var(--color--accent));
 
-            @include hcm {
+            @include hcm() {
                 filter: invert(1);
             }
         }
 
-        @include hcm {
+        @include hcm() {
             border: 2px solid;
         }
     }

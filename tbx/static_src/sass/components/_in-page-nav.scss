@@ -163,7 +163,7 @@
             font-size: map-get($large-font-sizes, s);
         }
 
-        @include hcm {
+        @include hcm() {
             &:focus,
             &:hover {
                 outline: 2px solid;

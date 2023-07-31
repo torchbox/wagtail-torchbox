@@ -110,7 +110,7 @@
             .streamfield & {
                 border-bottom: 2px solid var(--color--underline);
 
-                @include hcm {
+                @include hcm() {
                     &:focus,
                     &:hover {
                         border-bottom: 0;
@@ -130,7 +130,7 @@
             background-color: var(--color--accent);
             clip-path: $arrow-path;
 
-            @include hcm {
+            @include hcm() {
                 filter: invert(1);
             }
         }
