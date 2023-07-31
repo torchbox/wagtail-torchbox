@@ -307,6 +307,7 @@
 
                 &:hover,
                 &:focus {
+                    /* stylelint-disable-next-line max-nesting-depth */
                     &::before {
                         filter: invert(1);
                     }
