@@ -43,7 +43,7 @@
             }
         }
 
-        @include hcm {
+        @include hcm() {
             fill: var(--color--white);
         }
 

@@ -302,7 +302,7 @@
                 outline: 4px solid var(--color--header-links) transparent;
             }
 
-            @include hcm {
+            @include hcm() {
                 text-decoration: underline;
 
                 &:hover,
@@ -350,7 +350,7 @@
                 top: 8px;
             }
 
-            @include hcm {
+            @include hcm() {
                 filter: invert(1);
             }
 
