@@ -34,7 +34,7 @@
             #{$root}__title {
                 color: var(--color--coral);
 
-                @include hcm {
+                @include hcm() {
                     text-decoration: none;
                 }
             }
@@ -62,7 +62,7 @@
             font-size: 22px;
         }
 
-        @include hcm {
+        @include hcm() {
             text-decoration: underline;
         }
     }

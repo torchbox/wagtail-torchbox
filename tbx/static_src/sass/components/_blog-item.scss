@@ -14,7 +14,7 @@ $blog-author: var(--testimonial-name);
         #{$root}__title {
             color: var(--color--coral);
 
-            @include hcm {
+            @include hcm() {
                 text-decoration: none;
             }
         }
@@ -57,7 +57,7 @@ $blog-author: var(--testimonial-name);
         }
 
         // Add visual indication that it's a link
-        @include hcm {
+        @include hcm() {
             text-decoration: underline;
         }
     }
