@@ -159,8 +159,8 @@
         display: flex;
         flex-wrap: wrap;
         column-gap: $grid;
-        row-gap: $grid / 2;
-        margin-top: $grid / 5;
+        row-gap: math.div($grid, 2);
+        margin-top: math.div($grid, 5);
         align-items: center;
 
         @include media-query(menu-break) {
