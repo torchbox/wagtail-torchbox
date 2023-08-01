@@ -48,6 +48,10 @@
             left: 14px;
             top: 29px;
         }
+
+        @include hcm() {
+            filter: invert(1);
+        }
     }
 
     // Applied by js
@@ -85,4 +89,12 @@
         }
     }
 
+    @include hcm() {
+        filter: invert(1);
+
+        &:focus,
+        &:hover {
+            filter: invert(0);
+        }
+    }
 }
