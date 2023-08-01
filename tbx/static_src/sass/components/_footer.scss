@@ -178,10 +178,12 @@
         display: inline-block;
         color: var(--color--indigo);
         border-bottom: 0;
+        text-decoration: underline;
 
         &:hover,
         &:focus {
             color: var(--color--coral-dark);
+            text-decoration-thickness: 5px;
         }
     }
 
