@@ -311,7 +311,7 @@
 
                 &:hover,
                 &:focus {
-                    text-decoration: none;
+                    text-decoration-thickness: 5px;
                 }
             }
         }
@@ -328,7 +328,7 @@
                 background-color: var(--color--accent);
 
                 @include hcm() {
-                    text-decoration: none;
+                    text-decoration-thickness: 5px;
                 }
             }
 
