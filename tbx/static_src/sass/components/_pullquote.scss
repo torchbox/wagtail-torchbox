@@ -111,6 +111,7 @@
                 border-bottom: 2px solid var(--color--underline);
 
                 @include hcm() {
+                    /* stylelint-disable-next-line max-nesting-depth */
                     &:focus,
                     &:hover {
                         border-bottom: 0;
