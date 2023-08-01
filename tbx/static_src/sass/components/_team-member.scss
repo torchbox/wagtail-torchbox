@@ -35,7 +35,7 @@
                 color: var(--color--coral);
 
                 @include hcm() {
-                    text-decoration: none;
+                    text-decoration-thickness: 5px;
                 }
             }
 
@@ -117,6 +117,13 @@
         @include media-query(large) {
             margin-left: 16.66vw;
             max-width: 50vw;
+        }
+
+        a {
+            &:hover,
+            &:focus {
+                border-bottom-width: 5px;
+            }
         }
     }
 

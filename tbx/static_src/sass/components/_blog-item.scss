@@ -15,7 +15,7 @@ $blog-author: var(--testimonial-name);
             color: var(--color--coral);
 
             @include hcm() {
-                text-decoration: none;
+                text-decoration-thickness: 5px;
             }
         }
     }

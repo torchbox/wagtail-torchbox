@@ -37,6 +37,7 @@
     @include hcm() {
         &--active {
             text-decoration: underline;
+            text-decoration-thickness: 3px;
         }
 
         &:focus,
