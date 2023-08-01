@@ -18,13 +18,20 @@
         @include media-query(large) {
             padding: 15px;
         }
+    }
+
+    &__image-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         @include high-contrast-dark-mode() {
+            position: relative;
+
             &::before {
                 content: '';
                 display: block;
-                padding-bottom: 100%;
-                background-color: #fff;
+                background-color: var(--color--white);
                 position: absolute;
                 inset: 0;
                 z-index: 0;
@@ -56,19 +63,6 @@
         }
     }
 
-    &__cta {
-        &::after {
-            // Show chevron on hover in HCM
-            @include hcm() {
-                filter: invert(1);
-            }
-
-            @include high-contrast-dark-mode() {
-                filter: invert(0);
-            }
-        }
-    }
-
     .streamfield & {
         width: 100%;
         padding-left: 0;
@@ -94,6 +88,26 @@
                         &::after {
                             background-color: var(--color--accent);
                         }
+                    }
+                }
+            }
+
+            // Move the underline to the text - not the logo
+            @include hcm() {
+                border-bottom: 0;
+
+                &:focus,
+                &:hover {
+                    border-bottom: 0;
+
+                    // Increase underline thickness on hover
+                    #{$root}__cta {
+                        text-decoration-thickness: 5px;
+                    }
+
+                    // Don't increase image size on hover
+                    #{$root}__image {
+                        transform: scale3d(1, 1, 1);
                     }
                 }
             }
@@ -138,6 +152,14 @@
                 @include media-query(large) {
                     width: 20px;
                     height: 18px;
+                }
+            }
+
+            @include hcm() {
+                text-decoration: underline;
+
+                &::after {
+                    display: none;
                 }
             }
         }
