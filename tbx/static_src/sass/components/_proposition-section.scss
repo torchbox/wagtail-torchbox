@@ -18,6 +18,10 @@
             height: 2px;
             top: -15px;
             background-color: var(--color--section-title);
+
+            @include high-contrast-dark-mode() {
+                filter: invert(1);
+            }
         }
     }
 
