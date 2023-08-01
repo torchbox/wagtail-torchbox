@@ -101,22 +101,21 @@
         font-weight: $weight--bold;
         display: inline-block;
         position: relative;
-        border-bottom: 2px solid transparent; // prevent shift on hover
+        text-decoration: underline;
+        text-decoration-color: var(--color--underline);
         margin-top: 40px;
+        text-underline-offset: 5px;
 
+        .streamfield & {
+            border-bottom: 0;
+        }
+
+        &:focus,
         &:hover {
-            border-bottom: 2px solid var(--color--underline);
+            text-decoration-thickness: 5px;
 
             .streamfield & {
-                border-bottom: 2px solid var(--color--underline);
-
-                @include hcm() {
-                    /* stylelint-disable-next-line max-nesting-depth */
-                    &:focus,
-                    &:hover {
-                        border-bottom: 0;
-                    }
-                }
+                border-bottom: 0;
             }
         }
 

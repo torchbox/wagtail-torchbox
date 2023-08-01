@@ -27,12 +27,20 @@
         .streamfield & {
             &:hover {
                 border-bottom: 0;
+
+                @include hcm() {
+                    border-bottom: 5px solid;
+                }
             }
         }
 
         &::before {
             //override underline colour in mixin
             background-color: var(--color--accent);
+
+            @include hcm() {
+                display: none;
+            }
         }
     }
 
