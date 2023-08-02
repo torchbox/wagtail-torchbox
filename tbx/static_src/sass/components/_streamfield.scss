@@ -258,6 +258,7 @@
     }
 
     .streamfield__heading {
+        @include font-size(l);
         font-weight: $weight--heavy;
     }
 

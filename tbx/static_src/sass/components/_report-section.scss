@@ -24,7 +24,7 @@
     }
 
     &__heading {
-        @include font-size(xxxxl);
+        @include font-size(xxl);
         line-height: 55px;
         font-weight: $weight--heavy;
         color: var(--color--dark-indigo);
