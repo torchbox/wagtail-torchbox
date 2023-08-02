@@ -4,6 +4,7 @@ from django.utils.functional import cached_property
 from modelcluster.fields import ParentalKey
 from tbx.blog.models import BlogIndexPage
 from tbx.core.blocks import PageSectionStoryBlock
+from tbx.core.utils.models import SocialFields
 from tbx.propositions.models import PropositionPage
 from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
@@ -12,7 +13,7 @@ from wagtail.models import Orderable, Page
 from wagtail.search import index
 
 
-class BaseServicePage(Page):
+class BaseServicePage(SocialFields, Page):
     theme = models.CharField(
         max_length=255,
         choices=(
@@ -139,6 +140,11 @@ class BaseServicePage(Page):
             heading="Thinking",
             classname="collapsible",
         ),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]
 
     class Meta:

@@ -1,6 +1,7 @@
 from django.db import models
 
 from tbx.core.blocks import PageSectionStoryBlock
+from tbx.core.utils.models import SocialFields
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
@@ -9,7 +10,7 @@ from wagtail.search import index
 INTRO_RICHTEXT_FEATURES = ["bold", "italic", "link", "document-link", "strikethrough"]
 
 
-class PropositionPage(Page):
+class PropositionPage(SocialFields, Page):
     template = "patterns/pages/proposition/proposition.html"
 
     subpage_types = [
@@ -124,4 +125,9 @@ class PropositionPage(Page):
             heading="Our team",
             classname="collapsible",
         ),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]

@@ -42,7 +42,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@{{ social_media_settings.twitter_handle }}" />
     <meta name="twitter:title" content="{{ page.title }}" />
-    <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% elif page.listing_summary %}{{ page.listing_summary }}{% else %}{{ page|social_text:current_site }}{% endif %}">
+    <meta name="twitter:description" content="{% if page|social_text:current_site %}{{ page|social_text:current_site }}{% elif page.search_description %}{{ page.search_description }}{% elif page.listing_summary %}{{ page.listing_summary }}{% else %}{{ social_media_settings.default_sharing_text }}{% endif %}">
     {% if page.social_image or page.feed_image or page.hero_image %}
         {% if page.social_image %}
             {% image page.social_image width-1000 as social_img %}
@@ -65,7 +65,10 @@
     {% endif %}
 
     {# facebook opengraph tags #}
-    <meta property="fb:app_id" content="{{ social_media_settings.facebook_app_id }}" />
+    {% if social_media_settings.facebook_app_id %}
+        <meta property="fb:app_id" content="{{ social_media_settings.facebook_app_id }}" />
+    {% endif %}
+
     <meta property="og:type" content="website" />
     {% if page %}
         <meta property="og:url" content="{{ site.root_url }}{% pageurl page %}" />
@@ -90,7 +93,7 @@
         <meta name="twitter:image" content="{{ current_site.root_url }}{% static 'images/social-image.png' %}">
         {% endcomment %}
     {% endif %}
-    <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% elif page.listing_summary %}{{ page.listing_summary }}{% else %}{{ page|social_text:current_site }}{% endif %}" />
+    <meta property="og:description" content="{% if page|social_text:current_site %}{{ page|social_text:current_site }}{% elif page.search_description %}{{ page.search_description }}{% elif page.listing_summary %}{{ page.listing_summary }}{% else %}{{ social_media_settings.default_sharing_text }}{% endif %}" />
     <meta property="og:site_name" content="{{ social_media_settings.site_name }}" />
 {% endblock meta_tags %}
 
