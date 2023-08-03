@@ -1,7 +1,16 @@
 {% load wagtailcore_tags %}
-<div class="blog-listing {% if classes %}{{ classes }}{% endif %}" {% if page.blogs_section_title %}id="{{ page.blogs_section_title|slugify }}"{% endif %} {% if data_attrs %}{{ data_attrs }}{% endif %}>
+<div
+    class="blog-listing {% if classes %}{{ classes }}{% endif %}"
+    {% if page.blogs_section_title %}id="{{ page.blogs_section_title|slugify }}"
+    {% elif blogs_section_title %}id="{{ blogs_section_title|slugify }}"{% endif %}
+    {% if data_attrs %}{{ data_attrs }}{% endif %}
+>
     <div class="blog-listing__content">
-        {% include "patterns/atoms/section-title/section-title.html" with title=page.blogs_section_title %}
+        {% if page.blogs_section_title %}
+            {% include "patterns/atoms/section-title/section-title.html" with title=page.blogs_section_title %}
+        {% elif blogs_section_title %}
+            {% include "patterns/atoms/section-title/section-title.html" with title=blogs_section_title %}
+        {% endif %}
 
         {% if blogs_section_heading %}
             <h2 class="blog-listing__heading">What our team says</h2>

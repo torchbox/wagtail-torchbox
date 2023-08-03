@@ -7,10 +7,14 @@
         {% if clients %}
             <div class="client-block__section">
                 <ul class="client-block__icon-list client-block__icon-list--spaced">
-                    {% for client in clients %}
+                    {% for client_logo in clients %}
                         <li class="client-item">
                             <div class="client-item__container">
-                                {% image client.image width-400 class="client-item__image" loading="lazy" %}
+                                {% if client_logo.image %}
+                                    {% image client_logo.image width-400 class="client-item__image" loading="lazy" %}
+                                {% else %} {# this is coming from a StreamField #}
+                                    {% image client_logo width-400 class="client-item__image" loading="lazy" %}
+                                {% endif %}
                             </div>
                         </li>
                     {% endfor %}
