@@ -1,0 +1,17 @@
+context:
+  value:
+    title: Services
+    heading_for_key_points: '<p><b>We help you create digital products and services, fast</b>. And, you can transform your organisation along the way.</p>'
+    key_points:
+      - text: UX Research and Design
+        linked_page: '#'
+      - text: Design Sprints
+      - text: Software Engineering
+        linked_page: '#'
+      - text: Wagtail CMS services
+      - text: Digital marketing
+        linked_page: '#'
+  page:
+    contact:
+      email_address: willh@torchbox.com
+      phone_number: +441608811870
