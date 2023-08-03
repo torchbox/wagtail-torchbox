@@ -219,6 +219,8 @@
             }
 
             #{$root}__link {
+                padding-top: 5px;
+
                 &.is-active {
                     text-decoration-thickness: 5px;
                 }
