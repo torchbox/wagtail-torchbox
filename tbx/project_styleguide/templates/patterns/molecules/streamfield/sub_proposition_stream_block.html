@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+
+{% for block in value %}
+    {% if block.block_type in section_block_types %}
+        {% include_block block %}
+    {% else %}
+        <div class="streamfield">
+            {% include_block block %}
+        </div>
+    {% endif %}
+{% endfor %}
