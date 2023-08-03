@@ -1,0 +1,4 @@
+{% load wagtailcore_tags %}
+<div class="service-section" id="{{ value.title|slugify }}" data-service-section>
+    {% include "patterns/organisms/client-block/client-block.html" with title=value.title clients=value.client_logos quotes=value.testimonials %}
+</div>
