@@ -1,0 +1,10 @@
+context:
+  title: Example <span>title</span>
+  desc: <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+  page:
+    service: Design + build products
+    section_titles:
+      - Services
+      - About support
+      - Clients
+      - Blog
