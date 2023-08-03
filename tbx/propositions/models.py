@@ -145,6 +145,7 @@ class PropositionPage(SocialFields, Page):
 class SubPropositionPage(Page):
     template = "patterns/pages/proposition/sub_proposition.html"
     parent_page_types = ["propositions.PropositionPage"]
+    subpage_types = ["torchbox.StandardPage"]
 
     theme = models.CharField(
         max_length=255,
