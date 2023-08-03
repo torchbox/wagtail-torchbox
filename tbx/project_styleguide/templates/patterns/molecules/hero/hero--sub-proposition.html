@@ -1,0 +1,23 @@
+{% load wagtailcore_tags %}
+<div class="hero {% if classes %}{{ classes }}{% endif %}">
+    <div class="hero__container">
+        <div class="hero__content">
+            <h1 class="hero__title">{{ title|richtext }}</h1>
+            {% if desc %}
+                <div class="hero__description">{{ desc|richtext }}</div>
+            {% endif %}
+        </div>
+
+        {% if in_page_nav %}
+            {% include "patterns/molecules/in-page-nav/in-page-nav--sub-proposition.html" with section_titles=page.section_titles title=page.service %}
+        {% endif %}
+
+        {% if page.greeting_image_type == 'woman-left' %}
+            {% include "patterns/atoms/animated-characters/women.html" %}
+        {% elif page.greeting_image_type == 'man-left' %}
+            {% include "patterns/atoms/animated-characters/man.html" %}
+        {% elif page.greeting_image_type == 'wagtail' %}
+            {% include "patterns/atoms/animated-characters/wagtail.html" %}
+        {% endif %}
+    </div>
+</div>
