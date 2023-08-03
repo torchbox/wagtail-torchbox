@@ -41,6 +41,11 @@
 
             &.is-active {
                 border-bottom: 2px solid var(--color--underline);
+
+                // We use text-decoration for HCM
+                @include hcm() {
+                    border-bottom: 0;
+                }
             }
 
             @include media-query(large) {
@@ -140,15 +145,17 @@
 
     &__link {
         font-size: map-get($small-font-sizes, xxs);
-        transition: all $transition-quick;
+        transition: border $transition-quick, color $transition-quick;
         color: var(--color--theme-link);
-        text-decoration: none;
-        border-bottom: 2px solid var(--color--background);
+        text-decoration: underline;
+        text-decoration-color: var(--color--underline);
         padding-top: 20px;
+        border: 0;
+        text-underline-offset: 7px;
 
         &:focus,
         &:hover {
-            border-bottom: 2px solid var(--color--underline);
+            text-decoration-thickness: 5px;
             color: var(--color--theme-hover);
         }
 
@@ -213,7 +220,7 @@
 
             #{$root}__link {
                 &.is-active {
-                    border-bottom-color: var(--color--dark-indigo);
+                    text-decoration-thickness: 5px;
                 }
             }
         }

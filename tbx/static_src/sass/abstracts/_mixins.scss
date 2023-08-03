@@ -172,3 +172,23 @@
         }
     }
 }
+
+/* ============================================
+    High Contrast mode in dark mode
+    prefers-color-scheme: dark + forced-colors: active
+*/
+@mixin high-contrast-dark-mode() {
+    @media (prefers-color-scheme: dark) and (forced-colors: active) {
+        @content;
+    }
+}
+
+/* ============================================
+    High Contrast mode (forced-colors: active)
+*/
+
+@mixin hcm() {
+    @media (forced-colors: active) {
+        @content;
+    }
+}
