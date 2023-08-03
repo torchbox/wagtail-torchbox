@@ -260,6 +260,11 @@
     .streamfield__heading {
         @include font-size(l);
         font-weight: $weight--heavy;
+        margin-top: 30px;
+
+        @include media-query(medium) {
+            margin-top: 60px;
+        }
     }
 
     .streamfield__paragraph {

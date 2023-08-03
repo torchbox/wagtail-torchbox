@@ -34,7 +34,7 @@
     }
 
     &__heading {
-        @include font-size(xxxxl);
+        @include font-size(xxxl);
         color: var(--color--stone);
         line-height: 80px;
         font-weight: $weight--heavy;
