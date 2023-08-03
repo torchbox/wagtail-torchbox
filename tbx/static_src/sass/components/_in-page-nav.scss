@@ -167,7 +167,11 @@
     &--report {
         margin-left: $variable-gutter--small;
 
-        @include media-query(medium) {
+        @include media-query(large) {
+            margin-left: 0;
+        }
+
+        @include media-query(menu-break) {
             margin-left: 10.33vw;
         }
 
