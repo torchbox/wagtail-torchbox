@@ -1,0 +1,25 @@
+.small-image-with-text {
+    margin-bottom: 25px;
+
+    @include media-query(medium) {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 25px;
+    }
+
+    &__image {
+        margin-bottom: 10px;
+        max-width: 50px;
+
+        @include media-query(medium) {
+            margin-bottom: 0;
+            max-width: 80px;
+        }
+    }
+
+    &__title {
+        font-size: map-get($medium-font-sizes, m);
+        color: var(--color--stone);
+        margin: 0 0 5px;
+    }
+}

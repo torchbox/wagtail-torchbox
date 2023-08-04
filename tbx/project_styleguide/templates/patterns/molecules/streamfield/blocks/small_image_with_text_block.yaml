@@ -1,0 +1,10 @@
+context:
+  value:
+    title: 100% renewable gas
+    text: >
+      We're still heating on gas in our Bristol office, but we're excited to have moved this year to a 100% certified renewable gas supply (SSE's Green Gas Plus).
+
+tags:
+  image:
+    value.image fill-80x80 class="small-image-with-text__image":
+      raw: '<img src="https://placekitten.com/80" class="small-image-with-text__image">'

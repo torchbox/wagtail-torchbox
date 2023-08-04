@@ -94,9 +94,22 @@ class TwoColumnTextGridBlock(StructBlock):
         )
 
 
+class SmallImageWithTextBlock(StructBlock):
+    image = ImageChooserBlock()
+    title = CharBlock()
+    text = RichTextBlock()
+
+    class Meta:
+        icon = "image"
+        template = (
+            "patterns/molecules/streamfield/blocks/small_image_with_text_block.html"
+        )
+
+
 class ImpactReportStoryBlock(StoryBlock):
     impact_report_heading = ImpactReportHeadingBlock(group="Impact Report")
     paragraph_with_quote = ParagraphWithQuoteBlock(group="Impact Report")
     paragraph_with_image = ParagraphWithImageBlock(group="Impact Report")
     three_column_image_grid = ThreeColumnImageGridBlock(group="Impact Report")
     two_column_text_grid = TwoColumnTextGridBlock(group="Impact Report")
+    small_image_with_text = SmallImageWithTextBlock(group="Impact Report")
