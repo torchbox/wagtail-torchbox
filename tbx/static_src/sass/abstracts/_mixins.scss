@@ -192,3 +192,18 @@
         @content;
     }
 }
+
+/* ============================================
+    Impact Report link styles
+*/
+@mixin impact-report-link-styles() {
+    color: var(--color--stone);
+    font-weight: $weight--semibold;
+    border-bottom: 2px solid var(--color--light-stone);
+    transition: border $transition-quick;
+
+    &:hover,
+    &:focus {
+        border-bottom-width: 5px;
+    }
+}

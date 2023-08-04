@@ -272,9 +272,7 @@
         line-height: 31px;
 
         a {
-            color: var(--color--stone);
-            font-weight: $weight--semibold;
-            border-bottom: 2px solid var(--color--stone);
+            @include impact-report-link-styles();
         }
     }
 }
