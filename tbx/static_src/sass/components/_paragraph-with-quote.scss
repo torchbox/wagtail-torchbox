@@ -25,6 +25,10 @@
     &__text {
         font-size: map-get($large-font-sizes, s);
         line-height: 31px;
+
+        a {
+            @include impact-report-link-styles();
+        }
     }
 
     &--quote-left {

@@ -78,16 +78,6 @@ class ThreeColumnImageGridBlock(StructBlock):
         )
 
 
-class DiagonalImageGridBlock(StructBlock):
-    images = ListBlock(ImageChooserBlock(), min_num=3, max_num=3)
-
-    class Meta:
-        icon = "image"
-        template = (
-            "patterns/molecules/streamfield/blocks/diagonal_image_grid_block.html"
-        )
-
-
 class TwoColumnTextGridItemBlock(StructBlock):
     image = ImageChooserBlock()
     heading = CharBlock()
@@ -109,5 +99,4 @@ class ImpactReportStoryBlock(StoryBlock):
     paragraph_with_quote = ParagraphWithQuoteBlock(group="Impact Report")
     paragraph_with_image = ParagraphWithImageBlock(group="Impact Report")
     three_column_image_grid = ThreeColumnImageGridBlock(group="Impact Report")
-    diagonal_image_grid = DiagonalImageGridBlock(group="Impact Report")
     two_column_text_grid = TwoColumnTextGridBlock(group="Impact Report")

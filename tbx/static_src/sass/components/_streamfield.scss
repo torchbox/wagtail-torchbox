@@ -109,7 +109,7 @@
         }
 
         .template__impact-report-page & {
-            margin: 0;
+            margin: 0 0 20px;
         }
     }
 
@@ -258,7 +258,13 @@
     }
 
     .streamfield__heading {
+        @include font-size(l);
         font-weight: $weight--heavy;
+        margin-top: 30px;
+
+        @include media-query(medium) {
+            margin-top: 60px;
+        }
     }
 
     .streamfield__paragraph {
@@ -266,9 +272,7 @@
         line-height: 31px;
 
         a {
-            color: var(--color--stone);
-            font-weight: $weight--semibold;
-            border-bottom: 2px solid var(--color--stone);
+            @include impact-report-link-styles();
         }
     }
 }

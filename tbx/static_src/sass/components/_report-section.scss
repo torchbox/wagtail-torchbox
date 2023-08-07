@@ -1,5 +1,9 @@
 .report-section {
-    margin: 100px 0 20px;
+    margin: 50px 0 10px;
+
+    @include media-query(medium) {
+        margin: 100px 0 20px;
+    }
 
     &__short-heading {
         position: absolute;
@@ -24,8 +28,8 @@
     }
 
     &__heading {
-        @include font-size(xxxxl);
-        line-height: 55px;
+        @include font-size(xxl);
+        line-height: 40px;
         font-weight: $weight--heavy;
         color: var(--color--dark-indigo);
         margin: 35px 0 0;
@@ -53,7 +57,7 @@
 
     &__container {
         max-width: 740px;
-        margin: 80px auto 0;
+        margin: 75px auto 0;
         display: grid;
         grid-row-gap: 50px;
 
