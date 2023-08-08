@@ -40,10 +40,12 @@
             cursor: pointer;
             font-weight: $weight--heavy;
             color: var(--color--link);
-            border-bottom: 2px solid transparent; // prevent layout shift
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            border-bottom: 0;
 
             &:hover {
-                border-bottom: 2px solid var(--color--accent);
+                text-decoration-thickness: 4px;
                 color: var(--color--link);
             }
         }
@@ -51,6 +53,7 @@
 
     .streamfield {
         margin: 0;
+
         &:first-of-type {
             margin-top: ($gutter * 3);
 
