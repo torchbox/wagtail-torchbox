@@ -123,7 +123,7 @@
         }
 
         #{$root}__cta {
-            display: none;
+            display: flex;
             align-items: flex-start;
             justify-content: center;
             position: relative;
@@ -132,10 +132,6 @@
             font-size: rem(16px);
             font-weight: $weight--medium;
             transition: color $transition-quick;
-
-            @include media-query(large) {
-                display: flex;
-            }
 
             &::after {
                 content: '';
