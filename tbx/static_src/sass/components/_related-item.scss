@@ -10,16 +10,11 @@
     &:hover {
         #{$root}__title {
             color: var(--color--coral);
+            text-decoration-thickness: 4px;
         }
 
         #{$root}__client {
             color: var(--color--dark-indigo);
-        }
-    }
-
-    &:focus {
-        #{$root}__title {
-            outline: 5px solid var(--color--coral);
         }
     }
 
@@ -73,6 +68,10 @@
         }
     }
 
+    @include hcm() {
+        gap: 20px;
+    }
+
     &__meta {
         @include container();
         margin: ($gutter * 1.5);
@@ -110,7 +109,9 @@
         margin: 0 0 10px;
         color: var(--color--dark-indigo);
         font-weight: 800;
-        transition: color $transition-quick;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
 
         @include media-query(medium) {
             font-size: map-get($medium-font-sizes, xl);
@@ -162,6 +163,10 @@
             @include media-query(large) {
                 display: block;
                 border-width: 50vw 25vw 0 0;
+            }
+
+            @include hcm() {
+                display: none;
             }
         }
     }
