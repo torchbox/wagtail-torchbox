@@ -5,6 +5,7 @@ from wagtail.blocks import (
     ListBlock,
     RichTextBlock,
     StructBlock,
+    URLBlock,
 )
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -106,6 +107,24 @@ class SmallImageWithTextBlock(StructBlock):
         )
 
 
+class InstagramGalleryItemBlock(StructBlock):
+    image = ImageChooserBlock()
+    link = URLBlock(
+        required=False,
+    )
+
+    class Meta:
+        icon = "image"
+
+
+class InstagramGalleryGridBlock(StructBlock):
+    items = ListBlock(InstagramGalleryItemBlock())
+
+    class Meta:
+        icon = "group"
+        template = "patterns/molecules/streamfield/blocks/instagram-gallery.html"
+
+
 class ImpactReportStoryBlock(StoryBlock):
     impact_report_heading = ImpactReportHeadingBlock(group="Impact Report")
     paragraph_with_quote = ParagraphWithQuoteBlock(group="Impact Report")
@@ -113,3 +132,4 @@ class ImpactReportStoryBlock(StoryBlock):
     three_column_image_grid = ThreeColumnImageGridBlock(group="Impact Report")
     two_column_text_grid = TwoColumnTextGridBlock(group="Impact Report")
     small_image_with_text = SmallImageWithTextBlock(group="Impact Report")
+    instagram_gallery = InstagramGalleryGridBlock(group="Impact Report")

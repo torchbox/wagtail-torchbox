@@ -25,9 +25,8 @@
 
         {# Streamfield #}
         {% for block in page.body %}
-
             {# Give some blocks full width container #}
-            {% if block.block_type == 'impact_report_heading' %}
+            {% if block.block_type == 'impact_report_heading' or block.block_type == 'instagram_gallery' %}
                 <div class="report-page__full-width">
                     {% include_block block %}
                 </div>
