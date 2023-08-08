@@ -195,8 +195,6 @@ class SubPropositionPage(Page):
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
-        index.SearchField("contact"),
-        index.SearchField("contact_reasons"),
         index.SearchField("content"),
     ]
 
