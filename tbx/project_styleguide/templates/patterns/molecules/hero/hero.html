@@ -9,7 +9,7 @@
         </div>
 
         {% if in_page_nav %}
-            {% include "patterns/molecules/in-page-nav/in-page-nav.html" with item=page title=page.service %}
+            {% include "patterns/molecules/in-page-nav/in-page-nav.html" with section_titles=page.section_titles title=page.service %}
         {% endif %}
 
         {% if page.greeting_image_type == 'woman-left' %}
