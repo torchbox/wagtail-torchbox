@@ -2,16 +2,16 @@ import logging
 
 from django.db import models
 from django.utils.functional import cached_property
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.fields import RichTextField, StreamField
-from wagtail.models import Page
-from wagtail.search import index
 
 from tbx.blog.models import BlogIndexPage
 from tbx.core.blocks import PageSectionStoryBlock
 from tbx.core.utils.models import SocialFields
 from tbx.propositions.blocks import SubPropositionPageStoryBlock
 from tbx.work.models import WorkIndexPage
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
+from wagtail.search import index
 
 logger = logging.getLogger(__name__)
 
@@ -150,7 +150,7 @@ class PropositionPage(SocialFields, Page):
         ]
 
 
-class SubPropositionPage(Page):
+class SubPropositionPage(SocialFields, Page):
     template = "patterns/pages/proposition/sub_proposition.html"
     parent_page_types = ["propositions.PropositionPage"]
     subpage_types = ["torchbox.StandardPage"]
@@ -203,6 +203,11 @@ class SubPropositionPage(Page):
             classname="collapsible",
         ),
         FieldPanel("content"),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]
 
     @cached_property
