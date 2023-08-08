@@ -66,8 +66,6 @@ INSTALLED_APPS = [
     "wagtailmarkdown",
     "modelcluster",
     "taggit",
-    "captcha",
-    "wagtailcaptcha",
     "phonenumber_field",
     "django.contrib.humanize",
     "django.contrib.admin",
@@ -444,14 +442,6 @@ REFERRER_POLICY = env.get(
     "SECURE_REFERRER_POLICY", "no-referrer-when-downgrade"
 ).strip()
 
-# Recaptcha
-# https://github.com/springload/wagtail-django-recaptcha
-if "RECAPTCHA_PUBLIC_KEY" in env and "RECAPTCHA_PRIVATE_KEY" in env:
-    NOCAPTCHA = True
-    RECAPTCHA_PUBLIC_KEY = env["RECAPTCHA_PUBLIC_KEY"]
-    RECAPTCHA_PRIVATE_KEY = env["RECAPTCHA_PRIVATE_KEY"]
-
-
 # Wagtail settings
 WAGTAIL_SITE_NAME = "Torchbox"
 
@@ -563,8 +553,6 @@ GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID")
 
 # Trial Hotjar tracking for the CMS admin.
 ADMIN_HOTJAR_SITE_ID = env.get("ADMIN_HOTJAR_SITE_ID")
-
-SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
 
 # Birdbath - Database anonymisation
 BIRDBATH_REQUIRED = os.environ.get("BIRDBATH_REQUIRED", "true").lower() == "true"
