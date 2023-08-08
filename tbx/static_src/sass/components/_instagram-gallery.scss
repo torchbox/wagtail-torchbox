@@ -49,5 +49,11 @@
     // Ensure images don't blend in on the report page
     .report-page & {
         border: 1px solid var(--color--grey-border);
+        transition: border $transition-quick;
+
+        &:hover,
+        &:focus {
+            border: 3px solid var(--color--grey-dark);
+        }
     }
 }
