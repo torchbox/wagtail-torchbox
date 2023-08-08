@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro in_page_nav=True %}
+    {% include "patterns/molecules/hero/hero--service.html" with title=page.strapline desc=page.intro in_page_nav=True %}
 
     {% if page.key_points_section_title %}
         <div class="service-section" id="{{ page.key_points_section_title|slugify }}" data-service-section>
