@@ -13,7 +13,6 @@ class SubPropositionPageTestCase(WagtailPageTestCase):
         cls.proposition_page = PropositionPageFactory()
         cls.sub_proposition_page = SubPropositionPageFactory(
             parent=cls.proposition_page,
-            contact_reasons=6,
         )
 
     def test_can_create_sub_proposition_page_under_proposition_page(self):

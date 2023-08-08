@@ -174,21 +174,6 @@ class SubPropositionPage(Page):
         null=True,
     )
 
-    contact = models.ForeignKey(
-        "people.Contact",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="+",
-    )
-    contact_reasons = models.ForeignKey(
-        "people.ContactReasonsList",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="+",
-    )
-
     content = StreamField(
         SubPropositionPageStoryBlock(), blank=True, use_json_field=True, collapsed=True
     )
@@ -209,11 +194,6 @@ class SubPropositionPage(Page):
             heading="Hero",
             classname="collapsible",
         ),
-        MultiFieldPanel(
-            [FieldPanel("contact"), FieldPanel("contact_reasons")],
-            heading="Contact",
-            classname="collapsible",
-        ),
         FieldPanel("content"),
     ]
 
@@ -222,13 +202,7 @@ class SubPropositionPage(Page):
         """
         We need these in order to render the in-page-nav in the hero
         """
-        block_types = [
-            "key_points",
-            "testimonials",
-            "processes",
-            "work",
-            "thinking",
-        ]
+        block_types = SubPropositionPageStoryBlock.get_section_block_types()
         try:
             section_titles = [
                 block.value["title"]
