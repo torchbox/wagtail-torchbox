@@ -24,9 +24,9 @@ django-basic-auth-ip-whitelist = "^0.5"
 wagtail-accessibility = "^0.2.1"
 django-phonenumber-field = "^7.0.2"
 phonenumbers = "^8.12.48"
-wagtail-purge = {git = "https://github.com/victoriachan/wagtail-purge", rev = "support/wagtail50"}
-wagtail-webstories = {git = "https://github.com/torchbox-forks/wagtail-webstories", rev = "support/wagtail-50"}
-wagtail-markdown = {git = "https://github.com/nickmoreton/wagtail-markdown", rev = "upgrade-wagtail-50"}
+wagtail-purge = "^0.3.0"
+wagtail-webstories = "~0.1"
+wagtail-markdown = "^0.11.1"
 django-birdbath = "^1.1.0"
 sentry-sdk = "^1.12.1"
 Wand = "^0.6.10"

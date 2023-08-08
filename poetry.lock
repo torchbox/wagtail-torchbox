@@ -2499,23 +2499,22 @@ test = ["coverage (==6.0)", "flake8 (==4.0.0)", "flake8-blind-except (==0.1.1)",
 
 [[package]]
 name = "wagtail-markdown"
-version = "0.10.0"
+version = "0.11.1"
 description = "Markdown support for Wagtail"
 optional = false
-python-versions = "*"
-files = []
-develop = false
+python-versions = ">=3.8"
+files = [
+    {file = "wagtail_markdown-0.11.1-py3-none-any.whl", hash = "sha256:3d2c5dcfac718c3fc03f2ed05aca535b2aa70f71254599505ee272c54437db21"},
+    {file = "wagtail_markdown-0.11.1.tar.gz", hash = "sha256:afcb64efac5b1b57de9f7cc475987c0c7dec5b669833e4617ec4658880de0f77"},
+]
 
 [package.dependencies]
 bleach = ">=3.3,<5"
 Markdown = ">=3.3,<4"
 Wagtail = ">=4.1"
 
-[package.source]
-type = "git"
-url = "https://github.com/nickmoreton/wagtail-markdown"
-reference = "upgrade-wagtail-50"
-resolved_reference = "a8801f564888ec597bd42ec5f2941a5b392cfd8f"
+[package.extras]
+testing = ["pre-commit (>=3.3.0,<4)", "tox (>=4.6.4,<5)"]
 
 [[package]]
 name = "wagtail-purge"
@@ -2529,37 +2528,27 @@ files = [
 ]
 
 [package.dependencies]
-wagtail = ">=4.1"
-
-[package.source]
-type = "git"
-url = "https://github.com/victoriachan/wagtail-purge"
-reference = "support/wagtail50"
-resolved_reference = "7479c5c998d18a22547c1a79a64174b89a01860c"
+wagtail = ">=4.1,<6.0"
 
 [[package]]
 name = "wagtail-webstories"
-version = "0.0.4"
+version = "0.1"
 description = "AMP web story support for Wagtail"
 optional = false
-python-versions = ">=3.7"
-files = []
-develop = false
+python-versions = ">=3.8"
+files = [
+    {file = "wagtail-webstories-0.1.tar.gz", hash = "sha256:b9421336ac493aa294d21b9a4f09cba214635b04d16cfd482ffef6b636ab0881"},
+    {file = "wagtail_webstories-0.1-py3-none-any.whl", hash = "sha256:01862a83595cd01eab314883fb8f5d3845a1d82a0a7ec95905a9d7c27b580b90"},
+]
 
 [package.dependencies]
 beautifulsoup4 = ">=4.6,<5"
-requests = ">=2.24.0"
+requests = ">=2.24.0,<3"
 wagtail = ">=4.1"
-webstories = ">=0.0.1"
+webstories = ">=0.0.1,<1"
 
 [package.extras]
-testing = ["Pillow (>=4.0.0,<9.0.0)", "responses (>=0.12,<1)", "wagtailmedia (>=0.6,<0.13)"]
-
-[package.source]
-type = "git"
-url = "https://github.com/torchbox-forks/wagtail-webstories"
-reference = "support/wagtail-50"
-resolved_reference = "ef0c4367e4b4b6583c448385d8754426c92c7ca7"
+testing = ["Pillow (>=4.0.0,<10.0.0)", "responses (>=0.12,<1)", "wagtailmedia (>=0.6,<0.15)"]
 
 [[package]]
 name = "wagtailmedia"
@@ -2809,4 +2798,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "584be01f56cd8d48e1b81fc60dc42164b3ae47625e88f31ae60945af3630e220"
+content-hash = "76180128836853ece4499dd69629f2ccea169ae4f48feeb5839ad4a329dfb3a7"
