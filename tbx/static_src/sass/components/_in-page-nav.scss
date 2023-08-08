@@ -124,6 +124,10 @@
         height: 25px;
         margin-right: 10px;
         fill: var(--color--header-icon-color, --color--coral-dark);
+
+        @include high-contrast-dark-mode() {
+            fill: var(--color--white);
+        }
     }
 
     &__item {
