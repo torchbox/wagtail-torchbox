@@ -365,6 +365,9 @@ class SubServicePage(BaseServicePage):
 
     parent_page_types = ["ServicePage", "propositions.PropositionPage"]
 
+    # Prevent editors from using the page type until we fully remove it
+    is_creatable = False
+
     content = StreamField(
         PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
     )
