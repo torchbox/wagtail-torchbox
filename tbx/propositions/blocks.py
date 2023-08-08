@@ -6,6 +6,7 @@ from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.embeds import blocks as embed_blocks
 from wagtail.images import blocks as image_blocks
+from wagtail.snippets import blocks as snippet_blocks
 
 
 class KeyPointBlock(blocks.StructBlock):
@@ -28,6 +29,14 @@ class KeyPointsBlock(blocks.StructBlock):
     )
     key_points = blocks.ListBlock(
         KeyPointBlock(),
+    )
+    contact = snippet_blocks.SnippetChooserBlock(
+        "people.Contact",
+        required=False,
+    )
+    contact_reasons = snippet_blocks.SnippetChooserBlock(
+        "people.ContactReasonsList",
+        required=False,
     )
 
     class Meta:
@@ -267,15 +276,19 @@ class SubPropositionPageStoryBlock(blocks.StreamBlock):
         group="Content block",
     )
 
-    def get_context(self, value, parent_context=None):
-        context = super().get_context(value, parent_context=parent_context)
-        context["section_block_types"] = [
+    @staticmethod
+    def get_section_block_types():
+        return [
             "key_points",
             "testimonials",
             "processes",
             "work",
             "thinking",
         ]
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        context["section_block_types"] = self.get_section_block_types()
         return context
 
     class Meta:

@@ -24,14 +24,14 @@
                         {% image contact.image fill-100x100 class="avatar__image" %}
                     </div>
                     <div class="help-block__contact-details">
-                        {% if page.contact_reasons %}
-                        <h2 class="help-block__contact-title">
-                            {{ page.contact_reasons.heading }}
-                        </h2>
+                        {% if contact_reasons %}
+                            <h2 class="help-block__contact-title">
+                                {{ contact_reasons.heading }}
+                            </h2>
                         {% else %}
-                        <h2 class="help-block__contact-title">
-                            Get in touch about your project
-                        </h2>
+                            <h2 class="help-block__contact-title">
+                                Get in touch about your project
+                            </h2>
                         {% endif %}
                         <div class="help-block__contact-meta">
                             <a href="mailto:{{ contact.email_address }}" class="help-block__contact help-block__contact--email" aria-label="Email our New Business Director Will">
@@ -48,4 +48,4 @@
             </div>
         {% endif %}
     </div>
- </div>
+</div>
