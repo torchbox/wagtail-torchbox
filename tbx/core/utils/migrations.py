@@ -1,6 +1,8 @@
 import json
 from functools import wraps
 
+from django.core.exceptions import FieldError
+
 
 def for_each_page_revision(*model_names):
     """
@@ -33,11 +35,16 @@ def for_each_page_revision(*model_names):
                 ContentType.objects.get_for_model(apps.get_model(model_name))
                 for model_name in model_names
             ]
-            revisions = PageRevision.objects.filter(
-                page__content_type__in=content_types
-            )
 
-            for revision in revisions.select_related("page"):
+            try:
+                revisions = PageRevision.objects.filter(content_type__in=content_types)
+            except FieldError:
+                # In previous versions of Wagtail, the content_type field does not exist
+                revisions = PageRevision.objects.filter(
+                    page__content_type__in=content_types
+                ).select_related("page")
+
+            for revision in revisions:
                 content = json.loads(revision.content_json)
                 new_content = fn(revision.page, content)
                 if new_content is not None:

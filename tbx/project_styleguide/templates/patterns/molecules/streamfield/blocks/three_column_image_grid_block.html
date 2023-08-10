@@ -1,0 +1,12 @@
+{% load wagtailimages_tags %}
+
+<div class="three-col-image">
+    {% for item in value.items %}
+        <div class="three-col-image__item">
+            <div class="three-col-image__image-wrapper">
+                {% image item.image height-80 %}
+            </div>
+            <p class="three-col-image__text">{{ item.text }}</p>
+        </div>
+    {% endfor %}
+</div>

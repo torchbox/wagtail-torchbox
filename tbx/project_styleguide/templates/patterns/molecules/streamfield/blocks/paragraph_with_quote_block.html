@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+
+<div class="paragraph-with-quote paragraph-with-quote--quote-{{ value.quote_alignment }}">
+    <div class="paragraph-with-quote__text">
+        {{ value.text|richtext }}
+    </div>
+
+    <div class="paragraph-with-quote__quote-wrapper">
+        {{ value.quote }}
+        {{ value.attribution }}
+    </div>
+</div>

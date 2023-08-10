@@ -1,0 +1,40 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    {% include "patterns/molecules/hero/report_hero.html" with title=page.strapline %}
+
+    <div class="report-page">
+        <div class="report-page__container">
+
+            {# Introduction section #}
+            <div id="{{ page.introduction_title|slugify }}" data-service-section>
+                <h2 class="report-page__heading" >{{ page.introduction_title }}</h2>
+            </div>
+
+            {# Authors #}
+            {% for page_author in page.authors.all %}
+                {% include "patterns/molecules/author/author.html" with author=page_author.author item=page %}
+            {% endfor %}
+
+            {# Introduction copy #}
+            <div class="report-page__introduction">
+                {{ page.introduction|richtext }}
+            </div>
+        </div>
+
+        {# Streamfield #}
+        {% for block in page.body %}
+            {# Give some blocks full width container #}
+            {% if block.block_type == 'impact_report_heading' or block.block_type == 'instagram_gallery' %}
+                <div class="report-page__full-width">
+                    {% include_block block %}
+                </div>
+            {% else %}
+                <div class="report-page__container">
+                    {% include_block block %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+ {% endblock %}

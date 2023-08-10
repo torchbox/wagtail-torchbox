@@ -107,6 +107,10 @@
         img {
             width: 100%;
         }
+
+        .template__impact-report-page & {
+            margin: 0 0 20px;
+        }
     }
 
     &__wide-image-icon {
@@ -154,6 +158,10 @@
                 max-width: 100%;
                 margin-left: auto;
             }
+        }
+
+        .report-page & {
+            margin: 0;
         }
     }
 
@@ -233,6 +241,38 @@
             p {
                 color: var(--color--dark-indigo);
             }
+        }
+    }
+
+    .report-page & {
+        margin: 0;
+        background: transparent;
+    }
+}
+
+.report-page {
+    .streamfield__heading,
+    .streamfield__paragraph {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .streamfield__heading {
+        @include font-size(l);
+        font-weight: $weight--heavy;
+        margin-top: 30px;
+
+        @include media-query(medium) {
+            margin-top: 60px;
+        }
+    }
+
+    .streamfield__paragraph {
+        font-size: map-get($large-font-sizes, s);
+        line-height: 31px;
+
+        a {
+            @include impact-report-link-styles();
         }
     }
 }

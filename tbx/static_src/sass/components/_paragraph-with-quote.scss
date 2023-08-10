@@ -1,0 +1,39 @@
+.paragraph-with-quote {
+    $root: &;
+    gap: 30px;
+
+    @include media-query(medium) {
+        display: flex;
+    }
+
+    &__quote-wrapper {
+        flex-shrink: 0;
+
+        @include media-query(medium) {
+            max-width: 50%;
+        }
+
+        p {
+            color: var(--color--stone);
+            font-size: map-get($small-font-sizes, m);
+            line-height: 33px;
+            border-left: 3px solid var(--color--dark-indigo);
+            padding-left: 15px;
+        }
+    }
+
+    &__text {
+        font-size: map-get($large-font-sizes, s);
+        line-height: 31px;
+
+        a {
+            @include impact-report-link-styles();
+        }
+    }
+
+    &--quote-left {
+        @include media-query(medium) {
+            flex-direction: row-reverse;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.paragraph-with-image {
+    $root: &;
+    gap: 30px;
+
+    @include media-query(medium) {
+        display: flex;
+    }
+
+    &__image-wrapper {
+        flex-shrink: 0;
+
+        @include media-query(medium) {
+            max-width: 50%;
+        }
+    }
+
+    &__text {
+        font-size: map-get($large-font-sizes, s);
+        line-height: 31px;
+
+        a {
+            @include impact-report-link-styles();
+        }
+    }
+
+    &--image-left {
+        @include media-query(medium) {
+            flex-direction: row-reverse;
+        }
+    }
+}

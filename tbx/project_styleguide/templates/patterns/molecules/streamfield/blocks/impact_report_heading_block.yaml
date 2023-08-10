@@ -1,0 +1,10 @@
+context:
+  value:
+    short_heading: The business
+    heading: Doing business <span>right</span>
+    image: true
+
+tags:
+  image:
+    value.image fill-1792x597 class="report-section__image":
+      raw: '<img src="https://placekitten.com/1792/597" class="report-section__image">'
