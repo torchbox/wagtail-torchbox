@@ -108,7 +108,7 @@
 
 {% block header %}
     {% include "patterns/atoms/skip-link/skip-link.html" %}
-    {% include "patterns/organisms/header/header.html" %}
+    {% include "patterns/organisms/header/header.html" with show_primary_nav=True %}
     {% include "patterns/atoms/menu-button/menu-button.html" %}
     {% include "patterns/molecules/navigation/mobile-nav.html" %}
 {% endblock header %}
