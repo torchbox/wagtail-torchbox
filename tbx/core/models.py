@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from tbx.core.blocks import PageSectionStoryBlock
+from tbx.core.utils.models import SocialFields
 from wagtail import blocks
 from wagtail.admin.panels import (
     FieldPanel,
@@ -171,7 +172,7 @@ class HomePageHeroImage(Orderable):
     )
 
 
-class HomePage(Page):
+class HomePage(SocialFields, Page):
     template = "patterns/pages/home/home_page.html"
     hero_intro_primary = models.TextField(blank=True)
     hero_intro_secondary = models.TextField(blank=True)
@@ -193,6 +194,11 @@ class HomePage(Page):
             heading="Hero intro",
         ),
         InlinePanel("featured_posts", label="Featured Posts", max_num=3),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]
 
     def get_context(self, request):
@@ -218,7 +224,7 @@ class HomePage(Page):
 # Standard page
 
 
-class StandardPage(Page):
+class StandardPage(SocialFields, Page):
     template = "patterns/pages/standard/standard_page.html"
 
     body = StreamField(StoryBlock(), use_json_field=True)
@@ -233,6 +239,11 @@ class StandardPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("body"),
         FieldPanel("additional_content"),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]
 
 
@@ -335,7 +346,7 @@ class JobIndexPageJob(Orderable):
     ]
 
 
-class JobIndexPage(Page):
+class JobIndexPage(SocialFields, Page):
     template = "patterns/pages/job/job_listing.html"
 
     strapline = models.CharField(max_length=255)
@@ -346,6 +357,11 @@ class JobIndexPage(Page):
         FieldPanel("strapline", classname="title"),
         FieldPanel("intro"),
         FieldPanel("jobs_xml_feed"),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]
 
     def serve(self, request):

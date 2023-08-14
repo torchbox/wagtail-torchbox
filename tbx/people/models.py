@@ -9,6 +9,7 @@ from modelcluster.models import ClusterableModel
 from phonenumber_field.modelfields import PhoneNumberField
 from tbx.blog.models import BlogIndexPage, BlogPage
 from tbx.core.blocks import PageSectionStoryBlock
+from tbx.core.utils.models import SocialFields
 from tbx.people.blocks import InstagramEmbedBlock, StandoutItemsBlock
 from tbx.people.forms import ContactForm
 from tbx.work.models import WorkIndexPage, WorkPage
@@ -21,7 +22,7 @@ from wagtail.signals import page_published
 from wagtail.snippets.models import register_snippet
 
 
-class PersonPage(Page):
+class PersonPage(SocialFields, Page):
     template = "patterns/pages/team/team_detail.html"
 
     parent_page_types = ["PersonIndexPage"]
@@ -60,6 +61,7 @@ class PersonPage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]
 
     @cached_property
@@ -98,7 +100,7 @@ class PersonPage(Page):
 
 
 # Person index
-class PersonIndexPage(Page):
+class PersonIndexPage(SocialFields, Page):
     strapline = models.CharField(max_length=255)
     call_to_action = StreamField(
         PageSectionStoryBlock(),
@@ -120,6 +122,11 @@ class PersonIndexPage(Page):
         FieldPanel("call_to_action"),
     ]
 
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
+    ]
+
 
 class CulturePageLink(Orderable):
     page = ParentalKey("people.CulturePage", related_name="links")
@@ -137,7 +144,7 @@ class CulturePageLink(Orderable):
 
 
 # Was previously the culture page until it was re-purposed to be the careers page
-class CulturePage(Page):
+class CulturePage(SocialFields, Page):
     template = "patterns/pages/careers/careers_page.html"
 
     strapline = models.TextField()
@@ -197,6 +204,11 @@ class CulturePage(Page):
             classname="collapsible",
         ),
         FieldPanel("instagram_posts"),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]
 
     class Meta:
@@ -267,7 +279,7 @@ class CulturePageKeyPoint(Orderable, BaseCulturePageKeyPoint):
     page = ParentalKey(CulturePage, related_name="key_benefits")
 
 
-class ValuesPage(Page):
+class ValuesPage(SocialFields, Page):
     template = "patterns/pages/values/values_page.html"
 
     strapline = models.TextField()
@@ -295,6 +307,11 @@ class ValuesPage(Page):
             heading="Featured Blog Posts",
             classname="collapsible",
         ),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        MultiFieldPanel(SocialFields.promote_panels, "Social fields"),
     ]
 
     class Meta:
