@@ -32,6 +32,14 @@
         color: var(--color--primary);
         margin-bottom: 2px;
         border-bottom: none;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+
+        &:hover,
+        &:focus {
+            text-decoration-thickness: 4px;
+        }
     }
 
     &__meta {

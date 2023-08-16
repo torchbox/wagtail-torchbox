@@ -13,6 +13,10 @@ $blog-author: var(--testimonial-name);
     &:hover {
         #{$root}__title {
             color: var(--color--coral);
+
+            @include hcm() {
+                text-decoration-thickness: 5px;
+            }
         }
     }
 
@@ -50,6 +54,11 @@ $blog-author: var(--testimonial-name);
 
         @include media-query(large) {
             font-size: map-get($large-font-sizes, m);
+        }
+
+        // Add visual indication that it's a link
+        @include hcm() {
+            text-decoration: underline;
         }
     }
 
