@@ -42,6 +42,14 @@
                 display: none;
             }
         }
+
+        @include hcm() {
+            fill: var(--color--white);
+        }
+
+        @include high-contrast-dark-mode() {
+            fill: var(--color--black);
+        }
     }
 
     &__image {
