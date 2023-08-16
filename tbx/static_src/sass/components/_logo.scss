@@ -31,12 +31,28 @@
             width: 130px;
             height: 50px;
         }
+
+        @include hcm() {
+            fill: var(--color--black);
+        }
+
+        @include high-contrast-dark-mode() {
+            fill: var(--color--white);
+        }
     }
 
     &__flame {
         width: 25px;
         height: 25px;
         fill: var(--color--header-icon-color);
+
+        @include hcm() {
+            fill: var(--color--black);
+        }
+
+        @include high-contrast-dark-mode() {
+            fill: var(--color--white);
+        }
     }
 
     &__link {
