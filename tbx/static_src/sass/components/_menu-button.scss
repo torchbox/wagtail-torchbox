@@ -9,8 +9,9 @@
     border: none;
     text-align: center;
     cursor: pointer;
-    background: var(--color--white);
+    background-color: var(--color--white);
     border-radius: 50%;
+    transition: background-color $transition;
 
     @include media-query(menu-break) {
         display: none;
@@ -81,6 +82,23 @@
                 height: 2px;
                 width: 12px;
             }
+        }
+    }
+
+    &:hover {
+        background-color: var(--color--header-icon-color);
+
+        span {
+            background-color: var(--color--white);
+        }
+    }
+
+    @include hcm() {
+        filter: invert(1);
+
+        &:focus,
+        &:hover {
+            filter: invert(0);
         }
     }
 }

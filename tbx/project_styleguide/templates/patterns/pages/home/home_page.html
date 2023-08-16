@@ -4,6 +4,8 @@
 {% block theme_class %}theme--dark--transparent{% endblock %}
 
 {% block header %}
+    {% include "patterns/atoms/skip-link/skip-link.html" %}
+    {% include "patterns/organisms/header/header.html" %}
     {% include "patterns/atoms/menu-button/menu-button.html" %}
     {% include "patterns/molecules/navigation/mobile-nav.html" %}
 {% endblock %}
@@ -14,9 +16,6 @@
         <div class="home__hero">
             <div class="home__contents home__contents--top">
                 <div class="home__content-align">
-                    {# Logo #}
-                    {% include "patterns/atoms/logo/logo.html" with classes="logo--home" %}
-
                     {# Heading desktop #}
                     {% if page.hero_intro_primary or page.hero_intro_secondary %}
                         <h1 class="home__heading home__heading--desktop"><span>{{ page.hero_intro_primary }}</span> {{ page.hero_intro_secondary }}</h1>
