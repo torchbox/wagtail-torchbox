@@ -8,10 +8,14 @@
                         <li class="client-item">
                             <div class="client-item__container">
                                 {% with link=client.link.0.value %}
-                                <a class="client-item__link" href="{{ link.url }}" title="{{ link.text }}">
-                                    {% image client.image width-400 class="client-item__image" loading="lazy" alt="" %}
-                                    <span class="client-item__cta" aria-hidden="true">Read case study</span>
-                                </a>
+                                    {% if link %}
+                                        <a class="client-item__link" href="{{ link.url }}" title="{{ link.text }}">
+                                            {% image client.image width-400 class="client-item__image" loading="lazy" alt="" %}
+                                            <span class="client-item__cta" aria-hidden="true">Read case study</span>
+                                        </a>
+                                    {% else %}
+                                        {% image client.image width-400 class="client-item__image" loading="lazy" %}
+                                    {% endif %}
                                 {% endwith %}
                             </div>
                         </li>
