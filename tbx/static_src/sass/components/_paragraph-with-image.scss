@@ -1,6 +1,7 @@
 .paragraph-with-image {
     $root: &;
     gap: 30px;
+    margin-bottom: 30px;
 
     @include media-query(medium) {
         display: flex;
@@ -20,6 +21,12 @@
 
         a {
             @include impact-report-link-styles();
+        }
+
+        @include media-query(medium) {
+            p:last-child {
+                margin-bottom: 0;
+            }
         }
     }
 
