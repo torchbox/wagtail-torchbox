@@ -58,4 +58,16 @@
             line-height: 36px;
         }
     }
+
+    // there are no blocks on the impact report page currently using ul or ol
+    // in markup so we are safe to reset these styles here - they'll only affect rich text blocks.
+    ul {
+        list-style-type: disc;
+        margin: 0 0 30px 30px;
+    }
+
+    ol {
+        list-style-type: decimal;
+        margin: 0 0 30px 30px;
+    }
 }
