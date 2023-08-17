@@ -78,6 +78,27 @@
 
     &__paragraph {
         @include streamblock-padding();
+
+        // This rule overrides the generic `streamfield a` rule below, but then applies the hcm rule just
+        // for streamfield__paragraph. Really the `streamfield a` styles should only apply
+        // for paragraphs, and they've caused headaches in having to be overridden in multiple
+        // places for other streamfield blocks - in future it would be good to refactor that
+        // but it would require a lot of testing work.
+        /* stylelint-disable max-nesting-depth  */
+        .streamfield & {
+            a {
+                @include hcm() {
+                    text-decoration: underline;
+                    border-bottom: 0;
+
+                    &:hover,
+                    &:focus {
+                        text-decoration-thickness: 4px;
+                    }
+                }
+            }
+        }
+        /* stylelint-enable max-nesting-depth  */
     }
 
     &__raw {

@@ -99,6 +99,16 @@
                 //This only displays for windows high contrast mode
                 outline: 3px solid var(--color--header-links) transparent;
             }
+
+            @include hcm() {
+                @include hcm-underline();
+
+                &:hover,
+                &:focus,
+                &--active {
+                    @include hcm-underline-hover();
+                }
+            }
         }
 
         &__badge-link {
@@ -162,6 +172,16 @@
             &:hover {
                 color: var(--color--white);
             }
+
+            @include hcm() {
+                @include hcm-underline();
+
+                &:hover,
+                &:focus,
+                &--active {
+                    @include hcm-underline-hover();
+                }
+            }
         }
 
         &__badge-link {
@@ -202,6 +222,19 @@
         &:hover {
             cursor: pointer;
         }
+
+        @include hcm() {
+            /* stylelint-disable value-keyword-case  */
+            color: ButtonText;
+            border: 1px solid ButtonBorder;
+
+            &:hover,
+            &:focus {
+                color: ActiveText;
+                border-color: ActiveText;
+            }
+            /* stylelint-enable value-keyword-case  */
+        }
     }
 
     &__dots {
@@ -238,7 +271,28 @@
         }
 
         @include hcm() {
-            filter: invert(1);
+            /* stylelint-disable value-keyword-case  */
+            background-color: ButtonText;
+            color: ButtonText;
+
+            &::after,
+            &::before {
+                background-color: ButtonText;
+                color: ButtonText;
+
+                #{$root}__button:hover &,
+                #{$root}__button:focus & {
+                    color: ActiveText;
+                    background-color: ActiveText;
+                }
+            }
+
+            #{$root}__button:hover &,
+            #{$root}__button:focus & {
+                color: ActiveText;
+                background-color: ActiveText;
+            }
+            /* stylelint-enable value-keyword-case  */
         }
     }
 
