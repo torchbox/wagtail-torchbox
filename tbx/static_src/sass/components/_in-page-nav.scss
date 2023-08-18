@@ -190,6 +190,9 @@
 
             @include media-query(large) {
                 padding-top: 0;
+                padding-left: 2px;
+                padding-right: 2px;
+                background-color: rgba(255, 255, 255, 0.5);
             }
 
             &:focus,
@@ -219,6 +222,9 @@
 
             #{$root}__link {
                 padding-top: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                background-color: transparent;
 
                 &.is-active {
                     text-decoration-thickness: 5px;
