@@ -6,5 +6,5 @@ context:
 
 tags:
   image:
-    value.image fill-500x500:
+    value.image width-500:
       raw: '<img src="https://placekitten.com/500/500">'
