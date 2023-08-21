@@ -23,10 +23,12 @@ class MobileMenuToggle {
         // if the menu is open
         if (this.body.classList.contains(this.activeClass)) {
             if (this.node.dataset.active === 'menu') {
+                this.node.setAttribute('aria-expanded', false);
                 this.close();
             }
         } else {
             // open the menu
+            this.node.setAttribute('aria-expanded', true);
             this.open();
         }
     }

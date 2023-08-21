@@ -45,6 +45,11 @@
         }
     }
 
+    @include hcm() {
+        border: 1px solid var(--color--dark-indigo);
+        padding: 2px;
+    }
+
     &--desktop {
         right: -20px;
         top: -20px;

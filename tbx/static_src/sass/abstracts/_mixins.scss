@@ -193,6 +193,17 @@
     }
 }
 
+@mixin hcm-underline() {
+    text-decoration: underline;
+    text-decoration-color: var(--color--underline);
+    text-underline-offset: 2px;
+    text-decoration-thickness: 2px;
+}
+
+@mixin hcm-underline-hover() {
+    text-decoration-thickness: 4px;
+}
+
 /* ============================================
     Impact Report link styles
 */

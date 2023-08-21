@@ -23,6 +23,15 @@
         &:hover {
             color: var(--color--coral);
         }
+
+        @include hcm() {
+            text-decoration: underline;
+
+            &:hover,
+            &:focus {
+                text-decoration-thickness: 5px;
+            }
+        }
     }
 
     &__author {

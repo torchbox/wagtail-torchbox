@@ -43,6 +43,25 @@
             @include link-underscore(2);
             color: var(--color--dark-indigo);
         }
+
+        @include hcm() {
+            @include hcm-underline();
+            overflow: visible;
+
+            &::after {
+                display: none;
+            }
+
+            &:hover,
+            &:focus,
+            &--active {
+                &::after {
+                    display: none;
+                }
+
+                @include hcm-underline-hover();
+            }
+        }
     }
 
     &__badge-link {

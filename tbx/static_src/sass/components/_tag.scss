@@ -32,4 +32,17 @@
         border: 2px solid var(--color--coral-dark);
         color: var(--color--coral-dark);
     }
+
+    // Use text-decoration for states
+    @include hcm() {
+        &--active {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+        }
+
+        &:focus,
+        &:hover {
+            outline: 2px solid;
+        }
+    }
 }
