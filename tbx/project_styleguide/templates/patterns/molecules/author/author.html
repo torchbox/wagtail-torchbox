@@ -28,7 +28,7 @@
                 {% endif %}
                 <span class="u-sr-only">Post information:</span>
                 {% if item.date %}
-                    <span class="author__date">{{ item.date }}</span>
+                    <time class="author__date" datetime="{{ item.date|date:'Y-m-d' }}">{{ item.date }}</time>
                     <span class="u-sr-only">,</span>
                 {% endif %}
 
