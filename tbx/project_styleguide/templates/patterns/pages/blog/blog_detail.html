@@ -17,6 +17,8 @@
             'event': 'page-information'
         });
     </script>
+    <meta name="author" content="{{ page.authors.all.0.author.name }}">
+    <meta property="og:article:published_time" content="{{ page.date|date:'Y-m-d' }}" />
     {{ block.super }}
 
 {% endblock %}
@@ -24,6 +26,7 @@
 {% block content %}
     {% include "patterns/molecules/title-block/title-block.html" with item=page tags=False %}
     {% pageurl page.blog_index as blog_index_url %}
+
     {% for page_author in page.authors.all %}
         {% include "patterns/molecules/author/author.html" with author=page_author.author item=page tag_link_base=blog_index_url %}
     {% endfor %}

@@ -17,6 +17,8 @@
             'event': 'page-information'
         });
     </script>
+    <meta name="author" content="{{ page.authors.all.0.author.name }}">
+    <meta property="og:article:published_time" content="{{ page.date|date:'Y-m-d' }}" />
     {{ block.super }}
 
 {% endblock %}
@@ -35,7 +37,7 @@
         </div>
 
         {% include_block page.call_to_action %}
-        
+
         {% if page.related_works %}
         <div class="page__showcase">
             <div class="related-content">
