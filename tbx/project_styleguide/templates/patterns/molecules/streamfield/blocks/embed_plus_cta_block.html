@@ -11,12 +11,14 @@
     </div>
     {% if value.embed or value.image %}
         <div class="embed-cta__right">
-            <div class="embed-cta__embed">
+            {% if value.embed %}
+                <div class="embed-cta__embed">
+                    {{ value.embed }}
+                </div>
+            {% endif %}
             {% if value.image %}
                 {% image value.image max-1280x860 as img %}
                 <img src="{{ img.url }}" alt="{{ img.title }}" loading="lazy" />
-            {% else %}
-                {{ value.embed }}
             {% endif %}
         </div>
     {% endif %}

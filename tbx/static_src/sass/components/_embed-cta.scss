@@ -2,7 +2,7 @@
     @include media-query('medium') {
         display: grid;
         align-items: center;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1.5fr;
         grid-gap: ($grid * 2);
     }
 
