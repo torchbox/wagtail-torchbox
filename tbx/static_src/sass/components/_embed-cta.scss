@@ -6,6 +6,10 @@
         grid-gap: ($grid * 2);
     }
 
+    &__full {
+        grid-column: 1 / span 2;
+    }
+
     &__left {
         margin-bottom: ($grid * 2);
 
