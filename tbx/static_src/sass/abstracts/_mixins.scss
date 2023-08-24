@@ -16,13 +16,6 @@
     }
 }
 
-// for one off media queries
-@mixin custom-media-query($query) {
-    @media only screen and #{$query} {
-        @content;
-    }
-}
-
 /* ============================================
     z-index
 */

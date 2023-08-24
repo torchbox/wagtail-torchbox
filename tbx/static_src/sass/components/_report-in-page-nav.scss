@@ -28,7 +28,7 @@
             padding: ($gutter * 0.75) $variable-gutter--small;
             border-bottom: 1px solid var(--color--black-translucent);
 
-            @include custom-media-query($impact-report-breakpoint) {
+            @media only screen and #{$impact-report-breakpoint} {
                 display: flex;
                 align-items: center;
                 padding: $gutter $variable-gutter--small 0;
@@ -41,7 +41,7 @@
             display: flex;
             flex-wrap: wrap;
 
-            @include custom-media-query($impact-report-breakpoint) {
+            @media only screen and #{$impact-report-breakpoint} {
                 margin-left: 6.66vw;
             }
         }
@@ -58,7 +58,7 @@
                 text-decoration-thickness: 5px;
             }
 
-            @include custom-media-query($impact-report-breakpoint) {
+            @media only screen and #{$impact-report-breakpoint} {
                 @include font-size(xs);
                 padding-bottom: 20px;
             }
@@ -68,7 +68,7 @@
             padding-bottom: 0;
             padding-right: 20px;
 
-            @include custom-media-query($impact-report-breakpoint) {
+            @media only screen and #{$impact-report-breakpoint} {
                 padding-right: 50px;
             }
         }
@@ -85,7 +85,7 @@
                 align-items: center;
             }
 
-            @include custom-media-query($impact-report-breakpoint) {
+            @media only screen and #{$impact-report-breakpoint} {
                 flex-shrink: 0;
                 margin-right: 55px;
                 margin-bottom: 14px;
