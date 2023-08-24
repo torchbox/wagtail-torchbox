@@ -9,7 +9,6 @@ class InPageNav {
         this.allSections = document.querySelectorAll('[data-service-section]');
         this.allMenuLinks = this.node.querySelectorAll('[data-in-page-nav] a');
         this.sentinelEl = document.getElementById('sentinel');
-        this.stickyClass = 'in-page-nav--stuck';
 
         this.initObserving();
         this.bindEvents();
