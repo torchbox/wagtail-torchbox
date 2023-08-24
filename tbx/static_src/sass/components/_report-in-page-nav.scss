@@ -1,17 +1,26 @@
-.in-page-nav {
+// Based on the in-page-nav styles but there were enough variations
+// to justify a new version for the impact report page
+.report-in-page-nav {
     $root: &;
+    // the impact report page has a really custom breakpoint for the sticky nav which is
+    // purely based on the content used for the anchor links
+    $impact-report-breakpoint: '(min-width: 1280px)';
     @include z-index(in-page-nav);
     position: sticky;
     top: 0;
-    margin-left: 10.33vw;
+    margin-left: $variable-gutter--small;
 
-    &--proposition {
+    @include media-query(large) {
         margin-left: 0;
+    }
+
+    @include media-query(menu-break) {
+        margin-left: 10.33vw;
     }
 
     .nav-stuck & {
         #{$root}__inner {
-            background-color: var(--color--background);
+            background-color: var(--color--succulent);
             position: fixed;
             top: 0;
             left: 0;
@@ -19,7 +28,7 @@
             padding: ($gutter * 0.75) $variable-gutter--small;
             border-bottom: 1px solid var(--color--black-translucent);
 
-            @include media-query(large) {
+            @include custom-media-query($impact-report-breakpoint) {
                 display: flex;
                 align-items: center;
                 padding: $gutter $variable-gutter--small 0;
@@ -29,8 +38,10 @@
         #{$root}__container {
             margin-top: 0;
             padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
 
-            @include media-query(large) {
+            @include custom-media-query($impact-report-breakpoint) {
                 margin-left: 6.66vw;
             }
         }
@@ -38,12 +49,16 @@
         #{$root}__link {
             @include font-size(xxs);
             padding-bottom: 5px;
+            padding-top: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            background-color: transparent;
 
             &.is-active {
                 text-decoration-thickness: 5px;
             }
 
-            @include media-query(large) {
+            @include custom-media-query($impact-report-breakpoint) {
                 @include font-size(xs);
                 padding-bottom: 20px;
             }
@@ -53,7 +68,7 @@
             padding-bottom: 0;
             padding-right: 20px;
 
-            @include media-query(large) {
+            @include custom-media-query($impact-report-breakpoint) {
                 padding-right: 50px;
             }
         }
@@ -70,7 +85,7 @@
                 align-items: center;
             }
 
-            @include media-query(large) {
+            @include custom-media-query($impact-report-breakpoint) {
                 flex-shrink: 0;
                 margin-right: 55px;
                 margin-bottom: 14px;
@@ -81,18 +96,18 @@
     &__container {
         width: 100%;
         list-style: none;
-        display: flex;
-        margin-top: $gutter;
-        flex-wrap: wrap;
+        display: block;
+        padding-left: 0;
+        margin: 0;
 
         @include media-query(medium) {
-            padding-left: $variable-gutter--small;
             padding-top: 0;
             margin: 0;
         }
 
         @include media-query(large) {
-            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
         }
     }
 
@@ -135,18 +150,17 @@
         align-items: center;
         position: relative;
         padding-right: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 0;
 
         @include media-query(medium) {
-            padding-bottom: 0;
             padding-right: 50px;
         }
     }
 
     &__link {
-        font-size: map-get($small-font-sizes, xxs);
+        font-size: map-get($small-font-sizes, s);
         transition: border $transition-quick, color $transition-quick;
-        color: var(--color--theme-link);
+        color: var(--color--dark-indigo);
         text-decoration: underline;
         text-decoration-color: var(--color--underline);
         padding-top: 20px;
@@ -159,13 +173,16 @@
             color: var(--color--theme-hover);
         }
 
-        @include media-query(medium) {
-            font-size: map-get($medium-font-sizes, s);
-            padding: 0;
-        }
-
         @include media-query(large) {
-            font-size: map-get($large-font-sizes, s);
+            padding-top: 0;
+            padding-left: 2px;
+            padding-right: 2px;
+            background-color: rgba(255, 255, 255, 0.5);
+
+            &:focus,
+            &:hover {
+                border-bottom-color: var(--color--dark-indigo);
+            }
         }
     }
 }
