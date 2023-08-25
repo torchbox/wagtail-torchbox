@@ -1,0 +1,825 @@
+import csv
+import logging
+import re
+import tempfile
+from io import StringIO
+from itertools import chain
+
+from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.core.mail import EmailMessage
+from django.core.management import BaseCommand
+from django.template.defaultfilters import pluralize
+from django.utils import timezone
+
+from tbx.propositions.constants import SLUG_SUFFIX, TITLE_SUFFIX
+from tbx.propositions.models import SubPropositionPage
+from tbx.propositions.models import (
+    SubServicePageToSubPropositionPageMigration as MigrationRecord,
+)
+from tbx.services.models import SubServicePage
+from wagtail.blocks import StreamValue
+from wagtail.fields import StreamField
+from wagtail.models import Page, Site
+
+logger = logging.getLogger(__name__)
+
+today = timezone.now()
+site_url = Site.objects.filter(is_default_site=True).first().root_url
+message = f"""
+Hello there,
+
+This is an automated email containing details of a
+migration operation performed on {site_url} on
+{today.strftime("%d %B %Y at %H:%M:%S %Z")}
+
+Please see the attached report(s) of the migration
+from SubServicePages to PropositionPages.
+
+Best,
+
+» {site_url}
+"""
+
+
+def copy_existing_blocks(source, target):
+    """
+    Copy existing blocks from SubServicePage's content StreamField to
+    SubPropositionPage's content StreamField
+    """
+    changes_made = False
+
+    for block in source.content:
+        # We only care about blocks with non-empty content
+        if block.value:
+            # Testimonials block
+            if block.block_type == "testimonials":
+                target.content.append(("core_testimonials", block.value))
+            else:
+                # Key Points Summary block
+                # Clients block
+                # Embed + CTA block
+                # CTA block
+                target.content.append((block.block_type, block.value))
+
+            changes_made = True
+
+    if changes_made:
+        target.save()
+
+
+def add_stream_block_to_content(page, block_type, block_value):
+    """
+    Appends a new child block of the specified type and value
+    to the provided page's `content` StreamField.
+
+    Args:
+        page (wagtail.models.Page): The page object to which the
+        child block will be added.
+        block_type (str): The type of the child block to be added
+        (e.g., "key_points", "testimonials").
+        block_value (dict): The data for the child block, represented
+        as a dictionary.
+
+    Returns:
+        None
+    """
+    stream_data = []
+
+    for item in page.content.get_prep_value():
+        stream_data.append(item)
+
+    stream_data.append(
+        {
+            "type": block_type,
+            "value": block_value,
+        }
+    )
+
+    page.content = StreamValue(
+        page.content.stream_block,
+        stream_data,
+        is_lazy=True,
+    )
+
+    revision = page.save_revision()
+    revision.publish()
+    page.save()
+
+
+def construct_key_points_block(source, target):
+    """
+    Constructs a `tbx.propositions.blocks.KeyPointsBlock` based on
+    data from the provided source page and adds it to the
+    target page's `content` StreamField.
+
+    Args:
+        source (services.SubServicePage): The source object containing data for
+        the KeyPointsBlock.
+        target (propositions.SubPropositionPage): The target object with a
+        `content` StreamField where the KeyPointsBlock will be added.
+
+    Returns:
+        None
+    """
+    title = source.key_points_section_title
+    heading_for_key_points = source.heading_for_key_points
+    # each key_point has `text` and `linked_page` fields
+    key_points = source.key_points.all()
+    contact = source.contact
+    contact_reasons = source.contact_reasons
+
+    if title:
+        data = {
+            "title": title,
+            "heading_for_key_points": heading_for_key_points,
+            "key_points": [
+                {
+                    "text": key_point.text,
+                    "linked_page": key_point.linked_page.pk
+                    if key_point.linked_page
+                    else None,
+                }
+                for key_point in key_points
+            ],
+            "contact": contact.pk if contact else None,
+            "contact_reasons": contact_reasons.pk if contact_reasons else None,
+        }
+
+        add_stream_block_to_content(target, "key_points", data)
+
+
+def construct_testimonials_block(source, target):
+    """
+    Constructs a `tbx.propositions.blocks.TestimonialsBlock` based on
+    data from the provided source page and adds it to the
+    target page's `content` StreamField.
+
+    Args:
+        source (services.SubServicePage): The source object containing data for
+        the TestimonialsBlock.
+        target (propositions.SubPropositionPage): The target object with a
+        `content` StreamField where the TestimonialsBlock will be added.
+
+    Returns:
+        None
+    """
+
+    title = source.testimonials_section_title
+    # each logo has an `image` field
+    client_logos = source.client_logos.all()
+    usa_client_logos = source.usa_client_logos.all()
+    # each testimonial has `quote`, `name` and `role` fields
+    testimonials = source.testimonials.all()
+
+    if title:
+        data = {
+            "title": title,
+            "client_logos": [logo.image.pk for logo in client_logos if logo],
+            "usa_client_logos": [logo.image.pk for logo in usa_client_logos if logo],
+            "testimonials": [
+                {
+                    "quote": testimonial.quote,
+                    "name": testimonial.name,
+                    "role": testimonial.role,
+                }
+                for testimonial in testimonials
+            ],
+        }
+
+        add_stream_block_to_content(target, "testimonials", data)
+
+
+def construct_processes_block(source, target):
+    """
+    Constructs a `tbx.propositions.blocks.ProcessesBlock` based on
+    data from the provided source page and adds it to the
+    target page's `content` StreamField.
+
+    Args:
+        source (services.SubServicePage): The source object containing data for
+        the ProcessesBlock.
+        target (propositions.SubPropositionPage): The target object with a
+        `content` StreamField where the ProcessesBlock will be added.
+
+    Returns:
+        None
+    """
+    title = source.process_section_title
+    heading_for_processes = source.heading_for_processes
+    use_process_block_image = source.use_process_block_image
+    processes_section_embed_url = source.processes_section_embed_url
+    # each process has `title`, `description`, `external_link`, `page_link`
+    # and `link_label` fields
+    processes = source.processes.all()
+    process_section_cta = source.process_section_cta
+
+    if title:
+        data = {
+            "title": title,
+            "heading_for_processes": heading_for_processes,
+            "use_process_block_image": use_process_block_image,
+            "processes_section_embed_url": processes_section_embed_url,
+            "processes": [
+                {
+                    "title": process.title,
+                    "description": process.description,
+                    "external_link": process.external_link,
+                    "page_link": process.page_link.pk if process.page_link else None,
+                    "link_label": process.link_label,
+                }
+                for process in processes
+            ],
+            "process_section_cta": process_section_cta,
+        }
+
+        add_stream_block_to_content(target, "processes", data)
+
+
+def construct_work_block(source, target):
+    """
+    Constructs a `tbx.propositions.blocks.WorkBlock` based on
+    data from the provided source page and adds it to the
+    target page's `content` StreamField.
+
+    Args:
+        source (services.SubServicePage): The source object containing data for
+        the WorkBlock.
+        target (propositions.SubPropositionPage): The target object with a
+        `content` StreamField where the WorkBlock will be added.
+
+    Returns:
+        None
+    """
+    title = source.case_studies_section_title
+    # each featured_case_study has a `case_study` field
+    featured_case_studies = source.featured_case_studies.all()
+
+    if title:
+        data = {
+            "title": title,
+            "featured_case_studies": [
+                featured_case_study.case_study.pk
+                for featured_case_study in featured_case_studies
+                if featured_case_study
+            ],
+        }
+
+        add_stream_block_to_content(target, "work", data)
+
+
+def construct_thinking_block(source, target):
+    """
+    Constructs a `tbx.propositions.blocks.ThinkingBlock` based on
+    data from the provided source page and adds it to the
+    target page's `content` StreamField.
+
+    Args:
+        source (services.SubServicePage): The source object containing data for
+        the ThinkingBlock.
+        target (propositions.SubPropositionPage): The target object with a
+        `content` StreamField where the ThinkingBlock will be added.
+
+    Returns:
+        None
+    """
+    title = source.blogs_section_title
+    # each featured_blog_post has a `blog_post` field
+    featured_blog_posts = source.featured_blog_posts.all()
+
+    if title:
+        data = {
+            "title": title,
+            "featured_blog_posts": [
+                featured_blog_post.blog_post.pk
+                for featured_blog_post in featured_blog_posts
+                if featured_blog_post
+            ],
+        }
+
+        add_stream_block_to_content(target, "thinking", data)
+
+
+def is_streamfield(field):
+    return isinstance(field, StreamField)
+
+
+def replace_link(match, ids):
+    old_page_id = int(match.group(1))
+    if old_page_id in ids:
+        old_page = SubServicePage.objects.get(pk=old_page_id)
+        new_page_instance = SubPropositionPage.objects.get(
+            title=old_page.title.replace(f" {TITLE_SUFFIX}", ""),
+            slug=old_page.slug.replace(SLUG_SUFFIX, ""),
+        )
+        return f'<a id="{new_page_instance.pk}" linktype="page">'
+    else:
+        # Return the original match if no replacement is made
+        return match.group(0)
+
+
+def update_stream_data(data):
+    page_keys = [
+        "link",
+        "internal",
+        "page_link",
+        "linked_page",
+        "page",
+        "related_listing_page",
+    ]
+    old_pages_ids = SubServicePage.objects.all().values_list("pk", flat=True)
+
+    if isinstance(data, list):
+        new_data = []
+        for item in data:
+            new_data.append(update_stream_data(item))
+        return new_data
+
+    elif isinstance(data, dict):
+        new_data = {}
+        for key, value in data.items():
+            if key in page_keys and isinstance(value, int):
+                if value in old_pages_ids:
+                    old_page = SubServicePage.objects.get(pk=value)
+                    new_page_instance = SubPropositionPage.objects.get(
+                        title=old_page.title.replace(f" {TITLE_SUFFIX}", ""),
+                        slug=old_page.slug.replace(SLUG_SUFFIX, ""),
+                    )
+                    new_data[key] = new_page_instance.pk
+                else:
+                    new_data[key] = value
+            elif key == "value" and isinstance(value, str):
+                # Use regex to search and replace old page IDs with new page IDs
+                pattern = r'<a id="(\d+)" linktype="page">'
+                new_value = re.sub(
+                    pattern, lambda match: replace_link(match, old_pages_ids), value
+                )
+                new_data[key] = new_value
+            else:
+                new_data[key] = update_stream_data(value)
+        return new_data
+
+    else:
+        return data
+
+
+def update_page_links():
+    pages = Page.objects.not_type(SubServicePage).specific()
+    all_page_fields = [page._meta.get_fields() for page in pages]
+    flattened_page_fields = list(chain.from_iterable(all_page_fields))
+    unique_page_fields = set(flattened_page_fields)
+    streamfield_names = [
+        field.name for field in unique_page_fields if is_streamfield(field)
+    ]
+    unique_streamfield_names = set(streamfield_names)
+
+    # release memory
+    del all_page_fields
+    del flattened_page_fields
+    del unique_page_fields
+    del streamfield_names
+
+    # we exclude some pages because they somehow trigger a segmentation fault
+    # when running this command
+    titles_to_exclude = [
+        "An Extra 3 Million Organic Clicks a Month for the NHS Website",
+        "Raising millions for Islamic Relief UK during Ramadan",
+    ]
+    report_data = [
+        [
+            "page id",
+            "Title",
+            "Streamfield name",
+            "Error",
+        ],
+    ]
+    for page in pages.filter(title__in=titles_to_exclude):
+        report_data.append(
+            [
+                page.id,
+                page.title,
+                "Unknown",
+                "Page excluded from migration due to segmentation fault",
+            ]
+        )
+
+    for page in pages.exclude(title__in=titles_to_exclude):
+        # Iterate through each streamfield name
+        for streamfield_name in unique_streamfield_names:
+            # Check if the page has the current streamfield
+            if hasattr(page, streamfield_name):
+                field = getattr(page, streamfield_name)
+                try:
+                    stream_data = field.get_prep_value()
+                    new_stream_data = update_stream_data(stream_data)
+                    updated_data = StreamValue(
+                        field.stream_block,
+                        new_stream_data,
+                        is_lazy=True,
+                    )
+                    if stream_data != updated_data:
+                        setattr(page, streamfield_name, updated_data)
+
+                        revision = page.save_revision()
+                        revision.publish()
+                        page.save()
+                except AttributeError as attr_err:
+                    logger.exception(
+                        f"Error updating {streamfield_name} "
+                        f"on page {page.id} ({page.title}): {attr_err}"
+                    )
+                except ValidationError as val_err:
+                    logger.exception(
+                        f"Error updating {streamfield_name} "
+                        f"on page {page.id} ({page.title}): {val_err}"
+                    )
+                    report_data.append(
+                        [
+                            page.id,
+                            page.title,
+                            streamfield_name,
+                            val_err,
+                        ]
+                    )
+                # release memory
+                finally:
+                    if "stream_data" in locals():
+                        del stream_data
+                    if "new_stream_data" in locals():
+                        del new_stream_data
+                    if "updated_data" in locals():
+                        del updated_data
+                    if "revision" in locals():
+                        del revision
+                    if "field" in locals():
+                        del field
+
+    return report_data
+
+
+def update_rich_text_links():
+    pages = Page.objects.not_type(SubServicePage).specific()
+    all_page_fields = [page._meta.get_fields() for page in pages]
+    flattened_page_fields = list(chain.from_iterable(all_page_fields))
+    unique_page_fields = set(flattened_page_fields)
+    rich_text_names = [
+        field.name
+        for field in unique_page_fields
+        if field.__class__.__name__ == "RichTextField"
+    ]
+    unique_rich_text_names = set(rich_text_names)
+
+    # release memory
+    del all_page_fields
+    del flattened_page_fields
+    del unique_page_fields
+    del rich_text_names
+
+    old_pages_ids = SubServicePage.objects.all().values_list("pk", flat=True)
+
+    for page in pages:
+        # Iterate through each rich text name
+        for rich_text_name in unique_rich_text_names:
+            # Check if the page has the current rich text field
+            if hasattr(page, rich_text_name):
+                rich_text_field = getattr(page, rich_text_name)
+                changes_made = False
+                for page_id in old_pages_ids:
+                    if f'<a id="{page_id}"' in rich_text_field:
+                        old_page = SubServicePage.objects.get(pk=page_id)
+                        new_page = SubPropositionPage.objects.get(
+                            title=old_page.title.replace(f" {TITLE_SUFFIX}", ""),
+                            slug=old_page.slug.replace(SLUG_SUFFIX, ""),
+                        )
+                        new_rich_text_value = rich_text_field.replace(
+                            str(f'<a id="{page_id}"'), str(f'<a id="{new_page.id}"')
+                        )
+                        setattr(page, rich_text_name, new_rich_text_value)
+                        changes_made = True
+
+                if changes_made:
+                    revision = page.save_revision()
+                    revision.publish()
+                    page.save()
+
+                # release memory
+                if "rich_text_field" in locals():
+                    del rich_text_field
+
+
+class Command(BaseCommand):
+    help = "Migrate SubServicePages to PropositionPages"
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--send-to",
+            dest="recipients",
+            required=False,
+            nargs="*",
+            help="Optional space separated list of email addresses to send the migration report to",
+        )
+
+    def notify_site_admins(self, recipients, message, attachment, *args, **kwargs):
+        """
+        Send a report to the site admins, listing the pages that were migrated
+        """
+        subject = "⚙️ Migration Report » SubServicePages to PropositionPages"
+        from_email = settings.DEFAULT_FROM_EMAIL
+
+        email = EmailMessage(
+            subject,
+            message,
+            from_email,
+            recipients,
+        )
+        email.attach_file(attachment)
+        if kwargs.get("extra_attachment"):
+            email.attach_file(kwargs.get("extra_attachment"))
+
+        try:
+            email.send()
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f'Successfully sent report to {", ".join(recipients)}'
+                )
+            )
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(f"Failed to send report: {e}"))
+
+    def generate_report(self, report_data):
+        csv_buffer = StringIO()
+        csv_writer = csv.writer(csv_buffer)
+        for row in report_data:
+            csv_writer.writerow(row)
+
+        return csv_buffer.getvalue()
+
+    def create_temporary_csv_file(self, file_prefix, csv_data):
+        # Save CSV data to a temporary file
+        timestamp = today.strftime("%Y-%m-%d_%H%M%S")
+        temp_file = tempfile.NamedTemporaryFile(
+            prefix=f"{file_prefix}_{timestamp}",
+            delete=False,
+            mode="w",
+            suffix=".csv",
+        )
+        temp_file.write(csv_data)
+        temp_file.close()
+
+        return temp_file.name
+
+    def handle(self, *args, **options):
+        """
+        Approach:
+
+        - First, check if the migration has already been run. If it has, exit,
+        providing instructions on how to undo the migration.
+        - Grab all the fields we need from each SubServicePage, so that we can
+        create SubPropositionPages with the same data
+        - Add a suffix to the title & slug of each SubServicePage, to avoid
+        clashes with the title & slug of the corresponding SubPropositionPage
+        - Unpublish the SubServicePage if it's live
+        - Create a SubPropositionPage with the data we grabbed earlier
+        - Deal with the StreamField content
+        - Add a migration record to the database, so that in future we can check
+        if the migration has already been run.
+        - Optionally, send a report to the specified recipients, listing the
+        pages that were migrated.
+
+        Caveats:
+        - All draft changes will not be transferred to the new page
+        - All revisions will not be transferred to the new page
+        """
+
+        # if records exist, we've already run the migration, so we can exit.
+        if MigrationRecord.objects.exists():
+            self.stdout.write(
+                self.style.WARNING(
+                    "Migration has already been run. Please undo the migration first:\n"
+                    "`./manage.py undo_subservicepage_migration`"
+                )
+            )
+            return
+
+        report_data = [
+            [
+                "№",
+                "Title",
+                "SubServicePage ID",
+                "SubServicePage Slug",
+                "SubServicePage Was Live?",
+                "SubPropositionPage ID",
+                "SubPropositionPage Slug",
+            ]
+        ]
+
+        for count, old_page in enumerate(SubServicePage.objects.all(), start=1):
+            # wagtail core fields
+            parent = old_page.get_parent().specific
+            title = old_page.title
+            slug = old_page.slug
+            owner = old_page.owner
+            is_live = old_page.live
+            # *_published_at fields only apply to live pages
+            first_published_at = old_page.first_published_at
+            last_published_at = old_page.last_published_at
+            locked = old_page.locked
+            # locked_* fields only apply to locked pages
+            locked_by = old_page.locked_by
+            locked_at = old_page.locked_at
+            locale = old_page.locale
+            seo_title = old_page.seo_title
+            search_description = old_page.search_description
+            show_in_menus = old_page.show_in_menus
+
+            # check for social fields
+            social_image = getattr(old_page, "social_image", None)
+            social_text = getattr(old_page, "social_text", "")
+
+            # other page fields
+            theme = old_page.theme
+            strapline = old_page.strapline
+            intro = old_page.intro
+            greeting_image_type = old_page.greeting_image_type
+
+            # to avoid clashes with the new page we're about to create,
+            # change the old page's title & slug, and unpublish if live
+            old_page.title = f"{old_page.title} {TITLE_SUFFIX}"
+            old_page.slug = f"{old_page.slug}{SLUG_SUFFIX}"
+
+            old_page_revision = old_page.save_revision()
+            old_page_revision.publish()
+            old_page.save()
+
+            if is_live:
+                old_page.unpublish()
+
+            new_page = SubPropositionPage(
+                title=title,
+                slug=slug,
+                owner=owner,
+                live=is_live,
+                locked=locked,
+                locale=locale,
+                seo_title=seo_title,
+                search_description=search_description,
+                show_in_menus=show_in_menus,
+                social_image=social_image,
+                social_text=social_text,
+                theme=theme,
+                strapline=strapline,
+                intro=intro,
+                greeting_image_type=greeting_image_type,
+            )
+
+            if is_live:
+                new_page.first_published_at = first_published_at
+                new_page.last_published_at = last_published_at
+
+            if locked:
+                new_page.locked_by = locked_by
+                new_page.locked_at = locked_at
+
+            parent.add_child(instance=new_page)
+            new_page.save()
+
+            # Let's now deal with the content StreamField
+            copy_existing_blocks(old_page, new_page)
+            construct_key_points_block(old_page, new_page)
+            construct_processes_block(old_page, new_page)
+            construct_testimonials_block(old_page, new_page)
+            construct_work_block(old_page, new_page)
+            construct_thinking_block(old_page, new_page)
+
+            # Create a migration record
+            MigrationRecord.objects.create(
+                subservice_page=old_page,
+                subservice_page_was_live=is_live,
+                subproposition_page=new_page,
+            )
+
+            # Add the page data to the report
+            report_data.append(
+                [
+                    count,
+                    title,
+                    old_page.pk,
+                    old_page.slug,
+                    is_live,
+                    new_page.pk,
+                    new_page.slug,
+                ]
+            )
+
+        # Update links
+        self.stdout.write(
+            self.style.NOTICE("Now updating links in richtext fields ...")
+        )
+        update_rich_text_links()
+        self.stdout.write(self.style.NOTICE("Now updating links in streamfields ..."))
+        check = update_page_links()
+
+        total_migrations = len(report_data) - 1  # Exclude header row
+        if (n := total_migrations) > 0:
+            self.stdout.write(
+                self.style.SUCCESS(
+                    "{} migration{} {} been executed successfully.".format(
+                        n, pluralize(n), pluralize(n, "has,have")
+                    )
+                )
+            )
+            if recipients := options.get("recipients"):
+                csv_data = self.generate_report(report_data)
+                csv_file = self.create_temporary_csv_file("migration_report", csv_data)
+
+                if check:
+                    extra_csv_data = self.generate_report(check)
+                    extra_csv_file = self.create_temporary_csv_file(
+                        "pages_to_manually_check", extra_csv_data
+                    )
+                    self.notify_site_admins(
+                        recipients, message, csv_file, extra_attachment=extra_csv_file
+                    )
+                else:
+                    self.notify_site_admins(recipients, message, csv_file)
+            else:
+                # Display migration information, in the following format:
+                """
+                1.  Title
+                    ------------------------------------------------------------
+                    SubServicePage <ID> ⇒ SubPropositionPage <ID>
+                    slugs: <Slug> ⇒ <Slug>
+                    SubServicePage Was Live? <YES>
+                    ------------------------------------------------------------
+                2.  Title
+                    ------------------------------------------------------------
+                    SubServicePage <ID> ⇒ SubPropositionPage <ID>
+                    slugs: <Slug> ⇒ <Slug>
+                    SubServicePage Was Live? <YES>
+                    ------------------------------------------------------------
+                ...
+                """
+
+                for index, row in enumerate(report_data):
+                    if index == 0:
+                        continue  # Skip the header row
+
+                    # Extract data
+                    (
+                        num,
+                        title,
+                        sub_service_id,
+                        sub_service_slug,
+                        was_live,
+                        sub_proposition_id,
+                        sub_proposition_slug,
+                    ) = row
+
+                    # Display Title
+                    self.stdout.write(f"{num}.  {title}")
+                    self.stdout.write("-" * 60)
+
+                    # Display IDs
+                    self.stdout.write(
+                        f"    SubServicePage {sub_service_id} ⇒ SubPropositionPage "
+                        f"{sub_proposition_id}"
+                    )
+
+                    # Display slugs
+                    self.stdout.write(
+                        f"    slugs: {sub_service_slug} ⇒ {sub_proposition_slug}"
+                    )
+
+                    # Display published status
+                    self.stdout.write(
+                        f"    SubServicePage was live? {'YES' if was_live else 'NO'}"
+                    )
+
+                    self.stdout.write("-" * 60)
+
+                if check:
+                    self.stdout.write(
+                        self.style.NOTICE(
+                            "The following pages require manual checking:"
+                        )
+                    )
+                    for index, row in enumerate(check):
+                        if index == 0:
+                            continue  # Skip the header row
+                        (
+                            page_id,
+                            page_title,
+                            streamfield_name,
+                            error,
+                        ) = row
+                        self.stdout.write(f"{index}.  {page_title}")
+                        self.stdout.write("-" * 60)
+                        self.stdout.write(f"    Page id: {page_id}")
+                        self.stdout.write(f"    Streamfield name: {streamfield_name}")
+                        self.stdout.write(f"    Error: {error}")
+
+            # free up memory
+            del report_data
+
+        else:
+            self.stdout.write(self.style.NOTICE("No migrations have been created."))
