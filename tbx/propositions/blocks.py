@@ -5,7 +5,6 @@ from tbx.core import blocks as core_blocks
 from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.embeds import blocks as embed_blocks
-from wagtail.images import blocks as image_blocks
 from wagtail.snippets import blocks as snippet_blocks
 
 
@@ -62,12 +61,7 @@ class TestimonialsBlock(blocks.StructBlock):
         default="Clients",
     )
     client_logos = blocks.ListBlock(
-        image_blocks.ImageChooserBlock(),
-        required=False,
-    )
-    usa_client_logos = blocks.ListBlock(
-        image_blocks.ImageChooserBlock(),
-        label="Client logos (for USA users)",
+        core_blocks.ImageWithLinkBlock(),
         required=False,
     )
     testimonials = blocks.ListBlock(
@@ -222,11 +216,12 @@ class ThinkingBlock(blocks.StructBlock):
 
 
 class SubPropositionPageStoryBlock(blocks.StreamBlock):
-    # Page sections
+    # Page sections (headings appear in the in-page-nav in hero)
     key_points = KeyPointsBlock(
         group="Page section",
     )
     testimonials = TestimonialsBlock(
+        label="Testimonials / Clients logos",
         group="Page section",
     )
     processes = ProcessesBlock(
@@ -239,41 +234,18 @@ class SubPropositionPageStoryBlock(blocks.StreamBlock):
         group="Page section",
     )
 
-    # Content blocks (from tbx.core.blocks.PageSectionStoryBlock)
-    key_points_summary = blocks.ListBlock(
-        core_blocks.KeyPoint(),
-        icon="list-ul",
-        min_num=4,
-        max_num=6,
-        template="patterns/molecules/streamfield/blocks/key_points_summary.html",
-        help_text="Please add a minumum of 4 and a maximum of 6 key points.",
-        group="Content block",
-    )
-    core_testimonials = blocks.ListBlock(
-        core_blocks.TestimonialBlock(),
-        label="Testimonials",
-        icon="openquote",
-        template="patterns/molecules/streamfield/blocks/testimonial_block.html",
-        group="Content block",
-    )
-    clients = blocks.ListBlock(
-        core_blocks.ImageWithLinkBlock(),
-        icon="site",
-        template="patterns/molecules/streamfield/blocks/client-logo-block.html",
-        label="Clients logo",
-        group="Content block",
-    )
+    # These are from tbx.core.blocks.PageSectionStoryBlock
     embed_plus_cta = core_blocks.EmbedPlusCTABlock(
         label="Embed + CTA",
         icon="code",
         template="patterns/molecules/streamfield/blocks/embed_plus_cta_block.html",
-        group="Content block",
+        group="Call to action",
     )
     cta = core_blocks.CTABlock(
         label="CTA",
         icon="plus-inverse",
         template="patterns/molecules/streamfield/blocks/cta.html",
-        group="Content block",
+        group="Call to action",
     )
 
     @staticmethod
