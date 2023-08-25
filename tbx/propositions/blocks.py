@@ -201,7 +201,7 @@ class ThinkingBlock(blocks.StructBlock):
                 "date": blog_post.date,
             }
             for blog_post in value.get("featured_blog_posts")
-            if blog_post.live
+            if blog_post and blog_post.live
         ]
 
     def get_context(self, value, parent_context=None):
