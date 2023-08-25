@@ -152,7 +152,8 @@ class PropositionPage(SocialFields, Page):
 
 class SubPropositionPage(SocialFields, Page):
     template = "patterns/pages/proposition/sub_proposition.html"
-    parent_page_types = ["propositions.PropositionPage"]
+    # TODO: remove "ServicePage" from the list when deprecating ServicePage
+    parent_page_types = ["services.ServicePage", "propositions.PropositionPage"]
     subpage_types = ["torchbox.StandardPage"]
 
     theme = models.CharField(
@@ -258,3 +259,40 @@ class SubPropositionPage(SocialFields, Page):
             work_index_page=WorkIndexPage.objects.live().first(),
         )
         return context
+
+
+class SubServicePageToSubPropositionPageMigration(models.Model):
+    """
+    Keep track of changes to simplify rollback if needed.
+
+    NOTE: This can be removed once we are confident that all content
+    has been successfully migrated and everything is working as expected.
+    """
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    subservice_page = models.ForeignKey(
+        "services.SubServicePage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    subservice_page_was_live = models.BooleanField(
+        default=True,
+        editable=False,
+    )
+    subproposition_page = models.ForeignKey(
+        "propositions.SubPropositionPage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    def __str__(self):
+        return (
+            f"SubServicePage {self.subservice_page.pk} → "
+            f"SubPropositionPage {self.subproposition_page.pk}"
+        )
