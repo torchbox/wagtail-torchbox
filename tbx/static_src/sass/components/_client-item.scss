@@ -3,16 +3,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    padding-left: 0;
 
     @include high-contrast-dark-mode() {
         position: relative;
     }
 
     &__container {
-        padding: 15px;
+        height: 100%;
+        padding: 0 15px;
 
         @include media-query(medium) {
-            padding: 30px;
+            padding: 0 30px;
         }
 
         @include media-query(large) {
@@ -61,12 +64,80 @@
         @include media-query(large) {
             grid-template-rows: 1fr 30px;
         }
+
+        @include media-query(large) {
+            grid-template-rows: 1fr 30px;
+
+            // show CTA link on hover (only on desktop)
+            &:focus,
+            &:hover {
+                #{$root}__cta {
+                    color: var(--color--link);
+
+                    /* stylelint-disable-next-line max-nesting-depth */
+                    &::after {
+                        background-color: var(--color--accent);
+                    }
+                }
+            }
+        }
+
+        @include hcm() {
+            &:focus,
+            &:hover {
+                // Increase underline thickness on hover
+                #{$root}__cta {
+                    text-decoration-thickness: 5px;
+                }
+
+                // Don't increase image size on hover
+                #{$root}__image {
+                    transform: scale3d(1, 1, 1);
+                }
+            }
+        }
     }
 
-    .streamfield & {
-        width: 100%;
-        padding-left: 0;
+    &__cta {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+        margin-top: 10px;
+        color: transparent;
+        font-size: rem(16px);
+        font-weight: $weight--medium;
+        transition: color $transition-quick;
 
+        &::after {
+            content: '';
+            display: block;
+            position: relative;
+            right: -5px;
+            top: 7px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            background-color: transparent;
+            clip-path: $arrow-path;
+            transition: color $transition;
+
+            @include media-query(large) {
+                width: 15px;
+                height: 14px;
+            }
+        }
+
+        @include hcm() {
+            text-decoration: underline;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    // nesting necessary to override default streamfield styling
+    .streamfield & {
         &::before {
             content: none; // don't show li arrow
         }
@@ -77,21 +148,6 @@
                 border-bottom: 2px solid transparent;
             }
 
-            // show CTA link on hover (only on desktop)
-            @include media-query(large) {
-                &:focus,
-                &:hover {
-                    #{$root}__cta {
-                        color: var(--color--link);
-
-                        /* stylelint-disable-next-line max-nesting-depth */
-                        &::after {
-                            background-color: var(--color--accent);
-                        }
-                    }
-                }
-            }
-
             // Move the underline to the text - not the logo
             @include hcm() {
                 border-bottom: 0;
@@ -99,63 +155,6 @@
                 &:focus,
                 &:hover {
                     border-bottom: 0;
-
-                    // Increase underline thickness on hover
-                    #{$root}__cta {
-                        text-decoration-thickness: 5px;
-                    }
-
-                    // Don't increase image size on hover
-                    #{$root}__image {
-                        transform: scale3d(1, 1, 1);
-                    }
-                }
-            }
-        }
-
-        #{$root}__container {
-            height: 100%;
-            padding: 0 15px;
-
-            @include media-query(medium) {
-                padding: 0 30px;
-            }
-        }
-
-        #{$root}__cta {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            position: relative;
-            margin-top: 10px;
-            color: transparent;
-            font-size: rem(16px);
-            font-weight: $weight--medium;
-            transition: color $transition-quick;
-
-            &::after {
-                content: '';
-                display: block;
-                position: relative;
-                right: -5px;
-                top: 7px;
-                flex-grow: 0;
-                flex-shrink: 0;
-                background-color: transparent;
-                clip-path: $arrow-path;
-                transition: color $transition;
-
-                @include media-query(large) {
-                    width: 15px;
-                    height: 14px;
-                }
-            }
-
-            @include hcm() {
-                text-decoration: underline;
-
-                &::after {
-                    display: none;
                 }
             }
         }

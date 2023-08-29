@@ -4,9 +4,17 @@
     background-color: var(--color--white);
     padding-bottom: ($gutter * 5);
 
+    .service-section & {
+        // on sub-proposition pages client logos sit within a service-section container
+        // on proposition pages they sit within a proposition-section container, which has a left and right margin
+        // this rule adds a similar margin to that used by propostion-section, so the client-logos apppear the same on both page types
+        margin: 0 $variable-gutter--small;
+    }
+
     &__container {
         @include container();
-        padding: 90px 0 0;
+        margin: 0;
+        padding: 0;
     }
 
     &__block {
@@ -41,13 +49,6 @@
             @include media-query(medium) {
                 margin-bottom: 200px;
             }
-        }
-    }
-
-    .streamfield & {
-        #{$root}__container {
-            margin: 0;
-            padding-top: 0;
         }
     }
 }
