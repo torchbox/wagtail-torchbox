@@ -83,6 +83,8 @@
         }
 
         @include hcm() {
+            border: 0;
+
             &:focus,
             &:hover {
                 // Increase underline thickness on hover
