@@ -15,6 +15,11 @@
         @include container();
         margin: 0;
         padding: 0;
+
+        .service-section & {
+            // adds space below the absolutely positioned heading
+            padding: 90px 0 0;
+        }
     }
 
     &__block {
