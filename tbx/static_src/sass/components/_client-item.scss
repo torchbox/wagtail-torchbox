@@ -63,10 +63,6 @@
 
         @include media-query(large) {
             grid-template-rows: 1fr 30px;
-        }
-
-        @include media-query(large) {
-            grid-template-rows: 1fr 30px;
 
             // show CTA link on hover (only on desktop)
             &:focus,
