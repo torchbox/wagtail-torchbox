@@ -62,10 +62,6 @@
         border-bottom: 2px solid transparent; // prevent layout shift
 
         @include media-query(large) {
-            grid-template-rows: 1fr 0.3fr;
-        }
-
-        @include media-query(large) {
             grid-template-rows: 1fr 30px;
 
             // show CTA link on hover (only on desktop)
