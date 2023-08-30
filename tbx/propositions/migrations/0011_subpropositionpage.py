@@ -562,4 +562,3 @@ class Migration(migrations.Migration):
             bases=("wagtailcore.page", models.Model),
         ),
     ]
-
