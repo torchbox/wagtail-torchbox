@@ -1,21 +1,30 @@
 .embed-cta {
-    @include media-query('medium') {
+    @include media-query('medium-large') {
         display: grid;
         align-items: center;
         grid-template-columns: 1fr 1fr;
         grid-gap: ($grid * 2);
     }
 
+    @include media-query('large') {
+        grid-template-columns: 1fr 1.5fr;
+    }
+
+    &__full {
+        grid-column: 1 / span 2;
+    }
+
     &__left {
         margin-bottom: ($grid * 2);
 
-        @include media-query('medium') {
+        @include media-query('medium-large') {
             margin-bottom: 0;
         }
     }
 
     &__heading {
         margin-top: 0;
+        font-weight: $weight--semibold;
     }
 
     &__intro {

@@ -1,6 +1,10 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <div class="embed-cta">
-    <div class="embed-cta__left">
+    {% if value.embed or value.image %}
+        <div class="embed-cta__left">
+    {% else %}
+        <div class="embed-cta__full">
+    {% endif %}
         <h2 class="embed-cta__heading">{{ value.title }}</h2>
         <p class="embed-cta__intro">{{ value.intro }}</p>
         {% if value.link %}
@@ -11,12 +15,14 @@
     </div>
     {% if value.embed or value.image %}
         <div class="embed-cta__right">
-            <div class="embed-cta__embed">
+            {% if value.embed %}
+                <div class="embed-cta__embed">
+                    {{ value.embed }}
+                </div>
+            {% endif %}
             {% if value.image %}
                 {% image value.image max-1280x860 as img %}
                 <img src="{{ img.url }}" alt="{{ img.title }}" loading="lazy" />
-            {% else %}
-                {{ value.embed }}
             {% endif %}
         </div>
     {% endif %}
