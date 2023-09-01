@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 
 <div class="report-section">
-    {% image value.image fill-1792x597 class="report-section__image" %}
+    {% image value.image fill-1792x597 class="report-section__image" alt="" %}
 
     <div class="report-section__anchor" id="{{ value.short_heading|slugify }}" data-service-section></div>
 
