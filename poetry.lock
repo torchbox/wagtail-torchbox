@@ -2550,6 +2550,24 @@ Wagtail = ">=4.1"
 testing = ["pre-commit (>=3.3.0,<4)", "tox (>=4.6.4,<5)"]
 
 [[package]]
+name = "wagtail-modeladmin"
+version = "1.0.0"
+description = "Add any model in your project to the Wagtail admin. Formerly wagtail.contrib.modeladmin."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "wagtail_modeladmin-1.0.0-py3-none-any.whl", hash = "sha256:0d92dd012e17dd5b5d5058792c8549594884c87da7ef794e8f1765bb245a5340"},
+    {file = "wagtail_modeladmin-1.0.0.tar.gz", hash = "sha256:da545ba34747bff01c942b8306e20ac17d8a64d1873734cc8cf7303716af93fc"},
+]
+
+[package.dependencies]
+Wagtail = ">=5.0"
+
+[package.extras]
+docs = ["Sphinx (>=6.0)", "myst_parser (>=0.18.1,<1.0)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==6.0.0)", "sphinx_copybutton (>=0.5)", "sphinxcontrib-spelling (>=8.0,<9.0)"]
+testing = ["dj-database-url (>=2.0.0)", "pre-commit (<3.0)"]
+
+[[package]]
 name = "wagtail-purge"
 version = "0.3.0"
 description = "Purge individual URLs from the Wagtail admin"
@@ -2834,4 +2852,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "c620327a1dfe7b1e12711e94c7ce53a37688dfb687d4191a069ef296bb7a1110"
+content-hash = "cad884739605bc6a401795e9d706936a036136245fbe2fcb0a5271f3d49a275b"
