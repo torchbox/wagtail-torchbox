@@ -4,9 +4,9 @@ from django.urls import re_path
 from django.utils.functional import cached_property
 from django.utils.translation import gettext as _
 
-from wagtail.contrib.modeladmin.helpers import ButtonHelper
-from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup
-from wagtail.contrib.modeladmin.views import DeleteView, InstanceSpecificView
+from wagtail_modeladmin.helpers import ButtonHelper
+from wagtail_modeladmin.options import ModelAdmin, ModelAdminGroup
+from wagtail_modeladmin.views import DeleteView, InstanceSpecificView
 
 from . import models
 from .utils import get_object_usage
