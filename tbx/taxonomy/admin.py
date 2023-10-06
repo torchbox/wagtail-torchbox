@@ -1,4 +1,12 @@
-from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
+from django.contrib.admin.utils import quote
+from django.core.exceptions import PermissionDenied
+from django.urls import re_path
+from django.utils.functional import cached_property
+from django.utils.translation import gettext as _
+
+from wagtail_modeladmin.helpers import ButtonHelper
+from wagtail_modeladmin.options import ModelAdmin, ModelAdminGroup
+from wagtail_modeladmin.views import DeleteView, InstanceSpecificView
 
 from . import models
 
