@@ -59,7 +59,7 @@
         border-bottom: 2px solid transparent; // prevent layout shift
 
         @include media-query(large) {
-            grid-template-rows: 1fr 0.5fr;
+            grid-template-rows: 1fr 0.3fr;
         }
     }
 
