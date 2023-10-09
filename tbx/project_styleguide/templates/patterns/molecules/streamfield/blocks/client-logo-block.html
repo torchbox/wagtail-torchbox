@@ -18,7 +18,8 @@
                                                 <div class="client-item__image-wrap">
                                                     {% image client.image width-400 class="client-item__image" loading="lazy" alt="" %}
                                                 </div>
-                                                <span class="client-item__cta" aria-hidden="true">Read case study</span>
+                                                {# Note that the text in this element must have no whitespace before the closing span element in order for the CSS styling to work correctly #}
+                                            <span class="client-item__cta" aria-hidden="true">{{ link.text }}</span>
                                             </a>
                                         {% else %}
                                             <div class="client-item__image-wrap">
