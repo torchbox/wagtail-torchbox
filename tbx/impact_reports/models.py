@@ -2,7 +2,12 @@ from django.db import models
 from django.utils.text import slugify
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.panels import (
+    FieldPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    TitleFieldPanel,
+)
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
@@ -45,7 +50,7 @@ class ImpactReportPage(Page):
     content_panels = [
         MultiFieldPanel(
             [
-                FieldPanel("title", classname="title"),
+                TitleFieldPanel("title"),
                 FieldPanel("strapline"),
                 FieldPanel("hero_image"),
             ],
