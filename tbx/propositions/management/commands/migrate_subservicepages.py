@@ -41,34 +41,12 @@ Best,
 » {site_url}
 """
 
-
-def copy_existing_blocks(source, target):
-    """
-    Copy existing blocks from SubServicePage's content StreamField to
-    SubPropositionPage's content StreamField
-    """
-    changes_made = False
-
-    for block in source.content:
-        # We only care about blocks with non-empty content
-        if block.value:
-            # Testimonials block
-            if block.block_type == "testimonials":
-                target.content.append(("core_testimonials", block.value))
-            else:
-                # Key Points Summary block
-                # Clients block
-                # Embed + CTA block
-                # CTA block
-                target.content.append((block.block_type, block.value))
-
-            changes_made = True
-
-    if changes_made:
-        target.save()
+# -----------------------------------------------------------------------------
+# 0. Helper functions
+# -----------------------------------------------------------------------------
 
 
-def add_stream_block_to_content(page, block_type, block_value):
+def add_stream_block_to_content(page, block_type, block_value, save_revision=True):
     """
     Appends a new child block of the specified type and value
     to the provided page's `content` StreamField.
@@ -80,6 +58,8 @@ def add_stream_block_to_content(page, block_type, block_value):
         (e.g., "key_points", "testimonials").
         block_value (dict): The data for the child block, represented
         as a dictionary.
+        save_revision (bool): Whether to save a revision of the page
+        object after adding the child block. Defaults to True.
 
     Returns:
         None
@@ -102,9 +82,140 @@ def add_stream_block_to_content(page, block_type, block_value):
         is_lazy=True,
     )
 
-    revision = page.save_revision()
-    revision.publish()
+    if save_revision:
+        revision = page.save_revision()
+        revision.publish()
     page.save()
+
+
+def is_streamfield(field):
+    return isinstance(field, StreamField)
+
+
+# -----------------------------------------------------------------------------
+# 1. Copy existing blocks
+# -----------------------------------------------------------------------------
+
+
+def copy_existing_blocks(source, target):
+    """
+    Copy existing blocks from SubServicePage's content StreamField to
+    SubPropositionPage's content StreamField.
+
+    This is the first operation in the data migration.
+    """
+    changes_made = False
+
+    has_testimonials_and_clients = "testimonials" and "clients" in [
+        block.block_type for block in source.content
+    ]
+
+    for block in source.content:
+        # We only care about blocks with non-empty content
+        if block.value:
+            # Clients block
+            if block.block_type == "clients" and not has_testimonials_and_clients:
+                # we don't have a `clients` block on SubPropositionPage
+                # therefore, we need to add this to the `testimonials` block's `client_logos` field
+                data = {
+                    "title": "Clients",  # this is the default title
+                    "client_logos": [logo for logo in block.value if logo],
+                }
+                add_stream_block_to_content(
+                    target, "testimonials", data, save_revision=False
+                )
+            # Testimonials block
+            elif (
+                block.block_type == "testimonials" and not has_testimonials_and_clients
+            ):
+                # the source & target blocks are slightly different
+                # so we need to add this to the the `testimonials` block's `testimonials` field
+                data = {
+                    "title": "Clients",  # this is the default title
+                    "testimonials": [
+                        {
+                            "quote": testimonial.quote,
+                            "name": testimonial.name,
+                            "role": testimonial.role,
+                            "link": testimonial.link if testimonial.link else None,
+                        }
+                        for testimonial in block.value
+                    ],
+                }
+                add_stream_block_to_content(
+                    target, "testimonials", data, save_revision=False
+                )
+            # Key Points Summary block
+            elif block.block_type == "key_points_summary":
+                # we don't have a `key_points_summary` block on SubPropositionPage
+                # therefore, we need to add this to the `key_points` block's `key_points` field
+                data = {
+                    "title": "Services",  # this is the default title
+                    "key_points": [
+                        {
+                            "text": key_point.text,
+                            "linked_page": key_point.linked_page.pk
+                            if key_point.linked_page
+                            else None,
+                        }
+                        for key_point in block.value
+                    ],
+                }
+                add_stream_block_to_content(
+                    target, "key_points", data, save_revision=False
+                )
+            else:
+                # Embed + CTA block
+                # CTA block
+                target.content.append((block.block_type, block.value))
+
+            changes_made = True
+
+    if changes_made:
+        target.save()
+
+    if has_testimonials_and_clients:
+        # combine the content from the source `testimonials` and `clients` blocks
+        # into a single `testimonials` block on the target
+
+        testimonials = [
+            block
+            for block in source.content
+            if "testimonials" in block.block_type and block.value
+        ]
+        # the assumtion is that we only have one `testimonials` block
+        assert len(testimonials) <= 1
+        testimonials_block = testimonials[0] if testimonials else None
+
+        clients = [
+            block
+            for block in source.content
+            if "clients" in block.block_type and block.value
+        ]
+        # the assumtion is that we only have one `clients` block
+        assert len(clients) <= 1
+        clients_block = clients[0] if clients else None
+
+        data = {
+            "title": "Clients",  # this is the default title
+            "client_logos": [logo for logo in clients_block.value if logo],
+            "testimonials": [
+                {
+                    "quote": testimonial.quote,
+                    "name": testimonial.name,
+                    "role": testimonial.role,
+                    "link": testimonial.link if testimonial.link else None,
+                }
+                for testimonial in testimonials_block.value
+            ],
+        }
+
+        add_stream_block_to_content(target, "testimonials", data, save_revision=False)
+
+
+# -----------------------------------------------------------------------------
+# 2. Create new blocks
+# -----------------------------------------------------------------------------
 
 
 def construct_key_points_block(source, target):
@@ -168,7 +279,6 @@ def construct_testimonials_block(source, target):
     title = source.testimonials_section_title
     # each logo has an `image` field
     client_logos = source.client_logos.all()
-    usa_client_logos = source.usa_client_logos.all()
     # each testimonial has `quote`, `name` and `role` fields
     testimonials = source.testimonials.all()
 
@@ -176,12 +286,12 @@ def construct_testimonials_block(source, target):
         data = {
             "title": title,
             "client_logos": [logo.image.pk for logo in client_logos if logo],
-            "usa_client_logos": [logo.image.pk for logo in usa_client_logos if logo],
             "testimonials": [
                 {
                     "quote": testimonial.quote,
                     "name": testimonial.name,
                     "role": testimonial.role,
+                    "link": testimonial.link if testimonial.link else None,
                 }
                 for testimonial in testimonials
             ],
@@ -300,11 +410,20 @@ def construct_thinking_block(source, target):
         add_stream_block_to_content(target, "thinking", data)
 
 
-def is_streamfield(field):
-    return isinstance(field, StreamField)
+# -----------------------------------------------------------------------------
+# 3. Update links
+# -----------------------------------------------------------------------------
 
 
 def replace_link(match, ids):
+    """
+    Replace a link to a SubServicePage with a link to a SubPropositionPage.
+
+    Args:
+        match (re.Match): The match object returned by the regex search.
+        ids (list): A list of IDs of SubServicePages that have been
+        migrated to SubPropositionPages.
+    """
     old_page_id = int(match.group(1))
     if old_page_id in ids:
         old_page = SubServicePage.objects.get(pk=old_page_id)
@@ -319,6 +438,23 @@ def replace_link(match, ids):
 
 
 def update_stream_data(data):
+    """
+    Recursively updates data containing links to SubServicePages to point to
+    corresponding SubPropositionPages.
+
+    This function is designed to process a nested data structure, such as a JSON
+    object or a list, and replace links to SubServicePages with links to
+    SubPropositionPages. It works by recursively traversing the data structure and
+    performing the necessary replacements.
+
+    Args:
+        data (dict or list): The data structure containing links to SubServicePages
+        that need to be updated.
+
+    Returns:
+        dict or list: The updated data structure with links replaced.
+    """
+
     page_keys = [
         "link",
         "internal",
@@ -505,6 +641,11 @@ def update_rich_text_links():
                 # release memory
                 if "rich_text_field" in locals():
                     del rich_text_field
+
+
+# -------------------------------------------------------------------------------------
+# let's now wrap it all up in a Command
+# -------------------------------------------------------------------------------------
 
 
 class Command(BaseCommand):
@@ -717,7 +858,7 @@ class Command(BaseCommand):
         )
         update_rich_text_links()
         self.stdout.write(self.style.NOTICE("Now updating links in streamfields ..."))
-        check = update_page_links()
+        pages_to_manually_check = update_page_links()
 
         total_migrations = len(report_data) - 1  # Exclude header row
         if (n := total_migrations) > 0:
@@ -732,8 +873,8 @@ class Command(BaseCommand):
                 csv_data = self.generate_report(report_data)
                 csv_file = self.create_temporary_csv_file("migration_report", csv_data)
 
-                if check:
-                    extra_csv_data = self.generate_report(check)
+                if pages_to_manually_check:
+                    extra_csv_data = self.generate_report(pages_to_manually_check)
                     extra_csv_file = self.create_temporary_csv_file(
                         "pages_to_manually_check", extra_csv_data
                     )
@@ -797,13 +938,13 @@ class Command(BaseCommand):
 
                     self.stdout.write("-" * 60)
 
-                if check:
+                if pages_to_manually_check:
                     self.stdout.write(
                         self.style.NOTICE(
                             "The following pages require manual checking:"
                         )
                     )
-                    for index, row in enumerate(check):
+                    for index, row in enumerate(pages_to_manually_check):
                         if index == 0:
                             continue  # Skip the header row
                         (
