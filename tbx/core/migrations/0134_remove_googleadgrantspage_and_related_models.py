@@ -6,7 +6,6 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
         ("people", "0017_update_streamblock_templates"),
         ("wagtailredirects", "0006_redirect_increase_max_length"),
         ("wagtailforms", "0004_add_verbose_name_plural"),

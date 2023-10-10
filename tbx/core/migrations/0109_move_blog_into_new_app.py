@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ("wagtailcore", "0040_page_draft_title"),
         ("wagtailredirects", "0006_redirect_increase_max_length"),
-        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
         ("wagtailforms", "0003_capitalizeverbose"),
         ("work", "0001_initial"),
         ("torchbox", "0108_move_work_into_new_app"),

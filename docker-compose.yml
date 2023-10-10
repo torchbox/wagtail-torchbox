@@ -12,8 +12,6 @@ services:
       DATABASE_URL: postgres://tbx:tbx@db:5432/tbx # pragma: allowlist secret
       DJANGO_SETTINGS_MODULE: tbx.settings.dev
       MEDIA_DIR: /app/media/
-      RECAPTCHA_PRIVATE_KEY: UPDATE_THIS # pragma: allowlist secret
-      RECAPTCHA_PUBLIC_KEY: UPDATE_THIS
       REDIS_URL: redis://redis
       SECRET_KEY: local_dev_secret_key
       SECURE_SSL_REDIRECT: 'false'
