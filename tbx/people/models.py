@@ -417,6 +417,7 @@ class Author(index.Indexed, models.Model):
         return self.name
 
     search_fields = [
+        index.AutocompleteField("name"),
         index.SearchField("name"),
     ]
 
@@ -456,6 +457,7 @@ class Contact(index.Indexed, models.Model):
         return self.name
 
     search_fields = [
+        index.AutocompleteField("name"),
         index.SearchField("name"),
     ]
 
