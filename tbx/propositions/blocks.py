@@ -44,16 +44,6 @@ class KeyPointsBlock(blocks.StructBlock):
         template = "patterns/molecules/streamfield/blocks/key-points.html"
 
 
-class TestimonialBlock(blocks.StructBlock):
-    quote = blocks.TextBlock()
-    name = blocks.CharBlock(max_length=255)
-    role = blocks.CharBlock(max_length=255)
-
-    class Meta:
-        icon = "openquote"
-        label = "Testimonial"
-
-
 class TestimonialsBlock(blocks.StructBlock):
     title = blocks.CharBlock(
         label="Testimonials section title",
@@ -65,7 +55,7 @@ class TestimonialsBlock(blocks.StructBlock):
         required=False,
     )
     testimonials = blocks.ListBlock(
-        TestimonialBlock(),
+        core_blocks.TestimonialBlock(),
         required=False,
     )
 
