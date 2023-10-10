@@ -12,7 +12,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ("wagtailcore", "0023_alter_page_revision_on_delete_behaviour"),
         ("wagtailforms", "0003_capitalizeverbose"),
-        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
         ("wagtailredirects", "0005_capitalizeverbose"),
         ("torchbox", "0045_auto_20160708_1127"),
     ]

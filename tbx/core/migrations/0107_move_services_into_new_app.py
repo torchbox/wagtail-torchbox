@@ -8,7 +8,6 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("wagtailsearchpromotions", "0002_capitalizeverbose"),
         ("wagtailforms", "0003_capitalizeverbose"),
         ("wagtailredirects", "0006_redirect_increase_max_length"),
         ("wagtailcore", "0040_page_draft_title"),

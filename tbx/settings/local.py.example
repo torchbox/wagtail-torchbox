@@ -9,9 +9,6 @@ GOOGLE_MAPS_KEY = 'get-one-from-https://code.google.com/apis/console/?noredirect
 # in your version control system.
 SECRET_KEY = 'enter-a-long-unguessable-string-here'
 
-# Get a key for localhost here: https://www.google.com/recaptcha/admin
-RECAPTCHA_PUBLIC_KEY = ''  # Site key
-RECAPTCHA_PRIVATE_KEY = ''  # Private key
 
 # If you're developing Wagtail itself (as opposed to building a Wagtail-powered site), you'll
 # want to tweak the Python path so that it picks up your working copy of the Wagtail code
