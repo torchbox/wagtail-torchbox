@@ -745,6 +745,7 @@ class Command(BaseCommand):
         - Deal with the StreamField content
         - Add a migration record to the database, so that in future we can check
         if the migration has already been run.
+        - Update StreamField & RichTextField links so that we don't have 404 errors
         - Optionally, send a report to the specified recipients, listing the
         pages that were migrated.
 
@@ -909,7 +910,7 @@ class Command(BaseCommand):
                 if len(pages_to_manually_check) > 1:
                     extra_csv_data = self.generate_report(pages_to_manually_check)
                     extra_csv_file = self.create_temporary_csv_file(
-                        "pages_to_manually_check", extra_csv_data
+                        "pages_to_manually_check_links_to_avoid_404s", extra_csv_data
                     )
                     self.notify_site_admins(
                         recipients, message, csv_file, extra_attachment=extra_csv_file
@@ -971,8 +972,10 @@ class Command(BaseCommand):
 
                     self.stdout.write("-" * 60)
 
-                if pages_to_manually_check:
-                    self.show_status("The following pages require manual checking:")
+                if len(pages_to_manually_check) > 1:
+                    self.show_status(
+                        "The following pages require manual checking of links to avoid 404s:"
+                    )
                     for index, row in enumerate(pages_to_manually_check):
                         if index == 0:
                             continue  # Skip the header row
