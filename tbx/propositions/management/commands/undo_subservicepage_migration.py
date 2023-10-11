@@ -331,6 +331,7 @@ class Command(BaseCommand):
                     and not subservice_page.live
                 ):
                     revision.publish()
+                    subservice_page.live = True
 
                 subservice_page.save()
                 num_subservice_pages_reverted += 1
