@@ -2852,4 +2852,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "cad884739605bc6a401795e9d706936a036136245fbe2fcb0a5271f3d49a275b"
+content-hash = "ae1680775f25f79273e7a0fa795f31158b9f899c31a5b2920df66be501245198"
