@@ -2,6 +2,7 @@ import csv
 import logging
 import re
 import tempfile
+import time
 from io import StringIO
 from itertools import chain
 
@@ -285,13 +286,18 @@ def construct_testimonials_block(source, target):
     if title:
         data = {
             "title": title,
-            "client_logos": [logo.image.pk for logo in client_logos if logo],
+            "client_logos": [
+                {
+                    "image": logo.image.pk,
+                }
+                for logo in client_logos
+                if logo
+            ],
             "testimonials": [
                 {
                     "quote": testimonial.quote,
                     "name": testimonial.name,
                     "role": testimonial.role,
-                    "link": testimonial.link if testimonial.link else None,
                 }
                 for testimonial in testimonials
             ],
@@ -518,8 +524,8 @@ def update_page_links():
     # we exclude some pages because they somehow trigger a segmentation fault
     # when running this command
     titles_to_exclude = [
-        "An Extra 3 Million Organic Clicks a Month for the NHS Website",
-        "Raising millions for Islamic Relief UK during Ramadan",
+        "An Extra 3 Million Organic Clicks a Month for the NHS Website",  # WorkPage
+        "Raising millions for Islamic Relief UK during Ramadan",  # WorkPage
     ]
     report_data = [
         [
@@ -557,7 +563,8 @@ def update_page_links():
                         setattr(page, streamfield_name, updated_data)
 
                         revision = page.save_revision()
-                        revision.publish()
+                        if page.live:
+                            revision.publish()
                         page.save()
                 except AttributeError as attr_err:
                     logger.exception(
@@ -635,7 +642,8 @@ def update_rich_text_links():
 
                 if changes_made:
                     revision = page.save_revision()
-                    revision.publish()
+                    if page.live:
+                        revision.publish()
                     page.save()
 
                 # release memory
@@ -709,6 +717,19 @@ class Command(BaseCommand):
 
         return temp_file.name
 
+    def show_status(self, message):
+        """
+        Prints a message to the console.
+        This is helpful for debugging.
+
+        Args:
+            message (str): The message to be printed.
+
+        Returns:
+            None
+        """
+        self.stdout.write(self.style.NOTICE(message))
+
     def handle(self, *args, **options):
         """
         Approach:
@@ -741,6 +762,8 @@ class Command(BaseCommand):
                 )
             )
             return
+
+        start_time = time.time()
 
         report_data = [
             [
@@ -789,7 +812,8 @@ class Command(BaseCommand):
             old_page.slug = f"{old_page.slug}{SLUG_SUFFIX}"
 
             old_page_revision = old_page.save_revision()
-            old_page_revision.publish()
+            if is_live:
+                old_page_revision.publish()
             old_page.save()
 
             if is_live:
@@ -825,11 +849,22 @@ class Command(BaseCommand):
             new_page.save()
 
             # Let's now deal with the content StreamField
+            self.show_status(f"Copying existing blocks from {old_page} ...")
             copy_existing_blocks(old_page, new_page)
+
+            self.show_status(f"Constructing key_points block from {old_page} ...")
             construct_key_points_block(old_page, new_page)
+
+            self.show_status(f"Constructing processes block from {old_page} ...")
             construct_processes_block(old_page, new_page)
+
+            self.show_status(f"Constructing testimonials block from {old_page} ...")
             construct_testimonials_block(old_page, new_page)
+
+            self.show_status(f"Constructing work block from {old_page} ...")
             construct_work_block(old_page, new_page)
+
+            self.show_status(f"Constructing thinking block from {old_page} ...")
             construct_thinking_block(old_page, new_page)
 
             # Create a migration record
@@ -853,11 +888,9 @@ class Command(BaseCommand):
             )
 
         # Update links
-        self.stdout.write(
-            self.style.NOTICE("Now updating links in richtext fields ...")
-        )
+        self.show_status("Now updating links in richtext fields ...")
         update_rich_text_links()
-        self.stdout.write(self.style.NOTICE("Now updating links in streamfields ..."))
+        self.show_status("Now updating links in streamfields ...")
         pages_to_manually_check = update_page_links()
 
         total_migrations = len(report_data) - 1  # Exclude header row
@@ -873,7 +906,7 @@ class Command(BaseCommand):
                 csv_data = self.generate_report(report_data)
                 csv_file = self.create_temporary_csv_file("migration_report", csv_data)
 
-                if pages_to_manually_check:
+                if len(pages_to_manually_check) > 1:
                     extra_csv_data = self.generate_report(pages_to_manually_check)
                     extra_csv_file = self.create_temporary_csv_file(
                         "pages_to_manually_check", extra_csv_data
@@ -939,11 +972,7 @@ class Command(BaseCommand):
                     self.stdout.write("-" * 60)
 
                 if pages_to_manually_check:
-                    self.stdout.write(
-                        self.style.NOTICE(
-                            "The following pages require manual checking:"
-                        )
-                    )
+                    self.show_status("The following pages require manual checking:")
                     for index, row in enumerate(pages_to_manually_check):
                         if index == 0:
                             continue  # Skip the header row
@@ -963,4 +992,11 @@ class Command(BaseCommand):
             del report_data
 
         else:
-            self.stdout.write(self.style.NOTICE("No migrations have been created."))
+            self.show_status("No migrations have been created.")
+
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        minutes, seconds = divmod(elapsed_time, 60)
+        self.stdout.write("-" * 60)
+        self.show_status(f"Execution time: {int(minutes)} min, {int(seconds)} sec.")
+        self.stdout.write("-" * 60)
