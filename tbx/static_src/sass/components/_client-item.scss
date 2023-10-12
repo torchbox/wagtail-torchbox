@@ -138,6 +138,8 @@
 
     // nesting necessary to override default streamfield styling
     .streamfield & {
+        padding: 0;
+
         &::before {
             content: none; // don't show li arrow
         }
