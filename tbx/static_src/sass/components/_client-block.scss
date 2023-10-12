@@ -28,11 +28,12 @@
         }
 
         @include media-query(menu-break-larger) {
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(5, 1fr);
         }
 
         @include media-query(x-large) {
             column-gap: 60px;
+            grid-template-columns: repeat(6, 1fr);
         }
 
         &--spaced {
