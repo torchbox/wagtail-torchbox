@@ -13,10 +13,13 @@ from django.core.management import BaseCommand
 from django.template.defaultfilters import pluralize
 from django.utils import timezone
 
-from tbx.propositions.constants import SLUG_SUFFIX, TITLE_SUFFIX
 from tbx.propositions.models import SubPropositionPage
 from tbx.propositions.models import (
     SubServicePageToSubPropositionPageMigration as MigrationRecord,
+)
+from tbx.services.constants import (
+    DEPRECATED_SLUG_SUFFIX,
+    DEPRECATED_TITLE_SUFFIX,
 )
 from tbx.services.models import SubServicePage
 from wagtail.blocks import StreamValue
@@ -434,8 +437,8 @@ def replace_link(match, ids):
     if old_page_id in ids:
         old_page = SubServicePage.objects.get(pk=old_page_id)
         new_page_instance = SubPropositionPage.objects.get(
-            title=old_page.title.replace(f" {TITLE_SUFFIX}", ""),
-            slug=old_page.slug.replace(SLUG_SUFFIX, ""),
+            title=old_page.title.replace(f" {DEPRECATED_TITLE_SUFFIX}", ""),
+            slug=old_page.slug.replace(DEPRECATED_SLUG_SUFFIX, ""),
         )
         return f'<a id="{new_page_instance.pk}" linktype="page">'
     else:
@@ -484,8 +487,8 @@ def update_stream_data(data):
                 if value in old_pages_ids:
                     old_page = SubServicePage.objects.get(pk=value)
                     new_page_instance = SubPropositionPage.objects.get(
-                        title=old_page.title.replace(f" {TITLE_SUFFIX}", ""),
-                        slug=old_page.slug.replace(SLUG_SUFFIX, ""),
+                        title=old_page.title.replace(f" {DEPRECATED_TITLE_SUFFIX}", ""),
+                        slug=old_page.slug.replace(DEPRECATED_SLUG_SUFFIX, ""),
                     )
                     new_data[key] = new_page_instance.pk
                 else:
@@ -631,8 +634,10 @@ def update_rich_text_links():
                     if f'<a id="{page_id}"' in rich_text_field:
                         old_page = SubServicePage.objects.get(pk=page_id)
                         new_page = SubPropositionPage.objects.get(
-                            title=old_page.title.replace(f" {TITLE_SUFFIX}", ""),
-                            slug=old_page.slug.replace(SLUG_SUFFIX, ""),
+                            title=old_page.title.replace(
+                                f" {DEPRECATED_TITLE_SUFFIX}", ""
+                            ),
+                            slug=old_page.slug.replace(DEPRECATED_SLUG_SUFFIX, ""),
                         )
                         new_rich_text_value = rich_text_field.replace(
                             str(f'<a id="{page_id}"'), str(f'<a id="{new_page.id}"')
@@ -809,8 +814,8 @@ class Command(BaseCommand):
 
             # to avoid clashes with the new page we're about to create,
             # change the old page's title & slug, and unpublish if live
-            old_page.title = f"{old_page.title} {TITLE_SUFFIX}"
-            old_page.slug = f"{old_page.slug}{SLUG_SUFFIX}"
+            old_page.title = f"{old_page.title} {DEPRECATED_TITLE_SUFFIX}"
+            old_page.slug = f"{old_page.slug}{DEPRECATED_SLUG_SUFFIX}"
 
             old_page_revision = old_page.save_revision()
             if is_live:

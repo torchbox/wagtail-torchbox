@@ -7,10 +7,13 @@ from django.core.exceptions import ValidationError
 from django.core.management import BaseCommand
 from django.template.defaultfilters import pluralize
 
-from tbx.propositions.constants import SLUG_SUFFIX, TITLE_SUFFIX
 from tbx.propositions.models import SubPropositionPage
 from tbx.propositions.models import (
     SubServicePageToSubPropositionPageMigration as MigrationRecord,
+)
+from tbx.services.constants import (
+    DEPRECATED_SLUG_SUFFIX,
+    DEPRECATED_TITLE_SUFFIX,
 )
 from tbx.services.models import SubServicePage
 from wagtail.blocks import StreamValue
@@ -36,8 +39,8 @@ def replace_link(match, ids):
     new_page_id = int(match.group(1))
     if new_page_id in ids:
         new_page = SubPropositionPage.objects.get(pk=new_page_id)
-        title_list = [new_page.title, new_page.title + f" {TITLE_SUFFIX}"]
-        slug_list = [new_page.slug, new_page.slug + SLUG_SUFFIX]
+        title_list = [new_page.title, new_page.title + f" {DEPRECATED_TITLE_SUFFIX}"]
+        slug_list = [new_page.slug, new_page.slug + DEPRECATED_SLUG_SUFFIX]
         old_page_instance = SubServicePage.objects.filter(
             title__in=title_list,
             slug__in=slug_list,
@@ -89,8 +92,11 @@ def update_stream_data(data):
             if key in page_keys and isinstance(value, int):
                 if value in new_pages_ids:
                     new_page = SubPropositionPage.objects.get(pk=value)
-                    title_list = [new_page.title, new_page.title + f" {TITLE_SUFFIX}"]
-                    slug_list = [new_page.slug, new_page.slug + SLUG_SUFFIX]
+                    title_list = [
+                        new_page.title,
+                        new_page.title + f" {DEPRECATED_TITLE_SUFFIX}",
+                    ]
+                    slug_list = [new_page.slug, new_page.slug + DEPRECATED_SLUG_SUFFIX]
                     old_page_instance = SubServicePage.objects.filter(
                         title__in=title_list,
                         slug__in=slug_list,
@@ -241,9 +247,12 @@ def update_rich_text_links():
                         new_page = SubPropositionPage.objects.get(pk=page_id)
                         title_list = [
                             new_page.title,
-                            new_page.title + f" {TITLE_SUFFIX}",
+                            new_page.title + f" {DEPRECATED_TITLE_SUFFIX}",
                         ]
-                        slug_list = [new_page.slug, new_page.slug + SLUG_SUFFIX]
+                        slug_list = [
+                            new_page.slug,
+                            new_page.slug + DEPRECATED_SLUG_SUFFIX,
+                        ]
                         old_page = SubServicePage.objects.filter(
                             title__in=title_list,
                             slug__in=slug_list,
@@ -322,8 +331,12 @@ class Command(BaseCommand):
                 num_subproposition_pages_deleted += 1
 
                 # Revert the SubServicePage back to its 'original' state
-                subservice_page.title = subservice_page.title.rsplit(TITLE_SUFFIX, 1)[0]
-                subservice_page.slug = subservice_page.slug.rsplit(SLUG_SUFFIX, 1)[0]
+                subservice_page.title = subservice_page.title.rsplit(
+                    DEPRECATED_TITLE_SUFFIX, 1
+                )[0]
+                subservice_page.slug = subservice_page.slug.rsplit(
+                    DEPRECATED_SLUG_SUFFIX, 1
+                )[0]
                 revision = subservice_page.save_revision()
                 # If the page was live before the migration, publish it
                 if (
