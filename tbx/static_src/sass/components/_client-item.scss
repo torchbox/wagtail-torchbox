@@ -140,35 +140,6 @@
     .streamfield & {
         padding: 0 0 25px;
 
-        &::after {
-            content: '';
-            display: block;
-            position: relative;
-            right: -5px;
-            top: 7px;
-            flex-grow: 0;
-            flex-shrink: 0;
-            background-color: transparent;
-            clip-path: $arrow-path;
-            transition: color $transition;
-
-            @include media-query(large) {
-                width: 15px;
-                height: 14px;
-            }
-        }
-
-        @include hcm() {
-            text-decoration: underline;
-
-            &::after {
-                display: none;
-            }
-        }
-    }
-
-    // nesting necessary to override default streamfield styling
-    .streamfield & {
         &::before {
             content: none; // don't show li arrow
         }
