@@ -65,7 +65,7 @@
 
     .streamfield & {
         width: 100%;
-        padding: 0;
+        padding: 0 0 25px;
 
         &::before {
             content: none; // don't show li arrow
