@@ -2,6 +2,7 @@ import logging
 import time
 
 from django.core.management import BaseCommand
+from django.db.models import QuerySet
 from django.template.defaultfilters import pluralize
 
 from tbx.propositions.management.commands.migrate_subservicepages import (
@@ -42,10 +43,12 @@ class Command(BaseCommand):
         Approach:
         - Check if there are any migration records. If not, exit.
         - For each migration record:
-            - Delete the corresponding SubPropositionPage
+            - Alter the corresponding SubPropositionPage's title & slug to avoid clashes.
+              If the SubPropositionPage is live, unpublish it
             - Revert the SubServicePage back to its 'original' state
-            - Revert changes to StreamField & RichTextField links to avoid 404 errors
-            - Delete the migration record
+        - Revert changes to StreamField & RichTextField links to avoid 404 errors
+        - Delete the migration records
+        - Delete the SubPropositionPages
 
         Caveats:
         - We have no control on changes made to the page after the migration.
@@ -62,8 +65,6 @@ class Command(BaseCommand):
 
         start_time = time.time()
 
-        num_migration_records_deleted = 0
-        num_subproposition_pages_deleted = 0
         num_subservice_pages_reverted = 0
 
         for migration_record in MigrationRecord.objects.all():
@@ -77,7 +78,9 @@ class Command(BaseCommand):
                     f"Now altering title & slug for {subproposition_page}..."
                 )
                 subproposition_page.title += f" {DEPRECATED_TITLE_SUFFIX}"
-                subproposition_page.slug += DEPRECATED_SLUG_SUFFIX
+                # to avoid ValidationError:
+                # {'slug': ["The slug '***--deprecated' is already in use within the parent page at ...]}
+                subproposition_page.slug += 2 * DEPRECATED_SLUG_SUFFIX
                 subproposition_page.save_revision()
                 if subproposition_page.live:
                     self.show_status(f"Now unpublishing {subproposition_page}...")
@@ -111,15 +114,20 @@ class Command(BaseCommand):
             SubPropositionPage, SubServicePage, reverse=True
         )
 
-        # Delete the SubPropositionPages
-        self.show_status("Now deleting Subproposition Pages ...")
-        SubPropositionPage.objects.filter(
-            title__endswith=DEPRECATED_TITLE_SUFFIX
-        ).delete()
-
         # Delete the migration records
         self.show_status("Now deleting Migration Records ...")
-        MigrationRecord.objects.all().delete()
+        num_migration_records_deleted, _ = MigrationRecord.objects.all().delete()
+
+        # Delete the SubPropositionPages
+        self.show_status("Now deleting Subproposition Pages ...")
+        _, objects_deleted = (
+            QuerySet(model=SubPropositionPage)
+            .filter(title__endswith=DEPRECATED_TITLE_SUFFIX)
+            .delete()
+        )
+        num_subproposition_pages_deleted = objects_deleted.get(
+            "propositions.SubPropositionPage"
+        )
 
         if (n := num_migration_records_deleted) > 0:
             self.stdout.write(
