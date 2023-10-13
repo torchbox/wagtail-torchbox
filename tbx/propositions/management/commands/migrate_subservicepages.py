@@ -849,12 +849,14 @@ class Command(BaseCommand):
         except Exception as e:
             logger.exception(f"Error {message.replace(' ...', '')}: {e}")
             STREAMFIELD_PROCESSING_ERRORS.append(
-                len(STREAMFIELD_PROCESSING_ERRORS),  # "№"
-                operation.__name__,  # "Operation"
-                block,  # "Block"
-                f"{source.pk} » {source.title}",  # "SubServicePage"
-                f"{target.pk} » {target.title}",  # "SubPropositionPage"
-                str(e),  # "Error"
+                [
+                    len(STREAMFIELD_PROCESSING_ERRORS),  # "№"
+                    operation.__name__,  # "Operation"
+                    block,  # "Block"
+                    f"{source.pk} » {source.title}",  # "SubServicePage"
+                    f"{target.pk} » {target.title}",  # "SubPropositionPage"
+                    str(e),  # "Error"
+                ]
             )
         else:
             self.stdout.write(
@@ -1132,7 +1134,7 @@ class Command(BaseCommand):
                             subproposition_page,
                             error,
                         ) = row
-                        self.stdout.write(f"{count}.  {operation}")
+                        self.stdout.write(f"{count}. {operation}")
                         self.stdout.write("-" * 60)
                         self.stdout.write(f"    SubServicePage: {subservice_page}")
                         self.stdout.write(
