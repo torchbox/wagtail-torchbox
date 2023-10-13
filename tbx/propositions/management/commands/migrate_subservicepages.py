@@ -45,6 +45,17 @@ Best,
 » {site_url}
 """
 
+STREAMFIELD_PROCESSING_ERRORS = [
+    [
+        "№",
+        "Operation",
+        "Block",
+        "SubServicePage",
+        "SubPropositionPage",
+        "Error",
+    ]
+]
+
 # -----------------------------------------------------------------------------
 # 0. Helper functions
 # -----------------------------------------------------------------------------
@@ -756,8 +767,9 @@ class Command(BaseCommand):
             recipients,
         )
         email.attach_file(attachment)
-        if kwargs.get("extra_attachment"):
-            email.attach_file(kwargs.get("extra_attachment"))
+        if extra_attachments := kwargs.get("extra_attachments"):
+            for attachment in extra_attachments:
+                email.attach_file(attachment)
 
         try:
             email.send()
@@ -803,6 +815,53 @@ class Command(BaseCommand):
             None
         """
         self.stdout.write(self.style.NOTICE(message))
+
+    def perform_streamfield_operation(self, operation, source, target):
+        """
+        Performs a StreamField `operation` given the `source` and `target` pages.
+
+        If something goes wrong, we will take note of the error and carry on.
+
+        Args:
+            operation (function): The StreamField operation to be performed.
+            This could be, for instance:
+                - `construct_key_points_block`
+                - `construct_testimonials_block`
+                - `construct_processes_block`
+                - `construct_work_block`
+                - `construct_thinking_block`
+                - `copy_existing_blocks`
+            source (services.SubServicePage): The source Page object containing data for
+            the StreamField operation.
+            target (propositions.SubPropositionPage): The target Page object with a
+            `content` StreamField where the StreamField operation will be performed.
+
+        Returns:
+            None
+        """
+
+        action = operation.__name__.split("_")[0].capitalize()
+        block = operation.__name__.replace(f"{action.lower()}_", "")
+        message = f"{action}ing {block} from {source} ..."
+        self.show_status(message)
+        try:
+            operation(source, target)
+        except Exception as e:
+            logger.exception(f"Error {message.replace(' ...', '')}: {e}")
+            STREAMFIELD_PROCESSING_ERRORS.append(
+                len(STREAMFIELD_PROCESSING_ERRORS),  # "№"
+                operation.__name__,  # "Operation"
+                block,  # "Block"
+                f"{source.pk} » {source.title}",  # "SubServicePage"
+                f"{target.pk} » {target.title}",  # "SubPropositionPage"
+                str(e),  # "Error"
+            )
+        else:
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f"Successfully Completed {message.replace(' ...', '')}"
+                )
+            )
 
     def handle(self, *args, **options):
         """
@@ -904,23 +963,20 @@ class Command(BaseCommand):
             new_page.save()
 
             # Let's now deal with the content StreamField
-            self.show_status(f"Constructing key_points block from {old_page} ...")
-            construct_key_points_block(old_page, new_page)
-
-            self.show_status(f"Constructing processes block from {old_page} ...")
-            construct_processes_block(old_page, new_page)
-
-            self.show_status(f"Constructing testimonials block from {old_page} ...")
-            construct_testimonials_block(old_page, new_page)
-
-            self.show_status(f"Constructing work block from {old_page} ...")
-            construct_work_block(old_page, new_page)
-
-            self.show_status(f"Constructing thinking block from {old_page} ...")
-            construct_thinking_block(old_page, new_page)
-
-            self.show_status(f"Copying existing blocks from {old_page} ...")
-            copy_existing_blocks(old_page, new_page)
+            self.perform_streamfield_operation(
+                construct_key_points_block, old_page, new_page
+            )
+            self.perform_streamfield_operation(
+                construct_processes_block, old_page, new_page
+            )
+            self.perform_streamfield_operation(
+                construct_testimonials_block, old_page, new_page
+            )
+            self.perform_streamfield_operation(construct_work_block, old_page, new_page)
+            self.perform_streamfield_operation(
+                construct_thinking_block, old_page, new_page
+            )
+            self.perform_streamfield_operation(copy_existing_blocks, old_page, new_page)
 
             # Create a migration record
             MigrationRecord.objects.create(
@@ -961,13 +1017,29 @@ class Command(BaseCommand):
                 csv_data = self.generate_report(report_data)
                 csv_file = self.create_temporary_csv_file("migration_report", csv_data)
 
+                extra_attachments = []
+
                 if len(pages_to_manually_check) > 1:
                     extra_csv_data = self.generate_report(pages_to_manually_check)
                     extra_csv_file = self.create_temporary_csv_file(
-                        "pages_to_manually_check_links_to_avoid_404s", extra_csv_data
+                        "pages_to_manually_check_links_to_avoid_404s",
+                        extra_csv_data,
                     )
+                    extra_attachments.append(extra_csv_file)
+
+                if len(STREAMFIELD_PROCESSING_ERRORS) > 1:
+                    extra_csv_data = self.generate_report(STREAMFIELD_PROCESSING_ERRORS)
+                    extra_csv_file = self.create_temporary_csv_file(
+                        "streamfield_processing_errors", extra_csv_data
+                    )
+                    extra_attachments.append(extra_csv_file)
+
+                if extra_attachments:
                     self.notify_site_admins(
-                        recipients, message, csv_file, extra_attachment=extra_csv_file
+                        recipients,
+                        message,
+                        csv_file,
+                        extra_attachments=extra_attachments,
                     )
                 else:
                     self.notify_site_admins(recipients, message, csv_file)
@@ -1043,6 +1115,30 @@ class Command(BaseCommand):
                         self.stdout.write("-" * 60)
                         self.stdout.write(f"    Page id: {page_id}")
                         self.stdout.write(f"    Streamfield name: {streamfield_name}")
+                        self.stdout.write(f"    Error: {error}")
+
+                if len(STREAMFIELD_PROCESSING_ERRORS) > 1:
+                    self.show_status(
+                        "The following errors occurred while processing streamfields:"
+                    )
+                    for index, row in enumerate(STREAMFIELD_PROCESSING_ERRORS):
+                        if index == 0:
+                            continue  # Skip the header row
+                        (
+                            count,
+                            operation,
+                            block,
+                            subservice_page,
+                            subproposition_page,
+                            error,
+                        ) = row
+                        self.stdout.write(f"{count}.  {operation}")
+                        self.stdout.write("-" * 60)
+                        self.stdout.write(f"    SubServicePage: {subservice_page}")
+                        self.stdout.write(
+                            f"    SubPropositionPage: {subproposition_page}"
+                        )
+                        self.stdout.write(f"    Block: {block}")
                         self.stdout.write(f"    Error: {error}")
 
             # free up memory
