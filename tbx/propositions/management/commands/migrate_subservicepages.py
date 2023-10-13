@@ -853,38 +853,16 @@ class Command(BaseCommand):
         ]
 
         for count, old_page in enumerate(SubServicePage.objects.all(), start=1):
-            # wagtail core fields
             parent = old_page.get_parent().specific
             title = old_page.title
             slug = old_page.slug
-            owner = old_page.owner
             is_live = old_page.live
-            # *_published_at fields only apply to live pages
-            first_published_at = old_page.first_published_at
             last_published_at = old_page.last_published_at
-            locked = old_page.locked
-            # locked_* fields only apply to locked pages
-            locked_by = old_page.locked_by
-            locked_at = old_page.locked_at
-            locale = old_page.locale
-            seo_title = old_page.seo_title
-            search_description = old_page.search_description
-            show_in_menus = old_page.show_in_menus
-
-            # check for social fields
-            social_image = getattr(old_page, "social_image", None)
-            social_text = getattr(old_page, "social_text", "")
-
-            # other page fields
-            theme = old_page.theme
-            strapline = old_page.strapline
-            intro = old_page.intro
-            greeting_image_type = old_page.greeting_image_type
 
             # to avoid clashes with the new page we're about to create,
             # change the old page's title & slug, and unpublish if live
-            old_page.title = f"{old_page.title} {DEPRECATED_TITLE_SUFFIX}"
-            old_page.slug = f"{old_page.slug}{DEPRECATED_SLUG_SUFFIX}"
+            old_page.title = f"{title} {DEPRECATED_TITLE_SUFFIX}"
+            old_page.slug = f"{slug}{DEPRECATED_SLUG_SUFFIX}"
 
             old_page_revision = old_page.save_revision()
             if is_live:
@@ -897,28 +875,30 @@ class Command(BaseCommand):
             new_page = SubPropositionPage(
                 title=title,
                 slug=slug,
-                owner=owner,
+                owner=old_page.owner,
                 live=is_live,
-                locked=locked,
-                locale=locale,
-                seo_title=seo_title,
-                search_description=search_description,
-                show_in_menus=show_in_menus,
-                social_image=social_image,
-                social_text=social_text,
-                theme=theme,
-                strapline=strapline,
-                intro=intro,
-                greeting_image_type=greeting_image_type,
+                locked=old_page.locked,
+                locale=old_page.locale,
+                seo_title=old_page.seo_title,
+                search_description=old_page.search_description,
+                show_in_menus=old_page.show_in_menus,
+                social_image=getattr(old_page, "social_image", None),
+                social_text=getattr(old_page, "social_text", ""),
+                theme=old_page.theme,
+                strapline=old_page.strapline,
+                intro=old_page.intro,
+                greeting_image_type=old_page.greeting_image_type,
             )
 
             if is_live:
-                new_page.first_published_at = first_published_at
+                # *_published_at fields only apply to live pages
+                new_page.first_published_at = old_page.first_published_at
                 new_page.last_published_at = last_published_at
 
-            if locked:
-                new_page.locked_by = locked_by
-                new_page.locked_at = locked_at
+            if old_page.locked:
+                # locked_* fields only apply to locked pages
+                new_page.locked_by = old_page.locked_by
+                new_page.locked_at = old_page.locked_at
 
             parent.add_child(instance=new_page)
             new_page.save()
