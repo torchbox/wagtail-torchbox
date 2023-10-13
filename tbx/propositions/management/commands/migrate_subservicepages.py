@@ -504,41 +504,59 @@ def copy_existing_blocks(source, target):
 # -----------------------------------------------------------------------------
 
 
-def replace_link(match, ids):
+def replace_link(match, ids, reverse=False):
     """
-    Replace a link to a SubServicePage with a link to a SubPropositionPage.
+    Replace a link to a SubServicePage with a link to a SubPropositionPage or vice versa.
 
     Args:
         match (re.Match): The match object returned by the regex search.
-        ids (list): A list of IDs of SubServicePages that have been
-        migrated to SubPropositionPages.
+        ids (list): A list of IDs of either SubServicePages or SubPropositionPages.
+        reverse (bool): If True, replace links from SubPropositionPage to SubServicePage.
     """
-    old_page_id = int(match.group(1))
-    if old_page_id in ids:
-        old_page = SubServicePage.objects.get(pk=old_page_id)
-        new_page_instance = SubPropositionPage.objects.get(
-            title=old_page.title.replace(f" {DEPRECATED_TITLE_SUFFIX}", ""),
-            slug=old_page.slug.replace(DEPRECATED_SLUG_SUFFIX, ""),
+    page_id = int(match.group(1))
+    if page_id in ids:
+        page = (
+            SubServicePage.objects.get(pk=page_id)
+            if not reverse
+            else SubPropositionPage.objects.get(pk=page_id)
         )
-        return f'<a id="{new_page_instance.pk}" linktype="page">'
-    else:
-        # Return the original match if no replacement is made
-        return match.group(0)
+        if not reverse:
+            title_list = [page.title.replace(f" {DEPRECATED_TITLE_SUFFIX}", "")]
+            slug_list = [page.slug.replace(DEPRECATED_SLUG_SUFFIX, "")]
+            target = SubPropositionPage
+        else:
+            title_list = [page.title, page.title + f" {DEPRECATED_TITLE_SUFFIX}"]
+            slug_list = [page.slug, page.slug + DEPRECATED_SLUG_SUFFIX]
+            target = SubServicePage
+
+        target_page_instance = target.objects.filter(
+            title__in=title_list,
+            slug__in=slug_list,
+        ).first()
+        if target_page_instance:
+            return f'<a id="{target_page_instance.pk}" linktype="page">'
+
+    # Return the original match if no replacement is made
+    return match.group(0)
 
 
-def update_stream_data(data):
+def update_stream_data(data, source, target, reverse=False):
     """
-    Recursively updates data containing links to SubServicePages to point to
-    corresponding SubPropositionPages.
+    Recursively updates data containing links to source Pages to point to
+    corresponding target Pages.
 
     This function is designed to process a nested data structure, such as a JSON
-    object or a list, and replace links to SubServicePages with links to
-    SubPropositionPages. It works by recursively traversing the data structure and
+    object or a list, and replace links to source Pages with links to
+    target Pages. It works by recursively traversing the data structure and
     performing the necessary replacements.
 
     Args:
-        data (dict or list): The data structure containing links to SubServicePages
+        data (dict or list): The data structure containing links to source Pages
         that need to be updated.
+        source (SubServicePage / SubPropositionPage class): the Page class for the links that
+        we want to replace
+        target (SubServicePage / SubPropositionPage class): the Page class for the desired links
+        reverse (bool): If True, replace SubPropositionPage links with SubServicePage links.
 
     Returns:
         dict or list: The updated data structure with links replaced.
@@ -552,44 +570,70 @@ def update_stream_data(data):
         "page",
         "related_listing_page",
     ]
-    old_pages_ids = SubServicePage.objects.all().values_list("pk", flat=True)
+    source_pages_ids = source.objects.all().values_list("pk", flat=True)
 
     if isinstance(data, list):
-        new_data = []
+        target_data = []
         for item in data:
-            new_data.append(update_stream_data(item))
-        return new_data
+            target_data.append(
+                update_stream_data(item, source, target, reverse=reverse)
+            )
+        return target_data
 
     elif isinstance(data, dict):
-        new_data = {}
+        target_data = {}
         for key, value in data.items():
             if key in page_keys and isinstance(value, int):
-                if value in old_pages_ids:
-                    old_page = SubServicePage.objects.get(pk=value)
-                    new_page_instance = SubPropositionPage.objects.get(
-                        title=old_page.title.replace(f" {DEPRECATED_TITLE_SUFFIX}", ""),
-                        slug=old_page.slug.replace(DEPRECATED_SLUG_SUFFIX, ""),
-                    )
-                    new_data[key] = new_page_instance.pk
+                if value in source_pages_ids:
+                    source_page = source.objects.get(pk=value)
+                    if reverse:
+                        title_list = [
+                            source_page.title,
+                            source_page.title + f" {DEPRECATED_TITLE_SUFFIX}",
+                        ]
+                        slug_list = [
+                            source_page.slug,
+                            source_page.slug + DEPRECATED_SLUG_SUFFIX,
+                        ]
+                    else:
+                        title_list = [
+                            source_page.title.replace(f" {DEPRECATED_TITLE_SUFFIX}", "")
+                        ]
+                        slug_list = [
+                            source_page.slug.replace(DEPRECATED_SLUG_SUFFIX, "")
+                        ]
+
+                    target_page_instance = target.objects.filter(
+                        title__in=title_list,
+                        slug__in=slug_list,
+                    ).first()
+                    if target_page_instance:
+                        target_data[key] = target_page_instance.pk
                 else:
-                    new_data[key] = value
+                    target_data[key] = value
             elif key == "value" and isinstance(value, str):
-                # Use regex to search and replace old page IDs with new page IDs
+                # Use regex to search and replace source page IDs with target page IDs
                 pattern = r'<a id="(\d+)" linktype="page">'
-                new_value = re.sub(
-                    pattern, lambda match: replace_link(match, old_pages_ids), value
+                target_value = re.sub(
+                    pattern,
+                    lambda match: replace_link(
+                        match, source_pages_ids, reverse=reverse
+                    ),
+                    value,
                 )
-                new_data[key] = new_value
+                target_data[key] = target_value
             else:
-                new_data[key] = update_stream_data(value)
-        return new_data
+                target_data[key] = update_stream_data(
+                    value, source, target, reverse=reverse
+                )
+        return target_data
 
     else:
         return data
 
 
-def update_page_links():
-    pages = Page.objects.not_type(SubServicePage).specific()
+def update_page_links(source, target, reverse=False):
+    pages = Page.objects.not_type(source).specific()
     all_page_fields = [page._meta.get_fields() for page in pages]
     flattened_page_fields = list(chain.from_iterable(all_page_fields))
     unique_page_fields = set(flattened_page_fields)
@@ -636,7 +680,9 @@ def update_page_links():
                 field = getattr(page, streamfield_name)
                 try:
                     stream_data = field.get_prep_value()
-                    new_stream_data = update_stream_data(stream_data)
+                    new_stream_data = update_stream_data(
+                        stream_data, source, target, reverse=reverse
+                    )
                     updated_data = StreamValue(
                         field.stream_block,
                         new_stream_data,
@@ -653,6 +699,14 @@ def update_page_links():
                     logger.exception(
                         f"Error updating {streamfield_name} "
                         f"on page {page.id} ({page.title}): {attr_err}"
+                    )
+                    report_data.append(
+                        [
+                            page.id,
+                            page.title,
+                            streamfield_name,
+                            attr_err,
+                        ]
                     )
                 except ValidationError as val_err:
                     logger.exception(
@@ -683,8 +737,8 @@ def update_page_links():
     return report_data
 
 
-def update_rich_text_links():
-    pages = Page.objects.not_type(SubServicePage).specific()
+def update_rich_text_links(source, target, reverse=False):
+    pages = Page.objects.not_type(source).specific()
     all_page_fields = [page._meta.get_fields() for page in pages]
     flattened_page_fields = list(chain.from_iterable(all_page_fields))
     unique_page_fields = set(flattened_page_fields)
@@ -701,7 +755,7 @@ def update_rich_text_links():
     del unique_page_fields
     del rich_text_names
 
-    old_pages_ids = SubServicePage.objects.all().values_list("pk", flat=True)
+    source_pages_ids = source.objects.all().values_list("pk", flat=True)
 
     for page in pages:
         # Iterate through each rich text name
@@ -710,20 +764,40 @@ def update_rich_text_links():
             if hasattr(page, rich_text_name):
                 rich_text_field = getattr(page, rich_text_name)
                 changes_made = False
-                for page_id in old_pages_ids:
+                for page_id in source_pages_ids:
                     if f'<a id="{page_id}"' in rich_text_field:
-                        old_page = SubServicePage.objects.get(pk=page_id)
-                        new_page = SubPropositionPage.objects.get(
-                            title=old_page.title.replace(
-                                f" {DEPRECATED_TITLE_SUFFIX}", ""
-                            ),
-                            slug=old_page.slug.replace(DEPRECATED_SLUG_SUFFIX, ""),
-                        )
-                        new_rich_text_value = rich_text_field.replace(
-                            str(f'<a id="{page_id}"'), str(f'<a id="{new_page.id}"')
-                        )
-                        setattr(page, rich_text_name, new_rich_text_value)
-                        changes_made = True
+                        source_page = source.objects.get(pk=page_id)
+                        if reverse:
+                            title_list = [
+                                source_page.title,
+                                source_page.title + f" {DEPRECATED_TITLE_SUFFIX}",
+                            ]
+                            slug_list = [
+                                source_page.slug,
+                                source_page.slug + DEPRECATED_SLUG_SUFFIX,
+                            ]
+                        else:
+                            title_list = [
+                                source_page.title.replace(
+                                    f" {DEPRECATED_TITLE_SUFFIX}", ""
+                                )
+                            ]
+                            slug_list = [
+                                source_page.slug.replace(DEPRECATED_SLUG_SUFFIX, "")
+                            ]
+
+                        target_page = target.objects.filter(
+                            title__in=title_list,
+                            slug__in=slug_list,
+                        ).first()
+
+                        if target_page:
+                            target_rich_text_value = rich_text_field.replace(
+                                str(f'<a id="{page_id}"'),
+                                str(f'<a id="{target_page.id}"'),
+                            )
+                            setattr(page, rich_text_name, target_rich_text_value)
+                            changes_made = True
 
                 if changes_made:
                     revision = page.save_revision()
@@ -1003,9 +1077,9 @@ class Command(BaseCommand):
 
         # Update links
         self.show_status("Now updating links in richtext fields ...")
-        update_rich_text_links()
+        update_rich_text_links(SubServicePage, SubPropositionPage)
         self.show_status("Now updating links in streamfields ...")
-        pages_to_manually_check = update_page_links()
+        pages_to_manually_check = update_page_links(SubServicePage, SubPropositionPage)
 
         total_migrations = len(report_data) - 1  # Exclude header row
         if (n := total_migrations) > 0:
