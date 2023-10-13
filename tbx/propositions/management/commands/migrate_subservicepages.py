@@ -824,7 +824,8 @@ class Command(BaseCommand):
 
         Args:
             operation (function): The StreamField operation to be performed.
-            This could be, for instance:
+            The assumption here is that the function has two arguments: source & target.
+            For instance:
                 - `construct_key_points_block`
                 - `construct_testimonials_block`
                 - `construct_processes_block`
