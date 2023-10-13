@@ -92,133 +92,63 @@ def add_stream_block_to_content(page, block_type, block_value, save_revision=Tru
     page.save()
 
 
+def merge_blocks(page, block_type, key, val, save_revision=True):
+    """
+    Merges the provided block_type with the target page's
+    `content` StreamField's child block of the same type.
+
+    Args:
+        page (wagtail.models.Page): The page object to which the
+        child block will be added.
+        block_type (str): The type of the child block we are working with
+        (e.g., "key_points", "testimonials").
+        key (str): The key to be used to merge the child block.
+        val (str): The value to be used to merge the child block.
+        save_revision (bool): Whether to save a revision of the page
+        object after adding the child block. Defaults to True.
+
+    Returns:
+        Boolean: True if the block was merged, False otherwise.
+    """
+
+    # check if block_type is in the page's content StreamField
+    # if not, return False, and create a new block elsewhere.
+    good_to_merge = any(
+        item.get("type") == block_type
+        for item in page.content.blocks_by_name().stream_value.get_prep_value()
+    )
+    if not good_to_merge:
+        return False
+
+    stream_data = []
+    for item in page.content.get_prep_value():
+        if item["type"] == block_type:
+            data = item["value"].get(key, [])
+            data.extend(val)
+            stream_data.append(item)
+        else:
+            stream_data.append(item)
+
+    page.content = StreamValue(
+        page.content.stream_block,
+        stream_data,
+        is_lazy=True,
+    )
+    if save_revision:
+        revision = page.save_revision()
+        revision.publish()
+
+    page.save()
+
+    return True
+
+
 def is_streamfield(field):
     return isinstance(field, StreamField)
 
 
 # -----------------------------------------------------------------------------
-# 1. Copy existing blocks
-# -----------------------------------------------------------------------------
-
-
-def copy_existing_blocks(source, target):
-    """
-    Copy existing blocks from SubServicePage's content StreamField to
-    SubPropositionPage's content StreamField.
-
-    This is the first operation in the data migration.
-    """
-    changes_made = False
-
-    has_testimonials_and_clients = "testimonials" and "clients" in [
-        block.block_type for block in source.content
-    ]
-
-    for block in source.content:
-        # We only care about blocks with non-empty content
-        if block.value:
-            # Clients block
-            if block.block_type == "clients" and not has_testimonials_and_clients:
-                # we don't have a `clients` block on SubPropositionPage
-                # therefore, we need to add this to the `testimonials` block's `client_logos` field
-                data = {
-                    "title": "Clients",  # this is the default title
-                    "client_logos": [logo for logo in block.value if logo],
-                }
-                add_stream_block_to_content(
-                    target, "testimonials", data, save_revision=False
-                )
-            # Testimonials block
-            elif (
-                block.block_type == "testimonials" and not has_testimonials_and_clients
-            ):
-                # the source & target blocks are slightly different
-                # so we need to add this to the the `testimonials` block's `testimonials` field
-                data = {
-                    "title": "Clients",  # this is the default title
-                    "testimonials": [
-                        {
-                            "quote": testimonial.quote,
-                            "name": testimonial.name,
-                            "role": testimonial.role,
-                            "link": testimonial.link if testimonial.link else None,
-                        }
-                        for testimonial in block.value
-                    ],
-                }
-                add_stream_block_to_content(
-                    target, "testimonials", data, save_revision=False
-                )
-            # Key Points Summary block
-            elif block.block_type == "key_points_summary":
-                # we don't have a `key_points_summary` block on SubPropositionPage
-                # therefore, we need to add this to the `key_points` block's `key_points` field
-                data = {
-                    "title": "Services",  # this is the default title
-                    "key_points": [
-                        {
-                            "text": key_point.text,
-                            "linked_page": key_point.linked_page.pk
-                            if key_point.linked_page
-                            else None,
-                        }
-                        for key_point in block.value
-                    ],
-                }
-                add_stream_block_to_content(
-                    target, "key_points", data, save_revision=False
-                )
-            else:
-                # Embed + CTA block
-                # CTA block
-                target.content.append((block.block_type, block.value))
-
-            changes_made = True
-
-    if changes_made:
-        target.save()
-
-    if has_testimonials_and_clients:
-        # combine the content from the source `testimonials` and `clients` blocks
-        # into a single `testimonials` block on the target
-
-        testimonials = [
-            block
-            for block in source.content
-            if "testimonials" in block.block_type and block.value
-        ]
-        # the assumtion is that we only have one `testimonials` block
-        assert len(testimonials) <= 1
-        testimonials_block = testimonials[0] if testimonials else None
-
-        clients = [
-            block
-            for block in source.content
-            if "clients" in block.block_type and block.value
-        ]
-        # the assumtion is that we only have one `clients` block
-        assert len(clients) <= 1
-        clients_block = clients[0] if clients else None
-
-        data = {
-            "title": "Clients",  # this is the default title
-            "client_logos": [logo for logo in clients_block.value if logo],
-            "testimonials": [
-                {
-                    "quote": testimonial.quote,
-                    "name": testimonial.name,
-                    "role": testimonial.role,
-                    "link": testimonial.link if testimonial.link else None,
-                }
-                for testimonial in testimonials_block.value
-            ],
-        }
-
-        add_stream_block_to_content(target, "testimonials", data, save_revision=False)
-
-
-# -----------------------------------------------------------------------------
-# 2. Create new blocks
+# 1. Create new blocks
 # -----------------------------------------------------------------------------
 
 
@@ -417,6 +347,145 @@ def construct_thinking_block(source, target):
         }
 
         add_stream_block_to_content(target, "thinking", data)
+
+
+# -----------------------------------------------------------------------------
+# 2. Copy existing blocks
+# -----------------------------------------------------------------------------
+
+
+def copy_existing_blocks(source, target):
+    """
+    Copy existing blocks from SubServicePage's content StreamField to
+    SubPropositionPage's content StreamField.
+    """
+    changes_made = False
+
+    has_testimonials_and_clients = "testimonials" and "clients" in [
+        block.block_type for block in source.content
+    ]
+
+    for block in source.content:
+        # We only care about blocks with non-empty content
+        if block.value:
+            # Clients block
+            if block.block_type == "clients" and not has_testimonials_and_clients:
+                # we don't have a `clients` block on SubPropositionPage
+                # therefore, we need to add this to the `testimonials` block's `client_logos` field
+                data = {
+                    "title": "Clients",  # this is the default title
+                    "client_logos": [logo for logo in block.value if logo],
+                }
+                is_merged = merge_blocks(
+                    target, "testimonials", "client_logos", data["client_logos"]
+                )
+                if not is_merged:
+                    add_stream_block_to_content(target, "testimonials", data)
+            # Testimonials block
+            elif (
+                block.block_type == "testimonials" and not has_testimonials_and_clients
+            ):
+                # the source & target blocks are slightly different
+                # so we need to add this to the the `testimonials` block's `testimonials` field
+                data = {
+                    "title": "Clients",  # this is the default title
+                    "client_logos": [],
+                    "testimonials": [
+                        {
+                            "quote": testimonial.get("quote", ""),
+                            "name": testimonial.get("name", ""),
+                            "role": testimonial.get("role", ""),
+                            "link": [
+                                link.get_prep_value()
+                                for link in testimonial.get("link", [])
+                            ],
+                        }
+                        for testimonial in block.value
+                    ],
+                }
+                is_merged = merge_blocks(
+                    target, "testimonials", "testimonials", data["testimonials"]
+                )
+                if not is_merged:
+                    add_stream_block_to_content(target, "testimonials", data)
+            # Key Points Summary block
+            elif block.block_type == "key_points_summary":
+                # we don't have a `key_points_summary` block on SubPropositionPage
+                # therefore, we need to add this to the `key_points` block's `key_points` field
+                data = {
+                    "title": "Services",  # this is the default title
+                    "key_points": [
+                        {
+                            "text": key_point.text,
+                            "linked_page": key_point.linked_page.pk
+                            if key_point.linked_page
+                            else None,
+                        }
+                        for key_point in block.value
+                    ],
+                }
+                is_merged = merge_blocks(
+                    target, "key_points", "key_points", data["key_points"]
+                )
+                if not is_merged:
+                    add_stream_block_to_content(target, "key_points", data)
+            else:
+                # Embed + CTA block
+                # CTA block
+                target.content.append((block.block_type, block.value))
+
+            changes_made = True
+
+    if changes_made:
+        target.save()
+
+    if has_testimonials_and_clients:
+        # combine the content from the source `testimonials` and `clients` blocks
+        # into a single `testimonials` block on the target
+
+        testimonials = [
+            block
+            for block in source.content
+            if "testimonials" in block.block_type and block.value
+        ]
+        # the assumtion is that we only have one `testimonials` block
+        assert len(testimonials) <= 1
+        testimonials_block = testimonials[0] if testimonials else None
+
+        clients = [
+            block
+            for block in source.content
+            if "clients" in block.block_type and block.value
+        ]
+        # the assumtion is that we only have one `clients` block
+        assert len(clients) <= 1
+        clients_block = clients[0] if clients else None
+
+        data = {
+            "title": "Clients",  # this is the default title
+            "client_logos": [logo for logo in clients_block.value if logo],
+            "testimonials": [
+                {
+                    "quote": testimonial.get("quote", ""),
+                    "name": testimonial.get("name", ""),
+                    "role": testimonial.get("role", ""),
+                    "link": [
+                        link.get_prep_value() for link in testimonial.get("link", [])
+                    ],
+                }
+                for testimonial in testimonials_block.value
+            ],
+        }
+
+        good_to_merge = any(
+            item.get("type") == "testimonials"
+            for item in target.content.blocks_by_name().stream_value.get_prep_value()
+        )
+        if not good_to_merge:
+            add_stream_block_to_content(target, "testimonials", data)
+        else:
+            merge_blocks(target, "testimonials", "testimonials", data["client_logos"])
+            merge_blocks(target, "testimonials", "testimonials", data["testimonials"])
 
 
 # -----------------------------------------------------------------------------
@@ -855,9 +924,6 @@ class Command(BaseCommand):
             new_page.save()
 
             # Let's now deal with the content StreamField
-            self.show_status(f"Copying existing blocks from {old_page} ...")
-            copy_existing_blocks(old_page, new_page)
-
             self.show_status(f"Constructing key_points block from {old_page} ...")
             construct_key_points_block(old_page, new_page)
 
@@ -872,6 +938,9 @@ class Command(BaseCommand):
 
             self.show_status(f"Constructing thinking block from {old_page} ...")
             construct_thinking_block(old_page, new_page)
+
+            self.show_status(f"Copying existing blocks from {old_page} ...")
+            copy_existing_blocks(old_page, new_page)
 
             # Create a migration record
             MigrationRecord.objects.create(
