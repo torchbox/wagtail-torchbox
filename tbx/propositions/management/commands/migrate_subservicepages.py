@@ -962,6 +962,13 @@ class Command(BaseCommand):
             parent.add_child(instance=new_page)
             new_page.save()
 
+            # Create a migration record
+            MigrationRecord.objects.create(
+                subservice_page=old_page,
+                subservice_page_was_live=is_live,
+                subproposition_page=new_page,
+            )
+
             # Let's now deal with the content StreamField
             self.perform_streamfield_operation(
                 construct_key_points_block, old_page, new_page
@@ -977,13 +984,6 @@ class Command(BaseCommand):
                 construct_thinking_block, old_page, new_page
             )
             self.perform_streamfield_operation(copy_existing_blocks, old_page, new_page)
-
-            # Create a migration record
-            MigrationRecord.objects.create(
-                subservice_page=old_page,
-                subservice_page_was_live=is_live,
-                subproposition_page=new_page,
-            )
 
             # Add the page data to the report
             report_data.append(
