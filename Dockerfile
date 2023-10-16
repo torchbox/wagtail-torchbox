@@ -1,4 +1,4 @@
-FROM node:14 as frontend
+FROM node:16 as frontend
 
 # Make build & post-install scripts behave as if we were in a CI environment (e.g. for logging verbosity purposes).
 ARG CI=true
@@ -100,7 +100,9 @@ FROM production as dev
 USER root
 
 # Install `psql`, useful for `manage.py dbshell`
-RUN apt-get install -y postgresql-client
+RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
+    postgresql-client \
+    && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
 # Restore user
 USER tbx
