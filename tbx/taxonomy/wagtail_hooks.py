@@ -1,4 +1,4 @@
-from wagtail_modeladmin.options import modeladmin_register
+from wagtail.snippets.models import register_snippet
 
 from .admin import TaxonomyModelAdminGroup
 
