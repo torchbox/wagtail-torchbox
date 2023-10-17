@@ -1,17 +1,14 @@
-from django.contrib.admin.utils import quote
-from django.core.exceptions import PermissionDenied
-from django.urls import re_path
-from django.utils.functional import cached_property
-from django.utils.translation import gettext as _
-
-from wagtail_modeladmin.helpers import ButtonHelper
-from wagtail_modeladmin.options import ModelAdmin, ModelAdminGroup
-from wagtail_modeladmin.views import DeleteView, InstanceSpecificView
+from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
 
 from . import models
 
 
-class ServiceModelAdmin(SnippetViewSet):
+class TaxonomyModelAdmin(SnippetViewSet):
+    def get_admin_urls_for_registration(self):
+        return super().get_admin_urls_for_registration()
+
+
+class ServiceModelAdmin(TaxonomyModelAdmin):
     model = models.Service
     base_url_path = "taxonomy/service"
     list_display = ("name", "slug", "sort_order")
