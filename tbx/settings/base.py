@@ -568,3 +568,5 @@ BIRDBATH_PROCESSORS = [
     "birdbath.processors.users.UserEmailAnonymiser",
     "birdbath.processors.users.UserPasswordAnonymiser",
 ]
+# people hr feed
+PEOPLEHR_FEED_URL = env.get("PEOPLEHR_FEED_URL"),

@@ -2,7 +2,6 @@ from django.conf import settings
 from django.core.cache import cache
 
 from tbx.core.api import PeopleHRFeed
-from tbx.core.models import JobIndexPage
 
 
 def fb_app_id(request):
@@ -21,13 +20,9 @@ def peoplehr_jobs_count(request):
     job_count = cache.get(CACHE_KEY)
 
     if not job_count:
-        job_index = JobIndexPage.objects.first()
-        if job_index:
-            peoplehr_feed = PeopleHRFeed()
-            job_count = peoplehr_feed.get_job_count(job_index.jobs_xml_feed)
-        else:
-            job_count = 0
-        cache.set(CACHE_KEY, job_count, CACHE_TIMEOUT)
+        peoplehr_feed = PeopleHRFeed()
+        job_count = peoplehr_feed.get_job_count(settings.PEOPLEHR_FEED_URL)
+    cache.set(CACHE_KEY, job_count, CACHE_TIMEOUT)
 
     return {"job_count": job_count}
 
