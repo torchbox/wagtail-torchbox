@@ -62,7 +62,7 @@
         border-bottom: 2px solid transparent; // prevent layout shift
 
         @include media-query(large) {
-            grid-template-rows: 1fr 30px;
+            grid-template-rows: 1fr 0.25fr;
 
             // show CTA link on hover (only on desktop)
             &:focus,
@@ -97,27 +97,29 @@
     }
 
     &__cta {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
         position: relative;
-        margin-top: 10px;
+        display: inline-block;
         color: transparent;
         font-size: rem(16px);
         font-weight: $weight--medium;
         transition: color $transition-quick;
+        line-height: 1.2;
+        padding-right: 20px;
+        margin-top: 5px;
+        margin-left: 20px;
+        text-align: center;
+        min-height: 0;
 
         &::after {
             content: '';
-            display: block;
+            display: inline-block;
             position: relative;
-            right: -5px;
-            top: 7px;
-            flex-grow: 0;
-            flex-shrink: 0;
+            top: 3px;
             background-color: transparent;
             clip-path: $arrow-path;
             transition: color $transition;
+            margin-right: -20px;
+            margin-left: 5px;
 
             @include media-query(large) {
                 width: 15px;
@@ -136,6 +138,8 @@
 
     // nesting necessary to override default streamfield styling
     .streamfield & {
+        padding: 0 0 25px;
+
         &::before {
             content: none; // don't show li arrow
         }
