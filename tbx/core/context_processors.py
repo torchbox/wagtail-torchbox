@@ -22,7 +22,7 @@ def peoplehr_jobs_count(request):
     if not job_count:
         peoplehr_feed = PeopleHRFeed()
         job_count = peoplehr_feed.get_job_count(settings.PEOPLEHR_FEED_URL)
-    cache.set(CACHE_KEY, job_count, CACHE_TIMEOUT)
+        cache.set(CACHE_KEY, job_count, CACHE_TIMEOUT)
 
     return {"job_count": job_count}
 
