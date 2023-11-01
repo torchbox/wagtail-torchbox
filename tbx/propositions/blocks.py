@@ -44,16 +44,6 @@ class KeyPointsBlock(blocks.StructBlock):
         template = "patterns/molecules/streamfield/blocks/key-points.html"
 
 
-class TestimonialBlock(blocks.StructBlock):
-    quote = blocks.TextBlock()
-    name = blocks.CharBlock(max_length=255)
-    role = blocks.CharBlock(max_length=255)
-
-    class Meta:
-        icon = "openquote"
-        label = "Testimonial"
-
-
 class TestimonialsBlock(blocks.StructBlock):
     title = blocks.CharBlock(
         label="Testimonials section title",
@@ -65,7 +55,7 @@ class TestimonialsBlock(blocks.StructBlock):
         required=False,
     )
     testimonials = blocks.ListBlock(
-        TestimonialBlock(),
+        core_blocks.TestimonialBlock(),
         required=False,
     )
 
@@ -201,7 +191,7 @@ class ThinkingBlock(blocks.StructBlock):
                 "date": blog_post.date,
             }
             for blog_post in value.get("featured_blog_posts")
-            if blog_post.live
+            if blog_post and blog_post.live
         ]
 
     def get_context(self, value, parent_context=None):

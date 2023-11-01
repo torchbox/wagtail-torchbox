@@ -60,7 +60,7 @@ class WorkPage(SocialFields, Page):
 
     parent_page_types = ["WorkIndexPage"]
 
-    date = models.DateField("Post date", null=True)
+    date = models.DateField("Post date", blank=True, null=True)
     body = StreamField(StoryBlock(), use_json_field=True)
     body_word_count = models.PositiveIntegerField(null=True, editable=False)
     homepage_image = models.ForeignKey(
