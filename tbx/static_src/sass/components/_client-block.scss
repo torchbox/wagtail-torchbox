@@ -6,7 +6,17 @@
 
     &__container {
         @include container();
-        padding: 90px 0 0;
+        margin: 0;
+        padding: 0;
+
+        .service-section & {
+            // on sub-proposition pages client logos sit within a service-section container
+            // on proposition pages they sit within a proposition-section container, which has a left and right margin
+            // adds space below the absolutely positioned heading
+            padding: 90px 0 0;
+            // add left and right margin to match the proposition-section
+            margin: 0 $variable-gutter--small;
+        }
     }
 
     &__block {
@@ -42,13 +52,6 @@
             @include media-query(medium) {
                 margin-bottom: 200px;
             }
-        }
-    }
-
-    .streamfield & {
-        #{$root}__container {
-            margin: 0;
-            padding-top: 0;
         }
     }
 }

@@ -1,0 +1,4 @@
+{% load wagtailcore_tags %}
+<div class="service-section" id="{{ value.title|slugify }}" data-service-section>
+    {% include "patterns/molecules/streamfield/blocks/client-logo-block.html" with title=value.title value=value.client_logos quotes=value.testimonials %}
+</div>

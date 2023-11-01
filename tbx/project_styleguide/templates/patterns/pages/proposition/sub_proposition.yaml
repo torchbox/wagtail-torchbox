@@ -1,0 +1,76 @@
+context:
+  blog_index_page:
+    url: '#'
+  page:
+    blogs_section_title: Thinking
+    case_studies_section_title: Work
+    client_logos:
+      all:
+        - True
+        - True
+        - True
+        - True
+        - True
+        - True
+        - True
+    contact:
+      email_address: willh@torchbox.com
+      phone_number: +441608811870
+    featured_case_studies:
+      all:
+        - case_study:
+            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+            client: Oxfam
+            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+        - case_study:
+            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+            client: Oxfam
+            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+        - case_study:
+            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+            client: Oxfam
+            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+        - case_study:
+            title: We’ve launched a supporter-centred Wagtail website for Oxfam GB
+            client: Oxfam
+            listing_summary: Following the launch of a new public engagement strategy Oxfam needed a website to ‘make it happen’ by reshaping and tailoring the entire experience to the needs of Oxfam’s supporters.
+    heading_for_key_points: '<p><b>We help you create digital products and services, fast</b>. And, you can transform your organisation along the way.</p>'
+    key_points_section_title: Services
+    key_points:
+      all:
+        - text: UX Research and Design
+        - text: Design Sprints
+        - text: Software Engineering
+        - text: Wagtail CMS services
+        - text: Digital marketing
+    strapline: The digital product agency <span>for tomorrow’s nonprofits</span>.
+    testimonials_section_title: Clients
+    testimonials:
+      all:
+        - {
+            quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+            name: Sarah Toms,
+            role: Executive Director,
+            Wharton Interactive at The Wharton School,
+          }
+        - {
+            quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+            name: Sarah Toms,
+            role: Executive Director,
+            Wharton Interactive at The Wharton School,
+          }
+        - {
+            quote: Thank you for your amazing and continued partnership Torchbox - our new website exceeds expectations!,
+            name: Sarah Toms,
+            role: Executive Director,
+            Wharton Interactive at The Wharton School,
+          }
+    title: Service
+    get_verbose_name: service-page
+  work_index_page:
+    url: '#'
+
+tags:
+  image:
+    client.image width-400 class="client-item__image" loading="lazy":
+      raw: '<img src="https://placekitten.com/400/300" class="client-item__image">'

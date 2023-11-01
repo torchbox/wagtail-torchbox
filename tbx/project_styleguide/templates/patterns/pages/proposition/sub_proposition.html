@@ -1,0 +1,10 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro in_page_nav=True %}
+
+    {% include_block page.content %}
+
+{% endblock %}

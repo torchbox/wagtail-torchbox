@@ -1,0 +1,52 @@
+<nav class="in-page-nav" aria-label="In page navigation" data-in-page-nav>
+    <div class="in-page-nav__inner">
+        <div class="in-page-nav__header">
+            <a href="#" title="Back to top" class="in-page-nav__back-to-top">
+                <svg aria-hidden="true" class="in-page-nav__logo">
+                    <use xlink:href="#flame" />
+                </svg>
+                <span class="in-page-nav__title">
+                    {{ title }}
+                </span>
+            </a>
+        </div>
+        <ul class="in-page-nav__container">
+            {% if item.key_points_section_title %}
+                <li class="in-page-nav__item">
+                    <a class="in-page-nav__link" href="#{{ item.key_points_section_title|slugify }}">
+                        {{ item.key_points_section_title }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if item.process_section_title %}
+                <li class="in-page-nav__item">
+                    <a class="in-page-nav__link" href="#{{ item.process_section_title|slugify }}">
+                        {{ item.process_section_title }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if item.testimonials_section_title %}
+                <li class="in-page-nav__item">
+                    <a class="in-page-nav__link" href="#{{ item.testimonials_section_title|slugify }}">
+                        {{ item.testimonials_section_title }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if item.case_studies_section_title %}
+                <li class="in-page-nav__item">
+                    <a class="in-page-nav__link" href="#{{ item.case_studies_section_title|slugify }}">
+                        {{ item.case_studies_section_title }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if item.blogs_section_title %}
+                <li class="in-page-nav__item">
+                    <a class="in-page-nav__link" href="#{{ item.blogs_section_title|slugify }}">
+                        {{ item.blogs_section_title }}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<div class="sentinel" data-sticky-nav aria-hidden="true"></div>

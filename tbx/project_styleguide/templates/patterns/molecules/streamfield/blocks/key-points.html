@@ -1,0 +1,4 @@
+{% load wagtailcore_tags %}
+<div class="service-section" id="{{ value.title|slugify }}" data-service-section>
+    {% include "patterns/molecules/help-block/help-block.html" with title=value.title intro=value.heading_for_key_points items=value.key_points contact=value.contact contact_reasons=value.contact_reasons %}
+</div>
