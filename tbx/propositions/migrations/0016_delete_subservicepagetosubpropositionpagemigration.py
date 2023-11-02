@@ -3,14 +3,38 @@
 from django.db import migrations
 
 
+def delete_pages(apps, schema_editor):
+    SubServicePageToSubPropositionPageMigration = apps.get_model(
+        "propositions", "SubServicePageToSubPropositionPageMigration"
+    )
+    SubServicePageToSubPropositionPageMigration.objects.all().delete()
+
+
+def nooperation(apps, schema_editor):
+    pass
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
         ("propositions", "0015_add_optional_link_to_testimonials"),
     ]
 
-    operations = [
+    state_operations = [
         migrations.DeleteModel(
             name="SubServicePageToSubPropositionPageMigration",
+        ),
+    ]
+
+    operations = [
+        migrations.SeparateDatabaseAndState(
+            state_operations=[],
+            database_operations=[
+                migrations.RunPython(delete_pages, nooperation),
+            ],
+        ),
+        migrations.SeparateDatabaseAndState(
+            state_operations=state_operations,
+            database_operations=[],
         ),
     ]
