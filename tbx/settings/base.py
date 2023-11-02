@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "tbx.navigation",
     "tbx.people",
     "tbx.propositions",
-    "tbx.services",
+    "tbx.services",  # NOTE: No longer in use. See README in app directory.
     "tbx.sign_up_form",
     "tbx.taxonomy",
     "tbx.work",
