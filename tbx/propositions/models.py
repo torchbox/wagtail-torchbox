@@ -4,9 +4,11 @@ from django.db import models
 from django.utils.functional import cached_property
 
 from tbx.blog.models import BlogIndexPage
-from tbx.core.blocks import PageSectionStoryBlock
 from tbx.core.utils.models import SocialFields
-from tbx.propositions.blocks import SubPropositionPageStoryBlock
+from tbx.propositions.blocks import (
+    PropositionPageStoryBlock,
+    SubPropositionPageStoryBlock,
+)
 from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
@@ -63,21 +65,21 @@ class PropositionPage(SocialFields, Page):
     services_section_title = models.CharField(blank=True, max_length=255)
     services_section_intro = RichTextField(blank=True, features=INTRO_RICHTEXT_FEATURES)
     services_section_body = StreamField(
-        PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
+        PropositionPageStoryBlock(), blank=True, use_json_field=True, collapsed=True
     )
 
     # Our clients section
     clients_section_title = models.CharField(blank=True, max_length=255)
     clients_section_intro = RichTextField(blank=True, features=INTRO_RICHTEXT_FEATURES)
     clients_section_body = StreamField(
-        PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
+        PropositionPageStoryBlock(), blank=True, use_json_field=True, collapsed=True
     )
 
     # Team section
     team_section_title = models.CharField(blank=True, max_length=255)
     team_section_intro = RichTextField(blank=True, features=INTRO_RICHTEXT_FEATURES)
     team_section_body = StreamField(
-        PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
+        PropositionPageStoryBlock(), blank=True, use_json_field=True, collapsed=True
     )
 
     search_fields = Page.search_fields + [
@@ -148,6 +150,14 @@ class PropositionPage(SocialFields, Page):
             "Our clients",
             "Our team",
         ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context.update(
+            blog_index_page=BlogIndexPage.objects.live().first(),
+            work_index_page=WorkIndexPage.objects.live().first(),
+        )
+        return context
 
 
 class SubPropositionPage(SocialFields, Page):

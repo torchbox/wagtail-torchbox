@@ -205,6 +205,11 @@ class ThinkingBlock(blocks.StructBlock):
         template = "patterns/molecules/streamfield/blocks/thinking.html"
 
 
+class PropositionPageStoryBlock(core_blocks.PageSectionStoryBlock):
+    work = WorkBlock()
+    thinking = ThinkingBlock()
+
+
 class SubPropositionPageStoryBlock(blocks.StreamBlock):
     # Page sections (headings appear in the in-page-nav in hero)
     key_points = KeyPointsBlock(
