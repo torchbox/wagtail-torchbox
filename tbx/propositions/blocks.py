@@ -4,7 +4,6 @@ from django.forms.utils import ErrorList
 from tbx.core import blocks as core_blocks
 from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
-from wagtail.embeds import blocks as embed_blocks
 from wagtail.snippets import blocks as snippet_blocks
 
 
@@ -113,14 +112,6 @@ class ProcessesBlock(blocks.StructBlock):
         default="Process",
     )
     heading_for_processes = blocks.TextBlock(required=False)
-    use_process_block_image = blocks.BooleanBlock(
-        required=False,
-        default=False,
-    )
-    processes_section_embed_url = embed_blocks.EmbedBlock(
-        label="Embed URL",
-        required=False,
-    )
     processes = blocks.ListBlock(ProcessBlock())
     process_section_cta = blocks.RichTextBlock(
         label="Process section CTA",

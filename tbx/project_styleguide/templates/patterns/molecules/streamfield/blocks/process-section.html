@@ -1,4 +1,4 @@
 {% load wagtailcore_tags %}
 <div class="service-section process" id="{{ value.title|slugify }}" data-service-section>
-    {% include "patterns/organisms/process-block/process-block.html" with processes=value.processes section_title=value.title section_cta=value.process_section_cta has_process_block_image=value.use_process_block_image processes_section_embed_url=value.processes_section_embed_url %}
+    {% include "patterns/organisms/process-block/process-block.html" with processes=value.processes section_title=value.title section_cta=value.process_section_cta %}
 </div>
