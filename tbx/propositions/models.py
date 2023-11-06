@@ -85,14 +85,24 @@ class PropositionPage(SocialFields, Page):
     )
 
     # Our thinking section
-    our_thinking_section_body = StreamField([
-        ('our_thinking', ThinkingBlock()),
-    ], use_json_field=True, blank=True, max_num=1)
+    our_thinking_section_body = StreamField(
+        [
+            ("our_thinking", ThinkingBlock()),
+        ],
+        use_json_field=True,
+        blank=True,
+        max_num=1,
+    )
 
     # Our work section
-    our_work_section_body = StreamField([
-        ('our_work', WorkBlock()),
-    ], use_json_field=True, blank=True, max_num=1)
+    our_work_section_body = StreamField(
+        [
+            ("our_work", WorkBlock()),
+        ],
+        use_json_field=True,
+        blank=True,
+        max_num=1,
+    )
 
     search_fields = Page.search_fields + [
         index.SearchField("service"),
