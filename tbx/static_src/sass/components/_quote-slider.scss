@@ -3,6 +3,11 @@
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
 
+    // On the sub-proposition page, when the quote is the first block in a section, add padding to compensate for the offset quote svg, so we don't overlap the absolutely positioned heading
+    .service-section .client-block__section:first-child & {
+        padding-top: 100px;
+    }
+
     &__icon {
         fill: var(--color--icon, var(--color--accent));
         width: 20vw;
