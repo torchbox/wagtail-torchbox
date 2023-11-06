@@ -6,7 +6,7 @@ from django.utils.functional import cached_property
 from tbx.blog.models import BlogIndexPage
 from tbx.core.blocks import PageSectionStoryBlock
 from tbx.core.utils.models import SocialFields
-from tbx.propositions.blocks import SubPropositionPageStoryBlock
+from tbx.propositions.blocks import SubPropositionPageStoryBlock, ThinkingBlock, WorkBlock
 from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
@@ -80,6 +80,16 @@ class PropositionPage(SocialFields, Page):
         PageSectionStoryBlock(), blank=True, use_json_field=True, collapsed=True
     )
 
+    # Our thinking section
+    our_thinking_section_body = StreamField([
+        ('our_thinking', ThinkingBlock()),
+    ], use_json_field=True, blank=True, max_num=1)
+
+    # Our work section
+    our_work_section_body = StreamField([
+        ('our_work', WorkBlock()),
+    ], use_json_field=True, blank=True, max_num=1)
+
     search_fields = Page.search_fields + [
         index.SearchField("service"),
         index.SearchField("intro"),
@@ -134,6 +144,8 @@ class PropositionPage(SocialFields, Page):
             heading="Our team",
             classname="collapsible",
         ),
+        FieldPanel("our_thinking_section_body"),
+        FieldPanel("our_work_section_body"),
     ]
 
     promote_panels = [
@@ -143,11 +155,35 @@ class PropositionPage(SocialFields, Page):
 
     @property
     def section_titles(self):
-        return [
+        section_titles = [
             "Services",
             "Our clients",
             "Our team",
         ]
+
+        if self.our_thinking_section_body:
+            section_titles.append("Thinking")
+
+        if self.our_work_section_body:
+            section_titles.append("Work")
+
+        return section_titles
+
+    @property
+    def filter_by(self):
+        if self.service:
+            return self.service.slug
+
+        # If no service defined, don't filter by anything
+        return ""
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context.update(
+            blog_index_page=BlogIndexPage.objects.live().first(),
+            work_index_page=WorkIndexPage.objects.live().first(),
+        )
+        return context
 
 
 class SubPropositionPage(SocialFields, Page):

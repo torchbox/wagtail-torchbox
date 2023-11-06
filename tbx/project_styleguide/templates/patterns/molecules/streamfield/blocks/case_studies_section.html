@@ -1,2 +1,2 @@
 {% load wagtailcore_tags %}
-{% include "patterns/organisms/related-content/related-content.html" with id=value.title title=value.title items=featured_case_studies see_more_link=True data_attrs="data-service-section" classes="service-section" see_more_link_text="See more case studies" filter_by=page.filter_by %}
+{% include "patterns/organisms/related-content/related-content.html" with id=value.title title=value.title items=featured_case_studies see_more_link=True data_attrs="data-service-section" classes="service-section" see_more_link_text="See more case studies" filter_by=page.filter_by hide_title=hide_title %}

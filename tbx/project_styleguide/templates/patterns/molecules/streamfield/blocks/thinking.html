@@ -1,2 +1,3 @@
 {% load wagtailcore_tags %}
-{% include "patterns/organisms/latest-posts/latest-posts.html" with blogs_section_title=value.title classes="service-section" feature_first=True data_attrs="data-service-section" filter_by=page.filter_by %}
+
+{% include "patterns/organisms/latest-posts/latest-posts.html" with blogs_section_title=value.title classes="service-section" feature_first=True data_attrs="data-service-section" filter_by=page.filter_by wide=wide hide_title=hide_title %}

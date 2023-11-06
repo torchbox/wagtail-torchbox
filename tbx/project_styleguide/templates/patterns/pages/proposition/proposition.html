@@ -48,7 +48,8 @@
     </div>
 
     {# Team section #}
-    <div class="proposition-section" id="{{ 'our-team' }}" data-service-section>
+    {# add extra space below the team section if there is no body content added - common for the team section #}
+    <div class="proposition-section {% if not page.team_section_body %}proposition-section--bottom-space{% endif %}" id="{{ 'our-team' }}" data-service-section>
 
         <h2 class="proposition-section__anchor">Our team</h2>
 
@@ -66,5 +67,23 @@
 
         {% include_block page.team_section_body %}
     </div>
+
+    {# Our thinking section #}
+    {% if page.our_thinking_section_body %}
+        <div class="proposition-section" id="{{ 'thinking' }}" data-service-section>
+            {# there is just one block allowed #}
+            <h2 class="proposition-section__anchor">{{ page.our_thinking_section_body.0.value.title }}</h2>
+            {% include_block page.our_thinking_section_body with wide=True hide_title=True %}
+        </div>
+    {% endif %}
+
+    {# Our work section #}
+    {% if page.our_work_section_body %}
+        <div class="proposition-section" id="{{ 'work' }}" data-service-section>
+            {# there is just one block allowed #}
+            <h2 class="proposition-section__anchor">{{ page.our_work_section_body.0.value.title }}</h2>
+            {% include_block page.our_work_section_body with hide_title=True %}
+        </div>
+    {% endif %}
 
 {% endblock %}
