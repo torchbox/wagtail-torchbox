@@ -6,7 +6,11 @@ from django.utils.functional import cached_property
 from tbx.blog.models import BlogIndexPage
 from tbx.core.blocks import PageSectionStoryBlock
 from tbx.core.utils.models import SocialFields
-from tbx.propositions.blocks import SubPropositionPageStoryBlock, ThinkingBlock, WorkBlock
+from tbx.propositions.blocks import (
+    SubPropositionPageStoryBlock,
+    ThinkingBlock,
+    WorkBlock,
+)
 from tbx.work.models import WorkIndexPage
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
