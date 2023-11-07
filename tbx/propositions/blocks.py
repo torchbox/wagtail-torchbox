@@ -111,7 +111,6 @@ class ProcessesBlock(blocks.StructBlock):
         label="Process section title",
         default="Process",
     )
-    heading_for_processes = blocks.TextBlock(required=False)
     processes = blocks.ListBlock(ProcessBlock())
     process_section_cta = blocks.RichTextBlock(
         label="Process section CTA",
