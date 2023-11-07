@@ -158,8 +158,8 @@ class PropositionPage(SocialFields, Page):
             heading="Our team",
             classname="collapsible",
         ),
-        FieldPanel("our_thinking_section_body"),
         FieldPanel("our_work_section_body"),
+        FieldPanel("our_thinking_section_body"),
     ]
 
     promote_panels = [
@@ -175,11 +175,11 @@ class PropositionPage(SocialFields, Page):
             "Our team",
         ]
 
-        if self.our_thinking_section_body:
-            section_titles.append("Thinking")
-
         if self.our_work_section_body:
             section_titles.append("Work")
+
+        if self.our_thinking_section_body:
+            section_titles.append("Thinking")
 
         return section_titles
 

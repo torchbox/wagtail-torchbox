@@ -68,21 +68,21 @@
         {% include_block page.team_section_body %}
     </div>
 
-    {# Our thinking section #}
-    {% if page.our_thinking_section_body %}
-        <div class="proposition-section" id="{{ 'thinking' }}" data-service-section>
-            {# there is just one block allowed #}
-            <h2 class="proposition-section__anchor">{{ page.our_thinking_section_body.0.value.title }}</h2>
-            {% include_block page.our_thinking_section_body with wide=True hide_title=True %}
-        </div>
-    {% endif %}
-
     {# Our work section #}
     {% if page.our_work_section_body %}
         <div class="proposition-section" id="{{ 'work' }}" data-service-section>
             {# there is just one block allowed #}
             <h2 class="proposition-section__anchor">{{ page.our_work_section_body.0.value.title }}</h2>
             {% include_block page.our_work_section_body with hide_title=True %}
+        </div>
+    {% endif %}
+
+    {# Our thinking section #}
+    {% if page.our_thinking_section_body %}
+        <div class="proposition-section" id="{{ 'thinking' }}" data-service-section>
+            {# there is just one block allowed #}
+            <h2 class="proposition-section__anchor">{{ page.our_thinking_section_body.0.value.title }}</h2>
+            {% include_block page.our_thinking_section_body with wide=True hide_title=True %}
         </div>
     {% endif %}
 
