@@ -73,8 +73,9 @@
         <div class="proposition-section" id="{{ 'work' }}" data-service-section>
             {# there is just one block allowed #}
             <h2 class="proposition-section__anchor">{{ page.our_work_section_body.0.value.title }}</h2>
-            {% include_block page.our_work_section_body with hide_title=True %}
         </div>
+        {# work block sits outside the proposition-section wrapper as it is full-width #}
+        {% include_block page.our_work_section_body with hide_title=True %}
     {% endif %}
 
     {# Our thinking section #}
@@ -82,8 +83,9 @@
         <div class="proposition-section" id="{{ 'thinking' }}" data-service-section>
             {# there is just one block allowed #}
             <h2 class="proposition-section__anchor">{{ page.our_thinking_section_body.0.value.title }}</h2>
-            {% include_block page.our_thinking_section_body with wide=True hide_title=True %}
         </div>
+        {# our thinking block sits outside the proposition-secion wrapper as it has it's own left and right padding, and so the 'more' button aligns with the one under 'work' above #}
+        {% include_block page.our_thinking_section_body with hide_title=True %}
     {% endif %}
 
 {% endblock %}

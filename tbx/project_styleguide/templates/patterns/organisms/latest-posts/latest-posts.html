@@ -5,7 +5,7 @@
     {% elif blogs_section_title %}id="{{ blogs_section_title|slugify }}"{% endif %}
     {% if data_attrs %}{{ data_attrs }}{% endif %}
 >
-    <div class="{% if not wide %}blog-listing__content{% endif %}">
+    <div class="blog-listing__content">
         {% if page.blogs_section_title and not hide_title %}
             {% include "patterns/atoms/section-title/section-title.html" with title=page.blogs_section_title %}
         {% elif blogs_section_title and not hide_title %}
