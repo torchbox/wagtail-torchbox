@@ -1,7 +1,6 @@
 context:
   value:
     title: Process
-    use_process_block_image: True
     process_section_cta: <h2>Find out more…</h2><p>Email us at <a href="mailto:test@example.com">test@example.com</a></p>
     processes:
       - title: Lorem ipsum dolor sit amet.
@@ -16,4 +15,3 @@ context:
         description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
       - title: Lorem ipsum dolor sit amet.
         description: Praesent vitae elit nec nunc rutrum pulvinar. Aenean tincidunt sodales ante, a finibus dolor. Donec eget enim vel justo sollicitudin dapibus.
-    processes_section_embed_url: <iframe width="420" height="315" src="https://www.youtube.com/embed/9ZY4QUhOb4Y"></iframe>
