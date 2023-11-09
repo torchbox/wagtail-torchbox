@@ -1,5 +1,5 @@
 <div class="related-content {% if classes %}{{ classes }}{% endif %}" {% if id %}id="{{ id|slugify }}"{% endif %} {% if data_attrs %}data-service-section{% endif %}>
-    {% if title %}
+    {% if title and not hide_title %}
         {% include "patterns/atoms/section-title/section-title.html" with title=title %}
     {% endif %}
     <div class="related-content__list">
