@@ -2,32 +2,32 @@
 <div class="title-block {% if classes%} {{ classes }} {% endif %}">
     <div class="title-block__container">
         {% if item.client %}
-        <p class="title-block__client">{{ item.client }}</p>
+            <p class="title-block__client">{{ item.client }}</p>
         {% endif %}
         <h1 class="title-block__heading">{% firstof title|richtext item.title %}</h1>
         {% if meta %}
-        <div class="title-block__meta">
-            {{ meta }}
-        </div>
+            <div class="title-block__meta">
+                {{ meta }}
+            </div>
         {% endif %}
         {% if tags %}
-        <div class="title-block__tags">
-            <p class="u-sr-only">Filter blog posts by category</p>
-            {% pageurl item as index %}
-            {% if request.GET.filter == '' or not request.GET.filter %}
-                {% include "patterns/atoms/tag/tag.html" with tag_link_base=index has_all_filter=True item=None is_active=True %}
-            {% else %}
-                {% include "patterns/atoms/tag/tag.html" with tag_link_base=index has_all_filter=True item=None %}
-            {% endif %}
-
-            {% for tag in tags %}
-                {% if request.GET.filter == tag.slug %}
-                    {% include "patterns/atoms/tag/tag.html" with item=tag is_active=True %}
+            <div class="title-block__tags">
+                <p class="u-sr-only">Filter blog posts by category</p>
+                {% pageurl item as index %}
+                {% if request.GET.filter == '' or not request.GET.filter %}
+                    {% include "patterns/atoms/tag/tag.html" with tag_link_base=index has_all_filter=True item=None is_active=True %}
                 {% else %}
-                    {% include "patterns/atoms/tag/tag.html" with item=tag %}
+                    {% include "patterns/atoms/tag/tag.html" with tag_link_base=index has_all_filter=True item=None %}
                 {% endif %}
-            {% endfor %}
-        </div>
+
+                {% for tag in tags %}
+                    {% if request.GET.filter == tag.slug %}
+                        {% include "patterns/atoms/tag/tag.html" with item=tag is_active=True %}
+                    {% else %}
+                        {% include "patterns/atoms/tag/tag.html" with item=tag %}
+                    {% endif %}
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
 </div>

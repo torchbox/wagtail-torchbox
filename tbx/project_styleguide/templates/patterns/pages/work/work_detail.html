@@ -39,15 +39,15 @@
         {% include_block page.call_to_action %}
 
         {% if page.related_works %}
-        <div class="page__showcase">
-            <div class="related-content">
-                {% include "patterns/atoms/section-title/section-title.html" with title="More of our work" %}
-                <div class="related-content__list">
-                    {% include "patterns/organisms/work-listing/work-listing.html" with works=page.related_works %}
-                    {% include "patterns/atoms/see-more/see-more.html" with link=work_index_url text="See more case studies" %}
+            <div class="page__showcase">
+                <div class="related-content">
+                    {% include "patterns/atoms/section-title/section-title.html" with title="More of our work" %}
+                    <div class="related-content__list">
+                        {% include "patterns/organisms/work-listing/work-listing.html" with works=page.related_works %}
+                        {% include "patterns/atoms/see-more/see-more.html" with link=work_index_url text="See more case studies" %}
+                    </div>
                 </div>
             </div>
-        </div>
         {% endif %}
     {% endwith %}
 {% endblock %}

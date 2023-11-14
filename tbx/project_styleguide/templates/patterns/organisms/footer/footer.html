@@ -4,23 +4,23 @@
     <div class="footer__logos">
         {% with global_settings=settings.navigation.NavigationSettings %}
             {% if global_settings.footer_logos %}
-                    <ul class="footer__logos-list">
-                        {% for item in global_settings.footer_logos %}
-                            {% with logo=item.value %}
-                                <li class="footer__logos-item">
-                                        {% with link=logo.link.0.value %}
-                                            {% if link %}
-                                                <a class="footer__logos-link" href="{{ link.url }}" title="{{ link.link_text }}">
-                                                    {% image logo.image height-90 class="footer__logos-image" loading="lazy" alt=link.link_text %}
-                                                </a>
-                                            {% else %}
-                                                {% image logo.image height-90 class="footer__logos-image" loading="lazy" %}
-                                            {% endif %}
-                                        {% endwith %}
-                                </li>
-                            {% endwith %}
-                        {% endfor %}
-                    </ul>
+                <ul class="footer__logos-list">
+                    {% for item in global_settings.footer_logos %}
+                        {% with logo=item.value %}
+                            <li class="footer__logos-item">
+                                {% with link=logo.link.0.value %}
+                                    {% if link %}
+                                        <a class="footer__logos-link" href="{{ link.url }}" title="{{ link.link_text }}">
+                                            {% image logo.image height-90 class="footer__logos-image" loading="lazy" alt=link.link_text %}
+                                        </a>
+                                    {% else %}
+                                        {% image logo.image height-90 class="footer__logos-image" loading="lazy" %}
+                                    {% endif %}
+                                {% endwith %}
+                            </li>
+                        {% endwith %}
+                    {% endfor %}
+                </ul>
             {% endif %}
         {%endwith %}
     </div>
