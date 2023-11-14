@@ -31,7 +31,9 @@ class Migration(migrations.Migration):
                 ),
                 ("intro", models.TextField(blank=True)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -71,6 +73,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
         ),
     ]

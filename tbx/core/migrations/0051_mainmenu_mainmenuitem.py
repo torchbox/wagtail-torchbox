@@ -36,7 +36,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
         ),
         migrations.CreateModel(
             name="MainMenuItem",
@@ -71,6 +73,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
         ),
     ]

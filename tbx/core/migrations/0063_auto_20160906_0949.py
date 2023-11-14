@@ -12,8 +12,19 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="aboutpagevalue", name="image",),
-        migrations.RemoveField(model_name="aboutpagevalue", name="page",),
-        migrations.RemoveField(model_name="aboutpage", name="values_title",),
-        migrations.DeleteModel(name="AboutPageValue",),
+        migrations.RemoveField(
+            model_name="aboutpagevalue",
+            name="image",
+        ),
+        migrations.RemoveField(
+            model_name="aboutpagevalue",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="aboutpage",
+            name="values_title",
+        ),
+        migrations.DeleteModel(
+            name="AboutPageValue",
+        ),
     ]

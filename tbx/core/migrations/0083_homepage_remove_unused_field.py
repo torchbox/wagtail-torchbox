@@ -12,8 +12,20 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="homepage", name="hero_intro",),
-        migrations.RemoveField(model_name="homepage", name="hero_video_id",),
-        migrations.RemoveField(model_name="homepage", name="hero_video_poster_image",),
-        migrations.RemoveField(model_name="homepage", name="intro_title",),
+        migrations.RemoveField(
+            model_name="homepage",
+            name="hero_intro",
+        ),
+        migrations.RemoveField(
+            model_name="homepage",
+            name="hero_video_id",
+        ),
+        migrations.RemoveField(
+            model_name="homepage",
+            name="hero_video_poster_image",
+        ),
+        migrations.RemoveField(
+            model_name="homepage",
+            name="intro_title",
+        ),
     ]

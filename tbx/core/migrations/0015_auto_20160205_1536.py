@@ -83,7 +83,9 @@ class Migration(migrations.Migration):
                 ("call_to_action_title", models.CharField(max_length=255)),
                 ("call_to_action_embed_url", models.URLField()),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(

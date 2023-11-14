@@ -13,7 +13,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelOptions(name="workpage", options={"ordering": ["-pk"]},),
+        migrations.AlterModelOptions(
+            name="workpage",
+            options={"ordering": ["-pk"]},
+        ),
         migrations.AlterField(
             model_name="torchboximage",
             name="created_at",

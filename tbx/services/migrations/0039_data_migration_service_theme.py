@@ -2,15 +2,16 @@
 
 from django.db import migrations
 
+
 def update_theme(apps, schema_editor):
-    page = apps.get_model('services', 'ServicePage')
-    page.objects.filter(theme='dark--transparent').update(theme='light')
+    page = apps.get_model("services", "ServicePage")
+    page.objects.filter(theme="dark--transparent").update(theme="light")
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('services', '0038_data_migration_subservice_theme'),
+        ("services", "0038_data_migration_subservice_theme"),
     ]
 
     operations = [

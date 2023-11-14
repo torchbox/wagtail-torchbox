@@ -11,46 +11,59 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name="servicepageclientlogo", options={"ordering": ["sort_order"]},
+            name="servicepageclientlogo",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="servicepagefeaturedblogpost", options={"ordering": ["sort_order"]},
+            name="servicepagefeaturedblogpost",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="servicepagefeaturedcasestudy", options={"ordering": ["sort_order"]},
+            name="servicepagefeaturedcasestudy",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="servicepagekeypoint", options={"ordering": ["sort_order"]},
+            name="servicepagekeypoint",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="servicepageprocess", options={"ordering": ["sort_order"]},
+            name="servicepageprocess",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="servicepagetestimonial", options={"ordering": ["sort_order"]},
+            name="servicepagetestimonial",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="servicepageusaclientlogo", options={"ordering": ["sort_order"]},
+            name="servicepageusaclientlogo",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="subservicepageclientlogo", options={"ordering": ["sort_order"]},
+            name="subservicepageclientlogo",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="subservicepagefeaturedblogpost", options={"ordering": ["sort_order"]},
+            name="subservicepagefeaturedblogpost",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
             name="subservicepagefeaturedcasestudy",
             options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="subservicepagekeypoint", options={"ordering": ["sort_order"]},
+            name="subservicepagekeypoint",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="subservicepageprocess", options={"ordering": ["sort_order"]},
+            name="subservicepageprocess",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="subservicepagetestimonial", options={"ordering": ["sort_order"]},
+            name="subservicepagetestimonial",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="subservicepageusaclientlogo", options={"ordering": ["sort_order"]},
+            name="subservicepageusaclientlogo",
+            options={"ordering": ["sort_order"]},
         ),
     ]

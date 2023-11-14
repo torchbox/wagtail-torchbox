@@ -13,7 +13,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="workpageauthor", name="author_person_page",),
+        migrations.RemoveField(
+            model_name="workpageauthor",
+            name="author_person_page",
+        ),
         migrations.AlterField(
             model_name="workpageauthor",
             name="author",

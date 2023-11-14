@@ -81,7 +81,9 @@ class Migration(migrations.Migration):
                 ("intro", wagtail.fields.RichTextField(blank=True)),
                 ("show_in_play_menu", models.BooleanField(default=False)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -116,7 +118,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -145,7 +150,9 @@ class Migration(migrations.Migration):
                 ),
                 ("date", models.DateField(verbose_name=b"Post date")),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -165,7 +172,10 @@ class Migration(migrations.Migration):
                     models.IntegerField(null=True, editable=False, blank=True),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -200,7 +210,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -252,7 +265,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -279,7 +295,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "Homepage",},
+            options={
+                "verbose_name": "Homepage",
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -298,7 +316,9 @@ class Migration(migrations.Migration):
                 ),
                 ("intro", wagtail.fields.RichTextField(blank=True)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -325,7 +345,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -354,7 +377,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -374,7 +400,9 @@ class Migration(migrations.Migration):
                 ("intro", wagtail.fields.RichTextField(blank=True)),
                 ("show_in_play_menu", models.BooleanField(default=False)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -404,7 +432,9 @@ class Migration(migrations.Migration):
                 ("intro", wagtail.fields.RichTextField(blank=True)),
                 ("biography", wagtail.fields.RichTextField(blank=True)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page", models.Model),
         ),
         migrations.CreateModel(
@@ -439,7 +469,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -459,7 +492,9 @@ class Migration(migrations.Migration):
                 ("intro", wagtail.fields.RichTextField(blank=True)),
                 ("body", wagtail.fields.RichTextField(blank=True)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -486,7 +521,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -521,7 +559,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -547,7 +588,9 @@ class Migration(migrations.Migration):
                 ("email", models.EmailField(max_length=75, blank=True)),
                 ("show_in_play_menu", models.BooleanField(default=False)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -572,7 +615,10 @@ class Migration(migrations.Migration):
                 ),
                 ("title", models.CharField(help_text=b"Link title", max_length=255)),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -599,7 +645,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -634,7 +683,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -694,7 +746,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=(models.Model, wagtail.search.index.Indexed),
         ),
         migrations.CreateModel(
@@ -760,7 +814,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -781,7 +837,9 @@ class Migration(migrations.Migration):
                 ("show_in_play_menu", models.BooleanField(default=False)),
                 ("hide_popular_tags", models.BooleanField(default=False)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -812,7 +870,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -848,7 +908,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -882,7 +945,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
             bases=(models.Model,),
         ),
         migrations.AlterUniqueTogether(

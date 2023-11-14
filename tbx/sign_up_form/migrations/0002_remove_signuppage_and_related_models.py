@@ -17,17 +17,46 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RemoveField(
-            model_name="signupformpage", name="call_to_action_image",
+            model_name="signupformpage",
+            name="call_to_action_image",
         ),
-        migrations.RemoveField(model_name="signupformpage", name="email_attachment",),
-        migrations.RemoveField(model_name="signupformpage", name="page_ptr",),
-        migrations.RemoveField(model_name="signupformpagebullet", name="page",),
-        migrations.RemoveField(model_name="signupformpagelogo", name="logo",),
-        migrations.RemoveField(model_name="signupformpagelogo", name="page",),
-        migrations.RemoveField(model_name="signupformpagequote", name="page",),
-        migrations.DeleteModel(name="SignUpFormPageResponse",),
-        migrations.DeleteModel(name="SignUpFormPage",),
-        migrations.DeleteModel(name="SignUpFormPageBullet",),
-        migrations.DeleteModel(name="SignUpFormPageLogo",),
-        migrations.DeleteModel(name="SignUpFormPageQuote",),
+        migrations.RemoveField(
+            model_name="signupformpage",
+            name="email_attachment",
+        ),
+        migrations.RemoveField(
+            model_name="signupformpage",
+            name="page_ptr",
+        ),
+        migrations.RemoveField(
+            model_name="signupformpagebullet",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="signupformpagelogo",
+            name="logo",
+        ),
+        migrations.RemoveField(
+            model_name="signupformpagelogo",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="signupformpagequote",
+            name="page",
+        ),
+        migrations.DeleteModel(
+            name="SignUpFormPageResponse",
+        ),
+        migrations.DeleteModel(
+            name="SignUpFormPage",
+        ),
+        migrations.DeleteModel(
+            name="SignUpFormPageBullet",
+        ),
+        migrations.DeleteModel(
+            name="SignUpFormPageLogo",
+        ),
+        migrations.DeleteModel(
+            name="SignUpFormPageQuote",
+        ),
     ]

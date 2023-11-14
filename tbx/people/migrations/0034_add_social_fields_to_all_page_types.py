@@ -7,49 +7,73 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0004_wagtail42_images'),
-        ('people', '0033_call_to_action'),
+        ("images", "0004_wagtail42_images"),
+        ("people", "0033_call_to_action"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='culturepage',
-            name='social_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
+            model_name="culturepage",
+            name="social_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="images.customimage",
+            ),
         ),
         migrations.AddField(
-            model_name='culturepage',
-            name='social_text',
+            model_name="culturepage",
+            name="social_text",
             field=models.CharField(blank=True, max_length=255),
         ),
         migrations.AddField(
-            model_name='personindexpage',
-            name='social_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
+            model_name="personindexpage",
+            name="social_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="images.customimage",
+            ),
         ),
         migrations.AddField(
-            model_name='personindexpage',
-            name='social_text',
+            model_name="personindexpage",
+            name="social_text",
             field=models.CharField(blank=True, max_length=255),
         ),
         migrations.AddField(
-            model_name='personpage',
-            name='social_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
+            model_name="personpage",
+            name="social_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="images.customimage",
+            ),
         ),
         migrations.AddField(
-            model_name='personpage',
-            name='social_text',
+            model_name="personpage",
+            name="social_text",
             field=models.CharField(blank=True, max_length=255),
         ),
         migrations.AddField(
-            model_name='valuespage',
-            name='social_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
+            model_name="valuespage",
+            name="social_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="images.customimage",
+            ),
         ),
         migrations.AddField(
-            model_name='valuespage',
-            name='social_text',
+            model_name="valuespage",
+            name="social_text",
             field=models.CharField(blank=True, max_length=255),
         ),
     ]

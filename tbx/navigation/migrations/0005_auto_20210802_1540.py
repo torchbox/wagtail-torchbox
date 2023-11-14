@@ -11,9 +11,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RemoveField(
-            model_name="navigationsettings", name="footer_navigation",
+            model_name="navigationsettings",
+            name="footer_navigation",
         ),
         migrations.RemoveField(
-            model_name="navigationsettings", name="secondary_navigation",
+            model_name="navigationsettings",
+            name="secondary_navigation",
         ),
     ]

@@ -16,14 +16,41 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="serviceindexpage", name="main_image",),
-        migrations.RemoveField(model_name="serviceindexpage", name="page_ptr",),
-        migrations.RemoveField(model_name="serviceindexpageservice", name="link",),
-        migrations.RemoveField(model_name="serviceindexpageservice", name="page",),
-        migrations.RemoveField(model_name="servicepage", name="page_ptr",),
-        migrations.RemoveField(model_name="servicepage", name="particle",),
-        migrations.RemoveField(model_name="servicepage", name="service",),
-        migrations.DeleteModel(name="ServiceIndexPage",),
-        migrations.DeleteModel(name="ServiceIndexPageService",),
-        migrations.DeleteModel(name="ServicePage",),
+        migrations.RemoveField(
+            model_name="serviceindexpage",
+            name="main_image",
+        ),
+        migrations.RemoveField(
+            model_name="serviceindexpage",
+            name="page_ptr",
+        ),
+        migrations.RemoveField(
+            model_name="serviceindexpageservice",
+            name="link",
+        ),
+        migrations.RemoveField(
+            model_name="serviceindexpageservice",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="servicepage",
+            name="page_ptr",
+        ),
+        migrations.RemoveField(
+            model_name="servicepage",
+            name="particle",
+        ),
+        migrations.RemoveField(
+            model_name="servicepage",
+            name="service",
+        ),
+        migrations.DeleteModel(
+            name="ServiceIndexPage",
+        ),
+        migrations.DeleteModel(
+            name="ServiceIndexPageService",
+        ),
+        migrations.DeleteModel(
+            name="ServicePage",
+        ),
     ]

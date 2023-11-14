@@ -12,5 +12,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="workpage", name="intro",),
+        migrations.RemoveField(
+            model_name="workpage",
+            name="intro",
+        ),
     ]

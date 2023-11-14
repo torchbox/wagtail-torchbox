@@ -11,7 +11,12 @@ def migrate_streamfield_json(json):
     for block in json:
         if block["type"] == "case_studies":
             block["value"]["case_studies"] = [
-                {"page": page_id, "title": "", "descriptive_title": "", "image": None,}
+                {
+                    "page": page_id,
+                    "title": "",
+                    "descriptive_title": "",
+                    "image": None,
+                }
                 for page_id in block["value"]["case_studies"]
             ]
 

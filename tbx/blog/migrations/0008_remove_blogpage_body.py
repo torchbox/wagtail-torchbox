@@ -87,5 +87,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(migrate_blog_body_to_streamfield, nooperation),
-        migrations.RemoveField(model_name="blogpage", name="body",),
+        migrations.RemoveField(
+            model_name="blogpage",
+            name="body",
+        ),
     ]

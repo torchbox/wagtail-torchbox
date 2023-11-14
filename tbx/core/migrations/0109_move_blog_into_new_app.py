@@ -27,33 +27,81 @@ class Migration(migrations.Migration):
     ]
 
     state_operations = [
-        migrations.RemoveField(model_name="blogindexpage", name="page_ptr",),
         migrations.RemoveField(
-            model_name="blogindexpagerelatedlink", name="link_document",
+            model_name="blogindexpage",
+            name="page_ptr",
         ),
         migrations.RemoveField(
-            model_name="blogindexpagerelatedlink", name="link_page",
+            model_name="blogindexpagerelatedlink",
+            name="link_document",
         ),
-        migrations.RemoveField(model_name="blogindexpagerelatedlink", name="page",),
-        migrations.RemoveField(model_name="blogpage", name="feed_image",),
-        migrations.RemoveField(model_name="blogpage", name="page_ptr",),
-        migrations.RemoveField(model_name="blogpageauthor", name="author",),
-        migrations.RemoveField(model_name="blogpageauthor", name="page",),
-        migrations.RemoveField(model_name="blogpagerelatedlink", name="link_document",),
-        migrations.RemoveField(model_name="blogpagerelatedlink", name="link_page",),
-        migrations.RemoveField(model_name="blogpagerelatedlink", name="page",),
-        migrations.RemoveField(model_name="blogpagetagselect", name="page",),
-        migrations.RemoveField(model_name="blogpagetagselect", name="tag",),
-        migrations.DeleteModel(name="BlogIndexPage",),
-        migrations.DeleteModel(name="BlogIndexPageRelatedLink",),
-        migrations.DeleteModel(name="BlogPage",),
-        migrations.DeleteModel(name="BlogPageAuthor",),
-        migrations.DeleteModel(name="BlogPageRelatedLink",),
-        migrations.DeleteModel(name="BlogPageTagSelect",),
+        migrations.RemoveField(
+            model_name="blogindexpagerelatedlink",
+            name="link_page",
+        ),
+        migrations.RemoveField(
+            model_name="blogindexpagerelatedlink",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="blogpage",
+            name="feed_image",
+        ),
+        migrations.RemoveField(
+            model_name="blogpage",
+            name="page_ptr",
+        ),
+        migrations.RemoveField(
+            model_name="blogpageauthor",
+            name="author",
+        ),
+        migrations.RemoveField(
+            model_name="blogpageauthor",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="blogpagerelatedlink",
+            name="link_document",
+        ),
+        migrations.RemoveField(
+            model_name="blogpagerelatedlink",
+            name="link_page",
+        ),
+        migrations.RemoveField(
+            model_name="blogpagerelatedlink",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="blogpagetagselect",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="blogpagetagselect",
+            name="tag",
+        ),
+        migrations.DeleteModel(
+            name="BlogIndexPage",
+        ),
+        migrations.DeleteModel(
+            name="BlogIndexPageRelatedLink",
+        ),
+        migrations.DeleteModel(
+            name="BlogPage",
+        ),
+        migrations.DeleteModel(
+            name="BlogPageAuthor",
+        ),
+        migrations.DeleteModel(
+            name="BlogPageRelatedLink",
+        ),
+        migrations.DeleteModel(
+            name="BlogPageTagSelect",
+        ),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            database_operations=database_operations, state_operations=state_operations,
+            database_operations=database_operations,
+            state_operations=state_operations,
         )
     ]

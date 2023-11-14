@@ -62,5 +62,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(migrate_author_left_into_author_snippet, nooperation),
-        migrations.RemoveField(model_name="blogpage", name="author_left",),
+        migrations.RemoveField(
+            model_name="blogpage",
+            name="author_left",
+        ),
     ]

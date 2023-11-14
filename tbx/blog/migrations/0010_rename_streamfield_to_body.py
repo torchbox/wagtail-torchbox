@@ -40,6 +40,8 @@ class Migration(migrations.Migration):
             unrename_streamfield_to_body_in_revisions,
         ),
         migrations.RenameField(
-            model_name="blogpage", old_name="streamfield", new_name="body",
+            model_name="blogpage",
+            old_name="streamfield",
+            new_name="body",
         ),
     ]

@@ -28,6 +28,8 @@ class Migration(migrations.Migration):
                 ("slug", models.CharField(max_length=255, unique=True)),
                 ("sort_order", models.IntegerField()),
             ],
-            options={"ordering": ["sort_order"],},
+            options={
+                "ordering": ["sort_order"],
+            },
         ),
     ]

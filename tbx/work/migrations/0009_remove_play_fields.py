@@ -12,6 +12,12 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="workindexpage", name="show_in_play_menu",),
-        migrations.RemoveField(model_name="workpage", name="show_in_play_menu",),
+        migrations.RemoveField(
+            model_name="workindexpage",
+            name="show_in_play_menu",
+        ),
+        migrations.RemoveField(
+            model_name="workpage",
+            name="show_in_play_menu",
+        ),
     ]

@@ -13,10 +13,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name="googleadgrantsaccreditations", options={"ordering": ["sort_order"]},
+            name="googleadgrantsaccreditations",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name="googleadgrantspagequote", options={"ordering": ["sort_order"]},
+            name="googleadgrantspagequote",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AddField(
             model_name="googleadgrantsaccreditations",

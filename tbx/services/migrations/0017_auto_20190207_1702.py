@@ -11,7 +11,9 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RenameField(
-            model_name="servicepageprocess", old_name="link_page", new_name="page_link",
+            model_name="servicepageprocess",
+            old_name="link_page",
+            new_name="page_link",
         ),
         migrations.RenameField(
             model_name="servicepageprocess",

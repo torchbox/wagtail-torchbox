@@ -51,7 +51,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "MarketingLandingPage",},
+            options={
+                "verbose_name": "MarketingLandingPage",
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -104,6 +106,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
         ),
     ]

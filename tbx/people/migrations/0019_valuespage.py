@@ -30,7 +30,9 @@ class Migration(migrations.Migration):
                 ("strapline", models.TextField()),
                 ("intro", wagtail.fields.RichTextField(blank=True)),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
     ]

@@ -88,10 +88,14 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
         ),
         migrations.AlterModelOptions(
-            name="contact", options={"verbose_name": "Contact Page"},
+            name="contact",
+            options={"verbose_name": "Contact Page"},
         ),
         migrations.AddField(
             model_name="contact",

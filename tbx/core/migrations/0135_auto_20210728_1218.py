@@ -12,29 +12,53 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RemoveField(
-            model_name="globalsettings", name="bristol_address_link",
+            model_name="globalsettings",
+            name="bristol_address_link",
         ),
         migrations.RemoveField(
-            model_name="globalsettings", name="bristol_address_svg",
+            model_name="globalsettings",
+            name="bristol_address_svg",
         ),
         migrations.RemoveField(
-            model_name="globalsettings", name="cambridge_address_link",
+            model_name="globalsettings",
+            name="cambridge_address_link",
         ),
         migrations.RemoveField(
-            model_name="globalsettings", name="cambridge_address_svg",
-        ),
-        migrations.RemoveField(model_name="globalsettings", name="contact_email",),
-        migrations.RemoveField(model_name="globalsettings", name="contact_telephone",),
-        migrations.RemoveField(model_name="globalsettings", name="contact_twitter",),
-        migrations.RemoveField(
-            model_name="globalsettings", name="email_newsletter_teaser",
+            model_name="globalsettings",
+            name="cambridge_address_svg",
         ),
         migrations.RemoveField(
-            model_name="globalsettings", name="oxford_address_link",
+            model_name="globalsettings",
+            name="contact_email",
         ),
-        migrations.RemoveField(model_name="globalsettings", name="oxford_address_svg",),
-        migrations.RemoveField(model_name="globalsettings", name="us_address_link",),
-        migrations.RemoveField(model_name="globalsettings", name="us_address_svg",),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="contact_telephone",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="contact_twitter",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="email_newsletter_teaser",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="oxford_address_link",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="oxford_address_svg",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="us_address_link",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="us_address_svg",
+        ),
         migrations.AlterField(
             model_name="globalsettings",
             name="bristol_address",

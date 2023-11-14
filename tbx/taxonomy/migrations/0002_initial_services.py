@@ -14,7 +14,9 @@ def insert_initial_services(apps, schema_editor):
             slug = slugify(name)
 
         Service.objects.create(
-            name=name, slug=slug, sort_order=order,
+            name=name,
+            slug=slug,
+            sort_order=order,
         )
 
     add_service(100, "Digital products")

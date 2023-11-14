@@ -12,5 +12,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RenameModel(old_name="BlogPageTagList", new_name="Tag",),
+        migrations.RenameModel(
+            old_name="BlogPageTagList",
+            new_name="Tag",
+        ),
     ]

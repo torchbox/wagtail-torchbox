@@ -85,7 +85,10 @@ class Migration(migrations.Migration):
                                                 classname="quote title"
                                             ),
                                         ),
-                                        (b"attribution", wagtail.blocks.CharBlock(),),
+                                        (
+                                            b"attribution",
+                                            wagtail.blocks.CharBlock(),
+                                        ),
                                     ],
                                     template="blocks/pull_quote_block.html",
                                 ),
@@ -155,7 +158,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.AddField(

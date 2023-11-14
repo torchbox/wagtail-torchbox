@@ -48,7 +48,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "Global Settings",},
+            options={
+                "verbose_name": "Global Settings",
+            },
         ),
         migrations.AlterField(
             model_name="homepagehero",

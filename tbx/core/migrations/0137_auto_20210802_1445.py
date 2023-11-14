@@ -12,30 +12,54 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="globalsettings", name="bristol_address",),
         migrations.RemoveField(
-            model_name="globalsettings", name="bristol_address_title",
-        ),
-        migrations.RemoveField(model_name="globalsettings", name="cambridge_address",),
-        migrations.RemoveField(
-            model_name="globalsettings", name="cambridge_address_title",
-        ),
-        migrations.RemoveField(model_name="globalsettings", name="contact_person",),
-        migrations.RemoveField(
-            model_name="globalsettings", name="contact_widget_button_text",
+            model_name="globalsettings",
+            name="bristol_address",
         ),
         migrations.RemoveField(
-            model_name="globalsettings", name="contact_widget_call_to_action",
+            model_name="globalsettings",
+            name="bristol_address_title",
         ),
         migrations.RemoveField(
-            model_name="globalsettings", name="contact_widget_intro",
+            model_name="globalsettings",
+            name="cambridge_address",
         ),
-        migrations.RemoveField(model_name="globalsettings", name="oxford_address",),
         migrations.RemoveField(
-            model_name="globalsettings", name="oxford_address_title",
+            model_name="globalsettings",
+            name="cambridge_address_title",
         ),
-        migrations.RemoveField(model_name="globalsettings", name="us_address",),
-        migrations.RemoveField(model_name="globalsettings", name="us_address_title",),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="contact_person",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="contact_widget_button_text",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="contact_widget_call_to_action",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="contact_widget_intro",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="oxford_address",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="oxford_address_title",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="us_address",
+        ),
+        migrations.RemoveField(
+            model_name="globalsettings",
+            name="us_address_title",
+        ),
         migrations.AddField(
             model_name="globalsettings",
             name="addresses",

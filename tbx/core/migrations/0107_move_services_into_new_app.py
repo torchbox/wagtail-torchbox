@@ -23,19 +23,44 @@ class Migration(migrations.Migration):
     ]
 
     state_operations = [
-        migrations.RemoveField(model_name="servicepage", name="page_ptr",),
-        migrations.RemoveField(model_name="servicepage", name="particle",),
-        migrations.RemoveField(model_name="servicespage", name="main_image",),
-        migrations.RemoveField(model_name="servicespage", name="page_ptr",),
-        migrations.RemoveField(model_name="servicespageservice", name="link",),
-        migrations.RemoveField(model_name="servicespageservice", name="page",),
-        migrations.DeleteModel(name="ServicePage",),
-        migrations.DeleteModel(name="ServicesPage",),
-        migrations.DeleteModel(name="ServicesPageService",),
+        migrations.RemoveField(
+            model_name="servicepage",
+            name="page_ptr",
+        ),
+        migrations.RemoveField(
+            model_name="servicepage",
+            name="particle",
+        ),
+        migrations.RemoveField(
+            model_name="servicespage",
+            name="main_image",
+        ),
+        migrations.RemoveField(
+            model_name="servicespage",
+            name="page_ptr",
+        ),
+        migrations.RemoveField(
+            model_name="servicespageservice",
+            name="link",
+        ),
+        migrations.RemoveField(
+            model_name="servicespageservice",
+            name="page",
+        ),
+        migrations.DeleteModel(
+            name="ServicePage",
+        ),
+        migrations.DeleteModel(
+            name="ServicesPage",
+        ),
+        migrations.DeleteModel(
+            name="ServicesPageService",
+        ),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            database_operations=database_operations, state_operations=state_operations,
+            database_operations=database_operations,
+            state_operations=state_operations,
         )
     ]

@@ -50,7 +50,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
         ),
         migrations.CreateModel(
             name="SectorTag",
@@ -80,24 +82,59 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
         ),
-        migrations.RemoveField(model_name="workpageauthor", name="author",),
-        migrations.RemoveField(model_name="workpageauthor", name="page",),
-        migrations.RemoveField(model_name="workpagetagselect", name="page",),
-        migrations.RemoveField(model_name="workpagetagselect", name="tag",),
-        migrations.RemoveField(model_name="workpage", name="author_left",),
-        migrations.RemoveField(model_name="workpage", name="body",),
-        migrations.RemoveField(model_name="workpage", name="intro",),
-        migrations.RemoveField(model_name="workpage", name="summary",),
+        migrations.RemoveField(
+            model_name="workpageauthor",
+            name="author",
+        ),
+        migrations.RemoveField(
+            model_name="workpageauthor",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="workpagetagselect",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="workpagetagselect",
+            name="tag",
+        ),
+        migrations.RemoveField(
+            model_name="workpage",
+            name="author_left",
+        ),
+        migrations.RemoveField(
+            model_name="workpage",
+            name="body",
+        ),
+        migrations.RemoveField(
+            model_name="workpage",
+            name="intro",
+        ),
+        migrations.RemoveField(
+            model_name="workpage",
+            name="summary",
+        ),
         migrations.AlterField(
             model_name="blogpage",
             name="streamfield",
             field=wagtail.fields.StreamField(
                 (
-                    ("h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (
+                        "h2",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
                     ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     ("paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (
@@ -232,7 +269,10 @@ class Migration(migrations.Migration):
                         wagtail.blocks.StructBlock(
                             (
                                 ("title", wagtail.blocks.CharBlock(required=True)),
-                                ("intro", wagtail.blocks.TextBlock(required=False),),
+                                (
+                                    "intro",
+                                    wagtail.blocks.TextBlock(required=False),
+                                ),
                                 (
                                     "highlights",
                                     wagtail.blocks.ListBlock(
@@ -260,7 +300,10 @@ class Migration(migrations.Migration):
                         wagtail.blocks.StructBlock(
                             (
                                 ("title", wagtail.blocks.CharBlock(required=True)),
-                                ("intro", wagtail.blocks.TextBlock(required=False),),
+                                (
+                                    "intro",
+                                    wagtail.blocks.TextBlock(required=False),
+                                ),
                                 (
                                     "steps",
                                     wagtail.blocks.ListBlock(
@@ -332,7 +375,10 @@ class Migration(migrations.Migration):
                                                     "image",
                                                     wagtail.images.blocks.ImageChooserBlock(),
                                                 ),
-                                                ("text", wagtail.blocks.TextBlock(),),
+                                                (
+                                                    "text",
+                                                    wagtail.blocks.TextBlock(),
+                                                ),
                                                 (
                                                     "sub_text",
                                                     wagtail.blocks.CharBlock(
@@ -401,9 +447,18 @@ class Migration(migrations.Migration):
             name="streamfield",
             field=wagtail.fields.StreamField(
                 (
-                    ("h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (
+                        "h2",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
                     ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     ("paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (
@@ -463,9 +518,18 @@ class Migration(migrations.Migration):
             name="streamfield",
             field=wagtail.fields.StreamField(
                 (
-                    ("h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (
+                        "h2",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
                     ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     ("paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (
@@ -520,8 +584,12 @@ class Migration(migrations.Migration):
                 )
             ),
         ),
-        migrations.DeleteModel(name="WorkPageAuthor",),
-        migrations.DeleteModel(name="WorkPageTagSelect",),
+        migrations.DeleteModel(
+            name="WorkPageAuthor",
+        ),
+        migrations.DeleteModel(
+            name="WorkPageTagSelect",
+        ),
         migrations.AddField(
             model_name="workpage",
             name="expertises",

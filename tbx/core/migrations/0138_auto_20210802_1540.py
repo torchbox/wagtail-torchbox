@@ -22,7 +22,10 @@ class Migration(migrations.Migration):
                         wagtail.blocks.StructBlock(
                             [
                                 ("title", wagtail.blocks.CharBlock(blank=True)),
-                                ("address", wagtail.blocks.RichTextBlock(blank=True),),
+                                (
+                                    "address",
+                                    wagtail.blocks.RichTextBlock(blank=True),
+                                ),
                             ]
                         ),
                     )

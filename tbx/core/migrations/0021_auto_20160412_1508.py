@@ -44,9 +44,18 @@ class Migration(migrations.Migration):
             name="streamfield",
             field=wagtail.fields.StreamField(
                 (
-                    ("h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (
+                        "h2",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
                     ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     ("paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (
@@ -137,9 +146,18 @@ class Migration(migrations.Migration):
             name="streamfield",
             field=wagtail.fields.StreamField(
                 (
-                    ("h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (
+                        "h2",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
                     ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     ("paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (
@@ -211,9 +229,18 @@ class Migration(migrations.Migration):
             name="streamfield",
             field=wagtail.fields.StreamField(
                 (
-                    ("h2", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
-                    ("h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    (
+                        "h2",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h3",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
+                    (
+                        "h4",
+                        wagtail.blocks.CharBlock(classname="title", icon="title"),
+                    ),
                     ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     ("paragraph", wagtail.blocks.RichTextBlock(icon="pilcrow")),
                     (

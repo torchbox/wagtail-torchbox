@@ -12,5 +12,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="standardpage", name="middle_break",),
+        migrations.RemoveField(
+            model_name="standardpage",
+            name="middle_break",
+        ),
     ]

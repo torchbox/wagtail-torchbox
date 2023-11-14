@@ -37,19 +37,46 @@ class Migration(migrations.Migration):
                 ("svg", models.TextField(null=True)),
                 ("description", models.TextField()),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
         ),
-        migrations.RemoveField(model_name="servicesitem", name="page_ptr",),
-        migrations.RemoveField(model_name="servicespagecontentblock", name="page",),
         migrations.RemoveField(
-            model_name="servicespagerelatedlink", name="link_document",
+            model_name="servicesitem",
+            name="page_ptr",
         ),
-        migrations.RemoveField(model_name="servicespagerelatedlink", name="link_page",),
-        migrations.RemoveField(model_name="servicespagerelatedlink", name="page",),
-        migrations.AlterModelOptions(name="aboutpageservice", options={},),
-        migrations.AlterModelOptions(name="servicespage", options={},),
-        migrations.RemoveField(model_name="servicespage", name="body",),
-        migrations.RemoveField(model_name="servicespage", name="feed_image",),
+        migrations.RemoveField(
+            model_name="servicespagecontentblock",
+            name="page",
+        ),
+        migrations.RemoveField(
+            model_name="servicespagerelatedlink",
+            name="link_document",
+        ),
+        migrations.RemoveField(
+            model_name="servicespagerelatedlink",
+            name="link_page",
+        ),
+        migrations.RemoveField(
+            model_name="servicespagerelatedlink",
+            name="page",
+        ),
+        migrations.AlterModelOptions(
+            name="aboutpageservice",
+            options={},
+        ),
+        migrations.AlterModelOptions(
+            name="servicespage",
+            options={},
+        ),
+        migrations.RemoveField(
+            model_name="servicespage",
+            name="body",
+        ),
+        migrations.RemoveField(
+            model_name="servicespage",
+            name="feed_image",
+        ),
         migrations.AddField(
             model_name="servicespage",
             name="heading",
@@ -67,11 +94,19 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AlterField(
-            model_name="servicespage", name="intro", field=models.TextField(blank=True),
+            model_name="servicespage",
+            name="intro",
+            field=models.TextField(blank=True),
         ),
-        migrations.DeleteModel(name="ServicesItem",),
-        migrations.DeleteModel(name="ServicesPageContentBlock",),
-        migrations.DeleteModel(name="ServicesPageRelatedLink",),
+        migrations.DeleteModel(
+            name="ServicesItem",
+        ),
+        migrations.DeleteModel(
+            name="ServicesPageContentBlock",
+        ),
+        migrations.DeleteModel(
+            name="ServicesPageRelatedLink",
+        ),
         migrations.AddField(
             model_name="servicespageservice",
             name="page",

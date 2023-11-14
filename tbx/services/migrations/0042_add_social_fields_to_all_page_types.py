@@ -7,29 +7,41 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0004_wagtail42_images'),
-        ('services', '0041_merge_0038_call_to_action_0040_update_services_theme'),
+        ("images", "0004_wagtail42_images"),
+        ("services", "0041_merge_0038_call_to_action_0040_update_services_theme"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='servicepage',
-            name='social_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
+            model_name="servicepage",
+            name="social_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="images.customimage",
+            ),
         ),
         migrations.AddField(
-            model_name='servicepage',
-            name='social_text',
+            model_name="servicepage",
+            name="social_text",
             field=models.CharField(blank=True, max_length=255),
         ),
         migrations.AddField(
-            model_name='subservicepage',
-            name='social_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
+            model_name="subservicepage",
+            name="social_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="images.customimage",
+            ),
         ),
         migrations.AddField(
-            model_name='subservicepage',
-            name='social_text',
+            model_name="subservicepage",
+            name="social_text",
             field=models.CharField(blank=True, max_length=255),
         ),
     ]

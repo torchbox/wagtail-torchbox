@@ -10,11 +10,18 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="personindexpage", name="intro",),
         migrations.RemoveField(
-            model_name="personindexpage", name="senior_management_intro",
+            model_name="personindexpage",
+            name="intro",
         ),
-        migrations.RemoveField(model_name="personindexpage", name="team_intro",),
+        migrations.RemoveField(
+            model_name="personindexpage",
+            name="senior_management_intro",
+        ),
+        migrations.RemoveField(
+            model_name="personindexpage",
+            name="team_intro",
+        ),
         migrations.AddField(
             model_name="personindexpage",
             name="strapline",

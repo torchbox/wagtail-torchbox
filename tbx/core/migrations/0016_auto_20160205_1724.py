@@ -12,6 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name="googleadgrantapplication", options={"ordering": ["-date"]},
+            name="googleadgrantapplication",
+            options={"ordering": ["-date"]},
         ),
     ]

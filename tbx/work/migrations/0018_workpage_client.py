@@ -11,6 +11,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name="workpage", name="client", field=models.TextField(blank=True),
+            model_name="workpage",
+            name="client",
+            field=models.TextField(blank=True),
         ),
     ]

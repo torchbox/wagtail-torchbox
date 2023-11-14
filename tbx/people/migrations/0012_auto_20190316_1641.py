@@ -31,7 +31,10 @@ class Migration(migrations.Migration):
                 ("title", models.CharField(max_length=255)),
                 ("description", models.TextField()),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
         ),
         migrations.CreateModel(
             name="ContactReasonsList",
@@ -54,7 +57,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
         ),
         migrations.AddField(
             model_name="contactreason",

@@ -193,7 +193,10 @@ class Migration(migrations.Migration):
                                                 classname="quote title"
                                             ),
                                         ),
-                                        ("attribution", wagtail.blocks.CharBlock(),),
+                                        (
+                                            "attribution",
+                                            wagtail.blocks.CharBlock(),
+                                        ),
                                     ],
                                     template="blocks/services/pull_quote_block.html",
                                 ),
@@ -364,7 +367,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -394,7 +399,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"abstract": False,},
+            options={
+                "abstract": False,
+            },
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -435,13 +442,17 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["sort_order"], "abstract": False,},
+            options={
+                "ordering": ["sort_order"],
+                "abstract": False,
+            },
         ),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            state_operations=state_operations, database_operations=[],
+            state_operations=state_operations,
+            database_operations=[],
         ),
         migrations.SeparateDatabaseAndState(
             state_operations=[],

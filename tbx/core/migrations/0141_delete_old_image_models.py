@@ -10,8 +10,18 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterUniqueTogether(name="torchboxrendition", unique_together=None,),
-        migrations.RemoveField(model_name="torchboxrendition", name="image",),
-        migrations.DeleteModel(name="TorchboxImage",),
-        migrations.DeleteModel(name="TorchboxRendition",),
+        migrations.AlterUniqueTogether(
+            name="torchboxrendition",
+            unique_together=None,
+        ),
+        migrations.RemoveField(
+            model_name="torchboxrendition",
+            name="image",
+        ),
+        migrations.DeleteModel(
+            name="TorchboxImage",
+        ),
+        migrations.DeleteModel(
+            name="TorchboxRendition",
+        ),
     ]
