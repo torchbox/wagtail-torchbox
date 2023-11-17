@@ -4,10 +4,6 @@
 # Requires Git > 2.23
 # See https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---ignore-revs-fileltfilegt
 
-# Fix python formatting with black
-# pre-commit run black --color=always --all-files
-e6271cc9f60dcae600b011ab8e551bf1586bdc4d
-
 # Fix templates formatting with djhtml
 # pre-commit run djhtml --color=always --all-files
 b867caaabb109ca807559c73086f03fa2812fa31
