@@ -66,4 +66,12 @@ build-backend = "poetry.masonry.api"
 [tool.black]
 line_length = 88
 target-version = ['py39']
-exclude = '/(migrations|venv|.venv|node_modules|.git)/'
+exclude = '''
+/(
+    .+/migrations
+  | venv
+  | \.venv
+  | node_modules
+  | \.git
+)/
+'''
