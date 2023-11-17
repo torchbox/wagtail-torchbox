@@ -11,11 +11,9 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RemoveField(
-            model_name="subservicepage",
-            name="show_automatic_blog_listing",
+            model_name="subservicepage", name="show_automatic_blog_listing",
         ),
         migrations.RemoveField(
-            model_name="subservicepage",
-            name="show_automatic_case_studies_listing",
+            model_name="subservicepage", name="show_automatic_case_studies_listing",
         ),
     ]

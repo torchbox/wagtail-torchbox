@@ -7,41 +7,29 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("images", "0004_wagtail42_images"),
-        ("blog", "0027_add_mailchimp_block"),
+        ('images', '0004_wagtail42_images'),
+        ('blog', '0027_add_mailchimp_block'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="blogindexpage",
-            name="social_image",
-            field=models.ForeignKey(
-                blank=True,
-                null=True,
-                on_delete=django.db.models.deletion.SET_NULL,
-                related_name="+",
-                to="images.customimage",
-            ),
+            model_name='blogindexpage',
+            name='social_image',
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
         ),
         migrations.AddField(
-            model_name="blogindexpage",
-            name="social_text",
+            model_name='blogindexpage',
+            name='social_text',
             field=models.CharField(blank=True, max_length=255),
         ),
         migrations.AddField(
-            model_name="blogpage",
-            name="social_image",
-            field=models.ForeignKey(
-                blank=True,
-                null=True,
-                on_delete=django.db.models.deletion.SET_NULL,
-                related_name="+",
-                to="images.customimage",
-            ),
+            model_name='blogpage',
+            name='social_image',
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
         ),
         migrations.AddField(
-            model_name="blogpage",
-            name="social_text",
+            model_name='blogpage',
+            name='social_text',
             field=models.CharField(blank=True, max_length=255),
         ),
     ]

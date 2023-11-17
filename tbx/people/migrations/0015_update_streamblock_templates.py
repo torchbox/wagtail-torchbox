@@ -29,14 +29,8 @@ class Migration(migrations.Migration):
                             template="patterns/molecules/streamfield/blocks/heading2_block.html",
                         ),
                     ),
-                    (
-                        "h3",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
-                    (
-                        "h4",
-                        wagtail.blocks.CharBlock(classname="title", icon="title"),
-                    ),
+                    ("h3", wagtail.blocks.CharBlock(classname="title", icon="title"),),
+                    ("h4", wagtail.blocks.CharBlock(classname="title", icon="title"),),
                     (
                         "intro",
                         wagtail.blocks.RichTextBlock(

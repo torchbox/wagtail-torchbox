@@ -110,9 +110,7 @@ class Migration(migrations.Migration):
                 ("show_in_play_menu", models.BooleanField(default=False)),
                 ("hide_popular_tags", models.BooleanField(default=False)),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -182,10 +180,7 @@ class Migration(migrations.Migration):
                                     classname="title", icon="title"
                                 ),
                             ),
-                            (
-                                "intro",
-                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
-                            ),
+                            ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow"),),
                             (
                                 "paragraph",
                                 wagtail.blocks.RichTextBlock(icon="pilcrow"),
@@ -245,10 +240,7 @@ class Migration(migrations.Migration):
                                                 classname="quote title"
                                             ),
                                         ),
-                                        (
-                                            "attribution",
-                                            wagtail.blocks.CharBlock(),
-                                        ),
+                                        ("attribution", wagtail.blocks.CharBlock(),),
                                     ]
                                 ),
                             ),
@@ -290,9 +282,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -330,10 +320,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
             name="WorkPageScreenshot",
@@ -370,10 +357,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
             name="WorkPageTagSelect",
@@ -408,17 +392,13 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            state_operations=state_operations,
-            database_operations=[],
+            state_operations=state_operations, database_operations=[],
         ),
         migrations.SeparateDatabaseAndState(
             state_operations=[],

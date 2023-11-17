@@ -7,21 +7,14 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("images", "0003_alter_customimage_file_hash"),
-        ("impact_reports", "0001_initial"),
+        ('images', '0003_alter_customimage_file_hash'),
+        ('impact_reports', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name="impactreportpage",
-            name="hero_image",
-            field=models.ForeignKey(
-                blank=True,
-                help_text="This is for the illustration only. Use an image with dimensions of 571x700",
-                null=True,
-                on_delete=django.db.models.deletion.SET_NULL,
-                related_name="+",
-                to="images.customimage",
-            ),
+            model_name='impactreportpage',
+            name='hero_image',
+            field=models.ForeignKey(blank=True, help_text='This is for the illustration only. Use an image with dimensions of 571x700', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
         ),
     ]

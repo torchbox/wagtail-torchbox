@@ -42,10 +42,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
             name="WorkPageTagSelect",
@@ -64,35 +61,14 @@ class Migration(migrations.Migration):
                     models.IntegerField(blank=True, editable=False, null=True),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
-        migrations.RemoveField(
-            model_name="expertisetag",
-            name="content_object",
-        ),
-        migrations.RemoveField(
-            model_name="expertisetag",
-            name="tag",
-        ),
-        migrations.RemoveField(
-            model_name="sectortag",
-            name="content_object",
-        ),
-        migrations.RemoveField(
-            model_name="sectortag",
-            name="tag",
-        ),
-        migrations.RemoveField(
-            model_name="workpage",
-            name="expertises",
-        ),
-        migrations.RemoveField(
-            model_name="workpage",
-            name="sectors",
-        ),
+        migrations.RemoveField(model_name="expertisetag", name="content_object",),
+        migrations.RemoveField(model_name="expertisetag", name="tag",),
+        migrations.RemoveField(model_name="sectortag", name="content_object",),
+        migrations.RemoveField(model_name="sectortag", name="tag",),
+        migrations.RemoveField(model_name="workpage", name="expertises",),
+        migrations.RemoveField(model_name="workpage", name="sectors",),
         migrations.AddField(
             model_name="workpage",
             name="author_left",
@@ -120,12 +96,8 @@ class Migration(migrations.Migration):
             field=models.CharField(default="", max_length=255),
             preserve_default=False,
         ),
-        migrations.DeleteModel(
-            name="ExpertiseTag",
-        ),
-        migrations.DeleteModel(
-            name="SectorTag",
-        ),
+        migrations.DeleteModel(name="ExpertiseTag",),
+        migrations.DeleteModel(name="SectorTag",),
         migrations.AddField(
             model_name="workpagetagselect",
             name="page",

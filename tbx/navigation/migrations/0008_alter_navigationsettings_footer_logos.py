@@ -9,69 +9,13 @@ import wagtail.images.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("navigation", "0007_navigationsettings_footer_logos"),
+        ('navigation', '0007_navigationsettings_footer_logos'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name="navigationsettings",
-            name="footer_logos",
-            field=wagtail.fields.StreamField(
-                [
-                    (
-                        "logos",
-                        wagtail.blocks.StructBlock(
-                            [
-                                ("image", wagtail.images.blocks.ImageChooserBlock()),
-                                (
-                                    "link",
-                                    wagtail.blocks.StreamBlock(
-                                        [
-                                            (
-                                                "internal_link",
-                                                wagtail.blocks.StructBlock(
-                                                    [
-                                                        (
-                                                            "page",
-                                                            wagtail.blocks.PageChooserBlock(),
-                                                        ),
-                                                        (
-                                                            "link_text",
-                                                            wagtail.blocks.CharBlock(
-                                                                required=False
-                                                            ),
-                                                        ),
-                                                    ]
-                                                ),
-                                            ),
-                                            (
-                                                "external_link",
-                                                wagtail.blocks.StructBlock(
-                                                    [
-                                                        (
-                                                            "link_url",
-                                                            wagtail.blocks.URLBlock(
-                                                                label="URL"
-                                                            ),
-                                                        ),
-                                                        (
-                                                            "link_text",
-                                                            wagtail.blocks.CharBlock(),
-                                                        ),
-                                                    ]
-                                                ),
-                                            ),
-                                        ],
-                                        required=False,
-                                    ),
-                                ),
-                            ]
-                        ),
-                    )
-                ],
-                blank=True,
-                help_text="Single list of logos that appear before the footer box",
-                use_json_field=True,
-            ),
+            model_name='navigationsettings',
+            name='footer_logos',
+            field=wagtail.fields.StreamField([('logos', wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('link', wagtail.blocks.StreamBlock([('internal_link', wagtail.blocks.StructBlock([('page', wagtail.blocks.PageChooserBlock()), ('link_text', wagtail.blocks.CharBlock(required=False))])), ('external_link', wagtail.blocks.StructBlock([('link_url', wagtail.blocks.URLBlock(label='URL')), ('link_text', wagtail.blocks.CharBlock())]))], required=False))]))], blank=True, help_text='Single list of logos that appear before the footer box', use_json_field=True),
         ),
     ]

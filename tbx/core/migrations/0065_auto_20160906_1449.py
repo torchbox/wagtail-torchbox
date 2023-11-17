@@ -12,16 +12,11 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RenameModel(old_name="HomePageClients", new_name="HomePageClient",),
         migrations.RenameModel(
-            old_name="HomePageClients",
-            new_name="HomePageClient",
-        ),
-        migrations.RenameModel(
-            old_name="StandardPageClients",
-            new_name="StandardPageClient",
+            old_name="StandardPageClients", new_name="StandardPageClient",
         ),
         migrations.AlterModelOptions(
-            name="servicespageservice",
-            options={"ordering": ["sort_order"]},
+            name="servicespageservice", options={"ordering": ["sort_order"]},
         ),
     ]

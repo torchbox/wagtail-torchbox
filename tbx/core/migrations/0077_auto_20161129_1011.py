@@ -23,14 +23,8 @@ class Migration(migrations.Migration):
                         b"case_studies",
                         wagtail.blocks.StructBlock(
                             [
-                                (
-                                    b"title",
-                                    wagtail.blocks.CharBlock(required=True),
-                                ),
-                                (
-                                    b"intro",
-                                    wagtail.blocks.TextBlock(required=True),
-                                ),
+                                (b"title", wagtail.blocks.CharBlock(required=True),),
+                                (b"intro", wagtail.blocks.TextBlock(required=True),),
                                 (
                                     b"case_studies",
                                     wagtail.blocks.ListBlock(
@@ -46,10 +40,7 @@ class Migration(migrations.Migration):
                         b"highlights",
                         wagtail.blocks.StructBlock(
                             [
-                                (
-                                    b"title",
-                                    wagtail.blocks.CharBlock(required=True),
-                                ),
+                                (b"title", wagtail.blocks.CharBlock(required=True),),
                                 (b"intro", wagtail.blocks.TextBlock()),
                                 (
                                     b"highlights",
@@ -77,10 +68,7 @@ class Migration(migrations.Migration):
                         b"process",
                         wagtail.blocks.StructBlock(
                             [
-                                (
-                                    b"title",
-                                    wagtail.blocks.CharBlock(required=True),
-                                ),
+                                (b"title", wagtail.blocks.CharBlock(required=True),),
                                 (b"intro", wagtail.blocks.TextBlock()),
                                 (
                                     b"steps",
@@ -118,14 +106,8 @@ class Migration(migrations.Migration):
                         b"people",
                         wagtail.blocks.StructBlock(
                             [
-                                (
-                                    b"title",
-                                    wagtail.blocks.CharBlock(required=True),
-                                ),
-                                (
-                                    b"intro",
-                                    wagtail.blocks.TextBlock(required=True),
-                                ),
+                                (b"title", wagtail.blocks.CharBlock(required=True),),
+                                (b"intro", wagtail.blocks.TextBlock(required=True),),
                                 (
                                     b"people",
                                     wagtail.blocks.ListBlock(

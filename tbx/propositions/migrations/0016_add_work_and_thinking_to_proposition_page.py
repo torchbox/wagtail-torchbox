@@ -8,71 +8,18 @@ import wagtail.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("propositions", "0015_add_optional_link_to_testimonials"),
+        ('propositions', '0015_add_optional_link_to_testimonials'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="propositionpage",
-            name="our_thinking_section_body",
-            field=wagtail.fields.StreamField(
-                [
-                    (
-                        "our_thinking",
-                        wagtail.blocks.StructBlock(
-                            [
-                                (
-                                    "title",
-                                    wagtail.blocks.CharBlock(
-                                        default="Thinking", label="Blogs section title"
-                                    ),
-                                ),
-                                (
-                                    "featured_blog_posts",
-                                    wagtail.blocks.ListBlock(
-                                        wagtail.blocks.PageChooserBlock(
-                                            page_type=["blog.BlogPage"]
-                                        )
-                                    ),
-                                ),
-                            ]
-                        ),
-                    )
-                ],
-                blank=True,
-                use_json_field=True,
-            ),
+            model_name='propositionpage',
+            name='our_thinking_section_body',
+            field=wagtail.fields.StreamField([('our_thinking', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock(default='Thinking', label='Blogs section title')), ('featured_blog_posts', wagtail.blocks.ListBlock(wagtail.blocks.PageChooserBlock(page_type=['blog.BlogPage'])))]))], blank=True, use_json_field=True),
         ),
         migrations.AddField(
-            model_name="propositionpage",
-            name="our_work_section_body",
-            field=wagtail.fields.StreamField(
-                [
-                    (
-                        "our_work",
-                        wagtail.blocks.StructBlock(
-                            [
-                                (
-                                    "title",
-                                    wagtail.blocks.CharBlock(
-                                        default="Work",
-                                        label="Case studies section title",
-                                    ),
-                                ),
-                                (
-                                    "featured_case_studies",
-                                    wagtail.blocks.ListBlock(
-                                        wagtail.blocks.PageChooserBlock(
-                                            page_type=["work.WorkPage"]
-                                        )
-                                    ),
-                                ),
-                            ]
-                        ),
-                    )
-                ],
-                blank=True,
-                use_json_field=True,
-            ),
+            model_name='propositionpage',
+            name='our_work_section_body',
+            field=wagtail.fields.StreamField([('our_work', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock(default='Work', label='Case studies section title')), ('featured_case_studies', wagtail.blocks.ListBlock(wagtail.blocks.PageChooserBlock(page_type=['work.WorkPage'])))]))], blank=True, use_json_field=True),
         ),
     ]

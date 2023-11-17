@@ -13,8 +13,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RenameField(
-            model_name="workpage",
-            old_name="summary",
-            new_name="listing_summary",
+            model_name="workpage", old_name="summary", new_name="listing_summary",
         ),
     ]

@@ -89,9 +89,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -132,10 +130,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
             name="SignUpFormPageLogo",
@@ -172,10 +167,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
             name="SignUpFormPageQuote",
@@ -205,10 +197,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
         migrations.CreateModel(
             name="SignUpFormPageResponse",
@@ -225,8 +214,6 @@ class Migration(migrations.Migration):
                 ("date", models.DateTimeField(auto_now_add=True)),
                 ("email", models.EmailField(max_length=254)),
             ],
-            options={
-                "ordering": ["-date"],
-            },
+            options={"ordering": ["-date"],},
         ),
     ]

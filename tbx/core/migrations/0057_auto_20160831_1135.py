@@ -12,10 +12,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="blogpage",
-            name="homepage_color",
-        ),
+        migrations.RemoveField(model_name="blogpage", name="homepage_color",),
         migrations.AddField(
             model_name="blogpage",
             name="colour",

@@ -6,8 +6,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("services", "0038_call_to_action"),
-        ("services", "0040_update_services_theme"),
+        ('services', '0038_call_to_action'),
+        ('services', '0040_update_services_theme'),
     ]
 
-    operations = []
+    operations = [
+    ]

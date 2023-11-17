@@ -58,10 +58,7 @@ class Migration(migrations.Migration):
                                     classname="title", icon="title"
                                 ),
                             ),
-                            (
-                                "intro",
-                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
-                            ),
+                            ("intro", wagtail.blocks.RichTextBlock(icon="pilcrow"),),
                             (
                                 "paragraph",
                                 wagtail.blocks.RichTextBlock(icon="pilcrow"),
@@ -121,10 +118,7 @@ class Migration(migrations.Migration):
                                                 classname="quote title"
                                             ),
                                         ),
-                                        (
-                                            "attribution",
-                                            wagtail.blocks.CharBlock(),
-                                        ),
+                                        ("attribution", wagtail.blocks.CharBlock(),),
                                     ]
                                 ),
                             ),
@@ -163,9 +157,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -204,9 +196,6 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
     ]

@@ -10,8 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelOptions(
-            name="event",
-            options={},
-        ),
+        migrations.AlterModelOptions(name="event", options={},),
     ]

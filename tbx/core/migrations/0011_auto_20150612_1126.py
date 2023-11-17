@@ -11,8 +11,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelOptions(
-            name="workpage",
-            options={},
-        ),
+        migrations.AlterModelOptions(name="workpage", options={},),
     ]

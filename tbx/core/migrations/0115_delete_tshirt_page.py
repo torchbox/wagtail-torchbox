@@ -15,15 +15,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="tshirtpage",
-            name="main_image",
-        ),
-        migrations.RemoveField(
-            model_name="tshirtpage",
-            name="page_ptr",
-        ),
-        migrations.DeleteModel(
-            name="TshirtPage",
-        ),
+        migrations.RemoveField(model_name="tshirtpage", name="main_image",),
+        migrations.RemoveField(model_name="tshirtpage", name="page_ptr",),
+        migrations.DeleteModel(name="TshirtPage",),
     ]

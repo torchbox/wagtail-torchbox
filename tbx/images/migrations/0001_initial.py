@@ -98,9 +98,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
             bases=(wagtail.search.index.Indexed, models.Model),
         ),
         migrations.CreateModel(
@@ -141,8 +139,6 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "unique_together": {("image", "filter_spec", "focal_point_key")},
-            },
+            options={"unique_together": {("image", "filter_spec", "focal_point_key")},},
         ),
     ]

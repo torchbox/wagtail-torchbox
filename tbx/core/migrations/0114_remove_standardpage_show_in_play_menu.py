@@ -12,8 +12,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="standardpage",
-            name="show_in_play_menu",
-        ),
+        migrations.RemoveField(model_name="standardpage", name="show_in_play_menu",),
     ]

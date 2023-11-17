@@ -24,8 +24,5 @@ class Migration(migrations.Migration):
                 max_length=255,
             ),
         ),
-        migrations.RemoveField(
-            model_name="servicepage",
-            name="is_darktheme",
-        ),
+        migrations.RemoveField(model_name="servicepage", name="is_darktheme",),
     ]

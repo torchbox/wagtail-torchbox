@@ -61,10 +61,7 @@ class Migration(migrations.Migration):
                         null=True,
                     ),
                 ),
-                (
-                    "heading_for_key_points",
-                    wagtail.fields.RichTextField(blank=True),
-                ),
+                ("heading_for_key_points", wagtail.fields.RichTextField(blank=True),),
                 ("use_process_block_image", models.BooleanField(default=False)),
                 ("heading_for_processes", models.TextField(blank=True, null=True)),
                 (
@@ -108,9 +105,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -145,9 +140,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.CreateModel(
             name="SubServicePageFeaturedBlogPost",
@@ -180,9 +173,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.CreateModel(
             name="SubServicePageFeaturedCaseStudy",
@@ -215,9 +206,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.CreateModel(
             name="SubServicePageKeyPoint",
@@ -255,9 +244,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.CreateModel(
             name="SubServicePageProcess",
@@ -296,9 +283,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.CreateModel(
             name="SubServicePageTestimonial",
@@ -328,9 +313,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.CreateModel(
             name="SubServicePageUSAClientLogo",
@@ -364,38 +347,15 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
-        migrations.AlterModelOptions(
-            name="servicepageclientlogo",
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name="servicepagefeaturedblogpost",
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name="servicepagefeaturedcasestudy",
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name="servicepagekeypoint",
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name="servicepageprocess",
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name="servicepagetestimonial",
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name="servicepageusaclientlogo",
-            options={},
-        ),
+        migrations.AlterModelOptions(name="servicepageclientlogo", options={},),
+        migrations.AlterModelOptions(name="servicepagefeaturedblogpost", options={},),
+        migrations.AlterModelOptions(name="servicepagefeaturedcasestudy", options={},),
+        migrations.AlterModelOptions(name="servicepagekeypoint", options={},),
+        migrations.AlterModelOptions(name="servicepageprocess", options={},),
+        migrations.AlterModelOptions(name="servicepagetestimonial", options={},),
+        migrations.AlterModelOptions(name="servicepageusaclientlogo", options={},),
         migrations.AlterField(
             model_name="servicepage",
             name="heading_for_key_points",

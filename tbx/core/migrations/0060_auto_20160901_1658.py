@@ -52,46 +52,16 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
         ),
-        migrations.RenameModel(
-            old_name="AboutPageValues",
-            new_name="AboutPageValue",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpageclients",
-            name="image",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpageclients",
-            name="link_document",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpageclients",
-            name="link_page",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpageclients",
-            name="page",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpageinvolvement",
-            name="page",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpageservice",
-            name="page",
-        ),
-        migrations.DeleteModel(
-            name="AboutPageClients",
-        ),
-        migrations.DeleteModel(
-            name="AboutPageInvolvement",
-        ),
-        migrations.DeleteModel(
-            name="AboutPageService",
-        ),
+        migrations.RenameModel(old_name="AboutPageValues", new_name="AboutPageValue",),
+        migrations.RemoveField(model_name="aboutpageclients", name="image",),
+        migrations.RemoveField(model_name="aboutpageclients", name="link_document",),
+        migrations.RemoveField(model_name="aboutpageclients", name="link_page",),
+        migrations.RemoveField(model_name="aboutpageclients", name="page",),
+        migrations.RemoveField(model_name="aboutpageinvolvement", name="page",),
+        migrations.RemoveField(model_name="aboutpageservice", name="page",),
+        migrations.DeleteModel(name="AboutPageClients",),
+        migrations.DeleteModel(name="AboutPageInvolvement",),
+        migrations.DeleteModel(name="AboutPageService",),
     ]

@@ -16,34 +16,15 @@ class Migration(migrations.Migration):
     ]
 
     state_operations = [
+        migrations.RemoveField(model_name="personindexpage", name="page_ptr",),
+        migrations.RemoveField(model_name="personpage", name="feed_image",),
+        migrations.RemoveField(model_name="personpage", name="image",),
+        migrations.RemoveField(model_name="personpage", name="page_ptr",),
         migrations.RemoveField(
-            model_name="personindexpage",
-            name="page_ptr",
+            model_name="personpagerelatedlink", name="link_document",
         ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="feed_image",
-        ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="image",
-        ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="page_ptr",
-        ),
-        migrations.RemoveField(
-            model_name="personpagerelatedlink",
-            name="link_document",
-        ),
-        migrations.RemoveField(
-            model_name="personpagerelatedlink",
-            name="link_page",
-        ),
-        migrations.RemoveField(
-            model_name="personpagerelatedlink",
-            name="page",
-        ),
+        migrations.RemoveField(model_name="personpagerelatedlink", name="link_page",),
+        migrations.RemoveField(model_name="personpagerelatedlink", name="page",),
         migrations.AlterField(
             model_name="globalsettings",
             name="contact_person",
@@ -55,20 +36,13 @@ class Migration(migrations.Migration):
                 to="people.PersonPage",
             ),
         ),
-        migrations.DeleteModel(
-            name="PersonIndexPage",
-        ),
-        migrations.DeleteModel(
-            name="PersonPage",
-        ),
-        migrations.DeleteModel(
-            name="PersonPageRelatedLink",
-        ),
+        migrations.DeleteModel(name="PersonIndexPage",),
+        migrations.DeleteModel(name="PersonPage",),
+        migrations.DeleteModel(name="PersonPageRelatedLink",),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            database_operations=[],
-            state_operations=state_operations,
+            database_operations=[], state_operations=state_operations,
         )
     ]

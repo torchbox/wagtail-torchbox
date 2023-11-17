@@ -7,25 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("images", "0004_wagtail42_images"),
-        ("events", "0003_call_to_action"),
+        ('images', '0004_wagtail42_images'),
+        ('events', '0003_call_to_action'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="eventindexpage",
-            name="social_image",
-            field=models.ForeignKey(
-                blank=True,
-                null=True,
-                on_delete=django.db.models.deletion.SET_NULL,
-                related_name="+",
-                to="images.customimage",
-            ),
+            model_name='eventindexpage',
+            name='social_image',
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.customimage'),
         ),
         migrations.AddField(
-            model_name="eventindexpage",
-            name="social_text",
+            model_name='eventindexpage',
+            name='social_text',
             field=models.CharField(blank=True, max_length=255),
         ),
     ]

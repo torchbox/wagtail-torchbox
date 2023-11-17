@@ -8,80 +8,56 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("images", "0004_wagtail42_images"),
-        ("torchbox", "0150_add_mailchimp_block"),
+        ('images', '0004_wagtail42_images'),
+        ('torchbox', '0150_add_mailchimp_block'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="HomePageHeroImage",
+            name='HomePageHeroImage',
             fields=[
-                (
-                    "id",
-                    models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                (
-                    "sort_order",
-                    models.IntegerField(blank=True, editable=False, null=True),
-                ),
-                (
-                    "image",
-                    models.ForeignKey(
-                        help_text="The hero images will be displayed in a random order.",
-                        null=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        related_name="+",
-                        to="images.customimage",
-                    ),
-                ),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
+                ('image', models.ForeignKey(help_text='The hero images will be displayed in a random order.', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='images.customimage')),
             ],
             options={
-                "ordering": ["sort_order"],
-                "abstract": False,
+                'ordering': ['sort_order'],
+                'abstract': False,
             },
         ),
         migrations.RemoveField(
-            model_name="homepagehero",
-            name="background",
+            model_name='homepagehero',
+            name='background',
         ),
         migrations.RemoveField(
-            model_name="homepagehero",
-            name="link_document",
+            model_name='homepagehero',
+            name='link_document',
         ),
         migrations.RemoveField(
-            model_name="homepagehero",
-            name="link_page",
+            model_name='homepagehero',
+            name='link_page',
         ),
         migrations.RemoveField(
-            model_name="homepagehero",
-            name="logo",
+            model_name='homepagehero',
+            name='logo',
         ),
         migrations.RemoveField(
-            model_name="homepagehero",
-            name="page",
+            model_name='homepagehero',
+            name='page',
         ),
         migrations.RemoveField(
-            model_name="homepage",
-            name="hero_image",
+            model_name='homepage',
+            name='hero_image',
         ),
         migrations.DeleteModel(
-            name="HomePageClient",
+            name='HomePageClient',
         ),
         migrations.DeleteModel(
-            name="HomePageHero",
+            name='HomePageHero',
         ),
         migrations.AddField(
-            model_name="homepageheroimage",
-            name="page",
-            field=modelcluster.fields.ParentalKey(
-                on_delete=django.db.models.deletion.CASCADE,
-                related_name="hero_images",
-                to="torchbox.homepage",
-            ),
+            model_name='homepageheroimage',
+            name='page',
+            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='hero_images', to='torchbox.homepage'),
         ),
     ]

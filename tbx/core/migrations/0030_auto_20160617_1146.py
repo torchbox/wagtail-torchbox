@@ -14,9 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RenameField(
-            model_name="homepagehero",
-            old_name="image",
-            new_name="background",
+            model_name="homepagehero", old_name="image", new_name="background",
         ),
         migrations.AddField(
             model_name="homepagehero",

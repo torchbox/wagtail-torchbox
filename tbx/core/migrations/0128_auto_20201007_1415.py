@@ -27,8 +27,7 @@ class Migration(migrations.Migration):
             new_name="us_address_title",
         ),
         migrations.RemoveField(
-            model_name="globalsettings",
-            name="phili_address_title",
+            model_name="globalsettings", name="phili_address_title",
         ),
         migrations.AddField(
             model_name="globalsettings",

@@ -14,14 +14,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="mainmenuitem",
-            name="main_menu",
-        ),
-        migrations.RemoveField(
-            model_name="mainmenuitem",
-            name="page",
-        ),
+        migrations.RemoveField(model_name="mainmenuitem", name="main_menu",),
+        migrations.RemoveField(model_name="mainmenuitem", name="page",),
         migrations.AddField(
             model_name="mainmenu",
             name="menu",
@@ -50,7 +44,5 @@ class Migration(migrations.Migration):
                 blank=True,
             ),
         ),
-        migrations.DeleteModel(
-            name="MainMenuItem",
-        ),
+        migrations.DeleteModel(name="MainMenuItem",),
     ]

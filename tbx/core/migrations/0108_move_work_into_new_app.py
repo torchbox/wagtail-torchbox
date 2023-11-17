@@ -23,66 +23,25 @@ class Migration(migrations.Migration):
     ]
 
     state_operations = [
-        migrations.RemoveField(
-            model_name="workindexpage",
-            name="page_ptr",
-        ),
-        migrations.RemoveField(
-            model_name="workpage",
-            name="feed_image",
-        ),
-        migrations.RemoveField(
-            model_name="workpage",
-            name="homepage_image",
-        ),
-        migrations.RemoveField(
-            model_name="workpage",
-            name="page_ptr",
-        ),
-        migrations.RemoveField(
-            model_name="workpageauthor",
-            name="author",
-        ),
-        migrations.RemoveField(
-            model_name="workpageauthor",
-            name="page",
-        ),
-        migrations.RemoveField(
-            model_name="workpagescreenshot",
-            name="image",
-        ),
-        migrations.RemoveField(
-            model_name="workpagescreenshot",
-            name="page",
-        ),
-        migrations.RemoveField(
-            model_name="workpagetagselect",
-            name="page",
-        ),
-        migrations.RemoveField(
-            model_name="workpagetagselect",
-            name="tag",
-        ),
-        migrations.DeleteModel(
-            name="WorkIndexPage",
-        ),
-        migrations.DeleteModel(
-            name="WorkPage",
-        ),
-        migrations.DeleteModel(
-            name="WorkPageAuthor",
-        ),
-        migrations.DeleteModel(
-            name="WorkPageScreenshot",
-        ),
-        migrations.DeleteModel(
-            name="WorkPageTagSelect",
-        ),
+        migrations.RemoveField(model_name="workindexpage", name="page_ptr",),
+        migrations.RemoveField(model_name="workpage", name="feed_image",),
+        migrations.RemoveField(model_name="workpage", name="homepage_image",),
+        migrations.RemoveField(model_name="workpage", name="page_ptr",),
+        migrations.RemoveField(model_name="workpageauthor", name="author",),
+        migrations.RemoveField(model_name="workpageauthor", name="page",),
+        migrations.RemoveField(model_name="workpagescreenshot", name="image",),
+        migrations.RemoveField(model_name="workpagescreenshot", name="page",),
+        migrations.RemoveField(model_name="workpagetagselect", name="page",),
+        migrations.RemoveField(model_name="workpagetagselect", name="tag",),
+        migrations.DeleteModel(name="WorkIndexPage",),
+        migrations.DeleteModel(name="WorkPage",),
+        migrations.DeleteModel(name="WorkPageAuthor",),
+        migrations.DeleteModel(name="WorkPageScreenshot",),
+        migrations.DeleteModel(name="WorkPageTagSelect",),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
-            database_operations=database_operations,
-            state_operations=state_operations,
+            database_operations=database_operations, state_operations=state_operations,
         )
     ]

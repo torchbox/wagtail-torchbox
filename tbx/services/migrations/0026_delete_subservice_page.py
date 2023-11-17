@@ -16,15 +16,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="subservicepage",
-            name="parent_service",
-        ),
-        migrations.RemoveField(
-            model_name="subservicepage",
-            name="servicepage_ptr",
-        ),
-        migrations.DeleteModel(
-            name="SubServicePage",
-        ),
+        migrations.RemoveField(model_name="subservicepage", name="parent_service",),
+        migrations.RemoveField(model_name="subservicepage", name="servicepage_ptr",),
+        migrations.DeleteModel(name="SubServicePage",),
     ]

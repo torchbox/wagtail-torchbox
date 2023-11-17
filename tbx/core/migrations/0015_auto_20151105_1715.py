@@ -48,19 +48,11 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "ordering": ["sort_order"],
-                "abstract": False,
-            },
+            options={"ordering": ["sort_order"], "abstract": False,},
             bases=(models.Model,),
         ),
-        migrations.RemoveField(
-            model_name="jobindexpagecontentblock",
-            name="page",
-        ),
-        migrations.DeleteModel(
-            name="JobIndexPageContentBlock",
-        ),
+        migrations.RemoveField(model_name="jobindexpagecontentblock", name="page",),
+        migrations.DeleteModel(name="JobIndexPageContentBlock",),
         migrations.AddField(
             model_name="jobindexpage",
             name="no_jobs_that_fit",

@@ -26,13 +26,7 @@ def migrate_standardpage_intro_and_body_to_streamfield(apps, schema_editor):
         # Add body as first block so it appears in the same place on the template
         page.streamfield = StreamValue(
             stream_block,
-            [
-                (
-                    "paragraph",
-                    RichText(page.body),
-                    str(uuid3(UUID_NAMESPACE, page.body)),
-                ),
-            ]
+            [("paragraph", RichText(page.body), str(uuid3(UUID_NAMESPACE, page.body))),]
             + [(child.block_type, child.value, child.id) for child in page.streamfield],
         )
 
@@ -109,18 +103,10 @@ class Migration(migrations.Migration):
         migrations.RunPython(
             migrate_standardpage_intro_and_body_to_streamfield, nooperation
         ),
-        migrations.RemoveField(
-            model_name="standardpage",
-            name="body",
-        ),
-        migrations.RemoveField(
-            model_name="standardpage",
-            name="intro",
-        ),
+        migrations.RemoveField(model_name="standardpage", name="body",),
+        migrations.RemoveField(model_name="standardpage", name="intro",),
         migrations.RenameField(
-            model_name="standardpage",
-            old_name="streamfield",
-            new_name="body",
+            model_name="standardpage", old_name="streamfield", new_name="body",
         ),
         migrations.RunPython(update_revisions),
     ]

@@ -10,11 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="servicepageherolink",
-            name="page",
-        ),
-        migrations.DeleteModel(
-            name="ServicePageHeroLink",
-        ),
+        migrations.RemoveField(model_name="servicepageherolink", name="page",),
+        migrations.DeleteModel(name="ServicePageHeroLink",),
     ]

@@ -67,9 +67,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.CreateModel(
             name="MarketingLandingPageIntroRelatedLink",
@@ -122,21 +120,16 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.RemoveField(
-            model_name="marketinglandingpagerelatedlink",
-            name="link_document",
+            model_name="marketinglandingpagerelatedlink", name="link_document",
         ),
         migrations.RemoveField(
-            model_name="marketinglandingpagerelatedlink",
-            name="link_page",
+            model_name="marketinglandingpagerelatedlink", name="link_page",
         ),
         migrations.RemoveField(
-            model_name="marketinglandingpagerelatedlink",
-            name="page",
+            model_name="marketinglandingpagerelatedlink", name="page",
         ),
         migrations.AddField(
             model_name="marketinglandingpage",
@@ -150,9 +143,7 @@ class Migration(migrations.Migration):
             name="intro",
             field=models.TextField(blank=True, verbose_name="header text"),
         ),
-        migrations.DeleteModel(
-            name="MarketingLandingPageRelatedLink",
-        ),
+        migrations.DeleteModel(name="MarketingLandingPageRelatedLink",),
         migrations.AddField(
             model_name="marketinglandingpageintrorelatedlink",
             name="page",

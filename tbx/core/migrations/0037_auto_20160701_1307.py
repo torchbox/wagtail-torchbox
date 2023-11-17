@@ -30,9 +30,7 @@ class Migration(migrations.Migration):
                 ),
                 ("intro", models.TextField(blank=True)),
             ],
-            options={
-                "verbose_name": "Contact Index Page",
-            },
+            options={"verbose_name": "Contact Index Page",},
             bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
@@ -51,13 +49,10 @@ class Migration(migrations.Migration):
                 ),
                 ("intro", models.TextField(blank=True)),
             ],
-            options={
-                "verbose_name": "Service",
-            },
+            options={"verbose_name": "Service",},
             bases=("wagtailcore.page",),
         ),
         migrations.AlterModelOptions(
-            name="servicespage",
-            options={"verbose_name": "Services Index Page"},
+            name="servicespage", options={"verbose_name": "Services Index Page"},
         ),
     ]

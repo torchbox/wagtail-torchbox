@@ -6,28 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("services", "0033_subservicepage_content"),
+        ('services', '0033_subservicepage_content'),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name="servicepageprocess",
-            old_name="page_link_label",
-            new_name="link_label",
+            model_name='servicepageprocess',
+            old_name='page_link_label',
+            new_name='link_label',
         ),
         migrations.RenameField(
-            model_name="subservicepageprocess",
-            old_name="page_link_label",
-            new_name="link_label",
+            model_name='subservicepageprocess',
+            old_name='page_link_label',
+            new_name='link_label',
         ),
         migrations.AddField(
-            model_name="servicepageprocess",
-            name="external_link",
-            field=models.URLField(blank=True, verbose_name="External link"),
+            model_name='servicepageprocess',
+            name='external_link',
+            field=models.URLField(blank=True, verbose_name='External link'),
         ),
         migrations.AddField(
-            model_name="subservicepageprocess",
-            name="external_link",
-            field=models.URLField(blank=True, verbose_name="External link"),
+            model_name='subservicepageprocess',
+            name='external_link',
+            field=models.URLField(blank=True, verbose_name='External link'),
         ),
     ]

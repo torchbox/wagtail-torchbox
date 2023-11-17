@@ -13,9 +13,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RenameField(
-            model_name="homepage",
-            old_name="intro",
-            new_name="hero_intro",
+            model_name="homepage", old_name="intro", new_name="hero_intro",
         ),
         migrations.AddField(
             model_name="homepage",

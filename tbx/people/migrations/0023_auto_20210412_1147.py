@@ -14,8 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name="valuespage",
-            options={"verbose_name": "Values Page"},
+            name="valuespage", options={"verbose_name": "Values Page"},
         ),
         migrations.AddField(
             model_name="valuespage",
@@ -38,10 +37,7 @@ class Migration(migrations.Migration):
                                                 "internal",
                                                 wagtail.blocks.PageChooserBlock(),
                                             ),
-                                            (
-                                                "external",
-                                                wagtail.blocks.URLBlock(),
-                                            ),
+                                            ("external", wagtail.blocks.URLBlock(),),
                                         ]
                                     ),
                                 ),

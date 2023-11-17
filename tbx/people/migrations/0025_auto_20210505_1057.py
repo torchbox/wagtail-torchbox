@@ -10,16 +10,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="culturepage",
-            name="body",
-        ),
-        migrations.RemoveField(
-            model_name="culturepage",
-            name="contact",
-        ),
-        migrations.RemoveField(
-            model_name="culturepage",
-            name="strapline_visible",
-        ),
+        migrations.RemoveField(model_name="culturepage", name="body",),
+        migrations.RemoveField(model_name="culturepage", name="contact",),
+        migrations.RemoveField(model_name="culturepage", name="strapline_visible",),
     ]

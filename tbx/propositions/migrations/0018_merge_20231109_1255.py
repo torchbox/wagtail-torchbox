@@ -6,8 +6,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("propositions", "0016_add_work_and_thinking_to_proposition_page"),
-        ("propositions", "0017_remove_heading_for_processes_field"),
+        ('propositions', '0016_add_work_and_thinking_to_proposition_page'),
+        ('propositions', '0017_remove_heading_for_processes_field'),
     ]
 
-    operations = []
+    operations = [
+    ]

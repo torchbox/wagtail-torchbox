@@ -22,9 +22,7 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AlterField(
-            model_name="jobindexpage",
-            name="intro",
-            field=models.TextField(blank=True),
+            model_name="jobindexpage", name="intro", field=models.TextField(blank=True),
         ),
         migrations.AlterField(
             model_name="jobindexpage",

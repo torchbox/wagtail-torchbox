@@ -6,17 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("propositions", "0008_auto_20230317_1144"),
+        ('propositions', '0008_auto_20230317_1144'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name="propositionpage",
-            name="theme",
-            field=models.CharField(
-                choices=[("light", "Light"), ("coral", "Coral"), ("dark", "Dark")],
-                default="light",
-                max_length=255,
-            ),
+            model_name='propositionpage',
+            name='theme',
+            field=models.CharField(choices=[('light', 'Light'), ('coral', 'Coral'), ('dark', 'Dark')], default='light', max_length=255),
         ),
     ]

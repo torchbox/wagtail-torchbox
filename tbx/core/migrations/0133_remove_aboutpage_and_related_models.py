@@ -15,40 +15,18 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RemoveField(model_name="aboutpagecontentblock", name="image",),
+        migrations.RemoveField(model_name="aboutpagecontentblock", name="page",),
+        migrations.RemoveField(model_name="aboutpageoffice", name="page",),
         migrations.RemoveField(
-            model_name="aboutpagecontentblock",
-            name="image",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpagecontentblock",
-            name="page",
+            model_name="aboutpagerelatedlinkbutton", name="link_document",
         ),
         migrations.RemoveField(
-            model_name="aboutpageoffice",
-            name="page",
+            model_name="aboutpagerelatedlinkbutton", name="link_page",
         ),
-        migrations.RemoveField(
-            model_name="aboutpagerelatedlinkbutton",
-            name="link_document",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpagerelatedlinkbutton",
-            name="link_page",
-        ),
-        migrations.RemoveField(
-            model_name="aboutpagerelatedlinkbutton",
-            name="page",
-        ),
-        migrations.DeleteModel(
-            name="AboutPage",
-        ),
-        migrations.DeleteModel(
-            name="AboutPageContentBlock",
-        ),
-        migrations.DeleteModel(
-            name="AboutPageOffice",
-        ),
-        migrations.DeleteModel(
-            name="AboutPageRelatedLinkButton",
-        ),
+        migrations.RemoveField(model_name="aboutpagerelatedlinkbutton", name="page",),
+        migrations.DeleteModel(name="AboutPage",),
+        migrations.DeleteModel(name="AboutPageContentBlock",),
+        migrations.DeleteModel(name="AboutPageOffice",),
+        migrations.DeleteModel(name="AboutPageRelatedLinkButton",),
     ]

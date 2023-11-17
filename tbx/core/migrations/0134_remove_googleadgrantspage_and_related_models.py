@@ -15,35 +15,17 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.DeleteModel(
-            name="GoogleAdGrantApplication",
+        migrations.DeleteModel(name="GoogleAdGrantApplication",),
+        migrations.RemoveField(model_name="googleadgrantspage", name="page_ptr",),
+        migrations.RemoveField(
+            model_name="googleadgrantspagegrantsmanaged", name="image",
         ),
         migrations.RemoveField(
-            model_name="googleadgrantspage",
-            name="page_ptr",
+            model_name="googleadgrantspagegrantsmanaged", name="page",
         ),
-        migrations.RemoveField(
-            model_name="googleadgrantspagegrantsmanaged",
-            name="image",
-        ),
-        migrations.RemoveField(
-            model_name="googleadgrantspagegrantsmanaged",
-            name="page",
-        ),
-        migrations.RemoveField(
-            model_name="googleadgrantspagequote",
-            name="page",
-        ),
-        migrations.DeleteModel(
-            name="GoogleAdGrantsAccreditations",
-        ),
-        migrations.DeleteModel(
-            name="GoogleAdGrantsPage",
-        ),
-        migrations.DeleteModel(
-            name="GoogleAdGrantsPageGrantsManaged",
-        ),
-        migrations.DeleteModel(
-            name="GoogleAdGrantsPageQuote",
-        ),
+        migrations.RemoveField(model_name="googleadgrantspagequote", name="page",),
+        migrations.DeleteModel(name="GoogleAdGrantsAccreditations",),
+        migrations.DeleteModel(name="GoogleAdGrantsPage",),
+        migrations.DeleteModel(name="GoogleAdGrantsPageGrantsManaged",),
+        migrations.DeleteModel(name="GoogleAdGrantsPageQuote",),
     ]
