@@ -101,7 +101,7 @@ USER root
 
 # Install `psql`, useful for `manage.py dbshell`
 RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
-    postgresql-client \
+    postgresql-client jpegoptim pngquant gifsicle libjpeg-progs webp \
     && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
 # Restore user
