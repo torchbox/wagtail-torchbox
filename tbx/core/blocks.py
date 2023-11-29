@@ -303,10 +303,10 @@ class PageSectionStoryBlock(StreamBlock):
     key_points_summary = ListBlock(
         KeyPoint(),
         icon="list-ul",
-        min_num=4,
+        min_num=3,
         max_num=6,
         template="patterns/molecules/streamfield/blocks/key_points_summary.html",
-        help_text="Please add a minumum of 4 and a maximum of 6 key points.",
+        help_text="Please add a minumum of 3 and a maximum of 6 key points.",
     )
     testimonials = ListBlock(
         TestimonialBlock(),
