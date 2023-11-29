@@ -325,7 +325,6 @@ if "SERVER_EMAIL" in env:
 is_in_shell = len(sys.argv) > 1 and sys.argv[1] in ["shell", "shell_plus"]
 
 if "SENTRY_DSN" in env and not is_in_shell:
-
     import sentry_sdk
     from sentry_sdk.integrations.django import DjangoIntegration
     from sentry_sdk.utils import get_default_release
@@ -461,6 +460,10 @@ if env.get("BASIC_AUTH_ENABLED", "false").lower().strip() == "true":
     MIDDLEWARE.insert(0, "baipw.middleware.BasicAuthIPWhitelistMiddleware")
     BASIC_AUTH_LOGIN = env.get("BASIC_AUTH_LOGIN")
     BASIC_AUTH_PASSWORD = env.get("BASIC_AUTH_PASSWORD")
+
+    # Wagtail requires Authorization header to be present for the previews
+    BASIC_AUTH_DISABLE_CONSUMING_AUTHORIZATION_HEADER = True
+
     BASIC_AUTH_WHITELISTED_IP_NETWORKS = [
         # Torchbox networks.
         "78.32.251.192/28",
