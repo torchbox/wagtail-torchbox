@@ -505,13 +505,13 @@ files = [
 
 [[package]]
 name = "django"
-version = "3.2.20"
+version = "3.2.23"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "Django-3.2.20-py3-none-any.whl", hash = "sha256:a477ab326ae7d8807dc25c186b951ab8c7648a3a23f9497763c37307a2b5ef87"},
-    {file = "Django-3.2.20.tar.gz", hash = "sha256:dec2a116787b8e14962014bf78e120bba454135108e1af9e9b91ade7b2964c40"},
+    {file = "Django-3.2.23-py3-none-any.whl", hash = "sha256:d48608d5f62f2c1e260986835db089fa3b79d6f58510881d316b8d88345ae6e1"},
+    {file = "Django-3.2.23.tar.gz", hash = "sha256:82968f3640e29ef4a773af2c28448f5f7a08d001c6ac05b32d02aeee6509508b"},
 ]
 
 [package.dependencies]
@@ -638,17 +638,17 @@ taggit = ["django-taggit (>=2.0)"]
 
 [[package]]
 name = "django-pattern-library"
-version = "1.0.0"
+version = "1.1.0"
 description = "A module for Django that allows to build pattern libraries for your projects."
 optional = false
-python-versions = ">=3.7,<4.0"
+python-versions = ">=3.8,<4.0"
 files = [
-    {file = "django-pattern-library-1.0.0.tar.gz", hash = "sha256:3da0a4606af60846b6d864acf7a88e97e0b2619732befa85fb31e7969f0e5ae8"},
-    {file = "django_pattern_library-1.0.0-py3-none-any.whl", hash = "sha256:b4e48cf8f6d07a88a514777ce995edab7e153c9719349764ea57bf28660e3a59"},
+    {file = "django_pattern_library-1.1.0-py3-none-any.whl", hash = "sha256:0ade8446f5f3dc9fa88fe0e64c65b7e2e22e2195b05fbbd3f4e84311f634c53c"},
+    {file = "django_pattern_library-1.1.0.tar.gz", hash = "sha256:beca4d9df9004cc3e46b14de20943bca919d5940b41d490f5be491533a51c459"},
 ]
 
 [package.dependencies]
-Django = ">=3.2,<4.2"
+Django = ">=3.2,<5.0"
 Markdown = ">=3.1,<4.0"
 PyYAML = ">=5.1,<7.0"
 
@@ -2565,13 +2565,13 @@ wagtail = ">=4.1,<6.0"
 
 [[package]]
 name = "wagtail-webstories"
-version = "0.1"
+version = "0.1.1"
 description = "AMP web story support for Wagtail"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "wagtail-webstories-0.1.tar.gz", hash = "sha256:b9421336ac493aa294d21b9a4f09cba214635b04d16cfd482ffef6b636ab0881"},
-    {file = "wagtail_webstories-0.1-py3-none-any.whl", hash = "sha256:01862a83595cd01eab314883fb8f5d3845a1d82a0a7ec95905a9d7c27b580b90"},
+    {file = "wagtail-webstories-0.1.1.tar.gz", hash = "sha256:d7e71438d3628d4c4da4df28019079cc2dc99215b82187ab81aff5305df00f05"},
+    {file = "wagtail_webstories-0.1.1-py3-none-any.whl", hash = "sha256:1689c738ec7ee8d6eaeb2183563f96a5b2efaf2ad90034a5d40d8a6ba23aa401"},
 ]
 
 [package.dependencies]
@@ -2585,13 +2585,13 @@ testing = ["Pillow (>=4.0.0,<10.0.0)", "responses (>=0.12,<1)", "wagtailmedia (>
 
 [[package]]
 name = "wagtailmedia"
-version = "0.14.4"
+version = "0.14.5"
 description = "A Wagtail module for audio and video files."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "wagtailmedia-0.14.4-py3-none-any.whl", hash = "sha256:28f331ce28b487b2235a03b424e9bd0c136239477459790e5a586b1b1da1d671"},
-    {file = "wagtailmedia-0.14.4.tar.gz", hash = "sha256:0fc3136091429a1c4f99e4920541d6c89dd48e82561cab5fb13f0a1fd947c1ac"},
+    {file = "wagtailmedia-0.14.5-py3-none-any.whl", hash = "sha256:591f38f72980f8494c41e7df70c583ba8b40f284ec109f178ef73876747a139b"},
+    {file = "wagtailmedia-0.14.5.tar.gz", hash = "sha256:f3300f57d326c571420af4bc9381b3bb508dab402fb0f4b7957991a41fe91ef3"},
 ]
 
 [package.dependencies]
