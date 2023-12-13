@@ -503,13 +503,13 @@ files = [
 
 [[package]]
 name = "django"
-version = "4.2"
+version = "4.2.8"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "Django-4.2-py3-none-any.whl", hash = "sha256:ad33ed68db9398f5dfb33282704925bce044bef4261cd4fb59e4e7f9ae505a78"},
-    {file = "Django-4.2.tar.gz", hash = "sha256:c36e2ab12824e2ac36afa8b2515a70c53c7742f0d6eaefa7311ec379558db997"},
+    {file = "Django-4.2.8-py3-none-any.whl", hash = "sha256:6cb5dcea9e3d12c47834d32156b8841f533a4493c688e2718cafd51aa430ba6d"},
+    {file = "Django-4.2.8.tar.gz", hash = "sha256:d69d5e36cc5d9f4eb4872be36c622878afcdce94062716cf3e25bcedcb168b62"},
 ]
 
 [package.dependencies]
@@ -2794,4 +2794,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "04563f6b622cebf9fc555ad832408bc374642b46aef9965fdc32d2a09665e0e2"
+content-hash = "89f7743afdfbdc30b089cfb2155aa08841bbb073ad5b46ed9a70f868e871ad15"
