@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     "wagtail.admin",
     "wagtail_webstories",
     "wagtail",
-    "wagtail.contrib.modeladmin",
     "wagtailmarkdown",
     "modelcluster",
     "taggit",
@@ -573,3 +572,5 @@ BIRDBATH_PROCESSORS = [
 ]
 # people hr feed
 PEOPLEHR_FEED_URL = env.get("PEOPLEHR_FEED_URL", "")
+
+WILLOW_OPTIMIZERS = True

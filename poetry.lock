@@ -1542,6 +1542,70 @@ docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline
 tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
 
 [[package]]
+name = "pillow-heif"
+version = "0.13.0"
+description = "Python interface for libheif library"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pillow_heif-0.13.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:a909f52b396f24596610ca7aba809b298ddad6801169a3506f01c5ebae48ca47"},
+    {file = "pillow_heif-0.13.0-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:9c4b7a8108f927edf3d2ac105545a4157a422361422f085b2a7acb6dc7c372b2"},
+    {file = "pillow_heif-0.13.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2c3a42e5ba890f4b27ad9d5a1bb77f33a3ca5eb5490f21d784b02e4055614eae"},
+    {file = "pillow_heif-0.13.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ded3a1a467dace13511b3de0d1976c25096e440429214d2cebbdcfd42f2b3fbb"},
+    {file = "pillow_heif-0.13.0-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:640855b86593f980b5332983fd5af13a33ed9f7a937990b99372ec4b4b7818d3"},
+    {file = "pillow_heif-0.13.0-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:065d6f1ef07d35a45df625a8757da1b1e3c522593f9c5301c3aa11098c76eeef"},
+    {file = "pillow_heif-0.13.0-cp310-cp310-win_amd64.whl", hash = "sha256:71a583bdce36312b2f1b385e57fcabf8d23be8b3b3b45efeaed06cacf7029b22"},
+    {file = "pillow_heif-0.13.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:f91f43c7fe09903cb75b9ce15d5a9e69dad370d2081810fc4b2953a616dc8c6f"},
+    {file = "pillow_heif-0.13.0-cp311-cp311-macosx_12_0_arm64.whl", hash = "sha256:f4daa03c473eb4467f93a57ff2f5eb4fc66f649fdffc5fd3c8106603de7b7b66"},
+    {file = "pillow_heif-0.13.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:62758bf775e0c720dc159057136c685d21f20ed71d83117771cf863c6f675ff0"},
+    {file = "pillow_heif-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:292c9bba20aa366732f0e6f35ad462aafa89385c09cbd4a4cdcd8f309c9296dd"},
+    {file = "pillow_heif-0.13.0-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:2bf43a48ee4b723be9c0366a316c4c56fbc9c583f99730babb60d265372eeea7"},
+    {file = "pillow_heif-0.13.0-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:88c07d147158aa12f09636fe252d3550907600aeec57974ada57c84bd4d08efd"},
+    {file = "pillow_heif-0.13.0-cp311-cp311-win_amd64.whl", hash = "sha256:efa72a8fc136a324b59b3a3a0bac15803054d33a1738728c720c37ed47eddab3"},
+    {file = "pillow_heif-0.13.0-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:a9e966a0fd2a2d1ae2e56b2010a240ae968de88145b133a17fc1606ff2f8d838"},
+    {file = "pillow_heif-0.13.0-cp312-cp312-macosx_12_0_arm64.whl", hash = "sha256:ee6055fef87de9ae24a483221ca68a8d6d6cb295cb78730a9a23a4b05cdf4908"},
+    {file = "pillow_heif-0.13.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c9be78d1d11c1d3971e69efcaf67bfabbc6f6ee72889015c79e6160f3e2a3d42"},
+    {file = "pillow_heif-0.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5580d2a211da6e14445f7a5e95caa62f0d4d279ad4070382efaee59a0c0e58e5"},
+    {file = "pillow_heif-0.13.0-cp312-cp312-musllinux_1_1_aarch64.whl", hash = "sha256:101bc0506b91aa22a91676d62c808c4f005e6ab095e241bb828aa752418cdf88"},
+    {file = "pillow_heif-0.13.0-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:6c705770da571dcef7756f85b8d12c230d2064c886f12b929c462bec607313b2"},
+    {file = "pillow_heif-0.13.0-cp312-cp312-win_amd64.whl", hash = "sha256:2abcefcce289ecda74b845342dcd0e3a29930e77ac5520e45347808b3b0bf2cb"},
+    {file = "pillow_heif-0.13.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:1fa4c23c01395d60003b8fdb323f9aa8f881041c90ec6fa71ab8ff51a93b41b1"},
+    {file = "pillow_heif-0.13.0-cp38-cp38-macosx_12_0_arm64.whl", hash = "sha256:a820033ae9ac529cedbe53723b7afdf9cb4f8af37e02e78bc38609808edc1ac7"},
+    {file = "pillow_heif-0.13.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:1db6f82b7e71c5e45e9cbd09c918942f672a935ed721088e98965edd67ef8aca"},
+    {file = "pillow_heif-0.13.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:dfdcc57a7bc8e1f9038877552d0ca3a9ee00f380e3b8ee7494c5687b8b88097e"},
+    {file = "pillow_heif-0.13.0-cp38-cp38-musllinux_1_1_aarch64.whl", hash = "sha256:35dccc16d1c699341330f60ab7f656d76e18cac5b9d7423f5856cc00144f608b"},
+    {file = "pillow_heif-0.13.0-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:0ea71504cfef432e28b4ef3f08e92483cf951b487cf24c973824bfe0514a8102"},
+    {file = "pillow_heif-0.13.0-cp38-cp38-win_amd64.whl", hash = "sha256:b4469f8c504907e850ec03d1d7e6716779a8d0e27a2343feea2aa59ddf2d2790"},
+    {file = "pillow_heif-0.13.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:e95ccb268cfc4a8b02f20142a6e65ceae90e7be86cb6aac231b10b034c8c23da"},
+    {file = "pillow_heif-0.13.0-cp39-cp39-macosx_12_0_arm64.whl", hash = "sha256:1478de370c3d043fdf32bae926174b77e5c9956b4b68218193746cb194c56afc"},
+    {file = "pillow_heif-0.13.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:08f2416f5157b34ac7df4d960f1a5c3a7f65c85f91451f5f5215debbd9568ea0"},
+    {file = "pillow_heif-0.13.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:10c25c30fcf2a0d86cf6d643e27166d4fa6a027a4ee4e330bd2c01afd534b714"},
+    {file = "pillow_heif-0.13.0-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:a409abc6624216758358b8b9d97959c97809dec61a447bacf475f8ededdbd541"},
+    {file = "pillow_heif-0.13.0-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:63841f6f84fe3a02de5d5c78c7d85b6dcf8659c0c9559acf8c7523c815440b0e"},
+    {file = "pillow_heif-0.13.0-cp39-cp39-win_amd64.whl", hash = "sha256:ac65176b5b1010b216c0db1540e25bd90a7ff271402dbea8f6ea140b493611e1"},
+    {file = "pillow_heif-0.13.0-pp310-pypy310_pp73-macosx_10_9_x86_64.whl", hash = "sha256:457ed3c2bc0376aebb80453fd69e9259fcb727e45ce737185016b9df1e063986"},
+    {file = "pillow_heif-0.13.0-pp310-pypy310_pp73-macosx_12_0_arm64.whl", hash = "sha256:6bc46ffc5d9f7a396fb1493b40f834bde96975a0371c38ebae2f4fe4398103d8"},
+    {file = "pillow_heif-0.13.0-pp310-pypy310_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2c78f930ae35a24ff95d3c525b1d9794288dbed5b0ff66a3bdfff71a0a33cf02"},
+    {file = "pillow_heif-0.13.0-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b9611dab5575f8c4851f154c088e572d264c5587590892920c0e33ad874cc608"},
+    {file = "pillow_heif-0.13.0-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:80b65c84216e23b2a36bc0799f82e68b8881cde60b3af2a68d0e23edb9f9faae"},
+    {file = "pillow_heif-0.13.0-pp39-pypy39_pp73-macosx_10_9_x86_64.whl", hash = "sha256:2f4fb8647fc3ffafe34aed111770c2126c8fd2e04ab9c124fe16b74752aa6c0d"},
+    {file = "pillow_heif-0.13.0-pp39-pypy39_pp73-macosx_12_0_arm64.whl", hash = "sha256:c204ca4eb0ee59ab883f6b8475e889663c7230eba87197e024559af4808508af"},
+    {file = "pillow_heif-0.13.0-pp39-pypy39_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4fbf127bca5e24edd074acd7e13f40af08acf1006d54e63108415c7521eddb2c"},
+    {file = "pillow_heif-0.13.0-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8fe2d04f77e5901acc393ecdb99e00d9fc1409d39b7f8a2f9c85c0f37ae11a1f"},
+    {file = "pillow_heif-0.13.0-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:c110efb24c719a045c8304dbb83031a4156431ad761306020916eeab3855c80e"},
+    {file = "pillow_heif-0.13.0.tar.gz", hash = "sha256:be337495d0be5accf4d6ea6614f61293c40c86dc8d3e5e6eb63661f90f472362"},
+]
+
+[package.dependencies]
+pillow = ">=9.1.1"
+
+[package.extras]
+dev = ["coverage", "defusedxml", "numpy", "opencv-python (==4.8.0.74)", "packaging", "pre-commit", "pylint", "pympler", "pytest"]
+docs = ["sphinx (>=4.4)", "sphinx-issues (>=3.0.1)", "sphinx-rtd-theme (>=1.0)"]
+tests = ["defusedxml", "numpy", "packaging", "pympler", "pytest"]
+tests-min = ["defusedxml", "packaging", "pytest"]
+
+[[package]]
 name = "platformdirs"
 version = "3.1.0"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
@@ -2401,37 +2465,37 @@ test = ["covdefaults (>=2.2.2)", "coverage (>=7.1)", "coverage-enable-subprocess
 
 [[package]]
 name = "wagtail"
-version = "5.0.3"
+version = "5.1.3"
 description = "A Django content management system."
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "wagtail-5.0.3-py3-none-any.whl", hash = "sha256:2e4203661527a6df3d2f446b1bfca33db4682c760efd3e2aa6116ff30e3193d6"},
-    {file = "wagtail-5.0.3.tar.gz", hash = "sha256:c07c8df294e1d2c73f62d0624580aa9437bc1419405b3b2b2f1038e58a514848"},
+    {file = "wagtail-5.1.3-py3-none-any.whl", hash = "sha256:f4a6cc2adc40f687d8fb62fed2d4fc0804941dfa45b4624887f260dc6cf6b9f2"},
+    {file = "wagtail-5.1.3.tar.gz", hash = "sha256:45fac794e4c20c7e75b018069d7f9761f25faa3619ef30df24013ca24abf9a74"},
 ]
 
 [package.dependencies]
 anyascii = ">=0.1.5"
 beautifulsoup4 = ">=4.8,<4.12"
 Django = ">=3.2,<4.3"
-django-filter = ">=2.2,<23"
+django-filter = ">=2.2,<24"
 django-modelcluster = ">=6.0,<7.0"
 django-permissionedforms = ">=0.1,<1.0"
-django-taggit = ">=2.0,<4.0"
+django-taggit = ">=2.0,<5.0"
 django-treebeard = ">=4.5.1,<5.0"
 djangorestframework = ">=3.11.1,<4.0"
 draftjs-exporter = ">=2.1.5,<3.0"
 html5lib = ">=0.999,<2"
 l18n = ">=2018.5"
 openpyxl = ">=3.0.10,<4.0"
-Pillow = ">=9.1.0,<10.0.0"
+Pillow = ">=9.1.0,<11.0.0"
 requests = ">=2.11.1,<3.0"
 telepath = ">=0.1.1,<1"
-Willow = ">=1.5,<1.6"
+Willow = {version = ">=1.6.2,<1.7", extras = ["heif"]}
 
 [package.extras]
-docs = ["Sphinx (>=1.5.2)", "myst-parser (==0.18.1)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-copybutton (>=0.5,<1.0)", "sphinx-wagtail-theme (==6.0.0)", "sphinxcontrib-spelling (>=5.4.0,<6)"]
-testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "black (==22.3.0)", "boto3 (>=1.16,<1.17)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7,<0.8)", "djhtml (==1.5.2)", "doc8 (==0.8.1)", "elasticsearch (>=5.0,<6.0)", "factory-boy (>=3.2)", "flake8 (>=3.6.0,<6.1)", "flake8-assertive (==2.0.0)", "flake8-blind-except (==0.1.1)", "flake8-comprehensions (==3.8.0)", "flake8-print (==5.0.0)", "freezegun (>=0.3.8)", "isort (==5.6.4)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "pytz (>=2014.7)", "semgrep (==1.3.0)"]
+docs = ["Sphinx (>=1.5.2)", "myst-parser (==0.18.1)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-copybutton (>=0.5,<1.0)", "sphinx-wagtail-theme (==6.1.1)", "sphinxcontrib-spelling (>=5.4.0,<6)"]
+testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "black (==22.3.0)", "boto3 (>=1.16,<1.17)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7,<0.8)", "djhtml (==1.5.2)", "doc8 (==0.8.1)", "factory-boy (>=3.2)", "freezegun (>=0.3.8)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "pytz (>=2014.7)", "ruff (==0.0.272)", "semgrep (==1.3.0)"]
 
 [[package]]
 name = "wagtail-accessibility"
@@ -2646,21 +2710,24 @@ brotli = ["Brotli"]
 
 [[package]]
 name = "willow"
-version = "1.5"
+version = "1.6.2"
 description = "A Python image library that sits on top of Pillow, Wand and OpenCV"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "Willow-1.5-py3-none-any.whl", hash = "sha256:8f885ae0e8311ec45a943d5db2af77cc2b44d3c5ba4d6a053012a67e861ca829"},
-    {file = "Willow-1.5.tar.gz", hash = "sha256:3fe42cda9872d8e4f64df301e58a1d8be5b9e66944eb83aadcc50128d3ae658a"},
+    {file = "willow-1.6.2-py3-none-any.whl", hash = "sha256:957a4af8a7733e116a65eca34da11afe3fd52ffdb397494c8823901c25863787"},
+    {file = "willow-1.6.2.tar.gz", hash = "sha256:e2d0450fd78ab19052d0478b888ef163e3264e8dcd1af002dd691458db98056f"},
 ]
 
 [package.dependencies]
 defusedxml = ">=0.7,<1.0"
 filetype = ">=1.0.10,<1.1.0 || >1.1.0"
+pillow-heif = {version = ">=0.10.0,<1.0.0", optional = true, markers = "extra == \"heif\""}
 
 [package.extras]
-testing = ["Pillow (>=9.1.0,<11.0.0)", "Wand (>=0.6,<1.0)", "mock (>=3.0,<4.0)", "pillow-heif (>=0.7.0,<1.0.0)"]
+docs = ["Sphinx (>=7.0)", "sphinx-wagtail-theme (==6.0.0)", "sphinx_copybutton (>=0.5)", "sphinxcontrib-spelling (>=8.0,<9.0)"]
+heif = ["pillow-heif (>=0.10.0,<1.0.0)"]
+testing = ["Pillow (>=9.1.0,<11.0.0)", "Wand (>=0.6,<1.0)", "black (==22.3.0)", "coverage[toml] (>=7.2.7,<8.0)", "mock (>=3.0,<4.0)", "pillow-heif (>=0.10.0,<1.0.0)", "ruff (==0.0.275)"]
 
 [[package]]
 name = "wrapt"
@@ -2767,4 +2834,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "4142a7ac093cbc2f008e9369ed52f4590b1d94e2554591de11d44b66c28c842a"
+content-hash = "d659755fd202ef41a653969f3ca4b2ccd6ff736ebcc68ae4f6ec9874e2b05fe9"
