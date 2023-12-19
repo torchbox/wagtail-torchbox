@@ -5,25 +5,25 @@
     {% else %}
         <div class="embed-cta__full">
     {% endif %}
-        <h2 class="embed-cta__heading">{{ value.title }}</h2>
-        <p class="embed-cta__intro">{{ value.intro }}</p>
-        {% if value.link %}
-            <a class="embed-cta__button button" href="{% pageurl value.link %}">{{ value.button_text }}</a>
-        {% elif value.external_link %}
-            <a class="embed-cta__button button" href="{{ value.external_link }}">{{ value.button_text }}</a>
+    <h2 class="embed-cta__heading">{{ value.title }}</h2>
+    <p class="embed-cta__intro">{{ value.intro }}</p>
+    {% if value.link %}
+        <a class="embed-cta__button button" href="{% pageurl value.link %}">{{ value.button_text }}</a>
+    {% elif value.external_link %}
+        <a class="embed-cta__button button" href="{{ value.external_link }}">{{ value.button_text }}</a>
+    {% endif %}
+</div>
+{% if value.embed or value.image %}
+    <div class="embed-cta__right">
+        {% if value.embed %}
+            <div class="embed-cta__embed">
+                {{ value.embed }}
+            </div>
+        {% endif %}
+        {% if value.image %}
+            {% image value.image max-1280x860 as img %}
+            <img src="{{ img.url }}" alt="{{ img.title }}" loading="lazy" />
         {% endif %}
     </div>
-    {% if value.embed or value.image %}
-        <div class="embed-cta__right">
-            {% if value.embed %}
-                <div class="embed-cta__embed">
-                    {{ value.embed }}
-                </div>
-            {% endif %}
-            {% if value.image %}
-                {% image value.image max-1280x860 as img %}
-                <img src="{{ img.url }}" alt="{{ img.title }}" loading="lazy" />
-            {% endif %}
-        </div>
-    {% endif %}
+{% endif %}
 </div>

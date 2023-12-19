@@ -19,13 +19,13 @@
     <div class="advantages">
         <div class="container">
             {% for bullet in self.bullet_points.all %}
-            <div class="advantage">
-                <div class="svg">
-                    {% include bullet.icon %}
+                <div class="advantage">
+                    <div class="svg">
+                        {% include bullet.icon %}
+                    </div>
+                    <h3>{{ bullet.title }}</h3>
+                    <p>{{ bullet.body }}</p>
                 </div>
-                <h3>{{ bullet.title }}</h3>
-                <p>{{ bullet.body }}</p>
-            </div>
             {% endfor %}
         </div>
     </div>
@@ -34,9 +34,9 @@
         <h2>Case studies and contributions from</h2>
         <ul class="logos">
             {% for logo in page.logos.all %}
-            <li>
-                {% image logo.logo height-100 %}
-            </li>
+                <li>
+                    {% image logo.logo height-100 %}
+                </li>
             {% endfor %}
         </ul>
     </div>
@@ -44,13 +44,13 @@
         <div class="container">
             <div class="carousel">
                 {% for quote in page.quotes.all %}
-                <blockquote>
-                    <p>{{ quote.quote }}</p>
-                    <p class="author">– {{ quote.author }} <span>{{ quote.organisation }}</span></p>
-                    <div class="svg">
-                        {% include "torchbox/includes/svg/tail-svg.html" %}
-                    </div>
-                </blockquote>
+                    <blockquote>
+                        <p>{{ quote.quote }}</p>
+                        <p class="author">– {{ quote.author }} <span>{{ quote.organisation }}</span></p>
+                        <div class="svg">
+                            {% include "torchbox/includes/svg/tail-svg.html" %}
+                        </div>
+                    </blockquote>
                 {% endfor %}
             </div>
         </div>

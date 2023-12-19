@@ -2,10 +2,51 @@ name: CI
 
 on:
   push:
-  pull_request:
+    paths-ignore: ['docs/**']
 
 jobs:
-  test:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - id: node-cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
+      - if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci --no-audit
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.HOME }}/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+      - uses: pre-commit/action@v3.0.0
+  test_js:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - id: node-cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
+      - if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci --no-audit
+      - run: npm run lint
+      - run: npm run build:prod
+  test_python:
+    needs: lint
     runs-on: ubuntu-latest
 
     env:
@@ -16,7 +57,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:9.6
+        image: postgres:12.3
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres # pragma: allowlist secret
@@ -26,37 +67,19 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: Install Poetry
+        run: pipx install poetry==1.5.1 # Make sure this matches POETRY_VERSION in the Dockerfile
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
-      - uses: Gr1n/setup-poetry@v8
-        with:
-          poetry-version: 1.5.1
-      - name: Install python dependencies
-        run: |
-          poetry config virtualenvs.create false &&
-          poetry install
-      - name: Install npm dependencies
-        run: |
-          npm install npm-run-all
-          npm run build:prod
-      - name: Flake8
-        run: flake8 tbx fabfile.py
-      - name: isort
-        run: isort --check-only --diff tbx fabfile.py
-      - name: black
-        run: black --check tbx fabfile.py
+          cache: 'poetry'
+      - name: Install Python dependencies
+        run: poetry install
       - name: System checks
-        run: python manage.py check
-      - name: Missing migrations
-        run: python manage.py makemigrations --check
+        run: poetry run ./manage.py check
+      - name: Check for missing migrations
+        run: poetry run ./manage.py makemigrations --check --noinput
       - name: Test
-        run: python manage.py test
-      - name: Lint CSS
-        run: npm run lint:css
-      - name: Lint JS
-        run: npm run lint:js
-      - name: Lint Format
-        run: npm run lint:format
+        run: poetry run ./manage.py test
