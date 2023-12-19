@@ -16,7 +16,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13.12
+        image: postgres:9.6
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres # pragma: allowlist secret
@@ -30,7 +30,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.11
+          python-version: 3.9
       - uses: Gr1n/setup-poetry@v8
         with:
           poetry-version: 1.5.1
