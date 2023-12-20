@@ -158,7 +158,6 @@ TIME_ZONE = "Europe/London"
 
 USE_I18N = True
 
-USE_L10N = True
 
 USE_TZ = True
 
@@ -572,3 +571,5 @@ BIRDBATH_PROCESSORS = [
 ]
 # people hr feed
 PEOPLEHR_FEED_URL = env.get("PEOPLEHR_FEED_URL", "")
+
+WILLOW_OPTIMIZERS = True
