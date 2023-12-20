@@ -2,6 +2,7 @@ from django.apps import apps
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
@@ -84,7 +85,9 @@ urlpatterns = decorate_urlpatterns(
     ),
 )
 
-Page.serve = get_default_cache_control_decorator()(Page.serve)
+Page.serve = method_decorator(get_default_cache_control_decorator(), name="serve")(
+    Page.serve
+)
 
 # Join private and public URLs.
 urlpatterns = (
