@@ -11,7 +11,9 @@ import requests
 
 
 def newsletter_subsribe(request):
-    if request.is_ajax() and request.GET.get("email"):
+    if request.headers.get("x-requested-with") == "XMLHttpRequest" and request.GET.get(
+        "email"
+    ):
         requests.post(
             "https://us10.api.mailchimp.com/2.0/lists/subscribe",
             json={

@@ -14,7 +14,7 @@ django-pattern-library = "^1.1.0"
 whitenoise = "^6.1.0"
 dj-database-url = "^0.5.0"
 django-redis = "^5.2.0"
-django-storages = {extras = ["boto3"], version = "^1.13.2"}
+django-storages = { extras = ["boto3"], version = "^1.13.2" }
 django-permissions-policy = "^4.15.0"
 django-referrer-policy = "~1.0"
 django-csp = "^3.7"
@@ -66,4 +66,12 @@ build-backend = "poetry.masonry.api"
 [tool.black]
 line_length = 88
 target-version = ['py39']
-exclude = '/(migrations|venv|.venv|node_modules|.git)/'
+exclude = '''
+    /(
+        .+/migrations
+      | venv
+      | \.venv
+      | node_modules
+      | \.git
+    )/
+'''
