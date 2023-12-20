@@ -2,12 +2,14 @@ from django.apps import apps
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
-from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
 from tbx.core import urls as torchbox_urls
-from tbx.core.utils.cache import get_default_cache_control_decorator
+from tbx.core.utils.cache import (
+    get_default_cache_control_decorator,
+    get_default_cache_control_method_decorator,
+)
 from tbx.core.views import robots
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
@@ -85,9 +87,7 @@ urlpatterns = decorate_urlpatterns(
     ),
 )
 
-Page.serve = method_decorator(get_default_cache_control_decorator(), name="serve")(
-    Page.serve
-)
+Page.serve = get_default_cache_control_method_decorator(Page.serve)
 
 # Join private and public URLs.
 urlpatterns = (
