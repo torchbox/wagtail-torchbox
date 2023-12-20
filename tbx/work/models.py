@@ -230,7 +230,7 @@ class WorkIndexPage(SocialFields, Page):
         # Pagination
         paginator = Paginator(works, 10)  # Show 10 works per page
 
-        if request.is_ajax():
+        if request.headers.get("x-requested-with") == "XMLHttpRequest":
             page = request.GET.get("page")
             try:
                 works = paginator.page(page)
