@@ -94,7 +94,7 @@ class BlogIndexPage(SocialFields, Page):
         # Pagination
         paginator = Paginator(blog_posts, 10)  # Show 10 blog_posts per page
 
-        if request.is_ajax():
+        if request.headers.get("x-requested-with") == "XMLHttpRequest":
             # use page to filter
             page = request.GET.get("page")
             try:
