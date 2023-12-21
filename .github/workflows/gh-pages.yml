@@ -51,7 +51,7 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
 
     # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
     permissions:
