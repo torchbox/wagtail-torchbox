@@ -2,13 +2,13 @@ name: Docs
 
 on:
   pull_request:
-    branches: ['master']
+    branches: ['main']
     paths:
       - 'docs/**/*'
       - 'mkdocs.yml'
 
   push:
-    branches: ['master']
+    branches: ['main']
     paths:
       - 'docs/**/*'
       - 'mkdocs.yml'
