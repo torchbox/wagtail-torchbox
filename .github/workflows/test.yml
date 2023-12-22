@@ -77,7 +77,7 @@ jobs:
           cache: 'poetry'
       - name: Install Python dependencies
         run: |
-          apt-get install --yes --quiet --no-install-recommends graphviz libgraphviz-dev
+          sudo apt-get install --yes --quiet --no-install-recommends graphviz libgraphviz-dev
           poetry install
       - name: System checks
         run: poetry run ./manage.py check
