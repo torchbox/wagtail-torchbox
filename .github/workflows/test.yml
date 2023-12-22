@@ -76,7 +76,9 @@ jobs:
           python-version: 3.11
           cache: 'poetry'
       - name: Install Python dependencies
-        run: poetry install
+        run: |
+          apt-get install --yes --quiet --no-install-recommends graphviz libgraphviz-dev
+          poetry install
       - name: System checks
         run: poetry run ./manage.py check
       - name: Check for missing migrations
