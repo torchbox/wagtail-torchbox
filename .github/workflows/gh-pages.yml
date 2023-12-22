@@ -2,13 +2,13 @@ name: Docs
 
 on:
   pull_request:
-    branches: ['master']
+    branches: ['main']
     paths:
       - 'docs/**/*'
       - 'mkdocs.yml'
 
   push:
-    branches: ['master']
+    branches: ['main']
     paths:
       - 'docs/**/*'
       - 'mkdocs.yml'
@@ -51,7 +51,7 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
 
     # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
     permissions:
