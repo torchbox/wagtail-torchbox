@@ -3,8 +3,17 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/hero/hero.html" with title=page.title %}
+    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro sub_title=page.sub_title %}
 
-    {% include_block page.content %}
+    {% if page.child_page_listing_heading %}
+        <h3>{{ page.child_page_listing_heading }}</h3>
+    {% endif %}
+
+    {% for subpage in subpages %}
+        {{ subpage.sessions }} {% if subpage.sessions and subpage.cost %} | {% endif %} {{ subpage.cost }}
+        {{ subpage.title }}
+        {{ subpage.intro|richtext }}
+        <a href="{% pageurl subpage %}">View details</a>
+    {% endfor %}
 
 {% endblock %}

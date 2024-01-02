@@ -16,7 +16,33 @@ class CourseLandingPage(utils_models.SocialFields, wagtail_models.Page):
 
     template = "patterns/pages/courses/course_landing_page.html"
 
-    content_panels = wagtail_models.Page.content_panels + []
+    strapline = models.CharField(
+        max_length=255,
+        help_text="Words in <span> tag will display in a contrasting colour.",
+    )
+    sub_title = models.CharField(
+        max_length=255,
+        help_text="Displayed just below the strapline.",
+        blank=True,
+    )
+    intro = wagtail_fields.RichTextField(blank=True, features=INTRO_RICHTEXT_FEATURES)
+    child_page_listing_heading = models.CharField(
+        max_length=255,
+        help_text="A heading shown above the child pages listed.",
+        blank=True,
+    )
+    content_panels = wagtail_models.Page.content_panels + [
+        panels.MultiFieldPanel(
+            [
+                panels.FieldPanel("strapline", classname="full title"),
+                panels.FieldPanel("sub_title"),
+                panels.FieldPanel("intro", classname="full"),
+            ],
+            heading="Hero",
+            classname="collapsible",
+        ),
+        panels.FieldPanel("child_page_listing_heading"),
+    ]
 
     promote_panels = [
         panels.MultiFieldPanel(
@@ -26,6 +52,30 @@ class CourseLandingPage(utils_models.SocialFields, wagtail_models.Page):
             utils_models.SocialFields.promote_panels, "Social fields"
         ),
     ]
+
+    search_fields = wagtail_models.Page.search_fields + [
+        index.SearchField("intro"),
+        index.SearchField("strapline"),
+    ]
+
+    @property
+    def theme(self):
+        # Don't offer a theme style, just set to dark
+        return "dark"
+
+    def get_subpages(self):
+        subpages = (
+            CourseDetailPage.objects.live()
+            .descendant_of(self)
+            .order_by("title")
+            .only("title", "sessions", "cost", "intro")
+        )
+        return subpages
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["subpages"] = self.get_subpages()
+        return context
 
 
 class CourseDetailPage(utils_models.SocialFields, wagtail_models.Page):
