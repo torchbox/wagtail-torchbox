@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+
+{% if value.heading %}
+    <h3>{{ value.heading }}</h3>
+{% endif %}
+
+<ol>
+    {% for block in value.course_outline %}
+        <li>
+            <h2>{{ block.title }}</h2>
+            {{ block.text|richtext }}
+        </li>
+    {% endfor %}
+</ol>
