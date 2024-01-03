@@ -1,0 +1,40 @@
+.course-outline {
+    @include streamblock-padding();
+    margin-bottom: 75px;
+
+    &__heading {
+        @include font-size(l);
+        line-height: 38px;
+        margin: 0 0 40px;
+    }
+
+    &__sub-heading {
+        @include font-size(ml);
+        line-height: 33px;
+        margin-top: 35px;
+    }
+
+    &__list {
+        max-width: 720px;
+    }
+
+    // Override existing specificity
+    &__list-item {
+        .streamfield & {
+            ul {
+                list-style: disc;
+                padding-left: 25px;
+            }
+        }
+    }
+
+    .streamfield & {
+        li {
+            padding: 0;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,4 +1,13 @@
-<a href="{{ value.link}}">
-    <h3>{{ value.heading }}</h3>
-    <p>{{ value.text }}</p>
-</a>
+<div class="external-link-cta-wrapper">
+    <a class="external-link-cta" href="{{ value.link}}">
+        <div class="external-link-cta__overflow-hider">
+            <div class="external-link-cta__swish-background"></div>
+        </div>
+        <div class="external-link-cta__title-container">
+            <p class="external-link-cta__title">{{ value.heading }}</p>
+            <div class="external-link-cta__chevron" aria-hidden="true"></div>
+        </div>
+        <p class="external-link-cta__text">{{ value.text }}</p>
+    </a>
+</div>
+
