@@ -8,8 +8,13 @@
     <ol class="course-outline__list">
         {% for block in value.course_outline %}
             <li class="course-outline__list-item">
-                <h3 class="course-outline__sub-heading">{{ block.title }}</h3>
-                {{ block.text|richtext }}
+                <svg class="course-outline__icon">
+                    <use xlink:href="#star" />
+                </svg>
+                <div>
+                    <h3 class="course-outline__sub-heading">{{ forloop.counter }}. {{ block.title }}</h3>
+                    {{ block.text|richtext }}
+                </div>
             </li>
         {% endfor %}
     </ol>

@@ -95,24 +95,37 @@
 
     &__sessions {
         @include font-size(l);
-        line-height: 49px;
+        line-height: 38px;
         font-weight: $weight--normal;
         color: var(--color--dark-indigo);
+
+        @include media-query(large) {
+            line-height: 49px;
+        }
 
         // Nicer divider
         span {
             display: inline-block;
             position: relative;
-            margin: 0 15px;
+            margin: 0 10px;
+
+            @include media-query(large) {
+                margin: 0 15px;
+            }
 
             &::before {
                 content: '';
                 position: absolute;
                 left: 0;
-                top: -29px;
+                top: -22px;
                 width: 1px;
-                height: 35px;
+                height: 27px;
                 background-color: currentColor;
+
+                @include media-query(large) {
+                    top: -29px;
+                    height: 35px;
+                }
             }
         }
     }

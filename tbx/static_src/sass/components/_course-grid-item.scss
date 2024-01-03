@@ -1,7 +1,11 @@
 .course-grid-item {
-    padding: 50px;
+    padding: 25px;
     background-color: var(--color--grey-bg);
     border: 1px solid var(--color--grey-border-dark);
+
+    @include media-query(medium-large) {
+        padding: 50px;
+    }
 
     &__sessions {
         @include font-size(xs);
@@ -18,8 +22,12 @@
 
     &__title {
         @include font-size(l);
-        line-height: 44px;
+        line-height: 32px;
         margin: 15px 0 10px;
+
+        @include media-query(large) {
+            line-height: 44px;
+        }
     }
 
     &__intro {
