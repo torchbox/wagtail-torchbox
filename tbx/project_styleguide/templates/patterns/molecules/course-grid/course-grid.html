@@ -3,7 +3,7 @@
 <div class="course-grid {% if not page.child_page_listing_heading %}course-grid--margin-top{% endif %}">
     {% for card in cards %}
         <div class="course-grid-item">
-            <p class="course-grid-item__sessions"><span>{{ card.sessions }}</span> {% if card.sessions and card.cost %} | {% endif %} {{ card.cost }}
+            <p class="course-grid-item__sessions"><span>{{ card.sessions }}</span> {% if card.sessions and card.cost %} | {% endif %} {{ card.cost }}</p>
             <h3 class="course-grid-item__title">{{ card.title }}</h3>
             <div class="course-grid-item__intro">{{ card.intro|richtext }}</div>
             <a href="{% pageurl card %}" class="course-grid-item__link">View details</a>
