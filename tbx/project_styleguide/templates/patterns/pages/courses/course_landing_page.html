@@ -3,17 +3,16 @@
 
 {% block content %}
 
-    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro sub_title=page.sub_title %}
+    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro sub_title=page.sub_title classes='hero--course-landing' %}
 
-    {% if page.child_page_listing_heading %}
-        <h3>{{ page.child_page_listing_heading }}</h3>
-    {% endif %}
+    <div class="proposition-section">
+        {% if page.child_page_listing_heading %}
+            <h2 class="course-grid-title">{{ page.child_page_listing_heading }}</h2>
+        {% endif %}
 
-    {% for subpage in subpages %}
-        {{ subpage.sessions }} {% if subpage.sessions and subpage.cost %} | {% endif %} {{ subpage.cost }}
-        {{ subpage.title }}
-        {{ subpage.intro|richtext }}
-        <a href="{% pageurl subpage %}">View details</a>
-    {% endfor %}
+        {% if subpages %}
+            {% include "patterns/molecules/course-grid/course-grid.html" with cards=subpages %}
+        {% endif %}
+    </div>
 
 {% endblock %}
