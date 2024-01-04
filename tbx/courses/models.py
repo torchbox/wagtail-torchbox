@@ -63,7 +63,7 @@ class CourseLandingPage(utils_models.SocialFields, wagtail_models.Page):
         # Don't offer a theme style, just set to dark
         return "dark"
 
-    def get_subpages(self):
+    def _get_subpages(self):
         subpages = (
             CourseDetailPage.objects.live()
             .descendant_of(self)
@@ -74,7 +74,7 @@ class CourseLandingPage(utils_models.SocialFields, wagtail_models.Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context["subpages"] = self.get_subpages()
+        context["subpages"] = self._get_subpages()
         return context
 
 
