@@ -1,6 +1,7 @@
 from django.core import exceptions as django_exceptions
 from django.db import models
 
+from modelcluster import fields as modelcluster_fields
 from tbx.core.utils import models as utils_models
 from tbx.courses import blocks as tbx_course_blocks
 from wagtail import fields as wagtail_fields
@@ -73,6 +74,15 @@ class CourseLandingPage(utils_models.SocialFields, wagtail_models.Page):
         return context
 
 
+class RelatedCoursePage(wagtail_models.Orderable):
+    source_page = modelcluster_fields.ParentalKey(
+        wagtail_models.Page, related_name="related_course_pages"
+    )
+    page = models.ForeignKey("courses.CourseDetailPage", on_delete=models.CASCADE)
+
+    panels = [panels.FieldPanel("page")]
+
+
 class CourseDetailPage(utils_models.SocialFields, wagtail_models.Page):
     parent_page_types = ["courses.CourseLandingPage"]
 
@@ -115,6 +125,7 @@ class CourseDetailPage(utils_models.SocialFields, wagtail_models.Page):
             classname="collapsible",
         ),
         panels.FieldPanel("body"),
+        panels.InlinePanel("related_course_pages", label="Related courses"),
     ]
 
     promote_panels = [
@@ -137,3 +148,9 @@ class CourseDetailPage(utils_models.SocialFields, wagtail_models.Page):
 
         if errors:
             raise django_exceptions.ValidationError(errors)
+
+    @property
+    def related_courses(self):
+        return [
+            page.page for page in self.related_course_pages.all().select_related("page")
+        ]

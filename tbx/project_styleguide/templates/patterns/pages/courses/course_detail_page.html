@@ -24,4 +24,14 @@
     </div>
 
     {% include_block page.body %}
+
+    {% if page.related_courses %}
+        <div class="streamfield">
+            <div class="related-courses">
+                <h2 class="course-grid-title">Related courses:</h2>
+                {% include "patterns/molecules/course-grid/course-grid.html" with cards=page.related_courses %}
+            </div>
+        </div>
+    {% endif %}
+
 {% endblock %}
