@@ -12,8 +12,8 @@ INTRO_RICHTEXT_FEATURES = ["bold", "italic", "link", "document-link", "strikethr
 
 
 class CourseLandingPage(utils_models.SocialFields, wagtail_models.Page):
-    # stubbed out for now, is incoming
-
+    # Don't offer a theme style, just set to dark
+    theme = "dark"
     template = "patterns/pages/courses/course_landing_page.html"
 
     strapline = models.CharField(
@@ -57,11 +57,6 @@ class CourseLandingPage(utils_models.SocialFields, wagtail_models.Page):
         index.SearchField("intro"),
         index.SearchField("strapline"),
     ]
-
-    @property
-    def theme(self):
-        # Don't offer a theme style, just set to dark
-        return "dark"
 
     def _get_subpages(self):
         subpages = (
