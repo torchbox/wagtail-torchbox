@@ -92,7 +92,3 @@ class CourseDetailPage(utils_models.SocialFields, wagtail_models.Page):
 
         if errors:
             raise django_exceptions.ValidationError(errors)
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        return context
