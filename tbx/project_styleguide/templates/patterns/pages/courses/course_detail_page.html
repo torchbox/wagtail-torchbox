@@ -9,12 +9,11 @@
                 {{ page.strapline|richtext }}
             </h1>
             <div class="title-block__course-detail">
-                {% if page.sessions %}
-                    <p class="title-block__sessions">
-                        {{ page.sessions }}
-                        {% if page.cost and page.sessions %} <span aria-hidden="true"></span> {% endif %} {{ page.cost }}
-                    </p>
-                {% endif %}
+                <p class="title-block__sessions">
+                    {% if page.sessions %}{{ page.sessions }}{% endif %}
+                    {% if page.cost and page.sessions %} <span aria-hidden="true"></span> {% endif %}
+                    {% if page.cost %}{{ page.cost }}{% endif %}
+                </p>
 
                 <div class="title-block__intro">{{ page.intro|richtext }}</div>
                 <a class="title-block__link" href="{{ page.header_link }}">
