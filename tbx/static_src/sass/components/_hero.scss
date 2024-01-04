@@ -120,6 +120,18 @@
         }
     }
 
+    &--course-landing {
+        #{$root}__content {
+            max-width: 1165px;
+        }
+
+        #{$root}__description {
+            @include font-size(s);
+            line-height: 27px;
+            max-width: 700px;
+        }
+    }
+
     // The following code for image & image-mask is only used on proposition pages currently
     &__image {
         display: block;
@@ -237,6 +249,18 @@
                     border-bottom: 2px solid var(--color--white);
                 }
             }
+        }
+    }
+
+    &__sub-title {
+        @include font-size(l);
+        color: var(--color--primary);
+        font-weight: $weight--normal;
+        margin: 0 0 25px;
+        line-height: 34px;
+
+        @include media-query(medium) {
+            line-height: 49px;
         }
     }
 }

@@ -1,14 +1,23 @@
 {% load wagtailcore_tags %}
 
-{% if value.heading %}
-    <h3>{{ value.heading }}</h3>
-{% endif %}
+<div class="course-outline">
+    {% if value.heading %}
+        <h2 class="course-outline__heading">{{ value.heading }}</h2>
+    {% endif %}
 
-<ol>
-    {% for block in value.course_outline %}
-        <li>
-            <h2>{{ block.title }}</h2>
-            {{ block.text|richtext }}
-        </li>
-    {% endfor %}
-</ol>
+    <ol class="course-outline__list">
+        {% for block in value.course_outline %}
+            <li class="course-outline__list-item">
+                <svg class="course-outline__icon" aria-hidden="true">
+                    <use xlink:href="#star" />
+                </svg>
+                <div>
+                    <h3 class="course-outline__sub-heading" aria-label="{{ block.title }}">
+                        {{ forloop.counter }}. {{ block.title }}
+                    </h3>
+                    {{ block.text|richtext }}
+                </div>
+            </li>
+        {% endfor %}
+    </ol>
+</div>
