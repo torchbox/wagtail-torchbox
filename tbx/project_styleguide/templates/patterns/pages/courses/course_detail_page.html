@@ -5,23 +5,23 @@
 
     <div class="title-block">
         <div class="title-block__container">
-            <h1 class="title-block__heading">
+            <h1 class="title-block__heading title-block__heading--course">
                 {{ page.strapline|richtext }}
             </h1>
-            {% if page.sessions or page.cost %}
-                <h2>
-                    {{ page.sessions }}
-                    {% if page.cost and page.sessions %} | {% endif %} {{ page.cost }}
-                </h2>
-            {% endif %}
+            <div class="title-block__course-detail">
+                <p class="title-block__sessions">
+                    {% if page.sessions %}{{ page.sessions }}{% endif %}
+                    {% if page.cost and page.sessions %} <span aria-hidden="true"></span> {% endif %}
+                    {% if page.cost %}{{ page.cost }}{% endif %}
+                </p>
 
-            <div class="">{{ page.intro|richtext }}</div>
-            <a class="pullquote__link" href="{{ page.header_link }}">
-                {{ page.header_link_text }}
-            </a>
+                <div class="title-block__intro">{{ page.intro|richtext }}</div>
+                <a class="title-block__link" href="{{ page.header_link }}">
+                    {{ page.header_link_text }}
+                </a>
+            </div>
         </div>
     </div>
 
     {% include_block page.body %}
-
 {% endblock %}

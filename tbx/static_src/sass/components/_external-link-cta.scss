@@ -1,0 +1,182 @@
+// Pulled from the Careers site:
+// https://github.com/torchbox/careers/blob/main/components/Button/ApplyButton.module.scss
+
+/* stylelint-disable selector-max-specificity */
+.external-link-cta-wrapper {
+    @include streamblock-padding();
+}
+
+.external-link-cta {
+    @include z-index(zero);
+    @include font-size(m);
+    display: block;
+    position: relative;
+    width: 100%;
+    color: var(--color--white);
+    padding: $grid * 1.5;
+    border-radius: 7px;
+    transition: transform $transition-quick;
+    margin-top: $grid * 3;
+    background: radial-gradient(
+        81.08% 2378.82% at 50% 60%,
+        var(--color--dark-indigo) 0%,
+        var(--color--indigo) 100%
+    );
+    max-width: 630px;
+
+    @include media-query(medium) {
+        margin-top: $grid * 3;
+    }
+
+    @include media-query(large) {
+        margin: $grid * 4.5 0 $grid * 3 0;
+    }
+
+    &:hover,
+    &:focus {
+        &,
+        .streamfield & {
+            color: var(--color--white);
+            border-bottom: 2px solid transparent;
+
+            .external-link-cta__chevron {
+                transform: translateX(8px);
+            }
+
+            > .external-link-cta__overflow-hider
+                > .external-link-cta__swish-background {
+                opacity: 1;
+                animation-play-state: running;
+            }
+        }
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &:active {
+            transform: scale(1);
+        }
+
+        &:hover,
+        &:focus {
+            &,
+            > .external-link-cta__overflow-hider
+                > .external-link-cta__swish-background {
+                opacity: 0;
+                animation-play-state: paused;
+            }
+
+            outline: 3px solid var(--color--coral);
+        }
+    }
+
+    @include hcm() {
+        border: 1px solid buttonborder;
+    }
+
+    &__chevron {
+        @include z-index(one);
+        position: absolute;
+        transition: transform $transition-quick;
+        width: auto;
+        color: var(--color--white);
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto 30px auto 0;
+        display: grid;
+        align-items: center;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 19px;
+            background-color: var(--color--white);
+            clip-path: $arrow-path;
+
+            @include hcm() {
+                filter: invert(1);
+            }
+
+            @include media-query(medium) {
+                width: 30px;
+                height: 28px;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 24px;
+        color: var(--color--white);
+        font-weight: $weight--bold;
+        margin: 0;
+
+        &,
+        .streamfield & {
+            line-height: 34px;
+        }
+    }
+
+    &__title-container {
+        display: flex;
+        align-items: baseline;
+        padding-right: 40px;
+    }
+
+    &__text {
+        @include font-size(s);
+        pointer-events: none;
+        user-select: none;
+        color: var(--color--white);
+        font-weight: $weight--normal;
+        padding-right: 40px;
+
+        &,
+        .streamfield & {
+            margin: 5px 0 0;
+        }
+    }
+
+    &__swish-background {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: -200%;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        background: linear-gradient(
+            -70deg,
+            rgba(1, 0, 0, 0),
+            rgba(1, 0, 0, 0) 25%,
+            rgba(73, 44, 231, 1) 40%,
+            rgba(1, 0, 0, 0) 55%,
+            rgba(1, 0, 0, 0)
+        );
+        animation: wave 2s linear infinite;
+        animation-play-state: paused;
+        transition: opacity $transition;
+    }
+
+    &__overflow-hider {
+        border-radius: 7px;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+    }
+
+    @keyframes wave {
+        100% {
+            transform: translateX(150%);
+        }
+    }
+}
+/* stylelint-enable */
