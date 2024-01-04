@@ -1,3 +1,5 @@
 .related-courses {
-    @include streamblock-padding();
+    @include media-query(x-large) {
+        margin-left: $variable-gutter--medium;
+    }
 }
