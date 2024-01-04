@@ -1,0 +1,5 @@
+.related-courses {
+    @include media-query(x-large) {
+        margin-left: $variable-gutter--medium;
+    }
+}

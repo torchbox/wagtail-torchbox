@@ -1,0 +1,17 @@
+.course-grid-title {
+    @include font-size(ml);
+    margin-bottom: 0;
+}
+
+.course-grid {
+    display: grid;
+    gap: 30px;
+    margin: 25px 0 100px;
+
+    @include media-query(medium-large) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1280px;
+        gap: 50px;
+        margin: 50px 0 120px;
+    }
+}

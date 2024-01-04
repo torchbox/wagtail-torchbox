@@ -1,0 +1,37 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    <div class="title-block">
+        <div class="title-block__container">
+            <h1 class="title-block__heading title-block__heading--course">
+                {{ page.strapline|richtext }}
+            </h1>
+            <div class="title-block__course-detail">
+                <p class="title-block__sessions">
+                    {% if page.sessions %}{{ page.sessions }}{% endif %}
+                    {% if page.cost and page.sessions %} <span aria-hidden="true"></span> {% endif %}
+                    {% if page.cost %}{{ page.cost }}{% endif %}
+                </p>
+
+                <div class="title-block__intro">{{ page.intro|richtext }}</div>
+                <a class="title-block__link" href="{{ page.header_link }}">
+                    {{ page.header_link_text }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% include_block page.body %}
+
+    {% if page.related_courses %}
+        <div class="streamfield">
+            <div class="related-courses">
+                <h2 class="course-grid-title">Related courses:</h2>
+                {% include "patterns/molecules/course-grid/course-grid.html" with cards=page.related_courses %}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
