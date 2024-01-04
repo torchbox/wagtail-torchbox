@@ -25,10 +25,10 @@
 
     {% include_block page.body %}
 
-    {% for related_course_page in page.related_courses %}
-        {{ related_course_page.sessions }} {% if related_course_page.sessions and related_course_page.cost %} | {% endif %} {{ related_course_page.cost }}
-        {{ related_course_page.title }}
-        {{ related_course_page.intro|richtext }}
-        <a href="{% pageurl related_course_page %}">View details</a>
-    {% endfor %}
+    {% if page.related_courses %}
+        <div class="contain-me">
+            {% include "patterns/molecules/course-grid/course-grid.html" with cards=page.related_courses %}
+        </div>
+    {% endif %}
+
 {% endblock %}
