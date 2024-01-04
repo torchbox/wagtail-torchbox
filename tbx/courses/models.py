@@ -151,6 +151,6 @@ class CourseDetailPage(utils_models.SocialFields, wagtail_models.Page):
 
     @property
     def related_courses(self):
-        related_course_pages = self.related_course_pages.all().select_related("page")
-        related_courses = [page.page for page in related_course_pages]
-        return related_courses
+        return [
+            page.page for page in self.related_course_pages.all().select_related("page")
+        ]
