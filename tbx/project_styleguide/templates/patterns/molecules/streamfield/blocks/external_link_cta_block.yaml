@@ -1,5 +1,5 @@
 context:
   value:
-    link: '#'
+    link_url: '#'
     heading: Check upcoming course dates and apply
     text: If the dates don’t work, we can notify you of future courses
