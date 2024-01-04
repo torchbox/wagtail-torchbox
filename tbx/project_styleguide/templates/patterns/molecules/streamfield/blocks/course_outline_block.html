@@ -8,11 +8,13 @@
     <ol class="course-outline__list">
         {% for block in value.course_outline %}
             <li class="course-outline__list-item">
-                <svg class="course-outline__icon">
+                <svg class="course-outline__icon" aria-hidden="true">
                     <use xlink:href="#star" />
                 </svg>
                 <div>
-                    <h3 class="course-outline__sub-heading">{{ forloop.counter }}. {{ block.title }}</h3>
+                    <h3 class="course-outline__sub-heading" aria-label="{{ block.title }}">
+                        {{ forloop.counter }}. {{ block.title }}
+                    </h3>
                     {{ block.text|richtext }}
                 </div>
             </li>

@@ -9,7 +9,7 @@
                 {{ page.strapline|richtext }}
             </h1>
             <div class="title-block__course-detail">
-                {% if page.sessions or page.cost %}
+                {% if page.sessions %}
                     <p class="title-block__sessions">
                         {{ page.sessions }}
                         {% if page.cost and page.sessions %} <span aria-hidden="true"></span> {% endif %} {{ page.cost }}
