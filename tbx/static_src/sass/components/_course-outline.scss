@@ -1,0 +1,70 @@
+.course-outline {
+    @include streamblock-padding();
+    margin-bottom: 75px;
+
+    &__heading {
+        @include font-size(l);
+        line-height: 38px;
+        margin: 0 0 40px;
+    }
+
+    &__sub-heading {
+        @include font-size(ml);
+        line-height: 33px;
+        margin-top: 0;
+
+        @include media-query(large) {
+            margin-top: 5px;
+        }
+    }
+
+    &__list {
+        max-width: 720px;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        color: var(--color--coral);
+        width: 30px;
+        height: 30px;
+
+        @include media-query(large) {
+            width: 41px;
+            height: 41px;
+        }
+    }
+
+    // Override existing specificity
+    &__list-item {
+        display: flex;
+        margin-top: 35px;
+        gap: 15px;
+
+        @include media-query(large) {
+            gap: 25px;
+        }
+
+        .streamfield & {
+            ul {
+                list-style: disc;
+                padding-left: 25px;
+            }
+        }
+    }
+
+    .streamfield & {
+        li {
+            padding: 0;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        p {
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

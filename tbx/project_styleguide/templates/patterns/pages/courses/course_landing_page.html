@@ -1,0 +1,18 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    {% include "patterns/molecules/hero/hero.html" with title=page.strapline desc=page.intro sub_title=page.sub_title classes='hero--course-landing' %}
+
+    <div class="proposition-section">
+        {% if page.child_page_listing_heading %}
+            <h2 class="course-grid-title">{{ page.child_page_listing_heading }}</h2>
+        {% endif %}
+
+        {% if subpages %}
+            {% include "patterns/molecules/course-grid/course-grid.html" with cards=subpages %}
+        {% endif %}
+    </div>
+
+{% endblock %}
