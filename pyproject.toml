@@ -9,7 +9,7 @@ python = "^3.11"
 Django = "~4.2"
 wagtail = "~5.2"
 psycopg2 = "^2.9.3"
-gunicorn = {version = "^20.1.0", optional = true}
+gunicorn = { version = "^20.1.0", optional = true }
 django-pattern-library = "^1.1.0"
 whitenoise = "^6.1.0"
 dj-database-url = "^0.5.0"
@@ -37,11 +37,14 @@ gunicorn = ["gunicorn"]
 [tool.poetry.dev-dependencies]
 Werkzeug = "^2.1.2"
 django-debug-toolbar = "^4.1.0"
-django-extensions = "^3.2.1"
+django-extensions = "^3.2.3"
 fabric = "~2.5"
 stellar = "^0.4.5"
 pudb = "^2020.1"
 honcho = "^1.1.0"
+pygraphviz = "^1.11"
+pyparsing = "^3.1.1"
+pydot = "^1.4.2"
 
 # Linters etc.
 black = "^22.3.0"
