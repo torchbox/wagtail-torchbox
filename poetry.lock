@@ -2474,17 +2474,20 @@ testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-f
 
 [[package]]
 name = "wagtail-accessibility"
-version = "0.2.1"
-description = "A plugin to assist with accessibility when developing in Wagtail."
+version = "2.0.0"
+description = "Accessibility content checks for Wagtail websites"
 optional = false
 python-versions = "*"
 files = [
-    {file = "wagtail-accessibility-0.2.1.tar.gz", hash = "sha256:70a246bfa3bc85751317633353491c2f2432bd4ed54968f89ad1406d9e4d0190"},
-    {file = "wagtail_accessibility-0.2.1-py3-none-any.whl", hash = "sha256:c69679a420c2699be3b9fe2aea90b7c62cd3952402c396f470cfc2d2f7fa11c5"},
+    {file = "wagtail-accessibility-2.0.0.tar.gz", hash = "sha256:b425feb5feb51df3530670759f9312cc0ac01c6db3824eb07cb099bf3999f8a3"},
+    {file = "wagtail_accessibility-2.0.0-py3-none-any.whl", hash = "sha256:36b16a85a7a4447e97715078701ffabcbfd730287896ad644b4658eb028c0517"},
 ]
 
 [package.dependencies]
-wagtail = ">=1.0"
+wagtail = ">=4.1"
+
+[package.extras]
+test = ["coverage (==6.0)", "pytest (==6.2.5)", "pytest-cov (==3.0.0)", "pytest-django (==4.5.0)", "pytest-pythonpath (==0.7.3)"]
 
 [[package]]
 name = "wagtail-factories"
@@ -2507,36 +2510,36 @@ test = ["coverage (==6.0)", "flake8 (==4.0.0)", "flake8-blind-except (==0.1.1)",
 
 [[package]]
 name = "wagtail-markdown"
-version = "0.11.1"
+version = "0.12.1"
 description = "Markdown support for Wagtail"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "wagtail_markdown-0.11.1-py3-none-any.whl", hash = "sha256:3d2c5dcfac718c3fc03f2ed05aca535b2aa70f71254599505ee272c54437db21"},
-    {file = "wagtail_markdown-0.11.1.tar.gz", hash = "sha256:afcb64efac5b1b57de9f7cc475987c0c7dec5b669833e4617ec4658880de0f77"},
+    {file = "wagtail_markdown-0.12.1-py3-none-any.whl", hash = "sha256:bb5f02b6bdfef74b50a74e7aa3f255c7bc9787cec8d03dae50fc9404a0097dba"},
+    {file = "wagtail_markdown-0.12.1.tar.gz", hash = "sha256:54f1ba375348e86e03f4eca7d2ac3d33245ead9f854028d7ee9c479448f1e678"},
 ]
 
 [package.dependencies]
 bleach = ">=3.3,<5"
 Markdown = ">=3.3,<4"
-Wagtail = ">=4.1"
+Wagtail = ">=5.2"
 
 [package.extras]
-testing = ["pre-commit (>=3.3.0,<4)", "tox (>=4.6.4,<5)"]
+testing = ["coverage (>=7.0,<8.0)", "tox (>=4.6.4,<5)"]
 
 [[package]]
 name = "wagtail-purge"
-version = "0.3.0"
+version = "0.4.0"
 description = "Purge individual URLs from the Wagtail admin"
 optional = false
 python-versions = "*"
 files = [
-    {file = "wagtail-purge-0.3.0.tar.gz", hash = "sha256:c5464ff62a9748e23722572cd2f0f9be643d6c4a8cf02ef800ba72261f6f4c43"},
-    {file = "wagtail_purge-0.3.0-py2.py3-none-any.whl", hash = "sha256:326cbee87c4ff378b8695e05f6c6bbffae1b6acf6e971cd0d09131629416e42c"},
+    {file = "wagtail-purge-0.4.0.tar.gz", hash = "sha256:879f19b36fefc7f08bcca583a58ef0b7ed26def8f57e604b0d58d5f68bd99d32"},
+    {file = "wagtail_purge-0.4.0-py2.py3-none-any.whl", hash = "sha256:5d0ce4156187f66367ffd37d6fecbe03427e49fb22c7c7a0600b9ce9d93212ad"},
 ]
 
 [package.dependencies]
-wagtail = ">=4.1,<6.0"
+wagtail = ">=5.2"
 
 [[package]]
 name = "wagtail-webstories"
@@ -2560,18 +2563,22 @@ testing = ["Pillow (>=4.0.0,<10.0.0)", "responses (>=0.12,<1)", "wagtailmedia (>
 
 [[package]]
 name = "wagtailmedia"
-version = "0.14.5"
+version = "0.15.1"
 description = "A Wagtail module for audio and video files."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "wagtailmedia-0.14.5-py3-none-any.whl", hash = "sha256:591f38f72980f8494c41e7df70c583ba8b40f284ec109f178ef73876747a139b"},
-    {file = "wagtailmedia-0.14.5.tar.gz", hash = "sha256:f3300f57d326c571420af4bc9381b3bb508dab402fb0f4b7957991a41fe91ef3"},
+    {file = "wagtailmedia-0.15.1-py3-none-any.whl", hash = "sha256:4aff072de282ea3c0e5df8525e620e27752f8e0a0a223b48f89d89a5c0f6b335"},
+    {file = "wagtailmedia-0.15.1.tar.gz", hash = "sha256:1d16610f3b0f4b31012135ed4069c16da23fe9d69420969a5030d61e559b2144"},
 ]
 
 [package.dependencies]
 Django = ">=3.2"
 Wagtail = ">=4.1"
+
+[package.extras]
+linting = ["pre-commit (>=3.6.0)"]
+testing = ["coverage (>=7.4.0)"]
 
 [[package]]
 name = "wand"
@@ -2794,4 +2801,4 @@ gunicorn = ["gunicorn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "89f7743afdfbdc30b089cfb2155aa08841bbb073ad5b46ed9a70f868e871ad15"
+content-hash = "c4d31211ff7b4fecd3fc9d2d9fbd1654b81e56012390e6dfa217422e679a70d3"
