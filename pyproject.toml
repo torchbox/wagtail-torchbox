@@ -7,37 +7,36 @@ authors = ["Torchbox Ltd"]
 [tool.poetry.dependencies]
 python = "^3.11"
 Django = "~4.2"
-wagtail = "~5.2"
+wagtail = "~6.0"
 psycopg2 = "^2.9.3"
 gunicorn = {version = "^20.1.0", optional = true}
 django-pattern-library = "^1.1.0"
-whitenoise = "^6.1.0"
-dj-database-url = "^0.5.0"
-django-redis = "^5.2.0"
-django-storages = { extras = ["boto3"], version = "^1.13.2" }
-django-permissions-policy = "^4.15.0"
+whitenoise = "^6.6.0"
+dj-database-url = "^2.1.0"
+django-redis = "^5.4.0"
+django-storages = { extras = ["boto3"], version = "^1.14.2" }
+django-permissions-policy = "^4.19.0"
 django-referrer-policy = "~1.0"
-django-csp = "^3.7"
-scout-apm = "^2.25.1"
+django-csp = "^3.8"
+scout-apm = "^3.1.0"
 django-basic-auth-ip-whitelist = "^0.5"
-wagtail-accessibility = "^0.2.1"
-django-phonenumber-field = "^7.0.2"
-phonenumbers = "^8.12.48"
-wagtail-purge = "^0.3.0"
+wagtail-accessibility = "^2.0.0"
+django-phonenumber-field = { extras = ["phonenumbers"], version = "^7.3.0" }
+wagtail-purge = "^0.4.0"
 wagtail-webstories = "^0.1.1"
-wagtail-markdown = "^0.11.1"
-django-birdbath = "^1.1.0"
-sentry-sdk = "^1.12.1"
-Wand = "^0.6.10"
-wagtailmedia = "^0.14.5"
+wagtail-markdown = "^0.12.1"
+django-birdbath = "^1.1.1"
+sentry-sdk = "^1.42.0"
+Wand = "^0.6.13"
+wagtailmedia = "^0.15.1"
 
 [tool.poetry.extras]
 gunicorn = ["gunicorn"]
 
 [tool.poetry.dev-dependencies]
 Werkzeug = "^2.1.2"
-django-debug-toolbar = "^4.1.0"
-django-extensions = "^3.2.1"
+django-debug-toolbar = "^4.3.0"
+django-extensions = "^3.2.3"
 fabric = "~2.5"
 stellar = "^0.4.5"
 pudb = "^2020.1"
