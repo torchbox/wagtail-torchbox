@@ -1,4 +1,24 @@
-# Torchbox.com on Wagtail
+# Torchbox.com on Wagtail - RETIRED
+
+> [!WARNING]  
+> This version of the torchbox.com repo is now retired. You probably want https://github.com/torchbox/torchbox.com.
+
+The old REAME content is preserved below for reference.
+
+<pre>
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+</pre>
+
+# Historical documentation
 
 [![CI](https://github.com/torchbox/wagtail-torchbox/actions/workflows/test.yml/badge.svg)](https://github.com/torchbox/wagtail-torchbox/actions/workflows/test.yml)
 
