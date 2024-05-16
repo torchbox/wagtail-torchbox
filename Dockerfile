@@ -58,6 +58,12 @@ ENV PATH=$VIRTUAL_ENV/bin:$PATH \
 ARG BUILD_ENV
 ENV BUILD_ENV=${BUILD_ENV}
 
+# install graphviz only in dev environment
+RUN if [ "$BUILD_ENV" = "dev" ] ; then \
+    apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
+    graphviz libgraphviz-dev \
+    && apt-get autoremove && rm -rf /var/lib/apt/lists/* ; \
+    fi
 
 # Port exposed by this container. Should default to the port used by your WSGI
 # server (Gunicorn). This is read by Dokku only. Heroku will ignore this.

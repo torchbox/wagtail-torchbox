@@ -47,6 +47,8 @@ DEBUG_TOOLBAR_CONFIG = {
     "SHOW_COLLAPSED": True,
 }
 
+INSTALLED_APPS += ["django_extensions"]  # noqa
+
 try:
     from .local import *  # noqa
 except ImportError:
