@@ -69,7 +69,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Poetry
-        run: pipx install poetry==1.5.1 # Make sure this matches POETRY_VERSION in the Dockerfile
+        run: pipx install poetry==1.8.2 # Make sure this matches POETRY_VERSION in the Dockerfile
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
